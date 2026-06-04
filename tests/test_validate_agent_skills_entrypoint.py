@@ -14,7 +14,13 @@ if str(SCRIPTS_DIR) not in sys.path:
     sys.path.insert(0, str(SCRIPTS_DIR))
 
 from validation import validate_agent_skills
-from validation.validators import agent_skills_export_contract, agent_skills_export_surface
+from validation.validators import (
+    agent_skills_catalog_surface,
+    agent_skills_export_contract,
+    agent_skills_export_surface,
+    agent_skills_local_adapter_surface,
+    agent_skills_project_surface,
+)
 
 
 class ValidateAgentSkillsEntrypointTests(unittest.TestCase):
@@ -57,6 +63,34 @@ class ValidateAgentSkillsEntrypointTests(unittest.TestCase):
 
         self.assertLessEqual(len(validate_lines), 80)
         self.assertLessEqual(len(skill_lines), 180)
+
+    def test_local_adapter_validation_is_phase_split(self) -> None:
+        self.assertTrue(hasattr(agent_skills_local_adapter_surface, "validate_local_adapter_entry"))
+        self.assertTrue(hasattr(agent_skills_local_adapter_surface, "validate_local_adapter_skill_sets"))
+
+        export_source = inspect.getsource(agent_skills_export_surface.validate_exported_skill_directory)
+        catalog_source = inspect.getsource(agent_skills_catalog_surface.validate_export_catalog_entries)
+        adapter_source = inspect.getsource(agent_skills_local_adapter_surface.validate_local_adapter_entry)
+
+        self.assertIn("agent_skills_catalog_surface.validate_export_catalog_entries(", export_source)
+        self.assertIn("validate_local_adapter_entry(", catalog_source)
+        self.assertNotIn("allowlist path does not exist", export_source)
+        self.assertIn("allowlist path does not exist", adapter_source)
+
+    def test_project_surface_validation_is_phase_split(self) -> None:
+        self.assertTrue(hasattr(agent_skills_project_surface, "validate_project_core_kernel_surfaces"))
+        self.assertTrue(hasattr(agent_skills_project_surface, "validate_project_core_outer_ring_surfaces"))
+        self.assertTrue(hasattr(agent_skills_project_surface, "validate_project_risk_ring_surfaces"))
+        self.assertTrue(hasattr(agent_skills_project_surface, "validate_project_foundation_profile"))
+
+        validate_source = inspect.getsource(agent_skills_export_surface.validate)
+        export_wrapper_source = inspect.getsource(agent_skills_export_surface.validate_project_core_kernel_surfaces)
+        project_source = inspect.getsource(agent_skills_project_surface.validate_project_core_kernel_surfaces)
+
+        self.assertIn("agent_skills_project_surface.validate_project_core_kernel_surfaces(", validate_source)
+        self.assertIn("agent_skills_project_surface.validate_project_core_kernel_surfaces(", export_wrapper_source)
+        self.assertNotIn("config/project_core_skill_kernel.json schema_version must be 1", export_wrapper_source)
+        self.assertIn("config/project_core_skill_kernel.json schema_version must be 1", project_source)
 
     def test_export_contract_manifest_loads_runtime_constants(self) -> None:
         contract = agent_skills_export_contract.load_contract()

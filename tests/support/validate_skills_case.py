@@ -3,6 +3,7 @@ from __future__ import annotations
 import ast
 import contextlib
 import io
+import inspect
 import json
 import re
 import shutil
@@ -24,7 +25,12 @@ from validation import validate_skills
 from builders import build_catalog
 from skill_model import skill_lineage_surface
 from skill_model import skill_review_surface
-from validation.validators import generated_surface, questbook_contract, questbook_surface
+from validation.validators import (
+    generated_surface,
+    questbook_contract,
+    questbook_surface,
+    skill_status_surface,
+)
 
 
 PRIMARY_PUBLISHED_TECHNIQUE = {

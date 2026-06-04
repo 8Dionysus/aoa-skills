@@ -3,6 +3,7 @@ from __future__ import annotations
 import ast
 import json
 import re
+import subprocess
 import sys
 import unittest
 from pathlib import Path
@@ -55,6 +56,7 @@ THIN_ROOT_INGRESS = (
     "scripts/lint_support_resources.py",
 )
 OWNER_MODULE_LIMITS = {
+    "scripts/validation/validators/agent_skills_project_surface.py": 180,
     "scripts/validation/validators/tiny_router_surface.py": 180,
     "scripts/validation/validators/support_resource_surface.py": 180,
     "scripts/validation/validators/trigger_eval_surface.py": 180,
@@ -150,6 +152,29 @@ class ValidatorTopologyTests(unittest.TestCase):
         loader_text = (SCRIPTS_DIR / "validation_lanes.py").read_text(encoding="utf-8")
         self.assertNotIn("scripts/build_agent_skills.py", loader_text)
         self.assertNotIn("generated/runtime_discovery_index.json", loader_text)
+
+    def test_validation_lanes_root_ingress_is_safe_manifest_cli(self) -> None:
+        help_result = subprocess.run(
+            (sys.executable, "scripts/validation_lanes.py", "--help"),
+            cwd=REPO_ROOT,
+            check=False,
+            capture_output=True,
+            text=True,
+        )
+        self.assertEqual(0, help_result.returncode, help_result.stderr)
+        self.assertIn("usage:", help_result.stdout)
+        self.assertIn("config/validation_lanes.json", help_result.stdout)
+
+        inspect_result = subprocess.run(
+            (sys.executable, "scripts/validation_lanes.py"),
+            cwd=REPO_ROOT,
+            check=False,
+            capture_output=True,
+            text=True,
+        )
+        self.assertEqual(0, inspect_result.returncode, inspect_result.stderr)
+        self.assertIn("validation lanes: config/validation_lanes.json", inspect_result.stdout)
+        self.assertIn("- source_fast:", inspect_result.stdout)
 
     def test_all_agents_cards_name_validation_command_storage_balance(self) -> None:
         missing = []

@@ -57,6 +57,17 @@ Tracking starts with the community-docs baseline for this repository.
 - Generated/read-model, questbook, and Agent Skills export/runtime validation
   now execute from owner modules under `scripts/validation/validators/`, leaving the
   script entrypoints as CLI/orchestration adapters.
+- The Agent Skills export builder and validator now delegate local-adapter and
+  catalog-entry phases to export/validation owner modules instead of keeping
+  those phases in the main bodies.
+- Agent Skills project kernel, outer-ring, risk-ring, and foundation-profile
+  export document builders now live in their own export project-surface module.
+- The Agent Skills export builder `main()` now routes through explicit load,
+  portable-export, generated-text, and write phases.
+- Per-skill Agent Skills portable export assembly now lives in its own export
+  owner module, with the main builder retaining compatibility aliases.
+- Agent Skills project kernel, outer-ring, risk-ring, and foundation-profile
+  validation now lives in its own project-surface owner module.
 - Questbook surface validation is now split into explicit schema, quest YAML,
   generated catalog, and dispatch phases inside its owner module.
 - Agent Skills export/runtime validation is now phase-split into document
@@ -86,6 +97,12 @@ Tracking starts with the community-docs baseline for this repository.
   `validation/`.
 
 ### Fixed
+
+- Root script ingress now treats `--help` as a safe command surface, including
+  `validate_agents_design.py` and the validation-lane manifest inspector.
+- The duplicate standalone local-adapter manifest builder was folded into the
+  export builder path, leaving `scripts/build_agent_skills.py` as the single
+  source for `generated/local_adapter_manifest*.json`.
 
 ## [0.4.0] - 2026-05-18
 

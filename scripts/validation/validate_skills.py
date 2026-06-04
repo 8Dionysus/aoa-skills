@@ -30,7 +30,7 @@ from skill_model import skill_review_surface
 from runtime import skill_runtime_surface
 from skill_model import skill_section_contract
 from skill_model import skill_source_model
-from validation.validators import generated_surface, questbook_surface
+from validation.validators import generated_surface, questbook_surface, skill_status_surface
 
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
@@ -526,10 +526,6 @@ def validate_explicit_only_policy(
         )
 
 
-def load_policy_signal(repo_root: Path, skill_name: str) -> tuple[bool, Any]:
-    return skill_source_model.load_policy_signal(repo_root, skill_name)
-
-
 def status_requires_floor(status: str, floor: str) -> bool:
     floors = {
         "linked": {"linked", "reviewed", "evaluated", "canonical"},
@@ -698,58 +694,6 @@ def validate_skill_composition_contract(
                         )
                     )
     return issues
-
-
-def validate_canonical_floor(
-    metadata: dict[str, Any],
-    headings: set[str],
-    techniques_data: dict[str, Any],
-    skill_md_path: Path,
-    techniques_path: Path,
-    issues: list[ValidationIssue],
-) -> None:
-    skill_location = relative_location(skill_md_path)
-    techniques_location = relative_location(techniques_path)
-
-    dependencies = metadata.get("technique_dependencies", [])
-    if any(
-        isinstance(dependency, str) and dependency.startswith("AOA-T-PENDING-")
-        for dependency in dependencies
-    ):
-        issues.append(
-            ValidationIssue(
-                skill_location,
-                "status 'canonical' cannot use pending technique_dependencies",
-            )
-        )
-
-    if "Technique traceability" not in headings or "Future traceability" in headings:
-        issues.append(
-            ValidationIssue(
-                skill_location,
-                "status 'canonical' requires 'Technique traceability' and forbids legacy 'Future traceability'",
-            )
-        )
-
-    for technique in techniques_data.get("techniques", []):
-        if technique.get("id", "").startswith("AOA-T-PENDING-"):
-            issues.append(
-                ValidationIssue(
-                    techniques_location,
-                    "status 'canonical' cannot use pending techniques in techniques.yaml",
-                )
-            )
-            break
-
-    for technique in techniques_data.get("techniques", []):
-        if technique.get("path") == "TBD" or technique.get("source_ref") == "TBD":
-            issues.append(
-                ValidationIssue(
-                    techniques_location,
-                    "status 'canonical' requires concrete path and source_ref for every technique",
-                )
-            )
-            break
 
 
 def load_evaluation_fixtures(
@@ -956,150 +900,13 @@ def validate_canonical_status_floors(
     repo_root: Path,
     target_skills: Sequence[str],
 ) -> list[ValidationIssue]:
-    issues: list[ValidationIssue] = []
-    canonical_skills: list[
-        tuple[str, dict[str, Any], set[str], dict[str, Any], Path, Path]
-    ] = []
-
-    for skill_name in target_skills:
-        skill_md_path = skill_layout.skill_md_path(repo_root, skill_name)
-        techniques_path = skill_layout.techniques_path(repo_root, skill_name)
-        metadata, section_pairs = parse_skill_markdown(skill_md_path, [])
-        if metadata is None or metadata.get("status") != "canonical":
-            continue
-
-        manifest_issues: list[ValidationIssue] = []
-        techniques_data = load_yaml_file(techniques_path, manifest_issues)
-        if manifest_issues or not isinstance(techniques_data, dict):
-            continue
-
-        canonical_skills.append(
-            (
-                skill_name,
-                metadata,
-                {heading for heading, _content in section_pairs},
-                techniques_data,
-                skill_md_path,
-                techniques_path,
-            )
-        )
-
-    if not canonical_skills:
-        return issues
-
-    fixtures = load_evaluation_fixtures(repo_root, [])
-    coverage_by_skill = skill_governance_surface.collect_evaluation_coverage(fixtures)
-    snapshot_coverage_by_skill = skill_evaluation_contract.collect_snapshot_coverage(
-        repo_root,
-        fixtures,
-    )
-    fixtures_location = EVALUATION_FIXTURES_PATH.as_posix()
-    snapshots_location = skill_evaluation_contract.EVALUATION_SNAPSHOTS_DIR.as_posix()
-
-    for (
-        skill_name,
-        metadata,
-        headings,
-        techniques_data,
-        skill_md_path,
-        techniques_path,
-    ) in canonical_skills:
-        policy_exists, policy_allow_implicit_invocation = load_policy_signal(
+    return [
+        ValidationIssue(issue.location, issue.message)
+        for issue in skill_status_surface.validate_canonical_status_floors(
             repo_root,
-            skill_name,
+            target_skills,
         )
-        blockers = skill_governance_surface.derive_canonical_candidate_blockers(
-            status="canonical",
-            headings=headings,
-            technique_dependencies=list(metadata.get("technique_dependencies", [])),
-            techniques=skill_catalog_contract.normalize_technique_refs(techniques_data),
-            evaluation_coverage=skill_governance_surface.coverage_for_skill(
-                coverage_by_skill,
-                skill_name,
-            ),
-            invocation_mode=metadata.get("invocation_mode"),
-            policy_exists=policy_exists,
-            policy_allow_implicit_invocation=policy_allow_implicit_invocation,
-        )
-        skill_location = relative_location(skill_md_path)
-        techniques_location = relative_location(techniques_path)
-
-        if skill_governance_surface.BLOCKER_PENDING_TECHNIQUE_DEPENDENCIES in blockers:
-            issues.append(
-                ValidationIssue(
-                    skill_location,
-                    "status 'canonical' cannot use pending technique_dependencies",
-                )
-            )
-        if skill_governance_surface.BLOCKER_MISSING_TRACEABILITY_HEADING in blockers:
-            issues.append(
-                ValidationIssue(
-                    skill_location,
-                    "status 'canonical' requires 'Technique traceability' and forbids legacy 'Future traceability'",
-                )
-            )
-        if skill_governance_surface.BLOCKER_PENDING_TECHNIQUE_ENTRIES in blockers:
-            issues.append(
-                ValidationIssue(
-                    techniques_location,
-                    "status 'canonical' cannot use pending techniques in techniques.yaml",
-                )
-            )
-        if skill_governance_surface.BLOCKER_TBD_TECHNIQUE_REFS in blockers:
-            issues.append(
-                ValidationIssue(
-                    techniques_location,
-                    "status 'canonical' requires concrete path and source_ref for every technique",
-                )
-            )
-        eval_blockers = skill_evaluation_contract.derive_canonical_eval_blockers(
-            snapshot_coverage_by_skill,
-            skill_name,
-        )
-        if skill_evaluation_contract.BLOCKER_MISSING_USE_SNAPSHOT in eval_blockers:
-            issues.append(
-                ValidationIssue(
-                    fixtures_location,
-                    "status 'canonical' requires at least one 'use' snapshot case",
-                )
-            )
-        if skill_evaluation_contract.BLOCKER_MISSING_DO_NOT_USE_SNAPSHOT in eval_blockers:
-            issues.append(
-                ValidationIssue(
-                    fixtures_location,
-                    "status 'canonical' requires at least one 'do_not_use' snapshot case",
-                )
-            )
-        if skill_evaluation_contract.BLOCKER_MISSING_SNAPSHOT_FILE in eval_blockers:
-            issues.append(
-                ValidationIssue(
-                    snapshots_location,
-                    "status 'canonical' requires referenced snapshot files to exist",
-                )
-            )
-        if skill_evaluation_contract.BLOCKER_SNAPSHOT_HEADING_CONTRACT_VIOLATION in eval_blockers:
-            issues.append(
-                ValidationIssue(
-                    snapshots_location,
-                    "status 'canonical' requires snapshot files to satisfy the canonical heading contract",
-                )
-            )
-        if skill_evaluation_contract.BLOCKER_SNAPSHOT_MISSING_REQUIRED_PHRASE in eval_blockers:
-            issues.append(
-                ValidationIssue(
-                    snapshots_location,
-                    "status 'canonical' requires snapshot files to contain every required output phrase",
-                )
-            )
-        if skill_evaluation_contract.BLOCKER_SNAPSHOT_CONTAINS_FORBIDDEN_PHRASE in eval_blockers:
-            issues.append(
-                ValidationIssue(
-                    snapshots_location,
-                    "status 'canonical' requires snapshot files to avoid forbidden output phrases",
-                )
-            )
-
-    return issues
+    ]
 
 
 def validate_runtime_surface_contract(

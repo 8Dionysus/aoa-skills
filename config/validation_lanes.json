@@ -4,7 +4,7 @@
   "command_authority": "config/validation_lanes.json",
   "notes": [
     "This manifest is the canonical storage location for blocking lane command sequences.",
-    "scripts/validation_lanes.py is a loader/API for Python callers; do not duplicate full sequences in AGENTS.md or workflow YAML."
+    "scripts/lanes/validation_lanes.py is the loader/API; root scripts/validation_lanes.py is compatibility ingress and safe manifest inspection. Do not duplicate full sequences in AGENTS.md or workflow YAML."
   ],
   "drift_paths": {
     "export_generated": [

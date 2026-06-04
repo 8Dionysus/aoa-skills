@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+import argparse
 from pathlib import Path
 import subprocess
 import sys
@@ -182,8 +183,23 @@ def validate(repo_root: Path = REPO_ROOT) -> list[str]:
     return issues
 
 
-def main() -> int:
-    issues = validate(REPO_ROOT)
+def build_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(
+        description="Validate the aoa-skills AGENTS.md design mesh."
+    )
+    parser.add_argument(
+        "--repo-root",
+        default=REPO_ROOT,
+        type=Path,
+        help="Repository root to validate. Defaults to the aoa-skills checkout.",
+    )
+    return parser
+
+
+def main(argv: list[str] | None = None) -> int:
+    args = build_parser().parse_args(argv)
+    repo_root = args.repo_root.resolve()
+    issues = validate(repo_root)
     if issues:
         print("AGENTS design validation failed.", file=sys.stderr)
         for issue in issues:
@@ -192,7 +208,7 @@ def main() -> int:
 
     print(
         f"[ok] AGENTS design mesh is present and canonical: "
-        f"{len(iter_agent_cards(REPO_ROOT))} cards"
+        f"{len(iter_agent_cards(repo_root))} cards"
     )
     return 0
 

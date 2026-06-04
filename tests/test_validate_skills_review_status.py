@@ -4,6 +4,13 @@ from tests.support.validate_skills_case import *
 
 
 class ValidateSkillsReviewStatusTests(ValidateSkillsCase):
+    def test_canonical_status_floor_validation_is_phase_split(self) -> None:
+        self.assertTrue(hasattr(skill_status_surface, "validate_canonical_status_floors"))
+        source = inspect.getsource(validate_skills.validate_canonical_status_floors)
+
+        self.assertIn("skill_status_surface.validate_canonical_status_floors(", source)
+        self.assertNotIn("derive_canonical_candidate_blockers", source)
+
     def test_single_technique_skill_without_exception_review_fails(self) -> None:
         repo_root = self.make_repo(include_composition_exception_review=False)
 

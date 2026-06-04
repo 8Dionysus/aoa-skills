@@ -31,7 +31,8 @@ Use this route before editing validator code:
 4. Put bulky deterministic execution in `scripts/validation/validators/*`.
 5. Put route-law or contract data in JSON manifests, not Python lists.
 6. Store blocking lane sequences in `config/validation_lanes.json`.
-7. Wire callers through `scripts/validation_lanes.py` and `scripts/ci_gate.py`.
+7. Wire callers through `scripts/lanes/validation_lanes.py`, the compatibility
+   ingress `scripts/validation_lanes.py`, and `scripts/ci_gate.py`.
 8. Keep live workspace and broad evidence reports advisory unless a lane
    explicitly names their failure mode.
 
@@ -56,10 +57,10 @@ Use this route before editing validator code:
 | Activation/trigger | Explicit/manual posture, collision cases, description signals, trigger cases, tiny-router surfaces. | `scripts/validation/validators/trigger_eval_surface.py`, `scripts/validation/validators/tiny_router_surface.py` | Fix source skill description/policy, rebuild generated cases, then lint. |
 | Skill-native eval | Snapshot-backed local evidence and generated evaluation matrix. | `scripts/skill_model/skill_evaluation_contract.py`, `scripts/skill_model/skill_evaluation_surface.py` | Repair fixture/snapshot/source bundle mismatch; keep broad proof outside required gates. |
 | Generated/read-model | Catalogs, public/governance/evaluation matrices, decision indexes, skill graph, release manifest. | `scripts/build_catalog.py`, `scripts/generate_decision_indexes.py` | Move source input or builder, regenerate, and require drift-free output. |
-| Portable export/runtime | `.agents/skills/*`, runtime seam, guardrails, Agent Skills export surface. | `scripts/validation/validators/agent_skills_export_surface.py`, `scripts/skill_runtime_seam.py`, `scripts/skill_runtime_guardrails.py` | Fix source/config/builder and rerun export lane. |
+| Portable export/runtime | `.agents/skills/*`, runtime seam, guardrails, Agent Skills export surface. | `scripts/validation/validators/agent_skills_export_surface.py`, `scripts/validation/validators/agent_skills_project_surface.py`, `scripts/skill_runtime_seam.py`, `scripts/skill_runtime_guardrails.py` | Fix source/config/builder and rerun export lane. |
 | Support/tiny-router | Support resources, deterministic resource manifests, pack profiles, tiny-router capsules. | `scripts/validation/validators/support_resource_surface.py`, `scripts/validation/validators/pack_profile_surface.py`, `scripts/validation/validators/tiny_router_surface.py` | Fix canonical support files or generated mirrors; rerun export/generated lane. |
 | Risk/guardrail | Explicit-only posture, permission/trust/context guardrail manifests. | `scripts/build_runtime_guardrails.py`, `scripts/skill_runtime_guardrails.py` | Fix policy config or source bundle risk posture; rerun runtime generated checks. |
-| Release/CI | Lane command order, generated drift paths, packaging smoke, growth-vs-release split. | `config/validation_lanes.json`, `scripts/validation_lanes.py`, `scripts/ci_gate.py`, `scripts/release_check.py` | Fix lane manifest definitions and tests before changing GitHub workflow YAML. |
+| Release/CI | Lane command order, generated drift paths, packaging smoke, growth-vs-release split. | `config/validation_lanes.json`, `scripts/lanes/validation_lanes.py`, `scripts/validation_lanes.py`, `scripts/ci_gate.py`, `scripts/release_check.py` | Fix lane manifest definitions and tests before changing GitHub workflow YAML. |
 | Advisory audit/report | Promotion pressure, workspace adoption, quality audit, technique drift, reality trials. | Report scripts and audit docs. | Treat as review evidence unless a command is explicitly invoked with a failing flag. |
 
 ## Current Debt Closures
@@ -71,8 +72,10 @@ Use this route before editing validator code:
   pack-profile, and support-resource lint execution now lives in owner modules
   under `scripts/validation/validators/`; root files are CLI adapters.
 - `config/validation_lanes.json` is the source of CI command sequencing;
-  `scripts/validation_lanes.py` is the loader/API. GitHub workflow YAML should
-  call lanes, not invent hidden validation meaning.
+  `scripts/lanes/validation_lanes.py` is the loader/API, and root
+  `scripts/validation_lanes.py` is compatibility ingress with safe manifest
+  inspection. GitHub workflow YAML should call lanes, not invent hidden
+  validation meaning.
 
 ## Boundary
 
