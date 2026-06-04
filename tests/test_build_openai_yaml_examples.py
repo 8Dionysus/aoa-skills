@@ -7,9 +7,11 @@ import tempfile
 import unittest
 from pathlib import Path
 
+from tests.support.cli import command_env
+
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-SCRIPT = REPO_ROOT / "scripts" / "build_openai_yaml_examples.py"
+SCRIPT = REPO_ROOT / "scripts" / "adapters" / "build_openai_yaml_examples.py"
 
 
 class BuildOpenaiYamlExamplesTests(unittest.TestCase):
@@ -46,6 +48,7 @@ class BuildOpenaiYamlExamplesTests(unittest.TestCase):
                     str(output_dir),
                 ],
                 check=True,
+                env=command_env(),
             )
 
             result = output_dir / "openai.workspace-orientation.example.yaml"
@@ -92,6 +95,7 @@ class BuildOpenaiYamlExamplesTests(unittest.TestCase):
                 ],
                 capture_output=True,
                 text=True,
+                env=command_env(),
             )
 
             self.assertNotEqual(result.returncode, 0)

@@ -80,9 +80,9 @@ downstream workspace installs.
 
 - check:
   - `python scripts/ci_gate.py --mode export --changed-only`
-  - `python scripts/build_catalog.py --check --group reader`
+  - `PYTHONPATH=scripts python scripts/builders/build_catalog.py --check --group reader`
 - execute:
-  - `python scripts/build_catalog.py`
+  - `PYTHONPATH=scripts python scripts/builders/build_catalog.py`
 - validate:
   - `python scripts/ci_gate.py --mode source-fast`
   - `python scripts/ci_gate.py --mode export`
@@ -98,10 +98,10 @@ Proof commands:
 - `python scripts/ci_gate.py --mode source-fast`
 - `python scripts/ci_gate.py --mode generated --group all`
 - `python scripts/ci_gate.py --mode export`
-- `python scripts/report_skill_evaluation.py --fail-on-canonical-gaps`
-- `python scripts/validate_agent_skills.py --repo-root .`
-- `python scripts/validate_support_resources.py --repo-root . --check-portable`
-- `python scripts/validate_tiny_router_inputs.py --repo-root .`
+- `PYTHONPATH=scripts python scripts/reports/report_skill_evaluation.py --fail-on-canonical-gaps`
+- `PYTHONPATH=scripts python scripts/validation/validate_agent_skills.py --repo-root .`
+- `PYTHONPATH=scripts python scripts/validation/validate_support_resources.py --repo-root . --check-portable`
+- `PYTHONPATH=scripts python scripts/validation/validate_tiny_router_inputs.py --repo-root .`
 - `python -m pytest -q tests`
 
 Rollback anchors:

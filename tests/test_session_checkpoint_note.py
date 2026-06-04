@@ -170,7 +170,7 @@ def test_core_ring_skills_remain_explicit_only() -> None:
 
 def test_kernel_stage_and_live_receipt_family_do_not_expand_for_checkpoints() -> None:
     kernel = _load_json("config/project_core_skill_kernel.json")
-    publish_script = (REPO_ROOT / "scripts" / "publish_live_receipts.py").read_text(encoding="utf-8")
+    publish_script = (REPO_ROOT / "scripts" / "receipts" / "publish_live_receipts.py").read_text(encoding="utf-8")
 
     assert kernel["governance_contract"]["application_stage"] == "finish"
     assert "checkpoint_note_receipt" not in publish_script

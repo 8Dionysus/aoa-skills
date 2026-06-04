@@ -117,7 +117,7 @@ class ValidateSkillsGeneratedDriftTests(ValidateSkillsCase):
         self.assertFalse(
             any(
                 issue.message
-                == "generated lineage surface artifact is out of date; run python scripts/build_catalog.py"
+                == "generated lineage surface artifact is out of date; run PYTHONPATH=scripts python scripts/builders/build_catalog.py"
                 for issue in issues
             )
         )
@@ -142,7 +142,7 @@ class ValidateSkillsGeneratedDriftTests(ValidateSkillsCase):
         )
         messages = [issue.message for issue in issues]
         self.assertIn(
-            "generated lineage surface artifact is out of date; run python scripts/build_catalog.py",
+            "generated lineage surface artifact is out of date; run PYTHONPATH=scripts python scripts/builders/build_catalog.py",
             messages,
         )
         self.assertEqual(
@@ -161,7 +161,7 @@ class ValidateSkillsGeneratedDriftTests(ValidateSkillsCase):
         issues = validate_skills.run_validation(repo_root)
         messages = [issue.message for issue in issues]
         self.assertIn(
-            "generated skill composition audit artifact is out of date; run python scripts/build_catalog.py",
+            "generated skill composition audit artifact is out of date; run PYTHONPATH=scripts python scripts/builders/build_catalog.py",
             messages,
         )
 
@@ -207,7 +207,7 @@ class ValidateSkillsGeneratedDriftTests(ValidateSkillsCase):
         issues = validate_skills.run_validation(repo_root)
         messages = [issue.message for issue in issues]
         self.assertIn(
-            "generated catalog is out of date; run python scripts/build_catalog.py",
+            "generated catalog is out of date; run PYTHONPATH=scripts python scripts/builders/build_catalog.py",
             messages,
         )
 
@@ -227,15 +227,15 @@ class ValidateSkillsGeneratedDriftTests(ValidateSkillsCase):
         messages = [issue.message for issue in issues]
 
         self.assertIn(
-            "generated catalog entry for 'aoa-test-skill' is out of date; run python scripts/build_catalog.py",
+            "generated catalog entry for 'aoa-test-skill' is out of date; run PYTHONPATH=scripts python scripts/builders/build_catalog.py",
             messages,
         )
         self.assertIn(
-            "generated min catalog entry for 'aoa-test-skill' is out of date; run python scripts/build_catalog.py",
+            "generated min catalog entry for 'aoa-test-skill' is out of date; run PYTHONPATH=scripts python scripts/builders/build_catalog.py",
             messages,
         )
         self.assertIn(
-            "generated capsule entry for 'aoa-test-skill' is out of date; run python scripts/build_catalog.py",
+            "generated capsule entry for 'aoa-test-skill' is out of date; run PYTHONPATH=scripts python scripts/builders/build_catalog.py",
             messages,
         )
 
@@ -303,7 +303,7 @@ class ValidateSkillsGeneratedDriftTests(ValidateSkillsCase):
         issues = validate_skills.run_validation(repo_root)
         messages = [issue.message for issue in issues]
         self.assertIn(
-            "generated capsules are out of date; run python scripts/build_catalog.py",
+            "generated capsules are out of date; run PYTHONPATH=scripts python scripts/builders/build_catalog.py",
             messages,
         )
 
@@ -334,7 +334,7 @@ class ValidateSkillsGeneratedDriftTests(ValidateSkillsCase):
         issues = validate_skills.run_validation(repo_root)
         messages = [issue.message for issue in issues]
         self.assertIn(
-            "generated sections are out of date; run python scripts/build_catalog.py",
+            "generated sections are out of date; run PYTHONPATH=scripts python scripts/builders/build_catalog.py",
             messages,
         )
 
@@ -371,7 +371,7 @@ class ValidateSkillsGeneratedDriftTests(ValidateSkillsCase):
         )
         messages = [issue.message for issue in issues]
         self.assertIn(
-            "generated section entry for 'aoa-test-skill' is out of date; run python scripts/build_catalog.py",
+            "generated section entry for 'aoa-test-skill' is out of date; run PYTHONPATH=scripts python scripts/builders/build_catalog.py",
             messages,
         )
 
@@ -390,7 +390,7 @@ class ValidateSkillsGeneratedDriftTests(ValidateSkillsCase):
         issues = validate_skills.run_validation(repo_root)
         messages = [issue.message for issue in issues]
         self.assertIn(
-            "generated public surface is out of date; run python scripts/build_catalog.py",
+            "generated public surface is out of date; run PYTHONPATH=scripts python scripts/builders/build_catalog.py",
             messages,
         )
 
@@ -411,7 +411,7 @@ class ValidateSkillsGeneratedDriftTests(ValidateSkillsCase):
         issues = validate_skills.run_validation(repo_root)
         messages = [issue.message for issue in issues]
         self.assertIn(
-            "generated public surface markdown is out of date; run python scripts/build_catalog.py",
+            "generated public surface markdown is out of date; run PYTHONPATH=scripts python scripts/builders/build_catalog.py",
             messages,
         )
 
@@ -424,7 +424,7 @@ class ValidateSkillsGeneratedDriftTests(ValidateSkillsCase):
         issues = validate_skills.run_validation(repo_root)
         messages = [issue.message for issue in issues]
         self.assertIn(
-            "generated walkthrough surface is out of date; run python scripts/build_catalog.py",
+            "generated walkthrough surface is out of date; run PYTHONPATH=scripts python scripts/builders/build_catalog.py",
             messages,
         )
 
@@ -439,7 +439,7 @@ class ValidateSkillsGeneratedDriftTests(ValidateSkillsCase):
         issues = validate_skills.run_validation(repo_root)
         messages = [issue.message for issue in issues]
         self.assertIn(
-            "generated walkthrough markdown is out of date; run python scripts/build_catalog.py",
+            "generated walkthrough markdown is out of date; run PYTHONPATH=scripts python scripts/builders/build_catalog.py",
             messages,
         )
 

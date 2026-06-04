@@ -16,7 +16,7 @@ It contains:
 Render one profile's disable snippet:
 
 ```bash
-python scripts/render_codex_config.py --repo-root . --profile repo-risk-explicit
+PYTHONPATH=scripts python scripts/adapters/render_codex_config.py --repo-root . --profile repo-risk-explicit
 ```
 
 ## Example artifacts

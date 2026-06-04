@@ -119,7 +119,7 @@ The reverse route is also first-class:
 This keeps living skill workflows from being trapped behind technique
 publication while preserving the direct relationship between the layers.
 
-Current local helper: use `scripts/refresh_skill_from_manifest.py` in dry-run
+Current local helper: use `scripts/refresh/refresh_skill_from_manifest.py` in dry-run
 mode for one named skill.
 
 Explicit single-skill write mode stays available through the same helper with
@@ -132,8 +132,8 @@ Those gaps are review signals, not auto-generated content.
 Single-skill write mode may refresh `technique_dependencies` and the traceability block,
 but it must not invent missing runtime sections on behalf of the author.
 
-Current cross-repo hardening helpers are `scripts/report_technique_drift.py`
-and `scripts/refresh_skill_from_techniques.py` against a local
+Current cross-repo hardening helpers are `scripts/reports/report_technique_drift.py`
+and `scripts/refresh/refresh_skill_from_techniques.py` against a local
 `../aoa-techniques` checkout.
 
 `report_technique_drift.py` compares published `source_ref` values against a chosen local

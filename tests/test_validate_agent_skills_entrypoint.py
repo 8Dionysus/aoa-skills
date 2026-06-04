@@ -25,13 +25,11 @@ from validation.validators import (
 
 class ValidateAgentSkillsEntrypointTests(unittest.TestCase):
     def test_cli_adapter_stays_thin(self) -> None:
-        script_text = (SCRIPTS_DIR / "validate_agent_skills.py").read_text(
-            encoding="utf-8"
-        )
+        script_text = (SCRIPTS_DIR / "validation" / "validate_agent_skills.py").read_text(encoding="utf-8")
 
-        self.assertIn("from _ingress import expose", script_text)
-        self.assertIn('expose("validation.validate_agent_skills", globals())', script_text)
-        self.assertLessEqual(len(script_text.splitlines()), 4)
+        self.assertIn("from validation.validators.agent_skills_export_surface import main", script_text)
+        self.assertIn("raise SystemExit(main())", script_text)
+        self.assertLessEqual(len(script_text.splitlines()), 12)
         self.assertNotIn("load_json(generated_dir", script_text)
 
     def test_validate_returns_structured_result(self) -> None:

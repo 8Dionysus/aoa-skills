@@ -33,7 +33,7 @@
     "approval_posture": "review_required",
     "rollback_marker": "git:kernel-maturity-pre-repair",
     "health_check_refs": [
-      "cmd:python scripts/validate_skills.py --fail-on-review-truth-sync"
+      "cmd:PYTHONPATH=scripts python scripts/validation/validate_skills.py --fail-on-review-truth-sync"
     ],
     "resolution_status": "bounded_patch_prepared",
     "escalation_route": "aoa-session-route-forks",

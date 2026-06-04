@@ -18,7 +18,7 @@ It does not change the base skill boundary.
 ## Local surface
 
 - source-of-truth files: repo-relative operational and reporting docs such as `README.md`, `docs/ARCHITECTURE.md`, and `docs/[canonical-guide].md`
-- commands: repo-relative checks such as `python scripts/validate_skills.py`, `python scripts/build_catalog.py --check`, or another local validator chosen downstream
+- commands: repo-relative checks such as `PYTHONPATH=scripts python scripts/validation/validate_skills.py`, `PYTHONPATH=scripts python scripts/builders/build_catalog.py --check`, or another local validator chosen downstream
 - rollback path: revert the bounded local change or withhold the raw shareable material and re-run the smallest relevant local check
 - verification path: use the smallest repo-relative check that matches the touched operational or sharing surface
 - family review doc: `mechanics/boundary-bridge/overlays/abyss/REVIEW.md`

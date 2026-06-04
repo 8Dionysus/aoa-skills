@@ -1,4 +1,5 @@
 import json
+import os
 import pathlib
 import subprocess
 import sys
@@ -6,6 +7,15 @@ import unittest
 
 
 REPO_ROOT = pathlib.Path(__file__).resolve().parents[1]
+SCRIPTS_ROOT = REPO_ROOT / "scripts"
+
+
+def command_env() -> dict[str, str]:
+    env = os.environ.copy()
+    existing = env.get("PYTHONPATH")
+    scripts_root = str(SCRIPTS_ROOT)
+    env["PYTHONPATH"] = scripts_root if not existing else f"{scripts_root}{os.pathsep}{existing}"
+    return env
 
 
 class RuntimeGuardrailsBuilderTests(unittest.TestCase):
@@ -13,7 +23,7 @@ class RuntimeGuardrailsBuilderTests(unittest.TestCase):
         completed = subprocess.run(
             [
                 sys.executable,
-                "scripts/build_runtime_guardrails.py",
+                "scripts/runtime/build_runtime_guardrails.py",
                 "--repo-root",
                 ".",
                 "--check",
@@ -22,6 +32,7 @@ class RuntimeGuardrailsBuilderTests(unittest.TestCase):
             text=True,
             capture_output=True,
             check=False,
+            env=command_env(),
         )
         self.assertEqual(
             completed.returncode,

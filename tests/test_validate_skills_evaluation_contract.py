@@ -298,7 +298,7 @@ class ValidateSkillsEvaluationContractTests(ValidateSkillsCase):
         issues = validate_skills.run_validation(repo_root)
         messages = [issue.message for issue in issues]
         self.assertIn(
-            "generated evaluation matrix is out of date; run python scripts/build_catalog.py",
+            "generated evaluation matrix is out of date; run PYTHONPATH=scripts python scripts/builders/build_catalog.py",
             messages,
         )
 
@@ -318,7 +318,7 @@ class ValidateSkillsEvaluationContractTests(ValidateSkillsCase):
         issues = validate_skills.run_validation(repo_root)
         messages = [issue.message for issue in issues]
         self.assertIn(
-            "generated evaluation matrix markdown is out of date; run python scripts/build_catalog.py",
+            "generated evaluation matrix markdown is out of date; run PYTHONPATH=scripts python scripts/builders/build_catalog.py",
             messages,
         )
 

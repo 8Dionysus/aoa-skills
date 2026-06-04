@@ -9,11 +9,13 @@ import sys
 import tempfile
 import unittest
 
+from tests.support.cli import command_env
+
 
 REPO_ROOT = pathlib.Path(__file__).resolve().parents[1]
-BUILD_SCRIPT_PATH = REPO_ROOT / "scripts" / "build_agent_skills.py"
-PUBLISH_SCRIPT_PATH = REPO_ROOT / "scripts" / "publish_core_skill_receipts.py"
-VALIDATE_SCRIPT_PATH = REPO_ROOT / "scripts" / "validate_agent_skills.py"
+BUILD_SCRIPT_PATH = REPO_ROOT / "scripts" / "export" / "build_agent_skills.py"
+PUBLISH_SCRIPT_PATH = REPO_ROOT / "scripts" / "receipts" / "publish_core_skill_receipts.py"
+VALIDATE_SCRIPT_PATH = REPO_ROOT / "scripts" / "validation" / "validate_agent_skills.py"
 SCRIPTS_DIR = REPO_ROOT / "scripts"
 if str(SCRIPTS_DIR) not in sys.path:
     sys.path.insert(0, str(SCRIPTS_DIR))
@@ -26,10 +28,16 @@ def load_module(name: str, path: pathlib.Path):
     spec = importlib.util.spec_from_file_location(name, path)
     module = importlib.util.module_from_spec(spec)
     assert spec is not None and spec.loader is not None
+    previous = sys.modules.get(name)
+    sys.modules[name] = module
     try:
         spec.loader.exec_module(module)
         return module
     finally:
+        if previous is None:
+            sys.modules.pop(name, None)
+        else:
+            sys.modules[name] = previous
         if sys.path and sys.path[0] == str(path.parent):
             sys.path.pop(0)
 
@@ -203,6 +211,7 @@ class ProjectCoreKernelGovernanceTests(unittest.TestCase):
                 text=True,
                 capture_output=True,
                 check=False,
+                env=command_env(),
             )
 
         combined_output = completed.stdout + completed.stderr
@@ -295,6 +304,7 @@ class ProjectCoreKernelGovernanceTests(unittest.TestCase):
                 text=True,
                 capture_output=True,
                 check=False,
+                env=command_env(),
             )
 
         combined_output = completed.stdout + completed.stderr

@@ -13,16 +13,28 @@ The machine-readable organ map lives in
 
 ## Root Command Ingress
 
-Root `scripts/*.py` files keep historical command paths working. Except for
-`_ingress.py`, they must be thin wrappers that call `_ingress.expose(...)` and
-point to one implementation module under an organ directory.
+Root `scripts/*.py` files are limited to the allowlist in
+`script_inventory.json`. Except for `_ingress.py`, they must be thin wrappers
+that call `_ingress.expose(...)` and point to one implementation module under
+an organ directory.
 
 Root wrappers are for command/front-door paths, not for library convenience.
 Contract, source-model, surface, bridge, and helper modules should be imported
 from their organ package.
 
+The current allowed root fronts are only:
+
+- lane front doors: `ci_gate.py`, `release_check.py`, `validation_lanes.py`
+- runtime/activation fronts emitted by generated runtime or adapter surfaces
+- bundle handoff fronts for stage, inspect, import, install, smoke, and verify
+
+Internal builders, validators, reports, refresh flows, receipt publishers,
+adapters, and skill-model tools run from their organ paths. Direct organ
+commands use the explicit lane contract: `PYTHONPATH=scripts python
+scripts/<organ>/<tool>.py ...`.
+
 Generated local-adapter manifests are export-derived surfaces. They are built
-through `scripts/build_agent_skills.py`; a standalone
+through `scripts/export/build_agent_skills.py`; a standalone
 `scripts/build_local_adapter_manifest.py` ingress is intentionally not retained
 because it duplicates the export builder output without owning a separate lane.
 Project kernel, outer-ring, risk-ring, and foundation-profile export documents
@@ -61,6 +73,7 @@ handoff, trust, and runtime contract assembly lives in
 
 New script implementation must enter the narrowest organ directory first. Add a
 root ingress only when a historical command path, CI lane, generated payload, or
-downstream integration needs that stable path.
+downstream integration needs that stable path, and record owner surface, reason,
+downstream evidence, and retirement condition in `script_inventory.json`.
 
 Do not put new implementation or library wrappers in root `scripts/`.

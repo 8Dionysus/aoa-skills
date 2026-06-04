@@ -479,7 +479,7 @@
   ],
   "ci_steps": [
     "Build the portable export and downstream runtime layers first.",
-    "Run python scripts/validate_agent_skills.py --repo-root . and python scripts/lint_description_trigger_evals.py --repo-root . in the same job.",
-    "Run python scripts/run_skills_ref_validation.py --repo-root . as a soft conformance lane. Missing validator should skip cleanly; actual validator failures should fail the job."
+    "Run PYTHONPATH=scripts python scripts/validation/validate_agent_skills.py --repo-root . and PYTHONPATH=scripts python scripts/validation/lint_description_trigger_evals.py --repo-root . in the same job.",
+    "Run PYTHONPATH=scripts python scripts/validation/run_skills_ref_validation.py --repo-root . as a soft conformance lane. Missing validator should skip cleanly; actual validator failures should fail the job."
   ]
 }

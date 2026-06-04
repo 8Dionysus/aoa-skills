@@ -20,7 +20,7 @@ A review file may record evidence; it must not auto-promote a skill. Status chan
 
 Full lane command sequences live in `config/validation_lanes.json`; this local card may name only focused owner checks, lane ids, or the nearest route for the changed surface.
 
-Run `python scripts/report_skill_evaluation.py --fail-on-canonical-gaps`, `python scripts/report_skill_promotion_pressure.py --repo-root . --workspace-root /srv/AbyssOS`, and the focused validator for the reviewed bundle when relevant.
+Run `PYTHONPATH=scripts python scripts/reports/report_skill_evaluation.py --fail-on-canonical-gaps`, `PYTHONPATH=scripts python scripts/reports/report_skill_promotion_pressure.py --repo-root . --workspace-root /srv/AbyssOS`, and the focused validator for the reviewed bundle when relevant.
 
 ## Closeout
 

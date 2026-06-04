@@ -20,7 +20,7 @@ Keep Titan runtime and memory claims in Titan-owned context. This repo owns the 
 
 Full lane command sequences live in `config/validation_lanes.json`; this local card may name only focused owner checks, lane ids, or the nearest route for the changed surface.
 
-Run `python scripts/validate_skills.py`, `python scripts/build_catalog.py --check`, `python scripts/validate_agent_skills.py --repo-root .`, and focused bundle checks when present.
+Run `PYTHONPATH=scripts python scripts/validation/validate_skills.py`, `PYTHONPATH=scripts python scripts/builders/build_catalog.py --check`, `PYTHONPATH=scripts python scripts/validation/validate_agent_skills.py --repo-root .`, and focused bundle checks when present.
 
 ## Closeout
 

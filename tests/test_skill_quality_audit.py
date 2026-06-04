@@ -6,6 +6,7 @@ import subprocess
 import sys
 import unittest
 
+from tests.support.cli import command_env
 from tests.support.source_catalog import source_skill_count
 
 
@@ -17,7 +18,7 @@ class SkillQualityAuditTests(unittest.TestCase):
         completed = subprocess.run(
             [
                 sys.executable,
-                "scripts/audit_skill_quality.py",
+                "scripts/audit/audit_skill_quality.py",
                 "--repo-root",
                 ".",
                 "--format",
@@ -27,6 +28,7 @@ class SkillQualityAuditTests(unittest.TestCase):
             text=True,
             capture_output=True,
             check=False,
+            env=command_env(),
         )
         self.assertEqual(
             0, completed.returncode, msg=completed.stderr or completed.stdout
@@ -94,7 +96,7 @@ class SkillQualityAuditTests(unittest.TestCase):
         completed = subprocess.run(
             [
                 sys.executable,
-                "scripts/audit_skill_quality.py",
+                "scripts/audit/audit_skill_quality.py",
                 "--repo-root",
                 ".",
                 "--techniques-repo",
@@ -106,6 +108,7 @@ class SkillQualityAuditTests(unittest.TestCase):
             text=True,
             capture_output=True,
             check=False,
+            env=command_env(),
         )
 
         self.assertEqual(
@@ -119,7 +122,7 @@ class SkillQualityAuditTests(unittest.TestCase):
         completed = subprocess.run(
             [
                 sys.executable,
-                "scripts/audit_skill_quality.py",
+                "scripts/audit/audit_skill_quality.py",
                 "--repo-root",
                 ".",
                 "--format",
@@ -129,6 +132,7 @@ class SkillQualityAuditTests(unittest.TestCase):
             text=True,
             capture_output=True,
             check=False,
+            env=command_env(),
         )
 
         self.assertEqual(0, completed.returncode, msg=completed.stderr)

@@ -7,6 +7,7 @@ import sys
 import tempfile
 import unittest
 
+from tests.support.cli import command_env
 from tests.support.source_catalog import source_skill_count
 
 
@@ -18,7 +19,7 @@ class SkillPromotionPressureTests(unittest.TestCase):
         completed = subprocess.run(
             [
                 sys.executable,
-                "scripts/report_skill_promotion_pressure.py",
+                "scripts/reports/report_skill_promotion_pressure.py",
                 "--repo-root",
                 ".",
                 "--workspace-root",
@@ -33,6 +34,7 @@ class SkillPromotionPressureTests(unittest.TestCase):
             text=True,
             capture_output=True,
             check=False,
+            env=command_env(),
         )
         self.assertEqual(
             0, completed.returncode, msg=completed.stderr or completed.stdout
@@ -105,7 +107,7 @@ class SkillPromotionPressureTests(unittest.TestCase):
             completed = subprocess.run(
                 [
                     sys.executable,
-                    "scripts/report_skill_promotion_pressure.py",
+                    "scripts/reports/report_skill_promotion_pressure.py",
                     "--repo-root",
                     ".",
                     "--workspace-root",
@@ -115,10 +117,11 @@ class SkillPromotionPressureTests(unittest.TestCase):
                     "json",
                 ],
                 cwd=REPO_ROOT,
-                text=True,
-                capture_output=True,
-                check=False,
-            )
+                    text=True,
+                    capture_output=True,
+                    check=False,
+                    env=command_env(),
+                )
 
         self.assertEqual(
             0, completed.returncode, msg=completed.stderr or completed.stdout
@@ -144,7 +147,7 @@ class SkillPromotionPressureTests(unittest.TestCase):
         completed = subprocess.run(
             [
                 sys.executable,
-                "scripts/report_skill_promotion_pressure.py",
+                "scripts/reports/report_skill_promotion_pressure.py",
                 "--repo-root",
                 ".",
                 "--workspace-root",
@@ -159,6 +162,7 @@ class SkillPromotionPressureTests(unittest.TestCase):
             text=True,
             capture_output=True,
             check=False,
+            env=command_env(),
         )
 
         self.assertEqual(0, completed.returncode, msg=completed.stderr)

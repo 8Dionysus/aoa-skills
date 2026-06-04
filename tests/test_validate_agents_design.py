@@ -7,9 +7,11 @@ import tempfile
 from pathlib import Path
 import unittest
 
+from tests.support.cli import command_env
+
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-SCRIPT_PATH = REPO_ROOT / "scripts" / "validate_agents_design.py"
+SCRIPT_PATH = REPO_ROOT / "scripts" / "validation" / "validate_agents_design.py"
 
 
 def load_validator():
@@ -63,6 +65,7 @@ class ValidateAgentsDesignTests(unittest.TestCase):
             check=False,
             capture_output=True,
             text=True,
+            env=command_env(),
         )
 
         self.assertEqual(0, result.returncode, result.stderr)

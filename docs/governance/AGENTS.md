@@ -20,7 +20,7 @@ Do not change governance wording without checking validators and review surfaces
 
 Full lane command sequences live in `config/validation_lanes.json`; this local card may name only focused owner checks, lane ids, or the nearest route for the changed surface.
 
-Run `python scripts/validate_skills.py`, `python scripts/report_skill_evaluation.py --fail-on-canonical-gaps`, and `git diff --check` when governance fields or lane semantics move.
+Run `PYTHONPATH=scripts python scripts/validation/validate_skills.py`, `PYTHONPATH=scripts python scripts/reports/report_skill_evaluation.py --fail-on-canonical-gaps`, and `git diff --check` when governance fields or lane semantics move.
 
 ## Closeout
 

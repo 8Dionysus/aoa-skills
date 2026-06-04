@@ -15,7 +15,7 @@ for path in (SCRIPTS_DIR, TESTS_DIR):
     if str(path) not in sys.path:
         sys.path.insert(0, str(path))
 
-import refresh_skill_from_techniques
+from refresh import refresh_skill_from_techniques
 from bridge_cli_test_support import BridgeCliTestCase, DEFAULT_REPO
 
 

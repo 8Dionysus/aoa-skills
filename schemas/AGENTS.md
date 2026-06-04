@@ -20,7 +20,7 @@ Schema edits are contract edits. Preserve `$schema` and `$id`, keep backward com
 
 Full lane command sequences live in `config/validation_lanes.json`; this local card may name only focused owner checks, lane ids, or the nearest route for the changed surface.
 
-Run `python scripts/validate_skills.py`, the schema-specific tests, and any builder check for affected generated surfaces.
+Run `PYTHONPATH=scripts python scripts/validation/validate_skills.py`, the schema-specific tests, and any builder check for affected generated surfaces.
 
 ## Closeout
 

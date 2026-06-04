@@ -89,12 +89,12 @@
       "path": "tests/test_build_catalog_core.py",
       "family": "generated/catalog-core",
       "protects": "generated catalog-core",
-      "owner_surface": "scripts/build_catalog.py",
+      "owner_surface": "scripts/builders/build_catalog.py",
       "lane": "generated",
       "mode": "blocking",
       "runtime_cost": "medium",
       "focused_target": "tests/test_build_catalog_core.py",
-      "failure_route": "Fix scripts/build_catalog.py before widening the lane."
+      "failure_route": "Fix scripts/builders/build_catalog.py before widening the lane."
     },
     {
       "path": "tests/test_build_catalog_evaluation_matrix.py",
@@ -111,34 +111,34 @@
       "path": "tests/test_build_catalog_governance.py",
       "family": "generated/governance",
       "protects": "generated governance",
-      "owner_surface": "scripts/build_catalog.py",
+      "owner_surface": "scripts/builders/build_catalog.py",
       "lane": "generated",
       "mode": "blocking",
       "runtime_cost": "medium",
       "focused_target": "tests/test_build_catalog_governance.py",
-      "failure_route": "Fix scripts/build_catalog.py before widening the lane."
+      "failure_route": "Fix scripts/builders/build_catalog.py before widening the lane."
     },
     {
       "path": "tests/test_build_catalog_overlay_profiles.py",
       "family": "generated/overlay-profile",
       "protects": "generated overlay-profile",
-      "owner_surface": "scripts/build_catalog.py",
+      "owner_surface": "scripts/builders/build_catalog.py",
       "lane": "generated",
       "mode": "blocking",
       "runtime_cost": "medium",
       "focused_target": "tests/test_build_catalog_overlay_profiles.py",
-      "failure_route": "Fix scripts/build_catalog.py before widening the lane."
+      "failure_route": "Fix scripts/builders/build_catalog.py before widening the lane."
     },
     {
       "path": "tests/test_build_catalog_public_readmodels.py",
       "family": "generated/public-readmodels",
       "protects": "generated public-readmodels",
-      "owner_surface": "scripts/build_catalog.py",
+      "owner_surface": "scripts/builders/build_catalog.py",
       "lane": "generated",
       "mode": "blocking",
       "runtime_cost": "medium",
       "focused_target": "tests/test_build_catalog_public_readmodels.py",
-      "failure_route": "Fix scripts/build_catalog.py before widening the lane."
+      "failure_route": "Fix scripts/builders/build_catalog.py before widening the lane."
     },
     {
       "path": "tests/test_build_openai_yaml_examples.py",
@@ -232,12 +232,12 @@
       "path": "tests/test_description_trigger_builder.py",
       "family": "router/description-trigger",
       "protects": "router description-trigger",
-      "owner_surface": "scripts/build_description_trigger_evals.py",
+      "owner_surface": "scripts/builders/build_description_trigger_evals.py",
       "lane": "router",
       "mode": "blocking",
       "runtime_cost": "fast",
       "focused_target": "tests/test_description_trigger_builder.py",
-      "failure_route": "Fix scripts/build_description_trigger_evals.py before widening the lane."
+      "failure_route": "Fix scripts/builders/build_description_trigger_evals.py before widening the lane."
     },
     {
       "path": "tests/test_downstream_feed_contracts.py",
@@ -386,12 +386,12 @@
       "path": "tests/test_nested_agents_docs.py",
       "family": "AGENTS/route-law",
       "protects": "AGENTS route-law",
-      "owner_surface": "scripts/validate_nested_agents.py",
+      "owner_surface": "scripts/validation/validate_nested_agents.py",
       "lane": "source",
       "mode": "blocking",
       "runtime_cost": "fast",
       "focused_target": "tests/test_nested_agents_docs.py",
-      "failure_route": "Fix scripts/validate_nested_agents.py before widening the lane."
+      "failure_route": "Fix scripts/validation/validate_nested_agents.py before widening the lane."
     },
     {
       "path": "tests/test_project_core_kernel_governance.py",
@@ -474,12 +474,12 @@
       "path": "tests/test_report_skill_boundaries.py",
       "family": "advisory/report",
       "protects": "advisory report",
-      "owner_surface": "scripts/report_skill_boundaries.py",
+      "owner_surface": "scripts/reports/report_skill_boundaries.py",
       "lane": "advisory",
       "mode": "advisory",
       "runtime_cost": "fast",
       "focused_target": "tests/test_report_skill_boundaries.py",
-      "failure_route": "Fix scripts/report_skill_boundaries.py before widening the lane."
+      "failure_route": "Fix scripts/reports/report_skill_boundaries.py before widening the lane."
     },
     {
       "path": "tests/test_report_skill_evaluation.py",
@@ -496,12 +496,12 @@
       "path": "tests/test_report_technique_drift.py",
       "family": "advisory/report",
       "protects": "advisory report",
-      "owner_surface": "scripts/report_technique_drift.py",
+      "owner_surface": "scripts/reports/report_technique_drift.py",
       "lane": "advisory",
       "mode": "advisory",
       "runtime_cost": "fast",
       "focused_target": "tests/test_report_technique_drift.py",
-      "failure_route": "Fix scripts/report_technique_drift.py before widening the lane."
+      "failure_route": "Fix scripts/reports/report_technique_drift.py before widening the lane."
     },
     {
       "path": "tests/test_roadmap_parity.py",
@@ -540,12 +540,12 @@
       "path": "tests/test_runtime_guardrails_builder.py",
       "family": "export/runtime-guardrail",
       "protects": "export runtime-guardrail",
-      "owner_surface": "scripts/build_runtime_guardrails.py",
+      "owner_surface": "scripts/runtime/build_runtime_guardrails.py",
       "lane": "export",
       "mode": "blocking",
       "runtime_cost": "medium",
       "focused_target": "tests/test_runtime_guardrails_builder.py",
-      "failure_route": "Fix scripts/build_runtime_guardrails.py before widening the lane."
+      "failure_route": "Fix scripts/runtime/build_runtime_guardrails.py before widening the lane."
     },
     {
       "path": "tests/test_runtime_seam_toolchain.py",
@@ -639,34 +639,34 @@
       "path": "tests/test_skill_promotion_pressure.py",
       "family": "advisory/promotion-pressure",
       "protects": "advisory promotion-pressure",
-      "owner_surface": "scripts/report_skill_promotion_pressure.py",
+      "owner_surface": "scripts/reports/report_skill_promotion_pressure.py",
       "lane": "advisory",
       "mode": "advisory",
       "runtime_cost": "slow",
       "focused_target": "tests/test_skill_promotion_pressure.py",
-      "failure_route": "Fix scripts/report_skill_promotion_pressure.py before widening the lane."
+      "failure_route": "Fix scripts/reports/report_skill_promotion_pressure.py before widening the lane."
     },
     {
       "path": "tests/test_skill_quality_audit.py",
       "family": "advisory/quality",
       "protects": "advisory quality",
-      "owner_surface": "scripts/audit_skill_quality.py",
+      "owner_surface": "scripts/audit/audit_skill_quality.py",
       "lane": "advisory",
       "mode": "advisory",
       "runtime_cost": "slow",
       "focused_target": "tests/test_skill_quality_audit.py",
-      "failure_route": "Fix scripts/audit_skill_quality.py before widening the lane."
+      "failure_route": "Fix scripts/audit/audit_skill_quality.py before widening the lane."
     },
     {
       "path": "tests/test_skills_ref_validation.py",
       "family": "external/skills-ref",
       "protects": "external skills-ref",
-      "owner_surface": "scripts/run_skills_ref_validation.py",
+      "owner_surface": "scripts/validation/run_skills_ref_validation.py",
       "lane": "advisory",
       "mode": "soft-external",
       "runtime_cost": "medium",
       "focused_target": "tests/test_skills_ref_validation.py",
-      "failure_route": "Fix scripts/run_skills_ref_validation.py before widening the lane."
+      "failure_route": "Fix scripts/validation/run_skills_ref_validation.py before widening the lane."
     },
     {
       "path": "tests/test_smoke_skill_pack_handoff.py",
@@ -771,12 +771,12 @@
       "path": "tests/test_validate_agents_design.py",
       "family": "AGENTS/route-law",
       "protects": "AGENTS route-law",
-      "owner_surface": "scripts/validate_agents_design.py",
+      "owner_surface": "scripts/validation/validate_agents_design.py",
       "lane": "source",
       "mode": "blocking",
       "runtime_cost": "fast",
       "focused_target": "tests/test_validate_agents_design.py",
-      "failure_route": "Fix scripts/validate_agents_design.py before widening the lane."
+      "failure_route": "Fix scripts/validation/validate_agents_design.py before widening the lane."
     },
     {
       "path": "tests/test_validate_skill_mcp_wiring.py",
@@ -826,23 +826,23 @@
       "path": "tests/test_validate_skills_review_status.py",
       "family": "source/review-status",
       "protects": "source review-status",
-      "owner_surface": "scripts/validate_skills.py and docs/reviews/",
+      "owner_surface": "scripts/validation/validate_skills.py and docs/reviews/",
       "lane": "source",
       "mode": "blocking",
       "runtime_cost": "medium",
       "focused_target": "tests/test_validate_skills_review_status.py",
-      "failure_route": "Fix scripts/validate_skills.py and docs/reviews/ before widening the lane."
+      "failure_route": "Fix scripts/validation/validate_skills.py and docs/reviews/ before widening the lane."
     },
     {
       "path": "tests/test_validate_skills_source_contract.py",
       "family": "source/skill-contract",
       "protects": "source skill-contract",
-      "owner_surface": "scripts/validate_skills.py",
+      "owner_surface": "scripts/validation/validate_skills.py",
       "lane": "source",
       "mode": "blocking",
       "runtime_cost": "medium",
       "focused_target": "tests/test_validate_skills_source_contract.py",
-      "failure_route": "Fix scripts/validate_skills.py before widening the lane."
+      "failure_route": "Fix scripts/validation/validate_skills.py before widening the lane."
     },
     {
       "path": "tests/test_validator_topology.py",
@@ -870,12 +870,12 @@
       "path": "tests/test_workspace_skill_adoption_audit.py",
       "family": "advisory/workspace-adoption",
       "protects": "advisory workspace-adoption",
-      "owner_surface": "scripts/audit_workspace_skill_adoption.py",
+      "owner_surface": "scripts/audit/audit_workspace_skill_adoption.py",
       "lane": "advisory",
       "mode": "advisory",
       "runtime_cost": "medium",
       "focused_target": "tests/test_workspace_skill_adoption_audit.py",
-      "failure_route": "Fix scripts/audit_workspace_skill_adoption.py before widening the lane."
+      "failure_route": "Fix scripts/audit/audit_workspace_skill_adoption.py before widening the lane."
     }
   ]
 }

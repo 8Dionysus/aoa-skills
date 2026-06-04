@@ -61,9 +61,9 @@ Also apply the nearest nested `AGENTS.md` when working in subdirectories.
 
 - `skills/**/techniques.yaml`
 - `mechanics/boundary-bridge/docs/BRIDGE_SPEC.md`
-- `scripts/report_technique_drift.py`
-- `scripts/refresh_skill_from_manifest.py`
-- `scripts/refresh_skill_from_techniques.py`
+- `scripts/reports/report_technique_drift.py`
+- `scripts/refresh/refresh_skill_from_manifest.py`
+- `scripts/refresh/refresh_skill_from_techniques.py`
 - any change to pinned `source_ref` values or technique dependency shape
 
 ### Status, evidence, and governance surfaces
@@ -85,8 +85,8 @@ Also apply the nearest nested `AGENTS.md` when working in subdirectories.
 
 ### Derived surface contract layer
 
-- `scripts/build_catalog.py`
-- `scripts/validate_skills.py`
+- `scripts/builders/build_catalog.py`
+- `scripts/validation/validate_skills.py`
 - `schemas/`
 - `generated/*`
 - `tests/fixtures/skill_evaluation_cases.yaml`
@@ -127,8 +127,8 @@ cards name the focused local route.
 ### When touching bundles, derived surfaces, or validation contracts
 
 Use the source and generated/read-model routes for skill bundles and derived
-surfaces. The owning surfaces are `scripts/validate_skills.py`,
-`scripts/build_catalog.py`, and the validation lane manifest.
+surfaces. The owning surfaces are `scripts/validation/validate_skills.py`,
+`scripts/builders/build_catalog.py`, and the validation lane manifest.
 
 ### When touching canonical skills, evaluation evidence, or public status surfaces
 

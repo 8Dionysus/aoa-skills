@@ -85,7 +85,7 @@ class AgenticFaultBoundariesTests(unittest.TestCase):
         env["PATH"] = ""
         env.pop("SKILLS_REF_BIN", None)
         completed = run_python(
-            "scripts/run_skills_ref_validation.py",
+            "scripts/validation/run_skills_ref_validation.py",
             "--repo-root",
             ".",
             "--format",
@@ -104,7 +104,7 @@ class AgenticFaultBoundariesTests(unittest.TestCase):
             (output_root / "keep.txt").write_text("do not delete\n", encoding="utf-8")
 
             completed = run_python(
-                "scripts/build_agent_skills.py",
+                "scripts/export/build_agent_skills.py",
                 "--repo-root",
                 ".",
                 "--output-root",

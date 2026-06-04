@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import os
 import subprocess
 import sys
 import tempfile
@@ -10,7 +11,16 @@ from pathlib import Path
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-SCRIPT = REPO_ROOT / "scripts" / "validate_skill_mcp_wiring.py"
+SCRIPTS_ROOT = REPO_ROOT / "scripts"
+SCRIPT = REPO_ROOT / "scripts" / "validation" / "validate_skill_mcp_wiring.py"
+
+
+def command_env() -> dict[str, str]:
+    env = os.environ.copy()
+    existing = env.get("PYTHONPATH")
+    scripts_root = str(SCRIPTS_ROOT)
+    env["PYTHONPATH"] = scripts_root if not existing else f"{scripts_root}{os.pathsep}{existing}"
+    return env
 
 
 def write_workspace_config(path: Path) -> None:
@@ -93,6 +103,7 @@ class ValidateSkillMcpWiringTests(unittest.TestCase):
                 capture_output=True,
                 text=True,
                 check=True,
+                env=command_env(),
             )
 
             payload = json.loads(result.stdout)
@@ -134,6 +145,7 @@ class ValidateSkillMcpWiringTests(unittest.TestCase):
                 ],
                 capture_output=True,
                 text=True,
+                env=command_env(),
             )
 
             self.assertNotEqual(result.returncode, 0)
@@ -196,6 +208,7 @@ class ValidateSkillMcpWiringTests(unittest.TestCase):
                 ],
                 capture_output=True,
                 text=True,
+                env=command_env(),
             )
 
             self.assertNotEqual(result.returncode, 0)
