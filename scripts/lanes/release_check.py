@@ -4,10 +4,15 @@
 from __future__ import annotations
 
 import argparse
+import os
 import subprocess
 import sys
 from dataclasses import dataclass
 from pathlib import Path
+
+SCRIPTS_ROOT = Path(__file__).resolve().parents[1]
+if str(SCRIPTS_ROOT) not in sys.path:
+    sys.path.insert(0, str(SCRIPTS_ROOT))
 
 from lanes import validation_lanes
 
@@ -32,9 +37,17 @@ def resolve_command(command: tuple[str, ...]) -> tuple[str, ...]:
     return command
 
 
+def command_env() -> dict[str, str]:
+    env = os.environ.copy()
+    existing = env.get("PYTHONPATH")
+    scripts_root = str(SCRIPTS_ROOT)
+    env["PYTHONPATH"] = scripts_root if not existing else f"{scripts_root}{os.pathsep}{existing}"
+    return env
+
+
 def run_command(command: tuple[str, ...], repo_root: Path) -> None:
     print(f"[run] {' '.join(command)}")
-    subprocess.run(resolve_command(command), cwd=repo_root, check=True)
+    subprocess.run(resolve_command(command), cwd=repo_root, check=True, env=command_env())
 
 
 def capture_command_output(command: tuple[str, ...], repo_root: Path) -> str:

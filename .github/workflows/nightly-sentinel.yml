@@ -29,7 +29,7 @@ jobs:
 
       - name: Run moving-main growth sentinel
         run: |
-          python scripts/ci_gate.py --mode nightly | tee nightly-main-report.txt
+          python scripts/lanes/ci_gate.py --mode nightly | tee nightly-main-report.txt
           {
             echo "## Main growth sentinel"
             echo
@@ -70,4 +70,4 @@ jobs:
         run: python -m pip install -r requirements-dev.txt
 
       - name: Reproduce latest release gate
-        run: python scripts/release_check.py
+        run: python scripts/lanes/release_check.py

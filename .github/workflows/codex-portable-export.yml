@@ -32,8 +32,8 @@ jobs:
         if: github.event_name != 'workflow_dispatch'
         env:
           BASE_REF: ${{ github.event_name == 'pull_request' && github.event.pull_request.base.sha || github.event.before }}
-        run: python scripts/ci_gate.py --mode export --changed-only --base-ref "$BASE_REF"
+        run: python scripts/lanes/ci_gate.py --mode export --changed-only --base-ref "$BASE_REF"
 
       - name: Run full export lane
         if: github.event_name == 'workflow_dispatch'
-        run: python scripts/ci_gate.py --mode export
+        run: python scripts/lanes/ci_gate.py --mode export

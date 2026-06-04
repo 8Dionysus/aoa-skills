@@ -5,10 +5,15 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import subprocess
 import sys
 from pathlib import Path
 from typing import Sequence
+
+SCRIPTS_ROOT = Path(__file__).resolve().parents[1]
+if str(SCRIPTS_ROOT) not in sys.path:
+    sys.path.insert(0, str(SCRIPTS_ROOT))
 
 from lanes import validation_lanes
 
@@ -41,6 +46,8 @@ EXPORT_RELEVANT_FILES = {
     "config/validation_lanes.json",
     "requirements-dev.txt",
     "scripts/ci_gate.py",
+    "scripts/lanes/ci_gate.py",
+    "scripts/lanes/validation_lanes.py",
     "scripts/validation_lanes.py",
     "scripts/export/release_manifest_contract.py",
     *python_script_command_paths(validation_lanes.EXPORT_FULL_COMMAND_SEQUENCE),
@@ -56,10 +63,18 @@ def resolve_command(command: Sequence[str]) -> tuple[str, ...]:
     return tuple(command)
 
 
+def command_env() -> dict[str, str]:
+    env = os.environ.copy()
+    existing = env.get("PYTHONPATH")
+    scripts_root = str(SCRIPTS_ROOT)
+    env["PYTHONPATH"] = scripts_root if not existing else f"{scripts_root}{os.pathsep}{existing}"
+    return env
+
+
 def run_command(command: Sequence[str], repo_root: Path = REPO_ROOT) -> None:
     printable = " ".join(command)
     print(f"[ci-gate] {printable}", flush=True)
-    subprocess.run(resolve_command(command), cwd=repo_root, check=True)
+    subprocess.run(resolve_command(command), cwd=repo_root, check=True, env=command_env())
 
 
 def capture_command(command: Sequence[str], repo_root: Path = REPO_ROOT) -> str:
@@ -69,6 +84,7 @@ def capture_command(command: Sequence[str], repo_root: Path = REPO_ROOT) -> str:
         check=True,
         capture_output=True,
         text=True,
+        env=command_env(),
     )
     return result.stdout
 
@@ -122,14 +138,14 @@ def run_source_fast() -> None:
 
 def run_generated(group: str) -> None:
     if group == "all":
-        run_command(("python", "scripts/build_catalog.py", "--check", "--group", "all"))
+        run_command(("python", "scripts/builders/build_catalog.py", "--check", "--group", "all"))
         run_generated("export")
         run_generated("runtime")
-        run_command(("python", "scripts/generate_decision_indexes.py", "--check"))
+        run_command(("python", "scripts/decisions/generate_decision_indexes.py", "--check"))
         return
 
     if group in CATALOG_GENERATED_GROUPS:
-        run_command(("python", "scripts/build_catalog.py", "--check", "--group", group))
+        run_command(("python", "scripts/builders/build_catalog.py", "--check", "--group", group))
     elif group == "export":
         run_export_generated()
     elif group == "runtime":
@@ -138,7 +154,7 @@ def run_generated(group: str) -> None:
         raise ValueError(group)
 
     if group == "governance":
-        run_command(("python", "scripts/generate_decision_indexes.py", "--check"))
+        run_command(("python", "scripts/decisions/generate_decision_indexes.py", "--check"))
 
 
 def run_export_generated() -> None:
@@ -166,7 +182,7 @@ def run_export(*, changed_only: bool, base_ref: str | None) -> None:
 
 def run_release() -> None:
     run_source_fast()
-    run_command(("python", "scripts/release_check.py", "--include-packaging-smoke"))
+    run_command(("python", "scripts/lanes/release_check.py", "--include-packaging-smoke"))
 
 
 def run_nightly() -> None:

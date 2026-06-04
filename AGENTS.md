@@ -47,16 +47,16 @@ schema, export profile, or runtime seam actually requires them.
 Full lane command sequences live in `config/validation_lanes.json`; this local card may name only focused owner checks, lane ids, or the nearest route for the changed surface.
 
 Run the nearest validator named by this card or a nearer local card. For
-growth-facing repository changes, use `python scripts/ci_gate.py --mode
-source-fast`. For release-facing changes, use `python scripts/ci_gate.py --mode
-release` or `python scripts/release_check.py --include-packaging-smoke`.
+growth-facing repository changes, use `python scripts/lanes/ci_gate.py --mode
+source-fast`. For release-facing changes, use `python scripts/lanes/ci_gate.py --mode
+release` or `python scripts/lanes/release_check.py --include-packaging-smoke`.
 
 For root guidance changes, at minimum run:
 
 ```bash
-python scripts/validate_agents_design.py
-python scripts/validate_nested_agents.py
-python scripts/build_catalog.py --check
+PYTHONPATH=scripts python scripts/validation/validate_agents_design.py
+PYTHONPATH=scripts python scripts/validation/validate_nested_agents.py
+PYTHONPATH=scripts python scripts/builders/build_catalog.py --check
 ```
 
 ## Closeout
@@ -280,18 +280,18 @@ Treat these as high-risk findings in this repository:
 Minimum canonical skill validation:
 
 ```bash
-python scripts/ci_gate.py --mode source-fast
+python scripts/lanes/ci_gate.py --mode source-fast
 ```
 
 Generated/readout, export, release, and nightly checks are separate lanes:
 
 ```bash
-python scripts/ci_gate.py --mode generated --group all
-python scripts/ci_gate.py --mode generated --group export
-python scripts/ci_gate.py --mode generated --group runtime
-python scripts/ci_gate.py --mode export
-python scripts/ci_gate.py --mode release
-python scripts/ci_gate.py --mode nightly
+python scripts/lanes/ci_gate.py --mode generated --group all
+python scripts/lanes/ci_gate.py --mode generated --group export
+python scripts/lanes/ci_gate.py --mode generated --group runtime
+python scripts/lanes/ci_gate.py --mode export
+python scripts/lanes/ci_gate.py --mode release
+python scripts/lanes/ci_gate.py --mode nightly
 ```
 
 For broader validation, follow the nearest package `AGENTS.md`,
@@ -299,7 +299,7 @@ For broader validation, follow the nearest package `AGENTS.md`,
 specific owner docs they name. Use `docs/AGENTS_ROOT_REFERENCE.md` only for
 preserved validation intent, not as the active command source.
 
-Run `python scripts/validate_nested_agents.py` whenever an `AGENTS.md` card is
+Run `python scripts/validation/validate_nested_agents.py` whenever an `AGENTS.md` card is
 added or changed.
 
 ## Report

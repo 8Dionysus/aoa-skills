@@ -13,8 +13,8 @@ This card applies to `scripts/`.
 Read root `AGENTS.md`, `DESIGN.md`, `DESIGN.AGENTS.md` when route-law is
 touched, and the tests for the script being changed. For CI or release command
 ordering, read `config/validation_lanes.json` before editing
-`scripts/validation_lanes.py`, `scripts/ci_gate.py`, or
-`scripts/release_check.py`. Start from callers before changing shared helpers.
+`scripts/lanes/validation_lanes.py`, `scripts/lanes/ci_gate.py`, or
+`scripts/lanes/release_check.py`. Start from callers before changing shared helpers.
 
 ## Boundaries
 
@@ -32,13 +32,16 @@ and orchestration adapters.
 
 Full lane command sequences live in `config/validation_lanes.json`; this local card may name only focused owner checks, lane ids, or the nearest route for the changed surface.
 
-Run the script directly. For CI lane behavior, use `python scripts/ci_gate.py
---mode source-fast`, `python scripts/ci_gate.py --mode generated --group all`,
-`python scripts/ci_gate.py --mode export`, or `python scripts/ci_gate.py --mode
-release` as appropriate. For common builders and validators, use `python
-scripts/build_catalog.py`, `python scripts/validate_skills.py`, `python
-scripts/validate_agents_design.py`, related tests, and `python
-scripts/release_check.py` for release-facing changes.
+Run the script directly. For CI lane behavior, use `python
+scripts/lanes/ci_gate.py --mode source-fast`, `python scripts/lanes/ci_gate.py
+--mode generated --group all`, `python scripts/lanes/ci_gate.py --mode export`,
+or `python scripts/lanes/ci_gate.py --mode release` as appropriate. For common
+organ builders and validators, either use the lane runner or prefix direct
+module commands with `PYTHONPATH=scripts`, such as `PYTHONPATH=scripts python
+scripts/builders/build_catalog.py`, `PYTHONPATH=scripts python
+scripts/validation/validate_skills.py`, and `PYTHONPATH=scripts python
+scripts/validation/validate_agents_design.py`. Use `python
+scripts/lanes/release_check.py` for release-facing changes.
 
 ## Closeout
 

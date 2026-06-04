@@ -39,8 +39,8 @@ jobs:
 
       - name: Run technique drift release gate
         working-directory: workspace/aoa-skills
-        run: python scripts/report_technique_drift.py --techniques-repo ../aoa-techniques --fail-on-drift
+        run: PYTHONPATH=scripts python scripts/reports/report_technique_drift.py --techniques-repo ../aoa-techniques --fail-on-drift
 
       - name: Run release freeze gate
         working-directory: workspace/aoa-skills
-        run: python scripts/ci_gate.py --mode release
+        run: python scripts/lanes/ci_gate.py --mode release

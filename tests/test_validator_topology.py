@@ -227,17 +227,22 @@ class ValidatorTopologyTests(unittest.TestCase):
                 "run_skill_reality_trials.py",
                 "run_skills_ref_validation.py",
             )
-            for path in SCRIPTS_DIR.glob(pattern)
+            for path in SCRIPTS_DIR.rglob(pattern)
+            if path.parent != SCRIPTS_DIR and "/__pycache__/" not in path.as_posix()
         }
         discovered.update(
             {
-                "scripts/ci_gate.py",
-                "scripts/release_check.py",
-                "scripts/smoke_skill_pack_handoff.py",
-                "scripts/verify_skill_pack.py",
+                "scripts/lanes/ci_gate.py",
+                "scripts/lanes/release_check.py",
+                "scripts/bundles/smoke_skill_pack_handoff.py",
+                "scripts/bundles/verify_skill_pack.py",
                 ".agents/spark/scripts/validate_spark_lane.py",
             }
         )
+        discovered -= {
+            "scripts/validators/__init__.py",
+            "scripts/validation/validators/__init__.py",
+        }
 
         missing = sorted(discovered - inventory_paths)
         self.assertEqual([], missing)
