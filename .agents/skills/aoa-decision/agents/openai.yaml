@@ -1,0 +1,16 @@
+interface:
+  display_name: AoA Decision
+  short_description: Route decision-lane work
+  default_prompt: Use $aoa-decision to check the decision graph first, choose find/create/correct, and keep repo-local decision files as source truth.
+  icon_small: ./assets/small-logo.svg
+  icon_large: ./assets/large-logo.svg
+  brand_color: '#2563EB'
+policy:
+  implicit_activation_policy: invoke
+  allow_implicit_invocation: true
+dependencies:
+  tools:
+  - type: mcp
+    value: aoa_decisions
+    description: AoA workspace decision graph MCP server
+    transport: stdio

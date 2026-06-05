@@ -19,6 +19,10 @@
       ],
       "skills": [
         "aoa-adr-write",
+        "aoa-decision",
+        "aoa-decision-find",
+        "aoa-decision-create",
+        "aoa-decision-correct",
         "aoa-source-of-truth-check",
         "atm10-source-of-truth-check"
       ]
@@ -277,6 +281,70 @@
       "negative_cues": [
         "trivial wording fix",
         "more specific risk skill"
+      ]
+    },
+    "aoa-decision": {
+      "band": "decision-doc-authority",
+      "positive_cues": [
+        "decision graph",
+        "decision lane",
+        "docs decisions",
+        "find create correct",
+        "decision graph issues",
+        "changed path decisions",
+        "workspace decisions"
+      ],
+      "negative_cues": [
+        "standalone ADR only",
+        "source-of-truth ambiguity only"
+      ]
+    },
+    "aoa-decision-find": {
+      "band": "decision-doc-authority",
+      "positive_cues": [
+        "find decision",
+        "decision lookup",
+        "changed path impact",
+        "source surface decisions",
+        "owner surface decisions",
+        "prior rationale",
+        "graph match",
+        "source-note verification"
+      ],
+      "negative_cues": [
+        "new decision note",
+        "decision record correction"
+      ]
+    },
+    "aoa-decision-create": {
+      "band": "decision-doc-authority",
+      "positive_cues": [
+        "create decision",
+        "new decision record",
+        "record rationale",
+        "next decision id",
+        "refresh decision graph",
+        "decision graph issue"
+      ],
+      "negative_cues": [
+        "existing rationale lookup",
+        "existing record correction"
+      ]
+    },
+    "aoa-decision-correct": {
+      "band": "decision-doc-authority",
+      "positive_cues": [
+        "correct decision",
+        "stale decision record",
+        "supersede decision",
+        "reindex decisions",
+        "unknown decision surface",
+        "decision graph issue",
+        "graph mismatch"
+      ],
+      "negative_cues": [
+        "plain lookup only",
+        "new decision record"
       ]
     },
     "aoa-commit-growth-seam": {

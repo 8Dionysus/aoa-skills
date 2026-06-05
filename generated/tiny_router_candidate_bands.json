@@ -20,10 +20,17 @@
       ],
       "skills": [
         "aoa-adr-write",
+        "aoa-decision",
+        "aoa-decision-correct",
+        "aoa-decision-create",
+        "aoa-decision-find",
         "aoa-source-of-truth-check",
         "atm10-source-of-truth-check"
       ],
       "manual_only_skills": [
+        "aoa-decision-correct",
+        "aoa-decision-create",
+        "aoa-decision-find",
         "atm10-source-of-truth-check"
       ],
       "suggest_only_skills": [],

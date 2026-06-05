@@ -58,6 +58,27 @@ lanes:
         decision: default_reference
       - name: aoa-source-of-truth-check
         decision: default_reference
+  - id: decision_graph_chain
+    title: Decision graph chain
+    scope: core
+    state: comparative_pending
+    review_path: docs/governance/lanes.md#decision_graph_chain
+    evidence_case_ids:
+      - decision_router_vs_adr_write_boundary
+      - decision_find_vs_decision_create_boundary
+      - decision_create_vs_decision_find_boundary
+      - decision_correct_vs_decision_create_boundary
+    skills:
+      - name: aoa-adr-write
+        decision: default_reference
+      - name: aoa-decision
+        decision: stay_evaluated
+      - name: aoa-decision-find
+        decision: stay_evaluated
+      - name: aoa-decision-create
+        decision: stay_evaluated
+      - name: aoa-decision-correct
+        decision: stay_evaluated
   - id: risk_authority_preview_execution
     title: Risk authority preview and execution
     scope: risk

@@ -8,6 +8,10 @@
   "skills": [
     "aoa-adr-write",
     "aoa-source-of-truth-check",
+    "aoa-decision",
+    "aoa-decision-find",
+    "aoa-decision-create",
+    "aoa-decision-correct",
     "aoa-bounded-context-map",
     "aoa-core-logic-boundary",
     "aoa-port-adapter-refactor",
@@ -22,7 +26,11 @@
       "cluster_id": "decision-and-doc-authority",
       "skills": [
         "aoa-adr-write",
-        "aoa-source-of-truth-check"
+        "aoa-source-of-truth-check",
+        "aoa-decision",
+        "aoa-decision-find",
+        "aoa-decision-create",
+        "aoa-decision-correct"
       ]
     },
     {

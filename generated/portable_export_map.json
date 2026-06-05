@@ -331,6 +331,98 @@
       }
     },
     {
+      "name": "aoa-decision",
+      "source_skill_path": "skills/core/engineering/aoa-decision/SKILL.md",
+      "target_dir": ".agents/skills/aoa-decision",
+      "target_skill_path": ".agents/skills/aoa-decision/SKILL.md",
+      "target_openai_config_path": ".agents/skills/aoa-decision/agents/openai.yaml",
+      "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "invoke",
+      "allow_implicit_invocation": true,
+      "candidate_only": false,
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": []
+      }
+    },
+    {
+      "name": "aoa-decision-correct",
+      "source_skill_path": "skills/core/engineering/aoa-decision-correct/SKILL.md",
+      "target_dir": ".agents/skills/aoa-decision-correct",
+      "target_skill_path": ".agents/skills/aoa-decision-correct/SKILL.md",
+      "target_openai_config_path": ".agents/skills/aoa-decision-correct/agents/openai.yaml",
+      "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "manual",
+      "allow_implicit_invocation": false,
+      "candidate_only": false,
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": []
+      }
+    },
+    {
+      "name": "aoa-decision-create",
+      "source_skill_path": "skills/core/engineering/aoa-decision-create/SKILL.md",
+      "target_dir": ".agents/skills/aoa-decision-create",
+      "target_skill_path": ".agents/skills/aoa-decision-create/SKILL.md",
+      "target_openai_config_path": ".agents/skills/aoa-decision-create/agents/openai.yaml",
+      "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "manual",
+      "allow_implicit_invocation": false,
+      "candidate_only": false,
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": []
+      }
+    },
+    {
+      "name": "aoa-decision-find",
+      "source_skill_path": "skills/core/engineering/aoa-decision-find/SKILL.md",
+      "target_dir": ".agents/skills/aoa-decision-find",
+      "target_skill_path": ".agents/skills/aoa-decision-find/SKILL.md",
+      "target_openai_config_path": ".agents/skills/aoa-decision-find/agents/openai.yaml",
+      "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "manual",
+      "allow_implicit_invocation": false,
+      "candidate_only": false,
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": []
+      }
+    },
+    {
       "name": "aoa-dry-run-first",
       "source_skill_path": "skills/risk/aoa-dry-run-first/SKILL.md",
       "target_dir": ".agents/skills/aoa-dry-run-first",

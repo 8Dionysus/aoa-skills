@@ -5,6 +5,10 @@
       "aoa-automation-opportunity-scan",
       "aoa-checkpoint-closeout-bridge",
       "aoa-commit-growth-seam",
+      "aoa-decision",
+      "aoa-decision-correct",
+      "aoa-decision-create",
+      "aoa-decision-find",
       "aoa-quest-harvest",
       "aoa-session-donor-harvest",
       "aoa-session-progression-lift",
@@ -32,6 +36,10 @@
       "aoa-checkpoint-closeout-bridge",
       "aoa-commit-growth-seam",
       "aoa-core-logic-boundary",
+      "aoa-decision",
+      "aoa-decision-correct",
+      "aoa-decision-create",
+      "aoa-decision-find",
       "aoa-local-stack-bringup",
       "aoa-port-adapter-refactor",
       "aoa-quest-harvest",
@@ -43,7 +51,12 @@
       "aoa-summon"
     ],
     "docs_truth_sync": [],
-    "review_truth_sync": []
+    "review_truth_sync": [
+      "aoa-decision",
+      "aoa-decision-correct",
+      "aoa-decision-create",
+      "aoa-decision-find"
+    ]
   },
   "governance_backlog_version": 5,
   "review_truth_sync": [
@@ -166,6 +179,70 @@
       "runtime_skill_md_meaning_changed": true,
       "status": "evaluated",
       "truth_synced": true
+    },
+    {
+      "current_revision": "2dd29e91c836",
+      "governance_decision": "stay_evaluated",
+      "issues": [
+        "current_governance_decision_mismatch(expected=stay_evaluated, recorded=project_foundation)",
+        "reviewed_revision_mismatch(expected=2dd29e91c836, recorded=current-worktree)",
+        "recorded_governance_outcome_mismatch(expected=stay_evaluated, recorded=project_foundation)"
+      ],
+      "lineage_state": "published",
+      "name": "aoa-decision",
+      "review_path": "docs/reviews/status-promotions/aoa-decision.md",
+      "reviewed_revision": "current-worktree",
+      "runtime_skill_md_meaning_changed": true,
+      "status": "evaluated",
+      "truth_synced": false
+    },
+    {
+      "current_revision": "18f68b1173b4",
+      "governance_decision": "stay_evaluated",
+      "issues": [
+        "current_governance_decision_mismatch(expected=stay_evaluated, recorded=project_foundation)",
+        "reviewed_revision_mismatch(expected=18f68b1173b4, recorded=current-worktree)",
+        "recorded_governance_outcome_mismatch(expected=stay_evaluated, recorded=project_foundation)"
+      ],
+      "lineage_state": "published",
+      "name": "aoa-decision-correct",
+      "review_path": "docs/reviews/status-promotions/aoa-decision-correct.md",
+      "reviewed_revision": "current-worktree",
+      "runtime_skill_md_meaning_changed": true,
+      "status": "evaluated",
+      "truth_synced": false
+    },
+    {
+      "current_revision": "de4ff5b8cede",
+      "governance_decision": "stay_evaluated",
+      "issues": [
+        "current_governance_decision_mismatch(expected=stay_evaluated, recorded=project_foundation)",
+        "reviewed_revision_mismatch(expected=de4ff5b8cede, recorded=current-worktree)",
+        "recorded_governance_outcome_mismatch(expected=stay_evaluated, recorded=project_foundation)"
+      ],
+      "lineage_state": "published",
+      "name": "aoa-decision-create",
+      "review_path": "docs/reviews/status-promotions/aoa-decision-create.md",
+      "reviewed_revision": "current-worktree",
+      "runtime_skill_md_meaning_changed": true,
+      "status": "evaluated",
+      "truth_synced": false
+    },
+    {
+      "current_revision": "bda8dc8a6df2",
+      "governance_decision": "stay_evaluated",
+      "issues": [
+        "current_governance_decision_mismatch(expected=stay_evaluated, recorded=project_foundation)",
+        "reviewed_revision_mismatch(expected=bda8dc8a6df2, recorded=current-worktree)",
+        "recorded_governance_outcome_mismatch(expected=stay_evaluated, recorded=project_foundation)"
+      ],
+      "lineage_state": "published",
+      "name": "aoa-decision-find",
+      "review_path": "docs/reviews/status-promotions/aoa-decision-find.md",
+      "reviewed_revision": "current-worktree",
+      "runtime_skill_md_meaning_changed": true,
+      "status": "evaluated",
+      "truth_synced": false
     },
     {
       "current_revision": "fe0e70f084f5",
@@ -435,10 +512,15 @@
       "governance_decision": "default_reference",
       "governance_evidence_case_ids": [
         "adr_write_vs_source_of_truth_check_boundary",
+        "decision_correct_vs_decision_create_boundary",
+        "decision_create_vs_decision_find_boundary",
+        "decision_find_vs_decision_create_boundary",
+        "decision_router_vs_adr_write_boundary",
         "source_of_truth_check_vs_adr_write_boundary"
       ],
       "governance_lane_ids": [
-        "decision_docs_authority"
+        "decision_docs_authority",
+        "decision_graph_chain"
       ],
       "lineage_state": "published",
       "name": "aoa-adr-write",
@@ -670,6 +752,102 @@
       "readiness_reconciliation": "governance_and_eval_ready",
       "scope": "core",
       "skill_path": "skills/core/engineering/aoa-core-logic-boundary/SKILL.md",
+      "status": "evaluated"
+    },
+    {
+      "candidate_review_path": null,
+      "canonical_candidate_blockers": [],
+      "canonical_candidate_ready": true,
+      "canonical_eval_blockers": [],
+      "canonical_eval_ready": true,
+      "governance_decision": "stay_evaluated",
+      "governance_evidence_case_ids": [
+        "decision_correct_vs_decision_create_boundary",
+        "decision_create_vs_decision_find_boundary",
+        "decision_find_vs_decision_create_boundary",
+        "decision_router_vs_adr_write_boundary"
+      ],
+      "governance_lane_ids": [
+        "decision_graph_chain"
+      ],
+      "lineage_state": "published",
+      "name": "aoa-decision",
+      "promotion_review_path": "docs/reviews/status-promotions/aoa-decision.md",
+      "readiness_reconciliation": "governance_and_eval_ready",
+      "scope": "core",
+      "skill_path": "skills/core/engineering/aoa-decision/SKILL.md",
+      "status": "evaluated"
+    },
+    {
+      "candidate_review_path": null,
+      "canonical_candidate_blockers": [],
+      "canonical_candidate_ready": true,
+      "canonical_eval_blockers": [],
+      "canonical_eval_ready": true,
+      "governance_decision": "stay_evaluated",
+      "governance_evidence_case_ids": [
+        "decision_correct_vs_decision_create_boundary",
+        "decision_create_vs_decision_find_boundary",
+        "decision_find_vs_decision_create_boundary",
+        "decision_router_vs_adr_write_boundary"
+      ],
+      "governance_lane_ids": [
+        "decision_graph_chain"
+      ],
+      "lineage_state": "published",
+      "name": "aoa-decision-correct",
+      "promotion_review_path": "docs/reviews/status-promotions/aoa-decision-correct.md",
+      "readiness_reconciliation": "governance_and_eval_ready",
+      "scope": "core",
+      "skill_path": "skills/core/engineering/aoa-decision-correct/SKILL.md",
+      "status": "evaluated"
+    },
+    {
+      "candidate_review_path": null,
+      "canonical_candidate_blockers": [],
+      "canonical_candidate_ready": true,
+      "canonical_eval_blockers": [],
+      "canonical_eval_ready": true,
+      "governance_decision": "stay_evaluated",
+      "governance_evidence_case_ids": [
+        "decision_correct_vs_decision_create_boundary",
+        "decision_create_vs_decision_find_boundary",
+        "decision_find_vs_decision_create_boundary",
+        "decision_router_vs_adr_write_boundary"
+      ],
+      "governance_lane_ids": [
+        "decision_graph_chain"
+      ],
+      "lineage_state": "published",
+      "name": "aoa-decision-create",
+      "promotion_review_path": "docs/reviews/status-promotions/aoa-decision-create.md",
+      "readiness_reconciliation": "governance_and_eval_ready",
+      "scope": "core",
+      "skill_path": "skills/core/engineering/aoa-decision-create/SKILL.md",
+      "status": "evaluated"
+    },
+    {
+      "candidate_review_path": null,
+      "canonical_candidate_blockers": [],
+      "canonical_candidate_ready": true,
+      "canonical_eval_blockers": [],
+      "canonical_eval_ready": true,
+      "governance_decision": "stay_evaluated",
+      "governance_evidence_case_ids": [
+        "decision_correct_vs_decision_create_boundary",
+        "decision_create_vs_decision_find_boundary",
+        "decision_find_vs_decision_create_boundary",
+        "decision_router_vs_adr_write_boundary"
+      ],
+      "governance_lane_ids": [
+        "decision_graph_chain"
+      ],
+      "lineage_state": "published",
+      "name": "aoa-decision-find",
+      "promotion_review_path": "docs/reviews/status-promotions/aoa-decision-find.md",
+      "readiness_reconciliation": "governance_and_eval_ready",
+      "scope": "core",
+      "skill_path": "skills/core/engineering/aoa-decision-find/SKILL.md",
       "status": "evaluated"
     },
     {

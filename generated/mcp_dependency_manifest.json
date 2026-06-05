@@ -51,6 +51,50 @@
       "tools": []
     },
     {
+      "name": "aoa-decision",
+      "tools": [
+        {
+          "type": "mcp",
+          "value": "aoa_decisions",
+          "description": "AoA workspace decision graph MCP server",
+          "transport": "stdio"
+        }
+      ]
+    },
+    {
+      "name": "aoa-decision-correct",
+      "tools": [
+        {
+          "type": "mcp",
+          "value": "aoa_decisions",
+          "description": "AoA workspace decision graph MCP server",
+          "transport": "stdio"
+        }
+      ]
+    },
+    {
+      "name": "aoa-decision-create",
+      "tools": [
+        {
+          "type": "mcp",
+          "value": "aoa_decisions",
+          "description": "AoA workspace decision graph MCP server",
+          "transport": "stdio"
+        }
+      ]
+    },
+    {
+      "name": "aoa-decision-find",
+      "tools": [
+        {
+          "type": "mcp",
+          "value": "aoa_decisions",
+          "description": "AoA workspace decision graph MCP server",
+          "transport": "stdio"
+        }
+      ]
+    },
+    {
       "name": "aoa-dry-run-first",
       "tools": []
     },

@@ -46,6 +46,50 @@
       "implicit_activation_policy": "invoke",
       "notes": "General bounded change workflow for non-trivial code, config, and docs work."
     },
+    "aoa-decision": {
+      "trust_posture": "portable-core",
+      "mutation_surface": "repo",
+      "recommended_install_scopes": [
+        "repo",
+        "user"
+      ],
+      "requires_confirmation_seam": false,
+      "implicit_activation_policy": "invoke",
+      "notes": "Router for decision-lane lookup, creation, and correction through the decision graph and repo-local source records."
+    },
+    "aoa-decision-find": {
+      "trust_posture": "portable-core",
+      "mutation_surface": "none",
+      "recommended_install_scopes": [
+        "repo",
+        "user"
+      ],
+      "requires_confirmation_seam": false,
+      "implicit_activation_policy": "manual",
+      "notes": "Manual subskill selected by aoa-decision for graph-first decision lookup."
+    },
+    "aoa-decision-create": {
+      "trust_posture": "portable-core",
+      "mutation_surface": "repo",
+      "recommended_install_scopes": [
+        "repo",
+        "user"
+      ],
+      "requires_confirmation_seam": false,
+      "implicit_activation_policy": "manual",
+      "notes": "Manual subskill selected by aoa-decision for source-owned decision record creation."
+    },
+    "aoa-decision-correct": {
+      "trust_posture": "portable-core",
+      "mutation_surface": "repo",
+      "recommended_install_scopes": [
+        "repo",
+        "user"
+      ],
+      "requires_confirmation_seam": false,
+      "implicit_activation_policy": "manual",
+      "notes": "Manual subskill selected by aoa-decision for source-first decision correction and reindexing."
+    },
     "aoa-commit-growth-seam": {
       "trust_posture": "portable-core",
       "mutation_surface": "repo",

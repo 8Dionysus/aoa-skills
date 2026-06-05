@@ -460,6 +460,146 @@
       "notes": "Refactoring guidance for separating reusable logic from glue code."
     },
     {
+      "name": "aoa-decision",
+      "display_name": "AoA Decision",
+      "description": "Route AoA decision-lane work through the workspace decision graph first, checking status/issues and the smallest impact packet before choosing find, create, or correct while keeping repo-local decision files authoritative. Use when the task mentions docs/decisions, decision indexes, decision graph, ADRs, changed paths, source-surface rationale, supersession, or cross-repo decision symmetry. Do not use for ordinary docs edits, unresolved source-of-truth mapping, or trivial changes that do not need durable rationale.",
+      "short_description": "Route decision-lane work",
+      "path": ".agents/skills/aoa-decision/SKILL.md",
+      "openai_config_path": ".agents/skills/aoa-decision/agents/openai.yaml",
+      "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "invoke",
+      "allow_implicit_invocation": true,
+      "manual_invocation_required": false,
+      "candidate_only": false,
+      "trust_posture": "portable-core",
+      "mutation_surface": "repo",
+      "requires_confirmation_seam": false,
+      "recommended_install_scopes": [
+        "repo",
+        "user"
+      ],
+      "default_prompt": "Use $aoa-decision to check the decision graph first, choose find/create/correct, and keep repo-local decision files as source truth.",
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": []
+      },
+      "context_retention_ref": "generated/context_retention_manifest.json#aoa-decision",
+      "notes": "Router for decision-lane lookup, creation, and correction through the decision graph and repo-local source records."
+    },
+    {
+      "name": "aoa-decision-correct",
+      "display_name": "AoA Decision Correct",
+      "description": "Correct, supersede, reindex, or repair graph-coverage drift in AoA decision records by checking graph issues, editing source notes first, rebuilding repo-local indexes, and refreshing the workspace decision graph. Use when a decision note, index metadata, source-surface list, status, supersession, generated index, unknown surface, or graph packet is stale or wrong. Do not use for pure lookup or for creating a new decision note.",
+      "short_description": "Correct decision records",
+      "path": ".agents/skills/aoa-decision-correct/SKILL.md",
+      "openai_config_path": ".agents/skills/aoa-decision-correct/agents/openai.yaml",
+      "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "manual",
+      "allow_implicit_invocation": false,
+      "manual_invocation_required": true,
+      "candidate_only": false,
+      "trust_posture": "portable-core",
+      "mutation_surface": "repo",
+      "requires_confirmation_seam": false,
+      "recommended_install_scopes": [
+        "repo",
+        "user"
+      ],
+      "default_prompt": "Use $aoa-decision-correct to repair the source decision note first, rebuild local indexes, and refresh the workspace graph.",
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": []
+      },
+      "context_retention_ref": "generated/context_retention_manifest.json#aoa-decision-correct",
+      "notes": "Manual subskill selected by aoa-decision for source-first decision correction and reindexing."
+    },
+    {
+      "name": "aoa-decision-create",
+      "display_name": "AoA Decision Create",
+      "description": "Create a new AoA decision record in the owning repository by checking graph status/issues, using impact packets for placement, and following repo-local decision law for the actual source note and indexes. Use when a real structural, workflow, tooling, source/export, MCP, skill, or authority decision needs durable rationale. Do not use when no decision has been made, the change is trivial, the target repo has unresolved graph issues, or an existing note only needs correction.",
+      "short_description": "Create decision records",
+      "path": ".agents/skills/aoa-decision-create/SKILL.md",
+      "openai_config_path": ".agents/skills/aoa-decision-create/agents/openai.yaml",
+      "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "manual",
+      "allow_implicit_invocation": false,
+      "manual_invocation_required": true,
+      "candidate_only": false,
+      "trust_posture": "portable-core",
+      "mutation_surface": "repo",
+      "requires_confirmation_seam": false,
+      "recommended_install_scopes": [
+        "repo",
+        "user"
+      ],
+      "default_prompt": "Use $aoa-decision-create to inspect graph context, write the repo-local decision note, rebuild indexes, and refresh the workspace graph.",
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": []
+      },
+      "context_retention_ref": "generated/context_retention_manifest.json#aoa-decision-create",
+      "notes": "Manual subskill selected by aoa-decision for source-owned decision record creation."
+    },
+    {
+      "name": "aoa-decision-find",
+      "display_name": "AoA Decision Find",
+      "description": "Find AoA decision records through workspace graph search and impact packets, then verify claims against repo-local source notes and generated decision indexes. Use when prior decision rationale, changed paths, owner surfaces, source surfaces, status, or supersession links are needed before work continues. Do not use when the task is to create or edit a decision record.",
+      "short_description": "Find decision records",
+      "path": ".agents/skills/aoa-decision-find/SKILL.md",
+      "openai_config_path": ".agents/skills/aoa-decision-find/agents/openai.yaml",
+      "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "manual",
+      "allow_implicit_invocation": false,
+      "manual_invocation_required": true,
+      "candidate_only": false,
+      "trust_posture": "portable-core",
+      "mutation_surface": "none",
+      "requires_confirmation_seam": false,
+      "recommended_install_scopes": [
+        "repo",
+        "user"
+      ],
+      "default_prompt": "Use $aoa-decision-find to search the decision graph, read the matching source notes, and return compact decision context.",
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": []
+      },
+      "context_retention_ref": "generated/context_retention_manifest.json#aoa-decision-find",
+      "notes": "Manual subskill selected by aoa-decision for graph-first decision lookup."
+    },
+    {
       "name": "aoa-dry-run-first",
       "display_name": "AoA Dry Run First",
       "description": "Prefer simulation, preview, or inspect-only paths before any real mutation, then require one explicit confirmation for the concrete mutating step. Use when the action can be previewed and mistakes would be costly, such as delete, restore, migrate, or reconfigure operations. Do not use for purely analytical tasks or when the primary question is whether execution is authorized at all.",

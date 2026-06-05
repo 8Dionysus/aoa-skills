@@ -314,6 +314,54 @@
       "snapshot_path": "tests/fixtures/skill_evaluation_snapshots/aoa-adr-write/adr_write_vs_source_of_truth_check_boundary.md"
     },
     {
+      "adjacent_skill": "aoa-adr-write",
+      "blockers": [],
+      "case_id": "decision_router_vs_adr_write_boundary",
+      "expected": "use",
+      "governance_lane_ids": [
+        "decision_graph_chain"
+      ],
+      "prompt": "Compare routing decision-lane work through the workspace graph with writing a standalone ADR and choose the clearer fit when the task may be find, create, or correct.",
+      "skill": "aoa-decision",
+      "snapshot_path": "tests/fixtures/skill_evaluation_snapshots/aoa-decision/decision_router_vs_adr_write_boundary.md"
+    },
+    {
+      "adjacent_skill": "aoa-decision-create",
+      "blockers": [],
+      "case_id": "decision_find_vs_decision_create_boundary",
+      "expected": "use",
+      "governance_lane_ids": [
+        "decision_graph_chain"
+      ],
+      "prompt": "Compare finding existing decision rationale with creating a new decision note and choose the clearer fit when prior records may already answer the task.",
+      "skill": "aoa-decision-find",
+      "snapshot_path": "tests/fixtures/skill_evaluation_snapshots/aoa-decision-find/decision_find_vs_decision_create_boundary.md"
+    },
+    {
+      "adjacent_skill": "aoa-decision-find",
+      "blockers": [],
+      "case_id": "decision_create_vs_decision_find_boundary",
+      "expected": "use",
+      "governance_lane_ids": [
+        "decision_graph_chain"
+      ],
+      "prompt": "Compare creating a durable repo-local decision record with only finding existing rationale and choose the clearer fit after a real new route choice was made.",
+      "skill": "aoa-decision-create",
+      "snapshot_path": "tests/fixtures/skill_evaluation_snapshots/aoa-decision-create/decision_create_vs_decision_find_boundary.md"
+    },
+    {
+      "adjacent_skill": "aoa-decision-create",
+      "blockers": [],
+      "case_id": "decision_correct_vs_decision_create_boundary",
+      "expected": "use",
+      "governance_lane_ids": [
+        "decision_graph_chain"
+      ],
+      "prompt": "Compare correcting a stale or misindexed existing decision record with writing a new decision note and choose the clearer fit.",
+      "skill": "aoa-decision-correct",
+      "snapshot_path": "tests/fixtures/skill_evaluation_snapshots/aoa-decision-correct/decision_correct_vs_decision_create_boundary.md"
+    },
+    {
       "adjacent_skill": "aoa-property-invariants",
       "blockers": [],
       "case_id": "invariant_coverage_audit_vs_property_invariants_boundary",
@@ -574,7 +622,8 @@
         "aoa-source-of-truth-check"
       ],
       "governance_lane_ids": [
-        "decision_docs_authority"
+        "decision_docs_authority",
+        "decision_graph_chain"
       ],
       "name": "aoa-adr-write",
       "required_adjacency_coverage": true,
@@ -723,6 +772,74 @@
       "required_adjacency_coverage": true,
       "scope": "core",
       "skill_path": "skills/core/engineering/aoa-core-logic-boundary/SKILL.md",
+      "status": "evaluated"
+    },
+    {
+      "adjacency_blockers": [],
+      "adjacency_do_not_use_count": 0,
+      "adjacency_ready": true,
+      "adjacency_use_count": 1,
+      "adjacent_skill_names": [
+        "aoa-adr-write"
+      ],
+      "governance_lane_ids": [
+        "decision_graph_chain"
+      ],
+      "name": "aoa-decision",
+      "required_adjacency_coverage": true,
+      "scope": "core",
+      "skill_path": "skills/core/engineering/aoa-decision/SKILL.md",
+      "status": "evaluated"
+    },
+    {
+      "adjacency_blockers": [],
+      "adjacency_do_not_use_count": 0,
+      "adjacency_ready": true,
+      "adjacency_use_count": 1,
+      "adjacent_skill_names": [
+        "aoa-decision-create"
+      ],
+      "governance_lane_ids": [
+        "decision_graph_chain"
+      ],
+      "name": "aoa-decision-correct",
+      "required_adjacency_coverage": true,
+      "scope": "core",
+      "skill_path": "skills/core/engineering/aoa-decision-correct/SKILL.md",
+      "status": "evaluated"
+    },
+    {
+      "adjacency_blockers": [],
+      "adjacency_do_not_use_count": 0,
+      "adjacency_ready": true,
+      "adjacency_use_count": 1,
+      "adjacent_skill_names": [
+        "aoa-decision-find"
+      ],
+      "governance_lane_ids": [
+        "decision_graph_chain"
+      ],
+      "name": "aoa-decision-create",
+      "required_adjacency_coverage": true,
+      "scope": "core",
+      "skill_path": "skills/core/engineering/aoa-decision-create/SKILL.md",
+      "status": "evaluated"
+    },
+    {
+      "adjacency_blockers": [],
+      "adjacency_do_not_use_count": 0,
+      "adjacency_ready": true,
+      "adjacency_use_count": 1,
+      "adjacent_skill_names": [
+        "aoa-decision-create"
+      ],
+      "governance_lane_ids": [
+        "decision_graph_chain"
+      ],
+      "name": "aoa-decision-find",
+      "required_adjacency_coverage": true,
+      "scope": "core",
+      "skill_path": "skills/core/engineering/aoa-decision-find/SKILL.md",
       "status": "evaluated"
     },
     {

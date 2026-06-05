@@ -1,0 +1,5 @@
+policy:
+  allow_implicit_invocation: false
+  implicit_activation_policy: manual
+notes:
+- Prefer route through aoa-decision unless the user explicitly asks for this create subskill.

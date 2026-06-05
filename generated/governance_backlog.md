@@ -7,12 +7,12 @@ Read those rows as per-skill maintenance signals, not as missing canonical-decis
 
 ## Summary
 
-- total skills: 46
-- candidate ready without review: 10
+- total skills: 50
+- candidate ready without review: 14
 - pending technique bridge lineage: 0
 - canonical maintenance cohort: 12
-- comparative pending cohort: 13
-- review truth-sync gaps: 0
+- comparative pending cohort: 17
+- review truth-sync gaps: 4
 - docs truth-sync issues: 0
 
 | name | status | lineage | governance ready | eval ready | governance decision | lanes | reconciliation | candidate review | promotion review |
@@ -20,7 +20,7 @@ Read those rows as per-skill maintenance signals, not as missing canonical-decis
 | abyss-safe-infra-change | evaluated | published | false | true | - | - | project_overlay_federation_ready | - | docs/reviews/status-promotions/abyss-safe-infra-change.md |
 | abyss-sanitized-share | evaluated | published | false | true | - | - | project_overlay_federation_ready | - | docs/reviews/status-promotions/abyss-sanitized-share.md |
 | abyss-self-diagnostic-spine | scaffold | published | false | true | - | - | project_overlay_federation_ready | - | - |
-| aoa-adr-write | canonical | published | true | true | default_reference | decision_docs_authority | governance_and_eval_ready | docs/reviews/canonical-candidates/aoa-adr-write.md | docs/reviews/status-promotions/aoa-adr-write.md |
+| aoa-adr-write | canonical | published | true | true | default_reference | decision_docs_authority, decision_graph_chain | governance_and_eval_ready | docs/reviews/canonical-candidates/aoa-adr-write.md | docs/reviews/status-promotions/aoa-adr-write.md |
 | aoa-approval-gate-check | canonical | published | true | true | default_reference | local_runtime_bringup, risk_authority_preview_execution | governance_and_eval_ready | docs/reviews/canonical-candidates/aoa-approval-gate-check.md | docs/reviews/status-promotions/aoa-approval-gate-check.md |
 | aoa-automation-opportunity-scan | evaluated | published | true | true | stay_evaluated | session_growth_closeout | governance_and_eval_ready | - | docs/reviews/status-promotions/aoa-automation-opportunity-scan.md |
 | aoa-bounded-context-map | canonical | published | true | true | default_reference | context_vs_contract, core_boundary_refactor | governance_and_eval_ready | docs/reviews/canonical-candidates/aoa-bounded-context-map.md | docs/reviews/status-promotions/aoa-bounded-context-map.md |
@@ -29,6 +29,10 @@ Read those rows as per-skill maintenance signals, not as missing canonical-decis
 | aoa-commit-growth-seam | evaluated | published | true | true | stay_evaluated | session_growth_closeout | governance_and_eval_ready | - | docs/reviews/status-promotions/aoa-commit-growth-seam.md |
 | aoa-contract-test | canonical | published | true | true | default_reference | context_vs_contract | governance_and_eval_ready | docs/reviews/canonical-candidates/aoa-contract-test.md | docs/reviews/status-promotions/aoa-contract-test.md |
 | aoa-core-logic-boundary | evaluated | published | true | true | stay_evaluated | core_boundary_refactor | governance_and_eval_ready | docs/reviews/canonical-candidates/aoa-core-logic-boundary.md | docs/reviews/status-promotions/aoa-core-logic-boundary.md |
+| aoa-decision | evaluated | published | true | true | stay_evaluated | decision_graph_chain | governance_and_eval_ready | - | docs/reviews/status-promotions/aoa-decision.md |
+| aoa-decision-correct | evaluated | published | true | true | stay_evaluated | decision_graph_chain | governance_and_eval_ready | - | docs/reviews/status-promotions/aoa-decision-correct.md |
+| aoa-decision-create | evaluated | published | true | true | stay_evaluated | decision_graph_chain | governance_and_eval_ready | - | docs/reviews/status-promotions/aoa-decision-create.md |
+| aoa-decision-find | evaluated | published | true | true | stay_evaluated | decision_graph_chain | governance_and_eval_ready | - | docs/reviews/status-promotions/aoa-decision-find.md |
 | aoa-dry-run-first | canonical | published | true | true | default_reference | risk_authority_preview_execution | governance_and_eval_ready | docs/reviews/canonical-candidates/aoa-dry-run-first.md | docs/reviews/status-promotions/aoa-dry-run-first.md |
 | aoa-invariant-coverage-audit | canonical | published | true | true | default_reference | invariant_authoring_vs_audit | governance_and_eval_ready | docs/reviews/canonical-candidates/aoa-invariant-coverage-audit.md | docs/reviews/status-promotions/aoa-invariant-coverage-audit.md |
 | aoa-local-stack-bringup | evaluated | published | true | true | stay_evaluated | local_runtime_bringup | governance_and_eval_ready | docs/reviews/canonical-candidates/aoa-local-stack-bringup.md | docs/reviews/status-promotions/aoa-local-stack-bringup.md |
@@ -78,6 +82,10 @@ Read those rows as per-skill maintenance signals, not as missing canonical-decis
 | aoa-commit-growth-seam | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-commit-growth-seam.md | 6326b5e4985a | 6326b5e4985a | True | - | true |
 | aoa-contract-test | canonical | published | default_reference | docs/reviews/status-promotions/aoa-contract-test.md | 5643013a5d81 | 5643013a5d81 | True | - | true |
 | aoa-core-logic-boundary | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-core-logic-boundary.md | 4c1fe5d5fc55 | 4c1fe5d5fc55 | True | - | true |
+| aoa-decision | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-decision.md | current-worktree | 2dd29e91c836 | True | current_governance_decision_mismatch(expected=stay_evaluated, recorded=project_foundation), reviewed_revision_mismatch(expected=2dd29e91c836, recorded=current-worktree), recorded_governance_outcome_mismatch(expected=stay_evaluated, recorded=project_foundation) | false |
+| aoa-decision-correct | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-decision-correct.md | current-worktree | 18f68b1173b4 | True | current_governance_decision_mismatch(expected=stay_evaluated, recorded=project_foundation), reviewed_revision_mismatch(expected=18f68b1173b4, recorded=current-worktree), recorded_governance_outcome_mismatch(expected=stay_evaluated, recorded=project_foundation) | false |
+| aoa-decision-create | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-decision-create.md | current-worktree | de4ff5b8cede | True | current_governance_decision_mismatch(expected=stay_evaluated, recorded=project_foundation), reviewed_revision_mismatch(expected=de4ff5b8cede, recorded=current-worktree), recorded_governance_outcome_mismatch(expected=stay_evaluated, recorded=project_foundation) | false |
+| aoa-decision-find | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-decision-find.md | current-worktree | bda8dc8a6df2 | True | current_governance_decision_mismatch(expected=stay_evaluated, recorded=project_foundation), reviewed_revision_mismatch(expected=bda8dc8a6df2, recorded=current-worktree), recorded_governance_outcome_mismatch(expected=stay_evaluated, recorded=project_foundation) | false |
 | aoa-dry-run-first | canonical | published | default_reference | docs/reviews/status-promotions/aoa-dry-run-first.md | fe0e70f084f5 | fe0e70f084f5 | True | - | true |
 | aoa-invariant-coverage-audit | canonical | published | default_reference | docs/reviews/status-promotions/aoa-invariant-coverage-audit.md | 9ec574c0f128 | 9ec574c0f128 | True | - | true |
 | aoa-local-stack-bringup | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-local-stack-bringup.md | 7b229825ac1d | 7b229825ac1d | False | - | true |
@@ -98,10 +106,10 @@ Read those rows as per-skill maintenance signals, not as missing canonical-decis
 
 ## Cohorts
 
-- `candidate_ready_without_review`: aoa-automation-opportunity-scan, aoa-checkpoint-closeout-bridge, aoa-commit-growth-seam, aoa-quest-harvest, aoa-session-donor-harvest, aoa-session-progression-lift, aoa-session-route-forks, aoa-session-self-diagnose, aoa-session-self-repair, aoa-summon
+- `candidate_ready_without_review`: aoa-automation-opportunity-scan, aoa-checkpoint-closeout-bridge, aoa-commit-growth-seam, aoa-decision, aoa-decision-correct, aoa-decision-create, aoa-decision-find, aoa-quest-harvest, aoa-session-donor-harvest, aoa-session-progression-lift, aoa-session-route-forks, aoa-session-self-diagnose, aoa-session-self-repair, aoa-summon
 - `blocked_by_pending_lineage`: -
 - `canonical_maintenance`: aoa-adr-write, aoa-approval-gate-check, aoa-bounded-context-map, aoa-change-protocol, aoa-contract-test, aoa-dry-run-first, aoa-invariant-coverage-audit, aoa-property-invariants, aoa-safe-infra-change, aoa-sanitized-share, aoa-source-of-truth-check, aoa-tdd-slice
-- `comparative_pending`: aoa-automation-opportunity-scan, aoa-checkpoint-closeout-bridge, aoa-commit-growth-seam, aoa-core-logic-boundary, aoa-local-stack-bringup, aoa-port-adapter-refactor, aoa-quest-harvest, aoa-session-donor-harvest, aoa-session-progression-lift, aoa-session-route-forks, aoa-session-self-diagnose, aoa-session-self-repair, aoa-summon
-- `review_truth_sync`: -
+- `comparative_pending`: aoa-automation-opportunity-scan, aoa-checkpoint-closeout-bridge, aoa-commit-growth-seam, aoa-core-logic-boundary, aoa-decision, aoa-decision-correct, aoa-decision-create, aoa-decision-find, aoa-local-stack-bringup, aoa-port-adapter-refactor, aoa-quest-harvest, aoa-session-donor-harvest, aoa-session-progression-lift, aoa-session-route-forks, aoa-session-self-diagnose, aoa-session-self-repair, aoa-summon
+- `review_truth_sync`: aoa-decision, aoa-decision-correct, aoa-decision-create, aoa-decision-find
 - `docs_truth_sync`: -
 

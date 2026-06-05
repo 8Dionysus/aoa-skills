@@ -83,7 +83,11 @@
       ],
       "notes": [
         "Use aoa-adr-write when the task is to capture a concrete architectural or workflow decision.",
-        "Use aoa-source-of-truth-check when the task is to identify which documents are authoritative and reduce overlap."
+        "Use aoa-source-of-truth-check when the task is to identify which documents are authoritative and reduce overlap.",
+        "Use aoa-decision when the task needs a decision-lane route through find, create, or correct.",
+        "Use aoa-decision-find when prior decision rationale should be located and source-verified.",
+        "Use aoa-decision-create when a new repo-local decision record must be written.",
+        "Use aoa-decision-correct when an existing decision record, index, status, or graph mismatch must be repaired."
       ]
     },
     {
@@ -281,6 +285,104 @@
         "aoa-bounded-context-map is about naming contexts and interfaces at the system or domain level.",
         "aoa-core-logic-boundary is about separating reusable rules from glue or orchestration.",
         "aoa-port-adapter-refactor is about isolating a concrete dependency behind a port or adapter."
+      ]
+    },
+    {
+      "name": "aoa-decision",
+      "description": "Route AoA decision-lane work through the workspace decision graph first, checking status/issues and the smallest impact packet before choosing find, create, or correct while keeping repo-local decision files authoritative. Use when the task mentions docs/decisions, decision indexes, decision graph, ADRs, changed paths, source-surface rationale, supersession, or cross-repo decision symmetry. Do not use for ordinary docs edits, unresolved source-of-truth mapping, or trivial changes that do not need durable rationale.",
+      "collision_family": "decision-and-doc-authority",
+      "competing_skills": [
+        "aoa-adr-write",
+        "aoa-decision-find",
+        "aoa-decision-create",
+        "aoa-decision-correct"
+      ],
+      "should_trigger": [
+        "The task changes docs/decisions across multiple AoA repositories and needs the workspace decision graph to decide whether to find, create, or correct decision records before editing."
+      ],
+      "manual_invocation_required": [],
+      "negative_controls": [
+        "The task only clarifies which README is authoritative and has no decision record, generated index, or decision graph question."
+      ],
+      "notes": [
+        "Use aoa-adr-write when the task is to capture a concrete architectural or workflow decision.",
+        "Use aoa-source-of-truth-check when the task is to identify which documents are authoritative and reduce overlap.",
+        "Use aoa-decision when the task needs a decision-lane route through find, create, or correct.",
+        "Use aoa-decision-find when prior decision rationale should be located and source-verified.",
+        "Use aoa-decision-create when a new repo-local decision record must be written.",
+        "Use aoa-decision-correct when an existing decision record, index, status, or graph mismatch must be repaired."
+      ]
+    },
+    {
+      "name": "aoa-decision-correct",
+      "description": "Correct, supersede, reindex, or repair graph-coverage drift in AoA decision records by checking graph issues, editing source notes first, rebuilding repo-local indexes, and refreshing the workspace decision graph. Use when a decision note, index metadata, source-surface list, status, supersession, generated index, unknown surface, or graph packet is stale or wrong. Do not use for pure lookup or for creating a new decision note.",
+      "collision_family": "decision-and-doc-authority",
+      "competing_skills": [
+        "aoa-decision",
+        "aoa-decision-create"
+      ],
+      "should_trigger": [],
+      "manual_invocation_required": [
+        "Correct a stale decision note and generated index mismatch by editing the source record first and then refreshing the graph."
+      ],
+      "negative_controls": [
+        "There is no existing decision record to repair; a new durable record is needed."
+      ],
+      "notes": [
+        "Use aoa-adr-write when the task is to capture a concrete architectural or workflow decision.",
+        "Use aoa-source-of-truth-check when the task is to identify which documents are authoritative and reduce overlap.",
+        "Use aoa-decision when the task needs a decision-lane route through find, create, or correct.",
+        "Use aoa-decision-find when prior decision rationale should be located and source-verified.",
+        "Use aoa-decision-create when a new repo-local decision record must be written.",
+        "Use aoa-decision-correct when an existing decision record, index, status, or graph mismatch must be repaired."
+      ]
+    },
+    {
+      "name": "aoa-decision-create",
+      "description": "Create a new AoA decision record in the owning repository by checking graph status/issues, using impact packets for placement, and following repo-local decision law for the actual source note and indexes. Use when a real structural, workflow, tooling, source/export, MCP, skill, or authority decision needs durable rationale. Do not use when no decision has been made, the change is trivial, the target repo has unresolved graph issues, or an existing note only needs correction.",
+      "collision_family": "decision-and-doc-authority",
+      "competing_skills": [
+        "aoa-decision",
+        "aoa-decision-find"
+      ],
+      "should_trigger": [],
+      "manual_invocation_required": [
+        "Write a new repo-local decision record for this structural route choice, rebuild local decision indexes, and refresh the workspace graph."
+      ],
+      "negative_controls": [
+        "Existing records already explain the route; the task is to find and summarize them."
+      ],
+      "notes": [
+        "Use aoa-adr-write when the task is to capture a concrete architectural or workflow decision.",
+        "Use aoa-source-of-truth-check when the task is to identify which documents are authoritative and reduce overlap.",
+        "Use aoa-decision when the task needs a decision-lane route through find, create, or correct.",
+        "Use aoa-decision-find when prior decision rationale should be located and source-verified.",
+        "Use aoa-decision-create when a new repo-local decision record must be written.",
+        "Use aoa-decision-correct when an existing decision record, index, status, or graph mismatch must be repaired."
+      ]
+    },
+    {
+      "name": "aoa-decision-find",
+      "description": "Find AoA decision records through workspace graph search and impact packets, then verify claims against repo-local source notes and generated decision indexes. Use when prior decision rationale, changed paths, owner surfaces, source surfaces, status, or supersession links are needed before work continues. Do not use when the task is to create or edit a decision record.",
+      "collision_family": "decision-and-doc-authority",
+      "competing_skills": [
+        "aoa-decision",
+        "aoa-decision-create"
+      ],
+      "should_trigger": [],
+      "manual_invocation_required": [
+        "Find which prior decision explains this owner boundary by searching the decision graph and verifying the source decision note."
+      ],
+      "negative_controls": [
+        "A new durable decision must be recorded, so lookup alone is insufficient."
+      ],
+      "notes": [
+        "Use aoa-adr-write when the task is to capture a concrete architectural or workflow decision.",
+        "Use aoa-source-of-truth-check when the task is to identify which documents are authoritative and reduce overlap.",
+        "Use aoa-decision when the task needs a decision-lane route through find, create, or correct.",
+        "Use aoa-decision-find when prior decision rationale should be located and source-verified.",
+        "Use aoa-decision-create when a new repo-local decision record must be written.",
+        "Use aoa-decision-correct when an existing decision record, index, status, or graph mismatch must be repaired."
       ]
     },
     {
@@ -641,6 +743,7 @@
       "competing_skills": [
         "atm10-source-of-truth-check",
         "aoa-adr-write",
+        "aoa-decision",
         "aoa-quest-harvest",
         "abyss-self-diagnostic-spine",
         "aoa-bounded-context-map",

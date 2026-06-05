@@ -5,9 +5,9 @@ It is built from committed skill bundles, review records, and evaluation fixture
 
 ## Summary
 
-- total skills: 46
+- total skills: 50
 - default references: 12
-- default-reference ready skills: 13
+- default-reference ready skills: 17
 - pending technique bridge lineage: 0
 - risk surfaces: 5
 
@@ -15,7 +15,7 @@ It is built from committed skill bundles, review records, and evaluation fixture
 
 | name | maturity | readiness | scope | invocation | lineage | governance decision | lanes | readiness blockers | technique bridge | promotion review | candidate review |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| aoa-adr-write | canonical | ready | core | explicit-preferred | published | default_reference | decision_docs_authority | - | - | `docs/reviews/status-promotions/aoa-adr-write.md` | `docs/reviews/canonical-candidates/aoa-adr-write.md` |
+| aoa-adr-write | canonical | ready | core | explicit-preferred | published | default_reference | decision_docs_authority, decision_graph_chain | - | - | `docs/reviews/status-promotions/aoa-adr-write.md` | `docs/reviews/canonical-candidates/aoa-adr-write.md` |
 | aoa-approval-gate-check | canonical | ready | risk | explicit-only | published | default_reference | local_runtime_bringup, risk_authority_preview_execution | - | - | `docs/reviews/status-promotions/aoa-approval-gate-check.md` | `docs/reviews/canonical-candidates/aoa-approval-gate-check.md` |
 | aoa-bounded-context-map | canonical | ready | core | explicit-preferred | published | default_reference | context_vs_contract, core_boundary_refactor | - | - | `docs/reviews/status-promotions/aoa-bounded-context-map.md` | `docs/reviews/canonical-candidates/aoa-bounded-context-map.md` |
 | aoa-change-protocol | canonical | ready | core | explicit-preferred | published | default_reference | change_workflows | - | - | - | `docs/reviews/canonical-candidates/aoa-change-protocol.md` |
@@ -36,6 +36,10 @@ It is built from committed skill bundles, review records, and evaluation fixture
 | aoa-checkpoint-closeout-bridge | evaluated | ready | core | explicit-preferred | published | stay_evaluated | session_growth_closeout | - | - | `docs/reviews/status-promotions/aoa-checkpoint-closeout-bridge.md` | - |
 | aoa-commit-growth-seam | evaluated | ready | core | explicit-only | published | stay_evaluated | session_growth_closeout | - | - | `docs/reviews/status-promotions/aoa-commit-growth-seam.md` | - |
 | aoa-core-logic-boundary | evaluated | ready | core | explicit-preferred | published | stay_evaluated | core_boundary_refactor | - | - | `docs/reviews/status-promotions/aoa-core-logic-boundary.md` | `docs/reviews/canonical-candidates/aoa-core-logic-boundary.md` |
+| aoa-decision | evaluated | ready | core | explicit-preferred | published | stay_evaluated | decision_graph_chain | - | - | `docs/reviews/status-promotions/aoa-decision.md` | - |
+| aoa-decision-correct | evaluated | ready | core | explicit-preferred | published | stay_evaluated | decision_graph_chain | - | - | `docs/reviews/status-promotions/aoa-decision-correct.md` | - |
+| aoa-decision-create | evaluated | ready | core | explicit-preferred | published | stay_evaluated | decision_graph_chain | - | - | `docs/reviews/status-promotions/aoa-decision-create.md` | - |
+| aoa-decision-find | evaluated | ready | core | explicit-preferred | published | stay_evaluated | decision_graph_chain | - | - | `docs/reviews/status-promotions/aoa-decision-find.md` | - |
 | aoa-local-stack-bringup | evaluated | ready | risk | explicit-only | published | stay_evaluated | local_runtime_bringup | - | - | `docs/reviews/status-promotions/aoa-local-stack-bringup.md` | `docs/reviews/canonical-candidates/aoa-local-stack-bringup.md` |
 | aoa-port-adapter-refactor | evaluated | ready | core | explicit-preferred | published | stay_evaluated | core_boundary_refactor | - | - | `docs/reviews/status-promotions/aoa-port-adapter-refactor.md` | `docs/reviews/canonical-candidates/aoa-port-adapter-refactor.md` |
 | aoa-quest-harvest | evaluated | ready | core | explicit-only | published | stay_evaluated | session_growth_closeout | - | - | `docs/reviews/status-promotions/aoa-quest-harvest.md` | - |

@@ -556,6 +556,199 @@
     },
     {
       "composition_mode": "bounded",
+      "invocation_mode": "explicit-preferred",
+      "name": "aoa-decision",
+      "scope": "core",
+      "skill_path": "skills/core/engineering/aoa-decision/SKILL.md",
+      "status": "evaluated",
+      "summary": "Route AoA decision-lane work through the workspace decision graph first, then hand off to the smallest find, create, or correct subskill while keeping repo-local decision files authoritative.",
+      "technique_dependencies": [
+        "AOA-T-0033",
+        "AOA-T-0002"
+      ],
+      "technique_refs": [
+        {
+          "id": "AOA-T-0033",
+          "path": "techniques/instruction/docs-boundary/decision-rationale-recording/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+          "use_sections": [
+            "Intent",
+            "When to use",
+            "When not to use",
+            "Inputs",
+            "Outputs",
+            "Core procedure",
+            "Contracts",
+            "Risks",
+            "Validation"
+          ]
+        },
+        {
+          "id": "AOA-T-0002",
+          "path": "techniques/instruction/docs-boundary/source-of-truth-layout/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+          "use_sections": [
+            "Intent",
+            "When to use",
+            "When not to use",
+            "Inputs",
+            "Outputs",
+            "Core procedure",
+            "Contracts",
+            "Risks",
+            "Validation"
+          ]
+        }
+      ]
+    },
+    {
+      "composition_mode": "bounded",
+      "invocation_mode": "explicit-preferred",
+      "name": "aoa-decision-correct",
+      "scope": "core",
+      "skill_path": "skills/core/engineering/aoa-decision-correct/SKILL.md",
+      "status": "evaluated",
+      "summary": "Correct, supersede, or reindex AoA decision records by editing source notes first, rebuilding repo-local indexes, and refreshing the workspace decision graph.",
+      "technique_dependencies": [
+        "AOA-T-0001",
+        "AOA-T-0033",
+        "AOA-T-0002"
+      ],
+      "technique_refs": [
+        {
+          "id": "AOA-T-0001",
+          "path": "techniques/execution/agent-workflows-core/plan-diff-apply-verify-report/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+          "use_sections": [
+            "Intent",
+            "When to use",
+            "Inputs",
+            "Outputs",
+            "Core procedure",
+            "Contracts",
+            "Risks",
+            "Validation"
+          ]
+        },
+        {
+          "id": "AOA-T-0033",
+          "path": "techniques/instruction/docs-boundary/decision-rationale-recording/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+          "use_sections": [
+            "Intent",
+            "When to use",
+            "When not to use",
+            "Inputs",
+            "Outputs",
+            "Core procedure",
+            "Contracts",
+            "Risks",
+            "Validation"
+          ]
+        },
+        {
+          "id": "AOA-T-0002",
+          "path": "techniques/instruction/docs-boundary/source-of-truth-layout/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+          "use_sections": [
+            "Intent",
+            "When to use",
+            "Inputs",
+            "Outputs",
+            "Core procedure",
+            "Contracts",
+            "Risks",
+            "Validation"
+          ]
+        }
+      ]
+    },
+    {
+      "composition_mode": "bounded",
+      "invocation_mode": "explicit-preferred",
+      "name": "aoa-decision-create",
+      "scope": "core",
+      "skill_path": "skills/core/engineering/aoa-decision-create/SKILL.md",
+      "status": "evaluated",
+      "summary": "Create a new AoA decision record in the owning repository by using graph context for placement and repo-local decision law for the actual source note and indexes.",
+      "technique_dependencies": [
+        "AOA-T-0033",
+        "AOA-T-0002"
+      ],
+      "technique_refs": [
+        {
+          "id": "AOA-T-0033",
+          "path": "techniques/instruction/docs-boundary/decision-rationale-recording/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+          "use_sections": [
+            "Intent",
+            "When to use",
+            "When not to use",
+            "Inputs",
+            "Outputs",
+            "Core procedure",
+            "Contracts",
+            "Risks",
+            "Validation"
+          ]
+        },
+        {
+          "id": "AOA-T-0002",
+          "path": "techniques/instruction/docs-boundary/source-of-truth-layout/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+          "use_sections": [
+            "Intent",
+            "When to use",
+            "When not to use",
+            "Inputs",
+            "Outputs",
+            "Core procedure",
+            "Contracts",
+            "Risks",
+            "Validation"
+          ]
+        }
+      ]
+    },
+    {
+      "composition_mode": "bounded",
+      "invocation_mode": "explicit-preferred",
+      "name": "aoa-decision-find",
+      "scope": "core",
+      "skill_path": "skills/core/engineering/aoa-decision-find/SKILL.md",
+      "status": "evaluated",
+      "summary": "Find AoA decision records through the workspace graph, then verify claims against repo-local source notes and generated decision indexes.",
+      "technique_dependencies": [
+        "AOA-T-0002"
+      ],
+      "technique_refs": [
+        {
+          "id": "AOA-T-0002",
+          "path": "techniques/instruction/docs-boundary/source-of-truth-layout/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+          "use_sections": [
+            "Intent",
+            "When to use",
+            "Inputs",
+            "Outputs",
+            "Core procedure",
+            "Contracts",
+            "Risks",
+            "Validation"
+          ]
+        }
+      ]
+    },
+    {
+      "composition_mode": "bounded",
       "invocation_mode": "explicit-only",
       "name": "aoa-dry-run-first",
       "scope": "risk",

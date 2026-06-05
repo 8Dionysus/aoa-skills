@@ -137,6 +137,46 @@
       "description_sha256": "664701e603b988ed90f66e269c021c532c9c0b6b02a3f03b21d71fc4e7ced112"
     },
     {
+      "skill_name": "aoa-decision",
+      "path": ".agents/skills/aoa-decision",
+      "command": [
+        "skills-ref",
+        "validate",
+        ".agents/skills/aoa-decision"
+      ],
+      "description_sha256": "f76ac8c171081f4e8912c63d40b3c833ebc6b2ea155c1ea2bd629253c9e87530"
+    },
+    {
+      "skill_name": "aoa-decision-correct",
+      "path": ".agents/skills/aoa-decision-correct",
+      "command": [
+        "skills-ref",
+        "validate",
+        ".agents/skills/aoa-decision-correct"
+      ],
+      "description_sha256": "531d68aba2449c36696b1dafb8dcb9a707ac88ee82168f5f0309776516fd094d"
+    },
+    {
+      "skill_name": "aoa-decision-create",
+      "path": ".agents/skills/aoa-decision-create",
+      "command": [
+        "skills-ref",
+        "validate",
+        ".agents/skills/aoa-decision-create"
+      ],
+      "description_sha256": "235b2dbdf8fbbae38702b24835e6df7a5635d743ebdb740df224f1f415c14197"
+    },
+    {
+      "skill_name": "aoa-decision-find",
+      "path": ".agents/skills/aoa-decision-find",
+      "command": [
+        "skills-ref",
+        "validate",
+        ".agents/skills/aoa-decision-find"
+      ],
+      "description_sha256": "4ab35d41f09c5bb563a69fca0c81b7e58df44fe75af8c217d8c800c57fe597f9"
+    },
+    {
       "skill_name": "aoa-dry-run-first",
       "path": ".agents/skills/aoa-dry-run-first",
       "command": [

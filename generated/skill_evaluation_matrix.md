@@ -6,7 +6,7 @@ evaluation fixtures, and authored snapshot-backed evidence files.
 
 ## Summary
 
-- total skills: 46
+- total skills: 50
 - canonical skills: 12
 - canonical skills with eval gaps: 0
 
@@ -24,6 +24,10 @@ evaluation fixtures, and authored snapshot-backed evidence files.
 | aoa-commit-growth-seam | evaluated | core | explicit-only | 1 | 1 | 1 | 1 | 1 | `skills/core/session-growth/aoa-commit-growth-seam/examples/runtime.md` | `docs/reviews/status-promotions/aoa-commit-growth-seam.md` | - | true | - |
 | aoa-contract-test | canonical | core | explicit-preferred | 1 | 3 | 3 | 1 | 1 | `skills/core/engineering/aoa-contract-test/examples/example.md` | `docs/reviews/status-promotions/aoa-contract-test.md` | `docs/reviews/canonical-candidates/aoa-contract-test.md` | true | - |
 | aoa-core-logic-boundary | evaluated | core | explicit-preferred | 1 | 3 | 3 | 1 | 1 | `skills/core/engineering/aoa-core-logic-boundary/examples/example.md` | `docs/reviews/status-promotions/aoa-core-logic-boundary.md` | `docs/reviews/canonical-candidates/aoa-core-logic-boundary.md` | true | - |
+| aoa-decision | evaluated | core | explicit-preferred | 1 | 1 | 1 | 1 | 1 | `skills/core/engineering/aoa-decision/checks/review.md` | `docs/reviews/status-promotions/aoa-decision.md` | - | true | - |
+| aoa-decision-correct | evaluated | core | explicit-preferred | 1 | 1 | 1 | 1 | 1 | `skills/core/engineering/aoa-decision-correct/checks/review.md` | `docs/reviews/status-promotions/aoa-decision-correct.md` | - | true | - |
+| aoa-decision-create | evaluated | core | explicit-preferred | 1 | 1 | 1 | 1 | 1 | `skills/core/engineering/aoa-decision-create/checks/review.md` | `docs/reviews/status-promotions/aoa-decision-create.md` | - | true | - |
+| aoa-decision-find | evaluated | core | explicit-preferred | 1 | 1 | 1 | 1 | 1 | `skills/core/engineering/aoa-decision-find/checks/review.md` | `docs/reviews/status-promotions/aoa-decision-find.md` | - | true | - |
 | aoa-dry-run-first | canonical | risk | explicit-only | 1 | 1 | 2 | 1 | 1 | `skills/risk/aoa-dry-run-first/examples/runtime.md` | `docs/reviews/status-promotions/aoa-dry-run-first.md` | `docs/reviews/canonical-candidates/aoa-dry-run-first.md` | true | - |
 | aoa-invariant-coverage-audit | canonical | core | explicit-preferred | 1 | 1 | 1 | 1 | 1 | `skills/core/engineering/aoa-invariant-coverage-audit/examples/example.md` | `docs/reviews/status-promotions/aoa-invariant-coverage-audit.md` | `docs/reviews/canonical-candidates/aoa-invariant-coverage-audit.md` | true | - |
 | aoa-local-stack-bringup | evaluated | risk | explicit-only | 1 | 1 | 1 | 1 | 1 | `skills/risk/aoa-local-stack-bringup/examples/runtime.md` | `docs/reviews/status-promotions/aoa-local-stack-bringup.md` | `docs/reviews/canonical-candidates/aoa-local-stack-bringup.md` | true | - |

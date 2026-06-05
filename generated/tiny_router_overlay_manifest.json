@@ -10,9 +10,9 @@
     "config/skill_policy_matrix.json",
     "config/tiny_router_skill_bands.json"
   ],
-  "skill_count": 46,
+  "skill_count": 50,
   "band_count": 7,
-  "case_count": 112,
+  "case_count": 124,
   "skills": [
     {
       "name": "abyss-safe-infra-change",
@@ -121,6 +121,42 @@
       "candidate_only": false,
       "project_overlay": false,
       "description_sha256": "664701e603b988ed90f66e269c021c532c9c0b6b02a3f03b21d71fc4e7ced112"
+    },
+    {
+      "name": "aoa-decision",
+      "band": "decision-doc-authority",
+      "implicit_activation_policy": "invoke",
+      "manual_invocation_required": false,
+      "candidate_only": false,
+      "project_overlay": false,
+      "description_sha256": "f76ac8c171081f4e8912c63d40b3c833ebc6b2ea155c1ea2bd629253c9e87530"
+    },
+    {
+      "name": "aoa-decision-correct",
+      "band": "decision-doc-authority",
+      "implicit_activation_policy": "manual",
+      "manual_invocation_required": true,
+      "candidate_only": false,
+      "project_overlay": false,
+      "description_sha256": "531d68aba2449c36696b1dafb8dcb9a707ac88ee82168f5f0309776516fd094d"
+    },
+    {
+      "name": "aoa-decision-create",
+      "band": "decision-doc-authority",
+      "implicit_activation_policy": "manual",
+      "manual_invocation_required": true,
+      "candidate_only": false,
+      "project_overlay": false,
+      "description_sha256": "235b2dbdf8fbbae38702b24835e6df7a5635d743ebdb740df224f1f415c14197"
+    },
+    {
+      "name": "aoa-decision-find",
+      "band": "decision-doc-authority",
+      "implicit_activation_policy": "manual",
+      "manual_invocation_required": true,
+      "candidate_only": false,
+      "project_overlay": false,
+      "description_sha256": "4ab35d41f09c5bb563a69fca0c81b7e58df44fe75af8c217d8c800c57fe597f9"
     },
     {
       "name": "aoa-dry-run-first",

@@ -11,6 +11,11 @@
       "transport": "stdio",
       "required": false
     },
+    "aoa_decisions": {
+      "description": "AoA workspace decision graph MCP server",
+      "transport": "stdio",
+      "required": false
+    },
     "dionysus": {
       "description": "Dionysus seed-routing MCP server",
       "transport": "stdio",
@@ -52,6 +57,22 @@
         "architect"
       ],
       "notes": "Use when the route needs active summary surfaces or evidence-linked counts."
+    },
+    {
+      "slug": "decision-graph-route",
+      "display_name": "AoA decision graph route",
+      "short_description": "Use the workspace decision graph to find, create, or correct decision-lane records while preserving repo-local source truth.",
+      "default_prompt": "Use this route to query the AoA decision graph first, then verify or update repo-local docs/decisions source records through the owning repository.",
+      "allow_implicit_invocation": true,
+      "mcp_dependencies": [
+        "aoa_decisions"
+      ],
+      "preferred_subagents": [
+        "architect",
+        "reviewer"
+      ],
+      "supporting_subagents": [],
+      "notes": "Good first move when the route mentions docs/decisions, decision indexes, decision graph, ADR rationale, or decision-lane correction."
     },
     {
       "slug": "seed-route",

@@ -3075,6 +3075,990 @@
       ]
     },
     {
+      "name": "aoa-decision",
+      "scope": "core",
+      "status": "evaluated",
+      "summary": "Route AoA decision-lane work through the workspace decision graph first, then hand off to the smallest find, create, or correct subskill while keeping repo-local decision files authoritative.",
+      "source": {
+        "skill_path": "skills/core/engineering/aoa-decision/SKILL.md",
+        "techniques_path": "skills/core/engineering/aoa-decision/techniques.yaml",
+        "policy_path": "skills/core/engineering/aoa-decision/agents/openai.yaml",
+        "content_hash": "2dd29e91c836feffe0c2e6ba8de41092f0317062fd9ba54f673e4258434a72b1",
+        "skill_revision": "2dd29e91c836"
+      },
+      "policy": {
+        "invocation_mode": "explicit-preferred",
+        "implicit_activation_policy": "invoke",
+        "trust_posture": "portable-core",
+        "mutation_surface": "repo",
+        "requires_manual_invocation": false,
+        "candidate_only": false,
+        "requires_confirmation_seam": false
+      },
+      "runtime": {
+        "description": "Route AoA decision-lane work through the workspace decision graph first, checking status/issues and the smallest impact packet before choosing find, create, or correct while keeping repo-local decision files authoritative. Use when the task mentions docs/decisions, decision indexes, decision graph, ADRs, changed paths, source-surface rationale, supersession, or cross-repo decision symmetry. Do not use for ordinary docs edits, unresolved source-of-truth mapping, or trivial changes that do not need durable rationale.",
+        "allow_implicit_invocation": true
+      },
+      "tiny_router": {
+        "band": "decision-doc-authority",
+        "cue_phrases": [
+          "decision graph",
+          "decision lane",
+          "docs decisions",
+          "find create correct",
+          "decision graph issues",
+          "changed path decisions"
+        ],
+        "negative_phrases": [
+          "standalone ADR only",
+          "source-of-truth ambiguity only"
+        ],
+        "companions": []
+      },
+      "resources": {
+        "bundle_support_artifacts": [
+          {
+            "path": "skills/core/engineering/aoa-decision/checks/review.md",
+            "selected_for_runtime_inspection": true,
+            "type": "review_checklist"
+          },
+          {
+            "path": "docs/reviews/status-promotions/aoa-decision.md",
+            "selected_for_runtime_inspection": false,
+            "type": "promotion_review"
+          }
+        ],
+        "support_resource_index": {
+          "targeted": false,
+          "standard_dir_counts": {},
+          "legacy_dir_counts": {}
+        },
+        "selected_runtime_artifact_path": "skills/core/engineering/aoa-decision/checks/review.md"
+      },
+      "lineage": {
+        "technique_dependencies": [
+          "AOA-T-0033",
+          "AOA-T-0002"
+        ],
+        "technique_lineage": [
+          {
+            "id": "AOA-T-0033",
+            "lineage_state": "published",
+            "path": "techniques/instruction/docs-boundary/decision-rationale-recording/TECHNIQUE.md",
+            "repo": "aoa-techniques",
+            "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
+          },
+          {
+            "id": "AOA-T-0002",
+            "lineage_state": "published",
+            "path": "techniques/instruction/docs-boundary/source-of-truth-layout/TECHNIQUE.md",
+            "repo": "aoa-techniques",
+            "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
+          }
+        ],
+        "lineage_state": "published"
+      },
+      "boundaries": {
+        "adjacent_skill_names": [
+          "aoa-adr-write"
+        ],
+        "adjacency_ready": true,
+        "adjacency_blockers": []
+      },
+      "evaluation": {
+        "canonical_eval_ready": true,
+        "canonical_eval_blockers": [],
+        "use_case_count": 1,
+        "do_not_use_case_count": 1,
+        "autonomy_check_count": 1,
+        "promotion_review_path": "docs/reviews/status-promotions/aoa-decision.md",
+        "candidate_review_path": null
+      },
+      "graph_refs": {
+        "node_id": "skill_aoa_decision",
+        "outgoing_edge_count": 16,
+        "incoming_edge_count": 0,
+        "outgoing_edge_kinds": {
+          "available_in_artifact_group": 5,
+          "depends_on": 2,
+          "included_in_profile": 5,
+          "invocation_policy": 1,
+          "lineage": 1,
+          "maturity": 1,
+          "scope": 1
+        },
+        "incoming_edge_kinds": {}
+      },
+      "install_refs": {
+        "repo_export_path": ".agents/skills/aoa-decision/SKILL.md",
+        "repo_export_present": true,
+        "install_profiles": [
+          "repo-core-only",
+          "repo-default",
+          "repo-project-core-outer-ring",
+          "repo-project-foundation",
+          "user-curated-core"
+        ],
+        "artifact_group_coverage": [
+          "portable_export",
+          "runtime_seam",
+          "runtime_guardrails",
+          "description_trigger",
+          "tiny_router"
+        ]
+      },
+      "search_documents": [
+        {
+          "doc_id": "skill:aoa-decision:section:summary",
+          "skill_name": "aoa-decision",
+          "section_role": "summary",
+          "source_path": "skills/core/engineering/aoa-decision/SKILL.md",
+          "source_anchor": "frontmatter.summary",
+          "text": "Route AoA decision-lane work through the workspace decision graph first, then hand off to the smallest find, create, or correct subskill while keeping repo-local decision files authoritative.",
+          "text_sha256": "f49f18f82c18452ae84f02c61ac5bea5ed2fcf4e9461134bb564d26f7d626311",
+          "token_count": 27
+        },
+        {
+          "doc_id": "skill:aoa-decision:section:intent",
+          "skill_name": "aoa-decision",
+          "section_role": "intent",
+          "source_path": "skills/core/engineering/aoa-decision/SKILL.md",
+          "source_anchor": "## Intent",
+          "text": "Use this skill as the front door for AoA `docs/decisions/` work. It decides whether the task is to find, create, or correct a decision record, uses the workspace decision graph as the first lookup path when available, and keeps the owning repository's decision files and validators as source truth.",
+          "text_sha256": "a9e1a1569785610af631f584be41cd59c78ec0e668a113bf5f152b97bc011c01",
+          "token_count": 49
+        },
+        {
+          "doc_id": "skill:aoa-decision:section:trigger_boundary",
+          "skill_name": "aoa-decision",
+          "section_role": "trigger_boundary",
+          "source_path": "skills/core/engineering/aoa-decision/SKILL.md",
+          "source_anchor": "## Trigger boundary",
+          "text": "Use this skill when: - the task mentions `docs/decisions/`, decision records, ADRs, decision indexes, decision graph, or decision-lane symmetry - the user asks which prior decision, source surface, owner boundary, status, supersession, or rationale applies - a new durable decision record may be needed after a structural, workflow, tooling, source/export, or authority change - an existing decision note, index metadata, supersession, source-surface list, or generated decision index may need correction - the work spans more than one AoA repository and graph lookup can reduce context load Do not use this skill when: - the task is a normal docs edit with no durable decision-lane implication - the real question is only source-of-truth ambiguity; use `aoa-source-of-truth-check` - the real question is only whether a decision should be recorded; use `aoa-adr-write` - the request is only to summarize code, tests, or release notes without decision rationale - a repo-local route card forbids changing decision surfaces in the current scope",
+          "text_sha256": "2b5a85fa661546072a85d8e6f66ed6756c551ceaca895924dcdfa9c0ee9cb215",
+          "token_count": 157
+        },
+        {
+          "doc_id": "skill:aoa-decision:section:inputs",
+          "skill_name": "aoa-decision",
+          "section_role": "inputs",
+          "source_path": "skills/core/engineering/aoa-decision/SKILL.md",
+          "source_anchor": "## Inputs",
+          "text": "- user intent, target repository, touched paths, or decision ID when known - available `aoa_decisions` MCP tools or a local graph builder fallback, including status, issues, changed-path, source-surface, owner-surface, and repo-symmetry packets - repo-local `docs/decisions/AGENTS.md`, `README.md`, `TEMPLATE.md`, generated indexes, and nearest existing records - source surfaces that the decision record explains - validation commands from the owning repository",
+          "text_sha256": "e6b6435e75e02249cd6766e1054feefd19ba3ca792f44c5c6eb9d395e331cbed",
+          "token_count": 58
+        },
+        {
+          "doc_id": "skill:aoa-decision:section:outputs",
+          "skill_name": "aoa-decision",
+          "section_role": "outputs",
+          "source_path": "skills/core/engineering/aoa-decision/SKILL.md",
+          "source_anchor": "## Outputs",
+          "text": "- one chosen route: `aoa-decision-find`, `aoa-decision-create`, or `aoa-decision-correct` - compact graph or source context used for the route decision - explicit owner repository and source-truth surface - validation path for any write or correction - stop line when the graph is stale, missing, or not authoritative enough",
+          "text_sha256": "7433f8c0576b3610a5432ffb18d9fe5a9527ac5ccf015c44cbd4a59216a4c373",
+          "token_count": 47
+        },
+        {
+          "doc_id": "skill:aoa-decision:section:procedure",
+          "skill_name": "aoa-decision",
+          "section_role": "procedure",
+          "source_path": "skills/core/engineering/aoa-decision/SKILL.md",
+          "source_anchor": "## Procedure",
+          "text": "1. classify the task: - find or understand: use `aoa-decision-find` - create or record a new rationale: use `aoa-decision-create` - correct, supersede, reindex, or repair metadata: use `aoa-decision-correct` 2. use the `aoa_decisions` MCP first when it is available; request status and the smallest relevant packet before broad file reads: - touched path: `aoa_decisions_changed_path` - source surface: `aoa_decisions_source_surface` - owner surface: `aoa_decisions_owner_surface` - repo comparison: `aoa_decisions_repo_symmetry` - unknown surface or graph health: `aoa_decisions_issues` 3. if MCP is unavailable, fall back to the workspace builder from `abyss-stack`, such as `python /home/dionysus/src/abyss-stack/scripts/build_workspace_decision_graph.py --check --json` 4. if graph lookup is unavailable too, use repo-local `rg` and generated decision indexes, then read the source decision notes directly 5. load only the chosen subskill; do not load find, create, and correct instructions at the same time 6. before any write, read the target repo's decision route card and template; if `issue_count > 0`, inspect `aoa_decisions_issues` and do not write in a repo whose decision lane has unresolved graph issues 7. after any write, run the repo-local decision-index generator/check and then refresh or check the workspace graph and decision-graph lane when available 8. report the source decision file, graph freshness posture, validation run, and any remaining owner-route risk",
+          "text_sha256": "a5292996f7af3748cf62ea3e03d403499cd3de628ebae77d1f3146db8f0ae268",
+          "token_count": 201
+        },
+        {
+          "doc_id": "skill:aoa-decision:section:contracts",
+          "skill_name": "aoa-decision",
+          "section_role": "contracts",
+          "source_path": "skills/core/engineering/aoa-decision/SKILL.md",
+          "source_anchor": "## Contracts",
+          "text": "- the graph accelerates lookup; it does not own decision truth - source files in the owning repository remain stronger than MCP packets, generated graph nodes, and generated indexes - the router chooses one subskill to control cost and avoid conflicting advice - cross-repo symmetry must be appropriate to the target repo, not forced from a sibling template - no MCP write tool may create, accept, or correct a decision record silently - stale graph findings must be refreshed or downgraded before they shape a write - graph issues block writes in the affected repo and downgrade cross-repo confidence elsewhere until reported",
+          "text_sha256": "9d8b740156f4a628ec7d4b96f16f23b793aef23665c8eb130585e2f5cad714a8",
+          "token_count": 102
+        },
+        {
+          "doc_id": "skill:aoa-decision:section:risk",
+          "skill_name": "aoa-decision",
+          "section_role": "risk",
+          "source_path": "skills/core/engineering/aoa-decision/SKILL.md",
+          "source_anchor": "## Risks and anti-patterns",
+          "text": "- treating the workspace graph as an authority instead of a read model - loading every subskill for a simple lookup - creating a decision note when a lighter source-of-truth or change summary is enough - copying a sibling decision structure without checking the local owner surface - updating generated indexes without the source decision note, or vice versa - failing to refresh the workspace graph after changing decision files",
+          "text_sha256": "297c1c49604671d4938d91b8315e97c243b9f7e053315a04e791b864c31b23e2",
+          "token_count": 70
+        },
+        {
+          "doc_id": "skill:aoa-decision:section:verification",
+          "skill_name": "aoa-decision",
+          "section_role": "verification",
+          "source_path": "skills/core/engineering/aoa-decision/SKILL.md",
+          "source_anchor": "## Verification",
+          "text": "- confirm exactly one route was selected - confirm `aoa_decisions` was used first when available, or the fallback was named - confirm graph issue posture was checked before create/correct routes - confirm the owning repository and source decision surface are explicit - confirm any write uses repo-local route law and validators - confirm generated indexes and the workspace graph are not treated as source truth - confirm the final report names validation and any skipped check",
+          "text_sha256": "92e28b91ce69a3088ab927a3599ec63d6c16a83853809112f13ba12666cf772f",
+          "token_count": 76
+        },
+        {
+          "doc_id": "skill:aoa-decision:section:lineage",
+          "skill_name": "aoa-decision",
+          "section_role": "lineage",
+          "source_path": "skills/core/engineering/aoa-decision/SKILL.md",
+          "source_anchor": "## Technique traceability",
+          "text": "Manifest-backed techniques: - AOA-T-0033 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/instruction/docs-boundary/decision-rationale-recording/TECHNIQUE.md` and sections: Intent, When to use, When not to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation - AOA-T-0002 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/instruction/docs-boundary/source-of-truth-layout/TECHNIQUE.md` and sections: Intent, When to use, When not to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation",
+          "text_sha256": "4fbac3104c86615fa1ebcb678c205af83c07574ee95ae4af898be7bafd595d40",
+          "token_count": 54
+        },
+        {
+          "doc_id": "skill:aoa-decision:section:adaptation",
+          "skill_name": "aoa-decision",
+          "section_role": "adaptation",
+          "source_path": "skills/core/engineering/aoa-decision/SKILL.md",
+          "source_anchor": "## Adaptation points",
+          "text": "- stable MCP server name for the current environment - repo-local decision ID prefix and template - repo-local decision-index generator and validation commands - workspace graph output path or fallback builder command - local stop line for repositories that intentionally do not carry decisions",
+          "text_sha256": "8b66585422b7f5ef8674286ef96706d4a6934e1715d4102a1435bf1e5c1e625d",
+          "token_count": 44
+        }
+      ]
+    },
+    {
+      "name": "aoa-decision-correct",
+      "scope": "core",
+      "status": "evaluated",
+      "summary": "Correct, supersede, or reindex AoA decision records by editing source notes first, rebuilding repo-local indexes, and refreshing the workspace decision graph.",
+      "source": {
+        "skill_path": "skills/core/engineering/aoa-decision-correct/SKILL.md",
+        "techniques_path": "skills/core/engineering/aoa-decision-correct/techniques.yaml",
+        "policy_path": "skills/core/engineering/aoa-decision-correct/agents/openai.yaml",
+        "content_hash": "18f68b1173b405c35c90d98a0dd50a7d0979c52071151d32f5b2ef272e478790",
+        "skill_revision": "18f68b1173b4"
+      },
+      "policy": {
+        "invocation_mode": "explicit-preferred",
+        "implicit_activation_policy": "manual",
+        "trust_posture": "portable-core",
+        "mutation_surface": "repo",
+        "requires_manual_invocation": true,
+        "candidate_only": false,
+        "requires_confirmation_seam": false
+      },
+      "runtime": {
+        "description": "Correct, supersede, reindex, or repair graph-coverage drift in AoA decision records by checking graph issues, editing source notes first, rebuilding repo-local indexes, and refreshing the workspace decision graph. Use when a decision note, index metadata, source-surface list, status, supersession, generated index, unknown surface, or graph packet is stale or wrong. Do not use for pure lookup or for creating a new decision note.",
+        "allow_implicit_invocation": false
+      },
+      "tiny_router": {
+        "band": "decision-doc-authority",
+        "cue_phrases": [
+          "correct decision",
+          "stale decision record",
+          "supersede decision",
+          "reindex decisions",
+          "unknown decision surface",
+          "decision graph issue"
+        ],
+        "negative_phrases": [
+          "plain lookup only",
+          "new decision record"
+        ],
+        "companions": []
+      },
+      "resources": {
+        "bundle_support_artifacts": [
+          {
+            "path": "skills/core/engineering/aoa-decision-correct/checks/review.md",
+            "selected_for_runtime_inspection": true,
+            "type": "review_checklist"
+          },
+          {
+            "path": "docs/reviews/status-promotions/aoa-decision-correct.md",
+            "selected_for_runtime_inspection": false,
+            "type": "promotion_review"
+          }
+        ],
+        "support_resource_index": {
+          "targeted": false,
+          "standard_dir_counts": {},
+          "legacy_dir_counts": {}
+        },
+        "selected_runtime_artifact_path": "skills/core/engineering/aoa-decision-correct/checks/review.md"
+      },
+      "lineage": {
+        "technique_dependencies": [
+          "AOA-T-0001",
+          "AOA-T-0033",
+          "AOA-T-0002"
+        ],
+        "technique_lineage": [
+          {
+            "id": "AOA-T-0001",
+            "lineage_state": "published",
+            "path": "techniques/execution/agent-workflows-core/plan-diff-apply-verify-report/TECHNIQUE.md",
+            "repo": "aoa-techniques",
+            "source_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875"
+          },
+          {
+            "id": "AOA-T-0033",
+            "lineage_state": "published",
+            "path": "techniques/instruction/docs-boundary/decision-rationale-recording/TECHNIQUE.md",
+            "repo": "aoa-techniques",
+            "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
+          },
+          {
+            "id": "AOA-T-0002",
+            "lineage_state": "published",
+            "path": "techniques/instruction/docs-boundary/source-of-truth-layout/TECHNIQUE.md",
+            "repo": "aoa-techniques",
+            "source_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875"
+          }
+        ],
+        "lineage_state": "published"
+      },
+      "boundaries": {
+        "adjacent_skill_names": [
+          "aoa-decision-create"
+        ],
+        "adjacency_ready": true,
+        "adjacency_blockers": []
+      },
+      "evaluation": {
+        "canonical_eval_ready": true,
+        "canonical_eval_blockers": [],
+        "use_case_count": 1,
+        "do_not_use_case_count": 1,
+        "autonomy_check_count": 1,
+        "promotion_review_path": "docs/reviews/status-promotions/aoa-decision-correct.md",
+        "candidate_review_path": null
+      },
+      "graph_refs": {
+        "node_id": "skill_aoa_decision_correct",
+        "outgoing_edge_count": 17,
+        "incoming_edge_count": 0,
+        "outgoing_edge_kinds": {
+          "available_in_artifact_group": 5,
+          "depends_on": 3,
+          "included_in_profile": 5,
+          "invocation_policy": 1,
+          "lineage": 1,
+          "maturity": 1,
+          "scope": 1
+        },
+        "incoming_edge_kinds": {}
+      },
+      "install_refs": {
+        "repo_export_path": ".agents/skills/aoa-decision-correct/SKILL.md",
+        "repo_export_present": true,
+        "install_profiles": [
+          "repo-core-only",
+          "repo-default",
+          "repo-project-core-outer-ring",
+          "repo-project-foundation",
+          "user-curated-core"
+        ],
+        "artifact_group_coverage": [
+          "portable_export",
+          "runtime_seam",
+          "runtime_guardrails",
+          "description_trigger",
+          "tiny_router"
+        ]
+      },
+      "search_documents": [
+        {
+          "doc_id": "skill:aoa-decision-correct:section:summary",
+          "skill_name": "aoa-decision-correct",
+          "section_role": "summary",
+          "source_path": "skills/core/engineering/aoa-decision-correct/SKILL.md",
+          "source_anchor": "frontmatter.summary",
+          "text": "Correct, supersede, or reindex AoA decision records by editing source notes first, rebuilding repo-local indexes, and refreshing the workspace decision graph.",
+          "text_sha256": "7cb0623e85eb46666773003889b687f8132eded0614e965765e6da36d59a8c47",
+          "token_count": 21
+        },
+        {
+          "doc_id": "skill:aoa-decision-correct:section:intent",
+          "skill_name": "aoa-decision-correct",
+          "section_role": "intent",
+          "source_path": "skills/core/engineering/aoa-decision-correct/SKILL.md",
+          "source_anchor": "## Intent",
+          "text": "Use this skill to repair an existing decision record, its index metadata, supersession links, source-surface list, or generated decision indexes without letting the workspace graph become the authority.",
+          "text_sha256": "c922e22a7e705cd6b4b623720300397e5f2b0f8da453a60298c38db970c96e34",
+          "token_count": 28
+        },
+        {
+          "doc_id": "skill:aoa-decision-correct:section:trigger_boundary",
+          "skill_name": "aoa-decision-correct",
+          "section_role": "trigger_boundary",
+          "source_path": "skills/core/engineering/aoa-decision-correct/SKILL.md",
+          "source_anchor": "## Trigger boundary",
+          "text": "Use this skill when: - a decision record is stale, incomplete, misindexed, wrongly sourced, or needs supersession - generated decision indexes are out of date with source metadata - graph lookup shows a mismatch that must be verified against the source note - a correction must preserve local decision-lane law and validation Do not use this skill when: - the task is only to find relevant rationale; use `aoa-decision-find` - a new durable decision is required instead; use `aoa-decision-create` - the source surface itself is wrong and no decision-lane change is needed - a generated graph or index can be refreshed without source-note drift - the correction would rewrite history instead of adding an explicit supersession or status change",
+          "text_sha256": "f2e795c258dd7d6dd61f576e49ce78f9edf263f19aa5cf78745169628c3efe33",
+          "token_count": 119
+        },
+        {
+          "doc_id": "skill:aoa-decision-correct:section:inputs",
+          "skill_name": "aoa-decision-correct",
+          "section_role": "inputs",
+          "source_path": "skills/core/engineering/aoa-decision-correct/SKILL.md",
+          "source_anchor": "## Inputs",
+          "text": "- target decision ID, path, source surface, stale index, or graph mismatch - `aoa_decisions` status, issues, decision, changed-path, source-surface, owner-surface, or repo packet for the target record when available - repo-local decision route card, template, source note, and generated indexes - source files changed by the correction when relevant - validation commands for decision indexes and affected surfaces",
+          "text_sha256": "d841a4d140578d349f4244c79ad70f32ebabb3b3b5d6cb6f8b05b620be7ebb3c",
+          "token_count": 58
+        },
+        {
+          "doc_id": "skill:aoa-decision-correct:section:outputs",
+          "skill_name": "aoa-decision-correct",
+          "section_role": "outputs",
+          "source_path": "skills/core/engineering/aoa-decision-correct/SKILL.md",
+          "source_anchor": "## Outputs",
+          "text": "- corrected source decision note or explicit no-change finding - regenerated repo-local decision indexes when metadata changed - refreshed or checked workspace graph - clear report of old mismatch, correction, validation, and any remaining risk",
+          "text_sha256": "b5f373f04429bc380630ee526f66063804b1b21c58d03069a98f8349837f2e6d",
+          "token_count": 35
+        },
+        {
+          "doc_id": "skill:aoa-decision-correct:section:procedure",
+          "skill_name": "aoa-decision-correct",
+          "section_role": "procedure",
+          "source_path": "skills/core/engineering/aoa-decision-correct/SKILL.md",
+          "source_anchor": "## Procedure",
+          "text": "1. use `aoa_decisions` status and issues first, then fetch the target decision, changed-path, source-surface, owner-surface, or repo packet when available 2. if graph issues exist for the target repo, classify whether the fix belongs to the source note, local index contract, workspace graph registry, or cache refresh 3. read the source decision note before editing anything 4. read the repo-local decision route card and generated index contract 5. classify the correction as metadata, source-surface list, status, supersession, typo-only, or generated-index drift 6. edit the source note first; use explicit supersession or status language for semantic changes instead of silent history rewrite 7. regenerate repo-local decision indexes when metadata or source-record shape changed 8. run the repo-local decision validator/check and any affected surface validator 9. refresh or check the workspace graph, run the decision-graph lane when available, and compare the corrected graph packet 10. report whether the graph, source note, and local indexes are now aligned",
+          "text_sha256": "b305bedb1b3d136d0689dd6f893d774f7d4cbce0482882d17b94b6e5c38df744",
+          "token_count": 155
+        },
+        {
+          "doc_id": "skill:aoa-decision-correct:section:contracts",
+          "skill_name": "aoa-decision-correct",
+          "section_role": "contracts",
+          "source_path": "skills/core/engineering/aoa-decision-correct/SKILL.md",
+          "source_anchor": "## Contracts",
+          "text": "- source notes are edited before generated indexes or graph cache - generated graph/cache refresh cannot be used to hide source drift - semantic corrections must preserve reviewable history through status or supersession - typo-only fixes should not inflate into new rationale - validation must cover the owner repo, not only the workspace graph - graph issue packets are triage inputs; they do not replace source-note or local-contract inspection",
+          "text_sha256": "9e6fd438db2ca858b71be26e60a0793b563061f250a0312c294174875f3ad7e1",
+          "token_count": 69
+        },
+        {
+          "doc_id": "skill:aoa-decision-correct:section:risk",
+          "skill_name": "aoa-decision-correct",
+          "section_role": "risk",
+          "source_path": "skills/core/engineering/aoa-decision-correct/SKILL.md",
+          "source_anchor": "## Risks and anti-patterns",
+          "text": "- fixing only generated indexes while leaving source metadata wrong - changing meaning silently without status or supersession - broad rewriting because a small metadata fix was requested - trusting a stale graph packet after editing source files - applying another repo's metadata vocabulary where it does not fit - clearing cache freshness while leaving an unknown decision-lane surface unmodeled",
+          "text_sha256": "ec7b6ae68ceead5719387c42c490b89a94842ebee51a0f7439f6ead8f4d7f6b2",
+          "token_count": 60
+        },
+        {
+          "doc_id": "skill:aoa-decision-correct:section:verification",
+          "skill_name": "aoa-decision-correct",
+          "section_role": "verification",
+          "source_path": "skills/core/engineering/aoa-decision-correct/SKILL.md",
+          "source_anchor": "## Verification",
+          "text": "- confirm the source note was inspected and, if needed, edited - confirm generated indexes were regenerated only from source metadata - confirm repo-local decision checks passed or failures are explicit - confirm workspace graph refresh/check and decision-graph lane see the corrected state - confirm semantic rewrites are avoided or made explicit through supersession/status",
+          "text_sha256": "6b777b74ca0e447a1c517974baa8ba352e28ea16287c898e38de4c4b862a25a3",
+          "token_count": 54
+        },
+        {
+          "doc_id": "skill:aoa-decision-correct:section:lineage",
+          "skill_name": "aoa-decision-correct",
+          "section_role": "lineage",
+          "source_path": "skills/core/engineering/aoa-decision-correct/SKILL.md",
+          "source_anchor": "## Technique traceability",
+          "text": "Manifest-backed techniques: - AOA-T-0001 from `8Dionysus/aoa-techniques` at `cd276f040d55d490bd015b8698c7a5d594b9f875` using path `techniques/execution/agent-workflows-core/plan-diff-apply-verify-report/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation - AOA-T-0033 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/instruction/docs-boundary/decision-rationale-recording/TECHNIQUE.md` and sections: Intent, When to use, When not to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation - AOA-T-0002 from `8Dionysus/aoa-techniques` at `cd276f040d55d490bd015b8698c7a5d594b9f875` using path `techniques/instruction/docs-boundary/source-of-truth-layout/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation",
+          "text_sha256": "d47a6c939eb96ca46ddf27dd5bc8ab4fae9576b8a6470a162d53e226c7bc919e",
+          "token_count": 72
+        },
+        {
+          "doc_id": "skill:aoa-decision-correct:section:adaptation",
+          "skill_name": "aoa-decision-correct",
+          "section_role": "adaptation",
+          "source_path": "skills/core/engineering/aoa-decision-correct/SKILL.md",
+          "source_anchor": "## Adaptation points",
+          "text": "- repo-specific supersession/status vocabulary - repo-local generated index commands - decision validator and affected surface validator - MCP refresh command or graph fallback",
+          "text_sha256": "5a931bf7f3a49a3fa3e5f048826619d96b6c2dc7907284714d0d4cc562e5e264",
+          "token_count": 23
+        }
+      ]
+    },
+    {
+      "name": "aoa-decision-create",
+      "scope": "core",
+      "status": "evaluated",
+      "summary": "Create a new AoA decision record in the owning repository by using graph context for placement and repo-local decision law for the actual source note and indexes.",
+      "source": {
+        "skill_path": "skills/core/engineering/aoa-decision-create/SKILL.md",
+        "techniques_path": "skills/core/engineering/aoa-decision-create/techniques.yaml",
+        "policy_path": "skills/core/engineering/aoa-decision-create/agents/openai.yaml",
+        "content_hash": "de4ff5b8cedeb58d6e69756b732162ffe3fd9cb16c78ec1ce29b7e8df656f7d6",
+        "skill_revision": "de4ff5b8cede"
+      },
+      "policy": {
+        "invocation_mode": "explicit-preferred",
+        "implicit_activation_policy": "manual",
+        "trust_posture": "portable-core",
+        "mutation_surface": "repo",
+        "requires_manual_invocation": true,
+        "candidate_only": false,
+        "requires_confirmation_seam": false
+      },
+      "runtime": {
+        "description": "Create a new AoA decision record in the owning repository by checking graph status/issues, using impact packets for placement, and following repo-local decision law for the actual source note and indexes. Use when a real structural, workflow, tooling, source/export, MCP, skill, or authority decision needs durable rationale. Do not use when no decision has been made, the change is trivial, the target repo has unresolved graph issues, or an existing note only needs correction.",
+        "allow_implicit_invocation": false
+      },
+      "tiny_router": {
+        "band": "decision-doc-authority",
+        "cue_phrases": [
+          "create decision",
+          "new decision record",
+          "record rationale",
+          "next decision id",
+          "refresh decision graph",
+          "decision graph issue"
+        ],
+        "negative_phrases": [
+          "existing rationale lookup",
+          "existing record correction"
+        ],
+        "companions": []
+      },
+      "resources": {
+        "bundle_support_artifacts": [
+          {
+            "path": "skills/core/engineering/aoa-decision-create/checks/review.md",
+            "selected_for_runtime_inspection": true,
+            "type": "review_checklist"
+          },
+          {
+            "path": "docs/reviews/status-promotions/aoa-decision-create.md",
+            "selected_for_runtime_inspection": false,
+            "type": "promotion_review"
+          }
+        ],
+        "support_resource_index": {
+          "targeted": false,
+          "standard_dir_counts": {},
+          "legacy_dir_counts": {}
+        },
+        "selected_runtime_artifact_path": "skills/core/engineering/aoa-decision-create/checks/review.md"
+      },
+      "lineage": {
+        "technique_dependencies": [
+          "AOA-T-0033",
+          "AOA-T-0002"
+        ],
+        "technique_lineage": [
+          {
+            "id": "AOA-T-0033",
+            "lineage_state": "published",
+            "path": "techniques/instruction/docs-boundary/decision-rationale-recording/TECHNIQUE.md",
+            "repo": "aoa-techniques",
+            "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
+          },
+          {
+            "id": "AOA-T-0002",
+            "lineage_state": "published",
+            "path": "techniques/instruction/docs-boundary/source-of-truth-layout/TECHNIQUE.md",
+            "repo": "aoa-techniques",
+            "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
+          }
+        ],
+        "lineage_state": "published"
+      },
+      "boundaries": {
+        "adjacent_skill_names": [
+          "aoa-decision-find"
+        ],
+        "adjacency_ready": true,
+        "adjacency_blockers": []
+      },
+      "evaluation": {
+        "canonical_eval_ready": true,
+        "canonical_eval_blockers": [],
+        "use_case_count": 1,
+        "do_not_use_case_count": 1,
+        "autonomy_check_count": 1,
+        "promotion_review_path": "docs/reviews/status-promotions/aoa-decision-create.md",
+        "candidate_review_path": null
+      },
+      "graph_refs": {
+        "node_id": "skill_aoa_decision_create",
+        "outgoing_edge_count": 16,
+        "incoming_edge_count": 0,
+        "outgoing_edge_kinds": {
+          "available_in_artifact_group": 5,
+          "depends_on": 2,
+          "included_in_profile": 5,
+          "invocation_policy": 1,
+          "lineage": 1,
+          "maturity": 1,
+          "scope": 1
+        },
+        "incoming_edge_kinds": {}
+      },
+      "install_refs": {
+        "repo_export_path": ".agents/skills/aoa-decision-create/SKILL.md",
+        "repo_export_present": true,
+        "install_profiles": [
+          "repo-core-only",
+          "repo-default",
+          "repo-project-core-outer-ring",
+          "repo-project-foundation",
+          "user-curated-core"
+        ],
+        "artifact_group_coverage": [
+          "portable_export",
+          "runtime_seam",
+          "runtime_guardrails",
+          "description_trigger",
+          "tiny_router"
+        ]
+      },
+      "search_documents": [
+        {
+          "doc_id": "skill:aoa-decision-create:section:summary",
+          "skill_name": "aoa-decision-create",
+          "section_role": "summary",
+          "source_path": "skills/core/engineering/aoa-decision-create/SKILL.md",
+          "source_anchor": "frontmatter.summary",
+          "text": "Create a new AoA decision record in the owning repository by using graph context for placement and repo-local decision law for the actual source note and indexes.",
+          "text_sha256": "039b4ae726223482ce1686238dbb1589eaed96605d64b97f001996e3ba5b8adc",
+          "token_count": 27
+        },
+        {
+          "doc_id": "skill:aoa-decision-create:section:intent",
+          "skill_name": "aoa-decision-create",
+          "section_role": "intent",
+          "source_path": "skills/core/engineering/aoa-decision-create/SKILL.md",
+          "source_anchor": "## Intent",
+          "text": "Use this skill when a real structural, workflow, tooling, source/export, or authority decision needs a durable repo-local `docs/decisions/` note and the workspace graph should help find the right placement, neighbors, and ID context.",
+          "text_sha256": "095cbbb42488f601af19416d2c1061c85adf8cf6ebada7328a3eda0a34629213",
+          "token_count": 33
+        },
+        {
+          "doc_id": "skill:aoa-decision-create:section:trigger_boundary",
+          "skill_name": "aoa-decision-create",
+          "section_role": "trigger_boundary",
+          "source_path": "skills/core/engineering/aoa-decision-create/SKILL.md",
+          "source_anchor": "## Trigger boundary",
+          "text": "Use this skill when: - a change creates durable rationale that future agents need before repeating the route - the owner repository already has or intentionally needs a `docs/decisions/` lane - graph lookup should identify similar prior decisions, next ID, source surfaces, or symmetry constraints - a decision note must be created alongside code, docs, MCP, skill, validator, or generated-index changes Do not use this skill when: - no decision has been made yet and the work is still option framing - the change is self-evident and a commit or change summary is enough - the target repository has no appropriate decision lane and the task does not explicitly add one - an existing record can be corrected instead; use `aoa-decision-correct` - the decision would copy another repo's rationale without local owner evidence",
+          "text_sha256": "b43c94549e60fe28ae4566cd49f78719d3c2357724ca1e250b07efca316ac0c1",
+          "token_count": 133
+        },
+        {
+          "doc_id": "skill:aoa-decision-create:section:inputs",
+          "skill_name": "aoa-decision-create",
+          "section_role": "inputs",
+          "source_path": "skills/core/engineering/aoa-decision-create/SKILL.md",
+          "source_anchor": "## Inputs",
+          "text": "- chosen decision and the options that shaped it - target repository and source surfaces changed by the decision - graph status, issue packet, changed-path/source-surface/owner-surface packet, or search results for related records - repo-local decision route card, README, template, generated indexes, and latest records - repo-local decision-index and validation commands",
+          "text_sha256": "30a09b14050cb1e8d4d3a462ce20a7e09ea379ebdb7da68d0b08548bde6d31ac",
+          "token_count": 50
+        },
+        {
+          "doc_id": "skill:aoa-decision-create:section:outputs",
+          "skill_name": "aoa-decision-create",
+          "section_role": "outputs",
+          "source_path": "skills/core/engineering/aoa-decision-create/SKILL.md",
+          "source_anchor": "## Outputs",
+          "text": "- one new source decision note with canonical ID, status, date, owner surface, index metadata, context, options, decision, rationale, consequences, source surfaces, and follow-up route - refreshed repo-local generated decision indexes - refreshed or checked workspace decision graph - validation summary and any remaining owner-route risk",
+          "text_sha256": "72908e7884f5454b1ad6b22a2a6cc8c8e6d517bedbf9257e552ce7b6b573bea3",
+          "token_count": 46
+        },
+        {
+          "doc_id": "skill:aoa-decision-create:section:procedure",
+          "skill_name": "aoa-decision-create",
+          "section_role": "procedure",
+          "source_path": "skills/core/engineering/aoa-decision-create/SKILL.md",
+          "source_anchor": "## Procedure",
+          "text": "1. confirm a real decision exists and is worth preserving 2. use `aoa_decisions` status and issues first; if the target repo has graph issues, stop and route to correction before creating a new record 3. use changed-path, source-surface, owner-surface, repo, and search packets to collect related records and repo decision-lane context 4. read the target repo's `docs/decisions/AGENTS.md`, `README.md`, `TEMPLATE.md`, generated index shape, and latest decision records 5. choose the next canonical ID from source files, not from memory alone 6. write the note in the target repo's established format and metadata language 7. name only the source surfaces this decision actually explains 8. keep graph, generated indexes, tests, and runtime evidence as context rather than decision authority 9. run the repo-local decision-index generator, then the check form and any affected surface validator 10. refresh or check the workspace graph and run the decision-graph lane when available 11. report the new decision path, graph freshness, and validation",
+          "text_sha256": "89d5d6bc02902c90a3a6f3a9796a8171f0ff6e7b0f6eb71e4b623e808bf0dfb0",
+          "token_count": 156
+        },
+        {
+          "doc_id": "skill:aoa-decision-create:section:contracts",
+          "skill_name": "aoa-decision-create",
+          "section_role": "contracts",
+          "source_path": "skills/core/engineering/aoa-decision-create/SKILL.md",
+          "source_anchor": "## Contracts",
+          "text": "- a decision note records why; it does not replace the active source surface - next ID selection must be verified from source files - sibling decisions may inform shape, but the target repo owns its own rationale - generated indexes must be rebuilt from source metadata, not hand-edited as truth - workspace graph refresh is part of done after creating a record - unresolved graph issues in the target repo block creation until corrected",
+          "text_sha256": "5fa77a26536f82c03dbec7d2348243762da3260cbd60f21ffb1daed037bce585",
+          "token_count": 75
+        },
+        {
+          "doc_id": "skill:aoa-decision-create:section:risk",
+          "skill_name": "aoa-decision-create",
+          "section_role": "risk",
+          "source_path": "skills/core/engineering/aoa-decision-create/SKILL.md",
+          "source_anchor": "## Risks and anti-patterns",
+          "text": "- creating process noise for trivial changes - writing a decision before the choice is actually made - copying a sibling record and leaving mismatched owner surfaces - omitting rejected options or consequences when they shaped the choice - forgetting generated indexes or workspace graph refresh - using MCP output as if it created or accepted the decision - creating a new note while unknown decision-lane surfaces are already present",
+          "text_sha256": "76dfdfa13708fb5f8837076e92572e268a792d216d6463194c9134f299ff7d1f",
+          "token_count": 70
+        },
+        {
+          "doc_id": "skill:aoa-decision-create:section:verification",
+          "skill_name": "aoa-decision-create",
+          "section_role": "verification",
+          "source_path": "skills/core/engineering/aoa-decision-create/SKILL.md",
+          "source_anchor": "## Verification",
+          "text": "- confirm the new record has canonical ID, status, date, owner surface, and index metadata - confirm source surfaces match the actual diff - confirm repo-local decision indexes were regenerated and checked - confirm graph issue posture was checked before writing - confirm affected validators were run or explicitly skipped with reason - confirm workspace graph refresh/check and decision-graph lane see the new record",
+          "text_sha256": "067ce403bcb075fc5300fc61cd17fb0d5b24711441dd8e12d308b55c6d62509e",
+          "token_count": 64
+        },
+        {
+          "doc_id": "skill:aoa-decision-create:section:lineage",
+          "skill_name": "aoa-decision-create",
+          "section_role": "lineage",
+          "source_path": "skills/core/engineering/aoa-decision-create/SKILL.md",
+          "source_anchor": "## Technique traceability",
+          "text": "Manifest-backed techniques: - AOA-T-0033 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/instruction/docs-boundary/decision-rationale-recording/TECHNIQUE.md` and sections: Intent, When to use, When not to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation - AOA-T-0002 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/instruction/docs-boundary/source-of-truth-layout/TECHNIQUE.md` and sections: Intent, When to use, When not to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation",
+          "text_sha256": "4fbac3104c86615fa1ebcb678c205af83c07574ee95ae4af898be7bafd595d40",
+          "token_count": 54
+        },
+        {
+          "doc_id": "skill:aoa-decision-create:section:adaptation",
+          "skill_name": "aoa-decision-create",
+          "section_role": "adaptation",
+          "source_path": "skills/core/engineering/aoa-decision-create/SKILL.md",
+          "source_anchor": "## Adaptation points",
+          "text": "- repository-specific ID prefix and numbering - decision template fields and index metadata vocabulary - validation commands and generated index builder path - graph refresh command or MCP refresh tool",
+          "text_sha256": "007dc059a6ebbb1604e41e2878eb0611b6a96113a7373953ed9db5282f9df272",
+          "token_count": 30
+        }
+      ]
+    },
+    {
+      "name": "aoa-decision-find",
+      "scope": "core",
+      "status": "evaluated",
+      "summary": "Find AoA decision records through the workspace graph, then verify claims against repo-local source notes and generated decision indexes.",
+      "source": {
+        "skill_path": "skills/core/engineering/aoa-decision-find/SKILL.md",
+        "techniques_path": "skills/core/engineering/aoa-decision-find/techniques.yaml",
+        "policy_path": "skills/core/engineering/aoa-decision-find/agents/openai.yaml",
+        "content_hash": "bda8dc8a6df234e68f629039c5c59a479b1c2e53f584767d5a5536751ec07b4c",
+        "skill_revision": "bda8dc8a6df2"
+      },
+      "policy": {
+        "invocation_mode": "explicit-preferred",
+        "implicit_activation_policy": "manual",
+        "trust_posture": "portable-core",
+        "mutation_surface": "none",
+        "requires_manual_invocation": true,
+        "candidate_only": false,
+        "requires_confirmation_seam": false
+      },
+      "runtime": {
+        "description": "Find AoA decision records through workspace graph search and impact packets, then verify claims against repo-local source notes and generated decision indexes. Use when prior decision rationale, changed paths, owner surfaces, source surfaces, status, or supersession links are needed before work continues. Do not use when the task is to create or edit a decision record.",
+        "allow_implicit_invocation": false
+      },
+      "tiny_router": {
+        "band": "decision-doc-authority",
+        "cue_phrases": [
+          "find decision",
+          "decision lookup",
+          "changed path impact",
+          "source surface decisions",
+          "owner surface decisions",
+          "prior rationale"
+        ],
+        "negative_phrases": [
+          "new decision note",
+          "decision record correction"
+        ],
+        "companions": []
+      },
+      "resources": {
+        "bundle_support_artifacts": [
+          {
+            "path": "skills/core/engineering/aoa-decision-find/checks/review.md",
+            "selected_for_runtime_inspection": true,
+            "type": "review_checklist"
+          },
+          {
+            "path": "docs/reviews/status-promotions/aoa-decision-find.md",
+            "selected_for_runtime_inspection": false,
+            "type": "promotion_review"
+          }
+        ],
+        "support_resource_index": {
+          "targeted": false,
+          "standard_dir_counts": {},
+          "legacy_dir_counts": {}
+        },
+        "selected_runtime_artifact_path": "skills/core/engineering/aoa-decision-find/checks/review.md"
+      },
+      "lineage": {
+        "technique_dependencies": [
+          "AOA-T-0002"
+        ],
+        "technique_lineage": [
+          {
+            "id": "AOA-T-0002",
+            "lineage_state": "published",
+            "path": "techniques/instruction/docs-boundary/source-of-truth-layout/TECHNIQUE.md",
+            "repo": "aoa-techniques",
+            "source_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875"
+          }
+        ],
+        "lineage_state": "published"
+      },
+      "boundaries": {
+        "adjacent_skill_names": [
+          "aoa-decision-create"
+        ],
+        "adjacency_ready": true,
+        "adjacency_blockers": []
+      },
+      "evaluation": {
+        "canonical_eval_ready": true,
+        "canonical_eval_blockers": [],
+        "use_case_count": 1,
+        "do_not_use_case_count": 1,
+        "autonomy_check_count": 1,
+        "promotion_review_path": "docs/reviews/status-promotions/aoa-decision-find.md",
+        "candidate_review_path": null
+      },
+      "graph_refs": {
+        "node_id": "skill_aoa_decision_find",
+        "outgoing_edge_count": 15,
+        "incoming_edge_count": 0,
+        "outgoing_edge_kinds": {
+          "available_in_artifact_group": 5,
+          "depends_on": 1,
+          "included_in_profile": 5,
+          "invocation_policy": 1,
+          "lineage": 1,
+          "maturity": 1,
+          "scope": 1
+        },
+        "incoming_edge_kinds": {}
+      },
+      "install_refs": {
+        "repo_export_path": ".agents/skills/aoa-decision-find/SKILL.md",
+        "repo_export_present": true,
+        "install_profiles": [
+          "repo-core-only",
+          "repo-default",
+          "repo-project-core-outer-ring",
+          "repo-project-foundation",
+          "user-curated-core"
+        ],
+        "artifact_group_coverage": [
+          "portable_export",
+          "runtime_seam",
+          "runtime_guardrails",
+          "description_trigger",
+          "tiny_router"
+        ]
+      },
+      "search_documents": [
+        {
+          "doc_id": "skill:aoa-decision-find:section:summary",
+          "skill_name": "aoa-decision-find",
+          "section_role": "summary",
+          "source_path": "skills/core/engineering/aoa-decision-find/SKILL.md",
+          "source_anchor": "frontmatter.summary",
+          "text": "Find AoA decision records through the workspace graph, then verify claims against repo-local source notes and generated decision indexes.",
+          "text_sha256": "f0418e981bc47aae8bdb2a12f9da1907d2d53d2fde1116a6b0d6bc7325c787db",
+          "token_count": 19
+        },
+        {
+          "doc_id": "skill:aoa-decision-find:section:intent",
+          "skill_name": "aoa-decision-find",
+          "section_role": "intent",
+          "source_path": "skills/core/engineering/aoa-decision-find/SKILL.md",
+          "source_anchor": "## Intent",
+          "text": "Use this skill to find decision rationale quickly across AoA repositories while keeping final claims grounded in the owning repository's authored decision note.",
+          "text_sha256": "59910707d9a37e01e8124cdc51a34a3dac0ea5767c27941b96cc1b34a49bdb67",
+          "token_count": 23
+        },
+        {
+          "doc_id": "skill:aoa-decision-find:section:trigger_boundary",
+          "skill_name": "aoa-decision-find",
+          "section_role": "trigger_boundary",
+          "source_path": "skills/core/engineering/aoa-decision-find/SKILL.md",
+          "source_anchor": "## Trigger boundary",
+          "text": "Use this skill when: - the user asks what decision exists, which record explains a route, or why a boundary was chosen - a task needs relevant prior decision context before editing code, docs, validation, MCP, skill, or repo topology - a cross-repo comparison needs decision IDs, owner surfaces, source surfaces, statuses, or supersession links - graph search can prevent broad manual reads across many decision lanes Do not use this skill when: - a new decision note must be written; use `aoa-decision-create` - an existing note or metadata must be edited; use `aoa-decision-correct` - the task is only source-of-truth mapping outside decision records - the user needs a final architectural decision that has not been made yet - the graph or indexes are enough for lookup but the answer would require source-note verification and no source read is possible",
+          "text_sha256": "515daf71c24b640c6c43b3f87675ab2a81db2545f93942a982ec3f1c0c19d3dd",
+          "token_count": 140
+        },
+        {
+          "doc_id": "skill:aoa-decision-find:section:inputs",
+          "skill_name": "aoa-decision-find",
+          "section_role": "inputs",
+          "source_path": "skills/core/engineering/aoa-decision-find/SKILL.md",
+          "source_anchor": "## Inputs",
+          "text": "- query terms, touched paths, target repository, decision ID, source surface, or owner surface - `aoa_decisions` MCP search, packet, changed-path, source-surface, owner-surface, repo-symmetry, issue, repo, decision, or summary tools when available - fallback generated graph files or repo-local decision indexes - source decision notes for final verification",
+          "text_sha256": "c64ac7c538658c20dcad600a2b7d314753fc5c19f58eef0d2813c55237f1d699",
+          "token_count": 47
+        },
+        {
+          "doc_id": "skill:aoa-decision-find:section:outputs",
+          "skill_name": "aoa-decision-find",
+          "section_role": "outputs",
+          "source_path": "skills/core/engineering/aoa-decision-find/SKILL.md",
+          "source_anchor": "## Outputs",
+          "text": "- ranked decision matches with repo, decision ID, path, status, and reason for relevance - source-note refs used for any claim - note when graph data is stale, missing, or only a candidate hint - next route if creation or correction is needed",
+          "text_sha256": "52cd0fc00a1a9302cd6d1ba10ea38825740005964d055d71a19b2bbde3f81718",
+          "token_count": 43
+        },
+        {
+          "doc_id": "skill:aoa-decision-find:section:procedure",
+          "skill_name": "aoa-decision-find",
+          "section_role": "procedure",
+          "source_path": "skills/core/engineering/aoa-decision-find/SKILL.md",
+          "source_anchor": "## Procedure",
+          "text": "1. query `aoa_decisions` first when available; choose the narrowest packet: changed-path for touched files, source-surface for cited inputs, owner-surface for ownership routes, decision for a known ID, and packet/search for free-text intent 2. check status or issues; if `issue_count > 0`, report the graph issue posture and treat graph matches as candidates until source notes are inspected 3. if MCP is unavailable, use the latest workspace graph output or repo-local generated indexes as a search aid 4. read the source decision note before making a rationale, authority, or supersession claim 5. compare source-surface lists and owner metadata against the user's target paths when judging relevance 6. distinguish exact matches, likely matches, weak analogies, and missing records 7. if no adequate record exists, route to `aoa-decision-create`; if a record is stale or wrong, route to `aoa-decision-correct` 8. return compact evidence: decision ID, source path, key reason, and remaining uncertainty",
+          "text_sha256": "046a3ce30a6c379029620e3946ce069e0ee4f94cc337cc52fbff6e14bfe435c3",
+          "token_count": 148
+        },
+        {
+          "doc_id": "skill:aoa-decision-find:section:contracts",
+          "skill_name": "aoa-decision-find",
+          "section_role": "contracts",
+          "source_path": "skills/core/engineering/aoa-decision-find/SKILL.md",
+          "source_anchor": "## Contracts",
+          "text": "- MCP packets and graph nodes are hints until checked against source notes - source-note claims must cite the repo and decision path - related sibling decisions are examples, not templates to copy blindly - missing evidence should be reported as missing, not filled with doctrine - avoid loading unrelated decision lanes after a sufficient match is found - graph issues reduce confidence; they do not authorize guessing",
+          "text_sha256": "2469d321560b723f503278debd06c1b03ea1e7b9d09bb4686c34a0f45e528211",
+          "token_count": 68
+        },
+        {
+          "doc_id": "skill:aoa-decision-find:section:risk",
+          "skill_name": "aoa-decision-find",
+          "section_role": "risk",
+          "source_path": "skills/core/engineering/aoa-decision-find/SKILL.md",
+          "source_anchor": "## Risks and anti-patterns",
+          "text": "- over-answering from generated graph fields without opening the source record - treating a title match as semantic equivalence - ignoring supersession or status fields - turning a weak sibling analogy into a target-repo rule - searching every repo when a repo or path already narrows the route",
+          "text_sha256": "b7713ef03a4cedf0685af1dd9f1408b11c5273b8c71d06d54028080dc948ee88",
+          "token_count": 48
+        },
+        {
+          "doc_id": "skill:aoa-decision-find:section:verification",
+          "skill_name": "aoa-decision-find",
+          "section_role": "verification",
+          "source_path": "skills/core/engineering/aoa-decision-find/SKILL.md",
+          "source_anchor": "## Verification",
+          "text": "- confirm graph or fallback lookup path was used - confirm changed-path/source/owner packet was used when the input made one available - confirm final claims came from source notes, not only generated graph data - confirm match confidence and any uncertainty are visible - confirm missing or stale records route to create or correct instead of being hidden - confirm the answer stays compact enough for the current task",
+          "text_sha256": "422f4326ffbd6af688059a1618f0fd06c502717732257e1a5bf2346af832062e",
+          "token_count": 69
+        },
+        {
+          "doc_id": "skill:aoa-decision-find:section:lineage",
+          "skill_name": "aoa-decision-find",
+          "section_role": "lineage",
+          "source_path": "skills/core/engineering/aoa-decision-find/SKILL.md",
+          "source_anchor": "## Technique traceability",
+          "text": "Manifest-backed techniques: - AOA-T-0002 from `8Dionysus/aoa-techniques` at `cd276f040d55d490bd015b8698c7a5d594b9f875` using path `techniques/instruction/docs-boundary/source-of-truth-layout/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation",
+          "text_sha256": "754b9125a3e724c4d8138eafc54d41690d563aeaf2d2735b3741c7f0d39ae756",
+          "token_count": 24
+        },
+        {
+          "doc_id": "skill:aoa-decision-find:section:adaptation",
+          "skill_name": "aoa-decision-find",
+          "section_role": "adaptation",
+          "source_path": "skills/core/engineering/aoa-decision-find/SKILL.md",
+          "source_anchor": "## Adaptation points",
+          "text": "- MCP server and tool names - workspace graph cache path - repo-local index filenames and source-note metadata fields - source reference format expected by the active chat surface",
+          "text_sha256": "c1d02ea34313ef541fc055030f864a7aa70943dad5b08e889221d493c2465398",
+          "token_count": 29
+        }
+      ]
+    },
+    {
       "name": "aoa-dry-run-first",
       "scope": "risk",
       "status": "canonical",

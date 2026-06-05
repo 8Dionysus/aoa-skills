@@ -55,6 +55,42 @@
           "trust_posture": "portable-core"
         },
         {
+          "name": "aoa-decision",
+          "source_path": ".agents/skills/aoa-decision/SKILL.md",
+          "target_path": ".agents/skills/aoa-decision/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-decision/agents/openai.yaml",
+          "allow_implicit_invocation": true,
+          "implicit_activation_policy": "invoke",
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-decision-find",
+          "source_path": ".agents/skills/aoa-decision-find/SKILL.md",
+          "target_path": ".agents/skills/aoa-decision-find/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-decision-find/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "implicit_activation_policy": "manual",
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-decision-create",
+          "source_path": ".agents/skills/aoa-decision-create/SKILL.md",
+          "target_path": ".agents/skills/aoa-decision-create/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-decision-create/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "implicit_activation_policy": "manual",
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-decision-correct",
+          "source_path": ".agents/skills/aoa-decision-correct/SKILL.md",
+          "target_path": ".agents/skills/aoa-decision-correct/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-decision-correct/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "implicit_activation_policy": "manual",
+          "trust_posture": "portable-core"
+        },
+        {
           "name": "aoa-commit-growth-seam",
           "source_path": ".agents/skills/aoa-commit-growth-seam/SKILL.md",
           "target_path": ".agents/skills/aoa-commit-growth-seam/SKILL.md",
@@ -531,6 +567,42 @@
           "trust_posture": "portable-core"
         },
         {
+          "name": "aoa-decision",
+          "source_path": ".agents/skills/aoa-decision/SKILL.md",
+          "target_path": ".agents/skills/aoa-decision/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-decision/agents/openai.yaml",
+          "allow_implicit_invocation": true,
+          "implicit_activation_policy": "invoke",
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-decision-find",
+          "source_path": ".agents/skills/aoa-decision-find/SKILL.md",
+          "target_path": ".agents/skills/aoa-decision-find/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-decision-find/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "implicit_activation_policy": "manual",
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-decision-create",
+          "source_path": ".agents/skills/aoa-decision-create/SKILL.md",
+          "target_path": ".agents/skills/aoa-decision-create/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-decision-create/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "implicit_activation_policy": "manual",
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-decision-correct",
+          "source_path": ".agents/skills/aoa-decision-correct/SKILL.md",
+          "target_path": ".agents/skills/aoa-decision-correct/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-decision-correct/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "implicit_activation_policy": "manual",
+          "trust_posture": "portable-core"
+        },
+        {
           "name": "aoa-bounded-context-map",
           "source_path": ".agents/skills/aoa-bounded-context-map/SKILL.md",
           "target_path": ".agents/skills/aoa-bounded-context-map/SKILL.md",
@@ -707,6 +779,42 @@
           "openai_config_path": ".agents/skills/aoa-source-of-truth-check/agents/openai.yaml",
           "allow_implicit_invocation": true,
           "implicit_activation_policy": "invoke",
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-decision",
+          "source_path": ".agents/skills/aoa-decision/SKILL.md",
+          "target_path": ".agents/skills/aoa-decision/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-decision/agents/openai.yaml",
+          "allow_implicit_invocation": true,
+          "implicit_activation_policy": "invoke",
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-decision-find",
+          "source_path": ".agents/skills/aoa-decision-find/SKILL.md",
+          "target_path": ".agents/skills/aoa-decision-find/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-decision-find/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "implicit_activation_policy": "manual",
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-decision-create",
+          "source_path": ".agents/skills/aoa-decision-create/SKILL.md",
+          "target_path": ".agents/skills/aoa-decision-create/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-decision-create/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "implicit_activation_policy": "manual",
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-decision-correct",
+          "source_path": ".agents/skills/aoa-decision-correct/SKILL.md",
+          "target_path": ".agents/skills/aoa-decision-correct/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-decision-correct/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "implicit_activation_policy": "manual",
           "trust_posture": "portable-core"
         },
         {
@@ -1007,6 +1115,42 @@
           "openai_config_path": ".agents/skills/aoa-source-of-truth-check/agents/openai.yaml",
           "allow_implicit_invocation": true,
           "implicit_activation_policy": "invoke",
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-decision",
+          "source_path": ".agents/skills/aoa-decision/SKILL.md",
+          "target_path": ".agents/skills/aoa-decision/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-decision/agents/openai.yaml",
+          "allow_implicit_invocation": true,
+          "implicit_activation_policy": "invoke",
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-decision-find",
+          "source_path": ".agents/skills/aoa-decision-find/SKILL.md",
+          "target_path": ".agents/skills/aoa-decision-find/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-decision-find/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "implicit_activation_policy": "manual",
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-decision-create",
+          "source_path": ".agents/skills/aoa-decision-create/SKILL.md",
+          "target_path": ".agents/skills/aoa-decision-create/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-decision-create/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "implicit_activation_policy": "manual",
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-decision-correct",
+          "source_path": ".agents/skills/aoa-decision-correct/SKILL.md",
+          "target_path": ".agents/skills/aoa-decision-correct/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-decision-correct/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "implicit_activation_policy": "manual",
           "trust_posture": "portable-core"
         },
         {
@@ -1486,6 +1630,42 @@
           "openai_config_path": "$HOME/.agents/skills/aoa-change-protocol/agents/openai.yaml",
           "allow_implicit_invocation": true,
           "implicit_activation_policy": "invoke",
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-decision",
+          "source_path": ".agents/skills/aoa-decision/SKILL.md",
+          "target_path": "$HOME/.agents/skills/aoa-decision/SKILL.md",
+          "openai_config_path": "$HOME/.agents/skills/aoa-decision/agents/openai.yaml",
+          "allow_implicit_invocation": true,
+          "implicit_activation_policy": "invoke",
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-decision-find",
+          "source_path": ".agents/skills/aoa-decision-find/SKILL.md",
+          "target_path": "$HOME/.agents/skills/aoa-decision-find/SKILL.md",
+          "openai_config_path": "$HOME/.agents/skills/aoa-decision-find/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "implicit_activation_policy": "manual",
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-decision-create",
+          "source_path": ".agents/skills/aoa-decision-create/SKILL.md",
+          "target_path": "$HOME/.agents/skills/aoa-decision-create/SKILL.md",
+          "openai_config_path": "$HOME/.agents/skills/aoa-decision-create/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "implicit_activation_policy": "manual",
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-decision-correct",
+          "source_path": ".agents/skills/aoa-decision-correct/SKILL.md",
+          "target_path": "$HOME/.agents/skills/aoa-decision-correct/SKILL.md",
+          "openai_config_path": "$HOME/.agents/skills/aoa-decision-correct/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "implicit_activation_policy": "manual",
           "trust_posture": "portable-core"
         },
         {

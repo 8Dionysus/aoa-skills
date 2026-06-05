@@ -1,0 +1,18 @@
+skill_name: aoa-decision-find
+composition_mode: bounded
+techniques:
+  - id: AOA-T-0002
+    repo: 8Dionysus/aoa-techniques
+    path: techniques/instruction/docs-boundary/source-of-truth-layout/TECHNIQUE.md
+    source_ref: cd276f040d55d490bd015b8698c7a5d594b9f875
+    use_sections:
+      - Intent
+      - When to use
+      - Inputs
+      - Outputs
+      - Core procedure
+      - Contracts
+      - Risks
+      - Validation
+notes:
+  - Use graph lookup first, then verify source notes.
