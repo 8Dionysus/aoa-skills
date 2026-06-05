@@ -10,7 +10,7 @@ generated_indexes:
   - docs/decisions/indexes/by-skill-lane.md
   - docs/decisions/indexes/by-mechanic.md
   - docs/decisions/indexes/by-guard.md
-modeled_surfaces:
+modeled_surfaces: []
 required_metadata:
   - Original date
   - Surface classes
