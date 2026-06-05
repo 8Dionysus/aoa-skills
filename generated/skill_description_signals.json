@@ -128,7 +128,7 @@
         "desc-collision-collision-27"
       ],
       "mirror_case_ids": [
-        "desc-mirror-019-abyss-self-diagnostic-spine"
+        "desc-mirror-024-abyss-self-diagnostic-spine"
       ]
     },
     {
@@ -147,6 +147,10 @@
       ],
       "adjacent_skills": [
         "aoa-bounded-context-map",
+        "aoa-decision",
+        "aoa-decision-correct",
+        "aoa-decision-create",
+        "aoa-decision-find",
         "aoa-quest-harvest",
         "aoa-source-of-truth-check",
         "atm10-source-of-truth-check"
@@ -165,9 +169,10 @@
       ],
       "collision_case_ids": [],
       "mirror_case_ids": [
-        "desc-mirror-017-aoa-adr-write",
-        "desc-mirror-025-aoa-adr-write",
-        "desc-mirror-027-aoa-adr-write"
+        "desc-mirror-015-aoa-adr-write",
+        "desc-mirror-021-aoa-adr-write",
+        "desc-mirror-030-aoa-adr-write",
+        "desc-mirror-033-aoa-adr-write"
       ]
     },
     {
@@ -267,6 +272,7 @@
       "adjacent_skills": [
         "aoa-adr-write",
         "aoa-core-logic-boundary",
+        "aoa-decision",
         "aoa-port-adapter-refactor",
         "aoa-source-of-truth-check"
       ],
@@ -292,7 +298,7 @@
       "mirror_case_ids": [
         "desc-mirror-005-aoa-bounded-context-map",
         "desc-mirror-007-aoa-bounded-context-map",
-        "desc-mirror-026-aoa-bounded-context-map"
+        "desc-mirror-032-aoa-bounded-context-map"
       ]
     },
     {
@@ -398,7 +404,7 @@
         "desc-collision-collision-29"
       ],
       "mirror_case_ids": [
-        "desc-mirror-023-aoa-checkpoint-closeout-bridge"
+        "desc-mirror-028-aoa-checkpoint-closeout-bridge"
       ]
     },
     {
@@ -436,7 +442,7 @@
         "desc-collision-collision-31"
       ],
       "mirror_case_ids": [
-        "desc-mirror-024-aoa-commit-growth-seam"
+        "desc-mirror-029-aoa-commit-growth-seam"
       ]
     },
     {
@@ -515,6 +521,171 @@
       "mirror_case_ids": [
         "desc-mirror-003-aoa-core-logic-boundary",
         "desc-mirror-008-aoa-core-logic-boundary"
+      ]
+    },
+    {
+      "name": "aoa-decision",
+      "description": "Route AoA decision-lane work through the workspace decision graph first, checking status/issues and the smallest impact packet before choosing find, create, or correct while keeping repo-local decision files authoritative. Use when the task mentions docs/decisions, decision indexes, decision graph, ADRs, changed paths, source-surface rationale, supersession, or cross-repo decision symmetry. Do not use for ordinary docs edits, unresolved source-of-truth mapping, or trivial changes that do not need durable rationale.",
+      "description_sha256": "f76ac8c171081f4e8912c63d40b3c833ebc6b2ea155c1ea2bd629253c9e87530",
+      "summary_clause": "Route AoA decision-lane work through the workspace decision graph first, checking status/issues and the smallest impact packet before choosing find, create, or correct while keeping repo-local decision files authoritative",
+      "use_when_clause": "the task mentions docs/decisions, decision indexes, decision graph, ADRs, changed paths, source-surface rationale, supersession, or cross-repo decision symmetry",
+      "do_not_use_clause": "for ordinary docs edits, unresolved source-of-truth mapping, or trivial changes that do not need durable rationale",
+      "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "invoke",
+      "allow_implicit_invocation": true,
+      "family": "decision-and-doc-authority",
+      "families": [
+        "decision-and-doc-authority"
+      ],
+      "adjacent_skills": [
+        "aoa-adr-write",
+        "aoa-bounded-context-map",
+        "aoa-decision-correct",
+        "aoa-decision-create",
+        "aoa-decision-find",
+        "aoa-quest-harvest",
+        "aoa-source-of-truth-check",
+        "atm10-source-of-truth-check"
+      ],
+      "default_prompt": "Use $aoa-decision to check the decision graph first, choose find/create/correct, and keep repo-local decision files as source truth.",
+      "required_case_classes": [
+        "explicit-handle",
+        "should-trigger",
+        "should-not-trigger",
+        "prefer-other-skill"
+      ],
+      "base_case_ids": [
+        "collision-38",
+        "decision-router-explicit",
+        "decision-router-implicit",
+        "decision-router-adjacent-negative"
+      ],
+      "collision_case_ids": [
+        "desc-collision-collision-38"
+      ],
+      "mirror_case_ids": [
+        "desc-mirror-022-aoa-decision",
+        "desc-mirror-031-aoa-decision"
+      ]
+    },
+    {
+      "name": "aoa-decision-correct",
+      "description": "Correct, supersede, reindex, or repair graph-coverage drift in AoA decision records by checking graph issues, editing source notes first, rebuilding repo-local indexes, and refreshing the workspace decision graph. Use when a decision note, index metadata, source-surface list, status, supersession, generated index, unknown surface, or graph packet is stale or wrong. Do not use for pure lookup or for creating a new decision note.",
+      "description_sha256": "531d68aba2449c36696b1dafb8dcb9a707ac88ee82168f5f0309776516fd094d",
+      "summary_clause": "Correct, supersede, reindex, or repair graph-coverage drift in AoA decision records by checking graph issues, editing source notes first, rebuilding repo-local indexes, and refreshing the workspace decision graph",
+      "use_when_clause": "a decision note, index metadata, source-surface list, status, supersession, generated index, unknown surface, or graph packet is stale or wrong",
+      "do_not_use_clause": "for pure lookup or for creating a new decision note",
+      "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "manual",
+      "allow_implicit_invocation": false,
+      "family": "decision-and-doc-authority",
+      "families": [
+        "decision-and-doc-authority"
+      ],
+      "adjacent_skills": [
+        "aoa-adr-write",
+        "aoa-decision",
+        "aoa-decision-create",
+        "aoa-decision-find",
+        "aoa-source-of-truth-check"
+      ],
+      "default_prompt": "Use $aoa-decision-correct to repair the source decision note first, rebuild local indexes, and refresh the workspace graph.",
+      "required_case_classes": [
+        "explicit-handle",
+        "manual-invocation-required",
+        "should-not-trigger"
+      ],
+      "base_case_ids": [
+        "collision-41",
+        "decision-correct-explicit",
+        "decision-correct-manual",
+        "decision-correct-adjacent-negative"
+      ],
+      "collision_case_ids": [
+        "desc-collision-collision-41"
+      ],
+      "mirror_case_ids": [
+        "desc-mirror-018-aoa-decision-correct"
+      ]
+    },
+    {
+      "name": "aoa-decision-create",
+      "description": "Create a new AoA decision record in the owning repository by checking graph status/issues, using impact packets for placement, and following repo-local decision law for the actual source note and indexes. Use when a real structural, workflow, tooling, source/export, MCP, skill, or authority decision needs durable rationale. Do not use when no decision has been made, the change is trivial, the target repo has unresolved graph issues, or an existing note only needs correction.",
+      "description_sha256": "235b2dbdf8fbbae38702b24835e6df7a5635d743ebdb740df224f1f415c14197",
+      "summary_clause": "Create a new AoA decision record in the owning repository by checking graph status/issues, using impact packets for placement, and following repo-local decision law for the actual source note and indexes",
+      "use_when_clause": "a real structural, workflow, tooling, source/export, MCP, skill, or authority decision needs durable rationale",
+      "do_not_use_clause": "when no decision has been made, the change is trivial, the target repo has unresolved graph issues, or an existing note only needs correction",
+      "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "manual",
+      "allow_implicit_invocation": false,
+      "family": "decision-and-doc-authority",
+      "families": [
+        "decision-and-doc-authority"
+      ],
+      "adjacent_skills": [
+        "aoa-adr-write",
+        "aoa-decision",
+        "aoa-decision-correct",
+        "aoa-decision-find",
+        "aoa-source-of-truth-check"
+      ],
+      "default_prompt": "Use $aoa-decision-create to inspect graph context, write the repo-local decision note, rebuild indexes, and refresh the workspace graph.",
+      "required_case_classes": [
+        "explicit-handle",
+        "manual-invocation-required",
+        "should-not-trigger"
+      ],
+      "base_case_ids": [
+        "collision-40",
+        "decision-create-explicit",
+        "decision-create-manual",
+        "decision-create-adjacent-negative"
+      ],
+      "collision_case_ids": [
+        "desc-collision-collision-40"
+      ],
+      "mirror_case_ids": [
+        "desc-mirror-017-aoa-decision-create"
+      ]
+    },
+    {
+      "name": "aoa-decision-find",
+      "description": "Find AoA decision records through workspace graph search and impact packets, then verify claims against repo-local source notes and generated decision indexes. Use when prior decision rationale, changed paths, owner surfaces, source surfaces, status, or supersession links are needed before work continues. Do not use when the task is to create or edit a decision record.",
+      "description_sha256": "4ab35d41f09c5bb563a69fca0c81b7e58df44fe75af8c217d8c800c57fe597f9",
+      "summary_clause": "Find AoA decision records through workspace graph search and impact packets, then verify claims against repo-local source notes and generated decision indexes",
+      "use_when_clause": "prior decision rationale, changed paths, owner surfaces, source surfaces, status, or supersession links are needed before work continues",
+      "do_not_use_clause": "when the task is to create or edit a decision record",
+      "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "manual",
+      "allow_implicit_invocation": false,
+      "family": "decision-and-doc-authority",
+      "families": [
+        "decision-and-doc-authority"
+      ],
+      "adjacent_skills": [
+        "aoa-adr-write",
+        "aoa-decision",
+        "aoa-decision-correct",
+        "aoa-decision-create",
+        "aoa-source-of-truth-check"
+      ],
+      "default_prompt": "Use $aoa-decision-find to search the decision graph, read the matching source notes, and return compact decision context.",
+      "required_case_classes": [
+        "explicit-handle",
+        "manual-invocation-required",
+        "should-not-trigger"
+      ],
+      "base_case_ids": [
+        "collision-39",
+        "decision-find-explicit",
+        "decision-find-manual",
+        "decision-find-adjacent-negative"
+      ],
+      "collision_case_ids": [
+        "desc-collision-collision-39"
+      ],
+      "mirror_case_ids": [
+        "desc-mirror-016-aoa-decision-find"
       ]
     },
     {
@@ -667,7 +838,7 @@
       ],
       "collision_case_ids": [],
       "mirror_case_ids": [
-        "desc-mirror-029-aoa-memo-writeback"
+        "desc-mirror-035-aoa-memo-writeback"
       ]
     },
     {
@@ -764,6 +935,7 @@
         "aoa-adr-write",
         "aoa-automation-opportunity-scan",
         "aoa-checkpoint-closeout-bridge",
+        "aoa-decision",
         "aoa-memo-writeback",
         "aoa-session-donor-harvest",
         "aoa-session-progression-lift",
@@ -789,8 +961,8 @@
         "desc-collision-collision-25"
       ],
       "mirror_case_ids": [
-        "desc-mirror-018-aoa-quest-harvest",
-        "desc-mirror-022-aoa-quest-harvest"
+        "desc-mirror-023-aoa-quest-harvest",
+        "desc-mirror-027-aoa-quest-harvest"
       ]
     },
     {
@@ -926,7 +1098,7 @@
         "desc-collision-collision-20"
       ],
       "mirror_case_ids": [
-        "desc-mirror-020-aoa-session-donor-harvest"
+        "desc-mirror-025-aoa-session-donor-harvest"
       ]
     },
     {
@@ -969,7 +1141,7 @@
         "desc-collision-collision-24"
       ],
       "mirror_case_ids": [
-        "desc-mirror-021-aoa-session-progression-lift"
+        "desc-mirror-026-aoa-session-progression-lift"
       ]
     },
     {
@@ -1122,6 +1294,10 @@
         "aoa-adr-write",
         "aoa-bounded-context-map",
         "aoa-change-protocol",
+        "aoa-decision",
+        "aoa-decision-correct",
+        "aoa-decision-create",
+        "aoa-decision-find",
         "aoa-memo-writeback",
         "aoa-quest-harvest",
         "aoa-safe-infra-change",
@@ -1152,7 +1328,7 @@
         "desc-collision-collision-37"
       ],
       "mirror_case_ids": [
-        "desc-mirror-028-aoa-source-of-truth-check"
+        "desc-mirror-034-aoa-source-of-truth-check"
       ]
     },
     {
@@ -1272,7 +1448,7 @@
         "desc-collision-collision-14"
       ],
       "mirror_case_ids": [
-        "desc-mirror-015-atm10-change-protocol"
+        "desc-mirror-019-atm10-change-protocol"
       ]
     },
     {
@@ -1295,6 +1471,7 @@
         "abyss-self-diagnostic-spine",
         "aoa-adr-write",
         "aoa-change-protocol",
+        "aoa-decision",
         "aoa-quest-harvest",
         "aoa-safe-infra-change",
         "aoa-sanitized-share",
@@ -1317,7 +1494,7 @@
         "desc-collision-collision-16"
       ],
       "mirror_case_ids": [
-        "desc-mirror-016-atm10-source-of-truth-check"
+        "desc-mirror-020-atm10-source-of-truth-check"
       ]
     },
     {

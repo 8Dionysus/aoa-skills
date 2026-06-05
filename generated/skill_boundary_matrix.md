@@ -5,9 +5,9 @@ It is built from committed adjacency cases and snapshot-backed evidence only.
 
 ## Summary
 
-- total skills: 46
-- adjacency cases: 44
-- skills with required adjacency coverage: 25
+- total skills: 50
+- adjacency cases: 48
+- skills with required adjacency coverage: 29
 - required adjacency gaps: 0
 
 | name | status | scope | required coverage | use cases | do_not_use cases | adjacent skills | lane ids | ready | blockers |
@@ -15,7 +15,7 @@ It is built from committed adjacency cases and snapshot-backed evidence only.
 | abyss-safe-infra-change | evaluated | project | false | 1 | 0 | abyss-sanitized-share | - | true | - |
 | abyss-sanitized-share | evaluated | project | false | 1 | 0 | abyss-safe-infra-change | - | true | - |
 | abyss-self-diagnostic-spine | scaffold | project | false | 2 | 0 | aoa-session-self-diagnose, aoa-session-self-repair | - | true | - |
-| aoa-adr-write | canonical | core | true | 1 | 0 | aoa-source-of-truth-check | decision_docs_authority | true | - |
+| aoa-adr-write | canonical | core | true | 1 | 0 | aoa-source-of-truth-check | decision_docs_authority, decision_graph_chain | true | - |
 | aoa-approval-gate-check | canonical | risk | true | 3 | 0 | aoa-dry-run-first, aoa-safe-infra-change, aoa-sanitized-share | local_runtime_bringup, risk_authority_preview_execution | true | - |
 | aoa-automation-opportunity-scan | evaluated | core | true | 1 | 0 | aoa-session-route-forks | session_growth_closeout | true | - |
 | aoa-bounded-context-map | canonical | core | true | 3 | 0 | aoa-contract-test, aoa-core-logic-boundary, aoa-port-adapter-refactor | context_vs_contract, core_boundary_refactor | true | - |
@@ -24,6 +24,10 @@ It is built from committed adjacency cases and snapshot-backed evidence only.
 | aoa-commit-growth-seam | evaluated | core | true | 1 | 0 | aoa-session-donor-harvest | session_growth_closeout | true | - |
 | aoa-contract-test | canonical | core | true | 1 | 0 | aoa-bounded-context-map | context_vs_contract | true | - |
 | aoa-core-logic-boundary | evaluated | core | true | 2 | 0 | aoa-bounded-context-map, aoa-port-adapter-refactor | core_boundary_refactor | true | - |
+| aoa-decision | evaluated | core | true | 1 | 0 | aoa-adr-write | decision_graph_chain | true | - |
+| aoa-decision-correct | evaluated | core | true | 1 | 0 | aoa-decision-create | decision_graph_chain | true | - |
+| aoa-decision-create | evaluated | core | true | 1 | 0 | aoa-decision-find | decision_graph_chain | true | - |
+| aoa-decision-find | evaluated | core | true | 1 | 0 | aoa-decision-create | decision_graph_chain | true | - |
 | aoa-dry-run-first | canonical | risk | true | 3 | 0 | aoa-approval-gate-check, aoa-safe-infra-change, aoa-sanitized-share | risk_authority_preview_execution | true | - |
 | aoa-invariant-coverage-audit | canonical | core | true | 1 | 0 | aoa-property-invariants | invariant_authoring_vs_audit | true | - |
 | aoa-local-stack-bringup | evaluated | risk | true | 2 | 0 | aoa-approval-gate-check, aoa-safe-infra-change | local_runtime_bringup | true | - |
@@ -89,6 +93,10 @@ It is built from committed adjacency cases and snapshot-backed evidence only.
 | aoa-sanitized-share | aoa-safe-infra-change | sanitized_share_vs_safe_infra_change_boundary | use | risk_authority_preview_execution | - |
 | aoa-source-of-truth-check | aoa-adr-write | source_of_truth_check_vs_adr_write_boundary | use | decision_docs_authority | - |
 | aoa-adr-write | aoa-source-of-truth-check | adr_write_vs_source_of_truth_check_boundary | use | decision_docs_authority | - |
+| aoa-decision | aoa-adr-write | decision_router_vs_adr_write_boundary | use | decision_graph_chain | - |
+| aoa-decision-find | aoa-decision-create | decision_find_vs_decision_create_boundary | use | decision_graph_chain | - |
+| aoa-decision-create | aoa-decision-find | decision_create_vs_decision_find_boundary | use | decision_graph_chain | - |
+| aoa-decision-correct | aoa-decision-create | decision_correct_vs_decision_create_boundary | use | decision_graph_chain | - |
 | aoa-invariant-coverage-audit | aoa-property-invariants | invariant_coverage_audit_vs_property_invariants_boundary | use | invariant_authoring_vs_audit | - |
 | aoa-property-invariants | aoa-invariant-coverage-audit | property_invariants_vs_invariant_coverage_audit_boundary | use | invariant_authoring_vs_audit | - |
 | atm10-change-protocol | atm10-source-of-truth-check | atm10_change_protocol_vs_source_of_truth_boundary | use | - | - |

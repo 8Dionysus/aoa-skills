@@ -1,0 +1,16 @@
+interface:
+  display_name: AoA Decision Create
+  short_description: Create decision records
+  default_prompt: Use $aoa-decision-create to inspect graph context, write the repo-local decision note, rebuild indexes, and refresh the workspace graph.
+  icon_small: ./assets/small-logo.svg
+  icon_large: ./assets/large-logo.svg
+  brand_color: '#2563EB'
+policy:
+  implicit_activation_policy: manual
+  allow_implicit_invocation: false
+dependencies:
+  tools:
+  - type: mcp
+    value: aoa_decisions
+    description: AoA workspace decision graph MCP server
+    transport: stdio

@@ -147,6 +147,54 @@
       }
     },
     {
+      "name": "aoa-decision",
+      "codex_mention": "$aoa-decision",
+      "codex_browser": "/skills",
+      "local_slash_alias": "/aoa-decision",
+      "tool_call": {
+        "name": "activate_skill",
+        "arguments": {
+          "skill_name": "aoa-decision"
+        }
+      }
+    },
+    {
+      "name": "aoa-decision-correct",
+      "codex_mention": "$aoa-decision-correct",
+      "codex_browser": "/skills",
+      "local_slash_alias": "/aoa-decision-correct",
+      "tool_call": {
+        "name": "activate_skill",
+        "arguments": {
+          "skill_name": "aoa-decision-correct"
+        }
+      }
+    },
+    {
+      "name": "aoa-decision-create",
+      "codex_mention": "$aoa-decision-create",
+      "codex_browser": "/skills",
+      "local_slash_alias": "/aoa-decision-create",
+      "tool_call": {
+        "name": "activate_skill",
+        "arguments": {
+          "skill_name": "aoa-decision-create"
+        }
+      }
+    },
+    {
+      "name": "aoa-decision-find",
+      "codex_mention": "$aoa-decision-find",
+      "codex_browser": "/skills",
+      "local_slash_alias": "/aoa-decision-find",
+      "tool_call": {
+        "name": "activate_skill",
+        "arguments": {
+          "skill_name": "aoa-decision-find"
+        }
+      }
+    },
+    {
       "name": "aoa-dry-run-first",
       "codex_mention": "$aoa-dry-run-first",
       "codex_browser": "/skills",

@@ -1250,6 +1250,432 @@
       }
     },
     {
+      "name": "aoa-decision",
+      "display_name": "AoA Decision",
+      "description": "Route AoA decision-lane work through the workspace decision graph first, checking status/issues and the smallest impact packet before choosing find, create, or correct while keeping repo-local decision files authoritative. Use when the task mentions docs/decisions, decision indexes, decision graph, ADRs, changed paths, source-surface rationale, supersession, or cross-repo decision symmetry. Do not use for ordinary docs edits, unresolved source-of-truth mapping, or trivial changes that do not need durable rationale.",
+      "short_description": "Route decision-lane work",
+      "path": ".agents/skills/aoa-decision/SKILL.md",
+      "trust_posture": "portable-core",
+      "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "invoke",
+      "allow_implicit_invocation": true,
+      "candidate_only": false,
+      "mutation_surface": "repo",
+      "recommended_install_scopes": [
+        "repo",
+        "user"
+      ],
+      "explicit_handles": {
+        "codex": {
+          "mention": "$aoa-decision",
+          "browser": "/skills"
+        },
+        "local_wrapper": {
+          "slash_alias": "/aoa-decision",
+          "tool_call": {
+            "name": "activate_skill",
+            "arguments": {
+              "skill_name": "aoa-decision"
+            }
+          }
+        }
+      },
+      "keywords": [
+        "adaptation",
+        "adrs",
+        "and",
+        "anti-patterns",
+        "aoa",
+        "authoritative",
+        "before",
+        "boundary",
+        "changed",
+        "changes",
+        "checking",
+        "choosing",
+        "contracts",
+        "core",
+        "correct",
+        "create",
+        "cross-repo",
+        "decision",
+        "decision-lane",
+        "decisions",
+        "docs",
+        "durable",
+        "edits",
+        "files",
+        "find",
+        "first",
+        "for",
+        "graph",
+        "impact",
+        "indexes",
+        "inputs",
+        "intent",
+        "issues",
+        "keeping",
+        "mapping",
+        "mentions",
+        "not",
+        "ordinary",
+        "outputs",
+        "packet",
+        "paths",
+        "points",
+        "procedure",
+        "rationale",
+        "repo-local",
+        "risks",
+        "route",
+        "smallest",
+        "source-of-truth",
+        "source-surface",
+        "status",
+        "supersession",
+        "symmetry",
+        "task",
+        "technique",
+        "the",
+        "through",
+        "traceability",
+        "trigger",
+        "trivial",
+        "unresolved",
+        "use",
+        "verification",
+        "while",
+        "work",
+        "workspace"
+      ],
+      "disclose_tool": {
+        "name": "disclose_skill",
+        "arguments": {
+          "skill_name": "aoa-decision"
+        }
+      },
+      "activate_tool": {
+        "name": "activate_skill",
+        "arguments": {
+          "skill_name": "aoa-decision"
+        }
+      }
+    },
+    {
+      "name": "aoa-decision-correct",
+      "display_name": "AoA Decision Correct",
+      "description": "Correct, supersede, reindex, or repair graph-coverage drift in AoA decision records by checking graph issues, editing source notes first, rebuilding repo-local indexes, and refreshing the workspace decision graph. Use when a decision note, index metadata, source-surface list, status, supersession, generated index, unknown surface, or graph packet is stale or wrong. Do not use for pure lookup or for creating a new decision note.",
+      "short_description": "Correct decision records",
+      "path": ".agents/skills/aoa-decision-correct/SKILL.md",
+      "trust_posture": "portable-core",
+      "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "manual",
+      "allow_implicit_invocation": false,
+      "candidate_only": false,
+      "mutation_surface": "repo",
+      "recommended_install_scopes": [
+        "repo",
+        "user"
+      ],
+      "explicit_handles": {
+        "codex": {
+          "mention": "$aoa-decision-correct",
+          "browser": "/skills"
+        },
+        "local_wrapper": {
+          "slash_alias": "/aoa-decision-correct",
+          "tool_call": {
+            "name": "activate_skill",
+            "arguments": {
+              "skill_name": "aoa-decision-correct"
+            }
+          }
+        }
+      },
+      "keywords": [
+        "adaptation",
+        "and",
+        "anti-patterns",
+        "aoa",
+        "boundary",
+        "checking",
+        "contracts",
+        "core",
+        "correct",
+        "creating",
+        "decision",
+        "drift",
+        "editing",
+        "first",
+        "for",
+        "generated",
+        "graph",
+        "graph-coverage",
+        "index",
+        "indexes",
+        "inputs",
+        "intent",
+        "issues",
+        "list",
+        "lookup",
+        "metadata",
+        "new",
+        "not",
+        "note",
+        "notes",
+        "outputs",
+        "packet",
+        "points",
+        "procedure",
+        "pure",
+        "rebuilding",
+        "records",
+        "refreshing",
+        "reindex",
+        "repair",
+        "repo-local",
+        "risks",
+        "source",
+        "source-surface",
+        "stale",
+        "status",
+        "supersede",
+        "supersession",
+        "surface",
+        "technique",
+        "the",
+        "traceability",
+        "trigger",
+        "unknown",
+        "use",
+        "verification",
+        "workspace",
+        "wrong"
+      ],
+      "disclose_tool": {
+        "name": "disclose_skill",
+        "arguments": {
+          "skill_name": "aoa-decision-correct"
+        }
+      },
+      "activate_tool": {
+        "name": "activate_skill",
+        "arguments": {
+          "skill_name": "aoa-decision-correct"
+        }
+      }
+    },
+    {
+      "name": "aoa-decision-create",
+      "display_name": "AoA Decision Create",
+      "description": "Create a new AoA decision record in the owning repository by checking graph status/issues, using impact packets for placement, and following repo-local decision law for the actual source note and indexes. Use when a real structural, workflow, tooling, source/export, MCP, skill, or authority decision needs durable rationale. Do not use when no decision has been made, the change is trivial, the target repo has unresolved graph issues, or an existing note only needs correction.",
+      "short_description": "Create decision records",
+      "path": ".agents/skills/aoa-decision-create/SKILL.md",
+      "trust_posture": "portable-core",
+      "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "manual",
+      "allow_implicit_invocation": false,
+      "candidate_only": false,
+      "mutation_surface": "repo",
+      "recommended_install_scopes": [
+        "repo",
+        "user"
+      ],
+      "explicit_handles": {
+        "codex": {
+          "mention": "$aoa-decision-create",
+          "browser": "/skills"
+        },
+        "local_wrapper": {
+          "slash_alias": "/aoa-decision-create",
+          "tool_call": {
+            "name": "activate_skill",
+            "arguments": {
+              "skill_name": "aoa-decision-create"
+            }
+          }
+        }
+      },
+      "keywords": [
+        "actual",
+        "adaptation",
+        "and",
+        "anti-patterns",
+        "aoa",
+        "authority",
+        "been",
+        "boundary",
+        "change",
+        "checking",
+        "contracts",
+        "core",
+        "correction",
+        "create",
+        "decision",
+        "durable",
+        "existing",
+        "export",
+        "following",
+        "for",
+        "graph",
+        "has",
+        "impact",
+        "indexes",
+        "inputs",
+        "intent",
+        "issues",
+        "law",
+        "made",
+        "mcp",
+        "needs",
+        "new",
+        "not",
+        "note",
+        "outputs",
+        "owning",
+        "packets",
+        "placement",
+        "points",
+        "procedure",
+        "rationale",
+        "real",
+        "record",
+        "repo",
+        "repo-local",
+        "repository",
+        "risks",
+        "skill",
+        "source",
+        "status",
+        "structural",
+        "target",
+        "technique",
+        "the",
+        "tooling",
+        "traceability",
+        "trigger",
+        "trivial",
+        "unresolved",
+        "use",
+        "using",
+        "verification",
+        "workflow"
+      ],
+      "disclose_tool": {
+        "name": "disclose_skill",
+        "arguments": {
+          "skill_name": "aoa-decision-create"
+        }
+      },
+      "activate_tool": {
+        "name": "activate_skill",
+        "arguments": {
+          "skill_name": "aoa-decision-create"
+        }
+      }
+    },
+    {
+      "name": "aoa-decision-find",
+      "display_name": "AoA Decision Find",
+      "description": "Find AoA decision records through workspace graph search and impact packets, then verify claims against repo-local source notes and generated decision indexes. Use when prior decision rationale, changed paths, owner surfaces, source surfaces, status, or supersession links are needed before work continues. Do not use when the task is to create or edit a decision record.",
+      "short_description": "Find decision records",
+      "path": ".agents/skills/aoa-decision-find/SKILL.md",
+      "trust_posture": "portable-core",
+      "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "manual",
+      "allow_implicit_invocation": false,
+      "candidate_only": false,
+      "mutation_surface": "none",
+      "recommended_install_scopes": [
+        "repo",
+        "user"
+      ],
+      "explicit_handles": {
+        "codex": {
+          "mention": "$aoa-decision-find",
+          "browser": "/skills"
+        },
+        "local_wrapper": {
+          "slash_alias": "/aoa-decision-find",
+          "tool_call": {
+            "name": "activate_skill",
+            "arguments": {
+              "skill_name": "aoa-decision-find"
+            }
+          }
+        }
+      },
+      "keywords": [
+        "adaptation",
+        "against",
+        "and",
+        "anti-patterns",
+        "aoa",
+        "are",
+        "before",
+        "boundary",
+        "changed",
+        "claims",
+        "continues",
+        "contracts",
+        "core",
+        "create",
+        "decision",
+        "edit",
+        "find",
+        "generated",
+        "graph",
+        "impact",
+        "indexes",
+        "inputs",
+        "intent",
+        "links",
+        "needed",
+        "not",
+        "notes",
+        "outputs",
+        "owner",
+        "packets",
+        "paths",
+        "points",
+        "prior",
+        "procedure",
+        "rationale",
+        "record",
+        "records",
+        "repo-local",
+        "risks",
+        "search",
+        "source",
+        "status",
+        "supersession",
+        "surfaces",
+        "task",
+        "technique",
+        "the",
+        "through",
+        "traceability",
+        "trigger",
+        "use",
+        "verification",
+        "verify",
+        "work",
+        "workspace"
+      ],
+      "disclose_tool": {
+        "name": "disclose_skill",
+        "arguments": {
+          "skill_name": "aoa-decision-find"
+        }
+      },
+      "activate_tool": {
+        "name": "activate_skill",
+        "arguments": {
+          "skill_name": "aoa-decision-find"
+        }
+      }
+    },
+    {
       "name": "aoa-dry-run-first",
       "display_name": "AoA Dry Run First",
       "description": "Prefer simulation, preview, or inspect-only paths before any real mutation, then require one explicit confirmation for the concrete mutating step. Use when the action can be previewed and mistakes would be costly, such as delete, restore, migrate, or reconfigure operations. Do not use for purely analytical tasks or when the primary question is whether execution is authorized at all.",

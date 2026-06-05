@@ -12,8 +12,8 @@
     9
   ],
   "skill_root": ".agents/skills",
-  "skill_count": 46,
-  "explicit_only_count": 36,
+  "skill_count": 50,
+  "explicit_only_count": 39,
   "profile_count": 17,
   "authoring_inputs": [
     "generated/skill_sections.full.json",
@@ -172,33 +172,33 @@
   "authoring_input_digests": [
     {
       "path": "generated/skill_sections.full.json",
-      "sha256": "c6c5fcf3053c2f6cb45d0c1c766b38f3bb283c2f0b283d836612a36d1f47700a",
-      "bytes": 318758
+      "sha256": "d30712e30e662c3a61219bbd04c2fce800a811cab58439bbd2f701b638b692bd",
+      "bytes": 345128
     },
     {
       "path": "generated/skill_catalog.min.json",
-      "sha256": "fa6df396206363f90ff2e819320adc7b4e21aff1b860ade7b40649284c03ac60",
-      "bytes": 18755
+      "sha256": "9c1967e29a5768bd73fb0516a711feced322fddab6cbf765a61107b753f214c4",
+      "bytes": 20347
     },
     {
       "path": "config/portable_skill_overrides.json",
-      "sha256": "a189a134dbcbf647f763f4bd37379e3bc7e8b07c9a724d326595cfb4bd3b0337",
-      "bytes": 32720
+      "sha256": "6251e645283dc5611c921bd80c26660bf7b216b0f924610e9fcbb2f215f2a690",
+      "bytes": 35593
     },
     {
       "path": "config/openai_skill_extensions.json",
-      "sha256": "3db8e29a96109abbbcc923fff454f948e7f84f61627cb162706a4ebde4ed6551",
-      "bytes": 128
+      "sha256": "dc54576b2bb6c0369ef2f2107eff98644574ab4e4177a537c2af973e58abbc52",
+      "bytes": 1278
     },
     {
       "path": "config/skill_pack_profiles.json",
-      "sha256": "a5a30ce13739cb5a479bf3628af873800b8501be03ccc42066aed7d70130276a",
-      "bytes": 11045
+      "sha256": "79d944c4bc8519baebb246cbccb134b79209415638638a48009ec11a8a5acc35",
+      "bytes": 11625
     },
     {
       "path": "config/skill_policy_matrix.json",
-      "sha256": "7cae7cbb0cee9357b1f9c1bcb9c9b75b8099c4ae49e07ccd3872610831379eb2",
-      "bytes": 19843
+      "sha256": "a776c4e2d92971e3f043549be933bac08e60e8a3d0d41ece447ae128adcd43fc",
+      "bytes": 21379
     },
     {
       "path": "config/runtime_guardrail_policy.json",
@@ -212,95 +212,95 @@
     },
     {
       "path": "config/tiny_router_skill_bands.json",
-      "sha256": "d40936c8275894a8c4234f2d55e4de870be70ac712f0525322d6e7aeafd99b9b",
-      "bytes": 29924
+      "sha256": "93f410db5fc26281acc32c25b3cd9530d2de2ea84216e54eefb8b7d3d053cc61",
+      "bytes": 31711
     }
   ],
   "generated_file_digests": [
     {
       "path": "generated/agent_skill_catalog.json",
-      "sha256": "ddeb8452ee6605e373e48223cf497fbc222838c95b504813d9fdb3dc000a2ead",
-      "bytes": 86678
+      "sha256": "863494887ceba32630486e4938091b80897ee895ed742ba831ebd2f0df8627a3",
+      "bytes": 93739
     },
     {
       "path": "generated/agent_skill_catalog.min.json",
-      "sha256": "88a4ce8d126ac808b4fe3446f014c055d525e0e5e12b2e1b8eb4c42853646052",
-      "bytes": 32631
+      "sha256": "9a68606ac776dd48cb7fb7309cbe7892b55085c4b4e8c122e92ab4fdde90b3cd",
+      "bytes": 35591
     },
     {
       "path": "generated/portable_export_map.json",
-      "sha256": "5876961aa4c4b9031163ec074f8596301eb40377db28ba7ce0790addf641a396",
-      "bytes": 42868
+      "sha256": "e5fb40469776acb6f931943060d4de60b40b704dc226cb75ccf80843b3dc6cf9",
+      "bytes": 45999
     },
     {
       "path": "generated/local_adapter_manifest.json",
-      "sha256": "30ba27206b35f8475c2859ec7fa54ea4a7513156c647ce695195602027bda789",
-      "bytes": 82712
+      "sha256": "935d10ceb349d8704c7d3e8536a1d357204634783e1e7dd39c9f18cfa43e22f6",
+      "bytes": 89448
     },
     {
       "path": "generated/local_adapter_manifest.min.json",
-      "sha256": "58c1e6fd80cf5014aef46016601176c257e456ef7775769971e8522344d03055",
-      "bytes": 31471
+      "sha256": "d792c1beb071d6ae96452c7519413218806febe3eb6050bd9c5f1e123df7bcac",
+      "bytes": 34307
     },
     {
       "path": "generated/skill_handoff_contracts.json",
-      "sha256": "49d3abdddb2cef09f29928206fb9083b9d851697644cab20143aef46c9108f59",
-      "bytes": 208410
+      "sha256": "943964aadaabd4582633065add937f5dc40b06ec65b119e8e0234d7f0f9c8009",
+      "bytes": 225387
     },
     {
       "path": "generated/context_retention_manifest.json",
-      "sha256": "734ba5be4cbd599fb3e5c176e2970baa5b1349833c5ae735b76d29f68b0b69c0",
-      "bytes": 69141
+      "sha256": "06eee1a12f2136605d716709dcafc58f6bf3d07ac10064f349bbc377a6a65ac0",
+      "bytes": 76768
     },
     {
       "path": "generated/trust_policy_matrix.json",
-      "sha256": "c137daed39872c52e99682618bad57e0e92fae4eb272954d317febf67df3c8a1",
-      "bytes": 26614
+      "sha256": "80f2098ef0030f89c099d7f6359234fc329601db02d904aa3ade617b0d3cd6a6",
+      "bytes": 28779
     },
     {
       "path": "generated/skill_runtime_contracts.json",
-      "sha256": "f5d13072180379f51ff9e845fc0c12f787c4ea0285f7aa049e3e67134a7c9d45",
-      "bytes": 89690
+      "sha256": "2938f46dec7ede557c9f75cfcb7889837bc7612897c697d9486be6fceb1e2fad",
+      "bytes": 96871
     },
     {
       "path": "generated/skill_pack_profiles.resolved.json",
-      "sha256": "128d2408011828f9f4b0d2dbdbf072adba63007e1d707f78e316c0b2df62bae2",
-      "bytes": 85505
+      "sha256": "9e0cc4ea1637d2cd2b9a32bb380dbd654ab10ab1eb5453b27d65367c78790529",
+      "bytes": 94068
     },
     {
       "path": "generated/codex_config_snippets.json",
-      "sha256": "edf0e3ef3da4604c66f9adb232217c630553fab5e127d25806e6eb46b4865a89",
-      "bytes": 19122
+      "sha256": "fdf429dfa3c63e2e1c4e3a0766ef3e447b7aa712138227ac79a75b1d02ba36c3",
+      "bytes": 20986
     },
     {
       "path": "generated/mcp_dependency_manifest.json",
-      "sha256": "c26007bd7e14d33af43202ab5615fbff1f0a047bcd222042270567d9ab9b36c2",
-      "bytes": 3278
+      "sha256": "6a8d229c184c55dcee9ac1cdb24ab41be4584284196c275b37c7085c6a7863b4",
+      "bytes": 4290
     },
     {
       "path": "generated/runtime_discovery_index.json",
-      "sha256": "d3d5545b17973643fe9c177e5ae1f625ed38679726b5184eb875edd7902700c3",
-      "bytes": 128234
+      "sha256": "070c2937798c9326d3b6b8291eed40704184d6f3c3493f3d8505cb417e59d3b6",
+      "bytes": 139605
     },
     {
       "path": "generated/runtime_discovery_index.min.json",
-      "sha256": "50340909c7ca7baea64cd6ff1a0e8cb373c16c16f0b2576190ee6a3583fbaa2c",
-      "bytes": 30350
+      "sha256": "8cce265732da11ec53f9e13c9bdc94a3dff85678cfb809a81c73042000a2a561",
+      "bytes": 33138
     },
     {
       "path": "generated/runtime_disclosure_index.json",
-      "sha256": "e295cb852179db8fb1c394bbe8a7e098a267649a92bda3142739d2d3c193c11b",
-      "bytes": 327439
+      "sha256": "ded8d3109a8b00665803ab0fb3ff860239013b96d1c42b10cac40fa78f89d73a",
+      "bytes": 356627
     },
     {
       "path": "generated/runtime_activation_aliases.json",
-      "sha256": "6c6e43f7a4a4c1bae5156cbd6481f2f6ac1fa301a3666072de8de167ff669c26",
-      "bytes": 15278
+      "sha256": "c658c132bd513bdcdcea4438ca8cdc7f90df74bd9bb2040f3712bd79d88b62ce",
+      "bytes": 16542
     },
     {
       "path": "generated/runtime_tool_schemas.json",
-      "sha256": "ba75c6aa66280d207cc8682326228d8b6de098842aae819f42327e7a9129af0e",
-      "bytes": 10117
+      "sha256": "54d3927e137a8617494cea9a4a60c636c50e5dd2f8e9774c684c281b08cc7d33",
+      "bytes": 10537
     },
     {
       "path": "generated/runtime_session_contract.json",
@@ -309,13 +309,13 @@
     },
     {
       "path": "generated/runtime_prompt_blocks.json",
-      "sha256": "f8aaa6a03bb9adc1de77d17d9911cc70254b3492c519720d963281febecd1787",
-      "bytes": 88453
+      "sha256": "81f0f7d40957df0ea160e63b89591308756395f1518e9db1b2bba3a43ac38a52",
+      "bytes": 96577
     },
     {
       "path": "generated/runtime_router_hints.json",
-      "sha256": "0e9a8359ee46940563ebbaa6e472aee3cc2c5e94a9022fca741e94d55f3ce1dd",
-      "bytes": 79777
+      "sha256": "ba03b9d7b7a458243064440e20e8f405f87e6e2fe45834a72aa0fb89cb1b201d",
+      "bytes": 87718
     },
     {
       "path": "generated/runtime_seam_manifest.json",
@@ -324,28 +324,28 @@
     },
     {
       "path": "generated/repo_trust_gate_manifest.json",
-      "sha256": "9209675b62ffde78d4499f1a3f9a3f4e2d4f1f0ff1a51b14081f90877863dc4b",
-      "bytes": 56511
+      "sha256": "050ed560aa6af576d06a97adb35792e1ce9e373c2550504e7d641ea1b329a714",
+      "bytes": 61540
     },
     {
       "path": "generated/permission_allowlist_manifest.json",
-      "sha256": "c3a6aa15252e6070c7c995d4700a720c3393cde78d86a4e66a9c9198fffd5719",
-      "bytes": 115264
+      "sha256": "4eafe1973ef73e55a69ec61dfc47e8d0b7f0b66b9a57276bf26ada32f6fdcd57",
+      "bytes": 124380
     },
     {
       "path": "generated/skill_context_guard_manifest.json",
-      "sha256": "b031e9727b30fa4d814a66b478c2a069ec8a5dd1cb4197e1404bd55c4960daab",
-      "bytes": 95122
+      "sha256": "6c00e4c24733d7699adbc37e70b46e594d1fca0c21d46b9a9c111e0a75520e97",
+      "bytes": 104921
     },
     {
       "path": "generated/runtime_guardrail_tool_schemas.json",
-      "sha256": "30960c1e7d3940e8057501e133ef6d8bacad71e9bebf66654438046057dc5975",
-      "bytes": 13517
+      "sha256": "423df40851feb4e9184a1103a0beab59c78953fcf28169548347add2cb488c5c",
+      "bytes": 14077
     },
     {
       "path": "generated/runtime_guardrail_prompt_blocks.json",
-      "sha256": "8f7160f8065b5ecca69224f1e793416ab3692e002f8ef9fc577f90c2eb2145a4",
-      "bytes": 134944
+      "sha256": "c8acf022e171be19269dd7dca0c0865308f8a0e714acb000b7f475ca17e7d698",
+      "bytes": 147398
     },
     {
       "path": "generated/runtime_guardrail_manifest.json",
@@ -354,28 +354,28 @@
     },
     {
       "path": "generated/skill_description_signals.json",
-      "sha256": "adec6ceadab51c53278b7300a3e7fcda48cadb908e35856985b242abbad85e43",
-      "bytes": 101831
+      "sha256": "948b6898e4a99461cf94ca4bc492d14124b97079058d67d67fffbbec04ba6991",
+      "bytes": 111069
     },
     {
       "path": "generated/description_trigger_eval_cases.jsonl",
-      "sha256": "80e39f8091612c4708854ee695f456c8ef36709678aab3e031ed25b1feca9063",
-      "bytes": 179057
+      "sha256": "773294718dc9d0ee44f866ee9a5fbae7aa34a29ccf9edd6b10d86e224ff2692d",
+      "bytes": 197892
     },
     {
       "path": "generated/description_trigger_eval_cases.csv",
-      "sha256": "6dc8c961a00642f3a9fce9cc47f3e233889066059f743974f4ea937be6ca446e",
-      "bytes": 116330
+      "sha256": "4c203881fcff29df6daa15ed3ed0d4d9fa408f17eec9503926431236cf109c33",
+      "bytes": 128527
     },
     {
       "path": "generated/description_trigger_eval_manifest.json",
-      "sha256": "94ede2cfdebca03ce42db91daa1c4448d71f18375953b703f1225fbfc87db8c5",
-      "bytes": 31210
+      "sha256": "843a4251fb82aba07c14f83e7b6dfacdcf878a56f9e96763335184167396b5d1",
+      "bytes": 33940
     },
     {
       "path": "generated/skills_ref_validation_manifest.json",
-      "sha256": "67fce7ceb324f7a30946d46de3379912ce995bb0536417415dc20e062260bf66",
-      "bytes": 16147
+      "sha256": "87dea6e749fc2884eb507a906afcf520c8c1a25f09290359b7ce5aaf33317950",
+      "bytes": 17395
     },
     {
       "path": "generated/deterministic_resource_manifest.json",
@@ -409,48 +409,48 @@
     },
     {
       "path": "generated/tiny_router_skill_signals.json",
-      "sha256": "dc6945f168d60d131cf0f3c106a2c0b2931fe0c7b4133a842c4eee3ff19df8e8",
-      "bytes": 147977
+      "sha256": "353ec7f05805aa53a1ef057736d3048f8534111fd3e0e9ca2a693e305dfe22b1",
+      "bytes": 160404
     },
     {
       "path": "generated/tiny_router_candidate_bands.json",
-      "sha256": "ff7b635952b1490921f32b7937a0aab6c25afd8a30415f4dff49b15f79a02bf7",
-      "bytes": 8875
+      "sha256": "f5c8609d307cc24ff09ce8874c74b059018a74de99b5e15d3b680a74436bfc49",
+      "bytes": 9083
     },
     {
       "path": "generated/tiny_router_capsules.min.json",
-      "sha256": "5a561c8529ddf3d2a183ef8a8f288cfa4e3222629c7b9677b62bf25b119b7b6f",
-      "bytes": 49591
+      "sha256": "f71e2a23024693da9b0f29f29f91cc16f2258893d53b9e1e95b90829e58fd6c6",
+      "bytes": 53567
     },
     {
       "path": "generated/tiny_router_eval_cases.jsonl",
-      "sha256": "f746f5208b7204236a838ab7c5ebcb415c66637b361d1a5e1de612691bd7cbc3",
-      "bytes": 49355
+      "sha256": "a43075dd8efb6c24054a84a50774bdd30ebbb537a0bf0202d399e6abd133ca02",
+      "bytes": 54545
     },
     {
       "path": "generated/tiny_router_overlay_manifest.json",
-      "sha256": "3d85a42b3c4afa352e95989c03e6b7264cb4de940713b7db4e4944ce5707ea80",
-      "bytes": 15905
+      "sha256": "d7b2c69bfee544d3d30d84e7baf490dafc105d7104e0cbe52b9cfd4a13e08a08",
+      "bytes": 17242
     },
     {
       "path": "generated/skill_bundle_index.json",
-      "sha256": "8d48ab43ec883280afe0b0eecb915ca2c21187a56c7c1d9051b1b8f8df190cd4",
-      "bytes": 138780
+      "sha256": "ef808508fcaf7a168988ff4bd227bf390534edd2281c9b500a1c6ae5cc521ec8",
+      "bytes": 149662
     },
     {
       "path": "generated/skill_bundle_index.md",
-      "sha256": "422df6b399c3f14e0fb469489ae7ee87192bd35cbed5d809bbe4e8d5882b55c2",
-      "bytes": 15137
+      "sha256": "ee26a67be2570d70955608e15697598ee22a165240c775a80d88e90363f60fbe",
+      "bytes": 16461
     },
     {
       "path": "generated/skill_graph.json",
-      "sha256": "d713e45c4b8b3ebfea07fbb7ec66e4b7a509d467cd5b43955703870c816ea764",
-      "bytes": 251265
+      "sha256": "27eb977c467dc7859e4bd4bf9afcc630ecb4b60c3da0ea2c3be6b77de602b404",
+      "bytes": 271258
     },
     {
       "path": "generated/skill_graph.md",
-      "sha256": "9466c9243c59615e463aea23dfb77cff0bd89e2283f8427d5cffe5ab7018b606",
-      "bytes": 74679
+      "sha256": "a7615cb6a6cc01539e173a4c251a8e460cbc32f085b619015f21fd01c10c8f46",
+      "bytes": 80858
     }
   ],
   "skill_bundle_revisions": [
@@ -513,6 +513,26 @@
       "name": "aoa-core-logic-boundary",
       "skill_revision": "4c1fe5d5fc55",
       "content_hash": "4c1fe5d5fc552c4e75e06c4514614d239e2003f0d9f98ec3b3cc55f7f48a6713"
+    },
+    {
+      "name": "aoa-decision",
+      "skill_revision": "c2e248e7a30b",
+      "content_hash": "c2e248e7a30b08408c20530573733cfaf31e6c7e616b8024b9000b59c5a4bcb1"
+    },
+    {
+      "name": "aoa-decision-correct",
+      "skill_revision": "18f68b1173b4",
+      "content_hash": "18f68b1173b405c35c90d98a0dd50a7d0979c52071151d32f5b2ef272e478790"
+    },
+    {
+      "name": "aoa-decision-create",
+      "skill_revision": "de4ff5b8cede",
+      "content_hash": "de4ff5b8cedeb58d6e69756b732162ffe3fd9cb16c78ec1ce29b7e8df656f7d6"
+    },
+    {
+      "name": "aoa-decision-find",
+      "skill_revision": "bda8dc8a6df2",
+      "content_hash": "bda8dc8a6df234e68f629039c5c59a479b1c2e53f584767d5a5536751ec07b4c"
     },
     {
       "name": "aoa-dry-run-first",
@@ -715,7 +735,7 @@
     },
     {
       "name": "repo-core-only",
-      "skill_count": 19,
+      "skill_count": 23,
       "skill_names": [
         "aoa-adr-write",
         "aoa-automation-opportunity-scan",
@@ -724,6 +744,10 @@
         "aoa-checkpoint-closeout-bridge",
         "aoa-contract-test",
         "aoa-core-logic-boundary",
+        "aoa-decision",
+        "aoa-decision-correct",
+        "aoa-decision-create",
+        "aoa-decision-find",
         "aoa-invariant-coverage-audit",
         "aoa-memo-writeback",
         "aoa-port-adapter-refactor",
@@ -737,11 +761,11 @@
         "aoa-source-of-truth-check",
         "aoa-tdd-slice"
       ],
-      "profile_revision": "0842f6640533a6475277f1281c16427a96c8067b9f80207538f509f09188e3d2"
+      "profile_revision": "de4645051be59d622e604c99d0c0893714d39978f2e6c9f62fda1fc71e0c9889"
     },
     {
       "name": "repo-default",
-      "skill_count": 46,
+      "skill_count": 50,
       "skill_names": [
         "abyss-safe-infra-change",
         "abyss-sanitized-share",
@@ -755,6 +779,10 @@
         "aoa-commit-growth-seam",
         "aoa-contract-test",
         "aoa-core-logic-boundary",
+        "aoa-decision",
+        "aoa-decision-correct",
+        "aoa-decision-create",
+        "aoa-decision-find",
         "aoa-dry-run-first",
         "aoa-invariant-coverage-audit",
         "aoa-local-stack-bringup",
@@ -790,7 +818,7 @@
         "titan-summon",
         "titan-thread-turn-binding"
       ],
-      "profile_revision": "fa10556d59a08288d6723a8906021a4c2c2159df9ee4b554d00877373cb6dc90"
+      "profile_revision": "67dfc6ba44ee8ba17cedaf5c47d2142996018eec79bbbe48c3861d92cf3b1fb7"
     },
     {
       "name": "repo-project-core-kernel",
@@ -810,24 +838,28 @@
     },
     {
       "name": "repo-project-core-outer-ring",
-      "skill_count": 10,
+      "skill_count": 14,
       "skill_names": [
         "aoa-adr-write",
         "aoa-bounded-context-map",
         "aoa-change-protocol",
         "aoa-contract-test",
         "aoa-core-logic-boundary",
+        "aoa-decision",
+        "aoa-decision-correct",
+        "aoa-decision-create",
+        "aoa-decision-find",
         "aoa-invariant-coverage-audit",
         "aoa-port-adapter-refactor",
         "aoa-property-invariants",
         "aoa-source-of-truth-check",
         "aoa-tdd-slice"
       ],
-      "profile_revision": "8eb3176866e13fa75729fbb25b82cfaee318a0a639ba820da36d3cf98d9e8449"
+      "profile_revision": "cca54c52aaaeddad521d0ea78cbe0c8d235cd1834ae9dd65520ecf9f9e945c5c"
     },
     {
       "name": "repo-project-foundation",
-      "skill_count": 24,
+      "skill_count": 28,
       "skill_names": [
         "aoa-adr-write",
         "aoa-approval-gate-check",
@@ -837,6 +869,10 @@
         "aoa-checkpoint-closeout-bridge",
         "aoa-contract-test",
         "aoa-core-logic-boundary",
+        "aoa-decision",
+        "aoa-decision-correct",
+        "aoa-decision-create",
+        "aoa-decision-find",
         "aoa-dry-run-first",
         "aoa-invariant-coverage-audit",
         "aoa-local-stack-bringup",
@@ -854,7 +890,7 @@
         "aoa-source-of-truth-check",
         "aoa-tdd-slice"
       ],
-      "profile_revision": "51b43e7c49d98c5a8d2eb1c2863647c35e21a5d2e7f9996805a5e613188a83bc"
+      "profile_revision": "200341d8ca91b22dd1d93415ba5132e97fce9b9b8497352b9245eb9691714aad"
     },
     {
       "name": "repo-project-risk-guard-ring",
@@ -962,7 +998,7 @@
     },
     {
       "name": "user-curated-core",
-      "skill_count": 17,
+      "skill_count": 21,
       "skill_names": [
         "aoa-adr-write",
         "aoa-automation-opportunity-scan",
@@ -970,6 +1006,10 @@
         "aoa-change-protocol",
         "aoa-contract-test",
         "aoa-core-logic-boundary",
+        "aoa-decision",
+        "aoa-decision-correct",
+        "aoa-decision-create",
+        "aoa-decision-find",
         "aoa-memo-writeback",
         "aoa-port-adapter-refactor",
         "aoa-property-invariants",
@@ -982,7 +1022,7 @@
         "aoa-source-of-truth-check",
         "aoa-tdd-slice"
       ],
-      "profile_revision": "7ed05cc7b6de3ee3790fcabeddd5541d05155803c3bd153ca213d144ae8cee1c"
+      "profile_revision": "cffdf9876288978ea76e3ecf3b51fb462636d7b556d2abcfd210ac9a96f76c76"
     }
   ],
   "release_identity": {

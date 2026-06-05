@@ -219,6 +219,78 @@
       "workflow_short": "Purpose: separate a stable reusable center from surrounding glue, orchestration, projection, infrastructure, or presentation detail to future changes land in the right place. Flow: identify which rules or behaviors are stable enough to count as reusable..."
     },
     {
+      "inputs_short": "Needs: user intent, target repository, touched paths, or decision ID when known; available aoadecisions MCP tools or a local graph builder fallback, including status, issues, changed-path, source-surface,...",
+      "invocation_mode": "explicit-preferred",
+      "main_anti_patterns_short": "Avoid: treating the workspace graph as an authority instead of a read model; loading every subskill for a simple lookup; creating a decision note when a lighter source-of-truth or change summary is enough; copying a...",
+      "name": "aoa-decision",
+      "outputs_short": "Produces: one chosen route: aoa-decision-find, aoa-decision-create, or aoa-decision-correct; compact graph or source context used for the route decision; explicit owner repository and source-truth surface;...",
+      "scope": "core",
+      "skill_path": "skills/core/engineering/aoa-decision/SKILL.md",
+      "status": "evaluated",
+      "summary": "Route AoA decision-lane work through the workspace decision graph first, then hand off to the smallest find, create, or correct subskill while keeping repo-local decision files authoritative.",
+      "technique_dependencies": [
+        "AOA-T-0033",
+        "AOA-T-0002"
+      ],
+      "trigger_boundary_short": "Use when the task mentions docs/decisions/, decision records, ADRs, decision indexes, decision graph, or decision-lane symmetry; the user asks which prior decision, source surface, owner boundary, status,...",
+      "verification_short": "Checks: confirm exactly one route was selected; confirm aoadecisions was used first when available, or the fallback was named; confirm graph issue posture was checked before create/correct routes; confirm the owning...",
+      "workflow_short": "Purpose: this skill as the front door for AoA docs/decisions/ work. Flow: classify the task -> find or understand: use aoa-decision-find -> create or record a new rationale: use aoa-decision-create -> correct, supersede, reindex, or repair metadata: use..."
+    },
+    {
+      "inputs_short": "Needs: target decision ID, path, source surface, stale index, or graph mismatch; aoadecisions status, issues, decision, changed-path, source-surface, owner-surface, or repo packet for the target record when...",
+      "invocation_mode": "explicit-preferred",
+      "main_anti_patterns_short": "Avoid: fixing only generated indexes while leaving source metadata wrong; changing meaning silently without status or supersession; broad rewriting because a small metadata fix was requested; trusting a stale graph...",
+      "name": "aoa-decision-correct",
+      "outputs_short": "Produces: corrected source decision note or explicit no-change finding; regenerated repo-local decision indexes when metadata changed; refreshed or checked workspace graph; clear report of old mismatch, correction,...",
+      "scope": "core",
+      "skill_path": "skills/core/engineering/aoa-decision-correct/SKILL.md",
+      "status": "evaluated",
+      "summary": "Correct, supersede, or reindex AoA decision records by editing source notes first, rebuilding repo-local indexes, and refreshing the workspace decision graph.",
+      "technique_dependencies": [
+        "AOA-T-0001",
+        "AOA-T-0033",
+        "AOA-T-0002"
+      ],
+      "trigger_boundary_short": "Use when a decision record is stale, incomplete, misindexed, wrongly sourced, or needs supersession; generated decision indexes are out of date with source metadata; Avoid when the task is only to find relevant...",
+      "verification_short": "Checks: confirm the source note was inspected and, if needed, edited; confirm generated indexes were regenerated only from source metadata; confirm repo-local decision checks passed or failures are explicit; confirm...",
+      "workflow_short": "Purpose: repair an existing decision record, its index metadata, supersession links, source-surface list, or generated decision indexes without letting the workspace graph become the authority. Flow: use aoadecisions status and issues first, then fetch..."
+    },
+    {
+      "inputs_short": "Needs: chosen decision and the options that shaped it; target repository and source surfaces changed by the decision; graph status, issue packet, changed-path/source-surface/owner-surface packet, or search results...",
+      "invocation_mode": "explicit-preferred",
+      "main_anti_patterns_short": "Avoid: creating process noise for trivial changes; writing a decision before the choice is actually made; copying a sibling record and leaving mismatched owner surfaces; omitting rejected options or consequences...",
+      "name": "aoa-decision-create",
+      "outputs_short": "Produces: one new source decision note with canonical ID, status, date, owner surface, index metadata, context, options, decision, rationale, consequences, source surfaces, and follow-up route; refreshed repo-local...",
+      "scope": "core",
+      "skill_path": "skills/core/engineering/aoa-decision-create/SKILL.md",
+      "status": "evaluated",
+      "summary": "Create a new AoA decision record in the owning repository by using graph context for placement and repo-local decision law for the actual source note and indexes.",
+      "technique_dependencies": [
+        "AOA-T-0033",
+        "AOA-T-0002"
+      ],
+      "trigger_boundary_short": "Use when a change creates durable rationale that future agents need before repeating the route; the owner repository already has or intentionally needs a docs/decisions/ lane; Avoid when no decision has been made...",
+      "verification_short": "Checks: confirm the new record has canonical ID, status, date, owner surface, and index metadata; confirm source surfaces match the actual diff; confirm repo-local decision indexes were regenerated and checked;...",
+      "workflow_short": "Purpose: a real structural, workflow, tooling, source/export, or authority decision needs a durable repo-local docs/decisions/ note and the workspace graph should help find the right placement, neighbors, and ID context. Flow: confirm a real decision..."
+    },
+    {
+      "inputs_short": "Needs: query terms, touched paths, target repository, decision ID, source surface, or owner surface; aoadecisions MCP search, packet, changed-path, source-surface, owner-surface, repo-symmetry, issue, repo,...",
+      "invocation_mode": "explicit-preferred",
+      "main_anti_patterns_short": "Avoid: over-answering from generated graph fields without opening the source record; treating a title match as semantic equivalence; ignoring supersession or status fields; turning a weak sibling analogy into a...",
+      "name": "aoa-decision-find",
+      "outputs_short": "Produces: ranked decision matches with repo, decision ID, path, status, and reason for relevance; source-note refs used for any claim; note when graph data is stale, missing, or only a candidate hint; next route if...",
+      "scope": "core",
+      "skill_path": "skills/core/engineering/aoa-decision-find/SKILL.md",
+      "status": "evaluated",
+      "summary": "Find AoA decision records through the workspace graph, then verify claims against repo-local source notes and generated decision indexes.",
+      "technique_dependencies": [
+        "AOA-T-0002"
+      ],
+      "trigger_boundary_short": "Use when the user asks what decision exists, which record explains a route, or why a boundary was chosen; a task needs relevant prior decision context before editing code, docs, validation, MCP, skill, or repo...",
+      "verification_short": "Checks: confirm graph or fallback lookup path was used; confirm changed-path/source/owner packet was used when the input made one available; confirm final claims came from source notes, not only generated graph...",
+      "workflow_short": "Purpose: find decision rationale quickly across AoA repositories while keeping final claims grounded in the owning repository's authored decision note. Flow: query aoadecisions first when available; choose the narrowest packet changed-path for touched..."
+    },
+    {
       "inputs_short": "Needs: requested action; available preview or dry-run mechanisms; touched surfaces; known limits of the preview path.",
       "invocation_mode": "explicit-only",
       "main_anti_patterns_short": "Avoid: treating a preview as complete validation; skipping preview because the real change looks small; using a fake or weak preview path that does not touch the real risk surface; blurring inspect-only and execute...",

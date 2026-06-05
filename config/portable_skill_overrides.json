@@ -27,6 +27,26 @@
       "short_description": "Plan, scope, verify, report",
       "default_prompt": "Use $aoa-change-protocol to plan, apply, verify, and report a bounded non-trivial repository change."
     },
+    "aoa-decision": {
+      "description": "Route AoA decision-lane work through the workspace decision graph first, checking status/issues and the smallest impact packet before choosing find, create, or correct while keeping repo-local decision files authoritative. Use when the task mentions docs/decisions, decision indexes, decision graph, ADRs, changed paths, source-surface rationale, supersession, or cross-repo decision symmetry. Do not use for ordinary docs edits, unresolved source-of-truth mapping, or trivial changes that do not need durable rationale.",
+      "short_description": "Route decision-lane work",
+      "default_prompt": "Use $aoa-decision to check the decision graph first, choose find/create/correct, and keep repo-local decision files as source truth."
+    },
+    "aoa-decision-find": {
+      "description": "Find AoA decision records through workspace graph search and impact packets, then verify claims against repo-local source notes and generated decision indexes. Use when prior decision rationale, changed paths, owner surfaces, source surfaces, status, or supersession links are needed before work continues. Do not use when the task is to create or edit a decision record.",
+      "short_description": "Find decision records",
+      "default_prompt": "Use $aoa-decision-find to search the decision graph, read the matching source notes, and return compact decision context."
+    },
+    "aoa-decision-create": {
+      "description": "Create a new AoA decision record in the owning repository by checking graph status/issues, using impact packets for placement, and following repo-local decision law for the actual source note and indexes. Use when a real structural, workflow, tooling, source/export, MCP, skill, or authority decision needs durable rationale. Do not use when no decision has been made, the change is trivial, the target repo has unresolved graph issues, or an existing note only needs correction.",
+      "short_description": "Create decision records",
+      "default_prompt": "Use $aoa-decision-create to inspect graph context, write the repo-local decision note, rebuild indexes, and refresh the workspace graph."
+    },
+    "aoa-decision-correct": {
+      "description": "Correct, supersede, reindex, or repair graph-coverage drift in AoA decision records by checking graph issues, editing source notes first, rebuilding repo-local indexes, and refreshing the workspace decision graph. Use when a decision note, index metadata, source-surface list, status, supersession, generated index, unknown surface, or graph packet is stale or wrong. Do not use for pure lookup or for creating a new decision note.",
+      "short_description": "Correct decision records",
+      "default_prompt": "Use $aoa-decision-correct to repair the source decision note first, rebuild local indexes, and refresh the workspace graph."
+    },
     "aoa-commit-growth-seam": {
       "description": "Turn a validated bounded diff into one intentional local commit with explicit scope review, named verification carry-forward, and a visible stop line before push or publish. Use when a bounded code, config, or docs diff is already prepared locally and the next honest move is one local commit boundary rather than more coding. Do not use when the task still needs more repair or verification, when no bounded diff exists, or when the main task is push, PR, release, or public-share.",
       "short_description": "Commit bounded diffs honestly",

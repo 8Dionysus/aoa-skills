@@ -984,6 +984,280 @@
       }
     },
     {
+      "name": "aoa-decision",
+      "display_name": "AoA Decision",
+      "description": "Route AoA decision-lane work through the workspace decision graph first, checking status/issues and the smallest impact packet before choosing find, create, or correct while keeping repo-local decision files authoritative. Use when the task mentions docs/decisions, decision indexes, decision graph, ADRs, changed paths, source-surface rationale, supersession, or cross-repo decision symmetry. Do not use for ordinary docs edits, unresolved source-of-truth mapping, or trivial changes that do not need durable rationale.",
+      "invocation_mode": "explicit-preferred",
+      "inputs": [
+        "user intent, target repository, touched paths, or decision ID when known",
+        "available `aoa_decisions` MCP tools or a local graph builder fallback, including status, issues, changed-path, source-surface, owner-surface, and repo-symmetry packets",
+        "repo-local `docs/decisions/AGENTS.md`, `README.md`, `TEMPLATE.md`, generated indexes, and nearest existing records",
+        "source surfaces that the decision record explains",
+        "validation commands from the owning repository"
+      ],
+      "outputs": [
+        "one chosen route: `aoa-decision-find`, `aoa-decision-create`, or `aoa-decision-correct`",
+        "compact graph or source context used for the route decision",
+        "explicit owner repository and source-truth surface",
+        "validation path for any write or correction",
+        "stop line when the graph is stale, missing, or not authoritative enough"
+      ],
+      "verification": [
+        "confirm exactly one route was selected",
+        "confirm `aoa_decisions` was used first when available, or the fallback was named",
+        "confirm graph issue posture was checked before create/correct routes",
+        "confirm the owning repository and source decision surface are explicit",
+        "confirm any write uses repo-local route law and validators",
+        "confirm generated indexes and the workspace graph are not treated as source truth",
+        "confirm the final report names validation and any skipped check"
+      ],
+      "contracts": [
+        "the graph accelerates lookup; it does not own decision truth",
+        "source files in the owning repository remain stronger than MCP packets, generated graph nodes, and generated indexes",
+        "the router chooses one subskill to control cost and avoid conflicting advice",
+        "cross-repo symmetry must be appropriate to the target repo, not forced from a sibling template",
+        "no MCP write tool may create, accept, or correct a decision record silently",
+        "stale graph findings must be refreshed or downgraded before they shape a write",
+        "graph issues block writes in the affected repo and downgrade cross-repo confidence elsewhere until reported"
+      ],
+      "consumes_artifact_tags": [
+        "user-intent-target-repository-touched-paths-or-decision-id-when-",
+        "available-aoa-decisions-mcp-tools-or-a-local-graph-builder-fallb",
+        "repo-local-docs-decisions-agents-md-readme-md-template-md-genera",
+        "source-surfaces-that-the-decision-record-explains",
+        "validation-commands-from-the-owning-repository"
+      ],
+      "provides_artifact_tags": [
+        "one-chosen-route-aoa-decision-find-aoa-decision-create-or-aoa-de",
+        "compact-graph-or-source-context-used-for-the-route-decision",
+        "explicit-owner-repository-and-source-truth-surface",
+        "validation-path-for-any-write-or-correction",
+        "stop-line-when-the-graph-is-stale-missing-or-not-authoritative-e"
+      ],
+      "handoff_packet_template": {
+        "from_skill": "aoa-decision",
+        "produced_artifacts": [
+          "one-chosen-route-aoa-decision-find-aoa-decision-create-or-aoa-de",
+          "compact-graph-or-source-context-used-for-the-route-decision",
+          "explicit-owner-repository-and-source-truth-surface",
+          "validation-path-for-any-write-or-correction",
+          "stop-line-when-the-graph-is-stale-missing-or-not-authoritative-e"
+        ],
+        "verification_notes": [
+          "confirm exactly one route was selected",
+          "confirm `aoa_decisions` was used first when available, or the fallback was named",
+          "confirm graph issue posture was checked before create/correct routes"
+        ],
+        "contract_notes": [
+          "the graph accelerates lookup; it does not own decision truth",
+          "source files in the owning repository remain stronger than MCP packets, generated graph nodes, and generated indexes",
+          "the router chooses one subskill to control cost and avoid conflicting advice"
+        ],
+        "next_recommended_skills": []
+      }
+    },
+    {
+      "name": "aoa-decision-correct",
+      "display_name": "AoA Decision Correct",
+      "description": "Correct, supersede, reindex, or repair graph-coverage drift in AoA decision records by checking graph issues, editing source notes first, rebuilding repo-local indexes, and refreshing the workspace decision graph. Use when a decision note, index metadata, source-surface list, status, supersession, generated index, unknown surface, or graph packet is stale or wrong. Do not use for pure lookup or for creating a new decision note.",
+      "invocation_mode": "explicit-preferred",
+      "inputs": [
+        "target decision ID, path, source surface, stale index, or graph mismatch",
+        "`aoa_decisions` status, issues, decision, changed-path, source-surface, owner-surface, or repo packet for the target record when available",
+        "repo-local decision route card, template, source note, and generated indexes",
+        "source files changed by the correction when relevant",
+        "validation commands for decision indexes and affected surfaces"
+      ],
+      "outputs": [
+        "corrected source decision note or explicit no-change finding",
+        "regenerated repo-local decision indexes when metadata changed",
+        "refreshed or checked workspace graph",
+        "clear report of old mismatch, correction, validation, and any remaining risk"
+      ],
+      "verification": [
+        "confirm the source note was inspected and, if needed, edited",
+        "confirm generated indexes were regenerated only from source metadata",
+        "confirm repo-local decision checks passed or failures are explicit",
+        "confirm workspace graph refresh/check and decision-graph lane see the corrected state",
+        "confirm semantic rewrites are avoided or made explicit through supersession/status"
+      ],
+      "contracts": [
+        "source notes are edited before generated indexes or graph cache",
+        "generated graph/cache refresh cannot be used to hide source drift",
+        "semantic corrections must preserve reviewable history through status or supersession",
+        "typo-only fixes should not inflate into new rationale",
+        "validation must cover the owner repo, not only the workspace graph",
+        "graph issue packets are triage inputs; they do not replace source-note or local-contract inspection"
+      ],
+      "consumes_artifact_tags": [
+        "target-decision-id-path-source-surface-stale-index-or-graph-mism",
+        "aoa-decisions-status-issues-decision-changed-path-source-surface",
+        "repo-local-decision-route-card-template-source-note-and-generate",
+        "source-files-changed-by-the-correction-when-relevant",
+        "validation-commands-for-decision-indexes-and-affected-surfaces"
+      ],
+      "provides_artifact_tags": [
+        "corrected-source-decision-note-or-explicit-no-change-finding",
+        "regenerated-repo-local-decision-indexes-when-metadata-changed",
+        "refreshed-or-checked-workspace-graph",
+        "clear-report-of-old-mismatch-correction-validation-and-any-remai"
+      ],
+      "handoff_packet_template": {
+        "from_skill": "aoa-decision-correct",
+        "produced_artifacts": [
+          "corrected-source-decision-note-or-explicit-no-change-finding",
+          "regenerated-repo-local-decision-indexes-when-metadata-changed",
+          "refreshed-or-checked-workspace-graph",
+          "clear-report-of-old-mismatch-correction-validation-and-any-remai"
+        ],
+        "verification_notes": [
+          "confirm the source note was inspected and, if needed, edited",
+          "confirm generated indexes were regenerated only from source metadata",
+          "confirm repo-local decision checks passed or failures are explicit"
+        ],
+        "contract_notes": [
+          "source notes are edited before generated indexes or graph cache",
+          "generated graph/cache refresh cannot be used to hide source drift",
+          "semantic corrections must preserve reviewable history through status or supersession"
+        ],
+        "next_recommended_skills": []
+      }
+    },
+    {
+      "name": "aoa-decision-create",
+      "display_name": "AoA Decision Create",
+      "description": "Create a new AoA decision record in the owning repository by checking graph status/issues, using impact packets for placement, and following repo-local decision law for the actual source note and indexes. Use when a real structural, workflow, tooling, source/export, MCP, skill, or authority decision needs durable rationale. Do not use when no decision has been made, the change is trivial, the target repo has unresolved graph issues, or an existing note only needs correction.",
+      "invocation_mode": "explicit-preferred",
+      "inputs": [
+        "chosen decision and the options that shaped it",
+        "target repository and source surfaces changed by the decision",
+        "graph status, issue packet, changed-path/source-surface/owner-surface packet, or search results for related records",
+        "repo-local decision route card, README, template, generated indexes, and latest records",
+        "repo-local decision-index and validation commands"
+      ],
+      "outputs": [
+        "one new source decision note with canonical ID, status, date, owner surface, index metadata, context, options, decision, rationale, consequences, source surfaces, and follow-up route",
+        "refreshed repo-local generated decision indexes",
+        "refreshed or checked workspace decision graph",
+        "validation summary and any remaining owner-route risk"
+      ],
+      "verification": [
+        "confirm the new record has canonical ID, status, date, owner surface, and index metadata",
+        "confirm source surfaces match the actual diff",
+        "confirm repo-local decision indexes were regenerated and checked",
+        "confirm graph issue posture was checked before writing",
+        "confirm affected validators were run or explicitly skipped with reason",
+        "confirm workspace graph refresh/check and decision-graph lane see the new record"
+      ],
+      "contracts": [
+        "a decision note records why; it does not replace the active source surface",
+        "next ID selection must be verified from source files",
+        "sibling decisions may inform shape, but the target repo owns its own rationale",
+        "generated indexes must be rebuilt from source metadata, not hand-edited as truth",
+        "workspace graph refresh is part of done after creating a record",
+        "unresolved graph issues in the target repo block creation until corrected"
+      ],
+      "consumes_artifact_tags": [
+        "chosen-decision-and-the-options-that-shaped-it",
+        "target-repository-and-source-surfaces-changed-by-the-decision",
+        "graph-status-issue-packet-changed-path-source-surface-owner-surf",
+        "repo-local-decision-route-card-readme-template-generated-indexes",
+        "repo-local-decision-index-and-validation-commands"
+      ],
+      "provides_artifact_tags": [
+        "one-new-source-decision-note-with-canonical-id-status-date-owner",
+        "refreshed-repo-local-generated-decision-indexes",
+        "refreshed-or-checked-workspace-decision-graph",
+        "validation-summary-and-any-remaining-owner-route-risk"
+      ],
+      "handoff_packet_template": {
+        "from_skill": "aoa-decision-create",
+        "produced_artifacts": [
+          "one-new-source-decision-note-with-canonical-id-status-date-owner",
+          "refreshed-repo-local-generated-decision-indexes",
+          "refreshed-or-checked-workspace-decision-graph",
+          "validation-summary-and-any-remaining-owner-route-risk"
+        ],
+        "verification_notes": [
+          "confirm the new record has canonical ID, status, date, owner surface, and index metadata",
+          "confirm source surfaces match the actual diff",
+          "confirm repo-local decision indexes were regenerated and checked"
+        ],
+        "contract_notes": [
+          "a decision note records why; it does not replace the active source surface",
+          "next ID selection must be verified from source files",
+          "sibling decisions may inform shape, but the target repo owns its own rationale"
+        ],
+        "next_recommended_skills": []
+      }
+    },
+    {
+      "name": "aoa-decision-find",
+      "display_name": "AoA Decision Find",
+      "description": "Find AoA decision records through workspace graph search and impact packets, then verify claims against repo-local source notes and generated decision indexes. Use when prior decision rationale, changed paths, owner surfaces, source surfaces, status, or supersession links are needed before work continues. Do not use when the task is to create or edit a decision record.",
+      "invocation_mode": "explicit-preferred",
+      "inputs": [
+        "query terms, touched paths, target repository, decision ID, source surface, or owner surface",
+        "`aoa_decisions` MCP search, packet, changed-path, source-surface, owner-surface, repo-symmetry, issue, repo, decision, or summary tools when available",
+        "fallback generated graph files or repo-local decision indexes",
+        "source decision notes for final verification"
+      ],
+      "outputs": [
+        "ranked decision matches with repo, decision ID, path, status, and reason for relevance",
+        "source-note refs used for any claim",
+        "note when graph data is stale, missing, or only a candidate hint",
+        "next route if creation or correction is needed"
+      ],
+      "verification": [
+        "confirm graph or fallback lookup path was used",
+        "confirm changed-path/source/owner packet was used when the input made one available",
+        "confirm final claims came from source notes, not only generated graph data",
+        "confirm match confidence and any uncertainty are visible",
+        "confirm missing or stale records route to create or correct instead of being hidden",
+        "confirm the answer stays compact enough for the current task"
+      ],
+      "contracts": [
+        "MCP packets and graph nodes are hints until checked against source notes",
+        "source-note claims must cite the repo and decision path",
+        "related sibling decisions are examples, not templates to copy blindly",
+        "missing evidence should be reported as missing, not filled with doctrine",
+        "avoid loading unrelated decision lanes after a sufficient match is found",
+        "graph issues reduce confidence; they do not authorize guessing"
+      ],
+      "consumes_artifact_tags": [
+        "query-terms-touched-paths-target-repository-decision-id-source-s",
+        "aoa-decisions-mcp-search-packet-changed-path-source-surface-owne",
+        "fallback-generated-graph-files-or-repo-local-decision-indexes",
+        "source-decision-notes-for-final-verification"
+      ],
+      "provides_artifact_tags": [
+        "ranked-decision-matches-with-repo-decision-id-path-status-and-re",
+        "source-note-refs-used-for-any-claim",
+        "note-when-graph-data-is-stale-missing-or-only-a-candidate-hint",
+        "next-route-if-creation-or-correction-is-needed"
+      ],
+      "handoff_packet_template": {
+        "from_skill": "aoa-decision-find",
+        "produced_artifacts": [
+          "ranked-decision-matches-with-repo-decision-id-path-status-and-re",
+          "source-note-refs-used-for-any-claim",
+          "note-when-graph-data-is-stale-missing-or-only-a-candidate-hint",
+          "next-route-if-creation-or-correction-is-needed"
+        ],
+        "verification_notes": [
+          "confirm graph or fallback lookup path was used",
+          "confirm changed-path/source/owner packet was used when the input made one available",
+          "confirm final claims came from source notes, not only generated graph data"
+        ],
+        "contract_notes": [
+          "MCP packets and graph nodes are hints until checked against source notes",
+          "source-note claims must cite the repo and decision path",
+          "related sibling decisions are examples, not templates to copy blindly"
+        ],
+        "next_recommended_skills": []
+      }
+    },
+    {
       "name": "aoa-dry-run-first",
       "display_name": "AoA Dry Run First",
       "description": "Prefer simulation, preview, or inspect-only paths before any real mutation, then require one explicit confirmation for the concrete mutating step. Use when the action can be previewed and mistakes would be costly, such as delete, restore, migrate, or reconfigure operations. Do not use for purely analytical tasks or when the primary question is whether execution is authorized at all.",

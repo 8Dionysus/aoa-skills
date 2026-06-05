@@ -49,6 +49,21 @@ This document explains the same lane decisions in prose without changing status 
   - `docs/reviews/canonical-candidates/aoa-adr-write.md`
   - `docs/reviews/canonical-candidates/aoa-source-of-truth-check.md`
 
+## decision_graph_chain
+
+- state: `comparative_pending`
+- default reference anchor: `aoa-adr-write`
+- stay-evaluated decisions: `aoa-decision`, `aoa-decision-find`, `aoa-decision-create`, `aoa-decision-correct`
+- rationale: the graph chain is useful as a decision-lane access path, but it
+  stays intentionally below canonical default status because repo-local
+  decision notes, ADR writing, and source-of-truth checks still own the stronger
+  authority surfaces.
+- review sources:
+  - `skills/core/engineering/aoa-decision/checks/review.md`
+  - `skills/core/engineering/aoa-decision-find/checks/review.md`
+  - `skills/core/engineering/aoa-decision-create/checks/review.md`
+  - `skills/core/engineering/aoa-decision-correct/checks/review.md`
+
 ## risk_authority_preview_execution
 
 - state: `stable_defaults`

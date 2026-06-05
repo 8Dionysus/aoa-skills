@@ -137,6 +137,50 @@
     {
       "composition_class": "multi_technique",
       "exception_review_path": null,
+      "name": "aoa-decision",
+      "recommended_action": "keep_multi_technique",
+      "technique_count": 2,
+      "technique_ids": [
+        "AOA-T-0033",
+        "AOA-T-0002"
+      ]
+    },
+    {
+      "composition_class": "multi_technique",
+      "exception_review_path": null,
+      "name": "aoa-decision-correct",
+      "recommended_action": "keep_multi_technique",
+      "technique_count": 3,
+      "technique_ids": [
+        "AOA-T-0001",
+        "AOA-T-0033",
+        "AOA-T-0002"
+      ]
+    },
+    {
+      "composition_class": "multi_technique",
+      "exception_review_path": null,
+      "name": "aoa-decision-create",
+      "recommended_action": "keep_multi_technique",
+      "technique_count": 2,
+      "technique_ids": [
+        "AOA-T-0033",
+        "AOA-T-0002"
+      ]
+    },
+    {
+      "composition_class": "single_technique_exception",
+      "exception_review_path": "docs/reviews/skill-composition-exceptions/aoa-decision-find.md",
+      "name": "aoa-decision-find",
+      "recommended_action": "keep_exception",
+      "technique_count": 1,
+      "technique_ids": [
+        "AOA-T-0002"
+      ]
+    },
+    {
+      "composition_class": "multi_technique",
+      "exception_review_path": null,
       "name": "aoa-dry-run-first",
       "recommended_action": "keep_multi_technique",
       "technique_count": 2,
@@ -537,10 +581,10 @@
     "technique_manifest": "skills/**/techniques.yaml"
   },
   "summary": {
-    "approved_exception_count": 2,
-    "multi_technique_skill_count": 44,
+    "approved_exception_count": 3,
+    "multi_technique_skill_count": 47,
     "needs_reframe_count": 0,
-    "single_technique_skill_count": 2,
-    "total_skill_count": 46
+    "single_technique_skill_count": 3,
+    "total_skill_count": 50
   }
 }

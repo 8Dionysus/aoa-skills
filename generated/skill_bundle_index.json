@@ -1026,6 +1026,326 @@
         "runtime_seam",
         "runtime_guardrails",
         "description_trigger",
+        "tiny_router"
+      ],
+      "bundle_files": [
+        "skills/core/engineering/aoa-decision/SKILL.md",
+        "skills/core/engineering/aoa-decision/techniques.yaml",
+        "skills/core/engineering/aoa-decision/agents/openai.yaml"
+      ],
+      "candidate_review_path": null,
+      "canonical_candidate_ready": true,
+      "canonical_eval_ready": true,
+      "content_hash": "c2e248e7a30b08408c20530573733cfaf31e6c7e616b8024b9000b59c5a4bcb1",
+      "generated_surface_versions": {
+        "boundary_matrix": 2,
+        "bundle_index": 2,
+        "capsule": 1,
+        "catalog": 1,
+        "evaluation_matrix": 1,
+        "governance_backlog": 5,
+        "lineage_surface": 1,
+        "overlay_readiness": 1,
+        "public_surface": 3,
+        "sections": 1,
+        "skill_composition_audit": 1,
+        "skill_graph": 2,
+        "walkthrough": 1
+      },
+      "install_profiles": [
+        "repo-core-only",
+        "repo-default",
+        "repo-project-core-outer-ring",
+        "repo-project-foundation",
+        "user-curated-core"
+      ],
+      "invocation_mode": "explicit-preferred",
+      "lineage_state": "published",
+      "name": "aoa-decision",
+      "promotion_review_path": "docs/reviews/status-promotions/aoa-decision.md",
+      "scope": "core",
+      "skill_path": "skills/core/engineering/aoa-decision/SKILL.md",
+      "skill_revision": "c2e248e7a30b",
+      "status": "evaluated",
+      "support_artifacts": [
+        {
+          "path": "skills/core/engineering/aoa-decision/checks/review.md",
+          "selected_for_runtime_inspection": true,
+          "type": "review_checklist"
+        },
+        {
+          "path": "docs/reviews/status-promotions/aoa-decision.md",
+          "selected_for_runtime_inspection": false,
+          "type": "promotion_review"
+        }
+      ],
+      "technique_dependencies": [
+        "AOA-T-0033",
+        "AOA-T-0002"
+      ],
+      "technique_lineage": [
+        {
+          "id": "AOA-T-0033",
+          "lineage_state": "published",
+          "path": "techniques/instruction/docs-boundary/decision-rationale-recording/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
+        },
+        {
+          "id": "AOA-T-0002",
+          "lineage_state": "published",
+          "path": "techniques/instruction/docs-boundary/source-of-truth-layout/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
+        }
+      ]
+    },
+    {
+      "artifact_group_coverage": [
+        "portable_export",
+        "runtime_seam",
+        "runtime_guardrails",
+        "description_trigger",
+        "tiny_router"
+      ],
+      "bundle_files": [
+        "skills/core/engineering/aoa-decision-correct/SKILL.md",
+        "skills/core/engineering/aoa-decision-correct/techniques.yaml",
+        "skills/core/engineering/aoa-decision-correct/agents/openai.yaml"
+      ],
+      "candidate_review_path": null,
+      "canonical_candidate_ready": true,
+      "canonical_eval_ready": true,
+      "content_hash": "18f68b1173b405c35c90d98a0dd50a7d0979c52071151d32f5b2ef272e478790",
+      "generated_surface_versions": {
+        "boundary_matrix": 2,
+        "bundle_index": 2,
+        "capsule": 1,
+        "catalog": 1,
+        "evaluation_matrix": 1,
+        "governance_backlog": 5,
+        "lineage_surface": 1,
+        "overlay_readiness": 1,
+        "public_surface": 3,
+        "sections": 1,
+        "skill_composition_audit": 1,
+        "skill_graph": 2,
+        "walkthrough": 1
+      },
+      "install_profiles": [
+        "repo-core-only",
+        "repo-default",
+        "repo-project-core-outer-ring",
+        "repo-project-foundation",
+        "user-curated-core"
+      ],
+      "invocation_mode": "explicit-preferred",
+      "lineage_state": "published",
+      "name": "aoa-decision-correct",
+      "promotion_review_path": "docs/reviews/status-promotions/aoa-decision-correct.md",
+      "scope": "core",
+      "skill_path": "skills/core/engineering/aoa-decision-correct/SKILL.md",
+      "skill_revision": "18f68b1173b4",
+      "status": "evaluated",
+      "support_artifacts": [
+        {
+          "path": "skills/core/engineering/aoa-decision-correct/checks/review.md",
+          "selected_for_runtime_inspection": true,
+          "type": "review_checklist"
+        },
+        {
+          "path": "docs/reviews/status-promotions/aoa-decision-correct.md",
+          "selected_for_runtime_inspection": false,
+          "type": "promotion_review"
+        }
+      ],
+      "technique_dependencies": [
+        "AOA-T-0001",
+        "AOA-T-0033",
+        "AOA-T-0002"
+      ],
+      "technique_lineage": [
+        {
+          "id": "AOA-T-0001",
+          "lineage_state": "published",
+          "path": "techniques/execution/agent-workflows-core/plan-diff-apply-verify-report/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875"
+        },
+        {
+          "id": "AOA-T-0033",
+          "lineage_state": "published",
+          "path": "techniques/instruction/docs-boundary/decision-rationale-recording/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
+        },
+        {
+          "id": "AOA-T-0002",
+          "lineage_state": "published",
+          "path": "techniques/instruction/docs-boundary/source-of-truth-layout/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875"
+        }
+      ]
+    },
+    {
+      "artifact_group_coverage": [
+        "portable_export",
+        "runtime_seam",
+        "runtime_guardrails",
+        "description_trigger",
+        "tiny_router"
+      ],
+      "bundle_files": [
+        "skills/core/engineering/aoa-decision-create/SKILL.md",
+        "skills/core/engineering/aoa-decision-create/techniques.yaml",
+        "skills/core/engineering/aoa-decision-create/agents/openai.yaml"
+      ],
+      "candidate_review_path": null,
+      "canonical_candidate_ready": true,
+      "canonical_eval_ready": true,
+      "content_hash": "de4ff5b8cedeb58d6e69756b732162ffe3fd9cb16c78ec1ce29b7e8df656f7d6",
+      "generated_surface_versions": {
+        "boundary_matrix": 2,
+        "bundle_index": 2,
+        "capsule": 1,
+        "catalog": 1,
+        "evaluation_matrix": 1,
+        "governance_backlog": 5,
+        "lineage_surface": 1,
+        "overlay_readiness": 1,
+        "public_surface": 3,
+        "sections": 1,
+        "skill_composition_audit": 1,
+        "skill_graph": 2,
+        "walkthrough": 1
+      },
+      "install_profiles": [
+        "repo-core-only",
+        "repo-default",
+        "repo-project-core-outer-ring",
+        "repo-project-foundation",
+        "user-curated-core"
+      ],
+      "invocation_mode": "explicit-preferred",
+      "lineage_state": "published",
+      "name": "aoa-decision-create",
+      "promotion_review_path": "docs/reviews/status-promotions/aoa-decision-create.md",
+      "scope": "core",
+      "skill_path": "skills/core/engineering/aoa-decision-create/SKILL.md",
+      "skill_revision": "de4ff5b8cede",
+      "status": "evaluated",
+      "support_artifacts": [
+        {
+          "path": "skills/core/engineering/aoa-decision-create/checks/review.md",
+          "selected_for_runtime_inspection": true,
+          "type": "review_checklist"
+        },
+        {
+          "path": "docs/reviews/status-promotions/aoa-decision-create.md",
+          "selected_for_runtime_inspection": false,
+          "type": "promotion_review"
+        }
+      ],
+      "technique_dependencies": [
+        "AOA-T-0033",
+        "AOA-T-0002"
+      ],
+      "technique_lineage": [
+        {
+          "id": "AOA-T-0033",
+          "lineage_state": "published",
+          "path": "techniques/instruction/docs-boundary/decision-rationale-recording/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
+        },
+        {
+          "id": "AOA-T-0002",
+          "lineage_state": "published",
+          "path": "techniques/instruction/docs-boundary/source-of-truth-layout/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
+        }
+      ]
+    },
+    {
+      "artifact_group_coverage": [
+        "portable_export",
+        "runtime_seam",
+        "runtime_guardrails",
+        "description_trigger",
+        "tiny_router"
+      ],
+      "bundle_files": [
+        "skills/core/engineering/aoa-decision-find/SKILL.md",
+        "skills/core/engineering/aoa-decision-find/techniques.yaml",
+        "skills/core/engineering/aoa-decision-find/agents/openai.yaml"
+      ],
+      "candidate_review_path": null,
+      "canonical_candidate_ready": true,
+      "canonical_eval_ready": true,
+      "content_hash": "bda8dc8a6df234e68f629039c5c59a479b1c2e53f584767d5a5536751ec07b4c",
+      "generated_surface_versions": {
+        "boundary_matrix": 2,
+        "bundle_index": 2,
+        "capsule": 1,
+        "catalog": 1,
+        "evaluation_matrix": 1,
+        "governance_backlog": 5,
+        "lineage_surface": 1,
+        "overlay_readiness": 1,
+        "public_surface": 3,
+        "sections": 1,
+        "skill_composition_audit": 1,
+        "skill_graph": 2,
+        "walkthrough": 1
+      },
+      "install_profiles": [
+        "repo-core-only",
+        "repo-default",
+        "repo-project-core-outer-ring",
+        "repo-project-foundation",
+        "user-curated-core"
+      ],
+      "invocation_mode": "explicit-preferred",
+      "lineage_state": "published",
+      "name": "aoa-decision-find",
+      "promotion_review_path": "docs/reviews/status-promotions/aoa-decision-find.md",
+      "scope": "core",
+      "skill_path": "skills/core/engineering/aoa-decision-find/SKILL.md",
+      "skill_revision": "bda8dc8a6df2",
+      "status": "evaluated",
+      "support_artifacts": [
+        {
+          "path": "skills/core/engineering/aoa-decision-find/checks/review.md",
+          "selected_for_runtime_inspection": true,
+          "type": "review_checklist"
+        },
+        {
+          "path": "docs/reviews/status-promotions/aoa-decision-find.md",
+          "selected_for_runtime_inspection": false,
+          "type": "promotion_review"
+        }
+      ],
+      "technique_dependencies": [
+        "AOA-T-0002"
+      ],
+      "technique_lineage": [
+        {
+          "id": "AOA-T-0002",
+          "lineage_state": "published",
+          "path": "techniques/instruction/docs-boundary/source-of-truth-layout/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875"
+        }
+      ]
+    },
+    {
+      "artifact_group_coverage": [
+        "portable_export",
+        "runtime_seam",
+        "runtime_guardrails",
+        "description_trigger",
         "support_resources",
         "tiny_router"
       ],

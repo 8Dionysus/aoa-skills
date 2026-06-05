@@ -279,6 +279,98 @@
       "requires_confirmation_seam": false
     },
     {
+      "name": "aoa-decision",
+      "compact_summary": "Route decision-lane work",
+      "activation_card_markdown": "Use when: Route AoA decision-lane work through the workspace decision graph first, checking status/issues and the smallest impact packet before choosing find, create, or correct while keeping repo-local decision files authoritative. Use when the task mentions docs/decisions, decision indexes, decision graph, ADRs, changed paths, source-surface rationale, supersession, or cross-repo decision symmetry. Do not use for ordinary docs edits, unresolved source-of-truth mapping, or trivial changes that do not need durable rationale.\n\nKeep in memory: user intent, target repository, touched paths, or decision ID when known, available `aoa_decisions` MCP tools or a local graph builder fallback, including status, issues, changed-path, source-surface, owner-surface, and repo-symmetry packets, one chosen route: `aoa-decision-find`, `aoa-decision-create`, or `aoa-decision-correct`, compact graph or source context used for the route decision.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "must_keep": [
+        "user intent, target repository, touched paths, or decision ID when known",
+        "available `aoa_decisions` MCP tools or a local graph builder fallback, including status, issues, changed-path, source-surface, owner-surface, and repo-symmetry packets",
+        "one chosen route: `aoa-decision-find`, `aoa-decision-create`, or `aoa-decision-correct`",
+        "compact graph or source context used for the route decision"
+      ],
+      "retain_sections": [
+        "Trigger boundary",
+        "Procedure",
+        "Verification"
+      ],
+      "metadata_keys": [
+        "aoa_scope",
+        "aoa_status",
+        "aoa_invocation_mode"
+      ],
+      "rehydration_hint": "Reload the full SKILL.md and keep policy, procedure, and verification in active context before resuming.",
+      "requires_confirmation_seam": false
+    },
+    {
+      "name": "aoa-decision-correct",
+      "compact_summary": "Correct decision records",
+      "activation_card_markdown": "Use when: Correct, supersede, reindex, or repair graph-coverage drift in AoA decision records by checking graph issues, editing source notes first, rebuilding repo-local indexes, and refreshing the workspace decision graph. Use when a decision note, index metadata, source-surface list, status, supersession, generated index, unknown surface, or graph packet is stale or wrong. Do not use for pure lookup or for creating a new decision note.\n\nKeep in memory: target decision ID, path, source surface, stale index, or graph mismatch, `aoa_decisions` status, issues, decision, changed-path, source-surface, owner-surface, or repo packet for the target record when available, corrected source decision note or explicit no-change finding, regenerated repo-local decision indexes when metadata changed.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "must_keep": [
+        "target decision ID, path, source surface, stale index, or graph mismatch",
+        "`aoa_decisions` status, issues, decision, changed-path, source-surface, owner-surface, or repo packet for the target record when available",
+        "corrected source decision note or explicit no-change finding",
+        "regenerated repo-local decision indexes when metadata changed"
+      ],
+      "retain_sections": [
+        "Trigger boundary",
+        "Procedure",
+        "Verification"
+      ],
+      "metadata_keys": [
+        "aoa_scope",
+        "aoa_status",
+        "aoa_invocation_mode"
+      ],
+      "rehydration_hint": "Reload the full SKILL.md and keep policy, procedure, and verification in active context before resuming.",
+      "requires_confirmation_seam": false
+    },
+    {
+      "name": "aoa-decision-create",
+      "compact_summary": "Create decision records",
+      "activation_card_markdown": "Use when: Create a new AoA decision record in the owning repository by checking graph status/issues, using impact packets for placement, and following repo-local decision law for the actual source note and indexes. Use when a real structural, workflow, tooling, source/export, MCP, skill, or authority decision needs durable rationale. Do not use when no decision has been made, the change is trivial, the target repo has unresolved graph issues, or an existing note only needs correction.\n\nKeep in memory: chosen decision and the options that shaped it, target repository and source surfaces changed by the decision, one new source decision note with canonical ID, status, date, owner surface, index metadata, context, options, decision, rationale, consequences, source surfaces, and follow-up route, refreshed repo-local generated decision indexes.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "must_keep": [
+        "chosen decision and the options that shaped it",
+        "target repository and source surfaces changed by the decision",
+        "one new source decision note with canonical ID, status, date, owner surface, index metadata, context, options, decision, rationale, consequences, source surfaces, and follow-up route",
+        "refreshed repo-local generated decision indexes"
+      ],
+      "retain_sections": [
+        "Trigger boundary",
+        "Procedure",
+        "Verification"
+      ],
+      "metadata_keys": [
+        "aoa_scope",
+        "aoa_status",
+        "aoa_invocation_mode"
+      ],
+      "rehydration_hint": "Reload the full SKILL.md and keep policy, procedure, and verification in active context before resuming.",
+      "requires_confirmation_seam": false
+    },
+    {
+      "name": "aoa-decision-find",
+      "compact_summary": "Find decision records",
+      "activation_card_markdown": "Use when: Find AoA decision records through workspace graph search and impact packets, then verify claims against repo-local source notes and generated decision indexes. Use when prior decision rationale, changed paths, owner surfaces, source surfaces, status, or supersession links are needed before work continues. Do not use when the task is to create or edit a decision record.\n\nKeep in memory: query terms, touched paths, target repository, decision ID, source surface, or owner surface, `aoa_decisions` MCP search, packet, changed-path, source-surface, owner-surface, repo-symmetry, issue, repo, decision, or summary tools when available, ranked decision matches with repo, decision ID, path, status, and reason for relevance, source-note refs used for any claim.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "must_keep": [
+        "query terms, touched paths, target repository, decision ID, source surface, or owner surface",
+        "`aoa_decisions` MCP search, packet, changed-path, source-surface, owner-surface, repo-symmetry, issue, repo, decision, or summary tools when available",
+        "ranked decision matches with repo, decision ID, path, status, and reason for relevance",
+        "source-note refs used for any claim"
+      ],
+      "retain_sections": [
+        "Trigger boundary",
+        "Procedure",
+        "Verification"
+      ],
+      "metadata_keys": [
+        "aoa_scope",
+        "aoa_status",
+        "aoa_invocation_mode"
+      ],
+      "rehydration_hint": "Reload the full SKILL.md and keep policy, procedure, and verification in active context before resuming.",
+      "requires_confirmation_seam": false
+    },
+    {
       "name": "aoa-dry-run-first",
       "compact_summary": "Preview before real mutation",
       "activation_card_markdown": "Use when: Prefer simulation, preview, or inspect-only paths before any real mutation, then require one explicit confirmation for the concrete mutating step. Use when the action can be previewed and mistakes would be costly, such as delete, restore, migrate, or reconfigure operations. Do not use for purely analytical tasks or when the primary question is whether execution is authorized at all.\n\nKeep in memory: requested action, available preview or dry-run mechanisms, dry-run or preview recommendation, bounded preview result or plan.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",

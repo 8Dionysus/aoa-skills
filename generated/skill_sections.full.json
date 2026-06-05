@@ -698,6 +698,238 @@
       "status": "evaluated"
     },
     {
+      "name": "aoa-decision",
+      "scope": "core",
+      "sections": [
+        {
+          "content_markdown": "Use this skill as the front door for AoA `docs/decisions/` work. It decides\nwhether the task is to find, create, or correct a decision record, uses the\nworkspace decision graph as the first lookup path when available, and keeps the\nowning repository's decision files and validators as source truth.",
+          "heading": "Intent",
+          "key": "intent"
+        },
+        {
+          "content_markdown": "Use this skill when:\n- the task mentions `docs/decisions/`, decision records, ADRs, decision indexes, decision graph, or decision-lane symmetry\n- the user asks which prior decision, source surface, owner boundary, status, supersession, or rationale applies\n- a new durable decision record may be needed after a structural, workflow, tooling, source/export, or authority change\n- an existing decision note, index metadata, supersession, source-surface list, or generated decision index may need correction\n- the work spans more than one AoA repository and graph lookup can reduce context load\n\nDo not use this skill when:\n- the task is a normal docs edit with no durable decision-lane implication\n- the real question is only source-of-truth ambiguity; use `aoa-source-of-truth-check`\n- the real question is only whether a decision should be recorded; use `aoa-adr-write`\n- the request is only to summarize code, tests, or release notes without decision rationale\n- a repo-local route card forbids changing decision surfaces in the current scope",
+          "heading": "Trigger boundary",
+          "key": "trigger_boundary"
+        },
+        {
+          "content_markdown": "- user intent, target repository, touched paths, or decision ID when known\n- available `aoa_decisions` MCP tools or a local graph builder fallback,\n  including status, issues, changed-path, source-surface, owner-surface, and\n  repo-symmetry packets\n- repo-local `docs/decisions/AGENTS.md`, `README.md`, `TEMPLATE.md`, generated indexes, and nearest existing records\n- source surfaces that the decision record explains\n- validation commands from the owning repository",
+          "heading": "Inputs",
+          "key": "inputs"
+        },
+        {
+          "content_markdown": "- one chosen route: `aoa-decision-find`, `aoa-decision-create`, or `aoa-decision-correct`\n- compact graph or source context used for the route decision\n- explicit owner repository and source-truth surface\n- validation path for any write or correction\n- stop line when the graph is stale, missing, or not authoritative enough",
+          "heading": "Outputs",
+          "key": "outputs"
+        },
+        {
+          "content_markdown": "1. classify the task:\n   - find or understand: use `aoa-decision-find`\n   - create or record a new rationale: use `aoa-decision-create`\n   - correct, supersede, reindex, or repair metadata: use `aoa-decision-correct`\n2. use the `aoa_decisions` MCP first when it is available; request status and\n   the smallest relevant packet before broad file reads:\n   - touched path: `aoa_decisions_changed_path`\n   - source surface: `aoa_decisions_source_surface`\n   - owner surface: `aoa_decisions_owner_surface`\n   - repo comparison: `aoa_decisions_repo_symmetry`\n   - unknown surface or graph health: `aoa_decisions_issues`\n3. if MCP is unavailable, locate `abyss-stack` in the current workspace or a\n   known local checkout and run its graph builder, such as\n   `python <abyss-stack>/scripts/build_workspace_decision_graph.py --check --json`\n4. if graph lookup is unavailable too, use repo-local `rg` and generated\n   decision indexes, then read the source decision notes directly\n5. load only the chosen subskill; do not load find, create, and correct\n   instructions at the same time\n6. before any write, read the target repo's decision route card and template;\n   if `issue_count > 0`, inspect `aoa_decisions_issues` and do not write in a\n   repo whose decision lane has unresolved graph issues\n7. after any write, run the repo-local decision-index generator/check and then\n   refresh or check the workspace graph and decision-graph lane when available\n8. report the source decision file, graph freshness posture, validation run, and\n   any remaining owner-route risk",
+          "heading": "Procedure",
+          "key": "procedure"
+        },
+        {
+          "content_markdown": "- the graph accelerates lookup; it does not own decision truth\n- source files in the owning repository remain stronger than MCP packets,\n  generated graph nodes, and generated indexes\n- the router chooses one subskill to control cost and avoid conflicting advice\n- cross-repo symmetry must be appropriate to the target repo, not forced from a\n  sibling template\n- no MCP write tool may create, accept, or correct a decision record silently\n- stale graph findings must be refreshed or downgraded before they shape a write\n- graph issues block writes in the affected repo and downgrade cross-repo\n  confidence elsewhere until reported",
+          "heading": "Contracts",
+          "key": "contracts"
+        },
+        {
+          "content_markdown": "- treating the workspace graph as an authority instead of a read model\n- loading every subskill for a simple lookup\n- creating a decision note when a lighter source-of-truth or change summary is enough\n- copying a sibling decision structure without checking the local owner surface\n- updating generated indexes without the source decision note, or vice versa\n- failing to refresh the workspace graph after changing decision files",
+          "heading": "Risks and anti-patterns",
+          "key": "risks_and_anti_patterns"
+        },
+        {
+          "content_markdown": "- confirm exactly one route was selected\n- confirm `aoa_decisions` was used first when available, or the fallback was named\n- confirm graph issue posture was checked before create/correct routes\n- confirm the owning repository and source decision surface are explicit\n- confirm any write uses repo-local route law and validators\n- confirm generated indexes and the workspace graph are not treated as source truth\n- confirm the final report names validation and any skipped check",
+          "heading": "Verification",
+          "key": "verification"
+        },
+        {
+          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0033 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/instruction/docs-boundary/decision-rationale-recording/TECHNIQUE.md` and sections: Intent, When to use, When not to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation\n- AOA-T-0002 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/instruction/docs-boundary/source-of-truth-layout/TECHNIQUE.md` and sections: Intent, When to use, When not to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation",
+          "heading": "Technique traceability",
+          "key": "technique_traceability"
+        },
+        {
+          "content_markdown": "- stable MCP server name for the current environment\n- repo-local decision ID prefix and template\n- repo-local decision-index generator and validation commands\n- workspace graph output path or fallback builder command\n- local stop line for repositories that intentionally do not carry decisions",
+          "heading": "Adaptation points",
+          "key": "adaptation_points"
+        }
+      ],
+      "skill_path": "skills/core/engineering/aoa-decision/SKILL.md",
+      "status": "evaluated"
+    },
+    {
+      "name": "aoa-decision-correct",
+      "scope": "core",
+      "sections": [
+        {
+          "content_markdown": "Use this skill to repair an existing decision record, its index metadata,\nsupersession links, source-surface list, or generated decision indexes without\nletting the workspace graph become the authority.",
+          "heading": "Intent",
+          "key": "intent"
+        },
+        {
+          "content_markdown": "Use this skill when:\n- a decision record is stale, incomplete, misindexed, wrongly sourced, or needs supersession\n- generated decision indexes are out of date with source metadata\n- graph lookup shows a mismatch that must be verified against the source note\n- a correction must preserve local decision-lane law and validation\n\nDo not use this skill when:\n- the task is only to find relevant rationale; use `aoa-decision-find`\n- a new durable decision is required instead; use `aoa-decision-create`\n- the source surface itself is wrong and no decision-lane change is needed\n- a generated graph or index can be refreshed without source-note drift\n- the correction would rewrite history instead of adding an explicit supersession or status change",
+          "heading": "Trigger boundary",
+          "key": "trigger_boundary"
+        },
+        {
+          "content_markdown": "- target decision ID, path, source surface, stale index, or graph mismatch\n- `aoa_decisions` status, issues, decision, changed-path, source-surface,\n  owner-surface, or repo packet for the target record when available\n- repo-local decision route card, template, source note, and generated indexes\n- source files changed by the correction when relevant\n- validation commands for decision indexes and affected surfaces",
+          "heading": "Inputs",
+          "key": "inputs"
+        },
+        {
+          "content_markdown": "- corrected source decision note or explicit no-change finding\n- regenerated repo-local decision indexes when metadata changed\n- refreshed or checked workspace graph\n- clear report of old mismatch, correction, validation, and any remaining risk",
+          "heading": "Outputs",
+          "key": "outputs"
+        },
+        {
+          "content_markdown": "1. use `aoa_decisions` status and issues first, then fetch the target decision,\n   changed-path, source-surface, owner-surface, or repo packet when available\n2. if graph issues exist for the target repo, classify whether the fix belongs\n   to the source note, local index contract, workspace graph registry, or cache refresh\n3. read the source decision note before editing anything\n4. read the repo-local decision route card and generated index contract\n5. classify the correction as metadata, source-surface list, status,\n   supersession, typo-only, or generated-index drift\n6. edit the source note first; use explicit supersession or status language for\n   semantic changes instead of silent history rewrite\n7. regenerate repo-local decision indexes when metadata or source-record shape changed\n8. run the repo-local decision validator/check and any affected surface validator\n9. refresh or check the workspace graph, run the decision-graph lane when available,\n   and compare the corrected graph packet\n10. report whether the graph, source note, and local indexes are now aligned",
+          "heading": "Procedure",
+          "key": "procedure"
+        },
+        {
+          "content_markdown": "- source notes are edited before generated indexes or graph cache\n- generated graph/cache refresh cannot be used to hide source drift\n- semantic corrections must preserve reviewable history through status or supersession\n- typo-only fixes should not inflate into new rationale\n- validation must cover the owner repo, not only the workspace graph\n- graph issue packets are triage inputs; they do not replace source-note or\n  local-contract inspection",
+          "heading": "Contracts",
+          "key": "contracts"
+        },
+        {
+          "content_markdown": "- fixing only generated indexes while leaving source metadata wrong\n- changing meaning silently without status or supersession\n- broad rewriting because a small metadata fix was requested\n- trusting a stale graph packet after editing source files\n- applying another repo's metadata vocabulary where it does not fit\n- clearing cache freshness while leaving an unknown decision-lane surface unmodeled",
+          "heading": "Risks and anti-patterns",
+          "key": "risks_and_anti_patterns"
+        },
+        {
+          "content_markdown": "- confirm the source note was inspected and, if needed, edited\n- confirm generated indexes were regenerated only from source metadata\n- confirm repo-local decision checks passed or failures are explicit\n- confirm workspace graph refresh/check and decision-graph lane see the corrected state\n- confirm semantic rewrites are avoided or made explicit through supersession/status",
+          "heading": "Verification",
+          "key": "verification"
+        },
+        {
+          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0001 from `8Dionysus/aoa-techniques` at `cd276f040d55d490bd015b8698c7a5d594b9f875` using path `techniques/execution/agent-workflows-core/plan-diff-apply-verify-report/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation\n- AOA-T-0033 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/instruction/docs-boundary/decision-rationale-recording/TECHNIQUE.md` and sections: Intent, When to use, When not to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation\n- AOA-T-0002 from `8Dionysus/aoa-techniques` at `cd276f040d55d490bd015b8698c7a5d594b9f875` using path `techniques/instruction/docs-boundary/source-of-truth-layout/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation",
+          "heading": "Technique traceability",
+          "key": "technique_traceability"
+        },
+        {
+          "content_markdown": "- repo-specific supersession/status vocabulary\n- repo-local generated index commands\n- decision validator and affected surface validator\n- MCP refresh command or graph fallback",
+          "heading": "Adaptation points",
+          "key": "adaptation_points"
+        }
+      ],
+      "skill_path": "skills/core/engineering/aoa-decision-correct/SKILL.md",
+      "status": "evaluated"
+    },
+    {
+      "name": "aoa-decision-create",
+      "scope": "core",
+      "sections": [
+        {
+          "content_markdown": "Use this skill when a real structural, workflow, tooling, source/export, or\nauthority decision needs a durable repo-local `docs/decisions/` note and the\nworkspace graph should help find the right placement, neighbors, and ID context.",
+          "heading": "Intent",
+          "key": "intent"
+        },
+        {
+          "content_markdown": "Use this skill when:\n- a change creates durable rationale that future agents need before repeating the route\n- the owner repository already has or intentionally needs a `docs/decisions/` lane\n- graph lookup should identify similar prior decisions, next ID, source surfaces, or symmetry constraints\n- a decision note must be created alongside code, docs, MCP, skill, validator, or generated-index changes\n\nDo not use this skill when:\n- no decision has been made yet and the work is still option framing\n- the change is self-evident and a commit or change summary is enough\n- the target repository has no appropriate decision lane and the task does not explicitly add one\n- an existing record can be corrected instead; use `aoa-decision-correct`\n- the decision would copy another repo's rationale without local owner evidence",
+          "heading": "Trigger boundary",
+          "key": "trigger_boundary"
+        },
+        {
+          "content_markdown": "- chosen decision and the options that shaped it\n- target repository and source surfaces changed by the decision\n- graph status, issue packet, changed-path/source-surface/owner-surface packet,\n  or search results for related records\n- repo-local decision route card, README, template, generated indexes, and latest records\n- repo-local decision-index and validation commands",
+          "heading": "Inputs",
+          "key": "inputs"
+        },
+        {
+          "content_markdown": "- one new source decision note with canonical ID, status, date, owner surface, index metadata, context, options, decision, rationale, consequences, source surfaces, and follow-up route\n- refreshed repo-local generated decision indexes\n- refreshed or checked workspace decision graph\n- validation summary and any remaining owner-route risk",
+          "heading": "Outputs",
+          "key": "outputs"
+        },
+        {
+          "content_markdown": "1. confirm a real decision exists and is worth preserving\n2. use `aoa_decisions` status and issues first; if the target repo has graph\n   issues, stop and route to correction before creating a new record\n3. use changed-path, source-surface, owner-surface, repo, and search packets to\n   collect related records and repo decision-lane context\n4. read the target repo's `docs/decisions/AGENTS.md`, `README.md`, `TEMPLATE.md`,\n   generated index shape, and latest decision records\n5. choose the next canonical ID from source files, not from memory alone\n6. write the note in the target repo's established format and metadata language\n7. name only the source surfaces this decision actually explains\n8. keep graph, generated indexes, tests, and runtime evidence as context rather\n   than decision authority\n9. run the repo-local decision-index generator, then the check form and any\n   affected surface validator\n10. refresh or check the workspace graph and run the decision-graph lane when available\n11. report the new decision path, graph freshness, and validation",
+          "heading": "Procedure",
+          "key": "procedure"
+        },
+        {
+          "content_markdown": "- a decision note records why; it does not replace the active source surface\n- next ID selection must be verified from source files\n- sibling decisions may inform shape, but the target repo owns its own rationale\n- generated indexes must be rebuilt from source metadata, not hand-edited as truth\n- workspace graph refresh is part of done after creating a record\n- unresolved graph issues in the target repo block creation until corrected",
+          "heading": "Contracts",
+          "key": "contracts"
+        },
+        {
+          "content_markdown": "- creating process noise for trivial changes\n- writing a decision before the choice is actually made\n- copying a sibling record and leaving mismatched owner surfaces\n- omitting rejected options or consequences when they shaped the choice\n- forgetting generated indexes or workspace graph refresh\n- using MCP output as if it created or accepted the decision\n- creating a new note while unknown decision-lane surfaces are already present",
+          "heading": "Risks and anti-patterns",
+          "key": "risks_and_anti_patterns"
+        },
+        {
+          "content_markdown": "- confirm the new record has canonical ID, status, date, owner surface, and index metadata\n- confirm source surfaces match the actual diff\n- confirm repo-local decision indexes were regenerated and checked\n- confirm graph issue posture was checked before writing\n- confirm affected validators were run or explicitly skipped with reason\n- confirm workspace graph refresh/check and decision-graph lane see the new record",
+          "heading": "Verification",
+          "key": "verification"
+        },
+        {
+          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0033 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/instruction/docs-boundary/decision-rationale-recording/TECHNIQUE.md` and sections: Intent, When to use, When not to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation\n- AOA-T-0002 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/instruction/docs-boundary/source-of-truth-layout/TECHNIQUE.md` and sections: Intent, When to use, When not to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation",
+          "heading": "Technique traceability",
+          "key": "technique_traceability"
+        },
+        {
+          "content_markdown": "- repository-specific ID prefix and numbering\n- decision template fields and index metadata vocabulary\n- validation commands and generated index builder path\n- graph refresh command or MCP refresh tool",
+          "heading": "Adaptation points",
+          "key": "adaptation_points"
+        }
+      ],
+      "skill_path": "skills/core/engineering/aoa-decision-create/SKILL.md",
+      "status": "evaluated"
+    },
+    {
+      "name": "aoa-decision-find",
+      "scope": "core",
+      "sections": [
+        {
+          "content_markdown": "Use this skill to find decision rationale quickly across AoA repositories while\nkeeping final claims grounded in the owning repository's authored decision note.",
+          "heading": "Intent",
+          "key": "intent"
+        },
+        {
+          "content_markdown": "Use this skill when:\n- the user asks what decision exists, which record explains a route, or why a boundary was chosen\n- a task needs relevant prior decision context before editing code, docs, validation, MCP, skill, or repo topology\n- a cross-repo comparison needs decision IDs, owner surfaces, source surfaces, statuses, or supersession links\n- graph search can prevent broad manual reads across many decision lanes\n\nDo not use this skill when:\n- a new decision note must be written; use `aoa-decision-create`\n- an existing note or metadata must be edited; use `aoa-decision-correct`\n- the task is only source-of-truth mapping outside decision records\n- the user needs a final architectural decision that has not been made yet\n- the graph or indexes are enough for lookup but the answer would require source-note verification and no source read is possible",
+          "heading": "Trigger boundary",
+          "key": "trigger_boundary"
+        },
+        {
+          "content_markdown": "- query terms, touched paths, target repository, decision ID, source surface, or owner surface\n- `aoa_decisions` MCP search, packet, changed-path, source-surface,\n  owner-surface, repo-symmetry, issue, repo, decision, or summary tools when available\n- fallback generated graph files or repo-local decision indexes\n- source decision notes for final verification",
+          "heading": "Inputs",
+          "key": "inputs"
+        },
+        {
+          "content_markdown": "- ranked decision matches with repo, decision ID, path, status, and reason for relevance\n- source-note refs used for any claim\n- note when graph data is stale, missing, or only a candidate hint\n- next route if creation or correction is needed",
+          "heading": "Outputs",
+          "key": "outputs"
+        },
+        {
+          "content_markdown": "1. query `aoa_decisions` first when available; choose the narrowest packet:\n   changed-path for touched files, source-surface for cited inputs,\n   owner-surface for ownership routes, decision for a known ID, and packet/search\n   for free-text intent\n2. check status or issues; if `issue_count > 0`, report the graph issue posture\n   and treat graph matches as candidates until source notes are inspected\n3. if MCP is unavailable, use the latest workspace graph output or repo-local\n   generated indexes as a search aid\n4. read the source decision note before making a rationale, authority, or\n   supersession claim\n5. compare source-surface lists and owner metadata against the user's target\n   paths when judging relevance\n6. distinguish exact matches, likely matches, weak analogies, and missing\n   records\n7. if no adequate record exists, route to `aoa-decision-create`; if a record is\n   stale or wrong, route to `aoa-decision-correct`\n8. return compact evidence: decision ID, source path, key reason, and remaining uncertainty",
+          "heading": "Procedure",
+          "key": "procedure"
+        },
+        {
+          "content_markdown": "- MCP packets and graph nodes are hints until checked against source notes\n- source-note claims must cite the repo and decision path\n- related sibling decisions are examples, not templates to copy blindly\n- missing evidence should be reported as missing, not filled with doctrine\n- avoid loading unrelated decision lanes after a sufficient match is found\n- graph issues reduce confidence; they do not authorize guessing",
+          "heading": "Contracts",
+          "key": "contracts"
+        },
+        {
+          "content_markdown": "- over-answering from generated graph fields without opening the source record\n- treating a title match as semantic equivalence\n- ignoring supersession or status fields\n- turning a weak sibling analogy into a target-repo rule\n- searching every repo when a repo or path already narrows the route",
+          "heading": "Risks and anti-patterns",
+          "key": "risks_and_anti_patterns"
+        },
+        {
+          "content_markdown": "- confirm graph or fallback lookup path was used\n- confirm changed-path/source/owner packet was used when the input made one available\n- confirm final claims came from source notes, not only generated graph data\n- confirm match confidence and any uncertainty are visible\n- confirm missing or stale records route to create or correct instead of being hidden\n- confirm the answer stays compact enough for the current task",
+          "heading": "Verification",
+          "key": "verification"
+        },
+        {
+          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0002 from `8Dionysus/aoa-techniques` at `cd276f040d55d490bd015b8698c7a5d594b9f875` using path `techniques/instruction/docs-boundary/source-of-truth-layout/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation",
+          "heading": "Technique traceability",
+          "key": "technique_traceability"
+        },
+        {
+          "content_markdown": "- MCP server and tool names\n- workspace graph cache path\n- repo-local index filenames and source-note metadata fields\n- source reference format expected by the active chat surface",
+          "heading": "Adaptation points",
+          "key": "adaptation_points"
+        }
+      ],
+      "skill_path": "skills/core/engineering/aoa-decision-find/SKILL.md",
+      "status": "evaluated"
+    },
+    {
       "name": "aoa-dry-run-first",
       "scope": "risk",
       "sections": [

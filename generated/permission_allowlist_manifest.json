@@ -709,6 +709,226 @@
       "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, assets, checks, and examples do not trigger per-file permission prompts."
     },
     {
+      "name": "aoa-decision",
+      "display_name": "AoA Decision",
+      "source_scope": "repo",
+      "allowlist_id": "skill:aoa-decision",
+      "read_access": "read-only",
+      "merge_strategy": "union-active-skills",
+      "path_templates": {
+        "repo": [
+          "$REPO_ROOT/.agents/skills/aoa-decision",
+          "$REPO_ROOT/.agents/skills/aoa-decision/scripts",
+          "$REPO_ROOT/.agents/skills/aoa-decision/references",
+          "$REPO_ROOT/.agents/skills/aoa-decision/assets",
+          "$REPO_ROOT/.agents/skills/aoa-decision/checks",
+          "$REPO_ROOT/.agents/skills/aoa-decision/examples"
+        ],
+        "user": [
+          "$HOME/.agents/skills/aoa-decision",
+          "$HOME/.agents/skills/aoa-decision/scripts",
+          "$HOME/.agents/skills/aoa-decision/references",
+          "$HOME/.agents/skills/aoa-decision/assets",
+          "$HOME/.agents/skills/aoa-decision/checks",
+          "$HOME/.agents/skills/aoa-decision/examples"
+        ],
+        "admin": [
+          "/etc/codex/skills/aoa-decision",
+          "/etc/codex/skills/aoa-decision/scripts",
+          "/etc/codex/skills/aoa-decision/references",
+          "/etc/codex/skills/aoa-decision/assets",
+          "/etc/codex/skills/aoa-decision/checks",
+          "/etc/codex/skills/aoa-decision/examples"
+        ]
+      },
+      "repo_relative_paths": [
+        ".agents/skills/aoa-decision",
+        ".agents/skills/aoa-decision/scripts",
+        ".agents/skills/aoa-decision/references",
+        ".agents/skills/aoa-decision/assets",
+        ".agents/skills/aoa-decision/checks",
+        ".agents/skills/aoa-decision/examples"
+      ],
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": []
+      },
+      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, assets, checks, and examples do not trigger per-file permission prompts."
+    },
+    {
+      "name": "aoa-decision-correct",
+      "display_name": "AoA Decision Correct",
+      "source_scope": "repo",
+      "allowlist_id": "skill:aoa-decision-correct",
+      "read_access": "read-only",
+      "merge_strategy": "union-active-skills",
+      "path_templates": {
+        "repo": [
+          "$REPO_ROOT/.agents/skills/aoa-decision-correct",
+          "$REPO_ROOT/.agents/skills/aoa-decision-correct/scripts",
+          "$REPO_ROOT/.agents/skills/aoa-decision-correct/references",
+          "$REPO_ROOT/.agents/skills/aoa-decision-correct/assets",
+          "$REPO_ROOT/.agents/skills/aoa-decision-correct/checks",
+          "$REPO_ROOT/.agents/skills/aoa-decision-correct/examples"
+        ],
+        "user": [
+          "$HOME/.agents/skills/aoa-decision-correct",
+          "$HOME/.agents/skills/aoa-decision-correct/scripts",
+          "$HOME/.agents/skills/aoa-decision-correct/references",
+          "$HOME/.agents/skills/aoa-decision-correct/assets",
+          "$HOME/.agents/skills/aoa-decision-correct/checks",
+          "$HOME/.agents/skills/aoa-decision-correct/examples"
+        ],
+        "admin": [
+          "/etc/codex/skills/aoa-decision-correct",
+          "/etc/codex/skills/aoa-decision-correct/scripts",
+          "/etc/codex/skills/aoa-decision-correct/references",
+          "/etc/codex/skills/aoa-decision-correct/assets",
+          "/etc/codex/skills/aoa-decision-correct/checks",
+          "/etc/codex/skills/aoa-decision-correct/examples"
+        ]
+      },
+      "repo_relative_paths": [
+        ".agents/skills/aoa-decision-correct",
+        ".agents/skills/aoa-decision-correct/scripts",
+        ".agents/skills/aoa-decision-correct/references",
+        ".agents/skills/aoa-decision-correct/assets",
+        ".agents/skills/aoa-decision-correct/checks",
+        ".agents/skills/aoa-decision-correct/examples"
+      ],
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": []
+      },
+      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, assets, checks, and examples do not trigger per-file permission prompts."
+    },
+    {
+      "name": "aoa-decision-create",
+      "display_name": "AoA Decision Create",
+      "source_scope": "repo",
+      "allowlist_id": "skill:aoa-decision-create",
+      "read_access": "read-only",
+      "merge_strategy": "union-active-skills",
+      "path_templates": {
+        "repo": [
+          "$REPO_ROOT/.agents/skills/aoa-decision-create",
+          "$REPO_ROOT/.agents/skills/aoa-decision-create/scripts",
+          "$REPO_ROOT/.agents/skills/aoa-decision-create/references",
+          "$REPO_ROOT/.agents/skills/aoa-decision-create/assets",
+          "$REPO_ROOT/.agents/skills/aoa-decision-create/checks",
+          "$REPO_ROOT/.agents/skills/aoa-decision-create/examples"
+        ],
+        "user": [
+          "$HOME/.agents/skills/aoa-decision-create",
+          "$HOME/.agents/skills/aoa-decision-create/scripts",
+          "$HOME/.agents/skills/aoa-decision-create/references",
+          "$HOME/.agents/skills/aoa-decision-create/assets",
+          "$HOME/.agents/skills/aoa-decision-create/checks",
+          "$HOME/.agents/skills/aoa-decision-create/examples"
+        ],
+        "admin": [
+          "/etc/codex/skills/aoa-decision-create",
+          "/etc/codex/skills/aoa-decision-create/scripts",
+          "/etc/codex/skills/aoa-decision-create/references",
+          "/etc/codex/skills/aoa-decision-create/assets",
+          "/etc/codex/skills/aoa-decision-create/checks",
+          "/etc/codex/skills/aoa-decision-create/examples"
+        ]
+      },
+      "repo_relative_paths": [
+        ".agents/skills/aoa-decision-create",
+        ".agents/skills/aoa-decision-create/scripts",
+        ".agents/skills/aoa-decision-create/references",
+        ".agents/skills/aoa-decision-create/assets",
+        ".agents/skills/aoa-decision-create/checks",
+        ".agents/skills/aoa-decision-create/examples"
+      ],
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": []
+      },
+      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, assets, checks, and examples do not trigger per-file permission prompts."
+    },
+    {
+      "name": "aoa-decision-find",
+      "display_name": "AoA Decision Find",
+      "source_scope": "repo",
+      "allowlist_id": "skill:aoa-decision-find",
+      "read_access": "read-only",
+      "merge_strategy": "union-active-skills",
+      "path_templates": {
+        "repo": [
+          "$REPO_ROOT/.agents/skills/aoa-decision-find",
+          "$REPO_ROOT/.agents/skills/aoa-decision-find/scripts",
+          "$REPO_ROOT/.agents/skills/aoa-decision-find/references",
+          "$REPO_ROOT/.agents/skills/aoa-decision-find/assets",
+          "$REPO_ROOT/.agents/skills/aoa-decision-find/checks",
+          "$REPO_ROOT/.agents/skills/aoa-decision-find/examples"
+        ],
+        "user": [
+          "$HOME/.agents/skills/aoa-decision-find",
+          "$HOME/.agents/skills/aoa-decision-find/scripts",
+          "$HOME/.agents/skills/aoa-decision-find/references",
+          "$HOME/.agents/skills/aoa-decision-find/assets",
+          "$HOME/.agents/skills/aoa-decision-find/checks",
+          "$HOME/.agents/skills/aoa-decision-find/examples"
+        ],
+        "admin": [
+          "/etc/codex/skills/aoa-decision-find",
+          "/etc/codex/skills/aoa-decision-find/scripts",
+          "/etc/codex/skills/aoa-decision-find/references",
+          "/etc/codex/skills/aoa-decision-find/assets",
+          "/etc/codex/skills/aoa-decision-find/checks",
+          "/etc/codex/skills/aoa-decision-find/examples"
+        ]
+      },
+      "repo_relative_paths": [
+        ".agents/skills/aoa-decision-find",
+        ".agents/skills/aoa-decision-find/scripts",
+        ".agents/skills/aoa-decision-find/references",
+        ".agents/skills/aoa-decision-find/assets",
+        ".agents/skills/aoa-decision-find/checks",
+        ".agents/skills/aoa-decision-find/examples"
+      ],
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": []
+      },
+      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, assets, checks, and examples do not trigger per-file permission prompts."
+    },
+    {
       "name": "aoa-dry-run-first",
       "display_name": "AoA Dry Run First",
       "source_scope": "repo",

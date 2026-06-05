@@ -407,7 +407,11 @@
       "collision_family": "decision-and-doc-authority",
       "collision_notes": [
         "Use aoa-adr-write when the task is to capture a concrete architectural or workflow decision.",
-        "Use aoa-source-of-truth-check when the task is to identify which documents are authoritative and reduce overlap."
+        "Use aoa-source-of-truth-check when the task is to identify which documents are authoritative and reduce overlap.",
+        "Use aoa-decision when the task needs a decision-lane route through find, create, or correct.",
+        "Use aoa-decision-find when prior decision rationale should be located and source-verified.",
+        "Use aoa-decision-create when a new repo-local decision record must be written.",
+        "Use aoa-decision-correct when an existing decision record, index, status, or graph mismatch must be repaired."
       ],
       "competing_skills": [],
       "sample_prompts": {
@@ -1352,6 +1356,452 @@
         }
       },
       "disclose_card_markdown": "### aoa-core-logic-boundary\n- Summary: Separate core logic from glue\n- Use when: Separate reusable core logic from glue, orchestration, and infrastructure detail. Use when stable rules are mixed with wiring, the same logic repeats in several places, or reviews are muddy because the responsibility center is unclear. Do not use for tiny isolated fixes or when the real task is introducing a port or adapter around a concrete dependency.\n- Trust posture: portable-core\n- Mutation surface: repo\n"
+    },
+    {
+      "name": "aoa-decision",
+      "display_name": "AoA Decision",
+      "description": "Route AoA decision-lane work through the workspace decision graph first, checking status/issues and the smallest impact packet before choosing find, create, or correct while keeping repo-local decision files authoritative. Use when the task mentions docs/decisions, decision indexes, decision graph, ADRs, changed paths, source-surface rationale, supersession, or cross-repo decision symmetry. Do not use for ordinary docs edits, unresolved source-of-truth mapping, or trivial changes that do not need durable rationale.",
+      "short_description": "Route decision-lane work",
+      "path": ".agents/skills/aoa-decision/SKILL.md",
+      "skill_dir": ".agents/skills/aoa-decision",
+      "compatibility": "Designed for Codex or similar coding agents with repository file access and an interactive shell. Network access is optional and only needed when repository validation or referenced workflows require it.",
+      "metadata": {
+        "aoa_scope": "core",
+        "aoa_status": "evaluated",
+        "aoa_invocation_mode": "explicit-preferred",
+        "aoa_source_skill_path": "skills/core/engineering/aoa-decision/SKILL.md",
+        "aoa_source_repo": "8Dionysus/aoa-skills",
+        "aoa_technique_dependencies": "AOA-T-0033,AOA-T-0002",
+        "aoa_portable_profile": "codex-facing-wave-3"
+      },
+      "headings_available": [
+        "Intent",
+        "Trigger boundary",
+        "Inputs",
+        "Outputs",
+        "Procedure",
+        "Contracts",
+        "Risks and anti-patterns",
+        "Verification",
+        "Technique traceability",
+        "Adaptation points"
+      ],
+      "section_summaries": {
+        "Intent": "Use this skill as the front door for AoA `docs/decisions/` work. It decides whether the task is to find, create, or correct a decision record, uses the workspace decision graph as the first lookup path when available, and keeps the owning repository's decision files and valida...",
+        "Trigger boundary": "the task mentions `docs/decisions/`, decision records, ADRs, decision indexes, decision graph, or decision-lane symmetry; the user asks which prior decision, source surface, owner boundary, status, supersession, or rationale applies",
+        "Inputs": "user intent, target repository, touched paths, or decision ID when known; available `aoa_decisions` MCP tools or a local graph builder fallback,",
+        "Outputs": "one chosen route: `aoa-decision-find`, `aoa-decision-create`, or `aoa-decision-correct`; compact graph or source context used for the route decision",
+        "Procedure": "classify the task:; find or understand: use `aoa-decision-find`",
+        "Contracts": "the graph accelerates lookup; it does not own decision truth; source files in the owning repository remain stronger than MCP packets,",
+        "Risks and anti-patterns": "treating the workspace graph as an authority instead of a read model; loading every subskill for a simple lookup",
+        "Verification": "confirm exactly one route was selected; confirm `aoa_decisions` was used first when available, or the fallback was named",
+        "Technique traceability": "AOA-T-0033 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/instruction/docs-boundary/decision-rationale-recording/TECHNIQUE.md` and sections: Intent, When to use, When not to use, Inputs, Outputs, Core procedure, Contracts,...",
+        "Adaptation points": "stable MCP server name for the current environment; repo-local decision ID prefix and template"
+      },
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": []
+      },
+      "policy": {
+        "implicit_activation_policy": "invoke",
+        "allow_implicit_invocation": true
+      },
+      "interface": {
+        "display_name": "AoA Decision",
+        "short_description": "Route decision-lane work",
+        "default_prompt": "Use $aoa-decision to check the decision graph first, choose find/create/correct, and keep repo-local decision files as source truth.",
+        "icon_small": "./assets/small-logo.svg",
+        "icon_large": "./assets/large-logo.svg",
+        "brand_color": "#2563EB"
+      },
+      "runtime_contract_ref": "generated/skill_runtime_contracts.json#aoa-decision",
+      "context_retention_ref": "generated/context_retention_manifest.json#aoa-decision",
+      "trust_policy_ref": "generated/trust_policy_matrix.json#aoa-decision",
+      "collision_family": "decision-and-doc-authority",
+      "collision_notes": [
+        "Use aoa-adr-write when the task is to capture a concrete architectural or workflow decision.",
+        "Use aoa-source-of-truth-check when the task is to identify which documents are authoritative and reduce overlap.",
+        "Use aoa-decision when the task needs a decision-lane route through find, create, or correct.",
+        "Use aoa-decision-find when prior decision rationale should be located and source-verified.",
+        "Use aoa-decision-create when a new repo-local decision record must be written.",
+        "Use aoa-decision-correct when an existing decision record, index, status, or graph mismatch must be repaired."
+      ],
+      "competing_skills": [
+        "aoa-adr-write",
+        "aoa-decision-find",
+        "aoa-decision-create",
+        "aoa-decision-correct"
+      ],
+      "sample_prompts": {
+        "explicit": [
+          "Use $aoa-decision to check the decision graph first, choose find/create/correct, and keep repo-local decision files as source truth."
+        ],
+        "implicit": [
+          "The task touches docs/decisions across several AoA repos, and the agent must use the workspace decision graph to decide whether to find, create, or correct records before editing.",
+          "The task changes docs/decisions across multiple AoA repositories and needs the workspace decision graph to decide whether to find, create, or correct decision records before editing."
+        ],
+        "manual_invocation_required": [],
+        "negative": [
+          "The task only clarifies which README is authoritative and has no decision record, generated index, or decision graph question."
+        ]
+      },
+      "explicit_handles": {
+        "codex": {
+          "mention": "$aoa-decision",
+          "browser": "/skills"
+        },
+        "local_wrapper": {
+          "slash_alias": "/aoa-decision",
+          "tool_call": {
+            "name": "activate_skill",
+            "arguments": {
+              "skill_name": "aoa-decision"
+            }
+          }
+        }
+      },
+      "disclose_card_markdown": "### aoa-decision\n- Summary: Route decision-lane work\n- Use when: Route AoA decision-lane work through the workspace decision graph first, checking status/issues and the smallest impact packet before choosing find, create, or correct while keeping repo-local decision files authoritative. Use when the task mentions docs/decisions, decision indexes, decision graph, ADRs, changed paths, source-surface rationale, supersession, or cross-repo decision symmetry. Do not use for ordinary docs edits, unresolved source-of-truth mapping, or trivial changes that do not need durable rationale.\n- Trust posture: portable-core\n- Mutation surface: repo\n"
+    },
+    {
+      "name": "aoa-decision-correct",
+      "display_name": "AoA Decision Correct",
+      "description": "Correct, supersede, reindex, or repair graph-coverage drift in AoA decision records by checking graph issues, editing source notes first, rebuilding repo-local indexes, and refreshing the workspace decision graph. Use when a decision note, index metadata, source-surface list, status, supersession, generated index, unknown surface, or graph packet is stale or wrong. Do not use for pure lookup or for creating a new decision note.",
+      "short_description": "Correct decision records",
+      "path": ".agents/skills/aoa-decision-correct/SKILL.md",
+      "skill_dir": ".agents/skills/aoa-decision-correct",
+      "compatibility": "Designed for Codex or similar coding agents with repository file access and an interactive shell. Network access is optional and only needed when repository validation or referenced workflows require it.",
+      "metadata": {
+        "aoa_scope": "core",
+        "aoa_status": "evaluated",
+        "aoa_invocation_mode": "explicit-preferred",
+        "aoa_source_skill_path": "skills/core/engineering/aoa-decision-correct/SKILL.md",
+        "aoa_source_repo": "8Dionysus/aoa-skills",
+        "aoa_technique_dependencies": "AOA-T-0001,AOA-T-0033,AOA-T-0002",
+        "aoa_portable_profile": "codex-facing-wave-3"
+      },
+      "headings_available": [
+        "Intent",
+        "Trigger boundary",
+        "Inputs",
+        "Outputs",
+        "Procedure",
+        "Contracts",
+        "Risks and anti-patterns",
+        "Verification",
+        "Technique traceability",
+        "Adaptation points"
+      ],
+      "section_summaries": {
+        "Intent": "Use this skill to repair an existing decision record, its index metadata, supersession links, source-surface list, or generated decision indexes without letting the workspace graph become the authority.",
+        "Trigger boundary": "a decision record is stale, incomplete, misindexed, wrongly sourced, or needs supersession; generated decision indexes are out of date with source metadata",
+        "Inputs": "target decision ID, path, source surface, stale index, or graph mismatch; `aoa_decisions` status, issues, decision, changed-path, source-surface,",
+        "Outputs": "corrected source decision note or explicit no-change finding; regenerated repo-local decision indexes when metadata changed",
+        "Procedure": "use `aoa_decisions` status and issues first, then fetch the target decision,; if graph issues exist for the target repo, classify whether the fix belongs",
+        "Contracts": "source notes are edited before generated indexes or graph cache; generated graph/cache refresh cannot be used to hide source drift",
+        "Risks and anti-patterns": "fixing only generated indexes while leaving source metadata wrong; changing meaning silently without status or supersession",
+        "Verification": "confirm the source note was inspected and, if needed, edited; confirm generated indexes were regenerated only from source metadata",
+        "Technique traceability": "AOA-T-0001 from `8Dionysus/aoa-techniques` at `cd276f040d55d490bd015b8698c7a5d594b9f875` using path `techniques/execution/agent-workflows-core/plan-diff-apply-verify-report/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Vali...",
+        "Adaptation points": "repo-specific supersession/status vocabulary; repo-local generated index commands"
+      },
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": []
+      },
+      "policy": {
+        "implicit_activation_policy": "manual",
+        "allow_implicit_invocation": false
+      },
+      "interface": {
+        "display_name": "AoA Decision Correct",
+        "short_description": "Correct decision records",
+        "default_prompt": "Use $aoa-decision-correct to repair the source decision note first, rebuild local indexes, and refresh the workspace graph.",
+        "icon_small": "./assets/small-logo.svg",
+        "icon_large": "./assets/large-logo.svg",
+        "brand_color": "#2563EB"
+      },
+      "runtime_contract_ref": "generated/skill_runtime_contracts.json#aoa-decision-correct",
+      "context_retention_ref": "generated/context_retention_manifest.json#aoa-decision-correct",
+      "trust_policy_ref": "generated/trust_policy_matrix.json#aoa-decision-correct",
+      "collision_family": "decision-and-doc-authority",
+      "collision_notes": [
+        "Use aoa-adr-write when the task is to capture a concrete architectural or workflow decision.",
+        "Use aoa-source-of-truth-check when the task is to identify which documents are authoritative and reduce overlap.",
+        "Use aoa-decision when the task needs a decision-lane route through find, create, or correct.",
+        "Use aoa-decision-find when prior decision rationale should be located and source-verified.",
+        "Use aoa-decision-create when a new repo-local decision record must be written.",
+        "Use aoa-decision-correct when an existing decision record, index, status, or graph mismatch must be repaired."
+      ],
+      "competing_skills": [
+        "aoa-decision",
+        "aoa-decision-create"
+      ],
+      "sample_prompts": {
+        "explicit": [
+          "Use $aoa-decision-correct to repair the source decision note first, rebuild local indexes, and refresh the workspace graph."
+        ],
+        "implicit": [],
+        "manual_invocation_required": [
+          "Repair a stale decision note and generated index mismatch by editing the source record first, then refresh the graph.",
+          "Correct a stale decision note and generated index mismatch by editing the source record first and then refreshing the graph."
+        ],
+        "negative": [
+          "There is no existing decision record to repair; a new durable record is needed."
+        ]
+      },
+      "explicit_handles": {
+        "codex": {
+          "mention": "$aoa-decision-correct",
+          "browser": "/skills"
+        },
+        "local_wrapper": {
+          "slash_alias": "/aoa-decision-correct",
+          "tool_call": {
+            "name": "activate_skill",
+            "arguments": {
+              "skill_name": "aoa-decision-correct"
+            }
+          }
+        }
+      },
+      "disclose_card_markdown": "### aoa-decision-correct\n- Summary: Correct decision records\n- Use when: Correct, supersede, reindex, or repair graph-coverage drift in AoA decision records by checking graph issues, editing source notes first, rebuilding repo-local indexes, and refreshing the workspace decision graph. Use when a decision note, index metadata, source-surface list, status, supersession, generated index, unknown surface, or graph packet is stale or wrong. Do not use for pure lookup or for creating a new decision note.\n- Trust posture: portable-core\n- Mutation surface: repo\n"
+    },
+    {
+      "name": "aoa-decision-create",
+      "display_name": "AoA Decision Create",
+      "description": "Create a new AoA decision record in the owning repository by checking graph status/issues, using impact packets for placement, and following repo-local decision law for the actual source note and indexes. Use when a real structural, workflow, tooling, source/export, MCP, skill, or authority decision needs durable rationale. Do not use when no decision has been made, the change is trivial, the target repo has unresolved graph issues, or an existing note only needs correction.",
+      "short_description": "Create decision records",
+      "path": ".agents/skills/aoa-decision-create/SKILL.md",
+      "skill_dir": ".agents/skills/aoa-decision-create",
+      "compatibility": "Designed for Codex or similar coding agents with repository file access and an interactive shell. Network access is optional and only needed when repository validation or referenced workflows require it.",
+      "metadata": {
+        "aoa_scope": "core",
+        "aoa_status": "evaluated",
+        "aoa_invocation_mode": "explicit-preferred",
+        "aoa_source_skill_path": "skills/core/engineering/aoa-decision-create/SKILL.md",
+        "aoa_source_repo": "8Dionysus/aoa-skills",
+        "aoa_technique_dependencies": "AOA-T-0033,AOA-T-0002",
+        "aoa_portable_profile": "codex-facing-wave-3"
+      },
+      "headings_available": [
+        "Intent",
+        "Trigger boundary",
+        "Inputs",
+        "Outputs",
+        "Procedure",
+        "Contracts",
+        "Risks and anti-patterns",
+        "Verification",
+        "Technique traceability",
+        "Adaptation points"
+      ],
+      "section_summaries": {
+        "Intent": "Use this skill when a real structural, workflow, tooling, source/export, or authority decision needs a durable repo-local `docs/decisions/` note and the workspace graph should help find the right placement, neighbors, and ID context.",
+        "Trigger boundary": "a change creates durable rationale that future agents need before repeating the route; the owner repository already has or intentionally needs a `docs/decisions/` lane",
+        "Inputs": "chosen decision and the options that shaped it; target repository and source surfaces changed by the decision",
+        "Outputs": "one new source decision note with canonical ID, status, date, owner surface, index metadata, context, options, decision, rationale, consequences, source surfaces, and follow-up route; refreshed repo-local generated decision indexes",
+        "Procedure": "confirm a real decision exists and is worth preserving; use `aoa_decisions` status and issues first; if the target repo has graph",
+        "Contracts": "a decision note records why; it does not replace the active source surface; next ID selection must be verified from source files",
+        "Risks and anti-patterns": "creating process noise for trivial changes; writing a decision before the choice is actually made",
+        "Verification": "confirm the new record has canonical ID, status, date, owner surface, and index metadata; confirm source surfaces match the actual diff",
+        "Technique traceability": "AOA-T-0033 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/instruction/docs-boundary/decision-rationale-recording/TECHNIQUE.md` and sections: Intent, When to use, When not to use, Inputs, Outputs, Core procedure, Contracts,...",
+        "Adaptation points": "repository-specific ID prefix and numbering; decision template fields and index metadata vocabulary"
+      },
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": []
+      },
+      "policy": {
+        "implicit_activation_policy": "manual",
+        "allow_implicit_invocation": false
+      },
+      "interface": {
+        "display_name": "AoA Decision Create",
+        "short_description": "Create decision records",
+        "default_prompt": "Use $aoa-decision-create to inspect graph context, write the repo-local decision note, rebuild indexes, and refresh the workspace graph.",
+        "icon_small": "./assets/small-logo.svg",
+        "icon_large": "./assets/large-logo.svg",
+        "brand_color": "#2563EB"
+      },
+      "runtime_contract_ref": "generated/skill_runtime_contracts.json#aoa-decision-create",
+      "context_retention_ref": "generated/context_retention_manifest.json#aoa-decision-create",
+      "trust_policy_ref": "generated/trust_policy_matrix.json#aoa-decision-create",
+      "collision_family": "decision-and-doc-authority",
+      "collision_notes": [
+        "Use aoa-adr-write when the task is to capture a concrete architectural or workflow decision.",
+        "Use aoa-source-of-truth-check when the task is to identify which documents are authoritative and reduce overlap.",
+        "Use aoa-decision when the task needs a decision-lane route through find, create, or correct.",
+        "Use aoa-decision-find when prior decision rationale should be located and source-verified.",
+        "Use aoa-decision-create when a new repo-local decision record must be written.",
+        "Use aoa-decision-correct when an existing decision record, index, status, or graph mismatch must be repaired."
+      ],
+      "competing_skills": [
+        "aoa-decision",
+        "aoa-decision-find"
+      ],
+      "sample_prompts": {
+        "explicit": [
+          "Use $aoa-decision-create to inspect graph context, write the repo-local decision note, rebuild indexes, and refresh the workspace graph."
+        ],
+        "implicit": [],
+        "manual_invocation_required": [
+          "Write a new repo-local decision record for a real route choice, rebuild the local decision indexes, and refresh the workspace decision graph.",
+          "Write a new repo-local decision record for this structural route choice, rebuild local decision indexes, and refresh the workspace graph."
+        ],
+        "negative": [
+          "Existing records already explain the route; the task is to find and summarize them."
+        ]
+      },
+      "explicit_handles": {
+        "codex": {
+          "mention": "$aoa-decision-create",
+          "browser": "/skills"
+        },
+        "local_wrapper": {
+          "slash_alias": "/aoa-decision-create",
+          "tool_call": {
+            "name": "activate_skill",
+            "arguments": {
+              "skill_name": "aoa-decision-create"
+            }
+          }
+        }
+      },
+      "disclose_card_markdown": "### aoa-decision-create\n- Summary: Create decision records\n- Use when: Create a new AoA decision record in the owning repository by checking graph status/issues, using impact packets for placement, and following repo-local decision law for the actual source note and indexes. Use when a real structural, workflow, tooling, source/export, MCP, skill, or authority decision needs durable rationale. Do not use when no decision has been made, the change is trivial, the target repo has unresolved graph issues, or an existing note only needs correction.\n- Trust posture: portable-core\n- Mutation surface: repo\n"
+    },
+    {
+      "name": "aoa-decision-find",
+      "display_name": "AoA Decision Find",
+      "description": "Find AoA decision records through workspace graph search and impact packets, then verify claims against repo-local source notes and generated decision indexes. Use when prior decision rationale, changed paths, owner surfaces, source surfaces, status, or supersession links are needed before work continues. Do not use when the task is to create or edit a decision record.",
+      "short_description": "Find decision records",
+      "path": ".agents/skills/aoa-decision-find/SKILL.md",
+      "skill_dir": ".agents/skills/aoa-decision-find",
+      "compatibility": "Designed for Codex or similar coding agents with repository file access and an interactive shell. Network access is optional and only needed when repository validation or referenced workflows require it.",
+      "metadata": {
+        "aoa_scope": "core",
+        "aoa_status": "evaluated",
+        "aoa_invocation_mode": "explicit-preferred",
+        "aoa_source_skill_path": "skills/core/engineering/aoa-decision-find/SKILL.md",
+        "aoa_source_repo": "8Dionysus/aoa-skills",
+        "aoa_technique_dependencies": "AOA-T-0002",
+        "aoa_portable_profile": "codex-facing-wave-3"
+      },
+      "headings_available": [
+        "Intent",
+        "Trigger boundary",
+        "Inputs",
+        "Outputs",
+        "Procedure",
+        "Contracts",
+        "Risks and anti-patterns",
+        "Verification",
+        "Technique traceability",
+        "Adaptation points"
+      ],
+      "section_summaries": {
+        "Intent": "Use this skill to find decision rationale quickly across AoA repositories while keeping final claims grounded in the owning repository's authored decision note.",
+        "Trigger boundary": "the user asks what decision exists, which record explains a route, or why a boundary was chosen; a task needs relevant prior decision context before editing code, docs, validation, MCP, skill, or repo topology",
+        "Inputs": "query terms, touched paths, target repository, decision ID, source surface, or owner surface; `aoa_decisions` MCP search, packet, changed-path, source-surface,",
+        "Outputs": "ranked decision matches with repo, decision ID, path, status, and reason for relevance; source-note refs used for any claim",
+        "Procedure": "query `aoa_decisions` first when available; choose the narrowest packet:; check status or issues; if `issue_count > 0`, report the graph issue posture",
+        "Contracts": "MCP packets and graph nodes are hints until checked against source notes; source-note claims must cite the repo and decision path",
+        "Risks and anti-patterns": "over-answering from generated graph fields without opening the source record; treating a title match as semantic equivalence",
+        "Verification": "confirm graph or fallback lookup path was used; confirm changed-path/source/owner packet was used when the input made one available",
+        "Technique traceability": "AOA-T-0002 from `8Dionysus/aoa-techniques` at `cd276f040d55d490bd015b8698c7a5d594b9f875` using path `techniques/instruction/docs-boundary/source-of-truth-layout/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation",
+        "Adaptation points": "MCP server and tool names; workspace graph cache path"
+      },
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": []
+      },
+      "policy": {
+        "implicit_activation_policy": "manual",
+        "allow_implicit_invocation": false
+      },
+      "interface": {
+        "display_name": "AoA Decision Find",
+        "short_description": "Find decision records",
+        "default_prompt": "Use $aoa-decision-find to search the decision graph, read the matching source notes, and return compact decision context.",
+        "icon_small": "./assets/small-logo.svg",
+        "icon_large": "./assets/large-logo.svg",
+        "brand_color": "#2563EB"
+      },
+      "runtime_contract_ref": "generated/skill_runtime_contracts.json#aoa-decision-find",
+      "context_retention_ref": "generated/context_retention_manifest.json#aoa-decision-find",
+      "trust_policy_ref": "generated/trust_policy_matrix.json#aoa-decision-find",
+      "collision_family": "decision-and-doc-authority",
+      "collision_notes": [
+        "Use aoa-adr-write when the task is to capture a concrete architectural or workflow decision.",
+        "Use aoa-source-of-truth-check when the task is to identify which documents are authoritative and reduce overlap.",
+        "Use aoa-decision when the task needs a decision-lane route through find, create, or correct.",
+        "Use aoa-decision-find when prior decision rationale should be located and source-verified.",
+        "Use aoa-decision-create when a new repo-local decision record must be written.",
+        "Use aoa-decision-correct when an existing decision record, index, status, or graph mismatch must be repaired."
+      ],
+      "competing_skills": [
+        "aoa-decision",
+        "aoa-decision-create"
+      ],
+      "sample_prompts": {
+        "explicit": [
+          "Use $aoa-decision-find to search the decision graph, read the matching source notes, and return compact decision context."
+        ],
+        "implicit": [],
+        "manual_invocation_required": [
+          "Use the decision graph to find which prior decision explains this owner boundary, then verify the match against the source note.",
+          "Find which prior decision explains this owner boundary by searching the decision graph and verifying the source decision note."
+        ],
+        "negative": [
+          "A new durable decision must be recorded, so lookup alone is insufficient."
+        ]
+      },
+      "explicit_handles": {
+        "codex": {
+          "mention": "$aoa-decision-find",
+          "browser": "/skills"
+        },
+        "local_wrapper": {
+          "slash_alias": "/aoa-decision-find",
+          "tool_call": {
+            "name": "activate_skill",
+            "arguments": {
+              "skill_name": "aoa-decision-find"
+            }
+          }
+        }
+      },
+      "disclose_card_markdown": "### aoa-decision-find\n- Summary: Find decision records\n- Use when: Find AoA decision records through workspace graph search and impact packets, then verify claims against repo-local source notes and generated decision indexes. Use when prior decision rationale, changed paths, owner surfaces, source surfaces, status, or supersession links are needed before work continues. Do not use when the task is to create or edit a decision record.\n- Trust posture: portable-core\n- Mutation surface: none\n"
     },
     {
       "name": "aoa-dry-run-first",
@@ -3073,6 +3523,7 @@
       "competing_skills": [
         "atm10-source-of-truth-check",
         "aoa-adr-write",
+        "aoa-decision",
         "aoa-quest-harvest",
         "abyss-self-diagnostic-spine",
         "aoa-bounded-context-map",

@@ -29,6 +29,30 @@ autonomy_checks:
       - github.com/8Dionysus/aoa-techniques
       - git clone
       - live dependency resolution
+  - skill: aoa-decision
+    forbidden_runtime_terms:
+      - aoa-techniques
+      - github.com/8Dionysus/aoa-techniques
+      - git clone
+      - live dependency resolution
+  - skill: aoa-decision-find
+    forbidden_runtime_terms:
+      - aoa-techniques
+      - github.com/8Dionysus/aoa-techniques
+      - git clone
+      - live dependency resolution
+  - skill: aoa-decision-create
+    forbidden_runtime_terms:
+      - aoa-techniques
+      - github.com/8Dionysus/aoa-techniques
+      - git clone
+      - live dependency resolution
+  - skill: aoa-decision-correct
+    forbidden_runtime_terms:
+      - aoa-techniques
+      - github.com/8Dionysus/aoa-techniques
+      - git clone
+      - live dependency resolution
   - skill: atm10-change-protocol
     forbidden_runtime_terms:
       - aoa-techniques
@@ -330,6 +354,63 @@ trigger_cases:
     expected: do_not_use
     required_phrases:
       - the next honest move is a runbook, incident note, risk approval, or operational follow-up rather than durable decision rationale
+
+  - skill: aoa-decision
+    case_id: decision_router_docs_decisions_graph
+    prompt: Use the decisions graph to decide whether this docs/decisions task is a lookup, a new record, or a correction.
+    expected: use
+    required_phrases:
+      - the task mentions `docs/decisions/`, decision records, ADRs, decision indexes, decision graph, or decision-lane symmetry
+      - the work spans more than one AoA repository and graph lookup can reduce context load
+  - skill: aoa-decision
+    case_id: decision_router_plain_docs_edit
+    prompt: Update a README paragraph that has no decision-lane or durable rationale impact.
+    expected: do_not_use
+    required_phrases:
+      - the task is a normal docs edit with no durable decision-lane implication
+      - the request is only to summarize code, tests, or release notes without decision rationale
+  - skill: aoa-decision-find
+    case_id: decision_find_prior_rationale
+    prompt: Find which existing AoA decision explains a boundary before editing the related source surface.
+    expected: use
+    required_phrases:
+      - the user asks what decision exists, which record explains a route, or why a boundary was chosen
+      - graph search can prevent broad manual reads across many decision lanes
+  - skill: aoa-decision-find
+    case_id: decision_find_create_needed
+    prompt: Write a new decision record for a chosen MCP access-plane change.
+    expected: do_not_use
+    required_phrases:
+      - a new decision note must be written; use `aoa-decision-create`
+      - an existing note or metadata must be edited; use `aoa-decision-correct`
+  - skill: aoa-decision-create
+    case_id: decision_create_structural_rationale
+    prompt: Create a durable decision note for a structural source/export boundary that changed after review.
+    expected: use
+    required_phrases:
+      - a change creates durable rationale that future agents need before repeating the route
+      - graph lookup should identify similar prior decisions, next ID, source surfaces, or symmetry constraints
+  - skill: aoa-decision-create
+    case_id: decision_create_existing_note_correction
+    prompt: Fix the source-surface list in an existing decision record.
+    expected: do_not_use
+    required_phrases:
+      - an existing record can be corrected instead; use `aoa-decision-correct`
+      - no decision has been made yet and the work is still option framing
+  - skill: aoa-decision-correct
+    case_id: decision_correct_stale_metadata
+    prompt: Correct stale index metadata and regenerate the decision indexes for an existing record.
+    expected: use
+    required_phrases:
+      - a decision record is stale, incomplete, misindexed, wrongly sourced, or needs supersession
+      - generated decision indexes are out of date with source metadata
+  - skill: aoa-decision-correct
+    case_id: decision_correct_new_record_needed
+    prompt: Create a new decision record for a chosen skill-chain route.
+    expected: do_not_use
+    required_phrases:
+      - the task is only to find relevant rationale; use `aoa-decision-find`
+      - a new durable decision is required instead; use `aoa-decision-create`
 
   - skill: aoa-core-logic-boundary
     case_id: core_logic_boundary_mixed_responsibilities
@@ -1436,6 +1517,46 @@ adjacency_cases:
       - This is an adr-write case, not a source-of-truth-check case.
       - A concise decision note or ADR draft that explains the rationale rather than only the outcome.
     forbidden_output_phrases: []
+  - skill: aoa-decision
+    case_id: decision_router_vs_adr_write_boundary
+    prompt: Compare routing decision-lane work through the workspace graph with writing a standalone ADR and choose the clearer fit when the task may be find, create, or correct.
+    expected: use
+    adjacent_skill: aoa-adr-write
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-decision/decision_router_vs_adr_write_boundary.md
+    required_output_phrases:
+      - This is an aoa-decision case, not an aoa-adr-write case.
+      - A route decision that selects one find, create, or correct path and uses the decision graph before broad repo reads.
+    forbidden_output_phrases: []
+  - skill: aoa-decision-find
+    case_id: decision_find_vs_decision_create_boundary
+    prompt: Compare finding existing decision rationale with creating a new decision note and choose the clearer fit when prior records may already answer the task.
+    expected: use
+    adjacent_skill: aoa-decision-create
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-decision-find/decision_find_vs_decision_create_boundary.md
+    required_output_phrases:
+      - This is an aoa-decision-find case, not an aoa-decision-create case.
+      - A compact decision lookup that verifies graph matches against source notes.
+    forbidden_output_phrases: []
+  - skill: aoa-decision-create
+    case_id: decision_create_vs_decision_find_boundary
+    prompt: Compare creating a durable repo-local decision record with only finding existing rationale and choose the clearer fit after a real new route choice was made.
+    expected: use
+    adjacent_skill: aoa-decision-find
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-decision-create/decision_create_vs_decision_find_boundary.md
+    required_output_phrases:
+      - This is an aoa-decision-create case, not an aoa-decision-find case.
+      - A source-owned decision record creation route with local index rebuild and graph refresh.
+    forbidden_output_phrases: []
+  - skill: aoa-decision-correct
+    case_id: decision_correct_vs_decision_create_boundary
+    prompt: Compare correcting a stale or misindexed existing decision record with writing a new decision note and choose the clearer fit.
+    expected: use
+    adjacent_skill: aoa-decision-create
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-decision-correct/decision_correct_vs_decision_create_boundary.md
+    required_output_phrases:
+      - This is an aoa-decision-correct case, not an aoa-decision-create case.
+      - A source-first correction route that rebuilds local decision indexes and refreshes the graph.
+    forbidden_output_phrases: []
   - skill: aoa-invariant-coverage-audit
     case_id: invariant_coverage_audit_vs_property_invariants_boundary
     prompt: Compare auditing existing checks with authoring property invariants and choose the clearer fit for a coverage review.
@@ -1635,6 +1756,78 @@ snapshot_cases:
     required_output_phrases:
       - do_not_use
       - A deflection that recommends a simpler edit or no ADR at all because the change does not justify decision documentation.
+    forbidden_output_phrases: []
+  - skill: aoa-decision
+    case_id: decision_router_docs_decisions_graph
+    prompt: Use the decisions graph to decide whether this docs/decisions task is a lookup, a new record, or a correction.
+    expected: use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-decision/decision_router_docs_decisions_graph.md
+    required_output_phrases:
+      - use
+      - A route decision that selects one find, create, or correct path and uses the decision graph before broad repo reads.
+    forbidden_output_phrases: []
+  - skill: aoa-decision
+    case_id: decision_router_plain_docs_edit
+    prompt: Update a README paragraph that has no decision-lane or durable rationale impact.
+    expected: do_not_use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-decision/decision_router_plain_docs_edit.md
+    required_output_phrases:
+      - do_not_use
+      - A deflection that treats the request as an ordinary docs edit rather than a decision-lane route.
+    forbidden_output_phrases: []
+  - skill: aoa-decision-find
+    case_id: decision_find_prior_rationale
+    prompt: Find which existing AoA decision explains a boundary before editing the related source surface.
+    expected: use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-decision-find/decision_find_prior_rationale.md
+    required_output_phrases:
+      - use
+      - A compact decision lookup that verifies graph matches against source notes.
+    forbidden_output_phrases: []
+  - skill: aoa-decision-find
+    case_id: decision_find_create_needed
+    prompt: Write a new decision record for a chosen MCP access-plane change.
+    expected: do_not_use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-decision-find/decision_find_create_needed.md
+    required_output_phrases:
+      - do_not_use
+      - A deflection toward aoa-decision-create because a source decision note must be written.
+    forbidden_output_phrases: []
+  - skill: aoa-decision-create
+    case_id: decision_create_structural_rationale
+    prompt: Create a durable decision note for a structural source/export boundary that changed after review.
+    expected: use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-decision-create/decision_create_structural_rationale.md
+    required_output_phrases:
+      - use
+      - A source-owned decision record creation route with local index rebuild and graph refresh.
+    forbidden_output_phrases: []
+  - skill: aoa-decision-create
+    case_id: decision_create_existing_note_correction
+    prompt: Fix the source-surface list in an existing decision record.
+    expected: do_not_use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-decision-create/decision_create_existing_note_correction.md
+    required_output_phrases:
+      - do_not_use
+      - A deflection toward aoa-decision-correct because an existing source record needs repair.
+    forbidden_output_phrases: []
+  - skill: aoa-decision-correct
+    case_id: decision_correct_stale_metadata
+    prompt: Correct stale index metadata and regenerate the decision indexes for an existing record.
+    expected: use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-decision-correct/decision_correct_stale_metadata.md
+    required_output_phrases:
+      - use
+      - A source-first correction route that rebuilds local decision indexes and refreshes the graph.
+    forbidden_output_phrases: []
+  - skill: aoa-decision-correct
+    case_id: decision_correct_new_record_needed
+    prompt: Create a new decision record for a chosen skill-chain route.
+    expected: do_not_use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-decision-correct/decision_correct_new_record_needed.md
+    required_output_phrases:
+      - do_not_use
+      - A deflection toward aoa-decision-create because a new durable decision is required.
     forbidden_output_phrases: []
   - skill: aoa-approval-gate-check
     case_id: approval_gate_low_risk_task

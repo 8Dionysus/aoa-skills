@@ -1,0 +1,34 @@
+skill_name: aoa-decision
+composition_mode: bounded
+techniques:
+  - id: AOA-T-0033
+    repo: 8Dionysus/aoa-techniques
+    path: techniques/instruction/docs-boundary/decision-rationale-recording/TECHNIQUE.md
+    source_ref: 3b1d5d623569aa4920b87280d0db0e911d2e29d5
+    use_sections:
+      - Intent
+      - When to use
+      - When not to use
+      - Inputs
+      - Outputs
+      - Core procedure
+      - Contracts
+      - Risks
+      - Validation
+  - id: AOA-T-0002
+    repo: 8Dionysus/aoa-techniques
+    path: techniques/instruction/docs-boundary/source-of-truth-layout/TECHNIQUE.md
+    source_ref: 3b1d5d623569aa4920b87280d0db0e911d2e29d5
+    use_sections:
+      - Intent
+      - When to use
+      - When not to use
+      - Inputs
+      - Outputs
+      - Core procedure
+      - Contracts
+      - Risks
+      - Validation
+notes:
+  - Keep this skill as a router; the subskills own task-specific details.
+  - Keep MCP graph lookup weaker than repo-local authored decision records.

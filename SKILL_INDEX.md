@@ -16,6 +16,10 @@ This file is the repository-wide map of public skills.
 | aoa-invariant-coverage-audit | core | canonical | Skill for auditing whether existing checks actually constrain the stable invariants that matter, and for reporting the smallest bounded gaps. |
 | aoa-approval-gate-check | risk | canonical | Skill for classifying whether a requested action should proceed, wait for explicit approval, or be refused. |
 | aoa-adr-write | core | canonical | Skill for recording a meaningful architectural or workflow decision with rationale and tradeoffs. |
+| aoa-decision | core | evaluated | Router for decision-lane work that checks the workspace decision graph first, then selects the smallest find, create, or correct path. |
+| aoa-decision-find | core | evaluated | Skill for graph-first decision lookup with source-note verification before claims become task context. |
+| aoa-decision-create | core | evaluated | Skill for creating repo-local decision records with related graph context, local index rebuild, and graph refresh. |
+| aoa-decision-correct | core | evaluated | Skill for correcting, superseding, or reindexing source decision notes before refreshing generated indexes and the workspace graph. |
 | aoa-automation-opportunity-scan | core | scaffold | Skill for detecting reviewed or repeated project processes that are candidates for automation, classifying whether they are seed-ready, and routing them to the right owner layer without granting schedule or mutation authority. |
 | aoa-core-logic-boundary | core | evaluated | Skill for clarifying which logic belongs in the reusable core versus glue, orchestration, or infrastructure detail. |
 | aoa-port-adapter-refactor | core | evaluated | Skill for refactoring toward clearer ports and adapters so reusable logic is less entangled with infrastructure details. |
@@ -83,6 +87,10 @@ The next stable layer around that kernel is the engineering outer ring:
 
 - `aoa-adr-write`
 - `aoa-source-of-truth-check`
+- `aoa-decision`
+- `aoa-decision-find`
+- `aoa-decision-create`
+- `aoa-decision-correct`
 - `aoa-bounded-context-map`
 - `aoa-core-logic-boundary`
 - `aoa-port-adapter-refactor`

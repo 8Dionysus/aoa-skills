@@ -12,14 +12,14 @@
     "generated/runtime_router_hints.json",
     ".agents/skills/*/SKILL.md"
   ],
-  "skill_count": 46,
-  "total_cases": 207,
+  "skill_count": 50,
+  "total_cases": 229,
   "case_class_totals": {
-    "explicit-handle": 47,
-    "manual-invocation-required": 57,
-    "prefer-other-skill": 29,
-    "should-not-trigger": 47,
-    "should-trigger": 27
+    "explicit-handle": 51,
+    "manual-invocation-required": 63,
+    "prefer-other-skill": 35,
+    "should-not-trigger": 51,
+    "should-trigger": 29
   },
   "skills": [
     {
@@ -89,10 +89,10 @@
       "implicit_activation_policy": "invoke",
       "description_sha256": "f1f4cb3d68b8da03557ea671e72452a3e883eb989f7e093686eee8b1dd73fc94",
       "family": "decision-and-doc-authority",
-      "total_cases": 6,
+      "total_cases": 7,
       "case_class_totals": {
         "explicit-handle": 1,
-        "prefer-other-skill": 3,
+        "prefer-other-skill": 4,
         "should-not-trigger": 1,
         "should-trigger": 1
       },
@@ -272,6 +272,91 @@
         "should-trigger",
         "should-not-trigger",
         "prefer-other-skill"
+      ],
+      "coverage_ok": true,
+      "has_collision_coverage": true
+    },
+    {
+      "name": "aoa-decision",
+      "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "invoke",
+      "description_sha256": "f76ac8c171081f4e8912c63d40b3c833ebc6b2ea155c1ea2bd629253c9e87530",
+      "family": "decision-and-doc-authority",
+      "total_cases": 6,
+      "case_class_totals": {
+        "explicit-handle": 1,
+        "prefer-other-skill": 2,
+        "should-not-trigger": 1,
+        "should-trigger": 2
+      },
+      "required_case_classes": [
+        "explicit-handle",
+        "should-trigger",
+        "should-not-trigger",
+        "prefer-other-skill"
+      ],
+      "coverage_ok": true,
+      "has_collision_coverage": true
+    },
+    {
+      "name": "aoa-decision-correct",
+      "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "manual",
+      "description_sha256": "531d68aba2449c36696b1dafb8dcb9a707ac88ee82168f5f0309776516fd094d",
+      "family": "decision-and-doc-authority",
+      "total_cases": 5,
+      "case_class_totals": {
+        "explicit-handle": 1,
+        "manual-invocation-required": 2,
+        "prefer-other-skill": 1,
+        "should-not-trigger": 1
+      },
+      "required_case_classes": [
+        "explicit-handle",
+        "manual-invocation-required",
+        "should-not-trigger"
+      ],
+      "coverage_ok": true,
+      "has_collision_coverage": true
+    },
+    {
+      "name": "aoa-decision-create",
+      "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "manual",
+      "description_sha256": "235b2dbdf8fbbae38702b24835e6df7a5635d743ebdb740df224f1f415c14197",
+      "family": "decision-and-doc-authority",
+      "total_cases": 5,
+      "case_class_totals": {
+        "explicit-handle": 1,
+        "manual-invocation-required": 2,
+        "prefer-other-skill": 1,
+        "should-not-trigger": 1
+      },
+      "required_case_classes": [
+        "explicit-handle",
+        "manual-invocation-required",
+        "should-not-trigger"
+      ],
+      "coverage_ok": true,
+      "has_collision_coverage": true
+    },
+    {
+      "name": "aoa-decision-find",
+      "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "manual",
+      "description_sha256": "4ab35d41f09c5bb563a69fca0c81b7e58df44fe75af8c217d8c800c57fe597f9",
+      "family": "decision-and-doc-authority",
+      "total_cases": 5,
+      "case_class_totals": {
+        "explicit-handle": 1,
+        "manual-invocation-required": 2,
+        "prefer-other-skill": 1,
+        "should-not-trigger": 1
+      },
+      "required_case_classes": [
+        "explicit-handle",
+        "manual-invocation-required",
+        "should-not-trigger"
       ],
       "coverage_ok": true,
       "has_collision_coverage": true

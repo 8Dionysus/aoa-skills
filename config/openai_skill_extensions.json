@@ -6,5 +6,54 @@
       "tools": []
     }
   },
-  "skills": {}
+  "skills": {
+    "aoa-decision": {
+      "dependencies": {
+        "tools": [
+          {
+            "type": "mcp",
+            "value": "aoa_decisions",
+            "description": "AoA workspace decision graph MCP server",
+            "transport": "stdio"
+          }
+        ]
+      }
+    },
+    "aoa-decision-find": {
+      "dependencies": {
+        "tools": [
+          {
+            "type": "mcp",
+            "value": "aoa_decisions",
+            "description": "AoA workspace decision graph MCP server",
+            "transport": "stdio"
+          }
+        ]
+      }
+    },
+    "aoa-decision-create": {
+      "dependencies": {
+        "tools": [
+          {
+            "type": "mcp",
+            "value": "aoa_decisions",
+            "description": "AoA workspace decision graph MCP server",
+            "transport": "stdio"
+          }
+        ]
+      }
+    },
+    "aoa-decision-correct": {
+      "dependencies": {
+        "tools": [
+          {
+            "type": "mcp",
+            "value": "aoa_decisions",
+            "description": "AoA workspace decision graph MCP server",
+            "transport": "stdio"
+          }
+        ]
+      }
+    }
+  }
 }

@@ -6,11 +6,19 @@
       "family": "decision-and-doc-authority",
       "skills": [
         "aoa-adr-write",
-        "aoa-source-of-truth-check"
+        "aoa-source-of-truth-check",
+        "aoa-decision",
+        "aoa-decision-find",
+        "aoa-decision-create",
+        "aoa-decision-correct"
       ],
       "notes": [
         "Use aoa-adr-write when the task is to capture a concrete architectural or workflow decision.",
-        "Use aoa-source-of-truth-check when the task is to identify which documents are authoritative and reduce overlap."
+        "Use aoa-source-of-truth-check when the task is to identify which documents are authoritative and reduce overlap.",
+        "Use aoa-decision when the task needs a decision-lane route through find, create, or correct.",
+        "Use aoa-decision-find when prior decision rationale should be located and source-verified.",
+        "Use aoa-decision-create when a new repo-local decision record must be written.",
+        "Use aoa-decision-correct when an existing decision record, index, status, or graph mismatch must be repaired."
       ]
     },
     {
@@ -248,6 +256,56 @@
       "note": "General bounded change workflow, not specifically test-first or infra-heavy."
     },
     {
+      "case_id": "collision-38",
+      "skill_name": "aoa-decision",
+      "expected_behavior": "invoke-skill",
+      "expected_skill": "aoa-decision",
+      "competing_skills": [
+        "aoa-adr-write",
+        "aoa-decision-find",
+        "aoa-decision-create",
+        "aoa-decision-correct"
+      ],
+      "prompt": "The task touches docs/decisions across several AoA repos, and the agent must use the workspace decision graph to decide whether to find, create, or correct records before editing.",
+      "note": "This is a decision-lane route selection task, not a standalone ADR or one preselected subskill."
+    },
+    {
+      "case_id": "collision-39",
+      "skill_name": "aoa-decision-find",
+      "expected_behavior": "manual-invocation-required",
+      "expected_skill": null,
+      "competing_skills": [
+        "aoa-decision",
+        "aoa-decision-create"
+      ],
+      "prompt": "Use the decision graph to find which prior decision explains this owner boundary, then verify the match against the source note.",
+      "note": "The find subskill is manual and should normally be selected by aoa-decision."
+    },
+    {
+      "case_id": "collision-40",
+      "skill_name": "aoa-decision-create",
+      "expected_behavior": "manual-invocation-required",
+      "expected_skill": null,
+      "competing_skills": [
+        "aoa-decision",
+        "aoa-decision-find"
+      ],
+      "prompt": "Write a new repo-local decision record for a real route choice, rebuild the local decision indexes, and refresh the workspace decision graph.",
+      "note": "The create subskill is manual and should normally be selected by aoa-decision after routing."
+    },
+    {
+      "case_id": "collision-41",
+      "skill_name": "aoa-decision-correct",
+      "expected_behavior": "manual-invocation-required",
+      "expected_skill": null,
+      "competing_skills": [
+        "aoa-decision",
+        "aoa-decision-create"
+      ],
+      "prompt": "Repair a stale decision note and generated index mismatch by editing the source record first, then refresh the graph.",
+      "note": "The correct subskill is manual and should normally be selected by aoa-decision after routing."
+    },
+    {
       "case_id": "collision-09",
       "skill_name": "aoa-approval-gate-check",
       "expected_behavior": "manual-invocation-required",
@@ -347,6 +405,7 @@
       "competing_skills": [
         "atm10-source-of-truth-check",
         "aoa-adr-write",
+        "aoa-decision",
         "aoa-quest-harvest"
       ],
       "prompt": "This repo has three conflicting architecture guides and two outdated runbooks. Identify which files are authoritative and shorten the entrypoints into a link-driven map.",
@@ -562,6 +621,7 @@
       "expected_skill": "aoa-source-of-truth-check",
       "competing_skills": [
         "aoa-adr-write",
+        "aoa-decision",
         "aoa-bounded-context-map"
       ],
       "prompt": "Clarify which files are authoritative for chaos doctrine, runtime receipts, and re-entry gates, then keep the repo entrypoints short and link-driven.",

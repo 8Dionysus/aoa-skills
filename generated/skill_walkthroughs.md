@@ -529,6 +529,148 @@ Common expand sections:
 - `promotion_review`: `docs/reviews/status-promotions/aoa-core-logic-boundary.md`
 - `candidate_review`: `docs/reviews/canonical-candidates/aoa-core-logic-boundary.md`
 
+## aoa-decision
+
+- scope: `core`
+- status: `evaluated`
+- invocation mode: `explicit-preferred`
+- skill path: `skills/core/engineering/aoa-decision/SKILL.md`
+- pick summary: Route AoA decision-lane work through the workspace decision graph first, then hand off to the smallest find, create, or correct subskill while keeping repo-local decision files authoritative.
+
+### Use when
+
+- the task mentions docs/decisions/, decision records, ADRs, decision indexes, decision graph, or decision-lane symmetry
+- the user asks which prior decision, source surface, owner boundary, status, supersession, or rationale applies
+- a new durable decision record may be needed after a structural, workflow, tooling, source/export, or authority change
+- an existing decision note, index metadata, supersession, source-surface list, or generated decision index may need correction
+- the work spans more than one AoA repository and graph lookup can reduce context load
+
+### Do not use when
+
+- the task is a normal docs edit with no durable decision-lane implication
+- the real question is only source-of-truth ambiguity; use aoa-source-of-truth-check
+- the real question is only whether a decision should be recorded; use aoa-adr-write
+- the request is only to summarize code, tests, or release notes without decision rationale
+- a repo-local route card forbids changing decision surfaces in the current scope
+
+### Object use shape
+
+- one chosen route: aoa-decision-find, aoa-decision-create, or aoa-decision-correct
+- compact graph or source context used for the route decision
+- explicit owner repository and source-truth surface
+- validation path for any write or correction
+- stop line when the graph is stale, missing, or not authoritative enough
+
+### Support artifacts
+
+- `review_checklist` (selected): `skills/core/engineering/aoa-decision/checks/review.md`
+- `promotion_review`: `docs/reviews/status-promotions/aoa-decision.md`
+
+## aoa-decision-correct
+
+- scope: `core`
+- status: `evaluated`
+- invocation mode: `explicit-preferred`
+- skill path: `skills/core/engineering/aoa-decision-correct/SKILL.md`
+- pick summary: Correct, supersede, or reindex AoA decision records by editing source notes first, rebuilding repo-local indexes, and refreshing the workspace decision graph.
+
+### Use when
+
+- a decision record is stale, incomplete, misindexed, wrongly sourced, or needs supersession
+- generated decision indexes are out of date with source metadata
+- graph lookup shows a mismatch that must be verified against the source note
+- a correction must preserve local decision-lane law and validation
+
+### Do not use when
+
+- the task is only to find relevant rationale; use aoa-decision-find
+- a new durable decision is required instead; use aoa-decision-create
+- the source surface itself is wrong and no decision-lane change is needed
+- a generated graph or index can be refreshed without source-note drift
+- the correction would rewrite history instead of adding an explicit supersession or status change
+
+### Object use shape
+
+- corrected source decision note or explicit no-change finding
+- regenerated repo-local decision indexes when metadata changed
+- refreshed or checked workspace graph
+- clear report of old mismatch, correction, validation, and any remaining risk
+
+### Support artifacts
+
+- `review_checklist` (selected): `skills/core/engineering/aoa-decision-correct/checks/review.md`
+- `promotion_review`: `docs/reviews/status-promotions/aoa-decision-correct.md`
+
+## aoa-decision-create
+
+- scope: `core`
+- status: `evaluated`
+- invocation mode: `explicit-preferred`
+- skill path: `skills/core/engineering/aoa-decision-create/SKILL.md`
+- pick summary: Create a new AoA decision record in the owning repository by using graph context for placement and repo-local decision law for the actual source note and indexes.
+
+### Use when
+
+- a change creates durable rationale that future agents need before repeating the route
+- the owner repository already has or intentionally needs a docs/decisions/ lane
+- graph lookup should identify similar prior decisions, next ID, source surfaces, or symmetry constraints
+- a decision note must be created alongside code, docs, MCP, skill, validator, or generated-index changes
+
+### Do not use when
+
+- no decision has been made yet and the work is still option framing
+- the change is self-evident and a commit or change summary is enough
+- the target repository has no appropriate decision lane and the task does not explicitly add one
+- an existing record can be corrected instead; use aoa-decision-correct
+- the decision would copy another repo's rationale without local owner evidence
+
+### Object use shape
+
+- one new source decision note with canonical ID, status, date, owner surface, index metadata, context, options, decision, rationale, consequences, source surfaces, and follow-up route
+- refreshed repo-local generated decision indexes
+- refreshed or checked workspace decision graph
+- validation summary and any remaining owner-route risk
+
+### Support artifacts
+
+- `review_checklist` (selected): `skills/core/engineering/aoa-decision-create/checks/review.md`
+- `promotion_review`: `docs/reviews/status-promotions/aoa-decision-create.md`
+
+## aoa-decision-find
+
+- scope: `core`
+- status: `evaluated`
+- invocation mode: `explicit-preferred`
+- skill path: `skills/core/engineering/aoa-decision-find/SKILL.md`
+- pick summary: Find AoA decision records through the workspace graph, then verify claims against repo-local source notes and generated decision indexes.
+
+### Use when
+
+- the user asks what decision exists, which record explains a route, or why a boundary was chosen
+- a task needs relevant prior decision context before editing code, docs, validation, MCP, skill, or repo topology
+- a cross-repo comparison needs decision IDs, owner surfaces, source surfaces, statuses, or supersession links
+- graph search can prevent broad manual reads across many decision lanes
+
+### Do not use when
+
+- a new decision note must be written; use aoa-decision-create
+- an existing note or metadata must be edited; use aoa-decision-correct
+- the task is only source-of-truth mapping outside decision records
+- the user needs a final architectural decision that has not been made yet
+- the graph or indexes are enough for lookup but the answer would require source-note verification and no source read is possible
+
+### Object use shape
+
+- ranked decision matches with repo, decision ID, path, status, and reason for relevance
+- source-note refs used for any claim
+- note when graph data is stale, missing, or only a candidate hint
+- next route if creation or correction is needed
+
+### Support artifacts
+
+- `review_checklist` (selected): `skills/core/engineering/aoa-decision-find/checks/review.md`
+- `promotion_review`: `docs/reviews/status-promotions/aoa-decision-find.md`
+
 ## aoa-dry-run-first
 
 - scope: `risk`

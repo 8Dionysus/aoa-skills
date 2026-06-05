@@ -5,10 +5,10 @@ It is a boundary/readiness view, not a direct status surface.
 
 ## Summary
 
-- total skills: 46
-- multi-technique skills: 44
-- single-technique skills: 2
-- approved exceptions: 2
+- total skills: 50
+- multi-technique skills: 47
+- single-technique skills: 3
+- approved exceptions: 3
 - needs reframe: 0
 
 | name | techniques | composition class | recommended action | exception review |
@@ -25,6 +25,10 @@ It is a boundary/readiness view, not a direct status surface.
 | aoa-commit-growth-seam | 2 | multi_technique | keep_multi_technique | - |
 | aoa-contract-test | 2 | multi_technique | keep_multi_technique | - |
 | aoa-core-logic-boundary | 2 | multi_technique | keep_multi_technique | - |
+| aoa-decision | 2 | multi_technique | keep_multi_technique | - |
+| aoa-decision-correct | 3 | multi_technique | keep_multi_technique | - |
+| aoa-decision-create | 2 | multi_technique | keep_multi_technique | - |
+| aoa-decision-find | 1 | single_technique_exception | keep_exception | docs/reviews/skill-composition-exceptions/aoa-decision-find.md |
 | aoa-dry-run-first | 2 | multi_technique | keep_multi_technique | - |
 | aoa-invariant-coverage-audit | 1 | single_technique_exception | keep_exception | docs/reviews/skill-composition-exceptions/aoa-invariant-coverage-audit.md |
 | aoa-local-stack-bringup | 4 | multi_technique | keep_multi_technique | - |
