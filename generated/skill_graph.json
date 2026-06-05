@@ -5550,7 +5550,7 @@
       "candidate_review_path": null,
       "canonical_candidate_ready": true,
       "canonical_eval_ready": true,
-      "content_hash": "2dd29e91c836feffe0c2e6ba8de41092f0317062fd9ba54f673e4258434a72b1",
+      "content_hash": "c2e248e7a30b08408c20530573733cfaf31e6c7e616b8024b9000b59c5a4bcb1",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -5579,7 +5579,7 @@
       "promotion_review_path": "docs/reviews/status-promotions/aoa-decision.md",
       "scope": "core",
       "skill_path": "skills/core/engineering/aoa-decision/SKILL.md",
-      "skill_revision": "2dd29e91c836",
+      "skill_revision": "c2e248e7a30b",
       "status": "evaluated",
       "support_artifacts": [
         {

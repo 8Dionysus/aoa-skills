@@ -65,8 +65,9 @@ Do not use this skill when:
    - owner surface: `aoa_decisions_owner_surface`
    - repo comparison: `aoa_decisions_repo_symmetry`
    - unknown surface or graph health: `aoa_decisions_issues`
-3. if MCP is unavailable, fall back to the workspace builder from `abyss-stack`,
-   such as `python /home/dionysus/src/abyss-stack/scripts/build_workspace_decision_graph.py --check --json`
+3. if MCP is unavailable, locate `abyss-stack` in the current workspace or a
+   known local checkout and run its graph builder, such as
+   `python <abyss-stack>/scripts/build_workspace_decision_graph.py --check --json`
 4. if graph lookup is unavailable too, use repo-local `rg` and generated
    decision indexes, then read the source decision notes directly
 5. load only the chosen subskill; do not load find, create, and correct

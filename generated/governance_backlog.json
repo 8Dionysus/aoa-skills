@@ -176,13 +176,13 @@
       "truth_synced": true
     },
     {
-      "current_revision": "2dd29e91c836",
+      "current_revision": "c2e248e7a30b",
       "governance_decision": "stay_evaluated",
       "issues": [],
       "lineage_state": "published",
       "name": "aoa-decision",
       "review_path": "docs/reviews/status-promotions/aoa-decision.md",
-      "reviewed_revision": "2dd29e91c836",
+      "reviewed_revision": "c2e248e7a30b",
       "runtime_skill_md_meaning_changed": true,
       "status": "evaluated",
       "truth_synced": true

@@ -3083,8 +3083,8 @@
         "skill_path": "skills/core/engineering/aoa-decision/SKILL.md",
         "techniques_path": "skills/core/engineering/aoa-decision/techniques.yaml",
         "policy_path": "skills/core/engineering/aoa-decision/agents/openai.yaml",
-        "content_hash": "2dd29e91c836feffe0c2e6ba8de41092f0317062fd9ba54f673e4258434a72b1",
-        "skill_revision": "2dd29e91c836"
+        "content_hash": "c2e248e7a30b08408c20530573733cfaf31e6c7e616b8024b9000b59c5a4bcb1",
+        "skill_revision": "c2e248e7a30b"
       },
       "policy": {
         "invocation_mode": "explicit-preferred",
@@ -3264,9 +3264,9 @@
           "section_role": "procedure",
           "source_path": "skills/core/engineering/aoa-decision/SKILL.md",
           "source_anchor": "## Procedure",
-          "text": "1. classify the task: - find or understand: use `aoa-decision-find` - create or record a new rationale: use `aoa-decision-create` - correct, supersede, reindex, or repair metadata: use `aoa-decision-correct` 2. use the `aoa_decisions` MCP first when it is available; request status and the smallest relevant packet before broad file reads: - touched path: `aoa_decisions_changed_path` - source surface: `aoa_decisions_source_surface` - owner surface: `aoa_decisions_owner_surface` - repo comparison: `aoa_decisions_repo_symmetry` - unknown surface or graph health: `aoa_decisions_issues` 3. if MCP is unavailable, fall back to the workspace builder from `abyss-stack`, such as `python /home/dionysus/src/abyss-stack/scripts/build_workspace_decision_graph.py --check --json` 4. if graph lookup is unavailable too, use repo-local `rg` and generated decision indexes, then read the source decision notes directly 5. load only the chosen subskill; do not load find, create, and correct instructions at the same time 6. before any write, read the target repo's decision route card and template; if `issue_count > 0`, inspect `aoa_decisions_issues` and do not write in a repo whose decision lane has unresolved graph issues 7. after any write, run the repo-local decision-index generator/check and then refresh or check the workspace graph and decision-graph lane when available 8. report the source decision file, graph freshness posture, validation run, and any remaining owner-route risk",
-          "text_sha256": "a5292996f7af3748cf62ea3e03d403499cd3de628ebae77d1f3146db8f0ae268",
-          "token_count": 201
+          "text": "1. classify the task: - find or understand: use `aoa-decision-find` - create or record a new rationale: use `aoa-decision-create` - correct, supersede, reindex, or repair metadata: use `aoa-decision-correct` 2. use the `aoa_decisions` MCP first when it is available; request status and the smallest relevant packet before broad file reads: - touched path: `aoa_decisions_changed_path` - source surface: `aoa_decisions_source_surface` - owner surface: `aoa_decisions_owner_surface` - repo comparison: `aoa_decisions_repo_symmetry` - unknown surface or graph health: `aoa_decisions_issues` 3. if MCP is unavailable, locate `abyss-stack` in the current workspace or a known local checkout and run its graph builder, such as `python <abyss-stack>/scripts/build_workspace_decision_graph.py --check --json` 4. if graph lookup is unavailable too, use repo-local `rg` and generated decision indexes, then read the source decision notes directly 5. load only the chosen subskill; do not load find, create, and correct instructions at the same time 6. before any write, read the target repo's decision route card and template; if `issue_count > 0`, inspect `aoa_decisions_issues` and do not write in a repo whose decision lane has unresolved graph issues 7. after any write, run the repo-local decision-index generator/check and then refresh or check the workspace graph and decision-graph lane when available 8. report the source decision file, graph freshness posture, validation run, and any remaining owner-route risk",
+          "text_sha256": "b5b48b4f060a9408d6b8e20fcb5d537b3bfea6a3fd87524b5f78c910b34f7b76",
+          "token_count": 209
         },
         {
           "doc_id": "skill:aoa-decision:section:contracts",

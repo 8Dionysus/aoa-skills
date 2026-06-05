@@ -82,7 +82,7 @@ Read those rows as per-skill maintenance signals, not as missing canonical-decis
 | aoa-commit-growth-seam | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-commit-growth-seam.md | 6326b5e4985a | 6326b5e4985a | True | - | true |
 | aoa-contract-test | canonical | published | default_reference | docs/reviews/status-promotions/aoa-contract-test.md | 5643013a5d81 | 5643013a5d81 | True | - | true |
 | aoa-core-logic-boundary | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-core-logic-boundary.md | 4c1fe5d5fc55 | 4c1fe5d5fc55 | True | - | true |
-| aoa-decision | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-decision.md | 2dd29e91c836 | 2dd29e91c836 | True | - | true |
+| aoa-decision | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-decision.md | c2e248e7a30b | c2e248e7a30b | True | - | true |
 | aoa-decision-correct | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-decision-correct.md | 18f68b1173b4 | 18f68b1173b4 | True | - | true |
 | aoa-decision-create | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-decision-create.md | de4ff5b8cede | de4ff5b8cede | True | - | true |
 | aoa-decision-find | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-decision-find.md | bda8dc8a6df2 | bda8dc8a6df2 | True | - | true |
