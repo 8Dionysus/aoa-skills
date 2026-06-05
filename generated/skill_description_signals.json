@@ -555,6 +555,7 @@
         "prefer-other-skill"
       ],
       "base_case_ids": [
+        "collision-38",
         "decision-router-explicit",
         "decision-router-implicit",
         "decision-router-adjacent-negative"
@@ -595,6 +596,7 @@
         "should-not-trigger"
       ],
       "base_case_ids": [
+        "collision-41",
         "decision-correct-explicit",
         "decision-correct-manual",
         "decision-correct-adjacent-negative"
@@ -634,6 +636,7 @@
         "should-not-trigger"
       ],
       "base_case_ids": [
+        "collision-40",
         "decision-create-explicit",
         "decision-create-manual",
         "decision-create-adjacent-negative"
@@ -673,6 +676,7 @@
         "should-not-trigger"
       ],
       "base_case_ids": [
+        "collision-39",
         "decision-find-explicit",
         "decision-find-manual",
         "decision-find-adjacent-negative"

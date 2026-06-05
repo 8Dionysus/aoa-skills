@@ -289,8 +289,8 @@
     },
     {
       "path": "generated/runtime_disclosure_index.json",
-      "sha256": "e5e7ec8c21220eb7c30ae8f0a623172f6796338e10d0485c8bd1979ed84167ea",
-      "bytes": 356006
+      "sha256": "ded8d3109a8b00665803ab0fb3ff860239013b96d1c42b10cac40fa78f89d73a",
+      "bytes": 356627
     },
     {
       "path": "generated/runtime_activation_aliases.json",
@@ -314,8 +314,8 @@
     },
     {
       "path": "generated/runtime_router_hints.json",
-      "sha256": "f7d9bbdb23ae1e4b7bef584f9e3d87cbdbe5d60c571ecebe1af3a27450f6cfd9",
-      "bytes": 87105
+      "sha256": "ba03b9d7b7a458243064440e20e8f405f87e6e2fe45834a72aa0fb89cb1b201d",
+      "bytes": 87718
     },
     {
       "path": "generated/runtime_seam_manifest.json",
@@ -354,8 +354,8 @@
     },
     {
       "path": "generated/skill_description_signals.json",
-      "sha256": "3e6e988836c31b4ac8a2690ff6c9fed5b2a4c2d921335dd6c984e228f533378e",
-      "bytes": 110973
+      "sha256": "948b6898e4a99461cf94ca4bc492d14124b97079058d67d67fffbbec04ba6991",
+      "bytes": 111069
     },
     {
       "path": "generated/description_trigger_eval_cases.jsonl",

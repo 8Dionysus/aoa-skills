@@ -4,10 +4,10 @@
 
 - current maturity status: `evaluated`
 - current machine-checkable floor (`candidate_ready` gate only when applicable): `pass`
-- current governance lane decision: `project_foundation`
+- current governance lane decision: `stay_evaluated`
 - scope: `core`
 - current lineage: `published`
-- reviewed revision: `current-worktree`
+- reviewed revision: `de4ff5b8cede`
 
 ## Target status
 
@@ -24,7 +24,7 @@
 ## Findings
 
 - machine-checkable floor result: `pass`
-- recorded governance outcome: `project_foundation`
+- recorded governance outcome: `stay_evaluated`
 - runtime `SKILL.md` meaning changed: `yes`
 - current bundle note: the skill checks graph status and issues before writing, reads repo-local route law, creates the source decision note, and requires local index plus graph validation after writes.
 

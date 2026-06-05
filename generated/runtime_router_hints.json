@@ -298,6 +298,7 @@
         "aoa-decision-correct"
       ],
       "should_trigger": [
+        "The task touches docs/decisions across several AoA repos, and the agent must use the workspace decision graph to decide whether to find, create, or correct records before editing.",
         "The task changes docs/decisions across multiple AoA repositories and needs the workspace decision graph to decide whether to find, create, or correct decision records before editing."
       ],
       "manual_invocation_required": [],
@@ -323,6 +324,7 @@
       ],
       "should_trigger": [],
       "manual_invocation_required": [
+        "Repair a stale decision note and generated index mismatch by editing the source record first, then refresh the graph.",
         "Correct a stale decision note and generated index mismatch by editing the source record first and then refreshing the graph."
       ],
       "negative_controls": [
@@ -347,6 +349,7 @@
       ],
       "should_trigger": [],
       "manual_invocation_required": [
+        "Write a new repo-local decision record for a real route choice, rebuild the local decision indexes, and refresh the workspace decision graph.",
         "Write a new repo-local decision record for this structural route choice, rebuild local decision indexes, and refresh the workspace graph."
       ],
       "negative_controls": [
@@ -371,6 +374,7 @@
       ],
       "should_trigger": [],
       "manual_invocation_required": [
+        "Use the decision graph to find which prior decision explains this owner boundary, then verify the match against the source note.",
         "Find which prior decision explains this owner boundary by searching the decision graph and verifying the source decision note."
       ],
       "negative_controls": [

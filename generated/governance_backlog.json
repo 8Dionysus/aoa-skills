@@ -51,12 +51,7 @@
       "aoa-summon"
     ],
     "docs_truth_sync": [],
-    "review_truth_sync": [
-      "aoa-decision",
-      "aoa-decision-correct",
-      "aoa-decision-create",
-      "aoa-decision-find"
-    ]
+    "review_truth_sync": []
   },
   "governance_backlog_version": 5,
   "review_truth_sync": [
@@ -183,66 +178,50 @@
     {
       "current_revision": "2dd29e91c836",
       "governance_decision": "stay_evaluated",
-      "issues": [
-        "current_governance_decision_mismatch(expected=stay_evaluated, recorded=project_foundation)",
-        "reviewed_revision_mismatch(expected=2dd29e91c836, recorded=current-worktree)",
-        "recorded_governance_outcome_mismatch(expected=stay_evaluated, recorded=project_foundation)"
-      ],
+      "issues": [],
       "lineage_state": "published",
       "name": "aoa-decision",
       "review_path": "docs/reviews/status-promotions/aoa-decision.md",
-      "reviewed_revision": "current-worktree",
+      "reviewed_revision": "2dd29e91c836",
       "runtime_skill_md_meaning_changed": true,
       "status": "evaluated",
-      "truth_synced": false
+      "truth_synced": true
     },
     {
       "current_revision": "18f68b1173b4",
       "governance_decision": "stay_evaluated",
-      "issues": [
-        "current_governance_decision_mismatch(expected=stay_evaluated, recorded=project_foundation)",
-        "reviewed_revision_mismatch(expected=18f68b1173b4, recorded=current-worktree)",
-        "recorded_governance_outcome_mismatch(expected=stay_evaluated, recorded=project_foundation)"
-      ],
+      "issues": [],
       "lineage_state": "published",
       "name": "aoa-decision-correct",
       "review_path": "docs/reviews/status-promotions/aoa-decision-correct.md",
-      "reviewed_revision": "current-worktree",
+      "reviewed_revision": "18f68b1173b4",
       "runtime_skill_md_meaning_changed": true,
       "status": "evaluated",
-      "truth_synced": false
+      "truth_synced": true
     },
     {
       "current_revision": "de4ff5b8cede",
       "governance_decision": "stay_evaluated",
-      "issues": [
-        "current_governance_decision_mismatch(expected=stay_evaluated, recorded=project_foundation)",
-        "reviewed_revision_mismatch(expected=de4ff5b8cede, recorded=current-worktree)",
-        "recorded_governance_outcome_mismatch(expected=stay_evaluated, recorded=project_foundation)"
-      ],
+      "issues": [],
       "lineage_state": "published",
       "name": "aoa-decision-create",
       "review_path": "docs/reviews/status-promotions/aoa-decision-create.md",
-      "reviewed_revision": "current-worktree",
+      "reviewed_revision": "de4ff5b8cede",
       "runtime_skill_md_meaning_changed": true,
       "status": "evaluated",
-      "truth_synced": false
+      "truth_synced": true
     },
     {
       "current_revision": "bda8dc8a6df2",
       "governance_decision": "stay_evaluated",
-      "issues": [
-        "current_governance_decision_mismatch(expected=stay_evaluated, recorded=project_foundation)",
-        "reviewed_revision_mismatch(expected=bda8dc8a6df2, recorded=current-worktree)",
-        "recorded_governance_outcome_mismatch(expected=stay_evaluated, recorded=project_foundation)"
-      ],
+      "issues": [],
       "lineage_state": "published",
       "name": "aoa-decision-find",
       "review_path": "docs/reviews/status-promotions/aoa-decision-find.md",
-      "reviewed_revision": "current-worktree",
+      "reviewed_revision": "bda8dc8a6df2",
       "runtime_skill_md_meaning_changed": true,
       "status": "evaluated",
-      "truth_synced": false
+      "truth_synced": true
     },
     {
       "current_revision": "fe0e70f084f5",

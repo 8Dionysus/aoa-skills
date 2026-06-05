@@ -4,10 +4,10 @@
 
 - current maturity status: `evaluated`
 - current machine-checkable floor (`candidate_ready` gate only when applicable): `pass`
-- current governance lane decision: `project_foundation`
+- current governance lane decision: `stay_evaluated`
 - scope: `core`
 - current lineage: `published`
-- reviewed revision: `current-worktree`
+- reviewed revision: `bda8dc8a6df2`
 
 ## Target status
 
@@ -24,7 +24,7 @@
 ## Findings
 
 - machine-checkable floor result: `pass`
-- recorded governance outcome: `project_foundation`
+- recorded governance outcome: `stay_evaluated`
 - runtime `SKILL.md` meaning changed: `yes`
 - current bundle note: the skill uses the narrowest available decision graph packet, then verifies claims against repo-local source notes before reporting rationale.
 
