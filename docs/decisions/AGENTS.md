@@ -36,6 +36,9 @@ Give every decision a canonical `Decision ID: AOA-SK-D-####` whose filename
 prefix matches the ID exactly. Give every decision an `## Index Metadata` block
 so lookup indexes can be regenerated from source notes instead of hand-maintained
 crosswalks.
+Keep `modeled_surfaces` in `indexes/index_contract.yaml` as a top-level list
+of normalized repo-relative paths under `docs/decisions/`; do not use it for
+root non-record Markdown.
 
 Old date-prefixed decision paths stay in git history only. Do not recreate
 date-named stubs or compatibility maps for retired paths.
