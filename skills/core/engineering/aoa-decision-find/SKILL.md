@@ -49,21 +49,25 @@ Do not use this skill when:
 
 1. query `aoa_decisions` first when available; choose the narrowest packet:
    changed-path for touched files, source-surface for cited inputs,
-   owner-surface for ownership routes, decision for a known ID, and packet/search
-   for free-text intent
+   owner-surface for ownership routes, repo for a known target repository, and
+   decision for a known ID
 2. check status or issues; if `issue_count > 0`, report the graph issue posture
    and treat graph matches as candidates until source notes are inspected
-3. if MCP is unavailable, use the latest workspace graph output or repo-local
+3. use broad graph search only when no changed path, source surface, owner
+   surface, repo, or decision ID can narrow the route, or after those packets
+   fail to produce a sufficient candidate; split long free-text intent into
+   smaller anchors before searching
+4. if MCP is unavailable, use the latest workspace graph output or repo-local
    generated indexes as a search aid
-4. read the source decision note before making a rationale, authority, or
+5. read the source decision note before making a rationale, authority, or
    supersession claim
-5. compare source-surface lists and owner metadata against the user's target
+6. compare source-surface lists and owner metadata against the user's target
    paths when judging relevance
-6. distinguish exact matches, likely matches, weak analogies, and missing
+7. distinguish exact matches, likely matches, weak analogies, and missing
    records
-7. if no adequate record exists, route to `aoa-decision-create`; if a record is
+8. if no adequate record exists, route to `aoa-decision-create`; if a record is
    stale or wrong, route to `aoa-decision-correct`
-8. return compact evidence: decision ID, source path, key reason, and remaining uncertainty
+9. return compact evidence: decision ID, source path, key reason, and remaining uncertainty
 
 ## Contracts
 
@@ -77,6 +81,8 @@ Do not use this skill when:
 ## Risks and anti-patterns
 
 - over-answering from generated graph fields without opening the source record
+- using broad graph search before available path, repo, surface, or decision
+  anchors
 - treating a title match as semantic equivalence
 - ignoring supersession or status fields
 - turning a weak sibling analogy into a target-repo rule
@@ -86,6 +92,7 @@ Do not use this skill when:
 
 - confirm graph or fallback lookup path was used
 - confirm changed-path/source/owner packet was used when the input made one available
+- confirm broad search was needed, or skipped because a narrower packet was sufficient
 - confirm final claims came from source notes, not only generated graph data
 - confirm match confidence and any uncertainty are visible
 - confirm missing or stale records route to create or correct instead of being hidden

@@ -59,24 +59,30 @@ Do not use this skill when:
    - correct, supersede, reindex, or repair metadata: use `aoa-decision-correct`
 2. use the `aoa_decisions` MCP first when it is available; request status and
    the smallest relevant packet before broad file reads:
+   - graph health and blockers: `aoa_decisions_status` and
+     `aoa_decisions_issues`
    - touched path: `aoa_decisions_changed_path`
    - source surface: `aoa_decisions_source_surface`
    - owner surface: `aoa_decisions_owner_surface`
    - repo comparison: `aoa_decisions_repo_symmetry`
-   - unknown surface or graph health: `aoa_decisions_issues`
-3. if MCP is unavailable, locate `abyss-stack` in the current workspace or a
-   known local checkout and run its graph builder, such as
-   `python <abyss-stack>/scripts/build_workspace_decision_graph.py --check --json`
-4. if graph lookup is unavailable too, use repo-local `rg` and generated
+   - decision ID or known record: `aoa_decisions_decision`
+   - repo slice when the target repo is known: `aoa_decisions_repo`
+3. use `aoa_decisions_search` only after the status/issues and the relevant
+   changed-path, source-surface, owner-surface, repo, or decision packet is
+   missing, stale, or too narrow; split a long natural-language request into
+   smaller anchors before broad search
+4. if MCP is unavailable, fall back to the workspace builder from `abyss-stack`,
+   such as `python /home/dionysus/src/abyss-stack/scripts/build_workspace_decision_graph.py --check --json`
+5. if graph lookup is unavailable too, use repo-local `rg` and generated
    decision indexes, then read the source decision notes directly
-5. load only the chosen subskill; do not load find, create, and correct
+6. load only the chosen subskill; do not load find, create, and correct
    instructions at the same time
-6. before any write, read the target repo's decision route card and template;
+7. before any write, read the target repo's decision route card and template;
    if `issue_count > 0`, inspect `aoa_decisions_issues` and do not write in a
    repo whose decision lane has unresolved graph issues
-7. after any write, run the repo-local decision-index generator/check and then
+8. after any write, run the repo-local decision-index generator/check and then
    refresh or check the workspace graph and decision-graph lane when available
-8. report the source decision file, graph freshness posture, validation run, and
+9. report the source decision file, graph freshness posture, validation run, and
    any remaining owner-route risk
 
 ## Contracts
@@ -94,6 +100,8 @@ Do not use this skill when:
 ## Risks and anti-patterns
 - treating the workspace graph as an authority instead of a read model
 - loading every subskill for a simple lookup
+- starting with broad graph search when a changed path, owner surface, source
+  surface, repo, or decision ID can produce a smaller packet
 - creating a decision note when a lighter source-of-truth or change summary is enough
 - copying a sibling decision structure without checking the local owner surface
 - updating generated indexes without the source decision note, or vice versa
@@ -103,6 +111,8 @@ Do not use this skill when:
 - confirm exactly one route was selected
 - confirm `aoa_decisions` was used first when available, or the fallback was named
 - confirm graph issue posture was checked before create/correct routes
+- confirm broad `aoa_decisions_search` was skipped when a narrower packet was
+  sufficient, or explain why it was needed
 - confirm the owning repository and source decision surface are explicit
 - confirm any write uses repo-local route law and validators
 - confirm generated indexes and the workspace graph are not treated as source truth

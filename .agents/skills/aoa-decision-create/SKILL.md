@@ -52,19 +52,22 @@ Do not use this skill when:
 1. confirm a real decision exists and is worth preserving
 2. use `aoa_decisions` status and issues first; if the target repo has graph
    issues, stop and route to correction before creating a new record
-3. use changed-path, source-surface, owner-surface, repo, and search packets to
-   collect related records and repo decision-lane context
-4. read the target repo's `docs/decisions/AGENTS.md`, `README.md`, `TEMPLATE.md`,
+3. use changed-path, source-surface, owner-surface, repo, and decision packets
+   to collect related records and repo decision-lane context
+4. use broad search only when the narrower packets do not identify enough
+   placement context; split long free-text intent into path, repo, surface, or
+   decision anchors first
+5. read the target repo's `docs/decisions/AGENTS.md`, `README.md`, `TEMPLATE.md`,
    generated index shape, and latest decision records
-5. choose the next canonical ID from source files, not from memory alone
-6. write the note in the target repo's established format and metadata language
-7. name only the source surfaces this decision actually explains
-8. keep graph, generated indexes, tests, and runtime evidence as context rather
+6. choose the next canonical ID from source files, not from memory alone
+7. write the note in the target repo's established format and metadata language
+8. name only the source surfaces this decision actually explains
+9. keep graph, generated indexes, tests, and runtime evidence as context rather
    than decision authority
-9. run the repo-local decision-index generator, then the check form and any
+10. run the repo-local decision-index generator, then the check form and any
    affected surface validator
-10. refresh or check the workspace graph and run the decision-graph lane when available
-11. report the new decision path, graph freshness, and validation
+11. refresh or check the workspace graph and run the decision-graph lane when available
+12. report the new decision path, graph freshness, and validation
 
 ## Contracts
 - a decision note records why; it does not replace the active source surface
@@ -79,6 +82,7 @@ Do not use this skill when:
 - writing a decision before the choice is actually made
 - copying a sibling record and leaving mismatched owner surfaces
 - omitting rejected options or consequences when they shaped the choice
+- using broad graph search before available path, repo, or surface packets
 - forgetting generated indexes or workspace graph refresh
 - using MCP output as if it created or accepted the decision
 - creating a new note while unknown decision-lane surfaces are already present
@@ -88,6 +92,7 @@ Do not use this skill when:
 - confirm source surfaces match the actual diff
 - confirm repo-local decision indexes were regenerated and checked
 - confirm graph issue posture was checked before writing
+- confirm broad search was needed, or skipped because narrower packets were sufficient
 - confirm affected validators were run or explicitly skipped with reason
 - confirm workspace graph refresh/check and decision-graph lane see the new record
 

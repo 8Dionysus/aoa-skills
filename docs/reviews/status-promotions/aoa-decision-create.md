@@ -7,7 +7,7 @@
 - current governance lane decision: `stay_evaluated`
 - scope: `core`
 - current lineage: `published`
-- reviewed revision: `de4ff5b8cede`
+- reviewed revision: `10a15b8bd5d2`
 
 ## Target status
 
@@ -26,7 +26,7 @@
 - machine-checkable floor result: `pass`
 - recorded governance outcome: `stay_evaluated`
 - runtime `SKILL.md` meaning changed: `yes`
-- current bundle note: the skill checks graph status and issues before writing, reads repo-local route law, creates the source decision note, and requires local index plus graph validation after writes.
+- current bundle note: the skill checks graph status and issues before writing, uses narrower placement packets before broad search, reads repo-local route law, creates the source decision note, and requires local index plus graph validation after writes.
 
 ## Gaps and blockers
 

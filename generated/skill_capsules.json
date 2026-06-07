@@ -221,7 +221,7 @@
     {
       "inputs_short": "Needs: user intent, target repository, touched paths, or decision ID when known; available aoadecisions MCP tools or a local graph builder fallback, including status, issues, changed-path, source-surface,...",
       "invocation_mode": "explicit-preferred",
-      "main_anti_patterns_short": "Avoid: treating the workspace graph as an authority instead of a read model; loading every subskill for a simple lookup; creating a decision note when a lighter source-of-truth or change summary is enough; copying a...",
+      "main_anti_patterns_short": "Avoid: treating the workspace graph as an authority instead of a read model; loading every subskill for a simple lookup; starting with broad graph search when a changed path, owner surface, source surface, repo, or...",
       "name": "aoa-decision",
       "outputs_short": "Produces: one chosen route: aoa-decision-find, aoa-decision-create, or aoa-decision-correct; compact graph or source context used for the route decision; explicit owner repository and source-truth surface;...",
       "scope": "core",
@@ -233,7 +233,7 @@
         "AOA-T-0002"
       ],
       "trigger_boundary_short": "Use when the task mentions docs/decisions/, decision records, ADRs, decision indexes, decision graph, or decision-lane symmetry; the user asks which prior decision, source surface, owner boundary, status,...",
-      "verification_short": "Checks: confirm exactly one route was selected; confirm aoadecisions was used first when available, or the fallback was named; confirm graph issue posture was checked before create/correct routes; confirm the owning...",
+      "verification_short": "Checks: confirm exactly one route was selected; confirm aoadecisions was used first when available, or the fallback was named; confirm graph issue posture was checked before create/correct routes; confirm broad...",
       "workflow_short": "Purpose: this skill as the front door for AoA docs/decisions/ work. Flow: classify the task -> find or understand: use aoa-decision-find -> create or record a new rationale: use aoa-decision-create -> correct, supersede, reindex, or repair metadata: use..."
     },
     {
@@ -276,7 +276,7 @@
     {
       "inputs_short": "Needs: query terms, touched paths, target repository, decision ID, source surface, or owner surface; aoadecisions MCP search, packet, changed-path, source-surface, owner-surface, repo-symmetry, issue, repo,...",
       "invocation_mode": "explicit-preferred",
-      "main_anti_patterns_short": "Avoid: over-answering from generated graph fields without opening the source record; treating a title match as semantic equivalence; ignoring supersession or status fields; turning a weak sibling analogy into a...",
+      "main_anti_patterns_short": "Avoid: over-answering from generated graph fields without opening the source record; using broad graph search before available path, repo, surface, or decision anchors; treating a title match as semantic...",
       "name": "aoa-decision-find",
       "outputs_short": "Produces: ranked decision matches with repo, decision ID, path, status, and reason for relevance; source-note refs used for any claim; note when graph data is stale, missing, or only a candidate hint; next route if...",
       "scope": "core",
@@ -287,7 +287,7 @@
         "AOA-T-0002"
       ],
       "trigger_boundary_short": "Use when the user asks what decision exists, which record explains a route, or why a boundary was chosen; a task needs relevant prior decision context before editing code, docs, validation, MCP, skill, or repo...",
-      "verification_short": "Checks: confirm graph or fallback lookup path was used; confirm changed-path/source/owner packet was used when the input made one available; confirm final claims came from source notes, not only generated graph...",
+      "verification_short": "Checks: confirm graph or fallback lookup path was used; confirm changed-path/source/owner packet was used when the input made one available; confirm broad search was needed, or skipped because a narrower packet was...",
       "workflow_short": "Purpose: find decision rationale quickly across AoA repositories while keeping final claims grounded in the owning repository's authored decision note. Flow: query aoadecisions first when available; choose the narrowest packet changed-path for touched..."
     },
     {
