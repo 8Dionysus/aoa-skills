@@ -3083,8 +3083,8 @@
         "skill_path": "skills/core/engineering/aoa-decision/SKILL.md",
         "techniques_path": "skills/core/engineering/aoa-decision/techniques.yaml",
         "policy_path": "skills/core/engineering/aoa-decision/agents/openai.yaml",
-        "content_hash": "c2e248e7a30b08408c20530573733cfaf31e6c7e616b8024b9000b59c5a4bcb1",
-        "skill_revision": "c2e248e7a30b"
+        "content_hash": "456ad39ac9bd5ac0cf4b589f9225e179ef76f9bad0ca0d2c312160fce5b882ce",
+        "skill_revision": "456ad39ac9bd"
       },
       "policy": {
         "invocation_mode": "explicit-preferred",
@@ -3264,9 +3264,9 @@
           "section_role": "procedure",
           "source_path": "skills/core/engineering/aoa-decision/SKILL.md",
           "source_anchor": "## Procedure",
-          "text": "1. classify the task: - find or understand: use `aoa-decision-find` - create or record a new rationale: use `aoa-decision-create` - correct, supersede, reindex, or repair metadata: use `aoa-decision-correct` 2. use the `aoa_decisions` MCP first when it is available; request status and the smallest relevant packet before broad file reads: - touched path: `aoa_decisions_changed_path` - source surface: `aoa_decisions_source_surface` - owner surface: `aoa_decisions_owner_surface` - repo comparison: `aoa_decisions_repo_symmetry` - unknown surface or graph health: `aoa_decisions_issues` 3. if MCP is unavailable, locate `abyss-stack` in the current workspace or a known local checkout and run its graph builder, such as `python <abyss-stack>/scripts/build_workspace_decision_graph.py --check --json` 4. if graph lookup is unavailable too, use repo-local `rg` and generated decision indexes, then read the source decision notes directly 5. load only the chosen subskill; do not load find, create, and correct instructions at the same time 6. before any write, read the target repo's decision route card and template; if `issue_count > 0`, inspect `aoa_decisions_issues` and do not write in a repo whose decision lane has unresolved graph issues 7. after any write, run the repo-local decision-index generator/check and then refresh or check the workspace graph and decision-graph lane when available 8. report the source decision file, graph freshness posture, validation run, and any remaining owner-route risk",
-          "text_sha256": "b5b48b4f060a9408d6b8e20fcb5d537b3bfea6a3fd87524b5f78c910b34f7b76",
-          "token_count": 209
+          "text": "1. classify the task: - find or understand: use `aoa-decision-find` - create or record a new rationale: use `aoa-decision-create` - correct, supersede, reindex, or repair metadata: use `aoa-decision-correct` 2. use the `aoa_decisions` MCP first when it is available; request status and the smallest relevant packet before broad file reads: - graph health and blockers: `aoa_decisions_status` and `aoa_decisions_issues` - touched path: `aoa_decisions_changed_path` - source surface: `aoa_decisions_source_surface` - owner surface: `aoa_decisions_owner_surface` - repo comparison: `aoa_decisions_repo_symmetry` - decision ID or known record: `aoa_decisions_decision` - repo slice when the target repo is known: `aoa_decisions_repo` 3. use `aoa_decisions_search` only after the status/issues and the relevant changed-path, source-surface, owner-surface, repo, or decision packet is missing, stale, or too narrow; split a long natural-language request into smaller anchors before broad search 4. if MCP is unavailable, fall back to the workspace builder from `abyss-stack`, such as `python /home/dionysus/src/abyss-stack/scripts/build_workspace_decision_graph.py --check --json` 5. if graph lookup is unavailable too, use repo-local `rg` and generated decision indexes, then read the source decision notes directly 6. load only the chosen subskill; do not load find, create, and correct instructions at the same time 7. before any write, read the target repo's decision route card and template; if `issue_count > 0`, inspect `aoa_decisions_issues` and do not write in a repo whose decision lane has unresolved graph issues 8. after any write, run the repo-local decision-index generator/check and then refresh or check the workspace graph and decision-graph lane when available 9. report the source decision file, graph freshness posture, validation run, and any remaining owner-route risk",
+          "text_sha256": "e79cb80a5a871a5c8dbc79e60aa114586ac2ce930ccaf77cd7941b6d116c6448",
+          "token_count": 253
         },
         {
           "doc_id": "skill:aoa-decision:section:contracts",
@@ -3284,9 +3284,9 @@
           "section_role": "risk",
           "source_path": "skills/core/engineering/aoa-decision/SKILL.md",
           "source_anchor": "## Risks and anti-patterns",
-          "text": "- treating the workspace graph as an authority instead of a read model - loading every subskill for a simple lookup - creating a decision note when a lighter source-of-truth or change summary is enough - copying a sibling decision structure without checking the local owner surface - updating generated indexes without the source decision note, or vice versa - failing to refresh the workspace graph after changing decision files",
-          "text_sha256": "297c1c49604671d4938d91b8315e97c243b9f7e053315a04e791b864c31b23e2",
-          "token_count": 70
+          "text": "- treating the workspace graph as an authority instead of a read model - loading every subskill for a simple lookup - starting with broad graph search when a changed path, owner surface, source surface, repo, or decision ID can produce a smaller packet - creating a decision note when a lighter source-of-truth or change summary is enough - copying a sibling decision structure without checking the local owner surface - updating generated indexes without the source decision note, or vice versa - failing to refresh the workspace graph after changing decision files",
+          "text_sha256": "f708cd19a6c0bcaf1a22a7363d5a004840415074809b532c33d7e674e314b2e0",
+          "token_count": 93
         },
         {
           "doc_id": "skill:aoa-decision:section:verification",
@@ -3294,9 +3294,9 @@
           "section_role": "verification",
           "source_path": "skills/core/engineering/aoa-decision/SKILL.md",
           "source_anchor": "## Verification",
-          "text": "- confirm exactly one route was selected - confirm `aoa_decisions` was used first when available, or the fallback was named - confirm graph issue posture was checked before create/correct routes - confirm the owning repository and source decision surface are explicit - confirm any write uses repo-local route law and validators - confirm generated indexes and the workspace graph are not treated as source truth - confirm the final report names validation and any skipped check",
-          "text_sha256": "92e28b91ce69a3088ab927a3599ec63d6c16a83853809112f13ba12666cf772f",
-          "token_count": 76
+          "text": "- confirm exactly one route was selected - confirm `aoa_decisions` was used first when available, or the fallback was named - confirm graph issue posture was checked before create/correct routes - confirm broad `aoa_decisions_search` was skipped when a narrower packet was sufficient, or explain why it was needed - confirm the owning repository and source decision surface are explicit - confirm any write uses repo-local route law and validators - confirm generated indexes and the workspace graph are not treated as source truth - confirm the final report names validation and any skipped check",
+          "text_sha256": "8116eacacb53232d35230ed08a44864b7fc9346bc1f0546567bfdd9b3bcde4d2",
+          "token_count": 94
         },
         {
           "doc_id": "skill:aoa-decision:section:lineage",
@@ -3583,8 +3583,8 @@
         "skill_path": "skills/core/engineering/aoa-decision-create/SKILL.md",
         "techniques_path": "skills/core/engineering/aoa-decision-create/techniques.yaml",
         "policy_path": "skills/core/engineering/aoa-decision-create/agents/openai.yaml",
-        "content_hash": "de4ff5b8cedeb58d6e69756b732162ffe3fd9cb16c78ec1ce29b7e8df656f7d6",
-        "skill_revision": "de4ff5b8cede"
+        "content_hash": "10a15b8bd5d282f2fbe6752fc9793bef46739c65ef91c6ba51fbceb5802545c3",
+        "skill_revision": "10a15b8bd5d2"
       },
       "policy": {
         "invocation_mode": "explicit-preferred",
@@ -3764,9 +3764,9 @@
           "section_role": "procedure",
           "source_path": "skills/core/engineering/aoa-decision-create/SKILL.md",
           "source_anchor": "## Procedure",
-          "text": "1. confirm a real decision exists and is worth preserving 2. use `aoa_decisions` status and issues first; if the target repo has graph issues, stop and route to correction before creating a new record 3. use changed-path, source-surface, owner-surface, repo, and search packets to collect related records and repo decision-lane context 4. read the target repo's `docs/decisions/AGENTS.md`, `README.md`, `TEMPLATE.md`, generated index shape, and latest decision records 5. choose the next canonical ID from source files, not from memory alone 6. write the note in the target repo's established format and metadata language 7. name only the source surfaces this decision actually explains 8. keep graph, generated indexes, tests, and runtime evidence as context rather than decision authority 9. run the repo-local decision-index generator, then the check form and any affected surface validator 10. refresh or check the workspace graph and run the decision-graph lane when available 11. report the new decision path, graph freshness, and validation",
-          "text_sha256": "89d5d6bc02902c90a3a6f3a9796a8171f0ff6e7b0f6eb71e4b623e808bf0dfb0",
-          "token_count": 156
+          "text": "1. confirm a real decision exists and is worth preserving 2. use `aoa_decisions` status and issues first; if the target repo has graph issues, stop and route to correction before creating a new record 3. use changed-path, source-surface, owner-surface, repo, and decision packets to collect related records and repo decision-lane context 4. use broad search only when the narrower packets do not identify enough placement context; split long free-text intent into path, repo, surface, or decision anchors first 5. read the target repo's `docs/decisions/AGENTS.md`, `README.md`, `TEMPLATE.md`, generated index shape, and latest decision records 6. choose the next canonical ID from source files, not from memory alone 7. write the note in the target repo's established format and metadata language 8. name only the source surfaces this decision actually explains 9. keep graph, generated indexes, tests, and runtime evidence as context rather than decision authority 10. run the repo-local decision-index generator, then the check form and any affected surface validator 11. refresh or check the workspace graph and run the decision-graph lane when available 12. report the new decision path, graph freshness, and validation",
+          "text_sha256": "12eff50a2d3d8c3786cc0cdbb158403c400e97939b71bbf91d2fcda0a7a4aa10",
+          "token_count": 183
         },
         {
           "doc_id": "skill:aoa-decision-create:section:contracts",
@@ -3784,9 +3784,9 @@
           "section_role": "risk",
           "source_path": "skills/core/engineering/aoa-decision-create/SKILL.md",
           "source_anchor": "## Risks and anti-patterns",
-          "text": "- creating process noise for trivial changes - writing a decision before the choice is actually made - copying a sibling record and leaving mismatched owner surfaces - omitting rejected options or consequences when they shaped the choice - forgetting generated indexes or workspace graph refresh - using MCP output as if it created or accepted the decision - creating a new note while unknown decision-lane surfaces are already present",
-          "text_sha256": "76dfdfa13708fb5f8837076e92572e268a792d216d6463194c9134f299ff7d1f",
-          "token_count": 70
+          "text": "- creating process noise for trivial changes - writing a decision before the choice is actually made - copying a sibling record and leaving mismatched owner surfaces - omitting rejected options or consequences when they shaped the choice - using broad graph search before available path, repo, or surface packets - forgetting generated indexes or workspace graph refresh - using MCP output as if it created or accepted the decision - creating a new note while unknown decision-lane surfaces are already present",
+          "text_sha256": "639f294875560998d6d2d6c7ed58bfd27abdabbd64ffe0d4571f2630f50df8f4",
+          "token_count": 82
         },
         {
           "doc_id": "skill:aoa-decision-create:section:verification",
@@ -3794,9 +3794,9 @@
           "section_role": "verification",
           "source_path": "skills/core/engineering/aoa-decision-create/SKILL.md",
           "source_anchor": "## Verification",
-          "text": "- confirm the new record has canonical ID, status, date, owner surface, and index metadata - confirm source surfaces match the actual diff - confirm repo-local decision indexes were regenerated and checked - confirm graph issue posture was checked before writing - confirm affected validators were run or explicitly skipped with reason - confirm workspace graph refresh/check and decision-graph lane see the new record",
-          "text_sha256": "067ce403bcb075fc5300fc61cd17fb0d5b24711441dd8e12d308b55c6d62509e",
-          "token_count": 64
+          "text": "- confirm the new record has canonical ID, status, date, owner surface, and index metadata - confirm source surfaces match the actual diff - confirm repo-local decision indexes were regenerated and checked - confirm graph issue posture was checked before writing - confirm broad search was needed, or skipped because narrower packets were sufficient - confirm affected validators were run or explicitly skipped with reason - confirm workspace graph refresh/check and decision-graph lane see the new record",
+          "text_sha256": "0a52bd7cf43d8fb0436d8b1506507daa49bb56ee99b2bab2085a9a9572bf0e28",
+          "token_count": 77
         },
         {
           "doc_id": "skill:aoa-decision-create:section:lineage",
@@ -3829,8 +3829,8 @@
         "skill_path": "skills/core/engineering/aoa-decision-find/SKILL.md",
         "techniques_path": "skills/core/engineering/aoa-decision-find/techniques.yaml",
         "policy_path": "skills/core/engineering/aoa-decision-find/agents/openai.yaml",
-        "content_hash": "bda8dc8a6df234e68f629039c5c59a479b1c2e53f584767d5a5536751ec07b4c",
-        "skill_revision": "bda8dc8a6df2"
+        "content_hash": "2a8865aacedea046d815e641678561a8ef002de614d00c595b9418b35a3ed100",
+        "skill_revision": "2a8865aacede"
       },
       "policy": {
         "invocation_mode": "explicit-preferred",
@@ -4002,9 +4002,9 @@
           "section_role": "procedure",
           "source_path": "skills/core/engineering/aoa-decision-find/SKILL.md",
           "source_anchor": "## Procedure",
-          "text": "1. query `aoa_decisions` first when available; choose the narrowest packet: changed-path for touched files, source-surface for cited inputs, owner-surface for ownership routes, decision for a known ID, and packet/search for free-text intent 2. check status or issues; if `issue_count > 0`, report the graph issue posture and treat graph matches as candidates until source notes are inspected 3. if MCP is unavailable, use the latest workspace graph output or repo-local generated indexes as a search aid 4. read the source decision note before making a rationale, authority, or supersession claim 5. compare source-surface lists and owner metadata against the user's target paths when judging relevance 6. distinguish exact matches, likely matches, weak analogies, and missing records 7. if no adequate record exists, route to `aoa-decision-create`; if a record is stale or wrong, route to `aoa-decision-correct` 8. return compact evidence: decision ID, source path, key reason, and remaining uncertainty",
-          "text_sha256": "046a3ce30a6c379029620e3946ce069e0ee4f94cc337cc52fbff6e14bfe435c3",
-          "token_count": 148
+          "text": "1. query `aoa_decisions` first when available; choose the narrowest packet: changed-path for touched files, source-surface for cited inputs, owner-surface for ownership routes, repo for a known target repository, and decision for a known ID 2. check status or issues; if `issue_count > 0`, report the graph issue posture and treat graph matches as candidates until source notes are inspected 3. use broad graph search only when no changed path, source surface, owner surface, repo, or decision ID can narrow the route, or after those packets fail to produce a sufficient candidate; split long free-text intent into smaller anchors before searching 4. if MCP is unavailable, use the latest workspace graph output or repo-local generated indexes as a search aid 5. read the source decision note before making a rationale, authority, or supersession claim 6. compare source-surface lists and owner metadata against the user's target paths when judging relevance 7. distinguish exact matches, likely matches, weak analogies, and missing records 8. if no adequate record exists, route to `aoa-decision-create`; if a record is stale or wrong, route to `aoa-decision-correct` 9. return compact evidence: decision ID, source path, key reason, and remaining uncertainty",
+          "text_sha256": "a9b7021ac2e685b31cc2da4f30661e4197b775c50e2f0aa852f2df09d7e65029",
+          "token_count": 191
         },
         {
           "doc_id": "skill:aoa-decision-find:section:contracts",
@@ -4022,9 +4022,9 @@
           "section_role": "risk",
           "source_path": "skills/core/engineering/aoa-decision-find/SKILL.md",
           "source_anchor": "## Risks and anti-patterns",
-          "text": "- over-answering from generated graph fields without opening the source record - treating a title match as semantic equivalence - ignoring supersession or status fields - turning a weak sibling analogy into a target-repo rule - searching every repo when a repo or path already narrows the route",
-          "text_sha256": "b7713ef03a4cedf0685af1dd9f1408b11c5273b8c71d06d54028080dc948ee88",
-          "token_count": 48
+          "text": "- over-answering from generated graph fields without opening the source record - using broad graph search before available path, repo, surface, or decision anchors - treating a title match as semantic equivalence - ignoring supersession or status fields - turning a weak sibling analogy into a target-repo rule - searching every repo when a repo or path already narrows the route",
+          "text_sha256": "9f843331df1a62332f990d57e5de8156f21f26bc9e7010049d3d68c50cba2f64",
+          "token_count": 61
         },
         {
           "doc_id": "skill:aoa-decision-find:section:verification",
@@ -4032,9 +4032,9 @@
           "section_role": "verification",
           "source_path": "skills/core/engineering/aoa-decision-find/SKILL.md",
           "source_anchor": "## Verification",
-          "text": "- confirm graph or fallback lookup path was used - confirm changed-path/source/owner packet was used when the input made one available - confirm final claims came from source notes, not only generated graph data - confirm match confidence and any uncertainty are visible - confirm missing or stale records route to create or correct instead of being hidden - confirm the answer stays compact enough for the current task",
-          "text_sha256": "422f4326ffbd6af688059a1618f0fd06c502717732257e1a5bf2346af832062e",
-          "token_count": 69
+          "text": "- confirm graph or fallback lookup path was used - confirm changed-path/source/owner packet was used when the input made one available - confirm broad search was needed, or skipped because a narrower packet was sufficient - confirm final claims came from source notes, not only generated graph data - confirm match confidence and any uncertainty are visible - confirm missing or stale records route to create or correct instead of being hidden - confirm the answer stays compact enough for the current task",
+          "text_sha256": "7eb89a798ab4926a549751b253d9057bc864dde88586dcf397b908765ae2c4ff",
+          "token_count": 83
         },
         {
           "doc_id": "skill:aoa-decision-find:section:lineage",

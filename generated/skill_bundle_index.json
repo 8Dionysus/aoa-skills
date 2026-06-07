@@ -1036,7 +1036,7 @@
       "candidate_review_path": null,
       "canonical_candidate_ready": true,
       "canonical_eval_ready": true,
-      "content_hash": "c2e248e7a30b08408c20530573733cfaf31e6c7e616b8024b9000b59c5a4bcb1",
+      "content_hash": "456ad39ac9bd5ac0cf4b589f9225e179ef76f9bad0ca0d2c312160fce5b882ce",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -1065,7 +1065,7 @@
       "promotion_review_path": "docs/reviews/status-promotions/aoa-decision.md",
       "scope": "core",
       "skill_path": "skills/core/engineering/aoa-decision/SKILL.md",
-      "skill_revision": "c2e248e7a30b",
+      "skill_revision": "456ad39ac9bd",
       "status": "evaluated",
       "support_artifacts": [
         {
@@ -1204,7 +1204,7 @@
       "candidate_review_path": null,
       "canonical_candidate_ready": true,
       "canonical_eval_ready": true,
-      "content_hash": "de4ff5b8cedeb58d6e69756b732162ffe3fd9cb16c78ec1ce29b7e8df656f7d6",
+      "content_hash": "10a15b8bd5d282f2fbe6752fc9793bef46739c65ef91c6ba51fbceb5802545c3",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -1233,7 +1233,7 @@
       "promotion_review_path": "docs/reviews/status-promotions/aoa-decision-create.md",
       "scope": "core",
       "skill_path": "skills/core/engineering/aoa-decision-create/SKILL.md",
-      "skill_revision": "de4ff5b8cede",
+      "skill_revision": "10a15b8bd5d2",
       "status": "evaluated",
       "support_artifacts": [
         {
@@ -1284,7 +1284,7 @@
       "candidate_review_path": null,
       "canonical_candidate_ready": true,
       "canonical_eval_ready": true,
-      "content_hash": "bda8dc8a6df234e68f629039c5c59a479b1c2e53f584767d5a5536751ec07b4c",
+      "content_hash": "2a8865aacedea046d815e641678561a8ef002de614d00c595b9418b35a3ed100",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -1313,7 +1313,7 @@
       "promotion_review_path": "docs/reviews/status-promotions/aoa-decision-find.md",
       "scope": "core",
       "skill_path": "skills/core/engineering/aoa-decision-find/SKILL.md",
-      "skill_revision": "bda8dc8a6df2",
+      "skill_revision": "2a8865aacede",
       "status": "evaluated",
       "support_artifacts": [
         {

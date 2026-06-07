@@ -1728,7 +1728,7 @@
         "Outputs": "ranked decision matches with repo, decision ID, path, status, and reason for relevance; source-note refs used for any claim",
         "Procedure": "query `aoa_decisions` first when available; choose the narrowest packet:; check status or issues; if `issue_count > 0`, report the graph issue posture",
         "Contracts": "MCP packets and graph nodes are hints until checked against source notes; source-note claims must cite the repo and decision path",
-        "Risks and anti-patterns": "over-answering from generated graph fields without opening the source record; treating a title match as semantic equivalence",
+        "Risks and anti-patterns": "over-answering from generated graph fields without opening the source record; using broad graph search before available path, repo, surface, or decision",
         "Verification": "confirm graph or fallback lookup path was used; confirm changed-path/source/owner packet was used when the input made one available",
         "Technique traceability": "AOA-T-0002 from `8Dionysus/aoa-techniques` at `cd276f040d55d490bd015b8698c7a5d594b9f875` using path `techniques/instruction/docs-boundary/source-of-truth-layout/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation",
         "Adaptation points": "MCP server and tool names; workspace graph cache path"

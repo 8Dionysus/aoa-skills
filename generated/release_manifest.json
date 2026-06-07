@@ -172,8 +172,8 @@
   "authoring_input_digests": [
     {
       "path": "generated/skill_sections.full.json",
-      "sha256": "d30712e30e662c3a61219bbd04c2fce800a811cab58439bbd2f701b638b692bd",
-      "bytes": 345128
+      "sha256": "f8d0736c1a1dd3c2f40914a2312bf49b1c1259ade847caa7585f7f9fd9f4cc73",
+      "bytes": 346584
     },
     {
       "path": "generated/skill_catalog.min.json",
@@ -244,8 +244,8 @@
     },
     {
       "path": "generated/skill_handoff_contracts.json",
-      "sha256": "943964aadaabd4582633065add937f5dc40b06ec65b119e8e0234d7f0f9c8009",
-      "bytes": 225387
+      "sha256": "51d9a1e96bb8ad2ea9739134e27364c640404f22e8fa25a62299e01978bac5af",
+      "bytes": 225717
     },
     {
       "path": "generated/context_retention_manifest.json",
@@ -289,8 +289,8 @@
     },
     {
       "path": "generated/runtime_disclosure_index.json",
-      "sha256": "ded8d3109a8b00665803ab0fb3ff860239013b96d1c42b10cac40fa78f89d73a",
-      "bytes": 356627
+      "sha256": "405104b2d5b089a9a539de98e45dd5f53e9df9eabebfa9f335c7262c536e47e2",
+      "bytes": 356655
     },
     {
       "path": "generated/runtime_activation_aliases.json",
@@ -334,7 +334,7 @@
     },
     {
       "path": "generated/skill_context_guard_manifest.json",
-      "sha256": "6c00e4c24733d7699adbc37e70b46e594d1fca0c21d46b9a9c111e0a75520e97",
+      "sha256": "7048ead2cb27ce6aeb2d8a715f584a7da56b5cd5d9783f974496f266325f4896",
       "bytes": 104921
     },
     {
@@ -434,17 +434,17 @@
     },
     {
       "path": "generated/skill_bundle_index.json",
-      "sha256": "ef808508fcaf7a168988ff4bd227bf390534edd2281c9b500a1c6ae5cc521ec8",
+      "sha256": "4eb47854fb2ebc9a3f5382013e7fdce13dfe5bceae5741951839b0993a0e795f",
       "bytes": 149662
     },
     {
       "path": "generated/skill_bundle_index.md",
-      "sha256": "ee26a67be2570d70955608e15697598ee22a165240c775a80d88e90363f60fbe",
+      "sha256": "811a9cd69c230eff2d119c31e27e58c6ed373b2429114019860eace843d0f05e",
       "bytes": 16461
     },
     {
       "path": "generated/skill_graph.json",
-      "sha256": "27eb977c467dc7859e4bd4bf9afcc630ecb4b60c3da0ea2c3be6b77de602b404",
+      "sha256": "83a9f76125de752178b549a1217bc1dc8338565f9d5bfebf3c75684949360e34",
       "bytes": 271258
     },
     {
@@ -516,8 +516,8 @@
     },
     {
       "name": "aoa-decision",
-      "skill_revision": "c2e248e7a30b",
-      "content_hash": "c2e248e7a30b08408c20530573733cfaf31e6c7e616b8024b9000b59c5a4bcb1"
+      "skill_revision": "456ad39ac9bd",
+      "content_hash": "456ad39ac9bd5ac0cf4b589f9225e179ef76f9bad0ca0d2c312160fce5b882ce"
     },
     {
       "name": "aoa-decision-correct",
@@ -526,13 +526,13 @@
     },
     {
       "name": "aoa-decision-create",
-      "skill_revision": "de4ff5b8cede",
-      "content_hash": "de4ff5b8cedeb58d6e69756b732162ffe3fd9cb16c78ec1ce29b7e8df656f7d6"
+      "skill_revision": "10a15b8bd5d2",
+      "content_hash": "10a15b8bd5d282f2fbe6752fc9793bef46739c65ef91c6ba51fbceb5802545c3"
     },
     {
       "name": "aoa-decision-find",
-      "skill_revision": "bda8dc8a6df2",
-      "content_hash": "bda8dc8a6df234e68f629039c5c59a479b1c2e53f584767d5a5536751ec07b4c"
+      "skill_revision": "2a8865aacede",
+      "content_hash": "2a8865aacedea046d815e641678561a8ef002de614d00c595b9418b35a3ed100"
     },
     {
       "name": "aoa-dry-run-first",
@@ -761,7 +761,7 @@
         "aoa-source-of-truth-check",
         "aoa-tdd-slice"
       ],
-      "profile_revision": "de4645051be59d622e604c99d0c0893714d39978f2e6c9f62fda1fc71e0c9889"
+      "profile_revision": "8ebb0124aa1f7333622340807ac5950b75a327fc9e4bb8d9acae24805d1f5aa2"
     },
     {
       "name": "repo-default",
@@ -818,7 +818,7 @@
         "titan-summon",
         "titan-thread-turn-binding"
       ],
-      "profile_revision": "67dfc6ba44ee8ba17cedaf5c47d2142996018eec79bbbe48c3861d92cf3b1fb7"
+      "profile_revision": "ec5ae35263c5adb31f764578d5b372810866d86a8a89e7b4118a4412b4a551ab"
     },
     {
       "name": "repo-project-core-kernel",
@@ -855,7 +855,7 @@
         "aoa-source-of-truth-check",
         "aoa-tdd-slice"
       ],
-      "profile_revision": "cca54c52aaaeddad521d0ea78cbe0c8d235cd1834ae9dd65520ecf9f9e945c5c"
+      "profile_revision": "9470046e631207de4328a32a5930844a6e8d085d6f37cf6deeb0031b70d9cea8"
     },
     {
       "name": "repo-project-foundation",
@@ -890,7 +890,7 @@
         "aoa-source-of-truth-check",
         "aoa-tdd-slice"
       ],
-      "profile_revision": "200341d8ca91b22dd1d93415ba5132e97fce9b9b8497352b9245eb9691714aad"
+      "profile_revision": "244226b17fa7ca31613211b43af1bdafd65d0bef566e2cdbc7ec1ee4ab9998c8"
     },
     {
       "name": "repo-project-risk-guard-ring",
@@ -1022,7 +1022,7 @@
         "aoa-source-of-truth-check",
         "aoa-tdd-slice"
       ],
-      "profile_revision": "cffdf9876288978ea76e3ecf3b51fb462636d7b556d2abcfd210ac9a96f76c76"
+      "profile_revision": "0aedb4171c8efc3bdb42ae838c48bb03c74509030140920c8042007f6f4dffcd"
     }
   ],
   "release_identity": {

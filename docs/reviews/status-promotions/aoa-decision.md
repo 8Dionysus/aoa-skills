@@ -7,12 +7,12 @@
 - current governance lane decision: `stay_evaluated`
 - scope: `core`
 - current lineage: `published`
-- reviewed revision: `c2e248e7a30b`
+- reviewed revision: `456ad39ac9bd`
 
 ## Target status
 
 - target maturity status: `evaluated`
-- why this target now: the decision router is part of the project foundation skill pack and now carries graph status, issue, and impact-packet behavior.
+- why this target now: the decision router is part of the decision graph chain and now carries graph status, issue, and impact-packet behavior.
 - next status after this step: keep evaluated while graph-first behavior is validated through skill fixtures, generated exports, and MCP wiring.
 
 ## Evidence reviewed
@@ -28,7 +28,7 @@
 - machine-checkable floor result: `pass`
 - recorded governance outcome: `stay_evaluated`
 - runtime `SKILL.md` meaning changed: `yes`
-- current bundle note: the router selects one find, create, or correct subskill, checks `aoa_decisions` status and issue posture first, and keeps repo-local decision notes authoritative.
+- current bundle note: the router selects one find, create, or correct subskill, checks `aoa_decisions` status and issue posture first, uses path/repo/surface/decision packets before broad search, and keeps repo-local decision notes authoritative.
 
 ## Gaps and blockers
 

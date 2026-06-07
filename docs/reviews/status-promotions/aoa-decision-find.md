@@ -7,7 +7,7 @@
 - current governance lane decision: `stay_evaluated`
 - scope: `core`
 - current lineage: `published`
-- reviewed revision: `bda8dc8a6df2`
+- reviewed revision: `2a8865aacede`
 
 ## Target status
 
@@ -26,7 +26,7 @@
 - machine-checkable floor result: `pass`
 - recorded governance outcome: `stay_evaluated`
 - runtime `SKILL.md` meaning changed: `yes`
-- current bundle note: the skill uses the narrowest available decision graph packet, then verifies claims against repo-local source notes before reporting rationale.
+- current bundle note: the skill uses the narrowest available decision graph packet, treats broad graph search as fallback after path/repo/surface/decision anchors, then verifies claims against repo-local source notes before reporting rationale.
 
 ## Gaps and blockers
 
