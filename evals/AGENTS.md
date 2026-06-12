@@ -33,7 +33,8 @@ adoption rules, read the local eval-port standard in `aoa-evals`.
 Full lane command sequences live in `config/validation_lanes.json`; this local card may name only focused owner checks, lane ids, or the nearest route for the changed surface.
 
 ```bash
-python ../aoa-evals/scripts/validate_local_eval_port.py --target-root .
+AOA_EVALS_ROOT="${AOA_EVALS_ROOT:-../aoa-evals}"
+python "$AOA_EVALS_ROOT/scripts/validate_local_eval_port.py" --target-root .
 ```
 
 ## Closeout
