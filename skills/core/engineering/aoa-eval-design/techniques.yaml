@@ -1,0 +1,41 @@
+skill_name: aoa-eval-design
+composition_mode: bounded
+techniques:
+  - id: AOA-T-0015
+    repo: 8Dionysus/aoa-techniques
+    path: techniques/proof/skill-support/contract-test-design/TECHNIQUE.md
+    source_ref: 1a7d146957108ecefc24219c7d56357c5a4a2c2c
+    use_sections:
+      - Intent
+      - Inputs
+      - Outputs
+      - Core procedure
+      - Contracts
+      - Risks
+      - Validation
+  - id: AOA-T-0017
+    repo: 8Dionysus/aoa-techniques
+    path: techniques/proof/skill-support/property-invariants/TECHNIQUE.md
+    source_ref: 1a7d146957108ecefc24219c7d56357c5a4a2c2c
+    use_sections:
+      - Intent
+      - Inputs
+      - Outputs
+      - Core procedure
+      - Contracts
+      - Risks
+      - Validation
+  - id: AOA-T-0007
+    repo: 8Dionysus/aoa-techniques
+    path: techniques/proof/evaluation-chain/signal-first-gate-promotion/TECHNIQUE.md
+    source_ref: 1a7d146957108ecefc24219c7d56357c5a4a2c2c
+    use_sections:
+      - Intent
+      - Inputs
+      - Outputs
+      - Core procedure
+      - Contracts
+      - Risks
+      - Validation
+notes:
+  - Design local suites from explicit invariants and do not claim central acceptance.

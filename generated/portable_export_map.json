@@ -456,6 +456,144 @@
       }
     },
     {
+      "name": "aoa-eval",
+      "source_skill_path": "skills/core/engineering/aoa-eval/SKILL.md",
+      "target_dir": ".agents/skills/aoa-eval",
+      "target_skill_path": ".agents/skills/aoa-eval/SKILL.md",
+      "target_openai_config_path": ".agents/skills/aoa-eval/agents/openai.yaml",
+      "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "invoke",
+      "allow_implicit_invocation": true,
+      "candidate_only": false,
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ],
+        "checks": [],
+        "examples": [
+          "examples/runtime.md"
+        ]
+      }
+    },
+    {
+      "name": "aoa-eval-apply",
+      "source_skill_path": "skills/core/engineering/aoa-eval-apply/SKILL.md",
+      "target_dir": ".agents/skills/aoa-eval-apply",
+      "target_skill_path": ".agents/skills/aoa-eval-apply/SKILL.md",
+      "target_openai_config_path": ".agents/skills/aoa-eval-apply/agents/openai.yaml",
+      "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "manual",
+      "allow_implicit_invocation": false,
+      "candidate_only": false,
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ],
+        "checks": [],
+        "examples": [
+          "examples/runtime.md"
+        ]
+      }
+    },
+    {
+      "name": "aoa-eval-design",
+      "source_skill_path": "skills/core/engineering/aoa-eval-design/SKILL.md",
+      "target_dir": ".agents/skills/aoa-eval-design",
+      "target_skill_path": ".agents/skills/aoa-eval-design/SKILL.md",
+      "target_openai_config_path": ".agents/skills/aoa-eval-design/agents/openai.yaml",
+      "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "manual",
+      "allow_implicit_invocation": false,
+      "candidate_only": false,
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ],
+        "checks": [],
+        "examples": [
+          "examples/runtime.md"
+        ]
+      }
+    },
+    {
+      "name": "aoa-eval-local-need",
+      "source_skill_path": "skills/core/engineering/aoa-eval-local-need/SKILL.md",
+      "target_dir": ".agents/skills/aoa-eval-local-need",
+      "target_skill_path": ".agents/skills/aoa-eval-local-need/SKILL.md",
+      "target_openai_config_path": ".agents/skills/aoa-eval-local-need/agents/openai.yaml",
+      "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "manual",
+      "allow_implicit_invocation": false,
+      "candidate_only": false,
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ],
+        "checks": [],
+        "examples": [
+          "examples/runtime.md"
+        ]
+      }
+    },
+    {
+      "name": "aoa-eval-select",
+      "source_skill_path": "skills/core/engineering/aoa-eval-select/SKILL.md",
+      "target_dir": ".agents/skills/aoa-eval-select",
+      "target_skill_path": ".agents/skills/aoa-eval-select/SKILL.md",
+      "target_openai_config_path": ".agents/skills/aoa-eval-select/agents/openai.yaml",
+      "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "manual",
+      "allow_implicit_invocation": false,
+      "candidate_only": false,
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ],
+        "checks": [],
+        "examples": [
+          "examples/runtime.md"
+        ]
+      }
+    },
+    {
+      "name": "aoa-eval-session-mining",
+      "source_skill_path": "skills/core/engineering/aoa-eval-session-mining/SKILL.md",
+      "target_dir": ".agents/skills/aoa-eval-session-mining",
+      "target_skill_path": ".agents/skills/aoa-eval-session-mining/SKILL.md",
+      "target_openai_config_path": ".agents/skills/aoa-eval-session-mining/agents/openai.yaml",
+      "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "manual",
+      "allow_implicit_invocation": false,
+      "candidate_only": false,
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ],
+        "checks": [],
+        "examples": [
+          "examples/runtime.md"
+        ]
+      }
+    },
+    {
       "name": "aoa-invariant-coverage-audit",
       "source_skill_path": "skills/core/engineering/aoa-invariant-coverage-audit/SKILL.md",
       "target_dir": ".agents/skills/aoa-invariant-coverage-audit",

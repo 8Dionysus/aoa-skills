@@ -1,0 +1,5 @@
+policy:
+  allow_implicit_invocation: false
+  implicit_activation_policy: manual
+notes:
+- Prefer route through aoa-eval unless the user explicitly asks for this local-need subskill.

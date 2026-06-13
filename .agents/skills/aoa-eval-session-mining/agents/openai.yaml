@@ -1,0 +1,10 @@
+interface:
+  display_name: AoA Eval Session Mining
+  short_description: Mine sessions for eval triggers
+  default_prompt: Use $aoa-eval-session-mining to mine .aoa for candidate eval refs after web and repo owner gates are complete.
+  icon_small: ./assets/small-logo.svg
+  icon_large: ./assets/large-logo.svg
+  brand_color: '#2563EB'
+policy:
+  implicit_activation_policy: manual
+  allow_implicit_invocation: false

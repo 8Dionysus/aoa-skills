@@ -207,6 +207,78 @@
       }
     },
     {
+      "name": "aoa-eval",
+      "codex_mention": "$aoa-eval",
+      "codex_browser": "/skills",
+      "local_slash_alias": "/aoa-eval",
+      "tool_call": {
+        "name": "activate_skill",
+        "arguments": {
+          "skill_name": "aoa-eval"
+        }
+      }
+    },
+    {
+      "name": "aoa-eval-apply",
+      "codex_mention": "$aoa-eval-apply",
+      "codex_browser": "/skills",
+      "local_slash_alias": "/aoa-eval-apply",
+      "tool_call": {
+        "name": "activate_skill",
+        "arguments": {
+          "skill_name": "aoa-eval-apply"
+        }
+      }
+    },
+    {
+      "name": "aoa-eval-design",
+      "codex_mention": "$aoa-eval-design",
+      "codex_browser": "/skills",
+      "local_slash_alias": "/aoa-eval-design",
+      "tool_call": {
+        "name": "activate_skill",
+        "arguments": {
+          "skill_name": "aoa-eval-design"
+        }
+      }
+    },
+    {
+      "name": "aoa-eval-local-need",
+      "codex_mention": "$aoa-eval-local-need",
+      "codex_browser": "/skills",
+      "local_slash_alias": "/aoa-eval-local-need",
+      "tool_call": {
+        "name": "activate_skill",
+        "arguments": {
+          "skill_name": "aoa-eval-local-need"
+        }
+      }
+    },
+    {
+      "name": "aoa-eval-select",
+      "codex_mention": "$aoa-eval-select",
+      "codex_browser": "/skills",
+      "local_slash_alias": "/aoa-eval-select",
+      "tool_call": {
+        "name": "activate_skill",
+        "arguments": {
+          "skill_name": "aoa-eval-select"
+        }
+      }
+    },
+    {
+      "name": "aoa-eval-session-mining",
+      "codex_mention": "$aoa-eval-session-mining",
+      "codex_browser": "/skills",
+      "local_slash_alias": "/aoa-eval-session-mining",
+      "tool_call": {
+        "name": "activate_skill",
+        "arguments": {
+          "skill_name": "aoa-eval-session-mining"
+        }
+      }
+    },
+    {
       "name": "aoa-invariant-coverage-audit",
       "codex_mention": "$aoa-invariant-coverage-audit",
       "codex_browser": "/skills",

@@ -65,8 +65,20 @@ graph TD
   skill_aoa_dry_run_first["aoa-dry-run-first"]
   technique_AOA_T_0004["AOA-T-0004"]
   artifact_group_support_resources["artifact group: support_resources"]
-  skill_aoa_invariant_coverage_audit["aoa-invariant-coverage-audit"]
+  skill_aoa_eval["aoa-eval"]
+  technique_AOA_T_0076["AOA-T-0076"]
+  technique_AOA_T_0094["AOA-T-0094"]
+  skill_aoa_eval_apply["aoa-eval-apply"]
+  technique_AOA_T_0007["AOA-T-0007"]
+  technique_AOA_T_0096["AOA-T-0096"]
+  skill_aoa_eval_design["aoa-eval-design"]
   technique_AOA_T_0017["AOA-T-0017"]
+  skill_aoa_eval_local_need["aoa-eval-local-need"]
+  technique_AOA_T_0105["AOA-T-0105"]
+  skill_aoa_eval_select["aoa-eval-select"]
+  skill_aoa_eval_session_mining["aoa-eval-session-mining"]
+  technique_AOA_T_0067["AOA-T-0067"]
+  skill_aoa_invariant_coverage_audit["aoa-invariant-coverage-audit"]
   skill_aoa_local_stack_bringup["aoa-local-stack-bringup"]
   technique_AOA_T_0036["AOA-T-0036"]
   technique_AOA_T_0037["AOA-T-0037"]
@@ -74,10 +86,8 @@ graph TD
   skill_aoa_memo_writeback["aoa-memo-writeback"]
   technique_AOA_T_0026["AOA-T-0026"]
   technique_AOA_T_0106["AOA-T-0106"]
-  technique_AOA_T_0076["AOA-T-0076"]
   skill_aoa_port_adapter_refactor["aoa-port-adapter-refactor"]
   skill_aoa_property_invariants["aoa-property-invariants"]
-  technique_AOA_T_0007["AOA-T-0007"]
   skill_aoa_quest_harvest["aoa-quest-harvest"]
   technique_AOA_T_0090["AOA-T-0090"]
   profile_repo_quest_harvest_only["profile: repo-quest-harvest-only"]
@@ -395,6 +405,84 @@ graph TD
   skill_aoa_dry_run_first -->|available_in_artifact_group| artifact_group_description_trigger
   skill_aoa_dry_run_first -->|available_in_artifact_group| artifact_group_support_resources
   skill_aoa_dry_run_first -->|available_in_artifact_group| artifact_group_tiny_router
+  skill_aoa_eval -->|maturity| status_scaffold
+  skill_aoa_eval -->|scope| scope_core
+  skill_aoa_eval -->|lineage| lineage_published
+  skill_aoa_eval -->|invocation_policy| policy_explicit_preferred
+  skill_aoa_eval -->|depends_on| technique_AOA_T_0003
+  skill_aoa_eval -->|depends_on| technique_AOA_T_0076
+  skill_aoa_eval -->|depends_on| technique_AOA_T_0094
+  skill_aoa_eval -->|included_in_profile| profile_repo_default
+  skill_aoa_eval -->|available_in_artifact_group| artifact_group_portable_export
+  skill_aoa_eval -->|available_in_artifact_group| artifact_group_runtime_seam
+  skill_aoa_eval -->|available_in_artifact_group| artifact_group_runtime_guardrails
+  skill_aoa_eval -->|available_in_artifact_group| artifact_group_description_trigger
+  skill_aoa_eval -->|available_in_artifact_group| artifact_group_tiny_router
+  skill_aoa_eval_apply -->|maturity| status_scaffold
+  skill_aoa_eval_apply -->|scope| scope_core
+  skill_aoa_eval_apply -->|lineage| lineage_published
+  skill_aoa_eval_apply -->|invocation_policy| policy_explicit_preferred
+  skill_aoa_eval_apply -->|depends_on| technique_AOA_T_0003
+  skill_aoa_eval_apply -->|depends_on| technique_AOA_T_0007
+  skill_aoa_eval_apply -->|depends_on| technique_AOA_T_0096
+  skill_aoa_eval_apply -->|included_in_profile| profile_repo_default
+  skill_aoa_eval_apply -->|available_in_artifact_group| artifact_group_portable_export
+  skill_aoa_eval_apply -->|available_in_artifact_group| artifact_group_runtime_seam
+  skill_aoa_eval_apply -->|available_in_artifact_group| artifact_group_runtime_guardrails
+  skill_aoa_eval_apply -->|available_in_artifact_group| artifact_group_description_trigger
+  skill_aoa_eval_apply -->|available_in_artifact_group| artifact_group_tiny_router
+  skill_aoa_eval_design -->|maturity| status_scaffold
+  skill_aoa_eval_design -->|scope| scope_core
+  skill_aoa_eval_design -->|lineage| lineage_published
+  skill_aoa_eval_design -->|invocation_policy| policy_explicit_preferred
+  skill_aoa_eval_design -->|depends_on| technique_AOA_T_0015
+  skill_aoa_eval_design -->|depends_on| technique_AOA_T_0017
+  skill_aoa_eval_design -->|depends_on| technique_AOA_T_0007
+  skill_aoa_eval_design -->|included_in_profile| profile_repo_default
+  skill_aoa_eval_design -->|available_in_artifact_group| artifact_group_portable_export
+  skill_aoa_eval_design -->|available_in_artifact_group| artifact_group_runtime_seam
+  skill_aoa_eval_design -->|available_in_artifact_group| artifact_group_runtime_guardrails
+  skill_aoa_eval_design -->|available_in_artifact_group| artifact_group_description_trigger
+  skill_aoa_eval_design -->|available_in_artifact_group| artifact_group_tiny_router
+  skill_aoa_eval_local_need -->|maturity| status_scaffold
+  skill_aoa_eval_local_need -->|scope| scope_core
+  skill_aoa_eval_local_need -->|lineage| lineage_published
+  skill_aoa_eval_local_need -->|invocation_policy| policy_explicit_preferred
+  skill_aoa_eval_local_need -->|depends_on| technique_AOA_T_0076
+  skill_aoa_eval_local_need -->|depends_on| technique_AOA_T_0094
+  skill_aoa_eval_local_need -->|depends_on| technique_AOA_T_0105
+  skill_aoa_eval_local_need -->|included_in_profile| profile_repo_default
+  skill_aoa_eval_local_need -->|available_in_artifact_group| artifact_group_portable_export
+  skill_aoa_eval_local_need -->|available_in_artifact_group| artifact_group_runtime_seam
+  skill_aoa_eval_local_need -->|available_in_artifact_group| artifact_group_runtime_guardrails
+  skill_aoa_eval_local_need -->|available_in_artifact_group| artifact_group_description_trigger
+  skill_aoa_eval_local_need -->|available_in_artifact_group| artifact_group_tiny_router
+  skill_aoa_eval_select -->|maturity| status_scaffold
+  skill_aoa_eval_select -->|scope| scope_core
+  skill_aoa_eval_select -->|lineage| lineage_published
+  skill_aoa_eval_select -->|invocation_policy| policy_explicit_preferred
+  skill_aoa_eval_select -->|depends_on| technique_AOA_T_0003
+  skill_aoa_eval_select -->|depends_on| technique_AOA_T_0076
+  skill_aoa_eval_select -->|depends_on| technique_AOA_T_0094
+  skill_aoa_eval_select -->|included_in_profile| profile_repo_default
+  skill_aoa_eval_select -->|available_in_artifact_group| artifact_group_portable_export
+  skill_aoa_eval_select -->|available_in_artifact_group| artifact_group_runtime_seam
+  skill_aoa_eval_select -->|available_in_artifact_group| artifact_group_runtime_guardrails
+  skill_aoa_eval_select -->|available_in_artifact_group| artifact_group_description_trigger
+  skill_aoa_eval_select -->|available_in_artifact_group| artifact_group_tiny_router
+  skill_aoa_eval_session_mining -->|maturity| status_scaffold
+  skill_aoa_eval_session_mining -->|scope| scope_core
+  skill_aoa_eval_session_mining -->|lineage| lineage_published
+  skill_aoa_eval_session_mining -->|invocation_policy| policy_explicit_preferred
+  skill_aoa_eval_session_mining -->|depends_on| technique_AOA_T_0075
+  skill_aoa_eval_session_mining -->|depends_on| technique_AOA_T_0067
+  skill_aoa_eval_session_mining -->|depends_on| technique_AOA_T_0081
+  skill_aoa_eval_session_mining -->|included_in_profile| profile_repo_default
+  skill_aoa_eval_session_mining -->|available_in_artifact_group| artifact_group_portable_export
+  skill_aoa_eval_session_mining -->|available_in_artifact_group| artifact_group_runtime_seam
+  skill_aoa_eval_session_mining -->|available_in_artifact_group| artifact_group_runtime_guardrails
+  skill_aoa_eval_session_mining -->|available_in_artifact_group| artifact_group_description_trigger
+  skill_aoa_eval_session_mining -->|available_in_artifact_group| artifact_group_tiny_router
   skill_aoa_invariant_coverage_audit -->|maturity| status_canonical
   skill_aoa_invariant_coverage_audit -->|scope| scope_core
   skill_aoa_invariant_coverage_audit -->|lineage| lineage_published
@@ -927,6 +1015,12 @@ graph TD
 | aoa-decision-create | evaluated | core | explicit-preferred | published | repo-core-only, repo-default, repo-project-core-outer-ring, repo-project-foundation, user-curated-core | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-0033, AOA-T-0002 |
 | aoa-decision-find | evaluated | core | explicit-preferred | published | repo-core-only, repo-default, repo-project-core-outer-ring, repo-project-foundation, user-curated-core | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-0002 |
 | aoa-dry-run-first | canonical | risk | explicit-only | published | repo-default, repo-project-foundation, repo-project-risk-guard-ring, repo-risk-explicit | portable_export, runtime_seam, runtime_guardrails, description_trigger, support_resources, tiny_router | AOA-T-0004, AOA-T-0028 |
+| aoa-eval | scaffold | core | explicit-preferred | published | repo-default | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-0003, AOA-T-0076, AOA-T-0094 |
+| aoa-eval-apply | scaffold | core | explicit-preferred | published | repo-default | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-0003, AOA-T-0007, AOA-T-0096 |
+| aoa-eval-design | scaffold | core | explicit-preferred | published | repo-default | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-0015, AOA-T-0017, AOA-T-0007 |
+| aoa-eval-local-need | scaffold | core | explicit-preferred | published | repo-default | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-0076, AOA-T-0094, AOA-T-0105 |
+| aoa-eval-select | scaffold | core | explicit-preferred | published | repo-default | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-0003, AOA-T-0076, AOA-T-0094 |
+| aoa-eval-session-mining | scaffold | core | explicit-preferred | published | repo-default | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-0075, AOA-T-0067, AOA-T-0081 |
 | aoa-invariant-coverage-audit | canonical | core | explicit-preferred | published | repo-core-only, repo-default, repo-project-core-outer-ring, repo-project-foundation | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-0017 |
 | aoa-local-stack-bringup | evaluated | risk | explicit-only | published | repo-default, repo-project-foundation, repo-project-risk-guard-ring, repo-risk-explicit | portable_export, runtime_seam, runtime_guardrails, description_trigger, support_resources, tiny_router | AOA-T-0036, AOA-T-0037, AOA-T-0028, AOA-T-0038 |
 | aoa-memo-writeback | scaffold | core | explicit-preferred | published | repo-core-only, repo-default, repo-project-core-kernel, repo-project-foundation, repo-session-growth, repo-session-harvest-family, user-curated-core | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-0026, AOA-T-0106, AOA-T-0076 |

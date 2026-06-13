@@ -1,0 +1,6 @@
+policy:
+  allow_implicit_invocation: true
+  implicit_activation_policy: invoke
+notes:
+- This router may be invoked implicitly for clear AoA eval-lane work.
+- The router should select one subskill instead of loading the whole family.

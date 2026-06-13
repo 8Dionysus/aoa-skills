@@ -99,6 +99,30 @@
       "tools": []
     },
     {
+      "name": "aoa-eval",
+      "tools": []
+    },
+    {
+      "name": "aoa-eval-apply",
+      "tools": []
+    },
+    {
+      "name": "aoa-eval-design",
+      "tools": []
+    },
+    {
+      "name": "aoa-eval-local-need",
+      "tools": []
+    },
+    {
+      "name": "aoa-eval-select",
+      "tools": []
+    },
+    {
+      "name": "aoa-eval-session-mining",
+      "tools": []
+    },
+    {
       "name": "aoa-invariant-coverage-audit",
       "tools": []
     },

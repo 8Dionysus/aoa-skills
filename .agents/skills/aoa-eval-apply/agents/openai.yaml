@@ -1,0 +1,10 @@
+interface:
+  display_name: AoA Eval Apply
+  short_description: Apply selected evals
+  default_prompt: Use $aoa-eval-apply to run the selected eval surface and report evidence, artifacts, and proof limits.
+  icon_small: ./assets/small-logo.svg
+  icon_large: ./assets/large-logo.svg
+  brand_color: '#2563EB'
+policy:
+  implicit_activation_policy: manual
+  allow_implicit_invocation: false

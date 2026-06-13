@@ -1,0 +1,41 @@
+skill_name: aoa-eval-apply
+composition_mode: bounded
+techniques:
+  - id: AOA-T-0003
+    repo: 8Dionysus/aoa-techniques
+    path: techniques/proof/evaluation-chain/contract-first-smoke-summary/TECHNIQUE.md
+    source_ref: 1a7d146957108ecefc24219c7d56357c5a4a2c2c
+    use_sections:
+      - Intent
+      - Inputs
+      - Outputs
+      - Core procedure
+      - Contracts
+      - Risks
+      - Validation
+  - id: AOA-T-0007
+    repo: 8Dionysus/aoa-techniques
+    path: techniques/proof/evaluation-chain/signal-first-gate-promotion/TECHNIQUE.md
+    source_ref: 1a7d146957108ecefc24219c7d56357c5a4a2c2c
+    use_sections:
+      - Intent
+      - Inputs
+      - Outputs
+      - Core procedure
+      - Contracts
+      - Risks
+      - Validation
+  - id: AOA-T-0096
+    repo: 8Dionysus/aoa-techniques
+    path: techniques/proof/owner-truth-closeout/pinned-validation-matrix-before-generated-publish/TECHNIQUE.md
+    source_ref: 1a7d146957108ecefc24219c7d56357c5a4a2c2c
+    use_sections:
+      - Intent
+      - Inputs
+      - Outputs
+      - Core procedure
+      - Contracts
+      - Risks
+      - Validation
+notes:
+  - Applying existing proof surfaces produces evidence reports, not promotion verdicts.

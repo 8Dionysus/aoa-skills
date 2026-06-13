@@ -1,0 +1,10 @@
+interface:
+  display_name: AoA Eval Design
+  short_description: Design local eval suites
+  default_prompt: Use $aoa-eval-design to draft a bounded local eval suite with deterministic checks first and central proof acceptance out of scope.
+  icon_small: ./assets/small-logo.svg
+  icon_large: ./assets/large-logo.svg
+  brand_color: '#2563EB'
+policy:
+  implicit_activation_policy: manual
+  allow_implicit_invocation: false

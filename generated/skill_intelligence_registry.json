@@ -4328,6 +4328,1494 @@
       ]
     },
     {
+      "name": "aoa-eval",
+      "scope": "core",
+      "status": "scaffold",
+      "summary": "Route AoA eval-lane work by finding existing local or central eval surfaces first, then selecting apply, local-need, design, or session-mining without moving proof authority.",
+      "source": {
+        "skill_path": "skills/core/engineering/aoa-eval/SKILL.md",
+        "techniques_path": "skills/core/engineering/aoa-eval/techniques.yaml",
+        "policy_path": "skills/core/engineering/aoa-eval/agents/openai.yaml",
+        "content_hash": "7d566b7cfe55b99e3ecb1483bb6659c009f93b79c0d000678cdc6db3c997bfe4",
+        "skill_revision": "7d566b7cfe55"
+      },
+      "policy": {
+        "invocation_mode": "explicit-preferred",
+        "implicit_activation_policy": "invoke",
+        "trust_posture": "portable-core",
+        "mutation_surface": "repo",
+        "requires_manual_invocation": false,
+        "candidate_only": false,
+        "requires_confirmation_seam": false
+      },
+      "runtime": {
+        "description": "Route AoA eval-lane work by checking existing local and central eval surfaces first, then choosing apply, local intake need, local design, or session mining while preserving owner boundaries. Use when a task asks whether an eval exists, whether one should be added, how local evals connect to aoa-evals, or how validators, tests, scripts, traces, regressions, trigger misses, local eval ports, or aoa-evals-mcp should be used as evaluation surfaces. Do not use for ordinary one-off tests, source-of-truth mapping, decision records, memo writeback, or direct central aoa-evals proof-authority edits.",
+        "allow_implicit_invocation": true
+      },
+      "tiny_router": {
+        "band": "eval-proof-routing",
+        "cue_phrases": [
+          "eval lane",
+          "existing eval first",
+          "local eval port",
+          "aoa evals mcp",
+          "eval intake",
+          "session eval trigger"
+        ],
+        "negative_phrases": [
+          "ordinary unit test only",
+          "source of truth mapping",
+          "decision record"
+        ],
+        "companions": [
+          "aoa-eval-select",
+          "aoa-eval-apply",
+          "aoa-eval-local-need"
+        ]
+      },
+      "resources": {
+        "bundle_support_artifacts": [
+          {
+            "path": "skills/core/engineering/aoa-eval/examples/runtime.md",
+            "selected_for_runtime_inspection": true,
+            "type": "runtime_example"
+          }
+        ],
+        "support_resource_index": {
+          "targeted": false,
+          "standard_dir_counts": {},
+          "legacy_dir_counts": {}
+        },
+        "selected_runtime_artifact_path": "skills/core/engineering/aoa-eval/examples/runtime.md"
+      },
+      "lineage": {
+        "technique_dependencies": [
+          "AOA-T-0003",
+          "AOA-T-0076",
+          "AOA-T-0094"
+        ],
+        "technique_lineage": [
+          {
+            "id": "AOA-T-0003",
+            "lineage_state": "published",
+            "path": "techniques/proof/evaluation-chain/contract-first-smoke-summary/TECHNIQUE.md",
+            "repo": "aoa-techniques",
+            "source_ref": "1a7d146957108ecefc24219c7d56357c5a4a2c2c"
+          },
+          {
+            "id": "AOA-T-0076",
+            "lineage_state": "published",
+            "path": "techniques/governance/decision-routing/owner-layer-triage/TECHNIQUE.md",
+            "repo": "aoa-techniques",
+            "source_ref": "1a7d146957108ecefc24219c7d56357c5a4a2c2c"
+          },
+          {
+            "id": "AOA-T-0094",
+            "lineage_state": "published",
+            "path": "techniques/proof/owner-truth-closeout/canonical-owner-with-validated-mirror/TECHNIQUE.md",
+            "repo": "aoa-techniques",
+            "source_ref": "1a7d146957108ecefc24219c7d56357c5a4a2c2c"
+          }
+        ],
+        "lineage_state": "published"
+      },
+      "boundaries": {
+        "adjacent_skill_names": [],
+        "adjacency_ready": false,
+        "adjacency_blockers": []
+      },
+      "evaluation": {
+        "canonical_eval_ready": true,
+        "canonical_eval_blockers": [],
+        "use_case_count": 1,
+        "do_not_use_case_count": 1,
+        "autonomy_check_count": 1,
+        "promotion_review_path": null,
+        "candidate_review_path": null
+      },
+      "graph_refs": {
+        "node_id": "skill_aoa_eval",
+        "outgoing_edge_count": 13,
+        "incoming_edge_count": 0,
+        "outgoing_edge_kinds": {
+          "available_in_artifact_group": 5,
+          "depends_on": 3,
+          "included_in_profile": 1,
+          "invocation_policy": 1,
+          "lineage": 1,
+          "maturity": 1,
+          "scope": 1
+        },
+        "incoming_edge_kinds": {}
+      },
+      "install_refs": {
+        "repo_export_path": ".agents/skills/aoa-eval/SKILL.md",
+        "repo_export_present": true,
+        "install_profiles": [
+          "repo-default"
+        ],
+        "artifact_group_coverage": [
+          "portable_export",
+          "runtime_seam",
+          "runtime_guardrails",
+          "description_trigger",
+          "tiny_router"
+        ]
+      },
+      "search_documents": [
+        {
+          "doc_id": "skill:aoa-eval:section:summary",
+          "skill_name": "aoa-eval",
+          "section_role": "summary",
+          "source_path": "skills/core/engineering/aoa-eval/SKILL.md",
+          "source_anchor": "frontmatter.summary",
+          "text": "Route AoA eval-lane work by finding existing local or central eval surfaces first, then selecting apply, local-need, design, or session-mining without moving proof authority.",
+          "text_sha256": "edd7068715e82f77964a2996c4d25f7c191b29551115f18e03e0011c8cd41547",
+          "token_count": 24
+        },
+        {
+          "doc_id": "skill:aoa-eval:section:intent",
+          "skill_name": "aoa-eval",
+          "section_role": "intent",
+          "source_path": "skills/core/engineering/aoa-eval/SKILL.md",
+          "source_anchor": "## Intent",
+          "text": "Use this skill as the front door for AoA evaluation work. It decides whether a task should inspect existing evals, apply an existing eval or validator, record repo-local eval pressure, design a local eval suite, or mine `.aoa` session evidence for missed eval triggers.",
+          "text_sha256": "0953768618a0bfa6ec9606d3a816aa1e9aec4f57b691b99247ad19eb6f296c1a",
+          "token_count": 44
+        },
+        {
+          "doc_id": "skill:aoa-eval:section:trigger_boundary",
+          "skill_name": "aoa-eval",
+          "section_role": "trigger_boundary",
+          "source_path": "skills/core/engineering/aoa-eval/SKILL.md",
+          "source_anchor": "## Trigger boundary",
+          "text": "Use this skill when: - the user asks whether an eval exists, whether one should be added, or how to connect evals to a repository - a repeated failure, validation gap, proof gap, regression, trigger miss, or local `evals/` port appears during repository work - the task mentions `aoa-evals`, `aoa-evals-mcp`, local eval ports, eval intake, graders, traces, regressions, validators, tests, or scripts as evaluation surfaces - session evidence may reveal missed eval moments, but only after web and repo owner surfaces have been checked - a route must separate proof authority, local intake pressure, MCP access, and raw session evidence Do not use this skill when: - the task is only to add an ordinary unit test with no eval routing question; use the normal engineering workflow or `aoa-contract-test` - the task is only to find source authority; use `aoa-source-of-truth-check` - the task is only to record or correct durable rationale; use `aoa-decision` - the task is only memory candidate writeback; use `aoa-memo-writeback` - the user explicitly asks to edit central `aoa-evals` proof doctrine; route to the `aoa-evals` repo and its validators instead of making this skill the owner",
+          "text_sha256": "a15e90c2e8105bbfbe2d4944e3c6d332c21f903073d206c619239073fbbf5be9",
+          "token_count": 189
+        },
+        {
+          "doc_id": "skill:aoa-eval:section:inputs",
+          "skill_name": "aoa-eval",
+          "section_role": "inputs",
+          "source_path": "skills/core/engineering/aoa-eval/SKILL.md",
+          "source_anchor": "## Inputs",
+          "text": "- user intent, target repository, touched paths, failure mode, or eval name - local `evals/PORT.yaml`, `evals/intake/`, scripts, tests, validators, and repo route cards - central `aoa-evals` docs, schemas, validators, reports, and review surfaces - `aoa-evals-mcp` packets when available, treated as access-plane data - `.aoa` search hits, segments, raw refs, and freshness only when session mining is the chosen route",
+          "text_sha256": "9ad88bbfd15b8c7414583b9b0c287678ea9934e3b6c7a5cc45d4530783fa57a0",
+          "token_count": 59
+        },
+        {
+          "doc_id": "skill:aoa-eval:section:outputs",
+          "skill_name": "aoa-eval",
+          "section_role": "outputs",
+          "source_path": "skills/core/engineering/aoa-eval/SKILL.md",
+          "source_anchor": "## Outputs",
+          "text": "- exactly one chosen route: `aoa-eval-select`, `aoa-eval-apply`, `aoa-eval-local-need`, `aoa-eval-design`, or `aoa-eval-session-mining` - owner-boundary statement naming proof owner, local port owner, and any MCP or `.aoa` evidence role - selected existing eval, validation command, intake packet path, draft suite, or session-mining report - stop line when no owner surface is safe to write",
+          "text_sha256": "ef0fa36f4c8012725df9a3dc9b4431c6c311f1145f71fecea327dd6b8c7e27b1",
+          "token_count": 52
+        },
+        {
+          "doc_id": "skill:aoa-eval:section:procedure",
+          "skill_name": "aoa-eval",
+          "section_role": "procedure",
+          "source_path": "skills/core/engineering/aoa-eval/SKILL.md",
+          "source_anchor": "## Procedure",
+          "text": "1. classify the pressure: - existing eval may fit: use `aoa-eval-select` - existing eval or validator should run: use `aoa-eval-apply` - no eval fits and a repo-local pressure packet is needed: use `aoa-eval-local-need` - a local eval suite or report needs design: use `aoa-eval-design` - `.aoa` evidence should be mined for missed trigger cases: use `aoa-eval-session-mining` 2. check local owner route first: repository `AGENTS.md`, `evals/PORT.yaml`, nearby validators, tests, scripts, and local route docs 3. check central `aoa-evals` only for proof doctrine, local-port contract, central bundles, scoring, verdicts, or review rules 4. use `aoa-evals-mcp` only as a runtime access plane; do not let an MCP packet create proof truth or write central eval bundles 5. load exactly one subskill after classification; keep the other subskills out of context unless the route changes 6. if no safe route exists, stop with the missing owner evidence and the next narrow source to inspect 7. after any write or eval run, report the route, owner surface, evidence used, validation command, and remaining proof risk",
+          "text_sha256": "711d1750716db28ea3be7ad5da8b66cd5db28b9b4302be6b6af2986d177c92f5",
+          "token_count": 170
+        },
+        {
+          "doc_id": "skill:aoa-eval:section:contracts",
+          "skill_name": "aoa-eval",
+          "section_role": "contracts",
+          "source_path": "skills/core/engineering/aoa-eval/SKILL.md",
+          "source_anchor": "## Contracts",
+          "text": "- `aoa-evals` owns proof doctrine and central eval verdicts - local repositories own their `evals/` ports and can hold intake pressure without becoming proof authorities - `.aoa` raw traces are candidate evidence, not reviewed truth - MCP tools are access planes and must not silently promote local pressure into central proof - the router chooses one subskill to control scope and avoid mixed authority - new evals should be created only after existing local and central surfaces were inspected",
+          "text_sha256": "af9c0d5f77a0e20491b040fc6016978619537ab52dfec1e68d78d185c4f1ee82",
+          "token_count": 79
+        },
+        {
+          "doc_id": "skill:aoa-eval:section:risk",
+          "skill_name": "aoa-eval",
+          "section_role": "risk",
+          "source_path": "skills/core/engineering/aoa-eval/SKILL.md",
+          "source_anchor": "## Risks and anti-patterns",
+          "text": "- treating every test as an eval or every eval as a central `aoa-evals` object - creating a local eval need before checking existing validators and tests - letting `.aoa` search hits override repo-local source files - letting MCP writes bypass owner review - loading every subskill for a simple route decision - promoting scaffolded trigger pressure to canonical proof without review",
+          "text_sha256": "16ab4ab833be213c2909050caf49a09c672b9ff5c6b2fb8995e44f0b40fd7fcd",
+          "token_count": 62
+        },
+        {
+          "doc_id": "skill:aoa-eval:section:verification",
+          "skill_name": "aoa-eval",
+          "section_role": "verification",
+          "source_path": "skills/core/engineering/aoa-eval/SKILL.md",
+          "source_anchor": "## Verification",
+          "text": "- confirm exactly one subskill route was selected - confirm local `evals/PORT.yaml` was inspected or the absence was named - confirm central `aoa-evals` authority was kept separate from local intake - confirm existing scripts, tests, and validators were considered before new design - confirm `.aoa` evidence is marked candidate-only when used - confirm any generated or derived surfaces were rebuilt through owner builders - confirm final report names validation and skipped checks",
+          "text_sha256": "54d5ba933e66f85040e065ffbd837a97735ab79bf85b8b2b49cc6366a46adb2e",
+          "token_count": 72
+        },
+        {
+          "doc_id": "skill:aoa-eval:section:lineage",
+          "skill_name": "aoa-eval",
+          "section_role": "lineage",
+          "source_path": "skills/core/engineering/aoa-eval/SKILL.md",
+          "source_anchor": "## Technique traceability",
+          "text": "Manifest-backed techniques: - AOA-T-0003 from `8Dionysus/aoa-techniques` at `1a7d146957108ecefc24219c7d56357c5a4a2c2c` using path `techniques/proof/evaluation-chain/contract-first-smoke-summary/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Risks, Validation - AOA-T-0076 from `8Dionysus/aoa-techniques` at `1a7d146957108ecefc24219c7d56357c5a4a2c2c` using path `techniques/governance/decision-routing/owner-layer-triage/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Risks, Validation - AOA-T-0094 from `8Dionysus/aoa-techniques` at `1a7d146957108ecefc24219c7d56357c5a4a2c2c` using path `techniques/proof/owner-truth-closeout/canonical-owner-with-validated-mirror/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Risks, Validation",
+          "text_sha256": "80912dc78d809ee542af794575eca7dfe2b9c25d1709fb3d6b8b842f078a14b7",
+          "token_count": 59
+        },
+        {
+          "doc_id": "skill:aoa-eval:section:adaptation",
+          "skill_name": "aoa-eval",
+          "section_role": "adaptation",
+          "source_path": "skills/core/engineering/aoa-eval/SKILL.md",
+          "source_anchor": "## Adaptation points",
+          "text": "- local eval-port schema and status vocabulary - `aoa-evals-mcp` tool names - repo-local validator/test/script command names - session search provider and freshness policy",
+          "text_sha256": "df13f48e504dcfd79061f1ad49511cb499f061aae9146a57b001159c9f4c4bb4",
+          "token_count": 23
+        }
+      ]
+    },
+    {
+      "name": "aoa-eval-apply",
+      "scope": "core",
+      "status": "scaffold",
+      "summary": "Run or route an already selected eval, validator, test, or script, then report what the evidence proves and what remains unproven.",
+      "source": {
+        "skill_path": "skills/core/engineering/aoa-eval-apply/SKILL.md",
+        "techniques_path": "skills/core/engineering/aoa-eval-apply/techniques.yaml",
+        "policy_path": "skills/core/engineering/aoa-eval-apply/agents/openai.yaml",
+        "content_hash": "47864e0f122584cbac2d8c19d2680bcffca165f61cf66c97f89839a954a6a910",
+        "skill_revision": "47864e0f1225"
+      },
+      "policy": {
+        "invocation_mode": "explicit-preferred",
+        "implicit_activation_policy": "manual",
+        "trust_posture": "portable-core",
+        "mutation_surface": "repo",
+        "requires_manual_invocation": true,
+        "candidate_only": false,
+        "requires_confirmation_seam": false
+      },
+      "runtime": {
+        "description": "Run or route an already selected eval, validator, test, or script, then report command results, artifacts, generated drift, proof limits, and next route. Use when the eval surface is already selected and the task is to apply it rather than choose or design it. Do not use when no existing eval has been selected, when an intake need should be recorded first, or when central proof promotion is being requested.",
+        "allow_implicit_invocation": false
+      },
+      "tiny_router": {
+        "band": "eval-proof-routing",
+        "cue_phrases": [
+          "run selected eval",
+          "apply existing validator",
+          "selected test command",
+          "eval evidence report",
+          "generated drift check",
+          "proof limits"
+        ],
+        "negative_phrases": [
+          "no eval selected yet",
+          "design new suite",
+          "record intake need"
+        ],
+        "companions": [
+          "aoa-eval",
+          "aoa-eval-select",
+          "aoa-eval-local-need"
+        ]
+      },
+      "resources": {
+        "bundle_support_artifacts": [
+          {
+            "path": "skills/core/engineering/aoa-eval-apply/examples/runtime.md",
+            "selected_for_runtime_inspection": true,
+            "type": "runtime_example"
+          }
+        ],
+        "support_resource_index": {
+          "targeted": false,
+          "standard_dir_counts": {},
+          "legacy_dir_counts": {}
+        },
+        "selected_runtime_artifact_path": "skills/core/engineering/aoa-eval-apply/examples/runtime.md"
+      },
+      "lineage": {
+        "technique_dependencies": [
+          "AOA-T-0003",
+          "AOA-T-0007",
+          "AOA-T-0096"
+        ],
+        "technique_lineage": [
+          {
+            "id": "AOA-T-0003",
+            "lineage_state": "published",
+            "path": "techniques/proof/evaluation-chain/contract-first-smoke-summary/TECHNIQUE.md",
+            "repo": "aoa-techniques",
+            "source_ref": "1a7d146957108ecefc24219c7d56357c5a4a2c2c"
+          },
+          {
+            "id": "AOA-T-0007",
+            "lineage_state": "published",
+            "path": "techniques/proof/evaluation-chain/signal-first-gate-promotion/TECHNIQUE.md",
+            "repo": "aoa-techniques",
+            "source_ref": "1a7d146957108ecefc24219c7d56357c5a4a2c2c"
+          },
+          {
+            "id": "AOA-T-0096",
+            "lineage_state": "published",
+            "path": "techniques/proof/owner-truth-closeout/pinned-validation-matrix-before-generated-publish/TECHNIQUE.md",
+            "repo": "aoa-techniques",
+            "source_ref": "1a7d146957108ecefc24219c7d56357c5a4a2c2c"
+          }
+        ],
+        "lineage_state": "published"
+      },
+      "boundaries": {
+        "adjacent_skill_names": [],
+        "adjacency_ready": false,
+        "adjacency_blockers": []
+      },
+      "evaluation": {
+        "canonical_eval_ready": true,
+        "canonical_eval_blockers": [],
+        "use_case_count": 1,
+        "do_not_use_case_count": 1,
+        "autonomy_check_count": 1,
+        "promotion_review_path": null,
+        "candidate_review_path": null
+      },
+      "graph_refs": {
+        "node_id": "skill_aoa_eval_apply",
+        "outgoing_edge_count": 13,
+        "incoming_edge_count": 0,
+        "outgoing_edge_kinds": {
+          "available_in_artifact_group": 5,
+          "depends_on": 3,
+          "included_in_profile": 1,
+          "invocation_policy": 1,
+          "lineage": 1,
+          "maturity": 1,
+          "scope": 1
+        },
+        "incoming_edge_kinds": {}
+      },
+      "install_refs": {
+        "repo_export_path": ".agents/skills/aoa-eval-apply/SKILL.md",
+        "repo_export_present": true,
+        "install_profiles": [
+          "repo-default"
+        ],
+        "artifact_group_coverage": [
+          "portable_export",
+          "runtime_seam",
+          "runtime_guardrails",
+          "description_trigger",
+          "tiny_router"
+        ]
+      },
+      "search_documents": [
+        {
+          "doc_id": "skill:aoa-eval-apply:section:summary",
+          "skill_name": "aoa-eval-apply",
+          "section_role": "summary",
+          "source_path": "skills/core/engineering/aoa-eval-apply/SKILL.md",
+          "source_anchor": "frontmatter.summary",
+          "text": "Run or route an already selected eval, validator, test, or script, then report what the evidence proves and what remains unproven.",
+          "text_sha256": "e381b9fda2d338c15d6a3180daab09f45c1f40f1e28802561d1dbdf2ddc9ab14",
+          "token_count": 21
+        },
+        {
+          "doc_id": "skill:aoa-eval-apply:section:intent",
+          "skill_name": "aoa-eval-apply",
+          "section_role": "intent",
+          "source_path": "skills/core/engineering/aoa-eval-apply/SKILL.md",
+          "source_anchor": "## Intent",
+          "text": "Use this skill to apply an existing eval surface after selection is clear. The output is an evidence report, not a proof promotion.",
+          "text_sha256": "03e47faaf5aea29ad3fd2045bab741ccb037b57a7839bee21987dd8d8cfdda4f",
+          "token_count": 23
+        },
+        {
+          "doc_id": "skill:aoa-eval-apply:section:trigger_boundary",
+          "skill_name": "aoa-eval-apply",
+          "section_role": "trigger_boundary",
+          "source_path": "skills/core/engineering/aoa-eval-apply/SKILL.md",
+          "source_anchor": "## Trigger boundary",
+          "text": "Use this skill when: - an existing eval, validator, test, or script has already been selected - a local or central evaluation command should be run or routed - the user needs to know what the run proves, what failed, and what remains outside coverage - generated outputs need to be rebuilt or checked as part of the selected eval Do not use this skill when: - no existing eval has been selected yet; use `aoa-eval-select` - the next honest move is to record missing eval pressure; use `aoa-eval-local-need` - the task is to invent a new suite; use `aoa-eval-design` - the command would mutate production or central proof surfaces without owner permission",
+          "text_sha256": "ef38bdd66daf642c3397a7f8fbc6ffde66ba199d427784a7e542640c6f7300e4",
+          "token_count": 113
+        },
+        {
+          "doc_id": "skill:aoa-eval-apply:section:inputs",
+          "skill_name": "aoa-eval-apply",
+          "section_role": "inputs",
+          "source_path": "skills/core/engineering/aoa-eval-apply/SKILL.md",
+          "source_anchor": "## Inputs",
+          "text": "- selected eval or validation command - repo-local route law and command prerequisites - expected artifacts, reports, generated outputs, and pass/fail criteria - prior failure or regression context",
+          "text_sha256": "b163199118ab6f124f6f9046436b0172b7f4e86a25e2336e113a5b412b39e70f",
+          "token_count": 28
+        },
+        {
+          "doc_id": "skill:aoa-eval-apply:section:outputs",
+          "skill_name": "aoa-eval-apply",
+          "section_role": "outputs",
+          "source_path": "skills/core/engineering/aoa-eval-apply/SKILL.md",
+          "source_anchor": "## Outputs",
+          "text": "- commands run and results observed - artifacts or reports produced - evidence classification: green proof, regression, inconclusive, blocked, or outside coverage - next route if failure should become an intake need or suite design",
+          "text_sha256": "4643f9adc31ff89d716e0bb14490c936172a61cdbc8fb977284448751dda2cb8",
+          "token_count": 35
+        },
+        {
+          "doc_id": "skill:aoa-eval-apply:section:procedure",
+          "skill_name": "aoa-eval-apply",
+          "section_role": "procedure",
+          "source_path": "skills/core/engineering/aoa-eval-apply/SKILL.md",
+          "source_anchor": "## Procedure",
+          "text": "1. confirm the selected eval surface and owner repo 2. inspect prerequisites and choose the smallest command that exercises the intended evidence surface 3. run deterministic local checks before subjective review when possible 4. capture outputs, generated drift, and artifact paths 5. classify what the run proves and explicitly name what it does not prove 6. if the run exposes missing coverage, route to `aoa-eval-local-need` 7. if the run requires new design, route to `aoa-eval-design` 8. report commands, results, artifacts, and remaining risk",
+          "text_sha256": "4c6cf943649eb5f4b94dcdb1b713e836ba7e7cd9aee93a6183259e248eff94cf",
+          "token_count": 83
+        },
+        {
+          "doc_id": "skill:aoa-eval-apply:section:contracts",
+          "skill_name": "aoa-eval-apply",
+          "section_role": "contracts",
+          "source_path": "skills/core/engineering/aoa-eval-apply/SKILL.md",
+          "source_anchor": "## Contracts",
+          "text": "- applying an eval does not create a central verdict unless `aoa-evals` owns and validates that promotion - failed or inconclusive runs are evidence, not permission to guess - generated drift must be resolved through owner builders - local eval reports must stay under local repo surfaces unless central review accepts them",
+          "text_sha256": "e5b2058c1b915cf1443521d40b4f6669a328c1063a194993d8c3787276d52f22",
+          "token_count": 52
+        },
+        {
+          "doc_id": "skill:aoa-eval-apply:section:risk",
+          "skill_name": "aoa-eval-apply",
+          "section_role": "risk",
+          "source_path": "skills/core/engineering/aoa-eval-apply/SKILL.md",
+          "source_anchor": "## Risks and anti-patterns",
+          "text": "- running a broad release gate when a focused validator is enough - treating green tests as complete proof outside their scope - hiding generated drift - promoting failure observations without a reproducible command",
+          "text_sha256": "b9aeb08d5415d21795fe26a2f50d1ec385ab7f8519b0bc67af0b46a4dbc49a87",
+          "token_count": 34
+        },
+        {
+          "doc_id": "skill:aoa-eval-apply:section:verification",
+          "skill_name": "aoa-eval-apply",
+          "section_role": "verification",
+          "source_path": "skills/core/engineering/aoa-eval-apply/SKILL.md",
+          "source_anchor": "## Verification",
+          "text": "- confirm the selected eval existed before running - confirm command, cwd, and result - confirm artifacts and generated drift status - confirm proof limits and next route - confirm no central proof file was written through MCP",
+          "text_sha256": "b331abf59add4d003f2456a28c78b57b2c8e9f7e2b2518c7fc37f196d4ac51ec",
+          "token_count": 38
+        },
+        {
+          "doc_id": "skill:aoa-eval-apply:section:lineage",
+          "skill_name": "aoa-eval-apply",
+          "section_role": "lineage",
+          "source_path": "skills/core/engineering/aoa-eval-apply/SKILL.md",
+          "source_anchor": "## Technique traceability",
+          "text": "Manifest-backed techniques: - AOA-T-0003 from `8Dionysus/aoa-techniques` at `1a7d146957108ecefc24219c7d56357c5a4a2c2c` using path `techniques/proof/evaluation-chain/contract-first-smoke-summary/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Risks, Validation - AOA-T-0007 from `8Dionysus/aoa-techniques` at `1a7d146957108ecefc24219c7d56357c5a4a2c2c` using path `techniques/proof/evaluation-chain/signal-first-gate-promotion/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Risks, Validation - AOA-T-0096 from `8Dionysus/aoa-techniques` at `1a7d146957108ecefc24219c7d56357c5a4a2c2c` using path `techniques/proof/owner-truth-closeout/pinned-validation-matrix-before-generated-publish/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Risks, Validation",
+          "text_sha256": "ed316e08c171f14f396800a1dbf089e6c9b9de16ecb5c4a9c83c9c3eb1bd965c",
+          "token_count": 59
+        },
+        {
+          "doc_id": "skill:aoa-eval-apply:section:adaptation",
+          "skill_name": "aoa-eval-apply",
+          "section_role": "adaptation",
+          "source_path": "skills/core/engineering/aoa-eval-apply/SKILL.md",
+          "source_anchor": "## Adaptation points",
+          "text": "- repo-local command runner - report artifact format - generated rebuild order",
+          "text_sha256": "7bdbb6c53671b128cf3bf03204f61865bf0b9cbbbc54eda29c8555ddfeb1ed6a",
+          "token_count": 12
+        }
+      ]
+    },
+    {
+      "name": "aoa-eval-design",
+      "scope": "core",
+      "status": "scaffold",
+      "summary": "Design a local eval suite or report after selection fails, using deterministic checks first and leaving central proof acceptance to aoa-evals.",
+      "source": {
+        "skill_path": "skills/core/engineering/aoa-eval-design/SKILL.md",
+        "techniques_path": "skills/core/engineering/aoa-eval-design/techniques.yaml",
+        "policy_path": "skills/core/engineering/aoa-eval-design/agents/openai.yaml",
+        "content_hash": "2649bebdc77b0933af549d09a971737cb1b8954c08a56e224312f877d2922202",
+        "skill_revision": "2649bebdc77b"
+      },
+      "policy": {
+        "invocation_mode": "explicit-preferred",
+        "implicit_activation_policy": "manual",
+        "trust_posture": "portable-core",
+        "mutation_surface": "repo",
+        "requires_manual_invocation": true,
+        "candidate_only": false,
+        "requires_confirmation_seam": false
+      },
+      "runtime": {
+        "description": "Design a bounded local eval suite, prompt set, report, or validator plan after selection finds no adequate existing surface, using deterministic checks first and trace or rubric review only when needed. Use when a local eval needs positive, negative, collision, or regression cases around a clear behavior or invariant. Do not use when an existing eval should simply run, when only a local intake packet is needed, or when central aoa-evals proof doctrine is the target.",
+        "allow_implicit_invocation": false
+      },
+      "tiny_router": {
+        "band": "eval-proof-routing",
+        "cue_phrases": [
+          "design eval suite",
+          "local eval draft",
+          "positive negative cases",
+          "collision cases",
+          "trace rubric",
+          "deterministic checks first"
+        ],
+        "negative_phrases": [
+          "existing eval should run",
+          "intake packet only",
+          "central proof doctrine"
+        ],
+        "companions": [
+          "aoa-eval",
+          "aoa-eval-select",
+          "aoa-eval-local-need"
+        ]
+      },
+      "resources": {
+        "bundle_support_artifacts": [
+          {
+            "path": "skills/core/engineering/aoa-eval-design/examples/runtime.md",
+            "selected_for_runtime_inspection": true,
+            "type": "runtime_example"
+          }
+        ],
+        "support_resource_index": {
+          "targeted": false,
+          "standard_dir_counts": {},
+          "legacy_dir_counts": {}
+        },
+        "selected_runtime_artifact_path": "skills/core/engineering/aoa-eval-design/examples/runtime.md"
+      },
+      "lineage": {
+        "technique_dependencies": [
+          "AOA-T-0015",
+          "AOA-T-0017",
+          "AOA-T-0007"
+        ],
+        "technique_lineage": [
+          {
+            "id": "AOA-T-0015",
+            "lineage_state": "published",
+            "path": "techniques/proof/skill-support/contract-test-design/TECHNIQUE.md",
+            "repo": "aoa-techniques",
+            "source_ref": "1a7d146957108ecefc24219c7d56357c5a4a2c2c"
+          },
+          {
+            "id": "AOA-T-0017",
+            "lineage_state": "published",
+            "path": "techniques/proof/skill-support/property-invariants/TECHNIQUE.md",
+            "repo": "aoa-techniques",
+            "source_ref": "1a7d146957108ecefc24219c7d56357c5a4a2c2c"
+          },
+          {
+            "id": "AOA-T-0007",
+            "lineage_state": "published",
+            "path": "techniques/proof/evaluation-chain/signal-first-gate-promotion/TECHNIQUE.md",
+            "repo": "aoa-techniques",
+            "source_ref": "1a7d146957108ecefc24219c7d56357c5a4a2c2c"
+          }
+        ],
+        "lineage_state": "published"
+      },
+      "boundaries": {
+        "adjacent_skill_names": [],
+        "adjacency_ready": false,
+        "adjacency_blockers": []
+      },
+      "evaluation": {
+        "canonical_eval_ready": true,
+        "canonical_eval_blockers": [],
+        "use_case_count": 1,
+        "do_not_use_case_count": 1,
+        "autonomy_check_count": 1,
+        "promotion_review_path": null,
+        "candidate_review_path": null
+      },
+      "graph_refs": {
+        "node_id": "skill_aoa_eval_design",
+        "outgoing_edge_count": 13,
+        "incoming_edge_count": 0,
+        "outgoing_edge_kinds": {
+          "available_in_artifact_group": 5,
+          "depends_on": 3,
+          "included_in_profile": 1,
+          "invocation_policy": 1,
+          "lineage": 1,
+          "maturity": 1,
+          "scope": 1
+        },
+        "incoming_edge_kinds": {}
+      },
+      "install_refs": {
+        "repo_export_path": ".agents/skills/aoa-eval-design/SKILL.md",
+        "repo_export_present": true,
+        "install_profiles": [
+          "repo-default"
+        ],
+        "artifact_group_coverage": [
+          "portable_export",
+          "runtime_seam",
+          "runtime_guardrails",
+          "description_trigger",
+          "tiny_router"
+        ]
+      },
+      "search_documents": [
+        {
+          "doc_id": "skill:aoa-eval-design:section:summary",
+          "skill_name": "aoa-eval-design",
+          "section_role": "summary",
+          "source_path": "skills/core/engineering/aoa-eval-design/SKILL.md",
+          "source_anchor": "frontmatter.summary",
+          "text": "Design a local eval suite or report after selection fails, using deterministic checks first and leaving central proof acceptance to aoa-evals.",
+          "text_sha256": "66c8560503ff627a6fb5bed628c9e99ff9fccb099cc6ec2c72d0cb0222d338d6",
+          "token_count": 21
+        },
+        {
+          "doc_id": "skill:aoa-eval-design:section:intent",
+          "skill_name": "aoa-eval-design",
+          "section_role": "intent",
+          "source_path": "skills/core/engineering/aoa-eval-design/SKILL.md",
+          "source_anchor": "## Intent",
+          "text": "Use this skill to design a bounded local eval suite, prompt set, report, or validator plan after existing surfaces have been inspected and found insufficient.",
+          "text_sha256": "84a9d088ff0f99021cfb5a753bd52df28f9c64d5d0c62be33b555bcc7cae284f",
+          "token_count": 25
+        },
+        {
+          "doc_id": "skill:aoa-eval-design:section:trigger_boundary",
+          "skill_name": "aoa-eval-design",
+          "section_role": "trigger_boundary",
+          "source_path": "skills/core/engineering/aoa-eval-design/SKILL.md",
+          "source_anchor": "## Trigger boundary",
+          "text": "Use this skill when: - a local eval needs design from a clear failure mode or missing invariant - deterministic tests, validators, or scripts should be planned before rubric or transcript graders - positive, negative, collision, or regression cases need to be shaped for a local repo - the output is a draft suite or report, not central proof acceptance Do not use this skill when: - an existing eval should simply run now - the right next artifact is only an intake pressure packet - the invariant is unknown and discovery is still needed - the user asks for central `aoa-evals` proof doctrine changes",
+          "text_sha256": "68053a7ed5bb385ad91b2b846123d4a225fc423f191ae8cf25a90503bd11132f",
+          "token_count": 105
+        },
+        {
+          "doc_id": "skill:aoa-eval-design:section:inputs",
+          "skill_name": "aoa-eval-design",
+          "section_role": "inputs",
+          "source_path": "skills/core/engineering/aoa-eval-design/SKILL.md",
+          "source_anchor": "## Inputs",
+          "text": "- selected failure mode, target behavior, invariant, or trigger boundary - local repo tests, scripts, validators, fixtures, generated surfaces, and `evals/` port - evidence refs and rejected existing evals - central `aoa-evals` standards when relevant",
+          "text_sha256": "259dda70d3771e504ecfa95d39df93bf2a0dc0fc8c73f622525851ad367a2cbe",
+          "token_count": 35
+        },
+        {
+          "doc_id": "skill:aoa-eval-design:section:outputs",
+          "skill_name": "aoa-eval-design",
+          "section_role": "outputs",
+          "source_path": "skills/core/engineering/aoa-eval-design/SKILL.md",
+          "source_anchor": "## Outputs",
+          "text": "- draft suite structure, report plan, fixture set, or validator design - positive, negative, and regression cases - deterministic checks first, rubric or trace review only when needed - proof limit and owner handoff",
+          "text_sha256": "faea647cbf267959ca500f3feb3f895eedba73fe276ded6e5f83e33f0fb06195",
+          "token_count": 34
+        },
+        {
+          "doc_id": "skill:aoa-eval-design:section:procedure",
+          "skill_name": "aoa-eval-design",
+          "section_role": "procedure",
+          "source_path": "skills/core/engineering/aoa-eval-design/SKILL.md",
+          "source_anchor": "## Procedure",
+          "text": "1. restate the behavior or invariant to evaluate 2. choose the lowest-level deterministic checks that can constrain it 3. add positive and negative examples; add collision cases for trigger or router behavior 4. add trace or rubric review only where deterministic checks cannot cover the behavior 5. place the draft in the local eval port or report surface named by the repo 6. keep central acceptance language out of the draft 7. hand off to `aoa-eval-apply` when a runnable check exists",
+          "text_sha256": "292b9d9bc20cb256a00a83362460d58112cf55e76191dac926edc03611012b69",
+          "token_count": 81
+        },
+        {
+          "doc_id": "skill:aoa-eval-design:section:contracts",
+          "skill_name": "aoa-eval-design",
+          "section_role": "contracts",
+          "source_path": "skills/core/engineering/aoa-eval-design/SKILL.md",
+          "source_anchor": "## Contracts",
+          "text": "- design starts after selection fails, not before - local design remains local until central review accepts it - deterministic checks are preferred for coding-agent behavior - transcript and rubric grading are supporting layers when objective checks are insufficient",
+          "text_sha256": "7ef8aadd2dd67626ce1057a0122aff697a9d7eec36b50ce9499eff52a4cf9a93",
+          "token_count": 39
+        },
+        {
+          "doc_id": "skill:aoa-eval-design:section:risk",
+          "skill_name": "aoa-eval-design",
+          "section_role": "risk",
+          "source_path": "skills/core/engineering/aoa-eval-design/SKILL.md",
+          "source_anchor": "## Risks and anti-patterns",
+          "text": "- designing a suite around vague success criteria - using only positive examples - creating rubric-only evals where a script or test can check the behavior - making one local report sound like system-wide proof",
+          "text_sha256": "f5e6a444b7ec4b81d6846755ce1a37066311c658d0bfd635ad078a9cd82a0fbc",
+          "token_count": 35
+        },
+        {
+          "doc_id": "skill:aoa-eval-design:section:verification",
+          "skill_name": "aoa-eval-design",
+          "section_role": "verification",
+          "source_path": "skills/core/engineering/aoa-eval-design/SKILL.md",
+          "source_anchor": "## Verification",
+          "text": "- confirm the target invariant or behavior is explicit - confirm positive, negative, and regression cases exist or are deliberately deferred - confirm deterministic checks were considered first - confirm local owner path and proof limit - confirm next runnable command or review route",
+          "text_sha256": "cfca320b13825c0aae2fc9c15ba1121f401d56b4efc0eae8886888df33e26f95",
+          "token_count": 44
+        },
+        {
+          "doc_id": "skill:aoa-eval-design:section:lineage",
+          "skill_name": "aoa-eval-design",
+          "section_role": "lineage",
+          "source_path": "skills/core/engineering/aoa-eval-design/SKILL.md",
+          "source_anchor": "## Technique traceability",
+          "text": "Manifest-backed techniques: - AOA-T-0015 from `8Dionysus/aoa-techniques` at `1a7d146957108ecefc24219c7d56357c5a4a2c2c` using path `techniques/proof/skill-support/contract-test-design/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Risks, Validation - AOA-T-0017 from `8Dionysus/aoa-techniques` at `1a7d146957108ecefc24219c7d56357c5a4a2c2c` using path `techniques/proof/skill-support/property-invariants/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Risks, Validation - AOA-T-0007 from `8Dionysus/aoa-techniques` at `1a7d146957108ecefc24219c7d56357c5a4a2c2c` using path `techniques/proof/evaluation-chain/signal-first-gate-promotion/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Risks, Validation",
+          "text_sha256": "2e12fe6721f76c8f2f25d0c44ec47520a5882cc78e8301059775462ff9412c34",
+          "token_count": 59
+        },
+        {
+          "doc_id": "skill:aoa-eval-design:section:adaptation",
+          "skill_name": "aoa-eval-design",
+          "section_role": "adaptation",
+          "source_path": "skills/core/engineering/aoa-eval-design/SKILL.md",
+          "source_anchor": "## Adaptation points",
+          "text": "- local fixture format - local suite/report naming - central review handoff",
+          "text_sha256": "34320583ad1066c2d810bf190b6f702b95757ff92bff4e1a051591bfa6f8ce39",
+          "token_count": 12
+        }
+      ]
+    },
+    {
+      "name": "aoa-eval-local-need",
+      "scope": "core",
+      "status": "scaffold",
+      "summary": "Create a repo-local eval need packet when no existing eval fits, preserving owner route, evidence, rejected alternatives, and proof limits.",
+      "source": {
+        "skill_path": "skills/core/engineering/aoa-eval-local-need/SKILL.md",
+        "techniques_path": "skills/core/engineering/aoa-eval-local-need/techniques.yaml",
+        "policy_path": "skills/core/engineering/aoa-eval-local-need/agents/openai.yaml",
+        "content_hash": "5deadee29db3e7ad46f07960c42063b4a8e2f0a1f60eb7c7c6d7af0b24d85a33",
+        "skill_revision": "5deadee29db3"
+      },
+      "policy": {
+        "invocation_mode": "explicit-preferred",
+        "implicit_activation_policy": "manual",
+        "trust_posture": "portable-core",
+        "mutation_surface": "repo",
+        "requires_manual_invocation": true,
+        "candidate_only": false,
+        "requires_confirmation_seam": false
+      },
+      "runtime": {
+        "description": "Create a repo-local eval need packet under evals/intake when no existing eval fits, preserving owner route, evidence refs, rejected alternatives, proposed checks, and proof limits. Use when a repeated failure or missing behavior needs local eval pressure without central proof acceptance. Do not use when an existing eval can be applied, when the missing object is a memo or decision, or when the user asks for central aoa-evals acceptance.",
+        "allow_implicit_invocation": false
+      },
+      "tiny_router": {
+        "band": "eval-proof-routing",
+        "cue_phrases": [
+          "eval need packet",
+          "evals intake",
+          "no existing eval fits",
+          "missing eval pressure",
+          "rejected alternatives",
+          "local proof limit"
+        ],
+        "negative_phrases": [
+          "existing eval can run",
+          "memo candidate",
+          "decision candidate"
+        ],
+        "companions": [
+          "aoa-eval",
+          "aoa-eval-select",
+          "aoa-eval-design"
+        ]
+      },
+      "resources": {
+        "bundle_support_artifacts": [
+          {
+            "path": "skills/core/engineering/aoa-eval-local-need/examples/runtime.md",
+            "selected_for_runtime_inspection": true,
+            "type": "runtime_example"
+          }
+        ],
+        "support_resource_index": {
+          "targeted": false,
+          "standard_dir_counts": {},
+          "legacy_dir_counts": {}
+        },
+        "selected_runtime_artifact_path": "skills/core/engineering/aoa-eval-local-need/examples/runtime.md"
+      },
+      "lineage": {
+        "technique_dependencies": [
+          "AOA-T-0076",
+          "AOA-T-0094",
+          "AOA-T-0105"
+        ],
+        "technique_lineage": [
+          {
+            "id": "AOA-T-0076",
+            "lineage_state": "published",
+            "path": "techniques/governance/decision-routing/owner-layer-triage/TECHNIQUE.md",
+            "repo": "aoa-techniques",
+            "source_ref": "1a7d146957108ecefc24219c7d56357c5a4a2c2c"
+          },
+          {
+            "id": "AOA-T-0094",
+            "lineage_state": "published",
+            "path": "techniques/proof/owner-truth-closeout/canonical-owner-with-validated-mirror/TECHNIQUE.md",
+            "repo": "aoa-techniques",
+            "source_ref": "1a7d146957108ecefc24219c7d56357c5a4a2c2c"
+          },
+          {
+            "id": "AOA-T-0105",
+            "lineage_state": "published",
+            "path": "techniques/proof/review-evidence/single-missing-evidence-request/TECHNIQUE.md",
+            "repo": "aoa-techniques",
+            "source_ref": "1a7d146957108ecefc24219c7d56357c5a4a2c2c"
+          }
+        ],
+        "lineage_state": "published"
+      },
+      "boundaries": {
+        "adjacent_skill_names": [],
+        "adjacency_ready": false,
+        "adjacency_blockers": []
+      },
+      "evaluation": {
+        "canonical_eval_ready": true,
+        "canonical_eval_blockers": [],
+        "use_case_count": 1,
+        "do_not_use_case_count": 1,
+        "autonomy_check_count": 1,
+        "promotion_review_path": null,
+        "candidate_review_path": null
+      },
+      "graph_refs": {
+        "node_id": "skill_aoa_eval_local_need",
+        "outgoing_edge_count": 13,
+        "incoming_edge_count": 0,
+        "outgoing_edge_kinds": {
+          "available_in_artifact_group": 5,
+          "depends_on": 3,
+          "included_in_profile": 1,
+          "invocation_policy": 1,
+          "lineage": 1,
+          "maturity": 1,
+          "scope": 1
+        },
+        "incoming_edge_kinds": {}
+      },
+      "install_refs": {
+        "repo_export_path": ".agents/skills/aoa-eval-local-need/SKILL.md",
+        "repo_export_present": true,
+        "install_profiles": [
+          "repo-default"
+        ],
+        "artifact_group_coverage": [
+          "portable_export",
+          "runtime_seam",
+          "runtime_guardrails",
+          "description_trigger",
+          "tiny_router"
+        ]
+      },
+      "search_documents": [
+        {
+          "doc_id": "skill:aoa-eval-local-need:section:summary",
+          "skill_name": "aoa-eval-local-need",
+          "section_role": "summary",
+          "source_path": "skills/core/engineering/aoa-eval-local-need/SKILL.md",
+          "source_anchor": "frontmatter.summary",
+          "text": "Create a repo-local eval need packet when no existing eval fits, preserving owner route, evidence, rejected alternatives, and proof limits.",
+          "text_sha256": "9f7fe95a943a205ac51ab8c14f43da1d1b370f556696ece5c3bb8ae0c2952944",
+          "token_count": 20
+        },
+        {
+          "doc_id": "skill:aoa-eval-local-need:section:intent",
+          "skill_name": "aoa-eval-local-need",
+          "section_role": "intent",
+          "source_path": "skills/core/engineering/aoa-eval-local-need/SKILL.md",
+          "source_anchor": "## Intent",
+          "text": "Use this skill to record bounded local eval pressure under a repository's `evals/intake/` surface after selection confirms that no existing eval fits.",
+          "text_sha256": "9640c1f6c215f87c6ca37df0a9cb3df78719a35ff008fc4693945572b672349f",
+          "token_count": 22
+        },
+        {
+          "doc_id": "skill:aoa-eval-local-need:section:trigger_boundary",
+          "skill_name": "aoa-eval-local-need",
+          "section_role": "trigger_boundary",
+          "source_path": "skills/core/engineering/aoa-eval-local-need/SKILL.md",
+          "source_anchor": "## Trigger boundary",
+          "text": "Use this skill when: - a local repository needs an eval pressure packet but not a central proof bundle yet - no existing local validator, test, script, or central eval bundle covers the failure or behavior - a repeated session or implementation failure needs owner-routed follow-up - the right next artifact is `evals/intake/*.eval_need.json` Do not use this skill when: - an existing eval can be applied now - the missing object is a memory candidate, decision record, or source-truth map - the target repo has no local eval port and no owner permission to create one - the user asks for central `aoa-evals` proof acceptance",
+          "text_sha256": "ccde1fec459f786f6a7371c72e76741cb1cb818a0f800147c2ca9af1b4604f9f",
+          "token_count": 105
+        },
+        {
+          "doc_id": "skill:aoa-eval-local-need:section:inputs",
+          "skill_name": "aoa-eval-local-need",
+          "section_role": "inputs",
+          "source_path": "skills/core/engineering/aoa-eval-local-need/SKILL.md",
+          "source_anchor": "## Inputs",
+          "text": "- target repository and local `evals/PORT.yaml` - failure or behavior needing evaluation - evidence refs, touched paths, expected invariant, and rejected existing surfaces - owner route and validation commands",
+          "text_sha256": "bbda422c5e56ea0e68bfa717ad7dbbd6f25710e9107e31937a0869fe4c655361",
+          "token_count": 29
+        },
+        {
+          "doc_id": "skill:aoa-eval-local-need:section:outputs",
+          "skill_name": "aoa-eval-local-need",
+          "section_role": "outputs",
+          "source_path": "skills/core/engineering/aoa-eval-local-need/SKILL.md",
+          "source_anchor": "## Outputs",
+          "text": "- one repo-local eval need packet under `evals/intake/` - no central proof verdict - named next review or design route - validation result for the local port shape when available",
+          "text_sha256": "5e6254c6252e12a27085d4d17e3babfb25c11201ec657217c3685f8adce9d93c",
+          "token_count": 30
+        },
+        {
+          "doc_id": "skill:aoa-eval-local-need:section:procedure",
+          "skill_name": "aoa-eval-local-need",
+          "section_role": "procedure",
+          "source_path": "skills/core/engineering/aoa-eval-local-need/SKILL.md",
+          "source_anchor": "## Procedure",
+          "text": "1. verify that `aoa-eval-select` or equivalent inspection found no adequate existing surface 2. read local eval-port rules and confirm `evals/intake/` is the right write surface 3. write one bounded need packet with target behavior, evidence refs, owner route, rejected alternatives, proposed checks, and proof limits 4. avoid central `aoa-evals/evals/**` writes 5. run the local eval-port validator if available 6. report the packet path, owner route, and next review route",
+          "text_sha256": "8e5467d28403e4029f2bbfa874cea4b9430cab3a8309f77a3b6a82705a16336b",
+          "token_count": 69
+        },
+        {
+          "doc_id": "skill:aoa-eval-local-need:section:contracts",
+          "skill_name": "aoa-eval-local-need",
+          "section_role": "contracts",
+          "source_path": "skills/core/engineering/aoa-eval-local-need/SKILL.md",
+          "source_anchor": "## Contracts",
+          "text": "- local intake is pressure, not acceptance - central proof promotion requires `aoa-evals` review - packets must name rejected alternatives so later agents do not repeat the same search - raw session refs must remain candidate evidence until reviewed",
+          "text_sha256": "763711a175900272cd438cefca7cec0c0e12a3957c8dc734dba95c0703fd17d9",
+          "token_count": 39
+        },
+        {
+          "doc_id": "skill:aoa-eval-local-need:section:risk",
+          "skill_name": "aoa-eval-local-need",
+          "section_role": "risk",
+          "source_path": "skills/core/engineering/aoa-eval-local-need/SKILL.md",
+          "source_anchor": "## Risks and anti-patterns",
+          "text": "- using `candidates/` or another ad hoc directory when `intake/` is the local port route - creating many broad packets instead of one bounded need - omitting rejected existing evals - smuggling central verdict language into local intake",
+          "text_sha256": "7e73358f2c7869bdd9911732d4fc8672452344c2ef89850c6d9a5a5738a00e51",
+          "token_count": 38
+        },
+        {
+          "doc_id": "skill:aoa-eval-local-need:section:verification",
+          "skill_name": "aoa-eval-local-need",
+          "section_role": "verification",
+          "source_path": "skills/core/engineering/aoa-eval-local-need/SKILL.md",
+          "source_anchor": "## Verification",
+          "text": "- confirm no existing eval fit - confirm the target repo owns the local port - confirm packet path and schema posture - confirm evidence refs and proof limits - confirm central proof surfaces were not changed",
+          "text_sha256": "6e038894fe9471f04e34dd55049d91a915c4854e6487360688abb648bf95f1c8",
+          "token_count": 37
+        },
+        {
+          "doc_id": "skill:aoa-eval-local-need:section:lineage",
+          "skill_name": "aoa-eval-local-need",
+          "section_role": "lineage",
+          "source_path": "skills/core/engineering/aoa-eval-local-need/SKILL.md",
+          "source_anchor": "## Technique traceability",
+          "text": "Manifest-backed techniques: - AOA-T-0076 from `8Dionysus/aoa-techniques` at `1a7d146957108ecefc24219c7d56357c5a4a2c2c` using path `techniques/governance/decision-routing/owner-layer-triage/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Risks, Validation - AOA-T-0094 from `8Dionysus/aoa-techniques` at `1a7d146957108ecefc24219c7d56357c5a4a2c2c` using path `techniques/proof/owner-truth-closeout/canonical-owner-with-validated-mirror/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Risks, Validation - AOA-T-0105 from `8Dionysus/aoa-techniques` at `1a7d146957108ecefc24219c7d56357c5a4a2c2c` using path `techniques/proof/review-evidence/single-missing-evidence-request/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Risks, Validation",
+          "text_sha256": "98692394c588585511a879255d840e78e051b65f3f68ad82183dd9411ae956b8",
+          "token_count": 59
+        },
+        {
+          "doc_id": "skill:aoa-eval-local-need:section:adaptation",
+          "skill_name": "aoa-eval-local-need",
+          "section_role": "adaptation",
+          "source_path": "skills/core/engineering/aoa-eval-local-need/SKILL.md",
+          "source_anchor": "## Adaptation points",
+          "text": "- eval need schema - local intake filename convention - local-port validator command",
+          "text_sha256": "88e30dc453da99c9c84ad37d3b210af303da7802c8719df896908312708e95fd",
+          "token_count": 13
+        }
+      ]
+    },
+    {
+      "name": "aoa-eval-select",
+      "scope": "core",
+      "status": "scaffold",
+      "summary": "Inspect central and repo-local eval surfaces before new work, then select the smallest existing eval, validator, test, or stop line.",
+      "source": {
+        "skill_path": "skills/core/engineering/aoa-eval-select/SKILL.md",
+        "techniques_path": "skills/core/engineering/aoa-eval-select/techniques.yaml",
+        "policy_path": "skills/core/engineering/aoa-eval-select/agents/openai.yaml",
+        "content_hash": "a58d63f98d6c6696eb224375f610463e8bb45cc4d8f6d96153535f78ba75dbfd",
+        "skill_revision": "a58d63f98d6c"
+      },
+      "policy": {
+        "invocation_mode": "explicit-preferred",
+        "implicit_activation_policy": "manual",
+        "trust_posture": "portable-core",
+        "mutation_surface": "none",
+        "requires_manual_invocation": true,
+        "candidate_only": false,
+        "requires_confirmation_seam": false
+      },
+      "runtime": {
+        "description": "Inspect repo-local eval ports, tests, validators, scripts, reports, intake files, and central aoa-evals standards before new eval work, then select the smallest existing surface or a no-fit route. Use when the task asks which eval should apply to a change, failure, regression, or trigger miss. Do not use when the eval is already selected and should run, when no-fit has already been established, or when the real issue is source authority rather than eval coverage.",
+        "allow_implicit_invocation": false
+      },
+      "tiny_router": {
+        "band": "eval-proof-routing",
+        "cue_phrases": [
+          "select existing eval",
+          "inspect eval port",
+          "find validator surface",
+          "central eval standard",
+          "which eval applies",
+          "no fit route"
+        ],
+        "negative_phrases": [
+          "already selected eval",
+          "no fit already established",
+          "source authority problem"
+        ],
+        "companions": [
+          "aoa-eval",
+          "aoa-eval-apply",
+          "aoa-eval-local-need"
+        ]
+      },
+      "resources": {
+        "bundle_support_artifacts": [
+          {
+            "path": "skills/core/engineering/aoa-eval-select/examples/runtime.md",
+            "selected_for_runtime_inspection": true,
+            "type": "runtime_example"
+          }
+        ],
+        "support_resource_index": {
+          "targeted": false,
+          "standard_dir_counts": {},
+          "legacy_dir_counts": {}
+        },
+        "selected_runtime_artifact_path": "skills/core/engineering/aoa-eval-select/examples/runtime.md"
+      },
+      "lineage": {
+        "technique_dependencies": [
+          "AOA-T-0003",
+          "AOA-T-0076",
+          "AOA-T-0094"
+        ],
+        "technique_lineage": [
+          {
+            "id": "AOA-T-0003",
+            "lineage_state": "published",
+            "path": "techniques/proof/evaluation-chain/contract-first-smoke-summary/TECHNIQUE.md",
+            "repo": "aoa-techniques",
+            "source_ref": "1a7d146957108ecefc24219c7d56357c5a4a2c2c"
+          },
+          {
+            "id": "AOA-T-0076",
+            "lineage_state": "published",
+            "path": "techniques/governance/decision-routing/owner-layer-triage/TECHNIQUE.md",
+            "repo": "aoa-techniques",
+            "source_ref": "1a7d146957108ecefc24219c7d56357c5a4a2c2c"
+          },
+          {
+            "id": "AOA-T-0094",
+            "lineage_state": "published",
+            "path": "techniques/proof/owner-truth-closeout/canonical-owner-with-validated-mirror/TECHNIQUE.md",
+            "repo": "aoa-techniques",
+            "source_ref": "1a7d146957108ecefc24219c7d56357c5a4a2c2c"
+          }
+        ],
+        "lineage_state": "published"
+      },
+      "boundaries": {
+        "adjacent_skill_names": [],
+        "adjacency_ready": false,
+        "adjacency_blockers": []
+      },
+      "evaluation": {
+        "canonical_eval_ready": true,
+        "canonical_eval_blockers": [],
+        "use_case_count": 1,
+        "do_not_use_case_count": 1,
+        "autonomy_check_count": 1,
+        "promotion_review_path": null,
+        "candidate_review_path": null
+      },
+      "graph_refs": {
+        "node_id": "skill_aoa_eval_select",
+        "outgoing_edge_count": 13,
+        "incoming_edge_count": 0,
+        "outgoing_edge_kinds": {
+          "available_in_artifact_group": 5,
+          "depends_on": 3,
+          "included_in_profile": 1,
+          "invocation_policy": 1,
+          "lineage": 1,
+          "maturity": 1,
+          "scope": 1
+        },
+        "incoming_edge_kinds": {}
+      },
+      "install_refs": {
+        "repo_export_path": ".agents/skills/aoa-eval-select/SKILL.md",
+        "repo_export_present": true,
+        "install_profiles": [
+          "repo-default"
+        ],
+        "artifact_group_coverage": [
+          "portable_export",
+          "runtime_seam",
+          "runtime_guardrails",
+          "description_trigger",
+          "tiny_router"
+        ]
+      },
+      "search_documents": [
+        {
+          "doc_id": "skill:aoa-eval-select:section:summary",
+          "skill_name": "aoa-eval-select",
+          "section_role": "summary",
+          "source_path": "skills/core/engineering/aoa-eval-select/SKILL.md",
+          "source_anchor": "frontmatter.summary",
+          "text": "Inspect central and repo-local eval surfaces before new work, then select the smallest existing eval, validator, test, or stop line.",
+          "text_sha256": "1837d3d2d695ad14aafe437e0cab0caa30966c35e61922e646e7d697780598e3",
+          "token_count": 20
+        },
+        {
+          "doc_id": "skill:aoa-eval-select:section:intent",
+          "skill_name": "aoa-eval-select",
+          "section_role": "intent",
+          "source_path": "skills/core/engineering/aoa-eval-select/SKILL.md",
+          "source_anchor": "## Intent",
+          "text": "Use this skill to find whether an existing eval, validator, test, script, report, or local-port artifact already covers the current pressure before designing a new eval.",
+          "text_sha256": "9f790a974f96c201ce8da7890665d615c1c1a02cff4bf709c7db578b38c1ce58",
+          "token_count": 26
+        },
+        {
+          "doc_id": "skill:aoa-eval-select:section:trigger_boundary",
+          "skill_name": "aoa-eval-select",
+          "section_role": "trigger_boundary",
+          "source_path": "skills/core/engineering/aoa-eval-select/SKILL.md",
+          "source_anchor": "## Trigger boundary",
+          "text": "Use this skill when: - a task asks which eval should be used for a change, failure, or regression - a repository has a local `evals/` port and the agent needs to inspect it before writing anything new - central `aoa-evals` may already contain the relevant proof pattern or local port contract - existing validators, tests, or scripts may be the honest eval surface Do not use this skill when: - an already selected eval simply needs to be run; use `aoa-eval-apply` - no eval exists and the next move is a local intake packet; use `aoa-eval-local-need` - the user asks for a new suite design after selection has already failed; use `aoa-eval-design` - source authority rather than eval coverage is the problem",
+          "text_sha256": "579615c85c5190ff2df755cec3bc8887f5bd436f16150ee7d21f49112f146b30",
+          "token_count": 123
+        },
+        {
+          "doc_id": "skill:aoa-eval-select:section:inputs",
+          "skill_name": "aoa-eval-select",
+          "section_role": "inputs",
+          "source_path": "skills/core/engineering/aoa-eval-select/SKILL.md",
+          "source_anchor": "## Inputs",
+          "text": "- target repo and touched paths - local `evals/PORT.yaml`, `evals/README.md`, `evals/intake/`, and eval reports - scripts, tests, validators, schemas, generated manifests, and route docs - central `aoa-evals` docs and local-port standard - MCP list/inspect packets when available",
+          "text_sha256": "5736f400e60fdba36be9aa7d54553de1996597913d0848f02cd75a7c51623ba1",
+          "token_count": 37
+        },
+        {
+          "doc_id": "skill:aoa-eval-select:section:outputs",
+          "skill_name": "aoa-eval-select",
+          "section_role": "outputs",
+          "source_path": "skills/core/engineering/aoa-eval-select/SKILL.md",
+          "source_anchor": "## Outputs",
+          "text": "- selected existing eval, validator, test, script, or report surface - reason the surface fits or does not fit - owner and proof-authority classification - next route: apply, local need, design, or stop",
+          "text_sha256": "add1317882c8d983998a0ae050a5990c5c3528c539d2672177a247bc187bf0bf",
+          "token_count": 33
+        },
+        {
+          "doc_id": "skill:aoa-eval-select:section:procedure",
+          "skill_name": "aoa-eval-select",
+          "section_role": "procedure",
+          "source_path": "skills/core/engineering/aoa-eval-select/SKILL.md",
+          "source_anchor": "## Procedure",
+          "text": "1. read the target repo route law and local `evals/PORT.yaml` when present 2. inventory local `evals/`, tests, validators, and scripts around the touched paths 3. inspect central `aoa-evals` only for reusable proof doctrine, local-port standard, or central bundle matches 4. prefer deterministic local scripts and tests for coding-agent behavior when they already constrain the outcome 5. use MCP list/inspect only to narrow the search; verify important claims against source files 6. classify the result as exact fit, partial fit, nearest wrong target, no fit, or blocked by stale/missing owner evidence 7. hand off to `aoa-eval-apply`, `aoa-eval-local-need`, or `aoa-eval-design` only after selection is clear",
+          "text_sha256": "c623375e0e6c0f6e18b4c2ef0cb4ac406573f38ae315f341653e0039af0fc17a",
+          "token_count": 103
+        },
+        {
+          "doc_id": "skill:aoa-eval-select:section:contracts",
+          "skill_name": "aoa-eval-select",
+          "section_role": "contracts",
+          "source_path": "skills/core/engineering/aoa-eval-select/SKILL.md",
+          "source_anchor": "## Contracts",
+          "text": "- existing local proof surfaces beat new design pressure - central proof doctrine may guide but not absorb repo-local intake - selection reports confidence and nearest wrong target instead of guessing - generated indexes and MCP packets are read models until source-verified",
+          "text_sha256": "b8f9262ced06576a8721b80c5b7198eb560018e07993669de48d4ba74c9fa7f6",
+          "token_count": 42
+        },
+        {
+          "doc_id": "skill:aoa-eval-select:section:risk",
+          "skill_name": "aoa-eval-select",
+          "section_role": "risk",
+          "source_path": "skills/core/engineering/aoa-eval-select/SKILL.md",
+          "source_anchor": "## Risks and anti-patterns",
+          "text": "- skipping local validators because a central eval sounds more official - selecting a test that only checks incidental behavior - turning a partial fit into a proof verdict - reading all repos when touched paths already narrow the search",
+          "text_sha256": "297474c44e8eea79e126b36ca72bdc5319ebb60297294456137f632228d63201",
+          "token_count": 40
+        },
+        {
+          "doc_id": "skill:aoa-eval-select:section:verification",
+          "skill_name": "aoa-eval-select",
+          "section_role": "verification",
+          "source_path": "skills/core/engineering/aoa-eval-select/SKILL.md",
+          "source_anchor": "## Verification",
+          "text": "- confirm local port presence, absence, and status - confirm selected surface and owner route - confirm why nearest alternatives were rejected - confirm next route is one of apply, local need, design, or stop - confirm central `aoa-evals` was not rewritten",
+          "text_sha256": "722d31330cf5374a5d1ae94b81771e754b0eef44f28ad5c47536720a3545dc87",
+          "token_count": 42
+        },
+        {
+          "doc_id": "skill:aoa-eval-select:section:lineage",
+          "skill_name": "aoa-eval-select",
+          "section_role": "lineage",
+          "source_path": "skills/core/engineering/aoa-eval-select/SKILL.md",
+          "source_anchor": "## Technique traceability",
+          "text": "Manifest-backed techniques: - AOA-T-0003 from `8Dionysus/aoa-techniques` at `1a7d146957108ecefc24219c7d56357c5a4a2c2c` using path `techniques/proof/evaluation-chain/contract-first-smoke-summary/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Risks, Validation - AOA-T-0076 from `8Dionysus/aoa-techniques` at `1a7d146957108ecefc24219c7d56357c5a4a2c2c` using path `techniques/governance/decision-routing/owner-layer-triage/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Risks, Validation - AOA-T-0094 from `8Dionysus/aoa-techniques` at `1a7d146957108ecefc24219c7d56357c5a4a2c2c` using path `techniques/proof/owner-truth-closeout/canonical-owner-with-validated-mirror/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Risks, Validation",
+          "text_sha256": "80912dc78d809ee542af794575eca7dfe2b9c25d1709fb3d6b8b842f078a14b7",
+          "token_count": 59
+        },
+        {
+          "doc_id": "skill:aoa-eval-select:section:adaptation",
+          "skill_name": "aoa-eval-select",
+          "section_role": "adaptation",
+          "source_path": "skills/core/engineering/aoa-eval-select/SKILL.md",
+          "source_anchor": "## Adaptation points",
+          "text": "- local eval-port paths - repo-local validation command names - central proof bundle naming",
+          "text_sha256": "6c4f989841c03fb4f9ab6c370ab0b77c4b57ecf48b39941efd88e53a3a1f70bc",
+          "token_count": 14
+        }
+      ]
+    },
+    {
+      "name": "aoa-eval-session-mining",
+      "scope": "core",
+      "status": "scaffold",
+      "summary": "Mine .aoa session evidence for missed eval triggers only after web and repo owner surfaces are checked, producing candidate refs rather than proof.",
+      "source": {
+        "skill_path": "skills/core/engineering/aoa-eval-session-mining/SKILL.md",
+        "techniques_path": "skills/core/engineering/aoa-eval-session-mining/techniques.yaml",
+        "policy_path": "skills/core/engineering/aoa-eval-session-mining/agents/openai.yaml",
+        "content_hash": "37d7a2d483b25b7d88ae039ec000ea61af99a7055d798b7dcb5ae44cd3320b62",
+        "skill_revision": "37d7a2d483b2"
+      },
+      "policy": {
+        "invocation_mode": "explicit-preferred",
+        "implicit_activation_policy": "manual",
+        "trust_posture": "portable-core",
+        "mutation_surface": "none",
+        "requires_manual_invocation": true,
+        "candidate_only": false,
+        "requires_confirmation_seam": false
+      },
+      "runtime": {
+        "description": "Mine .aoa session evidence for missed eval triggers, candidate regression cases, and local eval pressure only after web research and repo owner surfaces are checked, returning raw and segment refs with freshness rather than proof. Use when the user asks to study sessions for eval moments, missed triggers, repeated failures, or session-derived eval cases. Do not use for raw .aoa preservation, hook repair, search-index maintenance, memo writeback, decision records, or treating session history as reviewed proof.",
+        "allow_implicit_invocation": false
+      },
+      "tiny_router": {
+        "band": "eval-proof-routing",
+        "cue_phrases": [
+          "session eval mining",
+          "missed eval trigger",
+          "session derived eval case",
+          "raw segment refs",
+          "trace regression candidate",
+          "freshness"
+        ],
+        "negative_phrases": [
+          "raw aoa preservation",
+          "hook repair only",
+          "search index maintenance"
+        ],
+        "companions": [
+          "aoa-eval",
+          "aoa-eval-local-need",
+          "aoa-eval-design"
+        ]
+      },
+      "resources": {
+        "bundle_support_artifacts": [
+          {
+            "path": "skills/core/engineering/aoa-eval-session-mining/examples/runtime.md",
+            "selected_for_runtime_inspection": true,
+            "type": "runtime_example"
+          }
+        ],
+        "support_resource_index": {
+          "targeted": false,
+          "standard_dir_counts": {},
+          "legacy_dir_counts": {}
+        },
+        "selected_runtime_artifact_path": "skills/core/engineering/aoa-eval-session-mining/examples/runtime.md"
+      },
+      "lineage": {
+        "technique_dependencies": [
+          "AOA-T-0075",
+          "AOA-T-0067",
+          "AOA-T-0081"
+        ],
+        "technique_lineage": [
+          {
+            "id": "AOA-T-0075",
+            "lineage_state": "published",
+            "path": "techniques/continuity/donor-harvest/session-donor-harvest/TECHNIQUE.md",
+            "repo": "aoa-techniques",
+            "source_ref": "1a7d146957108ecefc24219c7d56357c5a4a2c2c"
+          },
+          {
+            "id": "AOA-T-0067",
+            "lineage_state": "published",
+            "path": "techniques/history/history-artifacts/transcript-linked-code-lineage/TECHNIQUE.md",
+            "repo": "aoa-techniques",
+            "source_ref": "1a7d146957108ecefc24219c7d56357c5a4a2c2c"
+          },
+          {
+            "id": "AOA-T-0081",
+            "lineage_state": "published",
+            "path": "techniques/recovery/diagnosis-repair/diagnosis-from-reviewed-evidence/TECHNIQUE.md",
+            "repo": "aoa-techniques",
+            "source_ref": "1a7d146957108ecefc24219c7d56357c5a4a2c2c"
+          }
+        ],
+        "lineage_state": "published"
+      },
+      "boundaries": {
+        "adjacent_skill_names": [],
+        "adjacency_ready": false,
+        "adjacency_blockers": []
+      },
+      "evaluation": {
+        "canonical_eval_ready": true,
+        "canonical_eval_blockers": [],
+        "use_case_count": 1,
+        "do_not_use_case_count": 1,
+        "autonomy_check_count": 1,
+        "promotion_review_path": null,
+        "candidate_review_path": null
+      },
+      "graph_refs": {
+        "node_id": "skill_aoa_eval_session_mining",
+        "outgoing_edge_count": 13,
+        "incoming_edge_count": 0,
+        "outgoing_edge_kinds": {
+          "available_in_artifact_group": 5,
+          "depends_on": 3,
+          "included_in_profile": 1,
+          "invocation_policy": 1,
+          "lineage": 1,
+          "maturity": 1,
+          "scope": 1
+        },
+        "incoming_edge_kinds": {}
+      },
+      "install_refs": {
+        "repo_export_path": ".agents/skills/aoa-eval-session-mining/SKILL.md",
+        "repo_export_present": true,
+        "install_profiles": [
+          "repo-default"
+        ],
+        "artifact_group_coverage": [
+          "portable_export",
+          "runtime_seam",
+          "runtime_guardrails",
+          "description_trigger",
+          "tiny_router"
+        ]
+      },
+      "search_documents": [
+        {
+          "doc_id": "skill:aoa-eval-session-mining:section:summary",
+          "skill_name": "aoa-eval-session-mining",
+          "section_role": "summary",
+          "source_path": "skills/core/engineering/aoa-eval-session-mining/SKILL.md",
+          "source_anchor": "frontmatter.summary",
+          "text": "Mine .aoa session evidence for missed eval triggers only after web and repo owner surfaces are checked, producing candidate refs rather than proof.",
+          "text_sha256": "3787cba0c47dbda6d9b1f1870a87f36e63f93483fa4d411806518daf38848541",
+          "token_count": 23
+        },
+        {
+          "doc_id": "skill:aoa-eval-session-mining:section:intent",
+          "skill_name": "aoa-eval-session-mining",
+          "section_role": "intent",
+          "source_path": "skills/core/engineering/aoa-eval-session-mining/SKILL.md",
+          "source_anchor": "## Intent",
+          "text": "Use this skill to mine `.aoa` session evidence for missed eval-trigger moments, candidate regression cases, and local eval pressure after external and repo owner surfaces have already been studied.",
+          "text_sha256": "f96de54af7f959d800b8b4a00a132a61b52f1c69195ed757fde8d73305c013ac",
+          "token_count": 29
+        },
+        {
+          "doc_id": "skill:aoa-eval-session-mining:section:trigger_boundary",
+          "skill_name": "aoa-eval-session-mining",
+          "section_role": "trigger_boundary",
+          "source_path": "skills/core/engineering/aoa-eval-session-mining/SKILL.md",
+          "source_anchor": "## Trigger boundary",
+          "text": "Use this skill when: - the user asks to study sessions for eval moments, missed triggers, regressions, or repeated failures - repo and web research has already defined candidate trigger classes - `.aoa` search hits can reveal real prompts, failures, validations, or corrections that should become eval cases - the output should be candidate evidence with raw/segment refs and freshness Do not use this skill when: - the task is only `.aoa` preservation, hook repair, or search-index maintenance - a current repository source file can answer the question without session mining - session evidence would be treated as reviewed proof - memory writeback, decision records, or checkpoint closeout are the real owner routes",
+          "text_sha256": "254f3975f853ba1df38362f7f2454ea620ddf41420d75a1e2b60e4dc73e83d1e",
+          "token_count": 113
+        },
+        {
+          "doc_id": "skill:aoa-eval-session-mining:section:inputs",
+          "skill_name": "aoa-eval-session-mining",
+          "section_role": "inputs",
+          "source_path": "skills/core/engineering/aoa-eval-session-mining/SKILL.md",
+          "source_anchor": "## Inputs",
+          "text": "- trigger classes or target failure modes from prior research - `.aoa` search index status, raw refs, segment refs, freshness, and diagnostics - target repositories, touched paths, validators, tests, and local eval ports - review criteria for candidate vs accepted evidence",
+          "text_sha256": "a2987ebd90f6c3cb4461264b93c9df3c628b1dc14c8c4e48201e9c8cc1d64c2e",
+          "token_count": 41
+        },
+        {
+          "doc_id": "skill:aoa-eval-session-mining:section:outputs",
+          "skill_name": "aoa-eval-session-mining",
+          "section_role": "outputs",
+          "source_path": "skills/core/engineering/aoa-eval-session-mining/SKILL.md",
+          "source_anchor": "## Outputs",
+          "text": "- missed-trigger examples with session id, label, segment, event, raw ref, and freshness - candidate eval-case themes and owner routes - rejected examples and nearest wrong owner routes - local intake or design handoff when evidence is strong enough",
+          "text_sha256": "ced8b74abdaf5fd7a3f3ff279a416f1a09eed0c3a05d15c6d7db10e9d5d22b89",
+          "token_count": 39
+        },
+        {
+          "doc_id": "skill:aoa-eval-session-mining:section:procedure",
+          "skill_name": "aoa-eval-session-mining",
+          "section_role": "procedure",
+          "source_path": "skills/core/engineering/aoa-eval-session-mining/SKILL.md",
+          "source_anchor": "## Procedure",
+          "text": "1. confirm the research gates: web sources, repo-local eval surfaces, and owner boundaries are already mapped 2. check `.aoa` search provider status and index freshness 3. run narrow searches by trigger class, not one broad vague query 4. inspect enough surrounding segment context to avoid false positives 5. classify each hit as candidate eval trigger, candidate local need, existing eval apply moment, non-eval validation, or wrong owner route 6. preserve raw and segment refs; do not summarize them into authority 7. hand off accepted candidates to `aoa-eval-local-need` or `aoa-eval-design` only after owner-route checks",
+          "text_sha256": "21b8b2a9c2e4ddd9fda48a7df8281be0301a4267bad15b89953bdf517fb2b806",
+          "token_count": 93
+        },
+        {
+          "doc_id": "skill:aoa-eval-session-mining:section:contracts",
+          "skill_name": "aoa-eval-session-mining",
+          "section_role": "contracts",
+          "source_path": "skills/core/engineering/aoa-eval-session-mining/SKILL.md",
+          "source_anchor": "## Contracts",
+          "text": "- `.aoa` evidence is candidate evidence until reviewed - session search must include freshness and refs - raw transcript evidence cannot override source-owned repo files - mining happens after owner boundaries are known, not as a replacement for source archaeology",
+          "text_sha256": "93d6cd37871e03159086dd264565df0239a655cca4eceed28f1dc3a64a3d14e9",
+          "token_count": 40
+        },
+        {
+          "doc_id": "skill:aoa-eval-session-mining:section:risk",
+          "skill_name": "aoa-eval-session-mining",
+          "section_role": "risk",
+          "source_path": "skills/core/engineering/aoa-eval-session-mining/SKILL.md",
+          "source_anchor": "## Risks and anti-patterns",
+          "text": "- using session snippets as proof without source verification - mining all sessions before trigger classes are defined - confusing `.aoa` maintenance with eval mining - turning repeated frustration into a generic eval without a reproducible case",
+          "text_sha256": "456b7f5a774ac2c46d98659db5af2f5bd3bd16ae79d7c25d1be49207cc13ec1d",
+          "token_count": 37
+        },
+        {
+          "doc_id": "skill:aoa-eval-session-mining:section:verification",
+          "skill_name": "aoa-eval-session-mining",
+          "section_role": "verification",
+          "source_path": "skills/core/engineering/aoa-eval-session-mining/SKILL.md",
+          "source_anchor": "## Verification",
+          "text": "- confirm index freshness and provider - confirm each example has session, segment, event, raw ref, and freshness - confirm candidate owner route and rejected nearest wrong owner - confirm no raw evidence was promoted to proof - confirm next local need/design/apply route when applicable",
+          "text_sha256": "18244d359e7ed546b3cb60bd1e65cd6a6868b18e861212750f4a0c95bef958c4",
+          "token_count": 45
+        },
+        {
+          "doc_id": "skill:aoa-eval-session-mining:section:lineage",
+          "skill_name": "aoa-eval-session-mining",
+          "section_role": "lineage",
+          "source_path": "skills/core/engineering/aoa-eval-session-mining/SKILL.md",
+          "source_anchor": "## Technique traceability",
+          "text": "Manifest-backed techniques: - AOA-T-0075 from `8Dionysus/aoa-techniques` at `1a7d146957108ecefc24219c7d56357c5a4a2c2c` using path `techniques/continuity/donor-harvest/session-donor-harvest/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Risks, Validation - AOA-T-0067 from `8Dionysus/aoa-techniques` at `1a7d146957108ecefc24219c7d56357c5a4a2c2c` using path `techniques/history/history-artifacts/transcript-linked-code-lineage/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Risks, Validation - AOA-T-0081 from `8Dionysus/aoa-techniques` at `1a7d146957108ecefc24219c7d56357c5a4a2c2c` using path `techniques/recovery/diagnosis-repair/diagnosis-from-reviewed-evidence/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Risks, Validation",
+          "text_sha256": "42355a6bd5ddae5b343a4501ad99334c3b18e534ca0be190b8494445355805b3",
+          "token_count": 59
+        },
+        {
+          "doc_id": "skill:aoa-eval-session-mining:section:adaptation",
+          "skill_name": "aoa-eval-session-mining",
+          "section_role": "adaptation",
+          "source_path": "skills/core/engineering/aoa-eval-session-mining/SKILL.md",
+          "source_anchor": "## Adaptation points",
+          "text": "- `.aoa` search command and provider - session ref format - local intake handoff criteria",
+          "text_sha256": "eaa79c5dd4863754202afd8445145d585b861697d1bd302bacd6e2a92918a924",
+          "token_count": 15
+        }
+      ]
+    },
+    {
       "name": "aoa-invariant-coverage-audit",
       "scope": "core",
       "status": "canonical",

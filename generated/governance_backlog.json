@@ -862,6 +862,120 @@
       "status": "canonical"
     },
     {
+      "candidate_review_path": null,
+      "canonical_candidate_blockers": [
+        "status_below_evaluated"
+      ],
+      "canonical_candidate_ready": false,
+      "canonical_eval_blockers": [],
+      "canonical_eval_ready": true,
+      "governance_decision": null,
+      "governance_evidence_case_ids": [],
+      "governance_lane_ids": [],
+      "lineage_state": "published",
+      "name": "aoa-eval",
+      "promotion_review_path": null,
+      "readiness_reconciliation": "eval_ready_but_governance_blocked",
+      "scope": "core",
+      "skill_path": "skills/core/engineering/aoa-eval/SKILL.md",
+      "status": "scaffold"
+    },
+    {
+      "candidate_review_path": null,
+      "canonical_candidate_blockers": [
+        "status_below_evaluated"
+      ],
+      "canonical_candidate_ready": false,
+      "canonical_eval_blockers": [],
+      "canonical_eval_ready": true,
+      "governance_decision": null,
+      "governance_evidence_case_ids": [],
+      "governance_lane_ids": [],
+      "lineage_state": "published",
+      "name": "aoa-eval-apply",
+      "promotion_review_path": null,
+      "readiness_reconciliation": "eval_ready_but_governance_blocked",
+      "scope": "core",
+      "skill_path": "skills/core/engineering/aoa-eval-apply/SKILL.md",
+      "status": "scaffold"
+    },
+    {
+      "candidate_review_path": null,
+      "canonical_candidate_blockers": [
+        "status_below_evaluated"
+      ],
+      "canonical_candidate_ready": false,
+      "canonical_eval_blockers": [],
+      "canonical_eval_ready": true,
+      "governance_decision": null,
+      "governance_evidence_case_ids": [],
+      "governance_lane_ids": [],
+      "lineage_state": "published",
+      "name": "aoa-eval-design",
+      "promotion_review_path": null,
+      "readiness_reconciliation": "eval_ready_but_governance_blocked",
+      "scope": "core",
+      "skill_path": "skills/core/engineering/aoa-eval-design/SKILL.md",
+      "status": "scaffold"
+    },
+    {
+      "candidate_review_path": null,
+      "canonical_candidate_blockers": [
+        "status_below_evaluated"
+      ],
+      "canonical_candidate_ready": false,
+      "canonical_eval_blockers": [],
+      "canonical_eval_ready": true,
+      "governance_decision": null,
+      "governance_evidence_case_ids": [],
+      "governance_lane_ids": [],
+      "lineage_state": "published",
+      "name": "aoa-eval-local-need",
+      "promotion_review_path": null,
+      "readiness_reconciliation": "eval_ready_but_governance_blocked",
+      "scope": "core",
+      "skill_path": "skills/core/engineering/aoa-eval-local-need/SKILL.md",
+      "status": "scaffold"
+    },
+    {
+      "candidate_review_path": null,
+      "canonical_candidate_blockers": [
+        "status_below_evaluated"
+      ],
+      "canonical_candidate_ready": false,
+      "canonical_eval_blockers": [],
+      "canonical_eval_ready": true,
+      "governance_decision": null,
+      "governance_evidence_case_ids": [],
+      "governance_lane_ids": [],
+      "lineage_state": "published",
+      "name": "aoa-eval-select",
+      "promotion_review_path": null,
+      "readiness_reconciliation": "eval_ready_but_governance_blocked",
+      "scope": "core",
+      "skill_path": "skills/core/engineering/aoa-eval-select/SKILL.md",
+      "status": "scaffold"
+    },
+    {
+      "candidate_review_path": null,
+      "canonical_candidate_blockers": [
+        "status_below_evaluated"
+      ],
+      "canonical_candidate_ready": false,
+      "canonical_eval_blockers": [],
+      "canonical_eval_ready": true,
+      "governance_decision": null,
+      "governance_evidence_case_ids": [],
+      "governance_lane_ids": [],
+      "lineage_state": "published",
+      "name": "aoa-eval-session-mining",
+      "promotion_review_path": null,
+      "readiness_reconciliation": "eval_ready_but_governance_blocked",
+      "scope": "core",
+      "skill_path": "skills/core/engineering/aoa-eval-session-mining/SKILL.md",
+      "status": "scaffold"
+    },
+    {
       "candidate_review_path": "docs/reviews/canonical-candidates/aoa-invariant-coverage-audit.md",
       "canonical_candidate_blockers": [],
       "canonical_candidate_ready": true,

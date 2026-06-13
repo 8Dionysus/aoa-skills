@@ -1,0 +1,41 @@
+skill_name: aoa-eval-session-mining
+composition_mode: bounded
+techniques:
+  - id: AOA-T-0075
+    repo: 8Dionysus/aoa-techniques
+    path: techniques/continuity/donor-harvest/session-donor-harvest/TECHNIQUE.md
+    source_ref: 1a7d146957108ecefc24219c7d56357c5a4a2c2c
+    use_sections:
+      - Intent
+      - Inputs
+      - Outputs
+      - Core procedure
+      - Contracts
+      - Risks
+      - Validation
+  - id: AOA-T-0067
+    repo: 8Dionysus/aoa-techniques
+    path: techniques/history/history-artifacts/transcript-linked-code-lineage/TECHNIQUE.md
+    source_ref: 1a7d146957108ecefc24219c7d56357c5a4a2c2c
+    use_sections:
+      - Intent
+      - Inputs
+      - Outputs
+      - Core procedure
+      - Contracts
+      - Risks
+      - Validation
+  - id: AOA-T-0081
+    repo: 8Dionysus/aoa-techniques
+    path: techniques/recovery/diagnosis-repair/diagnosis-from-reviewed-evidence/TECHNIQUE.md
+    source_ref: 1a7d146957108ecefc24219c7d56357c5a4a2c2c
+    use_sections:
+      - Intent
+      - Inputs
+      - Outputs
+      - Core procedure
+      - Contracts
+      - Risks
+      - Validation
+notes:
+  - Session mining preserves candidate refs and freshness; it does not promote proof.

@@ -1,0 +1,41 @@
+skill_name: aoa-eval-select
+composition_mode: bounded
+techniques:
+  - id: AOA-T-0003
+    repo: 8Dionysus/aoa-techniques
+    path: techniques/proof/evaluation-chain/contract-first-smoke-summary/TECHNIQUE.md
+    source_ref: 1a7d146957108ecefc24219c7d56357c5a4a2c2c
+    use_sections:
+      - Intent
+      - Inputs
+      - Outputs
+      - Core procedure
+      - Contracts
+      - Risks
+      - Validation
+  - id: AOA-T-0076
+    repo: 8Dionysus/aoa-techniques
+    path: techniques/governance/decision-routing/owner-layer-triage/TECHNIQUE.md
+    source_ref: 1a7d146957108ecefc24219c7d56357c5a4a2c2c
+    use_sections:
+      - Intent
+      - Inputs
+      - Outputs
+      - Core procedure
+      - Contracts
+      - Risks
+      - Validation
+  - id: AOA-T-0094
+    repo: 8Dionysus/aoa-techniques
+    path: techniques/proof/owner-truth-closeout/canonical-owner-with-validated-mirror/TECHNIQUE.md
+    source_ref: 1a7d146957108ecefc24219c7d56357c5a4a2c2c
+    use_sections:
+      - Intent
+      - Inputs
+      - Outputs
+      - Core procedure
+      - Contracts
+      - Risks
+      - Validation
+notes:
+  - Selection is read-first and may stop without writes.

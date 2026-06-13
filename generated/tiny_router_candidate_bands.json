@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "profile": "codex-facing-wave-9-tiny-router-inputs",
-  "band_count": 7,
+  "band_count": 8,
   "bands": [
     {
       "id": "decision-doc-authority",
@@ -117,6 +117,41 @@
         "aoa-property-invariants"
       ],
       "manual_only_skills": [],
+      "suggest_only_skills": [],
+      "overlay_skills": []
+    },
+    {
+      "id": "eval-proof-routing",
+      "summary": "Eval-lane routing across existing proof surfaces, local eval ports, validators, tests, scripts, and session-derived trigger pressure.",
+      "cues": [
+        "eval lane",
+        "aoa evals",
+        "aoa evals mcp",
+        "local eval port",
+        "eval intake",
+        "existing eval",
+        "run selected eval",
+        "design eval suite",
+        "session eval trigger",
+        "trace regression",
+        "validator as eval",
+        "proof limit"
+      ],
+      "skills": [
+        "aoa-eval",
+        "aoa-eval-apply",
+        "aoa-eval-design",
+        "aoa-eval-local-need",
+        "aoa-eval-select",
+        "aoa-eval-session-mining"
+      ],
+      "manual_only_skills": [
+        "aoa-eval-apply",
+        "aoa-eval-design",
+        "aoa-eval-local-need",
+        "aoa-eval-select",
+        "aoa-eval-session-mining"
+      ],
       "suggest_only_skills": [],
       "overlay_skills": []
     },

@@ -12,14 +12,14 @@
     "generated/runtime_router_hints.json",
     ".agents/skills/*/SKILL.md"
   ],
-  "skill_count": 50,
-  "total_cases": 229,
+  "skill_count": 56,
+  "total_cases": 265,
   "case_class_totals": {
-    "explicit-handle": 51,
-    "manual-invocation-required": 63,
-    "prefer-other-skill": 35,
-    "should-not-trigger": 51,
-    "should-trigger": 29
+    "explicit-handle": 57,
+    "manual-invocation-required": 73,
+    "prefer-other-skill": 46,
+    "should-not-trigger": 57,
+    "should-trigger": 32
   },
   "skills": [
     {
@@ -238,10 +238,10 @@
       "implicit_activation_policy": "invoke",
       "description_sha256": "9bc2710777cc9b6a70a74df503ba7925b7dace767ee141b879357cd3106d440e",
       "family": "change-execution-vs-test-first",
-      "total_cases": 5,
+      "total_cases": 6,
       "case_class_totals": {
         "explicit-handle": 1,
-        "prefer-other-skill": 1,
+        "prefer-other-skill": 2,
         "should-not-trigger": 1,
         "should-trigger": 2
       },
@@ -282,10 +282,10 @@
       "implicit_activation_policy": "invoke",
       "description_sha256": "f76ac8c171081f4e8912c63d40b3c833ebc6b2ea155c1ea2bd629253c9e87530",
       "family": "decision-and-doc-authority",
-      "total_cases": 6,
+      "total_cases": 7,
       "case_class_totals": {
         "explicit-handle": 1,
-        "prefer-other-skill": 2,
+        "prefer-other-skill": 3,
         "should-not-trigger": 1,
         "should-trigger": 2
       },
@@ -382,15 +382,142 @@
       "has_collision_coverage": true
     },
     {
-      "name": "aoa-invariant-coverage-audit",
+      "name": "aoa-eval",
       "invocation_mode": "explicit-preferred",
       "implicit_activation_policy": "invoke",
-      "description_sha256": "65f3dc67fa694db586e881ca32ed304a246225c9fc3f3539094c3cd3115a8158",
-      "family": "property-authoring-vs-coverage-audit",
+      "description_sha256": "90ab0b8c48c88232da88d7f22621c6aaf1527c697b15d0a14975bbea0d0e9cb0",
+      "family": "eval-proof-routing-family",
       "total_cases": 5,
       "case_class_totals": {
         "explicit-handle": 1,
         "prefer-other-skill": 1,
+        "should-not-trigger": 1,
+        "should-trigger": 2
+      },
+      "required_case_classes": [
+        "explicit-handle",
+        "should-trigger",
+        "should-not-trigger",
+        "prefer-other-skill"
+      ],
+      "coverage_ok": true,
+      "has_collision_coverage": true
+    },
+    {
+      "name": "aoa-eval-apply",
+      "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "manual",
+      "description_sha256": "5b3193acd2aa17bf9e4e5df832c79f1d245601a9bcc78a3bf826f05e67cb6b11",
+      "family": "eval-proof-routing-family",
+      "total_cases": 5,
+      "case_class_totals": {
+        "explicit-handle": 1,
+        "manual-invocation-required": 2,
+        "prefer-other-skill": 1,
+        "should-not-trigger": 1
+      },
+      "required_case_classes": [
+        "explicit-handle",
+        "manual-invocation-required",
+        "should-not-trigger"
+      ],
+      "coverage_ok": true,
+      "has_collision_coverage": true
+    },
+    {
+      "name": "aoa-eval-design",
+      "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "manual",
+      "description_sha256": "0a71f12f9345a72eb52990ac72c66be2a8076a47163c0aa167d1ea9be09ef3ca",
+      "family": "eval-proof-routing-family",
+      "total_cases": 6,
+      "case_class_totals": {
+        "explicit-handle": 1,
+        "manual-invocation-required": 2,
+        "prefer-other-skill": 2,
+        "should-not-trigger": 1
+      },
+      "required_case_classes": [
+        "explicit-handle",
+        "manual-invocation-required",
+        "should-not-trigger"
+      ],
+      "coverage_ok": true,
+      "has_collision_coverage": true
+    },
+    {
+      "name": "aoa-eval-local-need",
+      "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "manual",
+      "description_sha256": "cc830ecdad58d6943fe61004ef48f6dd61d2a2cd3d62a1eaa0ea375331945d77",
+      "family": "eval-proof-routing-family",
+      "total_cases": 5,
+      "case_class_totals": {
+        "explicit-handle": 1,
+        "manual-invocation-required": 2,
+        "prefer-other-skill": 1,
+        "should-not-trigger": 1
+      },
+      "required_case_classes": [
+        "explicit-handle",
+        "manual-invocation-required",
+        "should-not-trigger"
+      ],
+      "coverage_ok": true,
+      "has_collision_coverage": true
+    },
+    {
+      "name": "aoa-eval-select",
+      "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "manual",
+      "description_sha256": "0be63765d3caff0555b4090b46e68d0ce4d394c39cfbc76b76302a1e5e883636",
+      "family": "eval-proof-routing-family",
+      "total_cases": 5,
+      "case_class_totals": {
+        "explicit-handle": 1,
+        "manual-invocation-required": 2,
+        "prefer-other-skill": 1,
+        "should-not-trigger": 1
+      },
+      "required_case_classes": [
+        "explicit-handle",
+        "manual-invocation-required",
+        "should-not-trigger"
+      ],
+      "coverage_ok": true,
+      "has_collision_coverage": true
+    },
+    {
+      "name": "aoa-eval-session-mining",
+      "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "manual",
+      "description_sha256": "04d539551d617733107494195dc8cffead04bf175349a30b872dbe709798c31c",
+      "family": "eval-proof-routing-family",
+      "total_cases": 5,
+      "case_class_totals": {
+        "explicit-handle": 1,
+        "manual-invocation-required": 2,
+        "prefer-other-skill": 1,
+        "should-not-trigger": 1
+      },
+      "required_case_classes": [
+        "explicit-handle",
+        "manual-invocation-required",
+        "should-not-trigger"
+      ],
+      "coverage_ok": true,
+      "has_collision_coverage": true
+    },
+    {
+      "name": "aoa-invariant-coverage-audit",
+      "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "invoke",
+      "description_sha256": "65f3dc67fa694db586e881ca32ed304a246225c9fc3f3539094c3cd3115a8158",
+      "family": "eval-proof-routing-family",
+      "total_cases": 6,
+      "case_class_totals": {
+        "explicit-handle": 1,
+        "prefer-other-skill": 2,
         "should-not-trigger": 1,
         "should-trigger": 2
       },
@@ -428,12 +555,12 @@
       "invocation_mode": "explicit-preferred",
       "implicit_activation_policy": "suggest",
       "description_sha256": "e6870123d0f2b8cae7facde3b47ce58e9f7f5a229fe4616b6da6e4091a6e3d12",
-      "family": "session-harvest-family",
-      "total_cases": 4,
+      "family": "eval-proof-routing-family",
+      "total_cases": 5,
       "case_class_totals": {
         "explicit-handle": 1,
         "manual-invocation-required": 1,
-        "prefer-other-skill": 1,
+        "prefer-other-skill": 2,
         "should-not-trigger": 1
       },
       "required_case_classes": [
@@ -472,7 +599,7 @@
       "invocation_mode": "explicit-preferred",
       "implicit_activation_policy": "invoke",
       "description_sha256": "2bf02fb83803f295670eb33af7b09d7dac89afd32857f82eb477db6f11dd2839",
-      "family": "property-authoring-vs-coverage-audit",
+      "family": "eval-proof-routing-family",
       "total_cases": 5,
       "case_class_totals": {
         "explicit-handle": 1,
@@ -659,12 +786,12 @@
       "implicit_activation_policy": "invoke",
       "description_sha256": "f1b3b6b5651315efb2e8182a557be4abad76a13eed6a4956674aa21d150d4fd0",
       "family": "decision-and-doc-authority",
-      "total_cases": 8,
+      "total_cases": 9,
       "case_class_totals": {
         "explicit-handle": 1,
         "prefer-other-skill": 1,
         "should-not-trigger": 1,
-        "should-trigger": 5
+        "should-trigger": 6
       },
       "required_case_classes": [
         "explicit-handle",

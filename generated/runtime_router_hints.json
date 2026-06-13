@@ -245,7 +245,7 @@
     {
       "name": "aoa-contract-test",
       "description": "Design or extend contract-oriented validation at module, service, or workflow boundaries. Use when two components interact across a meaningful interface, downstream assumptions matter, or a smoke path needs an explicit contract. Do not use for purely local changes or when the real need is invariant or property testing instead of boundary validation.",
-      "collision_family": "change-execution-vs-test-first",
+      "collision_family": "eval-proof-routing-family",
       "competing_skills": [
         "aoa-change-protocol",
         "aoa-tdd-slice"
@@ -259,10 +259,14 @@
         "The change is entirely local and does not cross or exercise any meaningful module, service, or workflow boundary."
       ],
       "notes": [
-        "aoa-change-protocol is the generic bounded-change workflow.",
-        "aoa-commit-growth-seam is the narrower post-verify commit boundary when the coding work is already done.",
-        "aoa-tdd-slice is specifically test-first feature slicing.",
-        "aoa-contract-test is specifically about validating a module/service/workflow boundary."
+        "aoa-eval is the front door for choosing an eval-lane route across existing evals, local ports, validators, tests, scripts, MCP access packets, and session-derived trigger pressure.",
+        "aoa-eval-select inspects existing local and central eval surfaces before new work.",
+        "aoa-eval-apply runs or routes an already selected eval surface and reports proof limits.",
+        "aoa-eval-local-need records bounded repo-local eval pressure under evals/intake when no existing surface fits.",
+        "aoa-eval-design drafts local eval suites or reports after selection fails without claiming central proof acceptance.",
+        "aoa-eval-session-mining mines .aoa only for candidate eval triggers after web and repo gates; raw session refs are not reviewed proof.",
+        "aoa-contract-test, aoa-property-invariants, and aoa-invariant-coverage-audit stay focused on test/invariant authoring or audit when no eval-lane owner route is in question.",
+        "aoa-source-of-truth-check, aoa-memo-writeback, and aoa-decision win when the pressure is documentation authority, memory writeback, or decision graph routing rather than eval proof routing."
       ]
     },
     {
@@ -290,7 +294,7 @@
     {
       "name": "aoa-decision",
       "description": "Route AoA decision-lane work through the workspace decision graph first, checking status/issues and the smallest impact packet before choosing find, create, or correct while keeping repo-local decision files authoritative. Use when the task mentions docs/decisions, decision indexes, decision graph, ADRs, changed paths, source-surface rationale, supersession, or cross-repo decision symmetry. Do not use for ordinary docs edits, unresolved source-of-truth mapping, or trivial changes that do not need durable rationale.",
-      "collision_family": "decision-and-doc-authority",
+      "collision_family": "eval-proof-routing-family",
       "competing_skills": [
         "aoa-adr-write",
         "aoa-decision-find",
@@ -306,12 +310,14 @@
         "The task only clarifies which README is authoritative and has no decision record, generated index, or decision graph question."
       ],
       "notes": [
-        "Use aoa-adr-write when the task is to capture a concrete architectural or workflow decision.",
-        "Use aoa-source-of-truth-check when the task is to identify which documents are authoritative and reduce overlap.",
-        "Use aoa-decision when the task needs a decision-lane route through find, create, or correct.",
-        "Use aoa-decision-find when prior decision rationale should be located and source-verified.",
-        "Use aoa-decision-create when a new repo-local decision record must be written.",
-        "Use aoa-decision-correct when an existing decision record, index, status, or graph mismatch must be repaired."
+        "aoa-eval is the front door for choosing an eval-lane route across existing evals, local ports, validators, tests, scripts, MCP access packets, and session-derived trigger pressure.",
+        "aoa-eval-select inspects existing local and central eval surfaces before new work.",
+        "aoa-eval-apply runs or routes an already selected eval surface and reports proof limits.",
+        "aoa-eval-local-need records bounded repo-local eval pressure under evals/intake when no existing surface fits.",
+        "aoa-eval-design drafts local eval suites or reports after selection fails without claiming central proof acceptance.",
+        "aoa-eval-session-mining mines .aoa only for candidate eval triggers after web and repo gates; raw session refs are not reviewed proof.",
+        "aoa-contract-test, aoa-property-invariants, and aoa-invariant-coverage-audit stay focused on test/invariant authoring or audit when no eval-lane owner route is in question.",
+        "aoa-source-of-truth-check, aoa-memo-writeback, and aoa-decision win when the pressure is documentation authority, memory writeback, or decision graph routing rather than eval proof routing."
       ]
     },
     {
@@ -414,9 +420,182 @@
       ]
     },
     {
+      "name": "aoa-eval",
+      "description": "Route AoA eval-lane work by checking existing local and central eval surfaces first, then choosing apply, local intake need, local design, or session mining while preserving owner boundaries. Use when a task asks whether an eval exists, whether one should be added, how local evals connect to aoa-evals, or how validators, tests, scripts, traces, regressions, trigger misses, local eval ports, or aoa-evals-mcp should be used as evaluation surfaces. Do not use for ordinary one-off tests, source-of-truth mapping, decision records, memo writeback, or direct central aoa-evals proof-authority edits.",
+      "collision_family": "eval-proof-routing-family",
+      "competing_skills": [
+        "aoa-eval-select",
+        "aoa-eval-apply",
+        "aoa-eval-local-need",
+        "aoa-eval-design",
+        "aoa-eval-session-mining",
+        "aoa-contract-test",
+        "aoa-invariant-coverage-audit",
+        "aoa-memo-writeback"
+      ],
+      "should_trigger": [
+        "We need to connect evals in OS Abyss for this repo: inspect existing local evals, validators, tests, central aoa-evals standards, and decide whether to apply an existing surface, create local intake pressure, design a suite, or mine sessions for missed triggers.",
+        "Decide how OS Abyss should connect evals in a target repo: inspect existing local eval ports, central aoa-evals standards, aoa-evals-mcp access packets, validators, tests, and session refs before selecting apply, local-need, design, or session-mining."
+      ],
+      "manual_invocation_required": [],
+      "negative_controls": [
+        "Add a small unit test for this pure helper; no eval port, central proof, trigger routing, or session evidence question exists."
+      ],
+      "notes": [
+        "aoa-eval is the front door for choosing an eval-lane route across existing evals, local ports, validators, tests, scripts, MCP access packets, and session-derived trigger pressure.",
+        "aoa-eval-select inspects existing local and central eval surfaces before new work.",
+        "aoa-eval-apply runs or routes an already selected eval surface and reports proof limits.",
+        "aoa-eval-local-need records bounded repo-local eval pressure under evals/intake when no existing surface fits.",
+        "aoa-eval-design drafts local eval suites or reports after selection fails without claiming central proof acceptance.",
+        "aoa-eval-session-mining mines .aoa only for candidate eval triggers after web and repo gates; raw session refs are not reviewed proof.",
+        "aoa-contract-test, aoa-property-invariants, and aoa-invariant-coverage-audit stay focused on test/invariant authoring or audit when no eval-lane owner route is in question.",
+        "aoa-source-of-truth-check, aoa-memo-writeback, and aoa-decision win when the pressure is documentation authority, memory writeback, or decision graph routing rather than eval proof routing."
+      ]
+    },
+    {
+      "name": "aoa-eval-apply",
+      "description": "Run or route an already selected eval, validator, test, or script, then report command results, artifacts, generated drift, proof limits, and next route. Use when the eval surface is already selected and the task is to apply it rather than choose or design it. Do not use when no existing eval has been selected, when an intake need should be recorded first, or when central proof promotion is being requested.",
+      "collision_family": "eval-proof-routing-family",
+      "competing_skills": [
+        "aoa-eval",
+        "aoa-eval-select",
+        "aoa-eval-local-need"
+      ],
+      "should_trigger": [],
+      "manual_invocation_required": [
+        "Run the already selected validator, test, or eval command and report what it proves, what artifacts changed, and what remains unproven.",
+        "The target validator command is already selected; run it, capture artifacts and generated drift, and report exactly what evidence it proves."
+      ],
+      "negative_controls": [
+        "No existing eval has been selected yet; first inspect the repo-local and central surfaces."
+      ],
+      "notes": [
+        "aoa-eval is the front door for choosing an eval-lane route across existing evals, local ports, validators, tests, scripts, MCP access packets, and session-derived trigger pressure.",
+        "aoa-eval-select inspects existing local and central eval surfaces before new work.",
+        "aoa-eval-apply runs or routes an already selected eval surface and reports proof limits.",
+        "aoa-eval-local-need records bounded repo-local eval pressure under evals/intake when no existing surface fits.",
+        "aoa-eval-design drafts local eval suites or reports after selection fails without claiming central proof acceptance.",
+        "aoa-eval-session-mining mines .aoa only for candidate eval triggers after web and repo gates; raw session refs are not reviewed proof.",
+        "aoa-contract-test, aoa-property-invariants, and aoa-invariant-coverage-audit stay focused on test/invariant authoring or audit when no eval-lane owner route is in question.",
+        "aoa-source-of-truth-check, aoa-memo-writeback, and aoa-decision win when the pressure is documentation authority, memory writeback, or decision graph routing rather than eval proof routing."
+      ]
+    },
+    {
+      "name": "aoa-eval-design",
+      "description": "Design a bounded local eval suite, prompt set, report, or validator plan after selection finds no adequate existing surface, using deterministic checks first and trace or rubric review only when needed. Use when a local eval needs positive, negative, collision, or regression cases around a clear behavior or invariant. Do not use when an existing eval should simply run, when only a local intake packet is needed, or when central aoa-evals proof doctrine is the target.",
+      "collision_family": "eval-proof-routing-family",
+      "competing_skills": [
+        "aoa-eval",
+        "aoa-eval-local-need",
+        "aoa-property-invariants"
+      ],
+      "should_trigger": [],
+      "manual_invocation_required": [
+        "Design a bounded local eval suite for this missing invariant using deterministic checks first, then trace or rubric review only where deterministic checks cannot cover the behavior.",
+        "Design a bounded local eval suite around a missing invariant, using deterministic checks first and trace or rubric review only where deterministic checks cannot cover the behavior."
+      ],
+      "negative_controls": [
+        "Only an eval_need intake packet is required now; suite design is premature."
+      ],
+      "notes": [
+        "aoa-eval is the front door for choosing an eval-lane route across existing evals, local ports, validators, tests, scripts, MCP access packets, and session-derived trigger pressure.",
+        "aoa-eval-select inspects existing local and central eval surfaces before new work.",
+        "aoa-eval-apply runs or routes an already selected eval surface and reports proof limits.",
+        "aoa-eval-local-need records bounded repo-local eval pressure under evals/intake when no existing surface fits.",
+        "aoa-eval-design drafts local eval suites or reports after selection fails without claiming central proof acceptance.",
+        "aoa-eval-session-mining mines .aoa only for candidate eval triggers after web and repo gates; raw session refs are not reviewed proof.",
+        "aoa-contract-test, aoa-property-invariants, and aoa-invariant-coverage-audit stay focused on test/invariant authoring or audit when no eval-lane owner route is in question.",
+        "aoa-source-of-truth-check, aoa-memo-writeback, and aoa-decision win when the pressure is documentation authority, memory writeback, or decision graph routing rather than eval proof routing."
+      ]
+    },
+    {
+      "name": "aoa-eval-local-need",
+      "description": "Create a repo-local eval need packet under evals/intake when no existing eval fits, preserving owner route, evidence refs, rejected alternatives, proposed checks, and proof limits. Use when a repeated failure or missing behavior needs local eval pressure without central proof acceptance. Do not use when an existing eval can be applied, when the missing object is a memo or decision, or when the user asks for central aoa-evals acceptance.",
+      "collision_family": "eval-proof-routing-family",
+      "competing_skills": [
+        "aoa-eval",
+        "aoa-eval-select",
+        "aoa-memo-writeback"
+      ],
+      "should_trigger": [],
+      "manual_invocation_required": [
+        "No existing local or central eval, validator, test, or script fits; create a bounded evals/intake eval_need packet with evidence refs and rejected alternatives.",
+        "Selection found no adequate existing eval, validator, test, or script; record one repo-local evals/intake need packet with evidence refs, rejected alternatives, proposed checks, and proof limits."
+      ],
+      "negative_controls": [
+        "An existing validator covers this behavior and should be run now."
+      ],
+      "notes": [
+        "aoa-eval is the front door for choosing an eval-lane route across existing evals, local ports, validators, tests, scripts, MCP access packets, and session-derived trigger pressure.",
+        "aoa-eval-select inspects existing local and central eval surfaces before new work.",
+        "aoa-eval-apply runs or routes an already selected eval surface and reports proof limits.",
+        "aoa-eval-local-need records bounded repo-local eval pressure under evals/intake when no existing surface fits.",
+        "aoa-eval-design drafts local eval suites or reports after selection fails without claiming central proof acceptance.",
+        "aoa-eval-session-mining mines .aoa only for candidate eval triggers after web and repo gates; raw session refs are not reviewed proof.",
+        "aoa-contract-test, aoa-property-invariants, and aoa-invariant-coverage-audit stay focused on test/invariant authoring or audit when no eval-lane owner route is in question.",
+        "aoa-source-of-truth-check, aoa-memo-writeback, and aoa-decision win when the pressure is documentation authority, memory writeback, or decision graph routing rather than eval proof routing."
+      ]
+    },
+    {
+      "name": "aoa-eval-select",
+      "description": "Inspect repo-local eval ports, tests, validators, scripts, reports, intake files, and central aoa-evals standards before new eval work, then select the smallest existing surface or a no-fit route. Use when the task asks which eval should apply to a change, failure, regression, or trigger miss. Do not use when the eval is already selected and should run, when no-fit has already been established, or when the real issue is source authority rather than eval coverage.",
+      "collision_family": "eval-proof-routing-family",
+      "competing_skills": [
+        "aoa-eval",
+        "aoa-eval-apply",
+        "aoa-eval-design"
+      ],
+      "should_trigger": [],
+      "manual_invocation_required": [
+        "Before adding a new eval, inspect this repo's evals/PORT.yaml, validators, tests, and central aoa-evals local-port standard to select an existing surface or declare no fit.",
+        "Inspect this repo's local eval port, tests, validators, scripts, reports, and central aoa-evals standard before deciding whether an existing eval fits."
+      ],
+      "negative_controls": [
+        "The selected validator command is already known and only needs to be run."
+      ],
+      "notes": [
+        "aoa-eval is the front door for choosing an eval-lane route across existing evals, local ports, validators, tests, scripts, MCP access packets, and session-derived trigger pressure.",
+        "aoa-eval-select inspects existing local and central eval surfaces before new work.",
+        "aoa-eval-apply runs or routes an already selected eval surface and reports proof limits.",
+        "aoa-eval-local-need records bounded repo-local eval pressure under evals/intake when no existing surface fits.",
+        "aoa-eval-design drafts local eval suites or reports after selection fails without claiming central proof acceptance.",
+        "aoa-eval-session-mining mines .aoa only for candidate eval triggers after web and repo gates; raw session refs are not reviewed proof.",
+        "aoa-contract-test, aoa-property-invariants, and aoa-invariant-coverage-audit stay focused on test/invariant authoring or audit when no eval-lane owner route is in question.",
+        "aoa-source-of-truth-check, aoa-memo-writeback, and aoa-decision win when the pressure is documentation authority, memory writeback, or decision graph routing rather than eval proof routing."
+      ]
+    },
+    {
+      "name": "aoa-eval-session-mining",
+      "description": "Mine .aoa session evidence for missed eval triggers, candidate regression cases, and local eval pressure only after web research and repo owner surfaces are checked, returning raw and segment refs with freshness rather than proof. Use when the user asks to study sessions for eval moments, missed triggers, repeated failures, or session-derived eval cases. Do not use for raw .aoa preservation, hook repair, search-index maintenance, memo writeback, decision records, or treating session history as reviewed proof.",
+      "collision_family": "eval-proof-routing-family",
+      "competing_skills": [
+        "aoa-eval",
+        "aoa-memo-writeback",
+        "aoa-session-donor-harvest"
+      ],
+      "should_trigger": [],
+      "manual_invocation_required": [
+        "Mine prior .aoa sessions for missed eval trigger moments, repeated validation failures, and session-derived eval cases, but treat raw transcript refs as candidates rather than reviewed proof.",
+        "After web research and repo owner-surface checks, mine .aoa sessions for missed eval triggers, repeated validation failures, and candidate eval cases with raw and segment refs only."
+      ],
+      "negative_controls": [
+        "Repair raw .aoa hook preservation and rebuild the search index; no eval trigger analysis is being requested."
+      ],
+      "notes": [
+        "aoa-eval is the front door for choosing an eval-lane route across existing evals, local ports, validators, tests, scripts, MCP access packets, and session-derived trigger pressure.",
+        "aoa-eval-select inspects existing local and central eval surfaces before new work.",
+        "aoa-eval-apply runs or routes an already selected eval surface and reports proof limits.",
+        "aoa-eval-local-need records bounded repo-local eval pressure under evals/intake when no existing surface fits.",
+        "aoa-eval-design drafts local eval suites or reports after selection fails without claiming central proof acceptance.",
+        "aoa-eval-session-mining mines .aoa only for candidate eval triggers after web and repo gates; raw session refs are not reviewed proof.",
+        "aoa-contract-test, aoa-property-invariants, and aoa-invariant-coverage-audit stay focused on test/invariant authoring or audit when no eval-lane owner route is in question.",
+        "aoa-source-of-truth-check, aoa-memo-writeback, and aoa-decision win when the pressure is documentation authority, memory writeback, or decision graph routing rather than eval proof routing."
+      ]
+    },
+    {
       "name": "aoa-invariant-coverage-audit",
       "description": "Audit whether existing tests and checks actually constrain the stable invariants that matter. Use when you need to judge if current coverage proves a rule or only repeats examples, and you want the smallest bounded follow-up gaps. Do not use when the invariant itself is still undefined or when the real task is to author new invariants rather than audit coverage.",
-      "collision_family": "property-authoring-vs-coverage-audit",
+      "collision_family": "eval-proof-routing-family",
       "competing_skills": [
         "aoa-property-invariants"
       ],
@@ -429,8 +608,14 @@
         "The real problem is that we have not identified the invariant yet, so this is not an audit of existing coverage."
       ],
       "notes": [
-        "aoa-property-invariants authors new invariant or property checks.",
-        "aoa-invariant-coverage-audit inspects whether current tests already prove the relevant invariants."
+        "aoa-eval is the front door for choosing an eval-lane route across existing evals, local ports, validators, tests, scripts, MCP access packets, and session-derived trigger pressure.",
+        "aoa-eval-select inspects existing local and central eval surfaces before new work.",
+        "aoa-eval-apply runs or routes an already selected eval surface and reports proof limits.",
+        "aoa-eval-local-need records bounded repo-local eval pressure under evals/intake when no existing surface fits.",
+        "aoa-eval-design drafts local eval suites or reports after selection fails without claiming central proof acceptance.",
+        "aoa-eval-session-mining mines .aoa only for candidate eval triggers after web and repo gates; raw session refs are not reviewed proof.",
+        "aoa-contract-test, aoa-property-invariants, and aoa-invariant-coverage-audit stay focused on test/invariant authoring or audit when no eval-lane owner route is in question.",
+        "aoa-source-of-truth-check, aoa-memo-writeback, and aoa-decision win when the pressure is documentation authority, memory writeback, or decision graph routing rather than eval proof routing."
       ]
     },
     {
@@ -459,7 +644,7 @@
     {
       "name": "aoa-memo-writeback",
       "description": "Bridge session evidence into memory writeback decisions without turning raw session history into reviewed memory. Use when a live session, closeout, PR, commit, or review reveals a memory-worthy decision, failure, route change, owner-boundary event, service contract, eval posture, or consumer handoff and the agent needs to decide whether to write a local memo candidate, prepare a reviewed-intake export, or record an explicit no-writeback stop line. Do not use for raw session capture, reviewed memory landing itself, proof verdicts, eval scoring, or generic summaries with no owner route.",
-      "collision_family": "session-harvest-family",
+      "collision_family": "eval-proof-routing-family",
       "competing_skills": [],
       "should_trigger": [],
       "manual_invocation_required": [
@@ -469,15 +654,14 @@
         "The only work is repairing raw .aoa preservation and rebuilding the search index; no owner route, memo port, or bounded memory question exists yet."
       ],
       "notes": [
-        "aoa-session-donor-harvest is the post-session nucleus: it authors a bounded HARVEST_PACKET and names the next honest family handoff.",
-        "aoa-checkpoint-closeout-bridge turns checkpoint-led shortlist hints into one explicit reviewed-closeout chain without letting provisional notes become final authority.",
-        "aoa-memo-writeback routes session evidence and landed-work context toward a local memo candidate, reviewed-intake export, or explicit no-writeback stop line without making raw session history reviewed memory.",
-        "aoa-automation-opportunity-scan classifies whether a recurring reviewed route should stay manual, become a bounded skill, or become a playbook automation seed without granting scheduler or background authority.",
-        "aoa-session-route-forks makes several plausible next routes legible when continuation should stay branch-aware instead of hidden in one recommendation.",
-        "aoa-session-self-diagnose turns repeated friction, drift, or proof blur from reviewed evidence into a diagnosis packet before mutation.",
-        "aoa-session-self-repair turns an existing reviewed diagnosis into the smallest honest repair packet with checkpoint posture and rollback thinking.",
-        "aoa-session-progression-lift reflects reviewed mastery movement as a bounded multi-axis delta without pretending to be routing or role authority.",
-        "aoa-quest-harvest stays the narrow final promotion verdict once the material is already reduced to one repeated reviewed quest unit."
+        "aoa-eval is the front door for choosing an eval-lane route across existing evals, local ports, validators, tests, scripts, MCP access packets, and session-derived trigger pressure.",
+        "aoa-eval-select inspects existing local and central eval surfaces before new work.",
+        "aoa-eval-apply runs or routes an already selected eval surface and reports proof limits.",
+        "aoa-eval-local-need records bounded repo-local eval pressure under evals/intake when no existing surface fits.",
+        "aoa-eval-design drafts local eval suites or reports after selection fails without claiming central proof acceptance.",
+        "aoa-eval-session-mining mines .aoa only for candidate eval triggers after web and repo gates; raw session refs are not reviewed proof.",
+        "aoa-contract-test, aoa-property-invariants, and aoa-invariant-coverage-audit stay focused on test/invariant authoring or audit when no eval-lane owner route is in question.",
+        "aoa-source-of-truth-check, aoa-memo-writeback, and aoa-decision win when the pressure is documentation authority, memory writeback, or decision graph routing rather than eval proof routing."
       ]
     },
     {
@@ -505,7 +689,7 @@
     {
       "name": "aoa-property-invariants",
       "description": "Express stable system or domain truths as invariant-oriented tests or checks rather than only fixed examples. Use when correctness depends on behavior that should hold across many inputs or states, such as monotonicity, idempotency, conservation, or structural rules. Do not use when no meaningful invariant is known yet or when the real task is auditing existing coverage instead of writing the properties.",
-      "collision_family": "property-authoring-vs-coverage-audit",
+      "collision_family": "eval-proof-routing-family",
       "competing_skills": [
         "aoa-invariant-coverage-audit"
       ],
@@ -518,8 +702,14 @@
         "The behavior is mostly presentation detail and narrow snapshots, not a stable truth that should hold across many cases."
       ],
       "notes": [
-        "aoa-property-invariants authors new invariant or property checks.",
-        "aoa-invariant-coverage-audit inspects whether current tests already prove the relevant invariants."
+        "aoa-eval is the front door for choosing an eval-lane route across existing evals, local ports, validators, tests, scripts, MCP access packets, and session-derived trigger pressure.",
+        "aoa-eval-select inspects existing local and central eval surfaces before new work.",
+        "aoa-eval-apply runs or routes an already selected eval surface and reports proof limits.",
+        "aoa-eval-local-need records bounded repo-local eval pressure under evals/intake when no existing surface fits.",
+        "aoa-eval-design drafts local eval suites or reports after selection fails without claiming central proof acceptance.",
+        "aoa-eval-session-mining mines .aoa only for candidate eval triggers after web and repo gates; raw session refs are not reviewed proof.",
+        "aoa-contract-test, aoa-property-invariants, and aoa-invariant-coverage-audit stay focused on test/invariant authoring or audit when no eval-lane owner route is in question.",
+        "aoa-source-of-truth-check, aoa-memo-writeback, and aoa-decision win when the pressure is documentation authority, memory writeback, or decision graph routing rather than eval proof routing."
       ]
     },
     {
@@ -751,7 +941,9 @@
         "aoa-quest-harvest",
         "abyss-self-diagnostic-spine",
         "aoa-bounded-context-map",
-        "aoa-memo-writeback"
+        "aoa-memo-writeback",
+        "aoa-eval",
+        "aoa-eval-design"
       ],
       "should_trigger": [
         "Clarify which files are authoritative for repository guidance, operational instructions, architecture, and status, and keep entrypoint docs short and link-driven once canonical homes exist. Use when docs overlap, conflict, or confuse contributors about which file to trust.",

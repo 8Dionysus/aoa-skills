@@ -7,7 +7,7 @@ Read those rows as per-skill maintenance signals, not as missing canonical-decis
 
 ## Summary
 
-- total skills: 50
+- total skills: 56
 - candidate ready without review: 14
 - pending technique bridge lineage: 0
 - canonical maintenance cohort: 12
@@ -34,6 +34,12 @@ Read those rows as per-skill maintenance signals, not as missing canonical-decis
 | aoa-decision-create | evaluated | published | true | true | stay_evaluated | decision_graph_chain | governance_and_eval_ready | - | docs/reviews/status-promotions/aoa-decision-create.md |
 | aoa-decision-find | evaluated | published | true | true | stay_evaluated | decision_graph_chain | governance_and_eval_ready | - | docs/reviews/status-promotions/aoa-decision-find.md |
 | aoa-dry-run-first | canonical | published | true | true | default_reference | risk_authority_preview_execution | governance_and_eval_ready | docs/reviews/canonical-candidates/aoa-dry-run-first.md | docs/reviews/status-promotions/aoa-dry-run-first.md |
+| aoa-eval | scaffold | published | false | true | - | - | eval_ready_but_governance_blocked | - | - |
+| aoa-eval-apply | scaffold | published | false | true | - | - | eval_ready_but_governance_blocked | - | - |
+| aoa-eval-design | scaffold | published | false | true | - | - | eval_ready_but_governance_blocked | - | - |
+| aoa-eval-local-need | scaffold | published | false | true | - | - | eval_ready_but_governance_blocked | - | - |
+| aoa-eval-select | scaffold | published | false | true | - | - | eval_ready_but_governance_blocked | - | - |
+| aoa-eval-session-mining | scaffold | published | false | true | - | - | eval_ready_but_governance_blocked | - | - |
 | aoa-invariant-coverage-audit | canonical | published | true | true | default_reference | invariant_authoring_vs_audit | governance_and_eval_ready | docs/reviews/canonical-candidates/aoa-invariant-coverage-audit.md | docs/reviews/status-promotions/aoa-invariant-coverage-audit.md |
 | aoa-local-stack-bringup | evaluated | published | true | true | stay_evaluated | local_runtime_bringup | governance_and_eval_ready | docs/reviews/canonical-candidates/aoa-local-stack-bringup.md | docs/reviews/status-promotions/aoa-local-stack-bringup.md |
 | aoa-memo-writeback | scaffold | published | false | true | - | - | eval_ready_but_governance_blocked | - | - |

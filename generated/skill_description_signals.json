@@ -457,11 +457,23 @@
       "allow_implicit_invocation": true,
       "family": "change-execution-vs-test-first",
       "families": [
-        "change-execution-vs-test-first"
+        "change-execution-vs-test-first",
+        "eval-proof-routing-family"
       ],
       "adjacent_skills": [
         "aoa-change-protocol",
         "aoa-commit-growth-seam",
+        "aoa-decision",
+        "aoa-eval",
+        "aoa-eval-apply",
+        "aoa-eval-design",
+        "aoa-eval-local-need",
+        "aoa-eval-select",
+        "aoa-eval-session-mining",
+        "aoa-invariant-coverage-audit",
+        "aoa-memo-writeback",
+        "aoa-property-invariants",
+        "aoa-source-of-truth-check",
         "aoa-tdd-slice"
       ],
       "default_prompt": "Use $aoa-contract-test to make a boundary contract explicit in tests or structured checks and report what the validation now proves.",
@@ -481,7 +493,8 @@
         "desc-collision-collision-07"
       ],
       "mirror_case_ids": [
-        "desc-mirror-010-aoa-contract-test"
+        "desc-mirror-010-aoa-contract-test",
+        "desc-mirror-041-aoa-contract-test"
       ]
     },
     {
@@ -535,14 +548,25 @@
       "allow_implicit_invocation": true,
       "family": "decision-and-doc-authority",
       "families": [
-        "decision-and-doc-authority"
+        "decision-and-doc-authority",
+        "eval-proof-routing-family"
       ],
       "adjacent_skills": [
         "aoa-adr-write",
         "aoa-bounded-context-map",
+        "aoa-contract-test",
         "aoa-decision-correct",
         "aoa-decision-create",
         "aoa-decision-find",
+        "aoa-eval",
+        "aoa-eval-apply",
+        "aoa-eval-design",
+        "aoa-eval-local-need",
+        "aoa-eval-select",
+        "aoa-eval-session-mining",
+        "aoa-invariant-coverage-audit",
+        "aoa-memo-writeback",
+        "aoa-property-invariants",
         "aoa-quest-harvest",
         "aoa-source-of-truth-check",
         "atm10-source-of-truth-check"
@@ -565,7 +589,8 @@
       ],
       "mirror_case_ids": [
         "desc-mirror-022-aoa-decision",
-        "desc-mirror-031-aoa-decision"
+        "desc-mirror-031-aoa-decision",
+        "desc-mirror-046-aoa-decision"
       ]
     },
     {
@@ -726,6 +751,286 @@
       "mirror_case_ids": []
     },
     {
+      "name": "aoa-eval",
+      "description": "Route AoA eval-lane work by checking existing local and central eval surfaces first, then choosing apply, local intake need, local design, or session mining while preserving owner boundaries. Use when a task asks whether an eval exists, whether one should be added, how local evals connect to aoa-evals, or how validators, tests, scripts, traces, regressions, trigger misses, local eval ports, or aoa-evals-mcp should be used as evaluation surfaces. Do not use for ordinary one-off tests, source-of-truth mapping, decision records, memo writeback, or direct central aoa-evals proof-authority edits.",
+      "description_sha256": "90ab0b8c48c88232da88d7f22621c6aaf1527c697b15d0a14975bbea0d0e9cb0",
+      "summary_clause": "Route AoA eval-lane work by checking existing local and central eval surfaces first, then choosing apply, local intake need, local design, or session mining while preserving owner boundaries",
+      "use_when_clause": "a task asks whether an eval exists, whether one should be added, how local evals connect to aoa-evals, or how validators, tests, scripts, traces, regressions, trigger misses, local eval ports, or aoa-evals-mcp should be used as evaluation surfaces",
+      "do_not_use_clause": "for ordinary one-off tests, source-of-truth mapping, decision records, memo writeback, or direct central aoa-evals proof-authority edits",
+      "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "invoke",
+      "allow_implicit_invocation": true,
+      "family": "eval-proof-routing-family",
+      "families": [
+        "eval-proof-routing-family"
+      ],
+      "adjacent_skills": [
+        "aoa-contract-test",
+        "aoa-decision",
+        "aoa-eval-apply",
+        "aoa-eval-design",
+        "aoa-eval-local-need",
+        "aoa-eval-select",
+        "aoa-eval-session-mining",
+        "aoa-invariant-coverage-audit",
+        "aoa-memo-writeback",
+        "aoa-property-invariants",
+        "aoa-session-donor-harvest",
+        "aoa-source-of-truth-check"
+      ],
+      "default_prompt": "Use $aoa-eval to select one eval route, inspect existing surfaces first, and keep central proof, local intake, MCP access, and session evidence separate.",
+      "required_case_classes": [
+        "explicit-handle",
+        "should-trigger",
+        "should-not-trigger",
+        "prefer-other-skill"
+      ],
+      "base_case_ids": [
+        "eval-router-explicit",
+        "eval-router-implicit",
+        "eval-router-adjacent-negative",
+        "collision-42"
+      ],
+      "collision_case_ids": [
+        "desc-collision-collision-42"
+      ],
+      "mirror_case_ids": [
+        "desc-mirror-044-aoa-eval"
+      ]
+    },
+    {
+      "name": "aoa-eval-apply",
+      "description": "Run or route an already selected eval, validator, test, or script, then report command results, artifacts, generated drift, proof limits, and next route. Use when the eval surface is already selected and the task is to apply it rather than choose or design it. Do not use when no existing eval has been selected, when an intake need should be recorded first, or when central proof promotion is being requested.",
+      "description_sha256": "5b3193acd2aa17bf9e4e5df832c79f1d245601a9bcc78a3bf826f05e67cb6b11",
+      "summary_clause": "Run or route an already selected eval, validator, test, or script, then report command results, artifacts, generated drift, proof limits, and next route",
+      "use_when_clause": "the eval surface is already selected and the task is to apply it rather than choose or design it",
+      "do_not_use_clause": "when no existing eval has been selected, when an intake need should be recorded first, or when central proof promotion is being requested",
+      "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "manual",
+      "allow_implicit_invocation": false,
+      "family": "eval-proof-routing-family",
+      "families": [
+        "eval-proof-routing-family"
+      ],
+      "adjacent_skills": [
+        "aoa-contract-test",
+        "aoa-decision",
+        "aoa-eval",
+        "aoa-eval-design",
+        "aoa-eval-local-need",
+        "aoa-eval-select",
+        "aoa-eval-session-mining",
+        "aoa-invariant-coverage-audit",
+        "aoa-memo-writeback",
+        "aoa-property-invariants",
+        "aoa-source-of-truth-check"
+      ],
+      "default_prompt": "Use $aoa-eval-apply to run the selected eval surface and report evidence, artifacts, and proof limits.",
+      "required_case_classes": [
+        "explicit-handle",
+        "manual-invocation-required",
+        "should-not-trigger"
+      ],
+      "base_case_ids": [
+        "eval-apply-explicit",
+        "eval-apply-manual",
+        "eval-apply-adjacent-negative",
+        "collision-45"
+      ],
+      "collision_case_ids": [
+        "desc-collision-collision-45"
+      ],
+      "mirror_case_ids": [
+        "desc-mirror-037-aoa-eval-apply"
+      ]
+    },
+    {
+      "name": "aoa-eval-design",
+      "description": "Design a bounded local eval suite, prompt set, report, or validator plan after selection finds no adequate existing surface, using deterministic checks first and trace or rubric review only when needed. Use when a local eval needs positive, negative, collision, or regression cases around a clear behavior or invariant. Do not use when an existing eval should simply run, when only a local intake packet is needed, or when central aoa-evals proof doctrine is the target.",
+      "description_sha256": "0a71f12f9345a72eb52990ac72c66be2a8076a47163c0aa167d1ea9be09ef3ca",
+      "summary_clause": "Design a bounded local eval suite, prompt set, report, or validator plan after selection finds no adequate existing surface, using deterministic checks first and trace or rubric review only when needed",
+      "use_when_clause": "a local eval needs positive, negative, collision, or regression cases around a clear behavior or invariant",
+      "do_not_use_clause": "when an existing eval should simply run, when only a local intake packet is needed, or when central aoa-evals proof doctrine is the target",
+      "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "manual",
+      "allow_implicit_invocation": false,
+      "family": "eval-proof-routing-family",
+      "families": [
+        "eval-proof-routing-family"
+      ],
+      "adjacent_skills": [
+        "aoa-contract-test",
+        "aoa-decision",
+        "aoa-eval",
+        "aoa-eval-apply",
+        "aoa-eval-local-need",
+        "aoa-eval-select",
+        "aoa-eval-session-mining",
+        "aoa-invariant-coverage-audit",
+        "aoa-memo-writeback",
+        "aoa-property-invariants",
+        "aoa-source-of-truth-check"
+      ],
+      "default_prompt": "Use $aoa-eval-design to draft a bounded local eval suite with deterministic checks first and central proof acceptance out of scope.",
+      "required_case_classes": [
+        "explicit-handle",
+        "manual-invocation-required",
+        "should-not-trigger"
+      ],
+      "base_case_ids": [
+        "eval-design-explicit",
+        "eval-design-manual",
+        "eval-design-adjacent-negative",
+        "collision-47"
+      ],
+      "collision_case_ids": [
+        "desc-collision-collision-47"
+      ],
+      "mirror_case_ids": [
+        "desc-mirror-039-aoa-eval-design",
+        "desc-mirror-045-aoa-eval-design"
+      ]
+    },
+    {
+      "name": "aoa-eval-local-need",
+      "description": "Create a repo-local eval need packet under evals/intake when no existing eval fits, preserving owner route, evidence refs, rejected alternatives, proposed checks, and proof limits. Use when a repeated failure or missing behavior needs local eval pressure without central proof acceptance. Do not use when an existing eval can be applied, when the missing object is a memo or decision, or when the user asks for central aoa-evals acceptance.",
+      "description_sha256": "cc830ecdad58d6943fe61004ef48f6dd61d2a2cd3d62a1eaa0ea375331945d77",
+      "summary_clause": "Create a repo-local eval need packet under evals/intake when no existing eval fits, preserving owner route, evidence refs, rejected alternatives, proposed checks, and proof limits",
+      "use_when_clause": "a repeated failure or missing behavior needs local eval pressure without central proof acceptance",
+      "do_not_use_clause": "when an existing eval can be applied, when the missing object is a memo or decision, or when the user asks for central aoa-evals acceptance",
+      "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "manual",
+      "allow_implicit_invocation": false,
+      "family": "eval-proof-routing-family",
+      "families": [
+        "eval-proof-routing-family"
+      ],
+      "adjacent_skills": [
+        "aoa-contract-test",
+        "aoa-decision",
+        "aoa-eval",
+        "aoa-eval-apply",
+        "aoa-eval-design",
+        "aoa-eval-select",
+        "aoa-eval-session-mining",
+        "aoa-invariant-coverage-audit",
+        "aoa-memo-writeback",
+        "aoa-property-invariants",
+        "aoa-source-of-truth-check"
+      ],
+      "default_prompt": "Use $aoa-eval-local-need to write one bounded local eval need packet with evidence, rejected alternatives, and proof limits.",
+      "required_case_classes": [
+        "explicit-handle",
+        "manual-invocation-required",
+        "should-not-trigger"
+      ],
+      "base_case_ids": [
+        "eval-local-need-explicit",
+        "eval-local-need-manual",
+        "eval-local-need-adjacent-negative",
+        "collision-46"
+      ],
+      "collision_case_ids": [
+        "desc-collision-collision-46"
+      ],
+      "mirror_case_ids": [
+        "desc-mirror-038-aoa-eval-local-need"
+      ]
+    },
+    {
+      "name": "aoa-eval-select",
+      "description": "Inspect repo-local eval ports, tests, validators, scripts, reports, intake files, and central aoa-evals standards before new eval work, then select the smallest existing surface or a no-fit route. Use when the task asks which eval should apply to a change, failure, regression, or trigger miss. Do not use when the eval is already selected and should run, when no-fit has already been established, or when the real issue is source authority rather than eval coverage.",
+      "description_sha256": "0be63765d3caff0555b4090b46e68d0ce4d394c39cfbc76b76302a1e5e883636",
+      "summary_clause": "Inspect repo-local eval ports, tests, validators, scripts, reports, intake files, and central aoa-evals standards before new eval work, then select the smallest existing surface or a no-fit route",
+      "use_when_clause": "the task asks which eval should apply to a change, failure, regression, or trigger miss",
+      "do_not_use_clause": "when the eval is already selected and should run, when no-fit has already been established, or when the real issue is source authority rather than eval coverage",
+      "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "manual",
+      "allow_implicit_invocation": false,
+      "family": "eval-proof-routing-family",
+      "families": [
+        "eval-proof-routing-family"
+      ],
+      "adjacent_skills": [
+        "aoa-contract-test",
+        "aoa-decision",
+        "aoa-eval",
+        "aoa-eval-apply",
+        "aoa-eval-design",
+        "aoa-eval-local-need",
+        "aoa-eval-session-mining",
+        "aoa-invariant-coverage-audit",
+        "aoa-memo-writeback",
+        "aoa-property-invariants",
+        "aoa-source-of-truth-check"
+      ],
+      "default_prompt": "Use $aoa-eval-select to inspect local and central eval surfaces before designing or writing anything new.",
+      "required_case_classes": [
+        "explicit-handle",
+        "manual-invocation-required",
+        "should-not-trigger"
+      ],
+      "base_case_ids": [
+        "eval-select-explicit",
+        "eval-select-manual",
+        "eval-select-adjacent-negative",
+        "collision-44"
+      ],
+      "collision_case_ids": [
+        "desc-collision-collision-44"
+      ],
+      "mirror_case_ids": [
+        "desc-mirror-036-aoa-eval-select"
+      ]
+    },
+    {
+      "name": "aoa-eval-session-mining",
+      "description": "Mine .aoa session evidence for missed eval triggers, candidate regression cases, and local eval pressure only after web research and repo owner surfaces are checked, returning raw and segment refs with freshness rather than proof. Use when the user asks to study sessions for eval moments, missed triggers, repeated failures, or session-derived eval cases. Do not use for raw .aoa preservation, hook repair, search-index maintenance, memo writeback, decision records, or treating session history as reviewed proof.",
+      "description_sha256": "04d539551d617733107494195dc8cffead04bf175349a30b872dbe709798c31c",
+      "summary_clause": "Mine .aoa session evidence for missed eval triggers, candidate regression cases, and local eval pressure only after web research and repo owner surfaces are checked, returning raw and segment refs with freshness rather than proof",
+      "use_when_clause": "the user asks to study sessions for eval moments, missed triggers, repeated failures, or session-derived eval cases",
+      "do_not_use_clause": "for raw .aoa preservation, hook repair, search-index maintenance, memo writeback, decision records, or treating session history as reviewed proof",
+      "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "manual",
+      "allow_implicit_invocation": false,
+      "family": "eval-proof-routing-family",
+      "families": [
+        "eval-proof-routing-family"
+      ],
+      "adjacent_skills": [
+        "aoa-contract-test",
+        "aoa-decision",
+        "aoa-eval",
+        "aoa-eval-apply",
+        "aoa-eval-design",
+        "aoa-eval-local-need",
+        "aoa-eval-select",
+        "aoa-invariant-coverage-audit",
+        "aoa-memo-writeback",
+        "aoa-property-invariants",
+        "aoa-session-donor-harvest",
+        "aoa-source-of-truth-check"
+      ],
+      "default_prompt": "Use $aoa-eval-session-mining to mine .aoa for candidate eval refs after web and repo owner gates are complete.",
+      "required_case_classes": [
+        "explicit-handle",
+        "manual-invocation-required",
+        "should-not-trigger"
+      ],
+      "base_case_ids": [
+        "eval-session-mining-explicit",
+        "eval-session-mining-manual",
+        "eval-session-mining-adjacent-negative",
+        "collision-48"
+      ],
+      "collision_case_ids": [
+        "desc-collision-collision-48"
+      ],
+      "mirror_case_ids": [
+        "desc-mirror-040-aoa-eval-session-mining"
+      ]
+    },
+    {
       "name": "aoa-invariant-coverage-audit",
       "description": "Audit whether existing tests and checks actually constrain the stable invariants that matter. Use when you need to judge if current coverage proves a rule or only repeats examples, and you want the smallest bounded follow-up gaps. Do not use when the invariant itself is still undefined or when the real task is to author new invariants rather than audit coverage.",
       "description_sha256": "65f3dc67fa694db586e881ca32ed304a246225c9fc3f3539094c3cd3115a8158",
@@ -735,12 +1040,23 @@
       "invocation_mode": "explicit-preferred",
       "implicit_activation_policy": "invoke",
       "allow_implicit_invocation": true,
-      "family": "property-authoring-vs-coverage-audit",
+      "family": "eval-proof-routing-family",
       "families": [
+        "eval-proof-routing-family",
         "property-authoring-vs-coverage-audit"
       ],
       "adjacent_skills": [
-        "aoa-property-invariants"
+        "aoa-contract-test",
+        "aoa-decision",
+        "aoa-eval",
+        "aoa-eval-apply",
+        "aoa-eval-design",
+        "aoa-eval-local-need",
+        "aoa-eval-select",
+        "aoa-eval-session-mining",
+        "aoa-memo-writeback",
+        "aoa-property-invariants",
+        "aoa-source-of-truth-check"
       ],
       "default_prompt": "Use $aoa-invariant-coverage-audit to map checks to invariants, identify the thinnest coverage gaps, and report what the current suite does and does not prove.",
       "required_case_classes": [
@@ -759,7 +1075,8 @@
         "desc-collision-collision-01"
       ],
       "mirror_case_ids": [
-        "desc-mirror-002-aoa-invariant-coverage-audit"
+        "desc-mirror-002-aoa-invariant-coverage-audit",
+        "desc-mirror-042-aoa-invariant-coverage-audit"
       ]
     },
     {
@@ -809,13 +1126,24 @@
       "invocation_mode": "explicit-preferred",
       "implicit_activation_policy": "suggest",
       "allow_implicit_invocation": false,
-      "family": "session-harvest-family",
+      "family": "eval-proof-routing-family",
       "families": [
+        "eval-proof-routing-family",
         "session-harvest-family"
       ],
       "adjacent_skills": [
         "aoa-automation-opportunity-scan",
         "aoa-checkpoint-closeout-bridge",
+        "aoa-contract-test",
+        "aoa-decision",
+        "aoa-eval",
+        "aoa-eval-apply",
+        "aoa-eval-design",
+        "aoa-eval-local-need",
+        "aoa-eval-select",
+        "aoa-eval-session-mining",
+        "aoa-invariant-coverage-audit",
+        "aoa-property-invariants",
         "aoa-quest-harvest",
         "aoa-session-donor-harvest",
         "aoa-session-progression-lift",
@@ -838,7 +1166,8 @@
       ],
       "collision_case_ids": [],
       "mirror_case_ids": [
-        "desc-mirror-035-aoa-memo-writeback"
+        "desc-mirror-035-aoa-memo-writeback",
+        "desc-mirror-043-aoa-memo-writeback"
       ]
     },
     {
@@ -890,12 +1219,23 @@
       "invocation_mode": "explicit-preferred",
       "implicit_activation_policy": "invoke",
       "allow_implicit_invocation": true,
-      "family": "property-authoring-vs-coverage-audit",
+      "family": "eval-proof-routing-family",
       "families": [
+        "eval-proof-routing-family",
         "property-authoring-vs-coverage-audit"
       ],
       "adjacent_skills": [
-        "aoa-invariant-coverage-audit"
+        "aoa-contract-test",
+        "aoa-decision",
+        "aoa-eval",
+        "aoa-eval-apply",
+        "aoa-eval-design",
+        "aoa-eval-local-need",
+        "aoa-eval-select",
+        "aoa-eval-session-mining",
+        "aoa-invariant-coverage-audit",
+        "aoa-memo-writeback",
+        "aoa-source-of-truth-check"
       ],
       "default_prompt": "Use $aoa-property-invariants to identify the stable truth that must hold across many cases and express it as bounded property-oriented checks.",
       "required_case_classes": [
@@ -1075,6 +1415,8 @@
       "adjacent_skills": [
         "aoa-automation-opportunity-scan",
         "aoa-checkpoint-closeout-bridge",
+        "aoa-eval",
+        "aoa-eval-session-mining",
         "aoa-memo-writeback",
         "aoa-quest-harvest",
         "aoa-session-progression-lift",
@@ -1285,6 +1627,7 @@
       "family": "decision-and-doc-authority",
       "families": [
         "decision-and-doc-authority",
+        "eval-proof-routing-family",
         "overlay-vs-base-skill"
       ],
       "adjacent_skills": [
@@ -1294,11 +1637,20 @@
         "aoa-adr-write",
         "aoa-bounded-context-map",
         "aoa-change-protocol",
+        "aoa-contract-test",
         "aoa-decision",
         "aoa-decision-correct",
         "aoa-decision-create",
         "aoa-decision-find",
+        "aoa-eval",
+        "aoa-eval-apply",
+        "aoa-eval-design",
+        "aoa-eval-local-need",
+        "aoa-eval-select",
+        "aoa-eval-session-mining",
+        "aoa-invariant-coverage-audit",
         "aoa-memo-writeback",
+        "aoa-property-invariants",
         "aoa-quest-harvest",
         "aoa-safe-infra-change",
         "aoa-sanitized-share",
@@ -1319,13 +1671,15 @@
         "collision-17",
         "collision-28",
         "collision-34",
-        "collision-37"
+        "collision-37",
+        "collision-43"
       ],
       "collision_case_ids": [
         "desc-collision-collision-17",
         "desc-collision-collision-28",
         "desc-collision-collision-34",
-        "desc-collision-collision-37"
+        "desc-collision-collision-37",
+        "desc-collision-collision-43"
       ],
       "mirror_case_ids": [
         "desc-mirror-034-aoa-source-of-truth-check"

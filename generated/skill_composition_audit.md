@@ -5,8 +5,8 @@ It is a boundary/readiness view, not a direct status surface.
 
 ## Summary
 
-- total skills: 50
-- multi-technique skills: 47
+- total skills: 56
+- multi-technique skills: 53
 - single-technique skills: 3
 - approved exceptions: 3
 - needs reframe: 0
@@ -30,6 +30,12 @@ It is a boundary/readiness view, not a direct status surface.
 | aoa-decision-create | 2 | multi_technique | keep_multi_technique | - |
 | aoa-decision-find | 1 | single_technique_exception | keep_exception | docs/reviews/skill-composition-exceptions/aoa-decision-find.md |
 | aoa-dry-run-first | 2 | multi_technique | keep_multi_technique | - |
+| aoa-eval | 3 | multi_technique | keep_multi_technique | - |
+| aoa-eval-apply | 3 | multi_technique | keep_multi_technique | - |
+| aoa-eval-design | 3 | multi_technique | keep_multi_technique | - |
+| aoa-eval-local-need | 3 | multi_technique | keep_multi_technique | - |
+| aoa-eval-select | 3 | multi_technique | keep_multi_technique | - |
+| aoa-eval-session-mining | 3 | multi_technique | keep_multi_technique | - |
 | aoa-invariant-coverage-audit | 1 | single_technique_exception | keep_exception | docs/reviews/skill-composition-exceptions/aoa-invariant-coverage-audit.md |
 | aoa-local-stack-bringup | 4 | multi_technique | keep_multi_technique | - |
 | aoa-memo-writeback | 3 | multi_technique | keep_multi_technique | - |

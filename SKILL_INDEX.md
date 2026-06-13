@@ -20,6 +20,12 @@ This file is the repository-wide map of public skills.
 | aoa-decision-find | core | evaluated | Skill for graph-first decision lookup with source-note verification before claims become task context. |
 | aoa-decision-create | core | evaluated | Skill for creating repo-local decision records with related graph context, local index rebuild, and graph refresh. |
 | aoa-decision-correct | core | evaluated | Skill for correcting, superseding, or reindexing source decision notes before refreshing generated indexes and the workspace graph. |
+| aoa-eval | core | scaffold | Router for eval-lane work that selects existing eval inspection, application, local intake pressure, design, or session mining while preserving owner boundaries. |
+| aoa-eval-select | core | scaffold | Skill for inspecting central and repo-local eval surfaces before new eval work. |
+| aoa-eval-apply | core | scaffold | Skill for running or routing an already selected eval, validator, test, or script and reporting evidence limits. |
+| aoa-eval-local-need | core | scaffold | Skill for creating bounded repo-local eval need packets when no existing eval fits. |
+| aoa-eval-design | core | scaffold | Skill for designing local eval suites or reports without claiming central proof authority. |
+| aoa-eval-session-mining | core | scaffold | Skill for mining `.aoa` session evidence for missed eval triggers after web and repo owner gates. |
 | aoa-automation-opportunity-scan | core | scaffold | Skill for detecting reviewed or repeated project processes that are candidates for automation, classifying whether they are seed-ready, and routing them to the right owner layer without granting schedule or mutation authority. |
 | aoa-core-logic-boundary | core | evaluated | Skill for clarifying which logic belongs in the reusable core versus glue, orchestration, or infrastructure detail. |
 | aoa-port-adapter-refactor | core | evaluated | Skill for refactoring toward clearer ports and adapters so reusable logic is less entangled with infrastructure details. |
