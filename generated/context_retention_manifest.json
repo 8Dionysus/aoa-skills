@@ -394,6 +394,144 @@
       "requires_confirmation_seam": true
     },
     {
+      "name": "aoa-eval",
+      "compact_summary": "Route AoA eval-lane work",
+      "activation_card_markdown": "Use when: Route AoA eval-lane work by checking existing local and central eval surfaces first, then choosing apply, local intake need, local design, or session mining while preserving owner boundaries. Use when a task asks whether an eval exists, whether one should be added, how local evals connect to aoa-evals, or how validators, tests, scripts, traces, regressions, trigger misses, local eval ports, or aoa-evals-mcp should be used as evaluation surfaces. Do not use for ordinary one-off tests, source-of-truth mapping, decision records, memo writeback, or direct central aoa-evals proof-authority edits.\n\nKeep in memory: user intent, target repository, touched paths, failure mode, or eval name, local `evals/PORT.yaml`, `evals/intake/`, scripts, tests, validators, and repo route cards, exactly one chosen route: `aoa-eval-select`, `aoa-eval-apply`, `aoa-eval-local-need`, `aoa-eval-design`, or `aoa-eval-session-mining`, owner-boundary statement naming proof owner, local port owner, and any MCP or `.aoa` evidence role.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "must_keep": [
+        "user intent, target repository, touched paths, failure mode, or eval name",
+        "local `evals/PORT.yaml`, `evals/intake/`, scripts, tests, validators, and repo route cards",
+        "exactly one chosen route: `aoa-eval-select`, `aoa-eval-apply`, `aoa-eval-local-need`, `aoa-eval-design`, or `aoa-eval-session-mining`",
+        "owner-boundary statement naming proof owner, local port owner, and any MCP or `.aoa` evidence role"
+      ],
+      "retain_sections": [
+        "Trigger boundary",
+        "Procedure",
+        "Verification"
+      ],
+      "metadata_keys": [
+        "aoa_scope",
+        "aoa_status",
+        "aoa_invocation_mode"
+      ],
+      "rehydration_hint": "Reload the full SKILL.md and keep policy, procedure, and verification in active context before resuming.",
+      "requires_confirmation_seam": false
+    },
+    {
+      "name": "aoa-eval-apply",
+      "compact_summary": "Apply selected evals",
+      "activation_card_markdown": "Use when: Run or route an already selected eval, validator, test, or script, then report command results, artifacts, generated drift, proof limits, and next route. Use when the eval surface is already selected and the task is to apply it rather than choose or design it. Do not use when no existing eval has been selected, when an intake need should be recorded first, or when central proof promotion is being requested.\n\nKeep in memory: selected eval or validation command, repo-local route law and command prerequisites, commands run and results observed, artifacts or reports produced.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "must_keep": [
+        "selected eval or validation command",
+        "repo-local route law and command prerequisites",
+        "commands run and results observed",
+        "artifacts or reports produced"
+      ],
+      "retain_sections": [
+        "Trigger boundary",
+        "Procedure",
+        "Verification"
+      ],
+      "metadata_keys": [
+        "aoa_scope",
+        "aoa_status",
+        "aoa_invocation_mode"
+      ],
+      "rehydration_hint": "Reload the full SKILL.md and keep policy, procedure, and verification in active context before resuming.",
+      "requires_confirmation_seam": false
+    },
+    {
+      "name": "aoa-eval-design",
+      "compact_summary": "Design local eval suites",
+      "activation_card_markdown": "Use when: Design a bounded local eval suite, prompt set, report, or validator plan after selection finds no adequate existing surface, using deterministic checks first and trace or rubric review only when needed. Use when a local eval needs positive, negative, collision, or regression cases around a clear behavior or invariant. Do not use when an existing eval should simply run, when only a local intake packet is needed, or when central aoa-evals proof doctrine is the target.\n\nKeep in memory: selected failure mode, target behavior, invariant, or trigger boundary, local repo tests, scripts, validators, fixtures, generated surfaces, and `evals/` port, draft suite structure, report plan, fixture set, or validator design, positive, negative, and regression cases.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "must_keep": [
+        "selected failure mode, target behavior, invariant, or trigger boundary",
+        "local repo tests, scripts, validators, fixtures, generated surfaces, and `evals/` port",
+        "draft suite structure, report plan, fixture set, or validator design",
+        "positive, negative, and regression cases"
+      ],
+      "retain_sections": [
+        "Trigger boundary",
+        "Procedure",
+        "Verification"
+      ],
+      "metadata_keys": [
+        "aoa_scope",
+        "aoa_status",
+        "aoa_invocation_mode"
+      ],
+      "rehydration_hint": "Reload the full SKILL.md and keep policy, procedure, and verification in active context before resuming.",
+      "requires_confirmation_seam": false
+    },
+    {
+      "name": "aoa-eval-local-need",
+      "compact_summary": "Record local eval needs",
+      "activation_card_markdown": "Use when: Create a repo-local eval need packet under evals/intake when no existing eval fits, preserving owner route, evidence refs, rejected alternatives, proposed checks, and proof limits. Use when a repeated failure or missing behavior needs local eval pressure without central proof acceptance. Do not use when an existing eval can be applied, when the missing object is a memo or decision, or when the user asks for central aoa-evals acceptance.\n\nKeep in memory: target repository and local `evals/PORT.yaml`, failure or behavior needing evaluation, one repo-local eval need packet under `evals/intake/`, no central proof verdict.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "must_keep": [
+        "target repository and local `evals/PORT.yaml`",
+        "failure or behavior needing evaluation",
+        "one repo-local eval need packet under `evals/intake/`",
+        "no central proof verdict"
+      ],
+      "retain_sections": [
+        "Trigger boundary",
+        "Procedure",
+        "Verification"
+      ],
+      "metadata_keys": [
+        "aoa_scope",
+        "aoa_status",
+        "aoa_invocation_mode"
+      ],
+      "rehydration_hint": "Reload the full SKILL.md and keep policy, procedure, and verification in active context before resuming.",
+      "requires_confirmation_seam": false
+    },
+    {
+      "name": "aoa-eval-select",
+      "compact_summary": "Select existing eval surfaces",
+      "activation_card_markdown": "Use when: Inspect repo-local eval ports, tests, validators, scripts, reports, intake files, and central aoa-evals standards before new eval work, then select the smallest existing surface or a no-fit route. Use when the task asks which eval should apply to a change, failure, regression, or trigger miss. Do not use when the eval is already selected and should run, when no-fit has already been established, or when the real issue is source authority rather than eval coverage.\n\nKeep in memory: target repo and touched paths, local `evals/PORT.yaml`, `evals/README.md`, `evals/intake/`, and eval reports, selected existing eval, validator, test, script, or report surface, reason the surface fits or does not fit.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "must_keep": [
+        "target repo and touched paths",
+        "local `evals/PORT.yaml`, `evals/README.md`, `evals/intake/`, and eval reports",
+        "selected existing eval, validator, test, script, or report surface",
+        "reason the surface fits or does not fit"
+      ],
+      "retain_sections": [
+        "Trigger boundary",
+        "Procedure",
+        "Verification"
+      ],
+      "metadata_keys": [
+        "aoa_scope",
+        "aoa_status",
+        "aoa_invocation_mode"
+      ],
+      "rehydration_hint": "Reload the full SKILL.md and keep policy, procedure, and verification in active context before resuming.",
+      "requires_confirmation_seam": false
+    },
+    {
+      "name": "aoa-eval-session-mining",
+      "compact_summary": "Mine sessions for eval triggers",
+      "activation_card_markdown": "Use when: Mine .aoa session evidence for missed eval triggers, candidate regression cases, and local eval pressure only after web research and repo owner surfaces are checked, returning raw and segment refs with freshness rather than proof. Use when the user asks to study sessions for eval moments, missed triggers, repeated failures, or session-derived eval cases. Do not use for raw .aoa preservation, hook repair, search-index maintenance, memo writeback, decision records, or treating session history as reviewed proof.\n\nKeep in memory: trigger classes or target failure modes from prior research, `.aoa` search index status, raw refs, segment refs, freshness, and diagnostics, missed-trigger examples with session id, label, segment, event, raw ref, and freshness, candidate eval-case themes and owner routes.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "must_keep": [
+        "trigger classes or target failure modes from prior research",
+        "`.aoa` search index status, raw refs, segment refs, freshness, and diagnostics",
+        "missed-trigger examples with session id, label, segment, event, raw ref, and freshness",
+        "candidate eval-case themes and owner routes"
+      ],
+      "retain_sections": [
+        "Trigger boundary",
+        "Procedure",
+        "Verification"
+      ],
+      "metadata_keys": [
+        "aoa_scope",
+        "aoa_status",
+        "aoa_invocation_mode"
+      ],
+      "rehydration_hint": "Reload the full SKILL.md and keep policy, procedure, and verification in active context before resuming.",
+      "requires_confirmation_seam": false
+    },
+    {
       "name": "aoa-invariant-coverage-audit",
       "compact_summary": "Audit invariant coverage",
       "activation_card_markdown": "Use when: Audit whether existing tests and checks actually constrain the stable invariants that matter. Use when you need to judge if current coverage proves a rule or only repeats examples, and you want the smallest bounded follow-up gaps. Do not use when the invariant itself is still undefined or when the real task is to author new invariants rather than audit coverage.\n\nKeep in memory: target rule or stable truth, current tests, checks, schemas, fixtures, reports, generated parity checks, proof reports, or examples, invariant coverage map, gap list for weak or missing checks.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",

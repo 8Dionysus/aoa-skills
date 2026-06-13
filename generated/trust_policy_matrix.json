@@ -271,6 +271,102 @@
       "notes": "Preview-first workflow that should remain explicit because it fronts mutating operations."
     },
     {
+      "name": "aoa-eval",
+      "scope": "core",
+      "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "invoke",
+      "trust_posture": "portable-core",
+      "mutation_surface": "repo",
+      "requires_manual_invocation": false,
+      "candidate_only": false,
+      "requires_confirmation_seam": false,
+      "recommended_install_scopes": [
+        "repo",
+        "user"
+      ],
+      "notes": "Router for AoA eval-lane work that selects existing evals, application, local intake pressure, design, or session mining while keeping aoa-evals as proof owner."
+    },
+    {
+      "name": "aoa-eval-apply",
+      "scope": "core",
+      "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "manual",
+      "trust_posture": "portable-core",
+      "mutation_surface": "repo",
+      "requires_manual_invocation": true,
+      "candidate_only": false,
+      "requires_confirmation_seam": false,
+      "recommended_install_scopes": [
+        "repo",
+        "user"
+      ],
+      "notes": "Manual subskill selected by aoa-eval to run or route an already selected eval, validator, test, or script."
+    },
+    {
+      "name": "aoa-eval-design",
+      "scope": "core",
+      "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "manual",
+      "trust_posture": "portable-core",
+      "mutation_surface": "repo",
+      "requires_manual_invocation": true,
+      "candidate_only": false,
+      "requires_confirmation_seam": false,
+      "recommended_install_scopes": [
+        "repo",
+        "user"
+      ],
+      "notes": "Manual subskill selected by aoa-eval to draft local eval suites or reports without claiming central proof acceptance."
+    },
+    {
+      "name": "aoa-eval-local-need",
+      "scope": "core",
+      "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "manual",
+      "trust_posture": "portable-core",
+      "mutation_surface": "repo",
+      "requires_manual_invocation": true,
+      "candidate_only": false,
+      "requires_confirmation_seam": false,
+      "recommended_install_scopes": [
+        "repo",
+        "user"
+      ],
+      "notes": "Manual subskill selected by aoa-eval to write repo-local eval need pressure under evals/intake when no existing eval fits."
+    },
+    {
+      "name": "aoa-eval-select",
+      "scope": "core",
+      "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "manual",
+      "trust_posture": "portable-core",
+      "mutation_surface": "none",
+      "requires_manual_invocation": true,
+      "candidate_only": false,
+      "requires_confirmation_seam": false,
+      "recommended_install_scopes": [
+        "repo",
+        "user"
+      ],
+      "notes": "Manual subskill selected by aoa-eval to inspect central and repo-local eval surfaces before new work."
+    },
+    {
+      "name": "aoa-eval-session-mining",
+      "scope": "core",
+      "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "manual",
+      "trust_posture": "portable-core",
+      "mutation_surface": "none",
+      "requires_manual_invocation": true,
+      "candidate_only": false,
+      "requires_confirmation_seam": false,
+      "recommended_install_scopes": [
+        "repo",
+        "user"
+      ],
+      "notes": "Manual subskill selected by aoa-eval to mine .aoa session evidence for missed eval triggers after source and owner gates."
+    },
+    {
       "name": "aoa-invariant-coverage-audit",
       "scope": "core",
       "invocation_mode": "explicit-preferred",

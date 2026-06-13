@@ -91,6 +91,60 @@
           "trust_posture": "portable-core"
         },
         {
+          "name": "aoa-eval",
+          "source_path": ".agents/skills/aoa-eval/SKILL.md",
+          "target_path": ".agents/skills/aoa-eval/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-eval/agents/openai.yaml",
+          "allow_implicit_invocation": true,
+          "implicit_activation_policy": "invoke",
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-eval-select",
+          "source_path": ".agents/skills/aoa-eval-select/SKILL.md",
+          "target_path": ".agents/skills/aoa-eval-select/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-eval-select/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "implicit_activation_policy": "manual",
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-eval-apply",
+          "source_path": ".agents/skills/aoa-eval-apply/SKILL.md",
+          "target_path": ".agents/skills/aoa-eval-apply/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-eval-apply/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "implicit_activation_policy": "manual",
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-eval-local-need",
+          "source_path": ".agents/skills/aoa-eval-local-need/SKILL.md",
+          "target_path": ".agents/skills/aoa-eval-local-need/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-eval-local-need/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "implicit_activation_policy": "manual",
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-eval-design",
+          "source_path": ".agents/skills/aoa-eval-design/SKILL.md",
+          "target_path": ".agents/skills/aoa-eval-design/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-eval-design/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "implicit_activation_policy": "manual",
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-eval-session-mining",
+          "source_path": ".agents/skills/aoa-eval-session-mining/SKILL.md",
+          "target_path": ".agents/skills/aoa-eval-session-mining/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-eval-session-mining/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "implicit_activation_policy": "manual",
+          "trust_posture": "portable-core"
+        },
+        {
           "name": "aoa-commit-growth-seam",
           "source_path": ".agents/skills/aoa-commit-growth-seam/SKILL.md",
           "target_path": ".agents/skills/aoa-commit-growth-seam/SKILL.md",

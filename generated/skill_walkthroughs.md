@@ -708,6 +708,206 @@ Common expand sections:
 - `promotion_review`: `docs/reviews/status-promotions/aoa-dry-run-first.md`
 - `candidate_review`: `docs/reviews/canonical-candidates/aoa-dry-run-first.md`
 
+## aoa-eval
+
+- scope: `core`
+- status: `scaffold`
+- invocation mode: `explicit-preferred`
+- skill path: `skills/core/engineering/aoa-eval/SKILL.md`
+- pick summary: Route AoA eval-lane work by finding existing local or central eval surfaces first, then selecting apply, local-need, design, or session-mining without moving proof authority.
+
+### Use when
+
+- the user asks whether an eval exists, whether one should be added, or how to connect evals to a repository
+- a repeated failure, validation gap, proof gap, regression, trigger miss, or local evals/ port appears during repository work
+- the task mentions aoa-evals, aoa-evals-mcp, local eval ports, eval intake, graders, traces, regressions, validators, tests, or scripts as evaluation surfaces
+- session evidence may reveal missed eval moments, but only after web and repo owner surfaces have been checked
+- a route must separate proof authority, local intake pressure, MCP access, and raw session evidence
+
+### Do not use when
+
+- the task is only to add an ordinary unit test with no eval routing question use the normal engineering workflow or aoa-contract-test
+- the task is only to find source authority; use aoa-source-of-truth-check
+- the task is only to record or correct durable rationale; use aoa-decision
+- the task is only memory candidate writeback; use aoa-memo-writeback
+- the user explicitly asks to edit central aoa-evals proof doctrine; route to the aoa-evals repo and its validators instead of making this skill the owner
+
+### Object use shape
+
+- exactly one chosen route: aoa-eval-select, aoa-eval-apply, aoa-eval-local-need, aoa-eval-design, or aoa-eval-session-mining
+- owner-boundary statement naming proof owner, local port owner, and any MCP or aoa evidence role
+- selected existing eval, validation command, intake packet path, draft suite, or session-mining report
+- stop line when no owner surface is safe to write
+
+### Support artifacts
+
+- `runtime_example` (selected): `skills/core/engineering/aoa-eval/examples/runtime.md`
+
+## aoa-eval-apply
+
+- scope: `core`
+- status: `scaffold`
+- invocation mode: `explicit-preferred`
+- skill path: `skills/core/engineering/aoa-eval-apply/SKILL.md`
+- pick summary: Run or route an already selected eval, validator, test, or script, then report what the evidence proves and what remains unproven.
+
+### Use when
+
+- an existing eval, validator, test, or script has already been selected
+- a local or central evaluation command should be run or routed
+- the user needs to know what the run proves, what failed, and what remains outside coverage
+- generated outputs need to be rebuilt or checked as part of the selected eval
+
+### Do not use when
+
+- no existing eval has been selected yet; use aoa-eval-select
+- the next honest move is to record missing eval pressure; use aoa-eval-local-need
+- the task is to invent a new suite; use aoa-eval-design
+- the command would mutate production or central proof surfaces without owner permission
+
+### Object use shape
+
+- commands run and results observed
+- artifacts or reports produced
+- evidence classification: green proof, regression, inconclusive, blocked, or outside coverage
+- next route if failure should become an intake need or suite design
+
+### Support artifacts
+
+- `runtime_example` (selected): `skills/core/engineering/aoa-eval-apply/examples/runtime.md`
+
+## aoa-eval-design
+
+- scope: `core`
+- status: `scaffold`
+- invocation mode: `explicit-preferred`
+- skill path: `skills/core/engineering/aoa-eval-design/SKILL.md`
+- pick summary: Design a local eval suite or report after selection fails, using deterministic checks first and leaving central proof acceptance to aoa-evals.
+
+### Use when
+
+- a local eval needs design from a clear failure mode or missing invariant
+- deterministic tests, validators, or scripts should be planned before rubric or transcript graders
+- positive, negative, collision, or regression cases need to be shaped for a local repo
+- the output is a draft suite or report, not central proof acceptance
+
+### Do not use when
+
+- an existing eval should simply run now
+- the right next artifact is only an intake pressure packet
+- the invariant is unknown and discovery is still needed
+- the user asks for central aoa-evals proof doctrine changes
+
+### Object use shape
+
+- draft suite structure, report plan, fixture set, or validator design
+- positive, negative, and regression cases
+- deterministic checks first, rubric or trace review only when needed
+- proof limit and owner handoff
+
+### Support artifacts
+
+- `runtime_example` (selected): `skills/core/engineering/aoa-eval-design/examples/runtime.md`
+
+## aoa-eval-local-need
+
+- scope: `core`
+- status: `scaffold`
+- invocation mode: `explicit-preferred`
+- skill path: `skills/core/engineering/aoa-eval-local-need/SKILL.md`
+- pick summary: Create a repo-local eval need packet when no existing eval fits, preserving owner route, evidence, rejected alternatives, and proof limits.
+
+### Use when
+
+- a local repository needs an eval pressure packet but not a central proof bundle yet
+- no existing local validator, test, script, or central eval bundle covers the failure or behavior
+- a repeated session or implementation failure needs owner-routed follow-up
+- the right next artifact is evals/intake/.evalneed.json
+
+### Do not use when
+
+- an existing eval can be applied now
+- the missing object is a memory candidate, decision record, or source-truth map
+- the target repo has no local eval port and no owner permission to create one
+- the user asks for central aoa-evals proof acceptance
+
+### Object use shape
+
+- one repo-local eval need packet under evals/intake/
+- no central proof verdict
+- named next review or design route
+- validation result for the local port shape when available
+
+### Support artifacts
+
+- `runtime_example` (selected): `skills/core/engineering/aoa-eval-local-need/examples/runtime.md`
+
+## aoa-eval-select
+
+- scope: `core`
+- status: `scaffold`
+- invocation mode: `explicit-preferred`
+- skill path: `skills/core/engineering/aoa-eval-select/SKILL.md`
+- pick summary: Inspect central and repo-local eval surfaces before new work, then select the smallest existing eval, validator, test, or stop line.
+
+### Use when
+
+- a task asks which eval should be used for a change, failure, or regression
+- a repository has a local evals/ port and the agent needs to inspect it before writing anything new
+- central aoa-evals may already contain the relevant proof pattern or local port contract
+- existing validators, tests, or scripts may be the honest eval surface
+
+### Do not use when
+
+- an already selected eval simply needs to be run; use aoa-eval-apply
+- no eval exists and the next move is a local intake packet; use aoa-eval-local-need
+- the user asks for a new suite design after selection has already failed; use aoa-eval-design
+- source authority rather than eval coverage is the problem
+
+### Object use shape
+
+- selected existing eval, validator, test, script, or report surface
+- reason the surface fits or does not fit
+- owner and proof-authority classification
+- next route: apply, local need, design, or stop
+
+### Support artifacts
+
+- `runtime_example` (selected): `skills/core/engineering/aoa-eval-select/examples/runtime.md`
+
+## aoa-eval-session-mining
+
+- scope: `core`
+- status: `scaffold`
+- invocation mode: `explicit-preferred`
+- skill path: `skills/core/engineering/aoa-eval-session-mining/SKILL.md`
+- pick summary: Mine .aoa session evidence for missed eval triggers only after web and repo owner surfaces are checked, producing candidate refs rather than proof.
+
+### Use when
+
+- the user asks to study sessions for eval moments, missed triggers, regressions, or repeated failures
+- repo and web research has already defined candidate trigger classes
+- aoa search hits can reveal real prompts, failures, validations, or corrections that should become eval cases
+- the output should be candidate evidence with raw/segment refs and freshness
+
+### Do not use when
+
+- the task is only .aoa preservation, hook repair, or search-index maintenance
+- a current repository source file can answer the question without session mining
+- session evidence would be treated as reviewed proof
+- memory writeback, decision records, or checkpoint closeout are the real owner routes
+
+### Object use shape
+
+- missed-trigger examples with session id, label, segment, event, raw ref, and freshness
+- candidate eval-case themes and owner routes
+- rejected examples and nearest wrong owner routes
+- local intake or design handoff when evidence is strong enough
+
+### Support artifacts
+
+- `runtime_example` (selected): `skills/core/engineering/aoa-eval-session-mining/examples/runtime.md`
+
 ## aoa-invariant-coverage-audit
 
 - scope: `core`

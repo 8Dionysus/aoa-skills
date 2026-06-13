@@ -96,6 +96,32 @@
       ]
     },
     {
+      "id": "eval-proof-routing",
+      "summary": "Eval-lane routing across existing proof surfaces, local eval ports, validators, tests, scripts, and session-derived trigger pressure.",
+      "cues": [
+        "eval lane",
+        "aoa evals",
+        "aoa evals mcp",
+        "local eval port",
+        "eval intake",
+        "existing eval",
+        "run selected eval",
+        "design eval suite",
+        "session eval trigger",
+        "trace regression",
+        "validator as eval",
+        "proof limit"
+      ],
+      "skills": [
+        "aoa-eval",
+        "aoa-eval-select",
+        "aoa-eval-apply",
+        "aoa-eval-local-need",
+        "aoa-eval-design",
+        "aoa-eval-session-mining"
+      ]
+    },
+    {
       "id": "quest-harvest-governance",
       "summary": "Post-session donor harvest, memo writeback, checkpoint closeout bridge, automation opportunity scanning, route forks, diagnosis, repair, progression, and quest promotion triage for reviewed session artifacts or repeated reviewed patterns.",
       "cues": [
@@ -345,6 +371,112 @@
       "negative_cues": [
         "plain lookup only",
         "new decision record"
+      ]
+    },
+    "aoa-eval": {
+      "band": "eval-proof-routing",
+      "positive_cues": [
+        "eval lane",
+        "existing eval first",
+        "local eval port",
+        "aoa evals mcp",
+        "eval intake",
+        "session eval trigger",
+        "validator as eval",
+        "proof owner boundary"
+      ],
+      "negative_cues": [
+        "ordinary unit test only",
+        "source of truth mapping",
+        "decision record",
+        "memo writeback",
+        "central proof edit only"
+      ]
+    },
+    "aoa-eval-apply": {
+      "band": "eval-proof-routing",
+      "positive_cues": [
+        "run selected eval",
+        "apply existing validator",
+        "selected test command",
+        "eval evidence report",
+        "generated drift check",
+        "proof limits"
+      ],
+      "negative_cues": [
+        "no eval selected yet",
+        "design new suite",
+        "record intake need",
+        "central proof promotion"
+      ]
+    },
+    "aoa-eval-design": {
+      "band": "eval-proof-routing",
+      "positive_cues": [
+        "design eval suite",
+        "local eval draft",
+        "positive negative cases",
+        "collision cases",
+        "trace rubric",
+        "deterministic checks first"
+      ],
+      "negative_cues": [
+        "existing eval should run",
+        "intake packet only",
+        "central proof doctrine",
+        "ordinary test fix"
+      ]
+    },
+    "aoa-eval-local-need": {
+      "band": "eval-proof-routing",
+      "positive_cues": [
+        "eval need packet",
+        "evals intake",
+        "no existing eval fits",
+        "missing eval pressure",
+        "rejected alternatives",
+        "local proof limit"
+      ],
+      "negative_cues": [
+        "existing eval can run",
+        "memo candidate",
+        "decision candidate",
+        "central aoa evals acceptance"
+      ]
+    },
+    "aoa-eval-select": {
+      "band": "eval-proof-routing",
+      "positive_cues": [
+        "select existing eval",
+        "inspect eval port",
+        "find validator surface",
+        "central eval standard",
+        "which eval applies",
+        "no fit route"
+      ],
+      "negative_cues": [
+        "already selected eval",
+        "no fit already established",
+        "source authority problem",
+        "write new eval immediately"
+      ]
+    },
+    "aoa-eval-session-mining": {
+      "band": "eval-proof-routing",
+      "positive_cues": [
+        "session eval mining",
+        "missed eval trigger",
+        "session derived eval case",
+        "raw segment refs",
+        "trace regression candidate",
+        "freshness"
+      ],
+      "negative_cues": [
+        "raw aoa preservation",
+        "hook repair only",
+        "search index maintenance",
+        "memo writeback",
+        "reviewed proof"
       ]
     },
     "aoa-commit-growth-seam": {
@@ -993,6 +1125,45 @@
     }
   },
   "companions": {
+    "aoa-eval": [
+      "aoa-eval-select",
+      "aoa-eval-apply",
+      "aoa-eval-local-need",
+      "aoa-eval-design",
+      "aoa-eval-session-mining",
+      "aoa-contract-test",
+      "aoa-invariant-coverage-audit"
+    ],
+    "aoa-eval-select": [
+      "aoa-eval",
+      "aoa-eval-apply",
+      "aoa-eval-local-need",
+      "aoa-eval-design"
+    ],
+    "aoa-eval-apply": [
+      "aoa-eval",
+      "aoa-eval-select",
+      "aoa-eval-local-need",
+      "aoa-contract-test"
+    ],
+    "aoa-eval-local-need": [
+      "aoa-eval",
+      "aoa-eval-select",
+      "aoa-eval-design",
+      "aoa-memo-writeback"
+    ],
+    "aoa-eval-design": [
+      "aoa-eval",
+      "aoa-eval-select",
+      "aoa-eval-local-need",
+      "aoa-property-invariants"
+    ],
+    "aoa-eval-session-mining": [
+      "aoa-eval",
+      "aoa-eval-local-need",
+      "aoa-eval-design",
+      "aoa-memo-writeback"
+    ],
     "aoa-adr-write": [
       "aoa-source-of-truth-check"
     ],

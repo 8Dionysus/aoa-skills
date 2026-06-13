@@ -187,6 +187,66 @@
       "description_sha256": "1a18696fe0798220e72c2582a17829dd4f8656cbd651bb2bae757039332b20bc"
     },
     {
+      "skill_name": "aoa-eval",
+      "path": ".agents/skills/aoa-eval",
+      "command": [
+        "skills-ref",
+        "validate",
+        ".agents/skills/aoa-eval"
+      ],
+      "description_sha256": "90ab0b8c48c88232da88d7f22621c6aaf1527c697b15d0a14975bbea0d0e9cb0"
+    },
+    {
+      "skill_name": "aoa-eval-apply",
+      "path": ".agents/skills/aoa-eval-apply",
+      "command": [
+        "skills-ref",
+        "validate",
+        ".agents/skills/aoa-eval-apply"
+      ],
+      "description_sha256": "5b3193acd2aa17bf9e4e5df832c79f1d245601a9bcc78a3bf826f05e67cb6b11"
+    },
+    {
+      "skill_name": "aoa-eval-design",
+      "path": ".agents/skills/aoa-eval-design",
+      "command": [
+        "skills-ref",
+        "validate",
+        ".agents/skills/aoa-eval-design"
+      ],
+      "description_sha256": "0a71f12f9345a72eb52990ac72c66be2a8076a47163c0aa167d1ea9be09ef3ca"
+    },
+    {
+      "skill_name": "aoa-eval-local-need",
+      "path": ".agents/skills/aoa-eval-local-need",
+      "command": [
+        "skills-ref",
+        "validate",
+        ".agents/skills/aoa-eval-local-need"
+      ],
+      "description_sha256": "cc830ecdad58d6943fe61004ef48f6dd61d2a2cd3d62a1eaa0ea375331945d77"
+    },
+    {
+      "skill_name": "aoa-eval-select",
+      "path": ".agents/skills/aoa-eval-select",
+      "command": [
+        "skills-ref",
+        "validate",
+        ".agents/skills/aoa-eval-select"
+      ],
+      "description_sha256": "0be63765d3caff0555b4090b46e68d0ce4d394c39cfbc76b76302a1e5e883636"
+    },
+    {
+      "skill_name": "aoa-eval-session-mining",
+      "path": ".agents/skills/aoa-eval-session-mining",
+      "command": [
+        "skills-ref",
+        "validate",
+        ".agents/skills/aoa-eval-session-mining"
+      ],
+      "description_sha256": "04d539551d617733107494195dc8cffead04bf175349a30b872dbe709798c31c"
+    },
+    {
       "skill_name": "aoa-invariant-coverage-audit",
       "path": ".agents/skills/aoa-invariant-coverage-audit",
       "command": [

@@ -6,7 +6,7 @@ evaluation fixtures, and authored snapshot-backed evidence files.
 
 ## Summary
 
-- total skills: 50
+- total skills: 56
 - canonical skills: 12
 - canonical skills with eval gaps: 0
 
@@ -29,6 +29,12 @@ evaluation fixtures, and authored snapshot-backed evidence files.
 | aoa-decision-create | evaluated | core | explicit-preferred | 1 | 1 | 1 | 1 | 1 | `skills/core/engineering/aoa-decision-create/checks/review.md` | `docs/reviews/status-promotions/aoa-decision-create.md` | - | true | - |
 | aoa-decision-find | evaluated | core | explicit-preferred | 1 | 1 | 1 | 1 | 1 | `skills/core/engineering/aoa-decision-find/checks/review.md` | `docs/reviews/status-promotions/aoa-decision-find.md` | - | true | - |
 | aoa-dry-run-first | canonical | risk | explicit-only | 1 | 1 | 2 | 1 | 1 | `skills/risk/aoa-dry-run-first/examples/runtime.md` | `docs/reviews/status-promotions/aoa-dry-run-first.md` | `docs/reviews/canonical-candidates/aoa-dry-run-first.md` | true | - |
+| aoa-eval | scaffold | core | explicit-preferred | 1 | 1 | 1 | 1 | 1 | `skills/core/engineering/aoa-eval/examples/runtime.md` | - | - | true | - |
+| aoa-eval-apply | scaffold | core | explicit-preferred | 1 | 1 | 1 | 1 | 1 | `skills/core/engineering/aoa-eval-apply/examples/runtime.md` | - | - | true | - |
+| aoa-eval-design | scaffold | core | explicit-preferred | 1 | 1 | 1 | 1 | 1 | `skills/core/engineering/aoa-eval-design/examples/runtime.md` | - | - | true | - |
+| aoa-eval-local-need | scaffold | core | explicit-preferred | 1 | 1 | 1 | 1 | 1 | `skills/core/engineering/aoa-eval-local-need/examples/runtime.md` | - | - | true | - |
+| aoa-eval-select | scaffold | core | explicit-preferred | 1 | 1 | 1 | 1 | 1 | `skills/core/engineering/aoa-eval-select/examples/runtime.md` | - | - | true | - |
+| aoa-eval-session-mining | scaffold | core | explicit-preferred | 1 | 1 | 1 | 1 | 1 | `skills/core/engineering/aoa-eval-session-mining/examples/runtime.md` | - | - | true | - |
 | aoa-invariant-coverage-audit | canonical | core | explicit-preferred | 1 | 1 | 1 | 1 | 1 | `skills/core/engineering/aoa-invariant-coverage-audit/examples/example.md` | `docs/reviews/status-promotions/aoa-invariant-coverage-audit.md` | `docs/reviews/canonical-candidates/aoa-invariant-coverage-audit.md` | true | - |
 | aoa-local-stack-bringup | evaluated | risk | explicit-only | 1 | 1 | 1 | 1 | 1 | `skills/risk/aoa-local-stack-bringup/examples/runtime.md` | `docs/reviews/status-promotions/aoa-local-stack-bringup.md` | `docs/reviews/canonical-candidates/aoa-local-stack-bringup.md` | true | - |
 | aoa-memo-writeback | scaffold | core | explicit-preferred | 1 | 1 | 1 | 1 | 1 | `skills/core/session-growth/aoa-memo-writeback/examples/runtime.md` | - | - | true | - |

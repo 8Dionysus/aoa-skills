@@ -994,6 +994,336 @@
       "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, assets, checks, and examples do not trigger per-file permission prompts."
     },
     {
+      "name": "aoa-eval",
+      "display_name": "AoA Eval",
+      "source_scope": "repo",
+      "allowlist_id": "skill:aoa-eval",
+      "read_access": "read-only",
+      "merge_strategy": "union-active-skills",
+      "path_templates": {
+        "repo": [
+          "$REPO_ROOT/.agents/skills/aoa-eval",
+          "$REPO_ROOT/.agents/skills/aoa-eval/scripts",
+          "$REPO_ROOT/.agents/skills/aoa-eval/references",
+          "$REPO_ROOT/.agents/skills/aoa-eval/assets",
+          "$REPO_ROOT/.agents/skills/aoa-eval/checks",
+          "$REPO_ROOT/.agents/skills/aoa-eval/examples"
+        ],
+        "user": [
+          "$HOME/.agents/skills/aoa-eval",
+          "$HOME/.agents/skills/aoa-eval/scripts",
+          "$HOME/.agents/skills/aoa-eval/references",
+          "$HOME/.agents/skills/aoa-eval/assets",
+          "$HOME/.agents/skills/aoa-eval/checks",
+          "$HOME/.agents/skills/aoa-eval/examples"
+        ],
+        "admin": [
+          "/etc/codex/skills/aoa-eval",
+          "/etc/codex/skills/aoa-eval/scripts",
+          "/etc/codex/skills/aoa-eval/references",
+          "/etc/codex/skills/aoa-eval/assets",
+          "/etc/codex/skills/aoa-eval/checks",
+          "/etc/codex/skills/aoa-eval/examples"
+        ]
+      },
+      "repo_relative_paths": [
+        ".agents/skills/aoa-eval",
+        ".agents/skills/aoa-eval/scripts",
+        ".agents/skills/aoa-eval/references",
+        ".agents/skills/aoa-eval/assets",
+        ".agents/skills/aoa-eval/checks",
+        ".agents/skills/aoa-eval/examples"
+      ],
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ],
+        "checks": [],
+        "examples": [
+          "examples/runtime.md"
+        ]
+      },
+      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, assets, checks, and examples do not trigger per-file permission prompts."
+    },
+    {
+      "name": "aoa-eval-apply",
+      "display_name": "AoA Eval Apply",
+      "source_scope": "repo",
+      "allowlist_id": "skill:aoa-eval-apply",
+      "read_access": "read-only",
+      "merge_strategy": "union-active-skills",
+      "path_templates": {
+        "repo": [
+          "$REPO_ROOT/.agents/skills/aoa-eval-apply",
+          "$REPO_ROOT/.agents/skills/aoa-eval-apply/scripts",
+          "$REPO_ROOT/.agents/skills/aoa-eval-apply/references",
+          "$REPO_ROOT/.agents/skills/aoa-eval-apply/assets",
+          "$REPO_ROOT/.agents/skills/aoa-eval-apply/checks",
+          "$REPO_ROOT/.agents/skills/aoa-eval-apply/examples"
+        ],
+        "user": [
+          "$HOME/.agents/skills/aoa-eval-apply",
+          "$HOME/.agents/skills/aoa-eval-apply/scripts",
+          "$HOME/.agents/skills/aoa-eval-apply/references",
+          "$HOME/.agents/skills/aoa-eval-apply/assets",
+          "$HOME/.agents/skills/aoa-eval-apply/checks",
+          "$HOME/.agents/skills/aoa-eval-apply/examples"
+        ],
+        "admin": [
+          "/etc/codex/skills/aoa-eval-apply",
+          "/etc/codex/skills/aoa-eval-apply/scripts",
+          "/etc/codex/skills/aoa-eval-apply/references",
+          "/etc/codex/skills/aoa-eval-apply/assets",
+          "/etc/codex/skills/aoa-eval-apply/checks",
+          "/etc/codex/skills/aoa-eval-apply/examples"
+        ]
+      },
+      "repo_relative_paths": [
+        ".agents/skills/aoa-eval-apply",
+        ".agents/skills/aoa-eval-apply/scripts",
+        ".agents/skills/aoa-eval-apply/references",
+        ".agents/skills/aoa-eval-apply/assets",
+        ".agents/skills/aoa-eval-apply/checks",
+        ".agents/skills/aoa-eval-apply/examples"
+      ],
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ],
+        "checks": [],
+        "examples": [
+          "examples/runtime.md"
+        ]
+      },
+      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, assets, checks, and examples do not trigger per-file permission prompts."
+    },
+    {
+      "name": "aoa-eval-design",
+      "display_name": "AoA Eval Design",
+      "source_scope": "repo",
+      "allowlist_id": "skill:aoa-eval-design",
+      "read_access": "read-only",
+      "merge_strategy": "union-active-skills",
+      "path_templates": {
+        "repo": [
+          "$REPO_ROOT/.agents/skills/aoa-eval-design",
+          "$REPO_ROOT/.agents/skills/aoa-eval-design/scripts",
+          "$REPO_ROOT/.agents/skills/aoa-eval-design/references",
+          "$REPO_ROOT/.agents/skills/aoa-eval-design/assets",
+          "$REPO_ROOT/.agents/skills/aoa-eval-design/checks",
+          "$REPO_ROOT/.agents/skills/aoa-eval-design/examples"
+        ],
+        "user": [
+          "$HOME/.agents/skills/aoa-eval-design",
+          "$HOME/.agents/skills/aoa-eval-design/scripts",
+          "$HOME/.agents/skills/aoa-eval-design/references",
+          "$HOME/.agents/skills/aoa-eval-design/assets",
+          "$HOME/.agents/skills/aoa-eval-design/checks",
+          "$HOME/.agents/skills/aoa-eval-design/examples"
+        ],
+        "admin": [
+          "/etc/codex/skills/aoa-eval-design",
+          "/etc/codex/skills/aoa-eval-design/scripts",
+          "/etc/codex/skills/aoa-eval-design/references",
+          "/etc/codex/skills/aoa-eval-design/assets",
+          "/etc/codex/skills/aoa-eval-design/checks",
+          "/etc/codex/skills/aoa-eval-design/examples"
+        ]
+      },
+      "repo_relative_paths": [
+        ".agents/skills/aoa-eval-design",
+        ".agents/skills/aoa-eval-design/scripts",
+        ".agents/skills/aoa-eval-design/references",
+        ".agents/skills/aoa-eval-design/assets",
+        ".agents/skills/aoa-eval-design/checks",
+        ".agents/skills/aoa-eval-design/examples"
+      ],
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ],
+        "checks": [],
+        "examples": [
+          "examples/runtime.md"
+        ]
+      },
+      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, assets, checks, and examples do not trigger per-file permission prompts."
+    },
+    {
+      "name": "aoa-eval-local-need",
+      "display_name": "AoA Eval Local Need",
+      "source_scope": "repo",
+      "allowlist_id": "skill:aoa-eval-local-need",
+      "read_access": "read-only",
+      "merge_strategy": "union-active-skills",
+      "path_templates": {
+        "repo": [
+          "$REPO_ROOT/.agents/skills/aoa-eval-local-need",
+          "$REPO_ROOT/.agents/skills/aoa-eval-local-need/scripts",
+          "$REPO_ROOT/.agents/skills/aoa-eval-local-need/references",
+          "$REPO_ROOT/.agents/skills/aoa-eval-local-need/assets",
+          "$REPO_ROOT/.agents/skills/aoa-eval-local-need/checks",
+          "$REPO_ROOT/.agents/skills/aoa-eval-local-need/examples"
+        ],
+        "user": [
+          "$HOME/.agents/skills/aoa-eval-local-need",
+          "$HOME/.agents/skills/aoa-eval-local-need/scripts",
+          "$HOME/.agents/skills/aoa-eval-local-need/references",
+          "$HOME/.agents/skills/aoa-eval-local-need/assets",
+          "$HOME/.agents/skills/aoa-eval-local-need/checks",
+          "$HOME/.agents/skills/aoa-eval-local-need/examples"
+        ],
+        "admin": [
+          "/etc/codex/skills/aoa-eval-local-need",
+          "/etc/codex/skills/aoa-eval-local-need/scripts",
+          "/etc/codex/skills/aoa-eval-local-need/references",
+          "/etc/codex/skills/aoa-eval-local-need/assets",
+          "/etc/codex/skills/aoa-eval-local-need/checks",
+          "/etc/codex/skills/aoa-eval-local-need/examples"
+        ]
+      },
+      "repo_relative_paths": [
+        ".agents/skills/aoa-eval-local-need",
+        ".agents/skills/aoa-eval-local-need/scripts",
+        ".agents/skills/aoa-eval-local-need/references",
+        ".agents/skills/aoa-eval-local-need/assets",
+        ".agents/skills/aoa-eval-local-need/checks",
+        ".agents/skills/aoa-eval-local-need/examples"
+      ],
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ],
+        "checks": [],
+        "examples": [
+          "examples/runtime.md"
+        ]
+      },
+      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, assets, checks, and examples do not trigger per-file permission prompts."
+    },
+    {
+      "name": "aoa-eval-select",
+      "display_name": "AoA Eval Select",
+      "source_scope": "repo",
+      "allowlist_id": "skill:aoa-eval-select",
+      "read_access": "read-only",
+      "merge_strategy": "union-active-skills",
+      "path_templates": {
+        "repo": [
+          "$REPO_ROOT/.agents/skills/aoa-eval-select",
+          "$REPO_ROOT/.agents/skills/aoa-eval-select/scripts",
+          "$REPO_ROOT/.agents/skills/aoa-eval-select/references",
+          "$REPO_ROOT/.agents/skills/aoa-eval-select/assets",
+          "$REPO_ROOT/.agents/skills/aoa-eval-select/checks",
+          "$REPO_ROOT/.agents/skills/aoa-eval-select/examples"
+        ],
+        "user": [
+          "$HOME/.agents/skills/aoa-eval-select",
+          "$HOME/.agents/skills/aoa-eval-select/scripts",
+          "$HOME/.agents/skills/aoa-eval-select/references",
+          "$HOME/.agents/skills/aoa-eval-select/assets",
+          "$HOME/.agents/skills/aoa-eval-select/checks",
+          "$HOME/.agents/skills/aoa-eval-select/examples"
+        ],
+        "admin": [
+          "/etc/codex/skills/aoa-eval-select",
+          "/etc/codex/skills/aoa-eval-select/scripts",
+          "/etc/codex/skills/aoa-eval-select/references",
+          "/etc/codex/skills/aoa-eval-select/assets",
+          "/etc/codex/skills/aoa-eval-select/checks",
+          "/etc/codex/skills/aoa-eval-select/examples"
+        ]
+      },
+      "repo_relative_paths": [
+        ".agents/skills/aoa-eval-select",
+        ".agents/skills/aoa-eval-select/scripts",
+        ".agents/skills/aoa-eval-select/references",
+        ".agents/skills/aoa-eval-select/assets",
+        ".agents/skills/aoa-eval-select/checks",
+        ".agents/skills/aoa-eval-select/examples"
+      ],
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ],
+        "checks": [],
+        "examples": [
+          "examples/runtime.md"
+        ]
+      },
+      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, assets, checks, and examples do not trigger per-file permission prompts."
+    },
+    {
+      "name": "aoa-eval-session-mining",
+      "display_name": "AoA Eval Session Mining",
+      "source_scope": "repo",
+      "allowlist_id": "skill:aoa-eval-session-mining",
+      "read_access": "read-only",
+      "merge_strategy": "union-active-skills",
+      "path_templates": {
+        "repo": [
+          "$REPO_ROOT/.agents/skills/aoa-eval-session-mining",
+          "$REPO_ROOT/.agents/skills/aoa-eval-session-mining/scripts",
+          "$REPO_ROOT/.agents/skills/aoa-eval-session-mining/references",
+          "$REPO_ROOT/.agents/skills/aoa-eval-session-mining/assets",
+          "$REPO_ROOT/.agents/skills/aoa-eval-session-mining/checks",
+          "$REPO_ROOT/.agents/skills/aoa-eval-session-mining/examples"
+        ],
+        "user": [
+          "$HOME/.agents/skills/aoa-eval-session-mining",
+          "$HOME/.agents/skills/aoa-eval-session-mining/scripts",
+          "$HOME/.agents/skills/aoa-eval-session-mining/references",
+          "$HOME/.agents/skills/aoa-eval-session-mining/assets",
+          "$HOME/.agents/skills/aoa-eval-session-mining/checks",
+          "$HOME/.agents/skills/aoa-eval-session-mining/examples"
+        ],
+        "admin": [
+          "/etc/codex/skills/aoa-eval-session-mining",
+          "/etc/codex/skills/aoa-eval-session-mining/scripts",
+          "/etc/codex/skills/aoa-eval-session-mining/references",
+          "/etc/codex/skills/aoa-eval-session-mining/assets",
+          "/etc/codex/skills/aoa-eval-session-mining/checks",
+          "/etc/codex/skills/aoa-eval-session-mining/examples"
+        ]
+      },
+      "repo_relative_paths": [
+        ".agents/skills/aoa-eval-session-mining",
+        ".agents/skills/aoa-eval-session-mining/scripts",
+        ".agents/skills/aoa-eval-session-mining/references",
+        ".agents/skills/aoa-eval-session-mining/assets",
+        ".agents/skills/aoa-eval-session-mining/checks",
+        ".agents/skills/aoa-eval-session-mining/examples"
+      ],
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ],
+        "checks": [],
+        "examples": [
+          "examples/runtime.md"
+        ]
+      },
+      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, assets, checks, and examples do not trigger per-file permission prompts."
+    },
+    {
       "name": "aoa-invariant-coverage-audit",
       "display_name": "AoA Invariant Coverage Audit",
       "source_scope": "repo",

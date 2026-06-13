@@ -1331,6 +1331,392 @@
       }
     },
     {
+      "name": "aoa-eval",
+      "display_name": "AoA Eval",
+      "description": "Route AoA eval-lane work by checking existing local and central eval surfaces first, then choosing apply, local intake need, local design, or session mining while preserving owner boundaries. Use when a task asks whether an eval exists, whether one should be added, how local evals connect to aoa-evals, or how validators, tests, scripts, traces, regressions, trigger misses, local eval ports, or aoa-evals-mcp should be used as evaluation surfaces. Do not use for ordinary one-off tests, source-of-truth mapping, decision records, memo writeback, or direct central aoa-evals proof-authority edits.",
+      "invocation_mode": "explicit-preferred",
+      "inputs": [
+        "user intent, target repository, touched paths, failure mode, or eval name",
+        "local `evals/PORT.yaml`, `evals/intake/`, scripts, tests, validators, and repo route cards",
+        "central `aoa-evals` docs, schemas, validators, reports, and review surfaces",
+        "`aoa-evals-mcp` packets when available, treated as access-plane data",
+        "`.aoa` search hits, segments, raw refs, and freshness only when session mining is the chosen route"
+      ],
+      "outputs": [
+        "exactly one chosen route: `aoa-eval-select`, `aoa-eval-apply`, `aoa-eval-local-need`, `aoa-eval-design`, or `aoa-eval-session-mining`",
+        "owner-boundary statement naming proof owner, local port owner, and any MCP or `.aoa` evidence role",
+        "selected existing eval, validation command, intake packet path, draft suite, or session-mining report",
+        "stop line when no owner surface is safe to write"
+      ],
+      "verification": [
+        "confirm exactly one subskill route was selected",
+        "confirm local `evals/PORT.yaml` was inspected or the absence was named",
+        "confirm central `aoa-evals` authority was kept separate from local intake",
+        "confirm existing scripts, tests, and validators were considered before new design",
+        "confirm `.aoa` evidence is marked candidate-only when used",
+        "confirm any generated or derived surfaces were rebuilt through owner builders",
+        "confirm final report names validation and skipped checks"
+      ],
+      "contracts": [
+        "`aoa-evals` owns proof doctrine and central eval verdicts",
+        "local repositories own their `evals/` ports and can hold intake pressure without becoming proof authorities",
+        "`.aoa` raw traces are candidate evidence, not reviewed truth",
+        "MCP tools are access planes and must not silently promote local pressure into central proof",
+        "the router chooses one subskill to control scope and avoid mixed authority",
+        "new evals should be created only after existing local and central surfaces were inspected"
+      ],
+      "consumes_artifact_tags": [
+        "user-intent-target-repository-touched-paths-failure-mode-or-eval",
+        "local-evals-port-yaml-evals-intake-scripts-tests-validators-and-",
+        "central-aoa-evals-docs-schemas-validators-reports-and-review-sur",
+        "aoa-evals-mcp-packets-when-available-treated-as-access-plane-dat",
+        "aoa-search-hits-segments-raw-refs-and-freshness-only-when-sessio"
+      ],
+      "provides_artifact_tags": [
+        "exactly-one-chosen-route-aoa-eval-select-aoa-eval-apply-aoa-eval",
+        "owner-boundary-statement-naming-proof-owner-local-port-owner-and",
+        "selected-existing-eval-validation-command-intake-packet-path-dra",
+        "stop-line-when-no-owner-surface-is-safe-to-write"
+      ],
+      "handoff_packet_template": {
+        "from_skill": "aoa-eval",
+        "produced_artifacts": [
+          "exactly-one-chosen-route-aoa-eval-select-aoa-eval-apply-aoa-eval",
+          "owner-boundary-statement-naming-proof-owner-local-port-owner-and",
+          "selected-existing-eval-validation-command-intake-packet-path-dra",
+          "stop-line-when-no-owner-surface-is-safe-to-write"
+        ],
+        "verification_notes": [
+          "confirm exactly one subskill route was selected",
+          "confirm local `evals/PORT.yaml` was inspected or the absence was named",
+          "confirm central `aoa-evals` authority was kept separate from local intake"
+        ],
+        "contract_notes": [
+          "`aoa-evals` owns proof doctrine and central eval verdicts",
+          "local repositories own their `evals/` ports and can hold intake pressure without becoming proof authorities",
+          "`.aoa` raw traces are candidate evidence, not reviewed truth"
+        ],
+        "next_recommended_skills": []
+      }
+    },
+    {
+      "name": "aoa-eval-apply",
+      "display_name": "AoA Eval Apply",
+      "description": "Run or route an already selected eval, validator, test, or script, then report command results, artifacts, generated drift, proof limits, and next route. Use when the eval surface is already selected and the task is to apply it rather than choose or design it. Do not use when no existing eval has been selected, when an intake need should be recorded first, or when central proof promotion is being requested.",
+      "invocation_mode": "explicit-preferred",
+      "inputs": [
+        "selected eval or validation command",
+        "repo-local route law and command prerequisites",
+        "expected artifacts, reports, generated outputs, and pass/fail criteria",
+        "prior failure or regression context"
+      ],
+      "outputs": [
+        "commands run and results observed",
+        "artifacts or reports produced",
+        "evidence classification: green proof, regression, inconclusive, blocked, or outside coverage",
+        "next route if failure should become an intake need or suite design"
+      ],
+      "verification": [
+        "confirm the selected eval existed before running",
+        "confirm command, cwd, and result",
+        "confirm artifacts and generated drift status",
+        "confirm proof limits and next route",
+        "confirm no central proof file was written through MCP"
+      ],
+      "contracts": [
+        "applying an eval does not create a central verdict unless `aoa-evals` owns and validates that promotion",
+        "failed or inconclusive runs are evidence, not permission to guess",
+        "generated drift must be resolved through owner builders",
+        "local eval reports must stay under local repo surfaces unless central review accepts them"
+      ],
+      "consumes_artifact_tags": [
+        "selected-eval-or-validation-command",
+        "repo-local-route-law-and-command-prerequisites",
+        "expected-artifacts-reports-generated-outputs-and-pass-fail-crite",
+        "prior-failure-or-regression-context"
+      ],
+      "provides_artifact_tags": [
+        "commands-run-and-results-observed",
+        "artifacts-or-reports-produced",
+        "evidence-classification-green-proof-regression-inconclusive-bloc",
+        "next-route-if-failure-should-become-an-intake-need-or-suite-desi"
+      ],
+      "handoff_packet_template": {
+        "from_skill": "aoa-eval-apply",
+        "produced_artifacts": [
+          "commands-run-and-results-observed",
+          "artifacts-or-reports-produced",
+          "evidence-classification-green-proof-regression-inconclusive-bloc",
+          "next-route-if-failure-should-become-an-intake-need-or-suite-desi"
+        ],
+        "verification_notes": [
+          "confirm the selected eval existed before running",
+          "confirm command, cwd, and result",
+          "confirm artifacts and generated drift status"
+        ],
+        "contract_notes": [
+          "applying an eval does not create a central verdict unless `aoa-evals` owns and validates that promotion",
+          "failed or inconclusive runs are evidence, not permission to guess",
+          "generated drift must be resolved through owner builders"
+        ],
+        "next_recommended_skills": []
+      }
+    },
+    {
+      "name": "aoa-eval-design",
+      "display_name": "AoA Eval Design",
+      "description": "Design a bounded local eval suite, prompt set, report, or validator plan after selection finds no adequate existing surface, using deterministic checks first and trace or rubric review only when needed. Use when a local eval needs positive, negative, collision, or regression cases around a clear behavior or invariant. Do not use when an existing eval should simply run, when only a local intake packet is needed, or when central aoa-evals proof doctrine is the target.",
+      "invocation_mode": "explicit-preferred",
+      "inputs": [
+        "selected failure mode, target behavior, invariant, or trigger boundary",
+        "local repo tests, scripts, validators, fixtures, generated surfaces, and `evals/` port",
+        "evidence refs and rejected existing evals",
+        "central `aoa-evals` standards when relevant"
+      ],
+      "outputs": [
+        "draft suite structure, report plan, fixture set, or validator design",
+        "positive, negative, and regression cases",
+        "deterministic checks first, rubric or trace review only when needed",
+        "proof limit and owner handoff"
+      ],
+      "verification": [
+        "confirm the target invariant or behavior is explicit",
+        "confirm positive, negative, and regression cases exist or are deliberately deferred",
+        "confirm deterministic checks were considered first",
+        "confirm local owner path and proof limit",
+        "confirm next runnable command or review route"
+      ],
+      "contracts": [
+        "design starts after selection fails, not before",
+        "local design remains local until central review accepts it",
+        "deterministic checks are preferred for coding-agent behavior",
+        "transcript and rubric grading are supporting layers when objective checks are insufficient"
+      ],
+      "consumes_artifact_tags": [
+        "selected-failure-mode-target-behavior-invariant-or-trigger-bound",
+        "local-repo-tests-scripts-validators-fixtures-generated-surfaces-",
+        "evidence-refs-and-rejected-existing-evals",
+        "central-aoa-evals-standards-when-relevant"
+      ],
+      "provides_artifact_tags": [
+        "draft-suite-structure-report-plan-fixture-set-or-validator-desig",
+        "positive-negative-and-regression-cases",
+        "deterministic-checks-first-rubric-or-trace-review-only-when-need",
+        "proof-limit-and-owner-handoff"
+      ],
+      "handoff_packet_template": {
+        "from_skill": "aoa-eval-design",
+        "produced_artifacts": [
+          "draft-suite-structure-report-plan-fixture-set-or-validator-desig",
+          "positive-negative-and-regression-cases",
+          "deterministic-checks-first-rubric-or-trace-review-only-when-need",
+          "proof-limit-and-owner-handoff"
+        ],
+        "verification_notes": [
+          "confirm the target invariant or behavior is explicit",
+          "confirm positive, negative, and regression cases exist or are deliberately deferred",
+          "confirm deterministic checks were considered first"
+        ],
+        "contract_notes": [
+          "design starts after selection fails, not before",
+          "local design remains local until central review accepts it",
+          "deterministic checks are preferred for coding-agent behavior"
+        ],
+        "next_recommended_skills": []
+      }
+    },
+    {
+      "name": "aoa-eval-local-need",
+      "display_name": "AoA Eval Local Need",
+      "description": "Create a repo-local eval need packet under evals/intake when no existing eval fits, preserving owner route, evidence refs, rejected alternatives, proposed checks, and proof limits. Use when a repeated failure or missing behavior needs local eval pressure without central proof acceptance. Do not use when an existing eval can be applied, when the missing object is a memo or decision, or when the user asks for central aoa-evals acceptance.",
+      "invocation_mode": "explicit-preferred",
+      "inputs": [
+        "target repository and local `evals/PORT.yaml`",
+        "failure or behavior needing evaluation",
+        "evidence refs, touched paths, expected invariant, and rejected existing surfaces",
+        "owner route and validation commands"
+      ],
+      "outputs": [
+        "one repo-local eval need packet under `evals/intake/`",
+        "no central proof verdict",
+        "named next review or design route",
+        "validation result for the local port shape when available"
+      ],
+      "verification": [
+        "confirm no existing eval fit",
+        "confirm the target repo owns the local port",
+        "confirm packet path and schema posture",
+        "confirm evidence refs and proof limits",
+        "confirm central proof surfaces were not changed"
+      ],
+      "contracts": [
+        "local intake is pressure, not acceptance",
+        "central proof promotion requires `aoa-evals` review",
+        "packets must name rejected alternatives so later agents do not repeat the same search",
+        "raw session refs must remain candidate evidence until reviewed"
+      ],
+      "consumes_artifact_tags": [
+        "target-repository-and-local-evals-port-yaml",
+        "failure-or-behavior-needing-evaluation",
+        "evidence-refs-touched-paths-expected-invariant-and-rejected-exis",
+        "owner-route-and-validation-commands"
+      ],
+      "provides_artifact_tags": [
+        "one-repo-local-eval-need-packet-under-evals-intake",
+        "no-central-proof-verdict",
+        "named-next-review-or-design-route",
+        "validation-result-for-the-local-port-shape-when-available"
+      ],
+      "handoff_packet_template": {
+        "from_skill": "aoa-eval-local-need",
+        "produced_artifacts": [
+          "one-repo-local-eval-need-packet-under-evals-intake",
+          "no-central-proof-verdict",
+          "named-next-review-or-design-route",
+          "validation-result-for-the-local-port-shape-when-available"
+        ],
+        "verification_notes": [
+          "confirm no existing eval fit",
+          "confirm the target repo owns the local port",
+          "confirm packet path and schema posture"
+        ],
+        "contract_notes": [
+          "local intake is pressure, not acceptance",
+          "central proof promotion requires `aoa-evals` review",
+          "packets must name rejected alternatives so later agents do not repeat the same search"
+        ],
+        "next_recommended_skills": []
+      }
+    },
+    {
+      "name": "aoa-eval-select",
+      "display_name": "AoA Eval Select",
+      "description": "Inspect repo-local eval ports, tests, validators, scripts, reports, intake files, and central aoa-evals standards before new eval work, then select the smallest existing surface or a no-fit route. Use when the task asks which eval should apply to a change, failure, regression, or trigger miss. Do not use when the eval is already selected and should run, when no-fit has already been established, or when the real issue is source authority rather than eval coverage.",
+      "invocation_mode": "explicit-preferred",
+      "inputs": [
+        "target repo and touched paths",
+        "local `evals/PORT.yaml`, `evals/README.md`, `evals/intake/`, and eval reports",
+        "scripts, tests, validators, schemas, generated manifests, and route docs",
+        "central `aoa-evals` docs and local-port standard",
+        "MCP list/inspect packets when available"
+      ],
+      "outputs": [
+        "selected existing eval, validator, test, script, or report surface",
+        "reason the surface fits or does not fit",
+        "owner and proof-authority classification",
+        "next route: apply, local need, design, or stop"
+      ],
+      "verification": [
+        "confirm local port presence, absence, and status",
+        "confirm selected surface and owner route",
+        "confirm why nearest alternatives were rejected",
+        "confirm next route is one of apply, local need, design, or stop",
+        "confirm central `aoa-evals` was not rewritten"
+      ],
+      "contracts": [
+        "existing local proof surfaces beat new design pressure",
+        "central proof doctrine may guide but not absorb repo-local intake",
+        "selection reports confidence and nearest wrong target instead of guessing",
+        "generated indexes and MCP packets are read models until source-verified"
+      ],
+      "consumes_artifact_tags": [
+        "target-repo-and-touched-paths",
+        "local-evals-port-yaml-evals-readme-md-evals-intake-and-eval-repo",
+        "scripts-tests-validators-schemas-generated-manifests-and-route-d",
+        "central-aoa-evals-docs-and-local-port-standard",
+        "mcp-list-inspect-packets-when-available"
+      ],
+      "provides_artifact_tags": [
+        "selected-existing-eval-validator-test-script-or-report-surface",
+        "reason-the-surface-fits-or-does-not-fit",
+        "owner-and-proof-authority-classification",
+        "next-route-apply-local-need-design-or-stop"
+      ],
+      "handoff_packet_template": {
+        "from_skill": "aoa-eval-select",
+        "produced_artifacts": [
+          "selected-existing-eval-validator-test-script-or-report-surface",
+          "reason-the-surface-fits-or-does-not-fit",
+          "owner-and-proof-authority-classification",
+          "next-route-apply-local-need-design-or-stop"
+        ],
+        "verification_notes": [
+          "confirm local port presence, absence, and status",
+          "confirm selected surface and owner route",
+          "confirm why nearest alternatives were rejected"
+        ],
+        "contract_notes": [
+          "existing local proof surfaces beat new design pressure",
+          "central proof doctrine may guide but not absorb repo-local intake",
+          "selection reports confidence and nearest wrong target instead of guessing"
+        ],
+        "next_recommended_skills": []
+      }
+    },
+    {
+      "name": "aoa-eval-session-mining",
+      "display_name": "AoA Eval Session Mining",
+      "description": "Mine .aoa session evidence for missed eval triggers, candidate regression cases, and local eval pressure only after web research and repo owner surfaces are checked, returning raw and segment refs with freshness rather than proof. Use when the user asks to study sessions for eval moments, missed triggers, repeated failures, or session-derived eval cases. Do not use for raw .aoa preservation, hook repair, search-index maintenance, memo writeback, decision records, or treating session history as reviewed proof.",
+      "invocation_mode": "explicit-preferred",
+      "inputs": [
+        "trigger classes or target failure modes from prior research",
+        "`.aoa` search index status, raw refs, segment refs, freshness, and diagnostics",
+        "target repositories, touched paths, validators, tests, and local eval ports",
+        "review criteria for candidate vs accepted evidence"
+      ],
+      "outputs": [
+        "missed-trigger examples with session id, label, segment, event, raw ref, and freshness",
+        "candidate eval-case themes and owner routes",
+        "rejected examples and nearest wrong owner routes",
+        "local intake or design handoff when evidence is strong enough"
+      ],
+      "verification": [
+        "confirm index freshness and provider",
+        "confirm each example has session, segment, event, raw ref, and freshness",
+        "confirm candidate owner route and rejected nearest wrong owner",
+        "confirm no raw evidence was promoted to proof",
+        "confirm next local need/design/apply route when applicable"
+      ],
+      "contracts": [
+        "`.aoa` evidence is candidate evidence until reviewed",
+        "session search must include freshness and refs",
+        "raw transcript evidence cannot override source-owned repo files",
+        "mining happens after owner boundaries are known, not as a replacement for source archaeology"
+      ],
+      "consumes_artifact_tags": [
+        "trigger-classes-or-target-failure-modes-from-prior-research",
+        "aoa-search-index-status-raw-refs-segment-refs-freshness-and-diag",
+        "target-repositories-touched-paths-validators-tests-and-local-eva",
+        "review-criteria-for-candidate-vs-accepted-evidence"
+      ],
+      "provides_artifact_tags": [
+        "missed-trigger-examples-with-session-id-label-segment-event-raw-",
+        "candidate-eval-case-themes-and-owner-routes",
+        "rejected-examples-and-nearest-wrong-owner-routes",
+        "local-intake-or-design-handoff-when-evidence-is-strong-enough"
+      ],
+      "handoff_packet_template": {
+        "from_skill": "aoa-eval-session-mining",
+        "produced_artifacts": [
+          "missed-trigger-examples-with-session-id-label-segment-event-raw-",
+          "candidate-eval-case-themes-and-owner-routes",
+          "rejected-examples-and-nearest-wrong-owner-routes",
+          "local-intake-or-design-handoff-when-evidence-is-strong-enough"
+        ],
+        "verification_notes": [
+          "confirm index freshness and provider",
+          "confirm each example has session, segment, event, raw ref, and freshness",
+          "confirm candidate owner route and rejected nearest wrong owner"
+        ],
+        "contract_notes": [
+          "`.aoa` evidence is candidate evidence until reviewed",
+          "session search must include freshness and refs",
+          "raw transcript evidence cannot override source-owned repo files"
+        ],
+        "next_recommended_skills": []
+      }
+    },
+    {
       "name": "aoa-invariant-coverage-audit",
       "display_name": "AoA Invariant Coverage Audit",
       "description": "Audit whether existing tests and checks actually constrain the stable invariants that matter. Use when you need to judge if current coverage proves a rule or only repeats examples, and you want the smallest bounded follow-up gaps. Do not use when the invariant itself is still undefined or when the real task is to author new invariants rather than audit coverage.",

@@ -86,6 +86,33 @@
       ]
     },
     {
+      "family": "eval-proof-routing-family",
+      "skills": [
+        "aoa-eval",
+        "aoa-eval-select",
+        "aoa-eval-apply",
+        "aoa-eval-local-need",
+        "aoa-eval-design",
+        "aoa-eval-session-mining",
+        "aoa-contract-test",
+        "aoa-property-invariants",
+        "aoa-invariant-coverage-audit",
+        "aoa-source-of-truth-check",
+        "aoa-memo-writeback",
+        "aoa-decision"
+      ],
+      "notes": [
+        "aoa-eval is the front door for choosing an eval-lane route across existing evals, local ports, validators, tests, scripts, MCP access packets, and session-derived trigger pressure.",
+        "aoa-eval-select inspects existing local and central eval surfaces before new work.",
+        "aoa-eval-apply runs or routes an already selected eval surface and reports proof limits.",
+        "aoa-eval-local-need records bounded repo-local eval pressure under evals/intake when no existing surface fits.",
+        "aoa-eval-design drafts local eval suites or reports after selection fails without claiming central proof acceptance.",
+        "aoa-eval-session-mining mines .aoa only for candidate eval triggers after web and repo gates; raw session refs are not reviewed proof.",
+        "aoa-contract-test, aoa-property-invariants, and aoa-invariant-coverage-audit stay focused on test/invariant authoring or audit when no eval-lane owner route is in question.",
+        "aoa-source-of-truth-check, aoa-memo-writeback, and aoa-decision win when the pressure is documentation authority, memory writeback, or decision graph routing rather than eval proof routing."
+      ]
+    },
+    {
       "family": "summon-and-route-governance",
       "skills": [
         "aoa-summon",
@@ -661,6 +688,102 @@
       ],
       "prompt": "The repository has conflicting docs about whether the memo port or root route card owns workspace memory guidance. Clarify the authoritative files and keep entrypoints link-driven before writing any memo candidate.",
       "note": "When the problem is document authority, source-of-truth mapping should win and memo writeback should defer."
+    },
+    {
+      "case_id": "collision-42",
+      "skill_name": "aoa-eval",
+      "expected_behavior": "invoke-skill",
+      "expected_skill": "aoa-eval",
+      "competing_skills": [
+        "aoa-eval-select",
+        "aoa-eval-apply",
+        "aoa-eval-local-need",
+        "aoa-eval-design",
+        "aoa-eval-session-mining",
+        "aoa-contract-test",
+        "aoa-invariant-coverage-audit",
+        "aoa-memo-writeback"
+      ],
+      "prompt": "Decide how OS Abyss should connect evals in a target repo: inspect existing local eval ports, central aoa-evals standards, aoa-evals-mcp access packets, validators, tests, and session refs before selecting apply, local-need, design, or session-mining.",
+      "note": "This is eval-lane route selection, so the router should win before any narrower subskill or adjacent validation/memo skill."
+    },
+    {
+      "case_id": "collision-43",
+      "skill_name": "aoa-source-of-truth-check",
+      "expected_behavior": "invoke-skill",
+      "expected_skill": "aoa-source-of-truth-check",
+      "competing_skills": [
+        "aoa-eval",
+        "aoa-eval-design",
+        "aoa-decision"
+      ],
+      "prompt": "Docs disagree about whether evals/PORT.yaml, README, or AGENTS.md is authoritative for local eval guidance; clarify the source-of-truth files and keep entrypoints link-driven before adding any eval suite.",
+      "note": "When document authority is unresolved, source-of-truth mapping should win and eval routing should defer."
+    },
+    {
+      "case_id": "collision-44",
+      "skill_name": "aoa-eval-select",
+      "expected_behavior": "manual-invocation-required",
+      "expected_skill": null,
+      "competing_skills": [
+        "aoa-eval",
+        "aoa-eval-apply",
+        "aoa-eval-design"
+      ],
+      "prompt": "Inspect this repo's local eval port, tests, validators, scripts, reports, and central aoa-evals standard before deciding whether an existing eval fits.",
+      "note": "The select subskill is manual and should normally be chosen by aoa-eval after routing."
+    },
+    {
+      "case_id": "collision-45",
+      "skill_name": "aoa-eval-apply",
+      "expected_behavior": "manual-invocation-required",
+      "expected_skill": null,
+      "competing_skills": [
+        "aoa-eval",
+        "aoa-eval-select",
+        "aoa-eval-local-need"
+      ],
+      "prompt": "The target validator command is already selected; run it, capture artifacts and generated drift, and report exactly what evidence it proves.",
+      "note": "The apply subskill is manual and should normally be chosen by aoa-eval after selection is clear."
+    },
+    {
+      "case_id": "collision-46",
+      "skill_name": "aoa-eval-local-need",
+      "expected_behavior": "manual-invocation-required",
+      "expected_skill": null,
+      "competing_skills": [
+        "aoa-eval",
+        "aoa-eval-select",
+        "aoa-memo-writeback"
+      ],
+      "prompt": "Selection found no adequate existing eval, validator, test, or script; record one repo-local evals/intake need packet with evidence refs, rejected alternatives, proposed checks, and proof limits.",
+      "note": "The local-need subskill is manual and should not be confused with memo writeback or router selection."
+    },
+    {
+      "case_id": "collision-47",
+      "skill_name": "aoa-eval-design",
+      "expected_behavior": "manual-invocation-required",
+      "expected_skill": null,
+      "competing_skills": [
+        "aoa-eval",
+        "aoa-eval-local-need",
+        "aoa-property-invariants"
+      ],
+      "prompt": "Design a bounded local eval suite around a missing invariant, using deterministic checks first and trace or rubric review only where deterministic checks cannot cover the behavior.",
+      "note": "The design subskill is manual and should stay separate from property-test authoring or mere intake pressure."
+    },
+    {
+      "case_id": "collision-48",
+      "skill_name": "aoa-eval-session-mining",
+      "expected_behavior": "manual-invocation-required",
+      "expected_skill": null,
+      "competing_skills": [
+        "aoa-eval",
+        "aoa-memo-writeback",
+        "aoa-session-donor-harvest"
+      ],
+      "prompt": "After web research and repo owner-surface checks, mine .aoa sessions for missed eval triggers, repeated validation failures, and candidate eval cases with raw and segment refs only.",
+      "note": "The session-mining subskill is manual and raw session refs remain candidate evidence, not memo writeback or reviewed proof."
     }
   ]
 }

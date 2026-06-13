@@ -5,7 +5,7 @@ It is built from committed adjacency cases and snapshot-backed evidence only.
 
 ## Summary
 
-- total skills: 50
+- total skills: 56
 - adjacency cases: 48
 - skills with required adjacency coverage: 29
 - required adjacency gaps: 0
@@ -29,6 +29,12 @@ It is built from committed adjacency cases and snapshot-backed evidence only.
 | aoa-decision-create | evaluated | core | true | 1 | 0 | aoa-decision-find | decision_graph_chain | true | - |
 | aoa-decision-find | evaluated | core | true | 1 | 0 | aoa-decision-create | decision_graph_chain | true | - |
 | aoa-dry-run-first | canonical | risk | true | 3 | 0 | aoa-approval-gate-check, aoa-safe-infra-change, aoa-sanitized-share | risk_authority_preview_execution | true | - |
+| aoa-eval | scaffold | core | false | 0 | 0 | - | - | false | - |
+| aoa-eval-apply | scaffold | core | false | 0 | 0 | - | - | false | - |
+| aoa-eval-design | scaffold | core | false | 0 | 0 | - | - | false | - |
+| aoa-eval-local-need | scaffold | core | false | 0 | 0 | - | - | false | - |
+| aoa-eval-select | scaffold | core | false | 0 | 0 | - | - | false | - |
+| aoa-eval-session-mining | scaffold | core | false | 0 | 0 | - | - | false | - |
 | aoa-invariant-coverage-audit | canonical | core | true | 1 | 0 | aoa-property-invariants | invariant_authoring_vs_audit | true | - |
 | aoa-local-stack-bringup | evaluated | risk | true | 2 | 0 | aoa-approval-gate-check, aoa-safe-infra-change | local_runtime_bringup | true | - |
 | aoa-memo-writeback | scaffold | core | false | 0 | 0 | - | - | false | - |

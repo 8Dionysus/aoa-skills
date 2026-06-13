@@ -5,8 +5,8 @@ It does not fetch or compare upstream repos; it only reflects committed bundle f
 
 ## Summary
 
-- total skills: 50
-- published lineage: 50
+- total skills: 56
+- published lineage: 56
 - pending lineage: 0
 
 | name | status | scope | lineage | published techniques | pending techniques | tbd refs | manifest canonical-path ready | blockers |
@@ -28,6 +28,12 @@ It does not fetch or compare upstream repos; it only reflects committed bundle f
 | aoa-decision-create | evaluated | core | published | 2 | 0 | 0 | true | - |
 | aoa-decision-find | evaluated | core | published | 1 | 0 | 0 | true | - |
 | aoa-dry-run-first | canonical | risk | published | 2 | 0 | 0 | true | - |
+| aoa-eval | scaffold | core | published | 3 | 0 | 0 | true | - |
+| aoa-eval-apply | scaffold | core | published | 3 | 0 | 0 | true | - |
+| aoa-eval-design | scaffold | core | published | 3 | 0 | 0 | true | - |
+| aoa-eval-local-need | scaffold | core | published | 3 | 0 | 0 | true | - |
+| aoa-eval-select | scaffold | core | published | 3 | 0 | 0 | true | - |
+| aoa-eval-session-mining | scaffold | core | published | 3 | 0 | 0 | true | - |
 | aoa-invariant-coverage-audit | canonical | core | published | 1 | 0 | 0 | true | - |
 | aoa-local-stack-bringup | evaluated | risk | published | 4 | 0 | 0 | true | - |
 | aoa-memo-writeback | scaffold | core | published | 3 | 0 | 0 | true | - |

@@ -663,6 +663,216 @@
       "context_retention_ref": "generated/context_retention_manifest.json#aoa-dry-run-first"
     },
     {
+      "name": "aoa-eval",
+      "description": "Route AoA eval-lane work by checking existing local and central eval surfaces first, then choosing apply, local intake need, local design, or session mining while preserving owner boundaries. Use when a task asks whether an eval exists, whether one should be added, how local evals connect to aoa-evals, or how validators, tests, scripts, traces, regressions, trigger misses, local eval ports, or aoa-evals-mcp should be used as evaluation surfaces. Do not use for ordinary one-off tests, source-of-truth mapping, decision records, memo writeback, or direct central aoa-evals proof-authority edits.",
+      "path": ".agents/skills/aoa-eval/SKILL.md",
+      "openai_config_path": ".agents/skills/aoa-eval/agents/openai.yaml",
+      "allow_implicit_invocation": true,
+      "implicit_activation_policy": "invoke",
+      "invocation_mode": "explicit-preferred",
+      "allowlist_paths": [
+        ".agents/skills/aoa-eval"
+      ],
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ],
+        "checks": [],
+        "examples": [
+          "examples/runtime.md"
+        ]
+      },
+      "metadata": {
+        "aoa_scope": "core",
+        "aoa_status": "scaffold",
+        "aoa_invocation_mode": "explicit-preferred",
+        "aoa_source_skill_path": "skills/core/engineering/aoa-eval/SKILL.md",
+        "aoa_source_repo": "8Dionysus/aoa-skills",
+        "aoa_technique_dependencies": "AOA-T-0003,AOA-T-0076,AOA-T-0094",
+        "aoa_portable_profile": "codex-facing-wave-3"
+      },
+      "trust_posture": "portable-core",
+      "context_retention_ref": "generated/context_retention_manifest.json#aoa-eval"
+    },
+    {
+      "name": "aoa-eval-apply",
+      "description": "Run or route an already selected eval, validator, test, or script, then report command results, artifacts, generated drift, proof limits, and next route. Use when the eval surface is already selected and the task is to apply it rather than choose or design it. Do not use when no existing eval has been selected, when an intake need should be recorded first, or when central proof promotion is being requested.",
+      "path": ".agents/skills/aoa-eval-apply/SKILL.md",
+      "openai_config_path": ".agents/skills/aoa-eval-apply/agents/openai.yaml",
+      "allow_implicit_invocation": false,
+      "implicit_activation_policy": "manual",
+      "invocation_mode": "explicit-preferred",
+      "allowlist_paths": [
+        ".agents/skills/aoa-eval-apply"
+      ],
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ],
+        "checks": [],
+        "examples": [
+          "examples/runtime.md"
+        ]
+      },
+      "metadata": {
+        "aoa_scope": "core",
+        "aoa_status": "scaffold",
+        "aoa_invocation_mode": "explicit-preferred",
+        "aoa_source_skill_path": "skills/core/engineering/aoa-eval-apply/SKILL.md",
+        "aoa_source_repo": "8Dionysus/aoa-skills",
+        "aoa_technique_dependencies": "AOA-T-0003,AOA-T-0007,AOA-T-0096",
+        "aoa_portable_profile": "codex-facing-wave-3"
+      },
+      "trust_posture": "portable-core",
+      "context_retention_ref": "generated/context_retention_manifest.json#aoa-eval-apply"
+    },
+    {
+      "name": "aoa-eval-design",
+      "description": "Design a bounded local eval suite, prompt set, report, or validator plan after selection finds no adequate existing surface, using deterministic checks first and trace or rubric review only when needed. Use when a local eval needs positive, negative, collision, or regression cases around a clear behavior or invariant. Do not use when an existing eval should simply run, when only a local intake packet is needed, or when central aoa-evals proof doctrine is the target.",
+      "path": ".agents/skills/aoa-eval-design/SKILL.md",
+      "openai_config_path": ".agents/skills/aoa-eval-design/agents/openai.yaml",
+      "allow_implicit_invocation": false,
+      "implicit_activation_policy": "manual",
+      "invocation_mode": "explicit-preferred",
+      "allowlist_paths": [
+        ".agents/skills/aoa-eval-design"
+      ],
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ],
+        "checks": [],
+        "examples": [
+          "examples/runtime.md"
+        ]
+      },
+      "metadata": {
+        "aoa_scope": "core",
+        "aoa_status": "scaffold",
+        "aoa_invocation_mode": "explicit-preferred",
+        "aoa_source_skill_path": "skills/core/engineering/aoa-eval-design/SKILL.md",
+        "aoa_source_repo": "8Dionysus/aoa-skills",
+        "aoa_technique_dependencies": "AOA-T-0015,AOA-T-0017,AOA-T-0007",
+        "aoa_portable_profile": "codex-facing-wave-3"
+      },
+      "trust_posture": "portable-core",
+      "context_retention_ref": "generated/context_retention_manifest.json#aoa-eval-design"
+    },
+    {
+      "name": "aoa-eval-local-need",
+      "description": "Create a repo-local eval need packet under evals/intake when no existing eval fits, preserving owner route, evidence refs, rejected alternatives, proposed checks, and proof limits. Use when a repeated failure or missing behavior needs local eval pressure without central proof acceptance. Do not use when an existing eval can be applied, when the missing object is a memo or decision, or when the user asks for central aoa-evals acceptance.",
+      "path": ".agents/skills/aoa-eval-local-need/SKILL.md",
+      "openai_config_path": ".agents/skills/aoa-eval-local-need/agents/openai.yaml",
+      "allow_implicit_invocation": false,
+      "implicit_activation_policy": "manual",
+      "invocation_mode": "explicit-preferred",
+      "allowlist_paths": [
+        ".agents/skills/aoa-eval-local-need"
+      ],
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ],
+        "checks": [],
+        "examples": [
+          "examples/runtime.md"
+        ]
+      },
+      "metadata": {
+        "aoa_scope": "core",
+        "aoa_status": "scaffold",
+        "aoa_invocation_mode": "explicit-preferred",
+        "aoa_source_skill_path": "skills/core/engineering/aoa-eval-local-need/SKILL.md",
+        "aoa_source_repo": "8Dionysus/aoa-skills",
+        "aoa_technique_dependencies": "AOA-T-0076,AOA-T-0094,AOA-T-0105",
+        "aoa_portable_profile": "codex-facing-wave-3"
+      },
+      "trust_posture": "portable-core",
+      "context_retention_ref": "generated/context_retention_manifest.json#aoa-eval-local-need"
+    },
+    {
+      "name": "aoa-eval-select",
+      "description": "Inspect repo-local eval ports, tests, validators, scripts, reports, intake files, and central aoa-evals standards before new eval work, then select the smallest existing surface or a no-fit route. Use when the task asks which eval should apply to a change, failure, regression, or trigger miss. Do not use when the eval is already selected and should run, when no-fit has already been established, or when the real issue is source authority rather than eval coverage.",
+      "path": ".agents/skills/aoa-eval-select/SKILL.md",
+      "openai_config_path": ".agents/skills/aoa-eval-select/agents/openai.yaml",
+      "allow_implicit_invocation": false,
+      "implicit_activation_policy": "manual",
+      "invocation_mode": "explicit-preferred",
+      "allowlist_paths": [
+        ".agents/skills/aoa-eval-select"
+      ],
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ],
+        "checks": [],
+        "examples": [
+          "examples/runtime.md"
+        ]
+      },
+      "metadata": {
+        "aoa_scope": "core",
+        "aoa_status": "scaffold",
+        "aoa_invocation_mode": "explicit-preferred",
+        "aoa_source_skill_path": "skills/core/engineering/aoa-eval-select/SKILL.md",
+        "aoa_source_repo": "8Dionysus/aoa-skills",
+        "aoa_technique_dependencies": "AOA-T-0003,AOA-T-0076,AOA-T-0094",
+        "aoa_portable_profile": "codex-facing-wave-3"
+      },
+      "trust_posture": "portable-core",
+      "context_retention_ref": "generated/context_retention_manifest.json#aoa-eval-select"
+    },
+    {
+      "name": "aoa-eval-session-mining",
+      "description": "Mine .aoa session evidence for missed eval triggers, candidate regression cases, and local eval pressure only after web research and repo owner surfaces are checked, returning raw and segment refs with freshness rather than proof. Use when the user asks to study sessions for eval moments, missed triggers, repeated failures, or session-derived eval cases. Do not use for raw .aoa preservation, hook repair, search-index maintenance, memo writeback, decision records, or treating session history as reviewed proof.",
+      "path": ".agents/skills/aoa-eval-session-mining/SKILL.md",
+      "openai_config_path": ".agents/skills/aoa-eval-session-mining/agents/openai.yaml",
+      "allow_implicit_invocation": false,
+      "implicit_activation_policy": "manual",
+      "invocation_mode": "explicit-preferred",
+      "allowlist_paths": [
+        ".agents/skills/aoa-eval-session-mining"
+      ],
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ],
+        "checks": [],
+        "examples": [
+          "examples/runtime.md"
+        ]
+      },
+      "metadata": {
+        "aoa_scope": "core",
+        "aoa_status": "scaffold",
+        "aoa_invocation_mode": "explicit-preferred",
+        "aoa_source_skill_path": "skills/core/engineering/aoa-eval-session-mining/SKILL.md",
+        "aoa_source_repo": "8Dionysus/aoa-skills",
+        "aoa_technique_dependencies": "AOA-T-0075,AOA-T-0067,AOA-T-0081",
+        "aoa_portable_profile": "codex-facing-wave-3"
+      },
+      "trust_posture": "portable-core",
+      "context_retention_ref": "generated/context_retention_manifest.json#aoa-eval-session-mining"
+    },
+    {
       "name": "aoa-invariant-coverage-audit",
       "description": "Audit whether existing tests and checks actually constrain the stable invariants that matter. Use when you need to judge if current coverage proves a rule or only repeats examples, and you want the smallest bounded follow-up gaps. Do not use when the invariant itself is still undefined or when the real task is to author new invariants rather than audit coverage.",
       "path": ".agents/skills/aoa-invariant-coverage-audit/SKILL.md",

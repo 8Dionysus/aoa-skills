@@ -179,6 +179,42 @@ autonomy_checks:
       - github.com/8Dionysus/aoa-techniques
       - git clone
       - live dependency resolution
+  - skill: aoa-eval
+    forbidden_runtime_terms:
+      - aoa-techniques
+      - github.com/8Dionysus/aoa-techniques
+      - git clone
+      - live dependency resolution
+  - skill: aoa-eval-select
+    forbidden_runtime_terms:
+      - aoa-techniques
+      - github.com/8Dionysus/aoa-techniques
+      - git clone
+      - live dependency resolution
+  - skill: aoa-eval-apply
+    forbidden_runtime_terms:
+      - aoa-techniques
+      - github.com/8Dionysus/aoa-techniques
+      - git clone
+      - live dependency resolution
+  - skill: aoa-eval-local-need
+    forbidden_runtime_terms:
+      - aoa-techniques
+      - github.com/8Dionysus/aoa-techniques
+      - git clone
+      - live dependency resolution
+  - skill: aoa-eval-design
+    forbidden_runtime_terms:
+      - aoa-techniques
+      - github.com/8Dionysus/aoa-techniques
+      - git clone
+      - live dependency resolution
+  - skill: aoa-eval-session-mining
+    forbidden_runtime_terms:
+      - aoa-techniques
+      - github.com/8Dionysus/aoa-techniques
+      - git clone
+      - live dependency resolution
   - skill: aoa-summon
     forbidden_runtime_terms:
       - aoa-techniques
@@ -411,6 +447,84 @@ trigger_cases:
     required_phrases:
       - the task is only to find relevant rationale; use `aoa-decision-find`
       - a new durable decision is required instead; use `aoa-decision-create`
+
+  - skill: aoa-eval
+    case_id: eval_router_existing_or_missing_eval_route
+    prompt: Decide whether this repository change should use an existing eval, run a validator, create local eval intake, or mine sessions for missed eval triggers.
+    expected: use
+    required_phrases:
+      - the user asks whether an eval exists
+      - a route must separate proof authority
+  - skill: aoa-eval
+    case_id: eval_router_plain_unit_test
+    prompt: Add one ordinary unit test for a local helper where there is no eval routing, proof, regression, or local eval-port question.
+    expected: do_not_use
+    required_phrases:
+      - the task is only to add an ordinary unit test with no eval routing question
+  - skill: aoa-eval-select
+    case_id: eval_select_existing_surface
+    prompt: Inspect the repo-local eval port, tests, validators, and central aoa-evals surfaces before deciding whether a new eval is needed.
+    expected: use
+    required_phrases:
+      - a task asks which eval should be used for a change, failure, or regression
+      - central `aoa-evals` may already contain the relevant proof pattern or local
+  - skill: aoa-eval-select
+    case_id: eval_select_apply_already_chosen
+    prompt: The exact validation command is already selected and only needs to be run and reported.
+    expected: do_not_use
+    required_phrases:
+      - an already selected eval simply needs to be run; use `aoa-eval-apply`
+  - skill: aoa-eval-apply
+    case_id: eval_apply_selected_validator
+    prompt: Run the already selected local validator for an eval regression and report what it proves and what remains unproven.
+    expected: use
+    required_phrases:
+      - an existing eval, validator, test, or script has already been selected
+  - skill: aoa-eval-apply
+    case_id: eval_apply_no_selection_yet
+    prompt: We have not inspected the local eval port or central eval bundles yet, but need to know which proof surface might apply.
+    expected: do_not_use
+    required_phrases:
+      - no existing eval has been selected yet; use `aoa-eval-select`
+  - skill: aoa-eval-local-need
+    case_id: eval_local_need_no_existing_fit
+    prompt: No existing eval fits this repeated failure, so create a repo-local eval need packet under evals/intake with evidence and rejected alternatives.
+    expected: use
+    required_phrases:
+      - a local repository needs an eval pressure packet but not a central proof
+      - the right next artifact is `evals/intake/*.eval_need.json`
+  - skill: aoa-eval-local-need
+    case_id: eval_local_need_existing_eval_available
+    prompt: A matching existing validator can be applied now, so do not write a new intake packet.
+    expected: do_not_use
+    required_phrases:
+      - an existing eval can be applied now
+  - skill: aoa-eval-design
+    case_id: eval_design_local_suite
+    prompt: Design a local eval suite with positive, negative, and regression cases after selection found no adequate existing surface.
+    expected: use
+    required_phrases:
+      - a local eval needs design from a clear failure mode or missing invariant
+      - positive, negative, collision, or regression cases need to be shaped for a
+  - skill: aoa-eval-design
+    case_id: eval_design_apply_existing
+    prompt: The existing eval already covers this behavior and only needs to run.
+    expected: do_not_use
+    required_phrases:
+      - an existing eval should simply run now
+  - skill: aoa-eval-session-mining
+    case_id: eval_session_mining_missed_triggers
+    prompt: Mine .aoa sessions for missed eval trigger moments after web research and repo owner surfaces are already mapped.
+    expected: use
+    required_phrases:
+      - the user asks to study sessions for eval moments
+      - repo and web research has already defined candidate trigger classes
+  - skill: aoa-eval-session-mining
+    case_id: eval_session_mining_hook_repair_only
+    prompt: Repair the .aoa preservation hook and rebuild the search index without deriving eval candidates.
+    expected: do_not_use
+    required_phrases:
+      - the task is only `.aoa` preservation, hook repair, or search-index maintenance
 
   - skill: aoa-core-logic-boundary
     case_id: core_logic_boundary_mixed_responsibilities
@@ -2640,4 +2754,112 @@ snapshot_cases:
     required_output_phrases:
       - do_not_use
       - 'Decision: do_not_use `titan-thread-turn-binding`. Use the ordinary owner-repo workflow because no explicit Titan service-cohort route is being requested.'
+    forbidden_output_phrases: []
+  - skill: aoa-eval
+    case_id: eval_router_existing_or_missing_eval_route
+    prompt: Decide whether this repository change should use an existing eval, run a validator, create local eval intake, or mine sessions for missed eval triggers.
+    expected: use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-eval/eval_router_existing_or_missing_eval_route.md
+    required_output_phrases:
+      - use
+      - 'Decision: use `aoa-eval`. Select exactly one eval route while keeping central proof, local intake, MCP access, and session evidence separate.'
+    forbidden_output_phrases: []
+  - skill: aoa-eval
+    case_id: eval_router_plain_unit_test
+    prompt: Add one ordinary unit test for a local helper where there is no eval routing, proof, regression, or local eval-port question.
+    expected: do_not_use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-eval/eval_router_plain_unit_test.md
+    required_output_phrases:
+      - do_not_use
+      - 'Decision: do_not_use `aoa-eval`. Use the ordinary engineering or contract-test route because there is no eval-lane routing pressure.'
+    forbidden_output_phrases: []
+  - skill: aoa-eval-select
+    case_id: eval_select_existing_surface
+    prompt: Inspect the repo-local eval port, tests, validators, and central aoa-evals surfaces before deciding whether a new eval is needed.
+    expected: use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-eval-select/eval_select_existing_surface.md
+    required_output_phrases:
+      - use
+      - 'Decision: use `aoa-eval-select`. Inspect existing local and central eval surfaces before designing or writing anything new.'
+    forbidden_output_phrases: []
+  - skill: aoa-eval-select
+    case_id: eval_select_apply_already_chosen
+    prompt: The exact validation command is already selected and only needs to be run and reported.
+    expected: do_not_use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-eval-select/eval_select_apply_already_chosen.md
+    required_output_phrases:
+      - do_not_use
+      - 'Decision: do_not_use `aoa-eval-select`. Use `aoa-eval-apply` because selection has already happened.'
+    forbidden_output_phrases: []
+  - skill: aoa-eval-apply
+    case_id: eval_apply_selected_validator
+    prompt: Run the already selected local validator for an eval regression and report what it proves and what remains unproven.
+    expected: use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-eval-apply/eval_apply_selected_validator.md
+    required_output_phrases:
+      - use
+      - 'Decision: use `aoa-eval-apply`. Run the selected eval surface and report evidence, artifacts, and proof limits.'
+    forbidden_output_phrases: []
+  - skill: aoa-eval-apply
+    case_id: eval_apply_no_selection_yet
+    prompt: We have not inspected the local eval port or central eval bundles yet, but need to know which proof surface might apply.
+    expected: do_not_use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-eval-apply/eval_apply_no_selection_yet.md
+    required_output_phrases:
+      - do_not_use
+      - 'Decision: do_not_use `aoa-eval-apply`. Use `aoa-eval-select` before running anything because no eval surface is selected.'
+    forbidden_output_phrases: []
+  - skill: aoa-eval-local-need
+    case_id: eval_local_need_no_existing_fit
+    prompt: No existing eval fits this repeated failure, so create a repo-local eval need packet under evals/intake with evidence and rejected alternatives.
+    expected: use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-eval-local-need/eval_local_need_no_existing_fit.md
+    required_output_phrases:
+      - use
+      - 'Decision: use `aoa-eval-local-need`. Write one local intake pressure packet with evidence, rejected alternatives, and proof limits.'
+    forbidden_output_phrases: []
+  - skill: aoa-eval-local-need
+    case_id: eval_local_need_existing_eval_available
+    prompt: A matching existing validator can be applied now, so do not write a new intake packet.
+    expected: do_not_use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-eval-local-need/eval_local_need_existing_eval_available.md
+    required_output_phrases:
+      - do_not_use
+      - 'Decision: do_not_use `aoa-eval-local-need`. Apply the existing eval instead of creating new local intake pressure.'
+    forbidden_output_phrases: []
+  - skill: aoa-eval-design
+    case_id: eval_design_local_suite
+    prompt: Design a local eval suite with positive, negative, and regression cases after selection found no adequate existing surface.
+    expected: use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-eval-design/eval_design_local_suite.md
+    required_output_phrases:
+      - use
+      - 'Decision: use `aoa-eval-design`. Draft a bounded local suite with deterministic checks first and central proof acceptance out of scope.'
+    forbidden_output_phrases: []
+  - skill: aoa-eval-design
+    case_id: eval_design_apply_existing
+    prompt: The existing eval already covers this behavior and only needs to run.
+    expected: do_not_use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-eval-design/eval_design_apply_existing.md
+    required_output_phrases:
+      - do_not_use
+      - 'Decision: do_not_use `aoa-eval-design`. Run the existing eval instead of designing a new suite.'
+    forbidden_output_phrases: []
+  - skill: aoa-eval-session-mining
+    case_id: eval_session_mining_missed_triggers
+    prompt: Mine .aoa sessions for missed eval trigger moments after web research and repo owner surfaces are already mapped.
+    expected: use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-eval-session-mining/eval_session_mining_missed_triggers.md
+    required_output_phrases:
+      - use
+      - 'Decision: use `aoa-eval-session-mining`. Mine .aoa for candidate refs only after web and repo owner gates are complete.'
+    forbidden_output_phrases: []
+  - skill: aoa-eval-session-mining
+    case_id: eval_session_mining_hook_repair_only
+    prompt: Repair the .aoa preservation hook and rebuild the search index without deriving eval candidates.
+    expected: do_not_use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-eval-session-mining/eval_session_mining_hook_repair_only.md
+    required_output_phrases:
+      - do_not_use
+      - 'Decision: do_not_use `aoa-eval-session-mining`. This is raw .aoa maintenance, not eval candidate mining.'
     forbidden_output_phrases: []

@@ -10,9 +10,9 @@
     "config/skill_policy_matrix.json",
     "config/tiny_router_skill_bands.json"
   ],
-  "skill_count": 50,
-  "band_count": 7,
-  "case_count": 124,
+  "skill_count": 56,
+  "band_count": 8,
+  "case_count": 142,
   "skills": [
     {
       "name": "abyss-safe-infra-change",
@@ -166,6 +166,60 @@
       "candidate_only": false,
       "project_overlay": false,
       "description_sha256": "1a18696fe0798220e72c2582a17829dd4f8656cbd651bb2bae757039332b20bc"
+    },
+    {
+      "name": "aoa-eval",
+      "band": "eval-proof-routing",
+      "implicit_activation_policy": "invoke",
+      "manual_invocation_required": false,
+      "candidate_only": false,
+      "project_overlay": false,
+      "description_sha256": "90ab0b8c48c88232da88d7f22621c6aaf1527c697b15d0a14975bbea0d0e9cb0"
+    },
+    {
+      "name": "aoa-eval-apply",
+      "band": "eval-proof-routing",
+      "implicit_activation_policy": "manual",
+      "manual_invocation_required": true,
+      "candidate_only": false,
+      "project_overlay": false,
+      "description_sha256": "5b3193acd2aa17bf9e4e5df832c79f1d245601a9bcc78a3bf826f05e67cb6b11"
+    },
+    {
+      "name": "aoa-eval-design",
+      "band": "eval-proof-routing",
+      "implicit_activation_policy": "manual",
+      "manual_invocation_required": true,
+      "candidate_only": false,
+      "project_overlay": false,
+      "description_sha256": "0a71f12f9345a72eb52990ac72c66be2a8076a47163c0aa167d1ea9be09ef3ca"
+    },
+    {
+      "name": "aoa-eval-local-need",
+      "band": "eval-proof-routing",
+      "implicit_activation_policy": "manual",
+      "manual_invocation_required": true,
+      "candidate_only": false,
+      "project_overlay": false,
+      "description_sha256": "cc830ecdad58d6943fe61004ef48f6dd61d2a2cd3d62a1eaa0ea375331945d77"
+    },
+    {
+      "name": "aoa-eval-select",
+      "band": "eval-proof-routing",
+      "implicit_activation_policy": "manual",
+      "manual_invocation_required": true,
+      "candidate_only": false,
+      "project_overlay": false,
+      "description_sha256": "0be63765d3caff0555b4090b46e68d0ce4d394c39cfbc76b76302a1e5e883636"
+    },
+    {
+      "name": "aoa-eval-session-mining",
+      "band": "eval-proof-routing",
+      "implicit_activation_policy": "manual",
+      "manual_invocation_required": true,
+      "candidate_only": false,
+      "project_overlay": false,
+      "description_sha256": "04d539551d617733107494195dc8cffead04bf175349a30b872dbe709798c31c"
     },
     {
       "name": "aoa-invariant-coverage-audit",
