@@ -28,6 +28,12 @@ jobs:
       - name: Install dependencies
         run: python -m pip install -r requirements-dev.txt
 
+      - name: Install skills-ref
+        run: |
+          git clone https://github.com/agentskills/agentskills.git /tmp/agentskills
+          git -C /tmp/agentskills checkout 2e8b3265237b2e5f255d6e675f89ae83be572329
+          python -m pip install -e /tmp/agentskills/skills-ref
+
       - name: Run growth-safe export sentinel
         if: github.event_name != 'workflow_dispatch'
         env:

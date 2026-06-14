@@ -153,6 +153,18 @@ class ValidatorTopologyTests(unittest.TestCase):
         self.assertNotIn("scripts/export/build_agent_skills.py", loader_text)
         self.assertNotIn("generated/runtime_discovery_index.json", loader_text)
 
+    def test_export_full_requires_skills_ref_when_lane_runs(self) -> None:
+        self.assertIn(
+            (
+                "python",
+                "scripts/validation/run_skills_ref_validation.py",
+                "--repo-root",
+                ".",
+                "--require-skills-ref",
+            ),
+            validation_lanes.EXPORT_FULL_COMMAND_SEQUENCE,
+        )
+
     def test_validation_lanes_root_ingress_is_safe_manifest_cli(self) -> None:
         help_result = subprocess.run(
             (sys.executable, "scripts/validation_lanes.py", "--help"),
@@ -198,6 +210,21 @@ class ValidatorTopologyTests(unittest.TestCase):
                     rel = path.relative_to(REPO_ROOT).as_posix()
                     offenders.append(f"{rel}:{lineno}: {line.strip()}")
         self.assertEqual([], offenders)
+
+    def test_portable_export_workflow_installs_required_skills_ref(self) -> None:
+        workflow = (REPO_ROOT / ".github" / "workflows" / "codex-portable-export.yml").read_text(
+            encoding="utf-8"
+        )
+
+        self.assertIn(
+            "git clone https://github.com/agentskills/agentskills.git /tmp/agentskills",
+            workflow,
+        )
+        self.assertIn(
+            "git -C /tmp/agentskills checkout 2e8b3265237b2e5f255d6e675f89ae83be572329",
+            workflow,
+        )
+        self.assertIn("python -m pip install -e /tmp/agentskills/skills-ref", workflow)
 
     def test_latest_release_repro_uses_release_tag_compatible_entrypoint(self) -> None:
         workflow = (REPO_ROOT / ".github" / "workflows" / "nightly-sentinel.yml").read_text(
