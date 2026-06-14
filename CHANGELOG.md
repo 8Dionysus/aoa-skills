@@ -39,6 +39,9 @@ Tracking starts with the community-docs baseline for this repository.
   root compatibility wrappers to script organ paths.
 - A new `AOA-SK-D-0033` decision records the root ingress closure, with a
   strict evidenced allowlist and retired wrapper inventory.
+- The evaluated decision graph skill chain now publishes `aoa-decision`,
+  `aoa-decision-find`, `aoa-decision-create`, and `aoa-decision-correct` in the
+  public skill index, core profiles, and generated export/runtime surfaces.
 
 ### Changed
 
