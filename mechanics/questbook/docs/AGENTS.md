@@ -20,7 +20,7 @@ Do not convert quest records into runtime state, proof, or automatic completion.
 
 Full lane command sequences live in `config/validation_lanes.json`; this local card may name only focused owner checks, lane ids, or the nearest route for the changed surface.
 
-`python -m pytest -q tests/test_validate_skills.py tests/test_session_checkpoint_note.py`.
+`python -m pytest -q tests/test_validate_skills_questbook_contract.py tests/test_session_checkpoint_note.py`.
 
 ## Closeout
 
