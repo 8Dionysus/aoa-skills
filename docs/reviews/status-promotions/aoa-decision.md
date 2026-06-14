@@ -7,7 +7,7 @@
 - current governance lane decision: `stay_evaluated`
 - scope: `core`
 - current lineage: `published`
-- reviewed revision: `456ad39ac9bd`
+- reviewed revision: `fe2445cc2394`
 
 ## Target status
 
@@ -28,7 +28,7 @@
 - machine-checkable floor result: `pass`
 - recorded governance outcome: `stay_evaluated`
 - runtime `SKILL.md` meaning changed: `yes`
-- current bundle note: the router selects one find, create, or correct subskill, checks `aoa_decisions` status and issue posture first, uses path/repo/surface/decision packets before broad search, and keeps repo-local decision notes authoritative.
+- current bundle note: the router selects one find, create, or correct subskill, checks `aoa_decisions` status and issue posture first, uses path/repo/surface/decision packets before broad search, keeps repo-local decision notes authoritative, and keeps the `abyss-stack` graph-builder fallback portable by requiring agents to locate the checkout before running it.
 
 ## Gaps and blockers
 

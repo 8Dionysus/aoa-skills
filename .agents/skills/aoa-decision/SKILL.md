@@ -71,8 +71,9 @@ Do not use this skill when:
    changed-path, source-surface, owner-surface, repo, or decision packet is
    missing, stale, or too narrow; split a long natural-language request into
    smaller anchors before broad search
-4. if MCP is unavailable, fall back to the workspace builder from `abyss-stack`,
-   such as `python /home/dionysus/src/abyss-stack/scripts/build_workspace_decision_graph.py --check --json`
+4. if MCP is unavailable, locate `abyss-stack` in the current workspace or a
+   known local checkout, then run its graph builder, such as
+   `python <abyss-stack>/scripts/build_workspace_decision_graph.py --check --json`
 5. if graph lookup is unavailable too, use repo-local `rg` and generated
    decision indexes, then read the source decision notes directly
 6. load only the chosen subskill; do not load find, create, and correct
