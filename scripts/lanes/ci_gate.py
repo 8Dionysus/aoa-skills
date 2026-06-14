@@ -22,7 +22,7 @@ REPO_ROOT = Path(__file__).resolve().parents[2]
 CATALOG_GENERATED_GROUPS = ("reader", "public", "evaluation", "governance")
 GENERATED_GROUPS = ("all", *CATALOG_GENERATED_GROUPS, "export", "runtime")
 
-EXPORT_RELEVANT_PREFIXES = (
+BASE_EXPORT_RELEVANT_PREFIXES = (
     ".agents/",
     "config/",
     "generated/",
@@ -41,6 +41,18 @@ def python_script_command_paths(commands: Sequence[Sequence[str]]) -> set[str]:
     return paths
 
 
+def python_script_command_parent_prefixes(commands: Sequence[Sequence[str]]) -> set[str]:
+    prefixes: set[str] = set()
+    for script_path in python_script_command_paths(commands):
+        path = Path(script_path)
+        if len(path.parts) < 3 or path.parts[0] != "scripts":
+            continue
+        parent = path.parent.as_posix()
+        if parent != "scripts":
+            prefixes.add(f"{parent}/")
+    return prefixes
+
+
 EXPORT_RELEVANT_FILES = {
     ".github/workflows/codex-portable-export.yml",
     "config/validation_lanes.json",
@@ -52,6 +64,14 @@ EXPORT_RELEVANT_FILES = {
     "scripts/export/release_manifest_contract.py",
     *python_script_command_paths(validation_lanes.EXPORT_FULL_COMMAND_SEQUENCE),
 }
+EXPORT_RELEVANT_PREFIXES = (
+    *BASE_EXPORT_RELEVANT_PREFIXES,
+    *sorted(
+        python_script_command_parent_prefixes(
+            validation_lanes.EXPORT_FULL_COMMAND_SEQUENCE
+        )
+    ),
+)
 EXPORT_GENERATED_DRIFT_PATHS = validation_lanes.EXPORT_GENERATED_DRIFT_PATHS
 RUNTIME_GENERATED_DRIFT_PATHS = validation_lanes.RUNTIME_GENERATED_DRIFT_PATHS
 EXPORT_DRIFT_PATHS = validation_lanes.EXPORT_DRIFT_PATHS
