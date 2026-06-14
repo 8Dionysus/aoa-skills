@@ -70,4 +70,4 @@ jobs:
         run: python -m pip install -r requirements-dev.txt
 
       - name: Reproduce latest release gate
-        run: python scripts/lanes/release_check.py
+        run: python scripts/release_check.py

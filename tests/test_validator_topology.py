@@ -199,6 +199,15 @@ class ValidatorTopologyTests(unittest.TestCase):
                     offenders.append(f"{rel}:{lineno}: {line.strip()}")
         self.assertEqual([], offenders)
 
+    def test_latest_release_repro_uses_release_tag_compatible_entrypoint(self) -> None:
+        workflow = (REPO_ROOT / ".github" / "workflows" / "nightly-sentinel.yml").read_text(
+            encoding="utf-8"
+        )
+
+        self.assertIn('run: git checkout --detach "${{ steps.latest.outputs.tag }}"', workflow)
+        self.assertIn("run: python scripts/release_check.py", workflow)
+        self.assertNotIn("run: python scripts/lanes/release_check.py", workflow)
+
     def test_active_non_agents_docs_do_not_store_validation_command_blocks(self) -> None:
         offenders: list[str] = []
         for path in sorted(REPO_ROOT.rglob("*.md")):
