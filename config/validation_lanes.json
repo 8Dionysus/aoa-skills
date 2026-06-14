@@ -344,7 +344,8 @@
         "python",
         "scripts/validation/run_skills_ref_validation.py",
         "--repo-root",
-        "."
+        ".",
+        "--require-skills-ref"
       ],
       [
         "git",

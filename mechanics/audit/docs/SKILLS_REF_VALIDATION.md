@@ -39,11 +39,15 @@ Recommended order:
 3. run `lint_description_trigger_evals.py`
 4. run `run_skills_ref_validation.py`
 
-The repo uses this as a soft lane:
+The wrapper remains soft by default for local advisory use:
 
-- missing validator should skip cleanly
+- missing validator should skip cleanly unless `--require-skills-ref` is passed
 - real validator failures should fail loudly
 - AoA-specific validation remains the primary repo-owned authority
+
+The GitHub portable export lane installs the pinned upstream checkout and runs
+this wrapper with `--require-skills-ref`, so export-relevant CI cannot pass by
+silently skipping the external conformance check.
 
 ## Important note
 
