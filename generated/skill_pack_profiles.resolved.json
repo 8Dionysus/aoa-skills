@@ -516,7 +516,7 @@
       ]
     },
     "repo-core-only": {
-      "description": "Install the full project-core repo surface into a repository root: the session-growth kernel plus the engineering outer ring.",
+      "description": "Install the stable project-core repo surface into a repository root: the session-growth kernel plus the stable engineering outer ring. Scaffold core skills stay outside this bounded profile until promoted into those rings.",
       "scope": "repo",
       "install_mode": "symlink-preferred",
       "install_root": ".agents/skills",

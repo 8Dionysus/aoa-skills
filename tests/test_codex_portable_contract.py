@@ -254,6 +254,28 @@ class CodexPortableContractTests(unittest.TestCase):
         )
         self.assertTrue(all(entry["readiness_passed"] for entry in readiness["skills"]))
 
+    def test_scaffold_eval_family_stays_out_of_stable_project_core_profiles(self):
+        eval_family = {
+            "aoa-eval",
+            "aoa-eval-select",
+            "aoa-eval-apply",
+            "aoa-eval-local-need",
+            "aoa-eval-design",
+            "aoa-eval-session-mining",
+        }
+        catalog = load_json(REPO_ROOT / "generated" / "agent_skill_catalog.json")
+        catalog_by_name = {entry["name"]: entry for entry in catalog["skills"]}
+        profiles = load_json(REPO_ROOT / "config" / "skill_pack_profiles.json")["profiles"]
+
+        self.assertTrue(eval_family <= set(profiles["repo-default"]["skills"]))
+        self.assertTrue(all(catalog_by_name[name]["status"] == "scaffold" for name in eval_family))
+        for stable_profile in (
+            "repo-core-only",
+            "repo-project-core-outer-ring",
+            "repo-project-foundation",
+        ):
+            self.assertFalse(eval_family & set(profiles[stable_profile]["skills"]))
+
     def test_project_foundation_profile_stays_aligned(self):
         kernel = load_json(REPO_ROOT / "generated" / "project_core_skill_kernel.min.json")
         outer_ring = load_json(REPO_ROOT / "generated" / "project_core_outer_ring.min.json")
