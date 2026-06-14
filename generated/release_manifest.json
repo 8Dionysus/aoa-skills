@@ -192,8 +192,8 @@
     },
     {
       "path": "config/skill_pack_profiles.json",
-      "sha256": "091b8f5be63467fd4a107543f720721bce5e3cb2b3afe0dea36bdd80db13f5e4",
-      "bytes": 11888
+      "sha256": "d6e293acdfac4764063b3435d61222b238c50dfcf46a07b2b7c788f1cbe8e339",
+      "bytes": 11905
     },
     {
       "path": "config/skill_policy_matrix.json",
@@ -264,8 +264,8 @@
     },
     {
       "path": "generated/skill_pack_profiles.resolved.json",
-      "sha256": "e927b7d946eb633dc9055ad3d102c7331439b6010edc8995817629de415e5525",
-      "bytes": 96688
+      "sha256": "bd1d3cf071053c04d2650d4a62902e5256bba2d809edcb88ce8c9a357e97a82d",
+      "bytes": 96705
     },
     {
       "path": "generated/codex_config_snippets.json",
