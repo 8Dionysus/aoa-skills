@@ -86,6 +86,17 @@
       "failure_route": "Fix skills/project/abyss/aoa-summon before widening the lane."
     },
     {
+      "path": "tests/test_aoa_eval_trigger_corpus.py",
+      "family": "skill-native-eval",
+      "protects": "aoa-eval trigger corpus",
+      "owner_surface": "evals/suites/aoa-eval-trigger-corpus.suite.md",
+      "lane": "source",
+      "mode": "blocking",
+      "runtime_cost": "fast",
+      "focused_target": "tests/test_aoa_eval_trigger_corpus.py",
+      "failure_route": "Fix evals/suites/aoa-eval-trigger-corpus.suite.md before widening the eval trigger corpus."
+    },
+    {
       "path": "tests/test_build_catalog_core.py",
       "family": "generated/catalog-core",
       "protects": "generated catalog-core",

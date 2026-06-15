@@ -153,6 +153,18 @@ trigger candidates:
 These refs are raw/segment pointers only. They are evidence candidates until a
 reviewed artifact or owner repo accepts the derived eval pressure.
 
+## Local corpus landing
+
+The first repo-local eval corpus now lives in:
+
+- `evals/suites/aoa-eval-trigger-corpus.suite.md`
+- `evals/reports/aoa-eval-session-mining.report.md`
+
+The suite turns the research taxonomy into local trigger classes with
+raw/segment refs, including an explicit no-trigger case from the existing
+skill-evaluation fixtures. The report records the current `.aoa` provider
+status and marks the mining output as candidate evidence, not central proof.
+
 ## First-slice implementation
 
 1. Land the skill family in `skills/core/engineering/` with `status: scaffold`.
