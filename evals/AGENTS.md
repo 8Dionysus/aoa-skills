@@ -6,7 +6,7 @@ This card applies to `aoa-skills/evals/` and every file below it.
 
 ## Role
 
-This skeleton port captures skill-layer eval pressure before it is accepted,
+This active port captures skill-layer eval pressure before it is accepted,
 rejected, or normalized by `aoa-evals`.
 
 `aoa-evals` owns central verdict, scoring, regression, and proof doctrine

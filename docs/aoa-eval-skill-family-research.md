@@ -53,9 +53,10 @@ repo-native `evals/` ports and intake pressure.
 
 All 15 `/srv/AbyssOS` git repositories were mapped. Fourteen repositories have
 `evals/PORT.yaml` with `schema_version: local_eval_port_v1`; `aoa-evals` itself
-does not expose a local port because it is the central proof owner. Only
-`aoa-memo` currently advertises `status: active`; the other local ports are
-`skeleton`.
+does not expose a local port because it is the central proof owner. `aoa-memo`
+and `aoa-skills` currently advertise `status: active`; the remaining local
+ports are `skeleton`. `aoa-skills` became active when the first local trigger
+corpus landed under `evals/suites/` and `evals/reports/`.
 
 | Repo | Local eval port | Status | Script/test/validator pressure |
 | --- | --- | --- | --- |
@@ -71,7 +72,7 @@ does not expose a local port because it is the central proof owner. Only
 | `aoa-playbooks` | yes | skeleton | 110 scripts, 71 tests, 64 validators |
 | `aoa-routing` | yes | skeleton | 52 scripts, 201 tests, 31 validators |
 | `aoa-sdk` | yes | skeleton | 81 scripts, 274 tests, 34 validators |
-| `aoa-skills` | yes | skeleton | 232 scripts, 325 tests, 79 validators |
+| `aoa-skills` | yes | active | 232 scripts, 325 tests, 79 validators |
 | `aoa-stats` | yes | skeleton | 53 scripts, 91 tests, 23 validators |
 | `aoa-techniques` | yes | skeleton | 103 scripts, 157 tests, 80 validators |
 
