@@ -42,6 +42,9 @@ Tracking starts with the community-docs baseline for this repository.
 - The evaluated decision graph skill chain now publishes `aoa-decision`,
   `aoa-decision-find`, `aoa-decision-create`, and `aoa-decision-correct` in the
   public skill index, core profiles, and generated export/runtime surfaces.
+- The `aoa-eval` family now has an active local eval-port trigger corpus and
+  session-mining report with `.aoa` refs, guarded by focused tests while central
+  proof authority remains in `aoa-evals`.
 
 ### Changed
 

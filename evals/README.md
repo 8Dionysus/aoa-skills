@@ -1,6 +1,6 @@
 # Local Eval Port
 
-This skeleton `evals/` port preserves skill-born eval pressure such as trigger
+This active `evals/` port preserves skill-born eval pressure such as trigger
 boundary cases, workflow fixture families, export compatibility questions, and
 skill adoption review cues.
 
@@ -18,5 +18,13 @@ packets, but they do not become bounded proof by location alone.
 
 ## Current Status
 
-Skeleton only. No active local intake packets, suites, reports, or draft bundles
-have been accepted here yet.
+Active first local corpus:
+
+- [suites/aoa-eval-trigger-corpus.suite.md](suites/aoa-eval-trigger-corpus.suite.md)
+  captures the `aoa-eval` trigger taxonomy, positive/negative classes, and
+  candidate `.aoa` raw/segment refs.
+- [reports/aoa-eval-session-mining.report.md](reports/aoa-eval-session-mining.report.md)
+  records the session-mining method, provider freshness, and handoff limits.
+
+These files are local evidence notes. They do not publish central proof
+acceptance, scoring, verdicts, regression truth, or proof doctrine.
