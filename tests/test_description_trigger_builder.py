@@ -57,6 +57,13 @@ class DescriptionTriggerBuilderTests(unittest.TestCase):
         self.assertGreaterEqual(manifest["total_cases"], 70)
         self.assertEqual(len(signals["skills"]), expected_skill_count)
         self.assertEqual(len(skills_ref["targets"]), expected_skill_count)
+        self.assertEqual(skills_ref["mode"], "export-required-conformance-lane")
+        self.assertTrue(
+            any("--require-skills-ref" in step for step in skills_ref["ci_steps"])
+        )
+        self.assertFalse(
+            any("Missing validator should skip cleanly" in step for step in skills_ref["ci_steps"])
+        )
         self.assertTrue(all(entry["coverage_ok"] for entry in manifest["skills"]))
         self.assertEqual(
             skills_ref["upstream"]["ref"],

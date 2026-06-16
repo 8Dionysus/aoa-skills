@@ -401,7 +401,7 @@ def main() -> int:
     validation_manifest = {
         "schema_version": 1,
         "profile": VALIDATION_PROFILE,
-        "mode": "soft-conformance-lane",
+        "mode": "export-required-conformance-lane",
         "validator": "skills-ref",
         "upstream": {
             "repository": AGENTSKILLS_REPOSITORY,
@@ -415,7 +415,7 @@ def main() -> int:
             "usage": "skills-ref validate path/to/skill",
             "caveat": (
                 "Upstream marks skills-ref as a reference library intended for demonstration purposes; "
-                "use it as a soft conformance lane alongside AoA-specific validators."
+                "use it as an export-required conformance lane alongside AoA-specific validators."
             ),
         },
         "targets": [
@@ -430,7 +430,7 @@ def main() -> int:
         "ci_steps": [
             "Build the portable export and downstream runtime layers first.",
             "Run PYTHONPATH=scripts python scripts/validation/validate_agent_skills.py --repo-root . and PYTHONPATH=scripts python scripts/validation/lint_description_trigger_evals.py --repo-root . in the same job.",
-            "Run PYTHONPATH=scripts python scripts/validation/run_skills_ref_validation.py --repo-root . as a soft conformance lane. Missing validator should skip cleanly; actual validator failures should fail the job.",
+            "Run PYTHONPATH=scripts python scripts/validation/run_skills_ref_validation.py --repo-root . --require-skills-ref as the export-required conformance lane. Missing validator and actual validator failures should fail the job.",
         ],
     }
 

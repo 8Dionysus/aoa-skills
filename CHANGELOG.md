@@ -78,6 +78,8 @@ Tracking starts with the community-docs baseline for this repository.
   owner module, with the main builder retaining compatibility aliases.
 - Agent Skills project kernel, outer-ring, risk-ring, and foundation-profile
   validation now lives in its own project-surface owner module.
+- The generated skills-ref conformance manifest now publishes the
+  export-required `--require-skills-ref` posture instead of a soft skip recipe.
 - Questbook surface validation is now split into explicit schema, quest YAML,
   generated catalog, and dispatch phases inside its owner module.
 - Agent Skills export/runtime validation is now phase-split into document
