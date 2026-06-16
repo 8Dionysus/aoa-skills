@@ -1426,7 +1426,7 @@ def validate_generated_evaluation_surfaces(docs: ExportSurfaceDocuments, indexes
         errors.append("generated/description_trigger_eval_manifest.json case_class_totals mismatch")
     if docs.skills_ref_manifest.get("validator") != "skills-ref":
         errors.append("generated/skills_ref_validation_manifest.json validator mismatch")
-    if docs.skills_ref_manifest.get("mode") != "soft-conformance-lane":
+    if docs.skills_ref_manifest.get("mode") != "export-required-conformance-lane":
         errors.append("generated/skills_ref_validation_manifest.json mode mismatch")
     if len(docs.skills_ref_manifest.get("targets", [])) != len(actual_names):
         errors.append("generated/skills_ref_validation_manifest.json target count mismatch")

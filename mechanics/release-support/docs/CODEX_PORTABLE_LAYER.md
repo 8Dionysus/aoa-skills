@@ -257,9 +257,9 @@ Lint the support-resource bridge:
 
     PYTHONPATH=scripts python scripts/validation/lint_support_resources.py --repo-root .
 
-Run the soft standards-conformance wrapper:
+Run the export-required standards-conformance wrapper:
 
-    PYTHONPATH=scripts python scripts/validation/run_skills_ref_validation.py --repo-root .
+    PYTHONPATH=scripts python scripts/validation/run_skills_ref_validation.py --repo-root . --require-skills-ref
 
 Inspect one activated raw runtime-seam payload:
 
