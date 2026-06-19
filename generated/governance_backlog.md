@@ -12,7 +12,7 @@ Read those rows as per-skill maintenance signals, not as missing canonical-decis
 - pending technique bridge lineage: 0
 - canonical maintenance cohort: 12
 - comparative pending cohort: 17
-- review truth-sync gaps: 1
+- review truth-sync gaps: 0
 - docs truth-sync issues: 0
 
 | name | status | lineage | governance ready | eval ready | governance decision | lanes | reconciliation | candidate review | promotion review |
@@ -104,7 +104,7 @@ Read those rows as per-skill maintenance signals, not as missing canonical-decis
 | aoa-session-progression-lift | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-session-progression-lift.md | 80f8c55f299f | 80f8c55f299f | True | - | true |
 | aoa-session-route-forks | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-session-route-forks.md | 35b036551123 | 35b036551123 | True | - | true |
 | aoa-session-self-diagnose | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-session-self-diagnose.md | 54e0926c66ea | 54e0926c66ea | True | - | true |
-| aoa-session-self-repair | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-session-self-repair.md | 0b867807a748 | 98ddb602e94b | True | reviewed_revision_mismatch(expected=98ddb602e94b, recorded=0b867807a748) | false |
+| aoa-session-self-repair | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-session-self-repair.md | 98ddb602e94b | 98ddb602e94b | True | - | true |
 | aoa-source-of-truth-check | canonical | published | default_reference | docs/reviews/status-promotions/aoa-source-of-truth-check.md | 7f6e64468a52 | 7f6e64468a52 | True | - | true |
 | aoa-summon | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-summon.md | 49650198b093 | 49650198b093 | True | - | true |
 | atm10-change-protocol | evaluated | published | - | docs/reviews/status-promotions/atm10-change-protocol.md | eb340748d355 | eb340748d355 | True | - | true |
@@ -116,6 +116,6 @@ Read those rows as per-skill maintenance signals, not as missing canonical-decis
 - `blocked_by_pending_lineage`: -
 - `canonical_maintenance`: aoa-adr-write, aoa-approval-gate-check, aoa-bounded-context-map, aoa-change-protocol, aoa-contract-test, aoa-dry-run-first, aoa-invariant-coverage-audit, aoa-property-invariants, aoa-safe-infra-change, aoa-sanitized-share, aoa-source-of-truth-check, aoa-tdd-slice
 - `comparative_pending`: aoa-automation-opportunity-scan, aoa-checkpoint-closeout-bridge, aoa-commit-growth-seam, aoa-core-logic-boundary, aoa-decision, aoa-decision-correct, aoa-decision-create, aoa-decision-find, aoa-local-stack-bringup, aoa-port-adapter-refactor, aoa-quest-harvest, aoa-session-donor-harvest, aoa-session-progression-lift, aoa-session-route-forks, aoa-session-self-diagnose, aoa-session-self-repair, aoa-summon
-- `review_truth_sync`: aoa-session-self-repair
+- `review_truth_sync`: -
 - `docs_truth_sync`: -
 
