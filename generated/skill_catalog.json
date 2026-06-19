@@ -836,7 +836,7 @@
           "id": "AOA-T-0094",
           "path": "techniques/proof/owner-truth-closeout/canonical-owner-with-validated-mirror/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "1a7d146957108ecefc24219c7d56357c5a4a2c2c",
+          "source_ref": "30a70271359fef7150cc8fa0c01530336f87edd4",
           "use_sections": [
             "Intent",
             "Inputs",
@@ -897,7 +897,7 @@
           "id": "AOA-T-0096",
           "path": "techniques/proof/owner-truth-closeout/pinned-validation-matrix-before-generated-publish/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "1a7d146957108ecefc24219c7d56357c5a4a2c2c",
+          "source_ref": "30a70271359fef7150cc8fa0c01530336f87edd4",
           "use_sections": [
             "Intent",
             "Inputs",
@@ -1004,7 +1004,7 @@
           "id": "AOA-T-0094",
           "path": "techniques/proof/owner-truth-closeout/canonical-owner-with-validated-mirror/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "1a7d146957108ecefc24219c7d56357c5a4a2c2c",
+          "source_ref": "30a70271359fef7150cc8fa0c01530336f87edd4",
           "use_sections": [
             "Intent",
             "Inputs",
@@ -1080,7 +1080,7 @@
           "id": "AOA-T-0094",
           "path": "techniques/proof/owner-truth-closeout/canonical-owner-with-validated-mirror/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "1a7d146957108ecefc24219c7d56357c5a4a2c2c",
+          "source_ref": "30a70271359fef7150cc8fa0c01530336f87edd4",
           "use_sections": [
             "Intent",
             "Inputs",
@@ -1758,7 +1758,7 @@
           "id": "AOA-T-0083",
           "path": "techniques/recovery/diagnosis-repair/checkpoint-bound-self-repair/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+          "source_ref": "30a70271359fef7150cc8fa0c01530336f87edd4",
           "use_sections": [
             "Outputs",
             "Contracts",
@@ -2273,7 +2273,7 @@
           "id": "AOA-T-0091",
           "path": "techniques/proof/owner-truth-closeout/workspace-root-ingress-and-mutation-gate/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+          "source_ref": "30a70271359fef7150cc8fa0c01530336f87edd4",
           "use_sections": [
             "Intent",
             "Inputs",
@@ -2654,7 +2654,7 @@
           "id": "AOA-T-0091",
           "path": "techniques/proof/owner-truth-closeout/workspace-root-ingress-and-mutation-gate/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+          "source_ref": "30a70271359fef7150cc8fa0c01530336f87edd4",
           "use_sections": [
             "Intent",
             "Inputs",
@@ -2837,7 +2837,7 @@
           "id": "AOA-T-0091",
           "path": "techniques/proof/owner-truth-closeout/workspace-root-ingress-and-mutation-gate/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+          "source_ref": "30a70271359fef7150cc8fa0c01530336f87edd4",
           "use_sections": [
             "Intent",
             "Inputs",

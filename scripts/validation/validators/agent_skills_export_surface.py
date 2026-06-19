@@ -1491,6 +1491,7 @@ def validate_release_relationship_surfaces(repo_root: pathlib.Path, docs: Export
     expected_release_manifest = release_manifest_contract.build_release_manifest(repo_root)
     for field_name in (
         "schema_version",
+        "artifact_identity",
         "profile",
         "included_waves",
         "skill_root",

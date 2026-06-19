@@ -368,13 +368,13 @@
       "truth_synced": true
     },
     {
-      "current_revision": "0b867807a748",
+      "current_revision": "98ddb602e94b",
       "governance_decision": "stay_evaluated",
       "issues": [],
       "lineage_state": "published",
       "name": "aoa-session-self-repair",
       "review_path": "docs/reviews/status-promotions/aoa-session-self-repair.md",
-      "reviewed_revision": "0b867807a748",
+      "reviewed_revision": "98ddb602e94b",
       "runtime_skill_md_meaning_changed": true,
       "status": "evaluated",
       "truth_synced": true

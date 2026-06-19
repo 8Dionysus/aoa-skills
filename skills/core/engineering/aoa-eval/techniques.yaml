@@ -28,7 +28,7 @@ techniques:
   - id: AOA-T-0094
     repo: 8Dionysus/aoa-techniques
     path: techniques/proof/owner-truth-closeout/canonical-owner-with-validated-mirror/TECHNIQUE.md
-    source_ref: 1a7d146957108ecefc24219c7d56357c5a4a2c2c
+    source_ref: 30a70271359fef7150cc8fa0c01530336f87edd4
     use_sections:
       - Intent
       - Inputs
