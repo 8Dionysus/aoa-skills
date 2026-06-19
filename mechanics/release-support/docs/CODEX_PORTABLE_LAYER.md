@@ -168,6 +168,11 @@ The portable export still stays generated from canonical skill roots; `scripts/b
 
 Use `generated/release_manifest.json` when you need one machine-readable view over the portable release contract.
 
+`mechanics/release-support/manifests/release_manifest.bundle.json` lets the
+same subject pass through the OS Abyss `abyss-machine` artifact verifier as
+`aoa_skills_release_manifest` without duplicating signing controls in this
+repository.
+
 It intentionally keeps three things separate:
 
 - repo-level release identity still lives in `CHANGELOG.md`, `mechanics/release-support/docs/RELEASING.md`, tags, and GitHub release notes

@@ -28,6 +28,13 @@ jobs:
           path: workspace/aoa-techniques
           fetch-depth: 0
 
+      - name: Checkout abyss-machine verifier
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+        with:
+          repository: 8Dionysus/abyss-machine
+          path: workspace/abyss-machine
+          fetch-depth: 0
+
       - name: Setup Python
         uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405
         with:
@@ -43,4 +50,6 @@ jobs:
 
       - name: Run release freeze gate
         working-directory: workspace/aoa-skills
+        env:
+          ABYSS_MACHINE_REPO_ROOT: ${{ github.workspace }}/workspace/abyss-machine
         run: python scripts/lanes/ci_gate.py --mode release

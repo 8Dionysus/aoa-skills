@@ -96,6 +96,33 @@
       "status": "active"
     },
     {
+      "path": "scripts/validation/validate_abyss_machine_artifact_bundle.py",
+      "family": "release/ci",
+      "owner_surface": "mechanics/release-support/manifests/release_manifest.bundle.json",
+      "layer": "release",
+      "lane": "release",
+      "mode": "blocking-os-abyss-verifier",
+      "inputs": [
+        "generated/release_manifest.json",
+        "mechanics/release-support/manifests/release_manifest.bundle.json",
+        "abyss-machine artifact bundle verifier"
+      ],
+      "outputs": [
+        "policy-driven ABI sidecar bundle verification JSON"
+      ],
+      "callers": [
+        "config/validation_lanes.json release_check",
+        ".github/workflows/release-audit.yml",
+        ".github/workflows/nightly-sentinel.yml",
+        "manual OS Abyss local validation"
+      ],
+      "overlap": "Consumes abyss-machine signing policy instead of duplicating release signing controls in aoa-skills.",
+      "pain": "Depends on runner-visible abyss-machine verifier availability through ABYSS_MACHINE_REPO_ROOT, local OS Abyss checkout, or installed package.",
+      "decision": "wire",
+      "failure_route": "Fix generated/release_manifest.json, the release-support bundle manifest, runner verifier setup, or the abyss-machine artifact policy class.",
+      "status": "active"
+    },
+    {
       "path": "scripts/validation/validate_agents_design.py",
       "family": "AGENTS/route-law",
       "owner_surface": "DESIGN.AGENTS.md",

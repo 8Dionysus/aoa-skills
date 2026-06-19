@@ -45,6 +45,9 @@ Tracking starts with the community-docs baseline for this repository.
 - The `aoa-eval` family now has an active local eval-port trigger corpus and
   session-mining report with `.aoa` refs, guarded by focused tests while central
   proof authority remains in `aoa-evals`.
+- The generated release manifest now has an OS Abyss artifact bundle manifest
+  and blocking release-lane `abyss-machine` verifier check for policy-driven
+  ABI sidecars.
 
 ### Changed
 
