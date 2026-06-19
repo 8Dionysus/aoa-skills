@@ -156,6 +156,15 @@ class ReleaseManifestContractTests(unittest.TestCase):
         self.assertEqual(["aoa-a", "aoa-b"], first["skill_names"])
         self.assertEqual(["aoa-a", "aoa-b"], second["skill_names"])
 
+    def test_artifact_identity_names_consumer_checks_and_privacy_boundary(self) -> None:
+        identity = release_manifest_contract.release_manifest_artifact_identity()
+
+        self.assertEqual(identity["artifact_class"], "aoa_skills_release_manifest")
+        self.assertEqual(identity["owner_repo"], "aoa-skills")
+        self.assertEqual(identity["abi_epoch"], "aoa_skills_release_manifest_v1")
+        self.assertIn("staged bundle manifests", identity["consumer_expectation"])
+        self.assertIn("no secrets", identity["privacy_boundary"])
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -92,9 +92,14 @@ class GeneratedSurfaceSchemaTests(unittest.TestCase):
 
     def test_release_manifest_schema_allows_relationship_views(self) -> None:
         payload = self.load_schema("release_manifest.schema.json")
-        self.assertEqual(payload["properties"]["schema_version"]["const"], 3)
+        self.assertEqual(payload["properties"]["schema_version"]["const"], 4)
+        self.assertIn("artifact_identity", payload["required"])
         self.assertIn("relationship_views", payload["required"])
         self.assertIn("relationship_views", payload["properties"])
+        self.assertEqual(
+            payload["$defs"]["artifactIdentity"]["properties"]["owner_repo"]["const"],
+            "aoa-skills",
+        )
 
 
 if __name__ == "__main__":

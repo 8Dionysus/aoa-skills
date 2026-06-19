@@ -6599,7 +6599,7 @@
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "7d566b7cfe55b99e3ecb1483bb6659c009f93b79c0d000678cdc6db3c997bfe4",
+      "content_hash": "1df90af29913434432d6704252a351f30dcbda3435458657c4e83423e9d97ec2",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -6625,7 +6625,7 @@
       "promotion_review_path": null,
       "scope": "core",
       "skill_path": "skills/core/engineering/aoa-eval/SKILL.md",
-      "skill_revision": "7d566b7cfe55",
+      "skill_revision": "1df90af29913",
       "status": "scaffold",
       "support_artifacts": [
         {
@@ -6659,7 +6659,7 @@
           "lineage_state": "published",
           "path": "techniques/proof/owner-truth-closeout/canonical-owner-with-validated-mirror/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "1a7d146957108ecefc24219c7d56357c5a4a2c2c"
+          "source_ref": "30a70271359fef7150cc8fa0c01530336f87edd4"
         }
       ]
     },
@@ -6679,7 +6679,7 @@
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "47864e0f122584cbac2d8c19d2680bcffca165f61cf66c97f89839a954a6a910",
+      "content_hash": "7d844fee55ea2692b2e39d58c4fd5865ca1ac78e9afe0b6ebce0127011bc6e6d",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -6705,7 +6705,7 @@
       "promotion_review_path": null,
       "scope": "core",
       "skill_path": "skills/core/engineering/aoa-eval-apply/SKILL.md",
-      "skill_revision": "47864e0f1225",
+      "skill_revision": "7d844fee55ea",
       "status": "scaffold",
       "support_artifacts": [
         {
@@ -6739,7 +6739,7 @@
           "lineage_state": "published",
           "path": "techniques/proof/owner-truth-closeout/pinned-validation-matrix-before-generated-publish/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "1a7d146957108ecefc24219c7d56357c5a4a2c2c"
+          "source_ref": "30a70271359fef7150cc8fa0c01530336f87edd4"
         }
       ]
     },
@@ -6839,7 +6839,7 @@
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "5deadee29db3e7ad46f07960c42063b4a8e2f0a1f60eb7c7c6d7af0b24d85a33",
+      "content_hash": "5245dc7a9c16f5bad46c1a4124eee21e995d06ffeae2d7e237a1b140fa454c48",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -6865,7 +6865,7 @@
       "promotion_review_path": null,
       "scope": "core",
       "skill_path": "skills/core/engineering/aoa-eval-local-need/SKILL.md",
-      "skill_revision": "5deadee29db3",
+      "skill_revision": "5245dc7a9c16",
       "status": "scaffold",
       "support_artifacts": [
         {
@@ -6892,7 +6892,7 @@
           "lineage_state": "published",
           "path": "techniques/proof/owner-truth-closeout/canonical-owner-with-validated-mirror/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "1a7d146957108ecefc24219c7d56357c5a4a2c2c"
+          "source_ref": "30a70271359fef7150cc8fa0c01530336f87edd4"
         },
         {
           "id": "AOA-T-0105",
@@ -6919,7 +6919,7 @@
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "a58d63f98d6c6696eb224375f610463e8bb45cc4d8f6d96153535f78ba75dbfd",
+      "content_hash": "8cb4d751897e967125a5e7bcfa1b336def2819fe4272f33ebcc62566fa288f8e",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -6945,7 +6945,7 @@
       "promotion_review_path": null,
       "scope": "core",
       "skill_path": "skills/core/engineering/aoa-eval-select/SKILL.md",
-      "skill_revision": "a58d63f98d6c",
+      "skill_revision": "8cb4d751897e",
       "status": "scaffold",
       "support_artifacts": [
         {
@@ -6979,7 +6979,7 @@
           "lineage_state": "published",
           "path": "techniques/proof/owner-truth-closeout/canonical-owner-with-validated-mirror/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "1a7d146957108ecefc24219c7d56357c5a4a2c2c"
+          "source_ref": "30a70271359fef7150cc8fa0c01530336f87edd4"
         }
       ]
     },
@@ -8152,7 +8152,7 @@
       "candidate_review_path": null,
       "canonical_candidate_ready": true,
       "canonical_eval_ready": true,
-      "content_hash": "0b867807a7486185f26774bb85d12be129bf34680d6c13e15f25d5e7dfc41134",
+      "content_hash": "98ddb602e94b1c588b0b9559e4aec5a04cdfd312d10ba58e47ea79f337266c9e",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -8184,7 +8184,7 @@
       "promotion_review_path": "docs/reviews/status-promotions/aoa-session-self-repair.md",
       "scope": "core",
       "skill_path": "skills/core/session-growth/aoa-session-self-repair/SKILL.md",
-      "skill_revision": "0b867807a748",
+      "skill_revision": "98ddb602e94b",
       "status": "evaluated",
       "support_artifacts": [
         {
@@ -8220,7 +8220,7 @@
           "lineage_state": "published",
           "path": "techniques/recovery/diagnosis-repair/checkpoint-bound-self-repair/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
+          "source_ref": "30a70271359fef7150cc8fa0c01530336f87edd4"
         }
       ]
     },
@@ -8942,7 +8942,7 @@
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "95c669f1733c17efa73024fe9cc5aa2ddcb4d342cc9eda20136e034447b149b1",
+      "content_hash": "e2e7f86ae3e84b4c3346384f4bc880d25c6f15e689c4660078398438e42db92a",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -8968,7 +8968,7 @@
       "promotion_review_path": null,
       "scope": "project",
       "skill_path": "skills/project/titan/titan-appserver-plan/SKILL.md",
-      "skill_revision": "95c669f1733c",
+      "skill_revision": "e2e7f86ae3e8",
       "status": "scaffold",
       "support_artifacts": [
         {
@@ -9000,7 +9000,7 @@
           "lineage_state": "published",
           "path": "techniques/proof/owner-truth-closeout/workspace-root-ingress-and-mutation-gate/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
+          "source_ref": "30a70271359fef7150cc8fa0c01530336f87edd4"
         },
         {
           "id": "AOA-T-0045",
@@ -9452,7 +9452,7 @@
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "208b66876410aef74ad70f9eb2a72e75fb5839534a7126a383b2820317aa8c7a",
+      "content_hash": "6caca5d3c25dd065fde56e6e8051a3ef3cc9a692f4103fd4149ae9c11eaba488",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -9478,7 +9478,7 @@
       "promotion_review_path": null,
       "scope": "project",
       "skill_path": "skills/project/titan/titan-mutation-gate/SKILL.md",
-      "skill_revision": "208b66876410",
+      "skill_revision": "6caca5d3c25d",
       "status": "scaffold",
       "support_artifacts": [
         {
@@ -9517,7 +9517,7 @@
           "lineage_state": "published",
           "path": "techniques/proof/owner-truth-closeout/workspace-root-ingress-and-mutation-gate/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
+          "source_ref": "30a70271359fef7150cc8fa0c01530336f87edd4"
         }
       ]
     },
@@ -9707,7 +9707,7 @@
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "d6bd4f6710258a84cd0e76dbf060d62568524e93dd9942c07458b2af10c993c8",
+      "content_hash": "29a46c72fbed1da7ddcca69931e181ba1d14daaabe401b3fd0777de57e72e2ec",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -9733,7 +9733,7 @@
       "promotion_review_path": null,
       "scope": "project",
       "skill_path": "skills/project/titan/titan-runtime-gate/SKILL.md",
-      "skill_revision": "d6bd4f671025",
+      "skill_revision": "29a46c72fbed",
       "status": "scaffold",
       "support_artifacts": [
         {
@@ -9772,7 +9772,7 @@
           "lineage_state": "published",
           "path": "techniques/proof/owner-truth-closeout/workspace-root-ingress-and-mutation-gate/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
+          "source_ref": "30a70271359fef7150cc8fa0c01530336f87edd4"
         }
       ]
     },

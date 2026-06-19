@@ -51,7 +51,9 @@
       "aoa-summon"
     ],
     "docs_truth_sync": [],
-    "review_truth_sync": []
+    "review_truth_sync": [
+      "aoa-session-self-repair"
+    ]
   },
   "governance_backlog_version": 5,
   "review_truth_sync": [
@@ -368,16 +370,18 @@
       "truth_synced": true
     },
     {
-      "current_revision": "0b867807a748",
+      "current_revision": "98ddb602e94b",
       "governance_decision": "stay_evaluated",
-      "issues": [],
+      "issues": [
+        "reviewed_revision_mismatch(expected=98ddb602e94b, recorded=0b867807a748)"
+      ],
       "lineage_state": "published",
       "name": "aoa-session-self-repair",
       "review_path": "docs/reviews/status-promotions/aoa-session-self-repair.md",
       "reviewed_revision": "0b867807a748",
       "runtime_skill_md_meaning_changed": true,
       "status": "evaluated",
-      "truth_synced": true
+      "truth_synced": false
     },
     {
       "current_revision": "7f6e64468a52",

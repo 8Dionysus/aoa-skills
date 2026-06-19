@@ -5,6 +5,7 @@
   "additionalProperties": false,
   "required": [
     "schema_version",
+    "artifact_identity",
     "profile",
     "included_waves",
     "skill_root",
@@ -22,7 +23,8 @@
     "release_identity"
   ],
   "properties": {
-    "schema_version": { "type": "integer", "const": 3 },
+    "schema_version": { "type": "integer", "const": 4 },
+    "artifact_identity": { "$ref": "#/$defs/artifactIdentity" },
     "profile": { "type": "string", "minLength": 1 },
     "included_waves": {
       "type": "array",
@@ -139,6 +141,65 @@
           "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
         },
         "has_unreleased_changes": { "type": "boolean" }
+      }
+    }
+  },
+  "$defs": {
+    "artifactIdentity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "artifact_class",
+        "surface_state",
+        "owner_repo",
+        "authority_ref",
+        "producer",
+        "consumer_expectation",
+        "privacy_boundary",
+        "content_identity",
+        "abi_epoch",
+        "contract_version",
+        "trust_layer",
+        "verification",
+        "action"
+      ],
+      "properties": {
+        "artifact_class": {
+          "type": "string",
+          "const": "aoa_skills_release_manifest"
+        },
+        "surface_state": {
+          "type": "string",
+          "const": "generated_portable_skill_export_release_contract"
+        },
+        "owner_repo": {
+          "type": "string",
+          "const": "aoa-skills"
+        },
+        "authority_ref": {
+          "type": "string",
+          "const": "mechanics/release-support/docs/CODEX_PORTABLE_LAYER.md"
+        },
+        "producer": { "type": "string", "minLength": 3 },
+        "consumer_expectation": { "type": "string", "minLength": 3 },
+        "privacy_boundary": { "type": "string", "minLength": 3 },
+        "content_identity": { "type": "string", "minLength": 3 },
+        "abi_epoch": {
+          "type": "string",
+          "const": "aoa_skills_release_manifest_v1"
+        },
+        "contract_version": { "type": "string", "minLength": 3 },
+        "trust_layer": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string", "minLength": 3 }
+        },
+        "verification": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string", "minLength": 3 }
+        },
+        "action": { "type": "string", "minLength": 3 }
       }
     }
   }

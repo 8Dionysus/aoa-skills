@@ -48,6 +48,8 @@ Tracking starts with the community-docs baseline for this repository.
 
 ### Changed
 
+- Generated release manifests now use schema version 4 and carry an
+  `artifact_identity` contract for portable export consumer checks.
 - The old root `Spark/` companion lane moved under `.agents/spark/`, matching
   the agent-lane topology used by `Agents-of-Abyss` and `aoa-techniques`.
 - Single-skill validation no longer checks aggregate generated surfaces unless

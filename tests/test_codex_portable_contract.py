@@ -297,6 +297,18 @@ class CodexPortableContractTests(unittest.TestCase):
         expected_manifest = release_manifest_contract.build_release_manifest(REPO_ROOT)
         source_catalog = load_json(REPO_ROOT / "generated" / "skill_catalog.min.json")
         self.assertEqual(release_manifest, expected_manifest)
+        identity = release_manifest["artifact_identity"]
+        self.assertEqual(identity["artifact_class"], "aoa_skills_release_manifest")
+        self.assertEqual(identity["owner_repo"], "aoa-skills")
+        self.assertEqual(
+            identity["trust_layer"],
+            [
+                "abi_contract_signature",
+                "local_release_provenance",
+                "w3c_prov_lineage",
+            ],
+        )
+        self.assertIn("staged bundle manifests", identity["consumer_expectation"])
 
         for rel_path in release_manifest["generated_files"]:
             self.assertTrue((REPO_ROOT / rel_path).exists(), msg=rel_path)
