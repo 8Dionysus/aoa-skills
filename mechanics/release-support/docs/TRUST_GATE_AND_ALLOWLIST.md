@@ -33,7 +33,7 @@ Policy:
 The governed seam resolves path templates for:
 
 - repo scope: `$REPO_ROOT/.agents/skills/<skill-name>`
-- user scope: `$HOME/.agents/skills/<skill-name>`
+- user scope: `$HOME/.codex/skills/<skill-name>`
 - admin scope: `/etc/codex/skills/<skill-name>`
 
 The merged allowlist is emitted by `scripts/skill_runtime_guardrails.py allowlist`.

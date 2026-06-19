@@ -279,6 +279,7 @@
         "repo-default",
         "repo-project-core-outer-ring",
         "repo-project-foundation",
+        "user-aoa-foundation",
         "user-curated-core"
       ],
       "invocation_mode": "explicit-preferred",
@@ -363,7 +364,8 @@
         "repo-default",
         "repo-project-foundation",
         "repo-project-risk-guard-ring",
-        "repo-risk-explicit"
+        "repo-risk-explicit",
+        "user-aoa-foundation"
       ],
       "invocation_mode": "explicit-only",
       "lineage_state": "published",
@@ -448,6 +450,7 @@
         "repo-project-foundation",
         "repo-session-growth",
         "repo-session-harvest-family",
+        "user-aoa-foundation",
         "user-curated-core"
       ],
       "invocation_mode": "explicit-only",
@@ -541,6 +544,7 @@
         "repo-default",
         "repo-project-core-outer-ring",
         "repo-project-foundation",
+        "user-aoa-foundation",
         "user-curated-core"
       ],
       "invocation_mode": "explicit-preferred",
@@ -626,6 +630,7 @@
         "repo-default",
         "repo-project-core-outer-ring",
         "repo-project-foundation",
+        "user-aoa-foundation",
         "user-curated-core"
       ],
       "invocation_mode": "explicit-preferred",
@@ -712,7 +717,8 @@
         "repo-project-core-kernel",
         "repo-project-foundation",
         "repo-session-growth",
-        "repo-session-harvest-family"
+        "repo-session-harvest-family",
+        "user-aoa-foundation"
       ],
       "invocation_mode": "explicit-preferred",
       "lineage_state": "published",
@@ -802,7 +808,8 @@
       },
       "install_profiles": [
         "repo-default",
-        "repo-session-growth"
+        "repo-session-growth",
+        "user-aoa-foundation"
       ],
       "invocation_mode": "explicit-only",
       "lineage_state": "published",
@@ -887,6 +894,7 @@
         "repo-default",
         "repo-project-core-outer-ring",
         "repo-project-foundation",
+        "user-aoa-foundation",
         "user-curated-core"
       ],
       "invocation_mode": "explicit-preferred",
@@ -972,6 +980,7 @@
         "repo-default",
         "repo-project-core-outer-ring",
         "repo-project-foundation",
+        "user-aoa-foundation",
         "user-curated-core"
       ],
       "invocation_mode": "explicit-preferred",
@@ -1057,6 +1066,7 @@
         "repo-default",
         "repo-project-core-outer-ring",
         "repo-project-foundation",
+        "user-aoa-foundation",
         "user-curated-core"
       ],
       "invocation_mode": "explicit-preferred",
@@ -1137,6 +1147,7 @@
         "repo-default",
         "repo-project-core-outer-ring",
         "repo-project-foundation",
+        "user-aoa-foundation",
         "user-curated-core"
       ],
       "invocation_mode": "explicit-preferred",
@@ -1225,6 +1236,7 @@
         "repo-default",
         "repo-project-core-outer-ring",
         "repo-project-foundation",
+        "user-aoa-foundation",
         "user-curated-core"
       ],
       "invocation_mode": "explicit-preferred",
@@ -1305,6 +1317,7 @@
         "repo-default",
         "repo-project-core-outer-ring",
         "repo-project-foundation",
+        "user-aoa-foundation",
         "user-curated-core"
       ],
       "invocation_mode": "explicit-preferred",
@@ -1377,7 +1390,8 @@
         "repo-default",
         "repo-project-foundation",
         "repo-project-risk-guard-ring",
-        "repo-risk-explicit"
+        "repo-risk-explicit",
+        "user-aoa-foundation"
       ],
       "invocation_mode": "explicit-only",
       "lineage_state": "published",
@@ -1463,7 +1477,8 @@
         "walkthrough": 1
       },
       "install_profiles": [
-        "repo-default"
+        "repo-default",
+        "user-aoa-foundation"
       ],
       "invocation_mode": "explicit-preferred",
       "lineage_state": "published",
@@ -1542,7 +1557,8 @@
         "walkthrough": 1
       },
       "install_profiles": [
-        "repo-default"
+        "repo-default",
+        "user-aoa-foundation"
       ],
       "invocation_mode": "explicit-preferred",
       "lineage_state": "published",
@@ -1621,7 +1637,8 @@
         "walkthrough": 1
       },
       "install_profiles": [
-        "repo-default"
+        "repo-default",
+        "user-aoa-foundation"
       ],
       "invocation_mode": "explicit-preferred",
       "lineage_state": "published",
@@ -1700,7 +1717,8 @@
         "walkthrough": 1
       },
       "install_profiles": [
-        "repo-default"
+        "repo-default",
+        "user-aoa-foundation"
       ],
       "invocation_mode": "explicit-preferred",
       "lineage_state": "published",
@@ -1779,7 +1797,8 @@
         "walkthrough": 1
       },
       "install_profiles": [
-        "repo-default"
+        "repo-default",
+        "user-aoa-foundation"
       ],
       "invocation_mode": "explicit-preferred",
       "lineage_state": "published",
@@ -1858,7 +1877,8 @@
         "walkthrough": 1
       },
       "install_profiles": [
-        "repo-default"
+        "repo-default",
+        "user-aoa-foundation"
       ],
       "invocation_mode": "explicit-preferred",
       "lineage_state": "published",
@@ -1940,7 +1960,8 @@
         "repo-core-only",
         "repo-default",
         "repo-project-core-outer-ring",
-        "repo-project-foundation"
+        "repo-project-foundation",
+        "user-aoa-foundation"
       ],
       "invocation_mode": "explicit-preferred",
       "lineage_state": "published",
@@ -2017,7 +2038,8 @@
         "repo-default",
         "repo-project-foundation",
         "repo-project-risk-guard-ring",
-        "repo-risk-explicit"
+        "repo-risk-explicit",
+        "user-aoa-foundation"
       ],
       "invocation_mode": "explicit-only",
       "lineage_state": "published",
@@ -2125,6 +2147,7 @@
         "repo-project-foundation",
         "repo-session-growth",
         "repo-session-harvest-family",
+        "user-aoa-foundation",
         "user-curated-core"
       ],
       "invocation_mode": "explicit-preferred",
@@ -2208,6 +2231,7 @@
         "repo-default",
         "repo-project-core-outer-ring",
         "repo-project-foundation",
+        "user-aoa-foundation",
         "user-curated-core"
       ],
       "invocation_mode": "explicit-preferred",
@@ -2293,6 +2317,7 @@
         "repo-default",
         "repo-project-core-outer-ring",
         "repo-project-foundation",
+        "user-aoa-foundation",
         "user-curated-core"
       ],
       "invocation_mode": "explicit-preferred",
@@ -2381,6 +2406,7 @@
         "repo-quest-harvest-only",
         "repo-session-growth",
         "repo-session-harvest-family",
+        "user-aoa-foundation",
         "user-curated-core"
       ],
       "invocation_mode": "explicit-only",
@@ -2466,7 +2492,8 @@
         "repo-default",
         "repo-project-foundation",
         "repo-project-risk-guard-ring",
-        "repo-risk-explicit"
+        "repo-risk-explicit",
+        "user-aoa-foundation"
       ],
       "invocation_mode": "explicit-only",
       "lineage_state": "published",
@@ -2555,7 +2582,8 @@
         "repo-default",
         "repo-project-foundation",
         "repo-project-risk-guard-ring",
-        "repo-risk-explicit"
+        "repo-risk-explicit",
+        "user-aoa-foundation"
       ],
       "invocation_mode": "explicit-only",
       "lineage_state": "published",
@@ -2648,6 +2676,7 @@
         "repo-session-donor-harvest-only",
         "repo-session-growth",
         "repo-session-harvest-family",
+        "user-aoa-foundation",
         "user-curated-core"
       ],
       "invocation_mode": "explicit-only",
@@ -2743,6 +2772,7 @@
         "repo-project-foundation",
         "repo-session-growth",
         "repo-session-harvest-family",
+        "user-aoa-foundation",
         "user-curated-core"
       ],
       "invocation_mode": "explicit-only",
@@ -2830,6 +2860,7 @@
         "repo-project-foundation",
         "repo-session-growth",
         "repo-session-harvest-family",
+        "user-aoa-foundation",
         "user-curated-core"
       ],
       "invocation_mode": "explicit-only",
@@ -2917,6 +2948,7 @@
         "repo-project-foundation",
         "repo-session-growth",
         "repo-session-harvest-family",
+        "user-aoa-foundation",
         "user-curated-core"
       ],
       "invocation_mode": "explicit-only",
@@ -3004,6 +3036,7 @@
         "repo-project-foundation",
         "repo-session-growth",
         "repo-session-harvest-family",
+        "user-aoa-foundation",
         "user-curated-core"
       ],
       "invocation_mode": "explicit-only",
@@ -3089,6 +3122,7 @@
         "repo-default",
         "repo-project-core-outer-ring",
         "repo-project-foundation",
+        "user-aoa-foundation",
         "user-curated-core"
       ],
       "invocation_mode": "explicit-preferred",
@@ -3180,7 +3214,8 @@
       "install_profiles": [
         "repo-default",
         "repo-session-growth",
-        "repo-summon-only"
+        "repo-summon-only",
+        "user-aoa-foundation"
       ],
       "invocation_mode": "explicit-only",
       "lineage_state": "published",
@@ -3281,6 +3316,7 @@
         "repo-default",
         "repo-project-core-outer-ring",
         "repo-project-foundation",
+        "user-aoa-foundation",
         "user-curated-core"
       ],
       "invocation_mode": "explicit-preferred",

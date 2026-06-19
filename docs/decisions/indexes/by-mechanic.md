@@ -63,6 +63,7 @@
 - [AOA-SK-D-0031 Script Source Home Topology](../AOA-SK-D-0031-script-source-home-topology.md) (`docs/decisions/AOA-SK-D-0031-script-source-home-topology.md`)
 - [AOA-SK-D-0032 Command Authority Family Paths](../AOA-SK-D-0032-command-authority-family-paths.md) (`docs/decisions/AOA-SK-D-0032-command-authority-family-paths.md`)
 - [AOA-SK-D-0033 Root Ingress Closure](../AOA-SK-D-0033-root-ingress-closure.md) (`docs/decisions/AOA-SK-D-0033-root-ingress-closure.md`)
+- [AOA-SK-D-0036 Codex User Skill Root And Foundation Profile](../AOA-SK-D-0036-codex-user-skill-root-and-foundation-profile.md) (`docs/decisions/AOA-SK-D-0036-codex-user-skill-root-and-foundation-profile.md`)
 
 ## rpg
 

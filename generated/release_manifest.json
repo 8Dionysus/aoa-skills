@@ -14,7 +14,7 @@
   "skill_root": ".agents/skills",
   "skill_count": 56,
   "explicit_only_count": 44,
-  "profile_count": 17,
+  "profile_count": 18,
   "authoring_inputs": [
     "generated/skill_sections.full.json",
     "generated/skill_catalog.min.json",
@@ -192,8 +192,8 @@
     },
     {
       "path": "config/skill_pack_profiles.json",
-      "sha256": "d6e293acdfac4764063b3435d61222b238c50dfcf46a07b2b7c788f1cbe8e339",
-      "bytes": 11905
+      "sha256": "c18820a7a426c2fb3064aa8fd415efb561af4dd47403dbc1cf3e6e748201c09a",
+      "bytes": 13385
     },
     {
       "path": "config/skill_policy_matrix.json",
@@ -264,13 +264,13 @@
     },
     {
       "path": "generated/skill_pack_profiles.resolved.json",
-      "sha256": "bd1d3cf071053c04d2650d4a62902e5256bba2d809edcb88ce8c9a357e97a82d",
-      "bytes": 96705
+      "sha256": "15a9e24c4bc6131a09223a0acf186ca690f9e9d7964c1254130b1ab966a6dba5",
+      "bytes": 113171
     },
     {
       "path": "generated/codex_config_snippets.json",
-      "sha256": "a3985553d4c951a88bbf6e8e0a96a13caedec4af072bd7de94c21e48c51f40e6",
-      "bytes": 21530
+      "sha256": "147892b4cc97b2c516a08e50956580e657e851ba32ef160e6806bdb4e1852e2c",
+      "bytes": 25205
     },
     {
       "path": "generated/mcp_dependency_manifest.json",
@@ -329,8 +329,8 @@
     },
     {
       "path": "generated/permission_allowlist_manifest.json",
-      "sha256": "668c2c4700d8e596e3449a0ccb92f95a326cead7b15751f9407c42a226dd3c96",
-      "bytes": 137856
+      "sha256": "434b13baf28301e79827e637d0724e95d77f1038b94b50410b83c3b694424e7e",
+      "bytes": 137520
     },
     {
       "path": "generated/skill_context_guard_manifest.json",
@@ -434,23 +434,23 @@
     },
     {
       "path": "generated/skill_bundle_index.json",
-      "sha256": "6edef7b5c2cfc08f807b07d89cc8dcafd5c5565be33200394e25dfb455b58152",
-      "bytes": 165679
+      "sha256": "4aeaefdca4f7eb1feb03bc900830d5b017d6082c3c147bff1d6c63611cc900e1",
+      "bytes": 166795
     },
     {
       "path": "generated/skill_bundle_index.md",
-      "sha256": "53692fe42be1c36452829a94ca20b761ae039cf0f86c557ab09cb50ccc07fa95",
-      "bytes": 18043
+      "sha256": "cdc38a5279ad9fb8f57599f4e61798d459a2fa3c478f514910f82af70e7be54c",
+      "bytes": 18799
     },
     {
       "path": "generated/skill_graph.json",
-      "sha256": "af13d2d23e8110e323e042d45c515861d31650e9583a340bf1370da787a735cb",
-      "bytes": 298593
+      "sha256": "aec87205c65e38193181f3f61c6d3307ca65c79e89cd5934cf8282207575e084",
+      "bytes": 304954
     },
     {
       "path": "generated/skill_graph.md",
-      "sha256": "b470b7b8bd797ec9ce63505e193d0ac06bdb7b053336d3186bc9f0dc1c0caf22",
-      "bytes": 88108
+      "sha256": "7e44ad9af0feb7852923fe5493ae5bab4656ed0c43c181f7ce81390dfb911d8a",
+      "bytes": 91884
     }
   ],
   "skill_bundle_revisions": [
@@ -1031,6 +1031,49 @@
         "titan-thread-turn-binding"
       ],
       "profile_revision": "e7537d737eb3da9303fe70037bae67ac858d26cb74ccae1610e730e125cb529b"
+    },
+    {
+      "name": "user-aoa-foundation",
+      "skill_count": 36,
+      "skill_names": [
+        "aoa-adr-write",
+        "aoa-approval-gate-check",
+        "aoa-automation-opportunity-scan",
+        "aoa-bounded-context-map",
+        "aoa-change-protocol",
+        "aoa-checkpoint-closeout-bridge",
+        "aoa-commit-growth-seam",
+        "aoa-contract-test",
+        "aoa-core-logic-boundary",
+        "aoa-decision",
+        "aoa-decision-correct",
+        "aoa-decision-create",
+        "aoa-decision-find",
+        "aoa-dry-run-first",
+        "aoa-eval",
+        "aoa-eval-apply",
+        "aoa-eval-design",
+        "aoa-eval-local-need",
+        "aoa-eval-select",
+        "aoa-eval-session-mining",
+        "aoa-invariant-coverage-audit",
+        "aoa-local-stack-bringup",
+        "aoa-memo-writeback",
+        "aoa-port-adapter-refactor",
+        "aoa-property-invariants",
+        "aoa-quest-harvest",
+        "aoa-safe-infra-change",
+        "aoa-sanitized-share",
+        "aoa-session-donor-harvest",
+        "aoa-session-progression-lift",
+        "aoa-session-route-forks",
+        "aoa-session-self-diagnose",
+        "aoa-session-self-repair",
+        "aoa-source-of-truth-check",
+        "aoa-summon",
+        "aoa-tdd-slice"
+      ],
+      "profile_revision": "f131dc05b8b5bb1c2a54ce4f3e197f72d96cd2db8687db578473fb07b3a866db"
     },
     {
       "name": "user-curated-core",

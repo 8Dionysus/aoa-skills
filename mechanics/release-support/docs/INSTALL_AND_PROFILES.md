@@ -275,6 +275,15 @@ explicit project safety perimeter outside project-core:
 `repo-risk-explicit` remains as the backward-compatible alias for the same five
 explicit-only risk skills.
 
+`user-aoa-foundation` is the broad personal Codex install layer:
+
+- it is `user`-scoped and targets `$HOME/.codex/skills`
+- it includes `repo-project-foundation`, the `aoa-eval*` routing family,
+  `aoa-commit-growth-seam`, and `aoa-summon`
+- it intentionally excludes project overlays such as `abyss-*`, `atm10-*`, and
+  `titan-*`
+- it is the intended default for this machine's top-level Codex skill root
+
 `repo-quest-harvest-only` remains the narrow leaf rollout profile for
 installing just `aoa-quest-harvest`.
 
@@ -301,7 +310,7 @@ python scripts/import_skill_pack.py --repo-root . --profile repo-core-only --bun
 Not every install root should carry the same surface:
 
 - repo roots can afford project overlays
-- user roots should prefer reusable portable skills
+- user roots should prefer reusable portable skills under `$HOME/.codex/skills`
 - explicit-only risk skills deserve a canonical bounded posture
 - some repos need one narrow post-session skill without taking the full repo-default surface
 - project overlays should stay project-local

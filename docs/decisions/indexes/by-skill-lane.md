@@ -7,6 +7,7 @@
 - [AOA-SK-D-0015 Skills Source Topology](../AOA-SK-D-0015-skills-source-topology.md) (`docs/decisions/AOA-SK-D-0015-skills-source-topology.md`)
 - [AOA-SK-D-0034 Decision Graph Skill Chain](../AOA-SK-D-0034-decision-graph-skill-chain.md) (`docs/decisions/AOA-SK-D-0034-decision-graph-skill-chain.md`)
 - [AOA-SK-D-0035 Decision Graph Impact And Issue-Aware Skills](../AOA-SK-D-0035-decision-graph-impact-and-issue-aware-skills.md) (`docs/decisions/AOA-SK-D-0035-decision-graph-impact-and-issue-aware-skills.md`)
+- [AOA-SK-D-0036 Codex User Skill Root And Foundation Profile](../AOA-SK-D-0036-codex-user-skill-root-and-foundation-profile.md) (`docs/decisions/AOA-SK-D-0036-codex-user-skill-root-and-foundation-profile.md`)
 
 ## core/session-growth
 
@@ -14,11 +15,13 @@
 - [AOA-SK-D-0018 Session Growth Evaluated Governance](../AOA-SK-D-0018-session-growth-evaluated-governance.md) (`docs/decisions/AOA-SK-D-0018-session-growth-evaluated-governance.md`)
 - [AOA-SK-D-0023 Growth-Cycle Session Harvest Ownership](../AOA-SK-D-0023-growth-cycle-session-harvest-ownership.md) (`docs/decisions/AOA-SK-D-0023-growth-cycle-session-harvest-ownership.md`)
 - [AOA-SK-D-0026 Memo Writeback Skill Owner Boundary](../AOA-SK-D-0026-memo-writeback-skill-owner-boundary.md) (`docs/decisions/AOA-SK-D-0026-memo-writeback-skill-owner-boundary.md`)
+- [AOA-SK-D-0036 Codex User Skill Root And Foundation Profile](../AOA-SK-D-0036-codex-user-skill-root-and-foundation-profile.md) (`docs/decisions/AOA-SK-D-0036-codex-user-skill-root-and-foundation-profile.md`)
 
 ## risk
 
 - [AOA-SK-D-0004 Mechanics Antifragility Risk Posture](../AOA-SK-D-0004-mechanics-antifragility-risk-posture.md) (`docs/decisions/AOA-SK-D-0004-mechanics-antifragility-risk-posture.md`)
 - [AOA-SK-D-0015 Skills Source Topology](../AOA-SK-D-0015-skills-source-topology.md) (`docs/decisions/AOA-SK-D-0015-skills-source-topology.md`)
+- [AOA-SK-D-0036 Codex User Skill Root And Foundation Profile](../AOA-SK-D-0036-codex-user-skill-root-and-foundation-profile.md) (`docs/decisions/AOA-SK-D-0036-codex-user-skill-root-and-foundation-profile.md`)
 
 ## project
 
@@ -30,3 +33,4 @@
 - [AOA-SK-D-0033 Root Ingress Closure](../AOA-SK-D-0033-root-ingress-closure.md) (`docs/decisions/AOA-SK-D-0033-root-ingress-closure.md`)
 - [AOA-SK-D-0034 Decision Graph Skill Chain](../AOA-SK-D-0034-decision-graph-skill-chain.md) (`docs/decisions/AOA-SK-D-0034-decision-graph-skill-chain.md`)
 - [AOA-SK-D-0035 Decision Graph Impact And Issue-Aware Skills](../AOA-SK-D-0035-decision-graph-impact-and-issue-aware-skills.md) (`docs/decisions/AOA-SK-D-0035-decision-graph-impact-and-issue-aware-skills.md`)
+- [AOA-SK-D-0036 Codex User Skill Root And Foundation Profile](../AOA-SK-D-0036-codex-user-skill-root-and-foundation-profile.md) (`docs/decisions/AOA-SK-D-0036-codex-user-skill-root-and-foundation-profile.md`)

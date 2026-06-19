@@ -21,7 +21,7 @@ import yaml
 
 STANDARD_INSTALL_ROOTS = {
     "repo": ".agents/skills",
-    "user": "$HOME/.agents/skills",
+    "user": "$HOME/.codex/skills",
     "admin": "/etc/codex/skills",
 }
 EXPORT_PROFILE = portable_skill_export.EXPORT_PROFILE

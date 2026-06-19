@@ -878,12 +878,12 @@
       },
       "graph_refs": {
         "node_id": "skill_aoa_adr_write",
-        "outgoing_edge_count": 16,
+        "outgoing_edge_count": 17,
         "incoming_edge_count": 0,
         "outgoing_edge_kinds": {
           "available_in_artifact_group": 5,
           "depends_on": 2,
-          "included_in_profile": 5,
+          "included_in_profile": 6,
           "invocation_policy": 1,
           "lineage": 1,
           "maturity": 1,
@@ -899,6 +899,7 @@
           "repo-default",
           "repo-project-core-outer-ring",
           "repo-project-foundation",
+          "user-aoa-foundation",
           "user-curated-core"
         ],
         "artifact_group_coverage": [
@@ -1131,12 +1132,12 @@
       },
       "graph_refs": {
         "node_id": "skill_aoa_approval_gate_check",
-        "outgoing_edge_count": 14,
+        "outgoing_edge_count": 15,
         "incoming_edge_count": 0,
         "outgoing_edge_kinds": {
           "available_in_artifact_group": 5,
           "depends_on": 1,
-          "included_in_profile": 4,
+          "included_in_profile": 5,
           "invocation_policy": 1,
           "lineage": 1,
           "maturity": 1,
@@ -1151,7 +1152,8 @@
           "repo-default",
           "repo-project-foundation",
           "repo-project-risk-guard-ring",
-          "repo-risk-explicit"
+          "repo-risk-explicit",
+          "user-aoa-foundation"
         ],
         "artifact_group_coverage": [
           "portable_export",
@@ -1394,12 +1396,12 @@
       },
       "graph_refs": {
         "node_id": "skill_aoa_automation_opportunity_scan",
-        "outgoing_edge_count": 20,
+        "outgoing_edge_count": 21,
         "incoming_edge_count": 0,
         "outgoing_edge_kinds": {
           "available_in_artifact_group": 5,
           "depends_on": 3,
-          "included_in_profile": 8,
+          "included_in_profile": 9,
           "invocation_policy": 1,
           "lineage": 1,
           "maturity": 1,
@@ -1418,6 +1420,7 @@
           "repo-project-foundation",
           "repo-session-growth",
           "repo-session-harvest-family",
+          "user-aoa-foundation",
           "user-curated-core"
         ],
         "artifact_group_coverage": [
@@ -1653,12 +1656,12 @@
       },
       "graph_refs": {
         "node_id": "skill_aoa_bounded_context_map",
-        "outgoing_edge_count": 16,
+        "outgoing_edge_count": 17,
         "incoming_edge_count": 0,
         "outgoing_edge_kinds": {
           "available_in_artifact_group": 5,
           "depends_on": 2,
-          "included_in_profile": 5,
+          "included_in_profile": 6,
           "invocation_policy": 1,
           "lineage": 1,
           "maturity": 1,
@@ -1674,6 +1677,7 @@
           "repo-default",
           "repo-project-core-outer-ring",
           "repo-project-foundation",
+          "user-aoa-foundation",
           "user-curated-core"
         ],
         "artifact_group_coverage": [
@@ -1908,12 +1912,12 @@
       },
       "graph_refs": {
         "node_id": "skill_aoa_change_protocol",
-        "outgoing_edge_count": 16,
+        "outgoing_edge_count": 17,
         "incoming_edge_count": 0,
         "outgoing_edge_kinds": {
           "available_in_artifact_group": 5,
           "depends_on": 2,
-          "included_in_profile": 5,
+          "included_in_profile": 6,
           "invocation_policy": 1,
           "lineage": 1,
           "maturity": 1,
@@ -1929,6 +1933,7 @@
           "repo-default",
           "repo-project-core-outer-ring",
           "repo-project-foundation",
+          "user-aoa-foundation",
           "user-curated-core"
         ],
         "artifact_group_coverage": [
@@ -2168,12 +2173,12 @@
       },
       "graph_refs": {
         "node_id": "skill_aoa_checkpoint_closeout_bridge",
-        "outgoing_edge_count": 18,
+        "outgoing_edge_count": 19,
         "incoming_edge_count": 0,
         "outgoing_edge_kinds": {
           "available_in_artifact_group": 5,
           "depends_on": 3,
-          "included_in_profile": 6,
+          "included_in_profile": 7,
           "invocation_policy": 1,
           "lineage": 1,
           "maturity": 1,
@@ -2190,7 +2195,8 @@
           "repo-project-core-kernel",
           "repo-project-foundation",
           "repo-session-growth",
-          "repo-session-harvest-family"
+          "repo-session-harvest-family",
+          "user-aoa-foundation"
         ],
         "artifact_group_coverage": [
           "portable_export",
@@ -2424,12 +2430,12 @@
       },
       "graph_refs": {
         "node_id": "skill_aoa_commit_growth_seam",
-        "outgoing_edge_count": 13,
+        "outgoing_edge_count": 14,
         "incoming_edge_count": 0,
         "outgoing_edge_kinds": {
           "available_in_artifact_group": 5,
           "depends_on": 2,
-          "included_in_profile": 2,
+          "included_in_profile": 3,
           "invocation_policy": 1,
           "lineage": 1,
           "maturity": 1,
@@ -2442,7 +2448,8 @@
         "repo_export_present": true,
         "install_profiles": [
           "repo-default",
-          "repo-session-growth"
+          "repo-session-growth",
+          "user-aoa-foundation"
         ],
         "artifact_group_coverage": [
           "portable_export",
@@ -2675,12 +2682,12 @@
       },
       "graph_refs": {
         "node_id": "skill_aoa_contract_test",
-        "outgoing_edge_count": 16,
+        "outgoing_edge_count": 17,
         "incoming_edge_count": 0,
         "outgoing_edge_kinds": {
           "available_in_artifact_group": 5,
           "depends_on": 2,
-          "included_in_profile": 5,
+          "included_in_profile": 6,
           "invocation_policy": 1,
           "lineage": 1,
           "maturity": 1,
@@ -2696,6 +2703,7 @@
           "repo-default",
           "repo-project-core-outer-ring",
           "repo-project-foundation",
+          "user-aoa-foundation",
           "user-curated-core"
         ],
         "artifact_group_coverage": [
@@ -2930,12 +2938,12 @@
       },
       "graph_refs": {
         "node_id": "skill_aoa_core_logic_boundary",
-        "outgoing_edge_count": 16,
+        "outgoing_edge_count": 17,
         "incoming_edge_count": 0,
         "outgoing_edge_kinds": {
           "available_in_artifact_group": 5,
           "depends_on": 2,
-          "included_in_profile": 5,
+          "included_in_profile": 6,
           "invocation_policy": 1,
           "lineage": 1,
           "maturity": 1,
@@ -2951,6 +2959,7 @@
           "repo-default",
           "repo-project-core-outer-ring",
           "repo-project-foundation",
+          "user-aoa-foundation",
           "user-curated-core"
         ],
         "artifact_group_coverage": [
@@ -3176,12 +3185,12 @@
       },
       "graph_refs": {
         "node_id": "skill_aoa_decision",
-        "outgoing_edge_count": 16,
+        "outgoing_edge_count": 17,
         "incoming_edge_count": 0,
         "outgoing_edge_kinds": {
           "available_in_artifact_group": 5,
           "depends_on": 2,
-          "included_in_profile": 5,
+          "included_in_profile": 6,
           "invocation_policy": 1,
           "lineage": 1,
           "maturity": 1,
@@ -3197,6 +3206,7 @@
           "repo-default",
           "repo-project-core-outer-ring",
           "repo-project-foundation",
+          "user-aoa-foundation",
           "user-curated-core"
         ],
         "artifact_group_coverage": [
@@ -3430,12 +3440,12 @@
       },
       "graph_refs": {
         "node_id": "skill_aoa_decision_correct",
-        "outgoing_edge_count": 17,
+        "outgoing_edge_count": 18,
         "incoming_edge_count": 0,
         "outgoing_edge_kinds": {
           "available_in_artifact_group": 5,
           "depends_on": 3,
-          "included_in_profile": 5,
+          "included_in_profile": 6,
           "invocation_policy": 1,
           "lineage": 1,
           "maturity": 1,
@@ -3451,6 +3461,7 @@
           "repo-default",
           "repo-project-core-outer-ring",
           "repo-project-foundation",
+          "user-aoa-foundation",
           "user-curated-core"
         ],
         "artifact_group_coverage": [
@@ -3676,12 +3687,12 @@
       },
       "graph_refs": {
         "node_id": "skill_aoa_decision_create",
-        "outgoing_edge_count": 16,
+        "outgoing_edge_count": 17,
         "incoming_edge_count": 0,
         "outgoing_edge_kinds": {
           "available_in_artifact_group": 5,
           "depends_on": 2,
-          "included_in_profile": 5,
+          "included_in_profile": 6,
           "invocation_policy": 1,
           "lineage": 1,
           "maturity": 1,
@@ -3697,6 +3708,7 @@
           "repo-default",
           "repo-project-core-outer-ring",
           "repo-project-foundation",
+          "user-aoa-foundation",
           "user-curated-core"
         ],
         "artifact_group_coverage": [
@@ -3914,12 +3926,12 @@
       },
       "graph_refs": {
         "node_id": "skill_aoa_decision_find",
-        "outgoing_edge_count": 15,
+        "outgoing_edge_count": 16,
         "incoming_edge_count": 0,
         "outgoing_edge_kinds": {
           "available_in_artifact_group": 5,
           "depends_on": 1,
-          "included_in_profile": 5,
+          "included_in_profile": 6,
           "invocation_policy": 1,
           "lineage": 1,
           "maturity": 1,
@@ -3935,6 +3947,7 @@
           "repo-default",
           "repo-project-core-outer-ring",
           "repo-project-foundation",
+          "user-aoa-foundation",
           "user-curated-core"
         ],
         "artifact_group_coverage": [
@@ -4183,12 +4196,12 @@
       },
       "graph_refs": {
         "node_id": "skill_aoa_dry_run_first",
-        "outgoing_edge_count": 16,
+        "outgoing_edge_count": 17,
         "incoming_edge_count": 0,
         "outgoing_edge_kinds": {
           "available_in_artifact_group": 6,
           "depends_on": 2,
-          "included_in_profile": 4,
+          "included_in_profile": 5,
           "invocation_policy": 1,
           "lineage": 1,
           "maturity": 1,
@@ -4203,7 +4216,8 @@
           "repo-default",
           "repo-project-foundation",
           "repo-project-risk-guard-ring",
-          "repo-risk-explicit"
+          "repo-risk-explicit",
+          "user-aoa-foundation"
         ],
         "artifact_group_coverage": [
           "portable_export",
@@ -4435,12 +4449,12 @@
       },
       "graph_refs": {
         "node_id": "skill_aoa_eval",
-        "outgoing_edge_count": 13,
+        "outgoing_edge_count": 14,
         "incoming_edge_count": 0,
         "outgoing_edge_kinds": {
           "available_in_artifact_group": 5,
           "depends_on": 3,
-          "included_in_profile": 1,
+          "included_in_profile": 2,
           "invocation_policy": 1,
           "lineage": 1,
           "maturity": 1,
@@ -4452,7 +4466,8 @@
         "repo_export_path": ".agents/skills/aoa-eval/SKILL.md",
         "repo_export_present": true,
         "install_profiles": [
-          "repo-default"
+          "repo-default",
+          "user-aoa-foundation"
         ],
         "artifact_group_coverage": [
           "portable_export",
@@ -4683,12 +4698,12 @@
       },
       "graph_refs": {
         "node_id": "skill_aoa_eval_apply",
-        "outgoing_edge_count": 13,
+        "outgoing_edge_count": 14,
         "incoming_edge_count": 0,
         "outgoing_edge_kinds": {
           "available_in_artifact_group": 5,
           "depends_on": 3,
-          "included_in_profile": 1,
+          "included_in_profile": 2,
           "invocation_policy": 1,
           "lineage": 1,
           "maturity": 1,
@@ -4700,7 +4715,8 @@
         "repo_export_path": ".agents/skills/aoa-eval-apply/SKILL.md",
         "repo_export_present": true,
         "install_profiles": [
-          "repo-default"
+          "repo-default",
+          "user-aoa-foundation"
         ],
         "artifact_group_coverage": [
           "portable_export",
@@ -4931,12 +4947,12 @@
       },
       "graph_refs": {
         "node_id": "skill_aoa_eval_design",
-        "outgoing_edge_count": 13,
+        "outgoing_edge_count": 14,
         "incoming_edge_count": 0,
         "outgoing_edge_kinds": {
           "available_in_artifact_group": 5,
           "depends_on": 3,
-          "included_in_profile": 1,
+          "included_in_profile": 2,
           "invocation_policy": 1,
           "lineage": 1,
           "maturity": 1,
@@ -4948,7 +4964,8 @@
         "repo_export_path": ".agents/skills/aoa-eval-design/SKILL.md",
         "repo_export_present": true,
         "install_profiles": [
-          "repo-default"
+          "repo-default",
+          "user-aoa-foundation"
         ],
         "artifact_group_coverage": [
           "portable_export",
@@ -5179,12 +5196,12 @@
       },
       "graph_refs": {
         "node_id": "skill_aoa_eval_local_need",
-        "outgoing_edge_count": 13,
+        "outgoing_edge_count": 14,
         "incoming_edge_count": 0,
         "outgoing_edge_kinds": {
           "available_in_artifact_group": 5,
           "depends_on": 3,
-          "included_in_profile": 1,
+          "included_in_profile": 2,
           "invocation_policy": 1,
           "lineage": 1,
           "maturity": 1,
@@ -5196,7 +5213,8 @@
         "repo_export_path": ".agents/skills/aoa-eval-local-need/SKILL.md",
         "repo_export_present": true,
         "install_profiles": [
-          "repo-default"
+          "repo-default",
+          "user-aoa-foundation"
         ],
         "artifact_group_coverage": [
           "portable_export",
@@ -5427,12 +5445,12 @@
       },
       "graph_refs": {
         "node_id": "skill_aoa_eval_select",
-        "outgoing_edge_count": 13,
+        "outgoing_edge_count": 14,
         "incoming_edge_count": 0,
         "outgoing_edge_kinds": {
           "available_in_artifact_group": 5,
           "depends_on": 3,
-          "included_in_profile": 1,
+          "included_in_profile": 2,
           "invocation_policy": 1,
           "lineage": 1,
           "maturity": 1,
@@ -5444,7 +5462,8 @@
         "repo_export_path": ".agents/skills/aoa-eval-select/SKILL.md",
         "repo_export_present": true,
         "install_profiles": [
-          "repo-default"
+          "repo-default",
+          "user-aoa-foundation"
         ],
         "artifact_group_coverage": [
           "portable_export",
@@ -5675,12 +5694,12 @@
       },
       "graph_refs": {
         "node_id": "skill_aoa_eval_session_mining",
-        "outgoing_edge_count": 13,
+        "outgoing_edge_count": 14,
         "incoming_edge_count": 0,
         "outgoing_edge_kinds": {
           "available_in_artifact_group": 5,
           "depends_on": 3,
-          "included_in_profile": 1,
+          "included_in_profile": 2,
           "invocation_policy": 1,
           "lineage": 1,
           "maturity": 1,
@@ -5692,7 +5711,8 @@
         "repo_export_path": ".agents/skills/aoa-eval-session-mining/SKILL.md",
         "repo_export_present": true,
         "install_profiles": [
-          "repo-default"
+          "repo-default",
+          "user-aoa-foundation"
         ],
         "artifact_group_coverage": [
           "portable_export",
@@ -5917,12 +5937,12 @@
       },
       "graph_refs": {
         "node_id": "skill_aoa_invariant_coverage_audit",
-        "outgoing_edge_count": 14,
+        "outgoing_edge_count": 15,
         "incoming_edge_count": 0,
         "outgoing_edge_kinds": {
           "available_in_artifact_group": 5,
           "depends_on": 1,
-          "included_in_profile": 4,
+          "included_in_profile": 5,
           "invocation_policy": 1,
           "lineage": 1,
           "maturity": 1,
@@ -5937,7 +5957,8 @@
           "repo-core-only",
           "repo-default",
           "repo-project-core-outer-ring",
-          "repo-project-foundation"
+          "repo-project-foundation",
+          "user-aoa-foundation"
         ],
         "artifact_group_coverage": [
           "portable_export",
@@ -6200,12 +6221,12 @@
       },
       "graph_refs": {
         "node_id": "skill_aoa_local_stack_bringup",
-        "outgoing_edge_count": 18,
+        "outgoing_edge_count": 19,
         "incoming_edge_count": 0,
         "outgoing_edge_kinds": {
           "available_in_artifact_group": 6,
           "depends_on": 4,
-          "included_in_profile": 4,
+          "included_in_profile": 5,
           "invocation_policy": 1,
           "lineage": 1,
           "maturity": 1,
@@ -6220,7 +6241,8 @@
           "repo-default",
           "repo-project-foundation",
           "repo-project-risk-guard-ring",
-          "repo-risk-explicit"
+          "repo-risk-explicit",
+          "user-aoa-foundation"
         ],
         "artifact_group_coverage": [
           "portable_export",
@@ -6452,12 +6474,12 @@
       },
       "graph_refs": {
         "node_id": "skill_aoa_memo_writeback",
-        "outgoing_edge_count": 19,
+        "outgoing_edge_count": 20,
         "incoming_edge_count": 0,
         "outgoing_edge_kinds": {
           "available_in_artifact_group": 5,
           "depends_on": 3,
-          "included_in_profile": 7,
+          "included_in_profile": 8,
           "invocation_policy": 1,
           "lineage": 1,
           "maturity": 1,
@@ -6475,6 +6497,7 @@
           "repo-project-foundation",
           "repo-session-growth",
           "repo-session-harvest-family",
+          "user-aoa-foundation",
           "user-curated-core"
         ],
         "artifact_group_coverage": [
@@ -6709,12 +6732,12 @@
       },
       "graph_refs": {
         "node_id": "skill_aoa_port_adapter_refactor",
-        "outgoing_edge_count": 16,
+        "outgoing_edge_count": 17,
         "incoming_edge_count": 0,
         "outgoing_edge_kinds": {
           "available_in_artifact_group": 5,
           "depends_on": 2,
-          "included_in_profile": 5,
+          "included_in_profile": 6,
           "invocation_policy": 1,
           "lineage": 1,
           "maturity": 1,
@@ -6730,6 +6753,7 @@
           "repo-default",
           "repo-project-core-outer-ring",
           "repo-project-foundation",
+          "user-aoa-foundation",
           "user-curated-core"
         ],
         "artifact_group_coverage": [
@@ -6963,12 +6987,12 @@
       },
       "graph_refs": {
         "node_id": "skill_aoa_property_invariants",
-        "outgoing_edge_count": 16,
+        "outgoing_edge_count": 17,
         "incoming_edge_count": 0,
         "outgoing_edge_kinds": {
           "available_in_artifact_group": 5,
           "depends_on": 2,
-          "included_in_profile": 5,
+          "included_in_profile": 6,
           "invocation_policy": 1,
           "lineage": 1,
           "maturity": 1,
@@ -6984,6 +7008,7 @@
           "repo-default",
           "repo-project-core-outer-ring",
           "repo-project-foundation",
+          "user-aoa-foundation",
           "user-curated-core"
         ],
         "artifact_group_coverage": [
@@ -7219,12 +7244,12 @@
       },
       "graph_refs": {
         "node_id": "skill_aoa_quest_harvest",
-        "outgoing_edge_count": 19,
+        "outgoing_edge_count": 20,
         "incoming_edge_count": 0,
         "outgoing_edge_kinds": {
           "available_in_artifact_group": 5,
           "depends_on": 2,
-          "included_in_profile": 8,
+          "included_in_profile": 9,
           "invocation_policy": 1,
           "lineage": 1,
           "maturity": 1,
@@ -7243,6 +7268,7 @@
           "repo-quest-harvest-only",
           "repo-session-growth",
           "repo-session-harvest-family",
+          "user-aoa-foundation",
           "user-curated-core"
         ],
         "artifact_group_coverage": [
@@ -7492,12 +7518,12 @@
       },
       "graph_refs": {
         "node_id": "skill_aoa_safe_infra_change",
-        "outgoing_edge_count": 16,
+        "outgoing_edge_count": 17,
         "incoming_edge_count": 0,
         "outgoing_edge_kinds": {
           "available_in_artifact_group": 6,
           "depends_on": 2,
-          "included_in_profile": 4,
+          "included_in_profile": 5,
           "invocation_policy": 1,
           "lineage": 1,
           "maturity": 1,
@@ -7512,7 +7538,8 @@
           "repo-default",
           "repo-project-foundation",
           "repo-project-risk-guard-ring",
-          "repo-risk-explicit"
+          "repo-risk-explicit",
+          "user-aoa-foundation"
         ],
         "artifact_group_coverage": [
           "portable_export",
@@ -7753,12 +7780,12 @@
       },
       "graph_refs": {
         "node_id": "skill_aoa_sanitized_share",
-        "outgoing_edge_count": 15,
+        "outgoing_edge_count": 16,
         "incoming_edge_count": 0,
         "outgoing_edge_kinds": {
           "available_in_artifact_group": 5,
           "depends_on": 2,
-          "included_in_profile": 4,
+          "included_in_profile": 5,
           "invocation_policy": 1,
           "lineage": 1,
           "maturity": 1,
@@ -7773,7 +7800,8 @@
           "repo-default",
           "repo-project-foundation",
           "repo-project-risk-guard-ring",
-          "repo-risk-explicit"
+          "repo-risk-explicit",
+          "user-aoa-foundation"
         ],
         "artifact_group_coverage": [
           "portable_export",
@@ -8016,12 +8044,12 @@
       },
       "graph_refs": {
         "node_id": "skill_aoa_session_donor_harvest",
-        "outgoing_edge_count": 20,
+        "outgoing_edge_count": 21,
         "incoming_edge_count": 0,
         "outgoing_edge_kinds": {
           "available_in_artifact_group": 5,
           "depends_on": 3,
-          "included_in_profile": 8,
+          "included_in_profile": 9,
           "invocation_policy": 1,
           "lineage": 1,
           "maturity": 1,
@@ -8040,6 +8068,7 @@
           "repo-session-donor-harvest-only",
           "repo-session-growth",
           "repo-session-harvest-family",
+          "user-aoa-foundation",
           "user-curated-core"
         ],
         "artifact_group_coverage": [
@@ -8275,12 +8304,12 @@
       },
       "graph_refs": {
         "node_id": "skill_aoa_session_progression_lift",
-        "outgoing_edge_count": 18,
+        "outgoing_edge_count": 19,
         "incoming_edge_count": 0,
         "outgoing_edge_kinds": {
           "available_in_artifact_group": 5,
           "depends_on": 2,
-          "included_in_profile": 7,
+          "included_in_profile": 8,
           "invocation_policy": 1,
           "lineage": 1,
           "maturity": 1,
@@ -8298,6 +8327,7 @@
           "repo-project-foundation",
           "repo-session-growth",
           "repo-session-harvest-family",
+          "user-aoa-foundation",
           "user-curated-core"
         ],
         "artifact_group_coverage": [
@@ -8533,12 +8563,12 @@
       },
       "graph_refs": {
         "node_id": "skill_aoa_session_route_forks",
-        "outgoing_edge_count": 18,
+        "outgoing_edge_count": 19,
         "incoming_edge_count": 0,
         "outgoing_edge_kinds": {
           "available_in_artifact_group": 5,
           "depends_on": 2,
-          "included_in_profile": 7,
+          "included_in_profile": 8,
           "invocation_policy": 1,
           "lineage": 1,
           "maturity": 1,
@@ -8556,6 +8586,7 @@
           "repo-project-foundation",
           "repo-session-growth",
           "repo-session-harvest-family",
+          "user-aoa-foundation",
           "user-curated-core"
         ],
         "artifact_group_coverage": [
@@ -8791,12 +8822,12 @@
       },
       "graph_refs": {
         "node_id": "skill_aoa_session_self_diagnose",
-        "outgoing_edge_count": 18,
+        "outgoing_edge_count": 19,
         "incoming_edge_count": 0,
         "outgoing_edge_kinds": {
           "available_in_artifact_group": 5,
           "depends_on": 2,
-          "included_in_profile": 7,
+          "included_in_profile": 8,
           "invocation_policy": 1,
           "lineage": 1,
           "maturity": 1,
@@ -8814,6 +8845,7 @@
           "repo-project-foundation",
           "repo-session-growth",
           "repo-session-harvest-family",
+          "user-aoa-foundation",
           "user-curated-core"
         ],
         "artifact_group_coverage": [
@@ -9049,12 +9081,12 @@
       },
       "graph_refs": {
         "node_id": "skill_aoa_session_self_repair",
-        "outgoing_edge_count": 18,
+        "outgoing_edge_count": 19,
         "incoming_edge_count": 0,
         "outgoing_edge_kinds": {
           "available_in_artifact_group": 5,
           "depends_on": 2,
-          "included_in_profile": 7,
+          "included_in_profile": 8,
           "invocation_policy": 1,
           "lineage": 1,
           "maturity": 1,
@@ -9072,6 +9104,7 @@
           "repo-project-foundation",
           "repo-session-growth",
           "repo-session-harvest-family",
+          "user-aoa-foundation",
           "user-curated-core"
         ],
         "artifact_group_coverage": [
@@ -9313,12 +9346,12 @@
       },
       "graph_refs": {
         "node_id": "skill_aoa_source_of_truth_check",
-        "outgoing_edge_count": 17,
+        "outgoing_edge_count": 18,
         "incoming_edge_count": 0,
         "outgoing_edge_kinds": {
           "available_in_artifact_group": 5,
           "depends_on": 3,
-          "included_in_profile": 5,
+          "included_in_profile": 6,
           "invocation_policy": 1,
           "lineage": 1,
           "maturity": 1,
@@ -9334,6 +9367,7 @@
           "repo-default",
           "repo-project-core-outer-ring",
           "repo-project-foundation",
+          "user-aoa-foundation",
           "user-curated-core"
         ],
         "artifact_group_coverage": [
@@ -9585,12 +9619,12 @@
       },
       "graph_refs": {
         "node_id": "skill_aoa_summon",
-        "outgoing_edge_count": 16,
+        "outgoing_edge_count": 17,
         "incoming_edge_count": 0,
         "outgoing_edge_kinds": {
           "available_in_artifact_group": 5,
           "depends_on": 4,
-          "included_in_profile": 3,
+          "included_in_profile": 4,
           "invocation_policy": 1,
           "lineage": 1,
           "maturity": 1,
@@ -9604,7 +9638,8 @@
         "install_profiles": [
           "repo-default",
           "repo-session-growth",
-          "repo-summon-only"
+          "repo-summon-only",
+          "user-aoa-foundation"
         ],
         "artifact_group_coverage": [
           "portable_export",
@@ -9832,12 +9867,12 @@
       },
       "graph_refs": {
         "node_id": "skill_aoa_tdd_slice",
-        "outgoing_edge_count": 16,
+        "outgoing_edge_count": 17,
         "incoming_edge_count": 0,
         "outgoing_edge_kinds": {
           "available_in_artifact_group": 5,
           "depends_on": 2,
-          "included_in_profile": 5,
+          "included_in_profile": 6,
           "invocation_policy": 1,
           "lineage": 1,
           "maturity": 1,
@@ -9853,6 +9888,7 @@
           "repo-default",
           "repo-project-core-outer-ring",
           "repo-project-foundation",
+          "user-aoa-foundation",
           "user-curated-core"
         ],
         "artifact_group_coverage": [

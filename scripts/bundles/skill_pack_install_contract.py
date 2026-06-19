@@ -14,7 +14,7 @@ from typing import Any, Mapping
 
 STANDARD_INSTALL_ROOTS = {
     "repo": ".agents/skills",
-    "user": "$HOME/.agents/skills",
+    "user": "$HOME/.codex/skills",
     "admin": "/etc/codex/skills",
 }
 RESOLVED_PROFILES_PATH = Path("generated") / "skill_pack_profiles.resolved.json"
@@ -35,6 +35,8 @@ TEXT_FILE_SUFFIXES = {
     ".yaml",
     ".yml",
 }
+IGNORED_DIRECTORY_PARTS = {"__pycache__", ".pytest_cache", ".ruff_cache"}
+IGNORED_FILE_SUFFIXES = {".pyc", ".pyo"}
 
 
 def load_json(path: Path) -> Any:
@@ -222,7 +224,13 @@ def iter_directory_file_payloads(
         (candidate for candidate in resolved_root.rglob("*") if candidate.is_file()),
         key=lambda candidate: candidate.relative_to(resolved_root).as_posix(),
     ):
-        relative_path = path.relative_to(resolved_root).as_posix()
+        relative_parts = path.relative_to(resolved_root).parts
+        if (
+            any(part in IGNORED_DIRECTORY_PARTS for part in relative_parts)
+            or path.suffix.lower() in IGNORED_FILE_SUFFIXES
+        ):
+            continue
+        relative_path = "/".join(relative_parts)
         if relative_prefix:
             relative_path = f"{relative_prefix.rstrip('/')}/{relative_path}"
         payloads.append(
