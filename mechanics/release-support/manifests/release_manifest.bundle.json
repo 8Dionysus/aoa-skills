@@ -1,0 +1,26 @@
+{
+  "schema": "abyss_machine_artifact_bundle_manifest_v1",
+  "id": "aoa-skills-release-manifest",
+  "artifact_class": "aoa_skills_release_manifest",
+  "owner_repo": "aoa-skills",
+  "policy_ref": "manifests/artifact_signature_policy.manifest.json",
+  "mode": "os_abyss_local",
+  "public_safe": true,
+  "purpose": "Repo-local OS Abyss artifact bundle input for generated/release_manifest.json.",
+  "subject_repo_root": "../../..",
+  "abi_subject": {
+    "path": "generated/release_manifest.json",
+    "artifact_identity_pointer": "/artifact_identity"
+  },
+  "artifact_source": {
+    "kind": "generated_release_manifest",
+    "content_identity_ref": "generated/release_manifest.json",
+    "artifact_identity_ref": "generated/release_manifest.json#/artifact_identity"
+  },
+  "consumer_command": [
+    "abyss-machine artifacts build-sidecars --manifest mechanics/release-support/manifests/release_manifest.bundle.json --bundle-dir BUNDLE_DIR",
+    "abyss-machine artifacts sign BUNDLE_DIR",
+    "abyss-machine artifacts verify BUNDLE_DIR",
+    "abyss-machine artifacts release-check BUNDLE_DIR"
+  ]
+}

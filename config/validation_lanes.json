@@ -622,6 +622,12 @@
         "python",
         "scripts/builders/build_catalog.py",
         "--check"
+      ],
+      [
+        "python",
+        "scripts/validation/validate_abyss_machine_artifact_bundle.py",
+        "--repo-root",
+        "."
       ]
     ]
   },
