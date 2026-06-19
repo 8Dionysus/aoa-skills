@@ -277,7 +277,7 @@
       ]
     },
     "user-curated-core": {
-      "description": "Install a portable personal set of reusable AoA skills into the user's home skills directory.",
+      "description": "Install a portable personal set of reusable AoA skills into the Codex user skills directory.",
       "scope": "user",
       "install_mode": "symlink-preferred",
       "skills": [
@@ -302,6 +302,49 @@
         "aoa-session-self-repair",
         "aoa-source-of-truth-check",
         "aoa-tdd-slice"
+      ]
+    },
+    "user-aoa-foundation": {
+      "description": "Install the broad reusable AoA foundation into the Codex user skills directory: project foundation, eval routing family, commit seam, and summon, without project overlays.",
+      "scope": "user",
+      "install_mode": "symlink-preferred",
+      "skills": [
+        "aoa-session-donor-harvest",
+        "aoa-checkpoint-closeout-bridge",
+        "aoa-automation-opportunity-scan",
+        "aoa-memo-writeback",
+        "aoa-session-route-forks",
+        "aoa-session-self-diagnose",
+        "aoa-session-self-repair",
+        "aoa-session-progression-lift",
+        "aoa-quest-harvest",
+        "aoa-adr-write",
+        "aoa-source-of-truth-check",
+        "aoa-decision",
+        "aoa-decision-find",
+        "aoa-decision-create",
+        "aoa-decision-correct",
+        "aoa-bounded-context-map",
+        "aoa-core-logic-boundary",
+        "aoa-port-adapter-refactor",
+        "aoa-change-protocol",
+        "aoa-tdd-slice",
+        "aoa-contract-test",
+        "aoa-property-invariants",
+        "aoa-invariant-coverage-audit",
+        "aoa-approval-gate-check",
+        "aoa-dry-run-first",
+        "aoa-local-stack-bringup",
+        "aoa-safe-infra-change",
+        "aoa-sanitized-share",
+        "aoa-eval",
+        "aoa-eval-select",
+        "aoa-eval-apply",
+        "aoa-eval-local-need",
+        "aoa-eval-design",
+        "aoa-eval-session-mining",
+        "aoa-commit-growth-seam",
+        "aoa-summon"
       ]
     },
     "repo-titan-overlay": {

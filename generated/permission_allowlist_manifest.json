@@ -26,12 +26,12 @@
           "$REPO_ROOT/.agents/skills/abyss-safe-infra-change/examples"
         ],
         "user": [
-          "$HOME/.agents/skills/abyss-safe-infra-change",
-          "$HOME/.agents/skills/abyss-safe-infra-change/scripts",
-          "$HOME/.agents/skills/abyss-safe-infra-change/references",
-          "$HOME/.agents/skills/abyss-safe-infra-change/assets",
-          "$HOME/.agents/skills/abyss-safe-infra-change/checks",
-          "$HOME/.agents/skills/abyss-safe-infra-change/examples"
+          "$HOME/.codex/skills/abyss-safe-infra-change",
+          "$HOME/.codex/skills/abyss-safe-infra-change/scripts",
+          "$HOME/.codex/skills/abyss-safe-infra-change/references",
+          "$HOME/.codex/skills/abyss-safe-infra-change/assets",
+          "$HOME/.codex/skills/abyss-safe-infra-change/checks",
+          "$HOME/.codex/skills/abyss-safe-infra-change/examples"
         ],
         "admin": [
           "/etc/codex/skills/abyss-safe-infra-change",
@@ -83,12 +83,12 @@
           "$REPO_ROOT/.agents/skills/abyss-sanitized-share/examples"
         ],
         "user": [
-          "$HOME/.agents/skills/abyss-sanitized-share",
-          "$HOME/.agents/skills/abyss-sanitized-share/scripts",
-          "$HOME/.agents/skills/abyss-sanitized-share/references",
-          "$HOME/.agents/skills/abyss-sanitized-share/assets",
-          "$HOME/.agents/skills/abyss-sanitized-share/checks",
-          "$HOME/.agents/skills/abyss-sanitized-share/examples"
+          "$HOME/.codex/skills/abyss-sanitized-share",
+          "$HOME/.codex/skills/abyss-sanitized-share/scripts",
+          "$HOME/.codex/skills/abyss-sanitized-share/references",
+          "$HOME/.codex/skills/abyss-sanitized-share/assets",
+          "$HOME/.codex/skills/abyss-sanitized-share/checks",
+          "$HOME/.codex/skills/abyss-sanitized-share/examples"
         ],
         "admin": [
           "/etc/codex/skills/abyss-sanitized-share",
@@ -140,12 +140,12 @@
           "$REPO_ROOT/.agents/skills/abyss-self-diagnostic-spine/examples"
         ],
         "user": [
-          "$HOME/.agents/skills/abyss-self-diagnostic-spine",
-          "$HOME/.agents/skills/abyss-self-diagnostic-spine/scripts",
-          "$HOME/.agents/skills/abyss-self-diagnostic-spine/references",
-          "$HOME/.agents/skills/abyss-self-diagnostic-spine/assets",
-          "$HOME/.agents/skills/abyss-self-diagnostic-spine/checks",
-          "$HOME/.agents/skills/abyss-self-diagnostic-spine/examples"
+          "$HOME/.codex/skills/abyss-self-diagnostic-spine",
+          "$HOME/.codex/skills/abyss-self-diagnostic-spine/scripts",
+          "$HOME/.codex/skills/abyss-self-diagnostic-spine/references",
+          "$HOME/.codex/skills/abyss-self-diagnostic-spine/assets",
+          "$HOME/.codex/skills/abyss-self-diagnostic-spine/checks",
+          "$HOME/.codex/skills/abyss-self-diagnostic-spine/examples"
         ],
         "admin": [
           "/etc/codex/skills/abyss-self-diagnostic-spine",
@@ -197,12 +197,12 @@
           "$REPO_ROOT/.agents/skills/aoa-adr-write/examples"
         ],
         "user": [
-          "$HOME/.agents/skills/aoa-adr-write",
-          "$HOME/.agents/skills/aoa-adr-write/scripts",
-          "$HOME/.agents/skills/aoa-adr-write/references",
-          "$HOME/.agents/skills/aoa-adr-write/assets",
-          "$HOME/.agents/skills/aoa-adr-write/checks",
-          "$HOME/.agents/skills/aoa-adr-write/examples"
+          "$HOME/.codex/skills/aoa-adr-write",
+          "$HOME/.codex/skills/aoa-adr-write/scripts",
+          "$HOME/.codex/skills/aoa-adr-write/references",
+          "$HOME/.codex/skills/aoa-adr-write/assets",
+          "$HOME/.codex/skills/aoa-adr-write/checks",
+          "$HOME/.codex/skills/aoa-adr-write/examples"
         ],
         "admin": [
           "/etc/codex/skills/aoa-adr-write",
@@ -255,12 +255,12 @@
           "$REPO_ROOT/.agents/skills/aoa-approval-gate-check/examples"
         ],
         "user": [
-          "$HOME/.agents/skills/aoa-approval-gate-check",
-          "$HOME/.agents/skills/aoa-approval-gate-check/scripts",
-          "$HOME/.agents/skills/aoa-approval-gate-check/references",
-          "$HOME/.agents/skills/aoa-approval-gate-check/assets",
-          "$HOME/.agents/skills/aoa-approval-gate-check/checks",
-          "$HOME/.agents/skills/aoa-approval-gate-check/examples"
+          "$HOME/.codex/skills/aoa-approval-gate-check",
+          "$HOME/.codex/skills/aoa-approval-gate-check/scripts",
+          "$HOME/.codex/skills/aoa-approval-gate-check/references",
+          "$HOME/.codex/skills/aoa-approval-gate-check/assets",
+          "$HOME/.codex/skills/aoa-approval-gate-check/checks",
+          "$HOME/.codex/skills/aoa-approval-gate-check/examples"
         ],
         "admin": [
           "/etc/codex/skills/aoa-approval-gate-check",
@@ -312,12 +312,12 @@
           "$REPO_ROOT/.agents/skills/aoa-automation-opportunity-scan/examples"
         ],
         "user": [
-          "$HOME/.agents/skills/aoa-automation-opportunity-scan",
-          "$HOME/.agents/skills/aoa-automation-opportunity-scan/scripts",
-          "$HOME/.agents/skills/aoa-automation-opportunity-scan/references",
-          "$HOME/.agents/skills/aoa-automation-opportunity-scan/assets",
-          "$HOME/.agents/skills/aoa-automation-opportunity-scan/checks",
-          "$HOME/.agents/skills/aoa-automation-opportunity-scan/examples"
+          "$HOME/.codex/skills/aoa-automation-opportunity-scan",
+          "$HOME/.codex/skills/aoa-automation-opportunity-scan/scripts",
+          "$HOME/.codex/skills/aoa-automation-opportunity-scan/references",
+          "$HOME/.codex/skills/aoa-automation-opportunity-scan/assets",
+          "$HOME/.codex/skills/aoa-automation-opportunity-scan/checks",
+          "$HOME/.codex/skills/aoa-automation-opportunity-scan/examples"
         ],
         "admin": [
           "/etc/codex/skills/aoa-automation-opportunity-scan",
@@ -378,12 +378,12 @@
           "$REPO_ROOT/.agents/skills/aoa-bounded-context-map/examples"
         ],
         "user": [
-          "$HOME/.agents/skills/aoa-bounded-context-map",
-          "$HOME/.agents/skills/aoa-bounded-context-map/scripts",
-          "$HOME/.agents/skills/aoa-bounded-context-map/references",
-          "$HOME/.agents/skills/aoa-bounded-context-map/assets",
-          "$HOME/.agents/skills/aoa-bounded-context-map/checks",
-          "$HOME/.agents/skills/aoa-bounded-context-map/examples"
+          "$HOME/.codex/skills/aoa-bounded-context-map",
+          "$HOME/.codex/skills/aoa-bounded-context-map/scripts",
+          "$HOME/.codex/skills/aoa-bounded-context-map/references",
+          "$HOME/.codex/skills/aoa-bounded-context-map/assets",
+          "$HOME/.codex/skills/aoa-bounded-context-map/checks",
+          "$HOME/.codex/skills/aoa-bounded-context-map/examples"
         ],
         "admin": [
           "/etc/codex/skills/aoa-bounded-context-map",
@@ -436,12 +436,12 @@
           "$REPO_ROOT/.agents/skills/aoa-change-protocol/examples"
         ],
         "user": [
-          "$HOME/.agents/skills/aoa-change-protocol",
-          "$HOME/.agents/skills/aoa-change-protocol/scripts",
-          "$HOME/.agents/skills/aoa-change-protocol/references",
-          "$HOME/.agents/skills/aoa-change-protocol/assets",
-          "$HOME/.agents/skills/aoa-change-protocol/checks",
-          "$HOME/.agents/skills/aoa-change-protocol/examples"
+          "$HOME/.codex/skills/aoa-change-protocol",
+          "$HOME/.codex/skills/aoa-change-protocol/scripts",
+          "$HOME/.codex/skills/aoa-change-protocol/references",
+          "$HOME/.codex/skills/aoa-change-protocol/assets",
+          "$HOME/.codex/skills/aoa-change-protocol/checks",
+          "$HOME/.codex/skills/aoa-change-protocol/examples"
         ],
         "admin": [
           "/etc/codex/skills/aoa-change-protocol",
@@ -493,12 +493,12 @@
           "$REPO_ROOT/.agents/skills/aoa-checkpoint-closeout-bridge/examples"
         ],
         "user": [
-          "$HOME/.agents/skills/aoa-checkpoint-closeout-bridge",
-          "$HOME/.agents/skills/aoa-checkpoint-closeout-bridge/scripts",
-          "$HOME/.agents/skills/aoa-checkpoint-closeout-bridge/references",
-          "$HOME/.agents/skills/aoa-checkpoint-closeout-bridge/assets",
-          "$HOME/.agents/skills/aoa-checkpoint-closeout-bridge/checks",
-          "$HOME/.agents/skills/aoa-checkpoint-closeout-bridge/examples"
+          "$HOME/.codex/skills/aoa-checkpoint-closeout-bridge",
+          "$HOME/.codex/skills/aoa-checkpoint-closeout-bridge/scripts",
+          "$HOME/.codex/skills/aoa-checkpoint-closeout-bridge/references",
+          "$HOME/.codex/skills/aoa-checkpoint-closeout-bridge/assets",
+          "$HOME/.codex/skills/aoa-checkpoint-closeout-bridge/checks",
+          "$HOME/.codex/skills/aoa-checkpoint-closeout-bridge/examples"
         ],
         "admin": [
           "/etc/codex/skills/aoa-checkpoint-closeout-bridge",
@@ -554,12 +554,12 @@
           "$REPO_ROOT/.agents/skills/aoa-commit-growth-seam/examples"
         ],
         "user": [
-          "$HOME/.agents/skills/aoa-commit-growth-seam",
-          "$HOME/.agents/skills/aoa-commit-growth-seam/scripts",
-          "$HOME/.agents/skills/aoa-commit-growth-seam/references",
-          "$HOME/.agents/skills/aoa-commit-growth-seam/assets",
-          "$HOME/.agents/skills/aoa-commit-growth-seam/checks",
-          "$HOME/.agents/skills/aoa-commit-growth-seam/examples"
+          "$HOME/.codex/skills/aoa-commit-growth-seam",
+          "$HOME/.codex/skills/aoa-commit-growth-seam/scripts",
+          "$HOME/.codex/skills/aoa-commit-growth-seam/references",
+          "$HOME/.codex/skills/aoa-commit-growth-seam/assets",
+          "$HOME/.codex/skills/aoa-commit-growth-seam/checks",
+          "$HOME/.codex/skills/aoa-commit-growth-seam/examples"
         ],
         "admin": [
           "/etc/codex/skills/aoa-commit-growth-seam",
@@ -611,12 +611,12 @@
           "$REPO_ROOT/.agents/skills/aoa-contract-test/examples"
         ],
         "user": [
-          "$HOME/.agents/skills/aoa-contract-test",
-          "$HOME/.agents/skills/aoa-contract-test/scripts",
-          "$HOME/.agents/skills/aoa-contract-test/references",
-          "$HOME/.agents/skills/aoa-contract-test/assets",
-          "$HOME/.agents/skills/aoa-contract-test/checks",
-          "$HOME/.agents/skills/aoa-contract-test/examples"
+          "$HOME/.codex/skills/aoa-contract-test",
+          "$HOME/.codex/skills/aoa-contract-test/scripts",
+          "$HOME/.codex/skills/aoa-contract-test/references",
+          "$HOME/.codex/skills/aoa-contract-test/assets",
+          "$HOME/.codex/skills/aoa-contract-test/checks",
+          "$HOME/.codex/skills/aoa-contract-test/examples"
         ],
         "admin": [
           "/etc/codex/skills/aoa-contract-test",
@@ -668,12 +668,12 @@
           "$REPO_ROOT/.agents/skills/aoa-core-logic-boundary/examples"
         ],
         "user": [
-          "$HOME/.agents/skills/aoa-core-logic-boundary",
-          "$HOME/.agents/skills/aoa-core-logic-boundary/scripts",
-          "$HOME/.agents/skills/aoa-core-logic-boundary/references",
-          "$HOME/.agents/skills/aoa-core-logic-boundary/assets",
-          "$HOME/.agents/skills/aoa-core-logic-boundary/checks",
-          "$HOME/.agents/skills/aoa-core-logic-boundary/examples"
+          "$HOME/.codex/skills/aoa-core-logic-boundary",
+          "$HOME/.codex/skills/aoa-core-logic-boundary/scripts",
+          "$HOME/.codex/skills/aoa-core-logic-boundary/references",
+          "$HOME/.codex/skills/aoa-core-logic-boundary/assets",
+          "$HOME/.codex/skills/aoa-core-logic-boundary/checks",
+          "$HOME/.codex/skills/aoa-core-logic-boundary/examples"
         ],
         "admin": [
           "/etc/codex/skills/aoa-core-logic-boundary",
@@ -725,12 +725,12 @@
           "$REPO_ROOT/.agents/skills/aoa-decision/examples"
         ],
         "user": [
-          "$HOME/.agents/skills/aoa-decision",
-          "$HOME/.agents/skills/aoa-decision/scripts",
-          "$HOME/.agents/skills/aoa-decision/references",
-          "$HOME/.agents/skills/aoa-decision/assets",
-          "$HOME/.agents/skills/aoa-decision/checks",
-          "$HOME/.agents/skills/aoa-decision/examples"
+          "$HOME/.codex/skills/aoa-decision",
+          "$HOME/.codex/skills/aoa-decision/scripts",
+          "$HOME/.codex/skills/aoa-decision/references",
+          "$HOME/.codex/skills/aoa-decision/assets",
+          "$HOME/.codex/skills/aoa-decision/checks",
+          "$HOME/.codex/skills/aoa-decision/examples"
         ],
         "admin": [
           "/etc/codex/skills/aoa-decision",
@@ -780,12 +780,12 @@
           "$REPO_ROOT/.agents/skills/aoa-decision-correct/examples"
         ],
         "user": [
-          "$HOME/.agents/skills/aoa-decision-correct",
-          "$HOME/.agents/skills/aoa-decision-correct/scripts",
-          "$HOME/.agents/skills/aoa-decision-correct/references",
-          "$HOME/.agents/skills/aoa-decision-correct/assets",
-          "$HOME/.agents/skills/aoa-decision-correct/checks",
-          "$HOME/.agents/skills/aoa-decision-correct/examples"
+          "$HOME/.codex/skills/aoa-decision-correct",
+          "$HOME/.codex/skills/aoa-decision-correct/scripts",
+          "$HOME/.codex/skills/aoa-decision-correct/references",
+          "$HOME/.codex/skills/aoa-decision-correct/assets",
+          "$HOME/.codex/skills/aoa-decision-correct/checks",
+          "$HOME/.codex/skills/aoa-decision-correct/examples"
         ],
         "admin": [
           "/etc/codex/skills/aoa-decision-correct",
@@ -835,12 +835,12 @@
           "$REPO_ROOT/.agents/skills/aoa-decision-create/examples"
         ],
         "user": [
-          "$HOME/.agents/skills/aoa-decision-create",
-          "$HOME/.agents/skills/aoa-decision-create/scripts",
-          "$HOME/.agents/skills/aoa-decision-create/references",
-          "$HOME/.agents/skills/aoa-decision-create/assets",
-          "$HOME/.agents/skills/aoa-decision-create/checks",
-          "$HOME/.agents/skills/aoa-decision-create/examples"
+          "$HOME/.codex/skills/aoa-decision-create",
+          "$HOME/.codex/skills/aoa-decision-create/scripts",
+          "$HOME/.codex/skills/aoa-decision-create/references",
+          "$HOME/.codex/skills/aoa-decision-create/assets",
+          "$HOME/.codex/skills/aoa-decision-create/checks",
+          "$HOME/.codex/skills/aoa-decision-create/examples"
         ],
         "admin": [
           "/etc/codex/skills/aoa-decision-create",
@@ -890,12 +890,12 @@
           "$REPO_ROOT/.agents/skills/aoa-decision-find/examples"
         ],
         "user": [
-          "$HOME/.agents/skills/aoa-decision-find",
-          "$HOME/.agents/skills/aoa-decision-find/scripts",
-          "$HOME/.agents/skills/aoa-decision-find/references",
-          "$HOME/.agents/skills/aoa-decision-find/assets",
-          "$HOME/.agents/skills/aoa-decision-find/checks",
-          "$HOME/.agents/skills/aoa-decision-find/examples"
+          "$HOME/.codex/skills/aoa-decision-find",
+          "$HOME/.codex/skills/aoa-decision-find/scripts",
+          "$HOME/.codex/skills/aoa-decision-find/references",
+          "$HOME/.codex/skills/aoa-decision-find/assets",
+          "$HOME/.codex/skills/aoa-decision-find/checks",
+          "$HOME/.codex/skills/aoa-decision-find/examples"
         ],
         "admin": [
           "/etc/codex/skills/aoa-decision-find",
@@ -945,12 +945,12 @@
           "$REPO_ROOT/.agents/skills/aoa-dry-run-first/examples"
         ],
         "user": [
-          "$HOME/.agents/skills/aoa-dry-run-first",
-          "$HOME/.agents/skills/aoa-dry-run-first/scripts",
-          "$HOME/.agents/skills/aoa-dry-run-first/references",
-          "$HOME/.agents/skills/aoa-dry-run-first/assets",
-          "$HOME/.agents/skills/aoa-dry-run-first/checks",
-          "$HOME/.agents/skills/aoa-dry-run-first/examples"
+          "$HOME/.codex/skills/aoa-dry-run-first",
+          "$HOME/.codex/skills/aoa-dry-run-first/scripts",
+          "$HOME/.codex/skills/aoa-dry-run-first/references",
+          "$HOME/.codex/skills/aoa-dry-run-first/assets",
+          "$HOME/.codex/skills/aoa-dry-run-first/checks",
+          "$HOME/.codex/skills/aoa-dry-run-first/examples"
         ],
         "admin": [
           "/etc/codex/skills/aoa-dry-run-first",
@@ -1010,12 +1010,12 @@
           "$REPO_ROOT/.agents/skills/aoa-eval/examples"
         ],
         "user": [
-          "$HOME/.agents/skills/aoa-eval",
-          "$HOME/.agents/skills/aoa-eval/scripts",
-          "$HOME/.agents/skills/aoa-eval/references",
-          "$HOME/.agents/skills/aoa-eval/assets",
-          "$HOME/.agents/skills/aoa-eval/checks",
-          "$HOME/.agents/skills/aoa-eval/examples"
+          "$HOME/.codex/skills/aoa-eval",
+          "$HOME/.codex/skills/aoa-eval/scripts",
+          "$HOME/.codex/skills/aoa-eval/references",
+          "$HOME/.codex/skills/aoa-eval/assets",
+          "$HOME/.codex/skills/aoa-eval/checks",
+          "$HOME/.codex/skills/aoa-eval/examples"
         ],
         "admin": [
           "/etc/codex/skills/aoa-eval",
@@ -1065,12 +1065,12 @@
           "$REPO_ROOT/.agents/skills/aoa-eval-apply/examples"
         ],
         "user": [
-          "$HOME/.agents/skills/aoa-eval-apply",
-          "$HOME/.agents/skills/aoa-eval-apply/scripts",
-          "$HOME/.agents/skills/aoa-eval-apply/references",
-          "$HOME/.agents/skills/aoa-eval-apply/assets",
-          "$HOME/.agents/skills/aoa-eval-apply/checks",
-          "$HOME/.agents/skills/aoa-eval-apply/examples"
+          "$HOME/.codex/skills/aoa-eval-apply",
+          "$HOME/.codex/skills/aoa-eval-apply/scripts",
+          "$HOME/.codex/skills/aoa-eval-apply/references",
+          "$HOME/.codex/skills/aoa-eval-apply/assets",
+          "$HOME/.codex/skills/aoa-eval-apply/checks",
+          "$HOME/.codex/skills/aoa-eval-apply/examples"
         ],
         "admin": [
           "/etc/codex/skills/aoa-eval-apply",
@@ -1120,12 +1120,12 @@
           "$REPO_ROOT/.agents/skills/aoa-eval-design/examples"
         ],
         "user": [
-          "$HOME/.agents/skills/aoa-eval-design",
-          "$HOME/.agents/skills/aoa-eval-design/scripts",
-          "$HOME/.agents/skills/aoa-eval-design/references",
-          "$HOME/.agents/skills/aoa-eval-design/assets",
-          "$HOME/.agents/skills/aoa-eval-design/checks",
-          "$HOME/.agents/skills/aoa-eval-design/examples"
+          "$HOME/.codex/skills/aoa-eval-design",
+          "$HOME/.codex/skills/aoa-eval-design/scripts",
+          "$HOME/.codex/skills/aoa-eval-design/references",
+          "$HOME/.codex/skills/aoa-eval-design/assets",
+          "$HOME/.codex/skills/aoa-eval-design/checks",
+          "$HOME/.codex/skills/aoa-eval-design/examples"
         ],
         "admin": [
           "/etc/codex/skills/aoa-eval-design",
@@ -1175,12 +1175,12 @@
           "$REPO_ROOT/.agents/skills/aoa-eval-local-need/examples"
         ],
         "user": [
-          "$HOME/.agents/skills/aoa-eval-local-need",
-          "$HOME/.agents/skills/aoa-eval-local-need/scripts",
-          "$HOME/.agents/skills/aoa-eval-local-need/references",
-          "$HOME/.agents/skills/aoa-eval-local-need/assets",
-          "$HOME/.agents/skills/aoa-eval-local-need/checks",
-          "$HOME/.agents/skills/aoa-eval-local-need/examples"
+          "$HOME/.codex/skills/aoa-eval-local-need",
+          "$HOME/.codex/skills/aoa-eval-local-need/scripts",
+          "$HOME/.codex/skills/aoa-eval-local-need/references",
+          "$HOME/.codex/skills/aoa-eval-local-need/assets",
+          "$HOME/.codex/skills/aoa-eval-local-need/checks",
+          "$HOME/.codex/skills/aoa-eval-local-need/examples"
         ],
         "admin": [
           "/etc/codex/skills/aoa-eval-local-need",
@@ -1230,12 +1230,12 @@
           "$REPO_ROOT/.agents/skills/aoa-eval-select/examples"
         ],
         "user": [
-          "$HOME/.agents/skills/aoa-eval-select",
-          "$HOME/.agents/skills/aoa-eval-select/scripts",
-          "$HOME/.agents/skills/aoa-eval-select/references",
-          "$HOME/.agents/skills/aoa-eval-select/assets",
-          "$HOME/.agents/skills/aoa-eval-select/checks",
-          "$HOME/.agents/skills/aoa-eval-select/examples"
+          "$HOME/.codex/skills/aoa-eval-select",
+          "$HOME/.codex/skills/aoa-eval-select/scripts",
+          "$HOME/.codex/skills/aoa-eval-select/references",
+          "$HOME/.codex/skills/aoa-eval-select/assets",
+          "$HOME/.codex/skills/aoa-eval-select/checks",
+          "$HOME/.codex/skills/aoa-eval-select/examples"
         ],
         "admin": [
           "/etc/codex/skills/aoa-eval-select",
@@ -1285,12 +1285,12 @@
           "$REPO_ROOT/.agents/skills/aoa-eval-session-mining/examples"
         ],
         "user": [
-          "$HOME/.agents/skills/aoa-eval-session-mining",
-          "$HOME/.agents/skills/aoa-eval-session-mining/scripts",
-          "$HOME/.agents/skills/aoa-eval-session-mining/references",
-          "$HOME/.agents/skills/aoa-eval-session-mining/assets",
-          "$HOME/.agents/skills/aoa-eval-session-mining/checks",
-          "$HOME/.agents/skills/aoa-eval-session-mining/examples"
+          "$HOME/.codex/skills/aoa-eval-session-mining",
+          "$HOME/.codex/skills/aoa-eval-session-mining/scripts",
+          "$HOME/.codex/skills/aoa-eval-session-mining/references",
+          "$HOME/.codex/skills/aoa-eval-session-mining/assets",
+          "$HOME/.codex/skills/aoa-eval-session-mining/checks",
+          "$HOME/.codex/skills/aoa-eval-session-mining/examples"
         ],
         "admin": [
           "/etc/codex/skills/aoa-eval-session-mining",
@@ -1340,12 +1340,12 @@
           "$REPO_ROOT/.agents/skills/aoa-invariant-coverage-audit/examples"
         ],
         "user": [
-          "$HOME/.agents/skills/aoa-invariant-coverage-audit",
-          "$HOME/.agents/skills/aoa-invariant-coverage-audit/scripts",
-          "$HOME/.agents/skills/aoa-invariant-coverage-audit/references",
-          "$HOME/.agents/skills/aoa-invariant-coverage-audit/assets",
-          "$HOME/.agents/skills/aoa-invariant-coverage-audit/checks",
-          "$HOME/.agents/skills/aoa-invariant-coverage-audit/examples"
+          "$HOME/.codex/skills/aoa-invariant-coverage-audit",
+          "$HOME/.codex/skills/aoa-invariant-coverage-audit/scripts",
+          "$HOME/.codex/skills/aoa-invariant-coverage-audit/references",
+          "$HOME/.codex/skills/aoa-invariant-coverage-audit/assets",
+          "$HOME/.codex/skills/aoa-invariant-coverage-audit/checks",
+          "$HOME/.codex/skills/aoa-invariant-coverage-audit/examples"
         ],
         "admin": [
           "/etc/codex/skills/aoa-invariant-coverage-audit",
@@ -1397,12 +1397,12 @@
           "$REPO_ROOT/.agents/skills/aoa-local-stack-bringup/examples"
         ],
         "user": [
-          "$HOME/.agents/skills/aoa-local-stack-bringup",
-          "$HOME/.agents/skills/aoa-local-stack-bringup/scripts",
-          "$HOME/.agents/skills/aoa-local-stack-bringup/references",
-          "$HOME/.agents/skills/aoa-local-stack-bringup/assets",
-          "$HOME/.agents/skills/aoa-local-stack-bringup/checks",
-          "$HOME/.agents/skills/aoa-local-stack-bringup/examples"
+          "$HOME/.codex/skills/aoa-local-stack-bringup",
+          "$HOME/.codex/skills/aoa-local-stack-bringup/scripts",
+          "$HOME/.codex/skills/aoa-local-stack-bringup/references",
+          "$HOME/.codex/skills/aoa-local-stack-bringup/assets",
+          "$HOME/.codex/skills/aoa-local-stack-bringup/checks",
+          "$HOME/.codex/skills/aoa-local-stack-bringup/examples"
         ],
         "admin": [
           "/etc/codex/skills/aoa-local-stack-bringup",
@@ -1462,12 +1462,12 @@
           "$REPO_ROOT/.agents/skills/aoa-memo-writeback/examples"
         ],
         "user": [
-          "$HOME/.agents/skills/aoa-memo-writeback",
-          "$HOME/.agents/skills/aoa-memo-writeback/scripts",
-          "$HOME/.agents/skills/aoa-memo-writeback/references",
-          "$HOME/.agents/skills/aoa-memo-writeback/assets",
-          "$HOME/.agents/skills/aoa-memo-writeback/checks",
-          "$HOME/.agents/skills/aoa-memo-writeback/examples"
+          "$HOME/.codex/skills/aoa-memo-writeback",
+          "$HOME/.codex/skills/aoa-memo-writeback/scripts",
+          "$HOME/.codex/skills/aoa-memo-writeback/references",
+          "$HOME/.codex/skills/aoa-memo-writeback/assets",
+          "$HOME/.codex/skills/aoa-memo-writeback/checks",
+          "$HOME/.codex/skills/aoa-memo-writeback/examples"
         ],
         "admin": [
           "/etc/codex/skills/aoa-memo-writeback",
@@ -1521,12 +1521,12 @@
           "$REPO_ROOT/.agents/skills/aoa-port-adapter-refactor/examples"
         ],
         "user": [
-          "$HOME/.agents/skills/aoa-port-adapter-refactor",
-          "$HOME/.agents/skills/aoa-port-adapter-refactor/scripts",
-          "$HOME/.agents/skills/aoa-port-adapter-refactor/references",
-          "$HOME/.agents/skills/aoa-port-adapter-refactor/assets",
-          "$HOME/.agents/skills/aoa-port-adapter-refactor/checks",
-          "$HOME/.agents/skills/aoa-port-adapter-refactor/examples"
+          "$HOME/.codex/skills/aoa-port-adapter-refactor",
+          "$HOME/.codex/skills/aoa-port-adapter-refactor/scripts",
+          "$HOME/.codex/skills/aoa-port-adapter-refactor/references",
+          "$HOME/.codex/skills/aoa-port-adapter-refactor/assets",
+          "$HOME/.codex/skills/aoa-port-adapter-refactor/checks",
+          "$HOME/.codex/skills/aoa-port-adapter-refactor/examples"
         ],
         "admin": [
           "/etc/codex/skills/aoa-port-adapter-refactor",
@@ -1578,12 +1578,12 @@
           "$REPO_ROOT/.agents/skills/aoa-property-invariants/examples"
         ],
         "user": [
-          "$HOME/.agents/skills/aoa-property-invariants",
-          "$HOME/.agents/skills/aoa-property-invariants/scripts",
-          "$HOME/.agents/skills/aoa-property-invariants/references",
-          "$HOME/.agents/skills/aoa-property-invariants/assets",
-          "$HOME/.agents/skills/aoa-property-invariants/checks",
-          "$HOME/.agents/skills/aoa-property-invariants/examples"
+          "$HOME/.codex/skills/aoa-property-invariants",
+          "$HOME/.codex/skills/aoa-property-invariants/scripts",
+          "$HOME/.codex/skills/aoa-property-invariants/references",
+          "$HOME/.codex/skills/aoa-property-invariants/assets",
+          "$HOME/.codex/skills/aoa-property-invariants/checks",
+          "$HOME/.codex/skills/aoa-property-invariants/examples"
         ],
         "admin": [
           "/etc/codex/skills/aoa-property-invariants",
@@ -1635,12 +1635,12 @@
           "$REPO_ROOT/.agents/skills/aoa-quest-harvest/examples"
         ],
         "user": [
-          "$HOME/.agents/skills/aoa-quest-harvest",
-          "$HOME/.agents/skills/aoa-quest-harvest/scripts",
-          "$HOME/.agents/skills/aoa-quest-harvest/references",
-          "$HOME/.agents/skills/aoa-quest-harvest/assets",
-          "$HOME/.agents/skills/aoa-quest-harvest/checks",
-          "$HOME/.agents/skills/aoa-quest-harvest/examples"
+          "$HOME/.codex/skills/aoa-quest-harvest",
+          "$HOME/.codex/skills/aoa-quest-harvest/scripts",
+          "$HOME/.codex/skills/aoa-quest-harvest/references",
+          "$HOME/.codex/skills/aoa-quest-harvest/assets",
+          "$HOME/.codex/skills/aoa-quest-harvest/checks",
+          "$HOME/.codex/skills/aoa-quest-harvest/examples"
         ],
         "admin": [
           "/etc/codex/skills/aoa-quest-harvest",
@@ -1697,12 +1697,12 @@
           "$REPO_ROOT/.agents/skills/aoa-safe-infra-change/examples"
         ],
         "user": [
-          "$HOME/.agents/skills/aoa-safe-infra-change",
-          "$HOME/.agents/skills/aoa-safe-infra-change/scripts",
-          "$HOME/.agents/skills/aoa-safe-infra-change/references",
-          "$HOME/.agents/skills/aoa-safe-infra-change/assets",
-          "$HOME/.agents/skills/aoa-safe-infra-change/checks",
-          "$HOME/.agents/skills/aoa-safe-infra-change/examples"
+          "$HOME/.codex/skills/aoa-safe-infra-change",
+          "$HOME/.codex/skills/aoa-safe-infra-change/scripts",
+          "$HOME/.codex/skills/aoa-safe-infra-change/references",
+          "$HOME/.codex/skills/aoa-safe-infra-change/assets",
+          "$HOME/.codex/skills/aoa-safe-infra-change/checks",
+          "$HOME/.codex/skills/aoa-safe-infra-change/examples"
         ],
         "admin": [
           "/etc/codex/skills/aoa-safe-infra-change",
@@ -1762,12 +1762,12 @@
           "$REPO_ROOT/.agents/skills/aoa-sanitized-share/examples"
         ],
         "user": [
-          "$HOME/.agents/skills/aoa-sanitized-share",
-          "$HOME/.agents/skills/aoa-sanitized-share/scripts",
-          "$HOME/.agents/skills/aoa-sanitized-share/references",
-          "$HOME/.agents/skills/aoa-sanitized-share/assets",
-          "$HOME/.agents/skills/aoa-sanitized-share/checks",
-          "$HOME/.agents/skills/aoa-sanitized-share/examples"
+          "$HOME/.codex/skills/aoa-sanitized-share",
+          "$HOME/.codex/skills/aoa-sanitized-share/scripts",
+          "$HOME/.codex/skills/aoa-sanitized-share/references",
+          "$HOME/.codex/skills/aoa-sanitized-share/assets",
+          "$HOME/.codex/skills/aoa-sanitized-share/checks",
+          "$HOME/.codex/skills/aoa-sanitized-share/examples"
         ],
         "admin": [
           "/etc/codex/skills/aoa-sanitized-share",
@@ -1819,12 +1819,12 @@
           "$REPO_ROOT/.agents/skills/aoa-session-donor-harvest/examples"
         ],
         "user": [
-          "$HOME/.agents/skills/aoa-session-donor-harvest",
-          "$HOME/.agents/skills/aoa-session-donor-harvest/scripts",
-          "$HOME/.agents/skills/aoa-session-donor-harvest/references",
-          "$HOME/.agents/skills/aoa-session-donor-harvest/assets",
-          "$HOME/.agents/skills/aoa-session-donor-harvest/checks",
-          "$HOME/.agents/skills/aoa-session-donor-harvest/examples"
+          "$HOME/.codex/skills/aoa-session-donor-harvest",
+          "$HOME/.codex/skills/aoa-session-donor-harvest/scripts",
+          "$HOME/.codex/skills/aoa-session-donor-harvest/references",
+          "$HOME/.codex/skills/aoa-session-donor-harvest/assets",
+          "$HOME/.codex/skills/aoa-session-donor-harvest/checks",
+          "$HOME/.codex/skills/aoa-session-donor-harvest/examples"
         ],
         "admin": [
           "/etc/codex/skills/aoa-session-donor-harvest",
@@ -1885,12 +1885,12 @@
           "$REPO_ROOT/.agents/skills/aoa-session-progression-lift/examples"
         ],
         "user": [
-          "$HOME/.agents/skills/aoa-session-progression-lift",
-          "$HOME/.agents/skills/aoa-session-progression-lift/scripts",
-          "$HOME/.agents/skills/aoa-session-progression-lift/references",
-          "$HOME/.agents/skills/aoa-session-progression-lift/assets",
-          "$HOME/.agents/skills/aoa-session-progression-lift/checks",
-          "$HOME/.agents/skills/aoa-session-progression-lift/examples"
+          "$HOME/.codex/skills/aoa-session-progression-lift",
+          "$HOME/.codex/skills/aoa-session-progression-lift/scripts",
+          "$HOME/.codex/skills/aoa-session-progression-lift/references",
+          "$HOME/.codex/skills/aoa-session-progression-lift/assets",
+          "$HOME/.codex/skills/aoa-session-progression-lift/checks",
+          "$HOME/.codex/skills/aoa-session-progression-lift/examples"
         ],
         "admin": [
           "/etc/codex/skills/aoa-session-progression-lift",
@@ -1947,12 +1947,12 @@
           "$REPO_ROOT/.agents/skills/aoa-session-route-forks/examples"
         ],
         "user": [
-          "$HOME/.agents/skills/aoa-session-route-forks",
-          "$HOME/.agents/skills/aoa-session-route-forks/scripts",
-          "$HOME/.agents/skills/aoa-session-route-forks/references",
-          "$HOME/.agents/skills/aoa-session-route-forks/assets",
-          "$HOME/.agents/skills/aoa-session-route-forks/checks",
-          "$HOME/.agents/skills/aoa-session-route-forks/examples"
+          "$HOME/.codex/skills/aoa-session-route-forks",
+          "$HOME/.codex/skills/aoa-session-route-forks/scripts",
+          "$HOME/.codex/skills/aoa-session-route-forks/references",
+          "$HOME/.codex/skills/aoa-session-route-forks/assets",
+          "$HOME/.codex/skills/aoa-session-route-forks/checks",
+          "$HOME/.codex/skills/aoa-session-route-forks/examples"
         ],
         "admin": [
           "/etc/codex/skills/aoa-session-route-forks",
@@ -2008,12 +2008,12 @@
           "$REPO_ROOT/.agents/skills/aoa-session-self-diagnose/examples"
         ],
         "user": [
-          "$HOME/.agents/skills/aoa-session-self-diagnose",
-          "$HOME/.agents/skills/aoa-session-self-diagnose/scripts",
-          "$HOME/.agents/skills/aoa-session-self-diagnose/references",
-          "$HOME/.agents/skills/aoa-session-self-diagnose/assets",
-          "$HOME/.agents/skills/aoa-session-self-diagnose/checks",
-          "$HOME/.agents/skills/aoa-session-self-diagnose/examples"
+          "$HOME/.codex/skills/aoa-session-self-diagnose",
+          "$HOME/.codex/skills/aoa-session-self-diagnose/scripts",
+          "$HOME/.codex/skills/aoa-session-self-diagnose/references",
+          "$HOME/.codex/skills/aoa-session-self-diagnose/assets",
+          "$HOME/.codex/skills/aoa-session-self-diagnose/checks",
+          "$HOME/.codex/skills/aoa-session-self-diagnose/examples"
         ],
         "admin": [
           "/etc/codex/skills/aoa-session-self-diagnose",
@@ -2069,12 +2069,12 @@
           "$REPO_ROOT/.agents/skills/aoa-session-self-repair/examples"
         ],
         "user": [
-          "$HOME/.agents/skills/aoa-session-self-repair",
-          "$HOME/.agents/skills/aoa-session-self-repair/scripts",
-          "$HOME/.agents/skills/aoa-session-self-repair/references",
-          "$HOME/.agents/skills/aoa-session-self-repair/assets",
-          "$HOME/.agents/skills/aoa-session-self-repair/checks",
-          "$HOME/.agents/skills/aoa-session-self-repair/examples"
+          "$HOME/.codex/skills/aoa-session-self-repair",
+          "$HOME/.codex/skills/aoa-session-self-repair/scripts",
+          "$HOME/.codex/skills/aoa-session-self-repair/references",
+          "$HOME/.codex/skills/aoa-session-self-repair/assets",
+          "$HOME/.codex/skills/aoa-session-self-repair/checks",
+          "$HOME/.codex/skills/aoa-session-self-repair/examples"
         ],
         "admin": [
           "/etc/codex/skills/aoa-session-self-repair",
@@ -2131,12 +2131,12 @@
           "$REPO_ROOT/.agents/skills/aoa-source-of-truth-check/examples"
         ],
         "user": [
-          "$HOME/.agents/skills/aoa-source-of-truth-check",
-          "$HOME/.agents/skills/aoa-source-of-truth-check/scripts",
-          "$HOME/.agents/skills/aoa-source-of-truth-check/references",
-          "$HOME/.agents/skills/aoa-source-of-truth-check/assets",
-          "$HOME/.agents/skills/aoa-source-of-truth-check/checks",
-          "$HOME/.agents/skills/aoa-source-of-truth-check/examples"
+          "$HOME/.codex/skills/aoa-source-of-truth-check",
+          "$HOME/.codex/skills/aoa-source-of-truth-check/scripts",
+          "$HOME/.codex/skills/aoa-source-of-truth-check/references",
+          "$HOME/.codex/skills/aoa-source-of-truth-check/assets",
+          "$HOME/.codex/skills/aoa-source-of-truth-check/checks",
+          "$HOME/.codex/skills/aoa-source-of-truth-check/examples"
         ],
         "admin": [
           "/etc/codex/skills/aoa-source-of-truth-check",
@@ -2188,12 +2188,12 @@
           "$REPO_ROOT/.agents/skills/aoa-summon/examples"
         ],
         "user": [
-          "$HOME/.agents/skills/aoa-summon",
-          "$HOME/.agents/skills/aoa-summon/scripts",
-          "$HOME/.agents/skills/aoa-summon/references",
-          "$HOME/.agents/skills/aoa-summon/assets",
-          "$HOME/.agents/skills/aoa-summon/checks",
-          "$HOME/.agents/skills/aoa-summon/examples"
+          "$HOME/.codex/skills/aoa-summon",
+          "$HOME/.codex/skills/aoa-summon/scripts",
+          "$HOME/.codex/skills/aoa-summon/references",
+          "$HOME/.codex/skills/aoa-summon/assets",
+          "$HOME/.codex/skills/aoa-summon/checks",
+          "$HOME/.codex/skills/aoa-summon/examples"
         ],
         "admin": [
           "/etc/codex/skills/aoa-summon",
@@ -2250,12 +2250,12 @@
           "$REPO_ROOT/.agents/skills/aoa-tdd-slice/examples"
         ],
         "user": [
-          "$HOME/.agents/skills/aoa-tdd-slice",
-          "$HOME/.agents/skills/aoa-tdd-slice/scripts",
-          "$HOME/.agents/skills/aoa-tdd-slice/references",
-          "$HOME/.agents/skills/aoa-tdd-slice/assets",
-          "$HOME/.agents/skills/aoa-tdd-slice/checks",
-          "$HOME/.agents/skills/aoa-tdd-slice/examples"
+          "$HOME/.codex/skills/aoa-tdd-slice",
+          "$HOME/.codex/skills/aoa-tdd-slice/scripts",
+          "$HOME/.codex/skills/aoa-tdd-slice/references",
+          "$HOME/.codex/skills/aoa-tdd-slice/assets",
+          "$HOME/.codex/skills/aoa-tdd-slice/checks",
+          "$HOME/.codex/skills/aoa-tdd-slice/examples"
         ],
         "admin": [
           "/etc/codex/skills/aoa-tdd-slice",
@@ -2307,12 +2307,12 @@
           "$REPO_ROOT/.agents/skills/atm10-change-protocol/examples"
         ],
         "user": [
-          "$HOME/.agents/skills/atm10-change-protocol",
-          "$HOME/.agents/skills/atm10-change-protocol/scripts",
-          "$HOME/.agents/skills/atm10-change-protocol/references",
-          "$HOME/.agents/skills/atm10-change-protocol/assets",
-          "$HOME/.agents/skills/atm10-change-protocol/checks",
-          "$HOME/.agents/skills/atm10-change-protocol/examples"
+          "$HOME/.codex/skills/atm10-change-protocol",
+          "$HOME/.codex/skills/atm10-change-protocol/scripts",
+          "$HOME/.codex/skills/atm10-change-protocol/references",
+          "$HOME/.codex/skills/atm10-change-protocol/assets",
+          "$HOME/.codex/skills/atm10-change-protocol/checks",
+          "$HOME/.codex/skills/atm10-change-protocol/examples"
         ],
         "admin": [
           "/etc/codex/skills/atm10-change-protocol",
@@ -2364,12 +2364,12 @@
           "$REPO_ROOT/.agents/skills/atm10-source-of-truth-check/examples"
         ],
         "user": [
-          "$HOME/.agents/skills/atm10-source-of-truth-check",
-          "$HOME/.agents/skills/atm10-source-of-truth-check/scripts",
-          "$HOME/.agents/skills/atm10-source-of-truth-check/references",
-          "$HOME/.agents/skills/atm10-source-of-truth-check/assets",
-          "$HOME/.agents/skills/atm10-source-of-truth-check/checks",
-          "$HOME/.agents/skills/atm10-source-of-truth-check/examples"
+          "$HOME/.codex/skills/atm10-source-of-truth-check",
+          "$HOME/.codex/skills/atm10-source-of-truth-check/scripts",
+          "$HOME/.codex/skills/atm10-source-of-truth-check/references",
+          "$HOME/.codex/skills/atm10-source-of-truth-check/assets",
+          "$HOME/.codex/skills/atm10-source-of-truth-check/checks",
+          "$HOME/.codex/skills/atm10-source-of-truth-check/examples"
         ],
         "admin": [
           "/etc/codex/skills/atm10-source-of-truth-check",
@@ -2421,12 +2421,12 @@
           "$REPO_ROOT/.agents/skills/titan-approval-ledger/examples"
         ],
         "user": [
-          "$HOME/.agents/skills/titan-approval-ledger",
-          "$HOME/.agents/skills/titan-approval-ledger/scripts",
-          "$HOME/.agents/skills/titan-approval-ledger/references",
-          "$HOME/.agents/skills/titan-approval-ledger/assets",
-          "$HOME/.agents/skills/titan-approval-ledger/checks",
-          "$HOME/.agents/skills/titan-approval-ledger/examples"
+          "$HOME/.codex/skills/titan-approval-ledger",
+          "$HOME/.codex/skills/titan-approval-ledger/scripts",
+          "$HOME/.codex/skills/titan-approval-ledger/references",
+          "$HOME/.codex/skills/titan-approval-ledger/assets",
+          "$HOME/.codex/skills/titan-approval-ledger/checks",
+          "$HOME/.codex/skills/titan-approval-ledger/examples"
         ],
         "admin": [
           "/etc/codex/skills/titan-approval-ledger",
@@ -2478,12 +2478,12 @@
           "$REPO_ROOT/.agents/skills/titan-approval-loom/examples"
         ],
         "user": [
-          "$HOME/.agents/skills/titan-approval-loom",
-          "$HOME/.agents/skills/titan-approval-loom/scripts",
-          "$HOME/.agents/skills/titan-approval-loom/references",
-          "$HOME/.agents/skills/titan-approval-loom/assets",
-          "$HOME/.agents/skills/titan-approval-loom/checks",
-          "$HOME/.agents/skills/titan-approval-loom/examples"
+          "$HOME/.codex/skills/titan-approval-loom",
+          "$HOME/.codex/skills/titan-approval-loom/scripts",
+          "$HOME/.codex/skills/titan-approval-loom/references",
+          "$HOME/.codex/skills/titan-approval-loom/assets",
+          "$HOME/.codex/skills/titan-approval-loom/checks",
+          "$HOME/.codex/skills/titan-approval-loom/examples"
         ],
         "admin": [
           "/etc/codex/skills/titan-approval-loom",
@@ -2535,12 +2535,12 @@
           "$REPO_ROOT/.agents/skills/titan-appserver-bridge/examples"
         ],
         "user": [
-          "$HOME/.agents/skills/titan-appserver-bridge",
-          "$HOME/.agents/skills/titan-appserver-bridge/scripts",
-          "$HOME/.agents/skills/titan-appserver-bridge/references",
-          "$HOME/.agents/skills/titan-appserver-bridge/assets",
-          "$HOME/.agents/skills/titan-appserver-bridge/checks",
-          "$HOME/.agents/skills/titan-appserver-bridge/examples"
+          "$HOME/.codex/skills/titan-appserver-bridge",
+          "$HOME/.codex/skills/titan-appserver-bridge/scripts",
+          "$HOME/.codex/skills/titan-appserver-bridge/references",
+          "$HOME/.codex/skills/titan-appserver-bridge/assets",
+          "$HOME/.codex/skills/titan-appserver-bridge/checks",
+          "$HOME/.codex/skills/titan-appserver-bridge/examples"
         ],
         "admin": [
           "/etc/codex/skills/titan-appserver-bridge",
@@ -2592,12 +2592,12 @@
           "$REPO_ROOT/.agents/skills/titan-appserver-plan/examples"
         ],
         "user": [
-          "$HOME/.agents/skills/titan-appserver-plan",
-          "$HOME/.agents/skills/titan-appserver-plan/scripts",
-          "$HOME/.agents/skills/titan-appserver-plan/references",
-          "$HOME/.agents/skills/titan-appserver-plan/assets",
-          "$HOME/.agents/skills/titan-appserver-plan/checks",
-          "$HOME/.agents/skills/titan-appserver-plan/examples"
+          "$HOME/.codex/skills/titan-appserver-plan",
+          "$HOME/.codex/skills/titan-appserver-plan/scripts",
+          "$HOME/.codex/skills/titan-appserver-plan/references",
+          "$HOME/.codex/skills/titan-appserver-plan/assets",
+          "$HOME/.codex/skills/titan-appserver-plan/checks",
+          "$HOME/.codex/skills/titan-appserver-plan/examples"
         ],
         "admin": [
           "/etc/codex/skills/titan-appserver-plan",
@@ -2649,12 +2649,12 @@
           "$REPO_ROOT/.agents/skills/titan-closeout/examples"
         ],
         "user": [
-          "$HOME/.agents/skills/titan-closeout",
-          "$HOME/.agents/skills/titan-closeout/scripts",
-          "$HOME/.agents/skills/titan-closeout/references",
-          "$HOME/.agents/skills/titan-closeout/assets",
-          "$HOME/.agents/skills/titan-closeout/checks",
-          "$HOME/.agents/skills/titan-closeout/examples"
+          "$HOME/.codex/skills/titan-closeout",
+          "$HOME/.codex/skills/titan-closeout/scripts",
+          "$HOME/.codex/skills/titan-closeout/references",
+          "$HOME/.codex/skills/titan-closeout/assets",
+          "$HOME/.codex/skills/titan-closeout/checks",
+          "$HOME/.codex/skills/titan-closeout/examples"
         ],
         "admin": [
           "/etc/codex/skills/titan-closeout",
@@ -2706,12 +2706,12 @@
           "$REPO_ROOT/.agents/skills/titan-console/examples"
         ],
         "user": [
-          "$HOME/.agents/skills/titan-console",
-          "$HOME/.agents/skills/titan-console/scripts",
-          "$HOME/.agents/skills/titan-console/references",
-          "$HOME/.agents/skills/titan-console/assets",
-          "$HOME/.agents/skills/titan-console/checks",
-          "$HOME/.agents/skills/titan-console/examples"
+          "$HOME/.codex/skills/titan-console",
+          "$HOME/.codex/skills/titan-console/scripts",
+          "$HOME/.codex/skills/titan-console/references",
+          "$HOME/.codex/skills/titan-console/assets",
+          "$HOME/.codex/skills/titan-console/checks",
+          "$HOME/.codex/skills/titan-console/examples"
         ],
         "admin": [
           "/etc/codex/skills/titan-console",
@@ -2763,12 +2763,12 @@
           "$REPO_ROOT/.agents/skills/titan-event-replay/examples"
         ],
         "user": [
-          "$HOME/.agents/skills/titan-event-replay",
-          "$HOME/.agents/skills/titan-event-replay/scripts",
-          "$HOME/.agents/skills/titan-event-replay/references",
-          "$HOME/.agents/skills/titan-event-replay/assets",
-          "$HOME/.agents/skills/titan-event-replay/checks",
-          "$HOME/.agents/skills/titan-event-replay/examples"
+          "$HOME/.codex/skills/titan-event-replay",
+          "$HOME/.codex/skills/titan-event-replay/scripts",
+          "$HOME/.codex/skills/titan-event-replay/references",
+          "$HOME/.codex/skills/titan-event-replay/assets",
+          "$HOME/.codex/skills/titan-event-replay/checks",
+          "$HOME/.codex/skills/titan-event-replay/examples"
         ],
         "admin": [
           "/etc/codex/skills/titan-event-replay",
@@ -2820,12 +2820,12 @@
           "$REPO_ROOT/.agents/skills/titan-memory-loom/examples"
         ],
         "user": [
-          "$HOME/.agents/skills/titan-memory-loom",
-          "$HOME/.agents/skills/titan-memory-loom/scripts",
-          "$HOME/.agents/skills/titan-memory-loom/references",
-          "$HOME/.agents/skills/titan-memory-loom/assets",
-          "$HOME/.agents/skills/titan-memory-loom/checks",
-          "$HOME/.agents/skills/titan-memory-loom/examples"
+          "$HOME/.codex/skills/titan-memory-loom",
+          "$HOME/.codex/skills/titan-memory-loom/scripts",
+          "$HOME/.codex/skills/titan-memory-loom/references",
+          "$HOME/.codex/skills/titan-memory-loom/assets",
+          "$HOME/.codex/skills/titan-memory-loom/checks",
+          "$HOME/.codex/skills/titan-memory-loom/examples"
         ],
         "admin": [
           "/etc/codex/skills/titan-memory-loom",
@@ -2877,12 +2877,12 @@
           "$REPO_ROOT/.agents/skills/titan-memory-prune/examples"
         ],
         "user": [
-          "$HOME/.agents/skills/titan-memory-prune",
-          "$HOME/.agents/skills/titan-memory-prune/scripts",
-          "$HOME/.agents/skills/titan-memory-prune/references",
-          "$HOME/.agents/skills/titan-memory-prune/assets",
-          "$HOME/.agents/skills/titan-memory-prune/checks",
-          "$HOME/.agents/skills/titan-memory-prune/examples"
+          "$HOME/.codex/skills/titan-memory-prune",
+          "$HOME/.codex/skills/titan-memory-prune/scripts",
+          "$HOME/.codex/skills/titan-memory-prune/references",
+          "$HOME/.codex/skills/titan-memory-prune/assets",
+          "$HOME/.codex/skills/titan-memory-prune/checks",
+          "$HOME/.codex/skills/titan-memory-prune/examples"
         ],
         "admin": [
           "/etc/codex/skills/titan-memory-prune",
@@ -2934,12 +2934,12 @@
           "$REPO_ROOT/.agents/skills/titan-mutation-gate/examples"
         ],
         "user": [
-          "$HOME/.agents/skills/titan-mutation-gate",
-          "$HOME/.agents/skills/titan-mutation-gate/scripts",
-          "$HOME/.agents/skills/titan-mutation-gate/references",
-          "$HOME/.agents/skills/titan-mutation-gate/assets",
-          "$HOME/.agents/skills/titan-mutation-gate/checks",
-          "$HOME/.agents/skills/titan-mutation-gate/examples"
+          "$HOME/.codex/skills/titan-mutation-gate",
+          "$HOME/.codex/skills/titan-mutation-gate/scripts",
+          "$HOME/.codex/skills/titan-mutation-gate/references",
+          "$HOME/.codex/skills/titan-mutation-gate/assets",
+          "$HOME/.codex/skills/titan-mutation-gate/checks",
+          "$HOME/.codex/skills/titan-mutation-gate/examples"
         ],
         "admin": [
           "/etc/codex/skills/titan-mutation-gate",
@@ -2991,12 +2991,12 @@
           "$REPO_ROOT/.agents/skills/titan-recall/examples"
         ],
         "user": [
-          "$HOME/.agents/skills/titan-recall",
-          "$HOME/.agents/skills/titan-recall/scripts",
-          "$HOME/.agents/skills/titan-recall/references",
-          "$HOME/.agents/skills/titan-recall/assets",
-          "$HOME/.agents/skills/titan-recall/checks",
-          "$HOME/.agents/skills/titan-recall/examples"
+          "$HOME/.codex/skills/titan-recall",
+          "$HOME/.codex/skills/titan-recall/scripts",
+          "$HOME/.codex/skills/titan-recall/references",
+          "$HOME/.codex/skills/titan-recall/assets",
+          "$HOME/.codex/skills/titan-recall/checks",
+          "$HOME/.codex/skills/titan-recall/examples"
         ],
         "admin": [
           "/etc/codex/skills/titan-recall",
@@ -3048,12 +3048,12 @@
           "$REPO_ROOT/.agents/skills/titan-receipt/examples"
         ],
         "user": [
-          "$HOME/.agents/skills/titan-receipt",
-          "$HOME/.agents/skills/titan-receipt/scripts",
-          "$HOME/.agents/skills/titan-receipt/references",
-          "$HOME/.agents/skills/titan-receipt/assets",
-          "$HOME/.agents/skills/titan-receipt/checks",
-          "$HOME/.agents/skills/titan-receipt/examples"
+          "$HOME/.codex/skills/titan-receipt",
+          "$HOME/.codex/skills/titan-receipt/scripts",
+          "$HOME/.codex/skills/titan-receipt/references",
+          "$HOME/.codex/skills/titan-receipt/assets",
+          "$HOME/.codex/skills/titan-receipt/checks",
+          "$HOME/.codex/skills/titan-receipt/examples"
         ],
         "admin": [
           "/etc/codex/skills/titan-receipt",
@@ -3105,12 +3105,12 @@
           "$REPO_ROOT/.agents/skills/titan-runtime-gate/examples"
         ],
         "user": [
-          "$HOME/.agents/skills/titan-runtime-gate",
-          "$HOME/.agents/skills/titan-runtime-gate/scripts",
-          "$HOME/.agents/skills/titan-runtime-gate/references",
-          "$HOME/.agents/skills/titan-runtime-gate/assets",
-          "$HOME/.agents/skills/titan-runtime-gate/checks",
-          "$HOME/.agents/skills/titan-runtime-gate/examples"
+          "$HOME/.codex/skills/titan-runtime-gate",
+          "$HOME/.codex/skills/titan-runtime-gate/scripts",
+          "$HOME/.codex/skills/titan-runtime-gate/references",
+          "$HOME/.codex/skills/titan-runtime-gate/assets",
+          "$HOME/.codex/skills/titan-runtime-gate/checks",
+          "$HOME/.codex/skills/titan-runtime-gate/examples"
         ],
         "admin": [
           "/etc/codex/skills/titan-runtime-gate",
@@ -3162,12 +3162,12 @@
           "$REPO_ROOT/.agents/skills/titan-summon/examples"
         ],
         "user": [
-          "$HOME/.agents/skills/titan-summon",
-          "$HOME/.agents/skills/titan-summon/scripts",
-          "$HOME/.agents/skills/titan-summon/references",
-          "$HOME/.agents/skills/titan-summon/assets",
-          "$HOME/.agents/skills/titan-summon/checks",
-          "$HOME/.agents/skills/titan-summon/examples"
+          "$HOME/.codex/skills/titan-summon",
+          "$HOME/.codex/skills/titan-summon/scripts",
+          "$HOME/.codex/skills/titan-summon/references",
+          "$HOME/.codex/skills/titan-summon/assets",
+          "$HOME/.codex/skills/titan-summon/checks",
+          "$HOME/.codex/skills/titan-summon/examples"
         ],
         "admin": [
           "/etc/codex/skills/titan-summon",
@@ -3219,12 +3219,12 @@
           "$REPO_ROOT/.agents/skills/titan-thread-turn-binding/examples"
         ],
         "user": [
-          "$HOME/.agents/skills/titan-thread-turn-binding",
-          "$HOME/.agents/skills/titan-thread-turn-binding/scripts",
-          "$HOME/.agents/skills/titan-thread-turn-binding/references",
-          "$HOME/.agents/skills/titan-thread-turn-binding/assets",
-          "$HOME/.agents/skills/titan-thread-turn-binding/checks",
-          "$HOME/.agents/skills/titan-thread-turn-binding/examples"
+          "$HOME/.codex/skills/titan-thread-turn-binding",
+          "$HOME/.codex/skills/titan-thread-turn-binding/scripts",
+          "$HOME/.codex/skills/titan-thread-turn-binding/references",
+          "$HOME/.codex/skills/titan-thread-turn-binding/assets",
+          "$HOME/.codex/skills/titan-thread-turn-binding/checks",
+          "$HOME/.codex/skills/titan-thread-turn-binding/examples"
         ],
         "admin": [
           "/etc/codex/skills/titan-thread-turn-binding",

@@ -200,6 +200,24 @@ class VerifySkillPackTests(unittest.TestCase):
             self.assertEqual([], payload["extra_skill_dirs"])
             self.assertIn("aoa-change-protocol", [entry["name"] for entry in payload["skills"]])
 
+    def test_runtime_cache_files_do_not_fail_verification(self) -> None:
+        with tempfile.TemporaryDirectory() as tmpdir:
+            dest_root = pathlib.Path(tmpdir) / "skills"
+            self.install_profile_copy("repo-core-only", dest_root)
+            cache_dir = dest_root / "aoa-change-protocol" / "scripts" / "__pycache__"
+            cache_dir.mkdir(parents=True)
+            (cache_dir / "helper.cpython-314.pyc").write_bytes(b"runtime cache")
+
+            completed, payload = self.verify_profile("repo-core-only", install_root=dest_root)
+
+            self.assertEqual(
+                completed.returncode,
+                0,
+                msg=f"verify failed\nstdout:\n{completed.stdout}\nstderr:\n{completed.stderr}",
+            )
+            self.assertTrue(payload["verified"])
+            self.assertEqual([], payload["mismatched_skills"])
+
     def test_foundation_copy_installed_profile_verifies_successfully(self) -> None:
         with tempfile.TemporaryDirectory() as tmpdir:
             dest_root = pathlib.Path(tmpdir) / "skills"

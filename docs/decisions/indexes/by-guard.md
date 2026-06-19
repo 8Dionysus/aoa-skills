@@ -38,6 +38,7 @@
 - [AOA-SK-D-0030 Test Topology And Agentic Contracts](../AOA-SK-D-0030-test-topology-and-agentic-contracts.md) (`docs/decisions/AOA-SK-D-0030-test-topology-and-agentic-contracts.md`)
 - [AOA-SK-D-0034 Decision Graph Skill Chain](../AOA-SK-D-0034-decision-graph-skill-chain.md) (`docs/decisions/AOA-SK-D-0034-decision-graph-skill-chain.md`)
 - [AOA-SK-D-0035 Decision Graph Impact And Issue-Aware Skills](../AOA-SK-D-0035-decision-graph-impact-and-issue-aware-skills.md) (`docs/decisions/AOA-SK-D-0035-decision-graph-impact-and-issue-aware-skills.md`)
+- [AOA-SK-D-0036 Codex User Skill Root And Foundation Profile](../AOA-SK-D-0036-codex-user-skill-root-and-foundation-profile.md) (`docs/decisions/AOA-SK-D-0036-codex-user-skill-root-and-foundation-profile.md`)
 
 ## technique bridge
 
@@ -71,6 +72,7 @@
 - [AOA-SK-D-0031 Script Source Home Topology](../AOA-SK-D-0031-script-source-home-topology.md) (`docs/decisions/AOA-SK-D-0031-script-source-home-topology.md`)
 - [AOA-SK-D-0034 Decision Graph Skill Chain](../AOA-SK-D-0034-decision-graph-skill-chain.md) (`docs/decisions/AOA-SK-D-0034-decision-graph-skill-chain.md`)
 - [AOA-SK-D-0035 Decision Graph Impact And Issue-Aware Skills](../AOA-SK-D-0035-decision-graph-impact-and-issue-aware-skills.md) (`docs/decisions/AOA-SK-D-0035-decision-graph-impact-and-issue-aware-skills.md`)
+- [AOA-SK-D-0036 Codex User Skill Root And Foundation Profile](../AOA-SK-D-0036-codex-user-skill-root-and-foundation-profile.md) (`docs/decisions/AOA-SK-D-0036-codex-user-skill-root-and-foundation-profile.md`)
 
 ## AGENTS/mesh
 
@@ -121,9 +123,17 @@
 - [AOA-SK-D-0034 Decision Graph Skill Chain](../AOA-SK-D-0034-decision-graph-skill-chain.md) (`docs/decisions/AOA-SK-D-0034-decision-graph-skill-chain.md`)
 - [AOA-SK-D-0035 Decision Graph Impact And Issue-Aware Skills](../AOA-SK-D-0035-decision-graph-impact-and-issue-aware-skills.md) (`docs/decisions/AOA-SK-D-0035-decision-graph-impact-and-issue-aware-skills.md`)
 
+## install profile
+
+- [AOA-SK-D-0036 Codex User Skill Root And Foundation Profile](../AOA-SK-D-0036-codex-user-skill-root-and-foundation-profile.md) (`docs/decisions/AOA-SK-D-0036-codex-user-skill-root-and-foundation-profile.md`)
+
 ## owner module
 
 - [AOA-SK-D-0029 Validator Topology And Owner Modules](../AOA-SK-D-0029-validator-topology-and-owner-modules.md) (`docs/decisions/AOA-SK-D-0029-validator-topology-and-owner-modules.md`)
+
+## permission allowlist
+
+- [AOA-SK-D-0036 Codex User Skill Root And Foundation Profile](../AOA-SK-D-0036-codex-user-skill-root-and-foundation-profile.md) (`docs/decisions/AOA-SK-D-0036-codex-user-skill-root-and-foundation-profile.md`)
 
 ## release/CI
 

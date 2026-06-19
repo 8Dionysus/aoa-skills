@@ -74,7 +74,7 @@ def source_scope_for_path(path: str) -> str:
         return "repo"
     if path.startswith("/etc/codex/skills/"):
         return "admin"
-    if path.startswith("$HOME/.agents/skills/") or path.startswith("~/.agents/skills/"):
+    if path.startswith("$HOME/.codex/skills/") or path.startswith("~/.codex/skills/"):
         return "user"
     return "repo"
 
@@ -87,7 +87,7 @@ def instruction_digest(skill_md: pathlib.Path) -> str:
 def allowlist_templates(name: str) -> dict[str, list[str]]:
     rel_base = f".agents/skills/{name}"
     repo_base = f"$REPO_ROOT/{rel_base}"
-    user_base = f"$HOME/.agents/skills/{name}"
+    user_base = f"$HOME/.codex/skills/{name}"
     admin_base = f"/etc/codex/skills/{name}"
     suffixes = ["", "/scripts", "/references", "/assets", "/checks", "/examples"]
     return {
