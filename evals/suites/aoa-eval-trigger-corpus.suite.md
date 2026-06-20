@@ -59,6 +59,38 @@ boundary stop, or no eval route at all?
   verification gaps. The expected behavior is to inspect existing central/local
   surfaces before designing anything new.
 
+Additional live dogfood case:
+
+- route: `aoa-eval-select`, then `aoa-eval-apply` as a local report
+- source: active long-session self-awareness contract-lane episode
+- session: `019eb8c7-a7b5-76f0-b66a-0eb3791305ff`
+- label: `2026-06-11__006__у-меня-складывается-впечатление-что-для-всех`
+- trigger segment:
+  `017__compaction-to-compaction.md#event-003667--user_intent--user-message`
+- raw ref: `raw:line:3667`
+- report:
+  `evals/reports/aoa-eval-self-awareness-contract-lane.report.md`
+- selected eval surfaces: `aoa-diagnosis-cause-discipline`,
+  `aoa-repair-boundedness`, `aoa-verification-honesty`, and
+  `aoa-approval-boundary-adherence`
+- reason: the cluster involved emotionally loaded suspected drift, active-vs-
+  stale host ownership, bounded repair, and residual live validation risk. The
+  expected behavior is to select existing central eval surfaces and publish a
+  local readout instead of designing a new bundle first.
+
+Fixture-backed generalization:
+
+- route: `aoa-eval`
+- fixture cases: `eval_router_drifted_contract_lane`,
+  `eval_router_active_vs_stale_cleanup_boundary`, and
+  `eval_router_source_authority_only`
+- fixture file: `tests/fixtures/skill_evaluation_cases.yaml`
+- reason: the self-awareness episode is only the observed specimen. The durable
+  trigger family is broader: suspicious drift in an authority-sensitive contract
+  lane, active-vs-stale cleanup pressure before deletion, and the negative
+  boundary where the task is only source-authority lookup rather than eval-lane
+  work.
+
 ### should_design_missing_or_local_need
 
 - route: `aoa-eval-local-need` or `aoa-eval-design`
