@@ -461,6 +461,26 @@ trigger_cases:
     expected: do_not_use
     required_phrases:
       - the task is only to add an ordinary unit test with no eval routing question
+  - skill: aoa-eval
+    case_id: eval_router_drifted_contract_lane
+    prompt: A contract lane looks drifted or agent-written and touches proof behavior; before editing it, decide whether existing evals, validators, tests, scripts, or local eval intake apply.
+    expected: use
+    required_phrases:
+      - a repeated failure, validation gap, proof gap, regression, trigger miss
+      - a route must separate proof authority
+  - skill: aoa-eval
+    case_id: eval_router_active_vs_stale_cleanup_boundary
+    prompt: An old generated contract surface appears obsolete, but a newer active lane may own the proof truth; before deleting anything, inspect eval-port evidence, validators, tests, and scripts.
+    expected: use
+    required_phrases:
+      - a repeated failure, validation gap, proof gap, regression, trigger miss
+      - a route must separate proof authority
+  - skill: aoa-eval
+    case_id: eval_router_source_authority_only
+    prompt: Find which source document owns a wording conflict before a normal docs edit; no eval coverage, regression, proof gap, or local eval-port question is present.
+    expected: do_not_use
+    required_phrases:
+      - the task is only to find source authority
   - skill: aoa-eval-select
     case_id: eval_select_existing_surface
     prompt: Inspect the repo-local eval port, tests, validators, and central aoa-evals surfaces before deciding whether a new eval is needed.

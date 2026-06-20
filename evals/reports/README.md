@@ -10,3 +10,6 @@ Active local report notes:
 - [aoa-eval-session-mining.report.md](aoa-eval-session-mining.report.md)
   records the first `.aoa` mining pass for `aoa-eval` trigger evidence and its
   proof limits.
+- [aoa-eval-self-awareness-contract-lane.report.md](aoa-eval-self-awareness-contract-lane.report.md)
+  applies existing central eval surfaces to the `abyss-machine`
+  self-awareness contract-lane episode as a local dogfood readout.
