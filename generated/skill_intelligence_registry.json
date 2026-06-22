@@ -4441,8 +4441,8 @@
       "evaluation": {
         "canonical_eval_ready": true,
         "canonical_eval_blockers": [],
-        "use_case_count": 1,
-        "do_not_use_case_count": 1,
+        "use_case_count": 3,
+        "do_not_use_case_count": 2,
         "autonomy_check_count": 1,
         "promotion_review_path": null,
         "candidate_review_path": null

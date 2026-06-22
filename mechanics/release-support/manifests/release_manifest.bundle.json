@@ -17,10 +17,47 @@
     "content_identity_ref": "generated/release_manifest.json",
     "artifact_identity_ref": "generated/release_manifest.json#/artifact_identity"
   },
+  "artifact_subjects": [
+    {
+      "path": "generated/release_manifest.json",
+      "role": "generated_release_manifest"
+    }
+  ],
+  "package": {
+    "ecosystem": "generated-readmodel",
+    "name": "aoa-skills-release-manifest",
+    "purl": "pkg:generic/aoa-skills-release-manifest@0"
+  },
+  "lifecycle": {
+    "initial_state": "candidate",
+    "promotion_path": [
+      "candidate",
+      "built-local",
+      "manually-verified",
+      "release-ready",
+      "published",
+      "superseded",
+      "revoked"
+    ],
+    "latest_eligible_states": [
+      "manually-verified",
+      "release-ready",
+      "published"
+    ]
+  },
+  "consumer_contract": {
+    "stable_interface": "python scripts/validation/validate_abyss_machine_artifact_bundle.py --repo-root . and abyss-machine artifacts trust-gate --artifact-class aoa_skills_release_manifest --consumer-intent agent --json",
+    "consumer_expectation": "Skill export consumers select an aoa_skills_release_manifest bundle from the registry latest read-model only after ABI verification, release-manifest subject materialization, and consumer trust-gate allow/warn succeeds.",
+    "registry_required": true
+  },
   "consumer_command": [
     "abyss-machine artifacts build-sidecars --manifest mechanics/release-support/manifests/release_manifest.bundle.json --bundle-dir BUNDLE_DIR",
     "abyss-machine artifacts sign BUNDLE_DIR",
     "abyss-machine artifacts verify BUNDLE_DIR",
-    "abyss-machine artifacts release-check BUNDLE_DIR"
+    "abyss-machine artifacts release-check BUNDLE_DIR",
+    "abyss-machine artifacts bundle-register BUNDLE_DIR --registry-dir REGISTRY_DIR --lifecycle-state release-ready --consumer-ref aoa-skills:release-manifest --source-repo aoa-skills --json",
+    "abyss-machine artifacts materialize-subjects BUNDLE_DIR --registry-dir REGISTRY_DIR --manifest mechanics/release-support/manifests/release_manifest.bundle.json --consumer-intent agent --source-repo aoa-skills --json",
+    "abyss-machine artifacts trust-gate --registry-dir REGISTRY_DIR --artifact-class aoa_skills_release_manifest --consumer-intent agent --source-repo aoa-skills --subject-digest SUBJECT_DIGEST --json",
+    "abyss-machine artifacts registry-latest --registry-dir REGISTRY_DIR --artifact-class aoa_skills_release_manifest --source-repo aoa-skills --json"
   ]
 }
