@@ -1055,6 +1055,7 @@
         "the user asks whether an eval exists, whether one should be added, or how to connect evals to a repository",
         "a repeated failure, validation gap, proof gap, regression, trigger miss, or local evals/ port appears during repository work",
         "the task mentions aoa-evals, aoa-evals-mcp, local eval ports, eval intake, graders, traces, regressions, validators, tests, or scripts as evaluation surfaces",
+        "a repo-family or workspace-local eval-port inventory, or missing/skeleton/active/invalid port status, is available before choosing a local eval route",
         "session evidence may reveal missed eval moments, but only after web and repo owner surfaces have been checked",
         "a route must separate proof authority, local intake pressure, MCP access, and raw session evidence"
       ]

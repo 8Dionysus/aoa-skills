@@ -469,6 +469,13 @@ trigger_cases:
       - a repeated failure, validation gap, proof gap, regression, trigger miss
       - a route must separate proof authority
   - skill: aoa-eval
+    case_id: eval_router_workspace_inventory_route
+    prompt: Use the OS Abyss local eval-port inventory to decide what to do with repositories marked missing, skeleton, active, and invalid before writing any new eval material.
+    expected: use
+    required_phrases:
+      - repo-family or workspace-local eval-port inventory
+      - missing/skeleton/active/invalid port status
+  - skill: aoa-eval
     case_id: eval_router_active_vs_stale_cleanup_boundary
     prompt: An old generated contract surface appears obsolete, but a newer active lane may own the proof truth; before deleting anything, inspect eval-port evidence, validators, tests, and scripts.
     expected: use

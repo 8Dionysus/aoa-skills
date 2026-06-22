@@ -421,7 +421,7 @@
     },
     {
       "name": "aoa-eval",
-      "description": "Route AoA eval-lane work by checking existing local and central eval surfaces first, then choosing apply, local intake need, local design, or session mining while preserving owner boundaries. Use when a task asks whether an eval exists, whether one should be added, how local evals connect to aoa-evals, or how validators, tests, scripts, traces, regressions, trigger misses, local eval ports, or aoa-evals-mcp should be used as evaluation surfaces. Do not use for ordinary one-off tests, source-of-truth mapping, decision records, memo writeback, or direct central aoa-evals proof-authority edits.",
+      "description": "Route AoA eval-lane work by checking existing local and central eval surfaces first, including any available repo-family or workspace eval-port inventory with missing/skeleton/active/invalid status, then choosing apply, local intake need, local design, or session mining while preserving owner boundaries. Use when a task asks whether an eval exists, whether one should be added, how local evals connect to aoa-evals, how local eval-port status should route work, or how validators, tests, scripts, traces, regressions, trigger misses, local eval ports, or aoa-evals-mcp should be used as evaluation surfaces. Do not use for ordinary one-off tests, source-of-truth mapping, decision records, memo writeback, or direct central aoa-evals proof-authority edits.",
       "collision_family": "eval-proof-routing-family",
       "competing_skills": [
         "aoa-eval-select",

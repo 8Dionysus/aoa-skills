@@ -4350,8 +4350,8 @@
         "skill_path": "skills/core/engineering/aoa-eval/SKILL.md",
         "techniques_path": "skills/core/engineering/aoa-eval/techniques.yaml",
         "policy_path": "skills/core/engineering/aoa-eval/agents/openai.yaml",
-        "content_hash": "1df90af29913434432d6704252a351f30dcbda3435458657c4e83423e9d97ec2",
-        "skill_revision": "1df90af29913"
+        "content_hash": "24499f2d05d95c245ee33608fde59dee40953e932619f69a8459ddec9bed0bef",
+        "skill_revision": "24499f2d05d9"
       },
       "policy": {
         "invocation_mode": "explicit-preferred",
@@ -4363,7 +4363,7 @@
         "requires_confirmation_seam": false
       },
       "runtime": {
-        "description": "Route AoA eval-lane work by checking existing local and central eval surfaces first, then choosing apply, local intake need, local design, or session mining while preserving owner boundaries. Use when a task asks whether an eval exists, whether one should be added, how local evals connect to aoa-evals, or how validators, tests, scripts, traces, regressions, trigger misses, local eval ports, or aoa-evals-mcp should be used as evaluation surfaces. Do not use for ordinary one-off tests, source-of-truth mapping, decision records, memo writeback, or direct central aoa-evals proof-authority edits.",
+        "description": "Route AoA eval-lane work by checking existing local and central eval surfaces first, including any available repo-family or workspace eval-port inventory with missing/skeleton/active/invalid status, then choosing apply, local intake need, local design, or session mining while preserving owner boundaries. Use when a task asks whether an eval exists, whether one should be added, how local evals connect to aoa-evals, how local eval-port status should route work, or how validators, tests, scripts, traces, regressions, trigger misses, local eval ports, or aoa-evals-mcp should be used as evaluation surfaces. Do not use for ordinary one-off tests, source-of-truth mapping, decision records, memo writeback, or direct central aoa-evals proof-authority edits.",
         "allow_implicit_invocation": true
       },
       "tiny_router": {
@@ -4441,7 +4441,7 @@
       "evaluation": {
         "canonical_eval_ready": true,
         "canonical_eval_blockers": [],
-        "use_case_count": 3,
+        "use_case_count": 4,
         "do_not_use_case_count": 2,
         "autonomy_check_count": 1,
         "promotion_review_path": null,
@@ -4504,9 +4504,9 @@
           "section_role": "trigger_boundary",
           "source_path": "skills/core/engineering/aoa-eval/SKILL.md",
           "source_anchor": "## Trigger boundary",
-          "text": "Use this skill when: - the user asks whether an eval exists, whether one should be added, or how to connect evals to a repository - a repeated failure, validation gap, proof gap, regression, trigger miss, or local `evals/` port appears during repository work - the task mentions `aoa-evals`, `aoa-evals-mcp`, local eval ports, eval intake, graders, traces, regressions, validators, tests, or scripts as evaluation surfaces - session evidence may reveal missed eval moments, but only after web and repo owner surfaces have been checked - a route must separate proof authority, local intake pressure, MCP access, and raw session evidence Do not use this skill when: - the task is only to add an ordinary unit test with no eval routing question; use the normal engineering workflow or `aoa-contract-test` - the task is only to find source authority; use `aoa-source-of-truth-check` - the task is only to record or correct durable rationale; use `aoa-decision` - the task is only memory candidate writeback; use `aoa-memo-writeback` - the user explicitly asks to edit central `aoa-evals` proof doctrine; route to the `aoa-evals` repo and its validators instead of making this skill the owner",
-          "text_sha256": "a15e90c2e8105bbfbe2d4944e3c6d332c21f903073d206c619239073fbbf5be9",
-          "token_count": 189
+          "text": "Use this skill when: - the user asks whether an eval exists, whether one should be added, or how to connect evals to a repository - a repeated failure, validation gap, proof gap, regression, trigger miss, or local `evals/` port appears during repository work - the task mentions `aoa-evals`, `aoa-evals-mcp`, local eval ports, eval intake, graders, traces, regressions, validators, tests, or scripts as evaluation surfaces - a repo-family or workspace-local eval-port inventory, or missing/skeleton/active/invalid port status, is available before choosing a local eval route - session evidence may reveal missed eval moments, but only after web and repo owner surfaces have been checked - a route must separate proof authority, local intake pressure, MCP access, and raw session evidence Do not use this skill when: - the task is only to add an ordinary unit test with no eval routing question; use the normal engineering workflow or `aoa-contract-test` - the task is only to find source authority; use `aoa-source-of-truth-check` - the task is only to record or correct durable rationale; use `aoa-decision` - the task is only memory candidate writeback; use `aoa-memo-writeback` - the user explicitly asks to edit central `aoa-evals` proof doctrine; route to the `aoa-evals` repo and its validators instead of making this skill the owner",
+          "text_sha256": "78199b6044a697190fae5c3df7640563c7b77971718cb28e2376ec30520aa10b",
+          "token_count": 208
         },
         {
           "doc_id": "skill:aoa-eval:section:inputs",
@@ -4514,9 +4514,9 @@
           "section_role": "inputs",
           "source_path": "skills/core/engineering/aoa-eval/SKILL.md",
           "source_anchor": "## Inputs",
-          "text": "- user intent, target repository, touched paths, failure mode, or eval name - local `evals/PORT.yaml`, `evals/intake/`, scripts, tests, validators, and repo route cards - central `aoa-evals` docs, schemas, validators, reports, and review surfaces - `aoa-evals-mcp` packets when available, treated as access-plane data - `.aoa` search hits, segments, raw refs, and freshness only when session mining is the chosen route",
-          "text_sha256": "9ad88bbfd15b8c7414583b9b0c287678ea9934e3b6c7a5cc45d4530783fa57a0",
-          "token_count": 59
+          "text": "- user intent, target repository, touched paths, failure mode, or eval name - local `evals/PORT.yaml`, `evals/intake/`, scripts, tests, validators, and repo route cards - central `aoa-evals` docs, schemas, validators, reports, and review surfaces - optional repo-family or workspace local-port inventory/read-model; in OS Abyss this may be `aoa-evals/scripts/build_local_eval_port_inventory.py` - `aoa-evals-mcp` packets when available, treated as access-plane data - `.aoa` search hits, segments, raw refs, and freshness only when session mining is the chosen route",
+          "text_sha256": "8a8999cc58f0fadbefe13262eafd3723444d05b7cafa03b4de5e3984e7849c84",
+          "token_count": 73
         },
         {
           "doc_id": "skill:aoa-eval:section:outputs",
@@ -4534,9 +4534,9 @@
           "section_role": "procedure",
           "source_path": "skills/core/engineering/aoa-eval/SKILL.md",
           "source_anchor": "## Procedure",
-          "text": "1. classify the pressure: - existing eval may fit: use `aoa-eval-select` - existing eval or validator should run: use `aoa-eval-apply` - no eval fits and a repo-local pressure packet is needed: use `aoa-eval-local-need` - a local eval suite or report needs design: use `aoa-eval-design` - `.aoa` evidence should be mined for missed trigger cases: use `aoa-eval-session-mining` 2. check local owner route first: repository `AGENTS.md`, `evals/PORT.yaml`, nearby validators, tests, scripts, and local route docs 3. check central `aoa-evals` only for proof doctrine, local-port contract, central bundles, scoring, verdicts, or review rules 4. use `aoa-evals-mcp` only as a runtime access plane; do not let an MCP packet create proof truth or write central eval bundles 5. load exactly one subskill after classification; keep the other subskills out of context unless the route changes 6. if no safe route exists, stop with the missing owner evidence and the next narrow source to inspect 7. after any write or eval run, report the route, owner surface, evidence used, validation command, and remaining proof risk",
-          "text_sha256": "711d1750716db28ea3be7ad5da8b66cd5db28b9b4302be6b6af2986d177c92f5",
-          "token_count": 170
+          "text": "1. classify the pressure: - existing eval may fit: use `aoa-eval-select` - existing eval or validator should run: use `aoa-eval-apply` - no eval fits and a repo-local pressure packet is needed: use `aoa-eval-local-need` - a local eval suite or report needs design: use `aoa-eval-design` - `.aoa` evidence should be mined for missed trigger cases: use `aoa-eval-session-mining` 2. if a repo-family or workspace local-port inventory is available, consult it before local need/design/session mining to distinguish missing, skeleton, active, invalid, and stale local surfaces; treat inventory route keys as advisory routing evidence, not proof or mutation authority 3. check local owner route first: repository `AGENTS.md`, `evals/PORT.yaml`, nearby validators, tests, scripts, and local route docs 4. check central `aoa-evals` only for proof doctrine, local-port contract, central bundles, scoring, verdicts, or review rules 5. use `aoa-evals-mcp` only as a runtime access plane; do not let an MCP packet create proof truth or write central eval bundles 6. load exactly one subskill after classification; keep the other subskills out of context unless the route changes 7. if no safe route exists, stop with the missing owner evidence and the next narrow source to inspect 8. after any write or eval run, report the route, owner surface, evidence used, validation command, and remaining proof risk",
+          "text_sha256": "4125009da2f04d26397f8b14dc63a50598fbc684bdffd6072d7a30a8576968e7",
+          "token_count": 209
         },
         {
           "doc_id": "skill:aoa-eval:section:contracts",
@@ -4544,9 +4544,9 @@
           "section_role": "contracts",
           "source_path": "skills/core/engineering/aoa-eval/SKILL.md",
           "source_anchor": "## Contracts",
-          "text": "- `aoa-evals` owns proof doctrine and central eval verdicts - local repositories own their `evals/` ports and can hold intake pressure without becoming proof authorities - `.aoa` raw traces are candidate evidence, not reviewed truth - MCP tools are access planes and must not silently promote local pressure into central proof - the router chooses one subskill to control scope and avoid mixed authority - new evals should be created only after existing local and central surfaces were inspected",
-          "text_sha256": "af9c0d5f77a0e20491b040fc6016978619537ab52dfec1e68d78d185c4f1ee82",
-          "token_count": 79
+          "text": "- `aoa-evals` owns proof doctrine and central eval verdicts - local repositories own their `evals/` ports and can hold intake pressure without becoming proof authorities - `.aoa` raw traces are candidate evidence, not reviewed truth - MCP tools are access planes and must not silently promote local pressure into central proof - workspace inventories and route read-models are advisory selectors; source files and owner validators remain stronger - the router chooses one subskill to control scope and avoid mixed authority - new evals should be created only after existing local and central surfaces were inspected",
+          "text_sha256": "8caf70616fefe79cc184c8a8e5a238a84993e102a90c816c5b42e7d2a64cd884",
+          "token_count": 95
         },
         {
           "doc_id": "skill:aoa-eval:section:risk",
@@ -4564,9 +4564,9 @@
           "section_role": "verification",
           "source_path": "skills/core/engineering/aoa-eval/SKILL.md",
           "source_anchor": "## Verification",
-          "text": "- confirm exactly one subskill route was selected - confirm local `evals/PORT.yaml` was inspected or the absence was named - confirm central `aoa-evals` authority was kept separate from local intake - confirm existing scripts, tests, and validators were considered before new design - confirm `.aoa` evidence is marked candidate-only when used - confirm any generated or derived surfaces were rebuilt through owner builders - confirm final report names validation and skipped checks",
-          "text_sha256": "54d5ba933e66f85040e065ffbd837a97735ab79bf85b8b2b49cc6366a46adb2e",
-          "token_count": 72
+          "text": "- confirm exactly one subskill route was selected - confirm local `evals/PORT.yaml` was inspected or the absence was named - if a workspace inventory was used, name the inventory command or MCP resource and the route recommendation it returned - confirm central `aoa-evals` authority was kept separate from local intake - confirm existing scripts, tests, and validators were considered before new design - confirm `.aoa` evidence is marked candidate-only when used - confirm any generated or derived surfaces were rebuilt through owner builders - confirm final report names validation and skipped checks",
+          "text_sha256": "0b32edd5104fbefcbbdf0347ac9810b49d1c4a031824a8cc985c6ca79ea2501b",
+          "token_count": 92
         },
         {
           "doc_id": "skill:aoa-eval:section:lineage",

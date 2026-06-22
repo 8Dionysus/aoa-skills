@@ -1333,12 +1333,13 @@
     {
       "name": "aoa-eval",
       "display_name": "AoA Eval",
-      "description": "Route AoA eval-lane work by checking existing local and central eval surfaces first, then choosing apply, local intake need, local design, or session mining while preserving owner boundaries. Use when a task asks whether an eval exists, whether one should be added, how local evals connect to aoa-evals, or how validators, tests, scripts, traces, regressions, trigger misses, local eval ports, or aoa-evals-mcp should be used as evaluation surfaces. Do not use for ordinary one-off tests, source-of-truth mapping, decision records, memo writeback, or direct central aoa-evals proof-authority edits.",
+      "description": "Route AoA eval-lane work by checking existing local and central eval surfaces first, including any available repo-family or workspace eval-port inventory with missing/skeleton/active/invalid status, then choosing apply, local intake need, local design, or session mining while preserving owner boundaries. Use when a task asks whether an eval exists, whether one should be added, how local evals connect to aoa-evals, how local eval-port status should route work, or how validators, tests, scripts, traces, regressions, trigger misses, local eval ports, or aoa-evals-mcp should be used as evaluation surfaces. Do not use for ordinary one-off tests, source-of-truth mapping, decision records, memo writeback, or direct central aoa-evals proof-authority edits.",
       "invocation_mode": "explicit-preferred",
       "inputs": [
         "user intent, target repository, touched paths, failure mode, or eval name",
         "local `evals/PORT.yaml`, `evals/intake/`, scripts, tests, validators, and repo route cards",
         "central `aoa-evals` docs, schemas, validators, reports, and review surfaces",
+        "optional repo-family or workspace local-port inventory/read-model; in OS Abyss this may be `aoa-evals/scripts/build_local_eval_port_inventory.py`",
         "`aoa-evals-mcp` packets when available, treated as access-plane data",
         "`.aoa` search hits, segments, raw refs, and freshness only when session mining is the chosen route"
       ],
@@ -1351,6 +1352,7 @@
       "verification": [
         "confirm exactly one subskill route was selected",
         "confirm local `evals/PORT.yaml` was inspected or the absence was named",
+        "if a workspace inventory was used, name the inventory command or MCP resource and the route recommendation it returned",
         "confirm central `aoa-evals` authority was kept separate from local intake",
         "confirm existing scripts, tests, and validators were considered before new design",
         "confirm `.aoa` evidence is marked candidate-only when used",
@@ -1362,6 +1364,7 @@
         "local repositories own their `evals/` ports and can hold intake pressure without becoming proof authorities",
         "`.aoa` raw traces are candidate evidence, not reviewed truth",
         "MCP tools are access planes and must not silently promote local pressure into central proof",
+        "workspace inventories and route read-models are advisory selectors; source files and owner validators remain stronger",
         "the router chooses one subskill to control scope and avoid mixed authority",
         "new evals should be created only after existing local and central surfaces were inspected"
       ],
@@ -1369,6 +1372,7 @@
         "user-intent-target-repository-touched-paths-failure-mode-or-eval",
         "local-evals-port-yaml-evals-intake-scripts-tests-validators-and-",
         "central-aoa-evals-docs-schemas-validators-reports-and-review-sur",
+        "optional-repo-family-or-workspace-local-port-inventory-read-mode",
         "aoa-evals-mcp-packets-when-available-treated-as-access-plane-dat",
         "aoa-search-hits-segments-raw-refs-and-freshness-only-when-sessio"
       ],
@@ -1389,7 +1393,7 @@
         "verification_notes": [
           "confirm exactly one subskill route was selected",
           "confirm local `evals/PORT.yaml` was inspected or the absence was named",
-          "confirm central `aoa-evals` authority was kept separate from local intake"
+          "if a workspace inventory was used, name the inventory command or MCP resource and the route recommendation it returned"
         ],
         "contract_notes": [
           "`aoa-evals` owns proof doctrine and central eval verdicts",

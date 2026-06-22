@@ -557,8 +557,8 @@
       "name": "aoa-eval",
       "display_name": "AoA Eval",
       "source_scope": "repo",
-      "instruction_sha256": "7a1f638790308ea2664820dfdc7c4e2cd20fc01a5d725ff6d0f7c384f9f2fcbe",
-      "dedupe_key": "aoa-eval:7a1f638790308ea2664820dfdc7c4e2cd20fc01a5d725ff6d0f7c384f9f2fcbe",
+      "instruction_sha256": "a5b8269f841ab7239b688bca4d24888a61d0e0a3e7db18d56ad1135736803e20",
+      "dedupe_key": "aoa-eval:a5b8269f841ab7239b688bca4d24888a61d0e0a3e7db18d56ad1135736803e20",
       "protect_from_compaction": true,
       "pin_strategy": "protected-tool-output",
       "reactivation_strategy": "compact-packet-then-activate",
@@ -575,7 +575,7 @@
         "Verification"
       ],
       "rehydration_hint": "Reload the full SKILL.md and keep policy, procedure, and verification in active context before resuming.",
-      "activation_card_markdown": "Use when: Route AoA eval-lane work by checking existing local and central eval surfaces first, then choosing apply, local intake need, local design, or session mining while preserving owner boundaries. Use when a task asks whether an eval exists, whether one should be added, how local evals connect to aoa-evals, or how validators, tests, scripts, traces, regressions, trigger misses, local eval ports, or aoa-evals-mcp should be used as evaluation surfaces. Do not use for ordinary one-off tests, source-of-truth mapping, decision records, memo writeback, or direct central aoa-evals proof-authority edits.\n\nKeep in memory: user intent, target repository, touched paths, failure mode, or eval name, local `evals/PORT.yaml`, `evals/intake/`, scripts, tests, validators, and repo route cards, exactly one chosen route: `aoa-eval-select`, `aoa-eval-apply`, `aoa-eval-local-need`, `aoa-eval-design`, or `aoa-eval-session-mining`, owner-boundary statement naming proof owner, local port owner, and any MCP or `.aoa` evidence role.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "activation_card_markdown": "Use when: Route AoA eval-lane work by checking existing local and central eval surfaces first, including any available repo-family or workspace eval-port inventory with missing/skeleton/active/invalid status, then choosing apply, local intake need, local design, or session mining while preserving owner boundaries. Use when a task asks whether an eval exists, whether one should be added, how local evals connect to aoa-evals, how local eval-port status should route work, or how validators, tests, scripts, traces, regressions, trigger misses, local eval ports, or aoa-evals-mcp should be used as evaluation surfaces. Do not use for ordinary one-off tests, source-of-truth mapping, decision records, memo writeback, or direct central aoa-evals proof-authority edits.\n\nKeep in memory: user intent, target repository, touched paths, failure mode, or eval name, local `evals/PORT.yaml`, `evals/intake/`, scripts, tests, validators, and repo route cards, exactly one chosen route: `aoa-eval-select`, `aoa-eval-apply`, `aoa-eval-local-need`, `aoa-eval-design`, or `aoa-eval-session-mining`, owner-boundary statement naming proof owner, local port owner, and any MCP or `.aoa` evidence role.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
       "reactivation_call": {
         "name": "guarded_activate_skill",
         "arguments": {

@@ -106,3 +106,67 @@ hits as candidate evidence that points back to raw/segment refs.
 The corpus status is `draft` and local. Central adoption, scoring, verdicts,
 regression truth, and proof doctrine remain outside this report and route to
 `aoa-evals`.
+
+## 2026-06-21 Refresh
+
+Command:
+
+```bash
+python /srv/AbyssOS/.aoa/scripts/aoa_session_memory.py maintenance-status \
+  --workspace-root /srv/AbyssOS \
+  --aoa-root /srv/AbyssOS/.aoa \
+  --no-timers \
+  --full
+```
+
+Observed at `2026-06-22T00:08:52Z`:
+
+- search status: `current_with_deferred_live_updates`
+- selected provider: `portable_sqlite`
+- graph status: `stale`
+- graph route: budgeted graph maintenance before GraphRAG-style synthesis
+- deferred live sessions: 4, including the current long eval-port session
+  `019eb8c7-a7b5-76f0-b66a-0eb3791305ff`
+
+Interpretation: use portable SQLite search and raw/segment refs for narrow
+trigger evidence; do not use stale graph state for proof-strength claims.
+
+Refresh search commands:
+
+```bash
+python /srv/AbyssOS/.aoa/scripts/aoa_session_memory.py search \
+  --workspace-root /srv/AbyssOS \
+  --aoa-root /srv/AbyssOS/.aoa \
+  --limit 5 \
+  --query "aoa-eval skill trigger local evals"
+```
+
+```bash
+python /srv/AbyssOS/.aoa/scripts/aoa_session_memory.py search \
+  --workspace-root /srv/AbyssOS \
+  --aoa-root /srv/AbyssOS/.aoa \
+  --limit 5 \
+  --query "self-awareness contract lane eval"
+```
+
+```bash
+python /srv/AbyssOS/.aoa/scripts/aoa_session_memory.py search \
+  --workspace-root /srv/AbyssOS \
+  --aoa-root /srv/AbyssOS/.aoa \
+  --limit 5 \
+  --query "aoa-evals-mcp local eval port validation"
+```
+
+Refresh trigger families:
+
+| Family | Evidence refs | Route implication |
+| --- | --- | --- |
+| local eval-port discovery | `2026-06-11__006`, `088__compaction-to-compaction.md#event-015320`, `raw:line:15320` | trigger `aoa-eval`; inventory before design |
+| MCP dry-run/apply local write | `2026-06-11__006`, `083__compaction-to-compaction.md#event-015025`, `raw:line:15025`; `083__...#event-015032`, `raw:line:15032` | trigger `aoa-eval-apply`/runtime bridge check; preserve central stop-line |
+| validator/schema failure during skill export | `2026-06-11__006`, `091__compaction-to-compaction.md#event-015941`, `raw:line:15941` | trigger apply/repair route instead of new proof design |
+| trigger-collision/description eval pressure | `2026-06-13__003`, `014__compaction-to-compaction.md#event-003368`, `raw:line:3368` | trigger skill-router regression check |
+| self-awareness contract-lane dogfood | `2026-06-13__003`, `170__compaction-to-compaction.md#event-086043`, `raw:line:86043` | keep as local dogfood evidence; no central promotion without owned `aoa-evals` route |
+
+These refreshed refs strengthen the local trigger corpus, but they still do not
+turn session-memory output into central proof. They are accepted here only as
+repo-local evidence candidates for `aoa-skills`.
