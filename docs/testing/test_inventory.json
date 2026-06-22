@@ -53,6 +53,17 @@
       "failure_route": "Fix mechanics/agon/parts before widening the lane."
     },
     {
+      "path": "tests/test_abyss_machine_artifact_bundle.py",
+      "family": "release/artifact-trust",
+      "protects": "OS Abyss release-manifest artifact bundle trust path",
+      "owner_surface": "mechanics/release-support/manifests/release_manifest.bundle.json",
+      "lane": "release",
+      "mode": "blocking",
+      "runtime_cost": "fast",
+      "focused_target": "tests/test_abyss_machine_artifact_bundle.py",
+      "failure_route": "Fix the release manifest artifact bundle contract or abyss-machine validator integration before weakening release trust."
+    },
+    {
       "path": "tests/test_agentic_fault_boundaries.py",
       "family": "tool-boundary/fault",
       "protects": "tool-boundary fault",
