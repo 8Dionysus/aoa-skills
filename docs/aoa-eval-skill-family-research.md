@@ -1,7 +1,7 @@
 # aoa-eval skill family research
 
-Status: first-slice research packet
-Date: 2026-06-13
+Status: operationalization research packet
+Date: 2026-06-21
 Owner repo: `aoa-skills`
 
 ## Question
@@ -22,41 +22,74 @@ repo-native `evals/` ports and intake pressure.
   when deterministic behavior or external tooling is needed, and prompt tests
   for trigger behavior.
   Source: https://developers.openai.com/codex/skills
-- OpenAI's January 22, 2026 skill-eval guide frames a skill eval as
-  `prompt -> captured run (trace + artifacts) -> checks -> score`, and calls
-  out regressions such as wrong trigger, skipped required step, or extra files.
-  Source: https://developers.openai.com/blog/eval-skills
-- OpenAI's agent workflow eval guide starts with traces while behavior is still
-  being debugged, then moves to datasets and eval runs once the team knows what
-  "good" looks like and needs repeatability.
+- OpenAI's current agent workflow eval guide treats traces, graders, datasets,
+  and eval runs as the core surfaces for agent evaluation. That maps to this
+  skill family as: trace/route evidence first, stable datasets and regression
+  checks only after we know the desired route.
   Source: https://developers.openai.com/api/docs/guides/agent-evals
-- Anthropic's agent eval guide separates capability evals from regression
-  evals, points coding agents toward deterministic tests first, and treats
-  transcript grading as an additional behavioral layer when tests alone are not
-  enough.
+- Anthropic's agent eval guide stresses clean isolated environments,
+  nondeterminism-aware scoring, outcome checks over brittle exact trajectories
+  unless the path itself matters, and tool-selection evals for browser/tool
+  agents. That supports a first-step `aoa-eval` router check plus local
+  validator/test execution before any central proof claim.
   Source: https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents
+- LangSmith separates final-response, trajectory, and single-step agent evals.
+  The relevant OS Abyss unit is usually single-step route selection first,
+  then trajectory verification only when a route must happen in a specific
+  order.
+  Source: https://docs.langchain.com/langsmith/evaluate-complex-agent
 - LangChain's agent-evaluation checklist stresses manual review of real traces,
-  clear success criteria, positive and negative cases, trace/run/thread levels,
-  and feeding production failures back into datasets and error analysis.
+  clear success criteria, positive and negative cases, clean runs, repeated
+  trials for nondeterminism, and promotion of stable capability evals into
+  regression suites.
   Source: https://www.langchain.com/blog/agent-evaluation-readiness-checklist
-- AgentSkills trigger guidance treats skill descriptions as stochastic trigger
-  surfaces that should be tested with should-trigger and should-not-trigger
-  prompts, repeated runs, and stable train/validation splits.
-  Source: https://agentskills.io/skill-creation/optimizing-descriptions
-- MCP's tool specification makes tool exposure model-controlled but still calls
-  for clear exposed-tool visibility and human-in-the-loop confirmation for
-  operations. That supports using `aoa-evals-mcp` as an access plane, not proof
-  authority.
+- LangChain Agent Evals provides strict, unordered, subset, and superset
+  trajectory matching modes. OS Abyss should reserve strict route contracts for
+  authority-sensitive flows, not ordinary exploratory work.
+  Source: https://docs.langchain.com/oss/python/langchain/test/evals
+- Inspect AI frames serious agent evals around datasets, solvers/agents,
+  tools, scorers, logs, and sandboxing. This matches the local/central split:
+  local ports can name suites and run receipts; central `aoa-evals` owns
+  scored proof bundles and promotion.
+  Source: https://inspect.aisi.org.uk/
+- MCP's tool specification makes tools model-controlled and schema-described,
+  with explicit safety expectations for human involvement and trusted
+  annotations. That supports using `aoa-evals-mcp` as an access/write bridge,
+  but not as a proof authority.
   Source: https://modelcontextprotocol.io/specification/2025-06-18/server/tools
+- The NSA/CISA MCP security guidance published in 2026 calls out dynamic tool
+  invocation, implicit trust, context sharing, and input validation as agentic
+  automation risks. For this repo family, MCP writes must therefore be
+  path-confined, schema-checked, dry-run friendly, and unable to escalate into
+  central source mutation.
+  Source: https://media.defense.gov/2026/Jun/02/2003943289/-1/-1/0/CSI_MCP_SECURITY.PDF
 
 ## Repo evidence
 
-All 15 `/srv/AbyssOS` git repositories were mapped. Fourteen repositories have
-`evals/PORT.yaml` with `schema_version: local_eval_port_v1`; `aoa-evals` itself
-does not expose a local port because it is the central proof owner. `aoa-memo`
-and `aoa-skills` currently advertise `status: active`; the remaining local
-ports are `skeleton`. `aoa-skills` became active when the first local trigger
-corpus landed under `evals/suites/` and `evals/reports/`.
+The 2026-06-21 live inventory was built from `aoa-evals`:
+
+```bash
+python scripts/build_local_eval_port_inventory.py --workspace-root /srv/AbyssOS --json
+```
+
+Current result: 15 repo-local ports, 15 valid, 0 invalid, 0 missing, 11
+skeleton, 4 active. `aoa-evals` is deliberately excluded as
+`central_proof_owner_not_repo_local_port`.
+
+Active ports:
+
+- `aoa-memo`: one intake packet; route `aoa-eval-select`.
+- `aoa-routing`: one intake packet and one report; route `aoa-eval-select`.
+- `aoa-skills`: one suite and three reports; route `aoa-eval-apply`.
+- `connectors/aoa-4pda-connector`: one suite; route `aoa-eval-apply`.
+
+Skeleton ports: `8Dionysus`, `ATM10-Agent`, `Agents-of-Abyss`, `Dionysus`,
+`Tree-of-Sophia`, `aoa-agents`, `aoa-kag`, `aoa-playbooks`, `aoa-sdk`,
+`aoa-stats`, and `aoa-techniques`.
+
+This means the workflow is no longer a narrow example. It is a workspace-wide
+port topology with valid dormant ports and a small number of live pressure
+surfaces.
 
 | Repo | Local eval port | Status | Script/test/validator pressure |
 | --- | --- | --- | --- |
@@ -70,11 +103,12 @@ corpus landed under `evals/suites/` and `evals/reports/`.
 | `aoa-kag` | yes | skeleton | 27 scripts, 52 tests, 20 validators |
 | `aoa-memo` | yes | active | 278 scripts, 190 tests, 167 validators |
 | `aoa-playbooks` | yes | skeleton | 110 scripts, 71 tests, 64 validators |
-| `aoa-routing` | yes | skeleton | 52 scripts, 201 tests, 31 validators |
+| `aoa-routing` | yes | active | 52 scripts, 201 tests, 31 validators |
 | `aoa-sdk` | yes | skeleton | 81 scripts, 274 tests, 34 validators |
 | `aoa-skills` | yes | active | 232 scripts, 325 tests, 79 validators |
 | `aoa-stats` | yes | skeleton | 53 scripts, 91 tests, 23 validators |
 | `aoa-techniques` | yes | skeleton | 103 scripts, 157 tests, 80 validators |
+| `connectors/aoa-4pda-connector` | yes | active | connector-local suite pressure |
 
 The density of existing scripts, tests, and validators means the skill should
 start by selecting current local proof surfaces before designing new evals.
@@ -127,8 +161,13 @@ start by selecting current local proof surfaces before designing new evals.
 
 ## Session evidence
 
-The `.aoa` search index was fresh at `2026-06-13T18:15:08Z`. Initial missed-
-trigger candidates:
+The 2026-06-21 `.aoa` refresh used the portable SQLite provider. Search was
+usable with `status: current_with_deferred_live_updates`; graph was stale and
+therefore not used for proof claims. Current live-tail sessions were deferred,
+so the session refs below are candidate evidence with raw/segment refs, not
+reviewed proof.
+
+Initial missed-trigger candidates:
 
 - `2026-05-25__001__давай-дошлифуем-рефакторинг-aoa-evals-вопрос-в`,
   session `019e5c96-3c6b-7382-a17d-4d76a4d4c079`, segment `039`, events
@@ -150,6 +189,20 @@ trigger candidates:
   `046`, `048`, `053`; this cluster involved description-trigger evals,
   trigger lint, and tiny-router validation. It is a skill-trigger eval
   regression example.
+- Current long eval-port session `2026-06-11__006__у-меня-складывается-впечатление-что-для-всех`,
+  session `019eb8c7-a7b5-76f0-b66a-0eb3791305ff`, contains concrete
+  trigger-family evidence for `aoa-eval`:
+  `083__compaction-to-compaction.md#event-015025` and `083__...#event-015032`
+  show `aoa-evals-mcp` dry-run/apply local report writes;
+  `088__compaction-to-compaction.md#event-015320` shows workspace-wide
+  `evals/` discovery pressure; `091__...#event-015941` shows a validator/schema
+  failure that should route to apply or repair instead of vague docs.
+- The `2026-06-13__003__подключайся-к-моему-gmail-и-анализируй-все` session
+  contains adjacent `aoa-skills` trigger work:
+  `014__compaction-to-compaction.md#event-003368` for trigger-collision
+  surfaces, `071__...#event-056429` for local port trigger-corpus inspection,
+  and `170__...#event-086043` for the self-awareness contract-lane dogfood
+  status.
 
 These refs are raw/segment pointers only. They are evidence candidates until a
 reviewed artifact or owner repo accepts the derived eval pressure.
@@ -160,6 +213,9 @@ The first repo-local eval corpus now lives in:
 
 - `evals/suites/aoa-eval-trigger-corpus.suite.md`
 - `evals/reports/aoa-eval-session-mining.report.md`
+- `evals/reports/aoa-eval-runtime-adoption-20260621.report.md`
+- `evals/reports/aoa-eval-self-awareness-contract-lane.report.md`
+- `evals/reports/aoa-eval-battle-path-20260621.report.md`
 
 The suite turns the research taxonomy into local trigger classes with
 raw/segment refs, including an explicit no-trigger case from the existing
@@ -188,3 +244,16 @@ status and marks the mining output as candidate evidence, not central proof.
   pressure that the current router cannot represent.
 - Promote from scaffold only after snapshot cases, reviewer notes, and real
   session-derived regression cases pass.
+
+## 2026-06-21 operational readout
+
+- `aoa-eval` is not manual-only in the local runtime evidence: the front-door
+  skill is prompt-visible and the generated runtime discovery index marks it
+  as `implicit_activation_policy: invoke`.
+- Subskills remain manual by design; the front-door router chooses exactly one
+  subroute.
+- `aoa-evals-mcp` can now list local ports, inspect `aoa-skills`, recommend
+  `aoa-eval-apply`, dry-run a local report write, apply the report, and keep
+  local-port validation green.
+- Central `aoa-evals` adoption is not warranted from this slice. The evidence
+  is local trigger/runtime pressure, not central proof doctrine.
