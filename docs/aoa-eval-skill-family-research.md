@@ -66,11 +66,8 @@ repo-native `evals/` ports and intake pressure.
 
 ## Repo evidence
 
-The 2026-06-21 live inventory was built from `aoa-evals`:
-
-```bash
-python scripts/build_local_eval_port_inventory.py --workspace-root /srv/AbyssOS --json
-```
+The 2026-06-21 live inventory was built from `aoa-evals` with
+`python scripts/build_local_eval_port_inventory.py --workspace-root /srv/AbyssOS --json`.
 
 Current result: 15 repo-local ports, 15 valid, 0 invalid, 0 missing, 11
 skeleton, 4 active. `aoa-evals` is deliberately excluded as

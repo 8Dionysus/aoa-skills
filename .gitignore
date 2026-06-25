@@ -2,6 +2,7 @@
 TODO.local.md
 PLANS.local.md
 seeds/
+dist/
 
 # Python validator cache files stay local.
 __pycache__/
