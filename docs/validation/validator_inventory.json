@@ -108,7 +108,11 @@
         "abyss-machine artifact bundle verifier"
       ],
       "outputs": [
-        "policy-driven ABI sidecar bundle verification JSON"
+        "policy-driven ABI sidecar bundle verification JSON",
+        "durable artifact registry latest-state read-model",
+        "materialized release-manifest subject store",
+        "fail-closed trust-gate admission JSON",
+        "ABI tamper, unverified-latest, materialized subject-store, and terminal-state negative checks"
       ],
       "callers": [
         "config/validation_lanes.json release_check",
@@ -117,9 +121,9 @@
         "manual OS Abyss local validation"
       ],
       "overlap": "Consumes abyss-machine signing policy instead of duplicating release signing controls in aoa-skills.",
-      "pain": "Depends on runner-visible abyss-machine verifier availability through ABYSS_MACHINE_REPO_ROOT, local OS Abyss checkout, or installed package.",
+      "pain": "Depends on runner-visible abyss-machine verifier availability through ABYSS_MACHINE_REPO_ROOT, local OS Abyss checkout, ABYSS_MACHINE_PACKAGE_ROOT, or installed package.",
       "decision": "wire",
-      "failure_route": "Fix generated/release_manifest.json, the release-support bundle manifest, runner verifier setup, or the abyss-machine artifact policy class.",
+      "failure_route": "Fix generated/release_manifest.json, the release-support bundle manifest, durable registry lifecycle/source/trust-root metadata, subject-store materialization, runner verifier setup, or the abyss-machine artifact policy class.",
       "status": "active"
     },
     {
