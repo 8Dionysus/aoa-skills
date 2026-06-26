@@ -714,20 +714,23 @@ Common expand sections:
 - status: `scaffold`
 - invocation mode: `explicit-preferred`
 - skill path: `skills/core/engineering/aoa-eval/SKILL.md`
-- pick summary: Route AoA eval-lane work by finding existing local or central eval surfaces first, then selecting apply, local-need, design, or session-mining without moving proof authority.
+- pick summary: Route AoA eval-lane work by raising the available session readiness packet and Eval Forge front door, finding existing local or central eval surfaces first, then selecting apply, local-need, design, or session-mining from route signs without moving proof authority.
 
 ### Use when
 
 - the user asks whether an eval exists, whether one should be added, or how to connect evals to a repository
 - a repeated failure, validation gap, proof gap, regression, trigger miss, or local evals/ port appears during repository work
+- route signs can trigger this skill even when the user never says eval repeated agent route failure, skipped validator/test/script evidence, unsafe proof/local/MCP/session mixing, or missed trigger behavior is enough pressure
 - the task mentions aoa-evals, aoa-evals-mcp, local eval ports, eval intake, graders, traces, regressions, validators, tests, or scripts as evaluation surfaces
 - a repo-family or workspace-local eval-port inventory, or missing/skeleton/active/invalid port status, is available before choosing a local eval route
+- an OS Abyss eval session needs a current readiness packet before selecting tools or touching local eval files
 - session evidence may reveal missed eval moments, but only after web and repo owner surfaces have been checked
 - a route must separate proof authority, local intake pressure, MCP access, and raw session evidence
 
 ### Do not use when
 
 - the task is only to add an ordinary unit test with no eval routing question use the normal engineering workflow or aoa-contract-test
+- keywords alone such as eval, test, landing, or done are not sufficient without route pressure
 - the task is only to find source authority; use aoa-source-of-truth-check
 - the task is only to record or correct durable rationale; use aoa-decision
 - the task is only memory candidate writeback; use aoa-memo-writeback
@@ -737,6 +740,8 @@ Common expand sections:
 
 - exactly one chosen route: aoa-eval-select, aoa-eval-apply, aoa-eval-local-need, aoa-eval-design, or aoa-eval-session-mining
 - owner-boundary statement naming proof owner, local port owner, and any MCP or aoa evidence role
+- session-start status when a workspace readiness command exists, including freshness blockers and stop lines that constrain the route
+- selected Eval Forge front-door refs and commands when the readiness packet exposes them, with proof authority explicitly kept false
 - selected existing eval, validation command, intake packet path, draft suite, or session-mining report
 - stop line when no owner surface is safe to write
 

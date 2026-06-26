@@ -1340,12 +1340,18 @@
         "local `evals/PORT.yaml`, `evals/intake/`, scripts, tests, validators, and repo route cards",
         "central `aoa-evals` docs, schemas, validators, reports, and review surfaces",
         "optional repo-family or workspace local-port inventory/read-model; in OS Abyss this may be `aoa-evals/scripts/build_local_eval_port_inventory.py`",
+        "optional OS Abyss eval session-start/readiness command; when present this is `aoa-evals/scripts/aoa_eval_session_start.py`",
+        "optional `eval_forge_front_door` packet fields from session-start/readiness: `surface_refs`, `exact_commands`, `surface_status`, stop-lines, and non-proof boundary flags",
+        "optional candidate-packet validator; when present this is `aoa-evals/scripts/validate_eval_candidate_packets.py`",
         "`aoa-evals-mcp` packets when available, treated as access-plane data",
+        "optional `.aoa` session evidence through `aoa-session-memory-evidence-route` when the task asks how an eval, validator, test, MCP, failure, or trigger was used in prior sessions",
         "`.aoa` search hits, segments, raw refs, and freshness only when session mining is the chosen route"
       ],
       "outputs": [
         "exactly one chosen route: `aoa-eval-select`, `aoa-eval-apply`, `aoa-eval-local-need`, `aoa-eval-design`, or `aoa-eval-session-mining`",
         "owner-boundary statement naming proof owner, local port owner, and any MCP or `.aoa` evidence role",
+        "session-start status when a workspace readiness command exists, including freshness blockers and stop lines that constrain the route",
+        "selected Eval Forge front-door refs and commands when the readiness packet exposes them, with proof authority explicitly kept false",
         "selected existing eval, validation command, intake packet path, draft suite, or session-mining report",
         "stop line when no owner surface is safe to write"
       ],
@@ -1353,9 +1359,13 @@
         "confirm exactly one subskill route was selected",
         "confirm local `evals/PORT.yaml` was inspected or the absence was named",
         "if a workspace inventory was used, name the inventory command or MCP resource and the route recommendation it returned",
+        "if a session-start readiness packet was available, confirm it was run and name any freshness blocker or stop line that constrained the route",
+        "when `eval_forge_front_door` is available, confirm its operating path, criteria, local-port matrix, route-review or worksheet refs, and exact commands were considered as routing evidence only",
         "confirm central `aoa-evals` authority was kept separate from local intake",
         "confirm existing scripts, tests, and validators were considered before new design",
         "confirm `.aoa` evidence is marked candidate-only when used",
+        "confirm session-memory evidence packets, if used, include raw/segment/session refs and did not replace local or central eval owner review",
+        "confirm session or trace-derived candidate evidence passed the candidate packet validator when the validator exists",
         "confirm any generated or derived surfaces were rebuilt through owner builders",
         "confirm final report names validation and skipped checks"
       ],
@@ -1363,6 +1373,10 @@
         "`aoa-evals` owns proof doctrine and central eval verdicts",
         "local repositories own their `evals/` ports and can hold intake pressure without becoming proof authorities",
         "`.aoa` raw traces are candidate evidence, not reviewed truth",
+        "`aoa-session-memory` evidence routes can locate usage and consequences, but they do not own proof doctrine, verdicts, scoring, baselines, or eval promotion",
+        "session-start packets, generated dashboards, support registries, and candidate queue summaries are read-only routing aids, not proof objects",
+        "Eval Forge front-door references and route commands help choose the next owner route, but they do not score, promote, accept, or prove an eval",
+        "candidate packets must remain candidate-only until reviewed by the owning local or central surface",
         "MCP tools are access planes and must not silently promote local pressure into central proof",
         "workspace inventories and route read-models are advisory selectors; source files and owner validators remain stronger",
         "the router chooses one subskill to control scope and avoid mixed authority",
@@ -1373,12 +1387,16 @@
         "local-evals-port-yaml-evals-intake-scripts-tests-validators-and-",
         "central-aoa-evals-docs-schemas-validators-reports-and-review-sur",
         "optional-repo-family-or-workspace-local-port-inventory-read-mode",
-        "aoa-evals-mcp-packets-when-available-treated-as-access-plane-dat",
-        "aoa-search-hits-segments-raw-refs-and-freshness-only-when-sessio"
+        "optional-os-abyss-eval-session-start-readiness-command-when-pres",
+        "optional-eval-forge-front-door-packet-fields-from-session-start-",
+        "optional-candidate-packet-validator-when-present-this-is-aoa-eva",
+        "aoa-evals-mcp-packets-when-available-treated-as-access-plane-dat"
       ],
       "provides_artifact_tags": [
         "exactly-one-chosen-route-aoa-eval-select-aoa-eval-apply-aoa-eval",
         "owner-boundary-statement-naming-proof-owner-local-port-owner-and",
+        "session-start-status-when-a-workspace-readiness-command-exists-i",
+        "selected-eval-forge-front-door-refs-and-commands-when-the-readin",
         "selected-existing-eval-validation-command-intake-packet-path-dra",
         "stop-line-when-no-owner-surface-is-safe-to-write"
       ],
@@ -1387,6 +1405,8 @@
         "produced_artifacts": [
           "exactly-one-chosen-route-aoa-eval-select-aoa-eval-apply-aoa-eval",
           "owner-boundary-statement-naming-proof-owner-local-port-owner-and",
+          "session-start-status-when-a-workspace-readiness-command-exists-i",
+          "selected-eval-forge-front-door-refs-and-commands-when-the-readin",
           "selected-existing-eval-validation-command-intake-packet-path-dra",
           "stop-line-when-no-owner-surface-is-safe-to-write"
         ],

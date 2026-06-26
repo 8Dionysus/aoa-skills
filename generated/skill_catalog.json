@@ -795,7 +795,7 @@
       "scope": "core",
       "skill_path": "skills/core/engineering/aoa-eval/SKILL.md",
       "status": "scaffold",
-      "summary": "Route AoA eval-lane work by finding existing local or central eval surfaces first, then selecting apply, local-need, design, or session-mining without moving proof authority.",
+      "summary": "Route AoA eval-lane work by raising the available session readiness packet and Eval Forge front door, finding existing local or central eval surfaces first, then selecting apply, local-need, design, or session-mining from route signs without moving proof authority.",
       "technique_dependencies": [
         "AOA-T-0003",
         "AOA-T-0076",

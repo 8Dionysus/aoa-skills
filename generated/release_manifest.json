@@ -195,13 +195,13 @@
   "authoring_input_digests": [
     {
       "path": "generated/skill_sections.full.json",
-      "sha256": "3fa597fb81540df670c6f66acf27a56fbb843c052c2bbed31872413c1e598169",
-      "bytes": 379963
+      "sha256": "629fa4a04515a0997f6adcf0bb8838e0a8393c4a572415055ed2ff2a5762dfcc",
+      "bytes": 385372
     },
     {
       "path": "generated/skill_catalog.min.json",
-      "sha256": "b95464f4aa03c12ce87e2c93f29c3b2f100fc1a088daa37ef26e9f8ce0a7686d",
-      "bytes": 22683
+      "sha256": "8bc22bf8f638abf79d421e7c088a90a204c109abd0e62c8a15541a4967386e5d",
+      "bytes": 22774
     },
     {
       "path": "config/portable_skill_overrides.json",
@@ -267,8 +267,8 @@
     },
     {
       "path": "generated/skill_handoff_contracts.json",
-      "sha256": "950c8f9f9f22482dcede95a4a9ed575c429f3d80d3c0c960072280a54a18d9ec",
-      "bytes": 247872
+      "sha256": "7ac58a4eae7346845e17807044a312940f06b5187e46fa21b79d56f1446da1a0",
+      "bytes": 250461
     },
     {
       "path": "generated/context_retention_manifest.json",
@@ -312,8 +312,8 @@
     },
     {
       "path": "generated/runtime_disclosure_index.json",
-      "sha256": "a80c94f266e82d4394b30de58ea032c89e655a89e18bfb01edaa4d545c763d22",
-      "bytes": 406281
+      "sha256": "488aa888ae94f4898d4ed4905ce9106cbda9142544731d1f52bb805438141108",
+      "bytes": 406327
     },
     {
       "path": "generated/runtime_activation_aliases.json",
@@ -357,7 +357,7 @@
     },
     {
       "path": "generated/skill_context_guard_manifest.json",
-      "sha256": "50018ce00ff7890fb21a63a548263b4adefebb6d0703e45b415ab30b3dda1c19",
+      "sha256": "193674eacb886849256abbe495d998ae233ae27fc12aa0325982a6c4380ab907",
       "bytes": 118581
     },
     {
@@ -432,8 +432,8 @@
     },
     {
       "path": "generated/tiny_router_skill_signals.json",
-      "sha256": "c46edd16486a1e90235cc4d4fe001db62098bb2d8e325d10a07f2ccbdfe4b3f0",
-      "bytes": 181953
+      "sha256": "80072eb29d250bb8e8c26ef394cd15b0de718be1c1638c2dfc094708b3ce9105",
+      "bytes": 182039
     },
     {
       "path": "generated/tiny_router_candidate_bands.json",
@@ -442,8 +442,8 @@
     },
     {
       "path": "generated/tiny_router_capsules.min.json",
-      "sha256": "a75958fe62b38f7cbf0d51892c20be25764357e50cf7a3f826727c501659f3dd",
-      "bytes": 60127
+      "sha256": "18ca9bdcaea99ff9281345d2fa8f463b64a8bfb9ddf5bfd48174001646abdd21",
+      "bytes": 60120
     },
     {
       "path": "generated/tiny_router_eval_cases.jsonl",
@@ -457,17 +457,17 @@
     },
     {
       "path": "generated/skill_bundle_index.json",
-      "sha256": "30a4cdcd647b444027e7d2369644c1d3ba928852fa782f035dd4322f83256d14",
+      "sha256": "27eaed9bb3a3b0f53b606979a20ff58714fd34d47444b6e47212f32df408dfda",
       "bytes": 166795
     },
     {
       "path": "generated/skill_bundle_index.md",
-      "sha256": "b8d15c16eec747e6527909b9b7b257b6741619ab7629085cc6c9ef7c75f95a1b",
+      "sha256": "3255c2ff8262ae5a0c4b663e5f1b7f96c31f7fce134170c65fa8eec24b68debd",
       "bytes": 18799
     },
     {
       "path": "generated/skill_graph.json",
-      "sha256": "81fa98fd4478314e32a9d22a1b4654580c39644640442497529ac5e7a114d49c",
+      "sha256": "1c82e4c9b8feb1b49c9812aba9e69c632092a5082033d87a4e1d02e550d54d3a",
       "bytes": 304954
     },
     {
@@ -564,8 +564,8 @@
     },
     {
       "name": "aoa-eval",
-      "skill_revision": "24499f2d05d9",
-      "content_hash": "24499f2d05d95c245ee33608fde59dee40953e932619f69a8459ddec9bed0bef"
+      "skill_revision": "1d1c1c0c322f",
+      "content_hash": "1d1c1c0c322fe989d867d24d1851c0c8f61a7ffa952e91150614dd528f4d96df"
     },
     {
       "name": "aoa-eval-apply",
@@ -877,7 +877,7 @@
         "titan-summon",
         "titan-thread-turn-binding"
       ],
-      "profile_revision": "c65383567184fe15757b2bce3b3aed46f50286ac094052804b9ca6d4a1d378b7"
+      "profile_revision": "14b8aeb57bbd9027e8e3b28bb73818a6d8c71bbcbcf4444680d93666dd5ae870"
     },
     {
       "name": "repo-project-core-kernel",
@@ -1096,7 +1096,7 @@
         "aoa-summon",
         "aoa-tdd-slice"
       ],
-      "profile_revision": "f75168b4a154d99a7136ea40204037d8f9e13860a7df79413e77b017c31c8667"
+      "profile_revision": "dcc53d181478b308a9d97e29997e3b6dfac3fd0a7c653e05d3b51376930b961d"
     },
     {
       "name": "user-curated-core",

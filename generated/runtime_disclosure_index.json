@@ -1959,11 +1959,11 @@
         "Adaptation points"
       ],
       "section_summaries": {
-        "Intent": "Use this skill as the front door for AoA evaluation work. It decides whether a task should inspect existing evals, apply an existing eval or validator, record repo-local eval pressure, design a local eval suite, or mine `.aoa` session evidence for missed eval triggers.",
+        "Intent": "Use this skill as the front door for AoA evaluation work. It decides whether a task should inspect existing evals, apply an existing eval or validator, record repo-local eval pressure, design a local eval suite, or mine `.aoa` session evidence for missed eval triggers. When th...",
         "Trigger boundary": "the user asks whether an eval exists, whether one should be added, or how to; a repeated failure, validation gap, proof gap, regression, trigger miss, or",
         "Inputs": "user intent, target repository, touched paths, failure mode, or eval name; local `evals/PORT.yaml`, `evals/intake/`, scripts, tests, validators, and repo",
         "Outputs": "exactly one chosen route: `aoa-eval-select`, `aoa-eval-apply`,; owner-boundary statement naming proof owner, local port owner, and any MCP or",
-        "Procedure": "classify the pressure:; existing eval may fit: use `aoa-eval-select`",
+        "Procedure": "when an OS Abyss `aoa-evals` checkout is available, raise the read-only; from the `aoa-evals` repo, run",
         "Contracts": "`aoa-evals` owns proof doctrine and central eval verdicts; local repositories own their `evals/` ports and can hold intake pressure",
         "Risks and anti-patterns": "treating every test as an eval or every eval as a central `aoa-evals` object; creating a local eval need before checking existing validators and tests",
         "Verification": "confirm exactly one subskill route was selected; confirm local `evals/PORT.yaml` was inspected or the absence was named",
