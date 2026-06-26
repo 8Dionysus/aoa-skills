@@ -476,6 +476,29 @@ trigger_cases:
       - repo-family or workspace-local eval-port inventory
       - missing/skeleton/active/invalid port status
   - skill: aoa-eval
+    case_id: eval_router_session_front_door
+    prompt: Start a new OS Abyss eval session and decide which local or central eval tools to bring up before touching repo files.
+    expected: use
+    required_phrases:
+      - OS Abyss eval session needs a current readiness packet
+      - eval_forge_front_door
+      - EVAL_FORGE_OPERATING_PATH.md
+      - before selecting
+  - skill: aoa-eval
+    case_id: eval_router_route_sign_without_eval_keyword
+    prompt: A repo task shows repeated owner-boundary confusion; the agent skipped existing validators and tests, treated a generated readiness packet as proof, and needs a route that separates central proof, local intake, MCP access, and session evidence before continuing.
+    expected: use
+    required_phrases:
+      - route signs can trigger this skill even when the user never says `eval`
+      - a repeated failure, validation gap, proof gap, regression, trigger miss
+      - a route must separate proof authority
+  - skill: aoa-eval
+    case_id: eval_router_keyword_only_noise
+    prompt: eval test landing done, maybe check
+    expected: do_not_use
+    required_phrases:
+      - keywords alone such as `eval`, `test`, `landing`, or `done` are not sufficient without route pressure
+  - skill: aoa-eval
     case_id: eval_router_active_vs_stale_cleanup_boundary
     prompt: An old generated contract surface appears obsolete, but a newer active lane may own the proof truth; before deleting anything, inspect eval-port evidence, validators, tests, and scripts.
     expected: use
@@ -2800,6 +2823,26 @@ snapshot_cases:
       - do_not_use
       - 'Decision: do_not_use `aoa-eval`. Use the ordinary engineering or contract-test route because there is no eval-lane routing pressure.'
     forbidden_output_phrases: []
+  - skill: aoa-eval
+    case_id: eval_router_route_sign_without_eval_keyword
+    prompt: A repo task shows repeated owner-boundary confusion; the agent skipped existing validators and tests, treated a generated readiness packet as proof, and needs a route that separates central proof, local intake, MCP access, and session evidence before continuing.
+    expected: use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-eval/eval_router_route_sign_without_eval_keyword.md
+    required_output_phrases:
+      - use
+      - 'Decision: use `aoa-eval`. Route signs can trigger this skill even when the user never says `eval`; select one route because repeated validation, proof, and owner-boundary pressure is present.'
+    forbidden_output_phrases:
+      - 'Decision: do_not_use `aoa-eval`'
+  - skill: aoa-eval
+    case_id: eval_router_keyword_only_noise
+    prompt: eval test landing done, maybe check
+    expected: do_not_use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-eval/eval_router_keyword_only_noise.md
+    required_output_phrases:
+      - do_not_use
+      - 'Decision: do_not_use `aoa-eval`. Keywords alone such as `eval`, `test`, `landing`, or `done` are not sufficient without route pressure.'
+    forbidden_output_phrases:
+      - 'Decision: use `aoa-eval`'
   - skill: aoa-eval-select
     case_id: eval_select_existing_surface
     prompt: Inspect the repo-local eval port, tests, validators, and central aoa-evals surfaces before deciding whether a new eval is needed.

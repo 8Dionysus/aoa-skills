@@ -47,6 +47,55 @@ boundary stop, or no eval route at all?
   moments, selects/applies existing evals, designs local pressure when none fit,
   and preserves owner boundaries.
 
+### session_front_door_first
+
+- route: `aoa-eval`
+- source: active OS Abyss eval-control work
+- fixture case: `eval_router_session_front_door`
+- fixture file: `tests/fixtures/skill_evaluation_cases.yaml`
+- required command when `aoa-evals` is available:
+  `python scripts/aoa_eval_session_start.py --json`
+- required Forge front-door refs when the readiness packet exposes them:
+  `EVAL_FORGE_OPERATING_PATH.md`, `SESSION_MINING_CRITERIA.md`,
+  `LOCAL_PORT_DECISION_MATRIX.md`, latest route-review report, worksheet
+  example, and exact route commands
+- candidate validator before session evidence:
+  `python scripts/validate_eval_candidate_packets.py --schema-only`
+- reason: a new agent session must raise the current eval-control read model
+  and Eval Forge front door before selecting tools, writing local eval files, or
+  importing session evidence. The packet is a route aid only; it cannot score,
+  promote, or accept proof.
+
+### route_signs_without_keywords
+
+- route: `aoa-eval`
+- source: Eval Forge dogfood candidate packet
+- candidate packet:
+  `/srv/AbyssOS/aoa-evals/mechanics/audit/parts/candidate-readers/packets/session-mining/aoa-eval-keyword-mining-blindspot.eval_candidate.json`
+- Forge owner route: `aoa-skills` / `trigger_design_case`
+- fixture case: `eval_router_route_sign_without_eval_keyword`
+- fixture file: `tests/fixtures/skill_evaluation_cases.yaml`
+- snapshot:
+  `tests/fixtures/skill_evaluation_snapshots/aoa-eval/eval_router_route_sign_without_eval_keyword.md`
+- reason: the candidate exposed a blind spot in keyword-based session mining.
+  A future agent should trigger `aoa-eval` from route signs: repeated
+  validation/proof pressure, skipped validator or test evidence, unsafe
+  proof/local/MCP/session mixing, active-vs-stale uncertainty, or missed
+  trigger behavior. The user or agent does not need to literally say `eval`.
+  The source packet remains candidate-only and carries no proof authority.
+
+### keyword_only_reject
+
+- route: no `aoa-eval` trigger
+- fixture case: `eval_router_keyword_only_noise`
+- fixture file: `tests/fixtures/skill_evaluation_cases.yaml`
+- snapshot:
+  `tests/fixtures/skill_evaluation_snapshots/aoa-eval/eval_router_keyword_only_noise.md`
+- reason: keywords alone such as `eval`, `test`, `landing`, or `done` are not
+  enough. The router needs route pressure: an owner-boundary question,
+  repeated failure, proof gap, selected evaluation surface, local eval-port
+  pressure, or session/trace candidate evidence.
+
 ### should_use_existing_eval_select_or_apply
 
 - route: `aoa-eval-select`, then `aoa-eval-apply` when a surface is selected

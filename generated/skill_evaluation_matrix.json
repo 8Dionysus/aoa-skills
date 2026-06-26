@@ -295,8 +295,8 @@
       "candidate_review_path": null,
       "canonical_eval_blockers": [],
       "canonical_eval_ready": true,
-      "do_not_use_case_count": 2,
-      "do_not_use_snapshot_count": 1,
+      "do_not_use_case_count": 3,
+      "do_not_use_snapshot_count": 2,
       "invocation_mode": "explicit-preferred",
       "name": "aoa-eval",
       "promotion_review_path": null,
@@ -304,8 +304,8 @@
       "selected_runtime_artifact_path": "skills/core/engineering/aoa-eval/examples/runtime.md",
       "skill_path": "skills/core/engineering/aoa-eval/SKILL.md",
       "status": "scaffold",
-      "use_case_count": 4,
-      "use_snapshot_count": 1
+      "use_case_count": 6,
+      "use_snapshot_count": 2
     },
     {
       "autonomy_check_count": 1,

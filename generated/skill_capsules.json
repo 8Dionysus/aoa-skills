@@ -311,13 +311,13 @@
     {
       "inputs_short": "Needs: user intent, target repository, touched paths, failure mode, or eval name; local evals/PORT.yaml, evals/intake/, scripts, tests, validators, and repo route cards; central aoa-evals docs, schemas, validators,...",
       "invocation_mode": "explicit-preferred",
-      "main_anti_patterns_short": "Avoid: treating every test as an eval or every eval as a central aoa-evals object; creating a local eval need before checking existing validators and tests; letting .aoa search hits override repo-local source files;...",
+      "main_anti_patterns_short": "Avoid: treating every test as an eval or every eval as a central aoa-evals object; creating a local eval need before checking existing validators and tests; skipping an available session-start packet and then...",
       "name": "aoa-eval",
       "outputs_short": "Produces: exactly one chosen route: aoa-eval-select, aoa-eval-apply, aoa-eval-local-need, aoa-eval-design, or aoa-eval-session-mining; owner-boundary statement naming proof owner, local port owner, and any MCP or...",
       "scope": "core",
       "skill_path": "skills/core/engineering/aoa-eval/SKILL.md",
       "status": "scaffold",
-      "summary": "Route AoA eval-lane work by finding existing local or central eval surfaces first, then selecting apply, local-need, design, or session-mining without moving proof authority.",
+      "summary": "Route AoA eval-lane work by raising the available session readiness packet and Eval Forge front door, finding existing local or central eval surfaces first, then selecting apply, local-need, design, or session-mining from route signs without moving proof authority.",
       "technique_dependencies": [
         "AOA-T-0003",
         "AOA-T-0076",
@@ -325,7 +325,7 @@
       ],
       "trigger_boundary_short": "Use when the user asks whether an eval exists, whether one should be added, or how to connect evals to a repository; a repeated failure, validation gap, proof gap, regression, trigger miss, or local evals/ port...",
       "verification_short": "Checks: confirm exactly one subskill route was selected; confirm local evals/PORT.yaml was inspected or the absence was named; if a workspace inventory was used, name the inventory command or MCP resource and the...",
-      "workflow_short": "Purpose: this skill as the front door for AoA evaluation work. Flow: classify the pressure -> existing eval may fit: use aoa-eval-select -> existing eval or validator should run: use aoa-eval-apply -> no eval fits and a repo-local pressure packet is..."
+      "workflow_short": "Purpose: this skill as the front door for AoA evaluation work. Flow: when an OS Abyss aoa-evals checkout is available, raise the read-only session readiness packet before choosing a subskill -> from the aoa-evals repo, run python..."
     },
     {
       "inputs_short": "Needs: selected eval or validation command; repo-local route law and command prerequisites; expected artifacts, reports, generated outputs, and pass/fail criteria; prior failure or regression context.",
