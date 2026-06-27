@@ -1,0 +1,61 @@
+{
+  "schema_version": "aoa-local-kag-record-v1",
+  "repo": "aoa-skills",
+  "local_id": "index:skills:source-surfaces",
+  "record_class": "index",
+  "source_refs": [
+    {
+      "repo": "aoa-skills",
+      "path": "generated/skill_graph.json",
+      "source_class": "skill_source",
+      "role": "primary",
+      "authority": "derived_readmodel"
+    },
+    {
+      "repo": "aoa-skills",
+      "path": "skills/README.md",
+      "source_class": "skill_source",
+      "role": "owner_route",
+      "authority": "authored_source"
+    }
+  ],
+  "source_owner": "aoa-skills",
+  "provenance_mode": "strict_source_linked",
+  "derived_method": "source-linked local KAG index over skill graph and canonical skill source bundles",
+  "generated_or_authored": "generated_from_source",
+  "status": "active",
+  "owner_return_route": {
+    "repo": "aoa-skills",
+    "surface": "skills/README.md",
+    "route_kind": "authored_meaning"
+  },
+  "freshness": {
+    "mode": "source_snapshot",
+    "state": "current",
+    "checked_ref": "generated/skill_graph.json"
+  },
+  "builder": {
+    "route": "skill catalog and graph builders",
+    "surface": "scripts/builders/build_catalog.py"
+  },
+  "validator": {
+    "route": "scripts/lanes/ci_gate.py --mode source-fast",
+    "lane": "source-fast"
+  },
+  "storage_posture": {
+    "git_surface": "portable_records",
+    "payload_class": "index",
+    "runtime_route": "source-repo"
+  },
+  "consumer_route": "aoa-kag registry",
+  "index_kind": "inventory",
+  "indexed_record_classes": [
+    "node",
+    "edge"
+  ],
+  "source_record_ids": [
+    "node:skills:skill-graph",
+    "node:skills:skill-source-home",
+    "edge:skills:source-returns-to-owner"
+  ]
+}
