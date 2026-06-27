@@ -30,6 +30,76 @@
       "source_class": "skill_source",
       "role": "supporting",
       "authority": "derived_readmodel"
+    },
+    {
+      "repo": "aoa-skills",
+      "path": "skills/risk/aoa-approval-gate-check/SKILL.md",
+      "source_class": "skill_source",
+      "role": "primary",
+      "authority": "authored_source"
+    },
+    {
+      "repo": "aoa-skills",
+      "path": "skills/risk/aoa-approval-gate-check/techniques.yaml",
+      "source_class": "skill_source",
+      "role": "supporting",
+      "authority": "authored_source"
+    },
+    {
+      "repo": "aoa-skills",
+      "path": "skills/risk/aoa-dry-run-first/SKILL.md",
+      "source_class": "skill_source",
+      "role": "primary",
+      "authority": "authored_source"
+    },
+    {
+      "repo": "aoa-skills",
+      "path": "skills/risk/aoa-dry-run-first/techniques.yaml",
+      "source_class": "skill_source",
+      "role": "supporting",
+      "authority": "authored_source"
+    },
+    {
+      "repo": "aoa-skills",
+      "path": "skills/risk/aoa-local-stack-bringup/SKILL.md",
+      "source_class": "skill_source",
+      "role": "primary",
+      "authority": "authored_source"
+    },
+    {
+      "repo": "aoa-skills",
+      "path": "skills/risk/aoa-local-stack-bringup/techniques.yaml",
+      "source_class": "skill_source",
+      "role": "supporting",
+      "authority": "authored_source"
+    },
+    {
+      "repo": "aoa-skills",
+      "path": "skills/risk/aoa-safe-infra-change/SKILL.md",
+      "source_class": "skill_source",
+      "role": "primary",
+      "authority": "authored_source"
+    },
+    {
+      "repo": "aoa-skills",
+      "path": "skills/risk/aoa-safe-infra-change/techniques.yaml",
+      "source_class": "skill_source",
+      "role": "supporting",
+      "authority": "authored_source"
+    },
+    {
+      "repo": "aoa-skills",
+      "path": "skills/risk/aoa-sanitized-share/SKILL.md",
+      "source_class": "skill_source",
+      "role": "primary",
+      "authority": "authored_source"
+    },
+    {
+      "repo": "aoa-skills",
+      "path": "skills/risk/aoa-sanitized-share/techniques.yaml",
+      "source_class": "skill_source",
+      "role": "supporting",
+      "authority": "authored_source"
     }
   ],
   "record_classes": [
@@ -48,6 +118,10 @@
     {
       "route": "scripts/lanes/ci_gate.py --mode source-fast",
       "lane": "source-fast"
+    },
+    {
+      "route": "aoa-kag:scripts/validate_kag.py",
+      "lane": "local-kag"
     }
   ],
   "consumer_routes": [
