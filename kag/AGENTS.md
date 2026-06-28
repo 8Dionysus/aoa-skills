@@ -25,6 +25,8 @@ serving state with `abyss-stack` or the runtime owner named by the consumer.
 
 ## Validation
 
+Full lane command sequences live in `config/validation_lanes.json`; this local card may name only focused owner checks, lane ids, or the nearest route for the changed surface.
+
 Use the owner validator named in `manifest.json`, then validate this provider
 through the `aoa-kag` local subtree validator.
 

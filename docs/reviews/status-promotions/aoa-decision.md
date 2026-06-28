@@ -7,7 +7,7 @@
 - current governance lane decision: `stay_evaluated`
 - scope: `core`
 - current lineage: `published`
-- reviewed revision: `fe2445cc2394`
+- reviewed revision: `ad955b8d6e62`
 
 ## Target status
 
@@ -28,7 +28,7 @@
 - machine-checkable floor result: `pass`
 - recorded governance outcome: `stay_evaluated`
 - runtime `SKILL.md` meaning changed: `yes`
-- current bundle note: the router selects one find, create, or correct subskill, checks `aoa_decisions` status and issue posture first, uses path/repo/surface/decision packets before broad search, keeps repo-local decision notes authoritative, and keeps the `abyss-stack` graph-builder fallback portable by requiring agents to locate the checkout before running it.
+- current bundle note: the router selects one find, create, or correct subskill, checks `aoa_decisions` status and issue posture first, uses path/repo/surface/decision packets before broad search, keeps repo-local decision notes authoritative, and keeps the `abyss-stack` graph-builder fallback portable by requiring agents to locate the checkout before running it. When prior-session behavior, correction history, tool usage, or impact evidence matters, it now routes through `.aoa` session evidence after the decision graph route, preferring an entity dossier for stable decision/tool/path anchors while keeping session packets as evidence refs only.
 
 ## Gaps and blockers
 

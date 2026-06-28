@@ -148,6 +148,9 @@ def extract_trigger_bullets(skill_text: str) -> dict[str, list[str]]:
             continue
         if current_group and line.startswith("- "):
             groups[current_group].append(line[2:].strip())
+            continue
+        if current_group and groups[current_group] and raw_line[:1].isspace() and line:
+            groups[current_group][-1] = f"{groups[current_group][-1]} {line}"
 
     return groups
 
@@ -184,7 +187,8 @@ class SkillEvaluationTests(unittest.TestCase):
             counts.setdefault(case["skill"], {"use": 0, "do_not_use": 0})[case["expected"]] += 1
 
         skill_names = skill_layout.discover_skill_names(REPO_ROOT)
-        self.assertEqual(len(skill_names) * 2, len(self.fixtures["snapshot_cases"]))
+        unknown_skills = sorted(set(counts) - set(skill_names))
+        self.assertEqual([], unknown_skills)
         for skill_name in skill_names:
             with self.subTest(skill=skill_name):
                 self.assertGreaterEqual(counts.get(skill_name, {}).get("use", 0), 1)

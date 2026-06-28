@@ -47,41 +47,13 @@ introducing a new fixture format.
 
 ## Checks
 
-Command:
-
-```bash
-python -m pytest -q tests/test_aoa_eval_prompt_trigger_harness.py
-```
-
-Observed result:
-
-```text
-5 passed, 40 subtests passed
-```
-
-Neighbor command:
-
-```bash
-python -m pytest -q tests/test_aoa_eval_prompt_trigger_harness.py tests/test_aoa_eval_trigger_corpus.py tests/test_skill_evaluation.py tests/test_evaluated_status_checks.py tests/test_test_topology.py
-```
-
-Observed result:
-
-```text
-21 passed, 604 subtests passed
-```
-
-Skill source validation:
-
-```bash
-PYTHONPATH=scripts python scripts/validation/validate_skills.py --skill aoa-eval
-```
-
-Observed result:
-
-```text
-Validation passed for skill 'aoa-eval'.
-```
+- Focused harness route: `tests/test_aoa_eval_prompt_trigger_harness.py`.
+  Observed result: `5 passed, 40 subtests passed`.
+- Neighbor route: prompt harness plus trigger corpus, skill evaluation,
+  evaluated-status checks, and test topology. Observed result:
+  `21 passed, 604 subtests passed`.
+- Skill source validation route: `validate_skills` scoped to `aoa-eval`.
+  Observed result: `Validation passed for skill 'aoa-eval'.`
 
 ## Boundary
 

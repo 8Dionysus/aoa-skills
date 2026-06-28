@@ -609,7 +609,7 @@
       "candidate_review_path": "docs/reviews/canonical-candidates/aoa-change-protocol.md",
       "canonical_candidate_ready": true,
       "canonical_eval_ready": true,
-      "content_hash": "dcfeeb63069afa92b3b352070c30e60b1933e672be0198dfe2040b085d3af906",
+      "content_hash": "290a8bad2a7bf2c41d43b3987d7baa0258b1b481ac0ef2b610c8237c25527cd1",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -639,7 +639,7 @@
       "promotion_review_path": null,
       "scope": "core",
       "skill_path": "skills/core/engineering/aoa-change-protocol/SKILL.md",
-      "skill_revision": "dcfeeb63069a",
+      "skill_revision": "290a8bad2a7b",
       "status": "canonical",
       "support_artifacts": [
         {
@@ -1045,7 +1045,7 @@
       "candidate_review_path": null,
       "canonical_candidate_ready": true,
       "canonical_eval_ready": true,
-      "content_hash": "fe2445cc239437d527478f7b4bc0daad2e114e0120999ac4d724f046177f321a",
+      "content_hash": "ad955b8d6e622f56dce1c9600f525b0255820531347a9c0eb8598900196d9b5a",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -1075,7 +1075,7 @@
       "promotion_review_path": "docs/reviews/status-promotions/aoa-decision.md",
       "scope": "core",
       "skill_path": "skills/core/engineering/aoa-decision/SKILL.md",
-      "skill_revision": "fe2445cc2394",
+      "skill_revision": "ad955b8d6e62",
       "status": "evaluated",
       "support_artifacts": [
         {
@@ -1460,7 +1460,7 @@
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "1d1c1c0c322fe989d867d24d1851c0c8f61a7ffa952e91150614dd528f4d96df",
+      "content_hash": "6acab597df57db35eb87ed261ab403dda6a798419a264e2bc4201027c50063a8",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -1486,7 +1486,7 @@
       "promotion_review_path": null,
       "scope": "core",
       "skill_path": "skills/core/engineering/aoa-eval/SKILL.md",
-      "skill_revision": "1d1c1c0c322f",
+      "skill_revision": "6acab597df57",
       "status": "scaffold",
       "support_artifacts": [
         {

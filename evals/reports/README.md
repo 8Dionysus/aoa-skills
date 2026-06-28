@@ -20,3 +20,7 @@ Active local report notes:
   records an end-to-end local eval-port route through `aoa-evals-mcp`,
   `aoa-eval-apply`, deterministic skill checks, session refs, and post-write
   validation.
+- [aoa-eval-prompt-trigger-harness-20260625.report.md](aoa-eval-prompt-trigger-harness-20260625.report.md)
+  records the focused deterministic prompt-trigger harness for `aoa-eval`
+  route correctness across front-door, subskill, negative, and owner-boundary
+  cases.

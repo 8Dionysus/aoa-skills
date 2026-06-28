@@ -646,7 +646,7 @@
     {
       "name": "aoa-eval",
       "display_name": "AoA Eval",
-      "description": "Route AoA eval-lane work by checking existing local and central eval surfaces first, including any available repo-family or workspace eval-port inventory with missing/skeleton/active/invalid status, then choosing apply, local intake need, local design, or session mining while preserving owner boundaries. Use when a task asks whether an eval exists, whether one should be added, how local evals connect to aoa-evals, how local eval-port status should route work, or how validators, tests, scripts, traces, regressions, trigger misses, local eval ports, or aoa-evals-mcp should be used as evaluation surfaces. Do not use for ordinary one-off tests, source-of-truth mapping, decision records, memo writeback, or direct central aoa-evals proof-authority edits.",
+      "description": "Route AoA eval-lane work by raising the available session readiness packet, checking existing local and central eval surfaces first, including any available repo-family or workspace eval-port inventory with missing/skeleton/active/invalid status, then choosing apply, local intake need, local design, or session mining while preserving owner boundaries. Use when a task asks whether an eval exists, whether one should be added, how local evals connect to aoa-evals, how local eval-port status should route work, or how validators, tests, scripts, traces, regressions, trigger misses, local eval ports, aoa-evals-mcp, candidate packets, or per-session eval readiness should be used as evaluation surfaces. Do not use for ordinary one-off tests, source-of-truth mapping, decision records, memo writeback, or direct central aoa-evals proof-authority edits.",
       "short_description": "Route AoA eval-lane work",
       "path": ".agents/skills/aoa-eval/SKILL.md",
       "openai_config_path": ".agents/skills/aoa-eval/agents/openai.yaml",
@@ -662,7 +662,7 @@
         "repo",
         "user"
       ],
-      "default_prompt": "Use $aoa-eval to select one eval route, inspect existing surfaces first, and keep central proof, local intake, MCP access, and session evidence separate.",
+      "default_prompt": "Use $aoa-eval to raise the session readiness packet when available, select one eval route, inspect existing surfaces first, and keep central proof, local intake, MCP access, candidate packets, and session evidence separate.",
       "resource_inventory": {
         "scripts": [],
         "references": [],
@@ -676,7 +676,7 @@
         ]
       },
       "context_retention_ref": "generated/context_retention_manifest.json#aoa-eval",
-      "notes": "Router for AoA eval-lane work that selects existing evals, application, local intake pressure, design, or session mining while keeping aoa-evals as proof owner."
+      "notes": "Router for AoA eval-lane work that raises session readiness when available, then selects existing evals, application, local intake pressure, design, or session mining while keeping aoa-evals as proof owner."
     },
     {
       "name": "aoa-eval-apply",

@@ -41,6 +41,10 @@ Do not use this skill when:
   including status, issues, changed-path, source-surface, owner-surface, and
   repo-symmetry packets
 - repo-local `docs/decisions/AGENTS.md`, `README.md`, `TEMPLATE.md`, generated indexes, and nearest existing records
+- optional `.aoa` session evidence through `aoa-session-memory-evidence-route`
+  when the question asks how a decision, decision tool, correction, or impact
+  path was used in prior sessions; prefer an entity dossier when the question
+  has a stable decision/tool/path anchor
 - source surfaces that the decision record explains
 - validation commands from the owning repository
 
@@ -72,19 +76,26 @@ Do not use this skill when:
    changed-path, source-surface, owner-surface, repo, or decision packet is
    missing, stale, or too narrow; split a long natural-language request into
    smaller anchors before broad search
-4. if MCP is unavailable, locate `abyss-stack` in the current workspace or a
+4. when the user asks about prior session behavior, correction history, tool
+   usage, impact evidence, or "what happened after", use
+   `aoa-session-memory-evidence-route` or the equivalent read-only
+   `aoa-session-memory-mcp` packet after the decision graph route; for a stable
+   decision/tool/path anchor, ask for the entity dossier first and expand only
+   if the dossier is stale, truncated, or too coarse; treat the packet as
+   evidence refs only, then return to repo-local decision files for truth
+5. if MCP is unavailable, locate `abyss-stack` in the current workspace or a
    known local checkout, then run its graph builder, such as
    `python <abyss-stack>/scripts/build_workspace_decision_graph.py --check --json`
-5. if graph lookup is unavailable too, use repo-local `rg` and generated
+6. if graph lookup is unavailable too, use repo-local `rg` and generated
    decision indexes, then read the source decision notes directly
-6. load only the chosen subskill; do not load find, create, and correct
+7. load only the chosen subskill; do not load find, create, and correct
    instructions at the same time
-7. before any write, read the target repo's decision route card and template;
+8. before any write, read the target repo's decision route card and template;
    if `issue_count > 0`, inspect `aoa_decisions_issues` and do not write in a
    repo whose decision lane has unresolved graph issues
-8. after any write, run the repo-local decision-index generator/check and then
+9. after any write, run the repo-local decision-index generator/check and then
    refresh or check the workspace graph and decision-graph lane when available
-9. report the source decision file, graph freshness posture, validation run, and
+10. report the source decision file, graph freshness posture, validation run, and
    any remaining owner-route risk
 
 ## Contracts
@@ -92,6 +103,8 @@ Do not use this skill when:
 - the graph accelerates lookup; it does not own decision truth
 - source files in the owning repository remain stronger than MCP packets,
   generated graph nodes, and generated indexes
+- `.aoa` session evidence may explain past usage or impact, but it cannot
+  create, accept, supersede, or correct a decision record by itself
 - the router chooses one subskill to control cost and avoid conflicting advice
 - cross-repo symmetry must be appropriate to the target repo, not forced from a
   sibling template
@@ -118,6 +131,9 @@ Do not use this skill when:
 - confirm graph issue posture was checked before create/correct routes
 - confirm broad `aoa_decisions_search` was skipped when a narrower packet was
   sufficient, or explain why it was needed
+- if `.aoa` session evidence was used, confirm the dossier or fallback route
+  cited raw/segment/session refs and that decision truth stayed with repo-local
+  files
 - confirm the owning repository and source decision surface are explicit
 - confirm any write uses repo-local route law and validators
 - confirm generated indexes and the workspace graph are not treated as source truth

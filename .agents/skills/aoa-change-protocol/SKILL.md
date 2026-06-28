@@ -34,6 +34,9 @@ Do not use this skill when:
 - owner repository or route surface
 - touched files or surfaces
 - source-of-truth or route-law surfaces that constrain the change
+- optional prior-session evidence when the request asks how this repository,
+  tool, MCP, hook, validator, failure, or change pattern behaved before,
+  preferably as a compact entity dossier when there is a stable anchor
 - main risk
 - intended validation path
 - rollback idea
@@ -48,13 +51,19 @@ Do not use this skill when:
 ## Procedure
 1. choose the owner repository and read the nearest route card, `AGENTS.md`, source-of-truth surfaces, and local validation path before planning
 2. state the goal, touched surfaces, and evidence already inspected; if the request depends on prior work, inspect the current repo state rather than relying on memory
-3. identify the main risk, owner boundary, and rollback or recovery shape before editing
-4. prepare the smallest reviewable change that follows the current source route
-5. avoid unrelated cleanup, opportunistic refactors, or importing a sibling owner's authority into the local surface
-6. apply the change inside the declared scope
-7. run or name explicit verification, including generated/export rebuilds when source surfaces feed derived outputs
-8. perform the narrow post-change route review only for surfaces whose meaning actually moved
-9. report what changed, what was verified, what was skipped, what remains risky, and where the next owner route is
+3. when prior-session behavior matters for risk, speed, or recurrence, use
+   `aoa-session-memory-evidence-route` or an equivalent read-only
+   `aoa-session-memory-mcp` packet; for a stable skill/MCP/hook/tool/script/test
+   anchor, ask for the entity dossier first, then expand to usage audit,
+   neighborhood, literal, graph, goal, or answer routes only as needed; use the
+   result as route evidence only
+4. identify the main risk, owner boundary, and rollback or recovery shape before editing
+5. prepare the smallest reviewable change that follows the current source route
+6. avoid unrelated cleanup, opportunistic refactors, or importing a sibling owner's authority into the local surface
+7. apply the change inside the declared scope
+8. run or name explicit verification, including generated/export rebuilds when source surfaces feed derived outputs
+9. perform the narrow post-change route review only for surfaces whose meaning actually moved
+10. report what changed, what was verified, what was skipped, what remains risky, and where the next owner route is
 
 ## Contracts
 - the change must remain reviewable
@@ -63,6 +72,8 @@ Do not use this skill when:
 - rollback thinking should exist before apply
 - the plan should be grounded in inspected source surfaces, not only conversation memory or generic pattern recall
 - generated, exported, compact, or derived surfaces should be refreshed from source rather than hand-authored as truth
+- prior-session evidence can shape risk and route choice, but it does not
+  override current owner files, validators, or live runtime state
 - cross-repo or mechanics changes should name owner boundaries and stop-lines before moving content
 
 ## Risks and anti-patterns
@@ -78,6 +89,9 @@ Do not use this skill when:
 - confirm the owner route and relevant source surfaces were inspected before apply
 - confirm the change stayed scoped
 - confirm at least one explicit verification step was run or intentionally skipped with explanation
+- if prior-session evidence was used, confirm the dossier or fallback route
+  packet refs were named and current source/runtime evidence still controlled
+  the change
 - confirm generated or export surfaces were rebuilt when canonical inputs changed
 - confirm the post-change route review touched only surfaces whose meaning moved
 - confirm the report includes outcome, rollback thinking, skipped checks, and remaining owner-route risk

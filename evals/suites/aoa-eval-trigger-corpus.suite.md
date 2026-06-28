@@ -15,11 +15,9 @@ bundle.
 
 The suite protects one question:
 
-```text
-Can a future agent decide whether the right next route is an existing eval,
-a validator/test/script, local eval intake/design, session mining, an owner
+Can a future agent decide whether the right next route is an existing eval, a
+validator/test/script, local eval intake/design, session mining, an owner
 boundary stop, or no eval route at all?
-```
 
 ## Owner Boundary
 
