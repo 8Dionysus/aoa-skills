@@ -85,7 +85,8 @@ Do not use this skill when:
 - `aoa-evals-mcp` packets when available, treated as access-plane data
 - optional `.aoa` session evidence through `aoa-session-memory-evidence-route`
   when the task asks how an eval, validator, test, MCP, failure, or trigger was
-  used in prior sessions; prefer an entity dossier when the question has a
+  used in prior sessions; prefer a usage-chain packet when the question is
+  about usage, outcomes, consequences, recurrence, or nearby errors for a
   stable eval/validator/test/MCP/failure anchor
 - `.aoa` search hits, segments, raw refs, and freshness only when session mining
   is the chosen route
@@ -143,9 +144,13 @@ Do not use this skill when:
    create proof truth or write central eval bundles
 8. when prior-session behavior matters, use `aoa-session-memory-evidence-route`
    or the equivalent read-only `aoa-session-memory-mcp` packet; for a stable
-   eval/validator/test/MCP/failure anchor, ask for the entity dossier first and
-   expand to usage audit, neighborhood, literal, graph, or answer routes only
-   when needed; keep those refs candidate-only until the local or central eval
+   eval/validator/test/MCP/failure anchor, ask for `usage-chain` first when the
+   question is how it was used, what happened after, or which
+   failures/consequences followed; use `entity-dossier` when source identity,
+   graph/cooccurrence/timeline context, related entities, or a heavier human
+   packet is needed; expand to usage audit, neighborhood, literal, graph, or
+   answer routes only when the first packet is stale, truncated, missing refs,
+   or too coarse; keep those refs candidate-only until the local or central eval
    owner accepts them
 9. load exactly one subskill after classification; keep the other subskills out
    of context unless the route changes
@@ -205,9 +210,9 @@ Do not use this skill when:
 - confirm existing scripts, tests, and validators were considered before new
   design
 - confirm `.aoa` evidence is marked candidate-only when used
-- confirm session-memory dossier or fallback route packets, if used, include
-  raw/segment/session refs and did not replace local or central eval owner
-  review
+- confirm session-memory usage-chain, dossier, or fallback route packets, if
+  used, include raw/segment/session refs and did not replace local or central
+  eval owner review
 - confirm session or trace-derived candidate evidence passed the candidate
   packet validator when the validator exists
 - confirm any generated or derived surfaces were rebuilt through owner builders
