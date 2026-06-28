@@ -36,7 +36,8 @@ Do not use this skill when:
 - source-of-truth or route-law surfaces that constrain the change
 - optional prior-session evidence when the request asks how this repository,
   tool, MCP, hook, validator, failure, or change pattern behaved before,
-  preferably as a compact entity dossier when there is a stable anchor
+  preferably as a compact usage-chain packet when the question is about usage,
+  outcomes, consequences, recurrence, or nearby errors for a stable anchor
 - main risk
 - intended validation path
 - rollback idea
@@ -54,9 +55,13 @@ Do not use this skill when:
 3. when prior-session behavior matters for risk, speed, or recurrence, use
    `aoa-session-memory-evidence-route` or an equivalent read-only
    `aoa-session-memory-mcp` packet; for a stable skill/MCP/hook/tool/script/test
-   anchor, ask for the entity dossier first, then expand to usage audit,
-   neighborhood, literal, graph, goal, or answer routes only as needed; use the
-   result as route evidence only
+   anchor, ask for `usage-chain` first when the question is how it was used,
+   what happened after, or which failures/consequences followed; use
+   `entity-dossier` when source identity, graph/cooccurrence/timeline context,
+   related entities, or a heavier human packet is needed; expand to usage
+   audit, neighborhood, literal, graph, goal, or answer routes only when the
+   first packet is stale, truncated, missing refs, or too coarse; use the result
+   as route evidence only
 4. identify the main risk, owner boundary, and rollback or recovery shape before editing
 5. prepare the smallest reviewable change that follows the current source route
 6. avoid unrelated cleanup, opportunistic refactors, or importing a sibling owner's authority into the local surface
@@ -89,9 +94,9 @@ Do not use this skill when:
 - confirm the owner route and relevant source surfaces were inspected before apply
 - confirm the change stayed scoped
 - confirm at least one explicit verification step was run or intentionally skipped with explanation
-- if prior-session evidence was used, confirm the dossier or fallback route
-  packet refs were named and current source/runtime evidence still controlled
-  the change
+- if prior-session evidence was used, confirm the usage-chain, dossier, or
+  fallback route packet refs were named and current source/runtime evidence
+  still controlled the change
 - confirm generated or export surfaces were rebuilt when canonical inputs changed
 - confirm the post-change route review touched only surfaces whose meaning moved
 - confirm the report includes outcome, rollback thinking, skipped checks, and remaining owner-route risk

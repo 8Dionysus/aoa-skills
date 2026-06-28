@@ -43,8 +43,9 @@ Do not use this skill when:
 - repo-local `docs/decisions/AGENTS.md`, `README.md`, `TEMPLATE.md`, generated indexes, and nearest existing records
 - optional `.aoa` session evidence through `aoa-session-memory-evidence-route`
   when the question asks how a decision, decision tool, correction, or impact
-  path was used in prior sessions; prefer an entity dossier when the question
-  has a stable decision/tool/path anchor
+  path was used in prior sessions; prefer a usage-chain packet when the
+  question is about usage, outcomes, consequences, recurrence, or nearby errors
+  for a stable decision/tool/path anchor
 - source surfaces that the decision record explains
 - validation commands from the owning repository
 
@@ -80,9 +81,13 @@ Do not use this skill when:
    usage, impact evidence, or "what happened after", use
    `aoa-session-memory-evidence-route` or the equivalent read-only
    `aoa-session-memory-mcp` packet after the decision graph route; for a stable
-   decision/tool/path anchor, ask for the entity dossier first and expand only
-   if the dossier is stale, truncated, or too coarse; treat the packet as
-   evidence refs only, then return to repo-local decision files for truth
+   decision/tool/path anchor, ask for `usage-chain` first when the question is
+   how it was used, what happened after, or which failures/consequences
+   followed; use `entity-dossier` when source identity,
+   graph/cooccurrence/timeline context, related entities, or a heavier human
+   packet is needed; expand only if the first packet is stale, truncated,
+   missing refs, or too coarse; treat the packet as evidence refs only, then
+   return to repo-local decision files for truth
 5. if MCP is unavailable, locate `abyss-stack` in the current workspace or a
    known local checkout, then run its graph builder, such as
    `python <abyss-stack>/scripts/build_workspace_decision_graph.py --check --json`
@@ -131,9 +136,9 @@ Do not use this skill when:
 - confirm graph issue posture was checked before create/correct routes
 - confirm broad `aoa_decisions_search` was skipped when a narrower packet was
   sufficient, or explain why it was needed
-- if `.aoa` session evidence was used, confirm the dossier or fallback route
-  cited raw/segment/session refs and that decision truth stayed with repo-local
-  files
+- if `.aoa` session evidence was used, confirm the usage-chain, dossier, or
+  fallback route cited raw/segment/session refs and that decision truth stayed
+  with repo-local files
 - confirm the owning repository and source decision surface are explicit
 - confirm any write uses repo-local route law and validators
 - confirm generated indexes and the workspace graph are not treated as source truth
