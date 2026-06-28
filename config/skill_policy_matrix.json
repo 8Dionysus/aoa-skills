@@ -99,7 +99,7 @@
       ],
       "requires_confirmation_seam": false,
       "implicit_activation_policy": "invoke",
-      "notes": "Router for AoA eval-lane work that selects existing evals, application, local intake pressure, design, or session mining while keeping aoa-evals as proof owner."
+      "notes": "Router for AoA eval-lane work that raises session readiness when available, then selects existing evals, application, local intake pressure, design, or session mining while keeping aoa-evals as proof owner."
     },
     "aoa-eval-apply": {
       "trust_posture": "portable-core",

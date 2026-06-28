@@ -284,7 +284,7 @@
         "repo",
         "user"
       ],
-      "notes": "Router for AoA eval-lane work that selects existing evals, application, local intake pressure, design, or session mining while keeping aoa-evals as proof owner."
+      "notes": "Router for AoA eval-lane work that raises session readiness when available, then selects existing evals, application, local intake pressure, design, or session mining while keeping aoa-evals as proof owner."
     },
     {
       "name": "aoa-eval-apply",

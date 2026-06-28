@@ -292,12 +292,26 @@ def trust_gate_allow_latest(
         expected_trust_root_mode=TRUST_ROOT_MODE,
     )
     inspected_claims = trust_gate.get("inspected_claims", {})
+    decision = trust_gate.get("decision", {})
+    blockers = trust_gate.get("blockers", [])
+    expected_pre_materialization_blocker = bool(
+        not require_subject_store
+        and trust_gate.get("verdict") == "deny"
+        and decision.get("allow") is False
+        and blockers == ["required_artifact_subject_store_not_verified"]
+        and inspected_claims.get("artifact_subject_store", {}).get("required") is True
+        and inspected_claims.get("artifact_subject_store", {}).get("ok") is False
+    )
+    allowed_after_materialization = bool(
+        trust_gate.get("ok")
+        and trust_gate.get("verdict") in {"allow", "warn"}
+        and decision.get("model") == "fail_closed_consumer_admission"
+        and decision.get("allow") is True
+    )
     return {
         "ok": bool(
-            trust_gate.get("ok")
-            and trust_gate.get("verdict") in {"allow", "warn"}
-            and trust_gate.get("decision", {}).get("model") == "fail_closed_consumer_admission"
-            and trust_gate.get("decision", {}).get("allow") is True
+            (allowed_after_materialization or expected_pre_materialization_blocker)
+            and decision.get("model") == "fail_closed_consumer_admission"
             and inspected_claims.get("registry_latest", {}).get("selected_record_is_latest") is True
             and inspected_claims.get("controls", {}).get("required_controls_missing") == []
             and inspected_claims.get("source", {}).get("source_repo_matched") is True
@@ -307,6 +321,7 @@ def trust_gate_allow_latest(
                 or inspected_claims.get("artifact_subject_store", {}).get("ok") is True
             )
         ),
+        "expected_pre_materialization_blocker": expected_pre_materialization_blocker,
         "trust_gate": trust_gate,
     }
 

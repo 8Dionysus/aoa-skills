@@ -48,8 +48,9 @@ Use this skill when:
   graders, traces, regressions, validators, tests, or scripts as evaluation
   surfaces
 - a repo-family or workspace-local eval-port inventory, or missing/skeleton/active/invalid port status, is available before choosing a local eval route
-- an OS Abyss eval session needs a current readiness packet before selecting
-  tools or touching local eval files
+- an OS Abyss eval session needs a current readiness packet, including any
+  available `eval_forge_front_door` and `EVAL_FORGE_OPERATING_PATH.md`, before
+  selecting tools or touching local eval files
 - session evidence may reveal missed eval moments, but only after web and repo
   owner surfaces have been checked
 - a route must separate proof authority, local intake pressure, MCP access, and
@@ -84,7 +85,8 @@ Do not use this skill when:
 - `aoa-evals-mcp` packets when available, treated as access-plane data
 - optional `.aoa` session evidence through `aoa-session-memory-evidence-route`
   when the task asks how an eval, validator, test, MCP, failure, or trigger was
-  used in prior sessions
+  used in prior sessions; prefer an entity dossier when the question has a
+  stable eval/validator/test/MCP/failure anchor
 - `.aoa` search hits, segments, raw refs, and freshness only when session mining
   is the chosen route
 
@@ -142,9 +144,11 @@ Do not use this skill when:
 7. use `aoa-evals-mcp` only as a runtime access plane; do not let an MCP packet
    create proof truth or write central eval bundles
 8. when prior-session behavior matters, use `aoa-session-memory-evidence-route`
-   or the equivalent `aoa-session-memory-mcp` read-only packet to find usage,
-   consequence, failure, and raw refs; keep those refs candidate-only until the
-   local or central eval owner accepts them
+   or the equivalent read-only `aoa-session-memory-mcp` packet; for a stable
+   eval/validator/test/MCP/failure anchor, ask for the entity dossier first and
+   expand to usage audit, neighborhood, literal, graph, or answer routes only
+   when needed; keep those refs candidate-only until the local or central eval
+   owner accepts them
 9. load exactly one subskill after classification; keep the other subskills out
    of context unless the route changes
 10. if no safe route exists, stop with the missing owner evidence and the next
@@ -206,8 +210,9 @@ Do not use this skill when:
 - confirm existing scripts, tests, and validators were considered before new
   design
 - confirm `.aoa` evidence is marked candidate-only when used
-- confirm session-memory evidence packets, if used, include raw/segment/session
-  refs and did not replace local or central eval owner review
+- confirm session-memory dossier or fallback route packets, if used, include
+  raw/segment/session refs and did not replace local or central eval owner
+  review
 - confirm session or trace-derived candidate evidence passed the candidate
   packet validator when the validator exists
 - confirm any generated or derived surfaces were rebuilt through owner builders

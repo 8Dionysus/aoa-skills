@@ -1442,8 +1442,8 @@
       "project_overlay": false,
       "summary": "Route AoA eval-lane work by raising the available session readiness packet and Eval Forge front door, finding existing local or central eval surfaces first, then selecting apply, local-need, design, or session-mining from route signs without moving proof authority.",
       "summary_short": "Route AoA eval-lane work by raising the available session readiness packet and Eval Forge front door, finding...",
-      "description": "Route AoA eval-lane work by checking existing local and central eval surfaces first, including any available repo-family or workspace eval-port inventory with missing/skeleton/active/invalid status, then choosing apply, local intake need, local design, or session mining while preserving owner boundaries. Use when a task asks whether an eval exists, whether one should be added, how local evals connect to aoa-evals, how local eval-port status should route work, or how validators, tests, scripts, traces, regressions, trigger misses, local eval ports, or aoa-evals-mcp should be used as evaluation surfaces. Do not use for ordinary one-off tests, source-of-truth mapping, decision records, memo writeback, or direct central aoa-evals proof-authority edits.",
-      "description_sha256": "7a26f34727d0f4e6f2b8aa94ae5ac7d5e34f59082c534e30976660ca8fcee398",
+      "description": "Route AoA eval-lane work by raising the available session readiness packet, checking existing local and central eval surfaces first, including any available repo-family or workspace eval-port inventory with missing/skeleton/active/invalid status, then choosing apply, local intake need, local design, or session mining while preserving owner boundaries. Use when a task asks whether an eval exists, whether one should be added, how local evals connect to aoa-evals, how local eval-port status should route work, or how validators, tests, scripts, traces, regressions, trigger misses, local eval ports, aoa-evals-mcp, candidate packets, or per-session eval readiness should be used as evaluation surfaces. Do not use for ordinary one-off tests, source-of-truth mapping, decision records, memo writeback, or direct central aoa-evals proof-authority edits.",
+      "description_sha256": "40f45070af8cc9cb2b701c7aa94b01933934884777b3adfc847fd6a0645115e4",
       "positive_cues": [
         "eval lane",
         "existing eval first",
@@ -1509,9 +1509,9 @@
         "route",
         "whether",
         "apply",
+        "available",
         "design",
-        "exists",
-        "mining"
+        "exists"
       ],
       "companions": [
         "aoa-eval-select",

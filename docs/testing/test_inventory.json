@@ -97,6 +97,17 @@
       "failure_route": "Fix skills/project/abyss/aoa-summon before widening the lane."
     },
     {
+      "path": "tests/test_aoa_eval_prompt_trigger_harness.py",
+      "family": "skill-native-eval",
+      "protects": "aoa-eval prompt trigger route harness",
+      "owner_surface": "tests/fixtures/skill_evaluation_cases.yaml",
+      "lane": "router",
+      "mode": "blocking",
+      "runtime_cost": "fast",
+      "focused_target": "tests/test_aoa_eval_prompt_trigger_harness.py",
+      "failure_route": "Fix aoa-eval fixture prompts, snapshots, or trigger suite before widening the eval route harness."
+    },
+    {
       "path": "tests/test_aoa_eval_trigger_corpus.py",
       "family": "skill-native-eval",
       "protects": "aoa-eval trigger corpus",

@@ -752,10 +752,10 @@
     },
     {
       "name": "aoa-eval",
-      "description": "Route AoA eval-lane work by checking existing local and central eval surfaces first, including any available repo-family or workspace eval-port inventory with missing/skeleton/active/invalid status, then choosing apply, local intake need, local design, or session mining while preserving owner boundaries. Use when a task asks whether an eval exists, whether one should be added, how local evals connect to aoa-evals, how local eval-port status should route work, or how validators, tests, scripts, traces, regressions, trigger misses, local eval ports, or aoa-evals-mcp should be used as evaluation surfaces. Do not use for ordinary one-off tests, source-of-truth mapping, decision records, memo writeback, or direct central aoa-evals proof-authority edits.",
-      "description_sha256": "7a26f34727d0f4e6f2b8aa94ae5ac7d5e34f59082c534e30976660ca8fcee398",
-      "summary_clause": "Route AoA eval-lane work by checking existing local and central eval surfaces first, including any available repo-family or workspace eval-port inventory with missing/skeleton/active/invalid status, then choosing apply, local intake need, local design, or session mining while preserving owner boundaries",
-      "use_when_clause": "a task asks whether an eval exists, whether one should be added, how local evals connect to aoa-evals, how local eval-port status should route work, or how validators, tests, scripts, traces, regressions, trigger misses, local eval ports, or aoa-evals-mcp should be used as evaluation surfaces",
+      "description": "Route AoA eval-lane work by raising the available session readiness packet, checking existing local and central eval surfaces first, including any available repo-family or workspace eval-port inventory with missing/skeleton/active/invalid status, then choosing apply, local intake need, local design, or session mining while preserving owner boundaries. Use when a task asks whether an eval exists, whether one should be added, how local evals connect to aoa-evals, how local eval-port status should route work, or how validators, tests, scripts, traces, regressions, trigger misses, local eval ports, aoa-evals-mcp, candidate packets, or per-session eval readiness should be used as evaluation surfaces. Do not use for ordinary one-off tests, source-of-truth mapping, decision records, memo writeback, or direct central aoa-evals proof-authority edits.",
+      "description_sha256": "40f45070af8cc9cb2b701c7aa94b01933934884777b3adfc847fd6a0645115e4",
+      "summary_clause": "Route AoA eval-lane work by raising the available session readiness packet, checking existing local and central eval surfaces first, including any available repo-family or workspace eval-port inventory with missing/skeleton/active/invalid status, then choosing apply, local intake need, local design, or session mining while preserving owner boundaries",
+      "use_when_clause": "a task asks whether an eval exists, whether one should be added, how local evals connect to aoa-evals, how local eval-port status should route work, or how validators, tests, scripts, traces, regressions, trigger misses, local eval ports, aoa-evals-mcp, candidate packets, or per-session eval readiness should be used as evaluation surfaces",
       "do_not_use_clause": "for ordinary one-off tests, source-of-truth mapping, decision records, memo writeback, or direct central aoa-evals proof-authority edits",
       "invocation_mode": "explicit-preferred",
       "implicit_activation_policy": "invoke",
@@ -778,7 +778,7 @@
         "aoa-session-donor-harvest",
         "aoa-source-of-truth-check"
       ],
-      "default_prompt": "Use $aoa-eval to select one eval route, inspect existing surfaces first, and keep central proof, local intake, MCP access, and session evidence separate.",
+      "default_prompt": "Use $aoa-eval to raise the session readiness packet when available, select one eval route, inspect existing surfaces first, and keep central proof, local intake, MCP access, candidate packets, and session evidence separate.",
       "required_case_classes": [
         "explicit-handle",
         "should-trigger",

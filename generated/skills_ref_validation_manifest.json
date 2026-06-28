@@ -194,7 +194,7 @@
         "validate",
         ".agents/skills/aoa-eval"
       ],
-      "description_sha256": "7a26f34727d0f4e6f2b8aa94ae5ac7d5e34f59082c534e30976660ca8fcee398"
+      "description_sha256": "40f45070af8cc9cb2b701c7aa94b01933934884777b3adfc847fd6a0645115e4"
     },
     {
       "skill_name": "aoa-eval-apply",

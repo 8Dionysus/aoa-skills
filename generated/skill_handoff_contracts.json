@@ -599,6 +599,7 @@
         "owner repository or route surface",
         "touched files or surfaces",
         "source-of-truth or route-law surfaces that constrain the change",
+        "optional prior-session evidence when the request asks how this repository, tool, MCP, hook, validator, failure, or change pattern behaved before, preferably as a compact entity dossier when there is a stable anchor",
         "main risk",
         "intended validation path",
         "rollback idea"
@@ -614,6 +615,7 @@
         "confirm the owner route and relevant source surfaces were inspected before apply",
         "confirm the change stayed scoped",
         "confirm at least one explicit verification step was run or intentionally skipped with explanation",
+        "if prior-session evidence was used, confirm the dossier or fallback route packet refs were named and current source/runtime evidence still controlled the change",
         "confirm generated or export surfaces were rebuilt when canonical inputs changed",
         "confirm the post-change route review touched only surfaces whose meaning moved",
         "confirm the report includes outcome, rollback thinking, skipped checks, and remaining owner-route risk"
@@ -625,6 +627,7 @@
         "rollback thinking should exist before apply",
         "the plan should be grounded in inspected source surfaces, not only conversation memory or generic pattern recall",
         "generated, exported, compact, or derived surfaces should be refreshed from source rather than hand-authored as truth",
+        "prior-session evidence can shape risk and route choice, but it does not override current owner files, validators, or live runtime state",
         "cross-repo or mechanics changes should name owner boundaries and stop-lines before moving content"
       ],
       "consumes_artifact_tags": [
@@ -632,6 +635,7 @@
         "owner-repository-or-route-surface",
         "touched-files-or-surfaces",
         "source-of-truth-or-route-law-surfaces-that-constrain-the-change",
+        "optional-prior-session-evidence-when-the-request-asks-how-this-r",
         "main-risk",
         "intended-validation-path",
         "rollback-idea"
@@ -992,6 +996,7 @@
         "user intent, target repository, touched paths, or decision ID when known",
         "available `aoa_decisions` MCP tools or a local graph builder fallback, including status, issues, changed-path, source-surface, owner-surface, and repo-symmetry packets",
         "repo-local `docs/decisions/AGENTS.md`, `README.md`, `TEMPLATE.md`, generated indexes, and nearest existing records",
+        "optional `.aoa` session evidence through `aoa-session-memory-evidence-route` when the question asks how a decision, decision tool, correction, or impact path was used in prior sessions; prefer an entity dossier when the question has a stable decision/tool/path anchor",
         "source surfaces that the decision record explains",
         "validation commands from the owning repository"
       ],
@@ -1007,6 +1012,7 @@
         "confirm `aoa_decisions` was used first when available, or the fallback was named",
         "confirm graph issue posture was checked before create/correct routes",
         "confirm broad `aoa_decisions_search` was skipped when a narrower packet was sufficient, or explain why it was needed",
+        "if `.aoa` session evidence was used, confirm the dossier or fallback route cited raw/segment/session refs and that decision truth stayed with repo-local files",
         "confirm the owning repository and source decision surface are explicit",
         "confirm any write uses repo-local route law and validators",
         "confirm generated indexes and the workspace graph are not treated as source truth",
@@ -1015,6 +1021,7 @@
       "contracts": [
         "the graph accelerates lookup; it does not own decision truth",
         "source files in the owning repository remain stronger than MCP packets, generated graph nodes, and generated indexes",
+        "`.aoa` session evidence may explain past usage or impact, but it cannot create, accept, supersede, or correct a decision record by itself",
         "the router chooses one subskill to control cost and avoid conflicting advice",
         "cross-repo symmetry must be appropriate to the target repo, not forced from a sibling template",
         "no MCP write tool may create, accept, or correct a decision record silently",
@@ -1025,6 +1032,7 @@
         "user-intent-target-repository-touched-paths-or-decision-id-when-",
         "available-aoa-decisions-mcp-tools-or-a-local-graph-builder-fallb",
         "repo-local-docs-decisions-agents-md-readme-md-template-md-genera",
+        "optional-aoa-session-evidence-through-aoa-session-memory-evidenc",
         "source-surfaces-that-the-decision-record-explains",
         "validation-commands-from-the-owning-repository"
       ],
@@ -1052,7 +1060,7 @@
         "contract_notes": [
           "the graph accelerates lookup; it does not own decision truth",
           "source files in the owning repository remain stronger than MCP packets, generated graph nodes, and generated indexes",
-          "the router chooses one subskill to control cost and avoid conflicting advice"
+          "`.aoa` session evidence may explain past usage or impact, but it cannot create, accept, supersede, or correct a decision record by itself"
         ],
         "next_recommended_skills": []
       }
@@ -1333,7 +1341,7 @@
     {
       "name": "aoa-eval",
       "display_name": "AoA Eval",
-      "description": "Route AoA eval-lane work by checking existing local and central eval surfaces first, including any available repo-family or workspace eval-port inventory with missing/skeleton/active/invalid status, then choosing apply, local intake need, local design, or session mining while preserving owner boundaries. Use when a task asks whether an eval exists, whether one should be added, how local evals connect to aoa-evals, how local eval-port status should route work, or how validators, tests, scripts, traces, regressions, trigger misses, local eval ports, or aoa-evals-mcp should be used as evaluation surfaces. Do not use for ordinary one-off tests, source-of-truth mapping, decision records, memo writeback, or direct central aoa-evals proof-authority edits.",
+      "description": "Route AoA eval-lane work by raising the available session readiness packet, checking existing local and central eval surfaces first, including any available repo-family or workspace eval-port inventory with missing/skeleton/active/invalid status, then choosing apply, local intake need, local design, or session mining while preserving owner boundaries. Use when a task asks whether an eval exists, whether one should be added, how local evals connect to aoa-evals, how local eval-port status should route work, or how validators, tests, scripts, traces, regressions, trigger misses, local eval ports, aoa-evals-mcp, candidate packets, or per-session eval readiness should be used as evaluation surfaces. Do not use for ordinary one-off tests, source-of-truth mapping, decision records, memo writeback, or direct central aoa-evals proof-authority edits.",
       "invocation_mode": "explicit-preferred",
       "inputs": [
         "user intent, target repository, touched paths, failure mode, or eval name",
@@ -1344,7 +1352,7 @@
         "optional `eval_forge_front_door` packet fields from session-start/readiness: `surface_refs`, `exact_commands`, `surface_status`, stop-lines, and non-proof boundary flags",
         "optional candidate-packet validator; when present this is `aoa-evals/scripts/validate_eval_candidate_packets.py`",
         "`aoa-evals-mcp` packets when available, treated as access-plane data",
-        "optional `.aoa` session evidence through `aoa-session-memory-evidence-route` when the task asks how an eval, validator, test, MCP, failure, or trigger was used in prior sessions",
+        "optional `.aoa` session evidence through `aoa-session-memory-evidence-route` when the task asks how an eval, validator, test, MCP, failure, or trigger was used in prior sessions; prefer an entity dossier when the question has a stable eval/validator/test/MCP/failure anchor",
         "`.aoa` search hits, segments, raw refs, and freshness only when session mining is the chosen route"
       ],
       "outputs": [
@@ -1364,7 +1372,7 @@
         "confirm central `aoa-evals` authority was kept separate from local intake",
         "confirm existing scripts, tests, and validators were considered before new design",
         "confirm `.aoa` evidence is marked candidate-only when used",
-        "confirm session-memory evidence packets, if used, include raw/segment/session refs and did not replace local or central eval owner review",
+        "confirm session-memory dossier or fallback route packets, if used, include raw/segment/session refs and did not replace local or central eval owner review",
         "confirm session or trace-derived candidate evidence passed the candidate packet validator when the validator exists",
         "confirm any generated or derived surfaces were rebuilt through owner builders",
         "confirm final report names validation and skipped checks"

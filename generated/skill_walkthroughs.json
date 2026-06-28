@@ -1060,7 +1060,7 @@
         "route signs can trigger this skill even when the user never says eval repeated agent route failure, skipped validator/test/script evidence, unsafe proof/local/MCP/session mixing, or missed trigger behavior is enough pressure",
         "the task mentions aoa-evals, aoa-evals-mcp, local eval ports, eval intake, graders, traces, regressions, validators, tests, or scripts as evaluation surfaces",
         "a repo-family or workspace-local eval-port inventory, or missing/skeleton/active/invalid port status, is available before choosing a local eval route",
-        "an OS Abyss eval session needs a current readiness packet before selecting tools or touching local eval files",
+        "an OS Abyss eval session needs a current readiness packet, including any available evalforgefrontdoor and EVALFORGEOPERATINGPATH.md, before selecting tools or touching local eval files",
         "session evidence may reveal missed eval moments, but only after web and repo owner surfaces have been checked",
         "a route must separate proof authority, local intake pressure, MCP access, and raw session evidence"
       ]

@@ -1,7 +1,7 @@
 interface:
   display_name: AoA Eval
   short_description: Route AoA eval-lane work
-  default_prompt: Use $aoa-eval to select one eval route, inspect existing surfaces first, and keep central proof, local intake, MCP access, and session evidence separate.
+  default_prompt: Use $aoa-eval to raise the session readiness packet when available, select one eval route, inspect existing surfaces first, and keep central proof, local intake, MCP access, candidate packets, and session evidence separate.
   icon_small: ./assets/small-logo.svg
   icon_large: ./assets/large-logo.svg
   brand_color: '#2563EB'
