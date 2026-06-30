@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 import unittest
 from pathlib import Path
 
@@ -531,6 +532,27 @@ class MechanicsTopologyTests(unittest.TestCase):
             "mechanics/recurrence/manifests/component.skills.bundle-and-activation-beacons.json",
             provenance,
         )
+
+    def test_recurrence_beacon_rule_inputs_are_declared(self) -> None:
+        manifest = json.loads(
+            (
+                REPO_ROOT
+                / "mechanics"
+                / "recurrence"
+                / "manifests"
+                / "component.skills.bundle-and-activation-beacons.json"
+            ).read_text(encoding="utf-8")
+        )
+        declared_inputs = {
+            entry["input_ref"] for entry in manifest["observation_inputs"]
+        }
+
+        for rule in manifest["beacon_rules"]:
+            with self.subTest(beacon_ref=rule["beacon_ref"]):
+                self.assertLessEqual(
+                    set(rule["observation_inputs"]),
+                    declared_inputs,
+                )
 
     def test_checkpoint_note_surface_moved_out_of_flat_docs(self) -> None:
         self.assertFalse((REPO_ROOT / "docs" / "CHECKPOINT_NOTE_PATH.md").exists())
