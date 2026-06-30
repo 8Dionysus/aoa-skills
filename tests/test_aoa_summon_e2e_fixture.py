@@ -87,6 +87,7 @@ class AoaSummonE2EFixtureTests(unittest.TestCase):
         required_plan_fields = {
             "return_plan",
             "checkpoint_bridge_plan",
+            "return_receipt_plan",
             "memo_export_plan",
             "owner_publication_plan",
         }
@@ -108,6 +109,7 @@ class AoaSummonE2EFixtureTests(unittest.TestCase):
                     "closeout_required": True,
                     "return_plan": None,
                     "checkpoint_bridge_plan": None,
+                    "return_receipt_plan": None,
                     "memo_export_plan": None,
                     "owner_publication_plan": [],
                 }
