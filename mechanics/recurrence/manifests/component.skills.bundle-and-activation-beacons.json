@@ -132,6 +132,12 @@
   ],
   "observation_inputs": [
     {
+      "input_ref": "change_signal",
+      "kind": "change_signal",
+      "path_globs": [],
+      "notes": "repo-local changed-path signal produced by the recurrence detector"
+    },
+    {
       "input_ref": "description-trigger-suite",
       "kind": "trigger_eval",
       "path_globs": [
