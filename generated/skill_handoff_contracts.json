@@ -1352,7 +1352,7 @@
         "optional `eval_forge_front_door` packet fields from session-start/readiness: `surface_refs`, `exact_commands`, `surface_status`, stop-lines, and non-proof boundary flags",
         "optional candidate-packet validator; when present this is `aoa-evals/scripts/validate_eval_candidate_packets.py`",
         "`aoa-evals-mcp` packets when available, treated as access-plane data",
-        "optional `.aoa` session evidence through `aoa-session-memory-evidence-route` when the task asks how an eval, validator, test, MCP, failure, or trigger was used in prior sessions; prefer a usage-chain packet when the question is about usage, outcomes, consequences, recurrence, or nearby errors for a stable eval/validator/test/MCP/failure anchor",
+        "optional `.aoa` session evidence through a discoverable workspace/session-memory evidence route, such as an installed `aoa-session-memory-evidence-route` skill or read-only `aoa-session-memory-mcp` packet, when the task asks how an eval, validator, test, MCP, failure, or trigger was used in prior sessions; prefer a usage-chain packet when the question is about usage, outcomes, consequences, recurrence, or nearby errors for a stable eval/validator/test/MCP/failure anchor",
         "`.aoa` search hits, segments, raw refs, and freshness only when session mining is the chosen route"
       ],
       "outputs": [
@@ -1372,7 +1372,7 @@
         "confirm central `aoa-evals` authority was kept separate from local intake",
         "confirm existing scripts, tests, and validators were considered before new design",
         "confirm `.aoa` evidence is marked candidate-only when used",
-        "confirm session-memory usage-chain, dossier, or fallback route packets, if used, include raw/segment/session refs and did not replace local or central eval owner review",
+        "confirm session-memory usage-chain, dossier, or fallback route packets, if used, include raw/segment/session refs and did not replace local or central eval owner review; if a needed workspace/session-memory route was unavailable, confirm that the gap was named and not mistaken for proof truth",
         "confirm session or trace-derived candidate evidence passed the candidate packet validator when the validator exists",
         "confirm any generated or derived surfaces were rebuilt through owner builders",
         "confirm final report names validation and skipped checks"
