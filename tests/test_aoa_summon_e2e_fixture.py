@@ -81,6 +81,43 @@ class AoaSummonE2EFixtureTests(unittest.TestCase):
                 text,
             )
 
+    def test_aoa_summon_result_schema_requires_return_and_publication_plans(self) -> None:
+        skill_dir = skill_layout.skill_dir_path(REPO_ROOT, "aoa-summon")
+        exported_dir = REPO_ROOT / ".agents" / "skills" / "aoa-summon"
+        required_plan_fields = {
+            "return_plan",
+            "checkpoint_bridge_plan",
+            "memo_export_plan",
+            "owner_publication_plan",
+        }
+
+        for schema_path in (
+            skill_dir / "references" / "summon-result-v3.schema.json",
+            exported_dir / "references" / "summon-result-v3.schema.json",
+        ):
+            with self.subTest(schema_path=schema_path):
+                schema = load_json(schema_path)
+                self.assertLessEqual(required_plan_fields, set(schema["required"]))
+
+                validator = Draft202012Validator(schema)
+                valid_result = {
+                    "allowed": False,
+                    "lane": "human_gate",
+                    "execution_surface": "no_execution",
+                    "cohort_pattern": "blocked",
+                    "closeout_required": True,
+                    "return_plan": None,
+                    "checkpoint_bridge_plan": None,
+                    "memo_export_plan": None,
+                    "owner_publication_plan": [],
+                }
+                self.assertTrue(validator.is_valid(valid_result))
+
+                for field in required_plan_fields:
+                    incomplete_result = deepcopy(valid_result)
+                    incomplete_result.pop(field)
+                    self.assertFalse(validator.is_valid(incomplete_result))
+
     def test_sdk_e2e_fixture_validates_aoa_summon_v3_contracts(self) -> None:
         if not SDK_FIXTURE_PATH.exists():
             self.skipTest("live aoa-sdk E2E fixture is unavailable")

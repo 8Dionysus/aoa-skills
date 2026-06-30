@@ -4,7 +4,17 @@
   "title": "aoa-summon result v3",
   "type": "object",
   "additionalProperties": true,
-  "required": ["allowed", "lane", "execution_surface", "cohort_pattern", "closeout_required"],
+  "required": [
+    "allowed",
+    "lane",
+    "execution_surface",
+    "cohort_pattern",
+    "closeout_required",
+    "return_plan",
+    "checkpoint_bridge_plan",
+    "memo_export_plan",
+    "owner_publication_plan"
+  ],
   "properties": {
     "allowed": {"type": "boolean"},
     "lane": {
