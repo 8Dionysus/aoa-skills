@@ -36,7 +36,6 @@ TEXT_FILE_SUFFIXES = {
     ".yml",
 }
 IGNORED_DIRECTORY_PARTS = {"__pycache__", ".pytest_cache", ".ruff_cache"}
-IGNORED_FILE_SUFFIXES = {".pyc", ".pyo"}
 
 
 def load_json(path: Path) -> Any:
@@ -225,10 +224,7 @@ def iter_directory_file_payloads(
         key=lambda candidate: candidate.relative_to(resolved_root).as_posix(),
     ):
         relative_parts = path.relative_to(resolved_root).parts
-        if (
-            any(part in IGNORED_DIRECTORY_PARTS for part in relative_parts)
-            or path.suffix.lower() in IGNORED_FILE_SUFFIXES
-        ):
+        if any(part in IGNORED_DIRECTORY_PARTS for part in relative_parts[:-1]):
             continue
         relative_path = "/".join(relative_parts)
         if relative_prefix:

@@ -218,6 +218,22 @@ class VerifySkillPackTests(unittest.TestCase):
             self.assertTrue(payload["verified"])
             self.assertEqual([], payload["mismatched_skills"])
 
+    def test_stray_bytecode_outside_runtime_cache_fails_verification(self) -> None:
+        with tempfile.TemporaryDirectory() as tmpdir:
+            dest_root = pathlib.Path(tmpdir) / "skills"
+            self.install_profile_copy("repo-core-only", dest_root)
+            (dest_root / "aoa-change-protocol" / "extra.pyc").write_bytes(b"stray bytecode")
+
+            completed, payload = self.verify_profile("repo-core-only", install_root=dest_root)
+
+            self.assertEqual(
+                completed.returncode,
+                1,
+                msg=f"verify unexpectedly passed\nstdout:\n{completed.stdout}\nstderr:\n{completed.stderr}",
+            )
+            self.assertFalse(payload["verified"])
+            self.assertIn("aoa-change-protocol", payload["mismatched_skills"])
+
     def test_foundation_copy_installed_profile_verifies_successfully(self) -> None:
         with tempfile.TemporaryDirectory() as tmpdir:
             dest_root = pathlib.Path(tmpdir) / "skills"

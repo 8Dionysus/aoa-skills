@@ -195,8 +195,8 @@
   "authoring_input_digests": [
     {
       "path": "generated/skill_sections.full.json",
-      "sha256": "816883cbe89083cc2723635e35a887b2b65fc78390384815bce73bcd19b1c886",
-      "bytes": 388915
+      "sha256": "945015fce50bf0df830a3ddbdb5017fc8122641c399f60b344bb1838444ae656",
+      "bytes": 389449
     },
     {
       "path": "generated/skill_catalog.min.json",
@@ -267,8 +267,8 @@
     },
     {
       "path": "generated/skill_handoff_contracts.json",
-      "sha256": "52340c9105da68997eeaf1b72726f6b57afeaa70c5ce42a57d9ed80b9d89adf6",
-      "bytes": 252292
+      "sha256": "5d936d43eb1eebeb31208b2987ccb63eeeea6821ebbd802c02b5728224df12aa",
+      "bytes": 252546
     },
     {
       "path": "generated/context_retention_manifest.json",
@@ -357,7 +357,7 @@
     },
     {
       "path": "generated/skill_context_guard_manifest.json",
-      "sha256": "ac8c538f6e9eb478179a71308e351b78a63cfcb407958d8f58a02666de1c5a33",
+      "sha256": "0479e1d4cba4549458c4e694271e23770f789a8812f50417eefa154eeb5daa55",
       "bytes": 118676
     },
     {
@@ -457,17 +457,17 @@
     },
     {
       "path": "generated/skill_bundle_index.json",
-      "sha256": "cc76bba66ee57777c925dbd155fae63342159598cdb120f23b2e9dba3e9c661f",
+      "sha256": "ad164c69e366c73cc817986ad9fa70cfdbb14154e6512e5283dbc81109addb74",
       "bytes": 166795
     },
     {
       "path": "generated/skill_bundle_index.md",
-      "sha256": "a3885c5ba8a82794526e5a5cd2601b09ba5634f16fb54097836bcf35c10ca2c1",
+      "sha256": "ec8a838f554af611eed3f83ffc5ea64c23e04cbde92e2d5bafa2f82fecb80524",
       "bytes": 18799
     },
     {
       "path": "generated/skill_graph.json",
-      "sha256": "27e2d8cbcabcc4ba3b62905b1fa7fe3dfdd98041a082fb17890d4e8bbd2822f7",
+      "sha256": "79e076a464205c4c64429fe6445c459e00119da9cf934403d7dafd40a1453edc",
       "bytes": 304954
     },
     {
@@ -564,8 +564,8 @@
     },
     {
       "name": "aoa-eval",
-      "skill_revision": "337ab3727efc",
-      "content_hash": "337ab3727efc92d7930cb7bb251904948f71bb0a64406871599f151cb6fa4641"
+      "skill_revision": "037e92848373",
+      "content_hash": "037e92848373a224744e591ba7c89424564f0723ef20813848b2fe33433b8beb"
     },
     {
       "name": "aoa-eval-apply",
@@ -877,7 +877,7 @@
         "titan-summon",
         "titan-thread-turn-binding"
       ],
-      "profile_revision": "13ee28ec028f60a641b4fb26e1a393489fcade6a6b5851609f7496cf667f31fd"
+      "profile_revision": "bfee94a388ddb5a9a76c2834fba464ee945d3fc8deeed140512fec28bdbf2962"
     },
     {
       "name": "repo-project-core-kernel",
@@ -1096,7 +1096,7 @@
         "aoa-summon",
         "aoa-tdd-slice"
       ],
-      "profile_revision": "cc5e595fb8d7d41feb783068c890af23257eb12657f7b64407b6e8e7a38b6435"
+      "profile_revision": "c551fe31f786348736341ff3dafe1a284f825ae79872a5211353cc9c7f5c9470"
     },
     {
       "name": "user-curated-core",
