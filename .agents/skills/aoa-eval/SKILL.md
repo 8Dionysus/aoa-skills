@@ -83,11 +83,14 @@ Do not use this skill when:
 - optional candidate-packet validator; when present this is
   `aoa-evals/scripts/validate_eval_candidate_packets.py`
 - `aoa-evals-mcp` packets when available, treated as access-plane data
-- optional `.aoa` session evidence through `aoa-session-memory-evidence-route`
-  when the task asks how an eval, validator, test, MCP, failure, or trigger was
-  used in prior sessions; prefer a usage-chain packet when the question is
-  about usage, outcomes, consequences, recurrence, or nearby errors for a
-  stable eval/validator/test/MCP/failure anchor
+- optional `.aoa` session evidence through a discoverable
+  workspace/session-memory evidence route, such as an installed
+  `aoa-session-memory-evidence-route` skill or read-only
+  `aoa-session-memory-mcp` packet, when the task asks how an eval, validator,
+  test, MCP, failure, or trigger was used in prior sessions; prefer a
+  usage-chain packet when the question is about usage, outcomes, consequences,
+  recurrence, or nearby errors for a stable eval/validator/test/MCP/failure
+  anchor
 - `.aoa` search hits, segments, raw refs, and freshness only when session mining
   is the chosen route
 
@@ -142,16 +145,19 @@ Do not use this skill when:
    central bundles, scoring, verdicts, or review rules
 7. use `aoa-evals-mcp` only as a runtime access plane; do not let an MCP packet
    create proof truth or write central eval bundles
-8. when prior-session behavior matters, use `aoa-session-memory-evidence-route`
-   or the equivalent read-only `aoa-session-memory-mcp` packet; for a stable
-   eval/validator/test/MCP/failure anchor, ask for `usage-chain` first when the
-   question is how it was used, what happened after, or which
+8. when prior-session behavior matters and a workspace/session-memory evidence
+   route is available, use an installed `aoa-session-memory-evidence-route`
+   skill or the equivalent read-only `aoa-session-memory-mcp` packet; for a
+   stable eval/validator/test/MCP/failure anchor, ask for `usage-chain` first
+   when the question is how it was used, what happened after, or which
    failures/consequences followed; use `entity-dossier` when source identity,
    graph/cooccurrence/timeline context, related entities, or a heavier human
    packet is needed; expand to usage audit, neighborhood, literal, graph, or
    answer routes only when the first packet is stale, truncated, missing refs,
    or too coarse; keep those refs candidate-only until the local or central eval
-   owner accepts them
+   owner accepts them; if no workspace/session-memory route is available, name
+   the gap and continue from current local and central eval owner files instead
+   of treating the missing packet as a blocker
 9. load exactly one subskill after classification; keep the other subskills out
    of context unless the route changes
 10. if no safe route exists, stop with the missing owner evidence and the next
@@ -212,7 +218,8 @@ Do not use this skill when:
 - confirm `.aoa` evidence is marked candidate-only when used
 - confirm session-memory usage-chain, dossier, or fallback route packets, if
   used, include raw/segment/session refs and did not replace local or central
-  eval owner review
+  eval owner review; if a needed workspace/session-memory route was unavailable,
+  confirm that the gap was named and not mistaken for proof truth
 - confirm session or trace-derived candidate evidence passed the candidate
   packet validator when the validator exists
 - confirm any generated or derived surfaces were rebuilt through owner builders
@@ -222,7 +229,7 @@ Do not use this skill when:
 Manifest-backed techniques:
 - AOA-T-0003 from `8Dionysus/aoa-techniques` at `1a7d146957108ecefc24219c7d56357c5a4a2c2c` using path `techniques/proof/evaluation-chain/contract-first-smoke-summary/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Risks, Validation
 - AOA-T-0076 from `8Dionysus/aoa-techniques` at `1a7d146957108ecefc24219c7d56357c5a4a2c2c` using path `techniques/governance/decision-routing/owner-layer-triage/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Risks, Validation
-- AOA-T-0094 from `8Dionysus/aoa-techniques` at `1a7d146957108ecefc24219c7d56357c5a4a2c2c` using path `techniques/proof/owner-truth-closeout/canonical-owner-with-validated-mirror/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Risks, Validation
+- AOA-T-0094 from `8Dionysus/aoa-techniques` at `30a70271359fef7150cc8fa0c01530336f87edd4` using path `techniques/proof/owner-truth-closeout/canonical-owner-with-validated-mirror/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Risks, Validation
 
 ## Adaptation points
 - local eval-port schema and status vocabulary

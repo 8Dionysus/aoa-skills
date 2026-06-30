@@ -41,6 +41,8 @@ jobs:
   latest_release_repro:
     name: Latest Release Repro
     runs-on: ubuntu-latest
+    env:
+      ABYSS_MACHINE_VERIFIER_REF: 4f8993d525991ac1803a11685f70814c7c378e39
     steps:
       - name: Checkout repository history
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
@@ -70,7 +72,9 @@ jobs:
         run: python -m pip install -r requirements-dev.txt
 
       - name: Prepare abyss-machine verifier
-        run: git clone --depth 1 https://github.com/8Dionysus/abyss-machine.git "$RUNNER_TEMP/abyss-machine"
+        run: |
+          git clone https://github.com/8Dionysus/abyss-machine.git "$RUNNER_TEMP/abyss-machine"
+          git -C "$RUNNER_TEMP/abyss-machine" checkout "$ABYSS_MACHINE_VERIFIER_REF"
 
       - name: Reproduce latest release gate
         env:
