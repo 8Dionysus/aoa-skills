@@ -2167,7 +2167,7 @@
           "key": "inputs"
         },
         {
-          "content_markdown": "- one summon decision with allowed or blocked posture\n- one chosen `lane` such as `codex_local_leaf`, `codex_local_reviewed`,\n  `remote_reviewed`, `split_required`, or `human_gate`\n- `execution_surface`, `cohort_pattern`, `reason_codes`, and `blocked_actions`\n- optional `codex_local_target`\n- `return_plan`, `checkpoint_bridge_plan`, `memo_export_plan`, and\n  `owner_publication_plan`\n- return receipt or acceptance expectation when the child crosses an actor,\n  session, or owner boundary\n- `closeout_required`, `checkpoint_required`, and `progression_required`",
+          "content_markdown": "- one summon decision with allowed or blocked posture\n- one chosen `lane` such as `codex_local_leaf`, `codex_local_reviewed`,\n  `remote_reviewed`, `split_required`, or `human_gate`\n- `execution_surface`, `cohort_pattern`, `reason_codes`, and `blocked_actions`\n- optional `codex_local_target`\n- `return_plan`, `checkpoint_bridge_plan`, `return_receipt_plan`,\n  `memo_export_plan`, and `owner_publication_plan`\n- `summon_result.return_receipt_plan` is the explicit return receipt or\n  acceptance expectation when the child crosses an actor, session, or owner\n  boundary; use `null` only when no receipt expectation is required\n- `closeout_required`, `checkpoint_required`, and `progression_required`",
           "heading": "Outputs",
           "key": "outputs"
         },

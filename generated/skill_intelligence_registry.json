@@ -9500,8 +9500,8 @@
         "skill_path": "skills/core/session-growth/aoa-summon/SKILL.md",
         "techniques_path": "skills/core/session-growth/aoa-summon/techniques.yaml",
         "policy_path": "skills/core/session-growth/aoa-summon/agents/openai.yaml",
-        "content_hash": "49650198b0937198d71cde27c951034cc0f1a026dab672b58b6eb958ea19278c",
-        "skill_revision": "49650198b093"
+        "content_hash": "552956c24589b5a56e91f918a88688203a11d1edb6e203527940f2083b7d70b0",
+        "skill_revision": "552956c24589"
       },
       "policy": {
         "invocation_mode": "explicit-only",
@@ -9696,9 +9696,9 @@
           "section_role": "outputs",
           "source_path": "skills/core/session-growth/aoa-summon/SKILL.md",
           "source_anchor": "## Outputs",
-          "text": "- one summon decision with allowed or blocked posture - one chosen `lane` such as `codex_local_leaf`, `codex_local_reviewed`, `remote_reviewed`, `split_required`, or `human_gate` - `execution_surface`, `cohort_pattern`, `reason_codes`, and `blocked_actions` - optional `codex_local_target` - `return_plan`, `checkpoint_bridge_plan`, `memo_export_plan`, and `owner_publication_plan` - return receipt or acceptance expectation when the child crosses an actor, session, or owner boundary - `closeout_required`, `checkpoint_required`, and `progression_required`",
-          "text_sha256": "2e532f162bd8fd7a5b8f20c7f29d43cf4bc726f1bf02e74228af4e2892da8cb8",
-          "token_count": 57
+          "text": "- one summon decision with allowed or blocked posture - one chosen `lane` such as `codex_local_leaf`, `codex_local_reviewed`, `remote_reviewed`, `split_required`, or `human_gate` - `execution_surface`, `cohort_pattern`, `reason_codes`, and `blocked_actions` - optional `codex_local_target` - `return_plan`, `checkpoint_bridge_plan`, `return_receipt_plan`, `memo_export_plan`, and `owner_publication_plan` - `summon_result.return_receipt_plan` is the explicit return receipt or acceptance expectation when the child crosses an actor, session, or owner boundary; use `null` only when no receipt expectation is required - `closeout_required`, `checkpoint_required`, and `progression_required`",
+          "text_sha256": "72626774778ae37719891b1c196b409f3a5c528cf774c4c01b4f97f06f9c4ba2",
+          "token_count": 71
         },
         {
           "doc_id": "skill:aoa-summon:section:procedure",

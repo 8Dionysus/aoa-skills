@@ -8334,7 +8334,7 @@
       "candidate_review_path": null,
       "canonical_candidate_ready": true,
       "canonical_eval_ready": true,
-      "content_hash": "49650198b0937198d71cde27c951034cc0f1a026dab672b58b6eb958ea19278c",
+      "content_hash": "552956c24589b5a56e91f918a88688203a11d1edb6e203527940f2083b7d70b0",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -8362,7 +8362,7 @@
       "promotion_review_path": "docs/reviews/status-promotions/aoa-summon.md",
       "scope": "core",
       "skill_path": "skills/core/session-growth/aoa-summon/SKILL.md",
-      "skill_revision": "49650198b093",
+      "skill_revision": "552956c24589",
       "status": "evaluated",
       "support_artifacts": [
         {

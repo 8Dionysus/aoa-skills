@@ -62,10 +62,11 @@ Do not use this skill when:
   `remote_reviewed`, `split_required`, or `human_gate`
 - `execution_surface`, `cohort_pattern`, `reason_codes`, and `blocked_actions`
 - optional `codex_local_target`
-- `return_plan`, `checkpoint_bridge_plan`, `memo_export_plan`, and
-  `owner_publication_plan`
-- return receipt or acceptance expectation when the child crosses an actor,
-  session, or owner boundary
+- `return_plan`, `checkpoint_bridge_plan`, `return_receipt_plan`,
+  `memo_export_plan`, and `owner_publication_plan`
+- `summon_result.return_receipt_plan` is the explicit return receipt or
+  acceptance expectation when the child crosses an actor, session, or owner
+  boundary; use `null` only when no receipt expectation is required
 - `closeout_required`, `checkpoint_required`, and `progression_required`
 
 ## Procedure
