@@ -2925,8 +2925,8 @@
         "one chosen `lane` such as `codex_local_leaf`, `codex_local_reviewed`, `remote_reviewed`, `split_required`, or `human_gate`",
         "`execution_surface`, `cohort_pattern`, `reason_codes`, and `blocked_actions`",
         "optional `codex_local_target`",
-        "`return_plan`, `checkpoint_bridge_plan`, `memo_export_plan`, and `owner_publication_plan`",
-        "return receipt or acceptance expectation when the child crosses an actor, session, or owner boundary",
+        "`return_plan`, `checkpoint_bridge_plan`, `return_receipt_plan`, `memo_export_plan`, and `owner_publication_plan`",
+        "`summon_result.return_receipt_plan` is the explicit return receipt or acceptance expectation when the child crosses an actor, session, or owner boundary; use `null` only when no receipt expectation is required",
         "`closeout_required`, `checkpoint_required`, and `progression_required`"
       ],
       "verification": [
@@ -2968,8 +2968,8 @@
         "one-chosen-lane-such-as-codex-local-leaf-codex-local-reviewed-re",
         "execution-surface-cohort-pattern-reason-codes-and-blocked-action",
         "optional-codex-local-target",
-        "return-plan-checkpoint-bridge-plan-memo-export-plan-and-owner-pu",
-        "return-receipt-or-acceptance-expectation-when-the-child-crosses-",
+        "return-plan-checkpoint-bridge-plan-return-receipt-plan-memo-expo",
+        "summon-result-return-receipt-plan-is-the-explicit-return-receipt",
         "closeout-required-checkpoint-required-and-progression-required"
       ],
       "handoff_packet_template": {
@@ -2979,8 +2979,8 @@
           "one-chosen-lane-such-as-codex-local-leaf-codex-local-reviewed-re",
           "execution-surface-cohort-pattern-reason-codes-and-blocked-action",
           "optional-codex-local-target",
-          "return-plan-checkpoint-bridge-plan-memo-export-plan-and-owner-pu",
-          "return-receipt-or-acceptance-expectation-when-the-child-crosses-",
+          "return-plan-checkpoint-bridge-plan-return-receipt-plan-memo-expo",
+          "summon-result-return-receipt-plan-is-the-explicit-return-receipt",
           "closeout-required-checkpoint-required-and-progression-required"
         ],
         "verification_notes": [

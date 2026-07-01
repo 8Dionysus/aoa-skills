@@ -1525,8 +1525,8 @@ Common expand sections:
 - one chosen lane such as codexlocalleaf, codexlocalreviewed, remotereviewed, splitrequired, or humangate
 - executionsurface, cohortpattern, reasoncodes, and blockedactions
 - optional codexlocaltarget
-- returnplan, checkpointbridgeplan, memoexportplan, and ownerpublicationplan
-- return receipt or acceptance expectation when the child crosses an actor, session, or owner boundary
+- returnplan, checkpointbridgeplan, returnreceiptplan, memoexportplan, and ownerpublicationplan
+- summonresult.returnreceiptplan is the explicit return receipt or acceptance expectation when the child crosses an actor, session, or owner boundary; use null only when no receipt expectation is required
 - closeoutrequired, checkpointrequired, and progressionrequired
 
 ### Support artifacts

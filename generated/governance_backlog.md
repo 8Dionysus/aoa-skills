@@ -106,7 +106,7 @@ Read those rows as per-skill maintenance signals, not as missing canonical-decis
 | aoa-session-self-diagnose | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-session-self-diagnose.md | 54e0926c66ea | 54e0926c66ea | True | - | true |
 | aoa-session-self-repair | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-session-self-repair.md | 98ddb602e94b | 98ddb602e94b | True | - | true |
 | aoa-source-of-truth-check | canonical | published | default_reference | docs/reviews/status-promotions/aoa-source-of-truth-check.md | 7f6e64468a52 | 7f6e64468a52 | True | - | true |
-| aoa-summon | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-summon.md | 49650198b093 | 49650198b093 | True | - | true |
+| aoa-summon | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-summon.md | 552956c24589 | 552956c24589 | True | - | true |
 | atm10-change-protocol | evaluated | published | - | docs/reviews/status-promotions/atm10-change-protocol.md | eb340748d355 | eb340748d355 | True | - | true |
 | atm10-source-of-truth-check | evaluated | published | - | docs/reviews/status-promotions/atm10-source-of-truth-check.md | fccd8fdf392a | fccd8fdf392a | True | - | true |
 
