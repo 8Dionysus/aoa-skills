@@ -39,6 +39,7 @@ SECTION_KEY_BY_HEADING = {
     "Adaptation points": "adaptation_points",
 }
 SECTION_HEADING_PATTERN = re.compile(r"^[ ]{0,3}##\s+(.+?)\s*$")
+FENCE_DELIMITER_PATTERN = re.compile(r"^[ ]{0,3}(`{3,}|~{3,})")
 
 
 @dataclass(frozen=True)
@@ -72,6 +73,7 @@ def extract_top_level_sections(body: str) -> list[tuple[str, str]]:
     current_heading: str | None = None
     current_lines: list[str] = []
     normalized_body = body.replace("\r\n", "\n").replace("\r", "\n")
+    active_fence: tuple[str, int] | None = None
 
     def flush_current() -> None:
         nonlocal current_heading, current_lines
@@ -82,8 +84,20 @@ def extract_top_level_sections(body: str) -> list[tuple[str, str]]:
         current_lines = []
 
     for line in normalized_body.split("\n"):
+        fence_match = FENCE_DELIMITER_PATTERN.match(line)
+        if fence_match:
+            delimiter = fence_match.group(1)
+            delimiter_key = (delimiter[0], len(delimiter))
+            if active_fence is None:
+                active_fence = delimiter_key
+            elif delimiter_key[0] == active_fence[0] and delimiter_key[1] >= active_fence[1]:
+                active_fence = None
+            if current_heading is not None:
+                current_lines.append(line)
+            continue
+
         heading_match = SECTION_HEADING_PATTERN.match(line)
-        if heading_match:
+        if active_fence is None and heading_match:
             flush_current()
             current_heading = heading_match.group(1).strip()
             continue

@@ -250,6 +250,23 @@ class BuildCatalogCoreTests(BuildCatalogCase):
         ):
             build_catalog.write_capsules(repo_root)
 
+    def test_write_capsules_ignores_fenced_fake_heading(self) -> None:
+        repo_root = self.make_repo()
+        skill_md_path = repo_root / "skills" / "aoa-test-skill" / "SKILL.md"
+        skill_md_path.write_text(
+            skill_md_path.read_text(encoding="utf-8").replace(
+                "## Verification\n\n- verify\n\n",
+                "## Procedure\n\n1. step\n\n```md\n## Verification\n\n- example only\n```\n\n",
+            ),
+            encoding="utf-8",
+        )
+
+        with self.assertRaisesRegex(
+            ValueError,
+            "capsule source section 'Verification' is missing",
+        ):
+            build_catalog.write_capsules(repo_root)
+
 
 if __name__ == "__main__":
     unittest.main()
