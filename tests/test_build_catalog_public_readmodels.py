@@ -116,6 +116,25 @@ class BuildCatalogPublicReadmodelsTests(BuildCatalogCase):
         self.assertIn("## aoa-test-skill", markdown)
         self.assertIn("`runtime_example` (selected)", markdown)
 
+    def test_walkthrough_object_shape_preserves_inline_code_keys(self) -> None:
+        repo_root = self.make_repo()
+        skill_path = repo_root / "skills" / "aoa-test-skill" / "SKILL.md"
+        skill_text = skill_path.read_text(encoding="utf-8")
+        skill_path.write_text(
+            skill_text.replace(
+                "- output",
+                "- `summon_result.return_receipt_plan` and `checkpoint_bridge_plan`",
+            ),
+            encoding="utf-8",
+        )
+
+        payload = build_catalog.build_walkthrough_payload(repo_root)
+
+        self.assertIn(
+            "summon_result.return_receipt_plan and checkpoint_bridge_plan",
+            payload["skills"][0]["object_use_shape"],
+        )
+
     def test_walkthrough_support_artifact_precedence_prefers_runtime_example_then_review(
         self,
     ) -> None:
