@@ -825,11 +825,11 @@ def execute_install_plan(
     for step in plan["steps"]:
         source_dir = Path(str(step["source_dir"]))
         target_dir = Path(str(step["target_dir"]))
+        if not source_dir.exists():
+            raise ValueError(f"missing source skill export: {source_dir}")
         if source_dir.resolve() == target_dir.resolve():
             if not target_dir.is_symlink() or str(plan["mode"]) == "symlink":
                 continue
-        if not source_dir.exists():
-            raise ValueError(f"missing source skill export: {source_dir}")
 
         if target_dir.exists():
             if not overwrite:

@@ -230,6 +230,30 @@ class InstallProfilesTests(unittest.TestCase):
             self.assertEqual(0, first.returncode, msg=first.stderr or first.stdout)
             self.assertEqual(0, second.returncode, msg=second.stderr or second.stdout)
 
+    def test_install_plan_rejects_missing_source_before_matching_target_skip(self):
+        sys.path.insert(0, str(REPO_ROOT / "scripts"))
+        from bundles import skill_pack_install_contract
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            dest_root = pathlib.Path(tmpdir) / "skills"
+            dest_root.mkdir()
+            target_dir = dest_root / "aoa-change-protocol"
+            target_dir.symlink_to(pathlib.Path(tmpdir) / "missing-source", target_is_directory=True)
+            plan = {
+                "dest_root": str(dest_root),
+                "mode": "symlink",
+                "steps": [
+                    {
+                        "skill": "aoa-change-protocol",
+                        "source_dir": str(target_dir),
+                        "target_dir": str(target_dir),
+                    }
+                ],
+            }
+
+            with self.assertRaisesRegex(ValueError, "missing source skill export"):
+                skill_pack_install_contract.execute_install_plan(plan, overwrite=False)
+
     def test_install_profile_copy_overwrite_replaces_symlink_target(self):
         with tempfile.TemporaryDirectory() as tmpdir:
             dest_root = pathlib.Path(tmpdir) / "skills"
