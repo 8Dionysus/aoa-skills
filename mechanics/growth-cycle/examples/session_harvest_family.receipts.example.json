@@ -100,10 +100,16 @@
     ],
     "payload": {
       "route_ref": "route:session-growth",
+      "branch_ids": [
+        "automation-first",
+        "manual-hold",
+        "method-growth-followthrough"
+      ],
+      "suggested_default_branch": "automation-first",
+      "predicted_gain_posture": "higher post-session reuse",
+      "predicted_cost_posture": "low",
+      "predicted_risk_posture": "bounded",
       "chosen_branch": "automation-first",
-      "branch_options_count": 3,
-      "predicted_gain": "higher post-session reuse",
-      "predicted_risk": "bounded",
       "realized_outcome_refs": []
     }
   },
@@ -419,10 +425,15 @@
     ],
     "payload": {
       "route_ref": "route:session-growth",
+      "branch_ids": [
+        "ship-adjunct",
+        "hold-for-manual-review"
+      ],
+      "suggested_default_branch": "ship-adjunct",
+      "predicted_gain_posture": "live derived stats layer",
+      "predicted_cost_posture": "medium",
+      "predicted_risk_posture": "moderate",
       "chosen_branch": "ship-adjunct",
-      "branch_options_count": 2,
-      "predicted_gain": "live derived stats layer",
-      "predicted_risk": "moderate",
       "realized_outcome_refs": [
         "repo:aoa-skills/mechanics/growth-cycle/examples/session-growth-artifacts/automation_candidate.derived-visibility-handoff.json"
       ]

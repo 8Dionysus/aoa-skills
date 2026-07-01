@@ -9,6 +9,21 @@ import yaml
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 
+SESSION_GROWTH_RECEIPT_SCHEMA_BY_KIND = {
+    "harvest_packet_receipt": (
+        "skills/core/session-growth/aoa-session-donor-harvest/references/harvest-packet-receipt-schema.yaml"
+    ),
+    "decision_fork_receipt": (
+        "skills/core/session-growth/aoa-session-route-forks/references/decision-fork-receipt-schema.yaml"
+    ),
+    "diagnosis_packet_receipt": (
+        "skills/core/session-growth/aoa-session-self-diagnose/references/diagnosis-packet-receipt-schema.yaml"
+    ),
+    "repair_cycle_receipt": (
+        "skills/core/session-growth/aoa-session-self-repair/references/repair-cycle-receipt-schema.yaml"
+    ),
+}
+
 
 def _load_json(relative_path: str) -> dict:
     return json.loads((REPO_ROOT / relative_path).read_text(encoding="utf-8"))
@@ -145,6 +160,31 @@ def test_harvest_packet_receipt_allows_candidate_lineage_entries_without_seed_or
     assert all("seed_ref" not in entry for entry in lineage_entries)
     assert all("object_ref" not in entry for entry in lineage_entries)
     assert any("must not carry seed_ref or object_ref" in rule for rule in schema["rules"])
+
+
+def test_session_harvest_family_receipts_match_session_growth_contract_fields() -> None:
+    receipt_family = json.loads(
+        (
+            REPO_ROOT
+            / "mechanics"
+            / "growth-cycle"
+            / "examples"
+            / "session_harvest_family.receipts.example.json"
+        ).read_text(encoding="utf-8")
+    )
+
+    for receipt in receipt_family:
+        schema_path = SESSION_GROWTH_RECEIPT_SCHEMA_BY_KIND.get(receipt["event_kind"])
+        if schema_path is None:
+            continue
+        required_fields = _load_yaml(schema_path)["required_payload_fields"]
+        payload = receipt["payload"]
+        missing = [field for field in required_fields if field not in payload]
+        assert not missing, f"{receipt['event_id']} missing payload fields: {missing}"
+
+        if receipt["event_kind"] == "decision_fork_receipt":
+            assert "predicted_gain" not in payload
+            assert "predicted_risk" not in payload
 
 
 def test_core_ring_skills_remain_explicit_only() -> None:
