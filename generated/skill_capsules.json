@@ -15,7 +15,7 @@
         "AOA-T-0028",
         "AOA-T-0001"
       ],
-      "trigger_boundary_short": "Use when the base aoa-safe-infra-change workflow is already correct, but an abyss- repo needs repo-relative operational surfaces, commands, or approval notes; the task is a bounded infrastructure, service,...",
+      "trigger_boundary_short": "Use when the base aoa-safe-infra-change workflow is already correct, but an abyss-* repo needs repo-relative operational surfaces, commands, or approval notes; the task is a bounded infrastructure, service,...",
       "verification_short": "Checks: confirm the base skill is still the correct workflow; confirm repo-relative paths, commands, receipts, or runtime checks are named explicitly; confirm local authority, stop condition, rollback posture, and...",
       "workflow_short": "Purpose: adapt aoa-safe-infra-change to an abyss- repository when the base operational workflow is correct but the local repo still needs repo-relative commands, authority notes, and risk framing. Flow: start from aoa-safe-infra-change instead of..."
     },
@@ -33,7 +33,7 @@
         "AOA-T-0034",
         "AOA-T-0002"
       ],
-      "trigger_boundary_short": "Use when the base aoa-sanitized-share workflow is already correct, but an abyss- repo needs local sharing surfaces, repo-relative paths, or explicit sanitization thresholds; raw logs, diagnostics, config snippets,...",
+      "trigger_boundary_short": "Use when the base aoa-sanitized-share workflow is already correct, but an abyss-* repo needs local sharing surfaces, repo-relative paths, or explicit sanitization thresholds; raw logs, diagnostics, config snippets,...",
       "verification_short": "Checks: confirm the base skill is still the correct workflow; confirm the repo-relative sharing surface is named explicitly; confirm audience, thresholds, retention, and review posture are visible rather than...",
       "workflow_short": "Purpose: adapt aoa-sanitized-share to an abyss- repository when the base sanitization workflow is right but the local repo still needs repo-relative sharing surfaces, thresholds, and review posture. Flow: start from aoa-sanitized-share rather than..."
     },
@@ -51,7 +51,7 @@
         "AOA-T-0080",
         "AOA-T-0081"
       ],
-      "trigger_boundary_short": "Use when the base aoa-session-self-diagnose workflow is already correct, but an abyss- repo needs one runtime-owned diagnostic session artifact with repo-relative evidence refs; a concrete runtime path must be...",
+      "trigger_boundary_short": "Use when the base aoa-session-self-diagnose workflow is already correct, but an abyss-* repo needs one runtime-owned diagnostic session artifact with repo-relative evidence refs; a concrete runtime path must be...",
       "verification_short": "Checks: confirm the base skill is still the correct workflow; confirm a concrete target exists; confirm the produced artifact stays runtime-owned and citation-friendly; confirm drift classes are named explicitly.",
       "workflow_short": "Purpose: adapt aoa-session-self-diagnose to an abyss- repository when the local repo needs one runtime-owned diagnostic session artifact that can cite runtime evidence, compare against last-good posture, and hand off honestly toward the reviewed session..."
     },
@@ -730,7 +730,7 @@
         "AOA-T-0001",
         "AOA-T-0002"
       ],
-      "trigger_boundary_short": "Use when the base aoa-change-protocol workflow is already correct, but an atm10- repo needs repo-relative paths, commands, or local approval notes; a bounded non-trivial change still needs an explicit plan and...",
+      "trigger_boundary_short": "Use when the base aoa-change-protocol workflow is already correct, but an atm10-* repo needs repo-relative paths, commands, or local approval notes; a bounded non-trivial change still needs an explicit plan and...",
       "verification_short": "Checks: confirm the base skill is still the correct workflow; confirm repo-relative paths and commands are named explicitly; confirm the relevant ATM10 route cards and source-of-truth surfaces were inspected;...",
       "workflow_short": "Purpose: adapt aoa-change-protocol to an atm10- repository without changing the base workflow meaning or moving ATM10 runtime authority into aoa-skills. Flow: start from aoa-change-protocol rather than rewriting the workflow -> read the ATM10 root route..."
     },
@@ -749,7 +749,7 @@
         "AOA-T-0002",
         "AOA-T-0009"
       ],
-      "trigger_boundary_short": "Use when the base aoa-source-of-truth-check workflow is already correct, but an atm10- repo needs local canonical-file patterns, repo-relative docs, or doc review rules; contributors need a thin overlay that maps...",
+      "trigger_boundary_short": "Use when the base aoa-source-of-truth-check workflow is already correct, but an atm10-* repo needs local canonical-file patterns, repo-relative docs, or doc review rules; contributors need a thin overlay that maps...",
       "verification_short": "Checks: confirm the base skill is still the right workflow; confirm authoritative repo-relative files are named explicitly; confirm local review posture is visible rather than implied; confirm the adaptation reduces...",
       "workflow_short": "Purpose: adapt aoa-source-of-truth-check to an atm10- repository when the base workflow is right but the local public-doc and repo-surface map needs repo-relative detail. Flow: start from aoa-source-of-truth-check instead of inventing a family-specific..."
     },

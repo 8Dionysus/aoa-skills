@@ -62,10 +62,18 @@ def parse_skill_sections(body: str) -> dict[str, str]:
 
 
 def normalize_inline_markdown(text: str) -> str:
+    code_spans: list[str] = []
+
+    def stash_inline_code(match: re.Match[str]) -> str:
+        code_spans.append(match.group(1))
+        return f"@@CODE{len(code_spans) - 1}@@"
+
     normalized = MARKDOWN_LINK_PATTERN.sub(r"\1", text)
-    normalized = INLINE_CODE_PATTERN.sub(r"\1", normalized)
+    normalized = INLINE_CODE_PATTERN.sub(stash_inline_code, normalized)
     normalized = EMPHASIS_PATTERN.sub("", normalized)
     normalized = normalized.replace("\\", "")
+    for index, code in enumerate(code_spans):
+        normalized = normalized.replace(f"@@CODE{index}@@", code)
     return " ".join(normalized.split())
 
 

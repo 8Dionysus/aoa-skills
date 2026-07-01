@@ -34,7 +34,7 @@ Common expand sections:
 
 ### Use when
 
-- the base aoa-safe-infra-change workflow is already correct, but an abyss- repo needs repo-relative operational surfaces, commands, or approval notes
+- the base aoa-safe-infra-change workflow is already correct, but an abyss-* repo needs repo-relative operational surfaces, commands, or approval notes
 - the task is a bounded infrastructure, service, configuration, or operational change inside one local repo family
 - the local surface is repo-owned operational material such as a compose file, service wrapper, env or config template, bootstrap script, deployment toggle, restart rule, runtime check, or generated operational receipt
 - explicit local authority, rollback posture, or verification commands still need to be named before execution
@@ -44,7 +44,7 @@ Common expand sections:
 ### Do not use when
 
 - the task is really about producing a shareable public-safe artifact rather than the operational change itself; use abyss-sanitized-share
-- no abyss- repo adaptation is needed and the base aoa-safe-infra-change skill is sufficient
+- no abyss-* repo adaptation is needed and the base aoa-safe-infra-change skill is sufficient
 - the overlay would only restate the base workflow without adding a real local surface
 - the main question is whether authority exists at all; use aoa-approval-gate-check
 - the main need is to prefer or interpret a preview path before execution; use aoa-dry-run-first
@@ -77,8 +77,8 @@ Common expand sections:
 
 ### Use when
 
-- the base aoa-sanitized-share workflow is already correct, but an abyss- repo needs local sharing surfaces, repo-relative paths, or explicit sanitization thresholds
-- raw logs, diagnostics, config snippets, or incident notes from one abyss- repo need a bounded public-safe or wider-shareable form
+- the base aoa-sanitized-share workflow is already correct, but an abyss-* repo needs local sharing surfaces, repo-relative paths, or explicit sanitization thresholds
+- raw logs, diagnostics, config snippets, or incident notes from one abyss-* repo need a bounded public-safe or wider-shareable form
 - the local repo needs a canonical place or review posture for the sanitized output
 - the material mixes durable lessons with raw paths, hostnames, account names, environment values, stack traces, timing traces, local commands, or unpublished operational context
 - the share target needs an explicit audience, retention posture, and raw-vs-sanitized separation before publication or handoff
@@ -87,7 +87,7 @@ Common expand sections:
 ### Do not use when
 
 - the real task is the underlying operational or configuration mutation itself; use abyss-safe-infra-change
-- no abyss- repo adaptation is needed and the base aoa-sanitized-share skill is sufficient
+- no abyss-* repo adaptation is needed and the base aoa-sanitized-share skill is sufficient
 - the overlay would only restate the base sanitization workflow without adding a real local sharing surface
 - the main question is whether the underlying action should be allowed at all; use aoa-approval-gate-check
 - the material is already clearly public-safe and no local sharing surface or threshold needs clarification
@@ -121,7 +121,7 @@ Common expand sections:
 
 ### Use when
 
-- the base aoa-session-self-diagnose workflow is already correct, but an abyss- repo needs one runtime-owned diagnostic session artifact with repo-relative evidence refs
+- the base aoa-session-self-diagnose workflow is already correct, but an abyss-* repo needs one runtime-owned diagnostic session artifact with repo-relative evidence refs
 - a concrete runtime path must be diagnosed before any repair claim becomes honest
 - multiple runtime-body signals exist but remain scattered across local docs, logs, checks, generated receipts, or run outputs
 - the evidence spans axes such as doctor, machine-fit, render-truth, smoke, autonomy, config projection, route receipt, or last-good comparison and needs one bounded diagnostic shape
@@ -136,13 +136,13 @@ Common expand sections:
 - the main confusion is which diagnostic doc, runbook, or route surface is authoritative; use aoa-source-of-truth-check
 - the ask is only to run a generic doctor or health command without producing a reviewed diagnostic artifact
 - the request needs a broad project doctrine change, quest mutation, progression update, or repair packet rather than read-only diagnosis
-- no abyss- repo adaptation is needed and the base aoa-session-self-diagnose skill is sufficient
+- no abyss-* repo adaptation is needed and the base aoa-session-self-diagnose skill is sufficient
 - the work would widen into broader project doctrine instead of a thin local overlay
 
 ### Object use shape
 
-- one bounded runtime-owned diagnosticsessionv1
-- one explicit exitclass chosen from a locally named finite set, such as retest, governedrepair, manualregrounding, ownerhandoff, or insufficientevidence
+- one bounded runtime-owned diagnostic_session_v1
+- one explicit exit_class chosen from a locally named finite set, such as retest, governed_repair, manual_regrounding, owner_handoff, or insufficient_evidence
 - named drift classes with evidence refs and unknowns when needed
 - per-axis verdicts that preserve mixed states instead of flattening everything into one pass/fail result
 - freshness and confidence notes for each major evidence family
@@ -253,7 +253,7 @@ Common expand sections:
 
 - a reviewed session or repeated project slice reveals a recurring manual route
 - the same audit, report, hygiene pass, or triage loop keeps coming back
-- a session-harvest packet includes an automationcandidate
+- a session-harvest packet includes an automation_candidate
 - an operator wants to know whether a recurring route should stay manual, become a bounded skill, or become a playbook automation seed
 - repeated friction suggests a good automation opportunity but authority and risk still need classification
 
@@ -267,14 +267,14 @@ Common expand sections:
 
 ### Object use shape
 
-- AUTOMATIONOPPORTUNITYPACKET
-- one or more AUTOMATIONCANDIDATE cards
-- seedready or notnow verdict for each candidate
-- automationmodeposture for the highest honest mode the candidate may claim now
-- checkpointrequired flag when the route crosses self-change or approval-sensitive boundaries
-- next-artifact suggestion such as skill, playbookseed, techniquecandidate, repairquest, quest, or defer
-- one AUTOMATIONCANDIDATERECEIPT using references/stats-event-envelope.md and references/automation-candidate-receipt-schema.yaml
-- one CORESKILLAPPLICATIONRECEIPT using references/core-skill-application-receipt-schema.yaml
+- AUTOMATION_OPPORTUNITY_PACKET
+- one or more AUTOMATION_CANDIDATE cards
+- seed_ready or not_now verdict for each candidate
+- automation_mode_posture for the highest honest mode the candidate may claim now
+- checkpoint_required flag when the route crosses self-change or approval-sensitive boundaries
+- next-artifact suggestion such as skill, playbook_seed, technique_candidate, repair_quest, quest, or defer
+- one AUTOMATION_CANDIDATE_RECEIPT using references/stats-event-envelope.md and references/automation-candidate-receipt-schema.yaml
+- one CORE_SKILL_APPLICATION_RECEIPT using references/core-skill-application-receipt-schema.yaml
 
 ### Support artifacts
 
@@ -435,7 +435,7 @@ Common expand sections:
 ### Object use shape
 
 - one bounded commit-or-defer decision
-- commitauthorizationposture, such as authorizednow, defercommit, needssplit, or needsverification
+- commit_authorization_posture, such as authorized_now, defer_commit, needs_split, or needs_verification
 - one intentional local commit, or one explicit refusal to commit yet
 - one honest commit message that matches the bounded unit
 - one carry-forward note for what was verified and what remains unresolved
@@ -723,7 +723,7 @@ Common expand sections:
 - route signs can trigger this skill even when the user never says eval repeated agent route failure, skipped validator/test/script evidence, unsafe proof/local/MCP/session mixing, or missed trigger behavior is enough pressure
 - the task mentions aoa-evals, aoa-evals-mcp, local eval ports, eval intake, graders, traces, regressions, validators, tests, or scripts as evaluation surfaces
 - a repo-family or workspace-local eval-port inventory, or missing/skeleton/active/invalid port status, is available before choosing a local eval route
-- an OS Abyss eval session needs a current readiness packet, including any available evalforgefrontdoor and EVALFORGEOPERATINGPATH.md, before selecting tools or touching local eval files
+- an OS Abyss eval session needs a current readiness packet, including any available eval_forge_front_door and EVAL_FORGE_OPERATING_PATH.md, before selecting tools or touching local eval files
 - session evidence may reveal missed eval moments, but only after web and repo owner surfaces have been checked
 - a route must separate proof authority, local intake pressure, MCP access, and raw session evidence
 
@@ -828,7 +828,7 @@ Common expand sections:
 - a local repository needs an eval pressure packet but not a central proof bundle yet
 - no existing local validator, test, script, or central eval bundle covers the failure or behavior
 - a repeated session or implementation failure needs owner-routed follow-up
-- the right next artifact is evals/intake/.evalneed.json
+- the right next artifact is evals/intake/*.eval_need.json
 
 ### Do not use when
 
@@ -1017,8 +1017,8 @@ Common expand sections:
 
 ### Object use shape
 
-- one memowritebackdecision: writecandidate, prepareexport, nowritebackneeded, routeonlydebt, needsownerreview, or blocked
-- if writing is warranted and a local port exists: one local memo candidate with source refs, evidence refs, trust posture, risk markers, and directdurablewrite=false
+- one memo_writeback_decision: write_candidate, prepare_export, no_writeback_needed, route_only_debt, needs_owner_review, or blocked
+- if writing is warranted and a local port exists: one local memo candidate with source refs, evidence refs, trust posture, risk markers, and direct_durable_write=false
 - if review already accepted promotion: one reviewed-intake export packet or landing-plan handoff, not a durable memory object
 - if no writeback is warranted: one concise no-writeback stop line with the reason and strongest evidence checked
 - if the repo is route-only or the port is missing or stale: one writeback-debt note naming the owner route and the evidence refs needed
@@ -1144,12 +1144,12 @@ Common expand sections:
 - promotion verdict
 - owner repo and follow-up surface
 - explicit reason for promotion or non-promotion
-- repeat evidence posture such as reviewedrepeatisolated, reviewedrepeatweak, contestedrepeat, topiconlyrepeat, mixedresidue, or ownerpending
+- repeat evidence posture such as reviewed_repeat_isolated, reviewed_repeat_weak, contested_repeat, topic_only_repeat, mixed_residue, or owner_pending
 - explicit statement that the verdict is smaller than authoring or owner acceptance in the destination repo
 - named next artifact or next quest action
 - concise note on what boundary must remain intact
-- one QUESTPROMOTIONRECEIPT using references/stats-event-envelope.md and references/quest-promotion-receipt-schema.yaml
-- one CORESKILLAPPLICATIONRECEIPT using references/core-skill-application-receipt-schema.yaml
+- one QUEST_PROMOTION_RECEIPT using references/stats-event-envelope.md and references/quest-promotion-receipt-schema.yaml
+- one CORE_SKILL_APPLICATION_RECEIPT using references/core-skill-application-receipt-schema.yaml
 
 ### Support artifacts
 
@@ -1257,7 +1257,7 @@ Common expand sections:
 
 ### Object use shape
 
-- one bounded HARVESTPACKET
+- one bounded HARVEST_PACKET
 - one reviewed intake note that says which checkpoint or handoff hints were accepted, rejected, or carried as unresolved focus only
 - named candidates, each with
 - candidate ref minted only after reviewed harvest
@@ -1271,10 +1271,10 @@ Common expand sections:
 - status posture plus any supersedes, merged-into, or drop-reason carry
 - evidence anchors from the session artifact
 - one short list of items to defer, drop, or keep as quest residue
-- one optional automationcandidate extract when a repeated manual route is stable enough to deserve explicit automation-readiness classification
+- one optional automation_candidate extract when a repeated manual route is stable enough to deserve explicit automation-readiness classification
 - one optional handoff list to aoa-automation-opportunity-scan, aoa-session-route-forks, aoa-session-self-diagnose, aoa-session-self-repair only when a reviewed diagnosis already exists, aoa-session-progression-lift, or aoa-quest-harvest
-- one HARVESTPACKETRECEIPT using references/stats-event-envelope.md and references/harvest-packet-receipt-schema.yaml
-- one CORESKILLAPPLICATIONRECEIPT using references/core-skill-application-receipt-schema.yaml
+- one HARVEST_PACKET_RECEIPT using references/stats-event-envelope.md and references/harvest-packet-receipt-schema.yaml
+- one CORE_SKILL_APPLICATION_RECEIPT using references/core-skill-application-receipt-schema.yaml
 
 ### Support artifacts
 
@@ -1310,15 +1310,15 @@ Common expand sections:
 
 ### Object use shape
 
-- PROGRESSIONDELTA with axis movement, verdict, and optional unlock hints
-- baseline posture such as baselineref, priordeltaref, firstobserved, baselinemissing, baselinestale, or baselinecontested
+- PROGRESSION_DELTA with axis movement, verdict, and optional unlock hints
+- baseline posture such as baseline_ref, prior_delta_ref, first_observed, baseline_missing, baseline_stale, or baseline_contested
 - one axis table where each meaningful axis names movement, evidence refs, evidence posture, and any defer or no-movement reason
 - optional automation-readiness hint when reviewed evidence supports it
 - optional rank reflection note if evidence is strong enough
 - quest hooks or chronicle stub when useful
 - negative or cautionary evidence when a hold, reanchor, or downgrade is more honest than advance
-- one PROGRESSIONDELTARECEIPT using references/stats-event-envelope.md and references/progression-delta-receipt-schema.yaml
-- one CORESKILLAPPLICATIONRECEIPT using references/core-skill-application-receipt-schema.yaml
+- one PROGRESSION_DELTA_RECEIPT using references/stats-event-envelope.md and references/progression-delta-receipt-schema.yaml
+- one CORE_SKILL_APPLICATION_RECEIPT using references/core-skill-application-receipt-schema.yaml
 
 ### Support artifacts
 
@@ -1352,13 +1352,13 @@ Common expand sections:
 
 ### Object use shape
 
-- FORKCARDS with likely gain, cost, risk, owner repo, and stop conditions
+- FORK_CARDS with likely gain, cost, risk, owner repo, and stop conditions
 - one suggested default route if evidence is strong enough
 - one explicit hold or defer option when honest uncertainty remains
 - optional automation and non-automation branches side by side when that choice is real
 - optional quest hooks or campaign hints without runtime authority
-- one DECISIONFORKRECEIPT using references/stats-event-envelope.md and references/decision-fork-receipt-schema.yaml
-- one CORESKILLAPPLICATIONRECEIPT using references/core-skill-application-receipt-schema.yaml
+- one DECISION_FORK_RECEIPT using references/stats-event-envelope.md and references/decision-fork-receipt-schema.yaml
+- one CORE_SKILL_APPLICATION_RECEIPT using references/core-skill-application-receipt-schema.yaml
 
 ### Support artifacts
 
@@ -1393,14 +1393,14 @@ Common expand sections:
 
 ### Object use shape
 
-- DIAGNOSISPACKET with drift types, symptoms, probable causes, repair shapes, and owner hints
+- DIAGNOSIS_PACKET with drift types, symptoms, probable causes, repair shapes, and owner hints
 - evidence posture for each meaningful symptom and probable cause, such as reviewed symptom, reviewed inference, provisional hint, contested evidence, stale evidence, or unknown
 - severity or urgency notes when evidence supports them
 - explicit unknowns when diagnosis remains incomplete
 - optional blocked-automation findings such as unstable inputs, hidden approval, rollback gaps, or secret coupling
 - optional handoff to aoa-session-self-repair
-- one DIAGNOSISPACKETRECEIPT using references/stats-event-envelope.md and references/diagnosis-packet-receipt-schema.yaml
-- one CORESKILLAPPLICATIONRECEIPT using references/core-skill-application-receipt-schema.yaml
+- one DIAGNOSIS_PACKET_RECEIPT using references/stats-event-envelope.md and references/diagnosis-packet-receipt-schema.yaml
+- one CORE_SKILL_APPLICATION_RECEIPT using references/core-skill-application-receipt-schema.yaml
 
 ### Support artifacts
 
@@ -1435,13 +1435,13 @@ Common expand sections:
 
 ### Object use shape
 
-- REPAIRPACKET with target owner repo, smallest diff shape, approval need, rollback marker, health check, and improvement-log stub
+- REPAIR_PACKET with target owner repo, smallest diff shape, approval need, rollback marker, health check, and improvement-log stub
 - explicit repair execution posture such as proposed, prepared, executing, verified, blocked, or handoffrequired
 - optional repair quest when execution should remain deferred
 - optional automation-readiness prerequisite packet when the real need is to stabilize a route before later automation scanning or seeding
 - explicit stop conditions and escalation points
-- one REPAIRCYCLERECEIPT using references/stats-event-envelope.md and references/repair-cycle-receipt-schema.yaml
-- one CORESKILLAPPLICATIONRECEIPT using references/core-skill-application-receipt-schema.yaml
+- one REPAIR_CYCLE_RECEIPT using references/stats-event-envelope.md and references/repair-cycle-receipt-schema.yaml
+- one CORE_SKILL_APPLICATION_RECEIPT using references/core-skill-application-receipt-schema.yaml
 
 ### Support artifacts
 
@@ -1522,12 +1522,12 @@ Common expand sections:
 ### Object use shape
 
 - one summon decision with allowed or blocked posture
-- one chosen lane such as codexlocalleaf, codexlocalreviewed, remotereviewed, splitrequired, or humangate
-- executionsurface, cohortpattern, reasoncodes, and blockedactions
-- optional codexlocaltarget
-- returnplan, checkpointbridgeplan, returnreceiptplan, memoexportplan, and ownerpublicationplan
-- summonresult.returnreceiptplan is the explicit return receipt or acceptance expectation when the child crosses an actor, session, or owner boundary; use null only when no receipt expectation is required
-- closeoutrequired, checkpointrequired, and progressionrequired
+- one chosen lane such as codex_local_leaf, codex_local_reviewed, remote_reviewed, split_required, or human_gate
+- execution_surface, cohort_pattern, reason_codes, and blocked_actions
+- optional codex_local_target
+- return_plan, checkpoint_bridge_plan, return_receipt_plan, memo_export_plan, and owner_publication_plan
+- summon_result.return_receipt_plan is the explicit return receipt or acceptance expectation when the child crosses an actor, session, or owner boundary; use null only when no receipt expectation is required
+- closeout_required, checkpoint_required, and progression_required
 
 ### Support artifacts
 
@@ -1583,7 +1583,7 @@ Common expand sections:
 
 ### Use when
 
-- the base aoa-change-protocol workflow is already correct, but an atm10- repo needs repo-relative paths, commands, or local approval notes
+- the base aoa-change-protocol workflow is already correct, but an atm10-* repo needs repo-relative paths, commands, or local approval notes
 - a bounded non-trivial change still needs an explicit plan and verification path inside the local repo
 - a contributor needs a thin local overlay rather than a fresh workflow design
 - the change touches ATM10 public docs, scripts, schemas, source modules, tests, or workflow files and the nearest route cards must be read before editing
@@ -1626,7 +1626,7 @@ Common expand sections:
 
 ### Use when
 
-- the base aoa-source-of-truth-check workflow is already correct, but an atm10- repo needs local canonical-file patterns, repo-relative docs, or doc review rules
+- the base aoa-source-of-truth-check workflow is already correct, but an atm10-* repo needs local canonical-file patterns, repo-relative docs, or doc review rules
 - contributors need a thin overlay that maps repo-relative docs such as README.md, docs/ARCHITECTURE.md, or docs/[canonical-guide].md
 - confusion exists between overview docs and authoritative files inside one local repo
 - active commands, archived commands, public status, support-profile claims, runtime baseline notes, release posture, or local-only planning surfaces are being mixed
