@@ -2405,6 +2405,63 @@
       "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, assets, checks, and examples do not trigger per-file permission prompts."
     },
     {
+      "name": "os-abyss-artifact-trust-loop",
+      "display_name": "Os Abyss Artifact Trust Loop",
+      "source_scope": "repo",
+      "allowlist_id": "skill:os-abyss-artifact-trust-loop",
+      "read_access": "read-only",
+      "merge_strategy": "union-active-skills",
+      "path_templates": {
+        "repo": [
+          "$REPO_ROOT/.agents/skills/os-abyss-artifact-trust-loop",
+          "$REPO_ROOT/.agents/skills/os-abyss-artifact-trust-loop/scripts",
+          "$REPO_ROOT/.agents/skills/os-abyss-artifact-trust-loop/references",
+          "$REPO_ROOT/.agents/skills/os-abyss-artifact-trust-loop/assets",
+          "$REPO_ROOT/.agents/skills/os-abyss-artifact-trust-loop/checks",
+          "$REPO_ROOT/.agents/skills/os-abyss-artifact-trust-loop/examples"
+        ],
+        "user": [
+          "$HOME/.codex/skills/os-abyss-artifact-trust-loop",
+          "$HOME/.codex/skills/os-abyss-artifact-trust-loop/scripts",
+          "$HOME/.codex/skills/os-abyss-artifact-trust-loop/references",
+          "$HOME/.codex/skills/os-abyss-artifact-trust-loop/assets",
+          "$HOME/.codex/skills/os-abyss-artifact-trust-loop/checks",
+          "$HOME/.codex/skills/os-abyss-artifact-trust-loop/examples"
+        ],
+        "admin": [
+          "/etc/codex/skills/os-abyss-artifact-trust-loop",
+          "/etc/codex/skills/os-abyss-artifact-trust-loop/scripts",
+          "/etc/codex/skills/os-abyss-artifact-trust-loop/references",
+          "/etc/codex/skills/os-abyss-artifact-trust-loop/assets",
+          "/etc/codex/skills/os-abyss-artifact-trust-loop/checks",
+          "/etc/codex/skills/os-abyss-artifact-trust-loop/examples"
+        ]
+      },
+      "repo_relative_paths": [
+        ".agents/skills/os-abyss-artifact-trust-loop",
+        ".agents/skills/os-abyss-artifact-trust-loop/scripts",
+        ".agents/skills/os-abyss-artifact-trust-loop/references",
+        ".agents/skills/os-abyss-artifact-trust-loop/assets",
+        ".agents/skills/os-abyss-artifact-trust-loop/checks",
+        ".agents/skills/os-abyss-artifact-trust-loop/examples"
+      ],
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/example.md"
+        ]
+      },
+      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, assets, checks, and examples do not trigger per-file permission prompts."
+    },
+    {
       "name": "titan-approval-ledger",
       "display_name": "Titan Approval Ledger",
       "source_scope": "repo",

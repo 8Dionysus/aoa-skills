@@ -427,6 +427,16 @@
       "description_sha256": "8cd17be221e3bf3352b948cc0f4e0fcd3afad8d9999de0c5f414d0eb6092a305"
     },
     {
+      "skill_name": "os-abyss-artifact-trust-loop",
+      "path": ".agents/skills/os-abyss-artifact-trust-loop",
+      "command": [
+        "skills-ref",
+        "validate",
+        ".agents/skills/os-abyss-artifact-trust-loop"
+      ],
+      "description_sha256": "4e651ff7b53f12a4cfe733dea9959ed56e75a93ff6c1d7df1c8a34bd53da5b27"
+    },
+    {
       "skill_name": "titan-approval-ledger",
       "path": ".agents/skills/titan-approval-ledger",
       "command": [

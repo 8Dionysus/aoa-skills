@@ -361,6 +361,15 @@
           "trust_posture": "project-overlay"
         },
         {
+          "name": "os-abyss-artifact-trust-loop",
+          "source_path": ".agents/skills/os-abyss-artifact-trust-loop/SKILL.md",
+          "target_path": ".agents/skills/os-abyss-artifact-trust-loop/SKILL.md",
+          "openai_config_path": ".agents/skills/os-abyss-artifact-trust-loop/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "implicit_activation_policy": "manual",
+          "trust_posture": "project-overlay"
+        },
+        {
           "name": "atm10-change-protocol",
           "source_path": ".agents/skills/atm10-change-protocol/SKILL.md",
           "target_path": ".agents/skills/atm10-change-protocol/SKILL.md",
@@ -1638,6 +1647,15 @@
           "source_path": ".agents/skills/abyss-sanitized-share/SKILL.md",
           "target_path": ".agents/skills/abyss-sanitized-share/SKILL.md",
           "openai_config_path": ".agents/skills/abyss-sanitized-share/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "implicit_activation_policy": "manual",
+          "trust_posture": "project-overlay"
+        },
+        {
+          "name": "os-abyss-artifact-trust-loop",
+          "source_path": ".agents/skills/os-abyss-artifact-trust-loop/SKILL.md",
+          "target_path": ".agents/skills/os-abyss-artifact-trust-loop/SKILL.md",
+          "openai_config_path": ".agents/skills/os-abyss-artifact-trust-loop/agents/openai.yaml",
           "allow_implicit_invocation": false,
           "implicit_activation_policy": "manual",
           "trust_posture": "project-overlay"

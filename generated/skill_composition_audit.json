@@ -469,6 +469,18 @@
     {
       "composition_class": "multi_technique",
       "exception_review_path": null,
+      "name": "os-abyss-artifact-trust-loop",
+      "recommended_action": "keep_multi_technique",
+      "technique_count": 3,
+      "technique_ids": [
+        "AOA-T-0001",
+        "AOA-T-0002",
+        "AOA-T-0028"
+      ]
+    },
+    {
+      "composition_class": "multi_technique",
+      "exception_review_path": null,
       "name": "titan-approval-ledger",
       "recommended_action": "keep_multi_technique",
       "technique_count": 3,
@@ -654,9 +666,9 @@
   },
   "summary": {
     "approved_exception_count": 3,
-    "multi_technique_skill_count": 53,
+    "multi_technique_skill_count": 54,
     "needs_reframe_count": 0,
     "single_technique_skill_count": 3,
-    "total_skill_count": 56
+    "total_skill_count": 57
   }
 }

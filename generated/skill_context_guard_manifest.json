@@ -1322,6 +1322,38 @@
       }
     },
     {
+      "name": "os-abyss-artifact-trust-loop",
+      "display_name": "Os Abyss Artifact Trust Loop",
+      "source_scope": "repo",
+      "instruction_sha256": "afaeb0b42ae10ddcf64782cffb493fabcbafa81bd443364976f4edb1894f06a8",
+      "dedupe_key": "os-abyss-artifact-trust-loop:afaeb0b42ae10ddcf64782cffb493fabcbafa81bd443364976f4edb1894f06a8",
+      "protect_from_compaction": true,
+      "pin_strategy": "protected-tool-output",
+      "reactivation_strategy": "compact-packet-then-activate",
+      "compact_summary": "Route OS artifact trust loops",
+      "must_keep": [
+        "artifact path, artifact class, or suspected artifact family",
+        "consumer intent, such as `agent`, `installer`, `runtime`, `release_consumer`, or another owner-defined intent",
+        "resolved or explicitly unknown artifact class",
+        "requirements, producer profile, affected/drift, registry/latest, trust coverage, and trust-gate summary"
+      ],
+      "retain_sections": [
+        "Trigger boundary",
+        "Procedure",
+        "Verification"
+      ],
+      "rehydration_hint": "Reload the full SKILL.md and keep policy, procedure, and verification in active context before resuming.",
+      "activation_card_markdown": "Use when: Route OS Abyss ABI, provenance, signatures, SBOM, SLSA/in-toto, Sigstore/Cosign, C2PA, TUF, SCITT, durable evidence, drift, producer profiles, and trust-gate work through existing abyss-machine read models and owner-local producer routes. Use when an agent needs to inspect or consume bundles, containers, models, runtimes, reports, media exports, source seeds, portable memory bundles, browser extensions, generated machine surfaces, or release artifacts without creating a second trust MCP or violating owner boundaries. Do not use for ordinary local edits, raw .aoa session search, or direct signing/promotion/registry mutation without an authorized owner route.\n\nKeep in memory: artifact path, artifact class, or suspected artifact family, consumer intent, such as `agent`, `installer`, `runtime`, `release_consumer`, or another owner-defined intent, resolved or explicitly unknown artifact class, requirements, producer profile, affected/drift, registry/latest, trust coverage, and trust-gate summary.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "reactivation_call": {
+        "name": "guarded_activate_skill",
+        "arguments": {
+          "skill_name": "os-abyss-artifact-trust-loop",
+          "explicit_handle": "$os-abyss-artifact-trust-loop",
+          "session_file": ".aoa/skill-runtime-session.json"
+        }
+      }
+    },
+    {
       "name": "titan-approval-ledger",
       "display_name": "Titan Approval Ledger",
       "source_scope": "repo",

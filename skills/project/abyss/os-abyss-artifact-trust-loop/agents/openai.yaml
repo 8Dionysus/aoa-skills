@@ -1,0 +1,6 @@
+policy:
+  allow_implicit_invocation: false
+  implicit_activation_policy: manual
+notes:
+- This OS Abyss artifact-trust loop stays manual because it can route toward owner-local build, signing, evidence promotion, release, or consumer gate decisions even though its MCP usage is read-only.
+- Generated exports add the `abyss_machine` MCP dependency from `config/openai_skill_extensions.json`; source skill meaning remains owner-route first.

@@ -198,6 +198,10 @@ class ValidateSkillsSourceContractTests(ValidateSkillsCase):
             messages,
         )
 
+    def test_skill_index_accepts_os_project_overlay_names(self) -> None:
+        repo_root = self.make_repo(skill_name="os-test-skill", scope="project")
+        self.assertEqual([], validate_skills.validate_skill_index(repo_root))
+
     def test_pending_technique_with_tbd_refs_passes_for_scaffold_skill(self) -> None:
         repo_root = self.make_repo(
             techniques=[PENDING_TECHNIQUE],

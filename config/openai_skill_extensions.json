@@ -54,6 +54,18 @@
           }
         ]
       }
+    },
+    "os-abyss-artifact-trust-loop": {
+      "dependencies": {
+        "tools": [
+          {
+            "type": "mcp",
+            "value": "abyss_machine",
+            "description": "OS Abyss host machine MCP server for read-only artifact trust surfaces",
+            "transport": "stdio"
+          }
+        ]
+      }
     }
   }
 }

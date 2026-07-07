@@ -210,6 +210,32 @@
       ]
     },
     {
+      "id": "os-artifact-trust",
+      "summary": "OS Abyss artifact-trust routing for ABI, provenance, signatures, SBOM, C2PA, durable evidence, drift, and trust gates.",
+      "cues": [
+        "artifact trust",
+        "abi",
+        "provenance",
+        "signatures",
+        "sbom",
+        "slsa",
+        "in-toto",
+        "sigstore",
+        "cosign",
+        "c2pa",
+        "trust gate",
+        "producer profile",
+        "durable evidence",
+        "registry latest",
+        "artifact drift",
+        "abyss-machine artifacts",
+        "os abyss trust"
+      ],
+      "skills": [
+        "os-abyss-artifact-trust-loop"
+      ]
+    },
+    {
       "id": "titan-service-cohort",
       "summary": "Titan service-cohort summon, receipt, gate, console, bridge, replay, and candidate-memory workflows.",
       "cues": [
@@ -895,6 +921,28 @@
         "underlying operational mutation"
       ]
     },
+    "os-abyss-artifact-trust-loop": {
+      "band": "os-artifact-trust",
+      "positive_cues": [
+        "os abyss artifact trust",
+        "abi provenance signs",
+        "artifact trust gate",
+        "abyss-machine artifacts",
+        "producer profiles",
+        "durable evidence registry",
+        "sbom slsa in-toto",
+        "sigstore cosign c2pa",
+        "artifact drift",
+        "registry latest"
+      ],
+      "negative_cues": [
+        "ordinary local edit",
+        "raw .aoa search only",
+        "direct signing without owner route",
+        "public c2pa production claim without credential",
+        "base infra change only"
+      ]
+    },
     "titan-approval-ledger": {
       "band": "titan-service-cohort",
       "positive_cues": [
@@ -1311,6 +1359,11 @@
     "abyss-sanitized-share": [
       "aoa-sanitized-share",
       "abyss-safe-infra-change"
+    ],
+    "os-abyss-artifact-trust-loop": [
+      "aoa-eval",
+      "aoa-source-of-truth-check",
+      "aoa-approval-gate-check"
     ],
     "titan-summon": [
       "titan-receipt",

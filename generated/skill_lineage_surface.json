@@ -43,6 +43,7 @@
       "aoa-tdd-slice",
       "atm10-change-protocol",
       "atm10-source-of-truth-check",
+      "os-abyss-artifact-trust-loop",
       "titan-approval-ledger",
       "titan-approval-loom",
       "titan-appserver-bridge",
@@ -552,6 +553,18 @@
       "scope": "project",
       "skill_path": "atm10/atm10-source-of-truth-check/SKILL.md",
       "status": "evaluated",
+      "tbd_ref_count": 0
+    },
+    {
+      "lineage_blockers": [],
+      "lineage_state": "published",
+      "manifest_canonical_path_ready": true,
+      "name": "os-abyss-artifact-trust-loop",
+      "pending_technique_count": 0,
+      "published_technique_count": 3,
+      "scope": "project",
+      "skill_path": "abyss/os-abyss-artifact-trust-loop/SKILL.md",
+      "status": "scaffold",
       "tbd_ref_count": 0
     },
     {

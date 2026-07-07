@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "profile": "codex-facing-wave-9-tiny-router-inputs",
-  "band_count": 8,
+  "band_count": 9,
   "bands": [
     {
       "id": "decision-doc-authority",
@@ -275,6 +275,39 @@
       "overlay_skills": [
         "abyss-safe-infra-change",
         "abyss-sanitized-share"
+      ]
+    },
+    {
+      "id": "os-artifact-trust",
+      "summary": "OS Abyss artifact-trust routing for ABI, provenance, signatures, SBOM, C2PA, durable evidence, drift, and trust gates.",
+      "cues": [
+        "artifact trust",
+        "abi",
+        "provenance",
+        "signatures",
+        "sbom",
+        "slsa",
+        "in-toto",
+        "sigstore",
+        "cosign",
+        "c2pa",
+        "trust gate",
+        "producer profile",
+        "durable evidence",
+        "registry latest",
+        "artifact drift",
+        "abyss-machine artifacts",
+        "os abyss trust"
+      ],
+      "skills": [
+        "os-abyss-artifact-trust-loop"
+      ],
+      "manual_only_skills": [
+        "os-abyss-artifact-trust-loop"
+      ],
+      "suggest_only_skills": [],
+      "overlay_skills": [
+        "os-abyss-artifact-trust-loop"
       ]
     },
     {

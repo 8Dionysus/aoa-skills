@@ -73,11 +73,12 @@
       "runtime_contract_ref": "generated/skill_runtime_contracts.json#abyss-safe-infra-change",
       "context_retention_ref": "generated/context_retention_manifest.json#abyss-safe-infra-change",
       "trust_policy_ref": "generated/trust_policy_matrix.json#abyss-safe-infra-change",
-      "collision_family": "overlay-vs-base-skill",
+      "collision_family": "os-artifact-trust-routing",
       "collision_notes": [
-        "Use a project overlay only when the repository actually matches that overlay family and the repo-relative adaptation matters.",
-        "Current live overlay families here are the atm10-* and abyss-* repo-local exemplars.",
-        "Use the base AoA skill when the workflow does not need a thin project overlay."
+        "Use os-abyss-artifact-trust-loop when ABI, provenance, signatures, SBOM, C2PA, durable evidence, drift, registry latest, or trust-gate verdicts determine whether an OS Abyss artifact can be consumed.",
+        "Use aoa-eval when the question is proof-surface selection or running an eval rather than artifact admission.",
+        "Use aoa-source-of-truth-check when the question is which owner files are authoritative before artifact policy is inspected.",
+        "Use aoa-approval-gate-check or abyss-safe-infra-change when the pressure is execution permission or bounded infrastructure mutation without an artifact-trust read model."
       ],
       "competing_skills": [
         "aoa-safe-infra-change",
@@ -513,13 +514,12 @@
       "runtime_contract_ref": "generated/skill_runtime_contracts.json#aoa-approval-gate-check",
       "context_retention_ref": "generated/context_retention_manifest.json#aoa-approval-gate-check",
       "trust_policy_ref": "generated/trust_policy_matrix.json#aoa-approval-gate-check",
-      "collision_family": "safety-and-mutation-gating",
+      "collision_family": "os-artifact-trust-routing",
       "collision_notes": [
-        "aoa-approval-gate-check classifies risk and whether execution is allowed at all.",
-        "aoa-dry-run-first insists on preview or simulation before a real mutation.",
-        "aoa-safe-infra-change handles bounded infra or config changes with rollback thinking.",
-        "aoa-local-stack-bringup is the local multi-service stack start path and is explicit-only.",
-        "aoa-sanitized-share is about turning raw technical material into a safe public artifact."
+        "Use os-abyss-artifact-trust-loop when ABI, provenance, signatures, SBOM, C2PA, durable evidence, drift, registry latest, or trust-gate verdicts determine whether an OS Abyss artifact can be consumed.",
+        "Use aoa-eval when the question is proof-surface selection or running an eval rather than artifact admission.",
+        "Use aoa-source-of-truth-check when the question is which owner files are authoritative before artifact policy is inspected.",
+        "Use aoa-approval-gate-check or abyss-safe-infra-change when the pressure is execution permission or bounded infrastructure mutation without an artifact-trust read model."
       ],
       "competing_skills": [
         "aoa-safe-infra-change",
@@ -1997,16 +1997,12 @@
       "runtime_contract_ref": "generated/skill_runtime_contracts.json#aoa-eval",
       "context_retention_ref": "generated/context_retention_manifest.json#aoa-eval",
       "trust_policy_ref": "generated/trust_policy_matrix.json#aoa-eval",
-      "collision_family": "eval-proof-routing-family",
+      "collision_family": "os-artifact-trust-routing",
       "collision_notes": [
-        "aoa-eval is the front door for choosing an eval-lane route across existing evals, local ports, validators, tests, scripts, MCP access packets, and session-derived trigger pressure.",
-        "aoa-eval-select inspects existing local and central eval surfaces before new work.",
-        "aoa-eval-apply runs or routes an already selected eval surface and reports proof limits.",
-        "aoa-eval-local-need records bounded repo-local eval pressure under evals/intake when no existing surface fits.",
-        "aoa-eval-design drafts local eval suites or reports after selection fails without claiming central proof acceptance.",
-        "aoa-eval-session-mining mines .aoa only for candidate eval triggers after web and repo gates; raw session refs are not reviewed proof.",
-        "aoa-contract-test, aoa-property-invariants, and aoa-invariant-coverage-audit stay focused on test/invariant authoring or audit when no eval-lane owner route is in question.",
-        "aoa-source-of-truth-check, aoa-memo-writeback, and aoa-decision win when the pressure is documentation authority, memory writeback, or decision graph routing rather than eval proof routing."
+        "Use os-abyss-artifact-trust-loop when ABI, provenance, signatures, SBOM, C2PA, durable evidence, drift, registry latest, or trust-gate verdicts determine whether an OS Abyss artifact can be consumed.",
+        "Use aoa-eval when the question is proof-surface selection or running an eval rather than artifact admission.",
+        "Use aoa-source-of-truth-check when the question is which owner files are authoritative before artifact policy is inspected.",
+        "Use aoa-approval-gate-check or abyss-safe-infra-change when the pressure is execution permission or bounded infrastructure mutation without an artifact-trust read model."
       ],
       "competing_skills": [
         "aoa-eval-select",
@@ -4220,11 +4216,12 @@
       "runtime_contract_ref": "generated/skill_runtime_contracts.json#aoa-source-of-truth-check",
       "context_retention_ref": "generated/context_retention_manifest.json#aoa-source-of-truth-check",
       "trust_policy_ref": "generated/trust_policy_matrix.json#aoa-source-of-truth-check",
-      "collision_family": "overlay-vs-base-skill",
+      "collision_family": "os-artifact-trust-routing",
       "collision_notes": [
-        "Use a project overlay only when the repository actually matches that overlay family and the repo-relative adaptation matters.",
-        "Current live overlay families here are the atm10-* and abyss-* repo-local exemplars.",
-        "Use the base AoA skill when the workflow does not need a thin project overlay."
+        "Use os-abyss-artifact-trust-loop when ABI, provenance, signatures, SBOM, C2PA, durable evidence, drift, registry latest, or trust-gate verdicts determine whether an OS Abyss artifact can be consumed.",
+        "Use aoa-eval when the question is proof-surface selection or running an eval rather than artifact admission.",
+        "Use aoa-source-of-truth-check when the question is which owner files are authoritative before artifact policy is inspected.",
+        "Use aoa-approval-gate-check or abyss-safe-infra-change when the pressure is execution permission or bounded infrastructure mutation without an artifact-trust read model."
       ],
       "competing_skills": [
         "atm10-source-of-truth-check",
@@ -4712,6 +4709,119 @@
         }
       },
       "disclose_card_markdown": "### atm10-source-of-truth-check\n- Summary: ATM10 source-of-truth overlay\n- Use when: Apply the aoa-source-of-truth-check workflow inside an atm10-* repository using repo-relative public-surface roles, document maps, canonical-file patterns, entrypoint trimming, and local review posture. Use when contributors need a thin project overlay to identify authoritative ATM10 docs or separate active, archived, generated, local-only, and runtime-adjacent surfaces. Do not use when the task is broader policy design, purely code-local, runtime authority, or better handled by the base skill without local adaptation.\n- Trust posture: project-overlay\n- Mutation surface: none\n"
+    },
+    {
+      "name": "os-abyss-artifact-trust-loop",
+      "display_name": "Os Abyss Artifact Trust Loop",
+      "description": "Route OS Abyss ABI, provenance, signatures, SBOM, SLSA/in-toto, Sigstore/Cosign, C2PA, TUF, SCITT, durable evidence, drift, producer profiles, and trust-gate work through existing abyss-machine read models and owner-local producer routes. Use when an agent needs to inspect or consume bundles, containers, models, runtimes, reports, media exports, source seeds, portable memory bundles, browser extensions, generated machine surfaces, or release artifacts without creating a second trust MCP or violating owner boundaries. Do not use for ordinary local edits, raw .aoa session search, or direct signing/promotion/registry mutation without an authorized owner route.",
+      "short_description": "Route OS artifact trust loops",
+      "path": ".agents/skills/os-abyss-artifact-trust-loop/SKILL.md",
+      "skill_dir": ".agents/skills/os-abyss-artifact-trust-loop",
+      "compatibility": "Designed for Codex or similar coding agents with repository file access and an interactive shell. Network access is optional and only needed when repository validation or referenced workflows require it.",
+      "metadata": {
+        "aoa_scope": "project",
+        "aoa_status": "scaffold",
+        "aoa_invocation_mode": "explicit-preferred",
+        "aoa_source_skill_path": "skills/project/abyss/os-abyss-artifact-trust-loop/SKILL.md",
+        "aoa_source_repo": "8Dionysus/aoa-skills",
+        "aoa_technique_dependencies": "AOA-T-0001,AOA-T-0002,AOA-T-0028",
+        "aoa_portable_profile": "codex-facing-wave-3"
+      },
+      "headings_available": [
+        "Intent",
+        "Trigger boundary",
+        "Inputs",
+        "Outputs",
+        "Procedure",
+        "Contracts",
+        "Risks and anti-patterns",
+        "Verification",
+        "Technique traceability",
+        "Adaptation points"
+      ],
+      "section_summaries": {
+        "Intent": "Use this skill to route OS Abyss ABI, provenance, signature, SBOM, SLSA/in-toto, Sigstore/Cosign, C2PA, TUF, SCITT, durable evidence, drift, and trust-gate work through the existing `abyss-machine` trust plane without creating a second trust authority. The skill gives agents o...",
+        "Trigger boundary": "a task mentions ABI, provenance, signs, signatures, SBOM, SLSA, in-toto, Sigstore, Cosign, C2PA, TUF, SCITT, artifact trust, producer profiles, durable evidence, trust gates, registry latest, stale bundles, or drift across OS Abyss; an agent needs to consume, build, release, u...",
+        "Inputs": "artifact path, artifact class, or suspected artifact family; consumer intent, such as `agent`, `installer`, `runtime`, `release_consumer`, or another owner-defined intent",
+        "Outputs": "resolved or explicitly unknown artifact class; requirements, producer profile, affected/drift, registry/latest, trust coverage, and trust-gate summary",
+        "Procedure": "Read the nearest owner route before touching artifacts. Start from the owning repo `AGENTS.md`, local manifests, release docs, or validator surfaces. Use center or doctrine docs only as orientation, not as a replacement for the owner route.; Detect the artifact class. Prefer c...",
+        "Contracts": "Keep `abyss-machine` as authority for host enforcement, durable registry, trust gates, trust roots, update lane, and artifact policy read models.; Keep the `abyss-machine` MCP read-only, typed, allowlisted, and bounded. It may inspect artifact-trust read models; it must not be...",
+        "Risks and anti-patterns": "Creating a separate trust MCP when the existing `abyss-machine` MCP can expose the needed read-only surfaces.; Turning MCP access into hidden build, sign, promote, registry-write, trust-root-change, `pkexec`, service restart, or arbitrary command execution.",
+        "Verification": "Confirm the artifact class and consumer intent were named or explicitly marked unknown.; Confirm requirements, producer profile, affected/drift, coverage, registry/latest, trust-gate, scenarios, and validate surfaces were inspected through MCP or equivalent CLI.",
+        "Technique traceability": "AOA-T-0001 from `8Dionysus/aoa-techniques` at `cd276f040d55d490bd015b8698c7a5d594b9f875` using path `techniques/execution/agent-workflows-core/plan-diff-apply-verify-report/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Vali...",
+        "Adaptation points": "Add owner-specific artifact classes only after the owner route has a real producer profile, required controls, and trust-gate behavior.; Add generated machine-surface or sibling-repo drift checks through `abyss-machine artifacts affected` rather than hard-coding sibling topolo..."
+      },
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/example.md"
+        ]
+      },
+      "policy": {
+        "implicit_activation_policy": "manual",
+        "allow_implicit_invocation": false
+      },
+      "interface": {
+        "display_name": "Os Abyss Artifact Trust Loop",
+        "short_description": "Route OS artifact trust loops",
+        "default_prompt": "Use $os-abyss-artifact-trust-loop to inspect OS Abyss artifact requirements, producer profiles, drift, evidence, and trust gates through abyss-machine read models before any owner-local build, signing, promotion, release, or consumption step.",
+        "icon_small": "./assets/small-logo.svg",
+        "icon_large": "./assets/large-logo.svg",
+        "brand_color": "#6D28D9"
+      },
+      "runtime_contract_ref": "generated/skill_runtime_contracts.json#os-abyss-artifact-trust-loop",
+      "context_retention_ref": "generated/context_retention_manifest.json#os-abyss-artifact-trust-loop",
+      "trust_policy_ref": "generated/trust_policy_matrix.json#os-abyss-artifact-trust-loop",
+      "collision_family": "os-artifact-trust-routing",
+      "collision_notes": [
+        "Use os-abyss-artifact-trust-loop when ABI, provenance, signatures, SBOM, C2PA, durable evidence, drift, registry latest, or trust-gate verdicts determine whether an OS Abyss artifact can be consumed.",
+        "Use aoa-eval when the question is proof-surface selection or running an eval rather than artifact admission.",
+        "Use aoa-source-of-truth-check when the question is which owner files are authoritative before artifact policy is inspected.",
+        "Use aoa-approval-gate-check or abyss-safe-infra-change when the pressure is execution permission or bounded infrastructure mutation without an artifact-trust read model."
+      ],
+      "competing_skills": [
+        "aoa-eval",
+        "aoa-source-of-truth-check",
+        "aoa-approval-gate-check",
+        "abyss-safe-infra-change"
+      ],
+      "sample_prompts": {
+        "explicit": [
+          "Use $os-abyss-artifact-trust-loop to inspect OS Abyss artifact requirements, producer profiles, drift, evidence, and trust gates through abyss-machine read models before any owner-local build, signing, promotion, release, or consumption step."
+        ],
+        "implicit": [],
+        "manual_invocation_required": [
+          "Inspect ABI signatures, SBOM, provenance, C2PA posture, registry latest, producer profiles, drift, and trust-gate verdicts for an OS Abyss artifact before a consumer or installer uses it.",
+          "Before installing or consuming this OS Abyss runtime bundle, inspect artifact requirements, producer profile, stale evidence, registry latest, and trust-gate verdict through abyss-machine, then route any rebuild, signing, promotion, or release action to the owner repo."
+        ],
+        "negative": [
+          "Run the ordinary unit tests for this local helper; there is no artifact class, provenance claim, signature, registry evidence, or consumer trust gate involved."
+        ]
+      },
+      "explicit_handles": {
+        "codex": {
+          "mention": "$os-abyss-artifact-trust-loop",
+          "browser": "/skills"
+        },
+        "local_wrapper": {
+          "slash_alias": "/os-abyss-artifact-trust-loop",
+          "tool_call": {
+            "name": "activate_skill",
+            "arguments": {
+              "skill_name": "os-abyss-artifact-trust-loop"
+            }
+          }
+        }
+      },
+      "disclose_card_markdown": "### os-abyss-artifact-trust-loop\n- Summary: Route OS artifact trust loops\n- Use when: Route OS Abyss ABI, provenance, signatures, SBOM, SLSA/in-toto, Sigstore/Cosign, C2PA, TUF, SCITT, durable evidence, drift, producer profiles, and trust-gate work through existing abyss-machine read models and owner-local producer routes. Use when an agent needs to inspect or consume bundles, containers, models, runtimes, reports, media exports, source seeds, portable memory bundles, browser extensions, generated machine surfaces, or release artifacts without creating a second trust MCP or violating owner boundaries. Do not use for ordinary local edits, raw .aoa session search, or direct signing/promotion/registry mutation without an authorized owner route.\n- Trust posture: project-overlay\n- Mutation surface: runtime\n"
     },
     {
       "name": "titan-approval-ledger",

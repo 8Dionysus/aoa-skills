@@ -1,0 +1,16 @@
+interface:
+  display_name: Os Abyss Artifact Trust Loop
+  short_description: Route OS artifact trust loops
+  default_prompt: Use $os-abyss-artifact-trust-loop to inspect OS Abyss artifact requirements, producer profiles, drift, evidence, and trust gates through abyss-machine read models before any owner-local build, signing, promotion, release, or consumption step.
+  icon_small: ./assets/small-logo.svg
+  icon_large: ./assets/large-logo.svg
+  brand_color: '#6D28D9'
+policy:
+  implicit_activation_policy: manual
+  allow_implicit_invocation: false
+dependencies:
+  tools:
+  - type: mcp
+    value: abyss_machine
+    description: OS Abyss host machine MCP server for read-only artifact trust surfaces
+    transport: stdio

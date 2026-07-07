@@ -2397,6 +2397,58 @@
     },
     {
       "do_not_use_when": [
+        "the task is an ordinary local test or code edit unrelated to artifact trust",
+        "the task asks to invent new trust policy rather than follow current owner surfaces",
+        "the request is only about .aoa session search, evidence routing, memory rehydration, or graph indexing",
+        "the operator asks for direct signing, evidence promotion, registry repair, privileged host mutation, or release publication without a confirmed owner route and authorization"
+      ],
+      "expand_sections": [
+        "Procedure",
+        "Contracts",
+        "Risks and anti-patterns",
+        "Verification"
+      ],
+      "inspection_order": [
+        "capsule",
+        "sections",
+        "full",
+        "evidence"
+      ],
+      "invocation_mode": "explicit-preferred",
+      "name": "os-abyss-artifact-trust-loop",
+      "object_use_shape": [
+        "resolved or explicitly unknown artifact class",
+        "requirements, producer profile, affected/drift, registry/latest, trust coverage, and trust-gate summary",
+        "named owner route for build, verify, sign, sidecar refresh, evidence promotion, release, eval, or manual review",
+        "allow, warn, deny, or manual-review posture for the requested consumer intent",
+        "proof and validator plan covering local owner checks, OS-facing gates, and aoa-evals scenarios when behavior or trust claims change",
+        "concise closeout naming verified controls, skipped checks, deferred blockers, stale evidence, dirty-state limits, and remaining risk"
+      ],
+      "pick_summary": "OS Abyss artifact-trust loop for routing ABI, provenance, signatures, SBOM, C2PA, drift, and consumer gates through abyss-machine read models and owner-local producers.",
+      "scope": "project",
+      "skill_path": "skills/project/abyss/os-abyss-artifact-trust-loop/SKILL.md",
+      "status": "scaffold",
+      "support_artifacts": [
+        {
+          "path": "skills/project/abyss/os-abyss-artifact-trust-loop/examples/example.md",
+          "selected_for_runtime_inspection": true,
+          "type": "runtime_example"
+        },
+        {
+          "path": "skills/project/abyss/os-abyss-artifact-trust-loop/checks/review.md",
+          "selected_for_runtime_inspection": false,
+          "type": "review_checklist"
+        }
+      ],
+      "use_when": [
+        "a task mentions ABI, provenance, signs, signatures, SBOM, SLSA, in-toto, Sigstore, Cosign, C2PA, TUF, SCITT, artifact trust, producer profiles, durable evidence, trust gates, registry latest, stale bundles, or drift across OS Abyss",
+        "an agent needs to consume, build, release, update, or audit a bundle, container, model, runtime, report, media export, source seed, portable memory bundle, browser extension package, or generated machine surface",
+        "MCP or skill automation must inspect artifact-trust state before an owner-local producer, installer, runtime, or agent consumes an artifact",
+        "sibling repos may lag, a checkout is dirty, or source refs need explicit evidence labeling instead of false clean claims"
+      ]
+    },
+    {
+      "do_not_use_when": [
         "the request has no explicit operator approval",
         "the action is not tied to a Titan receipt or ledger",
         "approval is being inferred from silence or convenience"

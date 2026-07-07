@@ -1099,6 +1099,31 @@
       }
     },
     {
+      "name": "os-abyss-artifact-trust-loop",
+      "source_skill_path": "skills/project/abyss/os-abyss-artifact-trust-loop/SKILL.md",
+      "target_dir": ".agents/skills/os-abyss-artifact-trust-loop",
+      "target_skill_path": ".agents/skills/os-abyss-artifact-trust-loop/SKILL.md",
+      "target_openai_config_path": ".agents/skills/os-abyss-artifact-trust-loop/agents/openai.yaml",
+      "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "manual",
+      "allow_implicit_invocation": false,
+      "candidate_only": false,
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/example.md"
+        ]
+      }
+    },
+    {
       "name": "titan-approval-ledger",
       "source_skill_path": "skills/project/titan/titan-approval-ledger/SKILL.md",
       "target_dir": ".agents/skills/titan-approval-ledger",

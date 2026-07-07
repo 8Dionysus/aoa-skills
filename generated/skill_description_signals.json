@@ -12,19 +12,23 @@
       "invocation_mode": "explicit-only",
       "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
-      "family": "overlay-vs-base-skill",
+      "family": "os-artifact-trust-routing",
       "families": [
+        "os-artifact-trust-routing",
         "overlay-vs-base-skill"
       ],
       "adjacent_skills": [
         "abyss-sanitized-share",
         "abyss-self-diagnostic-spine",
+        "aoa-approval-gate-check",
         "aoa-change-protocol",
+        "aoa-eval",
         "aoa-safe-infra-change",
         "aoa-sanitized-share",
         "aoa-source-of-truth-check",
         "atm10-change-protocol",
-        "atm10-source-of-truth-check"
+        "atm10-source-of-truth-check",
+        "os-abyss-artifact-trust-loop"
       ],
       "default_prompt": "Use $abyss-safe-infra-change to apply the base infra-change workflow with repo-relative abyss paths, explicit local authority, and local verification notes.",
       "required_case_classes": [
@@ -185,15 +189,20 @@
       "invocation_mode": "explicit-only",
       "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
-      "family": "safety-and-mutation-gating",
+      "family": "os-artifact-trust-routing",
       "families": [
+        "os-artifact-trust-routing",
         "safety-and-mutation-gating"
       ],
       "adjacent_skills": [
+        "abyss-safe-infra-change",
         "aoa-dry-run-first",
+        "aoa-eval",
         "aoa-local-stack-bringup",
         "aoa-safe-infra-change",
-        "aoa-sanitized-share"
+        "aoa-sanitized-share",
+        "aoa-source-of-truth-check",
+        "os-abyss-artifact-trust-loop"
       ],
       "default_prompt": "Use $aoa-approval-gate-check to classify whether the requested action is safe, approval-gated, or out of bounds before any execution proceeds.",
       "required_case_classes": [
@@ -762,9 +771,12 @@
       "allow_implicit_invocation": true,
       "family": "eval-proof-routing-family",
       "families": [
-        "eval-proof-routing-family"
+        "eval-proof-routing-family",
+        "os-artifact-trust-routing"
       ],
       "adjacent_skills": [
+        "abyss-safe-infra-change",
+        "aoa-approval-gate-check",
         "aoa-contract-test",
         "aoa-decision",
         "aoa-eval-apply",
@@ -776,7 +788,8 @@
         "aoa-memo-writeback",
         "aoa-property-invariants",
         "aoa-session-donor-harvest",
-        "aoa-source-of-truth-check"
+        "aoa-source-of-truth-check",
+        "os-abyss-artifact-trust-loop"
       ],
       "default_prompt": "Use $aoa-eval to raise the session readiness packet when available, select one eval route, inspect existing surfaces first, and keep central proof, local intake, MCP access, candidate packets, and session evidence separate.",
       "required_case_classes": [
@@ -1628,6 +1641,7 @@
       "families": [
         "decision-and-doc-authority",
         "eval-proof-routing-family",
+        "os-artifact-trust-routing",
         "overlay-vs-base-skill"
       ],
       "adjacent_skills": [
@@ -1635,6 +1649,7 @@
         "abyss-sanitized-share",
         "abyss-self-diagnostic-spine",
         "aoa-adr-write",
+        "aoa-approval-gate-check",
         "aoa-bounded-context-map",
         "aoa-change-protocol",
         "aoa-contract-test",
@@ -1655,7 +1670,8 @@
         "aoa-safe-infra-change",
         "aoa-sanitized-share",
         "atm10-change-protocol",
-        "atm10-source-of-truth-check"
+        "atm10-source-of-truth-check",
+        "os-abyss-artifact-trust-loop"
       ],
       "default_prompt": "Use $aoa-source-of-truth-check to map which files are authoritative, surface overlaps, and keep top-level guidance short and link-driven.",
       "required_case_classes": [
@@ -1850,6 +1866,43 @@
       "mirror_case_ids": [
         "desc-mirror-020-atm10-source-of-truth-check"
       ]
+    },
+    {
+      "name": "os-abyss-artifact-trust-loop",
+      "description": "Route OS Abyss ABI, provenance, signatures, SBOM, SLSA/in-toto, Sigstore/Cosign, C2PA, TUF, SCITT, durable evidence, drift, producer profiles, and trust-gate work through existing abyss-machine read models and owner-local producer routes. Use when an agent needs to inspect or consume bundles, containers, models, runtimes, reports, media exports, source seeds, portable memory bundles, browser extensions, generated machine surfaces, or release artifacts without creating a second trust MCP or violating owner boundaries. Do not use for ordinary local edits, raw .aoa session search, or direct signing/promotion/registry mutation without an authorized owner route.",
+      "description_sha256": "4e651ff7b53f12a4cfe733dea9959ed56e75a93ff6c1d7df1c8a34bd53da5b27",
+      "summary_clause": "Route OS Abyss ABI, provenance, signatures, SBOM, SLSA/in-toto, Sigstore/Cosign, C2PA, TUF, SCITT, durable evidence, drift, producer profiles, and trust-gate work through existing abyss-machine read models and owner-local producer routes",
+      "use_when_clause": "an agent needs to inspect or consume bundles, containers, models, runtimes, reports, media exports, source seeds, portable memory bundles, browser extensions, generated machine surfaces, or release artifacts without creating a second trust MCP or violating owner boundaries",
+      "do_not_use_clause": "for ordinary local edits, raw .aoa session search, or direct signing/promotion/registry mutation without an authorized owner route",
+      "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "manual",
+      "allow_implicit_invocation": false,
+      "family": "os-artifact-trust-routing",
+      "families": [
+        "os-artifact-trust-routing"
+      ],
+      "adjacent_skills": [
+        "abyss-safe-infra-change",
+        "aoa-approval-gate-check",
+        "aoa-eval",
+        "aoa-source-of-truth-check"
+      ],
+      "default_prompt": "Use $os-abyss-artifact-trust-loop to inspect OS Abyss artifact requirements, producer profiles, drift, evidence, and trust gates through abyss-machine read models before any owner-local build, signing, promotion, release, or consumption step.",
+      "required_case_classes": [
+        "explicit-handle",
+        "manual-invocation-required",
+        "should-not-trigger"
+      ],
+      "base_case_ids": [
+        "os-artifact-trust-explicit",
+        "os-artifact-trust-manual",
+        "os-artifact-trust-adjacent-negative",
+        "collision-49"
+      ],
+      "collision_case_ids": [
+        "desc-collision-collision-49"
+      ],
+      "mirror_case_ids": []
     },
     {
       "name": "titan-approval-ledger",

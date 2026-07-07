@@ -3246,6 +3246,86 @@
       }
     },
     {
+      "name": "os-abyss-artifact-trust-loop",
+      "display_name": "Os Abyss Artifact Trust Loop",
+      "description": "Route OS Abyss ABI, provenance, signatures, SBOM, SLSA/in-toto, Sigstore/Cosign, C2PA, TUF, SCITT, durable evidence, drift, producer profiles, and trust-gate work through existing abyss-machine read models and owner-local producer routes. Use when an agent needs to inspect or consume bundles, containers, models, runtimes, reports, media exports, source seeds, portable memory bundles, browser extensions, generated machine surfaces, or release artifacts without creating a second trust MCP or violating owner boundaries. Do not use for ordinary local edits, raw .aoa session search, or direct signing/promotion/registry mutation without an authorized owner route.",
+      "invocation_mode": "explicit-preferred",
+      "inputs": [
+        "artifact path, artifact class, or suspected artifact family",
+        "consumer intent, such as `agent`, `installer`, `runtime`, `release_consumer`, or another owner-defined intent",
+        "source repo, source ref, changed paths, dirty-state notes, or sibling lag context when known",
+        "owner route cards, manifests, release docs, producer profiles, validators, and current `abyss-machine artifacts` output",
+        "existing durable registry refs, sidecar paths, bundle dirs, eval reports, or C2PA/media evidence when provided",
+        "OS posture such as local dev, host-managed key, GitHub OIDC, OCI signature, public release attestation, pre-organization, or future external accountability mode"
+      ],
+      "outputs": [
+        "resolved or explicitly unknown artifact class",
+        "requirements, producer profile, affected/drift, registry/latest, trust coverage, and trust-gate summary",
+        "named owner route for build, verify, sign, sidecar refresh, evidence promotion, release, eval, or manual review",
+        "allow, warn, deny, or manual-review posture for the requested consumer intent",
+        "proof and validator plan covering local owner checks, OS-facing gates, and `aoa-evals` scenarios when behavior or trust claims change",
+        "concise closeout naming verified controls, skipped checks, deferred blockers, stale evidence, dirty-state limits, and remaining risk"
+      ],
+      "verification": [
+        "Confirm the artifact class and consumer intent were named or explicitly marked unknown.",
+        "Confirm requirements, producer profile, affected/drift, coverage, registry/latest, trust-gate, scenarios, and validate surfaces were inspected through MCP or equivalent CLI.",
+        "Confirm arbitrary artifact commands are not reachable through MCP; only allowlisted typed read models are exposed.",
+        "Confirm owner-local producer commands handled any build, verify, sign, materialize, evidence-promote, release, update, C2PA, or OCI action.",
+        "Confirm `trust-gate` returned allow, warn, deny, or manual-review and the final recommendation preserved that verdict.",
+        "Confirm representative classes are covered when auditing the whole OS plane: `public_source_seed`, `bootstrap_install_bundle`, `runtime_or_container_artifact`, `ai_model_or_runtime_bundle`, `aoa_sdk_python_distribution`, `aoa_session_memory_portable_bundle`, and `public_media_export`.",
+        "Confirm C2PA public media remains warn or deferred when the only blocker is missing production trust credentials.",
+        "Confirm generated/export skill surfaces and MCP dependency manifests were rebuilt when the skill bundle or adapter wiring changed."
+      ],
+      "contracts": [
+        "Keep `abyss-machine` as authority for host enforcement, durable registry, trust gates, trust roots, update lane, and artifact policy read models.",
+        "Keep the `abyss-machine` MCP read-only, typed, allowlisted, and bounded. It may inspect artifact-trust read models; it must not become a signer, builder, promoter, registry writer, privileged runner, or repair tool.",
+        "Keep owner repos authoritative for producer behavior, source manifests, release commands, and validator meaning.",
+        "Keep `aoa-sdk` as typed reader/assertion surface, not the producer of host truth.",
+        "Keep `aoa-evals` as proof and negative-scenario authority when trust claims or consumer decisions need durable proof.",
+        "Keep `.aoa` as session evidence routing, memory rehydration, and graph/index context. It is not trust policy authority and cannot override current owner files or live gates.",
+        "Keep public media C2PA posture honest: pre-organization or non-trust-list credentials can support local integrity and warn/deferred evidence, not production-ready public trust claims.",
+        "Keep TUF/update and SCITT/accountability lanes separate: TUF can be required for updateable artifacts; SCITT can be a future external accountability layer without blocking v1 unless an owner route requires it now."
+      ],
+      "consumes_artifact_tags": [
+        "artifact-path-artifact-class-or-suspected-artifact-family",
+        "consumer-intent-such-as-agent-installer-runtime-release-consumer",
+        "source-repo-source-ref-changed-paths-dirty-state-notes-or-siblin",
+        "owner-route-cards-manifests-release-docs-producer-profiles-valid",
+        "existing-durable-registry-refs-sidecar-paths-bundle-dirs-eval-re",
+        "os-posture-such-as-local-dev-host-managed-key-github-oidc-oci-si"
+      ],
+      "provides_artifact_tags": [
+        "resolved-or-explicitly-unknown-artifact-class",
+        "requirements-producer-profile-affected-drift-registry-latest-tru",
+        "named-owner-route-for-build-verify-sign-sidecar-refresh-evidence",
+        "allow-warn-deny-or-manual-review-posture-for-the-requested-consu",
+        "proof-and-validator-plan-covering-local-owner-checks-os-facing-g",
+        "concise-closeout-naming-verified-controls-skipped-checks-deferre"
+      ],
+      "handoff_packet_template": {
+        "from_skill": "os-abyss-artifact-trust-loop",
+        "produced_artifacts": [
+          "resolved-or-explicitly-unknown-artifact-class",
+          "requirements-producer-profile-affected-drift-registry-latest-tru",
+          "named-owner-route-for-build-verify-sign-sidecar-refresh-evidence",
+          "allow-warn-deny-or-manual-review-posture-for-the-requested-consu",
+          "proof-and-validator-plan-covering-local-owner-checks-os-facing-g",
+          "concise-closeout-naming-verified-controls-skipped-checks-deferre"
+        ],
+        "verification_notes": [
+          "Confirm the artifact class and consumer intent were named or explicitly marked unknown.",
+          "Confirm requirements, producer profile, affected/drift, coverage, registry/latest, trust-gate, scenarios, and validate surfaces were inspected through MCP or equivalent CLI.",
+          "Confirm arbitrary artifact commands are not reachable through MCP; only allowlisted typed read models are exposed."
+        ],
+        "contract_notes": [
+          "Keep `abyss-machine` as authority for host enforcement, durable registry, trust gates, trust roots, update lane, and artifact policy read models.",
+          "Keep the `abyss-machine` MCP read-only, typed, allowlisted, and bounded. It may inspect artifact-trust read models; it must not become a signer, builder, promoter, registry writer, privileged runner, or repair tool.",
+          "Keep owner repos authoritative for producer behavior, source manifests, release commands, and validator meaning."
+        ],
+        "next_recommended_skills": []
+      }
+    },
+    {
       "name": "titan-approval-ledger",
       "display_name": "Titan Approval Ledger",
       "description": "Record explicit operator approval for Forge mutation or Delta judgment gates without treating approval records as owner truth. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",

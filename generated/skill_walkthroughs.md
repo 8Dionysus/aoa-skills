@@ -1659,6 +1659,42 @@ Common expand sections:
 - `review_checklist`: `skills/project/atm10/atm10-source-of-truth-check/checks/review.md`
 - `promotion_review`: `docs/reviews/status-promotions/atm10-source-of-truth-check.md`
 
+## os-abyss-artifact-trust-loop
+
+- scope: `project`
+- status: `scaffold`
+- invocation mode: `explicit-preferred`
+- skill path: `skills/project/abyss/os-abyss-artifact-trust-loop/SKILL.md`
+- pick summary: OS Abyss artifact-trust loop for routing ABI, provenance, signatures, SBOM, C2PA, drift, and consumer gates through abyss-machine read models and owner-local producers.
+
+### Use when
+
+- a task mentions ABI, provenance, signs, signatures, SBOM, SLSA, in-toto, Sigstore, Cosign, C2PA, TUF, SCITT, artifact trust, producer profiles, durable evidence, trust gates, registry latest, stale bundles, or drift across OS Abyss
+- an agent needs to consume, build, release, update, or audit a bundle, container, model, runtime, report, media export, source seed, portable memory bundle, browser extension package, or generated machine surface
+- MCP or skill automation must inspect artifact-trust state before an owner-local producer, installer, runtime, or agent consumes an artifact
+- sibling repos may lag, a checkout is dirty, or source refs need explicit evidence labeling instead of false clean claims
+
+### Do not use when
+
+- the task is an ordinary local test or code edit unrelated to artifact trust
+- the task asks to invent new trust policy rather than follow current owner surfaces
+- the request is only about .aoa session search, evidence routing, memory rehydration, or graph indexing
+- the operator asks for direct signing, evidence promotion, registry repair, privileged host mutation, or release publication without a confirmed owner route and authorization
+
+### Object use shape
+
+- resolved or explicitly unknown artifact class
+- requirements, producer profile, affected/drift, registry/latest, trust coverage, and trust-gate summary
+- named owner route for build, verify, sign, sidecar refresh, evidence promotion, release, eval, or manual review
+- allow, warn, deny, or manual-review posture for the requested consumer intent
+- proof and validator plan covering local owner checks, OS-facing gates, and aoa-evals scenarios when behavior or trust claims change
+- concise closeout naming verified controls, skipped checks, deferred blockers, stale evidence, dirty-state limits, and remaining risk
+
+### Support artifacts
+
+- `runtime_example` (selected): `skills/project/abyss/os-abyss-artifact-trust-loop/examples/example.md`
+- `review_checklist`: `skills/project/abyss/os-abyss-artifact-trust-loop/checks/review.md`
+
 ## titan-approval-ledger
 
 - scope: `project`

@@ -12,13 +12,13 @@
     "generated/runtime_router_hints.json",
     ".agents/skills/*/SKILL.md"
   ],
-  "skill_count": 56,
-  "total_cases": 265,
+  "skill_count": 57,
+  "total_cases": 269,
   "case_class_totals": {
-    "explicit-handle": 57,
-    "manual-invocation-required": 73,
+    "explicit-handle": 58,
+    "manual-invocation-required": 75,
     "prefer-other-skill": 46,
-    "should-not-trigger": 57,
+    "should-not-trigger": 58,
     "should-trigger": 32
   },
   "skills": [
@@ -27,7 +27,7 @@
       "invocation_mode": "explicit-only",
       "implicit_activation_policy": "manual",
       "description_sha256": "e11ba355727d8866164caeb20c148111295c4486fdc868a212d164382ff4da55",
-      "family": "overlay-vs-base-skill",
+      "family": "os-artifact-trust-routing",
       "total_cases": 5,
       "case_class_totals": {
         "explicit-handle": 1,
@@ -110,7 +110,7 @@
       "invocation_mode": "explicit-only",
       "implicit_activation_policy": "manual",
       "description_sha256": "0242f9151a193c21c95ac982a226f7884c162fb174127b45bcda65e2a6f99d0c",
-      "family": "safety-and-mutation-gating",
+      "family": "os-artifact-trust-routing",
       "total_cases": 5,
       "case_class_totals": {
         "explicit-handle": 2,
@@ -876,6 +876,26 @@
         "explicit-handle": 1,
         "manual-invocation-required": 2,
         "prefer-other-skill": 1,
+        "should-not-trigger": 1
+      },
+      "required_case_classes": [
+        "explicit-handle",
+        "manual-invocation-required",
+        "should-not-trigger"
+      ],
+      "coverage_ok": true,
+      "has_collision_coverage": true
+    },
+    {
+      "name": "os-abyss-artifact-trust-loop",
+      "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "manual",
+      "description_sha256": "4e651ff7b53f12a4cfe733dea9959ed56e75a93ff6c1d7df1c8a34bd53da5b27",
+      "family": "os-artifact-trust-routing",
+      "total_cases": 4,
+      "case_class_totals": {
+        "explicit-handle": 1,
+        "manual-invocation-required": 2,
         "should-not-trigger": 1
       },
       "required_case_classes": [

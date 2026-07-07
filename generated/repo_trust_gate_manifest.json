@@ -918,6 +918,27 @@
       "notes": "Repo-scoped skills stay dark until the repository is explicitly trusted. The same skill may be installed at user/admin scope without repo trust gating."
     },
     {
+      "name": "os-abyss-artifact-trust-loop",
+      "display_name": "Os Abyss Artifact Trust Loop",
+      "description": "Route OS Abyss ABI, provenance, signatures, SBOM, SLSA/in-toto, Sigstore/Cosign, C2PA, TUF, SCITT, durable evidence, drift, producer profiles, and trust-gate work through existing abyss-machine read models and owner-local producer routes. Use when an agent needs to inspect or consume bundles, containers, models, runtimes, reports, media exports, source seeds, portable memory bundles, browser extensions, generated machine surfaces, or release artifacts without creating a second trust MCP or violating owner boundaries. Do not use for ordinary local edits, raw .aoa session search, or direct signing/promotion/registry mutation without an authorized owner route.",
+      "source_scope": "repo",
+      "trust_posture": "project-overlay",
+      "mutation_surface": "runtime",
+      "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "manual",
+      "recommended_install_scopes": [
+        "repo"
+      ],
+      "scope_policy": {
+        "repo": "require-trusted-repo",
+        "user": "allow",
+        "admin": "allow",
+        "system": "allow"
+      },
+      "default_behavior_when_untrusted": "hide-on-discover block-on-disclose block-on-activate",
+      "notes": "Repo-scoped skills stay dark until the repository is explicitly trusted. The same skill may be installed at user/admin scope without repo trust gating."
+    },
+    {
       "name": "titan-approval-ledger",
       "display_name": "Titan Approval Ledger",
       "description": "Record explicit operator approval for Forge mutation or Delta judgment gates without treating approval records as owner truth. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
