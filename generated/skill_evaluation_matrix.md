@@ -6,7 +6,7 @@ evaluation fixtures, and authored snapshot-backed evidence files.
 
 ## Summary
 
-- total skills: 56
+- total skills: 57
 - canonical skills: 12
 - canonical skills with eval gaps: 0
 
@@ -53,6 +53,7 @@ evaluation fixtures, and authored snapshot-backed evidence files.
 | aoa-tdd-slice | canonical | core | explicit-preferred | 1 | 2 | 2 | 1 | 1 | `skills/core/engineering/aoa-tdd-slice/examples/example.md` | - | `docs/reviews/canonical-candidates/aoa-tdd-slice.md` | true | - |
 | atm10-change-protocol | evaluated | project | explicit-preferred | 1 | 1 | 1 | 1 | 1 | `skills/project/atm10/atm10-change-protocol/examples/example.md` | `docs/reviews/status-promotions/atm10-change-protocol.md` | - | true | - |
 | atm10-source-of-truth-check | evaluated | project | explicit-preferred | 1 | 1 | 1 | 1 | 1 | `skills/project/atm10/atm10-source-of-truth-check/examples/example.md` | `docs/reviews/status-promotions/atm10-source-of-truth-check.md` | - | true | - |
+| os-abyss-artifact-trust-loop | scaffold | project | explicit-preferred | 0 | 0 | 0 | 0 | 0 | `skills/project/abyss/os-abyss-artifact-trust-loop/examples/example.md` | - | - | false | missing_use_snapshot, missing_do_not_use_snapshot |
 | titan-approval-ledger | scaffold | project | explicit-only | 1 | 1 | 1 | 1 | 1 | `skills/project/titan/titan-approval-ledger/examples/runtime.md` | - | - | true | - |
 | titan-approval-loom | scaffold | project | explicit-only | 1 | 1 | 1 | 1 | 1 | `skills/project/titan/titan-approval-loom/examples/runtime.md` | - | - | true | - |
 | titan-appserver-bridge | scaffold | project | explicit-only | 1 | 1 | 1 | 1 | 1 | `skills/project/titan/titan-appserver-bridge/examples/runtime.md` | - | - | true | - |

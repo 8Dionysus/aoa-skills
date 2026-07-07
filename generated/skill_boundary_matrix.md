@@ -5,7 +5,7 @@ It is built from committed adjacency cases and snapshot-backed evidence only.
 
 ## Summary
 
-- total skills: 56
+- total skills: 57
 - adjacency cases: 48
 - skills with required adjacency coverage: 29
 - required adjacency gaps: 0
@@ -53,6 +53,7 @@ It is built from committed adjacency cases and snapshot-backed evidence only.
 | aoa-tdd-slice | canonical | core | true | 1 | 0 | aoa-change-protocol | change_workflows | true | - |
 | atm10-change-protocol | evaluated | project | false | 1 | 0 | atm10-source-of-truth-check | - | true | - |
 | atm10-source-of-truth-check | evaluated | project | false | 1 | 0 | atm10-change-protocol | - | true | - |
+| os-abyss-artifact-trust-loop | scaffold | project | false | 0 | 0 | - | - | false | - |
 | titan-approval-ledger | scaffold | project | false | 0 | 0 | - | - | false | - |
 | titan-approval-loom | scaffold | project | false | 0 | 0 | - | - | false | - |
 | titan-appserver-bridge | scaffold | project | false | 0 | 0 | - | - | false | - |

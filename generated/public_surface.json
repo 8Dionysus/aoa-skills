@@ -1256,6 +1256,32 @@
     {
       "candidate_review_path": null,
       "canonical_candidate_blockers": [
+        "status_below_evaluated",
+        "missing_autonomy_check",
+        "missing_use_case",
+        "missing_do_not_use_case"
+      ],
+      "canonical_candidate_ready": false,
+      "default_reference_readiness": "not_applicable",
+      "default_reference_readiness_blockers": [],
+      "governance_decision": null,
+      "governance_evidence_case_ids": [],
+      "governance_lane_ids": [],
+      "invocation_mode": "explicit-preferred",
+      "is_default_reference": false,
+      "lineage_state": "published",
+      "maturity_status": "scaffold",
+      "name": "os-abyss-artifact-trust-loop",
+      "promotion_review_path": null,
+      "scope": "project",
+      "skill_path": "skills/project/abyss/os-abyss-artifact-trust-loop/SKILL.md",
+      "status": "scaffold",
+      "summary": "OS Abyss artifact-trust loop for routing ABI, provenance, signatures, SBOM, C2PA, drift, and consumer gates through abyss-machine read models and owner-local producers.",
+      "technique_bridge_findings": []
+    },
+    {
+      "candidate_review_path": null,
+      "canonical_candidate_blockers": [
         "status_below_evaluated"
       ],
       "canonical_candidate_ready": false,

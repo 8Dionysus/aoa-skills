@@ -46,6 +46,7 @@
         "abyss-safe-infra-change",
         "abyss-self-diagnostic-spine",
         "abyss-sanitized-share",
+        "os-abyss-artifact-trust-loop",
         "atm10-change-protocol",
         "atm10-source-of-truth-check",
         "titan-approval-ledger",
@@ -273,7 +274,8 @@
       "skills": [
         "abyss-safe-infra-change",
         "abyss-self-diagnostic-spine",
-        "abyss-sanitized-share"
+        "abyss-sanitized-share",
+        "os-abyss-artifact-trust-loop"
       ]
     },
     "user-curated-core": {

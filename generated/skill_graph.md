@@ -118,6 +118,7 @@ graph TD
   skill_atm10_change_protocol["atm10-change-protocol"]
   profile_repo_atm10_overlay["profile: repo-atm10-overlay"]
   skill_atm10_source_of_truth_check["atm10-source-of-truth-check"]
+  skill_os_abyss_artifact_trust_loop["os-abyss-artifact-trust-loop"]
   skill_titan_approval_ledger["titan-approval-ledger"]
   technique_AOA_T_0045["AOA-T-0045"]
   profile_repo_titan_overlay["profile: repo-titan-overlay"]
@@ -821,6 +822,20 @@ graph TD
   skill_atm10_source_of_truth_check -->|available_in_artifact_group| artifact_group_runtime_guardrails
   skill_atm10_source_of_truth_check -->|available_in_artifact_group| artifact_group_description_trigger
   skill_atm10_source_of_truth_check -->|available_in_artifact_group| artifact_group_tiny_router
+  skill_os_abyss_artifact_trust_loop -->|maturity| status_scaffold
+  skill_os_abyss_artifact_trust_loop -->|scope| scope_project
+  skill_os_abyss_artifact_trust_loop -->|lineage| lineage_published
+  skill_os_abyss_artifact_trust_loop -->|invocation_policy| policy_explicit_preferred
+  skill_os_abyss_artifact_trust_loop -->|depends_on| technique_AOA_T_0001
+  skill_os_abyss_artifact_trust_loop -->|depends_on| technique_AOA_T_0002
+  skill_os_abyss_artifact_trust_loop -->|depends_on| technique_AOA_T_0028
+  skill_os_abyss_artifact_trust_loop -->|included_in_profile| profile_repo_abyss_overlay
+  skill_os_abyss_artifact_trust_loop -->|included_in_profile| profile_repo_default
+  skill_os_abyss_artifact_trust_loop -->|available_in_artifact_group| artifact_group_portable_export
+  skill_os_abyss_artifact_trust_loop -->|available_in_artifact_group| artifact_group_runtime_seam
+  skill_os_abyss_artifact_trust_loop -->|available_in_artifact_group| artifact_group_runtime_guardrails
+  skill_os_abyss_artifact_trust_loop -->|available_in_artifact_group| artifact_group_description_trigger
+  skill_os_abyss_artifact_trust_loop -->|available_in_artifact_group| artifact_group_tiny_router
   skill_titan_approval_ledger -->|maturity| status_scaffold
   skill_titan_approval_ledger -->|scope| scope_project
   skill_titan_approval_ledger -->|lineage| lineage_published
@@ -1076,6 +1091,7 @@ graph TD
 | aoa-tdd-slice | canonical | core | explicit-preferred | published | repo-core-only, repo-default, repo-project-core-outer-ring, repo-project-foundation, user-aoa-foundation, user-curated-core | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-0014, AOA-T-0001 |
 | atm10-change-protocol | evaluated | project | explicit-preferred | published | repo-atm10-overlay, repo-default | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-0001, AOA-T-0002 |
 | atm10-source-of-truth-check | evaluated | project | explicit-preferred | published | repo-atm10-overlay, repo-default | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-0013, AOA-T-0002, AOA-T-0009 |
+| os-abyss-artifact-trust-loop | scaffold | project | explicit-preferred | published | repo-abyss-overlay, repo-default | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-0001, AOA-T-0002, AOA-T-0028 |
 | titan-approval-ledger | scaffold | project | explicit-only | published | repo-default, repo-titan-overlay | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-0028, AOA-T-0045, AOA-T-0058 |
 | titan-approval-loom | scaffold | project | explicit-only | published | repo-default, repo-titan-overlay | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-0028, AOA-T-0045, AOA-T-0062 |
 | titan-appserver-bridge | scaffold | project | explicit-only | published | repo-default, repo-titan-overlay | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-0045, AOA-T-0066, AOA-T-0043 |

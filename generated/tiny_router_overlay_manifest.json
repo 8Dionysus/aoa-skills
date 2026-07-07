@@ -10,9 +10,9 @@
     "config/skill_policy_matrix.json",
     "config/tiny_router_skill_bands.json"
   ],
-  "skill_count": 56,
-  "band_count": 8,
-  "case_count": 142,
+  "skill_count": 57,
+  "band_count": 9,
+  "case_count": 144,
   "skills": [
     {
       "name": "abyss-safe-infra-change",
@@ -382,6 +382,15 @@
       "candidate_only": false,
       "project_overlay": true,
       "description_sha256": "8cd17be221e3bf3352b948cc0f4e0fcd3afad8d9999de0c5f414d0eb6092a305"
+    },
+    {
+      "name": "os-abyss-artifact-trust-loop",
+      "band": "os-artifact-trust",
+      "implicit_activation_policy": "manual",
+      "manual_invocation_required": true,
+      "candidate_only": false,
+      "project_overlay": true,
+      "description_sha256": "4e651ff7b53f12a4cfe733dea9959ed56e75a93ff6c1d7df1c8a34bd53da5b27"
     },
     {
       "name": "titan-approval-ledger",

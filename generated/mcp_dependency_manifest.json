@@ -195,6 +195,17 @@
       "tools": []
     },
     {
+      "name": "os-abyss-artifact-trust-loop",
+      "tools": [
+        {
+          "type": "mcp",
+          "value": "abyss_machine",
+          "description": "OS Abyss host machine MCP server for read-only artifact trust surfaces",
+          "transport": "stdio"
+        }
+      ]
+    },
+    {
       "name": "titan-approval-ledger",
       "tools": []
     },

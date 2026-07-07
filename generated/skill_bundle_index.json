@@ -3541,6 +3541,91 @@
         "tiny_router"
       ],
       "bundle_files": [
+        "skills/project/abyss/os-abyss-artifact-trust-loop/SKILL.md",
+        "skills/project/abyss/os-abyss-artifact-trust-loop/techniques.yaml",
+        "skills/project/abyss/os-abyss-artifact-trust-loop/agents/openai.yaml"
+      ],
+      "candidate_review_path": null,
+      "canonical_candidate_ready": false,
+      "canonical_eval_ready": false,
+      "content_hash": "eb0f72bd5ea4ddcbd6125c352d367117d4653d8b3aaf5b5282dd06517e56eac0",
+      "generated_surface_versions": {
+        "boundary_matrix": 2,
+        "bundle_index": 2,
+        "capsule": 1,
+        "catalog": 1,
+        "evaluation_matrix": 1,
+        "governance_backlog": 5,
+        "lineage_surface": 1,
+        "overlay_readiness": 1,
+        "public_surface": 3,
+        "sections": 1,
+        "skill_composition_audit": 1,
+        "skill_graph": 2,
+        "walkthrough": 1
+      },
+      "install_profiles": [
+        "repo-abyss-overlay",
+        "repo-default"
+      ],
+      "invocation_mode": "explicit-preferred",
+      "lineage_state": "published",
+      "name": "os-abyss-artifact-trust-loop",
+      "promotion_review_path": null,
+      "scope": "project",
+      "skill_path": "skills/project/abyss/os-abyss-artifact-trust-loop/SKILL.md",
+      "skill_revision": "eb0f72bd5ea4",
+      "status": "scaffold",
+      "support_artifacts": [
+        {
+          "path": "skills/project/abyss/os-abyss-artifact-trust-loop/examples/example.md",
+          "selected_for_runtime_inspection": true,
+          "type": "runtime_example"
+        },
+        {
+          "path": "skills/project/abyss/os-abyss-artifact-trust-loop/checks/review.md",
+          "selected_for_runtime_inspection": false,
+          "type": "review_checklist"
+        }
+      ],
+      "technique_dependencies": [
+        "AOA-T-0001",
+        "AOA-T-0002",
+        "AOA-T-0028"
+      ],
+      "technique_lineage": [
+        {
+          "id": "AOA-T-0001",
+          "lineage_state": "published",
+          "path": "techniques/execution/agent-workflows-core/plan-diff-apply-verify-report/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875"
+        },
+        {
+          "id": "AOA-T-0002",
+          "lineage_state": "published",
+          "path": "techniques/instruction/docs-boundary/source-of-truth-layout/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875"
+        },
+        {
+          "id": "AOA-T-0028",
+          "lineage_state": "published",
+          "path": "techniques/execution/agent-workflows-core/confirmation-gated-mutating-action/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875"
+        }
+      ]
+    },
+    {
+      "artifact_group_coverage": [
+        "portable_export",
+        "runtime_seam",
+        "runtime_guardrails",
+        "description_trigger",
+        "tiny_router"
+      ],
+      "bundle_files": [
         "skills/project/titan/titan-approval-ledger/SKILL.md",
         "skills/project/titan/titan-approval-ledger/techniques.yaml",
         "skills/project/titan/titan-approval-ledger/agents/openai.yaml"

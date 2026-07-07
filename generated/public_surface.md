@@ -5,7 +5,7 @@ It is built from committed skill bundles, review records, and evaluation fixture
 
 ## Summary
 
-- total skills: 56
+- total skills: 57
 - default references: 12
 - default-reference ready skills: 17
 - pending technique bridge lineage: 0

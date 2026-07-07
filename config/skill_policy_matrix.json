@@ -445,6 +445,16 @@
       "implicit_activation_policy": "manual",
       "notes": "Project overlay for abyss repository sharing and sanitization surfaces."
     },
+    "os-abyss-artifact-trust-loop": {
+      "trust_posture": "project-overlay",
+      "mutation_surface": "runtime",
+      "recommended_install_scopes": [
+        "repo"
+      ],
+      "requires_confirmation_seam": true,
+      "implicit_activation_policy": "manual",
+      "notes": "Manual OS Abyss artifact-trust overlay; MCP inspection is read-only, but any build, signing, evidence promotion, registry mutation, release, or consumer-admission action must remain owner-local and explicitly gated."
+    },
     "titan-approval-ledger": {
       "trust_posture": "project-overlay",
       "mutation_surface": "repo",

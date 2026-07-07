@@ -5,8 +5,8 @@ It is a boundary/readiness view, not a direct status surface.
 
 ## Summary
 
-- total skills: 56
-- multi-technique skills: 53
+- total skills: 57
+- multi-technique skills: 54
 - single-technique skills: 3
 - approved exceptions: 3
 - needs reframe: 0
@@ -54,6 +54,7 @@ It is a boundary/readiness view, not a direct status surface.
 | aoa-tdd-slice | 2 | multi_technique | keep_multi_technique | - |
 | atm10-change-protocol | 2 | multi_technique | keep_multi_technique | - |
 | atm10-source-of-truth-check | 3 | multi_technique | keep_multi_technique | - |
+| os-abyss-artifact-trust-loop | 3 | multi_technique | keep_multi_technique | - |
 | titan-approval-ledger | 3 | multi_technique | keep_multi_technique | - |
 | titan-approval-loom | 3 | multi_technique | keep_multi_technique | - |
 | titan-appserver-bridge | 3 | multi_technique | keep_multi_technique | - |

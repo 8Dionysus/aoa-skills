@@ -651,6 +651,21 @@
       "notes": "Manual project overlay for ATM10 repository document authority and public-surface role clarification."
     },
     {
+      "name": "os-abyss-artifact-trust-loop",
+      "scope": "project",
+      "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "manual",
+      "trust_posture": "project-overlay",
+      "mutation_surface": "runtime",
+      "requires_manual_invocation": true,
+      "candidate_only": false,
+      "requires_confirmation_seam": true,
+      "recommended_install_scopes": [
+        "repo"
+      ],
+      "notes": "Manual OS Abyss artifact-trust overlay; MCP inspection is read-only, but any build, signing, evidence promotion, registry mutation, release, or consumer-admission action must remain owner-local and explicitly gated."
+    },
+    {
       "name": "titan-approval-ledger",
       "scope": "project",
       "invocation_mode": "explicit-only",

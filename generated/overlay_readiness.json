@@ -49,6 +49,26 @@
     {
       "authority_section_present": true,
       "boundary_statement_present": true,
+      "bundle_review_check_count": 1,
+      "eval_ready_skill_count": 0,
+      "family": "os",
+      "listed_matches_actual": true,
+      "listed_skill_names": [
+        "os-abyss-artifact-trust-loop"
+      ],
+      "project_overlay_path": "mechanics/boundary-bridge/overlays/os/PROJECT_OVERLAY.md",
+      "project_skill_count": 1,
+      "project_skill_names": [
+        "os-abyss-artifact-trust-loop"
+      ],
+      "readiness_state": "baseline",
+      "repo_relative_statement_present": true,
+      "review_mentions_all_skills": true,
+      "review_path": "mechanics/boundary-bridge/overlays/os/REVIEW.md"
+    },
+    {
+      "authority_section_present": true,
+      "boundary_statement_present": true,
       "bundle_review_check_count": 15,
       "eval_ready_skill_count": 15,
       "family": "titan",
@@ -156,6 +176,21 @@
       "runtime_example_count": 1,
       "skill_path": "skills/project/atm10/atm10-source-of-truth-check/SKILL.md",
       "status": "evaluated"
+    },
+    {
+      "eval_blockers": [
+        "missing_use_snapshot",
+        "missing_do_not_use_snapshot"
+      ],
+      "eval_ready": false,
+      "family": "os",
+      "has_adaptation_points": true,
+      "has_policy_file": true,
+      "name": "os-abyss-artifact-trust-loop",
+      "review_check_path": "skills/project/abyss/os-abyss-artifact-trust-loop/checks/review.md",
+      "runtime_example_count": 1,
+      "skill_path": "skills/project/abyss/os-abyss-artifact-trust-loop/SKILL.md",
+      "status": "scaffold"
     },
     {
       "eval_blockers": [],
@@ -348,9 +383,9 @@
   },
   "summary": {
     "eval_ready_project_skill_count": 20,
-    "live_overlay_family_count": 3,
-    "project_skill_count": 20,
-    "project_skill_review_check_count": 20,
+    "live_overlay_family_count": 4,
+    "project_skill_count": 21,
+    "project_skill_review_check_count": 21,
     "reviewable_family_count": 3
   }
 }

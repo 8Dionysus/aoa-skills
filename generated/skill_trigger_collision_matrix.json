@@ -164,6 +164,22 @@
       ]
     },
     {
+      "family": "os-artifact-trust-routing",
+      "skills": [
+        "os-abyss-artifact-trust-loop",
+        "aoa-eval",
+        "aoa-source-of-truth-check",
+        "aoa-approval-gate-check",
+        "abyss-safe-infra-change"
+      ],
+      "notes": [
+        "Use os-abyss-artifact-trust-loop when ABI, provenance, signatures, SBOM, C2PA, durable evidence, drift, registry latest, or trust-gate verdicts determine whether an OS Abyss artifact can be consumed.",
+        "Use aoa-eval when the question is proof-surface selection or running an eval rather than artifact admission.",
+        "Use aoa-source-of-truth-check when the question is which owner files are authoritative before artifact policy is inspected.",
+        "Use aoa-approval-gate-check or abyss-safe-infra-change when the pressure is execution permission or bounded infrastructure mutation without an artifact-trust read model."
+      ]
+    },
+    {
       "family": "titan-service-cohort",
       "skills": [
         "titan-approval-ledger",
@@ -784,6 +800,20 @@
       ],
       "prompt": "After web research and repo owner-surface checks, mine .aoa sessions for missed eval triggers, repeated validation failures, and candidate eval cases with raw and segment refs only.",
       "note": "The session-mining subskill is manual and raw session refs remain candidate evidence, not memo writeback or reviewed proof."
+    },
+    {
+      "case_id": "collision-49",
+      "skill_name": "os-abyss-artifact-trust-loop",
+      "expected_behavior": "manual-invocation-required",
+      "expected_skill": null,
+      "competing_skills": [
+        "aoa-eval",
+        "aoa-source-of-truth-check",
+        "aoa-approval-gate-check",
+        "abyss-safe-infra-change"
+      ],
+      "prompt": "Before installing or consuming this OS Abyss runtime bundle, inspect artifact requirements, producer profile, stale evidence, registry latest, and trust-gate verdict through abyss-machine, then route any rebuild, signing, promotion, or release action to the owner repo.",
+      "note": "The OS artifact-trust loop is the semantic match, but it remains manual because downstream mutation or admission must be explicitly owner-gated."
     }
   ]
 }

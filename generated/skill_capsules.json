@@ -754,6 +754,25 @@
       "workflow_short": "Purpose: adapt aoa-source-of-truth-check to an atm10- repository when the base workflow is right but the local public-doc and repo-surface map needs repo-relative detail. Flow: start from aoa-source-of-truth-check instead of inventing a family-specific..."
     },
     {
+      "inputs_short": "Needs: artifact path, artifact class, or suspected artifact family; consumer intent, such as agent, installer, runtime, releaseconsumer, or another owner-defined intent; source repo, source ref, changed paths,...",
+      "invocation_mode": "explicit-preferred",
+      "main_anti_patterns_short": "Avoid: Creating a separate trust MCP when the existing abyss-machine MCP can expose the needed read-only surfaces; Turning MCP access into hidden build, sign, promote, registry-write, trust-root-change, pkexec,...",
+      "name": "os-abyss-artifact-trust-loop",
+      "outputs_short": "Produces: resolved or explicitly unknown artifact class; requirements, producer profile, affected/drift, registry/latest, trust coverage, and trust-gate summary; named owner route for build, verify, sign, sidecar...",
+      "scope": "project",
+      "skill_path": "skills/project/abyss/os-abyss-artifact-trust-loop/SKILL.md",
+      "status": "scaffold",
+      "summary": "OS Abyss artifact-trust loop for routing ABI, provenance, signatures, SBOM, C2PA, drift, and consumer gates through abyss-machine read models and owner-local producers.",
+      "technique_dependencies": [
+        "AOA-T-0001",
+        "AOA-T-0002",
+        "AOA-T-0028"
+      ],
+      "trigger_boundary_short": "Use when a task mentions ABI, provenance, signs, signatures, SBOM, SLSA, in-toto, Sigstore, Cosign, C2PA, TUF, SCITT, artifact trust, producer profiles, durable evidence, trust gates, registry latest, stale bundles,...",
+      "verification_short": "Checks: Confirm the artifact class and consumer intent were named or explicitly marked unknown; Confirm requirements, producer profile, affected/drift, coverage, registry/latest, trust-gate, scenarios, and validate...",
+      "workflow_short": "Purpose: route OS Abyss ABI, provenance, signature, SBOM, SLSA/in-toto, Sigstore/Cosign, C2PA, TUF, SCITT, durable evidence, drift, and trust-gate work through the existing abyss-machine trust plane without creating a second trust authority. Flow: Read..."
+    },
+    {
       "inputs_short": "Needs: receipt or ledger reference; approved Titan lane; gate kind; operator intent text.",
       "invocation_mode": "explicit-only",
       "main_anti_patterns_short": "Avoid: treating Titan vocabulary as permission to widen authority; letting receipt, replay, console, or bridge state replace owner-repo evidence; auto-approving Forge or Delta because a plan looks plausible;...",
