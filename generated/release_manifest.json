@@ -47,6 +47,7 @@
     "config/skill_policy_matrix.json",
     "config/runtime_guardrail_policy.json",
     "config/description_trigger_eval_policy.json",
+    "config/skill_trigger_collision_families.json",
     "config/tiny_router_skill_bands.json"
   ],
   "generated_files": [
@@ -78,6 +79,7 @@
     "generated/runtime_guardrail_prompt_blocks.json",
     "generated/runtime_guardrail_manifest.json",
     "generated/skill_description_signals.json",
+    "generated/skill_trigger_collision_matrix.json",
     "generated/description_trigger_eval_cases.jsonl",
     "generated/description_trigger_eval_cases.csv",
     "generated/description_trigger_eval_manifest.json",
@@ -160,6 +162,7 @@
       "wave": 7,
       "files": [
         "generated/skill_description_signals.json",
+        "generated/skill_trigger_collision_matrix.json",
         "generated/description_trigger_eval_cases.jsonl",
         "generated/description_trigger_eval_cases.csv",
         "generated/description_trigger_eval_manifest.json",
@@ -232,6 +235,11 @@
       "path": "config/description_trigger_eval_policy.json",
       "sha256": "6059c94badbdb360f001a3381ce741575c121037a3006e83a62b8f5a768cc5b0",
       "bytes": 1323
+    },
+    {
+      "path": "config/skill_trigger_collision_families.json",
+      "sha256": "4a224e612b47abd9d7bc97c1c305a73044789cd8ce1cdddf65e02b280a72997e",
+      "bytes": 10037
     },
     {
       "path": "config/tiny_router_skill_bands.json",
@@ -312,8 +320,8 @@
     },
     {
       "path": "generated/runtime_disclosure_index.json",
-      "sha256": "f7c760c0e2c4ed7125e2d1d6ea25d42e432b3463cb4e59876b925212aa23c69c",
-      "bytes": 416212
+      "sha256": "4366ac1641e1afef06b048d2e5fb5840b79546a2c3b8ed6df5d2ab348fc6ef83",
+      "bytes": 415857
     },
     {
       "path": "generated/runtime_activation_aliases.json",
@@ -337,8 +345,8 @@
     },
     {
       "path": "generated/runtime_router_hints.json",
-      "sha256": "f945f16f13ebe1efb7af56272e1a8a437f2019977c65576b06965419b140fbaf",
-      "bytes": 108914
+      "sha256": "1d8dce33bf504677e6adf830f38bacaa6b1a4cc16f9e8f1c94cba197f939fdaa",
+      "bytes": 108559
     },
     {
       "path": "generated/runtime_seam_manifest.json",
@@ -377,23 +385,28 @@
     },
     {
       "path": "generated/skill_description_signals.json",
-      "sha256": "9a204fcf4afc7efb7e1c614db3eaaa89fa747b6215b8d170abffdd93adc03708",
-      "bytes": 131785
+      "sha256": "304b1a8787015d19242671a9acc3568ef329ec41467b89f52b13282c57b63d8d",
+      "bytes": 130993
+    },
+    {
+      "path": "generated/skill_trigger_collision_matrix.json",
+      "sha256": "0b6d77b4ab3fc2e70273c3cbadec7ecd9cb25eb142354fa9e66bfae2cb5dc31d",
+      "bytes": 39404
     },
     {
       "path": "generated/description_trigger_eval_cases.jsonl",
-      "sha256": "4e18d1892783603e64b5a65ede387c14a6f9c924ca9bfd315b2ba6f9d42d8614",
-      "bytes": 235009
+      "sha256": "54568d97b565b462e4f58e63d7fb726632d9cf7d10e13452049eb7ed750c6f70",
+      "bytes": 226584
     },
     {
       "path": "generated/description_trigger_eval_cases.csv",
-      "sha256": "24ffb49c7fef8e267084634d4332d6bbc2f88e2a1d664d249f0e088a86b886c8",
-      "bytes": 153650
+      "sha256": "bb5bea52269e983a63894a3290b7a18c54c37233078760574f522ccd88cc1f49",
+      "bytes": 147230
     },
     {
       "path": "generated/description_trigger_eval_manifest.json",
-      "sha256": "f4ec97b3db881cd4319f05d35f58e2fa607fc04414e35be2c19abb2329cca30e",
-      "bytes": 38660
+      "sha256": "2b534a5c839f1229ef5489d68f671b82679341e54382949cada82b3e9a360e32",
+      "bytes": 38131
     },
     {
       "path": "generated/skills_ref_validation_manifest.json",
@@ -432,8 +445,8 @@
     },
     {
       "path": "generated/tiny_router_skill_signals.json",
-      "sha256": "648bd45eedcbc969bc4f0bc1329060fe07b674da4cf71c31a50081f770b22fa1",
-      "bytes": 185888
+      "sha256": "bf1f288826022f9d9f9fcf0f38a2f39a52889f9cb5ae3d88bab312ec3e047542",
+      "bytes": 182654
     },
     {
       "path": "generated/tiny_router_candidate_bands.json",
@@ -447,12 +460,12 @@
     },
     {
       "path": "generated/tiny_router_eval_cases.jsonl",
-      "sha256": "d88c80627c65d4662738281a69068eb1a73b821beb3758f94a84660727efd9fc",
-      "bytes": 63919
+      "sha256": "67e24f5fe65b6517b53fffac4dfaaaec2af15f5af7cdb533b79e3df777db79c0",
+      "bytes": 55093
     },
     {
       "path": "generated/tiny_router_overlay_manifest.json",
-      "sha256": "3453cb270623997d00391c525b38c06ca27c75eb5a245dacc4f099b097f543fd",
+      "sha256": "54e78cbe4769036443b6f05d7fa1e6c231d7eef1fd51e69b908dab24f2c46c6c",
       "bytes": 19554
     },
     {

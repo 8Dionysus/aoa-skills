@@ -161,6 +161,19 @@ def validate_collision_matrix(
             errors.append(f"collision matrix missing skills: {missing!r}")
         if extra:
             errors.append(f"collision matrix has unknown skills: {extra!r}")
+    for family in collision_doc.get("families", []):
+        members = set(family.get("skills", []))
+        adjacent_skills = set(family.get("adjacent_skills", []))
+        unknown_adjacent = sorted(adjacent_skills - set(skills))
+        if unknown_adjacent:
+            errors.append(
+                f"collision matrix family {family.get('family')!r} has unknown adjacent skills: {unknown_adjacent!r}"
+            )
+        overlapping = sorted(members & adjacent_skills)
+        if overlapping:
+            errors.append(
+                f"collision matrix family {family.get('family')!r} repeats members as adjacent skills: {overlapping!r}"
+            )
     expected_collision_case_ids = {
         case["case_id"] for case in collision_doc.get("cases", []) if case.get("case_id")
     }

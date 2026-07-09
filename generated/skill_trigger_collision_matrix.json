@@ -166,17 +166,19 @@
     {
       "family": "os-artifact-trust-routing",
       "skills": [
-        "os-abyss-artifact-trust-loop",
-        "aoa-eval",
-        "aoa-source-of-truth-check",
-        "aoa-approval-gate-check",
-        "abyss-safe-infra-change"
+        "os-abyss-artifact-trust-loop"
       ],
       "notes": [
         "Use os-abyss-artifact-trust-loop when ABI, provenance, signatures, SBOM, C2PA, durable evidence, drift, registry latest, or trust-gate verdicts determine whether an OS Abyss artifact can be consumed.",
         "Use aoa-eval when the question is proof-surface selection or running an eval rather than artifact admission.",
         "Use aoa-source-of-truth-check when the question is which owner files are authoritative before artifact policy is inspected.",
         "Use aoa-approval-gate-check or abyss-safe-infra-change when the pressure is execution permission or bounded infrastructure mutation without an artifact-trust read model."
+      ],
+      "adjacent_skills": [
+        "aoa-eval",
+        "aoa-source-of-truth-check",
+        "aoa-approval-gate-check",
+        "abyss-safe-infra-change"
       ]
     },
     {
@@ -299,56 +301,6 @@
       "note": "General bounded change workflow, not specifically test-first or infra-heavy."
     },
     {
-      "case_id": "collision-38",
-      "skill_name": "aoa-decision",
-      "expected_behavior": "invoke-skill",
-      "expected_skill": "aoa-decision",
-      "competing_skills": [
-        "aoa-adr-write",
-        "aoa-decision-find",
-        "aoa-decision-create",
-        "aoa-decision-correct"
-      ],
-      "prompt": "The task touches docs/decisions across several AoA repos, and the agent must use the workspace decision graph to decide whether to find, create, or correct records before editing.",
-      "note": "This is a decision-lane route selection task, not a standalone ADR or one preselected subskill."
-    },
-    {
-      "case_id": "collision-39",
-      "skill_name": "aoa-decision-find",
-      "expected_behavior": "manual-invocation-required",
-      "expected_skill": null,
-      "competing_skills": [
-        "aoa-decision",
-        "aoa-decision-create"
-      ],
-      "prompt": "Use the decision graph to find which prior decision explains this owner boundary, then verify the match against the source note.",
-      "note": "The find subskill is manual and should normally be selected by aoa-decision."
-    },
-    {
-      "case_id": "collision-40",
-      "skill_name": "aoa-decision-create",
-      "expected_behavior": "manual-invocation-required",
-      "expected_skill": null,
-      "competing_skills": [
-        "aoa-decision",
-        "aoa-decision-find"
-      ],
-      "prompt": "Write a new repo-local decision record for a real route choice, rebuild the local decision indexes, and refresh the workspace decision graph.",
-      "note": "The create subskill is manual and should normally be selected by aoa-decision after routing."
-    },
-    {
-      "case_id": "collision-41",
-      "skill_name": "aoa-decision-correct",
-      "expected_behavior": "manual-invocation-required",
-      "expected_skill": null,
-      "competing_skills": [
-        "aoa-decision",
-        "aoa-decision-create"
-      ],
-      "prompt": "Repair a stale decision note and generated index mismatch by editing the source record first, then refresh the graph.",
-      "note": "The correct subskill is manual and should normally be selected by aoa-decision after routing."
-    },
-    {
       "case_id": "collision-09",
       "skill_name": "aoa-approval-gate-check",
       "expected_behavior": "manual-invocation-required",
@@ -410,13 +362,13 @@
     {
       "case_id": "collision-14",
       "skill_name": "atm10-change-protocol",
-      "expected_behavior": "invoke-skill",
-      "expected_skill": "atm10-change-protocol",
+      "expected_behavior": "manual-invocation-required",
+      "expected_skill": null,
       "competing_skills": [
         "aoa-change-protocol"
       ],
       "prompt": "Inside this atm10-billing repo, apply the base change protocol but use repo-relative atm10 paths, local commands, and local approval notes.",
-      "note": "The overlay should win only when the repo is actually an atm10-* repo and the project-specific overlay matters."
+      "note": "Strong collision-family matches must not activate this manual skill; use an explicit handle or deliberate manual decision before execution."
     },
     {
       "case_id": "collision-15",
@@ -432,13 +384,13 @@
     {
       "case_id": "collision-16",
       "skill_name": "atm10-source-of-truth-check",
-      "expected_behavior": "invoke-skill",
-      "expected_skill": "atm10-source-of-truth-check",
+      "expected_behavior": "manual-invocation-required",
+      "expected_skill": null,
       "competing_skills": [
         "aoa-source-of-truth-check"
       ],
       "prompt": "Inside this atm10-orders repo, map the authoritative docs using repo-relative atm10 canonical-file patterns and local review posture.",
-      "note": "Overlay-specific source-of-truth mapping inside an ATM10 repo."
+      "note": "Strong collision-family matches must not activate this manual skill; use an explicit handle or deliberate manual decision before execution."
     },
     {
       "case_id": "collision-17",
@@ -448,7 +400,6 @@
       "competing_skills": [
         "atm10-source-of-truth-check",
         "aoa-adr-write",
-        "aoa-decision",
         "aoa-quest-harvest"
       ],
       "prompt": "This repo has three conflicting architecture guides and two outdated runbooks. Identify which files are authoritative and shorten the entrypoints into a link-driven map.",
@@ -484,13 +435,12 @@
       "expected_behavior": "manual-invocation-required",
       "expected_skill": null,
       "competing_skills": [
-        "aoa-automation-opportunity-scan",
         "aoa-session-route-forks",
         "aoa-session-self-diagnose",
         "aoa-session-progression-lift",
         "aoa-quest-harvest"
       ],
-      "prompt": "Turn this reviewed session recap into a bounded HARVEST_PACKET, route reusable units to the right owner layer, and name whether the next honest handoff is automation scan, forks, diagnosis, progression, or quest promotion.",
+      "prompt": "Turn this reviewed session recap into a bounded HARVEST_PACKET, route reusable units to the right owner layer, and name whether the next honest handoff is forks, diagnosis, progression, or quest promotion.",
       "note": "This is the family nucleus: harvest first, then hand off. Even with a strong semantic match it stays explicit-only."
     },
     {
@@ -500,12 +450,11 @@
       "expected_skill": null,
       "competing_skills": [
         "aoa-session-donor-harvest",
-        "aoa-automation-opportunity-scan",
         "aoa-session-self-diagnose",
         "aoa-quest-harvest"
       ],
-      "prompt": "The reviewed session is already harvested, but there are three materially different next routes with different risks and owner targets, including staying manual versus lifting one branch into an automation seed. Surface explicit fork cards instead of burying the choice in one recommendation.",
-      "note": "This is branch analysis after review, not first-pass harvest, automation-readiness classification, diagnosis, or final quest promotion."
+      "prompt": "The reviewed session is already harvested, but there are three materially different next routes with different risks and owner targets. Surface explicit fork cards instead of burying the choice in one recommendation.",
+      "note": "This is branch analysis after review, not first-pass harvest, diagnosis, or final quest promotion."
     },
     {
       "case_id": "collision-22",
@@ -514,12 +463,11 @@
       "expected_skill": null,
       "competing_skills": [
         "aoa-session-donor-harvest",
-        "aoa-automation-opportunity-scan",
         "aoa-session-self-repair",
         "aoa-session-progression-lift"
       ],
-      "prompt": "Across the reviewed session notes, the same blockers, proof gaps, hidden inputs, and approval blur keep recurring. Turn that evidence into a diagnosis packet before anyone claims the route is automation-ready or starts patching.",
-      "note": "Diagnosis is the next honest move here, not donor extraction, automation-readiness classification, repair execution, or progression reflection."
+      "prompt": "Across the reviewed session notes, the same blockers, proof gaps, and boundary blur keep recurring. Turn that evidence into a diagnosis packet before anyone starts patching.",
+      "note": "Diagnosis is the next honest move here, not donor extraction, repair execution, or progression reflection."
     },
     {
       "case_id": "collision-23",
@@ -529,11 +477,10 @@
       "competing_skills": [
         "aoa-session-self-diagnose",
         "aoa-session-donor-harvest",
-        "aoa-session-route-forks",
-        "aoa-automation-opportunity-scan"
+        "aoa-session-route-forks"
       ],
-      "prompt": "We already have a reviewed diagnosis packet. Turn it into the smallest repair packet with checkpoint posture, rollback marker, health check, and owner target so later automation claims rest on a safer boundary.",
-      "note": "This is repair planning after diagnosis, not diagnosis itself, broader donor harvest, branch analysis, or automation-readiness classification."
+      "prompt": "We already have a reviewed diagnosis packet. Turn it into the smallest repair packet with checkpoint posture, rollback marker, health check, and owner target.",
+      "note": "This is repair planning after diagnosis, not diagnosis itself or a broader donor harvest."
     },
     {
       "case_id": "collision-24",
@@ -585,7 +532,7 @@
         "aoa-session-self-repair"
       ],
       "prompt": "Inside this abyss-stack repo, gather repo-relative runtime evidence around one concrete target path, normalize it into a bounded diagnostic session artifact, and name the honest exit class before any repair claim is made.",
-      "note": "The abyss overlay is the right manual route when the base diagnosis workflow needs one runtime-owned repo-relative artifact, but the scaffold must not auto-activate."
+      "note": "Strong collision-family matches must not activate this manual skill; use an explicit handle or deliberate manual decision before execution."
     },
     {
       "case_id": "collision-28",
@@ -601,15 +548,15 @@
     {
       "case_id": "collision-29",
       "skill_name": "aoa-checkpoint-closeout-bridge",
-      "expected_behavior": "invoke-skill",
-      "expected_skill": "aoa-checkpoint-closeout-bridge",
+      "expected_behavior": "manual-invocation-required",
+      "expected_skill": null,
       "competing_skills": [
         "aoa-session-donor-harvest",
         "aoa-session-progression-lift",
         "aoa-quest-harvest"
       ],
       "prompt": "A reviewed session artifact, a checkpoint note, and a reviewed closeout handoff already exist. Build one explicit closeout context, reread the full reviewed artifact, and drive donor harvest, progression lift, and quest harvest in that order.",
-      "note": "This is the explicit reviewed-closeout bridge: checkpoint hints stay provisional, but the bridge itself should win when the task is to coordinate the full donor -> progression -> quest chain."
+      "note": "Implicit semantic matches may surface this skill as a candidate, but reviewed activation remains explicit."
     },
     {
       "case_id": "collision-30",
@@ -664,7 +611,6 @@
       "expected_skill": "aoa-source-of-truth-check",
       "competing_skills": [
         "aoa-adr-write",
-        "aoa-decision",
         "aoa-bounded-context-map"
       ],
       "prompt": "Clarify which files are authoritative for chaos doctrine, runtime receipts, and re-entry gates, then keep the repo entrypoints short and link-driven.",
@@ -688,11 +634,10 @@
       "expected_behavior": "invoke-skill",
       "expected_skill": "aoa-bounded-context-map",
       "competing_skills": [
-        "aoa-adr-write",
-        "aoa-source-of-truth-check"
+        "aoa-adr-write"
       ],
       "prompt": "Separate runtime receipts, routing hints, playbook gates, and eval bridge candidates into bounded contexts before any new decision record is written.",
-      "note": "This is context carving before a decision note or source-of-truth map."
+      "note": "This is context carving before a decision note, not ADR authoring."
     },
     {
       "case_id": "collision-37",
@@ -704,6 +649,70 @@
       ],
       "prompt": "The repository has conflicting docs about whether the memo port or root route card owns workspace memory guidance. Clarify the authoritative files and keep entrypoints link-driven before writing any memo candidate.",
       "note": "When the problem is document authority, source-of-truth mapping should win and memo writeback should defer."
+    },
+    {
+      "case_id": "collision-38",
+      "skill_name": "aoa-decision",
+      "expected_behavior": "invoke-skill",
+      "expected_skill": "aoa-decision",
+      "competing_skills": [
+        "aoa-adr-write",
+        "aoa-decision-find",
+        "aoa-decision-create",
+        "aoa-decision-correct"
+      ],
+      "prompt": "The task touches docs/decisions across several AoA repos, and the agent must use the workspace decision graph to decide whether to find, create, or correct records before editing.",
+      "note": "This is a decision-lane route selection task, not a standalone ADR or one preselected subskill."
+    },
+    {
+      "case_id": "collision-39",
+      "skill_name": "aoa-decision-find",
+      "expected_behavior": "manual-invocation-required",
+      "expected_skill": null,
+      "competing_skills": [
+        "aoa-decision",
+        "aoa-decision-create"
+      ],
+      "prompt": "Use the decision graph to find which prior decision explains this owner boundary, then verify the match against the source note.",
+      "note": "The find subskill is manual and should normally be selected by aoa-decision."
+    },
+    {
+      "case_id": "collision-40",
+      "skill_name": "aoa-decision-create",
+      "expected_behavior": "manual-invocation-required",
+      "expected_skill": null,
+      "competing_skills": [
+        "aoa-decision",
+        "aoa-decision-find"
+      ],
+      "prompt": "Write a new repo-local decision record for a real route choice, rebuild the local decision indexes, and refresh the workspace decision graph.",
+      "note": "The create subskill is manual and should normally be selected by aoa-decision after routing."
+    },
+    {
+      "case_id": "collision-41",
+      "skill_name": "aoa-decision-correct",
+      "expected_behavior": "manual-invocation-required",
+      "expected_skill": null,
+      "competing_skills": [
+        "aoa-decision",
+        "aoa-decision-create"
+      ],
+      "prompt": "Repair a stale decision note and generated index mismatch by editing the source record first, then refresh the graph.",
+      "note": "The correct subskill is manual and should normally be selected by aoa-decision after routing."
+    },
+    {
+      "case_id": "collision-49",
+      "skill_name": "os-abyss-artifact-trust-loop",
+      "expected_behavior": "manual-invocation-required",
+      "expected_skill": null,
+      "competing_skills": [
+        "aoa-eval",
+        "aoa-source-of-truth-check",
+        "aoa-approval-gate-check",
+        "abyss-safe-infra-change"
+      ],
+      "prompt": "Before installing or consuming this OS Abyss runtime bundle, inspect artifact requirements, producer profile, stale evidence, registry latest, and trust-gate verdict through abyss-machine, then route any rebuild, signing, promotion, or release action to the owner repo.",
+      "note": "The OS artifact-trust loop is the semantic match, but it remains manual because downstream mutation or admission must be explicitly owner-gated."
     },
     {
       "case_id": "collision-42",
@@ -800,20 +809,6 @@
       ],
       "prompt": "After web research and repo owner-surface checks, mine .aoa sessions for missed eval triggers, repeated validation failures, and candidate eval cases with raw and segment refs only.",
       "note": "The session-mining subskill is manual and raw session refs remain candidate evidence, not memo writeback or reviewed proof."
-    },
-    {
-      "case_id": "collision-49",
-      "skill_name": "os-abyss-artifact-trust-loop",
-      "expected_behavior": "manual-invocation-required",
-      "expected_skill": null,
-      "competing_skills": [
-        "aoa-eval",
-        "aoa-source-of-truth-check",
-        "aoa-approval-gate-check",
-        "abyss-safe-infra-change"
-      ],
-      "prompt": "Before installing or consuming this OS Abyss runtime bundle, inspect artifact requirements, producer profile, stale evidence, registry latest, and trust-gate verdict through abyss-machine, then route any rebuild, signing, promotion, or release action to the owner repo.",
-      "note": "The OS artifact-trust loop is the semantic match, but it remains manual because downstream mutation or admission must be explicitly owner-gated."
     }
   ]
 }

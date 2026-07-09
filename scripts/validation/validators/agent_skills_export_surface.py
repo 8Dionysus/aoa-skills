@@ -352,8 +352,13 @@ def build_export_surface_indexes(docs: ExportSurfaceDocuments) -> ExportSurfaceI
     }
     for family in docs.collision_doc.get("families", []):
         members = family.get("skills", [])
+        adjacent_skills = family.get("adjacent_skills", [])
         for skill_name in members:
             description_families_by_skill.setdefault(skill_name, []).append(family["family"])
+            description_neighbors_by_skill.setdefault(skill_name, set()).update(
+                name for name in [*members, *adjacent_skills] if name != skill_name
+            )
+        for skill_name in adjacent_skills:
             description_neighbors_by_skill.setdefault(skill_name, set()).update(
                 name for name in members if name != skill_name
             )

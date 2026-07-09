@@ -255,7 +255,7 @@
       ],
       "primary_positive_prompt": "Use $abyss-self-diagnostic-spine to turn repo-relative runtime evidence plus optional reviewed session refs into one bounded diagnostic session artifact with an honest exit class and no silent repair authority.",
       "primary_negative_prompt": "The material is still a live unreviewed session and there is no concrete runtime target or repo-relative evidence surface to normalize yet, so a diagnostic spine artifact would be premature.",
-      "primary_defer_prompt": "This abyss repo now has a diagnostic spine note, runbook fragments, and overlay guidance that disagree about which file is authoritative. Map the canonical docs and shorten the entrypoints instead of producing a runtime artifact."
+      "primary_defer_prompt": ""
     },
     {
       "name": "aoa-adr-write",
@@ -336,7 +336,7 @@
       ],
       "primary_positive_prompt": "Use $aoa-adr-write to record a meaningful architectural or workflow decision, place it in the canonical decision surface, and verify the rationale is easy to find.",
       "primary_negative_prompt": "The change is tiny and self-evident, with no durable decision or rationale that future contributors would need to find.",
-      "primary_defer_prompt": "The task touches docs/decisions across several AoA repos, and the agent must use the workspace decision graph to decide whether to find, create, or correct records before editing."
+      "primary_defer_prompt": "This repo has three conflicting architecture guides and two outdated runbooks. Identify which files are authoritative and shorten the entrypoints into a link-driven map."
     },
     {
       "name": "aoa-approval-gate-check",
@@ -860,7 +860,7 @@
       ],
       "primary_positive_prompt": "Use $aoa-commit-growth-seam to isolate one bounded diff, carry forward the real validation state, and stop at one intentional local commit boundary before any push or publish route.",
       "primary_negative_prompt": "The patch is still incomplete, tests are still red, and the next honest move is more repair work rather than crossing any commit boundary yet.",
-      "primary_defer_prompt": "The change still needs planning, code edits, explicit verification, and a final report before any commit boundary would be honest."
+      "primary_defer_prompt": ""
     },
     {
       "name": "aoa-contract-test",
@@ -1104,7 +1104,7 @@
       "companions": [],
       "primary_positive_prompt": "Use $aoa-decision to check the decision graph first, choose find/create/correct, and keep repo-local decision files as source truth.",
       "primary_negative_prompt": "The task only clarifies which README is authoritative and has no decision record, generated index, or decision graph question.",
-      "primary_defer_prompt": "This repo has three conflicting architecture guides and two outdated runbooks. Identify which files are authoritative and shorten the entrypoints into a link-driven map."
+      "primary_defer_prompt": "Use the decision graph to find which prior decision explains this owner boundary, then verify the match against the source note."
     },
     {
       "name": "aoa-decision-correct",
@@ -1184,7 +1184,7 @@
       "companions": [],
       "primary_positive_prompt": "Use $aoa-decision-correct to repair the source decision note first, rebuild local indexes, and refresh the workspace graph.",
       "primary_negative_prompt": "There is no existing decision record to repair; a new durable record is needed.",
-      "primary_defer_prompt": "The task touches docs/decisions across several AoA repos, and the agent must use the workspace decision graph to decide whether to find, create, or correct records before editing."
+      "primary_defer_prompt": ""
     },
     {
       "name": "aoa-decision-create",
@@ -1264,7 +1264,7 @@
       "companions": [],
       "primary_positive_prompt": "Use $aoa-decision-create to inspect graph context, write the repo-local decision note, rebuild indexes, and refresh the workspace graph.",
       "primary_negative_prompt": "Existing records already explain the route; the task is to find and summarize them.",
-      "primary_defer_prompt": "The task touches docs/decisions across several AoA repos, and the agent must use the workspace decision graph to decide whether to find, create, or correct records before editing."
+      "primary_defer_prompt": ""
     },
     {
       "name": "aoa-decision-find",
@@ -1344,7 +1344,7 @@
       "companions": [],
       "primary_positive_prompt": "Use $aoa-decision-find to search the decision graph, read the matching source notes, and return compact decision context.",
       "primary_negative_prompt": "A new durable decision must be recorded, so lookup alone is insufficient.",
-      "primary_defer_prompt": "The task touches docs/decisions across several AoA repos, and the agent must use the workspace decision graph to decide whether to find, create, or correct records before editing."
+      "primary_defer_prompt": ""
     },
     {
       "name": "aoa-dry-run-first",
@@ -1524,7 +1524,7 @@
       ],
       "primary_positive_prompt": "Use $aoa-eval to check the local eval port, central aoa-evals standards, aoa-evals-mcp access packets, validators, tests, and session evidence, then choose select, apply, local-need, design, or session-mining with owner boundaries intact.",
       "primary_negative_prompt": "Add a small unit test for this pure helper; no eval port, central proof, trigger routing, or session evidence question exists.",
-      "primary_defer_prompt": "Docs disagree about whether evals/PORT.yaml, README, or AGENTS.md is authoritative for local eval guidance; clarify the source-of-truth files and keep entrypoints link-driven before adding any eval suite."
+      "primary_defer_prompt": "Before installing or consuming this OS Abyss runtime bundle, inspect artifact requirements, producer profile, stale evidence, registry latest, and trust-gate verdict through abyss-machine, then route any rebuild, signing, promotion, or release action to the owner repo."
     },
     {
       "name": "aoa-eval-apply",
@@ -1617,7 +1617,7 @@
       ],
       "primary_positive_prompt": "Use $aoa-eval-apply to run the selected eval, validator, test, or script and report command evidence, artifacts, generated drift, and proof limits.",
       "primary_negative_prompt": "No existing eval has been selected yet; first inspect the repo-local and central surfaces.",
-      "primary_defer_prompt": "Decide how OS Abyss should connect evals in a target repo: inspect existing local eval ports, central aoa-evals standards, aoa-evals-mcp access packets, validators, tests, and session refs before selecting apply, local-need, design, or session-mining."
+      "primary_defer_prompt": ""
     },
     {
       "name": "aoa-eval-design",
@@ -1710,7 +1710,7 @@
       ],
       "primary_positive_prompt": "Use $aoa-eval-design to draft a local eval suite with deterministic checks first, positive and negative cases, collision cases when routing matters, and central proof acceptance out of scope.",
       "primary_negative_prompt": "Only an eval_need intake packet is required now; suite design is premature.",
-      "primary_defer_prompt": "Decide how OS Abyss should connect evals in a target repo: inspect existing local eval ports, central aoa-evals standards, aoa-evals-mcp access packets, validators, tests, and session refs before selecting apply, local-need, design, or session-mining."
+      "primary_defer_prompt": ""
     },
     {
       "name": "aoa-eval-local-need",
@@ -1802,7 +1802,7 @@
       ],
       "primary_positive_prompt": "Use $aoa-eval-local-need to create one bounded evals/intake eval_need packet with owner route, evidence refs, rejected existing evals, proposed checks, and proof limits.",
       "primary_negative_prompt": "An existing validator covers this behavior and should be run now.",
-      "primary_defer_prompt": "Decide how OS Abyss should connect evals in a target repo: inspect existing local eval ports, central aoa-evals standards, aoa-evals-mcp access packets, validators, tests, and session refs before selecting apply, local-need, design, or session-mining."
+      "primary_defer_prompt": ""
     },
     {
       "name": "aoa-eval-select",
@@ -1895,7 +1895,7 @@
       ],
       "primary_positive_prompt": "Use $aoa-eval-select to inspect the repo-local eval port, tests, validators, scripts, and central aoa-evals standards before creating any new eval.",
       "primary_negative_prompt": "The selected validator command is already known and only needs to be run.",
-      "primary_defer_prompt": "Decide how OS Abyss should connect evals in a target repo: inspect existing local eval ports, central aoa-evals standards, aoa-evals-mcp access packets, validators, tests, and session refs before selecting apply, local-need, design, or session-mining."
+      "primary_defer_prompt": ""
     },
     {
       "name": "aoa-eval-session-mining",
@@ -1990,7 +1990,7 @@
       ],
       "primary_positive_prompt": "Use $aoa-eval-session-mining to mine .aoa sessions for missed eval triggers after web research and repo owner surfaces are checked, returning raw refs, segment refs, freshness, candidate themes, and proof limits.",
       "primary_negative_prompt": "Repair raw .aoa hook preservation and rebuild the search index; no eval trigger analysis is being requested.",
-      "primary_defer_prompt": "Decide how OS Abyss should connect evals in a target repo: inspect existing local eval ports, central aoa-evals standards, aoa-evals-mcp access packets, validators, tests, and session refs before selecting apply, local-need, design, or session-mining."
+      "primary_defer_prompt": ""
     },
     {
       "name": "aoa-invariant-coverage-audit",
@@ -2515,7 +2515,7 @@
       ],
       "primary_positive_prompt": "Use $aoa-quest-harvest to decide whether repeated reviewed quest evidence should stay a quest or be promoted into the next honest owner surface.",
       "primary_negative_prompt": "The source still needs donor harvest or broader session-family routing, and the evidence is not reduced to one repeated reviewed quest unit yet, so promotion triage would be premature.",
-      "primary_defer_prompt": "This repo has three conflicting architecture guides and two outdated runbooks. Identify which files are authoritative and shorten the entrypoints into a link-driven map."
+      "primary_defer_prompt": ""
     },
     {
       "name": "aoa-safe-infra-change",
@@ -2597,7 +2597,7 @@
       ],
       "primary_positive_prompt": "Use $aoa-safe-infra-change to plan and verify a bounded infrastructure or configuration change with explicit risk and rollback thinking.",
       "primary_negative_prompt": "This is a purely local code edit with no runtime, deployment, configuration, or operational implications.",
-      "primary_defer_prompt": "Make a bounded non-trivial repository change across code and docs, verify it, and report exactly what changed and how you checked it."
+      "primary_defer_prompt": ""
     },
     {
       "name": "aoa-sanitized-share",
@@ -2779,7 +2779,7 @@
       ],
       "primary_positive_prompt": "Use $aoa-session-donor-harvest to turn a reviewed session artifact into a bounded HARVEST_PACKET, route each reusable unit to the right AoA owner layer, and name the next honest post-session handoff.",
       "primary_negative_prompt": "The session is still live, nothing has been reviewed yet, and the team mainly wants to capture the chat, export a transcript, and make it searchable before deciding what reusable object, if any, emerged.",
-      "primary_defer_prompt": "A reviewed session artifact, a checkpoint note, and a reviewed closeout handoff already exist. Build one explicit closeout context, reread the full reviewed artifact, and drive donor harvest, progression lift, and quest harvest in that order."
+      "primary_defer_prompt": ""
     },
     {
       "name": "aoa-session-progression-lift",
@@ -2871,7 +2871,7 @@
       ],
       "primary_positive_prompt": "Use $aoa-session-progression-lift to turn reviewed session evidence into a bounded multi-axis progression delta with explicit unlock hints and honest hold or reanchor signals.",
       "primary_negative_prompt": "The request mainly wants one global power score or vibe-based praise, so progression lift would be dishonest.",
-      "primary_defer_prompt": "A reviewed session artifact, a checkpoint note, and a reviewed closeout handoff already exist. Build one explicit closeout context, reread the full reviewed artifact, and drive donor harvest, progression lift, and quest harvest in that order."
+      "primary_defer_prompt": ""
     },
     {
       "name": "aoa-session-route-forks",
@@ -3225,7 +3225,7 @@
       ],
       "primary_positive_prompt": "Use $aoa-source-of-truth-check to map which files are authoritative, surface overlaps, and keep top-level guidance short and link-driven.",
       "primary_negative_prompt": "The repository is tiny and there is no meaningful ambiguity about which file is authoritative.",
-      "primary_defer_prompt": "Separate runtime receipts, routing hints, playbook gates, and eval bridge candidates into bounded contexts before any new decision record is written."
+      "primary_defer_prompt": "Inside this atm10-orders repo, map the authoritative docs using repo-relative atm10 canonical-file patterns and local review posture."
     },
     {
       "name": "aoa-summon",
@@ -3486,7 +3486,7 @@
       ],
       "primary_positive_prompt": "Use $atm10-change-protocol to apply the base change protocol with repo-relative atm10 paths, commands, and local review notes.",
       "primary_negative_prompt": "This repository is not an atm10-* repo and does not need a project-specific overlay; the base change workflow is enough.",
-      "primary_defer_prompt": "Apply the bounded change workflow in this generic service repo. There is no atm10 overlay or project-specific path layer here."
+      "primary_defer_prompt": ""
     },
     {
       "name": "atm10-source-of-truth-check",
@@ -3566,7 +3566,7 @@
       ],
       "primary_positive_prompt": "Use $atm10-source-of-truth-check to map authoritative atm10 docs with repo-relative file patterns and explicit local review posture.",
       "primary_negative_prompt": "This is broader policy design for a generic repo, not local authority mapping inside an atm10-* repository.",
-      "primary_defer_prompt": "This repo has three conflicting architecture guides and two outdated runbooks. Identify which files are authoritative and shorten the entrypoints into a link-driven map."
+      "primary_defer_prompt": ""
     },
     {
       "name": "os-abyss-artifact-trust-loop",

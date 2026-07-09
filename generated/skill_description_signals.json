@@ -12,9 +12,8 @@
       "invocation_mode": "explicit-only",
       "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
-      "family": "os-artifact-trust-routing",
+      "family": "overlay-vs-base-skill",
       "families": [
-        "os-artifact-trust-routing",
         "overlay-vs-base-skill"
       ],
       "adjacent_skills": [
@@ -131,9 +130,7 @@
       "collision_case_ids": [
         "desc-collision-collision-27"
       ],
-      "mirror_case_ids": [
-        "desc-mirror-024-abyss-self-diagnostic-spine"
-      ]
+      "mirror_case_ids": []
     },
     {
       "name": "aoa-adr-write",
@@ -173,10 +170,10 @@
       ],
       "collision_case_ids": [],
       "mirror_case_ids": [
-        "desc-mirror-015-aoa-adr-write",
-        "desc-mirror-021-aoa-adr-write",
-        "desc-mirror-030-aoa-adr-write",
-        "desc-mirror-033-aoa-adr-write"
+        "desc-mirror-016-aoa-adr-write",
+        "desc-mirror-020-aoa-adr-write",
+        "desc-mirror-022-aoa-adr-write",
+        "desc-mirror-024-aoa-adr-write"
       ]
     },
     {
@@ -189,9 +186,8 @@
       "invocation_mode": "explicit-only",
       "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
-      "family": "os-artifact-trust-routing",
+      "family": "safety-and-mutation-gating",
       "families": [
-        "os-artifact-trust-routing",
         "safety-and-mutation-gating"
       ],
       "adjacent_skills": [
@@ -281,7 +277,6 @@
       "adjacent_skills": [
         "aoa-adr-write",
         "aoa-core-logic-boundary",
-        "aoa-decision",
         "aoa-port-adapter-refactor",
         "aoa-source-of-truth-check"
       ],
@@ -307,7 +302,7 @@
       "mirror_case_ids": [
         "desc-mirror-005-aoa-bounded-context-map",
         "desc-mirror-007-aoa-bounded-context-map",
-        "desc-mirror-032-aoa-bounded-context-map"
+        "desc-mirror-021-aoa-bounded-context-map"
       ]
     },
     {
@@ -366,7 +361,9 @@
       ],
       "mirror_case_ids": [
         "desc-mirror-009-aoa-change-protocol",
-        "desc-mirror-011-aoa-change-protocol"
+        "desc-mirror-011-aoa-change-protocol",
+        "desc-mirror-014-aoa-change-protocol",
+        "desc-mirror-018-aoa-change-protocol"
       ]
     },
     {
@@ -413,7 +410,8 @@
         "desc-collision-collision-29"
       ],
       "mirror_case_ids": [
-        "desc-mirror-028-aoa-checkpoint-closeout-bridge"
+        "desc-mirror-017-aoa-checkpoint-closeout-bridge",
+        "desc-mirror-019-aoa-checkpoint-closeout-bridge"
       ]
     },
     {
@@ -450,9 +448,7 @@
       "collision_case_ids": [
         "desc-collision-collision-31"
       ],
-      "mirror_case_ids": [
-        "desc-mirror-029-aoa-commit-growth-seam"
-      ]
+      "mirror_case_ids": []
     },
     {
       "name": "aoa-contract-test",
@@ -503,7 +499,7 @@
       ],
       "mirror_case_ids": [
         "desc-mirror-010-aoa-contract-test",
-        "desc-mirror-041-aoa-contract-test"
+        "desc-mirror-030-aoa-contract-test"
       ]
     },
     {
@@ -562,7 +558,6 @@
       ],
       "adjacent_skills": [
         "aoa-adr-write",
-        "aoa-bounded-context-map",
         "aoa-contract-test",
         "aoa-decision-correct",
         "aoa-decision-create",
@@ -576,9 +571,7 @@
         "aoa-invariant-coverage-audit",
         "aoa-memo-writeback",
         "aoa-property-invariants",
-        "aoa-quest-harvest",
-        "aoa-source-of-truth-check",
-        "atm10-source-of-truth-check"
+        "aoa-source-of-truth-check"
       ],
       "default_prompt": "Use $aoa-decision to check the decision graph first, choose find/create/correct, and keep repo-local decision files as source truth.",
       "required_case_classes": [
@@ -597,9 +590,10 @@
         "desc-collision-collision-38"
       ],
       "mirror_case_ids": [
-        "desc-mirror-022-aoa-decision",
-        "desc-mirror-031-aoa-decision",
-        "desc-mirror-046-aoa-decision"
+        "desc-mirror-025-aoa-decision",
+        "desc-mirror-026-aoa-decision",
+        "desc-mirror-027-aoa-decision",
+        "desc-mirror-034-aoa-decision"
       ]
     },
     {
@@ -638,9 +632,7 @@
       "collision_case_ids": [
         "desc-collision-collision-41"
       ],
-      "mirror_case_ids": [
-        "desc-mirror-018-aoa-decision-correct"
-      ]
+      "mirror_case_ids": []
     },
     {
       "name": "aoa-decision-create",
@@ -678,9 +670,7 @@
       "collision_case_ids": [
         "desc-collision-collision-40"
       ],
-      "mirror_case_ids": [
-        "desc-mirror-017-aoa-decision-create"
-      ]
+      "mirror_case_ids": []
     },
     {
       "name": "aoa-decision-find",
@@ -718,9 +708,7 @@
       "collision_case_ids": [
         "desc-collision-collision-39"
       ],
-      "mirror_case_ids": [
-        "desc-mirror-016-aoa-decision-find"
-      ]
+      "mirror_case_ids": []
     },
     {
       "name": "aoa-dry-run-first",
@@ -771,8 +759,7 @@
       "allow_implicit_invocation": true,
       "family": "eval-proof-routing-family",
       "families": [
-        "eval-proof-routing-family",
-        "os-artifact-trust-routing"
+        "eval-proof-routing-family"
       ],
       "adjacent_skills": [
         "abyss-safe-infra-change",
@@ -808,7 +795,10 @@
         "desc-collision-collision-42"
       ],
       "mirror_case_ids": [
-        "desc-mirror-044-aoa-eval"
+        "desc-mirror-028-aoa-eval",
+        "desc-mirror-033-aoa-eval",
+        "desc-mirror-035-aoa-eval",
+        "desc-mirror-036-aoa-eval"
       ]
     },
     {
@@ -853,9 +843,7 @@
       "collision_case_ids": [
         "desc-collision-collision-45"
       ],
-      "mirror_case_ids": [
-        "desc-mirror-037-aoa-eval-apply"
-      ]
+      "mirror_case_ids": []
     },
     {
       "name": "aoa-eval-design",
@@ -899,10 +887,7 @@
       "collision_case_ids": [
         "desc-collision-collision-47"
       ],
-      "mirror_case_ids": [
-        "desc-mirror-039-aoa-eval-design",
-        "desc-mirror-045-aoa-eval-design"
-      ]
+      "mirror_case_ids": []
     },
     {
       "name": "aoa-eval-local-need",
@@ -946,9 +931,7 @@
       "collision_case_ids": [
         "desc-collision-collision-46"
       ],
-      "mirror_case_ids": [
-        "desc-mirror-038-aoa-eval-local-need"
-      ]
+      "mirror_case_ids": []
     },
     {
       "name": "aoa-eval-select",
@@ -992,9 +975,7 @@
       "collision_case_ids": [
         "desc-collision-collision-44"
       ],
-      "mirror_case_ids": [
-        "desc-mirror-036-aoa-eval-select"
-      ]
+      "mirror_case_ids": []
     },
     {
       "name": "aoa-eval-session-mining",
@@ -1039,9 +1020,7 @@
       "collision_case_ids": [
         "desc-collision-collision-48"
       ],
-      "mirror_case_ids": [
-        "desc-mirror-040-aoa-eval-session-mining"
-      ]
+      "mirror_case_ids": []
     },
     {
       "name": "aoa-invariant-coverage-audit",
@@ -1089,7 +1068,7 @@
       ],
       "mirror_case_ids": [
         "desc-mirror-002-aoa-invariant-coverage-audit",
-        "desc-mirror-042-aoa-invariant-coverage-audit"
+        "desc-mirror-031-aoa-invariant-coverage-audit"
       ]
     },
     {
@@ -1179,8 +1158,10 @@
       ],
       "collision_case_ids": [],
       "mirror_case_ids": [
-        "desc-mirror-035-aoa-memo-writeback",
-        "desc-mirror-043-aoa-memo-writeback"
+        "desc-mirror-023-aoa-memo-writeback",
+        "desc-mirror-032-aoa-memo-writeback",
+        "desc-mirror-037-aoa-memo-writeback",
+        "desc-mirror-039-aoa-memo-writeback"
       ]
     },
     {
@@ -1267,7 +1248,8 @@
         "desc-collision-collision-02"
       ],
       "mirror_case_ids": [
-        "desc-mirror-001-aoa-property-invariants"
+        "desc-mirror-001-aoa-property-invariants",
+        "desc-mirror-038-aoa-property-invariants"
       ]
     },
     {
@@ -1288,7 +1270,6 @@
         "aoa-adr-write",
         "aoa-automation-opportunity-scan",
         "aoa-checkpoint-closeout-bridge",
-        "aoa-decision",
         "aoa-memo-writeback",
         "aoa-session-donor-harvest",
         "aoa-session-progression-lift",
@@ -1313,10 +1294,7 @@
       "collision_case_ids": [
         "desc-collision-collision-25"
       ],
-      "mirror_case_ids": [
-        "desc-mirror-023-aoa-quest-harvest",
-        "desc-mirror-027-aoa-quest-harvest"
-      ]
+      "mirror_case_ids": []
     },
     {
       "name": "aoa-safe-infra-change",
@@ -1362,9 +1340,7 @@
       "collision_case_ids": [
         "desc-collision-collision-11"
       ],
-      "mirror_case_ids": [
-        "desc-mirror-014-aoa-safe-infra-change"
-      ]
+      "mirror_case_ids": []
     },
     {
       "name": "aoa-sanitized-share",
@@ -1452,9 +1428,7 @@
       "collision_case_ids": [
         "desc-collision-collision-20"
       ],
-      "mirror_case_ids": [
-        "desc-mirror-025-aoa-session-donor-harvest"
-      ]
+      "mirror_case_ids": []
     },
     {
       "name": "aoa-session-progression-lift",
@@ -1495,9 +1469,7 @@
       "collision_case_ids": [
         "desc-collision-collision-24"
       ],
-      "mirror_case_ids": [
-        "desc-mirror-026-aoa-session-progression-lift"
-      ]
+      "mirror_case_ids": []
     },
     {
       "name": "aoa-session-route-forks",
@@ -1641,7 +1613,6 @@
       "families": [
         "decision-and-doc-authority",
         "eval-proof-routing-family",
-        "os-artifact-trust-routing",
         "overlay-vs-base-skill"
       ],
       "adjacent_skills": [
@@ -1698,7 +1669,8 @@
         "desc-collision-collision-43"
       ],
       "mirror_case_ids": [
-        "desc-mirror-034-aoa-source-of-truth-check"
+        "desc-mirror-015-aoa-source-of-truth-check",
+        "desc-mirror-029-aoa-source-of-truth-check"
       ]
     },
     {
@@ -1817,9 +1789,7 @@
       "collision_case_ids": [
         "desc-collision-collision-14"
       ],
-      "mirror_case_ids": [
-        "desc-mirror-019-atm10-change-protocol"
-      ]
+      "mirror_case_ids": []
     },
     {
       "name": "atm10-source-of-truth-check",
@@ -1841,7 +1811,6 @@
         "abyss-self-diagnostic-spine",
         "aoa-adr-write",
         "aoa-change-protocol",
-        "aoa-decision",
         "aoa-quest-harvest",
         "aoa-safe-infra-change",
         "aoa-sanitized-share",
@@ -1863,9 +1832,7 @@
       "collision_case_ids": [
         "desc-collision-collision-16"
       ],
-      "mirror_case_ids": [
-        "desc-mirror-020-atm10-source-of-truth-check"
-      ]
+      "mirror_case_ids": []
     },
     {
       "name": "os-abyss-artifact-trust-loop",

@@ -146,8 +146,13 @@ def main() -> int:
     neighbors_by_skill: dict[str, set[str]] = {entry["name"]: set() for entry in catalog_doc.get("skills", [])}
     for family in collision_doc.get("families", []):
         members = family.get("skills", [])
+        adjacent_skills = family.get("adjacent_skills", [])
         for skill_name in members:
             family_by_skill.setdefault(skill_name, []).append(family["family"])
+            neighbors_by_skill.setdefault(skill_name, set()).update(
+                name for name in [*members, *adjacent_skills] if name != skill_name
+            )
+        for skill_name in adjacent_skills:
             neighbors_by_skill.setdefault(skill_name, set()).update(name for name in members if name != skill_name)
     for collision_case in collision_doc.get("cases", []):
         skill_name = collision_case.get("skill_name")
@@ -308,18 +313,25 @@ def main() -> int:
 
         if not policy_doc.get("mirror_collision_cases", True):
             continue
-        if collision_case.get("expected_behavior") != "invoke-skill" or not collision_case.get("expected_skill"):
-            continue
-        expected_skill_name = collision_case["expected_skill"]
-        expected_skill_policy = resolve_implicit_activation_policy(
-            activation_policy_by_name.get(expected_skill_name),
-            expected_skill_name,
-        )
-        if expected_skill_policy == "manual":
+        mirror_expected_skill = collision_case.get("expected_skill")
+        mirror_note_prefix = "This near-neighbor prompt belongs to"
+        if collision_case.get("expected_behavior") == "invoke-skill" and mirror_expected_skill:
+            expected_skill_policy = resolve_implicit_activation_policy(
+                activation_policy_by_name.get(mirror_expected_skill),
+                mirror_expected_skill,
+            )
+            if expected_skill_policy == "manual":
+                continue
+        elif collision_case.get("expected_behavior") == "manual-invocation-required":
+            mirror_expected_skill = skill_name
+            mirror_note_prefix = "This near-neighbor prompt belongs to the manual route"
+        else:
             continue
 
         for competing_skill in collision_case.get("competing_skills", []):
             competing_signal = signals_by_name[competing_skill]
+            if competing_signal["implicit_activation_policy"] == "manual":
+                continue
             if len(competing_signal["mirror_case_ids"]) >= policy_doc.get("max_prefer_other_cases_per_skill", 4):
                 continue
             mirror_case_id = f"desc-mirror-{mirror_case_counter:03d}-{competing_skill}"
@@ -337,7 +349,7 @@ def main() -> int:
                     "implicit_activation_policy": competing_signal["implicit_activation_policy"],
                     "allow_implicit_invocation": competing_signal["allow_implicit_invocation"],
                     "expected_behavior": "defer-to-other-skill",
-                    "expected_skill": collision_case["expected_skill"],
+                    "expected_skill": mirror_expected_skill,
                     "competing_skills": [
                         skill_name,
                         *[name for name in collision_case.get("competing_skills", []) if name != competing_skill],
@@ -345,7 +357,7 @@ def main() -> int:
                     "prompt_origin": "mirrored-collision-matrix",
                     "prompt": collision_case["prompt"],
                     "note": (
-                        f"This near-neighbor prompt belongs to {collision_case['expected_skill']}; "
+                        f"{mirror_note_prefix} {mirror_expected_skill}; "
                         f"{competing_skill} should stay out of the match and defer."
                     ),
                 }

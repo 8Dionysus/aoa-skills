@@ -73,14 +73,14 @@
       "runtime_contract_ref": "generated/skill_runtime_contracts.json#abyss-safe-infra-change",
       "context_retention_ref": "generated/context_retention_manifest.json#abyss-safe-infra-change",
       "trust_policy_ref": "generated/trust_policy_matrix.json#abyss-safe-infra-change",
-      "collision_family": "os-artifact-trust-routing",
+      "collision_family": "overlay-vs-base-skill",
       "collision_notes": [
-        "Use os-abyss-artifact-trust-loop when ABI, provenance, signatures, SBOM, C2PA, durable evidence, drift, registry latest, or trust-gate verdicts determine whether an OS Abyss artifact can be consumed.",
-        "Use aoa-eval when the question is proof-surface selection or running an eval rather than artifact admission.",
-        "Use aoa-source-of-truth-check when the question is which owner files are authoritative before artifact policy is inspected.",
-        "Use aoa-approval-gate-check or abyss-safe-infra-change when the pressure is execution permission or bounded infrastructure mutation without an artifact-trust read model."
+        "Use a project overlay only when the repository actually matches that overlay family and the repo-relative adaptation matters.",
+        "Current live overlay families here are the atm10-* and abyss-* repo-local exemplars.",
+        "Use the base AoA skill when the workflow does not need a thin project overlay."
       ],
       "competing_skills": [
+        "os-abyss-artifact-trust-loop",
         "aoa-safe-infra-change",
         "abyss-sanitized-share"
       ],
@@ -514,14 +514,16 @@
       "runtime_contract_ref": "generated/skill_runtime_contracts.json#aoa-approval-gate-check",
       "context_retention_ref": "generated/context_retention_manifest.json#aoa-approval-gate-check",
       "trust_policy_ref": "generated/trust_policy_matrix.json#aoa-approval-gate-check",
-      "collision_family": "os-artifact-trust-routing",
+      "collision_family": "safety-and-mutation-gating",
       "collision_notes": [
-        "Use os-abyss-artifact-trust-loop when ABI, provenance, signatures, SBOM, C2PA, durable evidence, drift, registry latest, or trust-gate verdicts determine whether an OS Abyss artifact can be consumed.",
-        "Use aoa-eval when the question is proof-surface selection or running an eval rather than artifact admission.",
-        "Use aoa-source-of-truth-check when the question is which owner files are authoritative before artifact policy is inspected.",
-        "Use aoa-approval-gate-check or abyss-safe-infra-change when the pressure is execution permission or bounded infrastructure mutation without an artifact-trust read model."
+        "aoa-approval-gate-check classifies risk and whether execution is allowed at all.",
+        "aoa-dry-run-first insists on preview or simulation before a real mutation.",
+        "aoa-safe-infra-change handles bounded infra or config changes with rollback thinking.",
+        "aoa-local-stack-bringup is the local multi-service stack start path and is explicit-only.",
+        "aoa-sanitized-share is about turning raw technical material into a safe public artifact."
       ],
       "competing_skills": [
+        "os-abyss-artifact-trust-loop",
         "aoa-safe-infra-change",
         "aoa-dry-run-first"
       ],
@@ -764,8 +766,7 @@
       "competing_skills": [
         "aoa-core-logic-boundary",
         "aoa-port-adapter-refactor",
-        "aoa-adr-write",
-        "aoa-source-of-truth-check"
+        "aoa-adr-write"
       ],
       "sample_prompts": {
         "explicit": [
@@ -1997,14 +1998,19 @@
       "runtime_contract_ref": "generated/skill_runtime_contracts.json#aoa-eval",
       "context_retention_ref": "generated/context_retention_manifest.json#aoa-eval",
       "trust_policy_ref": "generated/trust_policy_matrix.json#aoa-eval",
-      "collision_family": "os-artifact-trust-routing",
+      "collision_family": "eval-proof-routing-family",
       "collision_notes": [
-        "Use os-abyss-artifact-trust-loop when ABI, provenance, signatures, SBOM, C2PA, durable evidence, drift, registry latest, or trust-gate verdicts determine whether an OS Abyss artifact can be consumed.",
-        "Use aoa-eval when the question is proof-surface selection or running an eval rather than artifact admission.",
-        "Use aoa-source-of-truth-check when the question is which owner files are authoritative before artifact policy is inspected.",
-        "Use aoa-approval-gate-check or abyss-safe-infra-change when the pressure is execution permission or bounded infrastructure mutation without an artifact-trust read model."
+        "aoa-eval is the front door for choosing an eval-lane route across existing evals, local ports, validators, tests, scripts, MCP access packets, and session-derived trigger pressure.",
+        "aoa-eval-select inspects existing local and central eval surfaces before new work.",
+        "aoa-eval-apply runs or routes an already selected eval surface and reports proof limits.",
+        "aoa-eval-local-need records bounded repo-local eval pressure under evals/intake when no existing surface fits.",
+        "aoa-eval-design drafts local eval suites or reports after selection fails without claiming central proof acceptance.",
+        "aoa-eval-session-mining mines .aoa only for candidate eval triggers after web and repo gates; raw session refs are not reviewed proof.",
+        "aoa-contract-test, aoa-property-invariants, and aoa-invariant-coverage-audit stay focused on test/invariant authoring or audit when no eval-lane owner route is in question.",
+        "aoa-source-of-truth-check, aoa-memo-writeback, and aoa-decision win when the pressure is documentation authority, memory writeback, or decision graph routing rather than eval proof routing."
       ],
       "competing_skills": [
+        "os-abyss-artifact-trust-loop",
         "aoa-eval-select",
         "aoa-eval-apply",
         "aoa-eval-local-need",
@@ -3626,7 +3632,6 @@
         "aoa-quest-harvest stays the narrow final promotion verdict once the material is already reduced to one repeated reviewed quest unit."
       ],
       "competing_skills": [
-        "aoa-automation-opportunity-scan",
         "aoa-session-route-forks",
         "aoa-session-self-diagnose",
         "aoa-session-progression-lift",
@@ -3867,7 +3872,6 @@
       ],
       "competing_skills": [
         "aoa-session-donor-harvest",
-        "aoa-automation-opportunity-scan",
         "aoa-session-self-diagnose",
         "aoa-quest-harvest"
       ],
@@ -3989,7 +3993,6 @@
       ],
       "competing_skills": [
         "aoa-session-donor-harvest",
-        "aoa-automation-opportunity-scan",
         "aoa-session-self-repair",
         "aoa-session-progression-lift"
       ],
@@ -4113,8 +4116,7 @@
       "competing_skills": [
         "aoa-session-self-diagnose",
         "aoa-session-donor-harvest",
-        "aoa-session-route-forks",
-        "aoa-automation-opportunity-scan"
+        "aoa-session-route-forks"
       ],
       "sample_prompts": {
         "explicit": [
@@ -4216,23 +4218,23 @@
       "runtime_contract_ref": "generated/skill_runtime_contracts.json#aoa-source-of-truth-check",
       "context_retention_ref": "generated/context_retention_manifest.json#aoa-source-of-truth-check",
       "trust_policy_ref": "generated/trust_policy_matrix.json#aoa-source-of-truth-check",
-      "collision_family": "os-artifact-trust-routing",
+      "collision_family": "overlay-vs-base-skill",
       "collision_notes": [
-        "Use os-abyss-artifact-trust-loop when ABI, provenance, signatures, SBOM, C2PA, durable evidence, drift, registry latest, or trust-gate verdicts determine whether an OS Abyss artifact can be consumed.",
-        "Use aoa-eval when the question is proof-surface selection or running an eval rather than artifact admission.",
-        "Use aoa-source-of-truth-check when the question is which owner files are authoritative before artifact policy is inspected.",
-        "Use aoa-approval-gate-check or abyss-safe-infra-change when the pressure is execution permission or bounded infrastructure mutation without an artifact-trust read model."
+        "Use a project overlay only when the repository actually matches that overlay family and the repo-relative adaptation matters.",
+        "Current live overlay families here are the atm10-* and abyss-* repo-local exemplars.",
+        "Use the base AoA skill when the workflow does not need a thin project overlay."
       ],
       "competing_skills": [
+        "os-abyss-artifact-trust-loop",
         "atm10-source-of-truth-check",
         "aoa-adr-write",
-        "aoa-decision",
         "aoa-quest-harvest",
         "abyss-self-diagnostic-spine",
         "aoa-bounded-context-map",
         "aoa-memo-writeback",
         "aoa-eval",
-        "aoa-eval-design"
+        "aoa-eval-design",
+        "aoa-decision"
       ],
       "sample_prompts": {
         "explicit": [

@@ -41,6 +41,7 @@ AUTHORING_INPUTS = [
     "config/skill_policy_matrix.json",
     "config/runtime_guardrail_policy.json",
     "config/description_trigger_eval_policy.json",
+    "config/skill_trigger_collision_families.json",
     "config/tiny_router_skill_bands.json",
 ]
 ARTIFACT_GROUPS = (
@@ -98,6 +99,7 @@ ARTIFACT_GROUPS = (
         "wave": 7,
         "files": [
             "generated/skill_description_signals.json",
+            "generated/skill_trigger_collision_matrix.json",
             "generated/description_trigger_eval_cases.jsonl",
             "generated/description_trigger_eval_cases.csv",
             "generated/description_trigger_eval_manifest.json",
