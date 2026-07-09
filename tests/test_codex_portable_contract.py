@@ -192,6 +192,43 @@ class CodexPortableContractTests(unittest.TestCase):
         self.assertEqual({entry["name"] for entry in router["skills"]}, catalog_names)
         self.assertEqual({entry["name"] for entry in aliases["aliases"]}, catalog_names)
 
+    def test_os_artifact_trust_collision_family_keeps_adjacent_skills_out_of_membership(self):
+        collision_doc = load_json(REPO_ROOT / "generated" / "skill_trigger_collision_matrix.json")
+        os_family = next(
+            family for family in collision_doc["families"] if family["family"] == "os-artifact-trust-routing"
+        )
+
+        self.assertEqual(os_family["skills"], ["os-abyss-artifact-trust-loop"])
+        self.assertEqual(
+            set(os_family["adjacent_skills"]),
+            {
+                "aoa-eval",
+                "aoa-source-of-truth-check",
+                "aoa-approval-gate-check",
+                "abyss-safe-infra-change",
+            },
+        )
+
+    def test_runtime_router_hints_do_not_assign_adjacent_skills_to_os_artifact_trust_family(self):
+        router = load_json(REPO_ROOT / "generated" / "runtime_router_hints.json")
+        router_by_name = {entry["name"]: entry for entry in router["skills"]}
+
+        self.assertEqual(
+            router_by_name["os-abyss-artifact-trust-loop"]["collision_family"],
+            "os-artifact-trust-routing",
+        )
+        for skill_name in (
+            "aoa-eval",
+            "aoa-source-of-truth-check",
+            "aoa-approval-gate-check",
+            "abyss-safe-infra-change",
+        ):
+            self.assertNotEqual(
+                router_by_name[skill_name]["collision_family"],
+                "os-artifact-trust-routing",
+                skill_name,
+            )
+
     def test_runtime_router_hints_keep_prompt_buckets_disjoint(self):
         router = load_json(REPO_ROOT / "generated" / "runtime_router_hints.json")
         for entry in router["skills"]:

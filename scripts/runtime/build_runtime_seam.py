@@ -128,10 +128,21 @@ def collect_keywords(name: str, description: str, headings: list[str], scope: st
 
 def collision_maps(collision_doc: dict[str, Any]) -> tuple[dict[str, dict[str, Any]], dict[str, list[str]]]:
     family_by_skill: dict[str, dict[str, Any]] = {}
+    competing: dict[str, list[str]] = {}
     for family in collision_doc.get("families", []):
+        members = list(family.get("skills", []))
+        adjacent_skills = list(family.get("adjacent_skills", []))
         for skill_name in family.get("skills", []):
             family_by_skill[skill_name] = family
-    competing: dict[str, list[str]] = {}
+            current = competing.setdefault(skill_name, [])
+            for candidate in adjacent_skills:
+                if candidate != skill_name and candidate not in current:
+                    current.append(candidate)
+        for skill_name in adjacent_skills:
+            current = competing.setdefault(skill_name, [])
+            for candidate in members:
+                if candidate != skill_name and candidate not in current:
+                    current.append(candidate)
     for case in collision_doc.get("cases", []):
         skill_name = case["skill_name"]
         current = competing.setdefault(skill_name, [])

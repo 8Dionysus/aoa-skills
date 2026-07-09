@@ -5,8 +5,9 @@
     {
       "name": "abyss-safe-infra-change",
       "description": "Apply the aoa-safe-infra-change workflow inside an abyss-* repository using repo-relative operational surfaces, explicit local authority notes, rollback posture, and local validation commands. Use when the base infra-change workflow is correct but a thin project overlay is needed for one abyss repo. Do not use when the base skill is sufficient without local adaptation or when the task is really about producing a shareable artifact.",
-      "collision_family": "os-artifact-trust-routing",
+      "collision_family": "overlay-vs-base-skill",
       "competing_skills": [
+        "os-abyss-artifact-trust-loop",
         "aoa-safe-infra-change",
         "abyss-sanitized-share"
       ],
@@ -20,10 +21,9 @@
         "This repository is not an abyss-* repo and the base infra-change workflow already names the needed operational surface without any project-specific overlay."
       ],
       "notes": [
-        "Use os-abyss-artifact-trust-loop when ABI, provenance, signatures, SBOM, C2PA, durable evidence, drift, registry latest, or trust-gate verdicts determine whether an OS Abyss artifact can be consumed.",
-        "Use aoa-eval when the question is proof-surface selection or running an eval rather than artifact admission.",
-        "Use aoa-source-of-truth-check when the question is which owner files are authoritative before artifact policy is inspected.",
-        "Use aoa-approval-gate-check or abyss-safe-infra-change when the pressure is execution permission or bounded infrastructure mutation without an artifact-trust read model."
+        "Use a project overlay only when the repository actually matches that overlay family and the repo-relative adaptation matters.",
+        "Current live overlay families here are the atm10-* and abyss-* repo-local exemplars.",
+        "Use the base AoA skill when the workflow does not need a thin project overlay."
       ]
     },
     {
@@ -94,8 +94,9 @@
     {
       "name": "aoa-approval-gate-check",
       "description": "Classify whether a requested action is safe to proceed, requires explicit approval, or should not be executed. Use when a task may be destructive, security-sensitive, or operationally sensitive and the authority boundary is unclear. Do not use for clearly low-risk work or when the main need is previewing a mutation rather than deciding whether it may proceed.",
-      "collision_family": "os-artifact-trust-routing",
+      "collision_family": "safety-and-mutation-gating",
       "competing_skills": [
+        "os-abyss-artifact-trust-loop",
         "aoa-safe-infra-change",
         "aoa-dry-run-first"
       ],
@@ -108,10 +109,11 @@
         "The task is clearly low-risk, already bounded, and does not look destructive, security-sensitive, or operationally sensitive."
       ],
       "notes": [
-        "Use os-abyss-artifact-trust-loop when ABI, provenance, signatures, SBOM, C2PA, durable evidence, drift, registry latest, or trust-gate verdicts determine whether an OS Abyss artifact can be consumed.",
-        "Use aoa-eval when the question is proof-surface selection or running an eval rather than artifact admission.",
-        "Use aoa-source-of-truth-check when the question is which owner files are authoritative before artifact policy is inspected.",
-        "Use aoa-approval-gate-check or abyss-safe-infra-change when the pressure is execution permission or bounded infrastructure mutation without an artifact-trust read model."
+        "aoa-approval-gate-check classifies risk and whether execution is allowed at all.",
+        "aoa-dry-run-first insists on preview or simulation before a real mutation.",
+        "aoa-safe-infra-change handles bounded infra or config changes with rollback thinking.",
+        "aoa-local-stack-bringup is the local multi-service stack start path and is explicit-only.",
+        "aoa-sanitized-share is about turning raw technical material into a safe public artifact."
       ]
     },
     {
@@ -152,8 +154,7 @@
       "competing_skills": [
         "aoa-core-logic-boundary",
         "aoa-port-adapter-refactor",
-        "aoa-adr-write",
-        "aoa-source-of-truth-check"
+        "aoa-adr-write"
       ],
       "should_trigger": [
         "Clarify system or domain boundaries, name contexts, and surface interfaces so changes stay semantically scoped. Use when naming is overloaded, responsibilities are mixed, or a task needs a cleaner boundary before coding.",
@@ -422,8 +423,9 @@
     {
       "name": "aoa-eval",
       "description": "Route AoA eval-lane work by raising the available session readiness packet, checking existing local and central eval surfaces first, including any available repo-family or workspace eval-port inventory with missing/skeleton/active/invalid status, then choosing apply, local intake need, local design, or session mining while preserving owner boundaries. Use when a task asks whether an eval exists, whether one should be added, how local evals connect to aoa-evals, how local eval-port status should route work, or how validators, tests, scripts, traces, regressions, trigger misses, local eval ports, aoa-evals-mcp, candidate packets, or per-session eval readiness should be used as evaluation surfaces. Do not use for ordinary one-off tests, source-of-truth mapping, decision records, memo writeback, or direct central aoa-evals proof-authority edits.",
-      "collision_family": "os-artifact-trust-routing",
+      "collision_family": "eval-proof-routing-family",
       "competing_skills": [
+        "os-abyss-artifact-trust-loop",
         "aoa-eval-select",
         "aoa-eval-apply",
         "aoa-eval-local-need",
@@ -442,10 +444,14 @@
         "Add a small unit test for this pure helper; no eval port, central proof, trigger routing, or session evidence question exists."
       ],
       "notes": [
-        "Use os-abyss-artifact-trust-loop when ABI, provenance, signatures, SBOM, C2PA, durable evidence, drift, registry latest, or trust-gate verdicts determine whether an OS Abyss artifact can be consumed.",
-        "Use aoa-eval when the question is proof-surface selection or running an eval rather than artifact admission.",
-        "Use aoa-source-of-truth-check when the question is which owner files are authoritative before artifact policy is inspected.",
-        "Use aoa-approval-gate-check or abyss-safe-infra-change when the pressure is execution permission or bounded infrastructure mutation without an artifact-trust read model."
+        "aoa-eval is the front door for choosing an eval-lane route across existing evals, local ports, validators, tests, scripts, MCP access packets, and session-derived trigger pressure.",
+        "aoa-eval-select inspects existing local and central eval surfaces before new work.",
+        "aoa-eval-apply runs or routes an already selected eval surface and reports proof limits.",
+        "aoa-eval-local-need records bounded repo-local eval pressure under evals/intake when no existing surface fits.",
+        "aoa-eval-design drafts local eval suites or reports after selection fails without claiming central proof acceptance.",
+        "aoa-eval-session-mining mines .aoa only for candidate eval triggers after web and repo gates; raw session refs are not reviewed proof.",
+        "aoa-contract-test, aoa-property-invariants, and aoa-invariant-coverage-audit stay focused on test/invariant authoring or audit when no eval-lane owner route is in question.",
+        "aoa-source-of-truth-check, aoa-memo-writeback, and aoa-decision win when the pressure is documentation authority, memory writeback, or decision graph routing rather than eval proof routing."
       ]
     },
     {
@@ -786,7 +792,6 @@
       "description": "Turn a reviewed session artifact into a bounded HARVEST_PACKET, route each reusable unit to the right AoA owner layer, and hand off to the next honest post-session skill when needed. Use when the source is a reviewed session transcript, compaction note, or recap and the real question is what should survive this session rather than merely what happened. Do not use for active or unreviewed sessions, raw session capture or indexing work, or when the only remaining object is already one repeated quest unit that just needs `aoa-quest-harvest` for the final promotion verdict.",
       "collision_family": "session-harvest-family",
       "competing_skills": [
-        "aoa-automation-opportunity-scan",
         "aoa-session-route-forks",
         "aoa-session-self-diagnose",
         "aoa-session-progression-lift",
@@ -847,7 +852,6 @@
       "collision_family": "summon-and-route-governance",
       "competing_skills": [
         "aoa-session-donor-harvest",
-        "aoa-automation-opportunity-scan",
         "aoa-session-self-diagnose",
         "aoa-quest-harvest"
       ],
@@ -872,7 +876,6 @@
       "collision_family": "session-harvest-family",
       "competing_skills": [
         "aoa-session-donor-harvest",
-        "aoa-automation-opportunity-scan",
         "aoa-session-self-repair",
         "aoa-session-progression-lift"
       ],
@@ -903,8 +906,7 @@
       "competing_skills": [
         "aoa-session-self-diagnose",
         "aoa-session-donor-harvest",
-        "aoa-session-route-forks",
-        "aoa-automation-opportunity-scan"
+        "aoa-session-route-forks"
       ],
       "should_trigger": [],
       "manual_invocation_required": [
@@ -929,17 +931,18 @@
     {
       "name": "aoa-source-of-truth-check",
       "description": "Clarify which files are authoritative for repository guidance, operational instructions, architecture, and status, and keep entrypoint docs short and link-driven once canonical homes exist. Use when docs overlap, conflict, or confuse contributors about which file to trust. Do not use for purely code-local tasks or when authoritative files are already clear and the main need is decision rationale.",
-      "collision_family": "os-artifact-trust-routing",
+      "collision_family": "overlay-vs-base-skill",
       "competing_skills": [
+        "os-abyss-artifact-trust-loop",
         "atm10-source-of-truth-check",
         "aoa-adr-write",
-        "aoa-decision",
         "aoa-quest-harvest",
         "abyss-self-diagnostic-spine",
         "aoa-bounded-context-map",
         "aoa-memo-writeback",
         "aoa-eval",
-        "aoa-eval-design"
+        "aoa-eval-design",
+        "aoa-decision"
       ],
       "should_trigger": [
         "Clarify which files are authoritative for repository guidance, operational instructions, architecture, and status, and keep entrypoint docs short and link-driven once canonical homes exist. Use when docs overlap, conflict, or confuse contributors about which file to trust.",
@@ -951,10 +954,9 @@
         "The repository is tiny and there is no meaningful ambiguity about which file is authoritative."
       ],
       "notes": [
-        "Use os-abyss-artifact-trust-loop when ABI, provenance, signatures, SBOM, C2PA, durable evidence, drift, registry latest, or trust-gate verdicts determine whether an OS Abyss artifact can be consumed.",
-        "Use aoa-eval when the question is proof-surface selection or running an eval rather than artifact admission.",
-        "Use aoa-source-of-truth-check when the question is which owner files are authoritative before artifact policy is inspected.",
-        "Use aoa-approval-gate-check or abyss-safe-infra-change when the pressure is execution permission or bounded infrastructure mutation without an artifact-trust read model."
+        "Use a project overlay only when the repository actually matches that overlay family and the repo-relative adaptation matters.",
+        "Current live overlay families here are the atm10-* and abyss-* repo-local exemplars.",
+        "Use the base AoA skill when the workflow does not need a thin project overlay."
       ]
     },
     {

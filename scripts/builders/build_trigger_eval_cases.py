@@ -18,6 +18,9 @@ from activation.skill_activation_policy import (
 
 JSONL_PATH = Path("generated") / "skill_trigger_eval_cases.jsonl"
 CSV_PATH = Path("generated") / "skill_trigger_eval_cases.csv"
+MATRIX_PATH = Path("generated") / "skill_trigger_collision_matrix.json"
+FAMILY_CONFIG_PATH = Path("config") / "skill_trigger_collision_families.json"
+MATRIX_PROFILE = "codex-facing-trigger-collisions"
 CSV_FIELDS = [
     "case_id",
     "skill_name",
@@ -41,8 +44,19 @@ def load_jsonl(path: Path) -> list[dict[str, Any]]:
     return [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines() if line.strip()]
 
 
+def load_json(path: Path) -> dict[str, Any]:
+    data = json.loads(path.read_text(encoding="utf-8"))
+    if not isinstance(data, dict):
+        raise ValueError(f"{path}: expected JSON object")
+    return data
+
+
 def dump_jsonl(rows: list[dict[str, Any]]) -> str:
     return "".join(json.dumps(row, ensure_ascii=False) + "\n" for row in rows)
+
+
+def dump_json(data: dict[str, Any]) -> str:
+    return json.dumps(data, indent=2, ensure_ascii=False) + "\n"
 
 
 def dump_csv(rows: list[dict[str, Any]]) -> str:
@@ -91,6 +105,43 @@ def normalize_rows(rows: list[dict[str, Any]], policy_doc: dict[str, Any]) -> li
     return normalized
 
 
+def build_collision_matrix(rows: list[dict[str, Any]], family_doc: dict[str, Any]) -> dict[str, Any]:
+    families: list[dict[str, Any]] = []
+    for family in family_doc.get("families", []):
+        if not isinstance(family, dict):
+            continue
+        entry = {
+            "family": family["family"],
+            "skills": list(family.get("skills", [])),
+            "notes": list(family.get("notes", [])),
+        }
+        adjacent_skills = list(family.get("adjacent_skills", []))
+        if adjacent_skills:
+            entry["adjacent_skills"] = adjacent_skills
+        families.append(entry)
+
+    cases = [
+        {
+            "case_id": row["case_id"],
+            "skill_name": row["skill_name"],
+            "expected_behavior": row["expected_behavior"],
+            "expected_skill": row.get("expected_skill"),
+            "competing_skills": list(row.get("competing_skills", [])),
+            "prompt": row["prompt"],
+            "note": row.get("note", ""),
+        }
+        for row in rows
+        if row.get("mode") == "collision"
+    ]
+
+    return {
+        "matrix_version": 1,
+        "profile": MATRIX_PROFILE,
+        "families": families,
+        "cases": cases,
+    }
+
+
 def render_or_check(path: Path, text: str, check: bool) -> None:
     if check:
         current = path.read_text(encoding="utf-8") if path.exists() else None
@@ -108,10 +159,13 @@ def main() -> int:
 
     repo_root = Path(args.repo_root).resolve()
     rows = load_jsonl(repo_root / JSONL_PATH)
-    policy_doc = json.loads((repo_root / "config" / "skill_policy_matrix.json").read_text(encoding="utf-8"))
+    policy_doc = load_json(repo_root / "config" / "skill_policy_matrix.json")
+    family_doc = load_json(repo_root / FAMILY_CONFIG_PATH)
     normalized = normalize_rows(rows, policy_doc)
+    collision_matrix = build_collision_matrix(normalized, family_doc)
     render_or_check(repo_root / JSONL_PATH, dump_jsonl(normalized), args.check)
     render_or_check(repo_root / CSV_PATH, dump_csv(normalized), args.check)
+    render_or_check(repo_root / MATRIX_PATH, dump_json(collision_matrix), args.check)
     print(json.dumps({"status": "ok", "case_count": len(normalized), "check": args.check}))
     return 0
 
