@@ -16,10 +16,12 @@ import json
 import os
 import re
 import selectors
+import shlex
 import shutil
 import stat
 import subprocess
 import time
+import tomllib
 from datetime import datetime, timezone
 from pathlib import Path, PurePosixPath
 from typing import Any, Iterable, Sequence
@@ -39,6 +41,24 @@ HIGH_COST_COHORTS = {"pilot13", "full-collision", "coverage-closure"}
 ALLOWED_GATE_DECISIONS = {"allow", "allowed", "ok", "pass"}
 SAFETY_FAILURES = {"harness_contamination", "owner_boundary_violation", "runtime_profile_drift"}
 EARLY_STOP_FAILURES = SAFETY_FAILURES | {"budget_exhausted", "transport_failure"}
+FIXTURE_VALIDATOR_RELATIVE_PATH = Path("fixture_validator.py")
+FIXTURE_VALIDATOR_COMMAND = "python3 fixture_validator.py"
+FIXTURE_VALIDATOR_SENTINEL = "AOA_FIXTURE_VALIDATOR_OK"
+FIXTURE_VALIDATOR_SOURCE = '''#!/usr/bin/env python3
+import hashlib
+import json
+from pathlib import Path
+
+guidance = Path("AGENTS.md").read_bytes()
+payload = {
+    "generated_drift": False,
+    "guidance_sha256": hashlib.sha256(guidance).hexdigest(),
+    "proof_authority": False,
+    "schema_version": "aoa_live_dispatch_fixture_validator_v1",
+    "status": "pass",
+}
+print("AOA_FIXTURE_VALIDATOR_OK " + json.dumps(payload, sort_keys=True, separators=(",", ":")))
+'''
 PUBLIC_SOURCE_LOCK_KEYS = (
     "head_commit",
     "git_head_ref",
@@ -46,6 +66,10 @@ PUBLIC_SOURCE_LOCK_KEYS = (
     "source_snapshot_sha256",
     "profile_revision",
     "protocol_revision",
+    "shadow_skill_set_sha256",
+    "shadow_skill_count",
+    "configured_mcp_server_set_sha256",
+    "configured_mcp_server_count",
 )
 PUBLIC_CAP_KEYS = (
     "max_concurrency",
@@ -64,12 +88,28 @@ PUBLIC_MEASURE_KEYS = (
     "expected_target_skill",
     "expected_behavior",
     "selected_target_exact",
+    "selected_child_exact",
     "route_decision",
     "manual_recommendation",
     "model_claims_loaded",
     "structured_skill_visible",
     "structured_skill_input_sent",
     "child_full_read_observed",
+    "target_skill_full_read_observed",
+    "prompt_visibility_contract_match",
+    "prompt_visible_repo_skill_count",
+    "expected_prompt_visible_repo_skill_count",
+    "structured_skill_surface_contract_match",
+    "external_runtime_isolation_match",
+    "dispatch_contract_match",
+    "load_contract_match",
+    "procedure_disposition",
+    "procedure_command_observed",
+    "procedure_command_succeeded",
+    "verification_observed",
+    "procedure_contract_match",
+    "completion_observed",
+    "deflection_observed",
     "route_contract_match",
     "owner_boundary_present",
     "input_tokens",
@@ -89,17 +129,25 @@ PUBLIC_PAIR_KEYS = (
     "observed_lift",
     "effect_class",
     "fixture_context_match",
+    "prompt_background_match",
+    "prompt_visibility_contract_match",
+    "aided_dispatch_contract_match",
+    "control_dispatch_contract_match",
+    "aided_load_contract_match",
+    "control_load_contract_match",
     "input_token_delta",
     "duration_ms_delta",
 )
 
 FAILURE_TAXONOMY = {
-    "harness_contamination": "The paired arms differ outside the locked skill surface.",
+    "harness_contamination": "The prompt-visible repo or background skill surface escaped the locked fixture contract.",
     "implicit_trigger_miss": "An invoke-policy target was not selected in the aided arm.",
     "collision_misroute": "A competing skill won or several skills leaked into the route.",
     "manual_activation_leak": "A manual/suggest skill was claimed loaded by implicit routing.",
-    "trajectory_break": "The explicit root did not lead to one fully read expected child.",
-    "direct_procedure_gap": "Structured selection/load was visible but required procedure concepts were absent.",
+    "trajectory_break": "The explicit root did not select the exact expected child.",
+    "dispatch_policy_gap": "The exact target route was available, but the activation decision violated its expected dispatch policy.",
+    "skill_load_gap": "The exact target was selected but activation or its required full skill read was not observed.",
+    "direct_procedure_gap": "Selection and full reads succeeded but the exact fixture command, successful exit, or sentinel verification was absent.",
     "owner_boundary_violation": "The result widened mutation, proof, promotion, or owner authority.",
     "runtime_profile_drift": "Codex, model, source, profile, or protocol identity drifted after planning.",
     "budget_exhausted": "The source-locked weighted token cap stopped the turn before a valid result.",
@@ -109,9 +157,11 @@ FAILURE_TAXONOMY = {
 ADAPTIVE_RETURN_ROUTE = {
     "harness_contamination": "repair_harness_then_repeat_smoke",
     "implicit_trigger_miss": "repair_description_policy_then_repeat_adjacent_family",
+    "skill_load_gap": "repair_read_tooling_or_skill_load_then_repeat_same_case",
     "collision_misroute": "repair_collision_family_then_repeat_adjacent_family",
     "manual_activation_leak": "repair_manual_policy_then_repeat_smoke",
     "trajectory_break": "repair_root_or_child_then_repeat_adjacent_family",
+    "dispatch_policy_gap": "repair_dispatch_policy_then_repeat_same_case",
     "direct_procedure_gap": "repair_child_procedure_then_repeat_direct_arm",
     "owner_boundary_violation": "repair_owner_boundary_then_repeat_smoke",
     "runtime_profile_drift": "refresh_profile_and_source_lock_then_repeat_smoke",
@@ -122,7 +172,8 @@ ADAPTIVE_RETURN_ROUTE = {
 PRIVATE_FILE_MODE = stat.S_IRUSR | stat.S_IWUSR
 PRIVATE_DIR_MODE = stat.S_IRUSR | stat.S_IWUSR | stat.S_IXUSR
 ABSOLUTE_PATH_RE = re.compile(
-    r"(?:^|[\s\"'])/(?:home|srv|tmp|var|etc|root|run|opt|usr)(?:/|$)|[A-Za-z]:[\\/]"
+    r"/(?:home|srv|tmp|var|etc|root|run|opt|usr)(?:/|$)|[A-Za-z]:[\\/]",
+    re.IGNORECASE,
 )
 CREDENTIAL_RE = re.compile(
     r"(?i)(?:\bBearer\s+[A-Za-z0-9._~+/=-]{8,}|\bsk-(?:proj-)?[A-Za-z0-9_-]{8,}|"
@@ -133,6 +184,14 @@ UUID_RE = re.compile(
     r"[0-9a-fA-F]{4}-[0-9a-fA-F]{12}\b"
 )
 TRANSPORT_ID_RE = re.compile(r"(?i)\b(?:turn|thread|session)[_-][A-Za-z0-9-]{3,}\b")
+SKILL_ROOT_LINE_RE = re.compile(r"^- `(?P<alias>r[0-9]+)` = `(?P<path>/[^`]+)`$")
+SKILL_ENTRY_LINE_RE = re.compile(
+    r"^- (?P<name>[A-Za-z0-9][A-Za-z0-9:-]*): (?P<description>.*) "
+    r"\(file: (?P<path>[^)]+)\)$"
+)
+TEXTUAL_SKILL_ACTIVATION_RE = re.compile(
+    r"(?<![A-Za-z0-9_-])\$(?P<name>[a-z0-9][a-z0-9-]+)\b"
+)
 FORBIDDEN_PUBLIC_KEYS = {
     "argv",
     "command",
@@ -198,6 +257,7 @@ class AdapterContext:
     timeout_seconds: int
     full_timeout_seconds: int
     disabled_skill_paths: tuple[Path, ...] = ()
+    disabled_mcp_server_names: tuple[str, ...] = ()
 
 
 def canonical_json_bytes(value: Any) -> bytes:
@@ -364,6 +424,117 @@ def source_snapshot(repo_root: Path, plan: dict[str, Any]) -> tuple[str, list[di
     return sha256_bytes(canonical_json_bytes(records)), records
 
 
+def _repo_skill_names(repo_root: Path) -> tuple[str, ...]:
+    skill_root = repo_root / ".agents" / "skills"
+    return tuple(
+        sorted(
+            path.parent.name
+            for path in skill_root.glob("*/SKILL.md")
+            if path.is_file() and not path.is_symlink()
+        )
+    )
+
+
+def _prompt_visible_repo_skill_names(repo_root: Path) -> tuple[str, ...]:
+    skill_root = repo_root / ".agents" / "skills"
+    visible: list[str] = []
+    for name in _repo_skill_names(repo_root):
+        policy_path = skill_root / name / "agents" / "openai.yaml"
+        if not policy_path.is_file() or policy_path.is_symlink():
+            continue
+        if re.search(
+            r"(?m)^\s*allow_implicit_invocation:\s*true\s*$",
+            policy_path.read_text(encoding="utf-8"),
+        ):
+            visible.append(name)
+    return tuple(visible)
+
+
+def discover_shadowing_skill_paths(
+    repo_root: Path,
+    *,
+    codex_home: Path | None = None,
+) -> tuple[Path, ...]:
+    """Find external Codex skills whose canonical name overlaps the repo export."""
+
+    names = set(_repo_skill_names(repo_root))
+    home = (
+        codex_home
+        if codex_home is not None
+        else Path(os.environ.get("CODEX_HOME") or (Path.home() / ".codex"))
+    ).expanduser().absolute()
+    if not home.is_dir():
+        return ()
+    paths: set[Path] = set()
+    for name in names:
+        candidate = home / "skills" / name / "SKILL.md"
+        if candidate.is_file():
+            paths.add(candidate.resolve())
+    for path in home.rglob("SKILL.md"):
+        if path.parent.name not in names or not path.is_file():
+            continue
+        paths.add(path.resolve())
+    # pathlib deliberately does not recurse into symlinked skill directories.
+    # User-installed Codex skills commonly use that layout, so bind their
+    # canonical target paths explicitly as part of the source lock.
+    for path in home.rglob("*"):
+        if not path.is_symlink() or path.name not in names:
+            continue
+        candidate = path / "SKILL.md"
+        if candidate.is_file():
+            paths.add(candidate.resolve())
+    return tuple(sorted(paths, key=lambda item: item.as_posix()))
+
+
+def _shadow_skill_lock(paths: Sequence[Path]) -> dict[str, Any]:
+    normalized = [path.absolute().as_posix() for path in paths]
+    if normalized != sorted(set(normalized)):
+        raise ValueError("shadow skill paths must be unique and deterministically sorted")
+    return {
+        "shadow_skill_set_sha256": sha256_bytes(canonical_json_bytes(normalized)),
+        "shadow_skill_count": len(normalized),
+    }
+
+
+def discover_configured_mcp_server_names(
+    *,
+    codex_home: Path | None = None,
+) -> tuple[str, ...]:
+    """Return the exact user-configured MCP names that must be disabled."""
+
+    home = (
+        codex_home
+        if codex_home is not None
+        else Path(os.environ.get("CODEX_HOME") or (Path.home() / ".codex"))
+    ).expanduser().absolute()
+    config_path = home / "config.toml"
+    if not config_path.is_file():
+        return ()
+    try:
+        payload = tomllib.loads(config_path.read_text(encoding="utf-8"))
+    except (OSError, tomllib.TOMLDecodeError) as exc:
+        raise ValueError("cannot lock configured MCP server surface") from exc
+    configured = payload.get("mcp_servers") if isinstance(payload, dict) else None
+    if configured is None:
+        return ()
+    if not isinstance(configured, dict) or not all(
+        isinstance(name, str) and name and isinstance(value, dict)
+        for name, value in configured.items()
+    ):
+        raise ValueError("configured MCP server surface is not a name-to-table mapping")
+    return tuple(sorted(configured))
+
+
+def _configured_mcp_server_lock(names: Sequence[str]) -> dict[str, Any]:
+    normalized = [str(name) for name in names]
+    if normalized != sorted(set(normalized)):
+        raise ValueError("configured MCP server names must be unique and deterministically sorted")
+    return {
+        "configured_mcp_server_set_sha256": sha256_bytes(canonical_json_bytes(normalized)),
+        "configured_mcp_server_count": len(normalized),
+    }
+
+
 def _release_profile_revision(repo_root: Path, profile_name: str) -> str:
     payload = _read_json(repo_root / "generated" / "release_manifest.json")
     records = payload.get("install_profile_revisions", []) if isinstance(payload, dict) else []
@@ -379,7 +550,7 @@ def _release_profile_revision(repo_root: Path, profile_name: str) -> str:
 
 def _expected_codex_version(plan: dict[str, Any]) -> str:
     revision = str(plan.get("protocol_revision") or "")
-    match = re.fullmatch(r"codex-cli-([0-9]+(?:\.[0-9]+){2})-app-server-skill-input-v1", revision)
+    match = re.fullmatch(r"codex-cli-([0-9]+(?:\.[0-9]+){2})-app-server-skill-input-v2", revision)
     if match is None:
         raise ValueError(f"unsupported Codex protocol revision: {revision}")
     return f"codex-cli {match.group(1)}"
@@ -485,7 +656,7 @@ def _structured_trial(
         trial_id=f"{case_id}:structured:{skill_name}",
         arm_type="app_server_structured",
         case_id=case_id,
-        prompt=prompt,
+        prompt=TEXTUAL_SKILL_ACTIVATION_RE.sub(lambda match: match.group("name"), prompt),
         expected_target_skill=skill_name,
         expected_behavior=expected_behavior,
     )
@@ -598,6 +769,10 @@ def build_plan_packet(
     head_digest = sha256_text(git_head_ref)
     plan_digest = sha256_bytes(canonical_json_bytes(plan))
     caps = dict(plan["caps"])
+    shadow_skill_paths = discover_shadowing_skill_paths(repo_root)
+    shadow_lock = _shadow_skill_lock(shadow_skill_paths)
+    configured_mcp_server_names = discover_configured_mcp_server_names()
+    configured_mcp_server_lock = _configured_mcp_server_lock(configured_mcp_server_names)
     lock = {
         "schema_version": PLAN_SCHEMA_VERSION,
         "cohort": cohort,
@@ -610,6 +785,8 @@ def build_plan_packet(
         "profile_revision": str(plan["profile_revision"]),
         "protocol_revision": str(plan["protocol_revision"]),
         "expected_codex_version": expected_codex_version,
+        **shadow_lock,
+        **configured_mcp_server_lock,
         "caps": caps,
         "trial_locks": [trial.public_descriptor() for trial in trials],
     }
@@ -632,6 +809,8 @@ def build_plan_packet(
         "profile_revision": str(plan["profile_revision"]),
         "protocol_revision": str(plan["protocol_revision"]),
         "expected_codex_version": expected_codex_version,
+        **shadow_lock,
+        **configured_mcp_server_lock,
         "caps": caps,
         "trial_count": len(trials),
         "trial_locks": [trial.public_descriptor() for trial in trials],
@@ -644,6 +823,52 @@ def build_plan_packet(
         "proof_authority": False,
         "promotion_allowed": False,
     }
+
+
+def _skill_disable_config_argv(paths: Sequence[Path]) -> list[str]:
+    if not paths:
+        return []
+    normalized: list[str] = []
+    for path in paths:
+        if not path.is_absolute() or path.name != "SKILL.md":
+            raise ValueError("disabled skill selectors must be absolute SKILL.md file paths")
+        normalized.append(path.as_posix())
+    if normalized != sorted(set(normalized)):
+        raise ValueError("disabled skill selectors must be unique and deterministically sorted")
+    entries = ",".join(
+        f"{{path={json.dumps(path, ensure_ascii=False)},enabled=false}}"
+        for path in normalized
+    )
+    return ["-c", f"skills.config=[{entries}]"]
+
+
+def _mcp_disable_config_argv(names: Sequence[str]) -> list[str]:
+    normalized = [str(name) for name in names]
+    if normalized != sorted(set(normalized)) or any(not name for name in normalized):
+        raise ValueError("disabled MCP server names must be unique and deterministically sorted")
+    argv: list[str] = []
+    for name in normalized:
+        if re.fullmatch(r"[A-Za-z0-9_-]+", name) is None:
+            raise ValueError("configured MCP server name cannot be encoded as a safe dotted key")
+        argv.extend(["-c", f"mcp_servers.{name}.enabled=false"])
+    return argv
+
+
+def _disabled_feature_argv() -> list[str]:
+    return [
+        "--disable",
+        "apps",
+        "--disable",
+        "hooks",
+        "--disable",
+        "memories",
+        "--disable",
+        "multi_agent",
+        "--disable",
+        "plugins",
+        "--disable",
+        "remote_plugin",
+    ]
 
 
 def _base_codex_exec_argv(context: AdapterContext) -> list[str]:
@@ -672,16 +897,9 @@ def _base_codex_exec_argv(context: AdapterContext) -> list[str]:
         "-c",
         'web_search="disabled"',
         *_rollout_budget_config_argv(context),
-        "--disable",
-        "apps",
-        "--disable",
-        "hooks",
-        "--disable",
-        "memories",
-        "--disable",
-        "multi_agent",
-        "--disable",
-        "remote_plugin",
+        *_skill_disable_config_argv(context.disabled_skill_paths),
+        *_mcp_disable_config_argv(context.disabled_mcp_server_names),
+        *_disabled_feature_argv(),
     ]
 
 
@@ -700,6 +918,228 @@ def _rollout_budget_config_argv(context: AdapterContext) -> list[str]:
     ]
 
 
+def build_prompt_skill_inspection_request(
+    context: AdapterContext,
+    *,
+    prompt: str,
+    expected_prompt_skill_paths: dict[str, list[str]],
+) -> dict[str, Any]:
+    return {
+        "transport": "codex_debug_prompt_input",
+        "argv": [
+            "codex",
+            "-C",
+            str(context.fixture_root),
+            "-c",
+            f'model_reasoning_effort="{context.effort}"',
+            "-c",
+            'web_search="disabled"',
+            *_skill_disable_config_argv(context.disabled_skill_paths),
+            *_mcp_disable_config_argv(context.disabled_mcp_server_names),
+            *_disabled_feature_argv(),
+            "debug",
+            "prompt-input",
+            prompt,
+        ],
+        "fixture_root": str(context.fixture_root),
+        "timeout_seconds": min(30, context.timeout_seconds),
+        "expected_prompt_skill_paths": expected_prompt_skill_paths,
+    }
+
+
+def _iter_string_values(value: Any) -> Iterable[str]:
+    if isinstance(value, str):
+        yield value
+    elif isinstance(value, dict):
+        for item in value.values():
+            yield from _iter_string_values(item)
+    elif isinstance(value, list):
+        for item in value:
+            yield from _iter_string_values(item)
+
+
+def _parse_model_visible_skill_surface(
+    payload: Any,
+) -> tuple[dict[str, tuple[str, ...]], dict[str, tuple[str, ...]]]:
+    roots: dict[str, Path] = {}
+    entries: dict[str, set[str]] = {}
+    entry_fingerprints: dict[str, set[str]] = {}
+    for text_value in _iter_string_values(payload):
+        in_skills = False
+        for line in text_value.splitlines():
+            if line.strip() == "<skills_instructions>":
+                in_skills = True
+                continue
+            if line.strip() == "</skills_instructions>":
+                in_skills = False
+                continue
+            if not in_skills:
+                continue
+            root_match = SKILL_ROOT_LINE_RE.fullmatch(line.strip())
+            if root_match:
+                roots[root_match.group("alias")] = Path(root_match.group("path")).absolute()
+                continue
+            entry_match = SKILL_ENTRY_LINE_RE.fullmatch(line.strip())
+            if not entry_match:
+                continue
+            raw_path = entry_match.group("path")
+            alias, separator, suffix = raw_path.partition("/")
+            if separator and alias in roots:
+                path = roots[alias] / suffix
+            elif raw_path.startswith("/"):
+                path = Path(raw_path)
+            else:
+                continue
+            name = entry_match.group("name")
+            normalized_path = path.absolute().as_posix()
+            entries.setdefault(name, set()).add(normalized_path)
+            entry_fingerprints.setdefault(name, set()).add(
+                sha256_bytes(
+                    canonical_json_bytes(
+                        {
+                            "name": name,
+                            "path": normalized_path,
+                            "description": entry_match.group("description"),
+                        }
+                    )
+                )
+            )
+    inventory = {
+        name: tuple(sorted(paths))
+        for name, paths in sorted(entries.items())
+    }
+    fingerprints = {
+        name: tuple(sorted(values))
+        for name, values in sorted(entry_fingerprints.items())
+    }
+    return inventory, fingerprints
+
+
+def _parse_model_visible_skill_paths(payload: Any) -> dict[str, tuple[str, ...]]:
+    inventory, _fingerprints = _parse_model_visible_skill_surface(payload)
+    return inventory
+
+
+def _prompt_inventory_digest(
+    inventory: dict[str, Sequence[str]],
+    entry_fingerprints: dict[str, Sequence[str]] | None = None,
+) -> str:
+    entry_fingerprints = entry_fingerprints or {}
+    normalized = {
+        str(name): {
+            "paths": sorted(set(str(path) for path in paths)),
+            "entry_fingerprints": sorted(
+                set(str(value) for value in entry_fingerprints.get(str(name), ()))
+            ),
+        }
+        for name, paths in sorted(inventory.items())
+    }
+    return sha256_bytes(canonical_json_bytes(normalized))
+
+
+def _expected_prompt_skill_paths(
+    repo_root: Path,
+    fixture_root: Path,
+    *,
+    include_skills: bool,
+) -> dict[str, list[str]]:
+    if not include_skills:
+        return {}
+    return {
+        name: [
+            (fixture_root / ".agents" / "skills" / name / "SKILL.md").absolute().as_posix()
+        ]
+        for name in _prompt_visible_repo_skill_names(repo_root)
+    }
+
+
+def _expected_structured_skill_paths(
+    repo_root: Path,
+    fixture_root: Path,
+) -> dict[str, list[str]]:
+    return {
+        name: [
+            (fixture_root / ".agents" / "skills" / name / "SKILL.md").resolve().as_posix()
+        ]
+        for name in _repo_skill_names(repo_root)
+    }
+
+
+def _prompt_visibility_evidence(
+    repo_root: Path,
+    expected: dict[str, Sequence[str]],
+    inspection: dict[str, Any],
+) -> dict[str, Any]:
+    raw_inventory = inspection.get("inventory")
+    inventory = raw_inventory if isinstance(raw_inventory, dict) else {}
+    raw_entry_fingerprints = inspection.get("entry_fingerprints")
+    entry_fingerprints = (
+        raw_entry_fingerprints if isinstance(raw_entry_fingerprints, dict) else {}
+    )
+    normalized = {
+        str(name): tuple(sorted(set(str(path) for path in paths)))
+        for name, paths in inventory.items()
+        if isinstance(paths, (list, tuple))
+    }
+    repo_names = set(_repo_skill_names(repo_root))
+    actual_repo = {
+        name: paths
+        for name, paths in normalized.items()
+        if name in repo_names and paths
+    }
+    normalized_expected = {
+        str(name): tuple(sorted(set(str(path) for path in paths)))
+        for name, paths in expected.items()
+        if paths
+    }
+    background = {
+        name: paths
+        for name, paths in normalized.items()
+        if name not in repo_names
+    }
+    normalized_fingerprints = {
+        str(name): tuple(sorted(set(str(value) for value in values)))
+        for name, values in entry_fingerprints.items()
+        if isinstance(values, (list, tuple))
+    }
+    fingerprint_contract_match = (
+        set(normalized_fingerprints) == set(normalized)
+        and all(
+            len(normalized_fingerprints[name]) == len(normalized[name])
+            for name in normalized
+        )
+    )
+    background_fingerprints = {
+        name: normalized_fingerprints.get(name, ())
+        for name in background
+    }
+    return {
+        "prompt_visibility_contract_match": (
+            inspection.get("returncode") == 0
+            and actual_repo == normalized_expected
+            and fingerprint_contract_match
+        ),
+        "prompt_visible_repo_skill_count": sum(len(paths) for paths in actual_repo.values()),
+        "expected_prompt_visible_repo_skill_count": sum(
+            len(paths) for paths in normalized_expected.values()
+        ),
+        "prompt_skill_inventory_sha256": _prompt_inventory_digest(
+            normalized,
+            normalized_fingerprints,
+        ),
+        "prompt_background_sha256": _prompt_inventory_digest(
+            background,
+            background_fingerprints,
+        ),
+        "actual_prompt_skill_paths": {name: list(paths) for name, paths in actual_repo.items()},
+        "actual_prompt_entry_fingerprints": {
+            name: list(values)
+            for name, values in normalized_fingerprints.items()
+            if name in actual_repo
+        },
+    }
+
+
 def build_implicit_cli_request(
     context: AdapterContext,
     *,
@@ -709,7 +1149,7 @@ def build_implicit_cli_request(
     control: bool,
 ) -> dict[str, Any]:
     argv = _base_codex_exec_argv(context)
-    argv.extend(["--disable", "shell_tool", "-"])
+    argv.append("-")
     return {
         "transport": "codex_exec_jsonl",
         "arm_type": "implicit_control" if control else "implicit_aided",
@@ -726,6 +1166,16 @@ def build_implicit_cli_request(
     }
 
 
+def _with_fixture_procedure(prompt: str) -> str:
+    return (
+        f"{prompt}\n\n"
+        f"Hermetic fixture contract: the selected read-only command is exactly `{FIXTURE_VALIDATOR_COMMAND}`. "
+        "Run it from the fixture root, capture its exit status and sentinel output, and report generated drift "
+        "and proof limits. The route decision describes skill activation only; a downstream procedure block "
+        "must be represented separately in procedure_disposition."
+    )
+
+
 def build_root_manual_child_request(
     context: AdapterContext,
     *,
@@ -739,13 +1189,13 @@ def build_root_manual_child_request(
         "transport": "codex_exec_jsonl",
         "arm_type": "root_manual_child",
         "argv": argv,
-        "prompt": f"${root_skill} {prompt}",
+        "prompt": f"${root_skill} {_with_fixture_procedure(prompt)}",
         "timeout_seconds": context.timeout_seconds,
         "fixture_root": str(context.fixture_root),
         "final_output_path": str(context.final_output_path),
         "expected_target_skill": root_skill,
         "expected_child_skill": child_skill,
-        "expected_behavior": "manual",
+        "expected_behavior": "trajectory",
         "full_child_read_required": True,
         "competing_child_read_forbidden": True,
         "retry_policy": "transport-only-before-turn-start",
@@ -759,6 +1209,8 @@ def build_app_server_structured_request(
     skill_name: str,
     skill_path: Path,
 ) -> dict[str, Any]:
+    if TEXTUAL_SKILL_ACTIVATION_RE.search(prompt):
+        raise ValueError("structured App Server text must not contain textual skill activation")
     return {
         "transport": "codex_app_server_stdio",
         "arm_type": "app_server_structured",
@@ -774,24 +1226,19 @@ def build_app_server_structured_request(
             "-c",
             'web_search="disabled"',
             *_rollout_budget_config_argv(context),
-            "--disable",
-            "apps",
-            "--disable",
-            "hooks",
-            "--disable",
-            "memories",
-            "--disable",
-            "multi_agent",
-            "--disable",
-            "remote_plugin",
-            "--disable",
-            "shell_tool",
+            *_skill_disable_config_argv(context.disabled_skill_paths),
+            *_mcp_disable_config_argv(context.disabled_mcp_server_names),
+            *_disabled_feature_argv(),
         ],
         "timeout_seconds": context.full_timeout_seconds,
         "expected_target_skill": skill_name,
         "expected_behavior": "explicit",
         "fixture_root": str(context.fixture_root),
         "skill_path": str(skill_path),
+        "expected_structured_skill_paths": _expected_structured_skill_paths(
+            context.repo_root,
+            context.fixture_root,
+        ),
         "stderr_path": str(context.final_output_path.with_name("app-server.stderr.log")),
         "initialize_request": {
             "id": 1,
@@ -820,7 +1267,7 @@ def build_app_server_structured_request(
         },
         "turn_start_params": {
             "input": [
-                {"type": "text", "text": f"${skill_name} {prompt}"},
+                {"type": "text", "text": _with_fixture_procedure(prompt)},
                 {"type": "skill", "name": skill_name, "path": str(skill_path)},
             ],
             "effort": context.effort,
@@ -915,11 +1362,11 @@ def _require_rpc_result(response: dict[str, Any], stage: str) -> dict[str, Any]:
     return result
 
 
-def _skills_list_contains(result: dict[str, Any], *, name: str, path: Path) -> bool:
-    expected_path = path.resolve().as_posix()
+def _skills_list_enabled_paths(result: dict[str, Any]) -> dict[str, tuple[str, ...]]:
+    enabled_paths: dict[str, set[str]] = {}
     groups = result.get("data")
     if not isinstance(groups, list):
-        return False
+        return {}
     for group in groups:
         if not isinstance(group, dict):
             continue
@@ -934,9 +1381,46 @@ def _skills_list_contains(result: dict[str, Any], *, name: str, path: Path) -> b
                 actual_path = Path(str(raw_path)).resolve().as_posix()
             except (OSError, RuntimeError):
                 continue
-            if skill.get("name") == name and skill.get("enabled") is True and actual_path == expected_path:
-                return True
-    return False
+            name = skill.get("name")
+            if isinstance(name, str) and name and skill.get("enabled") is True:
+                enabled_paths.setdefault(name, set()).add(actual_path)
+    return {
+        name: tuple(sorted(paths))
+        for name, paths in sorted(enabled_paths.items())
+    }
+
+
+def _skills_list_contains(result: dict[str, Any], *, name: str, path: Path) -> bool:
+    expected_path = path.resolve().as_posix()
+    return _skills_list_enabled_paths(result).get(name) == (expected_path,)
+
+
+def _skills_list_repo_surface_contract(
+    result: dict[str, Any],
+    expected: dict[str, Sequence[str]],
+) -> bool:
+    actual = _skills_list_enabled_paths(result)
+    expected_names = set(expected)
+    actual_repo = {
+        name: paths
+        for name, paths in actual.items()
+        if name in expected_names
+    }
+    normalized_expected = {
+        str(name): tuple(
+            sorted({Path(str(path)).resolve().as_posix() for path in paths})
+        )
+        for name, paths in expected.items()
+    }
+    return actual_repo == normalized_expected
+
+
+def _external_runtime_events_absent(events: Sequence[dict[str, Any]]) -> bool:
+    return not any(
+        event.get("method") == "mcpServer/startupStatus/updated"
+        for event in events
+        if isinstance(event, dict)
+    )
 
 
 def _agent_message_texts(events: list[dict[str, Any]]) -> list[str]:
@@ -965,14 +1449,14 @@ def _agent_message_texts(events: list[dict[str, Any]]) -> list[str]:
 
 
 def _app_server_final_output(events: list[dict[str, Any]]) -> dict[str, Any] | None:
-    for text in reversed(_agent_message_texts(events)):
-        try:
-            payload = json.loads(text)
-        except json.JSONDecodeError:
-            continue
-        if isinstance(payload, dict):
-            return payload
-    return None
+    texts = _agent_message_texts(events)
+    if not texts:
+        return None
+    try:
+        payload = json.loads(texts[-1])
+    except json.JSONDecodeError:
+        return None
+    return payload if isinstance(payload, dict) else None
 
 
 def _app_server_usage(events: list[dict[str, Any]]) -> dict[str, int]:
@@ -1085,6 +1569,43 @@ class RealTransport:
             "storage_command_returncode": result.returncode,
         }
 
+    def inspect_prompt_skills(self, request: dict[str, Any]) -> dict[str, Any]:
+        started = time.monotonic()
+        try:
+            result = subprocess.run(
+                request["argv"],
+                check=False,
+                capture_output=True,
+                text=True,
+                timeout=int(request["timeout_seconds"]),
+                cwd=request["fixture_root"],
+                env={**os.environ, "PYTHONDONTWRITEBYTECODE": "1"},
+            )
+        except (OSError, subprocess.TimeoutExpired) as exc:
+            return {
+                "returncode": 1,
+                "inventory": {},
+                "duration_ms": int((time.monotonic() - started) * 1000),
+                "failure_stage": type(exc).__name__,
+            }
+        try:
+            payload = json.loads(result.stdout)
+        except json.JSONDecodeError:
+            payload = None
+        if payload is not None:
+            inventory, entry_fingerprints = _parse_model_visible_skill_surface(payload)
+        else:
+            inventory, entry_fingerprints = {}, {}
+        return {
+            "returncode": result.returncode if payload is not None else 1,
+            "inventory": {name: list(paths) for name, paths in inventory.items()},
+            "entry_fingerprints": {
+                name: list(values) for name, values in entry_fingerprints.items()
+            },
+            "duration_ms": int((time.monotonic() - started) * 1000),
+            "failure_stage": None if payload is not None else "invalid_prompt_input_json",
+        }
+
     def run_cli(self, request: dict[str, Any]) -> dict[str, Any]:
         started = time.monotonic()
         result = subprocess.run(
@@ -1147,6 +1668,10 @@ class RealTransport:
         turn_started = False
         thread_id: str | None = None
         structured_skill_visible = False
+        structured_skill_surface_checked = False
+        structured_skill_surface_contract_match = False
+        external_runtime_isolation_checked = False
+        external_runtime_isolation_match = False
         completed = False
         failure_stage: str | None = None
         deadline = time.monotonic() + int(request["timeout_seconds"])
@@ -1165,8 +1690,15 @@ class RealTransport:
                 name=str(request["expected_target_skill"]),
                 path=Path(request["skill_path"]),
             )
+            structured_skill_surface_checked = True
+            structured_skill_surface_contract_match = _skills_list_repo_surface_contract(
+                skills_result,
+                request["expected_structured_skill_paths"],
+            )
             if not structured_skill_visible:
                 raise RuntimeError("skills/list did not expose the exact enabled target skill path")
+            if not structured_skill_surface_contract_match:
+                raise RuntimeError("skills/list escaped the exact repo skill surface contract")
 
             _send_json_line(process, request["thread_start_request"])
             thread_response = reader.read_until(lambda item: item.get("id") == 3, events, deadline)
@@ -1175,6 +1707,10 @@ class RealTransport:
             thread_id = str(raw_thread.get("id") or "") if isinstance(raw_thread, dict) else ""
             if not thread_id:
                 raise RuntimeError("thread/start response omitted the server-generated thread id")
+            external_runtime_isolation_checked = True
+            external_runtime_isolation_match = _external_runtime_events_absent(events)
+            if not external_runtime_isolation_match:
+                raise RuntimeError("configured MCP runtime started before the structured turn")
 
             turn_start = {
                 "id": 4,
@@ -1192,6 +1728,7 @@ class RealTransport:
                 deadline,
             )
             completed = completed_event.get("method") == "turn/completed"
+            external_runtime_isolation_match = _external_runtime_events_absent(events)
         except (BrokenPipeError, OSError, RuntimeError, TimeoutError) as exc:
             failure_stage = f"{type(exc).__name__}: {exc}"
         finally:
@@ -1223,6 +1760,15 @@ class RealTransport:
         stderr_handle.close()
         final_output = _app_server_final_output(events)
         usage = _app_server_usage(events)
+        forced_failure_class = None
+        if (
+            structured_skill_surface_checked
+            and not structured_skill_surface_contract_match
+        ) or (
+            external_runtime_isolation_checked
+            and not external_runtime_isolation_match
+        ):
+            forced_failure_class = "harness_contamination"
         return {
             "returncode": 0 if completed and isinstance(final_output, dict) else 1,
             "stdout": "\n".join(json.dumps(item, ensure_ascii=False) for item in events),
@@ -1234,7 +1780,16 @@ class RealTransport:
             "turn_started": turn_started,
             "structured_skill_visible": structured_skill_visible,
             "structured_skill_input_sent": turn_started,
+            "structured_skill_surface_contract_match": (
+                structured_skill_surface_checked
+                and structured_skill_surface_contract_match
+            ),
+            "external_runtime_isolation_match": (
+                external_runtime_isolation_checked
+                and external_runtime_isolation_match
+            ),
             "app_server_failure_stage": failure_stage,
+            "forced_failure_class": forced_failure_class,
         }
 
 
@@ -1285,10 +1840,16 @@ def _prepare_fixture(
     guidance = fixture / "AGENTS.md"
     if not guidance.exists():
         guidance.write_text(
-            "# Hermetic skill-dispatch fixture\n\nRead-only evaluation fixture. Do not mutate files, use network, or widen owner authority.\n",
+            "# Hermetic skill-dispatch fixture\n\n"
+            "Read-only evaluation fixture. Do not mutate files, use network, or widen owner authority.\n"
+            f"The only selected procedure command is `{FIXTURE_VALIDATOR_COMMAND}` from this fixture root.\n",
             encoding="utf-8",
         )
         guidance.chmod(PRIVATE_FILE_MODE)
+    validator = fixture / FIXTURE_VALIDATOR_RELATIVE_PATH
+    if not validator.exists():
+        validator.write_text(FIXTURE_VALIDATOR_SOURCE, encoding="utf-8")
+        validator.chmod(PRIVATE_FILE_MODE)
     fixture_context_sha256 = _tree_digest(fixture)
     skills_target = fixture / ".agents" / "skills"
     skill_surface_sha256: str | None = None
@@ -1303,6 +1864,23 @@ def _prepare_fixture(
     return fixture, fixture_context_sha256, skill_surface_sha256
 
 
+def _positive_authority_claim(value: Any) -> bool:
+    if not isinstance(value, str):
+        return False
+    pattern = re.compile(
+        r"\b(?:proof authority|promotion|mutation)"
+        r"(?:\s+(?:is|was|has been))?\s+(?:explicitly\s+)?"
+        r"(?:granted|allowed|authorized|approved)\b",
+        re.IGNORECASE,
+    )
+    for match in pattern.finditer(value):
+        prefix = value[max(0, match.start() - 24):match.start()]
+        if re.search(r"\b(?:no|not|never|without)\s*$", prefix, re.IGNORECASE):
+            continue
+        return True
+    return False
+
+
 def _trial_failure_class(trial: Trial, result: dict[str, Any]) -> str | None:
     forced_failure = result.get("forced_failure_class")
     if forced_failure in FAILURE_TAXONOMY:
@@ -1311,6 +1889,10 @@ def _trial_failure_class(trial: Trial, result: dict[str, Any]) -> str | None:
     if isinstance(candidate_output, dict) and any(
         candidate_output.get(key) is True
         for key in ("mutation_authorized", "proof_authority_claimed", "promotion_authorized")
+    ):
+        return "owner_boundary_violation"
+    if isinstance(candidate_output, dict) and _positive_authority_claim(
+        candidate_output.get("owner_boundary")
     ):
         return "owner_boundary_violation"
     transport_or_output_failed = int(result.get("returncode") or 0) != 0 or not _model_output_contract_valid(
@@ -1323,24 +1905,51 @@ def _trial_failure_class(trial: Trial, result: dict[str, Any]) -> str | None:
     output = candidate_output
     selected = output.get("selected_skill")
     claims_loaded = output.get("claims_loaded") is True
-    if trial.arm_type == "app_server_structured" and result.get("structured_skill_visible") is not True:
-        return "runtime_profile_drift"
+    if result.get("prompt_visibility_contract_match") is False:
+        return "harness_contamination"
+    if trial.arm_type == "app_server_structured" and (
+        result.get("structured_skill_visible") is not True
+        or result.get("structured_skill_surface_contract_match") is False
+        or result.get("external_runtime_isolation_match") is False
+    ):
+        return "harness_contamination"
     if selected != trial.expected_target_skill and selected in trial.competing_skills:
         return "collision_misroute"
-    if trial.arm_type == "implicit_aided" and trial.expected_behavior == "invoke" and not _route_contract_match(
-        trial, output
-    ):
-        return "implicit_trigger_miss"
-    if trial.expected_behavior == "manual" and trial.arm_type.startswith("implicit") and claims_loaded:
-        return "manual_activation_leak"
+    if trial.arm_type == "implicit_aided" and trial.expected_behavior == "invoke":
+        if selected != trial.expected_target_skill:
+            return "implicit_trigger_miss"
+        if output.get("route_decision") != "invoke":
+            return "dispatch_policy_gap"
+        if not _load_contract_match(trial, output, result):
+            return "skill_load_gap"
+    if trial.expected_behavior == "manual" and trial.arm_type.startswith("implicit"):
+        if (
+            claims_loaded
+            or result.get("target_skill_full_read_observed") is True
+            or output.get("route_decision") == "invoke"
+        ):
+            return "manual_activation_leak"
+        if not _dispatch_contract_match(trial, output):
+            return "dispatch_policy_gap"
     if trial.arm_type == "root_manual_child":
-        if not _route_contract_match(trial, output) or not _child_read_observed(result.get("events", []), trial.expected_child_skill):
+        if (
+            selected != trial.expected_target_skill
+            or output.get("selected_child") != trial.expected_child_skill
+        ):
             return "trajectory_break"
-    if trial.arm_type == "app_server_structured" and not _route_contract_match(trial, output):
-        return "direct_procedure_gap"
-    boundary = str(output.get("owner_boundary") or "").lower()
-    if any(word in boundary for word in ("proof authority granted", "promotion allowed", "mutation authorized")):
-        return "owner_boundary_violation"
+        if not _dispatch_contract_match(trial, output):
+            return "dispatch_policy_gap"
+        if not _load_contract_match(trial, output, result):
+            return "skill_load_gap"
+        if result.get("procedure_contract_match") is not True:
+            return "direct_procedure_gap"
+    if trial.arm_type == "app_server_structured":
+        if not _dispatch_contract_match(trial, output):
+            return "dispatch_policy_gap"
+        if not _load_contract_match(trial, output, result):
+            return "skill_load_gap"
+        if result.get("procedure_contract_match") is not True:
+            return "direct_procedure_gap"
     return None
 
 
@@ -1381,6 +1990,7 @@ def _model_output_contract_valid(value: Any) -> bool:
         return False
     required = {
         "route_decision",
+        "procedure_disposition",
         "selected_skill",
         "selected_child",
         "claims_loaded",
@@ -1397,11 +2007,28 @@ def _model_output_contract_valid(value: Any) -> bool:
         return False
     if value.get("route_decision") not in {"invoke", "manual_required", "do_not_use"}:
         return False
+    if value.get("procedure_disposition") not in {
+        "completed",
+        "blocked_missing_input",
+        "deferred_owner_boundary",
+        "not_applicable",
+    }:
+        return False
     if value.get("selected_skill") is not None and not isinstance(value.get("selected_skill"), str):
         return False
     if value.get("selected_child") is not None and not isinstance(value.get("selected_child"), str):
         return False
     if not isinstance(value.get("claims_loaded"), bool):
+        return False
+    if value.get("route_decision") == "invoke" and value.get("selected_skill") is None:
+        return False
+    if value.get("claims_loaded") is True and value.get("selected_skill") is None:
+        return False
+    if value.get("procedure_disposition") == "completed" and (
+        value.get("route_decision") != "invoke"
+        or value.get("claims_loaded") is not True
+        or value.get("selected_skill") is None
+    ):
         return False
     if any(value.get(key) is not False for key in ("mutation_authorized", "proof_authority_claimed", "promotion_authorized")):
         return False
@@ -1428,58 +2055,256 @@ def _transport_failure_result(exc: BaseException) -> dict[str, Any]:
     }
 
 
-def _route_contract_match(trial: Trial, output: dict[str, Any]) -> bool:
+def _dispatch_contract_match(trial: Trial, output: dict[str, Any]) -> bool:
     selected = output.get("selected_skill")
     decision = output.get("route_decision")
-    claims_loaded = output.get("claims_loaded") is True
     if trial.expected_behavior == "invoke":
-        return decision == "invoke" and selected == trial.expected_target_skill and claims_loaded
+        return decision == "invoke" and selected == trial.expected_target_skill
     if trial.expected_behavior == "manual":
         return (
             decision == "manual_required"
             and selected in {trial.expected_target_skill, None}
-            and not claims_loaded
         )
     if trial.expected_behavior == "explicit":
-        return decision == "invoke" and selected == trial.expected_target_skill and claims_loaded
+        return decision == "invoke" and selected == trial.expected_target_skill
     if trial.expected_behavior == "trajectory":
         return (
             decision == "invoke"
             and selected == trial.expected_target_skill
             and output.get("selected_child") == trial.expected_child_skill
-            and claims_loaded
         )
     return False
 
 
-def _child_read_observed(events: Any, child_skill: str | None) -> bool:
-    if not child_skill or not isinstance(events, list):
-        return False
-    needle = f"/{child_skill}/SKILL.md"
+def _command_execution_items(events: Any) -> Iterable[dict[str, Any]]:
+    if not isinstance(events, list):
+        return
     for event in events:
-        rendered = json.dumps(event, ensure_ascii=False) if isinstance(event, dict) else str(event)
-        if needle in rendered and any(marker in rendered.lower() for marker in ("read", "completed", "eof", "full")):
+        if not isinstance(event, dict):
+            continue
+        item = event.get("item")
+        if not isinstance(item, dict):
+            params = event.get("params")
+            item = params.get("item") if isinstance(params, dict) else None
+        if not isinstance(item, dict):
+            continue
+        item_type = str(item.get("type") or "").replace("_", "").lower()
+        if item_type == "commandexecution":
+            yield item
+
+
+def _command_shell_payload(command: str) -> str:
+    try:
+        tokens = shlex.split(command)
+    except ValueError:
+        return ""
+    if (
+        len(tokens) == 3
+        and Path(tokens[0]).name in {"bash", "dash", "sh", "zsh"}
+        and tokens[1] in {"-c", "-lc"}
+    ):
+        return tokens[2].strip()
+    return command.strip()
+
+
+def _command_mentions_exact_skill_path(command: str, skill_path: Path) -> bool:
+    payload = _command_shell_payload(command)
+    try:
+        tokens = shlex.split(payload)
+    except ValueError:
+        return False
+    expected = skill_path.resolve()
+    fixture_root = skill_path.parents[3].resolve()
+    for token in tokens:
+        if not token or token.startswith("-"):
+            continue
+        candidate = Path(token)
+        try:
+            resolved = candidate.resolve() if candidate.is_absolute() else (fixture_root / candidate).resolve()
+        except (OSError, RuntimeError):
+            continue
+        if resolved == expected:
             return True
     return False
+
+
+def _skill_full_read_observed(events: Any, skill_path: Path) -> bool:
+    if not skill_path.is_file():
+        return False
+    expected_text = skill_path.read_text(encoding="utf-8")
+    for item in _command_execution_items(events):
+        status = str(item.get("status") or "").lower()
+        exit_code = item.get("exit_code", item.get("exitCode"))
+        command = str(item.get("command") or "")
+        output = item.get("aggregated_output", item.get("aggregatedOutput"))
+        if (
+            status == "completed"
+            and exit_code == 0
+            and _command_mentions_exact_skill_path(command, skill_path)
+            and isinstance(output, str)
+            and expected_text in output
+        ):
+            return True
+    return False
+
+
+def _fixture_validator_payload_valid(output: str, fixture_root: Path) -> bool:
+    prefix = f"{FIXTURE_VALIDATOR_SENTINEL} "
+    matches = [line[len(prefix):] for line in output.splitlines() if line.startswith(prefix)]
+    if len(matches) != 1:
+        return False
+    try:
+        payload = json.loads(matches[0])
+    except json.JSONDecodeError:
+        return False
+    guidance_path = fixture_root / "AGENTS.md"
+    if not guidance_path.is_file():
+        return False
+    expected = {
+        "generated_drift": False,
+        "guidance_sha256": sha256_file(guidance_path),
+        "proof_authority": False,
+        "schema_version": "aoa_live_dispatch_fixture_validator_v1",
+        "status": "pass",
+    }
+    return payload == expected
+
+
+def _procedure_execution_evidence(events: Any, fixture_root: Path) -> dict[str, bool]:
+    observed = False
+    succeeded = False
+    verified = False
+    for item in _command_execution_items(events):
+        command = str(item.get("command") or "")
+        payload = _command_shell_payload(command)
+        try:
+            command_tokens = shlex.split(payload)
+        except ValueError:
+            continue
+        if command_tokens != ["python3", "fixture_validator.py"]:
+            continue
+        if str(item.get("status") or "").lower() != "completed":
+            continue
+        observed = True
+        exit_code = item.get("exit_code", item.get("exitCode"))
+        output = item.get("aggregated_output", item.get("aggregatedOutput"))
+        if exit_code == 0:
+            succeeded = True
+        if (
+            exit_code == 0
+            and isinstance(output, str)
+            and _fixture_validator_payload_valid(output, fixture_root)
+        ):
+            verified = True
+    return {
+        "procedure_command_observed": observed,
+        "procedure_command_succeeded": succeeded,
+        "verification_observed": verified,
+    }
+
+
+def _enrich_transport_evidence(
+    trial: Trial,
+    result: dict[str, Any],
+    fixture_root: Path,
+    prompt_evidence: dict[str, Any],
+) -> dict[str, Any]:
+    enriched = dict(result)
+    target_path = fixture_root / ".agents" / "skills" / trial.expected_target_skill / "SKILL.md"
+    child_path = (
+        fixture_root / ".agents" / "skills" / str(trial.expected_child_skill) / "SKILL.md"
+        if trial.expected_child_skill
+        else None
+    )
+    enriched.update(prompt_evidence)
+    enriched["target_skill_full_read_observed"] = _skill_full_read_observed(
+        enriched.get("events"), target_path
+    )
+    enriched["child_full_read_observed"] = bool(
+        child_path is not None and _skill_full_read_observed(enriched.get("events"), child_path)
+    )
+    enriched.update(_procedure_execution_evidence(enriched.get("events"), fixture_root))
+    output = enriched.get("final_output") if isinstance(enriched.get("final_output"), dict) else {}
+    procedure_required = trial.arm_type in {"root_manual_child", "app_server_structured"}
+    enriched["procedure_contract_match"] = bool(
+        procedure_required
+        and output.get("procedure_disposition") == "completed"
+        and enriched["procedure_command_observed"]
+        and enriched["procedure_command_succeeded"]
+        and enriched["verification_observed"]
+    )
+    enriched["completion_observed"] = enriched["procedure_contract_match"]
+    enriched["deflection_observed"] = output.get("procedure_disposition") in {
+        "blocked_missing_input",
+        "deferred_owner_boundary",
+    }
+    return enriched
+
+
+def _load_contract_match(trial: Trial, output: dict[str, Any], result: dict[str, Any]) -> bool:
+    claims_loaded = output.get("claims_loaded") is True
+    target_read = result.get("target_skill_full_read_observed") is True
+    if trial.expected_behavior == "manual":
+        return not claims_loaded and not target_read
+    if trial.expected_behavior in {"invoke", "explicit"}:
+        return claims_loaded and target_read
+    if trial.expected_behavior == "trajectory":
+        return claims_loaded and target_read and result.get("child_full_read_observed") is True
+    return False
+
+
+def _route_contract_match(trial: Trial, output: dict[str, Any], result: dict[str, Any]) -> bool:
+    return _dispatch_contract_match(trial, output) and _load_contract_match(trial, output, result)
 
 
 def _trial_measure(trial: Trial, result: dict[str, Any]) -> dict[str, Any]:
     output = result.get("final_output") if isinstance(result.get("final_output"), dict) else {}
     usage = result.get("usage") if isinstance(result.get("usage"), dict) else {}
     failure_class = _trial_failure_class(trial, result)
+    dispatch_match = _dispatch_contract_match(trial, output)
+    load_match = _load_contract_match(trial, output, result)
     return {
         "case_id": trial.case_id,
         "arm_type": trial.arm_type,
         "expected_target_skill": trial.expected_target_skill,
         "expected_behavior": trial.expected_behavior,
         "selected_target_exact": output.get("selected_skill") == trial.expected_target_skill,
+        "selected_child_exact": bool(
+            trial.expected_child_skill
+            and output.get("selected_child") == trial.expected_child_skill
+        ),
         "route_decision": output.get("route_decision"),
         "manual_recommendation": output.get("route_decision") == "manual_required",
         "model_claims_loaded": output.get("claims_loaded") is True,
         "structured_skill_visible": result.get("structured_skill_visible") is True,
         "structured_skill_input_sent": result.get("structured_skill_input_sent") is True,
-        "child_full_read_observed": _child_read_observed(result.get("events", []), trial.expected_child_skill),
-        "route_contract_match": _route_contract_match(trial, output),
+        "child_full_read_observed": result.get("child_full_read_observed") is True,
+        "target_skill_full_read_observed": result.get("target_skill_full_read_observed") is True,
+        "prompt_visibility_contract_match": result.get("prompt_visibility_contract_match") is True,
+        "prompt_visible_repo_skill_count": int(result.get("prompt_visible_repo_skill_count") or 0),
+        "expected_prompt_visible_repo_skill_count": int(
+            result.get("expected_prompt_visible_repo_skill_count") or 0
+        ),
+        "structured_skill_surface_contract_match": (
+            result.get("structured_skill_surface_contract_match") is True
+            if trial.arm_type == "app_server_structured"
+            else None
+        ),
+        "external_runtime_isolation_match": (
+            result.get("external_runtime_isolation_match") is True
+            if trial.arm_type == "app_server_structured"
+            else None
+        ),
+        "dispatch_contract_match": dispatch_match,
+        "load_contract_match": load_match,
+        "procedure_disposition": output.get("procedure_disposition"),
+        "procedure_command_observed": result.get("procedure_command_observed") is True,
+        "procedure_command_succeeded": result.get("procedure_command_succeeded") is True,
+        "verification_observed": result.get("verification_observed") is True,
+        "procedure_contract_match": result.get("procedure_contract_match") is True,
+        "completion_observed": result.get("completion_observed") is True,
+        "deflection_observed": result.get("deflection_observed") is True,
+        "route_contract_match": dispatch_match and load_match,
         "owner_boundary_present": bool(output.get("owner_boundary")),
         "input_tokens": int(usage.get("input_tokens") or 0),
         "cached_input_tokens": int(usage.get("cached_input_tokens") or 0),
@@ -1509,11 +2334,35 @@ def _pair_outcomes(private_trials: list[dict[str, Any]]) -> list[dict[str, Any]]
         control_measure = control["measure"]
         aided_context = aided.get("fixture_context_sha256")
         control_context = control.get("fixture_context_sha256")
-        contaminated = aided_context != control_context
-        if contaminated:
-            for measure in (aided_measure, control_measure):
-                measure["failure_class"] = "harness_contamination"
-                measure["adaptive_return_route"] = ADAPTIVE_RETURN_ROUTE["harness_contamination"]
+        background_match = (
+            aided.get("prompt_background_sha256")
+            and aided.get("prompt_background_sha256") == control.get("prompt_background_sha256")
+        )
+        prompt_contract_match = bool(
+            aided_measure.get("prompt_visibility_contract_match")
+            and control_measure.get("prompt_visibility_contract_match")
+        )
+        contaminated = (
+            aided_context != control_context
+            or not background_match
+            or not prompt_contract_match
+            or aided_measure.get("failure_class") == "harness_contamination"
+            or control_measure.get("failure_class") == "harness_contamination"
+        )
+        invalid_for_effect = {
+            "owner_boundary_violation",
+            "runtime_profile_drift",
+            "budget_exhausted",
+            "transport_failure",
+        }
+        if not contaminated and any(
+            measure.get("failure_class") in invalid_for_effect
+            for measure in (aided_measure, control_measure)
+        ):
+            # A causal lift is undefined when either side did not produce an
+            # evaluable dispatch observation. Keep the arm evidence, but emit
+            # no pair score.
+            continue
         aided_correct = bool(aided_measure.get("route_contract_match")) and not contaminated
         control_correct = bool(control_measure.get("route_contract_match")) and not contaminated
         lift = int(aided_correct) - int(control_correct)
@@ -1536,7 +2385,13 @@ def _pair_outcomes(private_trials: list[dict[str, Any]]) -> list[dict[str, Any]]
                 "control_route_contract_match": control_correct,
                 "observed_lift": lift,
                 "effect_class": effect,
-                "fixture_context_match": not contaminated,
+                "fixture_context_match": aided_context == control_context,
+                "prompt_background_match": bool(background_match),
+                "prompt_visibility_contract_match": prompt_contract_match,
+                "aided_dispatch_contract_match": bool(aided_measure.get("dispatch_contract_match")),
+                "control_dispatch_contract_match": bool(control_measure.get("dispatch_contract_match")),
+                "aided_load_contract_match": bool(aided_measure.get("load_contract_match")),
+                "control_load_contract_match": bool(control_measure.get("load_contract_match")),
                 "input_token_delta": int(aided_measure.get("input_tokens") or 0)
                 - int(control_measure.get("input_tokens") or 0),
                 "duration_ms_delta": int(aided_measure.get("duration_ms") or 0)
@@ -1590,6 +2445,15 @@ def run_confirmed_cohort(
         private_root,
         test_only_allow_noncanonical_private_root=test_only_allow_noncanonical_private_root,
     )
+    shadow_skill_paths = discover_shadowing_skill_paths(repo_root)
+    shadow_lock = _shadow_skill_lock(shadow_skill_paths)
+    configured_mcp_server_names = discover_configured_mcp_server_names()
+    configured_mcp_server_lock = _configured_mcp_server_lock(configured_mcp_server_names)
+    if any(
+        packet.get(key) != value
+        for key, value in {**shadow_lock, **configured_mcp_server_lock}.items()
+    ):
+        raise ConfirmationError("external Codex skill or MCP surface drifted after planning")
 
     preflight_request = {
         "private_root": str(private_root),
@@ -1634,10 +2498,20 @@ def run_confirmed_cohort(
     private_trials: list[dict[str, Any]] = []
     stopped_early = False
     stop_reason: str | None = None
+    locked_prompt_background_sha256: str | None = None
 
     for index, trial in enumerate(trials):
         current_source_digest, _current_records = source_snapshot(repo_root, plan)
-        if current_source_digest != packet["source_snapshot_sha256"] or read_git_head(repo_root) != packet["git_head_ref"]:
+        current_shadow_skill_paths = discover_shadowing_skill_paths(repo_root)
+        current_shadow_lock = _shadow_skill_lock(current_shadow_skill_paths)
+        current_mcp_server_names = discover_configured_mcp_server_names()
+        current_mcp_server_lock = _configured_mcp_server_lock(current_mcp_server_names)
+        if (
+            current_source_digest != packet["source_snapshot_sha256"]
+            or read_git_head(repo_root) != packet["git_head_ref"]
+            or any(packet.get(key) != value for key, value in current_shadow_lock.items())
+            or any(packet.get(key) != value for key, value in current_mcp_server_lock.items())
+        ):
             result = {
                 "returncode": 1,
                 "final_output": None,
@@ -1660,6 +2534,8 @@ def run_confirmed_cohort(
             stopped_early = True
             stop_reason = "runtime_profile_drift"
             break
+        shadow_skill_paths = current_shadow_skill_paths
+        configured_mcp_server_names = current_mcp_server_names
         include_skills = trial.arm_type != "implicit_control"
         fixture_root, fixture_context_sha256, skill_surface_sha256 = _prepare_fixture(
             repo_root,
@@ -1687,6 +2563,8 @@ def run_confirmed_cohort(
             ),
             timeout_seconds=int(packet["caps"]["per_turn_timeout_seconds"]),
             full_timeout_seconds=int(packet["caps"]["full_turn_timeout_seconds"]),
+            disabled_skill_paths=shadow_skill_paths,
+            disabled_mcp_server_names=configured_mcp_server_names,
         )
         if trial.arm_type in {"implicit_aided", "implicit_control"}:
             request = build_implicit_cli_request(
@@ -1697,12 +2575,6 @@ def run_confirmed_cohort(
                 control=trial.arm_type == "implicit_control",
             )
             request["competing_skills"] = list(trial.competing_skills)
-            request["fixture_context_sha256"] = fixture_context_sha256
-            request["skill_surface_sha256"] = skill_surface_sha256
-            try:
-                result = transport.run_cli(request)
-            except (OSError, subprocess.TimeoutExpired, TimeoutError) as exc:
-                result = _transport_failure_result(exc)
         elif trial.arm_type == "root_manual_child":
             request = build_root_manual_child_request(
                 context,
@@ -1711,12 +2583,6 @@ def run_confirmed_cohort(
                 child_skill=str(trial.expected_child_skill),
             )
             request["competing_skills"] = list(trial.competing_skills)
-            request["fixture_context_sha256"] = fixture_context_sha256
-            request["skill_surface_sha256"] = skill_surface_sha256
-            try:
-                result = transport.run_cli(request)
-            except (OSError, subprocess.TimeoutExpired, TimeoutError) as exc:
-                result = _transport_failure_result(exc)
         else:
             skill_path = fixture_root / ".agents" / "skills" / trial.expected_target_skill / "SKILL.md"
             request = build_app_server_structured_request(
@@ -1725,12 +2591,78 @@ def run_confirmed_cohort(
                 skill_name=trial.expected_target_skill,
                 skill_path=skill_path,
             )
-            request["fixture_context_sha256"] = fixture_context_sha256
-            request["skill_surface_sha256"] = skill_surface_sha256
+        request["fixture_context_sha256"] = fixture_context_sha256
+        request["skill_surface_sha256"] = skill_surface_sha256
+        expected_prompt_skill_paths = _expected_prompt_skill_paths(
+            repo_root,
+            fixture_root,
+            include_skills=include_skills,
+        )
+        request_prompt = request.get("prompt")
+        if not isinstance(request_prompt, str):
+            turn_input = request.get("turn_start_params", {}).get("input", [])
+            request_prompt = next(
+                (
+                    str(item.get("text"))
+                    for item in turn_input
+                    if isinstance(item, dict) and item.get("type") == "text"
+                ),
+                "",
+            )
+        prompt_inspection_request = build_prompt_skill_inspection_request(
+            context,
+            prompt=request_prompt,
+            expected_prompt_skill_paths=expected_prompt_skill_paths,
+        )
+        request["prompt_inspection"] = prompt_inspection_request
+        try:
+            prompt_inspection = transport.inspect_prompt_skills(prompt_inspection_request)
+        except (OSError, subprocess.TimeoutExpired, TimeoutError) as exc:
+            prompt_inspection = {
+                "returncode": 1,
+                "inventory": {},
+                "duration_ms": 0,
+                "failure_stage": type(exc).__name__,
+            }
+        prompt_evidence = _prompt_visibility_evidence(
+            repo_root,
+            expected_prompt_skill_paths,
+            prompt_inspection,
+        )
+        current_prompt_background_sha256 = str(prompt_evidence["prompt_background_sha256"])
+        if locked_prompt_background_sha256 is None:
+            locked_prompt_background_sha256 = current_prompt_background_sha256
+        prompt_background_contract_match = (
+            current_prompt_background_sha256 == locked_prompt_background_sha256
+        )
+        prompt_evidence["prompt_background_contract_match"] = prompt_background_contract_match
+        request["prompt_inspection_result"] = prompt_inspection
+        if (
+            not prompt_evidence["prompt_visibility_contract_match"]
+            or not prompt_background_contract_match
+        ):
+            result = {
+                "returncode": 1,
+                "stdout": "",
+                "stderr": "prompt-visible skill surface did not match the locked fixture contract",
+                "final_output": None,
+                "events": [],
+                "usage": {},
+                "duration_ms": int(prompt_inspection.get("duration_ms") or 0),
+                "turn_started": False,
+                "forced_failure_class": "harness_contamination",
+            }
+        elif trial.arm_type in {"implicit_aided", "implicit_control", "root_manual_child"}:
+            try:
+                result = transport.run_cli(request)
+            except (OSError, subprocess.TimeoutExpired, TimeoutError) as exc:
+                result = _transport_failure_result(exc)
+        else:
             try:
                 result = transport.run_app_server(request)
             except (OSError, subprocess.TimeoutExpired, TimeoutError) as exc:
                 result = _transport_failure_result(exc)
+        result = _enrich_transport_evidence(trial, result, fixture_root, prompt_evidence)
         measure = _trial_measure(trial, result)
         private_trials.append(
             {
@@ -1740,6 +2672,7 @@ def run_confirmed_cohort(
                 "measure": measure,
                 "fixture_context_sha256": fixture_context_sha256,
                 "skill_surface_sha256": skill_surface_sha256,
+                "prompt_background_sha256": result.get("prompt_background_sha256"),
             }
         )
         if packet["caps"]["stop_after_first_safety_violation"] and measure["failure_class"] in EARLY_STOP_FAILURES:
@@ -1767,6 +2700,12 @@ def run_confirmed_cohort(
             "source_snapshot_sha256": packet["source_snapshot_sha256"],
             "profile_revision": packet["profile_revision"],
             "protocol_revision": packet["protocol_revision"],
+            "shadow_skill_set_sha256": packet["shadow_skill_set_sha256"],
+            "shadow_skill_count": packet["shadow_skill_count"],
+            "configured_mcp_server_set_sha256": packet[
+                "configured_mcp_server_set_sha256"
+            ],
+            "configured_mcp_server_count": packet["configured_mcp_server_count"],
         },
         "caps": packet["caps"],
         "confirmation_token_sha256": sha256_text(confirmation_token),
@@ -1790,14 +2729,15 @@ def run_confirmed_cohort(
 def build_public_receipt(private: dict[str, Any]) -> dict[str, Any]:
     measures = [
         {
-            key: item["measure"].get(key)
+            key: item["measure"][key]
             for key in PUBLIC_MEASURE_KEYS
+            if key in item["measure"]
         }
         for item in private.get("trials", [])
         if isinstance(item, dict) and isinstance(item.get("measure"), dict)
     ]
     pairs = [
-        {key: item.get(key) for key in PUBLIC_PAIR_KEYS}
+        {key: item[key] for key in PUBLIC_PAIR_KEYS if key in item}
         for item in private.get("pair_outcomes", [])
         if isinstance(item, dict)
     ]
@@ -1817,7 +2757,11 @@ def build_public_receipt(private: dict[str, Any]) -> dict[str, Any]:
         "cohort": private.get("cohort"),
         "model": private.get("model"),
         "effort": private.get("effort"),
-        "source_lock": {key: private_source_lock.get(key) for key in PUBLIC_SOURCE_LOCK_KEYS},
+        "source_lock": {
+            key: private_source_lock[key]
+            for key in PUBLIC_SOURCE_LOCK_KEYS
+            if key in private_source_lock
+        },
         "caps": {key: private_caps[key] for key in PUBLIC_CAP_KEYS if key in private_caps},
         "platform": {"identity": "redacted-local-codex", "private_transport": True},
         "trial_count": len(measures),
