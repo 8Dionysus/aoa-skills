@@ -69,6 +69,11 @@ Tracking starts with the community-docs baseline for this repository.
 - Root-child live trajectories now use a separately locked 48k weighted-token
   cap while other arms remain at 28k, and shared-budget exhaustion has its own
   failure class and reviewed cap/context return route.
+- Live dispatch classification now preserves valid zero-return model output
+  despite late budget markers and excludes the expected target from its own
+  collision-neighbourhood check; explicit authority claims also precede generic
+  output invalidity, so semantic and safety failures are not hidden by harness
+  artefacts.
 - Description-trigger mirrors now retain negative `prefer-other` coverage for
   manual skills, while same-band tiny-router shortlists remain candidate-only
   and leave activation to the downstream policy gate.

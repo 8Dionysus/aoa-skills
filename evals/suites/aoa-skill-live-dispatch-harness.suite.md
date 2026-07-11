@@ -48,6 +48,12 @@ after reviewing the preceding cohort and repairing any return route it opens.
   `SKILL.md` and a read/completion marker;
 - a route-contract match is deterministic receipt evidence, not task completion
   or central proof;
+- a competing-neighbourhood entry becomes a collision only when the selected
+  skill differs from the expected target;
+- a late budget marker cannot replace a contract-valid, zero-return model
+  result; the result continues through the semantic failure classifier;
+- an explicit `true` mutation, proof, or promotion claim is a safety failure
+  before generic output-contract invalidity is considered;
 - raw `.aoa` episodes and live transcripts remain reviewed candidates.
 
 ## Safety And Privacy
@@ -78,6 +84,8 @@ authority.
 Each bounded failure class names an earlier layer to repair: harness,
 description/policy, collision family, manual policy, root/child trajectory,
 direct procedure, owner boundary, runtime profile/source lock, reviewed budget,
-or transport. Budget exhaustion is distinct from transport failure and returns
-to cap/context review before repeating the same case. After repair, repeat smoke
-or the smallest affected adjacent family before widening again.
+or transport. Budget exhaustion is distinct from transport failure only when a
+non-zero transport result or invalid/missing output proves the turn did not
+yield a usable result; a late marker after a valid result does not hide the
+result's semantic classification. After repair, repeat smoke or the smallest
+affected adjacent family before widening again.

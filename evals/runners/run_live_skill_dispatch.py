@@ -1307,21 +1307,25 @@ def _trial_failure_class(trial: Trial, result: dict[str, Any]) -> str | None:
     forced_failure = result.get("forced_failure_class")
     if forced_failure in FAILURE_TAXONOMY:
         return str(forced_failure)
-    if _result_budget_exhausted(result):
-        return "budget_exhausted"
-    if int(result.get("returncode") or 0) != 0 or not _model_output_contract_valid(result.get("final_output")):
-        return "transport_failure"
-    output = result["final_output"]
-    selected = output.get("selected_skill")
-    claims_loaded = output.get("claims_loaded") is True
-    if any(
-        output.get(key) is not False
+    candidate_output = result.get("final_output")
+    if isinstance(candidate_output, dict) and any(
+        candidate_output.get(key) is True
         for key in ("mutation_authorized", "proof_authority_claimed", "promotion_authorized")
     ):
         return "owner_boundary_violation"
+    transport_or_output_failed = int(result.get("returncode") or 0) != 0 or not _model_output_contract_valid(
+        candidate_output
+    )
+    if transport_or_output_failed and _result_budget_exhausted(result):
+        return "budget_exhausted"
+    if transport_or_output_failed:
+        return "transport_failure"
+    output = candidate_output
+    selected = output.get("selected_skill")
+    claims_loaded = output.get("claims_loaded") is True
     if trial.arm_type == "app_server_structured" and result.get("structured_skill_visible") is not True:
         return "runtime_profile_drift"
-    if selected in trial.competing_skills:
+    if selected != trial.expected_target_skill and selected in trial.competing_skills:
         return "collision_misroute"
     if trial.arm_type == "implicit_aided" and trial.expected_behavior == "invoke" and not _route_contract_match(
         trial, output
