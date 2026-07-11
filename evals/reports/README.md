@@ -11,6 +11,10 @@ Public-safe live-dispatch receipts may be written here only through the
 field-whitelisting review action. Raw receipts remain in the host-private
 temporary root and must not be copied into this directory.
 
+- [aoa-skill-live-dispatch-smoke-20260711-needs-rerun.json](aoa-skill-live-dispatch-smoke-20260711-needs-rerun.json)
+  records the reviewed pre-turn strict-config transport failure that opened the
+  rollout-budget reminder-list repair loop; it contains no model-quality
+  evidence and explicitly requires a rerun.
 - [aoa-eval-session-mining.report.md](aoa-eval-session-mining.report.md)
   records the first `.aoa` mining pass for `aoa-eval` trigger evidence and its
   proof limits.

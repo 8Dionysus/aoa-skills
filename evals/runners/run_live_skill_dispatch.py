@@ -50,6 +50,7 @@ PUBLIC_SOURCE_LOCK_KEYS = (
 PUBLIC_CAP_KEYS = (
     "max_concurrency",
     "per_turn_weighted_token_limit",
+    "rollout_budget_reminder_at_remaining_tokens",
     "per_turn_timeout_seconds",
     "full_turn_timeout_seconds",
     "max_transport_retries_before_turn_start",
@@ -190,6 +191,7 @@ class AdapterContext:
     model: str
     effort: str
     weighted_token_limit: int
+    rollout_budget_reminder_at_remaining_tokens: tuple[int, ...]
     timeout_seconds: int
     full_timeout_seconds: int
     disabled_skill_paths: tuple[Path, ...] = ()
@@ -616,10 +618,7 @@ def _base_codex_exec_argv(context: AdapterContext) -> list[str]:
         f'model_reasoning_effort="{context.effort}"',
         "-c",
         'web_search="disabled"',
-        "-c",
-        "features.rollout_budget.enabled=true",
-        "-c",
-        f"features.rollout_budget.limit_tokens={context.weighted_token_limit}",
+        *_rollout_budget_config_argv(context),
         "--disable",
         "apps",
         "--disable",
@@ -630,6 +629,21 @@ def _base_codex_exec_argv(context: AdapterContext) -> list[str]:
         "multi_agent",
         "--disable",
         "remote_plugin",
+    ]
+
+
+def _rollout_budget_config_argv(context: AdapterContext) -> list[str]:
+    reminders = context.rollout_budget_reminder_at_remaining_tokens
+    if not reminders or any(value <= 0 or value >= context.weighted_token_limit for value in reminders):
+        raise ValueError("rollout budget reminder thresholds must be positive and below the token limit")
+    reminder_toml = json.dumps(reminders, separators=(",", ":"))
+    return [
+        "-c",
+        "features.rollout_budget.enabled=true",
+        "-c",
+        f"features.rollout_budget.limit_tokens={context.weighted_token_limit}",
+        "-c",
+        f"features.rollout_budget.reminder_at_remaining_tokens={reminder_toml}",
     ]
 
 
@@ -706,10 +720,7 @@ def build_app_server_structured_request(
             f'model_reasoning_effort="{context.effort}"',
             "-c",
             'web_search="disabled"',
-            "-c",
-            "features.rollout_budget.enabled=true",
-            "-c",
-            f"features.rollout_budget.limit_tokens={context.weighted_token_limit}",
+            *_rollout_budget_config_argv(context),
             "--disable",
             "apps",
             "--disable",
@@ -1575,6 +1586,9 @@ def run_confirmed_cohort(
             model=model,
             effort=effort,
             weighted_token_limit=int(packet["caps"]["per_turn_weighted_token_limit"]),
+            rollout_budget_reminder_at_remaining_tokens=tuple(
+                int(value) for value in packet["caps"]["rollout_budget_reminder_at_remaining_tokens"]
+            ),
             timeout_seconds=int(packet["caps"]["per_turn_timeout_seconds"]),
             full_timeout_seconds=int(packet["caps"]["full_turn_timeout_seconds"]),
         )
@@ -1708,7 +1722,7 @@ def build_public_receipt(private: dict[str, Any]) -> dict[str, Any]:
         "model": private.get("model"),
         "effort": private.get("effort"),
         "source_lock": {key: private_source_lock.get(key) for key in PUBLIC_SOURCE_LOCK_KEYS},
-        "caps": {key: private_caps.get(key) for key in PUBLIC_CAP_KEYS},
+        "caps": {key: private_caps[key] for key in PUBLIC_CAP_KEYS if key in private_caps},
         "platform": {"identity": "redacted-local-codex", "private_transport": True},
         "trial_count": len(measures),
         "measures": measures,

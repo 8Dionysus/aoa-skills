@@ -56,7 +56,9 @@ The plan locks Git head, all portable skill files, generated/config inputs,
 profile revision, Codex protocol revision, caps, and trial identities. Live
 execution requires `abyss-machine resource launch`, independent storage and
 runtime gates, read-only sandboxing, network-disabled tool policy, concurrency
-one, and an opaque private fixture per turn.
+one, source-locked rollout token limits plus reminder thresholds, and an opaque
+private fixture per turn. The runner rejects empty, non-positive, or
+limit-reaching reminder lists before transport startup.
 
 Raw artifacts stay under
 `/srv/abyss-machine/tmp/ai/aoa-skill-live-evals` with directory mode `0700` and
