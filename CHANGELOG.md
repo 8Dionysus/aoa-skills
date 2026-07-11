@@ -112,9 +112,11 @@ Tracking starts with the community-docs baseline for this repository.
 - Live dispatch plan loading now rejects model-output schemas that escape the
   Responses API strict subset, and the bounded output contract declares types
   for enum and const fields before a model request can start.
-- Root-child live trajectories now use a separately locked 48k weighted-token
-  cap while other arms remain at 28k, and shared-budget exhaustion has its own
-  failure class and reviewed cap/context return route.
+- All live arms now use a source-locked 48k weighted-token ceiling. Root-child
+  reads first justified that floor; the corrected no-skill control then showed
+  that an equal-background session-memory route also cannot complete its
+  required owner reads under 28k. Aided/control caps remain equal, and
+  shared-budget exhaustion keeps its own reviewed cap/context return route.
 - Live dispatch classification now preserves valid zero-return model output
   despite late budget markers and excludes the expected target from its own
   collision-neighbourhood check; explicit authority claims also precede generic

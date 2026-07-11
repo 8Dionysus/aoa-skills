@@ -43,6 +43,12 @@ temporary root and must not be copied into this directory.
   overrides synthesized incomplete transport-free tables alongside
   `--ignore-user-config`; it contains adapter evidence only and requires the
   same smoke to be rerun after the CLI isolation repair.
+- [aoa-skill-live-dispatch-smoke-20260711-v2-control-budget-needs-rerun.json](aoa-skill-live-dispatch-smoke-20260711-v2-control-budget-needs-rerun.json)
+  records the repaired CLI run in which the aided arm completed exact
+  selection, full read, and atomic verification, while the matched control
+  legitimately followed the equal-background session-memory route and
+  exhausted the former 28k cap on its required owner reads. It publishes no
+  pair/lift and requires the same smoke under an equal 48k paired cap.
 
 Corrected live receipts under the v2 App Server protocol are reviewable only
 after canonical user-skill shadows, plugins, and every configured MCP id are

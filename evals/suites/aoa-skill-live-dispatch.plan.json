@@ -33,7 +33,7 @@
   },
   "caps": {
     "max_concurrency": 1,
-    "per_turn_weighted_token_limit": 28000,
+    "per_turn_weighted_token_limit": 48000,
     "trajectory_weighted_token_limit": 48000,
     "rollout_budget_reminder_at_remaining_tokens": [4000],
     "per_turn_timeout_seconds": 180,

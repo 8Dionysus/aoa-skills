@@ -99,14 +99,16 @@ pass both values explicitly under strict config so an installed Codex contract
 change fails in deterministic adapter tests or pre-turn smoke, not midway
 through a campaign.
 
-Root-child trajectories have a separate 48k weighted-token cap because proving
-a full child read adds bounded tool-output context that exhausted the common
-28k cap in the first real smoke. Implicit and structured arms retain 28k, and a
-cap stop without a valid result is classified as `budget_exhausted`, not generic
-transport failure. A late budget event after a zero-return, contract-valid
-model output cannot override that usable result; the normal semantic classifier
-still decides its failure class. Any further increase requires reviewed
-cap/context evidence and a same-case rerun.
+All arms use a 48k weighted-token cap. Root-child trajectories first established
+that floor because proving a full child read exhausted the former 28k cap. The
+corrected matched control then selected the source-locked ambient session-memory
+route and its required owner reads also exceeded 28k. Giving both implicit arms
+the same 48k ceiling preserves treatment/control symmetry without deleting a
+real background route. A cap stop without a valid result is classified as
+`budget_exhausted`, not generic transport failure. A late budget event after a
+zero-return, contract-valid model output cannot override that usable result; the
+normal semantic classifier still decides its failure class. Any further
+increase requires reviewed cap/context evidence and a same-case rerun.
 
 Planning also validates the model-output schema against the bounded Responses
 API strict-output contract before issuing a confirmation token. Draft 2020-12
@@ -190,6 +192,8 @@ target also appears in its own neighbourhood list.
   source-lock refresh before live use.
 - Tradeoff: single cohort observations remain candidate evidence; review and
   repeated runs are needed before changing skill status or promotion posture.
+- Tradeoff: the 48k ceiling raises worst-case live-campaign cost; non-smoke
+  cohorts therefore retain the second exact high-cost confirmation token.
 - Follow-up: rerun smoke under the corrected isolation and evidence contract;
   only then use reviewed smoke and pilot receipts to repair the smallest skill
   cohort before widening to all 57 skills.
@@ -210,6 +214,8 @@ As of 2026-07-11:
   skills, and paired background description fingerprints match. Structured
   arms expose exactly one fixture path for every one of the 57 repo skills and
   no configured MCP startup before the turn.
+- Current cap contract: every arm receives the same source-locked 48k ceiling;
+  paired arms may differ in actual use but never in available budget.
 - Current contract schema: `aoa_codex_app_server_skill_input_contract_v2`.
 - Current protocol lock: `codex-cli-0.144.1-app-server-skill-input-v2`.
 - Historical protocol: the retained complete smoke is source-locked to v1 and
@@ -217,6 +223,20 @@ As of 2026-07-11:
 - Superseded by: none.
 
 ## Review Log
+
+### 2026-07-11 - Preserve matched-pair symmetry across an ambient route
+
+- Previous assumption: 28k was sufficient for implicit and structured arms
+  after root-child trajectories received a separate 48k cap.
+- New reality: once shadow isolation became correct, the no-repo-skill control
+  legitimately selected the equal-background session-memory route and read
+  68,295 characters of required owner material before the 28k budget stopped
+  it. The aided arm read 15,095 characters and completed.
+- Reason: deleting the ambient route would weaken ecological validity, while
+  raising only the control cap would invalidate paired lift. Both implicit arms
+  therefore receive the same 48k ceiling, shared with the other live arms.
+- Validation: source-lock the cap, assert equal aided/control argv, retain the
+  stopped receipt as `needs-rerun`, and repeat the exact smoke before pilot.
 
 ### 2026-07-11 - Correct CLI MCP isolation without weakening App gates
 
