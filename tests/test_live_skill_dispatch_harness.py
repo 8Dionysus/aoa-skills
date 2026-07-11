@@ -421,7 +421,7 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
         )
         self.assertEqual(plan["protocol_revision"], contract["protocol_revision"])
         self.assertEqual(
-            "aoa_codex_app_server_skill_input_contract_v5",
+            "aoa_codex_app_server_skill_input_contract_v6",
             contract["schema_version"],
         )
         self.assertEqual("codex-cli 0.144.1", contract["codex_version"])
@@ -443,6 +443,10 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
         self.assertIn(
             "read-only skill-file inspection commands",
             contract["evidence_binding"]["read_command_boundary"],
+        )
+        self.assertIn(
+            "ordered successful exact-path outputs",
+            contract["evidence_binding"]["full_read_assembly"],
         )
         self.assertIn(
             "dynamically selected child",
@@ -1247,6 +1251,79 @@ for line in sys.stdin:
                 {**target_read_without_child, "child_full_read_observed": True},
             )
         )
+
+    def test_full_skill_read_accepts_ordered_complete_chunks_without_accepting_gaps(self) -> None:
+        runner = self.runner
+        with tempfile.TemporaryDirectory() as td:
+            fixture_root = Path(td)
+            skill_path = fixture_root / ".agents" / "skills" / "aoa-eval" / "SKILL.md"
+            skill_path.parent.mkdir(parents=True)
+            skill_text = """---
+name: aoa-eval
+---
+
+# aoa-eval
+
+First procedure section.
+Second procedure section.
+"""
+            skill_path.write_text(skill_text, encoding="utf-8")
+            split_at = skill_text.index("# aoa-eval")
+            first_chunk = skill_text[:split_at]
+            second_chunk = skill_text[split_at:]
+
+            def completed_read(command: str, output: str) -> dict:
+                return {
+                    "type": "item.completed",
+                    "item": {
+                        "type": "command_execution",
+                        "command": command,
+                        "aggregated_output": output,
+                        "exit_code": 0,
+                        "status": "completed",
+                    },
+                }
+
+            ordered_chunks = [
+                completed_read(
+                    "sed -n '1,4p' .agents/skills/aoa-eval/SKILL.md",
+                    first_chunk,
+                ),
+                completed_read(
+                    "sed -n '5,999p' .agents/skills/aoa-eval/SKILL.md",
+                    second_chunk,
+                ),
+            ]
+            self.assertTrue(runner._skill_full_read_observed(ordered_chunks, skill_path))
+
+            overlap_start = skill_text.index("# aoa-eval")
+            overlap_end = skill_text.index("First procedure section.")
+            overlapping_chunks_with_metadata = [
+                completed_read(
+                    "sed -n '1,6p' .agents/skills/aoa-eval/SKILL.md",
+                    skill_text[:overlap_end],
+                ),
+                completed_read(
+                    "wc -l .agents/skills/aoa-eval/SKILL.md",
+                    "8 .agents/skills/aoa-eval/SKILL.md\n",
+                ),
+                completed_read(
+                    "sed -n '5,999p' .agents/skills/aoa-eval/SKILL.md",
+                    skill_text[overlap_start:],
+                ),
+            ]
+            self.assertTrue(
+                runner._skill_full_read_observed(
+                    overlapping_chunks_with_metadata,
+                    skill_path,
+                )
+            )
+
+            missing_tail = ordered_chunks[:1]
+            self.assertFalse(runner._skill_full_read_observed(missing_tail, skill_path))
+
+            reversed_chunks = list(reversed(ordered_chunks))
+            self.assertFalse(runner._skill_full_read_observed(reversed_chunks, skill_path))
 
     def test_procedure_evidence_is_exact_atomic_and_payload_bound(self) -> None:
         runner = self.runner

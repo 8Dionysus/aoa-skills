@@ -81,8 +81,15 @@ temporary root and must not be copied into this directory.
   private command evidence places the earlier fault at filesystem-scope
   contamination. It supports no pair, lift, skill-effect, or family conclusion
   and requires a v5 fixture-scope rerun.
+- [aoa-skill-live-dispatch-smoke-20260711-v5-chunked-read-needs-rerun.json](aoa-skill-live-dispatch-smoke-20260711-v5-chunked-read-needs-rerun.json)
+  preserves the exact-merged-tree v5 rerun. Prompt and filesystem scope were
+  clean and all four arms completed, but the aided target's complete source was
+  read across two ordered exact-path outputs. The v5 single-output detector
+  recorded a false `skill_load_gap` and no-lift result. Historical fields stay
+  immutable; replay validates only the v6 detector repair, and a fresh
+  exact-merged v6 smoke is required before widening.
 
-Corrected live receipts under the v5 evidence protocol are reviewable only
+Corrected live receipts under the v6 evidence protocol are reviewable only
 after canonical user-skill shadows, plugins, and every configured MCP id are
 isolated with the adapter-appropriate mechanism (`--ignore-user-config` for
 CLI exec, explicit per-id disables for prompt inspection and App Server);
@@ -92,7 +99,10 @@ startup; the official `$skill` text plus matching `skill` item is accepted;
 native input acceptance remains separate from exact fixture-path full reads;
 model `claims_loaded` stays separate from objective load; every expected or
 dynamically selected child has a complete exact-path read; read-only inspection
-commands remain allowed evidence rather than procedure commands; zero-return
+commands remain allowed evidence rather than procedure commands; one complete
+output or ordered continuously covering source chunks can prove that read,
+while overlaps are accepted and gaps, reverse-only coverage, unrelated output,
+inventory mentions, and shadow paths remain insufficient; zero-return
 output-contract invalidity remains separate from transport failure; every
 model command remains within the fixture root, with external or parent-path
 access classified as contamination before budget; one atomic
@@ -100,9 +110,9 @@ guidance-bound validator event is proved; and invalid pairs are
 omitted without rewriting arm history. Public
 validation rejects embedded absolute host paths as well as raw prompts,
 transport ids, and credential-shaped values. Retained v1/v2 smokes remain
-historical `needs-rerun` evidence; retained v3 reports keep their original
-review status and grader semantics, and the retained v4 report keeps its
-original budget label rather than being rewritten in place.
+historical `needs-rerun` evidence; retained v3-v5 reports keep their original
+review status and grader semantics, including v4's budget label and v5's
+single-output read label rather than being rewritten in place.
 - [aoa-eval-session-mining.report.md](aoa-eval-session-mining.report.md)
   records the first `.aoa` mining pass for `aoa-eval` trigger evidence and its
   proof limits.

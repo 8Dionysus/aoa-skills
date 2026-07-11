@@ -69,10 +69,12 @@ after reviewing the preceding cohort and repairing any return route it opens.
   not a raw shell read;
 - an expected or dynamically selected child must be full-read before its load
   contract can pass; the selected child name alone is selection evidence;
-- a target, root, or child full read is observed only when a completed,
-  zero-exit transport event names the exact fixture `SKILL.md` path and
-  contains its complete source text; reading an external shadow with the same
-  canonical skill name does not satisfy the contract;
+- a target, root, or child full read is observed only from completed, zero-exit
+  transport events that name the exact fixture `SKILL.md` path; one event may
+  contain the whole source, or ordered events may continuously cover it, with
+  overlaps allowed and unrelated outputs ignored; gaps, reverse-only coverage,
+  and external shadows with the same canonical name do not satisfy the
+  contract;
 - dispatch-contract and load-contract matches are published separately;
 - read-only skill-file inspection commands are allowed before the procedure,
   collect load evidence, and do not count as procedure commands;
@@ -133,6 +135,14 @@ grade filesystem scope; raw review places the earlier fault at harness
 contamination. The receipt supports no pair, lift, skill-effect, or family
 conclusion. Repeat the smoke under v5 before pilot widening.
 
+The exact-merged-tree v5 rerun is also `needs-rerun`. It fixed fixture
+filesystem isolation and completed all four arms, but the aided root source was
+read in two ordered exact-path chunks. The v5 grader required one command
+output to contain the whole file and therefore emitted a false
+`skill_load_gap` and `no_lift_both_incorrect`. The historical fields remain
+unchanged; replay under v6 proves only the detector repair. Repeat the live
+smoke under exact-merged v6 before pilot widening.
+
 ## Safety And Privacy
 
 The plan locks Git head, all portable skill files, generated/config inputs,
@@ -149,8 +159,8 @@ therefore disable every locked id explicitly. Deterministic adapter tests guard
 both sides of this transport-specific contract.
 
 These hermetic invocation rules use contract schema
-`aoa_codex_app_server_skill_input_contract_v5` and protocol revision
-`codex-cli-0.144.1-live-dispatch-evidence-v5`. Retained v1-v4 receipts remain
+`aoa_codex_app_server_skill_input_contract_v6` and protocol revision
+`codex-cli-0.144.1-live-dispatch-evidence-v6`. Retained v1-v5 receipts remain
 source-locked to their original protocol and review status and are not upgraded
 in place.
 

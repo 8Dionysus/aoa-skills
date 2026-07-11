@@ -562,7 +562,7 @@ def _expected_codex_version(plan: dict[str, Any]) -> str:
     revision = str(plan.get("protocol_revision") or "")
     match = re.fullmatch(
         r"codex-cli-([0-9]+(?:\.[0-9]+){2})-"
-        r"(?:app-server-skill-input-v3|live-dispatch-evidence-v[45])",
+        r"(?:app-server-skill-input-v3|live-dispatch-evidence-v[456])",
         revision,
     )
     if match is None:
@@ -2305,6 +2305,7 @@ def _skill_full_read_observed(events: Any, skill_path: Path) -> bool:
     if not skill_path.is_file():
         return False
     expected_text = skill_path.read_text(encoding="utf-8")
+    covered_until = 0
     for item in _command_execution_items(events):
         status = str(item.get("status") or "").lower()
         exit_code = item.get("exit_code", item.get("exitCode"))
@@ -2315,9 +2316,24 @@ def _skill_full_read_observed(events: Any, skill_path: Path) -> bool:
             and exit_code == 0
             and _command_mentions_exact_skill_path(command, skill_path)
             and isinstance(output, str)
-            and expected_text in output
         ):
-            return True
+            if expected_text in output:
+                return True
+            if not output:
+                continue
+            search_from = 0
+            extended_until = covered_until
+            while True:
+                start = expected_text.find(output, search_from)
+                if start < 0:
+                    break
+                end = start + len(output)
+                if start <= covered_until < end:
+                    extended_until = max(extended_until, end)
+                search_from = start + 1
+            covered_until = extended_until
+            if covered_until == len(expected_text):
+                return True
     return False
 
 

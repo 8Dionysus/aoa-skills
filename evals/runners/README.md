@@ -46,9 +46,9 @@ turn follows the
 the text begins with the exact `$skill` mention and the adjacent structured
 `skill` item carries the same fixture name and path. An accepted official input
 is version-locked native-load evidence, distinct from a raw shell full read.
-These rules use contract schema `aoa_codex_app_server_skill_input_contract_v5`
-and protocol revision `codex-cli-0.144.1-live-dispatch-evidence-v5`. Retained
-v1-v4 receipts stay source-locked to their original protocol and review status;
+These rules use contract schema `aoa_codex_app_server_skill_input_contract_v6`
+and protocol revision `codex-cli-0.144.1-live-dispatch-evidence-v6`. Retained
+v1-v5 receipts stay source-locked to their original protocol and review status;
 they are never upgraded in place.
 
 Run the confirmed command only as the child of the plan packet's
@@ -69,7 +69,11 @@ procedure. Read-only skill-file inspection commands may precede the procedure;
 they collect evidence and do not count as procedure commands. Root/child and
 structured arms receive the one exact procedure command
 `python3 fixture_validator.py`. Transport evidence records full `SKILL.md`
-reads only from the exact fixture paths with complete source content. Public
+reads only from the exact fixture paths with complete source content. One
+successful output may contain the whole file, or ordered successful outputs may
+continuously cover it; overlapping chunks are allowed, unrelated exact-path
+metadata outputs are ignored, and gaps or reverse-only coverage remain
+incomplete. Public
 measures keep the model's `claims_loaded` self-report, accepted native input,
 and raw full-read events separate: the self-report never gates objective load
 evidence, the explicit root is natively loaded, any expected or dynamically
@@ -134,6 +138,14 @@ canonical checkout before exhausting its budget. The historical v4 grader
 reported only `budget_exhausted`; local raw review established that filesystem
 scope contamination occurred earlier. It supports no pair, lift, skill-effect,
 or family conclusion. The v5 fixture-scope rerun must pass before widening.
+
+The exact-merged-tree v5 rerun fixed filesystem isolation and completed all four
+arms, but its aided root read arrived as two ordered exact-path chunks. The v5
+grader required one command output to contain the entire root source and
+therefore recorded a false `skill_load_gap` and `no_lift_both_incorrect`. Its
+public receipt remains immutable `needs-rerun` evidence; raw replay under v6 is
+a harness regression check, not a replacement live result. Repeat the smoke on
+an exact merged v6 tree before widening to `pilot13`.
 
 See `evals/suites/aoa-skill-live-dispatch-harness.suite.md` and
 `docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md` for

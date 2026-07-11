@@ -1,7 +1,7 @@
 {
-  "schema_version": "aoa_codex_app_server_skill_input_contract_v5",
+  "schema_version": "aoa_codex_app_server_skill_input_contract_v6",
   "codex_version": "codex-cli 0.144.1",
-  "protocol_revision": "codex-cli-0.144.1-live-dispatch-evidence-v5",
+  "protocol_revision": "codex-cli-0.144.1-live-dispatch-evidence-v6",
   "official_contract_ref": "https://learn.chatgpt.com/docs/app-server#start-a-turn-invoke-a-skill",
   "schema_generation_command": "codex app-server generate-json-schema --experimental --out DIR",
   "request_sequence": [
@@ -25,6 +25,7 @@
   "evidence_binding": {
     "model_load_claim": "claims_loaded remains a separate model self-report; model self-reports do not gate objective load evidence",
     "read_command_boundary": "read-only skill-file inspection commands are evidence collection, remain allowed before the one exact procedure command, and do not count as procedure commands",
+    "full_read_assembly": "one successful exact-path output may contain the complete SKILL.md, or ordered successful exact-path outputs may continuously cover it; overlapping source chunks are allowed, unrelated outputs are ignored, and gaps or reverse-only coverage remain incomplete",
     "selected_child": "an expected or dynamically selected child requires a complete exact fixture-path SKILL.md read before the route load contract can pass",
     "fixture_filesystem_scope": "completed or in-progress command paths outside the fixture root are counted and become harness contamination before budget, dispatch, load, procedure, or lift interpretation; system executables and /dev/null remain allowed tooling",
     "output_failure": "a zero-return structured output that violates the bounded output contract is output_contract_invalid, not transport_failure"
