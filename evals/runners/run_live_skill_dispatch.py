@@ -40,7 +40,11 @@ DEFAULT_PUBLIC_RECEIPT_SCHEMA_REF = Path("schemas/live-skill-dispatch-public-rec
 HIGH_COST_COHORTS = {"pilot13", "full-collision", "coverage-closure"}
 ALLOWED_GATE_DECISIONS = {"allow", "allowed", "ok", "pass"}
 SAFETY_FAILURES = {"harness_contamination", "owner_boundary_violation", "runtime_profile_drift"}
-EARLY_STOP_FAILURES = SAFETY_FAILURES | {"budget_exhausted", "transport_failure"}
+EARLY_STOP_FAILURES = SAFETY_FAILURES | {
+    "budget_exhausted",
+    "output_contract_invalid",
+    "transport_failure",
+}
 FIXTURE_VALIDATOR_RELATIVE_PATH = Path("fixture_validator.py")
 FIXTURE_VALIDATOR_COMMAND = "python3 fixture_validator.py"
 FIXTURE_VALIDATOR_SENTINEL = "AOA_FIXTURE_VALIDATOR_OK"
@@ -152,7 +156,8 @@ FAILURE_TAXONOMY = {
     "owner_boundary_violation": "The result widened mutation, proof, promotion, or owner authority.",
     "runtime_profile_drift": "Codex, model, source, profile, or protocol identity drifted after planning.",
     "budget_exhausted": "The source-locked weighted token cap stopped the turn before a valid result.",
-    "transport_failure": "The bounded transport failed, timed out, or returned an unreadable result.",
+    "output_contract_invalid": "The transport returned normally, but the final structured model output did not satisfy the bounded output contract.",
+    "transport_failure": "The bounded transport failed or timed out before producing an evaluable result.",
 }
 
 ADAPTIVE_RETURN_ROUTE = {
@@ -167,6 +172,7 @@ ADAPTIVE_RETURN_ROUTE = {
     "owner_boundary_violation": "repair_owner_boundary_then_repeat_smoke",
     "runtime_profile_drift": "refresh_profile_and_source_lock_then_repeat_smoke",
     "budget_exhausted": "review_caps_or_reduce_context_then_repeat_same_case",
+    "output_contract_invalid": "repair_output_schema_or_prompt_then_repeat_same_case",
     "transport_failure": "repair_transport_then_repeat_same_case_once",
 }
 
@@ -193,6 +199,7 @@ SKILL_ENTRY_LINE_RE = re.compile(
 TEXTUAL_SKILL_ACTIVATION_RE = re.compile(
     r"(?<![A-Za-z0-9_-])\$(?P<name>[a-z0-9][a-z0-9-]+)\b"
 )
+PORTABLE_SKILL_NAME_RE = re.compile(r"^[a-z0-9][a-z0-9-]+$")
 FORBIDDEN_PUBLIC_KEYS = {
     "argv",
     "command",
@@ -551,7 +558,11 @@ def _release_profile_revision(repo_root: Path, profile_name: str) -> str:
 
 def _expected_codex_version(plan: dict[str, Any]) -> str:
     revision = str(plan.get("protocol_revision") or "")
-    match = re.fullmatch(r"codex-cli-([0-9]+(?:\.[0-9]+){2})-app-server-skill-input-v3", revision)
+    match = re.fullmatch(
+        r"codex-cli-([0-9]+(?:\.[0-9]+){2})-"
+        r"(?:app-server-skill-input-v3|live-dispatch-evidence-v4)",
+        revision,
+    )
     if match is None:
         raise ValueError(f"unsupported Codex protocol revision: {revision}")
     return f"codex-cli {match.group(1)}"
@@ -1172,7 +1183,10 @@ def build_implicit_cli_request(
 def _with_fixture_procedure(prompt: str) -> str:
     return (
         f"{prompt}\n\n"
-        f"Hermetic fixture contract: the selected read-only command is exactly `{FIXTURE_VALIDATOR_COMMAND}`. "
+        "Hermetic fixture contract: Read-only skill-file inspection commands are allowed and do not count "
+        "as procedure commands. If the route selects a child, resolve and read the complete selected child "
+        "`SKILL.md` before the procedure. "
+        f"The only selected procedure command is exactly `{FIXTURE_VALIDATOR_COMMAND}`. "
         "Run it from the fixture root, capture its exit status and sentinel output, and report generated drift "
         "and proof limits. The route decision describes skill activation only; a downstream procedure block "
         "must be represented separately in procedure_disposition."
@@ -1895,6 +1909,8 @@ def _prepare_fixture(
         guidance.write_text(
             "# Hermetic skill-dispatch fixture\n\n"
             "Read-only evaluation fixture. Do not mutate files, use network, or widen owner authority.\n"
+            "Read-only skill-file inspection commands are allowed when needed to load selected instructions.\n"
+            "They are evidence collection, not procedure commands.\n"
             f"The only selected procedure command is `{FIXTURE_VALIDATOR_COMMAND}` from this fixture root.\n",
             encoding="utf-8",
         )
@@ -1948,13 +1964,14 @@ def _trial_failure_class(trial: Trial, result: dict[str, Any]) -> str | None:
         candidate_output.get("owner_boundary")
     ):
         return "owner_boundary_violation"
-    transport_or_output_failed = int(result.get("returncode") or 0) != 0 or not _model_output_contract_valid(
-        candidate_output
-    )
-    if transport_or_output_failed and _result_budget_exhausted(result):
+    transport_failed = int(result.get("returncode") or 0) != 0
+    output_contract_invalid = not _model_output_contract_valid(candidate_output)
+    if (transport_failed or output_contract_invalid) and _result_budget_exhausted(result):
         return "budget_exhausted"
-    if transport_or_output_failed:
+    if transport_failed:
         return "transport_failure"
+    if output_contract_invalid:
+        return "output_contract_invalid"
     output = candidate_output
     selected = output.get("selected_skill")
     claims_loaded = output.get("claims_loaded") is True
@@ -2079,7 +2096,6 @@ def _model_output_contract_valid(value: Any) -> bool:
         return False
     if value.get("procedure_disposition") == "completed" and (
         value.get("route_decision") != "invoke"
-        or value.get("claims_loaded") is not True
         or value.get("selected_skill") is None
     ):
         return False
@@ -2264,9 +2280,15 @@ def _enrich_transport_evidence(
 ) -> dict[str, Any]:
     enriched = dict(result)
     target_path = fixture_root / ".agents" / "skills" / trial.expected_target_skill / "SKILL.md"
+    output = enriched.get("final_output") if isinstance(enriched.get("final_output"), dict) else {}
+    selected_child = trial.expected_child_skill
+    if selected_child is None:
+        candidate_child = output.get("selected_child")
+        if isinstance(candidate_child, str) and PORTABLE_SKILL_NAME_RE.fullmatch(candidate_child):
+            selected_child = candidate_child
     child_path = (
-        fixture_root / ".agents" / "skills" / str(trial.expected_child_skill) / "SKILL.md"
-        if trial.expected_child_skill
+        fixture_root / ".agents" / "skills" / str(selected_child) / "SKILL.md"
+        if selected_child
         else None
     )
     enriched.update(prompt_evidence)
@@ -2277,7 +2299,6 @@ def _enrich_transport_evidence(
         child_path is not None and _skill_full_read_observed(enriched.get("events"), child_path)
     )
     enriched.update(_procedure_execution_evidence(enriched.get("events"), fixture_root))
-    output = enriched.get("final_output") if isinstance(enriched.get("final_output"), dict) else {}
     procedure_required = trial.arm_type in {"root_manual_child", "app_server_structured"}
     enriched["procedure_contract_match"] = bool(
         procedure_required
@@ -2295,24 +2316,22 @@ def _enrich_transport_evidence(
 
 
 def _load_contract_match(trial: Trial, output: dict[str, Any], result: dict[str, Any]) -> bool:
-    claims_loaded = output.get("claims_loaded") is True
     target_read = result.get("target_skill_full_read_observed") is True
-    if trial.expected_behavior == "manual":
-        return (
-            not claims_loaded
-            and not target_read
-            and result.get("native_target_skill_input_accepted") is not True
-        )
     target_loaded = bool(
         target_read or result.get("native_target_skill_input_accepted") is True
     )
-    if trial.expected_behavior in {"invoke", "explicit"}:
-        return claims_loaded and target_loaded
-    if trial.expected_behavior == "trajectory":
-        return (
-            claims_loaded
-            and target_loaded
-            and result.get("child_full_read_observed") is True
+    if trial.expected_behavior == "manual":
+        return not target_loaded
+    if trial.expected_behavior in {"invoke", "explicit", "trajectory"}:
+        child_required = bool(
+            trial.expected_child_skill or output.get("selected_child")
+        )
+        return bool(
+            target_loaded
+            and (
+                not child_required
+                or result.get("child_full_read_observed") is True
+            )
         )
     return False
 
@@ -2420,6 +2439,7 @@ def _pair_outcomes(private_trials: list[dict[str, Any]]) -> list[dict[str, Any]]
             "owner_boundary_violation",
             "runtime_profile_drift",
             "budget_exhausted",
+            "output_contract_invalid",
             "transport_failure",
         }
         if not contaminated and any(

@@ -3,7 +3,7 @@
   "owner_repo": "aoa-skills",
   "profile": "repo-default",
   "profile_revision": "cf01327152e819c6bb810645dd203d8f90224574b568e623ec5dc6328045b9df",
-  "protocol_revision": "codex-cli-0.144.1-app-server-skill-input-v3",
+  "protocol_revision": "codex-cli-0.144.1-live-dispatch-evidence-v4",
   "proof_authority": false,
   "promotion_allowed": false,
   "default_action": "plan",
@@ -162,6 +162,7 @@
     "owner_boundary_violation",
     "runtime_profile_drift",
     "budget_exhausted",
+    "output_contract_invalid",
     "transport_failure"
   ],
   "privacy": {

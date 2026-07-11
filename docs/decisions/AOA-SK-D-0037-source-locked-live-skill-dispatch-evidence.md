@@ -89,13 +89,13 @@ synthesize partial MCP tables; prompt inspection and App Server retain user
 config and explicitly disable every locked id. A shadow or MCP count/digest
 change is source/runtime drift, not a reason to reuse the old token.
 
-The corrected hermetic pre-turn and native-load contract uses schema
-`aoa_codex_app_server_skill_input_contract_v3` and protocol revision
-`codex-cli-0.144.1-app-server-skill-input-v3`. It follows the
+The corrected hermetic pre-turn and evidence contract uses schema
+`aoa_codex_app_server_skill_input_contract_v4` and protocol revision
+`codex-cli-0.144.1-live-dispatch-evidence-v4`. It follows the
 [official App Server invocation shape](https://learn.chatgpt.com/docs/app-server#start-a-turn-invoke-a-skill)
 and Codex [progressive-disclosure load semantics](https://learn.chatgpt.com/docs/customization/overview#skills).
-Retained receipts source-locked to v1/v2 are historical `needs-rerun` evidence
-and are not upgraded in place.
+Retained receipts source-locked to v1-v3 keep their original protocol and
+review status and are not upgraded in place.
 
 The source-locked caps include both the rollout token limit and its required
 list of remaining-token reminder thresholds. Every CLI and App Server arm must
@@ -125,13 +125,18 @@ write preflight for its private host-owned root, and stops on runtime drift,
 privacy contamination, owner-boundary widening, or transport failure. The
 sandbox remains read-only and network-disabled, while read-only shell execution
 is available for evidence-bearing skill reads and one hermetic fixture
-procedure. Root/child and structured arms receive the exact command
+procedure. Read-only skill-file inspection commands are evidence collection,
+remain allowed before the procedure, and do not count as procedure commands.
+Root/child and structured arms receive the exact procedure command
 `python3 fixture_validator.py`. Transport records full reads, exact command
 observation, zero exit, and `AOA_FIXTURE_VALIDATOR_OK` verification as separate
 measures.
 A full read must name the exact fixture `SKILL.md` path and contain its complete
-source. Accepted native input is recorded separately and never relabeled as a
-raw read. Procedure verification is atomic: one completed exact-command event
+source. An expected or dynamically selected child must have that full read
+before the load contract passes. The model's `claims_loaded` field remains a
+self-report and never gates objective load. Accepted native input is recorded
+separately and never relabeled as a raw read. Procedure verification is atomic:
+one completed exact-command event
 must carry both zero exit and exactly one sentinel JSON payload matching the
 fixture-guidance digest, schema/status, no-drift, and no-proof-authority fields.
 Split or forged evidence does not pass.
@@ -174,8 +179,11 @@ instead of an installed user copy. Paired background digests expose other
 prompt-surface drift rather than crediting general model knowledge. Host routing
 bounds resource and storage pressure. Private/raw and public/digest separation
 keeps review possible without publishing session material.
-Paired lift is undefined and omitted when either arm has a transport, budget,
-runtime-profile, or owner-boundary safety failure. A contaminated pair remains
+Paired lift is undefined and omitted when either arm has an output-contract,
+transport, budget, runtime-profile, or owner-boundary safety failure. A
+zero-return invalid structured result is `output_contract_invalid`; transport
+failure is reserved for failed or timed-out transport. A contaminated pair
+remains
 visible without rewriting the original failure classification of either arm.
 Collision neighbourhoods are contextual candidates rather than adversarial
 truth: selecting the expected target is never a collision merely because the
@@ -201,10 +209,10 @@ target also appears in its own neighbourhood list.
   repeated runs are needed before changing skill status or promotion posture.
 - Tradeoff: the 48k ceiling raises worst-case live-campaign cost; non-smoke
   cohorts therefore retain the second exact high-cost confirmation token.
-- Follow-up: the reviewed v3 smoke localized one root-to-child load gap in
-  `aoa-eval`; repair that smallest skill surface and repeat the exact smoke
-  before any pilot widening, then use reviewed pilot receipts to continue
-  toward all 57 skills.
+- Follow-up: the root-to-child repair is landed, but its exact-merged-tree v3
+  rerun exposed grader and fixture ambiguity. Land the v4 evidence repair and
+  repeat the exact smoke before any pilot widening, then use reviewed pilot
+  receipts to continue toward all 57 skills.
 
 ## Current Applicability
 
@@ -224,19 +232,48 @@ As of 2026-07-11:
   no configured MCP startup before the turn.
 - Current cap contract: every arm receives the same source-locked 48k ceiling;
   paired arms may differ in actual use but never in available budget.
-- Current contract schema: `aoa_codex_app_server_skill_input_contract_v3`.
-- Current protocol lock: `codex-cli-0.144.1-app-server-skill-input-v3`.
-- Historical protocols: retained v1/v2 smokes are `needs-rerun`; v2 produced a
+- Current contract schema: `aoa_codex_app_server_skill_input_contract_v4`.
+- Current protocol lock: `codex-cli-0.144.1-live-dispatch-evidence-v4`.
+- Historical protocols: retained v1-v2 smokes are `needs-rerun`; v2 produced a
   valid candidate implicit pair but used an unsupported structured-only App
-  input and cannot support its App load label.
+  input and cannot support its App load label. Retained v3 reports keep their
+  original review status and old grader semantics.
 - Reviewed v3 candidate: the implicit pair records positive lift and the App
   arm passes its native-load/procedure path, while the explicit `aoa-eval`
   trajectory selects `aoa-eval-apply` without a complete child read. That
   observation supports a bounded root-handoff repair and same-case rerun, not
   central proof, status promotion, or a family-wide verdict.
+- Current rerun posture: the first exact-merged-tree v3 rerun after that repair
+  is `needs-rerun`. It exposed self-report load gating, a missing
+  dynamic-child read check, read/procedure ambiguity, and
+  output-contract/transport conflation. It supports no pair, lift,
+  skill-effect, or family conclusion; v4 smoke must pass before pilot widening.
 - Superseded by: none.
 
 ## Review Log
+
+### 2026-07-11 - Separate objective load evidence from self-report and procedure commands
+
+- Previous assumption: `claims_loaded` could safely participate in the load
+  gate, the statically expected child was sufficient for read checking, and
+  naming one exact procedure command made read-only inspection unambiguous.
+- New evidence: the exact merged root-handoff rerun selected `aoa-eval` and
+  `aoa-eval-apply` but skipped the child read after interpreting the fixture as
+  a one-command constraint. The implicit route could select a dynamic child
+  that the grader did not bind to a read. A zero-return invalid final result was
+  also reported as transport failure.
+- Decision: derive objective load only from accepted native input and complete
+  exact-path reads; bind both expected and dynamically selected children;
+  preserve `claims_loaded` only as a separate model self-report; explicitly
+  allow read-only inspection before the one procedure command; and classify
+  zero-return schema failure as `output_contract_invalid`.
+- Boundary: the v3 rerun is immutable `needs-rerun` harness evidence. It drives
+  no pair, lift, skill-effect, status, promotion, or family conclusion.
+- Tradeoff: explicit inspection may add read commands and context, but only the
+  selected child is loaded and the procedure remains exactly one command.
+- Validation: deterministic tests must prove the claim/evidence split, dynamic
+  child binding, command boundary, output taxonomy, and pair omission; then
+  land v4 and repeat the exact merged smoke before pilot widening.
 
 ### 2026-07-11 - Return a valid child-load gap to the root workflow
 

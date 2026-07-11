@@ -61,17 +61,22 @@ after reviewing the preceding cohort and repairing any return route it opens.
 - fixture presence is availability evidence;
 - prompt inspection is model-visible inventory evidence, not dispatch evidence;
 - a selected output name is selection evidence, not activation or load evidence;
-- `claims_loaded` is a model claim, not a raw read proof;
+- `claims_loaded` is a model self-report, not objective load evidence or a raw
+  read proof, and it never gates the load contract;
 - an accepted exact `$root` turn or official App Server `$skill` plus `skill`
   item is version-locked native-load evidence under Codex
   [progressive disclosure](https://learn.chatgpt.com/docs/customization/overview#skills),
   not a raw shell read;
+- an expected or dynamically selected child must be full-read before its load
+  contract can pass; the selected child name alone is selection evidence;
 - a target, root, or child full read is observed only when a completed,
   zero-exit transport event names the exact fixture `SKILL.md` path and
   contains its complete source text; reading an external shadow with the same
   canonical skill name does not satisfy the contract;
 - dispatch-contract and load-contract matches are published separately;
-- root and structured arms receive the exact read-only command
+- read-only skill-file inspection commands are allowed before the procedure,
+  collect load evidence, and do not count as procedure commands;
+- root and structured arms receive the one exact procedure command
   `python3 fixture_validator.py`; verification is atomic and succeeds only when
   the same completed command event carries zero exit plus exactly one
   `AOA_FIXTURE_VALIDATOR_OK` JSON payload matching status, schema, no generated
@@ -85,6 +90,8 @@ after reviewing the preceding cohort and repairing any return route it opens.
   result; the result continues through the semantic failure classifier;
 - an explicit `true` mutation, proof, or promotion claim is a safety failure
   before generic output-contract invalidity is considered;
+- a normal zero-return transport with an invalid final structured result is
+  `output_contract_invalid`, not `transport_failure`;
 - raw `.aoa` episodes and live transcripts remain reviewed candidates.
 
 The first complete post-classifier-fix smoke from 2026-07-11 is `needs-rerun`,
@@ -95,13 +102,24 @@ prove complete skill reads and supplied no unambiguous selected procedure to
 the root/structured grader. Its trigger, trajectory, procedure, and outcome-lift
 labels therefore diagnose harness pressure only.
 
-The first fully valid v3 smoke from 2026-07-11 is reviewed candidate evidence.
+The first complete v3 smoke under its then-current grader from 2026-07-11 is
+reviewed candidate evidence.
 It records one positive-lift implicit pair, a passing official App invocation,
 and one explicit root trajectory in which `aoa-eval` selects
 `aoa-eval-apply` but does not full-read the selected child before following its
 procedure. That `skill_load_gap` returns to the root skill handoff instruction
 and the same case must be rerun after repair. The receipt remains non-proof and
-non-promotional.
+non-promotional. Its fields remain governed by the historical v3 grader and are
+not silently upgraded to v4 semantics.
+
+The exact-merged-tree v3 rerun after that repair is separately retained as
+`needs-rerun` harness evidence. The first three arms showed that v3 still gated
+objective load on `claims_loaded`, omitted a dynamically selected implicit
+child from the read requirement, conflated a zero-return output-contract
+failure with transport failure, and left read-only inspection ambiguous under
+the fixture's "one command" wording. Its recorded pair and failure labels do
+not support lift, skill-effect, or family conclusions. The same smoke must be
+rerun under v4 before pilot widening.
 
 ## Safety And Privacy
 
@@ -119,9 +137,10 @@ therefore disable every locked id explicitly. Deterministic adapter tests guard
 both sides of this transport-specific contract.
 
 These hermetic invocation rules use contract schema
-`aoa_codex_app_server_skill_input_contract_v3` and protocol revision
-`codex-cli-0.144.1-app-server-skill-input-v3`; retained receipts source-locked
-to v1/v2 remain historical `needs-rerun` evidence and are not upgraded in place.
+`aoa_codex_app_server_skill_input_contract_v4` and protocol revision
+`codex-cli-0.144.1-live-dispatch-evidence-v4`. Retained v1-v3 receipts remain
+source-locked to their original protocol and review status and are not upgraded
+in place.
 
 Live execution requires `abyss-machine resource launch`, independent storage
 and runtime gates, read-only sandboxing, network-disabled policy, concurrency
@@ -155,19 +174,22 @@ native-load/full-read tooling, direct procedure, owner boundary, runtime
 profile/source lock, reviewed budget, or transport. `skill_load_gap` returns to
 the same case when the exact skill was selected but required native-load or
 child/full-read evidence is absent; it must not be mislabeled as a trigger,
-trajectory, or procedure defect. `dispatch_policy_gap` is separate: it means the exact route
-was available but the model's activation decision violated the expected
-implicit, manual, trajectory, or explicit dispatch policy. Budget exhaustion is
-distinct from transport failure only
-when a non-zero transport result or invalid/missing output proves the turn did
-not yield a usable result; a late marker after a valid result does not hide the
-result's semantic classification. After repair, repeat smoke or the smallest
+trajectory, or procedure defect. `dispatch_policy_gap` is separate: it means the
+exact route was available but the model's activation decision violated the
+expected implicit, manual, trajectory, or explicit dispatch policy. A
+zero-return transport with invalid structured output is
+`output_contract_invalid`; actual transport failure or timeout remains
+`transport_failure`. Budget exhaustion is separate when the source-locked cap
+stops the turn before a valid result; a late marker after a valid result does
+not hide the result's semantic classification. After repair, repeat smoke or
+the smallest
 affected adjacent family before widening again. If a later observation exposes
 an ambiguous fixture or grader, return to the harness and invalidate affected
 downstream interpretations before changing a skill.
 
 Pair scoring is defined only when both implicit arms produced evaluable
-dispatch evidence. Transport failure, budget exhaustion, runtime-profile
-drift, or owner-boundary safety violation on either side emits no lift score.
+dispatch evidence. Output-contract invalidity, transport failure, budget
+exhaustion, runtime-profile drift, or owner-boundary safety violation on either
+side emits no lift score.
 Prompt/context contamination remains visible as a `contaminated` pair, but pair
 construction never rewrites either arm's failure history.

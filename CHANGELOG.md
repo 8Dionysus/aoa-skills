@@ -33,7 +33,13 @@ Tracking starts with the community-docs baseline for this repository.
   receipt. It preserves one candidate implicit positive-lift pair and a valid
   App native-load/procedure path while localizing the explicit root trajectory
   to one missing-child-read gap; it publishes neither central proof nor a
-  promotion claim.
+  promotion claim, and later protocols do not upgrade its historical grader
+  semantics in place.
+- The exact-merged-tree v3 rerun after the root-handoff repair now has a
+  public-safe `needs-rerun` receipt. Its first three arms exposed self-report
+  load gating, a missing dynamic-child read check, ambiguous read-versus-
+  procedure wording, and output-contract/transport conflation; it publishes no
+  pair, lift, skill-effect, or family conclusion.
 - `AOA-SK-D-0037` records why live cohorts remain operator-confirmed candidate
   evidence and now clarifies prompt-surface isolation and evidence-stage grading
   after the contaminated smoke; deterministic harness validation, not model
@@ -111,14 +117,25 @@ Tracking starts with the community-docs baseline for this repository.
   `dispatch_policy_gap` means the activation decision was wrong, while
   `skill_load_gap` returns a correct selection with unproved activation/read to
   the same case.
+- Objective load evidence no longer depends on the model's `claims_loaded`
+  self-report. Expected and dynamically selected children require complete
+  exact-path reads, read-only inspection commands are explicitly allowed and
+  excluded from the one-command procedure count, and zero-return structured
+  output failures are classified as `output_contract_invalid` rather than
+  `transport_failure`.
+- Both executable local-suite sidecars now carry current tracked-source hashes:
+  the live dispatch v4 runner/schema/test surface and the `aoa-eval` trigger
+  corpus after the landed child-handoff change. The central `aoa-evals`
+  validator therefore reports the full local eval port source-contract-ready
+  instead of silently retaining transitive stale state.
 - Paired lift is not scored when either arm has a transport, budget, runtime,
   or owner-boundary safety failure. Contamination is retained as a pair result
   without rewriting either arm's historical failure class, and public-receipt
   validation rejects absolute host paths even when embedded inside prose.
-- The hermetic native-load contract is now
-  `aoa_codex_app_server_skill_input_contract_v3` with protocol revision
-  `codex-cli-0.144.1-app-server-skill-input-v3`; retained v1/v2 receipts remain
-  immutable historical `needs-rerun` evidence.
+- The hermetic evidence contract is now
+  `aoa_codex_app_server_skill_input_contract_v4` with protocol revision
+  `codex-cli-0.144.1-live-dispatch-evidence-v4`; retained v1-v3 receipts remain
+  immutable under their original protocol and review status.
 - Live dispatch now locks and passes Codex rollout-budget reminder thresholds
   as a TOML list for both CLI and App Server arms, rejects invalid thresholds
   before transport startup, and preserves review compatibility with receipts
