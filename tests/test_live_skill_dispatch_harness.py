@@ -649,6 +649,30 @@ for line in sys.stdin:
             self.runner.ADAPTIVE_RETURN_ROUTE["trajectory_break"],
         )
 
+    def test_competing_skill_win_is_classified_before_generic_trigger_miss(self) -> None:
+        runner = self.runner
+        trial = runner.Trial(
+            trial_id="collision-specificity:aided",
+            arm_type="implicit_aided",
+            case_id="collision-specificity",
+            prompt="Choose the correct owner route.",
+            expected_target_skill="aoa-eval",
+            expected_behavior="invoke",
+            competing_skills=("aoa-decision",),
+        )
+        result = FakeTransport().run_cli(
+            {
+                "expected_target_skill": "aoa-eval",
+                "expected_behavior": "invoke",
+                "arm_type": "implicit_aided",
+            }
+        )
+        result["final_output"]["selected_skill"] = "aoa-decision"
+        self.assertEqual("collision_misroute", runner._trial_failure_class(trial, result))
+
+        result["final_output"]["selected_skill"] = None
+        self.assertEqual("implicit_trigger_miss", runner._trial_failure_class(trial, result))
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -1255,12 +1255,12 @@ def _trial_failure_class(trial: Trial, result: dict[str, Any]) -> str | None:
         return "owner_boundary_violation"
     if trial.arm_type == "app_server_structured" and result.get("structured_skill_visible") is not True:
         return "runtime_profile_drift"
+    if selected in trial.competing_skills:
+        return "collision_misroute"
     if trial.arm_type == "implicit_aided" and trial.expected_behavior == "invoke" and not _route_contract_match(
         trial, output
     ):
         return "implicit_trigger_miss"
-    if selected in trial.competing_skills:
-        return "collision_misroute"
     if trial.expected_behavior == "manual" and trial.arm_type.startswith("implicit") and claims_loaded:
         return "manual_activation_leak"
     if trial.arm_type == "root_manual_child":
