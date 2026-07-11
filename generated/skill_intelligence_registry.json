@@ -3860,12 +3860,12 @@
       "tiny_router": {
         "band": "decision-doc-authority",
         "cue_phrases": [
+          "decision graph",
           "find decision",
           "decision lookup",
+          "source-note verification",
           "changed path impact",
-          "source surface decisions",
-          "owner surface decisions",
-          "prior rationale"
+          "source surface decisions"
         ],
         "negative_phrases": [
           "new decision note",
@@ -7420,12 +7420,12 @@
       "tiny_router": {
         "band": "risk-ops-safety",
         "cue_phrases": [
+          "configuration change",
           "infra change",
           "service config",
           "deployment implication",
           "rollback",
-          "runtime impact",
-          "approval gate"
+          "runtime impact"
         ],
         "negative_phrases": [
           "purely local code change",

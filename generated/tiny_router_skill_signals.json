@@ -1283,37 +1283,37 @@
       "description": "Explicit activation required: do not invoke or load this skill from an implicit match; wait for explicit user or operator invocation or a source-authorized parent-route selection. Find AoA decision records through workspace graph search and impact packets, then verify claims against repo-local source notes and generated decision indexes. Use when prior decision rationale, changed paths, owner surfaces, source surfaces, status, or supersession links are needed before work continues. When no graph status, changed paths, target records, or owner repository packet is available inside the active evidence boundary and no permitted graph or fallback index can supply them, stop with blocked_missing_input; do not relabel missing input as deferred_owner_boundary. Do not use when the task is to create or edit a decision record.",
       "description_sha256": "ff543a21f7c9e7b014c41ca9faf70557c7692487e2ee1ab37634d167b47b700a",
       "positive_cues": [
+        "decision graph",
         "find decision",
         "decision lookup",
+        "source-note verification",
         "changed path impact",
         "source surface decisions",
         "owner surface decisions",
         "prior rationale",
         "graph match",
-        "source-note verification",
-        "adr",
-        "decision note"
+        "adr"
       ],
       "negative_cues": [
         "new decision note",
         "decision record correction"
       ],
       "cue_tokens": [
-        "find",
         "decision",
+        "graph",
+        "find",
         "lookup",
+        "source",
+        "note",
+        "verification",
         "changed",
         "path",
         "impact",
-        "source",
         "decisions",
         "owner",
         "prior",
         "rationale",
-        "graph",
         "match",
-        "note",
-        "verification",
         "adr",
         "architectural",
         "truth"
@@ -2534,6 +2534,7 @@
       "description": "Explicit activation required: do not invoke or load this skill from an implicit match; wait for explicit user or operator invocation or a source-authorized parent-route selection. Make bounded infrastructure, configuration, service, or operational changes with explicit risk framing, proportional verification, and rollback thinking. Use when a change has runtime or deployment implications and needs stronger discipline than a normal code edit. Do not use for purely local code changes, or when the main need is approval classification or preview-first execution.",
       "description_sha256": "11bf235999439e6c94fa51fc76c612b08b43eedfe72782a5ab10aac63bc11bb9",
       "positive_cues": [
+        "configuration change",
         "infra change",
         "service config",
         "deployment implication",
@@ -2542,14 +2543,14 @@
         "approval gate",
         "authority unclear",
         "destructive",
-        "preview path",
-        "dry run"
+        "preview path"
       ],
       "negative_cues": [
         "purely local code change",
         "approval classification only"
       ],
       "cue_tokens": [
+        "configuration",
         "infra",
         "service",
         "deployment",
@@ -2566,8 +2567,7 @@
         "path",
         "dry",
         "run",
-        "simulate",
-        "first"
+        "simulate"
       ],
       "negative_tokens": [
         "purely",
