@@ -73,6 +73,7 @@
 - [AOA-SK-D-0034 Decision Graph Skill Chain](../AOA-SK-D-0034-decision-graph-skill-chain.md) (`docs/decisions/AOA-SK-D-0034-decision-graph-skill-chain.md`)
 - [AOA-SK-D-0035 Decision Graph Impact And Issue-Aware Skills](../AOA-SK-D-0035-decision-graph-impact-and-issue-aware-skills.md) (`docs/decisions/AOA-SK-D-0035-decision-graph-impact-and-issue-aware-skills.md`)
 - [AOA-SK-D-0036 Codex User Skill Root And Foundation Profile](../AOA-SK-D-0036-codex-user-skill-root-and-foundation-profile.md) (`docs/decisions/AOA-SK-D-0036-codex-user-skill-root-and-foundation-profile.md`)
+- [AOA-SK-D-0037 Source-Locked Live Skill Dispatch Evidence](../AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md) (`docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md`)
 
 ## AGENTS/mesh
 
@@ -86,6 +87,7 @@
 - [AOA-SK-D-0027 Canonical Decision IDs And Indexes](../AOA-SK-D-0027-canonical-decision-ids-and-indexes.md) (`docs/decisions/AOA-SK-D-0027-canonical-decision-ids-and-indexes.md`)
 - [AOA-SK-D-0028 Growth-First Validator CI Lanes](../AOA-SK-D-0028-growth-first-validator-ci-lanes.md) (`docs/decisions/AOA-SK-D-0028-growth-first-validator-ci-lanes.md`)
 - [AOA-SK-D-0030 Test Topology And Agentic Contracts](../AOA-SK-D-0030-test-topology-and-agentic-contracts.md) (`docs/decisions/AOA-SK-D-0030-test-topology-and-agentic-contracts.md`)
+- [AOA-SK-D-0037 Source-Locked Live Skill Dispatch Evidence](../AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md) (`docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md`)
 
 ## questbook
 
@@ -108,6 +110,7 @@
 - [AOA-SK-D-0030 Test Topology And Agentic Contracts](../AOA-SK-D-0030-test-topology-and-agentic-contracts.md) (`docs/decisions/AOA-SK-D-0030-test-topology-and-agentic-contracts.md`)
 - [AOA-SK-D-0034 Decision Graph Skill Chain](../AOA-SK-D-0034-decision-graph-skill-chain.md) (`docs/decisions/AOA-SK-D-0034-decision-graph-skill-chain.md`)
 - [AOA-SK-D-0035 Decision Graph Impact And Issue-Aware Skills](../AOA-SK-D-0035-decision-graph-impact-and-issue-aware-skills.md) (`docs/decisions/AOA-SK-D-0035-decision-graph-impact-and-issue-aware-skills.md`)
+- [AOA-SK-D-0037 Source-Locked Live Skill Dispatch Evidence](../AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md) (`docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md`)
 
 ## CI lane
 

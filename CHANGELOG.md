@@ -9,6 +9,14 @@ Tracking starts with the community-docs baseline for this repository.
 
 ### Added
 
+- A source-locked live skill-dispatch harness now separates implicit aided and
+  control arms, explicit root-child reads, structured App Server skill input,
+  paired outcome lift, host resource/storage gates, private raw receipts, and
+  public-safe reviewed projections without claiming central proof authority.
+- `AOA-SK-D-0037` records why live cohorts remain operator-confirmed candidate
+  evidence and why deterministic harness validation, not model calls, belongs
+  in the normal repository gate.
+
 - Codex Spark now has a validated `.agents/spark/` fast-session lane with a
   registry, scenario packets, result and handoff templates, schemas, validator,
   tests, and shared release-lane wiring.
@@ -51,6 +59,12 @@ Tracking starts with the community-docs baseline for this repository.
 
 ### Changed
 
+- Description-trigger mirrors now retain negative `prefer-other` coverage for
+  manual skills, while same-band tiny-router shortlists remain candidate-only
+  and leave activation to the downstream policy gate.
+- The OS Abyss artifact-trust skill now has matching positive and negative
+  trigger/snapshot evidence, and export drift checks include the collision
+  matrix they already declare as generated truth.
 - Generated release manifests now use schema version 4 and carry an
   `artifact_identity` contract for portable export consumer checks.
 - The old root `Spark/` companion lane moved under `.agents/spark/`, matching

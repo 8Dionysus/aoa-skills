@@ -383,6 +383,17 @@
       "failure_route": "Fix scripts/install_skill_pack.py before widening the lane."
     },
     {
+      "path": "tests/test_live_skill_dispatch_harness.py",
+      "family": "live-harness/dispatch",
+      "protects": "source-locked live skill dispatch harness without model calls",
+      "owner_surface": "evals/runners/run_live_skill_dispatch.py",
+      "lane": "source",
+      "mode": "blocking",
+      "runtime_cost": "fast",
+      "focused_target": "tests/test_live_skill_dispatch_harness.py",
+      "failure_route": "Repair the plan, schemas, adapters, host gates, privacy projection, or paired outcome contract before spending a live turn."
+    },
+    {
       "path": "tests/test_maturity_model_docs.py",
       "family": "source/contract",
       "protects": "source contract",

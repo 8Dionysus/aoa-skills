@@ -70,3 +70,7 @@
 ## 2026-06-13
 
 - [AOA-SK-D-0036 Codex User Skill Root And Foundation Profile](../AOA-SK-D-0036-codex-user-skill-root-and-foundation-profile.md) (`docs/decisions/AOA-SK-D-0036-codex-user-skill-root-and-foundation-profile.md`)
+
+## 2026-07-11
+
+- [AOA-SK-D-0037 Source-Locked Live Skill Dispatch Evidence](../AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md) (`docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md`)

@@ -91,6 +91,7 @@
 - [AOA-SK-D-0034 Decision Graph Skill Chain](../AOA-SK-D-0034-decision-graph-skill-chain.md) (`docs/decisions/AOA-SK-D-0034-decision-graph-skill-chain.md`)
 - [AOA-SK-D-0035 Decision Graph Impact And Issue-Aware Skills](../AOA-SK-D-0035-decision-graph-impact-and-issue-aware-skills.md) (`docs/decisions/AOA-SK-D-0035-decision-graph-impact-and-issue-aware-skills.md`)
 - [AOA-SK-D-0036 Codex User Skill Root And Foundation Profile](../AOA-SK-D-0036-codex-user-skill-root-and-foundation-profile.md) (`docs/decisions/AOA-SK-D-0036-codex-user-skill-root-and-foundation-profile.md`)
+- [AOA-SK-D-0037 Source-Locked Live Skill Dispatch Evidence](../AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md) (`docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md`)
 
 ## public status
 
@@ -104,6 +105,7 @@
 - [AOA-SK-D-0014 Owner Request Receipts](../AOA-SK-D-0014-owner-request-receipts.md) (`docs/decisions/AOA-SK-D-0014-owner-request-receipts.md`)
 - [AOA-SK-D-0017 Lived-Use Promotion Pressure](../AOA-SK-D-0017-lived-use-promotion-pressure.md) (`docs/decisions/AOA-SK-D-0017-lived-use-promotion-pressure.md`)
 - [AOA-SK-D-0018 Session Growth Evaluated Governance](../AOA-SK-D-0018-session-growth-evaluated-governance.md) (`docs/decisions/AOA-SK-D-0018-session-growth-evaluated-governance.md`)
+- [AOA-SK-D-0037 Source-Locked Live Skill Dispatch Evidence](../AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md) (`docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md`)
 
 ## quest/lane
 
@@ -125,6 +127,7 @@
 - [AOA-SK-D-0031 Script Source Home Topology](../AOA-SK-D-0031-script-source-home-topology.md) (`docs/decisions/AOA-SK-D-0031-script-source-home-topology.md`)
 - [AOA-SK-D-0032 Command Authority Family Paths](../AOA-SK-D-0032-command-authority-family-paths.md) (`docs/decisions/AOA-SK-D-0032-command-authority-family-paths.md`)
 - [AOA-SK-D-0033 Root Ingress Closure](../AOA-SK-D-0033-root-ingress-closure.md) (`docs/decisions/AOA-SK-D-0033-root-ingress-closure.md`)
+- [AOA-SK-D-0037 Source-Locked Live Skill Dispatch Evidence](../AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md) (`docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md`)
 
 ## legacy/provenance
 

@@ -13,11 +13,11 @@
     ".agents/skills/*/SKILL.md"
   ],
   "skill_count": 57,
-  "total_cases": 262,
+  "total_cases": 322,
   "case_class_totals": {
     "explicit-handle": 58,
     "manual-invocation-required": 75,
-    "prefer-other-skill": 39,
+    "prefer-other-skill": 99,
     "should-not-trigger": 58,
     "should-trigger": 32
   },
@@ -28,10 +28,11 @@
       "implicit_activation_policy": "manual",
       "description_sha256": "e11ba355727d8866164caeb20c148111295c4486fdc868a212d164382ff4da55",
       "family": "overlay-vs-base-skill",
-      "total_cases": 5,
+      "total_cases": 7,
       "case_class_totals": {
         "explicit-handle": 1,
         "manual-invocation-required": 3,
+        "prefer-other-skill": 2,
         "should-not-trigger": 1
       },
       "required_case_classes": [
@@ -48,10 +49,11 @@
       "implicit_activation_policy": "manual",
       "description_sha256": "f05959672d5e9437dfb398491815a99a183875aa237d0c2e8b9b3e7e12423b84",
       "family": "overlay-vs-base-skill",
-      "total_cases": 4,
+      "total_cases": 6,
       "case_class_totals": {
         "explicit-handle": 1,
         "manual-invocation-required": 2,
+        "prefer-other-skill": 2,
         "should-not-trigger": 1
       },
       "required_case_classes": [
@@ -68,10 +70,11 @@
       "implicit_activation_policy": "manual",
       "description_sha256": "3696a20155eab40023408030f20e145cab3ce3b95863f8a41e2eb22b88fe6cf9",
       "family": "overlay-vs-base-skill",
-      "total_cases": 4,
+      "total_cases": 5,
       "case_class_totals": {
         "explicit-handle": 1,
         "manual-invocation-required": 2,
+        "prefer-other-skill": 1,
         "should-not-trigger": 1
       },
       "required_case_classes": [
@@ -110,10 +113,11 @@
       "implicit_activation_policy": "manual",
       "description_sha256": "0242f9151a193c21c95ac982a226f7884c162fb174127b45bcda65e2a6f99d0c",
       "family": "safety-and-mutation-gating",
-      "total_cases": 5,
+      "total_cases": 8,
       "case_class_totals": {
         "explicit-handle": 2,
         "manual-invocation-required": 2,
+        "prefer-other-skill": 3,
         "should-not-trigger": 1
       },
       "required_case_classes": [
@@ -216,10 +220,11 @@
       "implicit_activation_policy": "manual",
       "description_sha256": "9d966375cec8d8bacf356d382c5866c18b41884e072affa5ebfae9a7e110ac12",
       "family": "change-execution-vs-test-first",
-      "total_cases": 4,
+      "total_cases": 5,
       "case_class_totals": {
         "explicit-handle": 1,
         "manual-invocation-required": 2,
+        "prefer-other-skill": 1,
         "should-not-trigger": 1
       },
       "required_case_classes": [
@@ -302,10 +307,11 @@
       "implicit_activation_policy": "manual",
       "description_sha256": "531d68aba2449c36696b1dafb8dcb9a707ac88ee82168f5f0309776516fd094d",
       "family": "decision-and-doc-authority",
-      "total_cases": 4,
+      "total_cases": 5,
       "case_class_totals": {
         "explicit-handle": 1,
         "manual-invocation-required": 2,
+        "prefer-other-skill": 1,
         "should-not-trigger": 1
       },
       "required_case_classes": [
@@ -322,10 +328,11 @@
       "implicit_activation_policy": "manual",
       "description_sha256": "235b2dbdf8fbbae38702b24835e6df7a5635d743ebdb740df224f1f415c14197",
       "family": "decision-and-doc-authority",
-      "total_cases": 4,
+      "total_cases": 7,
       "case_class_totals": {
         "explicit-handle": 1,
         "manual-invocation-required": 2,
+        "prefer-other-skill": 3,
         "should-not-trigger": 1
       },
       "required_case_classes": [
@@ -342,10 +349,11 @@
       "implicit_activation_policy": "manual",
       "description_sha256": "4ab35d41f09c5bb563a69fca0c81b7e58df44fe75af8c217d8c800c57fe597f9",
       "family": "decision-and-doc-authority",
-      "total_cases": 4,
+      "total_cases": 6,
       "case_class_totals": {
         "explicit-handle": 1,
         "manual-invocation-required": 2,
+        "prefer-other-skill": 2,
         "should-not-trigger": 1
       },
       "required_case_classes": [
@@ -362,10 +370,11 @@
       "implicit_activation_policy": "manual",
       "description_sha256": "1a18696fe0798220e72c2582a17829dd4f8656cbd651bb2bae757039332b20bc",
       "family": "safety-and-mutation-gating",
-      "total_cases": 4,
+      "total_cases": 6,
       "case_class_totals": {
         "explicit-handle": 1,
         "manual-invocation-required": 2,
+        "prefer-other-skill": 2,
         "should-not-trigger": 1
       },
       "required_case_classes": [
@@ -404,10 +413,11 @@
       "implicit_activation_policy": "manual",
       "description_sha256": "5b3193acd2aa17bf9e4e5df832c79f1d245601a9bcc78a3bf826f05e67cb6b11",
       "family": "eval-proof-routing-family",
-      "total_cases": 4,
+      "total_cases": 6,
       "case_class_totals": {
         "explicit-handle": 1,
         "manual-invocation-required": 2,
+        "prefer-other-skill": 2,
         "should-not-trigger": 1
       },
       "required_case_classes": [
@@ -424,10 +434,11 @@
       "implicit_activation_policy": "manual",
       "description_sha256": "0a71f12f9345a72eb52990ac72c66be2a8076a47163c0aa167d1ea9be09ef3ca",
       "family": "eval-proof-routing-family",
-      "total_cases": 4,
+      "total_cases": 7,
       "case_class_totals": {
         "explicit-handle": 1,
         "manual-invocation-required": 2,
+        "prefer-other-skill": 3,
         "should-not-trigger": 1
       },
       "required_case_classes": [
@@ -444,10 +455,11 @@
       "implicit_activation_policy": "manual",
       "description_sha256": "cc830ecdad58d6943fe61004ef48f6dd61d2a2cd3d62a1eaa0ea375331945d77",
       "family": "eval-proof-routing-family",
-      "total_cases": 4,
+      "total_cases": 7,
       "case_class_totals": {
         "explicit-handle": 1,
         "manual-invocation-required": 2,
+        "prefer-other-skill": 3,
         "should-not-trigger": 1
       },
       "required_case_classes": [
@@ -464,10 +476,11 @@
       "implicit_activation_policy": "manual",
       "description_sha256": "0be63765d3caff0555b4090b46e68d0ce4d394c39cfbc76b76302a1e5e883636",
       "family": "eval-proof-routing-family",
-      "total_cases": 4,
+      "total_cases": 7,
       "case_class_totals": {
         "explicit-handle": 1,
         "manual-invocation-required": 2,
+        "prefer-other-skill": 3,
         "should-not-trigger": 1
       },
       "required_case_classes": [
@@ -484,10 +497,11 @@
       "implicit_activation_policy": "manual",
       "description_sha256": "04d539551d617733107494195dc8cffead04bf175349a30b872dbe709798c31c",
       "family": "eval-proof-routing-family",
-      "total_cases": 4,
+      "total_cases": 5,
       "case_class_totals": {
         "explicit-handle": 1,
         "manual-invocation-required": 2,
+        "prefer-other-skill": 1,
         "should-not-trigger": 1
       },
       "required_case_classes": [
@@ -526,10 +540,11 @@
       "implicit_activation_policy": "manual",
       "description_sha256": "f878029a986286568d5254e65a58127f9bcfa51c949b0f08ddd9feadfaab6516",
       "family": "safety-and-mutation-gating",
-      "total_cases": 4,
+      "total_cases": 5,
       "case_class_totals": {
         "explicit-handle": 1,
         "manual-invocation-required": 2,
+        "prefer-other-skill": 1,
         "should-not-trigger": 1
       },
       "required_case_classes": [
@@ -612,10 +627,11 @@
       "implicit_activation_policy": "manual",
       "description_sha256": "331b01d53c27c36b8b793b7e32ac8a6630766b0bd1c2a47844ef4474f3a79dda",
       "family": "session-harvest-family",
-      "total_cases": 4,
+      "total_cases": 8,
       "case_class_totals": {
         "explicit-handle": 1,
         "manual-invocation-required": 2,
+        "prefer-other-skill": 4,
         "should-not-trigger": 1
       },
       "required_case_classes": [
@@ -632,10 +648,11 @@
       "implicit_activation_policy": "manual",
       "description_sha256": "c9f9c2af3a97385a9810e4397887785b6f5602fb8d75fb6b333ae747c3b6f69a",
       "family": "overlay-vs-base-skill",
-      "total_cases": 4,
+      "total_cases": 8,
       "case_class_totals": {
         "explicit-handle": 1,
         "manual-invocation-required": 2,
+        "prefer-other-skill": 4,
         "should-not-trigger": 1
       },
       "required_case_classes": [
@@ -652,10 +669,11 @@
       "implicit_activation_policy": "manual",
       "description_sha256": "01a00dd8a32d808ea6fb153f7d95f7e7d98adcecb1f6f70b73bd4954142beeae",
       "family": "overlay-vs-base-skill",
-      "total_cases": 4,
+      "total_cases": 5,
       "case_class_totals": {
         "explicit-handle": 1,
         "manual-invocation-required": 2,
+        "prefer-other-skill": 1,
         "should-not-trigger": 1
       },
       "required_case_classes": [
@@ -672,10 +690,11 @@
       "implicit_activation_policy": "manual",
       "description_sha256": "12327a955b20f8d5256b711c4584c87a2cc9db0100d2083697cd4565c49801b2",
       "family": "session-harvest-family",
-      "total_cases": 4,
+      "total_cases": 8,
       "case_class_totals": {
         "explicit-handle": 1,
         "manual-invocation-required": 2,
+        "prefer-other-skill": 4,
         "should-not-trigger": 1
       },
       "required_case_classes": [
@@ -692,10 +711,11 @@
       "implicit_activation_policy": "manual",
       "description_sha256": "2715c77c3d5ed19ab16fe4cde3e8dedcc4963fb2e140a14e8062c7e47cfe0961",
       "family": "session-harvest-family",
-      "total_cases": 4,
+      "total_cases": 8,
       "case_class_totals": {
         "explicit-handle": 1,
         "manual-invocation-required": 2,
+        "prefer-other-skill": 4,
         "should-not-trigger": 1
       },
       "required_case_classes": [
@@ -712,10 +732,11 @@
       "implicit_activation_policy": "manual",
       "description_sha256": "22824ec5994207065055b7d44afc266c05c0f8458f1d1794441823ae8f191ed9",
       "family": "session-harvest-family",
-      "total_cases": 4,
+      "total_cases": 8,
       "case_class_totals": {
         "explicit-handle": 1,
         "manual-invocation-required": 2,
+        "prefer-other-skill": 4,
         "should-not-trigger": 1
       },
       "required_case_classes": [
@@ -732,10 +753,11 @@
       "implicit_activation_policy": "manual",
       "description_sha256": "918ebdbc962c2c4d7878d90b971136fd3186a023850a71264eb31a743fa3a0ed",
       "family": "session-harvest-family",
-      "total_cases": 4,
+      "total_cases": 8,
       "case_class_totals": {
         "explicit-handle": 1,
         "manual-invocation-required": 2,
+        "prefer-other-skill": 4,
         "should-not-trigger": 1
       },
       "required_case_classes": [
@@ -752,10 +774,11 @@
       "implicit_activation_policy": "manual",
       "description_sha256": "538dd2a1460463bb3d83ff8b4eb5d07553c98bc1f6f373175a791ed78bd42869",
       "family": "session-harvest-family",
-      "total_cases": 4,
+      "total_cases": 7,
       "case_class_totals": {
         "explicit-handle": 1,
         "manual-invocation-required": 2,
+        "prefer-other-skill": 3,
         "should-not-trigger": 1
       },
       "required_case_classes": [
@@ -836,10 +859,11 @@
       "implicit_activation_policy": "manual",
       "description_sha256": "45693932852a02321b01983411bbd463ed40e8c008367d38bbb7488f6f8f5263",
       "family": "overlay-vs-base-skill",
-      "total_cases": 4,
+      "total_cases": 5,
       "case_class_totals": {
         "explicit-handle": 1,
         "manual-invocation-required": 2,
+        "prefer-other-skill": 1,
         "should-not-trigger": 1
       },
       "required_case_classes": [
@@ -856,10 +880,11 @@
       "implicit_activation_policy": "manual",
       "description_sha256": "8cd17be221e3bf3352b948cc0f4e0fcd3afad8d9999de0c5f414d0eb6092a305",
       "family": "overlay-vs-base-skill",
-      "total_cases": 4,
+      "total_cases": 5,
       "case_class_totals": {
         "explicit-handle": 1,
         "manual-invocation-required": 2,
+        "prefer-other-skill": 1,
         "should-not-trigger": 1
       },
       "required_case_classes": [

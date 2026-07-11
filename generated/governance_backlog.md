@@ -58,7 +58,7 @@ Read those rows as per-skill maintenance signals, not as missing canonical-decis
 | aoa-tdd-slice | canonical | published | true | true | default_reference | change_workflows | governance_and_eval_ready | docs/reviews/canonical-candidates/aoa-tdd-slice.md | - |
 | atm10-change-protocol | evaluated | published | false | true | - | - | project_overlay_federation_ready | - | docs/reviews/status-promotions/atm10-change-protocol.md |
 | atm10-source-of-truth-check | evaluated | published | false | true | - | - | project_overlay_federation_ready | - | docs/reviews/status-promotions/atm10-source-of-truth-check.md |
-| os-abyss-artifact-trust-loop | scaffold | published | false | false | - | - | project_overlay_needs_evidence | - | - |
+| os-abyss-artifact-trust-loop | scaffold | published | false | true | - | - | project_overlay_federation_ready | - | - |
 | titan-approval-ledger | scaffold | published | false | true | - | - | project_overlay_federation_ready | - | - |
 | titan-approval-loom | scaffold | published | false | true | - | - | project_overlay_federation_ready | - | - |
 | titan-appserver-bridge | scaffold | published | false | true | - | - | project_overlay_federation_ready | - | - |

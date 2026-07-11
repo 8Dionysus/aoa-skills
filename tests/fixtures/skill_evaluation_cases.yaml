@@ -1418,6 +1418,19 @@ trigger_cases:
     expected: do_not_use
     required_phrases:
       - thread or turn identifiers are missing
+  - skill: os-abyss-artifact-trust-loop
+    case_id: os_abyss_artifact_trust_loop_consumer_gate
+    prompt: Before an OS Abyss runtime bundle is consumed, inspect its artifact class, producer profile, drift, registry evidence, and trust-gate verdict through abyss-machine, then route any rebuild or signing action to its owner.
+    expected: use
+    required_phrases:
+      - a task mentions ABI, provenance, signs, signatures, SBOM, SLSA, in-toto, Sigstore, Cosign, C2PA, TUF, SCITT, artifact trust, producer profiles, durable evidence, trust gates, registry latest, stale bundles, or drift across OS Abyss
+      - an agent needs to consume, build, release, update, or audit a bundle, container, model, runtime, report, media export, source seed, portable memory bundle, browser extension package, or generated machine surface
+  - skill: os-abyss-artifact-trust-loop
+    case_id: os_abyss_artifact_trust_loop_plain_unit_test
+    prompt: Run the ordinary unit tests for this local helper; no artifact class, provenance, signature, registry evidence, or consumer trust gate is involved.
+    expected: do_not_use
+    required_phrases:
+      - the task is an ordinary local test or code edit unrelated to artifact trust
 
 
 adjacency_cases:
@@ -1901,7 +1914,6 @@ adjacency_cases:
       - This is a commit-growth-seam case, not a session-donor-harvest case.
       - A bounded local commit decision that preserves validation state, names commit authorization posture, and stops before push.
     forbidden_output_phrases: []
-
 snapshot_cases:
   - skill: aoa-adr-write
     case_id: adr_write_meaningful_decision
@@ -2932,4 +2944,22 @@ snapshot_cases:
     required_output_phrases:
       - do_not_use
       - 'Decision: do_not_use `aoa-eval-session-mining`. This is raw .aoa maintenance, not eval candidate mining.'
+    forbidden_output_phrases: []
+  - skill: os-abyss-artifact-trust-loop
+    case_id: os_abyss_artifact_trust_loop_consumer_gate
+    prompt: Before an OS Abyss runtime bundle is consumed, inspect its artifact class, producer profile, drift, registry evidence, and trust-gate verdict through abyss-machine, then route any rebuild or signing action to its owner.
+    expected: use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/os-abyss-artifact-trust-loop/os_abyss_artifact_trust_loop_consumer_gate.md
+    required_output_phrases:
+      - use
+      - 'Decision: use `os-abyss-artifact-trust-loop`. Inspect read-only trust state first, preserve the consumer verdict, and route mutation to the owner producer.'
+    forbidden_output_phrases: []
+  - skill: os-abyss-artifact-trust-loop
+    case_id: os_abyss_artifact_trust_loop_plain_unit_test
+    prompt: Run the ordinary unit tests for this local helper; no artifact class, provenance, signature, registry evidence, or consumer trust gate is involved.
+    expected: do_not_use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/os-abyss-artifact-trust-loop/os_abyss_artifact_trust_loop_plain_unit_test.md
+    required_output_phrases:
+      - do_not_use
+      - 'Decision: do_not_use `os-abyss-artifact-trust-loop`. Use the ordinary local test route because no artifact-trust or consumer-gate pressure exists.'
     forbidden_output_phrases: []

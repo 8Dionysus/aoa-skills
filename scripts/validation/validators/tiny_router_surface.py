@@ -94,7 +94,6 @@ def validate_eval_case_refs(
     actual_names: set[str],
     signal_by_name: dict[str, Any],
     catalog_by_name: dict[str, Any],
-    activation_policy_by_name: dict[str, Any],
     defer_case_by_source_and_prompt: dict[tuple[str, str], dict[str, Any]],
     errors: list[str],
 ) -> dict[str, int]:
@@ -113,7 +112,6 @@ def validate_eval_case_refs(
             case=case,
             signal_by_name=signal_by_name,
             catalog_by_name=catalog_by_name,
-            activation_policy_by_name=activation_policy_by_name,
             defer_case_by_source_and_prompt=defer_case_by_source_and_prompt,
             errors=errors,
         )
@@ -144,7 +142,6 @@ def validate_defer_case(
     case: dict[str, Any],
     signal_by_name: dict[str, Any],
     catalog_by_name: dict[str, Any],
-    activation_policy_by_name: dict[str, Any],
     defer_case_by_source_and_prompt: dict[tuple[str, str], dict[str, Any]],
     errors: list[str],
 ) -> None:
@@ -165,34 +162,17 @@ def validate_defer_case(
         if isinstance(source_defer_case, dict)
         else None
     )
-    expected_activation = expected_defer_activation(
-        expected_skill,
-        activation_policy_by_name,
-    )
     validate_defer_band_policy(
         case=case,
         case_id=case_id,
         source_band=source_band,
         source_signal=source_signal,
         included=included,
-        expected_activation=expected_activation,
         expected_skill=expected_skill,
         catalog_by_name=catalog_by_name,
         signal_by_name=signal_by_name,
         errors=errors,
     )
-
-
-def expected_defer_activation(
-    expected_skill: Any,
-    activation_policy_by_name: dict[str, Any],
-) -> str:
-    if isinstance(expected_skill, str) and expected_skill in activation_policy_by_name:
-        return resolve_implicit_activation_policy(
-            activation_policy_by_name.get(expected_skill),
-            expected_skill,
-        )
-    return "manual"
 
 
 def validate_defer_band_policy(
@@ -202,7 +182,6 @@ def validate_defer_band_policy(
     source_band: str,
     source_signal: dict[str, Any],
     included: Sequence[str],
-    expected_activation: str,
     expected_skill: Any,
     catalog_by_name: dict[str, Any],
     signal_by_name: dict[str, Any],
@@ -219,7 +198,9 @@ def validate_defer_band_policy(
         and not case.get("repo_family_hint")
     ):
         errors.append(f"{case_id}: cross-band overlay defer cases must set repo_family_hint")
-    if case.get("expected_band") == source_band and not included and expected_activation != "manual":
+    # A same-band shortlist is candidate routing only, including for manual
+    # targets; activation remains governed by the policy carried downstream.
+    if case.get("expected_band") == source_band and not included:
         errors.append(f"{case_id}: same-band defer cases must require expected_shortlist_includes")
     if (
         case.get("expected_band") != source_band
@@ -488,7 +469,6 @@ def validate(repo_root: Path) -> dict[str, Any]:
         actual_names=actual_names,
         signal_by_name=signal_by_name,
         catalog_by_name=catalog_by_name,
-        activation_policy_by_name=activation_policy_by_name,
         defer_case_by_source_and_prompt=index_defer_cases(description_eval_cases),
         errors=errors,
     )

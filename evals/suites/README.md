@@ -11,3 +11,7 @@ Active local suite notes:
 - [aoa-eval-trigger-corpus.suite.md](aoa-eval-trigger-corpus.suite.md) captures
   the first `aoa-eval` trigger corpus with session refs, owner routes, and a
   no-trigger case.
+- [aoa-skill-live-dispatch-harness.suite.md](aoa-skill-live-dispatch-harness.suite.md) defines
+  bounded smoke, pilot, collision, and coverage-closure cohorts. Its live runs
+  require exact confirmation and host resource/storage gates; its deterministic
+  harness contract is the only part eligible for ordinary local-suite execution.

@@ -7,6 +7,10 @@ proof doctrine. Route central proof adoption to `aoa-evals`.
 
 Active local report notes:
 
+Public-safe live-dispatch receipts may be written here only through the
+field-whitelisting review action. Raw receipts remain in the host-private
+temporary root and must not be copied into this directory.
+
 - [aoa-eval-session-mining.report.md](aoa-eval-session-mining.report.md)
   records the first `.aoa` mining pass for `aoa-eval` trigger evidence and its
   proof limits.

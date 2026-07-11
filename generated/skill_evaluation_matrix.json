@@ -701,13 +701,10 @@
     {
       "autonomy_check_count": 0,
       "candidate_review_path": null,
-      "canonical_eval_blockers": [
-        "missing_use_snapshot",
-        "missing_do_not_use_snapshot"
-      ],
-      "canonical_eval_ready": false,
-      "do_not_use_case_count": 0,
-      "do_not_use_snapshot_count": 0,
+      "canonical_eval_blockers": [],
+      "canonical_eval_ready": true,
+      "do_not_use_case_count": 1,
+      "do_not_use_snapshot_count": 1,
       "invocation_mode": "explicit-preferred",
       "name": "os-abyss-artifact-trust-loop",
       "promotion_review_path": null,
@@ -715,8 +712,8 @@
       "selected_runtime_artifact_path": "skills/project/abyss/os-abyss-artifact-trust-loop/examples/example.md",
       "skill_path": "skills/project/abyss/os-abyss-artifact-trust-loop/SKILL.md",
       "status": "scaffold",
-      "use_case_count": 0,
-      "use_snapshot_count": 0
+      "use_case_count": 1,
+      "use_snapshot_count": 1
     },
     {
       "autonomy_check_count": 1,

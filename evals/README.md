@@ -25,6 +25,9 @@ Active first local corpus:
   candidate `.aoa` raw/segment refs.
 - [reports/aoa-eval-session-mining.report.md](reports/aoa-eval-session-mining.report.md)
   records the session-mining method, provider freshness, and handoff limits.
+- [suites/aoa-skill-live-dispatch-harness.suite.md](suites/aoa-skill-live-dispatch-harness.suite.md)
+  and [runners](runners/) define the source-locked, operator-confirmed live
+  dispatch, manual reachability, trajectory, and paired outcome-lift harness.
 
 These files are local evidence notes. They do not publish central proof
 acceptance, scoring, verdicts, regression truth, or proof doctrine.
