@@ -73,8 +73,16 @@ temporary root and must not be copied into this directory.
   failure. The report preserves those historical measures without endorsing
   them and supports no pair, lift, skill-effect, or family conclusion. Repeat
   the smoke under v4 before widening.
+- [aoa-skill-live-dispatch-smoke-20260711-v4-external-source-contamination-needs-rerun.json](aoa-skill-live-dispatch-smoke-20260711-v4-external-source-contamination-needs-rerun.json)
+  preserves the exact-merged-tree v4 rerun. The aided arm passed objective root
+  and dynamic-child reads, but the control read a complete `aoa-eval` source
+  file from an external canonical checkout before exhausting 48k. The public
+  receipt immutably retains the historical `budget_exhausted` label; reviewed
+  private command evidence places the earlier fault at filesystem-scope
+  contamination. It supports no pair, lift, skill-effect, or family conclusion
+  and requires a v5 fixture-scope rerun.
 
-Corrected live receipts under the v4 evidence protocol are reviewable only
+Corrected live receipts under the v5 evidence protocol are reviewable only
 after canonical user-skill shadows, plugins, and every configured MCP id are
 isolated with the adapter-appropriate mechanism (`--ignore-user-config` for
 CLI exec, explicit per-id disables for prompt inspection and App Server);
@@ -85,13 +93,16 @@ native input acceptance remains separate from exact fixture-path full reads;
 model `claims_loaded` stays separate from objective load; every expected or
 dynamically selected child has a complete exact-path read; read-only inspection
 commands remain allowed evidence rather than procedure commands; zero-return
-output-contract invalidity remains separate from transport failure; one atomic
+output-contract invalidity remains separate from transport failure; every
+model command remains within the fixture root, with external or parent-path
+access classified as contamination before budget; one atomic
 guidance-bound validator event is proved; and invalid pairs are
 omitted without rewriting arm history. Public
 validation rejects embedded absolute host paths as well as raw prompts,
 transport ids, and credential-shaped values. Retained v1/v2 smokes remain
 historical `needs-rerun` evidence; retained v3 reports keep their original
-review status and grader semantics.
+review status and grader semantics, and the retained v4 report keeps its
+original budget label rather than being rewritten in place.
 - [aoa-eval-session-mining.report.md](aoa-eval-session-mining.report.md)
   records the first `.aoa` mining pass for `aoa-eval` trigger evidence and its
   proof limits.

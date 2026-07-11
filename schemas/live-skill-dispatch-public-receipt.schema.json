@@ -103,6 +103,8 @@
         "child_full_read_observed": {"type": "boolean"},
         "route_contract_match": {"type": "boolean"},
         "prompt_visibility_contract_match": {"type": "boolean"},
+        "fixture_filesystem_scope_match": {"type": "boolean"},
+        "external_filesystem_access_count": {"type": "integer", "minimum": 0},
         "prompt_visible_repo_skill_count": {"type": "integer", "minimum": 0},
         "expected_prompt_visible_repo_skill_count": {"type": "integer", "minimum": 0},
         "structured_skill_surface_contract_match": {"type": ["boolean", "null"]},

@@ -421,7 +421,7 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
         )
         self.assertEqual(plan["protocol_revision"], contract["protocol_revision"])
         self.assertEqual(
-            "aoa_codex_app_server_skill_input_contract_v4",
+            "aoa_codex_app_server_skill_input_contract_v5",
             contract["schema_version"],
         )
         self.assertEqual("codex-cli 0.144.1", contract["codex_version"])
@@ -447,6 +447,10 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
         self.assertIn(
             "dynamically selected child",
             contract["evidence_binding"]["selected_child"],
+        )
+        self.assertIn(
+            "outside the fixture root",
+            contract["evidence_binding"]["fixture_filesystem_scope"],
         )
         self.assertEqual(
             ["initialize", "initialized", "skills/list", "thread/start", "turn/start", "thread/delete"],
@@ -501,6 +505,10 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
         self.assertIn("--ephemeral", implicit["argv"])
         self.assertIn("--ignore-user-config", implicit["argv"])
         self.assertIn("read-only", implicit["argv"])
+        self.assertIn(
+            "Do not inspect or search any path outside this fixture root",
+            implicit["prompt"],
+        )
         self.assertTrue(trajectory["prompt"].startswith("$aoa-eval "))
         self.assertIn(
             "Read-only skill-file inspection commands are allowed",
@@ -718,6 +726,10 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
                 "They are evidence collection, not procedure commands",
                 trajectory_guidance,
             )
+            self.assertIn(
+                "Do not inspect or search any path outside this fixture root",
+                trajectory_guidance,
+            )
             for path in receipt_path.parent.rglob("*"):
                 self.assertEqual(0o700 if path.is_dir() else 0o600, path.stat().st_mode & 0o777)
             Draft202012Validator(
@@ -726,6 +738,8 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
 
             public = runner.build_public_receipt(receipt)
             runner.validate_public_receipt(public)
+            self.assertTrue(public["measures"][0]["fixture_filesystem_scope_match"])
+            self.assertEqual(0, public["measures"][0]["external_filesystem_access_count"])
             Draft202012Validator(
                 self.load_schema("live-skill-dispatch-public-receipt.schema.json")
             ).validate(public)
@@ -1375,6 +1389,74 @@ for line in sys.stdin:
             self.assertTrue(with_child["child_full_read_observed"])
             self.assertTrue(runner._load_contract_match(trial, output, with_child))
 
+    def test_fixture_filesystem_scope_rejects_external_absolute_and_parent_reads(self) -> None:
+        runner = self.runner
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            fixture_root = root / "fixture"
+            fixture_root.mkdir()
+            local_file = fixture_root / "local.txt"
+            local_file.write_text("local\n", encoding="utf-8")
+            fixture_skill = fixture_root / ".agents" / "skills" / "aoa-eval" / "SKILL.md"
+            fixture_skill.parent.mkdir(parents=True)
+            fixture_skill.write_text("# aoa-eval\n", encoding="utf-8")
+            external_file = root / "external.txt"
+            external_file.write_text("external\n", encoding="utf-8")
+
+            def event(command: str) -> dict:
+                return {
+                    "type": "item.completed",
+                    "item": {
+                        "type": "command_execution",
+                        "status": "completed",
+                        "exit_code": 0,
+                        "command": command,
+                        "aggregated_output": "observed",
+                    },
+                }
+
+            allowed = runner._fixture_filesystem_scope_evidence(
+                [
+                    event("/usr/bin/zsh -lc 'cat local.txt'"),
+                    event(f"/usr/bin/zsh -lc 'cat {local_file}'"),
+                    event(
+                        "/usr/bin/zsh -lc \"sed -n '1,40p' .agents/skills/aoa-eval/SKILL.md "
+                        "&& sed -n '41,80p' .agents/skills/aoa-eval/SKILL.md\""
+                    ),
+                    event("/usr/bin/zsh -lc 'python3 fixture_validator.py >/dev/null'"),
+                ],
+                fixture_root,
+            )
+            self.assertEqual(
+                {
+                    "fixture_filesystem_scope_match": True,
+                    "external_filesystem_access_count": 0,
+                },
+                allowed,
+            )
+
+            external = runner._fixture_filesystem_scope_evidence(
+                [
+                    event(f"/usr/bin/zsh -lc 'cat {external_file}'"),
+                    event("/usr/bin/zsh -lc 'cat ../external.txt'"),
+                    event(f"python3 -c 'open(\"{external_file}\").read()'"),
+                ],
+                fixture_root,
+            )
+            self.assertEqual(
+                {
+                    "fixture_filesystem_scope_match": False,
+                    "external_filesystem_access_count": 3,
+                },
+                external,
+            )
+
+            home_escape = runner._fixture_filesystem_scope_evidence(
+                [event("/usr/bin/zsh -lc 'find $HOME/.codex -name SKILL.md'")],
+                fixture_root,
+            )
+            self.assertFalse(home_escape["fixture_filesystem_scope_match"])
+
     def test_app_server_uses_only_the_last_agent_message_as_final_output(self) -> None:
         events = [
             {
@@ -1570,6 +1652,17 @@ for line in sys.stdin:
             "final_output": None,
         }
         self.assertEqual("budget_exhausted", self.runner._trial_failure_class(budget_trial, budget_result))
+        contaminated_budget_result = {
+            **budget_result,
+            "fixture_filesystem_scope_match": False,
+        }
+        self.assertEqual(
+            "harness_contamination",
+            self.runner._trial_failure_class(
+                budget_trial,
+                contaminated_budget_result,
+            ),
+        )
         app_server_budget_result = {
             "returncode": 1,
             "events": [
