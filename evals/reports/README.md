@@ -19,6 +19,10 @@ temporary root and must not be copied into this directory.
   records the reviewed Responses API strict-schema rejection that followed the
   transport repair; the request reached the API but no model output was
   produced, so it also carries no skill-quality evidence.
+- [aoa-skill-live-dispatch-smoke-20260711-trajectory-budget-needs-rerun.json](aoa-skill-live-dispatch-smoke-20260711-trajectory-budget-needs-rerun.json)
+  records the first two completed model arms plus the root-child budget stop.
+  The implicit pair remains candidate evidence, the structured arm did not run,
+  and the full smoke requires a rerun before widening.
 - [aoa-eval-session-mining.report.md](aoa-eval-session-mining.report.md)
   records the first `.aoa` mining pass for `aoa-eval` trigger evidence and its
   proof limits.

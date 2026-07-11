@@ -57,8 +57,10 @@ profile revision, Codex protocol revision, caps, and trial identities. Live
 execution requires `abyss-machine resource launch`, independent storage and
 runtime gates, read-only sandboxing, network-disabled tool policy, concurrency
 one, source-locked rollout token limits plus reminder thresholds, and an opaque
-private fixture per turn. The runner rejects empty, non-positive, or
-limit-reaching reminder lists before transport startup.
+private fixture per turn. Implicit and structured arms keep the 28k weighted
+token cap; root-child full-read trajectories use a separate 48k cap rather than
+widening every arm. The runner rejects empty, non-positive, or limit-reaching
+reminder lists before transport startup.
 
 The source-locked model-output schema must also satisfy the Responses API
 strict subset before a plan or run can be produced: the root and nested objects
@@ -75,6 +77,7 @@ authority.
 
 Each bounded failure class names an earlier layer to repair: harness,
 description/policy, collision family, manual policy, root/child trajectory,
-direct procedure, owner boundary, runtime profile/source lock, or transport.
-After repair, repeat smoke or the smallest affected adjacent family before
-widening again.
+direct procedure, owner boundary, runtime profile/source lock, reviewed budget,
+or transport. Budget exhaustion is distinct from transport failure and returns
+to cap/context review before repeating the same case. After repair, repeat smoke
+or the smallest affected adjacent family before widening again.

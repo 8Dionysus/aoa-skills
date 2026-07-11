@@ -215,6 +215,7 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
         self.assertEqual(64, len(first["plan_sha256"]))
         self.assertEqual(64, len(first["source_snapshot_sha256"]))
         self.assertEqual(28_000, first["caps"]["per_turn_weighted_token_limit"])
+        self.assertEqual(48_000, first["caps"]["trajectory_weighted_token_limit"])
         self.assertEqual([4_000], first["caps"]["rollout_budget_reminder_at_remaining_tokens"])
         self.assertEqual(1, first["caps"]["max_concurrency"])
         self.assertGreater(first["source_record_count"], 390)
@@ -333,6 +334,10 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
             self.assertEqual(1, len(transport.preflight_calls))
             self.assertEqual(3, len(transport.cli_calls))
             self.assertEqual(1, len(transport.app_server_calls))
+            implicit_request = next(call for call in transport.cli_calls if call["arm_type"] == "implicit_aided")
+            trajectory_request = next(call for call in transport.cli_calls if call["arm_type"] == "root_manual_child")
+            self.assertIn("features.rollout_budget.limit_tokens=28000", implicit_request["argv"])
+            self.assertIn("features.rollout_budget.limit_tokens=48000", trajectory_request["argv"])
             self.assertEqual(1, len(receipt["pair_outcomes"]))
             self.assertEqual("positive_lift", receipt["pair_outcomes"][0]["effect_class"])
             receipt_path = private_root / receipt["run_id"] / "private-receipt.json"
@@ -685,6 +690,7 @@ for line in sys.stdin:
                 "direct_procedure_gap",
                 "owner_boundary_violation",
                 "runtime_profile_drift",
+                "budget_exhausted",
                 "transport_failure",
             },
             set(taxonomy),
@@ -696,6 +702,50 @@ for line in sys.stdin:
         self.assertEqual(
             "repair_root_or_child_then_repeat_adjacent_family",
             self.runner.ADAPTIVE_RETURN_ROUTE["trajectory_break"],
+        )
+        self.assertEqual(
+            "review_caps_or_reduce_context_then_repeat_same_case",
+            self.runner.ADAPTIVE_RETURN_ROUTE["budget_exhausted"],
+        )
+
+        budget_trial = self.runner.Trial(
+            trial_id="budget:trajectory",
+            arm_type="root_manual_child",
+            case_id="budget-trajectory",
+            prompt="Follow the selected child.",
+            expected_target_skill="aoa-eval",
+            expected_behavior="trajectory",
+            expected_child_skill="aoa-eval-apply",
+        )
+        budget_result = {
+            "returncode": 1,
+            "events": [
+                {
+                    "type": "turn.failed",
+                    "error": {"message": "shared rollout token budget exhausted"},
+                }
+            ],
+            "final_output": None,
+        }
+        self.assertEqual("budget_exhausted", self.runner._trial_failure_class(budget_trial, budget_result))
+        app_server_budget_result = {
+            "returncode": 1,
+            "events": [
+                {
+                    "method": "turn/completed",
+                    "params": {
+                        "turn": {
+                            "status": "failed",
+                            "error": {"message": "shared rollout token budget exhausted"},
+                        }
+                    },
+                }
+            ],
+            "final_output": None,
+        }
+        self.assertEqual(
+            "budget_exhausted",
+            self.runner._trial_failure_class(budget_trial, app_server_budget_result),
         )
 
     def test_competing_skill_win_is_classified_before_generic_trigger_miss(self) -> None:
