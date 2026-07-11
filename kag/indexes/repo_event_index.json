@@ -1,0 +1,2078 @@
+{
+  "entries": [
+    {
+      "event_kind": "command_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:40251f34b51b38661b4d",
+      "observation_state": "declared",
+      "path": ".agents/skills/aoa-dry-run-first/scripts/dry_run_contract.py",
+      "source_record_id": "file:.agents/skills/aoa-dry-run-first/scripts/dry_run_contract.py:e1480fe2d2"
+    },
+    {
+      "event_kind": "command_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:a5ae70b3518fb15fb030",
+      "observation_state": "declared",
+      "path": ".agents/skills/aoa-dry-run-first/scripts/preview_gap_check.py",
+      "source_record_id": "file:.agents/skills/aoa-dry-run-first/scripts/preview_gap_check.py:0ea89b83a2"
+    },
+    {
+      "event_kind": "command_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:c2b812896127727c66e0",
+      "observation_state": "declared",
+      "path": ".agents/skills/aoa-local-stack-bringup/scripts/bringup_contract.py",
+      "source_record_id": "file:.agents/skills/aoa-local-stack-bringup/scripts/bringup_contract.py:65fb7d4d41"
+    },
+    {
+      "event_kind": "command_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:bb49ce42426fd9794cfb",
+      "observation_state": "declared",
+      "path": ".agents/skills/aoa-local-stack-bringup/scripts/readiness_summary.py",
+      "source_record_id": "file:.agents/skills/aoa-local-stack-bringup/scripts/readiness_summary.py:b9778391e0"
+    },
+    {
+      "event_kind": "command_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:4b3db6b246ef63eaa471",
+      "observation_state": "declared",
+      "path": ".agents/skills/aoa-safe-infra-change/scripts/infra_change_contract.py",
+      "source_record_id": "file:.agents/skills/aoa-safe-infra-change/scripts/infra_change_contract.py:f074327882"
+    },
+    {
+      "event_kind": "command_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:701425be2736e1a410e3",
+      "observation_state": "declared",
+      "path": ".agents/skills/aoa-safe-infra-change/scripts/risk_surface_scan.py",
+      "source_record_id": "file:.agents/skills/aoa-safe-infra-change/scripts/risk_surface_scan.py:4783038b81"
+    },
+    {
+      "event_kind": "validation_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:b3251f8c5a7c2e6816e1",
+      "observation_state": "declared",
+      "path": ".agents/spark/scripts/validate_spark_lane.py",
+      "source_record_id": "file:.agents/spark/scripts/validate_spark_lane.py:80adbf9807"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:70c1bd491f5f28544f39",
+      "observation_state": "declared",
+      "path": ".agents/spark/tests/test_spark_lane.py",
+      "source_record_id": "file:.agents/spark/tests/test_spark_lane.py:2b31a3041f"
+    },
+    {
+      "event_kind": "workflow_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:3947d90fea301e4d35d7",
+      "observation_state": "declared",
+      "path": ".github/workflows/codex-portable-export.yml",
+      "source_record_id": "file:.github/workflows/codex-portable-export.yml:97cd19faf2"
+    },
+    {
+      "event_kind": "workflow_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:ebf19a724607e1ddee24",
+      "observation_state": "declared",
+      "path": ".github/workflows/nightly-sentinel.yml",
+      "source_record_id": "file:.github/workflows/nightly-sentinel.yml:e170c6c6c0"
+    },
+    {
+      "event_kind": "workflow_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:eaa460245d4b89640823",
+      "observation_state": "declared",
+      "path": ".github/workflows/release-audit.yml",
+      "source_record_id": "file:.github/workflows/release-audit.yml:1e069fa705"
+    },
+    {
+      "event_kind": "workflow_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:0b8bf8089750b30599ce",
+      "observation_state": "declared",
+      "path": ".github/workflows/repo-validation.yml",
+      "source_record_id": "file:.github/workflows/repo-validation.yml:3affb923d0"
+    },
+    {
+      "event_kind": "release_declaration",
+      "event_role": "declaration",
+      "heading_ref": {
+        "anchor": "040-2026-05-18",
+        "level": 2,
+        "line": 132,
+        "ref": "CHANGELOG.md#040-2026-05-18",
+        "title": "[0.4.0] - 2026-05-18"
+      },
+      "id": "event:repo:2e464210021d649827d7",
+      "observation_state": "declared",
+      "path": "CHANGELOG.md",
+      "source_record_id": "file:changelog.md:06572a96a5"
+    },
+    {
+      "event_kind": "release_declaration",
+      "event_role": "declaration",
+      "heading_ref": {
+        "anchor": "010-2026-03-23",
+        "level": 2,
+        "line": 428,
+        "ref": "CHANGELOG.md#010-2026-03-23",
+        "title": "[0.1.0] - 2026-03-23"
+      },
+      "id": "event:repo:3e512d7cd63eaa12df22",
+      "observation_state": "declared",
+      "path": "CHANGELOG.md",
+      "source_record_id": "file:changelog.md:06572a96a5"
+    },
+    {
+      "event_kind": "release_declaration",
+      "event_role": "declaration",
+      "heading_ref": {
+        "anchor": "032-2026-04-19",
+        "level": 2,
+        "line": 270,
+        "ref": "CHANGELOG.md#032-2026-04-19",
+        "title": "[0.3.2] - 2026-04-19"
+      },
+      "id": "event:repo:407d984928aceff88bc6",
+      "observation_state": "declared",
+      "path": "CHANGELOG.md",
+      "source_record_id": "file:changelog.md:06572a96a5"
+    },
+    {
+      "event_kind": "release_declaration",
+      "event_role": "declaration",
+      "heading_ref": {
+        "anchor": "031-2026-04-12",
+        "level": 2,
+        "line": 302,
+        "ref": "CHANGELOG.md#031-2026-04-12",
+        "title": "[0.3.1] - 2026-04-12"
+      },
+      "id": "event:repo:993d922f446dacc458c6",
+      "observation_state": "declared",
+      "path": "CHANGELOG.md",
+      "source_record_id": "file:changelog.md:06572a96a5"
+    },
+    {
+      "event_kind": "release_declaration",
+      "event_role": "declaration",
+      "heading_ref": {
+        "anchor": "033-2026-04-23",
+        "level": 2,
+        "line": 221,
+        "ref": "CHANGELOG.md#033-2026-04-23",
+        "title": "[0.3.3] - 2026-04-23"
+      },
+      "id": "event:repo:9cfcb82ba2a1d2d26947",
+      "observation_state": "declared",
+      "path": "CHANGELOG.md",
+      "source_record_id": "file:changelog.md:06572a96a5"
+    },
+    {
+      "event_kind": "release_declaration",
+      "event_role": "declaration",
+      "heading_ref": {
+        "anchor": "020-2026-04-01",
+        "level": 2,
+        "line": 384,
+        "ref": "CHANGELOG.md#020-2026-04-01",
+        "title": "[0.2.0] - 2026-04-01"
+      },
+      "id": "event:repo:a5962405a07f69dea645",
+      "observation_state": "declared",
+      "path": "CHANGELOG.md",
+      "source_record_id": "file:changelog.md:06572a96a5"
+    },
+    {
+      "event_kind": "release_declaration",
+      "event_role": "declaration",
+      "heading_ref": {
+        "anchor": "030-2026-04-10",
+        "level": 2,
+        "line": 338,
+        "ref": "CHANGELOG.md#030-2026-04-10",
+        "title": "[0.3.0] - 2026-04-10"
+      },
+      "id": "event:repo:f6e2bca3aee9ee512435",
+      "observation_state": "declared",
+      "path": "CHANGELOG.md",
+      "source_record_id": "file:changelog.md:06572a96a5"
+    },
+    {
+      "event_kind": "release_lane",
+      "event_role": "declaration",
+      "heading_ref": {
+        "anchor": "unreleased",
+        "level": 2,
+        "line": 8,
+        "ref": "CHANGELOG.md#unreleased",
+        "title": "[Unreleased]"
+      },
+      "id": "event:repo:2d8bcc8456a28f7bfbc3",
+      "observation_state": "declared",
+      "path": "CHANGELOG.md",
+      "source_record_id": "file:changelog.md:06572a96a5"
+    },
+    {
+      "event_kind": "decision_record",
+      "event_role": "declaration",
+      "heading_ref": null,
+      "id": "event:repo:d231dde0b65409a10256",
+      "observation_state": "declared",
+      "path": "docs/decisions/AOA-SK-D-0001-distributed-mechanics-roadmaps-and-root-questbook.md",
+      "source_record_id": "file:docs/decisions/aoa-sk-d-0001-distributed-mechanics-roadmaps-and-root-questbook.md:5420687822"
+    },
+    {
+      "event_kind": "decision_record",
+      "event_role": "declaration",
+      "heading_ref": null,
+      "id": "event:repo:7e7bf208af3d31be4a1d",
+      "observation_state": "declared",
+      "path": "docs/decisions/AOA-SK-D-0002-mechanic-artifact-topology.md",
+      "source_record_id": "file:docs/decisions/aoa-sk-d-0002-mechanic-artifact-topology.md:f612389069"
+    },
+    {
+      "event_kind": "decision_record",
+      "event_role": "declaration",
+      "heading_ref": null,
+      "id": "event:repo:9872847eb77de9f10021",
+      "observation_state": "declared",
+      "path": "docs/decisions/AOA-SK-D-0003-mechanics-agon-start.md",
+      "source_record_id": "file:docs/decisions/aoa-sk-d-0003-mechanics-agon-start.md:bf0937be57"
+    },
+    {
+      "event_kind": "decision_record",
+      "event_role": "declaration",
+      "heading_ref": null,
+      "id": "event:repo:ef4dd89406617aea8c61",
+      "observation_state": "declared",
+      "path": "docs/decisions/AOA-SK-D-0004-mechanics-antifragility-risk-posture.md",
+      "source_record_id": "file:docs/decisions/aoa-sk-d-0004-mechanics-antifragility-risk-posture.md:6b7577af35"
+    },
+    {
+      "event_kind": "decision_record",
+      "event_role": "declaration",
+      "heading_ref": null,
+      "id": "event:repo:8e13a22f3e3182661123",
+      "observation_state": "declared",
+      "path": "docs/decisions/AOA-SK-D-0005-mechanics-checkpoint-note.md",
+      "source_record_id": "file:docs/decisions/aoa-sk-d-0005-mechanics-checkpoint-note.md:47667247e4"
+    },
+    {
+      "event_kind": "decision_record",
+      "event_role": "declaration",
+      "heading_ref": null,
+      "id": "event:repo:d474b433128e2658e7aa",
+      "observation_state": "declared",
+      "path": "docs/decisions/AOA-SK-D-0006-mechanics-companion-surface-routing.md",
+      "source_record_id": "file:docs/decisions/aoa-sk-d-0006-mechanics-companion-surface-routing.md:aa2f72a846"
+    },
+    {
+      "event_kind": "decision_record",
+      "event_role": "declaration",
+      "heading_ref": null,
+      "id": "event:repo:af10c2c0b81d2916c85c",
+      "observation_state": "declared",
+      "path": "docs/decisions/AOA-SK-D-0007-mechanics-growth-cycle-orchestration.md",
+      "source_record_id": "file:docs/decisions/aoa-sk-d-0007-mechanics-growth-cycle-orchestration.md:9c4339328d"
+    },
+    {
+      "event_kind": "decision_record",
+      "event_role": "declaration",
+      "heading_ref": null,
+      "id": "event:repo:260993f79e40b99b5f22",
+      "observation_state": "declared",
+      "path": "docs/decisions/AOA-SK-D-0008-mechanics-method-growth-adoption-lifecycle.md",
+      "source_record_id": "file:docs/decisions/aoa-sk-d-0008-mechanics-method-growth-adoption-lifecycle.md:0b2963ce04"
+    },
+    {
+      "event_kind": "decision_record",
+      "event_role": "declaration",
+      "heading_ref": null,
+      "id": "event:repo:afd91e31d1f838755163",
+      "observation_state": "declared",
+      "path": "docs/decisions/AOA-SK-D-0009-mechanics-method-growth-lineage.md",
+      "source_record_id": "file:docs/decisions/aoa-sk-d-0009-mechanics-method-growth-lineage.md:56d10be82d"
+    },
+    {
+      "event_kind": "decision_record",
+      "event_role": "declaration",
+      "heading_ref": null,
+      "id": "event:repo:9779d4e6dd8cb64f7e8b",
+      "observation_state": "declared",
+      "path": "docs/decisions/AOA-SK-D-0010-mechanics-questbook-integration.md",
+      "source_record_id": "file:docs/decisions/aoa-sk-d-0010-mechanics-questbook-integration.md:41868120fc"
+    },
+    {
+      "event_kind": "decision_record",
+      "event_role": "declaration",
+      "heading_ref": null,
+      "id": "event:repo:c6a5236465d2c4f52699",
+      "observation_state": "declared",
+      "path": "docs/decisions/AOA-SK-D-0011-mechanics-recurrence-observation.md",
+      "source_record_id": "file:docs/decisions/aoa-sk-d-0011-mechanics-recurrence-observation.md:3eb7863083"
+    },
+    {
+      "event_kind": "decision_record",
+      "event_role": "declaration",
+      "heading_ref": null,
+      "id": "event:repo:c8f385ba4b08cff6c3fd",
+      "observation_state": "declared",
+      "path": "docs/decisions/AOA-SK-D-0012-mechanics-rpg-reader-surfaces.md",
+      "source_record_id": "file:docs/decisions/aoa-sk-d-0012-mechanics-rpg-reader-surfaces.md:17d473fc85"
+    },
+    {
+      "event_kind": "decision_record",
+      "event_role": "declaration",
+      "heading_ref": null,
+      "id": "event:repo:735d061e63a1f9d35c27",
+      "observation_state": "declared",
+      "path": "docs/decisions/AOA-SK-D-0013-mechanics-surface-rehome.md",
+      "source_record_id": "file:docs/decisions/aoa-sk-d-0013-mechanics-surface-rehome.md:90cb080cc8"
+    },
+    {
+      "event_kind": "decision_record",
+      "event_role": "declaration",
+      "heading_ref": null,
+      "id": "event:repo:858d65dc3e9800d37f48",
+      "observation_state": "declared",
+      "path": "docs/decisions/AOA-SK-D-0014-owner-request-receipts.md",
+      "source_record_id": "file:docs/decisions/aoa-sk-d-0014-owner-request-receipts.md:0d2db5db25"
+    },
+    {
+      "event_kind": "decision_record",
+      "event_role": "declaration",
+      "heading_ref": null,
+      "id": "event:repo:30413e56a1abdabd96f5",
+      "observation_state": "declared",
+      "path": "docs/decisions/AOA-SK-D-0015-skills-source-topology.md",
+      "source_record_id": "file:docs/decisions/aoa-sk-d-0015-skills-source-topology.md:781be9ce06"
+    },
+    {
+      "event_kind": "decision_record",
+      "event_role": "declaration",
+      "heading_ref": null,
+      "id": "event:repo:7333ab06bac00159af27",
+      "observation_state": "declared",
+      "path": "docs/decisions/AOA-SK-D-0016-technique-traceability-path-refresh.md",
+      "source_record_id": "file:docs/decisions/aoa-sk-d-0016-technique-traceability-path-refresh.md:ec3d8d2d45"
+    },
+    {
+      "event_kind": "decision_record",
+      "event_role": "declaration",
+      "heading_ref": null,
+      "id": "event:repo:5e638eb36fa6497ada75",
+      "observation_state": "declared",
+      "path": "docs/decisions/AOA-SK-D-0017-lived-use-promotion-pressure.md",
+      "source_record_id": "file:docs/decisions/aoa-sk-d-0017-lived-use-promotion-pressure.md:6a850ee158"
+    },
+    {
+      "event_kind": "decision_record",
+      "event_role": "declaration",
+      "heading_ref": null,
+      "id": "event:repo:e5772bc511d543cff24b",
+      "observation_state": "declared",
+      "path": "docs/decisions/AOA-SK-D-0018-session-growth-evaluated-governance.md",
+      "source_record_id": "file:docs/decisions/aoa-sk-d-0018-session-growth-evaluated-governance.md:b81e48935a"
+    },
+    {
+      "event_kind": "decision_record",
+      "event_role": "declaration",
+      "heading_ref": null,
+      "id": "event:repo:26e17c1b0e461154c076",
+      "observation_state": "declared",
+      "path": "docs/decisions/AOA-SK-D-0019-skill-self-sufficiency-technique-bridge.md",
+      "source_record_id": "file:docs/decisions/aoa-sk-d-0019-skill-self-sufficiency-technique-bridge.md:be0827e5ce"
+    },
+    {
+      "event_kind": "decision_record",
+      "event_role": "declaration",
+      "heading_ref": null,
+      "id": "event:repo:6f6b4164bd5cd3186e9e",
+      "observation_state": "declared",
+      "path": "docs/decisions/AOA-SK-D-0020-root-design-agent-surfaces.md",
+      "source_record_id": "file:docs/decisions/aoa-sk-d-0020-root-design-agent-surfaces.md:25f6dd4c4c"
+    },
+    {
+      "event_kind": "decision_record",
+      "event_role": "declaration",
+      "heading_ref": null,
+      "id": "event:repo:5081fb10aceacab2ce26",
+      "observation_state": "declared",
+      "path": "docs/decisions/AOA-SK-D-0021-skill-intelligence-registry-first-slice.md",
+      "source_record_id": "file:docs/decisions/aoa-sk-d-0021-skill-intelligence-registry-first-slice.md:69d1f3c4df"
+    },
+    {
+      "event_kind": "decision_record",
+      "event_role": "declaration",
+      "heading_ref": null,
+      "id": "event:repo:02e0a79a023ad05a0b76",
+      "observation_state": "declared",
+      "path": "docs/decisions/AOA-SK-D-0022-codex-spark-agent-lane-home.md",
+      "source_record_id": "file:docs/decisions/aoa-sk-d-0022-codex-spark-agent-lane-home.md:fd925f43b5"
+    },
+    {
+      "event_kind": "decision_record",
+      "event_role": "declaration",
+      "heading_ref": null,
+      "id": "event:repo:262405718d13032b1776",
+      "observation_state": "declared",
+      "path": "docs/decisions/AOA-SK-D-0023-growth-cycle-session-harvest-ownership.md",
+      "source_record_id": "file:docs/decisions/aoa-sk-d-0023-growth-cycle-session-harvest-ownership.md:462fa1c971"
+    },
+    {
+      "event_kind": "decision_record",
+      "event_role": "declaration",
+      "heading_ref": null,
+      "id": "event:repo:9b1c8bca8e479c950307",
+      "observation_state": "declared",
+      "path": "docs/decisions/AOA-SK-D-0024-root-charter-boundary.md",
+      "source_record_id": "file:docs/decisions/aoa-sk-d-0024-root-charter-boundary.md:7132cc8c75"
+    },
+    {
+      "event_kind": "decision_record",
+      "event_role": "declaration",
+      "heading_ref": null,
+      "id": "event:repo:a0d085c8501c249389f2",
+      "observation_state": "declared",
+      "path": "docs/decisions/AOA-SK-D-0025-root-legacy-retirement.md",
+      "source_record_id": "file:docs/decisions/aoa-sk-d-0025-root-legacy-retirement.md:2dc8d214b2"
+    },
+    {
+      "event_kind": "decision_record",
+      "event_role": "declaration",
+      "heading_ref": null,
+      "id": "event:repo:074becdce7db3bbfac9d",
+      "observation_state": "declared",
+      "path": "docs/decisions/AOA-SK-D-0026-memo-writeback-skill-owner-boundary.md",
+      "source_record_id": "file:docs/decisions/aoa-sk-d-0026-memo-writeback-skill-owner-boundary.md:50302f61b9"
+    },
+    {
+      "event_kind": "decision_record",
+      "event_role": "declaration",
+      "heading_ref": null,
+      "id": "event:repo:be90fe283ba872dab900",
+      "observation_state": "declared",
+      "path": "docs/decisions/AOA-SK-D-0027-canonical-decision-ids-and-indexes.md",
+      "source_record_id": "file:docs/decisions/aoa-sk-d-0027-canonical-decision-ids-and-indexes.md:e80c4d416f"
+    },
+    {
+      "event_kind": "decision_record",
+      "event_role": "declaration",
+      "heading_ref": null,
+      "id": "event:repo:e4c63d8386de1d6eb82e",
+      "observation_state": "declared",
+      "path": "docs/decisions/AOA-SK-D-0028-growth-first-validator-ci-lanes.md",
+      "source_record_id": "file:docs/decisions/aoa-sk-d-0028-growth-first-validator-ci-lanes.md:9c61f5db82"
+    },
+    {
+      "event_kind": "decision_record",
+      "event_role": "declaration",
+      "heading_ref": null,
+      "id": "event:repo:ac82407676b54374cf84",
+      "observation_state": "declared",
+      "path": "docs/decisions/AOA-SK-D-0029-validator-topology-and-owner-modules.md",
+      "source_record_id": "file:docs/decisions/aoa-sk-d-0029-validator-topology-and-owner-modules.md:e2069a3ac9"
+    },
+    {
+      "event_kind": "decision_record",
+      "event_role": "declaration",
+      "heading_ref": null,
+      "id": "event:repo:e008e2a94cc197688b57",
+      "observation_state": "declared",
+      "path": "docs/decisions/AOA-SK-D-0030-test-topology-and-agentic-contracts.md",
+      "source_record_id": "file:docs/decisions/aoa-sk-d-0030-test-topology-and-agentic-contracts.md:6843931b49"
+    },
+    {
+      "event_kind": "decision_record",
+      "event_role": "declaration",
+      "heading_ref": null,
+      "id": "event:repo:ae3ba860cf2e2bb2b6e2",
+      "observation_state": "declared",
+      "path": "docs/decisions/AOA-SK-D-0031-script-source-home-topology.md",
+      "source_record_id": "file:docs/decisions/aoa-sk-d-0031-script-source-home-topology.md:cd71208c13"
+    },
+    {
+      "event_kind": "decision_record",
+      "event_role": "declaration",
+      "heading_ref": null,
+      "id": "event:repo:518cde4742fb57b06604",
+      "observation_state": "declared",
+      "path": "docs/decisions/AOA-SK-D-0032-command-authority-family-paths.md",
+      "source_record_id": "file:docs/decisions/aoa-sk-d-0032-command-authority-family-paths.md:156257bb08"
+    },
+    {
+      "event_kind": "decision_record",
+      "event_role": "declaration",
+      "heading_ref": null,
+      "id": "event:repo:9a7fab8edce7ec55c6d7",
+      "observation_state": "declared",
+      "path": "docs/decisions/AOA-SK-D-0033-root-ingress-closure.md",
+      "source_record_id": "file:docs/decisions/aoa-sk-d-0033-root-ingress-closure.md:48b6ac5b51"
+    },
+    {
+      "event_kind": "decision_record",
+      "event_role": "declaration",
+      "heading_ref": null,
+      "id": "event:repo:995fd785072f0aa48f16",
+      "observation_state": "declared",
+      "path": "docs/decisions/AOA-SK-D-0034-decision-graph-skill-chain.md",
+      "source_record_id": "file:docs/decisions/aoa-sk-d-0034-decision-graph-skill-chain.md:dcac9a70fb"
+    },
+    {
+      "event_kind": "decision_record",
+      "event_role": "declaration",
+      "heading_ref": null,
+      "id": "event:repo:f34c2bb982c1ed8f0593",
+      "observation_state": "declared",
+      "path": "docs/decisions/AOA-SK-D-0035-decision-graph-impact-and-issue-aware-skills.md",
+      "source_record_id": "file:docs/decisions/aoa-sk-d-0035-decision-graph-impact-and-issue-aware-skills.md:745b9bb288"
+    },
+    {
+      "event_kind": "decision_record",
+      "event_role": "declaration",
+      "heading_ref": null,
+      "id": "event:repo:f3d4e32cdca404a8974c",
+      "observation_state": "declared",
+      "path": "docs/decisions/AOA-SK-D-0036-codex-user-skill-root-and-foundation-profile.md",
+      "source_record_id": "file:docs/decisions/aoa-sk-d-0036-codex-user-skill-root-and-foundation-profile.md:657b6e9f1b"
+    },
+    {
+      "event_kind": "decision_record",
+      "event_role": "declaration",
+      "heading_ref": null,
+      "id": "event:repo:bdb17b7d37863195b6e9",
+      "observation_state": "declared",
+      "path": "docs/decisions/TEMPLATE.md",
+      "source_record_id": "file:docs/decisions/template.md:874770b824"
+    },
+    {
+      "event_kind": "decision_record",
+      "event_role": "declaration",
+      "heading_ref": null,
+      "id": "event:repo:17ef6f7883138d5ff752",
+      "observation_state": "declared",
+      "path": "docs/decisions/indexes/by-date.md",
+      "source_record_id": "file:docs/decisions/indexes/by-date.md:7f76a83a93"
+    },
+    {
+      "event_kind": "decision_record",
+      "event_role": "declaration",
+      "heading_ref": null,
+      "id": "event:repo:bcf0dedfc8c79033e6af",
+      "observation_state": "declared",
+      "path": "docs/decisions/indexes/by-guard.md",
+      "source_record_id": "file:docs/decisions/indexes/by-guard.md:8ae406686a"
+    },
+    {
+      "event_kind": "decision_record",
+      "event_role": "declaration",
+      "heading_ref": null,
+      "id": "event:repo:d30e0f7202daa891a959",
+      "observation_state": "declared",
+      "path": "docs/decisions/indexes/by-mechanic.md",
+      "source_record_id": "file:docs/decisions/indexes/by-mechanic.md:ebd094489b"
+    },
+    {
+      "event_kind": "decision_record",
+      "event_role": "declaration",
+      "heading_ref": null,
+      "id": "event:repo:a7ba4a8586fc8a9fbb91",
+      "observation_state": "declared",
+      "path": "docs/decisions/indexes/by-number.md",
+      "source_record_id": "file:docs/decisions/indexes/by-number.md:02e6940a39"
+    },
+    {
+      "event_kind": "decision_record",
+      "event_role": "declaration",
+      "heading_ref": null,
+      "id": "event:repo:c7cc536f7f9f2df0f5f1",
+      "observation_state": "declared",
+      "path": "docs/decisions/indexes/by-skill-lane.md",
+      "source_record_id": "file:docs/decisions/indexes/by-skill-lane.md:22ecd56127"
+    },
+    {
+      "event_kind": "decision_record",
+      "event_role": "declaration",
+      "heading_ref": null,
+      "id": "event:repo:c50edaff5667214f1564",
+      "observation_state": "declared",
+      "path": "docs/decisions/indexes/by-surface.md",
+      "source_record_id": "file:docs/decisions/indexes/by-surface.md:acd156903f"
+    },
+    {
+      "event_kind": "validation_receipt",
+      "event_role": "receipt",
+      "heading_ref": null,
+      "id": "event:repo:9da9c1f365662d350e06",
+      "observation_state": "observed",
+      "path": "kag/receipts/validation_receipt.json",
+      "source_record_id": "file:kag/receipts/validation_receipt.json:8e616be0cd"
+    },
+    {
+      "event_kind": "generation_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:a666ee9a9c4ce449e59e",
+      "observation_state": "declared",
+      "path": "mechanics/agon/parts/epistemic-candidate-boundary/scripts/build_agon_epistemic_skill_candidates.py",
+      "source_record_id": "file:mechanics/agon/parts/epistemic-candidate-boundary/scripts/build_agon_epistemic_skill_candidates.py:f878ccee39"
+    },
+    {
+      "event_kind": "validation_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:93e6b9ed7da490e0c7d1",
+      "observation_state": "declared",
+      "path": "mechanics/agon/parts/epistemic-candidate-boundary/scripts/validate_agon_epistemic_skill_candidates.py",
+      "source_record_id": "file:mechanics/agon/parts/epistemic-candidate-boundary/scripts/validate_agon_epistemic_skill_candidates.py:17c4950a7e"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:2d484cc54fc494cfe1a6",
+      "observation_state": "declared",
+      "path": "mechanics/agon/parts/epistemic-candidate-boundary/tests/test_agon_epistemic_skill_candidates.py",
+      "source_record_id": "file:mechanics/agon/parts/epistemic-candidate-boundary/tests/test_agon_epistemic_skill_candidates.py:7903cd934a"
+    },
+    {
+      "event_kind": "generation_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:feb81bbfd1002293f4d6",
+      "observation_state": "declared",
+      "path": "mechanics/agon/parts/workflow-candidate-bridge/scripts/build_agon_skill_binding_candidates.py",
+      "source_record_id": "file:mechanics/agon/parts/workflow-candidate-bridge/scripts/build_agon_skill_binding_candidates.py:adfbd30e6e"
+    },
+    {
+      "event_kind": "validation_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:78d823f65d8f9392cf07",
+      "observation_state": "declared",
+      "path": "mechanics/agon/parts/workflow-candidate-bridge/scripts/validate_agon_skill_binding_candidates.py",
+      "source_record_id": "file:mechanics/agon/parts/workflow-candidate-bridge/scripts/validate_agon_skill_binding_candidates.py:39b6c611c5"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:8b0f2d3ad67415fc6fb6",
+      "observation_state": "declared",
+      "path": "mechanics/agon/parts/workflow-candidate-bridge/tests/test_agon_skill_binding_candidates.py",
+      "source_record_id": "file:mechanics/agon/parts/workflow-candidate-bridge/tests/test_agon_skill_binding_candidates.py:4c56bf6f4d"
+    },
+    {
+      "event_kind": "validation_receipt",
+      "event_role": "receipt",
+      "heading_ref": null,
+      "id": "event:repo:560826e6271e0056c3d4",
+      "observation_state": "observed",
+      "path": "memo/receipts/.gitkeep",
+      "source_record_id": "file:memo/receipts/.gitkeep:eb3b036b02"
+    },
+    {
+      "event_kind": "command_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:9f8e7c1ce4fc5fd11a2e",
+      "observation_state": "declared",
+      "path": "scripts/activate_skill.py",
+      "source_record_id": "file:scripts/activate_skill.py:f2153a6665"
+    },
+    {
+      "event_kind": "command_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:ae3d8f9b56e0d12acb66",
+      "observation_state": "declared",
+      "path": "scripts/activation/activate_skill.py",
+      "source_record_id": "file:scripts/activation/activate_skill.py:dc7d6880f8"
+    },
+    {
+      "event_kind": "generation_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:e7b3ff7fa9e13e23fcdc",
+      "observation_state": "declared",
+      "path": "scripts/adapters/build_openai_yaml_examples.py",
+      "source_record_id": "file:scripts/adapters/build_openai_yaml_examples.py:657cc89a8d"
+    },
+    {
+      "event_kind": "command_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:e96708cbff6f349b4f9f",
+      "observation_state": "declared",
+      "path": "scripts/adapters/render_codex_config.py",
+      "source_record_id": "file:scripts/adapters/render_codex_config.py:f4e66324c9"
+    },
+    {
+      "event_kind": "command_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:4d328206a8f9b937c1ee",
+      "observation_state": "declared",
+      "path": "scripts/audit/audit_skill_quality.py",
+      "source_record_id": "file:scripts/audit/audit_skill_quality.py:a33ab535ca"
+    },
+    {
+      "event_kind": "command_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:2227642b85934fdeaedb",
+      "observation_state": "declared",
+      "path": "scripts/audit/audit_workspace_skill_adoption.py",
+      "source_record_id": "file:scripts/audit/audit_workspace_skill_adoption.py:640803597e"
+    },
+    {
+      "event_kind": "command_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:8e0ac6f7776fbb4f3792",
+      "observation_state": "declared",
+      "path": "scripts/audit/run_skill_reality_trials.py",
+      "source_record_id": "file:scripts/audit/run_skill_reality_trials.py:37865a2b02"
+    },
+    {
+      "event_kind": "generation_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:55ba8a2a567ab7c0adc1",
+      "observation_state": "declared",
+      "path": "scripts/builders/build_catalog.py",
+      "source_record_id": "file:scripts/builders/build_catalog.py:ad692317d5"
+    },
+    {
+      "event_kind": "generation_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:73518dc381be6444dd36",
+      "observation_state": "declared",
+      "path": "scripts/builders/build_description_trigger_evals.py",
+      "source_record_id": "file:scripts/builders/build_description_trigger_evals.py:8173cba511"
+    },
+    {
+      "event_kind": "generation_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:aa87df85852fd1d82a46",
+      "observation_state": "declared",
+      "path": "scripts/builders/build_support_resources.py",
+      "source_record_id": "file:scripts/builders/build_support_resources.py:4a7e804d1e"
+    },
+    {
+      "event_kind": "generation_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:1487608cdd1ec964e145",
+      "observation_state": "declared",
+      "path": "scripts/builders/build_tiny_router_inputs.py",
+      "source_record_id": "file:scripts/builders/build_tiny_router_inputs.py:f781eb5b5a"
+    },
+    {
+      "event_kind": "generation_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:0ab48cad614a398080ad",
+      "observation_state": "declared",
+      "path": "scripts/builders/build_trigger_eval_cases.py",
+      "source_record_id": "file:scripts/builders/build_trigger_eval_cases.py:1b0f06778e"
+    },
+    {
+      "event_kind": "command_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:6fd8ee9f070470f2921f",
+      "observation_state": "declared",
+      "path": "scripts/bundles/export_skill_bundle.py",
+      "source_record_id": "file:scripts/bundles/export_skill_bundle.py:b1d4d8b0fb"
+    },
+    {
+      "event_kind": "command_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:6fef51e05660b0929cee",
+      "observation_state": "declared",
+      "path": "scripts/bundles/import_skill_pack.py",
+      "source_record_id": "file:scripts/bundles/import_skill_pack.py:60b8063593"
+    },
+    {
+      "event_kind": "command_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:cade35c18d2f6a8bab85",
+      "observation_state": "declared",
+      "path": "scripts/bundles/inspect_skill_pack.py",
+      "source_record_id": "file:scripts/bundles/inspect_skill_pack.py:af7b2fd8e2"
+    },
+    {
+      "event_kind": "command_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:9bc02f19515f856d3b47",
+      "observation_state": "declared",
+      "path": "scripts/bundles/install_skill_pack.py",
+      "source_record_id": "file:scripts/bundles/install_skill_pack.py:9e4ef483b4"
+    },
+    {
+      "event_kind": "command_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:9e6e140a60cd0302ca10",
+      "observation_state": "declared",
+      "path": "scripts/bundles/smoke_skill_pack_handoff.py",
+      "source_record_id": "file:scripts/bundles/smoke_skill_pack_handoff.py:2214494325"
+    },
+    {
+      "event_kind": "command_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:f96b435bb06b97bcc522",
+      "observation_state": "declared",
+      "path": "scripts/bundles/stage_skill_pack.py",
+      "source_record_id": "file:scripts/bundles/stage_skill_pack.py:9f1b31e062"
+    },
+    {
+      "event_kind": "command_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:552ec7662c8a24c1cd05",
+      "observation_state": "declared",
+      "path": "scripts/bundles/verify_skill_pack.py",
+      "source_record_id": "file:scripts/bundles/verify_skill_pack.py:11baca2564"
+    },
+    {
+      "event_kind": "validation_lane_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:9dba0f2d028caa123fc2",
+      "observation_state": "declared",
+      "path": "scripts/ci_gate.py",
+      "source_record_id": "file:scripts/ci_gate.py:c5138334e3"
+    },
+    {
+      "event_kind": "generation_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:fc9dadbe0ed3103866c3",
+      "observation_state": "declared",
+      "path": "scripts/decisions/generate_decision_indexes.py",
+      "source_record_id": "file:scripts/decisions/generate_decision_indexes.py:6c30f1fff3"
+    },
+    {
+      "event_kind": "generation_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:3cd2db7e0c6d453014f4",
+      "observation_state": "declared",
+      "path": "scripts/export/build_agent_skills.py",
+      "source_record_id": "file:scripts/export/build_agent_skills.py:4ae5989616"
+    },
+    {
+      "event_kind": "command_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:19d2b2cd8abffb3dcec8",
+      "observation_state": "declared",
+      "path": "scripts/import_skill_pack.py",
+      "source_record_id": "file:scripts/import_skill_pack.py:57642af2d0"
+    },
+    {
+      "event_kind": "command_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:7201aa330d747098d2f8",
+      "observation_state": "declared",
+      "path": "scripts/inspect_skill.py",
+      "source_record_id": "file:scripts/inspect_skill.py:3dce500649"
+    },
+    {
+      "event_kind": "command_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:ea6e582cc3d1c744e10d",
+      "observation_state": "declared",
+      "path": "scripts/inspect_skill_pack.py",
+      "source_record_id": "file:scripts/inspect_skill_pack.py:cd9031233c"
+    },
+    {
+      "event_kind": "command_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:b276b87342c01f4fccb9",
+      "observation_state": "declared",
+      "path": "scripts/install_skill_pack.py",
+      "source_record_id": "file:scripts/install_skill_pack.py:0071e2fe24"
+    },
+    {
+      "event_kind": "validation_lane_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:0381a72d2535f592f91b",
+      "observation_state": "declared",
+      "path": "scripts/lanes/ci_gate.py",
+      "source_record_id": "file:scripts/lanes/ci_gate.py:ab5a4aa456"
+    },
+    {
+      "event_kind": "validation_lane_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:b5c99cd0e5f7c76450f7",
+      "observation_state": "declared",
+      "path": "scripts/lanes/release_check.py",
+      "source_record_id": "file:scripts/lanes/release_check.py:fe9958c9b9"
+    },
+    {
+      "event_kind": "validation_receipt",
+      "event_role": "receipt",
+      "heading_ref": null,
+      "id": "event:repo:a7379b296958586651c0",
+      "observation_state": "observed",
+      "path": "scripts/receipts/__init__.py",
+      "source_record_id": "file:scripts/receipts/__init__.py:cfcd35984e"
+    },
+    {
+      "event_kind": "validation_receipt",
+      "event_role": "receipt",
+      "heading_ref": null,
+      "id": "event:repo:73a5611fcd0edf2860bd",
+      "observation_state": "observed",
+      "path": "scripts/receipts/publish_core_skill_receipts.py",
+      "source_record_id": "file:scripts/receipts/publish_core_skill_receipts.py:2f4127b016"
+    },
+    {
+      "event_kind": "validation_receipt",
+      "event_role": "receipt",
+      "heading_ref": null,
+      "id": "event:repo:0bd1d70b3c9331d7aac2",
+      "observation_state": "observed",
+      "path": "scripts/receipts/publish_live_receipts.py",
+      "source_record_id": "file:scripts/receipts/publish_live_receipts.py:b9f8bbd9d8"
+    },
+    {
+      "event_kind": "command_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:d4cdf83693e03964cc2f",
+      "observation_state": "declared",
+      "path": "scripts/refresh/refresh_skill_from_manifest.py",
+      "source_record_id": "file:scripts/refresh/refresh_skill_from_manifest.py:05cf1c4d6d"
+    },
+    {
+      "event_kind": "command_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:f1d3c2cc7c1b49d87993",
+      "observation_state": "declared",
+      "path": "scripts/refresh/refresh_skill_from_techniques.py",
+      "source_record_id": "file:scripts/refresh/refresh_skill_from_techniques.py:fe8e889ba1"
+    },
+    {
+      "event_kind": "validation_lane_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:7bf0631d879f701308ec",
+      "observation_state": "declared",
+      "path": "scripts/release_check.py",
+      "source_record_id": "file:scripts/release_check.py:070046d3ac"
+    },
+    {
+      "event_kind": "command_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:a766b0ffe36e57960ca2",
+      "observation_state": "declared",
+      "path": "scripts/reports/report_skill_boundaries.py",
+      "source_record_id": "file:scripts/reports/report_skill_boundaries.py:ef8740f89e"
+    },
+    {
+      "event_kind": "command_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:8edccdd71275659b0bf5",
+      "observation_state": "declared",
+      "path": "scripts/reports/report_skill_evaluation.py",
+      "source_record_id": "file:scripts/reports/report_skill_evaluation.py:63bf9126b5"
+    },
+    {
+      "event_kind": "command_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:4eb5bc0b966b83cece3e",
+      "observation_state": "declared",
+      "path": "scripts/reports/report_skill_promotion_pressure.py",
+      "source_record_id": "file:scripts/reports/report_skill_promotion_pressure.py:8ccd6d1f40"
+    },
+    {
+      "event_kind": "command_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:04f869bcfd530b6d97f3",
+      "observation_state": "declared",
+      "path": "scripts/reports/report_technique_drift.py",
+      "source_record_id": "file:scripts/reports/report_technique_drift.py:203d961347"
+    },
+    {
+      "event_kind": "generation_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:3f339c40f1e669429b22",
+      "observation_state": "declared",
+      "path": "scripts/runtime/build_runtime_guardrails.py",
+      "source_record_id": "file:scripts/runtime/build_runtime_guardrails.py:dcef4f6c06"
+    },
+    {
+      "event_kind": "generation_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:dfe6cc4648605996c51b",
+      "observation_state": "declared",
+      "path": "scripts/runtime/build_runtime_seam.py",
+      "source_record_id": "file:scripts/runtime/build_runtime_seam.py:d8ea10ac67"
+    },
+    {
+      "event_kind": "command_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:da186003813ebe2b6a78",
+      "observation_state": "declared",
+      "path": "scripts/runtime/inspect_skill.py",
+      "source_record_id": "file:scripts/runtime/inspect_skill.py:bbc6f7a936"
+    },
+    {
+      "event_kind": "command_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:63a2fe030f10d0bc5764",
+      "observation_state": "declared",
+      "path": "scripts/runtime/skill_runtime_guardrails.py",
+      "source_record_id": "file:scripts/runtime/skill_runtime_guardrails.py:8b0f1d73be"
+    },
+    {
+      "event_kind": "command_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:27607084c27a409f7399",
+      "observation_state": "declared",
+      "path": "scripts/runtime/skill_runtime_seam.py",
+      "source_record_id": "file:scripts/runtime/skill_runtime_seam.py:8fe1c986d9"
+    },
+    {
+      "event_kind": "command_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:4cf76941c7a856f442d6",
+      "observation_state": "declared",
+      "path": "scripts/skill_model/skill_intelligence.py",
+      "source_record_id": "file:scripts/skill_model/skill_intelligence.py:8f617cd68a"
+    },
+    {
+      "event_kind": "command_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:420de42b5d8dfa5b51d8",
+      "observation_state": "declared",
+      "path": "scripts/skill_runtime_guardrails.py",
+      "source_record_id": "file:scripts/skill_runtime_guardrails.py:21574d3ae3"
+    },
+    {
+      "event_kind": "command_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:719d7d827b98de1966a0",
+      "observation_state": "declared",
+      "path": "scripts/skill_runtime_seam.py",
+      "source_record_id": "file:scripts/skill_runtime_seam.py:74efa9ba46"
+    },
+    {
+      "event_kind": "command_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:49366113e863d82150ef",
+      "observation_state": "declared",
+      "path": "scripts/smoke_skill_pack_handoff.py",
+      "source_record_id": "file:scripts/smoke_skill_pack_handoff.py:02fb0ccb5d"
+    },
+    {
+      "event_kind": "command_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:a7307dc37be7794476c0",
+      "observation_state": "declared",
+      "path": "scripts/stage_skill_pack.py",
+      "source_record_id": "file:scripts/stage_skill_pack.py:0862c46234"
+    },
+    {
+      "event_kind": "command_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:0dcfe72568fe7e6b83a9",
+      "observation_state": "declared",
+      "path": "scripts/validation/lint_description_trigger_evals.py",
+      "source_record_id": "file:scripts/validation/lint_description_trigger_evals.py:a2a277caa4"
+    },
+    {
+      "event_kind": "command_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:619c5ec408737f9c3da4",
+      "observation_state": "declared",
+      "path": "scripts/validation/lint_pack_profiles.py",
+      "source_record_id": "file:scripts/validation/lint_pack_profiles.py:192bb17f63"
+    },
+    {
+      "event_kind": "command_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:04cb01bbf36b313b4399",
+      "observation_state": "declared",
+      "path": "scripts/validation/lint_support_resources.py",
+      "source_record_id": "file:scripts/validation/lint_support_resources.py:32cac55949"
+    },
+    {
+      "event_kind": "command_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:3249f4c83aa63a3ce4a2",
+      "observation_state": "declared",
+      "path": "scripts/validation/lint_trigger_evals.py",
+      "source_record_id": "file:scripts/validation/lint_trigger_evals.py:c4cde428f1"
+    },
+    {
+      "event_kind": "command_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:264322fa205e97dbe7b4",
+      "observation_state": "declared",
+      "path": "scripts/validation/run_skills_ref_validation.py",
+      "source_record_id": "file:scripts/validation/run_skills_ref_validation.py:71b680f060"
+    },
+    {
+      "event_kind": "validation_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:934bc5b0d9abc3237622",
+      "observation_state": "declared",
+      "path": "scripts/validation/validate_abyss_machine_artifact_bundle.py",
+      "source_record_id": "file:scripts/validation/validate_abyss_machine_artifact_bundle.py:31b3fa32a6"
+    },
+    {
+      "event_kind": "validation_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:bf37a0c663836a2677d7",
+      "observation_state": "declared",
+      "path": "scripts/validation/validate_agent_skills.py",
+      "source_record_id": "file:scripts/validation/validate_agent_skills.py:74150ac86c"
+    },
+    {
+      "event_kind": "validation_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:da69e3a1fde271ebf1a9",
+      "observation_state": "declared",
+      "path": "scripts/validation/validate_agents_design.py",
+      "source_record_id": "file:scripts/validation/validate_agents_design.py:5653dd3da6"
+    },
+    {
+      "event_kind": "validation_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:d06dadae0f1ffce54e99",
+      "observation_state": "declared",
+      "path": "scripts/validation/validate_nested_agents.py",
+      "source_record_id": "file:scripts/validation/validate_nested_agents.py:d16c5a17b8"
+    },
+    {
+      "event_kind": "validation_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:ca977bf5fed527e53712",
+      "observation_state": "declared",
+      "path": "scripts/validation/validate_skill_mcp_wiring.py",
+      "source_record_id": "file:scripts/validation/validate_skill_mcp_wiring.py:b3de4ce38a"
+    },
+    {
+      "event_kind": "validation_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:da112789db6a2f1f14aa",
+      "observation_state": "declared",
+      "path": "scripts/validation/validate_skills.py",
+      "source_record_id": "file:scripts/validation/validate_skills.py:f3911c3ae0"
+    },
+    {
+      "event_kind": "validation_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:48855f508a111a20b91c",
+      "observation_state": "declared",
+      "path": "scripts/validation/validate_support_resources.py",
+      "source_record_id": "file:scripts/validation/validate_support_resources.py:3344f87f6f"
+    },
+    {
+      "event_kind": "validation_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:02ab971f0f4a3ce415ca",
+      "observation_state": "declared",
+      "path": "scripts/validation/validate_tiny_router_inputs.py",
+      "source_record_id": "file:scripts/validation/validate_tiny_router_inputs.py:0515d7f25f"
+    },
+    {
+      "event_kind": "command_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:ae1473b5efe3a1f5a5e6",
+      "observation_state": "declared",
+      "path": "scripts/validation_lanes.py",
+      "source_record_id": "file:scripts/validation_lanes.py:dda053a98d"
+    },
+    {
+      "event_kind": "command_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:324488f5f5310495050f",
+      "observation_state": "declared",
+      "path": "scripts/verify_skill_pack.py",
+      "source_record_id": "file:scripts/verify_skill_pack.py:2e1cb91265"
+    },
+    {
+      "event_kind": "command_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:6e298cd9b47ed55624ea",
+      "observation_state": "declared",
+      "path": "skills/risk/aoa-dry-run-first/scripts/dry_run_contract.py",
+      "source_record_id": "file:skills/risk/aoa-dry-run-first/scripts/dry_run_contract.py:98f72569da"
+    },
+    {
+      "event_kind": "command_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:0e3cd5df057ce3797e14",
+      "observation_state": "declared",
+      "path": "skills/risk/aoa-dry-run-first/scripts/preview_gap_check.py",
+      "source_record_id": "file:skills/risk/aoa-dry-run-first/scripts/preview_gap_check.py:6d3e8c89f2"
+    },
+    {
+      "event_kind": "command_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:ee4e233f55ef6bb837a4",
+      "observation_state": "declared",
+      "path": "skills/risk/aoa-local-stack-bringup/scripts/bringup_contract.py",
+      "source_record_id": "file:skills/risk/aoa-local-stack-bringup/scripts/bringup_contract.py:1267de7017"
+    },
+    {
+      "event_kind": "command_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:744f4e3b33e188f7f789",
+      "observation_state": "declared",
+      "path": "skills/risk/aoa-local-stack-bringup/scripts/readiness_summary.py",
+      "source_record_id": "file:skills/risk/aoa-local-stack-bringup/scripts/readiness_summary.py:c7301207ee"
+    },
+    {
+      "event_kind": "command_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:61e6226250feb4492c20",
+      "observation_state": "declared",
+      "path": "skills/risk/aoa-safe-infra-change/scripts/infra_change_contract.py",
+      "source_record_id": "file:skills/risk/aoa-safe-infra-change/scripts/infra_change_contract.py:1adb83164e"
+    },
+    {
+      "event_kind": "command_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:e4fe3f115c31a3ac1941",
+      "observation_state": "declared",
+      "path": "skills/risk/aoa-safe-infra-change/scripts/risk_surface_scan.py",
+      "source_record_id": "file:skills/risk/aoa-safe-infra-change/scripts/risk_surface_scan.py:5d10a1705a"
+    },
+    {
+      "event_kind": "generation_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:15c923ed8a740b06c2e2",
+      "observation_state": "declared",
+      "path": "tests/support/build_catalog_case.py",
+      "source_record_id": "file:tests/support/build_catalog_case.py:98253b9b78"
+    },
+    {
+      "event_kind": "validation_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:b6ff86fecaa65e1aca67",
+      "observation_state": "declared",
+      "path": "tests/support/validate_skills_case.py",
+      "source_record_id": "file:tests/support/validate_skills_case.py:17eecf8767"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:9a4cb377d3f94c69f12a",
+      "observation_state": "declared",
+      "path": "tests/test_abyss_machine_artifact_bundle.py",
+      "source_record_id": "file:tests/test_abyss_machine_artifact_bundle.py:d0a656f8b0"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:052a69ab5b99870f3c87",
+      "observation_state": "declared",
+      "path": "tests/test_agentic_fault_boundaries.py",
+      "source_record_id": "file:tests/test_agentic_fault_boundaries.py:5ceb0270d4"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:42dde676e643a6ca034c",
+      "observation_state": "declared",
+      "path": "tests/test_agentic_trace_contract.py",
+      "source_record_id": "file:tests/test_agentic_trace_contract.py:a60e66153e"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:337101595af4ec7fadda",
+      "observation_state": "declared",
+      "path": "tests/test_aoa_eval_prompt_trigger_harness.py",
+      "source_record_id": "file:tests/test_aoa_eval_prompt_trigger_harness.py:462516f6f9"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:7dd437e82cf3df3a7635",
+      "observation_state": "declared",
+      "path": "tests/test_aoa_eval_trigger_corpus.py",
+      "source_record_id": "file:tests/test_aoa_eval_trigger_corpus.py:10fdab2986"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:dac4ddb7c7c0b5b6bf58",
+      "observation_state": "declared",
+      "path": "tests/test_aoa_summon_e2e_fixture.py",
+      "source_record_id": "file:tests/test_aoa_summon_e2e_fixture.py:8738e09556"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:545accfd98acc782c9af",
+      "observation_state": "declared",
+      "path": "tests/test_build_catalog_core.py",
+      "source_record_id": "file:tests/test_build_catalog_core.py:dbe4f55fa9"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:09bfffbe0c067792d873",
+      "observation_state": "declared",
+      "path": "tests/test_build_catalog_evaluation_matrix.py",
+      "source_record_id": "file:tests/test_build_catalog_evaluation_matrix.py:221ee7683f"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:0b4b8fcbd548506c1791",
+      "observation_state": "declared",
+      "path": "tests/test_build_catalog_governance.py",
+      "source_record_id": "file:tests/test_build_catalog_governance.py:db61a6f534"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:748a23dc84e091be96cc",
+      "observation_state": "declared",
+      "path": "tests/test_build_catalog_overlay_profiles.py",
+      "source_record_id": "file:tests/test_build_catalog_overlay_profiles.py:b1e89dad06"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:6a68b1a67080423a948b",
+      "observation_state": "declared",
+      "path": "tests/test_build_catalog_public_readmodels.py",
+      "source_record_id": "file:tests/test_build_catalog_public_readmodels.py:5406dcc877"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:8322bf682db5b59eb3cc",
+      "observation_state": "declared",
+      "path": "tests/test_build_openai_yaml_examples.py",
+      "source_record_id": "file:tests/test_build_openai_yaml_examples.py:94585e5dad"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:ddb0a58f33cc54212f21",
+      "observation_state": "declared",
+      "path": "tests/test_candidate_review_records.py",
+      "source_record_id": "file:tests/test_candidate_review_records.py:9c6a3d242f"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:0ef08001fe51392e3483",
+      "observation_state": "declared",
+      "path": "tests/test_canonical_gate_checks.py",
+      "source_record_id": "file:tests/test_canonical_gate_checks.py:e07c6f53cf"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:f818d835dcd9c69e17e5",
+      "observation_state": "declared",
+      "path": "tests/test_ci_gate.py",
+      "source_record_id": "file:tests/test_ci_gate.py:8fb69627f7"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:e7be2f1217686620fcb4",
+      "observation_state": "declared",
+      "path": "tests/test_codex_portable_contract.py",
+      "source_record_id": "file:tests/test_codex_portable_contract.py:f4875b0c43"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:6effc07f43fb7f4a6f84",
+      "observation_state": "declared",
+      "path": "tests/test_component_refresh_law.py",
+      "source_record_id": "file:tests/test_component_refresh_law.py:81c69c88fb"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:bd131ba5864bbb912bc0",
+      "observation_state": "declared",
+      "path": "tests/test_current_direction_routes.py",
+      "source_record_id": "file:tests/test_current_direction_routes.py:098f12afb4"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:dd564e49a2b4aabfa6a2",
+      "observation_state": "declared",
+      "path": "tests/test_decision_indexes.py",
+      "source_record_id": "file:tests/test_decision_indexes.py:b90af86566"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:448e680455ff9f377006",
+      "observation_state": "declared",
+      "path": "tests/test_description_trigger_builder.py",
+      "source_record_id": "file:tests/test_description_trigger_builder.py:7b973d4317"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:2bb381d652f3c1d5b25a",
+      "observation_state": "declared",
+      "path": "tests/test_downstream_feed_contracts.py",
+      "source_record_id": "file:tests/test_downstream_feed_contracts.py:abc4f4e39f"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:82a16e10256bd413f26b",
+      "observation_state": "declared",
+      "path": "tests/test_evaluated_status_checks.py",
+      "source_record_id": "file:tests/test_evaluated_status_checks.py:4c228a06c6"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:c6986dca9999ff06ba12",
+      "observation_state": "declared",
+      "path": "tests/test_experience_governance_contracts.py",
+      "source_record_id": "file:tests/test_experience_governance_contracts.py:b1323ac9bc"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:dce4c2235d3e511cdb0b",
+      "observation_state": "declared",
+      "path": "tests/test_experience_installation_boundary_contracts.py",
+      "source_record_id": "file:tests/test_experience_installation_boundary_contracts.py:54018200c2"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:84c85f48c5fe3a14edbb",
+      "observation_state": "declared",
+      "path": "tests/test_export_skill_bundle.py",
+      "source_record_id": "file:tests/test_export_skill_bundle.py:5e291b3693"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:177e7f913e6f5a0cbcfe",
+      "observation_state": "declared",
+      "path": "tests/test_generated_surface_schemas.py",
+      "source_record_id": "file:tests/test_generated_surface_schemas.py:0936f7c8c4"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:d13b6a31d089f3f08461",
+      "observation_state": "declared",
+      "path": "tests/test_import_skill_pack.py",
+      "source_record_id": "file:tests/test_import_skill_pack.py:b9b1e86364"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:10be5b0030d835d575ba",
+      "observation_state": "declared",
+      "path": "tests/test_inspect_skill.py",
+      "source_record_id": "file:tests/test_inspect_skill.py:104f931a4e"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:45e217dede1f14e33f30",
+      "observation_state": "declared",
+      "path": "tests/test_inspect_skill_pack.py",
+      "source_record_id": "file:tests/test_inspect_skill_pack.py:c9b3dae064"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:ca2454b7f1602167da7d",
+      "observation_state": "declared",
+      "path": "tests/test_install_profiles.py",
+      "source_record_id": "file:tests/test_install_profiles.py:02d9ee6d62"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:c7edd6d0d48b910d3be7",
+      "observation_state": "declared",
+      "path": "tests/test_maturity_model_docs.py",
+      "source_record_id": "file:tests/test_maturity_model_docs.py:f824f64798"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:e686e10104387864babf",
+      "observation_state": "declared",
+      "path": "tests/test_mechanics_topology.py",
+      "source_record_id": "file:tests/test_mechanics_topology.py:915b0d0cb3"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:0d1cd24161f9bf930a43",
+      "observation_state": "declared",
+      "path": "tests/test_method_growth_adoption_contracts.py",
+      "source_record_id": "file:tests/test_method_growth_adoption_contracts.py:33b20a4ae2"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:1fcbf4faa0dec8569071",
+      "observation_state": "declared",
+      "path": "tests/test_nested_agents_docs.py",
+      "source_record_id": "file:tests/test_nested_agents_docs.py:d990104fd4"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:66998a46b3c937964be6",
+      "observation_state": "declared",
+      "path": "tests/test_project_core_kernel_governance.py",
+      "source_record_id": "file:tests/test_project_core_kernel_governance.py:9ce9adadb3"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:9970cecab9a5f6dab678",
+      "observation_state": "declared",
+      "path": "tests/test_promotion_path_governance.py",
+      "source_record_id": "file:tests/test_promotion_path_governance.py:b2d64c1a60"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:3754bee369b96f432d2f",
+      "observation_state": "declared",
+      "path": "tests/test_refresh_skill_from_manifest.py",
+      "source_record_id": "file:tests/test_refresh_skill_from_manifest.py:0d1d58624e"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:68b4b72bc928f543688e",
+      "observation_state": "declared",
+      "path": "tests/test_refresh_skill_from_techniques.py",
+      "source_record_id": "file:tests/test_refresh_skill_from_techniques.py:08bb822467"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:17b13257c558d0c8689b",
+      "observation_state": "declared",
+      "path": "tests/test_release_check.py",
+      "source_record_id": "file:tests/test_release_check.py:3f21f1424c"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:8508756161d3c1f81954",
+      "observation_state": "declared",
+      "path": "tests/test_release_docs.py",
+      "source_record_id": "file:tests/test_release_docs.py:336ca319f6"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:7127ad6949c4c79fc998",
+      "observation_state": "declared",
+      "path": "tests/test_release_manifest_contract.py",
+      "source_record_id": "file:tests/test_release_manifest_contract.py:3b8833157f"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:75195cf32585516e6931",
+      "observation_state": "declared",
+      "path": "tests/test_report_skill_boundaries.py",
+      "source_record_id": "file:tests/test_report_skill_boundaries.py:a15a74292e"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:754239cde5f50736f67e",
+      "observation_state": "declared",
+      "path": "tests/test_report_skill_evaluation.py",
+      "source_record_id": "file:tests/test_report_skill_evaluation.py:30a9424a59"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:cbc915f5115b008ca72b",
+      "observation_state": "declared",
+      "path": "tests/test_report_technique_drift.py",
+      "source_record_id": "file:tests/test_report_technique_drift.py:ce01ddb390"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:5576d7b2e92cfb6fa193",
+      "observation_state": "declared",
+      "path": "tests/test_roadmap_parity.py",
+      "source_record_id": "file:tests/test_roadmap_parity.py:574915dc67"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:1650a027378a6dd069f2",
+      "observation_state": "declared",
+      "path": "tests/test_runtime_discovery_contract.py",
+      "source_record_id": "file:tests/test_runtime_discovery_contract.py:c9585f2e14"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:0648d625352cec8f896b",
+      "observation_state": "declared",
+      "path": "tests/test_runtime_guardrails.py",
+      "source_record_id": "file:tests/test_runtime_guardrails.py:43515a1e8e"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:0489b2acbfa6810161b0",
+      "observation_state": "declared",
+      "path": "tests/test_runtime_guardrails_builder.py",
+      "source_record_id": "file:tests/test_runtime_guardrails_builder.py:bc68d19c40"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:debb962cf8bc38537641",
+      "observation_state": "declared",
+      "path": "tests/test_runtime_seam_toolchain.py",
+      "source_record_id": "file:tests/test_runtime_seam_toolchain.py:6ad266b868"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:734a52d58f100676119a",
+      "observation_state": "declared",
+      "path": "tests/test_runtime_session_contract.py",
+      "source_record_id": "file:tests/test_runtime_session_contract.py:36d1e2a2ca"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:e3e2b3a562468972f38c",
+      "observation_state": "declared",
+      "path": "tests/test_script_topology.py",
+      "source_record_id": "file:tests/test_script_topology.py:6f0a306b0b"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:15d5214f8224acf99cdd",
+      "observation_state": "declared",
+      "path": "tests/test_session_checkpoint_note.py",
+      "source_record_id": "file:tests/test_session_checkpoint_note.py:0737cd9597"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:47f672cf3e6693d24f78",
+      "observation_state": "declared",
+      "path": "tests/test_session_growth_kernel_maturity.py",
+      "source_record_id": "file:tests/test_session_growth_kernel_maturity.py:8e2bddfc2c"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:cdc5dd44925c48d683c1",
+      "observation_state": "declared",
+      "path": "tests/test_skill_bundle_surface.py",
+      "source_record_id": "file:tests/test_skill_bundle_surface.py:971c545f21"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:9a51ea984d4b8c879feb",
+      "observation_state": "declared",
+      "path": "tests/test_skill_evaluation.py",
+      "source_record_id": "file:tests/test_skill_evaluation.py:05cccfa32a"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:c581f08defcc6ec128eb",
+      "observation_state": "declared",
+      "path": "tests/test_skill_intelligence_surface.py",
+      "source_record_id": "file:tests/test_skill_intelligence_surface.py:6e56fd78c8"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:9920a815097c69a937be",
+      "observation_state": "declared",
+      "path": "tests/test_skill_layout.py",
+      "source_record_id": "file:tests/test_skill_layout.py:4d9b727d63"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:9d218b36a75a5692608e",
+      "observation_state": "declared",
+      "path": "tests/test_skill_promotion_pressure.py",
+      "source_record_id": "file:tests/test_skill_promotion_pressure.py:6274d8be4e"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:53f0c92df6daca3a0aae",
+      "observation_state": "declared",
+      "path": "tests/test_skill_quality_audit.py",
+      "source_record_id": "file:tests/test_skill_quality_audit.py:e02a071337"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:6bacbeb8abe511c7819a",
+      "observation_state": "declared",
+      "path": "tests/test_skills_ref_validation.py",
+      "source_record_id": "file:tests/test_skills_ref_validation.py:def702b4df"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:471b2c9dbf3ee2bed148",
+      "observation_state": "declared",
+      "path": "tests/test_smoke_skill_pack_handoff.py",
+      "source_record_id": "file:tests/test_smoke_skill_pack_handoff.py:a8222202a2"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:bc3f921915988257bd87",
+      "observation_state": "declared",
+      "path": "tests/test_stage_skill_pack.py",
+      "source_record_id": "file:tests/test_stage_skill_pack.py:242dd8b032"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:825a020a5a5f78f65fcb",
+      "observation_state": "declared",
+      "path": "tests/test_status_promotion_review_records.py",
+      "source_record_id": "file:tests/test_status_promotion_review_records.py:96d32effa0"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:9d0e775d387c3a88879b",
+      "observation_state": "declared",
+      "path": "tests/test_support_resource_bundles.py",
+      "source_record_id": "file:tests/test_support_resource_bundles.py:fcac50b3b8"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:a4d0d900443bf3829f28",
+      "observation_state": "declared",
+      "path": "tests/test_support_resource_schemas.py",
+      "source_record_id": "file:tests/test_support_resource_schemas.py:036aa7d5a4"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:3613fbc492c64714def9",
+      "observation_state": "declared",
+      "path": "tests/test_test_topology.py",
+      "source_record_id": "file:tests/test_test_topology.py:9474485b91"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:8a0c6d2722ea3ab10980",
+      "observation_state": "declared",
+      "path": "tests/test_tiny_router_inputs.py",
+      "source_record_id": "file:tests/test_tiny_router_inputs.py:dcf1eeed8f"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:c9ade19eb9797ff46c0e",
+      "observation_state": "declared",
+      "path": "tests/test_validate_agent_skills_entrypoint.py",
+      "source_record_id": "file:tests/test_validate_agent_skills_entrypoint.py:ff9e1f527d"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:8b35e94449b72a0d7709",
+      "observation_state": "declared",
+      "path": "tests/test_validate_agents_design.py",
+      "source_record_id": "file:tests/test_validate_agents_design.py:3e563eff8d"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:f65661e996978a71c65b",
+      "observation_state": "declared",
+      "path": "tests/test_validate_skill_mcp_wiring.py",
+      "source_record_id": "file:tests/test_validate_skill_mcp_wiring.py:7d94f0e9a9"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:db2a9710caef9abf3649",
+      "observation_state": "declared",
+      "path": "tests/test_validate_skills_evaluation_contract.py",
+      "source_record_id": "file:tests/test_validate_skills_evaluation_contract.py:33a29e1b51"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:623e83f22cdb5ea5900c",
+      "observation_state": "declared",
+      "path": "tests/test_validate_skills_generated_drift.py",
+      "source_record_id": "file:tests/test_validate_skills_generated_drift.py:19405d9acc"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:87f6b7af4dc00f1b3c08",
+      "observation_state": "declared",
+      "path": "tests/test_validate_skills_questbook_contract.py",
+      "source_record_id": "file:tests/test_validate_skills_questbook_contract.py:a50305fb03"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:58582b1cd5a9fb4b153a",
+      "observation_state": "declared",
+      "path": "tests/test_validate_skills_review_status.py",
+      "source_record_id": "file:tests/test_validate_skills_review_status.py:556ab9faf5"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:1069b7dce796acc750a5",
+      "observation_state": "declared",
+      "path": "tests/test_validate_skills_source_contract.py",
+      "source_record_id": "file:tests/test_validate_skills_source_contract.py:8ff3bdf570"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:fb3e0afb75396dea7a19",
+      "observation_state": "declared",
+      "path": "tests/test_validator_topology.py",
+      "source_record_id": "file:tests/test_validator_topology.py:a09b3075bb"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:68535ffcb75be6cc1a7c",
+      "observation_state": "declared",
+      "path": "tests/test_verify_skill_pack.py",
+      "source_record_id": "file:tests/test_verify_skill_pack.py:a8a6f5faf6"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:a295f56be0df09ba53a6",
+      "observation_state": "declared",
+      "path": "tests/test_workspace_skill_adoption_audit.py",
+      "source_record_id": "file:tests/test_workspace_skill_adoption_audit.py:efb0cbfebf"
+    }
+  ],
+  "index_identity": {
+    "artifact_kind": "repository_event_index",
+    "content_digest": "f080a40df99f360278b48b865d6ac412773985a79260756496a2cb0e5bbc02ba",
+    "index_kind": "event",
+    "local_id": "index:repo-local:events",
+    "schema_ref": "aoa-kag:schemas/repo-local-kag-repository-index.schema.json"
+  },
+  "registry_output": {
+    "consumer": "aoa-kag-mcp",
+    "resource_shape": "repo-local-event-index",
+    "stable_fields": [
+      "id",
+      "event_kind",
+      "event_role",
+      "source_record_id",
+      "path",
+      "heading_ref"
+    ]
+  },
+  "repo": {
+    "git_ref": "git-index-source-tree",
+    "name": "aoa-skills",
+    "owner_type": "organ",
+    "root": "."
+  },
+  "schema_version": "aoa-repo-local-kag-repository-index-v1",
+  "source_index": {
+    "content_digest": "ced63f7044f0b2ce9563c4ebcdb53f451616da147480e1477dc56a421718984e",
+    "local_id": "index:repo-local:source-surfaces",
+    "path": "kag/indexes/source_surface_index.json"
+  },
+  "summary": {
+    "entry_count": 220,
+    "kind_counts": {
+      "command_run": 50,
+      "decision_record": 43,
+      "generation_run": 13,
+      "release_declaration": 7,
+      "release_lane": 1,
+      "test_run": 81,
+      "validation_lane_run": 4,
+      "validation_receipt": 5,
+      "validation_run": 12,
+      "workflow_run": 4
+    }
+  }
+}
