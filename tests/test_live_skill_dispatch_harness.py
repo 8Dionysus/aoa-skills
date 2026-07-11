@@ -239,6 +239,13 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
         self.assertEqual(12, len(self.runner._prompt_visible_repo_skill_names(REPO_ROOT)))
         self.assertIn("aoa-eval", self.runner._prompt_visible_repo_skill_names(REPO_ROOT))
         self.assertNotIn("aoa-eval-apply", self.runner._prompt_visible_repo_skill_names(REPO_ROOT))
+        for cohort in (smoke, pilot, closure):
+            for trial in cohort:
+                if trial.arm_type == "app_server_structured":
+                    self.assertIsNone(
+                        self.runner.TEXTUAL_SKILL_ACTIVATION_RE.search(trial.prompt),
+                        trial.trial_id,
+                    )
 
     def test_default_plan_and_unconfirmed_run_never_spawn_or_write(self) -> None:
         runner = self.runner
@@ -493,6 +500,16 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
         self.assertEqual(180, implicit["timeout_seconds"])
         self.assertEqual(180, trajectory["timeout_seconds"])
         self.assertEqual(240, structured["timeout_seconds"])
+
+        with self.assertRaisesRegex(ValueError, "textual skill activation"):
+            runner.build_app_server_structured_request(
+                context,
+                prompt="Use $aoa-eval-apply for this route.",
+                skill_name="aoa-eval-apply",
+                skill_path=Path(
+                    "/private/fixture/.agents/skills/aoa-eval-apply/SKILL.md"
+                ),
+            )
 
         directory_selector_context = dataclasses.replace(
             context,

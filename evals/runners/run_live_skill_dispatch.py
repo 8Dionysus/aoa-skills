@@ -189,6 +189,9 @@ SKILL_ENTRY_LINE_RE = re.compile(
     r"^- (?P<name>[A-Za-z0-9][A-Za-z0-9:-]*): (?P<description>.*) "
     r"\(file: (?P<path>[^)]+)\)$"
 )
+TEXTUAL_SKILL_ACTIVATION_RE = re.compile(
+    r"(?<![A-Za-z0-9_-])\$(?P<name>[a-z0-9][a-z0-9-]+)\b"
+)
 FORBIDDEN_PUBLIC_KEYS = {
     "argv",
     "command",
@@ -653,7 +656,7 @@ def _structured_trial(
         trial_id=f"{case_id}:structured:{skill_name}",
         arm_type="app_server_structured",
         case_id=case_id,
-        prompt=prompt,
+        prompt=TEXTUAL_SKILL_ACTIVATION_RE.sub(lambda match: match.group("name"), prompt),
         expected_target_skill=skill_name,
         expected_behavior=expected_behavior,
     )
@@ -1206,6 +1209,8 @@ def build_app_server_structured_request(
     skill_name: str,
     skill_path: Path,
 ) -> dict[str, Any]:
+    if TEXTUAL_SKILL_ACTIVATION_RE.search(prompt):
+        raise ValueError("structured App Server text must not contain textual skill activation")
     return {
         "transport": "codex_app_server_stdio",
         "arm_type": "app_server_structured",
