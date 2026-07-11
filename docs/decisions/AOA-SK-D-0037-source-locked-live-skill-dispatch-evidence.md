@@ -62,6 +62,11 @@ pass both values explicitly under strict config so an installed Codex contract
 change fails in deterministic adapter tests or pre-turn smoke, not midway
 through a campaign.
 
+Planning also validates the model-output schema against the bounded Responses
+API strict-output contract before issuing a confirmation token. Draft 2020-12
+validity alone is insufficient because a locally valid `const` or `enum`
+without an explicit type is rejected by the runtime API.
+
 The run must execute inside `abyss-machine resource launch`; the runner verifies
 the resource class, agent kind, and cgroup, independently requires a storage
 write preflight for its private host-owned root, and stops on runtime drift,

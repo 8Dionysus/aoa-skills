@@ -15,6 +15,10 @@ temporary root and must not be copied into this directory.
   records the reviewed pre-turn strict-config transport failure that opened the
   rollout-budget reminder-list repair loop; it contains no model-quality
   evidence and explicitly requires a rerun.
+- [aoa-skill-live-dispatch-smoke-20260711-output-schema-needs-rerun.json](aoa-skill-live-dispatch-smoke-20260711-output-schema-needs-rerun.json)
+  records the reviewed Responses API strict-schema rejection that followed the
+  transport repair; the request reached the API but no model output was
+  produced, so it also carries no skill-quality evidence.
 - [aoa-eval-session-mining.report.md](aoa-eval-session-mining.report.md)
   records the first `.aoa` mining pass for `aoa-eval` trigger evidence and its
   proof limits.

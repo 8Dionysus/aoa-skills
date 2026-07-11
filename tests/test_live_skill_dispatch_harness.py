@@ -119,6 +119,24 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
             with self.subTest(schema=filename):
                 Draft202012Validator.check_schema(self.load_schema(filename))
         Draft202012Validator(self.load_schema("live-skill-dispatch-plan.schema.json")).validate(plan)
+        output_schema = self.load_schema("live-skill-dispatch-model-output.schema.json")
+        self.runner.validate_openai_strict_output_schema(output_schema)
+        invalid_output_schema = json.loads(json.dumps(output_schema))
+        invalid_output_schema["properties"]["mutation_authorized"].pop("type")
+        with self.assertRaisesRegex(ValueError, "mutation_authorized.*explicit type"):
+            self.runner.validate_openai_strict_output_schema(invalid_output_schema)
+        incomplete_required = json.loads(json.dumps(output_schema))
+        incomplete_required["required"].remove("stop_line")
+        with self.assertRaisesRegex(ValueError, "required must contain every property"):
+            self.runner.validate_openai_strict_output_schema(incomplete_required)
+        open_object = json.loads(json.dumps(output_schema))
+        open_object["additionalProperties"] = True
+        with self.assertRaisesRegex(ValueError, "additionalProperties must be false"):
+            self.runner.validate_openai_strict_output_schema(open_object)
+        itemless_array = json.loads(json.dumps(output_schema))
+        itemless_array["properties"]["verification_steps"].pop("items")
+        with self.assertRaisesRegex(ValueError, "array schema must declare items"):
+            self.runner.validate_openai_strict_output_schema(itemless_array)
 
     def test_cohort_expansion_closes_collision_and_manual_reachability_gaps(self) -> None:
         plan = self.runner.load_plan(self.plan_path)
