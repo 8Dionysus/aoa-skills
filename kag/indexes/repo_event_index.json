@@ -114,7 +114,7 @@
       "heading_ref": {
         "anchor": "040-2026-05-18",
         "level": 2,
-        "line": 132,
+        "line": 146,
         "ref": "CHANGELOG.md#040-2026-05-18",
         "title": "[0.4.0] - 2026-05-18"
       },
@@ -129,7 +129,7 @@
       "heading_ref": {
         "anchor": "010-2026-03-23",
         "level": 2,
-        "line": 428,
+        "line": 442,
         "ref": "CHANGELOG.md#010-2026-03-23",
         "title": "[0.1.0] - 2026-03-23"
       },
@@ -144,7 +144,7 @@
       "heading_ref": {
         "anchor": "032-2026-04-19",
         "level": 2,
-        "line": 270,
+        "line": 284,
         "ref": "CHANGELOG.md#032-2026-04-19",
         "title": "[0.3.2] - 2026-04-19"
       },
@@ -159,7 +159,7 @@
       "heading_ref": {
         "anchor": "031-2026-04-12",
         "level": 2,
-        "line": 302,
+        "line": 316,
         "ref": "CHANGELOG.md#031-2026-04-12",
         "title": "[0.3.1] - 2026-04-12"
       },
@@ -174,7 +174,7 @@
       "heading_ref": {
         "anchor": "033-2026-04-23",
         "level": 2,
-        "line": 221,
+        "line": 235,
         "ref": "CHANGELOG.md#033-2026-04-23",
         "title": "[0.3.3] - 2026-04-23"
       },
@@ -189,7 +189,7 @@
       "heading_ref": {
         "anchor": "020-2026-04-01",
         "level": 2,
-        "line": 384,
+        "line": 398,
         "ref": "CHANGELOG.md#020-2026-04-01",
         "title": "[0.2.0] - 2026-04-01"
       },
@@ -204,7 +204,7 @@
       "heading_ref": {
         "anchor": "030-2026-04-10",
         "level": 2,
-        "line": 338,
+        "line": 352,
         "ref": "CHANGELOG.md#030-2026-04-10",
         "title": "[0.3.0] - 2026-04-10"
       },
@@ -556,6 +556,15 @@
       "event_kind": "decision_record",
       "event_role": "declaration",
       "heading_ref": null,
+      "id": "event:repo:912d590d1e43ab448a2a",
+      "observation_state": "declared",
+      "path": "docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md",
+      "source_record_id": "file:docs/decisions/aoa-sk-d-0037-source-locked-live-skill-dispatch-evidence.md:ca6ee4ca5a"
+    },
+    {
+      "event_kind": "decision_record",
+      "event_role": "declaration",
+      "heading_ref": null,
       "id": "event:repo:bdb17b7d37863195b6e9",
       "observation_state": "declared",
       "path": "docs/decisions/TEMPLATE.md",
@@ -614,6 +623,15 @@
       "observation_state": "declared",
       "path": "docs/decisions/indexes/by-surface.md",
       "source_record_id": "file:docs/decisions/indexes/by-surface.md:acd156903f"
+    },
+    {
+      "event_kind": "command_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:eb67997c6bc61ee3bdb0",
+      "observation_state": "declared",
+      "path": "evals/runners/run_live_skill_dispatch.py",
+      "source_record_id": "file:evals/runners/run_live_skill_dispatch.py:e7cd5c0ae9"
     },
     {
       "event_kind": "validation_receipt",
@@ -1600,6 +1618,15 @@
       "event_kind": "test_run",
       "event_role": "producer",
       "heading_ref": null,
+      "id": "event:repo:1f5814181271a671a2e8",
+      "observation_state": "declared",
+      "path": "tests/test_live_skill_dispatch_harness.py",
+      "source_record_id": "file:tests/test_live_skill_dispatch_harness.py:27c0f74cd0"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
       "id": "event:repo:c7edd6d0d48b910d3be7",
       "observation_state": "declared",
       "path": "tests/test_maturity_model_docs.py",
@@ -2031,7 +2058,7 @@
   ],
   "index_identity": {
     "artifact_kind": "repository_event_index",
-    "content_digest": "931537b692537dd6fb735e4aa1e55358d20267686f2290ab408d48ee0c9feb10",
+    "content_digest": "44e8e868549e35e0f803807e94d19b610bbb5391c8024193420b94bea995570b",
     "index_kind": "event",
     "local_id": "index:repo-local:events",
     "schema_ref": "aoa-kag:schemas/repo-local-kag-repository-index.schema.json"
@@ -2056,19 +2083,19 @@
   },
   "schema_version": "aoa-repo-local-kag-repository-index-v1",
   "source_index": {
-    "content_digest": "59ca9c54ced2b12ca0cfe21effd8a76463ee38d1ab329a629795f388a1966517",
+    "content_digest": "9ef53d3ccc2acf70d4f3488247dc7c7d30125361b73f5ba63a3d2043201c2122",
     "local_id": "index:repo-local:source-surfaces",
     "path": "kag/indexes/source_surface_index.json"
   },
   "summary": {
-    "entry_count": 220,
+    "entry_count": 223,
     "kind_counts": {
-      "command_run": 50,
-      "decision_record": 43,
+      "command_run": 51,
+      "decision_record": 44,
       "generation_run": 13,
       "release_declaration": 7,
       "release_lane": 1,
-      "test_run": 81,
+      "test_run": 82,
       "validation_lane_run": 4,
       "validation_receipt": 5,
       "validation_run": 12,

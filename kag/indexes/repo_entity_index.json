@@ -7397,6 +7397,20 @@
         "artifact_kind": "document",
         "code_role": "none",
         "command_role": "none",
+        "document_role": "decision",
+        "mechanics_role": "none",
+        "surface_state": "authored_source"
+      },
+      "entity_kind": "decision",
+      "id": "entity:file:docs/decisions/aoa-sk-d-0037-source-locked-live-skill-dispatch-evidence.md:ca6ee4ca5a",
+      "label": "docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md",
+      "source_record_id": "file:docs/decisions/aoa-sk-d-0037-source-locked-live-skill-dispatch-evidence.md:ca6ee4ca5a"
+    },
+    {
+      "coordinates": {
+        "artifact_kind": "document",
+        "code_role": "none",
+        "command_role": "none",
         "document_role": "readme",
         "mechanics_role": "none",
         "surface_state": "authored_source"
@@ -8578,6 +8592,34 @@
         "surface_state": "authored_source"
       },
       "entity_kind": "document",
+      "id": "entity:file:evals/runners/readme.md:194095a363",
+      "label": "evals/runners/README.md",
+      "source_record_id": "file:evals/runners/readme.md:194095a363"
+    },
+    {
+      "coordinates": {
+        "artifact_kind": "script",
+        "code_role": "entrypoint",
+        "command_role": "script",
+        "document_role": "none",
+        "mechanics_role": "none",
+        "surface_state": "authored_source"
+      },
+      "entity_kind": "command",
+      "id": "entity:file:evals/runners/run_live_skill_dispatch.py:e7cd5c0ae9",
+      "label": "evals/runners/run_live_skill_dispatch.py",
+      "source_record_id": "file:evals/runners/run_live_skill_dispatch.py:e7cd5c0ae9"
+    },
+    {
+      "coordinates": {
+        "artifact_kind": "document",
+        "code_role": "none",
+        "command_role": "none",
+        "document_role": "readme",
+        "mechanics_role": "none",
+        "surface_state": "authored_source"
+      },
+      "entity_kind": "document",
       "id": "entity:file:evals/suites/readme.md:8611332c6f",
       "label": "evals/suites/README.md",
       "source_record_id": "file:evals/suites/readme.md:8611332c6f"
@@ -8609,6 +8651,62 @@
       "id": "entity:file:evals/suites/aoa-eval-trigger-corpus.suite.md:8fd354f387",
       "label": "evals/suites/aoa-eval-trigger-corpus.suite.md",
       "source_record_id": "file:evals/suites/aoa-eval-trigger-corpus.suite.md:8fd354f387"
+    },
+    {
+      "coordinates": {
+        "artifact_kind": "config",
+        "code_role": "none",
+        "command_role": "none",
+        "document_role": "none",
+        "mechanics_role": "none",
+        "surface_state": "authored_source"
+      },
+      "entity_kind": "artifact",
+      "id": "entity:file:evals/suites/aoa-skill-live-dispatch-harness.suite.json:beeca555d0",
+      "label": "evals/suites/aoa-skill-live-dispatch-harness.suite.json",
+      "source_record_id": "file:evals/suites/aoa-skill-live-dispatch-harness.suite.json:beeca555d0"
+    },
+    {
+      "coordinates": {
+        "artifact_kind": "document",
+        "code_role": "none",
+        "command_role": "none",
+        "document_role": "unknown_document",
+        "mechanics_role": "none",
+        "surface_state": "authored_source"
+      },
+      "entity_kind": "document",
+      "id": "entity:file:evals/suites/aoa-skill-live-dispatch-harness.suite.md:dc83328e65",
+      "label": "evals/suites/aoa-skill-live-dispatch-harness.suite.md",
+      "source_record_id": "file:evals/suites/aoa-skill-live-dispatch-harness.suite.md:dc83328e65"
+    },
+    {
+      "coordinates": {
+        "artifact_kind": "config",
+        "code_role": "none",
+        "command_role": "none",
+        "document_role": "none",
+        "mechanics_role": "none",
+        "surface_state": "authored_source"
+      },
+      "entity_kind": "artifact",
+      "id": "entity:file:evals/suites/aoa-skill-live-dispatch.plan.json:c8f8bbbc88",
+      "label": "evals/suites/aoa-skill-live-dispatch.plan.json",
+      "source_record_id": "file:evals/suites/aoa-skill-live-dispatch.plan.json:c8f8bbbc88"
+    },
+    {
+      "coordinates": {
+        "artifact_kind": "config",
+        "code_role": "none",
+        "command_role": "none",
+        "document_role": "none",
+        "mechanics_role": "none",
+        "surface_state": "authored_source"
+      },
+      "entity_kind": "artifact",
+      "id": "entity:file:evals/suites/codex-app-server-skill-input.contract.json:b1bc17a34b",
+      "label": "evals/suites/codex-app-server-skill-input.contract.json",
+      "source_record_id": "file:evals/suites/codex-app-server-skill-input.contract.json:b1bc17a34b"
     },
     {
       "coordinates": {
@@ -15511,6 +15609,62 @@
       "id": "entity:file:schemas/governance_lanes.schema.json:617bbceaf5",
       "label": "schemas/governance_lanes.schema.json",
       "source_record_id": "file:schemas/governance_lanes.schema.json:617bbceaf5"
+    },
+    {
+      "coordinates": {
+        "artifact_kind": "schema",
+        "code_role": "none",
+        "command_role": "none",
+        "document_role": "none",
+        "mechanics_role": "none",
+        "surface_state": "authored_source"
+      },
+      "entity_kind": "contract",
+      "id": "entity:file:schemas/live-skill-dispatch-model-output.schema.json:a717256676",
+      "label": "schemas/live-skill-dispatch-model-output.schema.json",
+      "source_record_id": "file:schemas/live-skill-dispatch-model-output.schema.json:a717256676"
+    },
+    {
+      "coordinates": {
+        "artifact_kind": "schema",
+        "code_role": "none",
+        "command_role": "none",
+        "document_role": "none",
+        "mechanics_role": "none",
+        "surface_state": "authored_source"
+      },
+      "entity_kind": "contract",
+      "id": "entity:file:schemas/live-skill-dispatch-plan.schema.json:ba7d5d70d0",
+      "label": "schemas/live-skill-dispatch-plan.schema.json",
+      "source_record_id": "file:schemas/live-skill-dispatch-plan.schema.json:ba7d5d70d0"
+    },
+    {
+      "coordinates": {
+        "artifact_kind": "schema",
+        "code_role": "none",
+        "command_role": "none",
+        "document_role": "none",
+        "mechanics_role": "none",
+        "surface_state": "authored_source"
+      },
+      "entity_kind": "contract",
+      "id": "entity:file:schemas/live-skill-dispatch-private-receipt.schema.json:a5ead8166f",
+      "label": "schemas/live-skill-dispatch-private-receipt.schema.json",
+      "source_record_id": "file:schemas/live-skill-dispatch-private-receipt.schema.json:a5ead8166f"
+    },
+    {
+      "coordinates": {
+        "artifact_kind": "schema",
+        "code_role": "none",
+        "command_role": "none",
+        "document_role": "none",
+        "mechanics_role": "none",
+        "surface_state": "authored_source"
+      },
+      "entity_kind": "contract",
+      "id": "entity:file:schemas/live-skill-dispatch-public-receipt.schema.json:6248b34177",
+      "label": "schemas/live-skill-dispatch-public-receipt.schema.json",
+      "source_record_id": "file:schemas/live-skill-dispatch-public-receipt.schema.json:6248b34177"
     },
     {
       "coordinates": {
@@ -24580,6 +24734,34 @@
         "surface_state": "authored_source"
       },
       "entity_kind": "document",
+      "id": "entity:file:tests/fixtures/skill_evaluation_snapshots/os-abyss-artifact-trust-loop/os_abyss_artifact_trust_loop_consumer_gate.md:66ac3a5f34",
+      "label": "tests/fixtures/skill_evaluation_snapshots/os-abyss-artifact-trust-loop/os_abyss_artifact_trust_loop_consumer_gate.md",
+      "source_record_id": "file:tests/fixtures/skill_evaluation_snapshots/os-abyss-artifact-trust-loop/os_abyss_artifact_trust_loop_consumer_gate.md:66ac3a5f34"
+    },
+    {
+      "coordinates": {
+        "artifact_kind": "document",
+        "code_role": "none",
+        "command_role": "none",
+        "document_role": "unknown_document",
+        "mechanics_role": "none",
+        "surface_state": "authored_source"
+      },
+      "entity_kind": "document",
+      "id": "entity:file:tests/fixtures/skill_evaluation_snapshots/os-abyss-artifact-trust-loop/os_abyss_artifact_trust_loop_plain_unit_test.md:a62cdb523b",
+      "label": "tests/fixtures/skill_evaluation_snapshots/os-abyss-artifact-trust-loop/os_abyss_artifact_trust_loop_plain_unit_test.md",
+      "source_record_id": "file:tests/fixtures/skill_evaluation_snapshots/os-abyss-artifact-trust-loop/os_abyss_artifact_trust_loop_plain_unit_test.md:a62cdb523b"
+    },
+    {
+      "coordinates": {
+        "artifact_kind": "document",
+        "code_role": "none",
+        "command_role": "none",
+        "document_role": "unknown_document",
+        "mechanics_role": "none",
+        "surface_state": "authored_source"
+      },
+      "entity_kind": "document",
       "id": "entity:file:tests/fixtures/skill_evaluation_snapshots/titan-approval-ledger/titan_approval_ledger_explicit_titan_route.md:65b621f1be",
       "label": "tests/fixtures/skill_evaluation_snapshots/titan-approval-ledger/titan_approval_ledger_explicit_titan_route.md",
       "source_record_id": "file:tests/fixtures/skill_evaluation_snapshots/titan-approval-ledger/titan_approval_ledger_explicit_titan_route.md:65b621f1be"
@@ -25504,6 +25686,20 @@
         "surface_state": "authored_source"
       },
       "entity_kind": "command",
+      "id": "entity:file:tests/test_live_skill_dispatch_harness.py:27c0f74cd0",
+      "label": "tests/test_live_skill_dispatch_harness.py",
+      "source_record_id": "file:tests/test_live_skill_dispatch_harness.py:27c0f74cd0"
+    },
+    {
+      "coordinates": {
+        "artifact_kind": "test",
+        "code_role": "test",
+        "command_role": "test",
+        "document_role": "none",
+        "mechanics_role": "none",
+        "surface_state": "authored_source"
+      },
+      "entity_kind": "command",
       "id": "entity:file:tests/test_maturity_model_docs.py:f824f64798",
       "label": "tests/test_maturity_model_docs.py",
       "source_record_id": "file:tests/test_maturity_model_docs.py:f824f64798"
@@ -26169,7 +26365,7 @@
   ],
   "index_identity": {
     "artifact_kind": "repository_entity_index",
-    "content_digest": "c2821198499d0e5d106a5e5ec8a2a2b1acbc368f1b18f4a577e039002b95637a",
+    "content_digest": "8ea4b132923a884958db062a9bce8c9670c23bf54b618189083ad8a73726b4bf",
     "index_kind": "entity",
     "local_id": "index:repo-local:entities",
     "schema_ref": "aoa-kag:schemas/repo-local-kag-repository-index.schema.json"
@@ -26192,20 +26388,20 @@
   },
   "schema_version": "aoa-repo-local-kag-repository-index-v1",
   "source_index": {
-    "content_digest": "59ca9c54ced2b12ca0cfe21effd8a76463ee38d1ab329a629795f388a1966517",
+    "content_digest": "9ef53d3ccc2acf70d4f3488247dc7c7d30125361b73f5ba63a3d2043201c2122",
     "local_id": "index:repo-local:source-surfaces",
     "path": "kag/indexes/source_surface_index.json"
   },
   "summary": {
-    "entry_count": 1869,
+    "entry_count": 1883,
     "kind_counts": {
       "agent_route": 29,
-      "artifact": 381,
+      "artifact": 384,
       "code": 66,
-      "command": 154,
-      "contract": 38,
-      "decision": 43,
-      "document": 699,
+      "command": 156,
+      "contract": 42,
+      "decision": 44,
+      "document": 703,
       "mechanic_package": 260,
       "mechanic_part": 93,
       "owner_surface": 2,

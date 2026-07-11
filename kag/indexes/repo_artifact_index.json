@@ -3682,7 +3682,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "c808bfbb164a724feb416dd1922ee0e1538cdddadff00143d18d4b89fc332717",
+      "content_hash": "734a354621f9338aad4704d6d5e92a50009b1aae59026a8d11c57c2d30298682",
       "id": "artifact:file:changelog.md:06572a96a5",
       "path": "CHANGELOG.md",
       "source_record_id": "file:changelog.md:06572a96a5",
@@ -3874,7 +3874,7 @@
     },
     {
       "artifact_kind": "config",
-      "content_hash": "b325dd6c378552858c7e0192135bef5d29b17023de3d8aedb8c2d7cb14893ac9",
+      "content_hash": "23677d5d966eb54b5b9d0f93e74074ff93c2edfab9c97c4d69a1336cf82a09d4",
       "id": "artifact:file:config/validation_lanes.json:44a533a030",
       "path": "config/validation_lanes.json",
       "source_record_id": "file:config/validation_lanes.json:44a533a030",
@@ -4226,6 +4226,14 @@
     },
     {
       "artifact_kind": "document",
+      "content_hash": "93a32d220d833d9e1045c2ef522eec2f1baabedd2f1bb5317eabd633490c4e66",
+      "id": "artifact:file:docs/decisions/aoa-sk-d-0037-source-locked-live-skill-dispatch-evidence.md:ca6ee4ca5a",
+      "path": "docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md",
+      "source_record_id": "file:docs/decisions/aoa-sk-d-0037-source-locked-live-skill-dispatch-evidence.md:ca6ee4ca5a",
+      "surface_state": "authored_source"
+    },
+    {
+      "artifact_kind": "document",
       "content_hash": "08e24a41bf11665f19a45bc1270307bb5c5d0aa4206b28e03c679e4030504691",
       "id": "artifact:file:docs/decisions/readme.md:e5ec0e7030",
       "path": "docs/decisions/README.md",
@@ -4250,7 +4258,7 @@
     },
     {
       "artifact_kind": "generated_readmodel",
-      "content_hash": "2b5344ce816a41170e4b0231efab36f76d99f6847c2f8ccae80ffee5255e9575",
+      "content_hash": "b7dac6ea5abe56c5ba614bec28404f1980a0b6ce40ec62cd66f618009f2f89ad",
       "id": "artifact:file:docs/decisions/indexes/by-date.md:7f76a83a93",
       "path": "docs/decisions/indexes/by-date.md",
       "source_record_id": "file:docs/decisions/indexes/by-date.md:7f76a83a93",
@@ -4258,7 +4266,7 @@
     },
     {
       "artifact_kind": "generated_readmodel",
-      "content_hash": "dc1a6b82985a109b006b8117b9a067f1a6e92e1e8f1601eb2b5d02f9bd0fdcc8",
+      "content_hash": "1be5e435c0f873980dbfd0e1f181df5afbe09016316a5f829154933aa3774b1e",
       "id": "artifact:file:docs/decisions/indexes/by-guard.md:8ae406686a",
       "path": "docs/decisions/indexes/by-guard.md",
       "source_record_id": "file:docs/decisions/indexes/by-guard.md:8ae406686a",
@@ -4274,7 +4282,7 @@
     },
     {
       "artifact_kind": "generated_readmodel",
-      "content_hash": "6e599af983dd85bd04127beecb89032591750d1964e8fee96448a93286dd0b01",
+      "content_hash": "0838e044ed054b9fec872d86eeb730b9909f52d4429ac8624cab5a4015d97589",
       "id": "artifact:file:docs/decisions/indexes/by-number.md:02e6940a39",
       "path": "docs/decisions/indexes/by-number.md",
       "source_record_id": "file:docs/decisions/indexes/by-number.md:02e6940a39",
@@ -4290,7 +4298,7 @@
     },
     {
       "artifact_kind": "generated_readmodel",
-      "content_hash": "fbde2fd1693caff76a88f3da1c06a9e3027df35c31baff20629ea1cab846f0e2",
+      "content_hash": "d7bc244c6229505dde73d96f2e8120e27429226ef089e9514aaa32e51e173a3d",
       "id": "artifact:file:docs/decisions/indexes/by-surface.md:acd156903f",
       "path": "docs/decisions/indexes/by-surface.md",
       "source_record_id": "file:docs/decisions/indexes/by-surface.md:acd156903f",
@@ -4754,7 +4762,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "0808ebab6ed6dcd34374ec26ed005e518a4d09c815ddb057c40a4c458f12186a",
+      "content_hash": "82b10215ca226c248f92b0ada6ac5c810b7b81cefd3d11b0f6294f0c52a5c72d",
       "id": "artifact:file:docs/testing/test_topology.md:aecbbf32b8",
       "path": "docs/testing/TEST_TOPOLOGY.md",
       "source_record_id": "file:docs/testing/test_topology.md:aecbbf32b8",
@@ -4762,7 +4770,7 @@
     },
     {
       "artifact_kind": "config",
-      "content_hash": "0e5e8298b6a51b01409cbcad55348ad840f47a6d2e599416d1c9df62cd675da9",
+      "content_hash": "6f94e1c82697a6d769160425cf1baec1fac11933524b4fd90641b1a388544916",
       "id": "artifact:file:docs/testing/test_inventory.json:4bb775b510",
       "path": "docs/testing/test_inventory.json",
       "source_record_id": "file:docs/testing/test_inventory.json:4bb775b510",
@@ -4834,7 +4842,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "8d6bce2636b6cb742b17cf1125406ce685e2109804190dd56472ecb2650de6e9",
+      "content_hash": "57f26317daaf5268da1345e63a7576a283b994423b972921f36e2f465d64043d",
       "id": "artifact:file:evals/readme.md:a1a9eeb43d",
       "path": "evals/README.md",
       "source_record_id": "file:evals/readme.md:a1a9eeb43d",
@@ -4850,7 +4858,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "8e55e302ca819feddab970d40f4cd62798cd8963f2da20a6d200ed6ba4117322",
+      "content_hash": "8416c35307ec0df9d01652fcfd318b32578a2f8140aadf0ba75e8c9a0a7fe956",
       "id": "artifact:file:evals/reports/readme.md:ac5e016ca2",
       "path": "evals/reports/README.md",
       "source_record_id": "file:evals/reports/readme.md:ac5e016ca2",
@@ -4898,7 +4906,23 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "bbae4ed7028593e839507f4754f4f1e1d712b45dc141bd4ecd88b3dc233e664e",
+      "content_hash": "e6e8ba1d02f19244b69e6cf5be25add774d9fd554f2ac81a24a4c6dbf03c0a85",
+      "id": "artifact:file:evals/runners/readme.md:194095a363",
+      "path": "evals/runners/README.md",
+      "source_record_id": "file:evals/runners/readme.md:194095a363",
+      "surface_state": "authored_source"
+    },
+    {
+      "artifact_kind": "script",
+      "content_hash": "71089edf0a4c807b49fc7c80308dd56e65b4ba57f7aafb9e4453f9cadb7eb276",
+      "id": "artifact:file:evals/runners/run_live_skill_dispatch.py:e7cd5c0ae9",
+      "path": "evals/runners/run_live_skill_dispatch.py",
+      "source_record_id": "file:evals/runners/run_live_skill_dispatch.py:e7cd5c0ae9",
+      "surface_state": "authored_source"
+    },
+    {
+      "artifact_kind": "document",
+      "content_hash": "ec0e9c87fde1e82eaf20cb00808f69a21d6231e3960c5a2e7441ec7cf426d075",
       "id": "artifact:file:evals/suites/readme.md:8611332c6f",
       "path": "evals/suites/README.md",
       "source_record_id": "file:evals/suites/readme.md:8611332c6f",
@@ -4906,7 +4930,7 @@
     },
     {
       "artifact_kind": "config",
-      "content_hash": "1d175af8abfeb1d0f0523e8c35177370747aed49f5252e82a81855a2b798c0fc",
+      "content_hash": "acafec7c9ca3c3c53017339b364d77bc9acfe81dfeb93ff0d51da5fd8f7b69c0",
       "id": "artifact:file:evals/suites/aoa-eval-trigger-corpus.suite.json:32274551c1",
       "path": "evals/suites/aoa-eval-trigger-corpus.suite.json",
       "source_record_id": "file:evals/suites/aoa-eval-trigger-corpus.suite.json:32274551c1",
@@ -4918,6 +4942,38 @@
       "id": "artifact:file:evals/suites/aoa-eval-trigger-corpus.suite.md:8fd354f387",
       "path": "evals/suites/aoa-eval-trigger-corpus.suite.md",
       "source_record_id": "file:evals/suites/aoa-eval-trigger-corpus.suite.md:8fd354f387",
+      "surface_state": "authored_source"
+    },
+    {
+      "artifact_kind": "config",
+      "content_hash": "4daa10d675342e0caac68667875d0cb97bd63235b2f5233ca5b6230520ce49aa",
+      "id": "artifact:file:evals/suites/aoa-skill-live-dispatch-harness.suite.json:beeca555d0",
+      "path": "evals/suites/aoa-skill-live-dispatch-harness.suite.json",
+      "source_record_id": "file:evals/suites/aoa-skill-live-dispatch-harness.suite.json:beeca555d0",
+      "surface_state": "authored_source"
+    },
+    {
+      "artifact_kind": "document",
+      "content_hash": "0a70dfe8e69096062cced6e5df3607c1091efaa644090a3e41f5d98fb8e93fdc",
+      "id": "artifact:file:evals/suites/aoa-skill-live-dispatch-harness.suite.md:dc83328e65",
+      "path": "evals/suites/aoa-skill-live-dispatch-harness.suite.md",
+      "source_record_id": "file:evals/suites/aoa-skill-live-dispatch-harness.suite.md:dc83328e65",
+      "surface_state": "authored_source"
+    },
+    {
+      "artifact_kind": "config",
+      "content_hash": "5454ffe73bc12c8155359fa9dd4379596b53ac9b60165335fbfc2d548f25633e",
+      "id": "artifact:file:evals/suites/aoa-skill-live-dispatch.plan.json:c8f8bbbc88",
+      "path": "evals/suites/aoa-skill-live-dispatch.plan.json",
+      "source_record_id": "file:evals/suites/aoa-skill-live-dispatch.plan.json:c8f8bbbc88",
+      "surface_state": "authored_source"
+    },
+    {
+      "artifact_kind": "config",
+      "content_hash": "1fbeb658ddf7fb2be9aada8e9d0e5ff59c175e32b0ea7449d44b2ab4f54f73cb",
+      "id": "artifact:file:evals/suites/codex-app-server-skill-input.contract.json:b1bc17a34b",
+      "path": "evals/suites/codex-app-server-skill-input.contract.json",
+      "source_record_id": "file:evals/suites/codex-app-server-skill-input.contract.json:b1bc17a34b",
       "surface_state": "authored_source"
     },
     {
@@ -5002,7 +5058,7 @@
     },
     {
       "artifact_kind": "data_table",
-      "content_hash": "bb5bea52269e983a63894a3290b7a18c54c37233078760574f522ccd88cc1f49",
+      "content_hash": "69912e3340059c5cb53f0ec8dd3a671d8e0d3af6d3cbd170528a58cdef03144f",
       "id": "artifact:file:generated/description_trigger_eval_cases.csv:d9645e6c0f",
       "path": "generated/description_trigger_eval_cases.csv",
       "source_record_id": "file:generated/description_trigger_eval_cases.csv:d9645e6c0f",
@@ -5010,7 +5066,7 @@
     },
     {
       "artifact_kind": "record_log",
-      "content_hash": "54568d97b565b462e4f58e63d7fb726632d9cf7d10e13452049eb7ed750c6f70",
+      "content_hash": "fe2e0a9c269b6a72d4b119332cac166dc7a9205497bf0dc06149527967c1c63f",
       "id": "artifact:file:generated/description_trigger_eval_cases.jsonl:214a3f457c",
       "path": "generated/description_trigger_eval_cases.jsonl",
       "source_record_id": "file:generated/description_trigger_eval_cases.jsonl:214a3f457c",
@@ -5018,7 +5074,7 @@
     },
     {
       "artifact_kind": "generated_readmodel",
-      "content_hash": "2b534a5c839f1229ef5489d68f671b82679341e54382949cada82b3e9a360e32",
+      "content_hash": "370a4c1061da9904c7097b71628ec549ca8fdf58328e6126744ab34ab715ce87",
       "id": "artifact:file:generated/description_trigger_eval_manifest.json:604a215656",
       "path": "generated/description_trigger_eval_manifest.json",
       "source_record_id": "file:generated/description_trigger_eval_manifest.json:604a215656",
@@ -5050,7 +5106,7 @@
     },
     {
       "artifact_kind": "generated_readmodel",
-      "content_hash": "db0661fd4c998919054a6872fc88531616f13a22fcee27d87c5168459f1513bf",
+      "content_hash": "aea0d6168b02ee8f80cff22be453b00bb90104ca49e868051e86840d9ac80d5b",
       "id": "artifact:file:generated/governance_backlog.json:520a802849",
       "path": "generated/governance_backlog.json",
       "source_record_id": "file:generated/governance_backlog.json:520a802849",
@@ -5058,7 +5114,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "97ddf25f71ae67922f8ecd286c8edb39476fe77d3dd57b814ffcc09c2316a28b",
+      "content_hash": "7e2c11ad5ec41c93e0a6e3cf5feacc951639a4aeb7070bbf6f43019ed9f0f7d1",
       "id": "artifact:file:generated/governance_backlog.md:4dbc75853f",
       "path": "generated/governance_backlog.md",
       "source_record_id": "file:generated/governance_backlog.md:4dbc75853f",
@@ -5090,7 +5146,7 @@
     },
     {
       "artifact_kind": "generated_readmodel",
-      "content_hash": "6ef850ab4c84f0e9a8fe3fe6300d80980627cee463209fc3b519184eb057f43d",
+      "content_hash": "988e3cf73c93d148e5efc3f22720830cd5b494206c74a22b21c3183a436ac2b7",
       "id": "artifact:file:generated/overlay_readiness.json:4c848771fa",
       "path": "generated/overlay_readiness.json",
       "source_record_id": "file:generated/overlay_readiness.json:4c848771fa",
@@ -5098,7 +5154,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "f7408400ef9452788fee90ab04366d4230b297e611655a3cd7fb9d20ff2e6d9e",
+      "content_hash": "f41accd08491f0a430b4ad1a1e7de08e060725f114b553f3e82d7530eca0bf63",
       "id": "artifact:file:generated/overlay_readiness.md:252f521fac",
       "path": "generated/overlay_readiness.md",
       "source_record_id": "file:generated/overlay_readiness.md:252f521fac",
@@ -5178,7 +5234,7 @@
     },
     {
       "artifact_kind": "generated_readmodel",
-      "content_hash": "5bb6a2c4fc571581a7e1e44bb5188d8577f55de32ed37cd5c688fd59bb8f0b94",
+      "content_hash": "a5c196a3f1b215bdc35574c35fa2368bf87b0fb832208244e505c8c5a319f420",
       "id": "artifact:file:generated/public_surface.json:1a38f46b7f",
       "path": "generated/public_surface.json",
       "source_record_id": "file:generated/public_surface.json:1a38f46b7f",
@@ -5226,7 +5282,7 @@
     },
     {
       "artifact_kind": "generated_readmodel",
-      "content_hash": "91deafb625d1fce3845953ab564d4e1fab6216059212f30c783adeb9786e4c0c",
+      "content_hash": "18f835c09c355fa756a74bded0d2427997242a504376536f322b5447843499df",
       "id": "artifact:file:generated/release_manifest.json:0d2f8dd349",
       "path": "generated/release_manifest.json",
       "source_record_id": "file:generated/release_manifest.json:0d2f8dd349",
@@ -5362,7 +5418,7 @@
     },
     {
       "artifact_kind": "generated_readmodel",
-      "content_hash": "f11825a5958c359692802f8b94d8f9f85062c4f7ae61ba3f830c5ec5ecd3138f",
+      "content_hash": "6de59d7c215935ac2e032652fb33b8c989989a49d5a0246a9af9c1052f56314d",
       "id": "artifact:file:generated/skill_bundle_index.json:21c110a25c",
       "path": "generated/skill_bundle_index.json",
       "source_record_id": "file:generated/skill_bundle_index.json:21c110a25c",
@@ -5370,7 +5426,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "85d84074100d3011ce5b3b699c7be05757c45d0ad83377d5e4b563fa2a347e64",
+      "content_hash": "2984bf3711e5810b0f256c363eabf8dfdc145f4fbe636f4365b34e54a760c8be",
       "id": "artifact:file:generated/skill_bundle_index.md:1f0f1423c6",
       "path": "generated/skill_bundle_index.md",
       "source_record_id": "file:generated/skill_bundle_index.md:1f0f1423c6",
@@ -5426,7 +5482,7 @@
     },
     {
       "artifact_kind": "generated_readmodel",
-      "content_hash": "304b1a8787015d19242671a9acc3568ef329ec41467b89f52b13282c57b63d8d",
+      "content_hash": "30e712008370fd848c262e5b7c9d0d51672e2534f192d4a4a5c2048f09fa5ab5",
       "id": "artifact:file:generated/skill_description_signals.json:b24fd7113a",
       "path": "generated/skill_description_signals.json",
       "source_record_id": "file:generated/skill_description_signals.json:b24fd7113a",
@@ -5434,7 +5490,7 @@
     },
     {
       "artifact_kind": "generated_readmodel",
-      "content_hash": "14cc0bf2f082d1453024faa8175a6461aa35121be8c5c0b8079c09d5a73bd7af",
+      "content_hash": "56a7d4123fe81d4c13901b52125292508aa2b066171808bda5f95d23e8571cc0",
       "id": "artifact:file:generated/skill_evaluation_matrix.json:6e4900a48b",
       "path": "generated/skill_evaluation_matrix.json",
       "source_record_id": "file:generated/skill_evaluation_matrix.json:6e4900a48b",
@@ -5442,7 +5498,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "99f0087d376f4f62d8ad23b0866ca81d1d832957f8078be2551df110b111a090",
+      "content_hash": "a3180b50aaec8104e96bd7e40e5a41fe11492f676a87e4938111f154b7b7789a",
       "id": "artifact:file:generated/skill_evaluation_matrix.md:01aa16b70b",
       "path": "generated/skill_evaluation_matrix.md",
       "source_record_id": "file:generated/skill_evaluation_matrix.md:01aa16b70b",
@@ -5450,7 +5506,7 @@
     },
     {
       "artifact_kind": "generated_readmodel",
-      "content_hash": "0841dc6ad3af05976566c15a942c4332db52673274def38673dfff030a98a108",
+      "content_hash": "10a55be3364d56d7a8278ffd79da9a94ba436b95ff61b2825fe763a212a6b6fb",
       "id": "artifact:file:generated/skill_graph.json:d1304faa7e",
       "path": "generated/skill_graph.json",
       "source_record_id": "file:generated/skill_graph.json:d1304faa7e",
@@ -5474,7 +5530,7 @@
     },
     {
       "artifact_kind": "generated_readmodel",
-      "content_hash": "b052e2be3654f6cab50833f232e18e5cbec53adb5e8ce7099769069b6b53853d",
+      "content_hash": "76cb3bfbc3daf5f204c209dceafe9f0ce296ab8b8768469c64b7f6b9f0ab1ad3",
       "id": "artifact:file:generated/skill_intelligence_registry.json:6c0fbe1c8a",
       "path": "generated/skill_intelligence_registry.json",
       "source_record_id": "file:generated/skill_intelligence_registry.json:6c0fbe1c8a",
@@ -5482,7 +5538,7 @@
     },
     {
       "artifact_kind": "generated_readmodel",
-      "content_hash": "882a400821feee326dabc154f402e7b43be3b3d5a7795e0147620e53dfb094f7",
+      "content_hash": "65db5fba04a367ef78fc7aef154d88e2e22dd3ce6929a37c97aa4db08c378327",
       "id": "artifact:file:generated/skill_intelligence_registry.min.json:83ed727446",
       "path": "generated/skill_intelligence_registry.min.json",
       "source_record_id": "file:generated/skill_intelligence_registry.min.json:83ed727446",
@@ -5666,7 +5722,7 @@
     },
     {
       "artifact_kind": "record_log",
-      "content_hash": "67e24f5fe65b6517b53fffac4dfaaaec2af15f5af7cdb533b79e3df777db79c0",
+      "content_hash": "6a664511f5344ab73fcf672e1eb14c5097db097063b989e9f1b1dab13feec6c4",
       "id": "artifact:file:generated/tiny_router_eval_cases.jsonl:7673190fde",
       "path": "generated/tiny_router_eval_cases.jsonl",
       "source_record_id": "file:generated/tiny_router_eval_cases.jsonl:7673190fde",
@@ -5674,7 +5730,7 @@
     },
     {
       "artifact_kind": "generated_readmodel",
-      "content_hash": "54e78cbe4769036443b6f05d7fa1e6c231d7eef1fd51e69b908dab24f2c46c6c",
+      "content_hash": "9ad75e5c8097ec21e2ace81bf6d40c00e3175e8ae0948ca72270cb91e936e3e2",
       "id": "artifact:file:generated/tiny_router_overlay_manifest.json:add71e4c83",
       "path": "generated/tiny_router_overlay_manifest.json",
       "source_record_id": "file:generated/tiny_router_overlay_manifest.json:add71e4c83",
@@ -5682,7 +5738,7 @@
     },
     {
       "artifact_kind": "generated_readmodel",
-      "content_hash": "bf1f288826022f9d9f9fcf0f38a2f39a52889f9cb5ae3d88bab312ec3e047542",
+      "content_hash": "f05711301faa63e1bbe913d7c898230fe602b3ab17d109e61ac848dc26bda063",
       "id": "artifact:file:generated/tiny_router_skill_signals.json:f336bee8db",
       "path": "generated/tiny_router_skill_signals.json",
       "source_record_id": "file:generated/tiny_router_skill_signals.json:f336bee8db",
@@ -8842,7 +8898,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "e6a970d080f07c2c6b9dd50dd040fca7c12375f5aa692f53ec465dd9fb992e6b",
+      "content_hash": "f0b501ef34e69e6408764d2f3fff3ac6e503d072e69bef79a6028f6df325554d",
       "id": "artifact:file:schemas/readme.md:b0566199e4",
       "path": "schemas/README.md",
       "source_record_id": "file:schemas/readme.md:b0566199e4",
@@ -8862,6 +8918,38 @@
       "id": "artifact:file:schemas/governance_lanes.schema.json:617bbceaf5",
       "path": "schemas/governance_lanes.schema.json",
       "source_record_id": "file:schemas/governance_lanes.schema.json:617bbceaf5",
+      "surface_state": "authored_source"
+    },
+    {
+      "artifact_kind": "schema",
+      "content_hash": "872efbd93d3db3a9e348f1595f432236039e59fb91a9f32835c75f0afe74a9d4",
+      "id": "artifact:file:schemas/live-skill-dispatch-model-output.schema.json:a717256676",
+      "path": "schemas/live-skill-dispatch-model-output.schema.json",
+      "source_record_id": "file:schemas/live-skill-dispatch-model-output.schema.json:a717256676",
+      "surface_state": "authored_source"
+    },
+    {
+      "artifact_kind": "schema",
+      "content_hash": "258f6c6c81e33074d6b79b2c7881773ca43ba4e1196d7fe135dfb401d1a8b7b0",
+      "id": "artifact:file:schemas/live-skill-dispatch-plan.schema.json:ba7d5d70d0",
+      "path": "schemas/live-skill-dispatch-plan.schema.json",
+      "source_record_id": "file:schemas/live-skill-dispatch-plan.schema.json:ba7d5d70d0",
+      "surface_state": "authored_source"
+    },
+    {
+      "artifact_kind": "schema",
+      "content_hash": "ab10ccb8e4c536e12c8f66ec3a577668a4ca1a94b31951d4646911e53e7e8c76",
+      "id": "artifact:file:schemas/live-skill-dispatch-private-receipt.schema.json:a5ead8166f",
+      "path": "schemas/live-skill-dispatch-private-receipt.schema.json",
+      "source_record_id": "file:schemas/live-skill-dispatch-private-receipt.schema.json:a5ead8166f",
+      "surface_state": "authored_source"
+    },
+    {
+      "artifact_kind": "schema",
+      "content_hash": "92f33bb741d0770b080a1860b103a86512f5e4975ed68e939b30ff5f106538c3",
+      "id": "artifact:file:schemas/live-skill-dispatch-public-receipt.schema.json:6248b34177",
+      "path": "schemas/live-skill-dispatch-public-receipt.schema.json",
+      "source_record_id": "file:schemas/live-skill-dispatch-public-receipt.schema.json:6248b34177",
       "surface_state": "authored_source"
     },
     {
@@ -9186,7 +9274,7 @@
     },
     {
       "artifact_kind": "script",
-      "content_hash": "4466f375d23344ec4c5b9f75be719ad81cc0fc024837e6d4f4ee73a673c9a0c1",
+      "content_hash": "7c904d0b802ec53db0306e9636c8c92dea757cf11b20522c004106b6b97cbab5",
       "id": "artifact:file:scripts/builders/build_description_trigger_evals.py:8173cba511",
       "path": "scripts/builders/build_description_trigger_evals.py",
       "source_record_id": "file:scripts/builders/build_description_trigger_evals.py:8173cba511",
@@ -9202,7 +9290,7 @@
     },
     {
       "artifact_kind": "script",
-      "content_hash": "5eeb093203904a86629d8bdbe4b97edc303908c7a7cbc7a2660f04ccababddeb",
+      "content_hash": "5a674e77933e9ce3d32594ee44b313fdf98ee384edf06efd5c7465e5199df010",
       "id": "artifact:file:scripts/builders/build_tiny_router_inputs.py:f781eb5b5a",
       "path": "scripts/builders/build_tiny_router_inputs.py",
       "source_record_id": "file:scripts/builders/build_tiny_router_inputs.py:f781eb5b5a",
@@ -10010,7 +10098,7 @@
     },
     {
       "artifact_kind": "source_code",
-      "content_hash": "6acc10d125b98899a0bb672d5636c8ecf14210ba945386fe5265cfcecd1b8ba4",
+      "content_hash": "36315563955523a60c5eee7bee455446008311eaabdfe59c2a6fc42e179e4e54",
       "id": "artifact:file:scripts/validation/validators/tiny_router_surface.py:cb82e74b01",
       "path": "scripts/validation/validators/tiny_router_surface.py",
       "source_record_id": "file:scripts/validation/validators/tiny_router_surface.py:cb82e74b01",
@@ -12978,7 +13066,7 @@
     },
     {
       "artifact_kind": "config",
-      "content_hash": "739456c325fa095a29d7f8a2e447c293a75f85d05b91792a5f0186e5b20f5be2",
+      "content_hash": "0dd6b6f6eab65a654f15623c575db4f5e1fcec3204523d08591da737ba195110",
       "id": "artifact:file:tests/fixtures/skill_evaluation_cases.yaml:1c6caffedc",
       "path": "tests/fixtures/skill_evaluation_cases.yaml",
       "source_record_id": "file:tests/fixtures/skill_evaluation_cases.yaml:1c6caffedc",
@@ -14042,6 +14130,22 @@
     },
     {
       "artifact_kind": "document",
+      "content_hash": "8911495c42f62f10547a1570f9231e8c8e96d8d0c289acd5d9980f736d2fdf7a",
+      "id": "artifact:file:tests/fixtures/skill_evaluation_snapshots/os-abyss-artifact-trust-loop/os_abyss_artifact_trust_loop_consumer_gate.md:66ac3a5f34",
+      "path": "tests/fixtures/skill_evaluation_snapshots/os-abyss-artifact-trust-loop/os_abyss_artifact_trust_loop_consumer_gate.md",
+      "source_record_id": "file:tests/fixtures/skill_evaluation_snapshots/os-abyss-artifact-trust-loop/os_abyss_artifact_trust_loop_consumer_gate.md:66ac3a5f34",
+      "surface_state": "authored_source"
+    },
+    {
+      "artifact_kind": "document",
+      "content_hash": "e6f6446eb840f460cdb292b8549a2e252260d4b31bd8a93c17db17fbb6bc8ef3",
+      "id": "artifact:file:tests/fixtures/skill_evaluation_snapshots/os-abyss-artifact-trust-loop/os_abyss_artifact_trust_loop_plain_unit_test.md:a62cdb523b",
+      "path": "tests/fixtures/skill_evaluation_snapshots/os-abyss-artifact-trust-loop/os_abyss_artifact_trust_loop_plain_unit_test.md",
+      "source_record_id": "file:tests/fixtures/skill_evaluation_snapshots/os-abyss-artifact-trust-loop/os_abyss_artifact_trust_loop_plain_unit_test.md:a62cdb523b",
+      "surface_state": "authored_source"
+    },
+    {
+      "artifact_kind": "document",
       "content_hash": "350ba989d8f425e36d9b6e17b8bb951c7336a6759276e729eb24cfd3a6c4219e",
       "id": "artifact:file:tests/fixtures/skill_evaluation_snapshots/titan-approval-ledger/titan_approval_ledger_explicit_titan_route.md:65b621f1be",
       "path": "tests/fixtures/skill_evaluation_snapshots/titan-approval-ledger/titan_approval_ledger_explicit_titan_route.md",
@@ -14570,6 +14674,14 @@
     },
     {
       "artifact_kind": "test",
+      "content_hash": "5b1ede86c88957b9597ffafe89e8ba45158ac71c250fe58538fb5ec2c4c07f29",
+      "id": "artifact:file:tests/test_live_skill_dispatch_harness.py:27c0f74cd0",
+      "path": "tests/test_live_skill_dispatch_harness.py",
+      "source_record_id": "file:tests/test_live_skill_dispatch_harness.py:27c0f74cd0",
+      "surface_state": "authored_source"
+    },
+    {
+      "artifact_kind": "test",
       "content_hash": "364f72d1479dd3dfa416b58bfc1bb32dab4ca48b9c6b7a0bd37c0123fc030c14",
       "id": "artifact:file:tests/test_maturity_model_docs.py:f824f64798",
       "path": "tests/test_maturity_model_docs.py",
@@ -14955,7 +15067,7 @@
   ],
   "index_identity": {
     "artifact_kind": "repository_artifact_index",
-    "content_digest": "3e4506c6e2cf5acf18769b8b31c58527bdf62a4302f706ae1e1816c9490dbf67",
+    "content_digest": "080be506464672a5b59eb18e705883667e405951e6c745d68b2143233d0cf26c",
     "index_kind": "artifact",
     "local_id": "index:repo-local:artifacts",
     "schema_ref": "aoa-kag:schemas/repo-local-kag-repository-index.schema.json"
@@ -14979,19 +15091,19 @@
   },
   "schema_version": "aoa-repo-local-kag-repository-index-v1",
   "source_index": {
-    "content_digest": "59ca9c54ced2b12ca0cfe21effd8a76463ee38d1ab329a629795f388a1966517",
+    "content_digest": "9ef53d3ccc2acf70d4f3488247dc7c7d30125361b73f5ba63a3d2043201c2122",
     "local_id": "index:repo-local:source-surfaces",
     "path": "kag/indexes/source_surface_index.json"
   },
   "summary": {
-    "entry_count": 1869,
+    "entry_count": 1883,
     "kind_counts": {
       "asset": 114,
-      "config": 319,
+      "config": 322,
       "data_table": 2,
       "dependency_manifest": 1,
       "directory_marker": 4,
-      "document": 1041,
+      "document": 1046,
       "generated_readmodel": 84,
       "index": 1,
       "license": 1,
@@ -15000,11 +15112,11 @@
       "projection": 1,
       "receipt": 4,
       "record_log": 4,
-      "schema": 60,
-      "script": 67,
+      "schema": 64,
+      "script": 68,
       "security": 1,
       "source_code": 63,
-      "test": 81,
+      "test": 82,
       "validator": 12
     }
   }
