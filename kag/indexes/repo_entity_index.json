@@ -8704,6 +8704,20 @@
         "surface_state": "authored_source"
       },
       "entity_kind": "artifact",
+      "id": "entity:file:evals/reports/aoa-skill-live-dispatch-smoke-20260711-v3-read-command-ambiguity-needs-rerun.json:44aee596b5",
+      "label": "evals/reports/aoa-skill-live-dispatch-smoke-20260711-v3-read-command-ambiguity-needs-rerun.json",
+      "source_record_id": "file:evals/reports/aoa-skill-live-dispatch-smoke-20260711-v3-read-command-ambiguity-needs-rerun.json:44aee596b5"
+    },
+    {
+      "coordinates": {
+        "artifact_kind": "config",
+        "code_role": "none",
+        "command_role": "none",
+        "document_role": "none",
+        "mechanics_role": "none",
+        "surface_state": "authored_source"
+      },
+      "entity_kind": "artifact",
       "id": "entity:file:evals/reports/aoa-skill-live-dispatch-smoke-20260711-v3-reviewed.json:fd9d0d0f07",
       "label": "evals/reports/aoa-skill-live-dispatch-smoke-20260711-v3-reviewed.json",
       "source_record_id": "file:evals/reports/aoa-skill-live-dispatch-smoke-20260711-v3-reviewed.json:fd9d0d0f07"
@@ -26491,7 +26505,7 @@
   ],
   "index_identity": {
     "artifact_kind": "repository_entity_index",
-    "content_digest": "df659f26553cf048925cb9452968db8517e7fd75b46e338b712925ff57d61000",
+    "content_digest": "49b53a6b6067aaaf98c4586f97cb467c5ed7e825d16c217b315517344e6fdf22",
     "index_kind": "entity",
     "local_id": "index:repo-local:entities",
     "schema_ref": "aoa-kag:schemas/repo-local-kag-repository-index.schema.json"
@@ -26514,15 +26528,15 @@
   },
   "schema_version": "aoa-repo-local-kag-repository-index-v1",
   "source_index": {
-    "content_digest": "9a80b7d95a4e9d55e4326f7558276dc594bd1eb9f8cbaacf29c114f6c019eac3",
+    "content_digest": "ce1d1488cea2f72da5e26d0cfeeec5ae2fd2b0d981b9a82fb59b7370eef2ff41",
     "local_id": "index:repo-local:source-surfaces",
     "path": "kag/indexes/source_surface_index.json"
   },
   "summary": {
-    "entry_count": 1892,
+    "entry_count": 1893,
     "kind_counts": {
       "agent_route": 29,
-      "artifact": 393,
+      "artifact": 394,
       "code": 66,
       "command": 156,
       "contract": 42,

@@ -9,7 +9,7 @@
     "route_decision": {"type": "string", "enum": ["invoke", "manual_required", "do_not_use"], "description": "Activation and dispatch decision for the target skill. A downstream procedure blocked by missing input or an owner boundary does not change an otherwise correct invoke decision."},
     "selected_skill": {"type": ["string", "null"], "maxLength": 120, "description": "Exact root or directly selected skill name, or null when no skill should be selected."},
     "selected_child": {"type": ["string", "null"], "maxLength": 120, "description": "Exact child skill selected through a root route, or null when no child route applies."},
-    "claims_loaded": {"type": "boolean", "description": "Whether the response claims that the selected skill instructions were loaded and used."},
+    "claims_loaded": {"type": "boolean", "description": "Model self-report only: whether all instructions needed for the selected route, including a selected child, are claimed loaded. This field never proves or gates the objective load contract."},
     "procedure_disposition": {"type": "string", "enum": ["completed", "blocked_missing_input", "deferred_owner_boundary", "not_applicable"], "description": "Disposition of the downstream skill procedure after dispatch: completed, blocked on required input, deferred to an authoritative owner, or not applicable."},
     "mutation_authorized": {"type": "boolean", "const": false, "description": "Whether this bounded evaluation authorizes repository, runtime, or external mutation; it never does."},
     "proof_authority_claimed": {"type": "boolean", "const": false, "description": "Whether the response claims that this evaluation is authoritative proof; such a claim is forbidden."},

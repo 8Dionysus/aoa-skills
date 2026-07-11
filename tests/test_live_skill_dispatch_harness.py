@@ -421,7 +421,7 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
         )
         self.assertEqual(plan["protocol_revision"], contract["protocol_revision"])
         self.assertEqual(
-            "aoa_codex_app_server_skill_input_contract_v3",
+            "aoa_codex_app_server_skill_input_contract_v4",
             contract["schema_version"],
         )
         self.assertEqual("codex-cli 0.144.1", contract["codex_version"])
@@ -435,6 +435,18 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
         self.assertIn(
             "same exact fixture name and path",
             contract["structured_input_binding"]["skill_item"],
+        )
+        self.assertIn(
+            "do not gate objective load evidence",
+            contract["evidence_binding"]["model_load_claim"],
+        )
+        self.assertIn(
+            "read-only skill-file inspection commands",
+            contract["evidence_binding"]["read_command_boundary"],
+        )
+        self.assertIn(
+            "dynamically selected child",
+            contract["evidence_binding"]["selected_child"],
         )
         self.assertEqual(
             ["initialize", "initialized", "skills/list", "thread/start", "turn/start", "thread/delete"],
@@ -490,6 +502,18 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
         self.assertIn("--ignore-user-config", implicit["argv"])
         self.assertIn("read-only", implicit["argv"])
         self.assertTrue(trajectory["prompt"].startswith("$aoa-eval "))
+        self.assertIn(
+            "Read-only skill-file inspection commands are allowed",
+            trajectory["prompt"],
+        )
+        self.assertIn(
+            "do not count as procedure commands",
+            trajectory["prompt"],
+        )
+        self.assertIn(
+            "complete selected child `SKILL.md`",
+            trajectory["prompt"],
+        )
         self.assertTrue(
             runner._native_cli_target_input_accepted(
                 trajectory, [{"type": "turn.started"}]
@@ -683,6 +707,17 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
             self.assertEqual(0o700, private_root.stat().st_mode & 0o777)
             self.assertEqual(0o700, receipt_path.parent.stat().st_mode & 0o777)
             self.assertEqual(0o600, receipt_path.stat().st_mode & 0o777)
+            trajectory_guidance = (
+                receipt_path.parent / "fixtures" / "fixture-002" / "AGENTS.md"
+            ).read_text(encoding="utf-8")
+            self.assertIn(
+                "Read-only skill-file inspection commands are allowed",
+                trajectory_guidance,
+            )
+            self.assertIn(
+                "They are evidence collection, not procedure commands",
+                trajectory_guidance,
+            )
             for path in receipt_path.parent.rglob("*"):
                 self.assertEqual(0o700 if path.is_dir() else 0o600, path.stat().st_mode & 0o777)
             Draft202012Validator(
@@ -1140,10 +1175,11 @@ for line in sys.stdin:
             expected_target_skill="aoa-eval-apply",
             expected_behavior="explicit",
         )
-        output = {"claims_loaded": True}
+        output = {"claims_loaded": False, "selected_child": None}
         native_without_shell_read = {
             "native_target_skill_input_accepted": True,
             "target_skill_full_read_observed": False,
+            "child_full_read_observed": False,
         }
         self.assertTrue(
             runner._load_contract_match(explicit, output, native_without_shell_read)
@@ -1166,6 +1202,36 @@ for line in sys.stdin:
         }
         self.assertTrue(
             runner._load_contract_match(trajectory, output, native_with_child_read)
+        )
+
+        implicit_router = dataclasses.replace(
+            explicit,
+            trial_id="native:implicit-router",
+            arm_type="implicit_aided",
+            expected_behavior="invoke",
+        )
+        routed_output = {
+            "claims_loaded": False,
+            "selected_child": "aoa-eval-apply",
+        }
+        target_read_without_child = {
+            "native_target_skill_input_accepted": False,
+            "target_skill_full_read_observed": True,
+            "child_full_read_observed": False,
+        }
+        self.assertFalse(
+            runner._load_contract_match(
+                implicit_router,
+                routed_output,
+                target_read_without_child,
+            )
+        )
+        self.assertTrue(
+            runner._load_contract_match(
+                implicit_router,
+                routed_output,
+                {**target_read_without_child, "child_full_read_observed": True},
+            )
         )
 
     def test_procedure_evidence_is_exact_atomic_and_payload_bound(self) -> None:
@@ -1237,6 +1303,77 @@ for line in sys.stdin:
                     [forged_payload], fixture_root
                 )["verification_observed"]
             )
+
+    def test_dynamic_selected_child_read_is_required_for_implicit_router_load(self) -> None:
+        runner = self.runner
+        with tempfile.TemporaryDirectory() as td:
+            fixture_root = Path(td)
+            target_path = fixture_root / ".agents" / "skills" / "aoa-eval" / "SKILL.md"
+            child_path = (
+                fixture_root
+                / ".agents"
+                / "skills"
+                / "aoa-eval-apply"
+                / "SKILL.md"
+            )
+            target_path.parent.mkdir(parents=True)
+            child_path.parent.mkdir(parents=True)
+            target_path.write_text("# aoa-eval\n", encoding="utf-8")
+            child_path.write_text("# aoa-eval-apply\n", encoding="utf-8")
+
+            def read_event(path: Path) -> dict:
+                return {
+                    "type": "item.completed",
+                    "item": {
+                        "type": "command_execution",
+                        "status": "completed",
+                        "exit_code": 0,
+                        "command": f"cat {path}",
+                        "aggregated_output": path.read_text(encoding="utf-8"),
+                    },
+                }
+
+            trial = runner.Trial(
+                trial_id="dynamic-child:aided",
+                arm_type="implicit_aided",
+                case_id="dynamic-child",
+                prompt="Route through the selected child.",
+                expected_target_skill="aoa-eval",
+                expected_behavior="invoke",
+            )
+            output = {
+                "selected_skill": "aoa-eval",
+                "selected_child": "aoa-eval-apply",
+            }
+            base_result = {
+                "returncode": 0,
+                "final_output": output,
+                "events": [read_event(target_path)],
+            }
+            prompt_evidence = {
+                "prompt_visibility_contract_match": True,
+                "prompt_visible_repo_skill_count": 1,
+                "expected_prompt_visible_repo_skill_count": 1,
+            }
+
+            missing_child = runner._enrich_transport_evidence(
+                trial,
+                base_result,
+                fixture_root,
+                prompt_evidence,
+            )
+            self.assertTrue(missing_child["target_skill_full_read_observed"])
+            self.assertFalse(missing_child["child_full_read_observed"])
+            self.assertFalse(runner._load_contract_match(trial, output, missing_child))
+
+            with_child = runner._enrich_transport_evidence(
+                trial,
+                {**base_result, "events": [read_event(target_path), read_event(child_path)]},
+                fixture_root,
+                prompt_evidence,
+            )
+            self.assertTrue(with_child["child_full_read_observed"])
+            self.assertTrue(runner._load_contract_match(trial, output, with_child))
 
     def test_app_server_uses_only_the_last_agent_message_as_final_output(self) -> None:
         events = [
@@ -1383,6 +1520,7 @@ for line in sys.stdin:
                 "owner_boundary_violation",
                 "runtime_profile_drift",
                 "budget_exhausted",
+                "output_contract_invalid",
                 "transport_failure",
             },
             set(taxonomy),
@@ -1406,6 +1544,10 @@ for line in sys.stdin:
         self.assertEqual(
             "review_caps_or_reduce_context_then_repeat_same_case",
             self.runner.ADAPTIVE_RETURN_ROUTE["budget_exhausted"],
+        )
+        self.assertEqual(
+            "repair_output_schema_or_prompt_then_repeat_same_case",
+            self.runner.ADAPTIVE_RETURN_ROUTE["output_contract_invalid"],
         )
 
         budget_trial = self.runner.Trial(
@@ -1446,6 +1588,40 @@ for line in sys.stdin:
         self.assertEqual(
             "budget_exhausted",
             self.runner._trial_failure_class(budget_trial, app_server_budget_result),
+        )
+
+        invalid_output = FakeTransport().run_cli(
+            {
+                "expected_target_skill": "aoa-eval",
+                "expected_behavior": "trajectory",
+                "expected_child_skill": "aoa-eval-apply",
+                "arm_type": "root_manual_child",
+            }
+        )
+        invalid_output["final_output"].pop("stop_line")
+        self.assertEqual(
+            "output_contract_invalid",
+            self.runner._trial_failure_class(budget_trial, invalid_output),
+        )
+
+        zero_return_self_report_gap = FakeTransport().run_cli(
+            {
+                "expected_target_skill": "aoa-eval",
+                "expected_behavior": "trajectory",
+                "expected_child_skill": "aoa-eval-apply",
+                "arm_type": "root_manual_child",
+            }
+        )
+        zero_return_self_report_gap["final_output"]["claims_loaded"] = False
+        zero_return_self_report_gap["child_full_read_observed"] = False
+        zero_return_self_report_gap["target_skill_full_read_observed"] = False
+        zero_return_self_report_gap["native_target_skill_input_accepted"] = True
+        self.assertEqual(
+            "skill_load_gap",
+            self.runner._trial_failure_class(
+                budget_trial,
+                zero_return_self_report_gap,
+            ),
         )
 
     def test_late_budget_marker_does_not_override_valid_model_output(self) -> None:
@@ -1554,6 +1730,17 @@ for line in sys.stdin:
         self.assertEqual(
             "transport_failure",
             transport_failed["measure"]["failure_class"],
+        )
+
+        output_invalid = arm(
+            "implicit_control",
+            failure="output_contract_invalid",
+            route_match=False,
+        )
+        self.assertEqual([], runner._pair_outcomes([aided, output_invalid]))
+        self.assertEqual(
+            "output_contract_invalid",
+            output_invalid["measure"]["failure_class"],
         )
 
         contaminated_control = arm(

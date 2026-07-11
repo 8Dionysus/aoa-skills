@@ -31,7 +31,7 @@
     {
       "path": "tests/test_aoa_eval_prompt_trigger_harness.py",
       "kind": "file",
-      "sha256": "601252cbbe41f6253baddc69f5a78e8da5cc5a1db89b49643cb423e458d83a3f"
+      "sha256": "628158c3a0461624224bd2d948c6ddbdec7331f78606e8ac08d02a1d2321f538"
     },
     {
       "path": "tests/fixtures/skill_evaluation_cases.yaml",
@@ -41,12 +41,12 @@
     {
       "path": "skills/core/engineering/aoa-eval/SKILL.md",
       "kind": "file",
-      "sha256": "44ca9ad063e9bda478f026b0671947a7e3272eec6799f6cc20d3ea6d7c25aa11"
+      "sha256": "ba9e0349bf988fc7ece71989c1f216e04e13d7065e947569cba22d629945f016"
     },
     {
       "path": "skills/core/engineering/aoa-eval/examples/runtime.md",
       "kind": "file",
-      "sha256": "55a6c4067efd50a3e104bf4bdd31fba2915a532366c49f73fe0b03a6adb37398"
+      "sha256": "5d3babe485f5c87505a7f9a3826425f745a24fc165b1589e9bc993b657f9ad35"
     },
     {
       "path": "pytest.ini",

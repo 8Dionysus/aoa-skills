@@ -55,15 +55,26 @@ temporary root and must not be copied into this directory.
   missing-child-read gap, but the App arm used unsupported structured-only
   input. Its App `skill_load_gap` is a harness diagnosis, not a skill verdict.
 - [aoa-skill-live-dispatch-smoke-20260711-v3-reviewed.json](aoa-skill-live-dispatch-smoke-20260711-v3-reviewed.json)
-  records the first fully valid v3 smoke. The implicit pair has candidate
-  positive lift, the official App invocation passes native load, procedure,
-  verification, and completion, and the explicit `aoa-eval` root selects
+  records the first complete v3 smoke under its then-current grader. The
+  implicit pair has candidate positive lift, the official App invocation passes
+  native load, procedure, verification, and completion, and the explicit
+  `aoa-eval` root selects
   `aoa-eval-apply` but does not full-read that child before following its
   procedure. The reviewed `skill_load_gap` routes back to the root handoff
   instruction and requires a same-case rerun after repair; it is not central
-  proof or promotion evidence.
+  proof or promotion evidence. Its fields remain source-locked to the v3
+  grader and are not upgraded in place by later evidence semantics.
+- [aoa-skill-live-dispatch-smoke-20260711-v3-read-command-ambiguity-needs-rerun.json](aoa-skill-live-dispatch-smoke-20260711-v3-read-command-ambiguity-needs-rerun.json)
+  preserves the exact-merged-tree v3 rerun after the root handoff repair. Its
+  first three arms exposed four harness defects: model self-report still gated
+  objective load, an implicitly selected child escaped the read check,
+  read-only inspection was ambiguous under the "one command" fixture wording,
+  and a zero-return output-contract failure was mislabeled as transport
+  failure. The report preserves those historical measures without endorsing
+  them and supports no pair, lift, skill-effect, or family conclusion. Repeat
+  the smoke under v4 before widening.
 
-Corrected live receipts under the v3 App Server protocol are reviewable only
+Corrected live receipts under the v4 evidence protocol are reviewable only
 after canonical user-skill shadows, plugins, and every configured MCP id are
 isolated with the adapter-appropriate mechanism (`--ignore-user-config` for
 CLI exec, explicit per-id disables for prompt inspection and App Server);
@@ -71,11 +82,16 @@ prompt entry descriptions match the locked background; structured
 `skills/list` exposes the exact unique 57-skill fixture map with zero MCP
 startup; the official `$skill` text plus matching `skill` item is accepted;
 native input acceptance remains separate from exact fixture-path full reads;
-one atomic guidance-bound validator event is proved; and invalid pairs are
+model `claims_loaded` stays separate from objective load; every expected or
+dynamically selected child has a complete exact-path read; read-only inspection
+commands remain allowed evidence rather than procedure commands; zero-return
+output-contract invalidity remains separate from transport failure; one atomic
+guidance-bound validator event is proved; and invalid pairs are
 omitted without rewriting arm history. Public
 validation rejects embedded absolute host paths as well as raw prompts,
 transport ids, and credential-shaped values. Retained v1/v2 smokes remain
-historical `needs-rerun` evidence.
+historical `needs-rerun` evidence; retained v3 reports keep their original
+review status and grader semantics.
 - [aoa-eval-session-mining.report.md](aoa-eval-session-mining.report.md)
   records the first `.aoa` mining pass for `aoa-eval` trigger evidence and its
   proof limits.

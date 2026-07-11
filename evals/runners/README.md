@@ -46,9 +46,10 @@ turn follows the
 the text begins with the exact `$skill` mention and the adjacent structured
 `skill` item carries the same fixture name and path. An accepted official input
 is version-locked native-load evidence, distinct from a raw shell full read.
-These rules use contract schema `aoa_codex_app_server_skill_input_contract_v3`
-and protocol revision `codex-cli-0.144.1-app-server-skill-input-v3`; retained
-v1/v2 receipts remain historical `needs-rerun` evidence.
+These rules use contract schema `aoa_codex_app_server_skill_input_contract_v4`
+and protocol revision `codex-cli-0.144.1-live-dispatch-evidence-v4`. Retained
+v1-v3 receipts stay source-locked to their original protocol and review status;
+they are never upgraded in place.
 
 Run the confirmed command only as the child of the plan packet's
 `resource_launch_prefix`. The wrapper must produce the expected
@@ -64,12 +65,16 @@ would invalidate paired lift.
 
 The sandbox remains read-only and network-disabled, but the read-only shell
 tool is available for evidence-bearing reads and the hermetic fixture
-procedure. Root/child and structured arms receive the exact command
+procedure. Read-only skill-file inspection commands may precede the procedure;
+they collect evidence and do not count as procedure commands. Root/child and
+structured arms receive the one exact procedure command
 `python3 fixture_validator.py`. Transport evidence records full `SKILL.md`
 reads only from the exact fixture paths with complete source content. Public
-measures keep accepted native input separate from those raw full-read events:
-the explicit root is natively loaded, its selected child still requires a raw
-read, and the official App Server dual input natively loads its target.
+measures keep the model's `claims_loaded` self-report, accepted native input,
+and raw full-read events separate: the self-report never gates objective load
+evidence, the explicit root is natively loaded, any expected or dynamically
+selected child still requires a raw read, and the official App Server dual
+input natively loads its target.
 Verification requires the same completed exact-command event to carry zero
 exit and exactly one `AOA_FIXTURE_VALIDATOR_OK` JSON payload bound to the
 current fixture-guidance digest; split success/sentinel events do not pass.
@@ -92,12 +97,15 @@ native input, raw full-read evidence, dispatch/load matches, procedure
 disposition, execution, verification, completion, and deflection separate. A
 correct selection without the required native-load or child/full-read evidence
 returns `skill_load_gap` to the same case. A wrong activation decision after the
-route is available is instead `dispatch_policy_gap`; neither class is proof of
-a skill defect or completed work.
+route is available is instead `dispatch_policy_gap`. A normal zero-return
+transport whose final structured result violates the bounded output schema is
+`output_contract_invalid`, not `transport_failure`; none of these classes is
+proof of a skill defect or completed work.
 
-Implicit lift is omitted when either arm has a transport, budget, runtime, or
-owner-boundary safety failure. Contamination remains an explicit pair outcome
-but never rewrites either arm's recorded classification. Public review also
+Implicit lift is omitted when either arm has an output-contract, transport,
+budget, runtime, or owner-boundary safety failure. Contamination remains an
+explicit pair outcome but never rewrites either arm's recorded classification.
+Public review also
 walks every string value and rejects an absolute host path even when it is
 embedded in prose, in addition to credential and transport-id leakage.
 
@@ -105,6 +113,14 @@ The 2026-07-11 complete post-classifier smoke is retained only as a
 `needs-rerun` harness diagnosis. User-skill prompt contamination, a disabled
 full-read/shell path, and an ambiguous route/procedure grader make its former
 trigger, trajectory, procedure, and lift interpretations non-actionable.
+
+The exact-merged-tree v3 rerun after the `aoa-eval` child-handoff repair is also
+retained as `needs-rerun` harness evidence. Its first three arms exposed that
+the v3 grader still treated `claims_loaded` as load proof, did not bind an
+implicitly selected child to its required read, classified a zero-return
+output-contract failure as transport failure, and let the phrase "one command"
+obscure that read-only inspection commands were allowed. It supports no pair,
+lift, or skill-effect conclusion. The v4 rerun must pass before widening.
 
 See `evals/suites/aoa-skill-live-dispatch-harness.suite.md` and
 `docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md` for
