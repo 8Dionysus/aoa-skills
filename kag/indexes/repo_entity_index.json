@@ -8654,6 +8654,20 @@
     },
     {
       "coordinates": {
+        "artifact_kind": "config",
+        "code_role": "none",
+        "command_role": "none",
+        "document_role": "none",
+        "mechanics_role": "none",
+        "surface_state": "authored_source"
+      },
+      "entity_kind": "artifact",
+      "id": "entity:file:evals/reports/aoa-skill-live-dispatch-smoke-20260711-v2-cli-mcp-config-needs-rerun.json:a64ff9237d",
+      "label": "evals/reports/aoa-skill-live-dispatch-smoke-20260711-v2-cli-mcp-config-needs-rerun.json",
+      "source_record_id": "file:evals/reports/aoa-skill-live-dispatch-smoke-20260711-v2-cli-mcp-config-needs-rerun.json:a64ff9237d"
+    },
+    {
+      "coordinates": {
         "artifact_kind": "document",
         "code_role": "none",
         "command_role": "none",
@@ -26435,7 +26449,7 @@
   ],
   "index_identity": {
     "artifact_kind": "repository_entity_index",
-    "content_digest": "72e451d1eb5ed3971214fb1d339b1b1b5490e73b516c52e3fdd68485f39f73b4",
+    "content_digest": "2eb9fd3676cb8fc594be03eae1584afd2058effc7b2de85f866076108efb282a",
     "index_kind": "entity",
     "local_id": "index:repo-local:entities",
     "schema_ref": "aoa-kag:schemas/repo-local-kag-repository-index.schema.json"
@@ -26458,15 +26472,15 @@
   },
   "schema_version": "aoa-repo-local-kag-repository-index-v1",
   "source_index": {
-    "content_digest": "851fc6a71af83c1ad315fbcf067c82266ba8afdf5c29c5e2fbf479039c8fedc8",
+    "content_digest": "f3dfcff849b9672cc40af499afc81632489496a4a27d2be508b5fe3f483ba4b5",
     "local_id": "index:repo-local:source-surfaces",
     "path": "kag/indexes/source_surface_index.json"
   },
   "summary": {
-    "entry_count": 1888,
+    "entry_count": 1889,
     "kind_counts": {
       "agent_route": 29,
-      "artifact": 389,
+      "artifact": 390,
       "code": 66,
       "command": 156,
       "contract": 42,
