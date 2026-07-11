@@ -8634,6 +8634,20 @@
         "surface_state": "authored_source"
       },
       "entity_kind": "artifact",
+      "id": "entity:file:evals/reports/aoa-skill-live-dispatch-smoke-20260711-reviewed.json:749a07c144",
+      "label": "evals/reports/aoa-skill-live-dispatch-smoke-20260711-reviewed.json",
+      "source_record_id": "file:evals/reports/aoa-skill-live-dispatch-smoke-20260711-reviewed.json:749a07c144"
+    },
+    {
+      "coordinates": {
+        "artifact_kind": "config",
+        "code_role": "none",
+        "command_role": "none",
+        "document_role": "none",
+        "mechanics_role": "none",
+        "surface_state": "authored_source"
+      },
+      "entity_kind": "artifact",
       "id": "entity:file:evals/reports/aoa-skill-live-dispatch-smoke-20260711-trajectory-budget-needs-rerun.json:2de3095e49",
       "label": "evals/reports/aoa-skill-live-dispatch-smoke-20260711-trajectory-budget-needs-rerun.json",
       "source_record_id": "file:evals/reports/aoa-skill-live-dispatch-smoke-20260711-trajectory-budget-needs-rerun.json:2de3095e49"
@@ -26421,7 +26435,7 @@
   ],
   "index_identity": {
     "artifact_kind": "repository_entity_index",
-    "content_digest": "aacf6460823a51c9346e9818840f1e6e7d25b1a98cd4577c64bb20df8414718a",
+    "content_digest": "67543a47cd6c2f65869d3a368ce1725c32187e3dab97e0b4b30862d03535df33",
     "index_kind": "entity",
     "local_id": "index:repo-local:entities",
     "schema_ref": "aoa-kag:schemas/repo-local-kag-repository-index.schema.json"
@@ -26444,15 +26458,15 @@
   },
   "schema_version": "aoa-repo-local-kag-repository-index-v1",
   "source_index": {
-    "content_digest": "d5f7f28ab1fea4a29ccf84a48b343f80858af300168cdb9c159dac00f0d26039",
+    "content_digest": "7ee3e1154842d39d5b230eacc5b95c3c6d35c7396e678f4dc408175f4a0a7d25",
     "local_id": "index:repo-local:source-surfaces",
     "path": "kag/indexes/source_surface_index.json"
   },
   "summary": {
-    "entry_count": 1887,
+    "entry_count": 1888,
     "kind_counts": {
       "agent_route": 29,
-      "artifact": 388,
+      "artifact": 389,
       "code": 66,
       "command": 156,
       "contract": 42,
