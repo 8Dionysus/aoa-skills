@@ -59,6 +59,10 @@ Tracking starts with the community-docs baseline for this repository.
 
 ### Changed
 
+- Live dispatch now locks and passes Codex rollout-budget reminder thresholds
+  as a TOML list for both CLI and App Server arms, rejects invalid thresholds
+  before transport startup, and preserves review compatibility with receipts
+  created before that cap was published.
 - Description-trigger mirrors now retain negative `prefer-other` coverage for
   manual skills, while same-band tiny-router shortlists remain candidate-only
   and leave activation to the downstream policy gate.

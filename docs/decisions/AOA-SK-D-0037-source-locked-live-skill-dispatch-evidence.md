@@ -56,6 +56,12 @@ skill files, generated/config inputs, profile revision, Codex protocol revision,
 caps, and trial identities into exact confirmation tokens, and requires a
 second token for every cohort beyond smoke.
 
+The source-locked caps include both the rollout token limit and its required
+list of remaining-token reminder thresholds. Every CLI and App Server arm must
+pass both values explicitly under strict config so an installed Codex contract
+change fails in deterministic adapter tests or pre-turn smoke, not midway
+through a campaign.
+
 The run must execute inside `abyss-machine resource launch`; the runner verifies
 the resource class, agent kind, and cgroup, independently requires a storage
 write preflight for its private host-owned root, and stops on runtime drift,

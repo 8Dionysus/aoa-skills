@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import dataclasses
 import importlib.util
 import io
 import json
@@ -196,6 +197,7 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
         self.assertEqual(64, len(first["plan_sha256"]))
         self.assertEqual(64, len(first["source_snapshot_sha256"]))
         self.assertEqual(28_000, first["caps"]["per_turn_weighted_token_limit"])
+        self.assertEqual([4_000], first["caps"]["rollout_budget_reminder_at_remaining_tokens"])
         self.assertEqual(1, first["caps"]["max_concurrency"])
         self.assertGreater(first["source_record_count"], 390)
         self.assertTrue(first["resource_wrapper_required"])
@@ -230,6 +232,7 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
             model="test-model",
             effort="medium",
             weighted_token_limit=28_000,
+            rollout_budget_reminder_at_remaining_tokens=(4_000,),
             timeout_seconds=180,
             full_timeout_seconds=240,
             disabled_skill_paths=(Path("/global/aoa-eval"),),
@@ -260,6 +263,10 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
         self.assertIn("shell_tool", implicit["argv"])
         self.assertTrue(trajectory["prompt"].startswith("$aoa-eval "))
         self.assertNotIn("shell_tool", trajectory["argv"])
+        reminder_override = "features.rollout_budget.reminder_at_remaining_tokens=[4000]"
+        self.assertIn(reminder_override, implicit["argv"])
+        self.assertIn(reminder_override, trajectory["argv"])
+        self.assertIn(reminder_override, structured["argv"])
         flattened = json.dumps([implicit, trajectory, structured])
         self.assertNotIn("dangerously-bypass", flattened)
         self.assertNotIn("threadId", structured["turn_start_params"])
@@ -270,6 +277,21 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
         self.assertEqual(180, implicit["timeout_seconds"])
         self.assertEqual(180, trajectory["timeout_seconds"])
         self.assertEqual(240, structured["timeout_seconds"])
+
+        for invalid_reminders in ((), (0,), (28_000,)):
+            invalid_context = dataclasses.replace(
+                context,
+                rollout_budget_reminder_at_remaining_tokens=invalid_reminders,
+            )
+            with self.subTest(invalid_reminders=invalid_reminders):
+                with self.assertRaisesRegex(ValueError, "positive and below the token limit"):
+                    runner.build_implicit_cli_request(
+                        invalid_context,
+                        prompt="Decide the route.",
+                        target_skill="aoa-eval",
+                        expected_behavior="invoke",
+                        control=False,
+                    )
 
     def test_confirmed_mock_run_writes_private_receipt_but_no_public_raw_data(self) -> None:
         runner = self.runner
@@ -315,6 +337,14 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
             self.assertNotIn("Decide the route", rendered)
             self.assertNotIn(str(private_root), rendered)
             self.assertNotIn("final_output", rendered)
+
+            legacy_receipt = json.loads(json.dumps(receipt))
+            legacy_receipt["caps"].pop("rollout_budget_reminder_at_remaining_tokens")
+            legacy_public = runner.build_public_receipt(legacy_receipt)
+            self.assertNotIn("rollout_budget_reminder_at_remaining_tokens", legacy_public["caps"])
+            Draft202012Validator(
+                self.load_schema("live-skill-dispatch-public-receipt.schema.json")
+            ).validate(legacy_public)
 
     def test_public_validator_rejects_paths_credentials_raw_text_and_session_ids(self) -> None:
         runner = self.runner
@@ -519,6 +549,7 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
             model="test-model",
             effort="medium",
             weighted_token_limit=28_000,
+            rollout_budget_reminder_at_remaining_tokens=(4_000,),
             timeout_seconds=30,
             full_timeout_seconds=45,
         )
