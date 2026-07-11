@@ -29,6 +29,12 @@ temporary root and must not be copied into this directory.
   expected root was treated as its own collision competitor. Its source-locked
   historical failure labels remain immutable evidence of the old classifier;
   they are not current verdicts, and the corrected harness requires a rerun.
+- [aoa-skill-live-dispatch-smoke-20260711-reviewed.json](aoa-skill-live-dispatch-smoke-20260711-reviewed.json)
+  records the complete post-fix smoke with no early stop. The corrected
+  classifier preserves one implicit trigger miss, one root-child trajectory
+  break, and one structured direct-procedure gap; the paired arm shows no lift.
+  These are reviewed candidate observations and adaptive return routes, not a
+  central verdict or skill-promotion decision.
 - [aoa-eval-session-mining.report.md](aoa-eval-session-mining.report.md)
   records the first `.aoa` mining pass for `aoa-eval` trigger evidence and its
   proof limits.

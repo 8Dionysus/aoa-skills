@@ -13,6 +13,9 @@ Tracking starts with the community-docs baseline for this repository.
   control arms, explicit root-child reads, structured App Server skill input,
   paired outcome lift, host resource/storage gates, private raw receipts, and
   public-safe reviewed projections without claiming central proof authority.
+- The first complete post-classifier-fix smoke now has a public-safe reviewed
+  receipt that keeps implicit dispatch, trajectory, and direct-procedure
+  failures separate while retaining candidate-only and no-promotion posture.
 - `AOA-SK-D-0037` records why live cohorts remain operator-confirmed candidate
   evidence and why deterministic harness validation, not model calls, belongs
   in the normal repository gate.
