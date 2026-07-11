@@ -65,9 +65,11 @@ through a campaign.
 Root-child trajectories have a separate 48k weighted-token cap because proving
 a full child read adds bounded tool-output context that exhausted the common
 28k cap in the first real smoke. Implicit and structured arms retain 28k, and a
-cap stop is classified as `budget_exhausted`, not generic transport failure.
-Any further increase requires reviewed cap/context evidence and a same-case
-rerun.
+cap stop without a valid result is classified as `budget_exhausted`, not generic
+transport failure. A late budget event after a zero-return, contract-valid
+model output cannot override that usable result; the normal semantic classifier
+still decides its failure class. Any further increase requires reviewed
+cap/context evidence and a same-case rerun.
 
 Planning also validates the model-output schema against the bounded Responses
 API strict-output contract before issuing a confirmation token. Draft 2020-12
@@ -78,6 +80,9 @@ The run must execute inside `abyss-machine resource launch`; the runner verifies
 the resource class, agent kind, and cgroup, independently requires a storage
 write preflight for its private host-owned root, and stops on runtime drift,
 privacy contamination, owner-boundary widening, or transport failure.
+An explicit `true` mutation, proof-authority, or promotion claim is classified
+as an owner-boundary safety violation before generic output invalidity, even
+though the strict response schema also forbids that value.
 
 Raw prompts, events, transport identifiers, and model output remain in `0600`
 files below the source-locked `0700` host-private root. Public receipts are
@@ -97,6 +102,9 @@ Source locks make a rerun comparable. Paired controls expose whether the skill
 surface changed the observed route instead of crediting general model knowledge.
 Host routing bounds resource and storage pressure. Private/raw and public/digest
 separation keeps review possible without publishing session material.
+Collision neighbourhoods are contextual candidates rather than adversarial
+truth: selecting the expected target is never a collision merely because the
+target also appears in its own neighbourhood list.
 
 ## Consequences
 

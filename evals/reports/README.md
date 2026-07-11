@@ -23,6 +23,12 @@ temporary root and must not be copied into this directory.
   records the first two completed model arms plus the root-child budget stop.
   The implicit pair remains candidate evidence, the structured arm did not run,
   and the full smoke requires a rerun before widening.
+- [aoa-skill-live-dispatch-smoke-20260711-classification-needs-rerun.json](aoa-skill-live-dispatch-smoke-20260711-classification-needs-rerun.json)
+  preserves the reviewed four-arm receipt that exposed two classifier defects:
+  a valid structured result was overridden by a late budget marker, and the
+  expected root was treated as its own collision competitor. Its source-locked
+  historical failure labels remain immutable evidence of the old classifier;
+  they are not current verdicts, and the corrected harness requires a rerun.
 - [aoa-eval-session-mining.report.md](aoa-eval-session-mining.report.md)
   records the first `.aoa` mining pass for `aoa-eval` trigger evidence and its
   proof limits.
