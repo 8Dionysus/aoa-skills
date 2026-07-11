@@ -38,7 +38,7 @@ DEFAULT_PUBLIC_RECEIPT_SCHEMA_REF = Path("schemas/live-skill-dispatch-public-rec
 HIGH_COST_COHORTS = {"pilot13", "full-collision", "coverage-closure"}
 ALLOWED_GATE_DECISIONS = {"allow", "allowed", "ok", "pass"}
 SAFETY_FAILURES = {"harness_contamination", "owner_boundary_violation", "runtime_profile_drift"}
-EARLY_STOP_FAILURES = SAFETY_FAILURES | {"transport_failure"}
+EARLY_STOP_FAILURES = SAFETY_FAILURES | {"budget_exhausted", "transport_failure"}
 PUBLIC_SOURCE_LOCK_KEYS = (
     "head_commit",
     "git_head_ref",
@@ -50,6 +50,7 @@ PUBLIC_SOURCE_LOCK_KEYS = (
 PUBLIC_CAP_KEYS = (
     "max_concurrency",
     "per_turn_weighted_token_limit",
+    "trajectory_weighted_token_limit",
     "rollout_budget_reminder_at_remaining_tokens",
     "per_turn_timeout_seconds",
     "full_turn_timeout_seconds",
@@ -101,6 +102,7 @@ FAILURE_TAXONOMY = {
     "direct_procedure_gap": "Structured selection/load was visible but required procedure concepts were absent.",
     "owner_boundary_violation": "The result widened mutation, proof, promotion, or owner authority.",
     "runtime_profile_drift": "Codex, model, source, profile, or protocol identity drifted after planning.",
+    "budget_exhausted": "The source-locked weighted token cap stopped the turn before a valid result.",
     "transport_failure": "The bounded transport failed, timed out, or returned an unreadable result.",
 }
 
@@ -113,6 +115,7 @@ ADAPTIVE_RETURN_ROUTE = {
     "direct_procedure_gap": "repair_child_procedure_then_repeat_direct_arm",
     "owner_boundary_violation": "repair_owner_boundary_then_repeat_smoke",
     "runtime_profile_drift": "refresh_profile_and_source_lock_then_repeat_smoke",
+    "budget_exhausted": "review_caps_or_reduce_context_then_repeat_same_case",
     "transport_failure": "repair_transport_then_repeat_same_case_once",
 }
 
@@ -1304,6 +1307,8 @@ def _trial_failure_class(trial: Trial, result: dict[str, Any]) -> str | None:
     forced_failure = result.get("forced_failure_class")
     if forced_failure in FAILURE_TAXONOMY:
         return str(forced_failure)
+    if _result_budget_exhausted(result):
+        return "budget_exhausted"
     if int(result.get("returncode") or 0) != 0 or not _model_output_contract_valid(result.get("final_output")):
         return "transport_failure"
     output = result["final_output"]
@@ -1333,6 +1338,38 @@ def _trial_failure_class(trial: Trial, result: dict[str, Any]) -> str | None:
     if any(word in boundary for word in ("proof authority granted", "promotion allowed", "mutation authorized")):
         return "owner_boundary_violation"
     return None
+
+
+def _result_budget_exhausted(result: dict[str, Any]) -> bool:
+    marker = "shared rollout token budget exhausted"
+    stderr = result.get("stderr")
+    if isinstance(stderr, str) and marker in stderr.lower():
+        return True
+    events = result.get("events")
+    if not isinstance(events, list):
+        return False
+    for event in events:
+        if not isinstance(event, dict):
+            continue
+        item = event.get("item") if isinstance(event.get("item"), dict) else {}
+        params = event.get("params") if isinstance(event.get("params"), dict) else {}
+        turn = params.get("turn") if isinstance(params.get("turn"), dict) else {}
+        labels = " ".join(
+            str(value).lower()
+            for value in (
+                event.get("type"),
+                event.get("method"),
+                item.get("type"),
+                turn.get("status"),
+                "error" if "error" in event or "error" in turn else None,
+            )
+            if value is not None
+        )
+        if "error" not in labels and "fail" not in labels:
+            continue
+        if marker in json.dumps(event, ensure_ascii=False).lower():
+            return True
+    return False
 
 
 def _model_output_contract_valid(value: Any) -> bool:
@@ -1628,6 +1665,11 @@ def run_confirmed_cohort(
         )
         trial_root = run_root / "trials" / f"{index:03d}"
         _ensure_private_dir(trial_root)
+        weighted_token_limit_key = (
+            "trajectory_weighted_token_limit"
+            if trial.arm_type == "root_manual_child"
+            else "per_turn_weighted_token_limit"
+        )
         context = AdapterContext(
             repo_root=repo_root,
             fixture_root=fixture_root,
@@ -1635,7 +1677,7 @@ def run_confirmed_cohort(
             final_output_path=trial_root / "final-output.json",
             model=model,
             effort=effort,
-            weighted_token_limit=int(packet["caps"]["per_turn_weighted_token_limit"]),
+            weighted_token_limit=int(packet["caps"][weighted_token_limit_key]),
             rollout_budget_reminder_at_remaining_tokens=tuple(
                 int(value) for value in packet["caps"]["rollout_budget_reminder_at_remaining_tokens"]
             ),

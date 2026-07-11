@@ -66,6 +66,9 @@ Tracking starts with the community-docs baseline for this repository.
 - Live dispatch plan loading now rejects model-output schemas that escape the
   Responses API strict subset, and the bounded output contract declares types
   for enum and const fields before a model request can start.
+- Root-child live trajectories now use a separately locked 48k weighted-token
+  cap while other arms remain at 28k, and shared-budget exhaustion has its own
+  failure class and reviewed cap/context return route.
 - Description-trigger mirrors now retain negative `prefer-other` coverage for
   manual skills, while same-band tiny-router shortlists remain candidate-only
   and leave activation to the downstream policy gate.

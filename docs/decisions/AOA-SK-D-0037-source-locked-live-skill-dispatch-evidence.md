@@ -62,6 +62,13 @@ pass both values explicitly under strict config so an installed Codex contract
 change fails in deterministic adapter tests or pre-turn smoke, not midway
 through a campaign.
 
+Root-child trajectories have a separate 48k weighted-token cap because proving
+a full child read adds bounded tool-output context that exhausted the common
+28k cap in the first real smoke. Implicit and structured arms retain 28k, and a
+cap stop is classified as `budget_exhausted`, not generic transport failure.
+Any further increase requires reviewed cap/context evidence and a same-case
+rerun.
+
 Planning also validates the model-output schema against the bounded Responses
 API strict-output contract before issuing a confirmation token. Draft 2020-12
 validity alone is insufficient because a locally valid `const` or `enum`
