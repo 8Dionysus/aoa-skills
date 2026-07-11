@@ -95,6 +95,14 @@ prove complete skill reads and supplied no unambiguous selected procedure to
 the root/structured grader. Its trigger, trajectory, procedure, and outcome-lift
 labels therefore diagnose harness pressure only.
 
+The first fully valid v3 smoke from 2026-07-11 is reviewed candidate evidence.
+It records one positive-lift implicit pair, a passing official App invocation,
+and one explicit root trajectory in which `aoa-eval` selects
+`aoa-eval-apply` but does not full-read the selected child before following its
+procedure. That `skill_load_gap` returns to the root skill handoff instruction
+and the same case must be rerun after repair. The receipt remains non-proof and
+non-promotional.
+
 ## Safety And Privacy
 
 The plan locks Git head, all portable skill files, generated/config inputs,

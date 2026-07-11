@@ -324,7 +324,7 @@
         "AOA-T-0094"
       ],
       "trigger_boundary_short": "Use when the user asks whether an eval exists, whether one should be added, or how to connect evals to a repository; a repeated failure, validation gap, proof gap, regression, trigger miss, or local evals/ port...",
-      "verification_short": "Checks: confirm exactly one subskill route was selected; confirm local evals/PORT.yaml was inspected or the absence was named; if a workspace inventory was used, name the inventory command or MCP resource and the...",
+      "verification_short": "Checks: confirm exactly one subskill route was selected; confirm the selected subskill's complete SKILL.md was read before its procedure; a selected child name alone is not load evidence; confirm local...",
       "workflow_short": "Purpose: this skill as the front door for AoA evaluation work. Flow: when an OS Abyss aoa-evals checkout is available, raise the read-only session readiness packet before choosing a subskill -> from the aoa-evals repo, run python..."
     },
     {

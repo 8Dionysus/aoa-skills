@@ -1365,6 +1365,7 @@
       ],
       "verification": [
         "confirm exactly one subskill route was selected",
+        "confirm the selected subskill's complete `SKILL.md` was read before its procedure; a selected child name alone is not load evidence",
         "confirm local `evals/PORT.yaml` was inspected or the absence was named",
         "if a workspace inventory was used, name the inventory command or MCP resource and the route recommendation it returned",
         "if a session-start readiness packet was available, confirm it was run and name any freshness blocker or stop line that constrained the route",
@@ -1420,8 +1421,8 @@
         ],
         "verification_notes": [
           "confirm exactly one subskill route was selected",
-          "confirm local `evals/PORT.yaml` was inspected or the absence was named",
-          "if a workspace inventory was used, name the inventory command or MCP resource and the route recommendation it returned"
+          "confirm the selected subskill's complete `SKILL.md` was read before its procedure; a selected child name alone is not load evidence",
+          "confirm local `evals/PORT.yaml` was inspected or the absence was named"
         ],
         "contract_notes": [
           "`aoa-evals` owns proof doctrine and central eval verdicts",

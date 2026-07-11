@@ -29,6 +29,11 @@ Tracking starts with the community-docs baseline for this repository.
   Its implicit positive-lift pair remains candidate evidence, but the App arm
   used structured-only input instead of the official `$skill` plus `skill`
   pair, so its App load label is harness evidence only.
+- The first source-locked protocol-v3 smoke now has a public-safe reviewed
+  receipt. It preserves one candidate implicit positive-lift pair and a valid
+  App native-load/procedure path while localizing the explicit root trajectory
+  to one missing-child-read gap; it publishes neither central proof nor a
+  promotion claim.
 - `AOA-SK-D-0037` records why live cohorts remain operator-confirmed candidate
   evidence and now clarifies prompt-surface isolation and evidence-stage grading
   after the contaminated smoke; deterministic harness validation, not model
@@ -76,6 +81,10 @@ Tracking starts with the community-docs baseline for this repository.
 
 ### Changed
 
+- `aoa-eval` now requires a complete read of exactly one selected child's
+  `SKILL.md` before applying or claiming its procedure. A returned child name
+  remains selection evidence only, and focused regression coverage protects
+  the selected-to-loaded handoff exposed by the reviewed v3 smoke.
 - Live dispatch now discovers exact external shadowing `SKILL.md` paths,
   including canonical targets behind user-skill symlinks, binds only their
   count and digest into confirmation/source locks, and disables the canonical

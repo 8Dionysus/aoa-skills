@@ -1460,7 +1460,7 @@
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "037e92848373a224744e591ba7c89424564f0723ef20813848b2fe33433b8beb",
+      "content_hash": "1d775f9cb49ffc4e9c9ef821d0709d0c4eb1c10c3ff2a4d7b44171d01c71c7f2",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -1486,7 +1486,7 @@
       "promotion_review_path": null,
       "scope": "core",
       "skill_path": "skills/core/engineering/aoa-eval/SKILL.md",
-      "skill_revision": "037e92848373",
+      "skill_revision": "1d775f9cb49f",
       "status": "scaffold",
       "support_artifacts": [
         {
