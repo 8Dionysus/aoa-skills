@@ -1,0 +1,101 @@
+{
+  "schema_version": "local_eval_suite_execution_v1",
+  "suite_id": "aoa-eval-trigger-corpus",
+  "owner_repo": "aoa-skills",
+  "suite_note_ref": "evals/suites/aoa-eval-trigger-corpus.suite.md",
+  "runner": {
+    "kind": "python_pytest",
+    "argv": [
+      "python",
+      "-B",
+      "-m",
+      "pytest",
+      "-q",
+      "-p",
+      "no:cacheprovider",
+      "tests/test_aoa_eval_prompt_trigger_harness.py"
+    ],
+    "cwd": "."
+  },
+  "entrypoint_ref": "tests/test_aoa_eval_prompt_trigger_harness.py",
+  "timeout_seconds": 120,
+  "success_exit_codes": [
+    0
+  ],
+  "tracked_sources": [
+    {
+      "path": "evals/suites/aoa-eval-trigger-corpus.suite.md",
+      "kind": "file",
+      "sha256": "a5f6df423654f093d52a0e9eabb44007359a7095d94f71d6c5c13627cd7ecb10"
+    },
+    {
+      "path": "tests/test_aoa_eval_prompt_trigger_harness.py",
+      "kind": "file",
+      "sha256": "601252cbbe41f6253baddc69f5a78e8da5cc5a1db89b49643cb423e458d83a3f"
+    },
+    {
+      "path": "tests/fixtures/skill_evaluation_cases.yaml",
+      "kind": "file",
+      "sha256": "739456c325fa095a29d7f8a2e447c293a75f85d05b91792a5f0186e5b20f5be2"
+    },
+    {
+      "path": "skills/core/engineering/aoa-eval/SKILL.md",
+      "kind": "file",
+      "sha256": "44ca9ad063e9bda478f026b0671947a7e3272eec6799f6cc20d3ea6d7c25aa11"
+    },
+    {
+      "path": "skills/core/engineering/aoa-eval/examples/runtime.md",
+      "kind": "file",
+      "sha256": "55a6c4067efd50a3e104bf4bdd31fba2915a532366c49f73fe0b03a6adb37398"
+    },
+    {
+      "path": "pytest.ini",
+      "kind": "file",
+      "sha256": "9d1d59584510ad19cb36e20db73b25f32e4a6c88e0b3c0954fcf884790ad0381"
+    },
+    {
+      "path": "requirements-dev.txt",
+      "kind": "file",
+      "sha256": "e1b086e8fc31bb76cd1f9b0d884ee13ef2ecc693743c2f21f8fa6a8f148ee1cf"
+    },
+    {
+      "path": "tests/fixtures/skill_evaluation_snapshots/aoa-eval",
+      "kind": "tree",
+      "sha256": "bf0cc97fc37dfd54ca46a7d88717d0039307871a0f1c71a7ab65df26de3d6d75"
+    },
+    {
+      "path": "tests/fixtures/skill_evaluation_snapshots/aoa-eval-apply",
+      "kind": "tree",
+      "sha256": "78948d9370e64c3c3d7432462a5ae5d6a8fe554b09032169a7ea26b409e7a48b"
+    },
+    {
+      "path": "tests/fixtures/skill_evaluation_snapshots/aoa-eval-design",
+      "kind": "tree",
+      "sha256": "b11ee5940a6e2314837f239fd050c59286e39f5ee02a2e1a2571f6af3d80f37b"
+    },
+    {
+      "path": "tests/fixtures/skill_evaluation_snapshots/aoa-eval-local-need",
+      "kind": "tree",
+      "sha256": "3ba2d24b880fc0000c8a8fed11a039a262055a2472a2a686d8259485d4d0207e"
+    },
+    {
+      "path": "tests/fixtures/skill_evaluation_snapshots/aoa-eval-select",
+      "kind": "tree",
+      "sha256": "8b7a3876ed1a248ea7e2a8eed0d2cae0df05fc2851b53e1539a4534244ef4916"
+    },
+    {
+      "path": "tests/fixtures/skill_evaluation_snapshots/aoa-eval-session-mining",
+      "kind": "tree",
+      "sha256": "70560d8b1c79c58d81c045f9ef4aab110d62c97a2f0bdaf44114faadc0d6e779"
+    }
+  ],
+  "auto_run_allowed": false,
+  "proof_authority": false,
+  "promotion_allowed": false,
+  "readiness_scope": "source-contract-ready",
+  "runtime_reproducibility_proven": false,
+  "jit_revalidation_required": true,
+  "execution_receipt_required": true,
+  "environment_capture_required": true,
+  "authority_boundary": "owner-local execution support only; no verdict, scoring, regression, proof doctrine, proof acceptance, or promotion authority"
+}
