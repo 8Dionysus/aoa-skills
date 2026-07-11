@@ -41,11 +41,14 @@ mismatch stops before the model turn as `harness_contamination`.
 The structured arm has a second pre-turn gate. App Server `skills/list` must
 equal the full 57-skill fixture path map, with exactly one enabled path per repo
 name, and no configured MCP startup event may appear before `turn/start`. Its
-text item deliberately has no `$skill` prefix; activation comes only from the
-structured `skill` item. These causality/isolation rules use contract schema
-`aoa_codex_app_server_skill_input_contract_v2` and protocol revision
-`codex-cli-0.144.1-app-server-skill-input-v2`; retained receipts source-locked
-to v1 remain historical `needs-rerun` evidence.
+turn follows the
+[official App Server skill-invocation contract](https://learn.chatgpt.com/docs/app-server#start-a-turn-invoke-a-skill):
+the text begins with the exact `$skill` mention and the adjacent structured
+`skill` item carries the same fixture name and path. An accepted official input
+is version-locked native-load evidence, distinct from a raw shell full read.
+These rules use contract schema `aoa_codex_app_server_skill_input_contract_v3`
+and protocol revision `codex-cli-0.144.1-app-server-skill-input-v3`; retained
+v1/v2 receipts remain historical `needs-rerun` evidence.
 
 Run the confirmed command only as the child of the plan packet's
 `resource_launch_prefix`. The wrapper must produce the expected
@@ -63,7 +66,10 @@ The sandbox remains read-only and network-disabled, but the read-only shell
 tool is available for evidence-bearing reads and the hermetic fixture
 procedure. Root/child and structured arms receive the exact command
 `python3 fixture_validator.py`. Transport evidence records full `SKILL.md`
-reads only from the exact fixture paths with complete source content.
+reads only from the exact fixture paths with complete source content. Public
+measures keep accepted native input separate from those raw full-read events:
+the explicit root is natively loaded, its selected child still requires a raw
+read, and the official App Server dual input natively loads its target.
 Verification requires the same completed exact-command event to carry zero
 exit and exactly one `AOA_FIXTURE_VALIDATOR_OK` JSON payload bound to the
 current fixture-guidance digest; split success/sentinel events do not pass.
@@ -81,13 +87,13 @@ python evals/runners/run_live_skill_dispatch.py plan \
 Do not paste raw receipts into Git, issue trackers, or chat. Review them locally
 and use the runner's `review` action to create a field-whitelisted public
 receipt under `evals/reports/` only after assigning an explicit review status.
-Public measures keep prompt visibility, selection, model load claim, full-read
-evidence, dispatch/load matches, procedure disposition, execution,
-verification, completion, and deflection separate. A correct selection without
-the required activation/read evidence returns `skill_load_gap` to the same
-case. A wrong activation decision after the route is available is instead
-`dispatch_policy_gap`; neither class is proof of a skill defect or completed
-work.
+Public measures keep prompt visibility, selection, model load claim, accepted
+native input, raw full-read evidence, dispatch/load matches, procedure
+disposition, execution, verification, completion, and deflection separate. A
+correct selection without the required native-load or child/full-read evidence
+returns `skill_load_gap` to the same case. A wrong activation decision after the
+route is available is instead `dispatch_policy_gap`; neither class is proof of
+a skill defect or completed work.
 
 Implicit lift is omitted when either arm has a transport, budget, runtime, or
 owner-boundary safety failure. Contamination remains an explicit pair outcome

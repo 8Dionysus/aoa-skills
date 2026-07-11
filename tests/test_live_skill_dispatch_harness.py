@@ -174,6 +174,7 @@ class FakeTransport:
             "duration_ms": 30,
             "structured_skill_visible": True,
             "structured_skill_input_sent": True,
+            "native_target_skill_input_accepted": True,
             "structured_skill_surface_contract_match": True,
             "external_runtime_isolation_match": True,
         }
@@ -419,7 +420,22 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
             (REPO_ROOT / plan["sources"]["protocol_contract"]).read_text(encoding="utf-8")
         )
         self.assertEqual(plan["protocol_revision"], contract["protocol_revision"])
+        self.assertEqual(
+            "aoa_codex_app_server_skill_input_contract_v3",
+            contract["schema_version"],
+        )
         self.assertEqual("codex-cli 0.144.1", contract["codex_version"])
+        self.assertEqual(
+            "https://learn.chatgpt.com/docs/app-server#start-a-turn-invoke-a-skill",
+            contract["official_contract_ref"],
+        )
+        self.assertIn(
+            "$<skill-name>", contract["structured_input_binding"]["text_item"]
+        )
+        self.assertIn(
+            "same exact fixture name and path",
+            contract["structured_input_binding"]["skill_item"],
+        )
         self.assertEqual(
             ["initialize", "initialized", "skills/list", "thread/start", "turn/start", "thread/delete"],
             contract["request_sequence"],
@@ -474,6 +490,16 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
         self.assertIn("--ignore-user-config", implicit["argv"])
         self.assertIn("read-only", implicit["argv"])
         self.assertTrue(trajectory["prompt"].startswith("$aoa-eval "))
+        self.assertTrue(
+            runner._native_cli_target_input_accepted(
+                trajectory, [{"type": "turn.started"}]
+            )
+        )
+        self.assertFalse(
+            runner._native_cli_target_input_accepted(
+                implicit, [{"type": "turn.started"}]
+            )
+        )
         expected_skill_override = (
             'skills.config=[{path="/global/aoa-eval/SKILL.md",enabled=false}]'
         )
@@ -514,16 +540,23 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
         self.assertEqual("skill", structured["turn_start_params"]["input"][1]["type"])
         self.assertEqual("aoa-eval-apply", structured["turn_start_params"]["input"][1]["name"])
         self.assertEqual("readOnly", structured["turn_start_params"]["sandboxPolicy"]["type"])
-        self.assertNotIn(
-            "$aoa-eval-apply",
-            structured["turn_start_params"]["input"][0]["text"],
+        self.assertTrue(
+            structured["turn_start_params"]["input"][0]["text"].startswith(
+                "$aoa-eval-apply "
+            )
+        )
+        self.assertEqual(
+            1,
+            structured["turn_start_params"]["input"][0]["text"].count(
+                "$aoa-eval-apply"
+            ),
         )
         self.assertEqual("thread/start", structured["thread_start_request"]["method"])
         self.assertEqual(180, implicit["timeout_seconds"])
         self.assertEqual(180, trajectory["timeout_seconds"])
         self.assertEqual(240, structured["timeout_seconds"])
 
-        with self.assertRaisesRegex(ValueError, "textual skill activation"):
+        with self.assertRaisesRegex(ValueError, "source prompt.*textual skill activation"):
             runner.build_app_server_structured_request(
                 context,
                 prompt="Use $aoa-eval-apply for this route.",
@@ -993,8 +1026,12 @@ for line in sys.stdin:
         continue
     print(json.dumps(response), flush=True)
 '''
-        def run_mode(mode: str) -> dict:
+        def run_mode(mode: str, *, official_input: bool = True) -> dict:
             candidate = json.loads(json.dumps(request))
+            if not official_input:
+                candidate["turn_start_params"]["input"][0]["text"] = (
+                    "Apply the selected validator route."
+                )
             candidate["argv"] = [
                 sys.executable,
                 "-u",
@@ -1017,6 +1054,8 @@ for line in sys.stdin:
         self.assertTrue(result["turn_started"])
         self.assertTrue(result["structured_skill_visible"])
         self.assertTrue(result["structured_skill_input_sent"])
+        self.assertTrue(result["native_target_skill_input_accepted"])
+        self.assertTrue(result["official_skill_input_contract_match"])
         self.assertTrue(result["structured_skill_surface_contract_match"])
         self.assertTrue(result["external_runtime_isolation_match"])
         self.assertIn("diagnostic-burst:", result["stderr"])
@@ -1032,6 +1071,16 @@ for line in sys.stdin:
         self.assertFalse(mcp["turn_started"])
         self.assertEqual("harness_contamination", mcp["forced_failure_class"])
         self.assertFalse(mcp["external_runtime_isolation_match"])
+
+        unsupported_structured_only = run_mode("clean", official_input=False)
+        self.assertFalse(unsupported_structured_only["turn_started"])
+        self.assertFalse(
+            unsupported_structured_only["official_skill_input_contract_match"]
+        )
+        self.assertEqual(
+            "harness_contamination",
+            unsupported_structured_only["forced_failure_class"],
+        )
 
     def test_full_skill_read_requires_completed_command_output_not_inventory_mention(self) -> None:
         runner = self.runner
@@ -1082,6 +1131,42 @@ for line in sys.stdin:
             self.assertFalse(
                 runner._skill_full_read_observed([shadow_read_event], skill_path)
             )
+
+        explicit = runner.Trial(
+            trial_id="native:explicit",
+            arm_type="app_server_structured",
+            case_id="native-explicit",
+            prompt="Apply the selected route.",
+            expected_target_skill="aoa-eval-apply",
+            expected_behavior="explicit",
+        )
+        output = {"claims_loaded": True}
+        native_without_shell_read = {
+            "native_target_skill_input_accepted": True,
+            "target_skill_full_read_observed": False,
+        }
+        self.assertTrue(
+            runner._load_contract_match(explicit, output, native_without_shell_read)
+        )
+        self.assertFalse(native_without_shell_read["target_skill_full_read_observed"])
+
+        trajectory = dataclasses.replace(
+            explicit,
+            trial_id="native:trajectory",
+            arm_type="root_manual_child",
+            expected_behavior="trajectory",
+            expected_child_skill="aoa-eval-apply",
+        )
+        self.assertFalse(
+            runner._load_contract_match(trajectory, output, native_without_shell_read)
+        )
+        native_with_child_read = {
+            **native_without_shell_read,
+            "child_full_read_observed": True,
+        }
+        self.assertTrue(
+            runner._load_contract_match(trajectory, output, native_with_child_read)
+        )
 
     def test_procedure_evidence_is_exact_atomic_and_payload_bound(self) -> None:
         runner = self.runner
@@ -1234,6 +1319,7 @@ for line in sys.stdin:
         stage_fields = {
             "selected_child_exact",
             "target_skill_full_read_observed",
+            "native_target_skill_input_accepted",
             "prompt_visibility_contract_match",
             "prompt_visible_repo_skill_count",
             "expected_prompt_visible_repo_skill_count",
@@ -1430,6 +1516,7 @@ for line in sys.stdin:
         self.assertEqual("owner_boundary_violation", runner._trial_failure_class(trial, result))
 
         result["final_output"]["owner_boundary"] = "No proof authority granted to this local receipt."
+        result["native_target_skill_input_accepted"] = False
         self.assertEqual("skill_load_gap", runner._trial_failure_class(trial, result))
 
     def test_invalid_or_contaminated_pairs_never_rewrite_arm_history(self) -> None:

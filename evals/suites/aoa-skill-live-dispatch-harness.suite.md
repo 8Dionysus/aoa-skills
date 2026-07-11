@@ -22,15 +22,16 @@ stage with the next?
 - `implicit_control`: the same opaque fixture context has no repo skill
   surface, and pre-turn prompt inspection must expose zero repo skills.
 - `root_manual_child`: an explicit root skill must lead to the expected child;
-  transport evidence must show complete reads of both `SKILL.md` files and the
+  accepted `$root` invocation is version-locked native root-load evidence, while
+  transport must still show a complete read of the selected child and the
   bounded fixture procedure.
 - `app_server_structured`: before `turn/start`, `skills/list` must expose the
   exact enabled fixture-path map for all 57 repo skills, including one and only
   one path for the target, and no configured MCP startup event may occur. The
-  server-issued thread receives an unprefixed text item plus the structured
-  `skill` item; the text contains no `$skill` activation, so structured input
-  is the only activation treatment. Transport must then prove the full target
-  read and bounded fixture procedure.
+  server-issued thread follows the official contract with both the exact
+  `$skill` text prefix and the matching structured `skill` item. Acceptance is
+  native target-load evidence; transport must separately prove the bounded
+  fixture procedure.
 
 Before any model turn, every arm runs `codex debug prompt-input` under the same
 fixture, disabled-feature, and exact external-shadow configuration as its live
@@ -59,9 +60,12 @@ after reviewing the preceding cohort and repairing any return route it opens.
 
 - fixture presence is availability evidence;
 - prompt inspection is model-visible inventory evidence, not dispatch evidence;
-- a selected name or structured App Server item is selection evidence, not
-  activation or load evidence;
+- a selected output name is selection evidence, not activation or load evidence;
 - `claims_loaded` is a model claim, not a raw read proof;
+- an accepted exact `$root` turn or official App Server `$skill` plus `skill`
+  item is version-locked native-load evidence under Codex
+  [progressive disclosure](https://learn.chatgpt.com/docs/customization/overview#skills),
+  not a raw shell read;
 - a target, root, or child full read is observed only when a completed,
   zero-exit transport event names the exact fixture `SKILL.md` path and
   contains its complete source text; reading an external shadow with the same
@@ -105,10 +109,11 @@ source lock. CLI exec arms isolate it by ignoring user config and must not add
 partial MCP tables; prompt inspection and App Server retain user config and
 therefore disable every locked id explicitly. Deterministic adapter tests guard
 both sides of this transport-specific contract.
-These hermetic structured-causality rules use contract schema
-`aoa_codex_app_server_skill_input_contract_v2` and protocol revision
-`codex-cli-0.144.1-app-server-skill-input-v2`; retained receipts source-locked
-to v1 remain historical `needs-rerun` evidence and are not upgraded in place.
+
+These hermetic invocation rules use contract schema
+`aoa_codex_app_server_skill_input_contract_v3` and protocol revision
+`codex-cli-0.144.1-app-server-skill-input-v3`; retained receipts source-locked
+to v1/v2 remain historical `needs-rerun` evidence and are not upgraded in place.
 
 Live execution requires `abyss-machine resource launch`, independent storage
 and runtime gates, read-only sandboxing, network-disabled policy, concurrency
@@ -138,11 +143,11 @@ value.
 
 Each bounded failure class names an earlier layer to repair: harness,
 description/policy, collision family, manual policy, root/child trajectory,
-skill read/load tooling, direct procedure, owner boundary, runtime
+native-load/full-read tooling, direct procedure, owner boundary, runtime
 profile/source lock, reviewed budget, or transport. `skill_load_gap` returns to
-the same case when the exact skill was selected but required activation or full
-read evidence is absent; it must not be mislabeled as a trigger, trajectory, or
-procedure defect. `dispatch_policy_gap` is separate: it means the exact route
+the same case when the exact skill was selected but required native-load or
+child/full-read evidence is absent; it must not be mislabeled as a trigger,
+trajectory, or procedure defect. `dispatch_policy_gap` is separate: it means the exact route
 was available but the model's activation decision violated the expected
 implicit, manual, trajectory, or explicit dispatch policy. Budget exhaustion is
 distinct from transport failure only

@@ -25,6 +25,10 @@ Tracking starts with the community-docs baseline for this repository.
   receipt. Its prompt gate passed, but the first CLI arm stopped before model
   spend because per-MCP overrides reconstructed incomplete tables under
   `--ignore-user-config`; it is adapter evidence only.
+- The complete protocol-v2 smoke now has a public-safe `needs-rerun` receipt.
+  Its implicit positive-lift pair remains candidate evidence, but the App arm
+  used structured-only input instead of the official `$skill` plus `skill`
+  pair, so its App load label is harness evidence only.
 - `AOA-SK-D-0037` records why live cohorts remain operator-confirmed candidate
   evidence and now clarifies prompt-surface isolation and evidence-stage grading
   after the contaminated smoke; deterministic harness validation, not model
@@ -85,14 +89,15 @@ Tracking starts with the community-docs baseline for this repository.
   model-visible name, path, and description rather than paths alone. Structured
   App Server turns separately require the exact fixture path for every one of
   the 57 repo skills before `turn/start`, reject any MCP startup event, and use
-  an unprefixed text item so only the structured `skill` item activates the
-  target.
+  the official dual invocation: an exact `$skill` text prefix plus the matching
+  structured `skill` item.
 - Read-only shell execution is now available to prove complete skill reads and
   run the exact hermetic `python3 fixture_validator.py` procedure. A full read
   must name the exact fixture `SKILL.md` path and return its complete content;
   verification requires one atomic command event whose exact command, zero
   exit, sentinel JSON, and fixture-guidance digest all agree. Public measures
-  keep selection, claimed load, transport-observed reads, dispatch, load,
+  keep selection, claimed load, accepted native input, transport-observed
+  reads, dispatch, load,
   execution, verification, completion, and deflection distinct:
   `dispatch_policy_gap` means the activation decision was wrong, while
   `skill_load_gap` returns a correct selection with unproved activation/read to
@@ -101,10 +106,10 @@ Tracking starts with the community-docs baseline for this repository.
   or owner-boundary safety failure. Contamination is retained as a pair result
   without rewriting either arm's historical failure class, and public-receipt
   validation rejects absolute host paths even when embedded inside prose.
-- The hermetic structured-causality contract is now
-  `aoa_codex_app_server_skill_input_contract_v2` with protocol revision
-  `codex-cli-0.144.1-app-server-skill-input-v2`; the retained complete smoke
-  remains source-locked to protocol v1 and `needs-rerun`.
+- The hermetic native-load contract is now
+  `aoa_codex_app_server_skill_input_contract_v3` with protocol revision
+  `codex-cli-0.144.1-app-server-skill-input-v3`; retained v1/v2 receipts remain
+  immutable historical `needs-rerun` evidence.
 - Live dispatch now locks and passes Codex rollout-budget reminder thresholds
   as a TOML list for both CLI and App Server arms, rejects invalid thresholds
   before transport startup, and preserves review compatibility with receipts

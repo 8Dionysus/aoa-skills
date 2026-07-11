@@ -54,11 +54,12 @@ The live harness has four observable arms:
 
 - paired implicit aided and no-skill control turns for dispatch and observed
   outcome lift;
-- explicit root-to-child trajectories where complete root and child
-  `SKILL.md` reads must be visible in transport events;
+- explicit root-to-child trajectories where accepted `$root` input is native
+  root-load evidence and the selected child still needs a complete raw read;
 - structured App Server skill input, bound to the exact 57-skill fixture path
-  map and the server-issued thread id, with no `$skill` activation in its text
-  item and no configured MCP startup before the turn;
+  map and the server-issued thread id, with the official paired `$skill` text
+  prefix plus matching `skill` item and no configured MCP startup before the
+  turn;
 - deterministic harness tests that validate all schemas, cohort expansion,
   adapters, privacy projection, and stop-lines without making model calls.
 
@@ -88,10 +89,13 @@ synthesize partial MCP tables; prompt inspection and App Server retain user
 config and explicitly disable every locked id. A shadow or MCP count/digest
 change is source/runtime drift, not a reason to reuse the old token.
 
-The corrected structured-causality and hermetic pre-turn contract uses schema
-`aoa_codex_app_server_skill_input_contract_v2` and protocol revision
-`codex-cli-0.144.1-app-server-skill-input-v2`. Retained receipts source-locked
-to v1 are historical `needs-rerun` evidence and are not upgraded in place.
+The corrected hermetic pre-turn and native-load contract uses schema
+`aoa_codex_app_server_skill_input_contract_v3` and protocol revision
+`codex-cli-0.144.1-app-server-skill-input-v3`. It follows the
+[official App Server invocation shape](https://learn.chatgpt.com/docs/app-server#start-a-turn-invoke-a-skill)
+and Codex [progressive-disclosure load semantics](https://learn.chatgpt.com/docs/customization/overview#skills).
+Retained receipts source-locked to v1/v2 are historical `needs-rerun` evidence
+and are not upgraded in place.
 
 The source-locked caps include both the rollout token limit and its required
 list of remaining-token reminder thresholds. Every CLI and App Server arm must
@@ -126,7 +130,8 @@ procedure. Root/child and structured arms receive the exact command
 observation, zero exit, and `AOA_FIXTURE_VALIDATOR_OK` verification as separate
 measures.
 A full read must name the exact fixture `SKILL.md` path and contain its complete
-source. Procedure verification is atomic: one completed exact-command event
+source. Accepted native input is recorded separately and never relabeled as a
+raw read. Procedure verification is atomic: one completed exact-command event
 must carry both zero exit and exactly one sentinel JSON payload matching the
 fixture-guidance digest, schema/status, no-drift, and no-proof-authority fields.
 Split or forged evidence does not pass.
@@ -138,16 +143,17 @@ Raw prompts, events, transport identifiers, and model output remain in `0600`
 files below the source-locked `0700` host-private root. Public receipts are
 field-whitelisted projections with digests, per-arm observations, paired deltas,
 failure classes, and review status. Measures distinguish prompt visibility,
-selection, model load claim, full-read evidence, dispatch and load contracts,
-procedure disposition, execution, verification, completion, and deflection.
-They publish no raw text and no aggregate score.
+selection, model load claim, accepted native input, raw full-read evidence,
+dispatch and load contracts, procedure disposition, execution, verification,
+completion, and deflection. They publish no raw text and no aggregate score.
 Public safety validation walks every string and rejects an absolute host path
 even when it is embedded inside a longer prose value.
 
 `skill_load_gap` is the bounded return route when the exact target was selected
-but required activation or full-read evidence was not observed. It returns to
-read tooling or skill-load behavior for the same case rather than mislabeling
-the result as a trigger, trajectory, or procedure defect.
+but required native-load or child/full-read evidence was not observed. It
+returns to native-load/full-read tooling or skill behavior for the same case
+rather than mislabeling the result as a trigger, trajectory, or procedure
+defect.
 
 `dispatch_policy_gap` is distinct: the route was available, but the activation
 decision violated the expected implicit, manual, trajectory, or explicit
@@ -157,8 +163,9 @@ dispatch policy. It returns to dispatch policy, not read tooling.
 
 This route measures different evidence stages without collapsing them. A skill
 surface being prompt-visible is not the same as being selected; selection is
-not activation; a model load claim is not a complete transport-observed read; a
-read is not procedure execution; an exit code is not sentinel verification;
+not accepted native input; a model load claim is neither native acceptance nor
+a complete transport-observed raw read; a read is not procedure execution; an
+exit code is not sentinel verification;
 and a route-contract match is neither observed completion nor central proof.
 
 Source locks make a rerun comparable. Exact shadow disabling and pre-turn
@@ -216,13 +223,31 @@ As of 2026-07-11:
   no configured MCP startup before the turn.
 - Current cap contract: every arm receives the same source-locked 48k ceiling;
   paired arms may differ in actual use but never in available budget.
-- Current contract schema: `aoa_codex_app_server_skill_input_contract_v2`.
-- Current protocol lock: `codex-cli-0.144.1-app-server-skill-input-v2`.
-- Historical protocol: the retained complete smoke is source-locked to v1 and
-  `needs-rerun`.
+- Current contract schema: `aoa_codex_app_server_skill_input_contract_v3`.
+- Current protocol lock: `codex-cli-0.144.1-app-server-skill-input-v3`.
+- Historical protocols: retained v1/v2 smokes are `needs-rerun`; v2 produced a
+  valid candidate implicit pair but used an unsupported structured-only App
+  input and cannot support its App load label.
 - Superseded by: none.
 
 ## Review Log
+
+### 2026-07-11 - Align native-load evidence with the official Codex contract
+
+- Previous assumption: a structured App Server `skill` item without textual
+  activation could isolate causality, and every loaded skill needed a separate
+  shell full-read event.
+- New reality: official Codex documentation defines App invocation as the pair
+  of `$skill` text plus a matching `skill` item and says `SKILL.md` loads when a
+  skill is chosen. The completed v2 smoke therefore contains a valid candidate
+  implicit pair, a candidate missing-child-read trajectory, and an invalid App
+  load interpretation.
+- Reason: native input acceptance and raw shell reads are different evidence
+  kinds. Collapsing them created a false App `skill_load_gap` while hiding the
+  real question of whether the selected child was loaded.
+- Validation: bump to v3, assert the official dual input, publish native input
+  acceptance separately from full-read observation, retain v2 as
+  `needs-rerun`, and repeat smoke before any skill edit or pilot widening.
 
 ### 2026-07-11 - Preserve matched-pair symmetry across an ambient route
 

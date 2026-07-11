@@ -94,6 +94,7 @@ PUBLIC_MEASURE_KEYS = (
     "model_claims_loaded",
     "structured_skill_visible",
     "structured_skill_input_sent",
+    "native_target_skill_input_accepted",
     "child_full_read_observed",
     "target_skill_full_read_observed",
     "prompt_visibility_contract_match",
@@ -146,8 +147,8 @@ FAILURE_TAXONOMY = {
     "manual_activation_leak": "A manual/suggest skill was claimed loaded by implicit routing.",
     "trajectory_break": "The explicit root did not select the exact expected child.",
     "dispatch_policy_gap": "The exact target route was available, but the activation decision violated its expected dispatch policy.",
-    "skill_load_gap": "The exact target was selected but activation or its required full skill read was not observed.",
-    "direct_procedure_gap": "Selection and full reads succeeded but the exact fixture command, successful exit, or sentinel verification was absent.",
+    "skill_load_gap": "The exact target was selected but neither an accepted native load contract nor its required child/full read was observed.",
+    "direct_procedure_gap": "Selection and the load contract succeeded but the exact fixture command, successful exit, or sentinel verification was absent.",
     "owner_boundary_violation": "The result widened mutation, proof, promotion, or owner authority.",
     "runtime_profile_drift": "Codex, model, source, profile, or protocol identity drifted after planning.",
     "budget_exhausted": "The source-locked weighted token cap stopped the turn before a valid result.",
@@ -550,7 +551,7 @@ def _release_profile_revision(repo_root: Path, profile_name: str) -> str:
 
 def _expected_codex_version(plan: dict[str, Any]) -> str:
     revision = str(plan.get("protocol_revision") or "")
-    match = re.fullmatch(r"codex-cli-([0-9]+(?:\.[0-9]+){2})-app-server-skill-input-v2", revision)
+    match = re.fullmatch(r"codex-cli-([0-9]+(?:\.[0-9]+){2})-app-server-skill-input-v3", revision)
     if match is None:
         raise ValueError(f"unsupported Codex protocol revision: {revision}")
     return f"codex-cli {match.group(1)}"
@@ -1198,6 +1199,7 @@ def build_root_manual_child_request(
         "expected_target_skill": root_skill,
         "expected_child_skill": child_skill,
         "expected_behavior": "trajectory",
+        "native_target_skill_input_sent": True,
         "full_child_read_required": True,
         "competing_child_read_forbidden": True,
         "retry_policy": "transport-only-before-turn-start",
@@ -1212,7 +1214,7 @@ def build_app_server_structured_request(
     skill_path: Path,
 ) -> dict[str, Any]:
     if TEXTUAL_SKILL_ACTIVATION_RE.search(prompt):
-        raise ValueError("structured App Server text must not contain textual skill activation")
+        raise ValueError("source prompt must not contain textual skill activation")
     return {
         "transport": "codex_app_server_stdio",
         "arm_type": "app_server_structured",
@@ -1235,6 +1237,7 @@ def build_app_server_structured_request(
         "timeout_seconds": context.full_timeout_seconds,
         "expected_target_skill": skill_name,
         "expected_behavior": "explicit",
+        "native_target_skill_input_sent": True,
         "fixture_root": str(context.fixture_root),
         "skill_path": str(skill_path),
         "expected_structured_skill_paths": _expected_structured_skill_paths(
@@ -1269,7 +1272,10 @@ def build_app_server_structured_request(
         },
         "turn_start_params": {
             "input": [
-                {"type": "text", "text": _with_fixture_procedure(prompt)},
+                {
+                    "type": "text",
+                    "text": f"${skill_name} {_with_fixture_procedure(prompt)}",
+                },
                 {"type": "skill", "name": skill_name, "path": str(skill_path)},
             ],
             "effort": context.effort,
@@ -1279,6 +1285,29 @@ def build_app_server_structured_request(
         "thread_delete_method": "thread/delete",
         "retry_policy": "transport-only-before-turn-start",
     }
+
+
+def _official_app_skill_input_contract_match(request: dict[str, Any]) -> bool:
+    params = request.get("turn_start_params")
+    inputs = params.get("input") if isinstance(params, dict) else None
+    if not isinstance(inputs, list) or len(inputs) != 2:
+        return False
+    text_item, skill_item = inputs
+    if not isinstance(text_item, dict) or not isinstance(skill_item, dict):
+        return False
+    name = str(request.get("expected_target_skill") or "")
+    path = Path(str(request.get("skill_path") or "")).resolve().as_posix()
+    text = str(text_item.get("text") or "")
+    activations = [match.group("name") for match in TEXTUAL_SKILL_ACTIVATION_RE.finditer(text)]
+    return bool(
+        name
+        and text_item.get("type") == "text"
+        and text.startswith(f"${name} ")
+        and activations == [name]
+        and skill_item.get("type") == "skill"
+        and skill_item.get("name") == name
+        and Path(str(skill_item.get("path") or "")).resolve().as_posix() == path
+    )
 
 
 def _jsonl_events(text: str) -> list[dict[str, Any]]:
@@ -1291,6 +1320,15 @@ def _jsonl_events(text: str) -> list[dict[str, Any]]:
         if isinstance(item, dict):
             events.append(item)
     return events
+
+
+def _native_cli_target_input_accepted(
+    request: dict[str, Any], events: Sequence[dict[str, Any]]
+) -> bool:
+    return bool(
+        request.get("native_target_skill_input_sent") is True
+        and any(event.get("type") == "turn.started" for event in events)
+    )
 
 
 class _JsonLineReader:
@@ -1636,6 +1674,9 @@ class RealTransport:
             ),
             {},
         )
+        native_target_skill_input_accepted = _native_cli_target_input_accepted(
+            request, events
+        )
         return {
             "returncode": result.returncode,
             "stdout": result.stdout,
@@ -1644,6 +1685,7 @@ class RealTransport:
             "events": events,
             "usage": usage,
             "duration_ms": int((time.monotonic() - started) * 1000),
+            "native_target_skill_input_accepted": native_target_skill_input_accepted,
         }
 
     def run_app_server(self, request: dict[str, Any]) -> dict[str, Any]:
@@ -1675,6 +1717,7 @@ class RealTransport:
         external_runtime_isolation_checked = False
         external_runtime_isolation_match = False
         completed = False
+        official_skill_input_contract_match = _official_app_skill_input_contract_match(request)
         failure_stage: str | None = None
         deadline = time.monotonic() + int(request["timeout_seconds"])
         reader = _JsonLineReader(process)
@@ -1701,6 +1744,8 @@ class RealTransport:
                 raise RuntimeError("skills/list did not expose the exact enabled target skill path")
             if not structured_skill_surface_contract_match:
                 raise RuntimeError("skills/list escaped the exact repo skill surface contract")
+            if not official_skill_input_contract_match:
+                raise RuntimeError("turn/start escaped the official dual skill-input contract")
 
             _send_json_line(process, request["thread_start_request"])
             thread_response = reader.read_until(lambda item: item.get("id") == 3, events, deadline)
@@ -1767,6 +1812,8 @@ class RealTransport:
             structured_skill_surface_checked
             and not structured_skill_surface_contract_match
         ) or (
+            not official_skill_input_contract_match
+        ) or (
             external_runtime_isolation_checked
             and not external_runtime_isolation_match
         ):
@@ -1782,6 +1829,9 @@ class RealTransport:
             "turn_started": turn_started,
             "structured_skill_visible": structured_skill_visible,
             "structured_skill_input_sent": turn_started,
+            "native_target_skill_input_accepted": bool(
+                turn_started and official_skill_input_contract_match
+            ),
             "structured_skill_surface_contract_match": (
                 structured_skill_surface_checked
                 and structured_skill_surface_contract_match
@@ -1791,6 +1841,7 @@ class RealTransport:
                 and external_runtime_isolation_match
             ),
             "app_server_failure_stage": failure_stage,
+            "official_skill_input_contract_match": official_skill_input_contract_match,
             "forced_failure_class": forced_failure_class,
         }
 
@@ -2247,11 +2298,22 @@ def _load_contract_match(trial: Trial, output: dict[str, Any], result: dict[str,
     claims_loaded = output.get("claims_loaded") is True
     target_read = result.get("target_skill_full_read_observed") is True
     if trial.expected_behavior == "manual":
-        return not claims_loaded and not target_read
+        return (
+            not claims_loaded
+            and not target_read
+            and result.get("native_target_skill_input_accepted") is not True
+        )
+    target_loaded = bool(
+        target_read or result.get("native_target_skill_input_accepted") is True
+    )
     if trial.expected_behavior in {"invoke", "explicit"}:
-        return claims_loaded and target_read
+        return claims_loaded and target_loaded
     if trial.expected_behavior == "trajectory":
-        return claims_loaded and target_read and result.get("child_full_read_observed") is True
+        return (
+            claims_loaded
+            and target_loaded
+            and result.get("child_full_read_observed") is True
+        )
     return False
 
 
@@ -2280,6 +2342,9 @@ def _trial_measure(trial: Trial, result: dict[str, Any]) -> dict[str, Any]:
         "model_claims_loaded": output.get("claims_loaded") is True,
         "structured_skill_visible": result.get("structured_skill_visible") is True,
         "structured_skill_input_sent": result.get("structured_skill_input_sent") is True,
+        "native_target_skill_input_accepted": (
+            result.get("native_target_skill_input_accepted") is True
+        ),
         "child_full_read_observed": result.get("child_full_read_observed") is True,
         "target_skill_full_read_observed": result.get("target_skill_full_read_observed") is True,
         "prompt_visibility_contract_match": result.get("prompt_visibility_contract_match") is True,
