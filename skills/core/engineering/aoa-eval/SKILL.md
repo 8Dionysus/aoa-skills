@@ -160,8 +160,14 @@ Do not use this skill when:
    owner accepts them; if no workspace/session-memory route is available, name
    the gap and continue from current local and central eval owner files instead
    of treating the missing packet as a blocker
-9. load exactly one subskill after classification; keep the other subskills out
-   of context unless the route changes
+9. after classification, load exactly one selected subskill before applying its
+   procedure:
+   - read the selected subskill's complete `SKILL.md`
+   - the selected child name is selection evidence only, not load or handoff
+     evidence
+   - do not apply the child procedure or report it loaded until that read is
+     complete
+   - keep every unselected subskill out of context unless the route changes
 10. if no safe route exists, stop with the missing owner evidence and the next
    narrow source to inspect
 11. after any write or eval run, report the route, owner surface, evidence used,
@@ -203,12 +209,16 @@ Do not use this skill when:
 - treating the Eval Forge front door as a central proof bundle instead of a
   route into existing surfaces, local ports, worksheets, rejects, or review
 - letting MCP writes bypass owner review
+- naming a selected subskill without reading its complete `SKILL.md` before
+  applying its procedure
 - loading every subskill for a simple route decision
 - promoting scaffolded trigger pressure to canonical proof without review
 
 ## Verification
 
 - confirm exactly one subskill route was selected
+- confirm the selected subskill's complete `SKILL.md` was read before its
+  procedure; a selected child name alone is not load evidence
 - confirm local `evals/PORT.yaml` was inspected or the absence was named
 - if a workspace inventory was used, name the inventory command or MCP resource
   and the route recommendation it returned

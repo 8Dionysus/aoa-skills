@@ -8696,6 +8696,20 @@
     },
     {
       "coordinates": {
+        "artifact_kind": "config",
+        "code_role": "none",
+        "command_role": "none",
+        "document_role": "none",
+        "mechanics_role": "none",
+        "surface_state": "authored_source"
+      },
+      "entity_kind": "artifact",
+      "id": "entity:file:evals/reports/aoa-skill-live-dispatch-smoke-20260711-v3-reviewed.json:fd9d0d0f07",
+      "label": "evals/reports/aoa-skill-live-dispatch-smoke-20260711-v3-reviewed.json",
+      "source_record_id": "file:evals/reports/aoa-skill-live-dispatch-smoke-20260711-v3-reviewed.json:fd9d0d0f07"
+    },
+    {
+      "coordinates": {
         "artifact_kind": "document",
         "code_role": "none",
         "command_role": "none",
@@ -26477,7 +26491,7 @@
   ],
   "index_identity": {
     "artifact_kind": "repository_entity_index",
-    "content_digest": "130533cda1cd2117280f103ce4cafa6f046f1e3e3fda115aaa43675a6c9c5ba6",
+    "content_digest": "df659f26553cf048925cb9452968db8517e7fd75b46e338b712925ff57d61000",
     "index_kind": "entity",
     "local_id": "index:repo-local:entities",
     "schema_ref": "aoa-kag:schemas/repo-local-kag-repository-index.schema.json"
@@ -26500,15 +26514,15 @@
   },
   "schema_version": "aoa-repo-local-kag-repository-index-v1",
   "source_index": {
-    "content_digest": "c87c25418b367d8768a9d85743f54fa0fc9f635be50947fad07d3cce21bc3a7d",
+    "content_digest": "9a80b7d95a4e9d55e4326f7558276dc594bd1eb9f8cbaacf29c114f6c019eac3",
     "local_id": "index:repo-local:source-surfaces",
     "path": "kag/indexes/source_surface_index.json"
   },
   "summary": {
-    "entry_count": 1891,
+    "entry_count": 1892,
     "kind_counts": {
       "agent_route": 29,
-      "artifact": 392,
+      "artifact": 393,
       "code": 66,
       "command": 156,
       "contract": 42,

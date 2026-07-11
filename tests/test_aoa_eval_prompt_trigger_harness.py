@@ -205,6 +205,27 @@ class AoaEvalPromptTriggerHarnessTests(unittest.TestCase):
             with self.subTest(suite=expected):
                 self.assertIn(normalize(expected), normalized_suite_text)
 
+    def test_router_loads_selected_child_before_following_its_procedure(self) -> None:
+        skill_text = normalize(SKILL_PATH.read_text(encoding="utf-8"))
+
+        for expected in (
+            "read the selected subskill's complete `SKILL.md`",
+            "the selected child name is selection evidence only, not load or handoff evidence",
+            "do not apply the child procedure or report it loaded until that read is complete",
+            "keep every unselected subskill out of context unless the route changes",
+            "confirm the selected subskill's complete `SKILL.md` was read before its procedure",
+        ):
+            with self.subTest(expected=expected):
+                self.assertIn(normalize(expected), skill_text)
+
+        runtime_example = normalize(RUNTIME_EXAMPLE_PATH.read_text(encoding="utf-8"))
+        for expected in (
+            "read the selected child's complete `SKILL.md` before applying its procedure",
+            "a returned child name proves selection, not load",
+        ):
+            with self.subTest(runtime_example=expected):
+                self.assertIn(normalize(expected), runtime_example)
+
     def test_snapshot_prompt_route_decisions_match_fixture_contract(self) -> None:
         for case_id, case in self.snapshot_cases.items():
             with self.subTest(case=case_id, skill=case["skill"]):

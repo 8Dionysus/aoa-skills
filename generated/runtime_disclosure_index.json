@@ -1967,7 +1967,7 @@
         "Procedure": "when an OS Abyss `aoa-evals` checkout is available, raise the read-only; from the `aoa-evals` repo, run",
         "Contracts": "`aoa-evals` owns proof doctrine and central eval verdicts; local repositories own their `evals/` ports and can hold intake pressure",
         "Risks and anti-patterns": "treating every test as an eval or every eval as a central `aoa-evals` object; creating a local eval need before checking existing validators and tests",
-        "Verification": "confirm exactly one subskill route was selected; confirm local `evals/PORT.yaml` was inspected or the absence was named",
+        "Verification": "confirm exactly one subskill route was selected; confirm the selected subskill's complete `SKILL.md` was read before its",
         "Technique traceability": "AOA-T-0003 from `8Dionysus/aoa-techniques` at `1a7d146957108ecefc24219c7d56357c5a4a2c2c` using path `techniques/proof/evaluation-chain/contract-first-smoke-summary/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Risks, Validation; AOA-T-0076 fro...",
         "Adaptation points": "local eval-port schema and status vocabulary; `aoa-evals-mcp` tool names"
       },

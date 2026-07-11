@@ -42,6 +42,8 @@ A repo change may need an eval, but the owner route is unclear.
 ## Verification notes
 
 - verify that one route is chosen
+- read the selected child's complete `SKILL.md` before applying its procedure;
+  a returned child name proves selection, not load
 - verify local and central owner surfaces are named
 - verify Forge front-door refs were considered before local design or session
   mining when they are available

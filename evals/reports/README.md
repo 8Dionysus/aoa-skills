@@ -54,6 +54,14 @@ temporary root and must not be copied into this directory.
   positive-lift pair is candidate evidence and its root arm exposes a candidate
   missing-child-read gap, but the App arm used unsupported structured-only
   input. Its App `skill_load_gap` is a harness diagnosis, not a skill verdict.
+- [aoa-skill-live-dispatch-smoke-20260711-v3-reviewed.json](aoa-skill-live-dispatch-smoke-20260711-v3-reviewed.json)
+  records the first fully valid v3 smoke. The implicit pair has candidate
+  positive lift, the official App invocation passes native load, procedure,
+  verification, and completion, and the explicit `aoa-eval` root selects
+  `aoa-eval-apply` but does not full-read that child before following its
+  procedure. The reviewed `skill_load_gap` routes back to the root handoff
+  instruction and requires a same-case rerun after repair; it is not central
+  proof or promotion evidence.
 
 Corrected live receipts under the v3 App Server protocol are reviewable only
 after canonical user-skill shadows, plugins, and every configured MCP id are

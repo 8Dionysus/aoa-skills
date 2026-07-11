@@ -201,9 +201,10 @@ target also appears in its own neighbourhood list.
   repeated runs are needed before changing skill status or promotion posture.
 - Tradeoff: the 48k ceiling raises worst-case live-campaign cost; non-smoke
   cohorts therefore retain the second exact high-cost confirmation token.
-- Follow-up: rerun smoke under the corrected isolation and evidence contract;
-  only then use reviewed smoke and pilot receipts to repair the smallest skill
-  cohort before widening to all 57 skills.
+- Follow-up: the reviewed v3 smoke localized one root-to-child load gap in
+  `aoa-eval`; repair that smallest skill surface and repeat the exact smoke
+  before any pilot widening, then use reviewed pilot receipts to continue
+  toward all 57 skills.
 
 ## Current Applicability
 
@@ -228,9 +229,38 @@ As of 2026-07-11:
 - Historical protocols: retained v1/v2 smokes are `needs-rerun`; v2 produced a
   valid candidate implicit pair but used an unsupported structured-only App
   input and cannot support its App load label.
+- Reviewed v3 candidate: the implicit pair records positive lift and the App
+  arm passes its native-load/procedure path, while the explicit `aoa-eval`
+  trajectory selects `aoa-eval-apply` without a complete child read. That
+  observation supports a bounded root-handoff repair and same-case rerun, not
+  central proof, status promotion, or a family-wide verdict.
 - Superseded by: none.
 
 ## Review Log
+
+### 2026-07-11 - Return a valid child-load gap to the root workflow
+
+- Previous assumption: telling the router to load exactly one selected subskill
+  was sufficient to distinguish selection from loading while controlling
+  context.
+- New evidence: the source-locked v3 smoke natively loaded `aoa-eval`, selected
+  the expected `aoa-eval-apply` child, ran and verified the fixture procedure,
+  but produced no complete read of the child `SKILL.md`. The official App arm
+  passed under the same protocol, so the missing read is no longer explained by
+  the v2 harness defect.
+- Decision: keep the trigger and invocation policy unchanged; require the root
+  router to read the selected child's complete `SKILL.md` before applying or
+  claiming its procedure, and state that a selected child name is selection
+  evidence only.
+- Boundary: the reviewed receipt is evidence context, not decision or proof
+  authority. The source skill owns the workflow repair; `aoa-evals` retains
+  central verdict, scoring, regression, and proof doctrine.
+- Tradeoff: the explicit handoff adds a small amount of context and may increase
+  a root trajectory's token use, but still loads one child rather than the whole
+  family.
+- Validation: add a focused source regression, rebuild generated/export
+  companions through their owner builders, and repeat the exact v3 smoke before
+  pilot widening.
 
 ### 2026-07-11 - Align native-load evidence with the official Codex contract
 
