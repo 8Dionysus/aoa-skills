@@ -40,6 +40,12 @@ Tracking starts with the community-docs baseline for this repository.
   load gating, a missing dynamic-child read check, ambiguous read-versus-
   procedure wording, and output-contract/transport conflation; it publishes no
   pair, lift, skill-effect, or family conclusion.
+- The exact-merged-tree v4 smoke now has a public-safe `needs-rerun` receipt.
+  Its aided arm passed objective root and dynamic-child reads, but its control
+  read a complete repo skill from an external canonical checkout before budget
+  exhaustion. The historical budget label remains immutable; reviewed raw
+  evidence routes the earlier fault to harness isolation and permits no pair,
+  lift, skill-effect, or family conclusion.
 - `AOA-SK-D-0037` records why live cohorts remain operator-confirmed candidate
   evidence and now clarifies prompt-surface isolation and evidence-stage grading
   after the contaminated smoke; deterministic harness validation, not model
@@ -123,8 +129,13 @@ Tracking starts with the community-docs baseline for this repository.
   excluded from the one-command procedure count, and zero-return structured
   output failures are classified as `output_contract_invalid` rather than
   `transport_failure`.
+- Live model commands are now confined to the hermetic fixture root. Absolute
+  host, workspace, session-memory, user-config, other-repository, and
+  parent-traversal paths set `fixture_filesystem_scope_match=false` and return
+  `harness_contamination` before budget, dispatch, load, procedure, or pair
+  interpretation; system executables and `/dev/null` remain tooling exceptions.
 - Both executable local-suite sidecars now carry current tracked-source hashes:
-  the live dispatch v4 runner/schema/test surface and the `aoa-eval` trigger
+  the live dispatch runner/schema/test surface and the `aoa-eval` trigger
   corpus after the landed child-handoff change. The central `aoa-evals`
   validator therefore reports the full local eval port source-contract-ready
   instead of silently retaining transitive stale state.
@@ -133,8 +144,8 @@ Tracking starts with the community-docs baseline for this repository.
   without rewriting either arm's historical failure class, and public-receipt
   validation rejects absolute host paths even when embedded inside prose.
 - The hermetic evidence contract is now
-  `aoa_codex_app_server_skill_input_contract_v4` with protocol revision
-  `codex-cli-0.144.1-live-dispatch-evidence-v4`; retained v1-v3 receipts remain
+  `aoa_codex_app_server_skill_input_contract_v5` with protocol revision
+  `codex-cli-0.144.1-live-dispatch-evidence-v5`; retained v1-v4 receipts remain
   immutable under their original protocol and review status.
 - Live dispatch now locks and passes Codex rollout-budget reminder thresholds
   as a TOML list for both CLI and App Server arms, rejects invalid thresholds

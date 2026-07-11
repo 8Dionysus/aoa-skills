@@ -46,9 +46,9 @@ turn follows the
 the text begins with the exact `$skill` mention and the adjacent structured
 `skill` item carries the same fixture name and path. An accepted official input
 is version-locked native-load evidence, distinct from a raw shell full read.
-These rules use contract schema `aoa_codex_app_server_skill_input_contract_v4`
-and protocol revision `codex-cli-0.144.1-live-dispatch-evidence-v4`. Retained
-v1-v3 receipts stay source-locked to their original protocol and review status;
+These rules use contract schema `aoa_codex_app_server_skill_input_contract_v5`
+and protocol revision `codex-cli-0.144.1-live-dispatch-evidence-v5`. Retained
+v1-v4 receipts stay source-locked to their original protocol and review status;
 they are never upgraded in place.
 
 Run the confirmed command only as the child of the plan packet's
@@ -75,6 +75,11 @@ and raw full-read events separate: the self-report never gates objective load
 evidence, the explicit root is natively loaded, any expected or dynamically
 selected child still requires a raw read, and the official App Server dual
 input natively loads its target.
+Every model command remains confined to the fixture root. An observed absolute
+host, workspace, session-memory, user-config, other-repository, or
+parent-traversal path is `harness_contamination` before budget, dispatch, load,
+procedure, or lift interpretation. System executables and `/dev/null` are
+tooling exceptions; they do not authorize data reads outside the fixture.
 Verification requires the same completed exact-command event to carry zero
 exit and exactly one `AOA_FIXTURE_VALIDATOR_OK` JSON payload bound to the
 current fixture-guidance digest; split success/sentinel events do not pass.
@@ -120,7 +125,15 @@ the v3 grader still treated `claims_loaded` as load proof, did not bind an
 implicitly selected child to its required read, classified a zero-return
 output-contract failure as transport failure, and let the phrase "one command"
 obscure that read-only inspection commands were allowed. It supports no pair,
-lift, or skill-effect conclusion. The v4 rerun must pass before widening.
+lift, or skill-effect conclusion and required the now-retained v4 rerun.
+
+The exact-merged-tree v4 rerun is retained as a second `needs-rerun` harness
+receipt. Its aided arm completed objective root and dynamic-child reads, but
+the control then read a complete `aoa-eval` source file from an external
+canonical checkout before exhausting its budget. The historical v4 grader
+reported only `budget_exhausted`; local raw review established that filesystem
+scope contamination occurred earlier. It supports no pair, lift, skill-effect,
+or family conclusion. The v5 fixture-scope rerun must pass before widening.
 
 See `evals/suites/aoa-skill-live-dispatch-harness.suite.md` and
 `docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md` for

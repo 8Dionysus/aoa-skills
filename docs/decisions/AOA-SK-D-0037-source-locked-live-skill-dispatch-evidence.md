@@ -36,6 +36,12 @@ procedure even though the grader expected one. Those observations invalidate
 the run as evidence of trigger, trajectory, procedure, or outcome-lift defects;
 the receipt is `needs-rerun` harness evidence instead.
 
+The exact-merged-tree v4 rerun exposed the next prerequisite. Prompt inventory
+was clean and the aided arm passed objective root and dynamic-child reads, but
+the control used the read-only shell to reach an external canonical checkout
+and read a complete repo skill before exhausting its cap. Prompt isolation did
+not imply filesystem isolation, and budget was downstream of contamination.
+
 ## Options Considered
 
 - Infer effectiveness from session mentions, generated trigger fixtures, and
@@ -90,11 +96,11 @@ config and explicitly disable every locked id. A shadow or MCP count/digest
 change is source/runtime drift, not a reason to reuse the old token.
 
 The corrected hermetic pre-turn and evidence contract uses schema
-`aoa_codex_app_server_skill_input_contract_v4` and protocol revision
-`codex-cli-0.144.1-live-dispatch-evidence-v4`. It follows the
+`aoa_codex_app_server_skill_input_contract_v5` and protocol revision
+`codex-cli-0.144.1-live-dispatch-evidence-v5`. It follows the
 [official App Server invocation shape](https://learn.chatgpt.com/docs/app-server#start-a-turn-invoke-a-skill)
 and Codex [progressive-disclosure load semantics](https://learn.chatgpt.com/docs/customization/overview#skills).
-Retained receipts source-locked to v1-v3 keep their original protocol and
+Retained receipts source-locked to v1-v4 keep their original protocol and
 review status and are not upgraded in place.
 
 The source-locked caps include both the rollout token limit and its required
@@ -127,6 +133,11 @@ sandbox remains read-only and network-disabled, while read-only shell execution
 is available for evidence-bearing skill reads and one hermetic fixture
 procedure. Read-only skill-file inspection commands are evidence collection,
 remain allowed before the procedure, and do not count as procedure commands.
+Every completed or in-progress model command must remain inside the fixture
+root. Absolute host, workspace, session-memory, user-config, other-repository,
+or parent-traversal paths are `harness_contamination` before budget, dispatch,
+load, procedure, or lift interpretation. System executables and `/dev/null`
+remain tooling exceptions and do not widen the data boundary.
 Root/child and structured arms receive the exact procedure command
 `python3 fixture_validator.py`. Transport records full reads, exact command
 observation, zero exit, and `AOA_FIXTURE_VALIDATOR_OK` verification as separate
@@ -173,9 +184,10 @@ a complete transport-observed raw read; a read is not procedure execution; an
 exit code is not sentinel verification;
 and a route-contract match is neither observed completion nor central proof.
 
-Source locks make a rerun comparable. Exact shadow disabling and pre-turn
-inventory checks make the aided/control difference attributable to the fixture
-instead of an installed user copy. Paired background digests expose other
+Source locks make a rerun comparable. Exact shadow disabling, pre-turn
+inventory checks, and command-level fixture-scope evidence make the
+aided/control difference attributable to the fixture instead of an installed
+user copy or a source checkout reached through the read-only filesystem. Paired background digests expose other
 prompt-surface drift rather than crediting general model knowledge. Host routing
 bounds resource and storage pressure. Private/raw and public/digest separation
 keeps review possible without publishing session material.
@@ -200,6 +212,9 @@ target also appears in its own neighbourhood list.
 - Positive: source locks and transport-appropriate per-adapter isolation cover
   canonical user-skill shadows, plugins, and configured MCP ids; structured
   turns prove a unique 57-skill surface and zero MCP startup before model spend.
+- Positive: fixture-scope grading rejects filesystem treatment leakage even
+  when prompt visibility is clean and a later budget marker would otherwise
+  hide the earlier contamination.
 - Positive: failures carry bounded adaptive return routes instead of one score.
 - Positive: ordinary CI proves the harness contract without spending model
   turns or treating model quality as deterministic repository proof.
@@ -209,10 +224,10 @@ target also appears in its own neighbourhood list.
   repeated runs are needed before changing skill status or promotion posture.
 - Tradeoff: the 48k ceiling raises worst-case live-campaign cost; non-smoke
   cohorts therefore retain the second exact high-cost confirmation token.
-- Follow-up: the root-to-child repair is landed, but its exact-merged-tree v3
-  rerun exposed grader and fixture ambiguity. Land the v4 evidence repair and
-  repeat the exact smoke before any pilot widening, then use reviewed pilot
-  receipts to continue toward all 57 skills.
+- Follow-up: v4 repaired claim/read/output grading, but its exact-merged-tree
+  rerun exposed an external source read in the control. Land the v5
+  fixture-scope gate and repeat the exact smoke before any pilot widening, then
+  use reviewed pilot receipts to continue toward all 57 skills.
 
 ## Current Applicability
 
@@ -230,13 +245,16 @@ As of 2026-07-11:
   skills, and paired background description fingerprints match. Structured
   arms expose exactly one fixture path for every one of the 57 repo skills and
   no configured MCP startup before the turn.
+- Current filesystem contract: model commands may read only inside the fixture;
+  external absolute or parent-traversal access is contamination before budget
+  or any skill-effect interpretation.
 - Current cap contract: every arm receives the same source-locked 48k ceiling;
   paired arms may differ in actual use but never in available budget.
-- Current contract schema: `aoa_codex_app_server_skill_input_contract_v4`.
-- Current protocol lock: `codex-cli-0.144.1-live-dispatch-evidence-v4`.
+- Current contract schema: `aoa_codex_app_server_skill_input_contract_v5`.
+- Current protocol lock: `codex-cli-0.144.1-live-dispatch-evidence-v5`.
 - Historical protocols: retained v1-v2 smokes are `needs-rerun`; v2 produced a
   valid candidate implicit pair but used an unsupported structured-only App
-  input and cannot support its App load label. Retained v3 reports keep their
+  input and cannot support its App load label. Retained v3-v4 reports keep their
   original review status and old grader semantics.
 - Reviewed v3 candidate: the implicit pair records positive lift and the App
   arm passes its native-load/procedure path, while the explicit `aoa-eval`
@@ -247,10 +265,40 @@ As of 2026-07-11:
   is `needs-rerun`. It exposed self-report load gating, a missing
   dynamic-child read check, read/procedure ambiguity, and
   output-contract/transport conflation. It supports no pair, lift,
-  skill-effect, or family conclusion; v4 smoke must pass before pilot widening.
+  skill-effect, or family conclusion.
+- Current rerun posture: the exact-merged-tree v4 smoke is also `needs-rerun`.
+  Its aided arm passed objective root and dynamic-child reads, but the control
+  read a complete repo skill from an external canonical checkout before budget
+  exhaustion. V4 preserved the budget label; raw review routes the earlier
+  fault to harness contamination. V5 smoke must pass before pilot widening.
 - Superseded by: none.
 
 ## Review Log
+
+### 2026-07-11 - Grade fixture filesystem scope before budget or skill effect
+
+- Previous assumption: prompt-visible skill isolation plus exact fixture-path
+  load checks made the aided/control treatment boundary sufficient; a later
+  budget stop could therefore be interpreted as cap pressure.
+- New evidence: the exact merged v4 run kept prompt visibility clean and its
+  aided arm passed objective root and dynamic-child reads. The control then
+  traversed ambient session-memory owner files and read a complete `aoa-eval`
+  source from an external canonical checkout before the 48k stop. The old
+  grader reported `budget_exhausted`, hiding the earlier treatment leakage.
+- Decision: confine every model command to the fixture root, publish
+  `fixture_filesystem_scope_match`, and classify observed absolute external or
+  parent-traversal access as `harness_contamination` before budget, dispatch,
+  load, procedure, pair, or lift interpretation. System executables and
+  `/dev/null` remain tooling exceptions.
+- Boundary: the v4 public receipt remains immutable under its historical budget
+  label. Reviewed private events justify a harness repair only; they support no
+  pair, lift, skill-effect, status, promotion, or family conclusion.
+- Tradeoff: the bounded fixture no longer measures unrestricted ambient owner
+  traversal in the causal smoke. Ecological background-route behavior can be a
+  separate reviewed cohort only after the causal fixture is sound.
+- Validation: replay the raw v4 events through the new detector, preserve
+  fixture-local chained skill reads, reject absolute and parent escapes, prove
+  contamination outranks budget, then land v5 and repeat the exact merged smoke.
 
 ### 2026-07-11 - Separate objective load evidence from self-report and procedure commands
 

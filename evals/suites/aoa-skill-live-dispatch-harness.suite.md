@@ -76,6 +76,10 @@ after reviewing the preceding cohort and repairing any return route it opens.
 - dispatch-contract and load-contract matches are published separately;
 - read-only skill-file inspection commands are allowed before the procedure,
   collect load evidence, and do not count as procedure commands;
+- completed or in-progress model commands must remain inside the fixture root;
+  absolute host, workspace, session-memory, user-config, other-repository, or
+  parent-traversal paths are `harness_contamination` before any budget or skill
+  interpretation, while system executables and `/dev/null` remain tooling;
 - root and structured arms receive the one exact procedure command
   `python3 fixture_validator.py`; verification is atomic and succeeds only when
   the same completed command event carries zero exit plus exactly one
@@ -121,6 +125,14 @@ the fixture's "one command" wording. Its recorded pair and failure labels do
 not support lift, skill-effect, or family conclusions. The same smoke must be
 rerun under v4 before pilot widening.
 
+The exact-merged-tree v4 rerun is also `needs-rerun`. Its aided arm passed
+objective root and dynamically selected child reads, but the control read a
+complete `aoa-eval` source file from an external canonical checkout before the
+48k budget stopped it. V4 recorded `budget_exhausted` because it did not yet
+grade filesystem scope; raw review places the earlier fault at harness
+contamination. The receipt supports no pair, lift, skill-effect, or family
+conclusion. Repeat the smoke under v5 before pilot widening.
+
 ## Safety And Privacy
 
 The plan locks Git head, all portable skill files, generated/config inputs,
@@ -137,8 +149,8 @@ therefore disable every locked id explicitly. Deterministic adapter tests guard
 both sides of this transport-specific contract.
 
 These hermetic invocation rules use contract schema
-`aoa_codex_app_server_skill_input_contract_v4` and protocol revision
-`codex-cli-0.144.1-live-dispatch-evidence-v4`. Retained v1-v3 receipts remain
+`aoa_codex_app_server_skill_input_contract_v5` and protocol revision
+`codex-cli-0.144.1-live-dispatch-evidence-v5`. Retained v1-v4 receipts remain
 source-locked to their original protocol and review status and are not upgraded
 in place.
 
@@ -146,9 +158,10 @@ Live execution requires `abyss-machine resource launch`, independent storage
 and runtime gates, read-only sandboxing, network-disabled policy, concurrency
 one, source-locked rollout token limits plus reminder thresholds, and an opaque
 private fixture per turn. Read-only shell execution is available only so the
-model can expose full skill reads and run the hermetic
+model can expose fixture-local full skill reads and run the hermetic
 `python3 fixture_validator.py` procedure; the fixture and owner stop-lines do
-not authorize mutation. All arms use the same 48k weighted-token ceiling. The
+not authorize mutation or external filesystem inspection. All arms use the
+same 48k weighted-token ceiling. The
 matched implicit pair must remain cap-symmetric: the corrected control can
 legitimately select the source-locked ambient session-memory route, whose
 required owner reads exceeded the former 28k ceiling. The runner rejects empty,
@@ -186,6 +199,10 @@ the smallest
 affected adjacent family before widening again. If a later observation exposes
 an ambiguous fixture or grader, return to the harness and invalidate affected
 downstream interpretations before changing a skill.
+
+Filesystem-scope contamination precedes budget classification: once a model
+command leaves the fixture, later token exhaustion cannot make that arm
+evaluable or justify a cap increase.
 
 Pair scoring is defined only when both implicit arms produced evaluable
 dispatch evidence. Output-contract invalidity, transport failure, budget

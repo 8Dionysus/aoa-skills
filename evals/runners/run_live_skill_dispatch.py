@@ -102,6 +102,8 @@ PUBLIC_MEASURE_KEYS = (
     "child_full_read_observed",
     "target_skill_full_read_observed",
     "prompt_visibility_contract_match",
+    "fixture_filesystem_scope_match",
+    "external_filesystem_access_count",
     "prompt_visible_repo_skill_count",
     "expected_prompt_visible_repo_skill_count",
     "structured_skill_surface_contract_match",
@@ -145,7 +147,7 @@ PUBLIC_PAIR_KEYS = (
 )
 
 FAILURE_TAXONOMY = {
-    "harness_contamination": "The prompt-visible repo or background skill surface escaped the locked fixture contract.",
+    "harness_contamination": "The prompt-visible skill surface or a model command escaped the locked fixture contract.",
     "implicit_trigger_miss": "An invoke-policy target was not selected in the aided arm.",
     "collision_misroute": "A competing skill won or several skills leaked into the route.",
     "manual_activation_leak": "A manual/suggest skill was claimed loaded by implicit routing.",
@@ -560,7 +562,7 @@ def _expected_codex_version(plan: dict[str, Any]) -> str:
     revision = str(plan.get("protocol_revision") or "")
     match = re.fullmatch(
         r"codex-cli-([0-9]+(?:\.[0-9]+){2})-"
-        r"(?:app-server-skill-input-v3|live-dispatch-evidence-v4)",
+        r"(?:app-server-skill-input-v3|live-dispatch-evidence-v[45])",
         revision,
     )
     if match is None:
@@ -1168,7 +1170,7 @@ def build_implicit_cli_request(
         "transport": "codex_exec_jsonl",
         "arm_type": "implicit_control" if control else "implicit_aided",
         "argv": argv,
-        "prompt": prompt,
+        "prompt": _with_fixture_scope(prompt),
         "timeout_seconds": context.timeout_seconds,
         "fixture_root": str(context.fixture_root),
         "final_output_path": str(context.final_output_path),
@@ -1180,9 +1182,18 @@ def build_implicit_cli_request(
     }
 
 
-def _with_fixture_procedure(prompt: str) -> str:
+def _with_fixture_scope(prompt: str) -> str:
     return (
         f"{prompt}\n\n"
+        "Hermetic filesystem scope: Do not inspect or search any path outside this fixture root. "
+        "Do not use absolute host, workspace, session-memory, user-config, or other-repository paths, "
+        "and do not use parent traversal. Prompt-visible background skills do not widen this scope."
+    )
+
+
+def _with_fixture_procedure(prompt: str) -> str:
+    return (
+        f"{_with_fixture_scope(prompt)}\n\n"
         "Hermetic fixture contract: Read-only skill-file inspection commands are allowed and do not count "
         "as procedure commands. If the route selects a child, resolve and read the complete selected child "
         "`SKILL.md` before the procedure. "
@@ -1909,6 +1920,9 @@ def _prepare_fixture(
         guidance.write_text(
             "# Hermetic skill-dispatch fixture\n\n"
             "Read-only evaluation fixture. Do not mutate files, use network, or widen owner authority.\n"
+            "Do not inspect or search any path outside this fixture root.\n"
+            "Do not use absolute host, workspace, session-memory, user-config, or other-repository paths, or parent traversal.\n"
+            "Prompt-visible background skills do not widen this filesystem scope.\n"
             "Read-only skill-file inspection commands are allowed when needed to load selected instructions.\n"
             "They are evidence collection, not procedure commands.\n"
             f"The only selected procedure command is `{FIXTURE_VALIDATOR_COMMAND}` from this fixture root.\n",
@@ -1964,6 +1978,8 @@ def _trial_failure_class(trial: Trial, result: dict[str, Any]) -> str | None:
         candidate_output.get("owner_boundary")
     ):
         return "owner_boundary_violation"
+    if result.get("fixture_filesystem_scope_match") is False:
+        return "harness_contamination"
     transport_failed = int(result.get("returncode") or 0) != 0
     output_contract_invalid = not _model_output_contract_valid(candidate_output)
     if (transport_failed or output_contract_invalid) and _result_budget_exhausted(result):
@@ -2176,6 +2192,94 @@ def _command_shell_payload(command: str) -> str:
     return command.strip()
 
 
+def _path_within(path: Path, root: Path) -> bool:
+    try:
+        path.relative_to(root)
+    except ValueError:
+        return False
+    return True
+
+
+def _fixture_path_candidate_escapes(raw: str, fixture_root: Path) -> bool:
+    candidate = Path(raw.rstrip(",:;"))
+    if candidate == Path("/dev/null"):
+        return False
+    try:
+        resolved = (
+            candidate.resolve()
+            if candidate.is_absolute()
+            else (fixture_root / candidate).resolve()
+        )
+    except (OSError, RuntimeError):
+        return True
+    if _path_within(resolved, fixture_root):
+        return False
+    if (
+        resolved.is_file()
+        and os.access(resolved, os.X_OK)
+        and resolved.parent in {Path("/bin"), Path("/usr/bin"), Path("/usr/local/bin")}
+    ):
+        return False
+    return True
+
+
+def _command_escapes_fixture_scope(command: str, fixture_root: Path) -> bool:
+    payload = _command_shell_payload(command)
+    if not payload:
+        return False
+    if re.search(r"(?:^|[^A-Za-z0-9_])(?:~(?:/|$)|\$HOME(?:/|$)|\$\{HOME\}(?:/|$))", payload):
+        return True
+    try:
+        tokens = shlex.split(payload)
+    except ValueError:
+        return True
+    fixture = fixture_root.resolve()
+    for token in tokens:
+        if not token or token in {"&&", "||", ";", "|", "(", ")"}:
+            continue
+        normalized_token = token.rstrip(",:;")
+        candidates: list[str] = []
+        if normalized_token.startswith("/"):
+            candidates.append(normalized_token)
+        if "=" in normalized_token:
+            assigned = normalized_token.split("=", 1)[1]
+            if assigned.startswith("/"):
+                candidates.append(assigned)
+        redirect_match = re.search(r"[<>]+(?P<path>/[^<>]+)$", normalized_token)
+        if redirect_match is not None:
+            candidates.append(redirect_match.group("path"))
+        if not candidates and ".." in Path(normalized_token).parts:
+            candidates.append(normalized_token)
+        for raw in candidates:
+            if _fixture_path_candidate_escapes(raw, fixture):
+                return True
+    for match in re.finditer(
+        r"(?:^|[\s'\"(=<>])(?P<path>/[^\s'\";&|()<>]+)",
+        payload,
+    ):
+        if _fixture_path_candidate_escapes(match.group("path"), fixture):
+            return True
+    return False
+
+
+def _fixture_filesystem_scope_evidence(
+    events: Any,
+    fixture_root: Path,
+) -> dict[str, bool | int]:
+    violating_commands: set[str] = set()
+    for item in _command_execution_items(events):
+        status = str(item.get("status") or "").lower()
+        if status not in {"in_progress", "completed"}:
+            continue
+        command = str(item.get("command") or "")
+        if _command_escapes_fixture_scope(command, fixture_root):
+            violating_commands.add(_command_shell_payload(command))
+    return {
+        "fixture_filesystem_scope_match": not violating_commands,
+        "external_filesystem_access_count": len(violating_commands),
+    }
+
+
 def _command_mentions_exact_skill_path(command: str, skill_path: Path) -> bool:
     payload = _command_shell_payload(command)
     try:
@@ -2292,6 +2396,7 @@ def _enrich_transport_evidence(
         else None
     )
     enriched.update(prompt_evidence)
+    enriched.update(_fixture_filesystem_scope_evidence(enriched.get("events"), fixture_root))
     enriched["target_skill_full_read_observed"] = _skill_full_read_observed(
         enriched.get("events"), target_path
     )
@@ -2367,6 +2472,10 @@ def _trial_measure(trial: Trial, result: dict[str, Any]) -> dict[str, Any]:
         "child_full_read_observed": result.get("child_full_read_observed") is True,
         "target_skill_full_read_observed": result.get("target_skill_full_read_observed") is True,
         "prompt_visibility_contract_match": result.get("prompt_visibility_contract_match") is True,
+        "fixture_filesystem_scope_match": result.get("fixture_filesystem_scope_match") is True,
+        "external_filesystem_access_count": int(
+            result.get("external_filesystem_access_count") or 0
+        ),
         "prompt_visible_repo_skill_count": int(result.get("prompt_visible_repo_skill_count") or 0),
         "expected_prompt_visible_repo_skill_count": int(
             result.get("expected_prompt_visible_repo_skill_count") or 0
