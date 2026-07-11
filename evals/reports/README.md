@@ -49,18 +49,25 @@ temporary root and must not be copied into this directory.
   legitimately followed the equal-background session-memory route and
   exhausted the former 28k cap on its required owner reads. It publishes no
   pair/lift and requires the same smoke under an equal 48k paired cap.
+- [aoa-skill-live-dispatch-smoke-20260711-v2-native-load-contract-needs-rerun.json](aoa-skill-live-dispatch-smoke-20260711-v2-native-load-contract-needs-rerun.json)
+  preserves the complete 48k v2 smoke. Its source-locked implicit
+  positive-lift pair is candidate evidence and its root arm exposes a candidate
+  missing-child-read gap, but the App arm used unsupported structured-only
+  input. Its App `skill_load_gap` is a harness diagnosis, not a skill verdict.
 
-Corrected live receipts under the v2 App Server protocol are reviewable only
+Corrected live receipts under the v3 App Server protocol are reviewable only
 after canonical user-skill shadows, plugins, and every configured MCP id are
 isolated with the adapter-appropriate mechanism (`--ignore-user-config` for
 CLI exec, explicit per-id disables for prompt inspection and App Server);
 prompt entry descriptions match the locked background; structured
 `skills/list` exposes the exact unique 57-skill fixture map with zero MCP
-startup; exact fixture-path reads and one atomic guidance-bound validator event
-are proved; and invalid pairs are omitted without rewriting arm history. Public
+startup; the official `$skill` text plus matching `skill` item is accepted;
+native input acceptance remains separate from exact fixture-path full reads;
+one atomic guidance-bound validator event is proved; and invalid pairs are
+omitted without rewriting arm history. Public
 validation rejects embedded absolute host paths as well as raw prompts,
-transport ids, and credential-shaped values. The retained complete smoke
-remains source-locked to protocol v1 and `needs-rerun`.
+transport ids, and credential-shaped values. Retained v1/v2 smokes remain
+historical `needs-rerun` evidence.
 - [aoa-eval-session-mining.report.md](aoa-eval-session-mining.report.md)
   records the first `.aoa` mining pass for `aoa-eval` trigger evidence and its
   proof limits.

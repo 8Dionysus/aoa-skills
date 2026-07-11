@@ -3,7 +3,7 @@
   "owner_repo": "aoa-skills",
   "profile": "repo-default",
   "profile_revision": "7217588744c68b15cf12e0a2ac3de7af74f5b3cc623b72b985c0169406f5f7b4",
-  "protocol_revision": "codex-cli-0.144.1-app-server-skill-input-v2",
+  "protocol_revision": "codex-cli-0.144.1-app-server-skill-input-v3",
   "proof_authority": false,
   "promotion_allowed": false,
   "default_action": "plan",

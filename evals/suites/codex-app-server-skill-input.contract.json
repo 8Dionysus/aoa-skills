@@ -1,7 +1,8 @@
 {
-  "schema_version": "aoa_codex_app_server_skill_input_contract_v2",
+  "schema_version": "aoa_codex_app_server_skill_input_contract_v3",
   "codex_version": "codex-cli 0.144.1",
-  "protocol_revision": "codex-cli-0.144.1-app-server-skill-input-v2",
+  "protocol_revision": "codex-cli-0.144.1-app-server-skill-input-v3",
+  "official_contract_ref": "https://learn.chatgpt.com/docs/app-server#start-a-turn-invoke-a-skill",
   "schema_generation_command": "codex app-server generate-json-schema --experimental --out DIR",
   "request_sequence": [
     "initialize",
@@ -17,8 +18,9 @@
     "turn_output": "the last completed agentMessage.text must itself be one valid JSON object; earlier JSON is never a fallback"
   },
   "structured_input_binding": {
-    "text_item": "task and fixture procedure only; no textual $skill activation",
-    "skill_item": "the sole explicit activation signal is type=skill with the exact fixture name and path"
+    "text_item": "the exact $<skill-name> textual mention precedes the task and fixture procedure",
+    "skill_item": "type=skill carries the same exact fixture name and path alongside the text item",
+    "load_evidence": "an accepted official dual input is version-locked native load evidence, distinct from a raw shell full-read event"
   },
   "preturn_isolation": {
     "user_skill_shadows": "all canonical overlapping user skill paths are source-locked and disabled",

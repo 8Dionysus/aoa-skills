@@ -99,6 +99,7 @@
         "model_claims_loaded": {"type": "boolean"},
         "structured_skill_visible": {"type": "boolean"},
         "structured_skill_input_sent": {"type": "boolean"},
+        "native_target_skill_input_accepted": {"type": "boolean"},
         "child_full_read_observed": {"type": "boolean"},
         "route_contract_match": {"type": "boolean"},
         "prompt_visibility_contract_match": {"type": "boolean"},
