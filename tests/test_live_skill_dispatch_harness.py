@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import dataclasses
+import hashlib
 import importlib.util
 import io
 import json
@@ -31,6 +32,7 @@ def load_runner():
 class FakeTransport:
     def __init__(self) -> None:
         self.preflight_calls: list[dict] = []
+        self.prompt_inspection_calls: list[dict] = []
         self.cli_calls: list[dict] = []
         self.app_server_calls: list[dict] = []
 
@@ -43,10 +45,71 @@ class FakeTransport:
             "allowed": True,
         }
 
+    def inspect_prompt_skills(self, request: dict) -> dict:
+        self.prompt_inspection_calls.append(request)
+        inventory = request["expected_prompt_skill_paths"]
+        return {
+            "returncode": 0,
+            "inventory": inventory,
+            "entry_fingerprints": {
+                name: [
+                    hashlib.sha256(f"{name}\0{path}".encode()).hexdigest()
+                    for path in paths
+                ]
+                for name, paths in inventory.items()
+            },
+            "duration_ms": 0,
+        }
+
+    @staticmethod
+    def _skill_read_event(request: dict, skill_name: str) -> dict:
+        path = Path(request["fixture_root"]) / ".agents" / "skills" / skill_name / "SKILL.md"
+        return {
+            "type": "item.completed",
+            "item": {
+                "type": "command_execution",
+                "status": "completed",
+                "exit_code": 0,
+                "command": f"sed -n '1,9999p' {path}",
+                "aggregated_output": path.read_text(encoding="utf-8"),
+            },
+        }
+
+    @staticmethod
+    def _validator_event(request: dict) -> dict:
+        guidance = Path(request["fixture_root"]) / "AGENTS.md"
+        payload = {
+            "generated_drift": False,
+            "guidance_sha256": hashlib.sha256(guidance.read_bytes()).hexdigest(),
+            "proof_authority": False,
+            "schema_version": "aoa_live_dispatch_fixture_validator_v1",
+            "status": "pass",
+        }
+        return {
+            "type": "item.completed",
+            "item": {
+                "type": "command_execution",
+                "status": "completed",
+                "exit_code": 0,
+                "command": "python3 fixture_validator.py",
+                "aggregated_output": (
+                    "AOA_FIXTURE_VALIDATOR_OK "
+                    + json.dumps(payload, sort_keys=True, separators=(",", ":"))
+                ),
+            },
+        }
+
     def run_cli(self, request: dict) -> dict:
         self.cli_calls.append(request)
         target = request["expected_target_skill"]
         decision = "manual_required" if request["expected_behavior"] == "manual" else "invoke"
+        events = list(request.get("mock_events", []))
+        if request["arm_type"] != "implicit_control" and not events and "fixture_root" in request:
+            events.append(self._skill_read_event(request, target))
+            child = request.get("expected_child_skill")
+            if child:
+                events.append(self._skill_read_event(request, child))
+                events.append(self._validator_event(request))
         return {
             "returncode": 0,
             "stdout": "{\"type\":\"turn.completed\"}\n",
@@ -56,6 +119,9 @@ class FakeTransport:
                 "selected_skill": target,
                 "selected_child": request.get("expected_child_skill"),
                 "claims_loaded": request["arm_type"] != "implicit_control",
+                "procedure_disposition": (
+                    "completed" if request["arm_type"] == "root_manual_child" else "not_applicable"
+                ),
                 "mutation_authorized": False,
                 "proof_authority_claimed": False,
                 "promotion_authorized": False,
@@ -65,7 +131,7 @@ class FakeTransport:
                 "verification_steps": ["Run the owner validator."],
                 "stop_line": "Stop before mutation.",
             },
-            "events": request.get("mock_events", []),
+            "events": events,
             "usage": {"input_tokens": 100, "cached_input_tokens": 0, "output_tokens": 40},
             "duration_ms": 25,
         }
@@ -73,6 +139,14 @@ class FakeTransport:
     def run_app_server(self, request: dict) -> dict:
         self.app_server_calls.append(request)
         target = request["expected_target_skill"]
+        evidence_events = []
+        if "fixture_root" in request:
+            skill_event = self._skill_read_event(request, target)
+            evidence_events.append({"method": "item/completed", "params": {"item": skill_event["item"]}})
+            validator_event = self._validator_event(request)
+            evidence_events.append(
+                {"method": "item/completed", "params": {"item": validator_event["item"]}}
+            )
         return {
             "returncode": 0,
             "stdout": "",
@@ -82,6 +156,7 @@ class FakeTransport:
                 "selected_skill": target,
                 "selected_child": None,
                 "claims_loaded": True,
+                "procedure_disposition": "completed",
                 "mutation_authorized": False,
                 "proof_authority_claimed": False,
                 "promotion_authorized": False,
@@ -91,11 +166,16 @@ class FakeTransport:
                 "verification_steps": ["Keep the receipt local."],
                 "stop_line": "Stop before unauthorized mutation.",
             },
-            "events": [{"method": "turn/completed", "params": {"turn": {"status": "completed"}}}],
+            "events": [
+                *evidence_events,
+                {"method": "turn/completed", "params": {"turn": {"status": "completed"}}},
+            ],
             "usage": {"input_tokens": 120, "cached_input_tokens": 0, "output_tokens": 50},
             "duration_ms": 30,
             "structured_skill_visible": True,
             "structured_skill_input_sent": True,
+            "structured_skill_surface_contract_match": True,
+            "external_runtime_isolation_match": True,
         }
 
 
@@ -155,6 +235,10 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
         )
         self.assertEqual(45, sum(t.arm_type == "app_server_structured" for t in closure))
         self.assertEqual(8, sum(t.arm_type == "root_manual_child" for t in closure))
+        self.assertEqual(57, len(self.runner._repo_skill_names(REPO_ROOT)))
+        self.assertEqual(12, len(self.runner._prompt_visible_repo_skill_names(REPO_ROOT)))
+        self.assertIn("aoa-eval", self.runner._prompt_visible_repo_skill_names(REPO_ROOT))
+        self.assertNotIn("aoa-eval-apply", self.runner._prompt_visible_repo_skill_names(REPO_ROOT))
 
     def test_default_plan_and_unconfirmed_run_never_spawn_or_write(self) -> None:
         runner = self.runner
@@ -227,6 +311,101 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
         pilot = self.runner.build_plan_packet(REPO_ROOT, plan, "pilot13", "model-a", "medium")
         self.assertTrue(pilot["high_cost_confirmation_required"])
 
+    def test_confirmation_token_binds_discovered_shadow_skill_set(self) -> None:
+        runner = self.runner
+        plan = runner.load_plan(self.plan_path)
+        first_shadow_set = (Path("/external/skills/aoa-eval/SKILL.md"),)
+        second_shadow_set = (
+            Path("/external/skills/aoa-decision/SKILL.md"),
+            Path("/external/skills/aoa-eval/SKILL.md"),
+        )
+
+        with mock.patch.object(
+            runner,
+            "discover_shadowing_skill_paths",
+            return_value=first_shadow_set,
+        ):
+            first = runner.build_plan_packet(REPO_ROOT, plan, "smoke", "model-a", "medium")
+        with mock.patch.object(
+            runner,
+            "discover_shadowing_skill_paths",
+            return_value=second_shadow_set,
+        ):
+            second = runner.build_plan_packet(REPO_ROOT, plan, "smoke", "model-a", "medium")
+
+        self.assertEqual(1, first["shadow_skill_count"])
+        self.assertEqual(2, second["shadow_skill_count"])
+        self.assertNotEqual(first["shadow_skill_set_sha256"], second["shadow_skill_set_sha256"])
+        self.assertNotEqual(first["confirmation_token"], second["confirmation_token"])
+
+    def test_shadow_discovery_follows_user_skill_symlink_to_canonical_target(self) -> None:
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            codex_home = root / "codex-home"
+            target = root / "source" / "aoa-eval"
+            target.mkdir(parents=True)
+            (target / "SKILL.md").write_text("---\nname: aoa-eval\n---\n", encoding="utf-8")
+            skill_root = codex_home / "skills"
+            skill_root.mkdir(parents=True)
+            (skill_root / "aoa-eval").symlink_to(target, target_is_directory=True)
+
+            discovered = self.runner.discover_shadowing_skill_paths(
+                REPO_ROOT,
+                codex_home=codex_home,
+            )
+
+        self.assertEqual((target / "SKILL.md",), discovered)
+
+    def test_configured_mcp_inventory_is_sorted_and_lockable(self) -> None:
+        with tempfile.TemporaryDirectory() as td:
+            codex_home = Path(td)
+            (codex_home / "config.toml").write_text(
+                "[mcp_servers.zeta]\ncommand='z'\n"
+                "[mcp_servers.alpha]\ncommand='a'\n",
+                encoding="utf-8",
+            )
+            names = self.runner.discover_configured_mcp_server_names(
+                codex_home=codex_home
+            )
+
+        self.assertEqual(("alpha", "zeta"), names)
+        lock = self.runner._configured_mcp_server_lock(names)
+        self.assertEqual(2, lock["configured_mcp_server_count"])
+        self.assertEqual(64, len(lock["configured_mcp_server_set_sha256"]))
+
+        plan = self.runner.load_plan(self.plan_path)
+        with (
+            mock.patch.object(
+                self.runner,
+                "discover_shadowing_skill_paths",
+                return_value=(),
+            ),
+            mock.patch.object(
+                self.runner,
+                "discover_configured_mcp_server_names",
+                return_value=("alpha",),
+            ),
+        ):
+            first = self.runner.build_plan_packet(
+                REPO_ROOT, plan, "smoke", "model-a", "medium"
+            )
+        with (
+            mock.patch.object(
+                self.runner,
+                "discover_shadowing_skill_paths",
+                return_value=(),
+            ),
+            mock.patch.object(
+                self.runner,
+                "discover_configured_mcp_server_names",
+                return_value=("alpha", "zeta"),
+            ),
+        ):
+            second = self.runner.build_plan_packet(
+                REPO_ROOT, plan, "smoke", "model-a", "medium"
+            )
+        self.assertNotEqual(first["confirmation_token"], second["confirmation_token"])
+
     def test_protocol_contract_matches_plan_and_installed_version_lock(self) -> None:
         plan = self.runner.load_plan(self.plan_path)
         contract = json.loads(
@@ -254,7 +433,8 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
             rollout_budget_reminder_at_remaining_tokens=(4_000,),
             timeout_seconds=180,
             full_timeout_seconds=240,
-            disabled_skill_paths=(Path("/global/aoa-eval"),),
+            disabled_skill_paths=(Path("/global/aoa-eval/SKILL.md"),),
+            disabled_mcp_server_names=("aoa_evals",),
         )
         implicit = runner.build_implicit_cli_request(
             context,
@@ -279,9 +459,22 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
         self.assertIn("--ephemeral", implicit["argv"])
         self.assertIn("--ignore-user-config", implicit["argv"])
         self.assertIn("read-only", implicit["argv"])
-        self.assertIn("shell_tool", implicit["argv"])
         self.assertTrue(trajectory["prompt"].startswith("$aoa-eval "))
-        self.assertNotIn("shell_tool", trajectory["argv"])
+        expected_skill_override = (
+            'skills.config=[{path="/global/aoa-eval/SKILL.md",enabled=false}]'
+        )
+        for request in (implicit, trajectory, structured):
+            with self.subTest(adapter=request["arm_type"]):
+                self.assertEqual(
+                    [expected_skill_override],
+                    [arg for arg in request["argv"] if arg.startswith("skills.config=")],
+                )
+                self.assertNotIn("shell_tool", request["argv"])
+                self.assertIn(
+                    "mcp_servers.aoa_evals.enabled=false",
+                    request["argv"],
+                )
+                self.assertIn("plugins", request["argv"])
         reminder_override = "features.rollout_budget.reminder_at_remaining_tokens=[4000]"
         self.assertIn(reminder_override, implicit["argv"])
         self.assertIn(reminder_override, trajectory["argv"])
@@ -292,10 +485,27 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
         self.assertEqual("skill", structured["turn_start_params"]["input"][1]["type"])
         self.assertEqual("aoa-eval-apply", structured["turn_start_params"]["input"][1]["name"])
         self.assertEqual("readOnly", structured["turn_start_params"]["sandboxPolicy"]["type"])
+        self.assertNotIn(
+            "$aoa-eval-apply",
+            structured["turn_start_params"]["input"][0]["text"],
+        )
         self.assertEqual("thread/start", structured["thread_start_request"]["method"])
         self.assertEqual(180, implicit["timeout_seconds"])
         self.assertEqual(180, trajectory["timeout_seconds"])
         self.assertEqual(240, structured["timeout_seconds"])
+
+        directory_selector_context = dataclasses.replace(
+            context,
+            disabled_skill_paths=(Path("/global/aoa-eval"),),
+        )
+        with self.assertRaisesRegex(ValueError, "absolute SKILL.md file paths"):
+            runner.build_implicit_cli_request(
+                directory_selector_context,
+                prompt="Decide the route.",
+                target_skill="aoa-eval",
+                expected_behavior="invoke",
+                control=False,
+            )
 
         for invalid_reminders in ((), (0,), (28_000,)):
             invalid_context = dataclasses.replace(
@@ -311,6 +521,55 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
                         expected_behavior="invoke",
                         control=False,
                     )
+
+    def test_model_visible_skill_parser_resolves_aliases_and_duplicate_names(self) -> None:
+        skills_instructions = """<skills_instructions>
+## Skills
+### Skill roots
+- `r0` = `/home/tester/.codex/skills`
+- `r10` = `/private/fixture/.agents/skills`
+### Available skills
+- aoa-eval: fixture route (file: r10/aoa-eval/SKILL.md)
+- aoa-eval: user-installed shadow (file: r0/aoa-eval/SKILL.md)
+- aoa-decision: fixture decision route (file: r10/aoa-decision/SKILL.md)
+</skills_instructions>"""
+        payload = [
+            {
+                "type": "message",
+                "role": "developer",
+                "content": [{"type": "input_text", "text": skills_instructions}],
+            }
+        ]
+
+        self.assertEqual(
+            {
+                "aoa-decision": (
+                    "/private/fixture/.agents/skills/aoa-decision/SKILL.md",
+                ),
+                "aoa-eval": (
+                    "/home/tester/.codex/skills/aoa-eval/SKILL.md",
+                    "/private/fixture/.agents/skills/aoa-eval/SKILL.md",
+                ),
+            },
+            self.runner._parse_model_visible_skill_paths(payload),
+        )
+        _inventory, first_fingerprints = self.runner._parse_model_visible_skill_surface(payload)
+        changed_payload = json.loads(json.dumps(payload))
+        changed_payload[0]["content"][0]["text"] = skills_instructions.replace(
+            "fixture decision route",
+            "changed decision route",
+        )
+        changed_inventory, changed_fingerprints = self.runner._parse_model_visible_skill_surface(
+            changed_payload
+        )
+        self.assertEqual(
+            self.runner._parse_model_visible_skill_paths(payload),
+            changed_inventory,
+        )
+        self.assertNotEqual(
+            first_fingerprints["aoa-decision"],
+            changed_fingerprints["aoa-decision"],
+        )
 
     def test_confirmed_mock_run_writes_private_receipt_but_no_public_raw_data(self) -> None:
         runner = self.runner
@@ -332,6 +591,7 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
                 test_only_allow_noncanonical_private_root=True,
             )
             self.assertEqual(1, len(transport.preflight_calls))
+            self.assertEqual(4, len(transport.prompt_inspection_calls))
             self.assertEqual(3, len(transport.cli_calls))
             self.assertEqual(1, len(transport.app_server_calls))
             implicit_request = next(call for call in transport.cli_calls if call["arm_type"] == "implicit_aided")
@@ -369,6 +629,50 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
                 self.load_schema("live-skill-dispatch-public-receipt.schema.json")
             ).validate(legacy_public)
 
+    def test_prompt_visibility_contamination_stops_before_any_model_turn(self) -> None:
+        runner = self.runner
+        plan = runner.load_plan(self.plan_path)
+        packet = runner.build_plan_packet(REPO_ROOT, plan, "smoke", "test-model", "medium")
+
+        class ContaminatedPromptTransport(FakeTransport):
+            def inspect_prompt_skills(self, request: dict) -> dict:
+                payload = super().inspect_prompt_skills(request)
+                inventory = {
+                    name: list(paths)
+                    for name, paths in payload["inventory"].items()
+                }
+                inventory.setdefault("aoa-eval", []).append(
+                    "/home/tester/.codex/skills/aoa-eval/SKILL.md"
+                )
+                payload["inventory"] = inventory
+                return payload
+
+        transport = ContaminatedPromptTransport()
+        with tempfile.TemporaryDirectory() as td:
+            receipt = runner.run_confirmed_cohort(
+                repo_root=REPO_ROOT,
+                plan=plan,
+                cohort="smoke",
+                model="test-model",
+                effort="medium",
+                confirmation_token=packet["confirmation_token"],
+                high_cost_token=None,
+                private_root=Path(td),
+                transport=transport,
+                test_only_allow_noncanonical_private_root=True,
+            )
+
+        self.assertEqual(1, len(transport.preflight_calls))
+        self.assertEqual(1, len(transport.prompt_inspection_calls))
+        self.assertEqual([], transport.cli_calls)
+        self.assertEqual([], transport.app_server_calls)
+        self.assertTrue(receipt["stopped_early"])
+        self.assertEqual("harness_contamination", receipt["stop_reason"])
+        self.assertEqual(
+            "harness_contamination",
+            receipt["trials"][0]["measure"]["failure_class"],
+        )
+
     def test_public_validator_rejects_paths_credentials_raw_text_and_session_ids(self) -> None:
         runner = self.runner
         plan = runner.load_plan(self.plan_path)
@@ -389,7 +693,7 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
             )
         base = runner.build_public_receipt(receipt)
         attacks = (
-            "/home/dionysus/private.json",
+            "ref=/srv/private/operator-secret",
             "sk-proj-secretvalue123456789",
             "Bearer abcdefghijklmnop",
             "turn_457",
@@ -398,9 +702,14 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
         for attack in attacks:
             with self.subTest(attack=attack):
                 candidate = json.loads(json.dumps(base))
-                candidate["review"]["note"] = attack
+                candidate["model"] = attack
                 with self.assertRaises(runner.PublicReceiptSafetyError):
                     runner.validate_public_receipt(candidate)
+
+        forbidden_key = json.loads(json.dumps(base))
+        forbidden_key["review"]["note"] = "bounded text"
+        with self.assertRaises(runner.PublicReceiptSafetyError):
+            runner.validate_public_receipt(forbidden_key)
 
     def test_review_cli_blocks_public_write_outside_reports_without_traceback(self) -> None:
         runner = self.runner
@@ -583,11 +892,14 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
             skill_name="aoa-eval-apply",
             skill_path=skill_path,
         )
+        request["expected_structured_skill_paths"] = {
+            "aoa-eval-apply": [str(skill_path)]
+        }
         script = r'''
 import json
 import sys
 
-name, path = sys.argv[1:3]
+name, path, mode = sys.argv[1:4]
 sys.stderr.write("diagnostic-burst:" + ("x" * 131072))
 sys.stderr.flush()
 thread_id = "019f0000-0000-7000-8000-000000000001"
@@ -596,6 +908,7 @@ output = {
     "selected_skill": name,
     "selected_child": None,
     "claims_loaded": True,
+    "procedure_disposition": "completed",
     "mutation_authorized": False,
     "proof_authority_claimed": False,
     "promotion_authorized": False,
@@ -611,8 +924,13 @@ for line in sys.stdin:
     if method == "initialize":
         response = {"id": 1, "result": {"serverInfo": {"name": "fake", "version": "1"}}}
     elif method == "skills/list":
-        response = {"id": 2, "result": {"data": [{"cwd": "/private/fixture", "errors": [], "skills": [{"name": name, "path": path, "enabled": True, "description": "fixture", "scope": "repo"}]}]}}
+        skills = [{"name": name, "path": path, "enabled": True, "description": "fixture", "scope": "repo"}]
+        if mode == "duplicate":
+            skills.append({"name": name, "path": "/external/aoa-eval-apply/SKILL.md", "enabled": True, "description": "shadow", "scope": "user"})
+        response = {"id": 2, "result": {"data": [{"cwd": "/private/fixture", "errors": [], "skills": skills}]}}
     elif method == "thread/start":
+        if mode == "mcp":
+            print(json.dumps({"method": "mcpServer/startupStatus/updated", "params": {"name": "unexpected", "status": "starting"}}), flush=True)
         response = {"id": 3, "result": {"thread": {"id": thread_id}}}
     elif method == "turn/start":
         if message["params"]["threadId"] != thread_id:
@@ -630,20 +948,214 @@ for line in sys.stdin:
         continue
     print(json.dumps(response), flush=True)
 '''
-        request["argv"] = [sys.executable, "-u", "-c", script, "aoa-eval-apply", str(skill_path)]
-        with tempfile.TemporaryDirectory() as td:
-            stderr_path = Path(td) / "app-server.stderr.log"
-            request["stderr_path"] = str(stderr_path)
-            result = runner.RealTransport().run_app_server(request)
-            self.assertEqual(0o600, stderr_path.stat().st_mode & 0o777)
+        def run_mode(mode: str) -> dict:
+            candidate = json.loads(json.dumps(request))
+            candidate["argv"] = [
+                sys.executable,
+                "-u",
+                "-c",
+                script,
+                "aoa-eval-apply",
+                str(skill_path),
+                mode,
+            ]
+            with tempfile.TemporaryDirectory() as td:
+                stderr_path = Path(td) / "app-server.stderr.log"
+                candidate["stderr_path"] = str(stderr_path)
+                outcome = runner.RealTransport().run_app_server(candidate)
+                self.assertEqual(0o600, stderr_path.stat().st_mode & 0o777)
+            return outcome
+
+        result = run_mode("clean")
 
         self.assertEqual(0, result["returncode"])
         self.assertTrue(result["turn_started"])
         self.assertTrue(result["structured_skill_visible"])
         self.assertTrue(result["structured_skill_input_sent"])
+        self.assertTrue(result["structured_skill_surface_contract_match"])
+        self.assertTrue(result["external_runtime_isolation_match"])
         self.assertIn("diagnostic-burst:", result["stderr"])
         self.assertEqual("aoa-eval-apply", result["final_output"]["selected_skill"])
         self.assertEqual(120, result["usage"]["input_tokens"])
+
+        duplicate = run_mode("duplicate")
+        self.assertFalse(duplicate["turn_started"])
+        self.assertEqual("harness_contamination", duplicate["forced_failure_class"])
+        self.assertFalse(duplicate["structured_skill_surface_contract_match"])
+
+        mcp = run_mode("mcp")
+        self.assertFalse(mcp["turn_started"])
+        self.assertEqual("harness_contamination", mcp["forced_failure_class"])
+        self.assertFalse(mcp["external_runtime_isolation_match"])
+
+    def test_full_skill_read_requires_completed_command_output_not_inventory_mention(self) -> None:
+        runner = self.runner
+        with tempfile.TemporaryDirectory() as td:
+            skill_path = Path(td) / ".agents" / "skills" / "aoa-eval-apply" / "SKILL.md"
+            skill_path.parent.mkdir(parents=True)
+            skill_text = "---\nname: aoa-eval-apply\n---\n\n# aoa-eval-apply\n\nFull procedure.\n"
+            skill_path.write_text(skill_text, encoding="utf-8")
+            inventory_event = {
+                "id": 2,
+                "result": {
+                    "data": [
+                        {
+                            "skills": [
+                                {
+                                    "name": "aoa-eval-apply",
+                                    "path": str(skill_path),
+                                    "enabled": True,
+                                }
+                            ]
+                        }
+                    ]
+                },
+            }
+            self.assertFalse(
+                runner._skill_full_read_observed([inventory_event], skill_path)
+            )
+
+            completed_read_event = {
+                "type": "item.completed",
+                "item": {
+                    "type": "command_execution",
+                    "command": f"sed -n '1,240p' {skill_path}",
+                    "aggregated_output": skill_text,
+                    "exit_code": 0,
+                    "status": "completed",
+                },
+            }
+            self.assertTrue(
+                runner._skill_full_read_observed([completed_read_event], skill_path)
+            )
+
+            shadow_path = Path(td) / "shadow" / "aoa-eval-apply" / "SKILL.md"
+            shadow_path.parent.mkdir(parents=True)
+            shadow_path.write_text(skill_text, encoding="utf-8")
+            shadow_read_event = json.loads(json.dumps(completed_read_event))
+            shadow_read_event["item"]["command"] = f"sed -n '1,9999p' {shadow_path}"
+            self.assertFalse(
+                runner._skill_full_read_observed([shadow_read_event], skill_path)
+            )
+
+    def test_procedure_evidence_is_exact_atomic_and_payload_bound(self) -> None:
+        runner = self.runner
+        with tempfile.TemporaryDirectory() as td:
+            fixture_root = Path(td)
+            guidance = fixture_root / "AGENTS.md"
+            guidance.write_text("fixture guidance\n", encoding="utf-8")
+            valid_payload = {
+                "generated_drift": False,
+                "guidance_sha256": hashlib.sha256(guidance.read_bytes()).hexdigest(),
+                "proof_authority": False,
+                "schema_version": "aoa_live_dispatch_fixture_validator_v1",
+                "status": "pass",
+            }
+            sentinel = "AOA_FIXTURE_VALIDATOR_OK " + json.dumps(
+                valid_payload,
+                sort_keys=True,
+                separators=(",", ":"),
+            )
+            valid = {
+                "type": "item.completed",
+                "item": {
+                    "type": "command_execution",
+                    "status": "completed",
+                    "exit_code": 0,
+                    "command": "/usr/bin/zsh -lc 'python3 fixture_validator.py'",
+                    "aggregated_output": sentinel,
+                },
+            }
+            self.assertEqual(
+                {
+                    "procedure_command_observed": True,
+                    "procedure_command_succeeded": True,
+                    "verification_observed": True,
+                },
+                runner._procedure_execution_evidence([valid], fixture_root),
+            )
+
+            spoofed = json.loads(json.dumps(valid))
+            spoofed["item"]["command"] = "echo python3 fixture_validator.py"
+            self.assertEqual(
+                {
+                    "procedure_command_observed": False,
+                    "procedure_command_succeeded": False,
+                    "verification_observed": False,
+                },
+                runner._procedure_execution_evidence([spoofed], fixture_root),
+            )
+
+            split_success = json.loads(json.dumps(valid))
+            split_success["item"]["aggregated_output"] = "no sentinel"
+            split_sentinel = json.loads(json.dumps(valid))
+            split_sentinel["item"]["exit_code"] = 1
+            evidence = runner._procedure_execution_evidence(
+                [split_success, split_sentinel],
+                fixture_root,
+            )
+            self.assertTrue(evidence["procedure_command_observed"])
+            self.assertTrue(evidence["procedure_command_succeeded"])
+            self.assertFalse(evidence["verification_observed"])
+
+            forged_payload = json.loads(json.dumps(valid))
+            forged_payload["item"]["aggregated_output"] = (
+                "AOA_FIXTURE_VALIDATOR_OK {\"status\":\"pass\"}"
+            )
+            self.assertFalse(
+                runner._procedure_execution_evidence(
+                    [forged_payload], fixture_root
+                )["verification_observed"]
+            )
+
+    def test_app_server_uses_only_the_last_agent_message_as_final_output(self) -> None:
+        events = [
+            {
+                "method": "item/completed",
+                "params": {"item": {"type": "agentMessage", "text": '{"valid":"earlier"}'}},
+            },
+            {
+                "method": "item/completed",
+                "params": {"item": {"type": "agentMessage", "text": "malformed final"}},
+            },
+        ]
+        self.assertIsNone(self.runner._app_server_final_output(events))
+
+    def test_structured_surface_rejects_any_external_duplicate(self) -> None:
+        expected = {
+            "aoa-eval": ["/private/fixture/.agents/skills/aoa-eval/SKILL.md"],
+            "aoa-eval-apply": [
+                "/private/fixture/.agents/skills/aoa-eval-apply/SKILL.md"
+            ],
+        }
+        result = {
+            "data": [
+                {
+                    "skills": [
+                        {
+                            "name": name,
+                            "path": path,
+                            "enabled": True,
+                        }
+                        for name, paths in expected.items()
+                        for path in paths
+                    ]
+                }
+            ]
+        }
+        self.assertTrue(
+            self.runner._skills_list_repo_surface_contract(result, expected)
+        )
+        result["data"][0]["skills"].append(
+            {
+                "name": "aoa-eval",
+                "path": "/external/aoa-eval/SKILL.md",
+                "enabled": True,
+            }
+        )
+        self.assertFalse(
+            self.runner._skills_list_repo_surface_contract(result, expected)
+        )
 
     def test_public_projection_whitelists_measures_and_hashes_private_review_note(self) -> None:
         runner = self.runner
@@ -674,9 +1186,56 @@ for line in sys.stdin:
         self.assertNotIn("private source text", rendered)
         self.assertNotIn("raw_text", rendered)
         self.assertEqual(64, len(public["review"]["note_sha256"]))
+        stage_fields = {
+            "selected_child_exact",
+            "target_skill_full_read_observed",
+            "prompt_visibility_contract_match",
+            "prompt_visible_repo_skill_count",
+            "expected_prompt_visible_repo_skill_count",
+            "structured_skill_surface_contract_match",
+            "external_runtime_isolation_match",
+            "dispatch_contract_match",
+            "load_contract_match",
+            "procedure_disposition",
+            "procedure_command_observed",
+            "procedure_command_succeeded",
+            "verification_observed",
+            "procedure_contract_match",
+            "completion_observed",
+            "deflection_observed",
+        }
+        self.assertLessEqual(stage_fields, set(public["measures"][0]))
+        self.assertEqual(receipt["source_lock"]["shadow_skill_count"], public["source_lock"]["shadow_skill_count"])
+        self.assertEqual(
+            receipt["source_lock"]["shadow_skill_set_sha256"],
+            public["source_lock"]["shadow_skill_set_sha256"],
+        )
+        self.assertEqual(
+            receipt["source_lock"]["configured_mcp_server_count"],
+            public["source_lock"]["configured_mcp_server_count"],
+        )
         Draft202012Validator(
             self.load_schema("live-skill-dispatch-public-receipt.schema.json")
         ).validate(public)
+
+        legacy_receipt = json.loads(json.dumps(receipt))
+        legacy_receipt["source_lock"].pop("shadow_skill_count")
+        legacy_receipt["source_lock"].pop("shadow_skill_set_sha256")
+        legacy_receipt["source_lock"].pop("configured_mcp_server_count")
+        legacy_receipt["source_lock"].pop("configured_mcp_server_set_sha256")
+        for trial in legacy_receipt["trials"]:
+            for field in stage_fields:
+                trial["measure"].pop(field, None)
+        legacy_public = runner.build_public_receipt(legacy_receipt)
+        self.assertNotIn("shadow_skill_count", legacy_public["source_lock"])
+        self.assertNotIn("shadow_skill_set_sha256", legacy_public["source_lock"])
+        self.assertNotIn("configured_mcp_server_count", legacy_public["source_lock"])
+        self.assertNotIn("configured_mcp_server_set_sha256", legacy_public["source_lock"])
+        for measure in legacy_public["measures"]:
+            self.assertTrue(stage_fields.isdisjoint(measure))
+        Draft202012Validator(
+            self.load_schema("live-skill-dispatch-public-receipt.schema.json")
+        ).validate(legacy_public)
 
     def test_failure_taxonomy_is_bounded_and_adaptive(self) -> None:
         taxonomy = self.runner.FAILURE_TAXONOMY
@@ -684,9 +1243,11 @@ for line in sys.stdin:
             {
                 "harness_contamination",
                 "implicit_trigger_miss",
+                "skill_load_gap",
                 "collision_misroute",
                 "manual_activation_leak",
                 "trajectory_break",
+                "dispatch_policy_gap",
                 "direct_procedure_gap",
                 "owner_boundary_violation",
                 "runtime_profile_drift",
@@ -702,6 +1263,14 @@ for line in sys.stdin:
         self.assertEqual(
             "repair_root_or_child_then_repeat_adjacent_family",
             self.runner.ADAPTIVE_RETURN_ROUTE["trajectory_break"],
+        )
+        self.assertEqual(
+            "repair_dispatch_policy_then_repeat_same_case",
+            self.runner.ADAPTIVE_RETURN_ROUTE["dispatch_policy_gap"],
+        )
+        self.assertEqual(
+            "repair_read_tooling_or_skill_load_then_repeat_same_case",
+            self.runner.ADAPTIVE_RETURN_ROUTE["skill_load_gap"],
         )
         self.assertEqual(
             "review_caps_or_reduce_context_then_repeat_same_case",
@@ -766,6 +1335,15 @@ for line in sys.stdin:
             }
         )
         result["final_output"]["route_decision"] = "manual_required"
+        result["final_output"]["procedure_disposition"] = "blocked_missing_input"
+        result.update(
+            {
+                "target_skill_full_read_observed": True,
+                "procedure_command_observed": False,
+                "procedure_command_succeeded": False,
+                "verification_observed": False,
+            }
+        )
         result["events"].append(
             {
                 "method": "turn/completed",
@@ -778,7 +1356,7 @@ for line in sys.stdin:
             }
         )
 
-        self.assertEqual("direct_procedure_gap", runner._trial_failure_class(trial, result))
+        self.assertEqual("dispatch_policy_gap", runner._trial_failure_class(trial, result))
 
     def test_explicit_authority_claim_precedes_generic_output_invalidity(self) -> None:
         runner = self.runner
@@ -801,6 +1379,60 @@ for line in sys.stdin:
 
         self.assertEqual("owner_boundary_violation", runner._trial_failure_class(trial, result))
 
+        result["final_output"]["promotion_authorized"] = False
+        result["final_output"]["owner_boundary"] = "Proof authority granted to this local receipt."
+        result["target_skill_full_read_observed"] = False
+        self.assertEqual("owner_boundary_violation", runner._trial_failure_class(trial, result))
+
+        result["final_output"]["owner_boundary"] = "No proof authority granted to this local receipt."
+        self.assertEqual("skill_load_gap", runner._trial_failure_class(trial, result))
+
+    def test_invalid_or_contaminated_pairs_never_rewrite_arm_history(self) -> None:
+        runner = self.runner
+
+        def arm(arm_type: str, *, failure: str | None, route_match: bool) -> dict:
+            return {
+                "trial": {
+                    "arm_type": arm_type,
+                    "case_id": "pair-case",
+                },
+                "measure": {
+                    "expected_target_skill": "aoa-eval",
+                    "expected_behavior": "invoke",
+                    "route_contract_match": route_match,
+                    "dispatch_contract_match": route_match,
+                    "load_contract_match": route_match,
+                    "prompt_visibility_contract_match": True,
+                    "failure_class": failure,
+                    "input_tokens": 10,
+                    "duration_ms": 5,
+                },
+                "fixture_context_sha256": "same",
+                "prompt_background_sha256": "same",
+            }
+
+        aided = arm("implicit_aided", failure=None, route_match=True)
+        transport_failed = arm(
+            "implicit_control",
+            failure="transport_failure",
+            route_match=False,
+        )
+        self.assertEqual([], runner._pair_outcomes([aided, transport_failed]))
+        self.assertIsNone(aided["measure"]["failure_class"])
+        self.assertEqual(
+            "transport_failure",
+            transport_failed["measure"]["failure_class"],
+        )
+
+        contaminated_control = arm(
+            "implicit_control",
+            failure="harness_contamination",
+            route_match=False,
+        )
+        pairs = runner._pair_outcomes([aided, contaminated_control])
+        self.assertEqual("contaminated", pairs[0]["effect_class"])
+        self.assertIsNone(aided["measure"]["failure_class"])
+
     def test_competing_skill_win_is_classified_before_generic_trigger_miss(self) -> None:
         runner = self.runner
         trial = runner.Trial(
@@ -819,11 +1451,51 @@ for line in sys.stdin:
                 "arm_type": "implicit_aided",
             }
         )
+        result["target_skill_full_read_observed"] = False
+        self.assertEqual("skill_load_gap", runner._trial_failure_class(trial, result))
+
         result["final_output"]["selected_skill"] = "aoa-decision"
         self.assertEqual("collision_misroute", runner._trial_failure_class(trial, result))
 
         result["final_output"]["selected_skill"] = None
+        result["final_output"]["route_decision"] = "do_not_use"
+        result["final_output"]["claims_loaded"] = False
         self.assertEqual("implicit_trigger_miss", runner._trial_failure_class(trial, result))
+
+    def test_reached_root_child_with_missing_concrete_procedure_is_not_trajectory_break(self) -> None:
+        runner = self.runner
+        trajectory = runner.Trial(
+            trial_id="trajectory:procedure-gap",
+            arm_type="root_manual_child",
+            case_id="trajectory-procedure-gap",
+            prompt="Use the exact selected root and child, then run the fixture validator.",
+            expected_target_skill="aoa-eval",
+            expected_behavior="trajectory",
+            expected_child_skill="aoa-eval-apply",
+        )
+        result = FakeTransport().run_cli(
+            {
+                "expected_target_skill": "aoa-eval",
+                "expected_behavior": "trajectory",
+                "expected_child_skill": "aoa-eval-apply",
+                "arm_type": "root_manual_child",
+            }
+        )
+        result["final_output"]["procedure_disposition"] = "blocked_missing_input"
+        result.update(
+            {
+                "target_skill_full_read_observed": True,
+                "child_full_read_observed": True,
+                "procedure_command_observed": False,
+                "procedure_command_succeeded": False,
+                "verification_observed": False,
+            }
+        )
+
+        self.assertEqual(
+            "direct_procedure_gap",
+            runner._trial_failure_class(trajectory, result),
+        )
 
     def test_expected_target_is_not_its_own_collision_competitor(self) -> None:
         runner = self.runner
@@ -853,8 +1525,9 @@ for line in sys.stdin:
             }
         )
         result["final_output"]["route_decision"] = "manual_required"
+        result["final_output"]["procedure_disposition"] = "blocked_missing_input"
 
-        self.assertEqual("trajectory_break", runner._trial_failure_class(trial, result))
+        self.assertEqual("dispatch_policy_gap", runner._trial_failure_class(trial, result))
 
 
 if __name__ == "__main__":

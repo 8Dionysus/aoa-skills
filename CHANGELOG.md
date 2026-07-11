@@ -9,16 +9,22 @@ Tracking starts with the community-docs baseline for this repository.
 
 ### Added
 
-- A source-locked live skill-dispatch harness now separates implicit aided and
-  control arms, explicit root-child reads, structured App Server skill input,
-  paired outcome lift, host resource/storage gates, private raw receipts, and
-  public-safe reviewed projections without claiming central proof authority.
-- The first complete post-classifier-fix smoke now has a public-safe reviewed
-  receipt that keeps implicit dispatch, trajectory, and direct-procedure
-  failures separate while retaining candidate-only and no-promotion posture.
+- A source-locked live skill-dispatch harness now separates prompt visibility,
+  implicit aided/control dispatch, activation and full reads, explicit
+  root-child trajectories, structured App Server input, procedure execution,
+  verification, completion/deflection, paired outcome lift, host gates, private
+  raw receipts, and public-safe candidate projections without claiming central
+  proof authority. Structured turns additionally require the exact enabled map
+  for all 57 repo skills and prove that no configured MCP runtime started.
+- The complete post-classifier-fix smoke now has a public-safe `needs-rerun`
+  receipt. Model-visible user-skill contamination, a disabled full-read/shell
+  path, and an ambiguous route/procedure grader make its former trigger,
+  trajectory, procedure, and no-lift labels harness diagnostics rather than
+  reviewed evidence of skill defects.
 - `AOA-SK-D-0037` records why live cohorts remain operator-confirmed candidate
-  evidence and why deterministic harness validation, not model calls, belongs
-  in the normal repository gate.
+  evidence and now clarifies prompt-surface isolation and evidence-stage grading
+  after the contaminated smoke; deterministic harness validation, not model
+  calls, remains in the normal repository gate.
 
 - Codex Spark now has a validated `.agents/spark/` fast-session lane with a
   registry, scenario packets, result and handoff templates, schemas, validator,
@@ -62,6 +68,38 @@ Tracking starts with the community-docs baseline for this repository.
 
 ### Changed
 
+- Live dispatch now discovers exact external shadowing `SKILL.md` paths,
+  including canonical targets behind user-skill symlinks, binds only their
+  count and digest into confirmation/source locks, and disables the canonical
+  paths in every adapter. Plugin surfaces are disabled; the configured MCP-name
+  inventory is independently source-locked and every configured name is
+  disabled explicitly.
+- Every model turn is gated by `codex debug prompt-input`. Aided fixtures must
+  expose exactly the policy-visible repo skills (currently 12 of 57), controls
+  expose zero, and the background inventory digest now fingerprints each
+  model-visible name, path, and description rather than paths alone. Structured
+  App Server turns separately require the exact fixture path for every one of
+  the 57 repo skills before `turn/start`, reject any MCP startup event, and use
+  an unprefixed text item so only the structured `skill` item activates the
+  target.
+- Read-only shell execution is now available to prove complete skill reads and
+  run the exact hermetic `python3 fixture_validator.py` procedure. A full read
+  must name the exact fixture `SKILL.md` path and return its complete content;
+  verification requires one atomic command event whose exact command, zero
+  exit, sentinel JSON, and fixture-guidance digest all agree. Public measures
+  keep selection, claimed load, transport-observed reads, dispatch, load,
+  execution, verification, completion, and deflection distinct:
+  `dispatch_policy_gap` means the activation decision was wrong, while
+  `skill_load_gap` returns a correct selection with unproved activation/read to
+  the same case.
+- Paired lift is not scored when either arm has a transport, budget, runtime,
+  or owner-boundary safety failure. Contamination is retained as a pair result
+  without rewriting either arm's historical failure class, and public-receipt
+  validation rejects absolute host paths even when embedded inside prose.
+- The hermetic structured-causality contract is now
+  `aoa_codex_app_server_skill_input_contract_v2` with protocol revision
+  `codex-cli-0.144.1-app-server-skill-input-v2`; the retained complete smoke
+  remains source-locked to protocol v1 and `needs-rerun`.
 - Live dispatch now locks and passes Codex rollout-budget reminder thresholds
   as a TOML list for both CLI and App Server arms, rejects invalid thresholds
   before transport startup, and preserves review compatibility with receipts

@@ -37,7 +37,11 @@
         "plan_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
         "source_snapshot_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
         "profile_revision": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
-        "protocol_revision": {"type": "string", "minLength": 1, "maxLength": 160}
+        "protocol_revision": {"type": "string", "minLength": 1, "maxLength": 160},
+        "shadow_skill_set_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "shadow_skill_count": {"type": "integer", "minimum": 0},
+        "configured_mcp_server_set_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "configured_mcp_server_count": {"type": "integer", "minimum": 0}
       }
     },
     "review": {

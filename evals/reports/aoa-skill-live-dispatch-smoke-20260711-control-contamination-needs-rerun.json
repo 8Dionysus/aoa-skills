@@ -144,8 +144,8 @@
   "raw_bundle_sha256": "1e283e22611e08aa09f1652bc6998388d4b1a7a2ce62157352805f28a318906a",
   "raw_bundle_local_available": true,
   "review": {
-    "status": "reviewed",
-    "note_sha256": "896f22c64a6e24691796e291db1c1a8af50a95d89695f4c59474a1f4c587fc1e"
+    "status": "needs-rerun",
+    "note_sha256": "b145eaf545372d2e7ac43733e82d619a39a91627730377c6176dc1154d3a982e"
   },
   "stopped_early": false,
   "stop_reason": null,

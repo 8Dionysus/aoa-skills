@@ -94,8 +94,8 @@
     },
     "failure_taxonomy": {
       "type": "array",
-      "minItems": 10,
-      "maxItems": 10,
+      "minItems": 12,
+      "maxItems": 12,
       "uniqueItems": true,
       "items": {"type": "string"}
     },

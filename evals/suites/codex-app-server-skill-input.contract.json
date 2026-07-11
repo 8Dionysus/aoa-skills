@@ -1,7 +1,7 @@
 {
-  "schema_version": "aoa_codex_app_server_skill_input_contract_v1",
+  "schema_version": "aoa_codex_app_server_skill_input_contract_v2",
   "codex_version": "codex-cli 0.144.1",
-  "protocol_revision": "codex-cli-0.144.1-app-server-skill-input-v1",
+  "protocol_revision": "codex-cli-0.144.1-app-server-skill-input-v2",
   "schema_generation_command": "codex app-server generate-json-schema --experimental --out DIR",
   "request_sequence": [
     "initialize",
@@ -12,9 +12,19 @@
     "thread/delete"
   ],
   "response_bindings": {
-    "skills_list": "result.data[].skills[] exact enabled name and path",
+    "skills_list": "result.data[].skills[] must expose exactly one enabled fixture path for every one of the 57 repo skill names",
     "thread_start": "result.thread.id is the only accepted turn/start threadId",
-    "turn_output": "last JSON object parsed from completed agentMessage.text"
+    "turn_output": "the last completed agentMessage.text must itself be one valid JSON object; earlier JSON is never a fallback"
+  },
+  "structured_input_binding": {
+    "text_item": "task and fixture procedure only; no textual $skill activation",
+    "skill_item": "the sole explicit activation signal is type=skill with the exact fixture name and path"
+  },
+  "preturn_isolation": {
+    "user_skill_shadows": "all canonical overlapping user skill paths are source-locked and disabled",
+    "plugins": "features.plugins=false",
+    "configured_mcp_servers": "the source-locked user MCP name set is disabled per id",
+    "mcp_startup_events_before_turn": 0
   },
   "schema_sha256": {
     "v1/InitializeParams.json": "4f576f99e285beb28f71f48a72b887c1f517dada86fee348fe2af0a35511de23",
