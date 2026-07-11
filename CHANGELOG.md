@@ -46,6 +46,12 @@ Tracking starts with the community-docs baseline for this repository.
   exhaustion. The historical budget label remains immutable; reviewed raw
   evidence routes the earlier fault to harness isolation and permits no pair,
   lift, skill-effect, or family conclusion.
+- The exact-merged-tree v5 smoke now has a public-safe `needs-rerun` receipt.
+  Fixture scope was clean and all four arms completed, but the aided target was
+  fully read across two ordered command outputs that the v5 single-output
+  grader rejected. V6 assembles continuous ordered exact-path source coverage,
+  permits overlaps, ignores unrelated outputs, and keeps gaps or reverse-only
+  coverage incomplete before repeating the live smoke.
 - `AOA-SK-D-0037` records why live cohorts remain operator-confirmed candidate
   evidence and now clarifies prompt-surface isolation and evidence-stage grading
   after the contaminated smoke; deterministic harness validation, not model
@@ -144,8 +150,8 @@ Tracking starts with the community-docs baseline for this repository.
   without rewriting either arm's historical failure class, and public-receipt
   validation rejects absolute host paths even when embedded inside prose.
 - The hermetic evidence contract is now
-  `aoa_codex_app_server_skill_input_contract_v5` with protocol revision
-  `codex-cli-0.144.1-live-dispatch-evidence-v5`; retained v1-v4 receipts remain
+  `aoa_codex_app_server_skill_input_contract_v6` with protocol revision
+  `codex-cli-0.144.1-live-dispatch-evidence-v6`; retained v1-v5 receipts remain
   immutable under their original protocol and review status.
 - Live dispatch now locks and passes Codex rollout-budget reminder thresholds
   as a TOML list for both CLI and App Server arms, rejects invalid thresholds

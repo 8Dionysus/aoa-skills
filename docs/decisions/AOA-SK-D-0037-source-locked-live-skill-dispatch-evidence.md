@@ -96,11 +96,11 @@ config and explicitly disable every locked id. A shadow or MCP count/digest
 change is source/runtime drift, not a reason to reuse the old token.
 
 The corrected hermetic pre-turn and evidence contract uses schema
-`aoa_codex_app_server_skill_input_contract_v5` and protocol revision
-`codex-cli-0.144.1-live-dispatch-evidence-v5`. It follows the
+`aoa_codex_app_server_skill_input_contract_v6` and protocol revision
+`codex-cli-0.144.1-live-dispatch-evidence-v6`. It follows the
 [official App Server invocation shape](https://learn.chatgpt.com/docs/app-server#start-a-turn-invoke-a-skill)
 and Codex [progressive-disclosure load semantics](https://learn.chatgpt.com/docs/customization/overview#skills).
-Retained receipts source-locked to v1-v4 keep their original protocol and
+Retained receipts source-locked to v1-v5 keep their original protocol and
 review status and are not upgraded in place.
 
 The source-locked caps include both the rollout token limit and its required
@@ -142,12 +142,15 @@ Root/child and structured arms receive the exact procedure command
 `python3 fixture_validator.py`. Transport records full reads, exact command
 observation, zero exit, and `AOA_FIXTURE_VALIDATOR_OK` verification as separate
 measures.
-A full read must name the exact fixture `SKILL.md` path and contain its complete
-source. An expected or dynamically selected child must have that full read
-before the load contract passes. The model's `claims_loaded` field remains a
-self-report and never gates objective load. Accepted native input is recorded
-separately and never relabeled as a raw read. Procedure verification is atomic:
-one completed exact-command event
+A full read must come from successful transport events that name the exact
+fixture `SKILL.md` path. One output may contain the whole source, or ordered
+outputs may continuously cover it; overlaps are allowed, unrelated outputs are
+ignored, and gaps or reverse-only coverage remain incomplete. An expected or
+dynamically selected child must have that full read before the load contract
+passes. The model's `claims_loaded` field remains a self-report and never gates
+objective load. Accepted native input is recorded separately and never
+relabeled as a raw read. Procedure verification remains atomic: one completed
+exact-command event
 must carry both zero exit and exactly one sentinel JSON payload matching the
 fixture-guidance digest, schema/status, no-drift, and no-proof-authority fields.
 Split or forged evidence does not pass.
@@ -215,6 +218,9 @@ target also appears in its own neighbourhood list.
 - Positive: fixture-scope grading rejects filesystem treatment leakage even
   when prompt visibility is clean and a later budget marker would otherwise
   hide the earlier contamination.
+- Positive: complete source exposure can be proven across ordinary bounded
+  chunk reads without accepting inventory mentions, unrelated metadata, gaps,
+  reverse-only coverage, or same-name shadow paths.
 - Positive: failures carry bounded adaptive return routes instead of one score.
 - Positive: ordinary CI proves the harness contract without spending model
   turns or treating model quality as deterministic repository proof.
@@ -224,10 +230,11 @@ target also appears in its own neighbourhood list.
   repeated runs are needed before changing skill status or promotion posture.
 - Tradeoff: the 48k ceiling raises worst-case live-campaign cost; non-smoke
   cohorts therefore retain the second exact high-cost confirmation token.
-- Follow-up: v4 repaired claim/read/output grading, but its exact-merged-tree
-  rerun exposed an external source read in the control. Land the v5
-  fixture-scope gate and repeat the exact smoke before any pilot widening, then
-  use reviewed pilot receipts to continue toward all 57 skills.
+- Follow-up: v5 repaired fixture scope, but its exact-merged-tree rerun exposed
+  a false load failure when one complete target read was split across two
+  ordered outputs. Land the v6 continuous-coverage grader and repeat the exact
+  smoke before any pilot widening, then use reviewed pilot receipts to continue
+  toward all 57 skills.
 
 ## Current Applicability
 
@@ -250,11 +257,11 @@ As of 2026-07-11:
   or any skill-effect interpretation.
 - Current cap contract: every arm receives the same source-locked 48k ceiling;
   paired arms may differ in actual use but never in available budget.
-- Current contract schema: `aoa_codex_app_server_skill_input_contract_v5`.
-- Current protocol lock: `codex-cli-0.144.1-live-dispatch-evidence-v5`.
+- Current contract schema: `aoa_codex_app_server_skill_input_contract_v6`.
+- Current protocol lock: `codex-cli-0.144.1-live-dispatch-evidence-v6`.
 - Historical protocols: retained v1-v2 smokes are `needs-rerun`; v2 produced a
   valid candidate implicit pair but used an unsupported structured-only App
-  input and cannot support its App load label. Retained v3-v4 reports keep their
+  input and cannot support its App load label. Retained v3-v5 reports keep their
   original review status and old grader semantics.
 - Reviewed v3 candidate: the implicit pair records positive lift and the App
   arm passes its native-load/procedure path, while the explicit `aoa-eval`
@@ -270,10 +277,41 @@ As of 2026-07-11:
   Its aided arm passed objective root and dynamic-child reads, but the control
   read a complete repo skill from an external canonical checkout before budget
   exhaustion. V4 preserved the budget label; raw review routes the earlier
-  fault to harness contamination. V5 smoke must pass before pilot widening.
+  fault to harness contamination.
+- Current rerun posture: the exact-merged-tree v5 smoke is also `needs-rerun`.
+  It kept prompt and filesystem scope clean and completed all four arms, but its
+  aided target read was split across two ordered exact-path outputs. The v5
+  single-output detector recorded a false `skill_load_gap` and no-lift result;
+  its historical fields remain immutable. V6 smoke must pass before pilot
+  widening.
 - Superseded by: none.
 
 ## Review Log
+
+### 2026-07-11 - Assemble complete skill reads across ordered transport events
+
+- Previous assumption: requiring one successful command output to contain the
+  complete exact-path `SKILL.md` source was a safe proxy for a complete read.
+- New evidence: the exact merged v5 aided arm selected `aoa-eval`, read its
+  complete source in two consecutive exact-path ranges, read the dynamically
+  selected `aoa-eval-apply` child completely, and verified the fixture
+  procedure. The v5 grader nevertheless emitted `skill_load_gap` because
+  neither root-read output alone contained the whole source.
+- Decision: accept either one complete successful exact-path output or ordered
+  successful exact-path outputs whose source intervals continuously cover the
+  file. Permit overlap, ignore unrelated outputs, and reject gaps,
+  reverse-only coverage, failed commands, inventory mentions, and shadow paths.
+- Boundary: the v5 public receipt remains immutable under its historical
+  single-output semantics. Raw replay proves the grader repair only and does
+  not replace a fresh v6 live result or support status, promotion, family, or
+  all-skill conclusions.
+- Tradeoff: the detector is slightly more stateful, but it models normal
+  progressive reading of long skills without weakening exact-path, success,
+  order, or complete-source requirements.
+- Validation: preserve the real v5 two-chunk shape in a red-first regression;
+  prove overlap and unrelated metadata do not break continuous coverage; keep
+  missing, reversed, inventory-only, and shadow-path cases negative; replay the
+  private v5 trace; then land v6 and repeat the exact merged smoke.
 
 ### 2026-07-11 - Grade fixture filesystem scope before budget or skill effect
 
