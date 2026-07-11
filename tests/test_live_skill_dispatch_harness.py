@@ -305,7 +305,7 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
         self.assertEqual(64, len(first["head_commit"]))
         self.assertEqual(64, len(first["plan_sha256"]))
         self.assertEqual(64, len(first["source_snapshot_sha256"]))
-        self.assertEqual(28_000, first["caps"]["per_turn_weighted_token_limit"])
+        self.assertEqual(48_000, first["caps"]["per_turn_weighted_token_limit"])
         self.assertEqual(48_000, first["caps"]["trajectory_weighted_token_limit"])
         self.assertEqual([4_000], first["caps"]["rollout_budget_reminder_at_remaining_tokens"])
         self.assertEqual(1, first["caps"]["max_concurrency"])
@@ -633,9 +633,15 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
             self.assertEqual(4, len(transport.prompt_inspection_calls))
             self.assertEqual(3, len(transport.cli_calls))
             self.assertEqual(1, len(transport.app_server_calls))
-            implicit_request = next(call for call in transport.cli_calls if call["arm_type"] == "implicit_aided")
+            implicit_requests = [
+                call
+                for call in transport.cli_calls
+                if call["arm_type"] in {"implicit_aided", "implicit_control"}
+            ]
             trajectory_request = next(call for call in transport.cli_calls if call["arm_type"] == "root_manual_child")
-            self.assertIn("features.rollout_budget.limit_tokens=28000", implicit_request["argv"])
+            self.assertEqual(2, len(implicit_requests))
+            for implicit_request in implicit_requests:
+                self.assertIn("features.rollout_budget.limit_tokens=48000", implicit_request["argv"])
             self.assertIn("features.rollout_budget.limit_tokens=48000", trajectory_request["argv"])
             self.assertEqual(1, len(receipt["pair_outcomes"]))
             self.assertEqual("positive_lift", receipt["pair_outcomes"][0]["effect_class"])

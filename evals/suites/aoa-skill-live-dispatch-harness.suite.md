@@ -116,10 +116,11 @@ one, source-locked rollout token limits plus reminder thresholds, and an opaque
 private fixture per turn. Read-only shell execution is available only so the
 model can expose full skill reads and run the hermetic
 `python3 fixture_validator.py` procedure; the fixture and owner stop-lines do
-not authorize mutation. Implicit and structured arms keep the 28k weighted
-token cap; root-child full-read trajectories use a separate 48k cap rather than
-widening every arm. The runner rejects empty, non-positive, or limit-reaching
-reminder lists before transport startup.
+not authorize mutation. All arms use the same 48k weighted-token ceiling. The
+matched implicit pair must remain cap-symmetric: the corrected control can
+legitimately select the source-locked ambient session-memory route, whose
+required owner reads exceeded the former 28k ceiling. The runner rejects empty,
+non-positive, or limit-reaching reminder lists before transport startup.
 
 The source-locked model-output schema must also satisfy the Responses API
 strict subset before a plan or run can be produced: the root and nested objects

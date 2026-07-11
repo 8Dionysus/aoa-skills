@@ -54,6 +54,11 @@ Run the confirmed command only as the child of the plan packet's
 the storage write preflight and checks the exact Codex version before creating
 its private run directory.
 
+Every live arm has the same source-locked 48k weighted-token ceiling. In
+particular, aided and control arms must remain cap-symmetric even when the
+control selects a longer source-locked ambient route; widening only one side
+would invalidate paired lift.
+
 The sandbox remains read-only and network-disabled, but the read-only shell
 tool is available for evidence-bearing reads and the hermetic fixture
 procedure. Root/child and structured arms receive the exact command
