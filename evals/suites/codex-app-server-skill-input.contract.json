@@ -1,0 +1,33 @@
+{
+  "schema_version": "aoa_codex_app_server_skill_input_contract_v1",
+  "codex_version": "codex-cli 0.144.1",
+  "protocol_revision": "codex-cli-0.144.1-app-server-skill-input-v1",
+  "schema_generation_command": "codex app-server generate-json-schema --experimental --out DIR",
+  "request_sequence": [
+    "initialize",
+    "initialized",
+    "skills/list",
+    "thread/start",
+    "turn/start",
+    "thread/delete"
+  ],
+  "response_bindings": {
+    "skills_list": "result.data[].skills[] exact enabled name and path",
+    "thread_start": "result.thread.id is the only accepted turn/start threadId",
+    "turn_output": "last JSON object parsed from completed agentMessage.text"
+  },
+  "schema_sha256": {
+    "v1/InitializeParams.json": "4f576f99e285beb28f71f48a72b887c1f517dada86fee348fe2af0a35511de23",
+    "v2/SkillsListParams.json": "a942aa92e6da4cf8a76d6b99cbdaf6672864e6ff955f44a6d469f0363afd3bf2",
+    "v2/SkillsListResponse.json": "9d7dcc8cc75aac6be70803a941eedc9594725b66eacaa54062a3b6518acf70d5",
+    "v2/ThreadStartParams.json": "4f30cb90cae47ff01adba8d863228b2aa198232df895dbfc996d594270326744",
+    "v2/ThreadStartResponse.json": "eb5135241a7806db436100493c91214ef3516c4a9bd9aae700abc418c71be132",
+    "v2/TurnStartParams.json": "a28f74287e18b8a18c7aa6966ee7552a8ed2ae13c03f4ba12e9af48f7370f19d",
+    "v2/TurnStartResponse.json": "7cfae42a4652fe38119d6a0a625910357c869c448c985513a4cd5966031e18bc",
+    "v2/TurnCompletedNotification.json": "900bc6e40f0aeb5aa498ec874f026a2a077356ac1dc740c1928cfdca29630345",
+    "v2/ItemCompletedNotification.json": "2905f1169b0990af2b114358b0b14ddb071fdd2643ac7e43a62c8db40643abcf",
+    "v2/ThreadDeleteParams.json": "b0c68afa98bf529010fe643da11db29a8a0a2f2963c8e7a25831f8612f98297d"
+  },
+  "proof_authority": false,
+  "promotion_allowed": false
+}

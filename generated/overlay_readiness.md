@@ -8,10 +8,10 @@ Use this surface for family maturity and `generated/governance_backlog.md` for p
 ## Summary
 
 - live overlay families: 4
-- reviewable families: 3
+- reviewable families: 4
 - project overlay skills: 21
 - project skills with review checklists: 21
-- eval-ready project skills: 20
+- eval-ready project skills: 21
 
 ## Families
 
@@ -19,7 +19,7 @@ Use this surface for family maturity and `generated/governance_backlog.md` for p
 |---|---:|---|---|---:|---:|---|---|---|
 | abyss | 3 | true | mechanics/boundary-bridge/overlays/abyss/REVIEW.md | 3 | 3 | true | true | reviewable |
 | atm10 | 2 | true | mechanics/boundary-bridge/overlays/atm10/REVIEW.md | 2 | 2 | true | true | reviewable |
-| os | 1 | true | mechanics/boundary-bridge/overlays/os/REVIEW.md | 1 | 0 | true | true | baseline |
+| os | 1 | true | mechanics/boundary-bridge/overlays/os/REVIEW.md | 1 | 1 | true | true | reviewable |
 | titan | 15 | true | mechanics/boundary-bridge/overlays/titan/REVIEW.md | 15 | 15 | true | true | reviewable |
 
 ## Project skills
@@ -31,7 +31,7 @@ Use this surface for family maturity and `generated/governance_backlog.md` for p
 | abyss-self-diagnostic-spine | abyss | scaffold | skills/project/abyss/abyss-self-diagnostic-spine/checks/review.md | 1 | true | true | true | - |
 | atm10-change-protocol | atm10 | evaluated | skills/project/atm10/atm10-change-protocol/checks/review.md | 1 | true | true | true | - |
 | atm10-source-of-truth-check | atm10 | evaluated | skills/project/atm10/atm10-source-of-truth-check/checks/review.md | 1 | true | true | true | - |
-| os-abyss-artifact-trust-loop | os | scaffold | skills/project/abyss/os-abyss-artifact-trust-loop/checks/review.md | 1 | true | true | false | missing_use_snapshot, missing_do_not_use_snapshot |
+| os-abyss-artifact-trust-loop | os | scaffold | skills/project/abyss/os-abyss-artifact-trust-loop/checks/review.md | 1 | true | true | true | - |
 | titan-approval-ledger | titan | scaffold | skills/project/titan/titan-approval-ledger/checks/review.md | 1 | true | true | true | - |
 | titan-approval-loom | titan | scaffold | skills/project/titan/titan-approval-loom/checks/review.md | 1 | true | true | true | - |
 | titan-appserver-bridge | titan | scaffold | skills/project/titan/titan-appserver-bridge/checks/review.md | 1 | true | true | true | - |

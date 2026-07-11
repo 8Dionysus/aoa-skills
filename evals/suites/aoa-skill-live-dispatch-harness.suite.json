@@ -1,0 +1,53 @@
+{
+  "schema_version": "local_eval_suite_execution_v1",
+  "suite_id": "aoa-skill-live-dispatch-harness",
+  "owner_repo": "aoa-skills",
+  "suite_note_ref": "evals/suites/aoa-skill-live-dispatch-harness.suite.md",
+  "runner": {
+    "kind": "python_pytest",
+    "argv": [
+      "python",
+      "-B",
+      "-m",
+      "pytest",
+      "-q",
+      "-p",
+      "no:cacheprovider",
+      "tests/test_live_skill_dispatch_harness.py"
+    ],
+    "cwd": "."
+  },
+  "entrypoint_ref": "tests/test_live_skill_dispatch_harness.py",
+  "timeout_seconds": 300,
+  "success_exit_codes": [0],
+  "tracked_sources": [
+    {"path": "evals/suites/aoa-skill-live-dispatch-harness.suite.md", "kind": "file", "sha256": "0a70dfe8e69096062cced6e5df3607c1091efaa644090a3e41f5d98fb8e93fdc"},
+    {"path": "evals/runners/run_live_skill_dispatch.py", "kind": "file", "sha256": "71089edf0a4c807b49fc7c80308dd56e65b4ba57f7aafb9e4453f9cadb7eb276"},
+    {"path": "evals/suites/aoa-skill-live-dispatch.plan.json", "kind": "file", "sha256": "5454ffe73bc12c8155359fa9dd4379596b53ac9b60165335fbfc2d548f25633e"},
+    {"path": "evals/suites/codex-app-server-skill-input.contract.json", "kind": "file", "sha256": "1fbeb658ddf7fb2be9aada8e9d0e5ff59c175e32b0ea7449d44b2ab4f54f73cb"},
+    {"path": "schemas/live-skill-dispatch-plan.schema.json", "kind": "file", "sha256": "258f6c6c81e33074d6b79b2c7881773ca43ba4e1196d7fe135dfb401d1a8b7b0"},
+    {"path": "schemas/live-skill-dispatch-model-output.schema.json", "kind": "file", "sha256": "872efbd93d3db3a9e348f1595f432236039e59fb91a9f32835c75f0afe74a9d4"},
+    {"path": "schemas/live-skill-dispatch-private-receipt.schema.json", "kind": "file", "sha256": "ab10ccb8e4c536e12c8f66ec3a577668a4ca1a94b31951d4646911e53e7e8c76"},
+    {"path": "schemas/live-skill-dispatch-public-receipt.schema.json", "kind": "file", "sha256": "92f33bb741d0770b080a1860b103a86512f5e4975ed68e939b30ff5f106538c3"},
+    {"path": "tests/test_live_skill_dispatch_harness.py", "kind": "file", "sha256": "5b1ede86c88957b9597ffafe89e8ba45158ac71c250fe58538fb5ec2c4c07f29"},
+    {"path": "generated/skill_trigger_collision_matrix.json", "kind": "file", "sha256": "0b6d77b4ab3fc2e70273c3cbadec7ecd9cb25eb142354fa9e66bfae2cb5dc31d"},
+    {"path": "generated/description_trigger_eval_cases.jsonl", "kind": "file", "sha256": "fe2e0a9c269b6a72d4b119332cac166dc7a9205497bf0dc06149527967c1c63f"},
+    {"path": "generated/skill_catalog.json", "kind": "file", "sha256": "e14305b5f3a81b5fd23968c10924cdf9d60d4f8bea1ac2304f715037760b0827"},
+    {"path": "generated/skill_pack_profiles.resolved.json", "kind": "file", "sha256": "cc822a44d24ee6018f46f9fab73359b2e2d1ae89702f089ee9db79ac465f676c"},
+    {"path": "generated/release_manifest.json", "kind": "file", "sha256": "18f835c09c355fa756a74bded0d2427997242a504376536f322b5447843499df"},
+    {"path": "config/skill_policy_matrix.json", "kind": "file", "sha256": "1b5f06fd3e55c74217f6a3f0f3d62e925d580441d78cf93f1eb886b915c23640"},
+    {"path": "config/skill_pack_profiles.json", "kind": "file", "sha256": "4357d1063f4ce70442052eceb34ffaaaffb6de2135c9ee967c92877342e30eb8"},
+    {"path": ".agents/skills", "kind": "tree", "sha256": "c49e3fbf57fe9fe4b0eb241b31b453ad192584e7cd50e539a856809c4c2cbf49"},
+    {"path": "pytest.ini", "kind": "file", "sha256": "9d1d59584510ad19cb36e20db73b25f32e4a6c88e0b3c0954fcf884790ad0381"},
+    {"path": "requirements-dev.txt", "kind": "file", "sha256": "e1b086e8fc31bb76cd1f9b0d884ee13ef2ecc693743c2f21f8fa6a8f148ee1cf"}
+  ],
+  "auto_run_allowed": false,
+  "proof_authority": false,
+  "promotion_allowed": false,
+  "readiness_scope": "source-contract-ready",
+  "runtime_reproducibility_proven": false,
+  "jit_revalidation_required": true,
+  "execution_receipt_required": true,
+  "environment_capture_required": true,
+  "authority_boundary": "owner-local execution support only; no verdict, scoring, regression, proof doctrine, proof acceptance, or promotion authority"
+}

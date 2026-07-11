@@ -330,8 +330,8 @@ def main() -> int:
 
         for competing_skill in collision_case.get("competing_skills", []):
             competing_signal = signals_by_name[competing_skill]
-            if competing_signal["implicit_activation_policy"] == "manual":
-                continue
+            # A prefer-other case is negative routing evidence, not implicit
+            # activation, so manual skills need this collision coverage too.
             if len(competing_signal["mirror_case_ids"]) >= policy_doc.get("max_prefer_other_cases_per_skill", 4):
                 continue
             mirror_case_id = f"desc-mirror-{mirror_case_counter:03d}-{competing_skill}"

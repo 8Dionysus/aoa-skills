@@ -1,0 +1,170 @@
+{
+  "schema_version": "aoa_skill_live_dispatch_plan_v1",
+  "owner_repo": "aoa-skills",
+  "profile": "repo-default",
+  "profile_revision": "7217588744c68b15cf12e0a2ac3de7af74f5b3cc623b72b985c0169406f5f7b4",
+  "protocol_revision": "codex-cli-0.144.1-app-server-skill-input-v1",
+  "proof_authority": false,
+  "promotion_allowed": false,
+  "default_action": "plan",
+  "source_refs": [
+    "evals/suites/aoa-skill-live-dispatch.plan.json",
+    "generated/skill_trigger_collision_matrix.json",
+    "generated/description_trigger_eval_cases.jsonl",
+    "generated/skill_catalog.json",
+    "generated/skill_pack_profiles.resolved.json",
+    "generated/release_manifest.json",
+    "config/skill_policy_matrix.json",
+    "config/skill_pack_profiles.json",
+    "schemas/live-skill-dispatch-plan.schema.json",
+    "schemas/live-skill-dispatch-model-output.schema.json",
+    "schemas/live-skill-dispatch-private-receipt.schema.json",
+    "schemas/live-skill-dispatch-public-receipt.schema.json",
+    "evals/suites/codex-app-server-skill-input.contract.json",
+    "evals/runners/run_live_skill_dispatch.py"
+  ],
+  "sources": {
+    "collision_matrix": "generated/skill_trigger_collision_matrix.json",
+    "description_cases": "generated/description_trigger_eval_cases.jsonl",
+    "skill_catalog": "generated/skill_catalog.json",
+    "policy_matrix": "config/skill_policy_matrix.json",
+    "pack_profiles": "config/skill_pack_profiles.json",
+    "protocol_contract": "evals/suites/codex-app-server-skill-input.contract.json"
+  },
+  "caps": {
+    "max_concurrency": 1,
+    "per_turn_weighted_token_limit": 28000,
+    "per_turn_timeout_seconds": 180,
+    "full_turn_timeout_seconds": 240,
+    "max_transport_retries_before_turn_start": 0,
+    "stop_after_first_safety_violation": true,
+    "raw_private_only": true
+  },
+  "cohorts": {
+    "smoke": {
+      "implicit_case_ids": [
+        "collision-42"
+      ],
+      "trajectory_case_ids": [
+        "collision-45"
+      ],
+      "structured_skills": [
+        "aoa-eval-apply"
+      ],
+      "expected_turn_count": 4,
+      "estimated_private_bytes": 67108864,
+      "estimated_memory_demand_mib": 256,
+      "resource_class": "light"
+    },
+    "pilot13": {
+      "implicit_case_ids": [
+        "collision-38",
+        "collision-03",
+        "collision-08",
+        "collision-01",
+        "collision-20",
+        "collision-42",
+        "collision-33",
+        "collision-09",
+        "collision-14",
+        "collision-49",
+        "desc-titan-03-manual"
+      ],
+      "trajectory_case_ids": [
+        "collision-45",
+        "collision-39"
+      ],
+      "structured_skills": [
+        "aoa-eval-apply",
+        "aoa-decision-find",
+        "aoa-approval-gate-check",
+        "abyss-safe-infra-change",
+        "os-abyss-artifact-trust-loop",
+        "titan-appserver-bridge"
+      ],
+      "expected_turn_count": 30,
+      "estimated_private_bytes": 536870912,
+      "estimated_memory_demand_mib": 512,
+      "resource_class": "medium"
+    },
+    "full-collision": {
+      "implicit_case_ids": "all-collision-cases",
+      "trajectory_case_ids": [],
+      "structured_skills": [],
+      "expected_turn_count": 98,
+      "estimated_private_bytes": 2147483648,
+      "estimated_memory_demand_mib": 1024,
+      "resource_class": "sustained"
+    },
+    "coverage-closure": {
+      "implicit_case_ids": "all-uncovered-skills",
+      "trajectory_case_ids": "all-root-child-trajectories",
+      "structured_skills": "all-non-invoke-skills",
+      "expected_turn_count": 87,
+      "estimated_private_bytes": 2147483648,
+      "estimated_memory_demand_mib": 1024,
+      "resource_class": "sustained"
+    }
+  },
+  "root_child_trajectories": [
+    {
+      "case_id": "collision-39",
+      "root_skill": "aoa-decision",
+      "child_skill": "aoa-decision-find"
+    },
+    {
+      "case_id": "collision-40",
+      "root_skill": "aoa-decision",
+      "child_skill": "aoa-decision-create"
+    },
+    {
+      "case_id": "collision-41",
+      "root_skill": "aoa-decision",
+      "child_skill": "aoa-decision-correct"
+    },
+    {
+      "case_id": "collision-44",
+      "root_skill": "aoa-eval",
+      "child_skill": "aoa-eval-select"
+    },
+    {
+      "case_id": "collision-45",
+      "root_skill": "aoa-eval",
+      "child_skill": "aoa-eval-apply"
+    },
+    {
+      "case_id": "collision-46",
+      "root_skill": "aoa-eval",
+      "child_skill": "aoa-eval-local-need"
+    },
+    {
+      "case_id": "collision-47",
+      "root_skill": "aoa-eval",
+      "child_skill": "aoa-eval-design"
+    },
+    {
+      "case_id": "collision-48",
+      "root_skill": "aoa-eval",
+      "child_skill": "aoa-eval-session-mining"
+    }
+  ],
+  "failure_taxonomy": [
+    "harness_contamination",
+    "implicit_trigger_miss",
+    "collision_misroute",
+    "manual_activation_leak",
+    "trajectory_break",
+    "direct_procedure_gap",
+    "owner_boundary_violation",
+    "runtime_profile_drift",
+    "transport_failure"
+  ],
+  "privacy": {
+    "private_root": "/srv/abyss-machine/tmp/ai/aoa-skill-live-evals",
+    "directory_mode": "0700",
+    "file_mode": "0600",
+    "public_raw_text_allowed": false,
+    "public_absolute_paths_allowed": false,
+    "public_transport_ids_allowed": false
+  }
+}

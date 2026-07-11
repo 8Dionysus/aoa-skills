@@ -8761,7 +8761,7 @@
       ],
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
-      "canonical_eval_ready": false,
+      "canonical_eval_ready": true,
       "content_hash": "eb0f72bd5ea4ddcbd6125c352d367117d4653d8b3aaf5b5282dd06517e56eac0",
       "generated_surface_versions": {
         "boundary_matrix": 2,

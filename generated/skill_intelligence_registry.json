@@ -10625,13 +10625,10 @@
         "adjacency_blockers": []
       },
       "evaluation": {
-        "canonical_eval_ready": false,
-        "canonical_eval_blockers": [
-          "missing_use_snapshot",
-          "missing_do_not_use_snapshot"
-        ],
-        "use_case_count": 0,
-        "do_not_use_case_count": 0,
+        "canonical_eval_ready": true,
+        "canonical_eval_blockers": [],
+        "use_case_count": 1,
+        "do_not_use_case_count": 1,
         "autonomy_check_count": 0,
         "promotion_review_path": null,
         "candidate_review_path": null

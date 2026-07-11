@@ -46,7 +46,10 @@
         "desc-collision-collision-18",
         "desc-collision-collision-35"
       ],
-      "mirror_case_ids": []
+      "mirror_case_ids": [
+        "desc-mirror-031-abyss-safe-infra-change",
+        "desc-mirror-077-abyss-safe-infra-change"
+      ]
     },
     {
       "name": "abyss-sanitized-share",
@@ -87,7 +90,10 @@
       "collision_case_ids": [
         "desc-collision-collision-19"
       ],
-      "mirror_case_ids": []
+      "mirror_case_ids": [
+        "desc-mirror-029-abyss-sanitized-share",
+        "desc-mirror-061-abyss-sanitized-share"
+      ]
     },
     {
       "name": "abyss-self-diagnostic-spine",
@@ -130,7 +136,9 @@
       "collision_case_ids": [
         "desc-collision-collision-27"
       ],
-      "mirror_case_ids": []
+      "mirror_case_ids": [
+        "desc-mirror-053-abyss-self-diagnostic-spine"
+      ]
     },
     {
       "name": "aoa-adr-write",
@@ -170,10 +178,10 @@
       ],
       "collision_case_ids": [],
       "mirror_case_ids": [
-        "desc-mirror-016-aoa-adr-write",
-        "desc-mirror-020-aoa-adr-write",
-        "desc-mirror-022-aoa-adr-write",
-        "desc-mirror-024-aoa-adr-write"
+        "desc-mirror-027-aoa-adr-write",
+        "desc-mirror-059-aoa-adr-write",
+        "desc-mirror-062-aoa-adr-write",
+        "desc-mirror-064-aoa-adr-write"
       ]
     },
     {
@@ -216,7 +224,11 @@
       "collision_case_ids": [
         "desc-collision-collision-09"
       ],
-      "mirror_case_ids": []
+      "mirror_case_ids": [
+        "desc-mirror-017-aoa-approval-gate-check",
+        "desc-mirror-019-aoa-approval-gate-check",
+        "desc-mirror-076-aoa-approval-gate-check"
+      ]
     },
     {
       "name": "aoa-automation-opportunity-scan",
@@ -302,7 +314,7 @@
       "mirror_case_ids": [
         "desc-mirror-005-aoa-bounded-context-map",
         "desc-mirror-007-aoa-bounded-context-map",
-        "desc-mirror-021-aoa-bounded-context-map"
+        "desc-mirror-060-aoa-bounded-context-map"
       ]
     },
     {
@@ -362,8 +374,8 @@
       "mirror_case_ids": [
         "desc-mirror-009-aoa-change-protocol",
         "desc-mirror-011-aoa-change-protocol",
-        "desc-mirror-014-aoa-change-protocol",
-        "desc-mirror-018-aoa-change-protocol"
+        "desc-mirror-023-aoa-change-protocol",
+        "desc-mirror-056-aoa-change-protocol"
       ]
     },
     {
@@ -410,8 +422,8 @@
         "desc-collision-collision-29"
       ],
       "mirror_case_ids": [
-        "desc-mirror-017-aoa-checkpoint-closeout-bridge",
-        "desc-mirror-019-aoa-checkpoint-closeout-bridge"
+        "desc-mirror-055-aoa-checkpoint-closeout-bridge",
+        "desc-mirror-058-aoa-checkpoint-closeout-bridge"
       ]
     },
     {
@@ -448,7 +460,9 @@
       "collision_case_ids": [
         "desc-collision-collision-31"
       ],
-      "mirror_case_ids": []
+      "mirror_case_ids": [
+        "desc-mirror-057-aoa-commit-growth-seam"
+      ]
     },
     {
       "name": "aoa-contract-test",
@@ -499,7 +513,7 @@
       ],
       "mirror_case_ids": [
         "desc-mirror-010-aoa-contract-test",
-        "desc-mirror-030-aoa-contract-test"
+        "desc-mirror-083-aoa-contract-test"
       ]
     },
     {
@@ -590,10 +604,10 @@
         "desc-collision-collision-38"
       ],
       "mirror_case_ids": [
-        "desc-mirror-025-aoa-decision",
-        "desc-mirror-026-aoa-decision",
-        "desc-mirror-027-aoa-decision",
-        "desc-mirror-034-aoa-decision"
+        "desc-mirror-068-aoa-decision",
+        "desc-mirror-070-aoa-decision",
+        "desc-mirror-072-aoa-decision",
+        "desc-mirror-088-aoa-decision"
       ]
     },
     {
@@ -632,7 +646,9 @@
       "collision_case_ids": [
         "desc-collision-collision-41"
       ],
-      "mirror_case_ids": []
+      "mirror_case_ids": [
+        "desc-mirror-067-aoa-decision-correct"
+      ]
     },
     {
       "name": "aoa-decision-create",
@@ -670,7 +686,11 @@
       "collision_case_ids": [
         "desc-collision-collision-40"
       ],
-      "mirror_case_ids": []
+      "mirror_case_ids": [
+        "desc-mirror-066-aoa-decision-create",
+        "desc-mirror-069-aoa-decision-create",
+        "desc-mirror-073-aoa-decision-create"
+      ]
     },
     {
       "name": "aoa-decision-find",
@@ -708,7 +728,10 @@
       "collision_case_ids": [
         "desc-collision-collision-39"
       ],
-      "mirror_case_ids": []
+      "mirror_case_ids": [
+        "desc-mirror-065-aoa-decision-find",
+        "desc-mirror-071-aoa-decision-find"
+      ]
     },
     {
       "name": "aoa-dry-run-first",
@@ -745,7 +768,10 @@
       "collision_case_ids": [
         "desc-collision-collision-10"
       ],
-      "mirror_case_ids": []
+      "mirror_case_ids": [
+        "desc-mirror-016-aoa-dry-run-first",
+        "desc-mirror-020-aoa-dry-run-first"
+      ]
     },
     {
       "name": "aoa-eval",
@@ -795,10 +821,10 @@
         "desc-collision-collision-42"
       ],
       "mirror_case_ids": [
-        "desc-mirror-028-aoa-eval",
-        "desc-mirror-033-aoa-eval",
-        "desc-mirror-035-aoa-eval",
-        "desc-mirror-036-aoa-eval"
+        "desc-mirror-074-aoa-eval",
+        "desc-mirror-086-aoa-eval",
+        "desc-mirror-089-aoa-eval",
+        "desc-mirror-092-aoa-eval"
       ]
     },
     {
@@ -843,7 +869,10 @@
       "collision_case_ids": [
         "desc-collision-collision-45"
       ],
-      "mirror_case_ids": []
+      "mirror_case_ids": [
+        "desc-mirror-079-aoa-eval-apply",
+        "desc-mirror-090-aoa-eval-apply"
+      ]
     },
     {
       "name": "aoa-eval-design",
@@ -887,7 +916,11 @@
       "collision_case_ids": [
         "desc-collision-collision-47"
       ],
-      "mirror_case_ids": []
+      "mirror_case_ids": [
+        "desc-mirror-081-aoa-eval-design",
+        "desc-mirror-087-aoa-eval-design",
+        "desc-mirror-091-aoa-eval-design"
+      ]
     },
     {
       "name": "aoa-eval-local-need",
@@ -931,7 +964,11 @@
       "collision_case_ids": [
         "desc-collision-collision-46"
       ],
-      "mirror_case_ids": []
+      "mirror_case_ids": [
+        "desc-mirror-080-aoa-eval-local-need",
+        "desc-mirror-094-aoa-eval-local-need",
+        "desc-mirror-097-aoa-eval-local-need"
+      ]
     },
     {
       "name": "aoa-eval-select",
@@ -975,7 +1012,11 @@
       "collision_case_ids": [
         "desc-collision-collision-44"
       ],
-      "mirror_case_ids": []
+      "mirror_case_ids": [
+        "desc-mirror-078-aoa-eval-select",
+        "desc-mirror-093-aoa-eval-select",
+        "desc-mirror-095-aoa-eval-select"
+      ]
     },
     {
       "name": "aoa-eval-session-mining",
@@ -1020,7 +1061,9 @@
       "collision_case_ids": [
         "desc-collision-collision-48"
       ],
-      "mirror_case_ids": []
+      "mirror_case_ids": [
+        "desc-mirror-082-aoa-eval-session-mining"
+      ]
     },
     {
       "name": "aoa-invariant-coverage-audit",
@@ -1068,7 +1111,7 @@
       ],
       "mirror_case_ids": [
         "desc-mirror-002-aoa-invariant-coverage-audit",
-        "desc-mirror-031-aoa-invariant-coverage-audit"
+        "desc-mirror-084-aoa-invariant-coverage-audit"
       ]
     },
     {
@@ -1106,7 +1149,9 @@
       "collision_case_ids": [
         "desc-collision-collision-12"
       ],
-      "mirror_case_ids": []
+      "mirror_case_ids": [
+        "desc-mirror-021-aoa-local-stack-bringup"
+      ]
     },
     {
       "name": "aoa-memo-writeback",
@@ -1158,10 +1203,10 @@
       ],
       "collision_case_ids": [],
       "mirror_case_ids": [
-        "desc-mirror-023-aoa-memo-writeback",
-        "desc-mirror-032-aoa-memo-writeback",
-        "desc-mirror-037-aoa-memo-writeback",
-        "desc-mirror-039-aoa-memo-writeback"
+        "desc-mirror-063-aoa-memo-writeback",
+        "desc-mirror-085-aoa-memo-writeback",
+        "desc-mirror-096-aoa-memo-writeback",
+        "desc-mirror-099-aoa-memo-writeback"
       ]
     },
     {
@@ -1249,7 +1294,7 @@
       ],
       "mirror_case_ids": [
         "desc-mirror-001-aoa-property-invariants",
-        "desc-mirror-038-aoa-property-invariants"
+        "desc-mirror-098-aoa-property-invariants"
       ]
     },
     {
@@ -1294,7 +1339,12 @@
       "collision_case_ids": [
         "desc-collision-collision-25"
       ],
-      "mirror_case_ids": []
+      "mirror_case_ids": [
+        "desc-mirror-028-aoa-quest-harvest",
+        "desc-mirror-035-aoa-quest-harvest",
+        "desc-mirror-038-aoa-quest-harvest",
+        "desc-mirror-047-aoa-quest-harvest"
+      ]
     },
     {
       "name": "aoa-safe-infra-change",
@@ -1340,7 +1390,12 @@
       "collision_case_ids": [
         "desc-collision-collision-11"
       ],
-      "mirror_case_ids": []
+      "mirror_case_ids": [
+        "desc-mirror-014-aoa-safe-infra-change",
+        "desc-mirror-015-aoa-safe-infra-change",
+        "desc-mirror-018-aoa-safe-infra-change",
+        "desc-mirror-022-aoa-safe-infra-change"
+      ]
     },
     {
       "name": "aoa-sanitized-share",
@@ -1385,7 +1440,9 @@
       "collision_case_ids": [
         "desc-collision-collision-13"
       ],
-      "mirror_case_ids": []
+      "mirror_case_ids": [
+        "desc-mirror-030-aoa-sanitized-share"
+      ]
     },
     {
       "name": "aoa-session-donor-harvest",
@@ -1428,7 +1485,12 @@
       "collision_case_ids": [
         "desc-collision-collision-20"
       ],
-      "mirror_case_ids": []
+      "mirror_case_ids": [
+        "desc-mirror-036-aoa-session-donor-harvest",
+        "desc-mirror-039-aoa-session-donor-harvest",
+        "desc-mirror-043-aoa-session-donor-harvest",
+        "desc-mirror-045-aoa-session-donor-harvest"
+      ]
     },
     {
       "name": "aoa-session-progression-lift",
@@ -1469,7 +1531,12 @@
       "collision_case_ids": [
         "desc-collision-collision-24"
       ],
-      "mirror_case_ids": []
+      "mirror_case_ids": [
+        "desc-mirror-034-aoa-session-progression-lift",
+        "desc-mirror-041-aoa-session-progression-lift",
+        "desc-mirror-049-aoa-session-progression-lift",
+        "desc-mirror-054-aoa-session-progression-lift"
+      ]
     },
     {
       "name": "aoa-session-route-forks",
@@ -1513,7 +1580,12 @@
       "collision_case_ids": [
         "desc-collision-collision-21"
       ],
-      "mirror_case_ids": []
+      "mirror_case_ids": [
+        "desc-mirror-032-aoa-session-route-forks",
+        "desc-mirror-044-aoa-session-route-forks",
+        "desc-mirror-048-aoa-session-route-forks",
+        "desc-mirror-050-aoa-session-route-forks"
+      ]
     },
     {
       "name": "aoa-session-self-diagnose",
@@ -1555,7 +1627,12 @@
       "collision_case_ids": [
         "desc-collision-collision-22"
       ],
-      "mirror_case_ids": []
+      "mirror_case_ids": [
+        "desc-mirror-033-aoa-session-self-diagnose",
+        "desc-mirror-037-aoa-session-self-diagnose",
+        "desc-mirror-042-aoa-session-self-diagnose",
+        "desc-mirror-046-aoa-session-self-diagnose"
+      ]
     },
     {
       "name": "aoa-session-self-repair",
@@ -1597,7 +1674,11 @@
       "collision_case_ids": [
         "desc-collision-collision-23"
       ],
-      "mirror_case_ids": []
+      "mirror_case_ids": [
+        "desc-mirror-040-aoa-session-self-repair",
+        "desc-mirror-051-aoa-session-self-repair",
+        "desc-mirror-052-aoa-session-self-repair"
+      ]
     },
     {
       "name": "aoa-source-of-truth-check",
@@ -1669,8 +1750,8 @@
         "desc-collision-collision-43"
       ],
       "mirror_case_ids": [
-        "desc-mirror-015-aoa-source-of-truth-check",
-        "desc-mirror-029-aoa-source-of-truth-check"
+        "desc-mirror-025-aoa-source-of-truth-check",
+        "desc-mirror-075-aoa-source-of-truth-check"
       ]
     },
     {
@@ -1789,7 +1870,9 @@
       "collision_case_ids": [
         "desc-collision-collision-14"
       ],
-      "mirror_case_ids": []
+      "mirror_case_ids": [
+        "desc-mirror-024-atm10-change-protocol"
+      ]
     },
     {
       "name": "atm10-source-of-truth-check",
@@ -1832,7 +1915,9 @@
       "collision_case_ids": [
         "desc-collision-collision-16"
       ],
-      "mirror_case_ids": []
+      "mirror_case_ids": [
+        "desc-mirror-026-atm10-source-of-truth-check"
+      ]
     },
     {
       "name": "os-abyss-artifact-trust-loop",

@@ -362,13 +362,11 @@ def build_documents(repo_root: Path) -> dict[Path, str]:
             and defer_case["expected_skill"] != skill_name
         ):
             expected_skill = defer_case["expected_skill"]
-            expected_activation_policy = str(
-                local_by_name.get(expected_skill, {}).get("implicit_activation_policy")
-                or "manual"
-            )
+            # Stage 1 may shortlist a manual skill without activating it; the
+            # activation policy remains a separate downstream gate.
             expected_shortlist_includes = (
                 [expected_skill]
-                if band_by_skill[expected_skill] == band_id and expected_activation_policy != "manual"
+                if band_by_skill[expected_skill] == band_id
                 else []
             )
             eval_cases.append(
