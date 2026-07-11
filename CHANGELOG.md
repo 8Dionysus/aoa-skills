@@ -63,6 +63,9 @@ Tracking starts with the community-docs baseline for this repository.
   as a TOML list for both CLI and App Server arms, rejects invalid thresholds
   before transport startup, and preserves review compatibility with receipts
   created before that cap was published.
+- Live dispatch plan loading now rejects model-output schemas that escape the
+  Responses API strict subset, and the bounded output contract declares types
+  for enum and const fields before a model request can start.
 - Description-trigger mirrors now retain negative `prefer-other` coverage for
   manual skills, while same-band tiny-router shortlists remain candidate-only
   and leave activation to the downstream policy gate.

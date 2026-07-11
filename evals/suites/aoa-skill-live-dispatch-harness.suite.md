@@ -60,6 +60,11 @@ one, source-locked rollout token limits plus reminder thresholds, and an opaque
 private fixture per turn. The runner rejects empty, non-positive, or
 limit-reaching reminder lists before transport startup.
 
+The source-locked model-output schema must also satisfy the Responses API
+strict subset before a plan or run can be produced: the root and nested objects
+are closed, every property is required, every property declares an explicit
+type or supported union, and arrays declare item schemas.
+
 Raw artifacts stay under
 `/srv/abyss-machine/tmp/ai/aoa-skill-live-evals` with directory mode `0700` and
 file mode `0600`. Public receipts whitelist fields and reject paths,

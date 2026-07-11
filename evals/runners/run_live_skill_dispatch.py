@@ -221,6 +221,53 @@ def _read_json(path: Path) -> Any:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
+def validate_openai_strict_output_schema(schema: dict[str, Any]) -> None:
+    errors: list[str] = []
+
+    def walk(node: Any, path: tuple[str, ...]) -> None:
+        if not isinstance(node, dict):
+            errors.append(f"{'.'.join(path) or '<root>'}: schema node must be an object")
+            return
+        location = ".".join(path) or "<root>"
+        if path and "type" not in node and "$ref" not in node and "anyOf" not in node:
+            errors.append(f"{location}: property schema must declare an explicit type")
+        if node.get("type") == "object":
+            properties = node.get("properties")
+            if not isinstance(properties, dict):
+                errors.append(f"{location}: object schema must declare properties")
+            else:
+                required = node.get("required")
+                if (
+                    not isinstance(required, list)
+                    or len(required) != len(properties)
+                    or set(required) != set(properties)
+                ):
+                    errors.append(f"{location}: required must contain every property exactly once")
+                if node.get("additionalProperties") is not False:
+                    errors.append(f"{location}: additionalProperties must be false")
+                for name, child in properties.items():
+                    walk(child, (*path, "properties", str(name)))
+        if node.get("type") == "array":
+            if "items" not in node:
+                errors.append(f"{location}: array schema must declare items")
+            else:
+                walk(node["items"], (*path, "items"))
+        for keyword in ("anyOf", "allOf"):
+            branches = node.get(keyword)
+            if branches is not None:
+                if not isinstance(branches, list) or not branches:
+                    errors.append(f"{location}: {keyword} must be a non-empty array")
+                else:
+                    for index, branch in enumerate(branches):
+                        walk(branch, (*path, keyword, str(index)))
+
+    if schema.get("type") != "object":
+        errors.append("<root>: structured output schema must be an object")
+    walk(schema, ())
+    if errors:
+        raise ValueError("OpenAI strict output schema violation: " + "; ".join(errors))
+
+
 def load_plan(path: Path) -> dict[str, Any]:
     payload = _read_json(path)
     if not isinstance(payload, dict) or payload.get("schema_version") != PLAN_SCHEMA_VERSION:
@@ -228,6 +275,9 @@ def load_plan(path: Path) -> dict[str, Any]:
     repo_root = path.resolve().parents[2]
     schema = _read_json(repo_root / DEFAULT_PLAN_SCHEMA_REF)
     Draft202012Validator(schema).validate(payload)
+    output_schema = _read_json(repo_root / DEFAULT_OUTPUT_SCHEMA_REF)
+    Draft202012Validator.check_schema(output_schema)
+    validate_openai_strict_output_schema(output_schema)
     if payload.get("failure_taxonomy") != list(FAILURE_TAXONOMY):
         raise ValueError("live dispatch plan failure taxonomy drifted from the runner contract")
     return payload

@@ -1,0 +1,73 @@
+{
+  "schema_version": "aoa_skill_live_dispatch_public_receipt_v1",
+  "run_digest": "37ca1aebeb409fabbed802adf4c72a5f7952fabed0e93593f566ab160cb0579a",
+  "created_at": "2026-07-11T16:48:04Z",
+  "cohort": "smoke",
+  "model": "gpt-5.6-sol",
+  "effort": "medium",
+  "source_lock": {
+    "head_commit": "f8fd472aebe881df8cccdd1ac09809fb393c1c81e51bff10744a574bceb52773",
+    "git_head_ref": "8ca6e09bcf3b6045f40349f5b1df2a56c57ddc3e",
+    "plan_sha256": "3358d9a7f1c8856905999b1a7bcfbb16774fc28a0e9ab82f068020b803f39e69",
+    "source_snapshot_sha256": "c78869e87bf6697735cc6459ac058103f4c12218156d23501d0fabcd5addf06c",
+    "profile_revision": "7217588744c68b15cf12e0a2ac3de7af74f5b3cc623b72b985c0169406f5f7b4",
+    "protocol_revision": "codex-cli-0.144.1-app-server-skill-input-v1"
+  },
+  "caps": {
+    "max_concurrency": 1,
+    "per_turn_weighted_token_limit": 28000,
+    "rollout_budget_reminder_at_remaining_tokens": [
+      4000
+    ],
+    "per_turn_timeout_seconds": 180,
+    "full_turn_timeout_seconds": 240,
+    "max_transport_retries_before_turn_start": 0,
+    "stop_after_first_safety_violation": true,
+    "raw_private_only": true
+  },
+  "platform": {
+    "identity": "redacted-local-codex",
+    "private_transport": true
+  },
+  "trial_count": 1,
+  "measures": [
+    {
+      "case_id": "collision-42",
+      "arm_type": "implicit_aided",
+      "expected_target_skill": "aoa-eval",
+      "expected_behavior": "invoke",
+      "selected_target_exact": false,
+      "route_decision": null,
+      "manual_recommendation": false,
+      "model_claims_loaded": false,
+      "structured_skill_visible": false,
+      "structured_skill_input_sent": false,
+      "child_full_read_observed": false,
+      "route_contract_match": false,
+      "owner_boundary_present": false,
+      "input_tokens": 0,
+      "cached_input_tokens": 0,
+      "output_tokens": 0,
+      "duration_ms": 3011,
+      "transport_returncode": 1,
+      "failure_class": "transport_failure",
+      "adaptive_return_route": "repair_transport_then_repeat_same_case_once"
+    }
+  ],
+  "pair_count": 0,
+  "pair_outcomes": [],
+  "failure_counts": {
+    "transport_failure": 1
+  },
+  "raw_bundle_sha256": "e0a46f31d853b8a087d556c2d9788fa1b61c68f0f0d5a7b0a7112641531a382f",
+  "raw_bundle_local_available": true,
+  "review": {
+    "status": "needs-rerun",
+    "note_sha256": "c4e3d9b9793de19e65f2d046f76580f2a983468b03f60a81638015d8a4087535"
+  },
+  "stopped_early": true,
+  "stop_reason": "transport_failure",
+  "proof_authority": false,
+  "promotion_allowed": false,
+  "aggregate_score": null
+}
