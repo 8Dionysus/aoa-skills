@@ -101,7 +101,10 @@ not only the link spelling. The absolute paths stay private. The same canonical
 paths are disabled in every CLI, prompt-inspection, and App Server adapter, and
 run-time rediscovery must match the confirmation/source lock. Plugin features
 are disabled. The exact configured MCP-name set receives its own count/digest
-source lock, and every configured id is disabled explicitly in every adapter.
+source lock. CLI exec arms isolate it by ignoring user config and must not add
+partial MCP tables; prompt inspection and App Server retain user config and
+therefore disable every locked id explicitly. Deterministic adapter tests guard
+both sides of this transport-specific contract.
 These hermetic structured-causality rules use contract schema
 `aoa_codex_app_server_skill_input_contract_v2` and protocol revision
 `codex-cli-0.144.1-app-server-skill-input-v2`; retained receipts source-locked

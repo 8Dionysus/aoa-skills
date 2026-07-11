@@ -462,6 +462,13 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
             skill_name="aoa-eval-apply",
             skill_path=Path("/private/fixture/.agents/skills/aoa-eval-apply/SKILL.md"),
         )
+        prompt_inspection = runner.build_prompt_skill_inspection_request(
+            context,
+            prompt="Decide the route.",
+            expected_prompt_skill_paths={
+                "aoa-eval": ["/private/fixture/.agents/skills/aoa-eval/SKILL.md"]
+            },
+        )
 
         self.assertIn("--ephemeral", implicit["argv"])
         self.assertIn("--ignore-user-config", implicit["argv"])
@@ -477,11 +484,26 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
                     [arg for arg in request["argv"] if arg.startswith("skills.config=")],
                 )
                 self.assertNotIn("shell_tool", request["argv"])
+                self.assertIn("plugins", request["argv"])
+        for request in (implicit, trajectory):
+            with self.subTest(
+                adapter=request["arm_type"], mcp_isolation="ignore-user-config"
+            ):
+                self.assertIn("--ignore-user-config", request["argv"])
+                self.assertNotIn(
+                    "mcp_servers.aoa_evals.enabled=false",
+                    request["argv"],
+                )
+        for adapter, request in (
+            ("prompt_inspection", prompt_inspection),
+            ("app_server_structured", structured),
+        ):
+            with self.subTest(adapter=adapter, mcp_isolation="explicit-disable"):
+                self.assertNotIn("--ignore-user-config", request["argv"])
                 self.assertIn(
                     "mcp_servers.aoa_evals.enabled=false",
                     request["argv"],
                 )
-                self.assertIn("plugins", request["argv"])
         reminder_override = "features.rollout_budget.reminder_at_remaining_tokens=[4000]"
         self.assertIn(reminder_override, implicit["argv"])
         self.assertIn(reminder_override, trajectory["argv"])

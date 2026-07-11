@@ -37,10 +37,18 @@ temporary root and must not be copied into this directory.
   ambiguous route/procedure grader. Its former trigger, trajectory, procedure,
   and no-lift labels are harness diagnostics only, not skill-defect evidence.
   The raw receipt remains immutable and a corrected smoke is required.
+- [aoa-skill-live-dispatch-smoke-20260711-v2-cli-mcp-config-needs-rerun.json](aoa-skill-live-dispatch-smoke-20260711-v2-cli-mcp-config-needs-rerun.json)
+  records the first protocol-v2 smoke after its 12/12 prompt gate passed. The
+  first CLI arm then failed before model spend because per-MCP disable
+  overrides synthesized incomplete transport-free tables alongside
+  `--ignore-user-config`; it contains adapter evidence only and requires the
+  same smoke to be rerun after the CLI isolation repair.
 
 Corrected live receipts under the v2 App Server protocol are reviewable only
 after canonical user-skill shadows, plugins, and every configured MCP id are
-isolated; prompt entry descriptions match the locked background; structured
+isolated with the adapter-appropriate mechanism (`--ignore-user-config` for
+CLI exec, explicit per-id disables for prompt inspection and App Server);
+prompt entry descriptions match the locked background; structured
 `skills/list` exposes the exact unique 57-skill fixture map with zero MCP
 startup; exact fixture-path reads and one atomic guidance-bound validator event
 are proved; and invalid pairs are omitted without rewriting arm history. Public
