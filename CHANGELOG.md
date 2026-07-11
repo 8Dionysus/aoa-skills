@@ -21,6 +21,10 @@ Tracking starts with the community-docs baseline for this repository.
   path, and an ambiguous route/procedure grader make its former trigger,
   trajectory, procedure, and no-lift labels harness diagnostics rather than
   reviewed evidence of skill defects.
+- The first protocol-v2 smoke now has a separate public-safe `needs-rerun`
+  receipt. Its prompt gate passed, but the first CLI arm stopped before model
+  spend because per-MCP overrides reconstructed incomplete tables under
+  `--ignore-user-config`; it is adapter evidence only.
 - `AOA-SK-D-0037` records why live cohorts remain operator-confirmed candidate
   evidence and now clarifies prompt-surface isolation and evidence-stage grading
   after the contaminated smoke; deterministic harness validation, not model
@@ -72,8 +76,9 @@ Tracking starts with the community-docs baseline for this repository.
   including canonical targets behind user-skill symlinks, binds only their
   count and digest into confirmation/source locks, and disables the canonical
   paths in every adapter. Plugin surfaces are disabled; the configured MCP-name
-  inventory is independently source-locked and every configured name is
-  disabled explicitly.
+  inventory is independently source-locked. CLI exec isolates it through
+  `--ignore-user-config` without constructing partial MCP tables, while prompt
+  inspection and App Server explicitly disable every configured name.
 - Every model turn is gated by `codex debug prompt-input`. Aided fixtures must
   expose exactly the policy-visible repo skills (currently 12 of 57), controls
   expose zero, and the background inventory digest now fingerprints each

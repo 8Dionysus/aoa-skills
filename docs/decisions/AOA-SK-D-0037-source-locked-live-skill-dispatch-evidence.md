@@ -83,9 +83,10 @@ are rediscovered before execution, and are disabled in every CLI, App Server,
 and prompt-inspection adapter. User-skill symlinks are resolved and their
 canonical target files are the locked and disabled identities. Plugin features
 are disabled independently. The configured MCP-name inventory has its own
-count/digest lock and every configured id is explicitly disabled in each
-adapter. A shadow or MCP count/digest change is source/runtime drift, not a
-reason to reuse the old token.
+count/digest lock. CLI exec arms use `--ignore-user-config` and must not
+synthesize partial MCP tables; prompt inspection and App Server retain user
+config and explicitly disable every locked id. A shadow or MCP count/digest
+change is source/runtime drift, not a reason to reuse the old token.
 
 The corrected structured-causality and hermetic pre-turn contract uses schema
 `aoa_codex_app_server_skill_input_contract_v2` and protocol revision
@@ -179,9 +180,9 @@ target also appears in its own neighbourhood list.
 - Positive: harness contamination is rejected before model spend, and public
   evidence can locate a gap at visibility, dispatch, load, procedure,
   verification, completion, or deflection instead of collapsing stages.
-- Positive: source locks and per-adapter disables cover canonical user-skill
-  shadows, plugins, and configured MCP ids; structured turns prove a unique
-  57-skill surface and zero MCP startup before model spend.
+- Positive: source locks and transport-appropriate per-adapter isolation cover
+  canonical user-skill shadows, plugins, and configured MCP ids; structured
+  turns prove a unique 57-skill surface and zero MCP startup before model spend.
 - Positive: failures carry bounded adaptive return routes instead of one score.
 - Positive: ordinary CI proves the harness contract without spending model
   turns or treating model quality as deterministic repository proof.
@@ -216,6 +217,22 @@ As of 2026-07-11:
 - Superseded by: none.
 
 ## Review Log
+
+### 2026-07-11 - Correct CLI MCP isolation without weakening App gates
+
+- Previous assumption: every configured MCP id could receive the same
+  `enabled=false` override in every adapter.
+- New reality: CLI exec already removes all user MCP tables with
+  `--ignore-user-config`; adding name-only overrides reconstructs incomplete
+  tables without transports and fails before model spend. Prompt inspection and
+  App Server still need explicit per-id disables because they retain user
+  config.
+- Reason: the first protocol-v2 smoke passed its 12/12 prompt gate but stopped
+  on `invalid transport` before a model turn, so it contains adapter evidence
+  only and requires a rerun.
+- Validation: deterministic argv tests must prove absence of MCP-table
+  overrides on CLI exec and their presence on prompt inspection and App Server,
+  followed by a source-locked smoke before any pilot widening.
 
 ### 2026-07-11 - Correct prompt isolation and evidence-stage grading
 

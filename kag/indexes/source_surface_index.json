@@ -2,7 +2,7 @@
   "classification_summary": {
     "artifact_kind": {
       "asset": 114,
-      "config": 327,
+      "config": 328,
       "data_table": 2,
       "dependency_manifest": 1,
       "directory_marker": 4,
@@ -25,7 +25,7 @@
     "command_role": {
       "builder": 13,
       "lane_entrypoint": 4,
-      "none": 1726,
+      "none": 1727,
       "script": 51,
       "test": 82,
       "validator": 12
@@ -39,7 +39,7 @@
       "design_agents": 1,
       "handoff": 6,
       "mechanics_doc": 117,
-      "none": 834,
+      "none": 835,
       "parts": 12,
       "provenance": 12,
       "readme": 104,
@@ -54,7 +54,7 @@
       "legacy": 39,
       "mechanic_package": 260,
       "mechanic_part": 8,
-      "none": 1535,
+      "none": 1536,
       "part_doc": 37,
       "part_schema": 3,
       "part_script": 4,
@@ -64,10 +64,10 @@
       "artifact": 210,
       "command": 162,
       "document": 1054,
-      "surface": 462
+      "surface": 463
     },
     "surface_state": {
-      "authored_source": 1735,
+      "authored_source": 1736,
       "generated_readmodel": 110,
       "legacy": 39,
       "receipt": 4
@@ -77,9 +77,9 @@
     "command_count": 162,
     "document_count": 1054,
     "generated_count": 110,
-    "heading_count": 7403,
+    "heading_count": 7404,
     "mechanics_count": 353,
-    "record_count": 1888,
+    "record_count": 1889,
     "schema_count": 64,
     "script_count": 68,
     "test_count": 82,
@@ -88,7 +88,7 @@
   },
   "index_identity": {
     "artifact_kind": "source_surface_index",
-    "content_digest": "851fc6a71af83c1ad315fbcf067c82266ba8afdf5c29c5e2fbf479039c8fedc8",
+    "content_digest": "f3dfcff849b9672cc40af499afc81632489496a4a27d2be508b5fe3f483ba4b5",
     "local_id": "index:repo-local:source-surfaces",
     "schema_ref": "aoa-kag:schemas/repo-local-kag-index.schema.json"
   },
@@ -51314,13 +51314,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "4fbbff24ce3b6bd615d7790d39744ce88a3dd5c9ca5459cb92b4fc30eec6c8e8",
+        "content_hash": "a20e5e5ede58bd0e769254b08fc0c4b98994f9e292fd613e6ef24e4cbced13b9",
         "git_ref": "git-index-source-tree",
         "id": "file:changelog.md:06572a96a5",
         "mime": "text/markdown",
         "path": "CHANGELOG.md",
         "repo": "aoa-skills",
-        "size_bytes": 28835
+        "size_bytes": 29242
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -51370,336 +51370,336 @@
           {
             "anchor": "changed",
             "level": 3,
-            "line": 69,
+            "line": 73,
             "ref": "CHANGELOG.md#changed",
             "title": "Changed"
           },
           {
             "anchor": "fixed",
             "level": 3,
-            "line": 194,
+            "line": 199,
             "ref": "CHANGELOG.md#fixed",
             "title": "Fixed"
           },
           {
             "anchor": "040-2026-05-18",
             "level": 2,
-            "line": 202,
+            "line": 207,
             "ref": "CHANGELOG.md#040-2026-05-18",
             "title": "[0.4.0] - 2026-05-18"
           },
           {
             "anchor": "summary",
             "level": 3,
-            "line": 204,
+            "line": 209,
             "ref": "CHANGELOG.md#summary",
             "title": "Summary"
           },
           {
             "anchor": "added-1",
             "level": 3,
-            "line": 216,
+            "line": 221,
             "ref": "CHANGELOG.md#added-1",
             "title": "Added"
           },
           {
             "anchor": "changed-1",
             "level": 3,
-            "line": 236,
+            "line": 241,
             "ref": "CHANGELOG.md#changed-1",
             "title": "Changed"
           },
           {
             "anchor": "included-in-this-release",
             "level": 3,
-            "line": 267,
+            "line": 272,
             "ref": "CHANGELOG.md#included-in-this-release",
             "title": "Included in this release"
           },
           {
             "anchor": "validation",
             "level": 3,
-            "line": 280,
+            "line": 285,
             "ref": "CHANGELOG.md#validation",
             "title": "Validation"
           },
           {
             "anchor": "notes",
             "level": 3,
-            "line": 285,
+            "line": 290,
             "ref": "CHANGELOG.md#notes",
             "title": "Notes"
           },
           {
             "anchor": "033-2026-04-23",
             "level": 2,
-            "line": 291,
+            "line": 296,
             "ref": "CHANGELOG.md#033-2026-04-23",
             "title": "[0.3.3] - 2026-04-23"
           },
           {
             "anchor": "summary-1",
             "level": 3,
-            "line": 293,
+            "line": 298,
             "ref": "CHANGELOG.md#summary-1",
             "title": "Summary"
           },
           {
             "anchor": "added-2",
             "level": 3,
-            "line": 304,
+            "line": 309,
             "ref": "CHANGELOG.md#added-2",
             "title": "Added"
           },
           {
             "anchor": "changed-2",
             "level": 3,
-            "line": 318,
+            "line": 323,
             "ref": "CHANGELOG.md#changed-2",
             "title": "Changed"
           },
           {
             "anchor": "validation-1",
             "level": 3,
-            "line": 327,
+            "line": 332,
             "ref": "CHANGELOG.md#validation-1",
             "title": "Validation"
           },
           {
             "anchor": "notes-1",
             "level": 3,
-            "line": 334,
+            "line": 339,
             "ref": "CHANGELOG.md#notes-1",
             "title": "Notes"
           },
           {
             "anchor": "032-2026-04-19",
             "level": 2,
-            "line": 340,
+            "line": 345,
             "ref": "CHANGELOG.md#032-2026-04-19",
             "title": "[0.3.2] - 2026-04-19"
           },
           {
             "anchor": "summary-2",
             "level": 3,
-            "line": 342,
+            "line": 347,
             "ref": "CHANGELOG.md#summary-2",
             "title": "Summary"
           },
           {
             "anchor": "added-3",
             "level": 3,
-            "line": 351,
+            "line": 356,
             "ref": "CHANGELOG.md#added-3",
             "title": "Added"
           },
           {
             "anchor": "changed-3",
             "level": 3,
-            "line": 358,
+            "line": 363,
             "ref": "CHANGELOG.md#changed-3",
             "title": "Changed"
           },
           {
             "anchor": "validation-2",
             "level": 3,
-            "line": 363,
+            "line": 368,
             "ref": "CHANGELOG.md#validation-2",
             "title": "Validation"
           },
           {
             "anchor": "notes-2",
             "level": 3,
-            "line": 367,
+            "line": 372,
             "ref": "CHANGELOG.md#notes-2",
             "title": "Notes"
           },
           {
             "anchor": "031-2026-04-12",
             "level": 2,
-            "line": 372,
+            "line": 377,
             "ref": "CHANGELOG.md#031-2026-04-12",
             "title": "[0.3.1] - 2026-04-12"
           },
           {
             "anchor": "summary-3",
             "level": 3,
-            "line": 374,
+            "line": 379,
             "ref": "CHANGELOG.md#summary-3",
             "title": "Summary"
           },
           {
             "anchor": "validation-3",
             "level": 3,
-            "line": 383,
+            "line": 388,
             "ref": "CHANGELOG.md#validation-3",
             "title": "Validation"
           },
           {
             "anchor": "notes-3",
             "level": 3,
-            "line": 387,
+            "line": 392,
             "ref": "CHANGELOG.md#notes-3",
             "title": "Notes"
           },
           {
             "anchor": "added-4",
             "level": 3,
-            "line": 392,
+            "line": 397,
             "ref": "CHANGELOG.md#added-4",
             "title": "Added"
           },
           {
             "anchor": "changed-4",
             "level": 3,
-            "line": 403,
+            "line": 408,
             "ref": "CHANGELOG.md#changed-4",
             "title": "Changed"
           },
           {
             "anchor": "030-2026-04-10",
             "level": 2,
-            "line": 408,
+            "line": 413,
             "ref": "CHANGELOG.md#030-2026-04-10",
             "title": "[0.3.0] - 2026-04-10"
           },
           {
             "anchor": "summary-4",
             "level": 3,
-            "line": 410,
+            "line": 415,
             "ref": "CHANGELOG.md#summary-4",
             "title": "Summary"
           },
           {
             "anchor": "validation-4",
             "level": 3,
-            "line": 416,
+            "line": 421,
             "ref": "CHANGELOG.md#validation-4",
             "title": "Validation"
           },
           {
             "anchor": "notes-4",
             "level": 3,
-            "line": 420,
+            "line": 425,
             "ref": "CHANGELOG.md#notes-4",
             "title": "Notes"
           },
           {
             "anchor": "added-5",
             "level": 3,
-            "line": 424,
+            "line": 429,
             "ref": "CHANGELOG.md#added-5",
             "title": "Added"
           },
           {
             "anchor": "changed-5",
             "level": 3,
-            "line": 434,
+            "line": 439,
             "ref": "CHANGELOG.md#changed-5",
             "title": "Changed"
           },
           {
             "anchor": "included-in-this-release-1",
             "level": 3,
-            "line": 441,
+            "line": 446,
             "ref": "CHANGELOG.md#included-in-this-release-1",
             "title": "Included in this release"
           },
           {
             "anchor": "020-2026-04-01",
             "level": 2,
-            "line": 454,
+            "line": 459,
             "ref": "CHANGELOG.md#020-2026-04-01",
             "title": "[0.2.0] - 2026-04-01"
           },
           {
             "anchor": "summary-5",
             "level": 3,
-            "line": 460,
+            "line": 465,
             "ref": "CHANGELOG.md#summary-5",
             "title": "Summary"
           },
           {
             "anchor": "added-6",
             "level": 3,
-            "line": 466,
+            "line": 471,
             "ref": "CHANGELOG.md#added-6",
             "title": "Added"
           },
           {
             "anchor": "changed-6",
             "level": 3,
-            "line": 477,
+            "line": 482,
             "ref": "CHANGELOG.md#changed-6",
             "title": "Changed"
           },
           {
             "anchor": "included-in-this-release-2",
             "level": 3,
-            "line": 484,
+            "line": 489,
             "ref": "CHANGELOG.md#included-in-this-release-2",
             "title": "Included in this release"
           },
           {
             "anchor": "validation-5",
             "level": 3,
-            "line": 489,
+            "line": 494,
             "ref": "CHANGELOG.md#validation-5",
             "title": "Validation"
           },
           {
             "anchor": "notes-5",
             "level": 3,
-            "line": 493,
+            "line": 498,
             "ref": "CHANGELOG.md#notes-5",
             "title": "Notes"
           },
           {
             "anchor": "010-2026-03-23",
             "level": 2,
-            "line": 498,
+            "line": 503,
             "ref": "CHANGELOG.md#010-2026-03-23",
             "title": "[0.1.0] - 2026-03-23"
           },
           {
             "anchor": "summary-6",
             "level": 3,
-            "line": 504,
+            "line": 509,
             "ref": "CHANGELOG.md#summary-6",
             "title": "Summary"
           },
           {
             "anchor": "added-7",
             "level": 3,
-            "line": 508,
+            "line": 513,
             "ref": "CHANGELOG.md#added-7",
             "title": "Added"
           },
           {
             "anchor": "changed-7",
             "level": 3,
-            "line": 515,
+            "line": 520,
             "ref": "CHANGELOG.md#changed-7",
             "title": "Changed"
           },
           {
             "anchor": "included-in-this-release-3",
             "level": 3,
-            "line": 521,
+            "line": 526,
             "ref": "CHANGELOG.md#included-in-this-release-3",
             "title": "Included in this release"
           },
           {
             "anchor": "validation-6",
             "level": 3,
-            "line": 527,
+            "line": 532,
             "ref": "CHANGELOG.md#validation-6",
             "title": "Validation"
           },
           {
             "anchor": "notes-6",
             "level": 3,
-            "line": 532,
+            "line": 537,
             "ref": "CHANGELOG.md#notes-6",
             "title": "Notes"
           }
@@ -51711,7 +51711,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "4fbbff24ce3b6bd615d7790d39744ce88a3dd5c9ca5459cb92b4fc30eec6c8e8",
+        "digest": "a20e5e5ede58bd0e769254b08fc0c4b98994f9e292fd613e6ef24e4cbced13b9",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -60893,13 +60893,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "e878a9e2e093040f44c7fd90ea5dc2ed51b2ff868d3a9cc2428686022d52a433",
+        "content_hash": "5476e12438cdab0ac037da42d50d97fb1bb224b5ca8051872501438aa07f20a4",
         "git_ref": "git-index-source-tree",
         "id": "file:docs/decisions/aoa-sk-d-0037-source-locked-live-skill-dispatch-evidence.md:ca6ee4ca5a",
         "mime": "text/markdown",
         "path": "docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md",
         "repo": "aoa-skills",
-        "size_bytes": 14525
+        "size_bytes": 15556
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -60963,49 +60963,56 @@
           {
             "anchor": "rationale",
             "level": 2,
-            "line": 153,
+            "line": 154,
             "ref": "docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md#rationale",
             "title": "Rationale"
           },
           {
             "anchor": "consequences",
             "level": 2,
-            "line": 174,
+            "line": 175,
             "ref": "docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md#consequences",
             "title": "Consequences"
           },
           {
             "anchor": "current-applicability",
             "level": 2,
-            "line": 196,
+            "line": 197,
             "ref": "docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md#current-applicability",
             "title": "Current Applicability"
           },
           {
             "anchor": "review-log",
             "level": 2,
-            "line": 218,
+            "line": 219,
             "ref": "docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md#review-log",
             "title": "Review Log"
           },
           {
+            "anchor": "2026-07-11-correct-cli-mcp-isolation-without-weakening-app-gates",
+            "level": 3,
+            "line": 221,
+            "ref": "docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md#2026-07-11-correct-cli-mcp-isolation-without-weakening-app-gates",
+            "title": "2026-07-11 - Correct CLI MCP isolation without weakening App gates"
+          },
+          {
             "anchor": "2026-07-11-correct-prompt-isolation-and-evidence-stage-grading",
             "level": 3,
-            "line": 220,
+            "line": 237,
             "ref": "docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md#2026-07-11-correct-prompt-isolation-and-evidence-stage-grading",
             "title": "2026-07-11 - Correct prompt isolation and evidence-stage grading"
           },
           {
             "anchor": "boundaries",
             "level": 2,
-            "line": 240,
+            "line": 257,
             "ref": "docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md#boundaries",
             "title": "Boundaries"
           },
           {
             "anchor": "validation",
             "level": 2,
-            "line": 250,
+            "line": 267,
             "ref": "docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md#validation",
             "title": "Validation"
           }
@@ -61017,7 +61024,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "e878a9e2e093040f44c7fd90ea5dc2ed51b2ff868d3a9cc2428686022d52a433",
+        "digest": "5476e12438cdab0ac037da42d50d97fb1bb224b5ca8051872501438aa07f20a4",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -71533,13 +71540,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "6ace18a8796bf41add8caf04d6738d5431b95135742333afb730392f9ed279ee",
+        "content_hash": "e86c6db9b1074c4e3b0344e63f57dcfeeb64cf6b45a35fc13c4cd08e3cf2fb8b",
         "git_ref": "git-index-source-tree",
         "id": "file:evals/reports/readme.md:ac5e016ca2",
         "mime": "text/markdown",
         "path": "evals/reports/README.md",
         "repo": "aoa-skills",
-        "size_bytes": 4502
+        "size_bytes": 5145
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -71580,7 +71587,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "6ace18a8796bf41add8caf04d6738d5431b95135742333afb730392f9ed279ee",
+        "digest": "e86c6db9b1074c4e3b0344e63f57dcfeeb64cf6b45a35fc13c4cd08e3cf2fb8b",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -72780,6 +72787,95 @@
     {
       "abi": {
         "abi_epoch": "source",
+        "artifact_class": "config",
+        "compatibility": "stable",
+        "contract_version": "none",
+        "schema_version": "aoa_skill_live_dispatch_public_receipt_v1"
+      },
+      "access": {
+        "scope": "public",
+        "secrets_risk": "none"
+      },
+      "artifact_kind": "config",
+      "classification": {
+        "confidence": "high",
+        "primary_kind": "surface"
+      },
+      "code_role": "none",
+      "command_role": "none",
+      "consumer_route": {
+        "route_kind": "resource",
+        "surface": "aoa-kag-mcp"
+      },
+      "document_role": "none",
+      "freshness": {
+        "checked_ref": "git-index-source-tree",
+        "mode": "source_snapshot",
+        "state": "current"
+      },
+      "identity": {
+        "content_hash": "1cf3b60aaabb306c999f451b891374c3e53dfa386ccdbba15498f70a9b4aff0d",
+        "git_ref": "git-index-source-tree",
+        "id": "file:evals/reports/aoa-skill-live-dispatch-smoke-20260711-v2-cli-mcp-config-needs-rerun.json:a64ff9237d",
+        "mime": "application/json",
+        "path": "evals/reports/aoa-skill-live-dispatch-smoke-20260711-v2-cli-mcp-config-needs-rerun.json",
+        "repo": "aoa-skills",
+        "size_bytes": 3557
+      },
+      "mechanics_role": "none",
+      "observed_form": "file",
+      "owner_return_route": {
+        "route_kind": "source_owner",
+        "surface": "evals/reports/aoa-skill-live-dispatch-smoke-20260711-v2-cli-mcp-config-needs-rerun.json"
+      },
+      "provenance": {
+        "generated_by": "",
+        "materials": [],
+        "observed_by": "aoa-kag:scripts/generate_repo_local_kag_index.py",
+        "source_refs": [
+          {
+            "authority": "authored_source",
+            "path": "evals/reports/aoa-skill-live-dispatch-smoke-20260711-v2-cli-mcp-config-needs-rerun.json",
+            "repo": "aoa-skills",
+            "role": "primary"
+          }
+        ],
+        "validated_by": [
+          "aoa-kag:scripts/validate_kag.py"
+        ]
+      },
+      "refs": {
+        "heading_refs": [],
+        "line_refs": [
+          "evals/reports/aoa-skill-live-dispatch-smoke-20260711-v2-cli-mcp-config-needs-rerun.json:1"
+        ],
+        "path_ref": "evals/reports/aoa-skill-live-dispatch-smoke-20260711-v2-cli-mcp-config-needs-rerun.json"
+      },
+      "signs": {
+        "attestation_ref": "",
+        "digest": "1cf3b60aaabb306c999f451b891374c3e53dfa386ccdbba15498f70a9b4aff0d",
+        "signature_ref": "",
+        "verification_state": "digest-only"
+      },
+      "surface_state": "authored_source",
+      "toolchain": {
+        "detected_tools": [
+          "git",
+          "python"
+        ],
+        "owner_commands": [],
+        "required_tools": [
+          "jq"
+        ]
+      },
+      "validator_route": {
+        "route_kind": "source_fast",
+        "surface": "aoa-kag:scripts/validate_kag.py"
+      }
+    },
+    {
+      "abi": {
+        "abi_epoch": "source",
         "artifact_class": "document",
         "compatibility": "stable",
         "contract_version": "none",
@@ -72807,13 +72903,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "e4bd582a6b6aa3d532844855d5e873c0f5dea7c34b41cc2898be7fc16f308487",
+        "content_hash": "c1118a995e3bf48894d504a242e0c9025905e8f01b5b82f8e7e18cd65ede39e1",
         "git_ref": "git-index-source-tree",
         "id": "file:evals/runners/readme.md:194095a363",
         "mime": "text/markdown",
         "path": "evals/runners/README.md",
         "repo": "aoa-skills",
-        "size_bytes": 5145
+        "size_bytes": 5380
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -72861,7 +72957,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "e4bd582a6b6aa3d532844855d5e873c0f5dea7c34b41cc2898be7fc16f308487",
+        "digest": "c1118a995e3bf48894d504a242e0c9025905e8f01b5b82f8e7e18cd65ede39e1",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -72909,13 +73005,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "5569ea3fb86de98e12462db1f84b57f157d52c5ab7e30ed480b6a0a851891738",
+        "content_hash": "4484e1c66f26bfe7bd763beaa3cea868c5df511774fdf727d3cad9ebc7c22660",
         "git_ref": "git-index-source-tree",
         "id": "file:evals/runners/run_live_skill_dispatch.py:e7cd5c0ae9",
         "mime": "text/x-python",
         "path": "evals/runners/run_live_skill_dispatch.py",
         "repo": "aoa-skills",
-        "size_bytes": 119614
+        "size_bytes": 119779
       },
       "mechanics_role": "none",
       "observed_form": "command",
@@ -72948,7 +73044,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "5569ea3fb86de98e12462db1f84b57f157d52c5ab7e30ed480b6a0a851891738",
+        "digest": "4484e1c66f26bfe7bd763beaa3cea868c5df511774fdf727d3cad9ebc7c22660",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -73384,7 +73480,7 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "7e9fcd5843aa47876db56453760788ab9b401cb8619b19eb8033bd7b05258153",
+        "content_hash": "84d3cff333cc771405bb71d411c6fe974b64a5d95b9f035ee24f3b616c4c2d84",
         "git_ref": "git-index-source-tree",
         "id": "file:evals/suites/aoa-skill-live-dispatch-harness.suite.json:beeca555d0",
         "mime": "application/json",
@@ -73423,7 +73519,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "7e9fcd5843aa47876db56453760788ab9b401cb8619b19eb8033bd7b05258153",
+        "digest": "84d3cff333cc771405bb71d411c6fe974b64a5d95b9f035ee24f3b616c4c2d84",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -73473,13 +73569,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "109f8bf22956861f9e01dcf06cf1ffb796c6c210ae322e38f2e6c0d5e38b7793",
+        "content_hash": "cc9ade0af2523021c7c151fccada93a9ed54cddf3b4619a78d7446b87aed73ed",
         "git_ref": "git-index-source-tree",
         "id": "file:evals/suites/aoa-skill-live-dispatch-harness.suite.md:dc83328e65",
         "mime": "text/markdown",
         "path": "evals/suites/aoa-skill-live-dispatch-harness.suite.md",
         "repo": "aoa-skills",
-        "size_bytes": 8936
+        "size_bytes": 9141
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -73550,7 +73646,7 @@
           {
             "anchor": "adaptive-return",
             "level": 2,
-            "line": 133,
+            "line": 136,
             "ref": "evals/suites/aoa-skill-live-dispatch-harness.suite.md#adaptive-return",
             "title": "Adaptive Return"
           }
@@ -73562,7 +73658,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "109f8bf22956861f9e01dcf06cf1ffb796c6c210ae322e38f2e6c0d5e38b7793",
+        "digest": "cc9ade0af2523021c7c151fccada93a9ed54cddf3b4619a78d7446b87aed73ed",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -214524,13 +214620,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "efb3432a1611618cbe06f52097ff288658f686670043d33757e4fcd70d69e066",
+        "content_hash": "c5f7c67445d9cf7b8532b144f37cd7ab981c26593271e57c00644f0275c63085",
         "git_ref": "git-index-source-tree",
         "id": "file:tests/test_live_skill_dispatch_harness.py:27c0f74cd0",
         "mime": "text/x-python",
         "path": "tests/test_live_skill_dispatch_harness.py",
         "repo": "aoa-skills",
-        "size_bytes": 68866
+        "size_bytes": 69848
       },
       "mechanics_role": "none",
       "observed_form": "command",
@@ -214563,7 +214659,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "efb3432a1611618cbe06f52097ff288658f686670043d33757e4fcd70d69e066",
+        "digest": "c5f7c67445d9cf7b8532b144f37cd7ab981c26593271e57c00644f0275c63085",
         "signature_ref": "",
         "verification_state": "digest-only"
       },

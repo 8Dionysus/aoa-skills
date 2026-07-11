@@ -898,7 +898,9 @@ def _base_codex_exec_argv(context: AdapterContext) -> list[str]:
         'web_search="disabled"',
         *_rollout_budget_config_argv(context),
         *_skill_disable_config_argv(context.disabled_skill_paths),
-        *_mcp_disable_config_argv(context.disabled_mcp_server_names),
+        # User MCP tables do not exist under --ignore-user-config. Adding only
+        # per-name enabled=false overrides here would synthesize incomplete
+        # tables without their required transports and fail before model spend.
         *_disabled_feature_argv(),
     ]
 

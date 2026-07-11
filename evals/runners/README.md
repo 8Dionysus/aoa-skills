@@ -23,12 +23,16 @@ directories. Only their count and deterministic digest enter the
 confirmation/source lock; absolute paths remain private. A confirmed run
 rediscovers the set and disables those canonical file paths in every CLI, App
 Server, and prompt-inspection adapter. Plugin features are disabled. The exact
-configured MCP-name inventory is separately count/digest locked, and every
-configured id is disabled explicitly in all three adapter paths.
+configured MCP-name inventory is separately count/digest locked. CLI exec arms
+use `--ignore-user-config` and must not synthesize otherwise absent MCP tables;
+prompt inspection and App Server, which retain the user config needed by those
+transports, disable every locked MCP id explicitly.
 
 Before each model turn, the runner calls `codex debug prompt-input` under the
-same fixture and disable configuration. The aided fixture must expose exactly
-the repo skills with `allow_implicit_invocation: true` (currently 12 of 57),
+same fixture, skill-shadow, and feature-disable configuration, with the
+transport-appropriate MCP isolation described above. The aided fixture must
+expose exactly the repo skills with `allow_implicit_invocation: true`
+(currently 12 of 57),
 while the control must expose zero repo skills. The paired non-repo background
 inventory digests must match. Each entry fingerprint binds its model-visible
 name, resolved path, and description, so description-only drift is detected. A
