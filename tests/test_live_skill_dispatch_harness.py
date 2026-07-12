@@ -692,7 +692,7 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
         )
         self.assertEqual(plan["protocol_revision"], contract["protocol_revision"])
         self.assertEqual(
-            "aoa_codex_app_server_skill_input_contract_v10",
+            "aoa_codex_app_server_skill_input_contract_v11",
             contract["schema_version"],
         )
         self.assertEqual("codex-cli 0.144.1", contract["codex_version"])
@@ -798,6 +798,10 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
         self.assertIn("read-only", implicit["argv"])
         self.assertIn(
             "Do not inspect or search any path outside this fixture root",
+            implicit["prompt"],
+        )
+        self.assertIn(
+            "Do not enumerate, recursively list, or hash the fixture tree",
             implicit["prompt"],
         )
         self.assertTrue(trajectory["prompt"].startswith("$aoa-eval "))
@@ -1049,6 +1053,10 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
                 "Do not inspect or search any path outside this fixture root",
                 trajectory_guidance,
             )
+            self.assertIn(
+                "Do not enumerate, recursively list, or hash the fixture tree",
+                trajectory_guidance,
+            )
             for path in receipt_path.parent.rglob("*"):
                 self.assertEqual(0o700 if path.is_dir() else 0o600, path.stat().st_mode & 0o777)
             Draft202012Validator(
@@ -1059,6 +1067,11 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
             runner.validate_public_receipt(public)
             self.assertTrue(public["measures"][0]["fixture_filesystem_scope_match"])
             self.assertEqual(0, public["measures"][0]["external_filesystem_access_count"])
+            self.assertTrue(public["measures"][0]["fixture_inventory_scope_match"])
+            self.assertEqual(
+                0,
+                public["measures"][0]["broad_fixture_inventory_command_count"],
+            )
             Draft202012Validator(
                 self.load_schema("live-skill-dispatch-public-receipt.schema.json")
             ).validate(public)
@@ -1914,6 +1927,65 @@ Second procedure section.
             )
             self.assertFalse(home_escape["fixture_filesystem_scope_match"])
 
+    def test_fixture_inventory_scope_rejects_broad_enumeration_and_hashing(self) -> None:
+        runner = self.runner
+
+        def event(command: str, status: str = "completed") -> dict:
+            return {
+                "type": "item.completed",
+                "item": {
+                    "type": "command_execution",
+                    "status": status,
+                    "exit_code": 0,
+                    "command": command,
+                    "aggregated_output": "observed",
+                },
+            }
+
+        allowed = runner._fixture_inventory_scope_evidence(
+            [
+                event("sed -n '1,260p' .agents/skills/aoa-eval/SKILL.md"),
+                event("cat .agents/skills/aoa-eval-select/SKILL.md"),
+                event("sed -n '1,160p' AGENTS.md"),
+                event("ls -l AGENTS.md"),
+                event("du -h AGENTS.md"),
+                event("printf '%s\\0' AGENTS.md | xargs -0 cat"),
+                event("python3 fixture_validator.py"),
+                event("test -f evals/PORT.yaml"),
+            ]
+        )
+        self.assertEqual(
+            {
+                "fixture_inventory_scope_match": True,
+                "broad_fixture_inventory_command_count": 0,
+            },
+            allowed,
+        )
+
+        broad = runner._fixture_inventory_scope_evidence(
+            [
+                event(
+                    "/usr/bin/zsh -lc \"rg --hidden --files .agents/skills\""
+                ),
+                event("find . -type f"),
+                event("tree -a"),
+                event("ls -R ."),
+                event("ls .agents/skills"),
+                event("rg --files -0 | sort -z | xargs -0 sha256sum"),
+                event("du -a ."),
+                event("python -c 'import os; print(list(os.scandir(\".\")))'"),
+                event("python -c 'from pathlib import Path; print(list(Path().rglob(\"*\")))'"),
+                event("sha256sum $(find . -type f)"),
+            ]
+        )
+        self.assertEqual(
+            {
+                "fixture_inventory_scope_match": False,
+                "broad_fixture_inventory_command_count": 10,
+            },
+            broad,
+        )
+
     def test_app_server_uses_only_the_last_agent_message_as_final_output(self) -> None:
         events = [
             {
@@ -1997,6 +2069,8 @@ Second procedure section.
             "target_skill_full_read_observed",
             "native_target_skill_input_accepted",
             "prompt_visibility_contract_match",
+            "fixture_inventory_scope_match",
+            "broad_fixture_inventory_command_count",
             "prompt_visible_repo_skill_count",
             "expected_prompt_visible_repo_skill_count",
             "structured_skill_surface_contract_match",
@@ -2073,6 +2147,7 @@ Second procedure section.
                 "trajectory_break",
                 "dispatch_policy_gap",
                 "selection_report_miss",
+                "fixture_inventory_scope_violation",
                 "fixture_execution_gap",
                 "procedure_disposition_miss",
                 "owner_boundary_violation",
@@ -2098,6 +2173,12 @@ Second procedure section.
         self.assertEqual(
             "review_selection_report_contract_then_repeat_same_case",
             self.runner.ADAPTIVE_RETURN_ROUTE["selection_report_miss"],
+        )
+        self.assertEqual(
+            "repair_fixture_inventory_scope_then_repeat_same_case",
+            self.runner.ADAPTIVE_RETURN_ROUTE[
+                "fixture_inventory_scope_violation"
+            ],
         )
         self.assertEqual(
             "repair_read_tooling_or_skill_load_then_repeat_same_case",
@@ -2145,6 +2226,18 @@ Second procedure section.
             self.runner._trial_failure_class(
                 budget_trial,
                 contaminated_budget_result,
+            ),
+        )
+        broad_inventory_budget_result = {
+            **budget_result,
+            "fixture_filesystem_scope_match": True,
+            "fixture_inventory_scope_match": False,
+        }
+        self.assertEqual(
+            "fixture_inventory_scope_violation",
+            self.runner._trial_failure_class(
+                budget_trial,
+                broad_inventory_budget_result,
             ),
         )
         app_server_budget_result = {

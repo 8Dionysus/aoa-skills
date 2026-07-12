@@ -88,6 +88,13 @@ Tracking starts with the community-docs baseline for this repository.
   dispatch or load evidence.
   Current pairs explicitly leave objective outcome unscored because the fixture
   has no observable external-task result.
+- Two exact-merged v10 attempts now have public-safe `needs-rerun` receipts.
+  The first stopped the aided arm after broad hidden fixture enumeration; the
+  unchanged repeat completed the implicit pair but stopped the explicit root
+  arm after broad listing and tree hashing. V11 keeps the 48k cap, source-locks
+  a bounded inventory contract, permits exact route-required reads, and grades
+  broad internal enumeration as `fixture_inventory_scope_violation` before a
+  later budget marker or skill interpretation.
 - `AOA-SK-D-0037` records why live cohorts remain operator-confirmed candidate
   evidence and now clarifies prompt-surface isolation and evidence-stage grading
   after the contaminated smoke; deterministic harness validation, not model
@@ -198,15 +205,15 @@ Tracking starts with the community-docs baseline for this repository.
   selected procedure's disposition report and owner boundary. This also fits
   direct pilot routes without inventing a child. Fixture execution is objective
   but independent; whole-task outcome remains explicitly unavailable.
-  Historical v8-v9 receipts remain readable and immutable under their original
+  Historical v8-v10 receipts remain readable and immutable under their original
   graders.
 - The source corpus and schema are now named
   `aoa-skill-live-dispatch-procedures.json` and
   `live-skill-dispatch-procedure-contracts.schema.json`; the old outcome names
   are retained only inside historical receipt vocabulary.
 - The hermetic evidence contract is now
-  `aoa_codex_app_server_skill_input_contract_v10` with protocol revision
-  `codex-cli-0.144.1-live-dispatch-evidence-v10`; retained v1-v9 receipts remain
+  `aoa_codex_app_server_skill_input_contract_v11` with protocol revision
+  `codex-cli-0.144.1-live-dispatch-evidence-v11`; retained v1-v10 receipts remain
   immutable under their original protocol and review status.
 - Live dispatch now locks and passes Codex rollout-budget reminder thresholds
   as a TOML list for both CLI and App Server arms, rejects invalid thresholds

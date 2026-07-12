@@ -18,5 +18,6 @@ Active local suite notes:
   [aoa-skill-live-dispatch-procedures.json](aoa-skill-live-dispatch-procedures.json)
   holds source-authored selected-child and procedure-disposition expectations.
   Missing contracts remain explicitly unscored; the independent fixture probe
-  stays separate, whole-task outcome stays outside this corpus, and live
-  observations cannot write their own answer key.
+  stays separate, whole-task outcome stays outside this corpus, broad fixture
+  inventory is rejected before budget interpretation, and live observations
+  cannot write their own answer key.

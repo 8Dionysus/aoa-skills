@@ -25,4 +25,6 @@ selected-child/procedure-disposition expectations, constrained model output,
 private raw receipt, and public field-whitelisted projection for the local
 live-dispatch harness. Procedure contracts do not turn the independent fixture
 probe or a model disposition report into an objective outcome observation,
-whole-task completion claim, eval verdict, or proof authority.
+whole-task completion claim, eval verdict, or proof authority. Public measures
+also keep external-filesystem scope distinct from broad in-fixture inventory
+scope so a later budget marker cannot erase either boundary.
