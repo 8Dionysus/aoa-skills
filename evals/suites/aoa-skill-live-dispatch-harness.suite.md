@@ -73,7 +73,10 @@ after reviewing the preceding cohort and repairing any return route it opens.
 `pilot13` is additionally `required_for_live`: planning may expose incomplete
 procedure-contract and objective-outcome coverage, but confirmed execution
 stops before preflight or model spend until both reach all 11 implicit pairs.
-The current posture is 1/11 procedure contracts and 1/11 objective outcomes.
+The current posture is 11/11 procedure contracts and 11/11 objective outcomes.
+This closes only the deterministic coverage gate: the pilot has not yet run,
+and its exact source token, high-cost token, and host/runtime preflights remain
+mandatory.
 
 ## Evidence Semantics
 
@@ -300,6 +303,16 @@ dimension. The reviewed public receipt is
 This validates the outcome seam, not skill-specific outcome lift or pilot
 authorization; expand the reviewed contract shape to the remaining ten cases
 before pilot execution.
+
+That expansion is now source-authored for all eleven implicit pilot cases. The
+three underspecified direct invoke routes stop at `blocked_missing_input`; the
+two rooted routes additionally lock their first child and complete child read;
+the six explicit-only routes remain `not_applicable` under implicit pressure.
+Each case also has a separate sorted three-choice owner-action contract whose
+answer is hidden behind the same one-attempt validator boundary. Deterministic
+tests now report 11/11 on both axes. This authorizes only the next guarded step:
+review and merge the exact source, then plan and run `pilot13` with its printed
+operator tokens and host gates.
 
 ## Safety And Privacy
 

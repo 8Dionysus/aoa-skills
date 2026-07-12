@@ -130,6 +130,13 @@ Tracking starts with the community-docs baseline for this repository.
   so each reports `0` lift with both correct. The reviewed receipt validates
   one-attempt outcome observability and anti-inspection boundaries, not
   skill-specific outcome lift, whole-task completion, or pilot authorization.
+- The reviewed v12 contract shape now covers all 11 implicit `pilot13` pairs.
+  Source-locked procedure contracts distinguish underspecified invoke routes,
+  rooted child trajectories, and explicit-only manual routes; separate bounded
+  owner-action contracts make one honest next action observable per case.
+  Deterministic plan coverage is 11/11 on both required axes. This closes the
+  preflight coverage stop only; live pilot execution still requires an exact
+  merged source plan, both operator tokens, host gates, and adaptive review.
 - `AOA-SK-D-0037` records why live cohorts remain operator-confirmed candidate
   evidence and now clarifies prompt-surface isolation and evidence-stage grading
   after the contaminated smoke; deterministic harness validation, not model

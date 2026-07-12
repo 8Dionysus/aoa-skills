@@ -531,6 +531,110 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
             ):
                 runner.expand_cohort(REPO_ROOT, plan, "smoke")
 
+    def test_pilot_has_source_locked_procedure_and_outcome_contracts_for_all_cases(self) -> None:
+        runner = self.runner
+        plan = runner.load_plan(self.plan_path)
+        pilot = runner.expand_cohort(REPO_ROOT, plan, "pilot13")
+        implicit = [
+            trial
+            for trial in pilot
+            if trial.arm_type in {"implicit_aided", "implicit_control"}
+        ]
+        expected = {
+            "collision-01": (None, "blocked_missing_input", False, True),
+            "collision-03": (None, "blocked_missing_input", False, True),
+            "collision-08": (None, "blocked_missing_input", False, True),
+            "collision-09": (None, "not_applicable", False, False),
+            "collision-14": (None, "not_applicable", False, False),
+            "collision-20": (None, "not_applicable", False, False),
+            "collision-33": (None, "not_applicable", False, False),
+            "collision-38": (
+                "aoa-decision-find",
+                "blocked_missing_input",
+                False,
+                True,
+            ),
+            "collision-42": (
+                "aoa-eval-select",
+                "blocked_missing_input",
+                False,
+                True,
+            ),
+            "collision-49": (None, "not_applicable", False, False),
+            "desc-titan-03-manual": (None, "not_applicable", False, False),
+        }
+        expected_outcomes = {
+            "collision-01": "request_parser_checks_and_stable_truth",
+            "collision-03": "request_owner_context_and_interface_evidence",
+            "collision-08": "request_owner_repo_route_and_target_diff",
+            "collision-09": "require_explicit_gate_invocation_before_dns_action",
+            "collision-14": "require_explicit_invocation_and_atm10_owner_route",
+            "collision-20": "require_explicit_invocation_and_reviewed_artifact",
+            "collision-33": "require_explicit_invocation_before_child_lane",
+            "collision-38": "inspect_graph_status_and_narrow_impact_packet",
+            "collision-42": "inspect_target_eval_surfaces_before_classification",
+            "collision-49": "require_explicit_invocation_before_trust_loop",
+            "desc-titan-03-manual": "require_explicit_invocation_before_bridge_work",
+        }
+        self.assertEqual(22, len(implicit))
+        self.assertEqual(set(expected), {trial.case_id for trial in implicit})
+        self.assertEqual(set(expected), set(expected_outcomes))
+        for trial in implicit:
+            with self.subTest(case_id=trial.case_id, arm=trial.arm_type):
+                self.assertIsNotNone(trial.procedure_contract)
+                self.assertIsNotNone(trial.outcome_contract)
+                procedure = trial.procedure_contract
+                outcome = trial.outcome_contract
+                assert procedure is not None
+                assert outcome is not None
+                child, disposition, completion, deflection = expected[trial.case_id]
+                self.assertEqual(
+                    "manual" if disposition == "not_applicable" else "invoke",
+                    trial.expected_behavior,
+                )
+                self.assertEqual(child, procedure.expected_selected_child_skill)
+                self.assertEqual(
+                    True if child is not None else None,
+                    procedure.expected_selected_child_full_read_observed,
+                )
+                self.assertEqual(
+                    disposition,
+                    procedure.expected_selected_procedure_disposition,
+                )
+                self.assertEqual(
+                    completion,
+                    procedure.expected_selected_procedure_completion_reported,
+                )
+                self.assertEqual(
+                    deflection,
+                    procedure.expected_selected_procedure_deflection_reported,
+                )
+                self.assertTrue(procedure.expected_owner_boundary_present)
+                self.assertEqual(
+                    "fixture_owner_observable_decision",
+                    outcome.scope,
+                )
+                self.assertEqual(
+                    expected_outcomes[trial.case_id],
+                    outcome.expected_candidate_value,
+                )
+                self.assertEqual(
+                    tuple(sorted(outcome.candidate_values)),
+                    outcome.candidate_values,
+                )
+
+        packet = runner.build_plan_packet(
+            REPO_ROOT,
+            plan,
+            "pilot13",
+            "model-a",
+            "medium",
+        )
+        self.assertEqual(11, packet["procedure_scored_pair_count"])
+        self.assertTrue(packet["procedure_contract_coverage_complete"])
+        self.assertEqual(11, packet["objective_outcome_scored_pair_count"])
+        self.assertTrue(packet["objective_outcome_coverage_complete"])
+
     def test_procedure_contract_match_is_independent_from_route_match(self) -> None:
         runner = self.runner
         contract = runner.ProcedureContract(
@@ -712,20 +816,34 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
         self.assertTrue(pilot["high_cost_confirmation_required"])
         self.assertEqual("required_for_live", pilot["procedure_contract_mode"])
         self.assertEqual(11, pilot["implicit_pair_count"])
-        self.assertEqual(1, pilot["procedure_scored_pair_count"])
-        self.assertFalse(pilot["procedure_contract_coverage_complete"])
-        self.assertFalse(pilot["objective_outcome_coverage_complete"])
+        self.assertEqual(11, pilot["procedure_scored_pair_count"])
+        self.assertTrue(pilot["procedure_contract_coverage_complete"])
+        self.assertEqual(11, pilot["objective_outcome_scored_pair_count"])
+        self.assertTrue(pilot["objective_outcome_coverage_complete"])
 
     def test_high_cost_live_run_blocks_before_preflight_when_procedures_are_incomplete(self) -> None:
         runner = self.runner
         plan = runner.load_plan(self.plan_path)
-        packet = runner.build_plan_packet(REPO_ROOT, plan, "pilot13", "model-a", "medium")
         transport = FakeTransport()
+        packet = {
+            "confirmation_token": "confirmed",
+            "high_cost_confirmation_required": False,
+            "procedure_contract_mode": "required_for_live",
+            "procedure_contract_coverage_complete": False,
+            "procedure_scored_pair_count": 0,
+            "objective_outcome_mode": "required_for_live",
+            "objective_outcome_coverage_complete": True,
+            "objective_outcome_scored_pair_count": 11,
+            "implicit_pair_count": 11,
+        }
 
         with tempfile.TemporaryDirectory() as td:
-            with self.assertRaisesRegex(
-                runner.ConfirmationError,
-                "pilot13 requires source-locked procedure contracts for all 11 implicit pairs",
+            with (
+                mock.patch.object(runner, "build_plan_packet", return_value=packet),
+                self.assertRaisesRegex(
+                    runner.ConfirmationError,
+                    "pilot13 requires source-locked procedure contracts for all 11 implicit pairs",
+                ),
             ):
                 runner.run_confirmed_cohort(
                     repo_root=REPO_ROOT,
@@ -733,8 +851,8 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
                     cohort="pilot13",
                     model="model-a",
                     effort="medium",
-                    confirmation_token=packet["confirmation_token"],
-                    high_cost_token=packet["high_cost_confirmation_token"],
+                    confirmation_token="confirmed",
+                    high_cost_token=None,
                     private_root=Path(td),
                     transport=transport,
                     test_only_allow_noncanonical_private_root=True,
