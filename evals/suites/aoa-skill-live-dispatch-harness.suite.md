@@ -98,6 +98,11 @@ after reviewing the preceding cohort and repairing any return route it opens.
   before generic output-contract invalidity is considered;
 - a normal zero-return transport with an invalid final structured result is
   `output_contract_invalid`, not `transport_failure`;
+- caught transport exceptions preserve observed elapsed milliseconds and any
+  partial private stdout/stderr, including recoverable JSONL events and usage;
+- after preserving the private receipt, an incomplete stopped-early cohort
+  reports its stop reason and exits nonzero, while a fully measured cohort exits
+  zero even when its skill evidence is negative;
 - raw `.aoa` episodes and live transcripts remain reviewed candidates.
 
 The first complete post-classifier-fix smoke from 2026-07-11 is `needs-rerun`,
@@ -143,6 +148,14 @@ output to contain the whole file and therefore emitted a false
 unchanged; replay under v6 proves only the detector repair. Repeat the live
 smoke under exact-merged v6 before pilot widening.
 
+The exact-merged-tree v6 rerun is also `needs-rerun`. Prompt visibility and
+fixture scope passed, but the first CLI transport timed out after 180 seconds
+before a turn event, output, usage, or pair. The v6 private receipt correctly
+stopped early, while its command still exited zero and made the host wrapper
+look successful. V7 preserves timeout duration and returns nonzero for an
+incomplete cohort. Repeat only after runtime availability and exact-merged v7
+validation.
+
 ## Safety And Privacy
 
 The plan locks Git head, all portable skill files, generated/config inputs,
@@ -159,8 +172,8 @@ therefore disable every locked id explicitly. Deterministic adapter tests guard
 both sides of this transport-specific contract.
 
 These hermetic invocation rules use contract schema
-`aoa_codex_app_server_skill_input_contract_v6` and protocol revision
-`codex-cli-0.144.1-live-dispatch-evidence-v6`. Retained v1-v5 receipts remain
+`aoa_codex_app_server_skill_input_contract_v7` and protocol revision
+`codex-cli-0.144.1-live-dispatch-evidence-v7`. Retained v1-v6 receipts remain
 source-locked to their original protocol and review status and are not upgraded
 in place.
 

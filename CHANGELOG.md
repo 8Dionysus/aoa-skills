@@ -52,6 +52,11 @@ Tracking starts with the community-docs baseline for this repository.
   grader rejected. V6 assembles continuous ordered exact-path source coverage,
   permits overlaps, ignores unrelated outputs, and keeps gaps or reverse-only
   coverage incomplete before repeating the live smoke.
+- The exact-merged-tree v6 smoke now has a public-safe `needs-rerun` receipt.
+  Prompt visibility and fixture scope passed, but the first CLI transport timed
+  out at 180 seconds before any turn event, output, usage, or pair. V7 preserves
+  elapsed failure duration and returns nonzero for an incomplete stopped-early
+  cohort after safely writing its private receipt.
 - `AOA-SK-D-0037` records why live cohorts remain operator-confirmed candidate
   evidence and now clarifies prompt-surface isolation and evidence-stage grading
   after the contaminated smoke; deterministic harness validation, not model
@@ -120,7 +125,8 @@ Tracking starts with the community-docs baseline for this repository.
   structured `skill` item.
 - Read-only shell execution is now available to prove complete skill reads and
   run the exact hermetic `python3 fixture_validator.py` procedure. A full read
-  must name the exact fixture `SKILL.md` path and return its complete content;
+  must name the exact fixture `SKILL.md` path and expose its complete content in
+  one output or continuous ordered chunks;
   verification requires one atomic command event whose exact command, zero
   exit, sentinel JSON, and fixture-guidance digest all agree. Public measures
   keep selection, claimed load, accepted native input, transport-observed
@@ -149,9 +155,14 @@ Tracking starts with the community-docs baseline for this repository.
   or owner-boundary safety failure. Contamination is retained as a pair result
   without rewriting either arm's historical failure class, and public-receipt
   validation rejects absolute host paths even when embedded inside prose.
+- Caught CLI and App Server transport exceptions retain elapsed duration,
+  partial private stdout/stderr, recoverable JSONL events, and usage.
+  Complete cohorts exit zero even for negative model evidence, while incomplete
+  stopped-early cohorts publish their stop reason and exit nonzero after the
+  private receipt is preserved.
 - The hermetic evidence contract is now
-  `aoa_codex_app_server_skill_input_contract_v6` with protocol revision
-  `codex-cli-0.144.1-live-dispatch-evidence-v6`; retained v1-v5 receipts remain
+  `aoa_codex_app_server_skill_input_contract_v7` with protocol revision
+  `codex-cli-0.144.1-live-dispatch-evidence-v7`; retained v1-v6 receipts remain
   immutable under their original protocol and review status.
 - Live dispatch now locks and passes Codex rollout-budget reminder thresholds
   as a TOML list for both CLI and App Server arms, rejects invalid thresholds

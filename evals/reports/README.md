@@ -88,8 +88,14 @@ temporary root and must not be copied into this directory.
   recorded a false `skill_load_gap` and no-lift result. Historical fields stay
   immutable; replay validates only the v6 detector repair, and a fresh
   exact-merged v6 smoke is required before widening.
+- [aoa-skill-live-dispatch-smoke-20260712-v6-transport-timeout-needs-rerun.json](aoa-skill-live-dispatch-smoke-20260712-v6-transport-timeout-needs-rerun.json)
+  preserves the exact-merged v6 rerun. Prompt visibility and fixture scope
+  passed, but the first CLI transport reached its 180-second timeout before any
+  turn event, output, usage, or pair. The private receipt stopped early while
+  the historical v6 command still exited zero. This is transport and CLI-status
+  evidence only; repeat after runtime availability under exact-merged v7.
 
-Corrected live receipts under the v6 evidence protocol are reviewable only
+Corrected live receipts under the v7 evidence protocol are reviewable only
 after canonical user-skill shadows, plugins, and every configured MCP id are
 isolated with the adapter-appropriate mechanism (`--ignore-user-config` for
 CLI exec, explicit per-id disables for prompt inspection and App Server);
@@ -106,13 +112,18 @@ inventory mentions, and shadow paths remain insufficient; zero-return
 output-contract invalidity remains separate from transport failure; every
 model command remains within the fixture root, with external or parent-path
 access classified as contamination before budget; one atomic
-guidance-bound validator event is proved; and invalid pairs are
+guidance-bound validator event is proved; caught transport exceptions preserve
+elapsed duration and partial private stdout/stderr so recoverable events retain
+their normal precedence; incomplete stopped-early cohorts return nonzero after
+their private receipt is written, while complete negative cohorts remain valid
+executions; and invalid pairs are
 omitted without rewriting arm history. Public
 validation rejects embedded absolute host paths as well as raw prompts,
 transport ids, and credential-shaped values. Retained v1/v2 smokes remain
-historical `needs-rerun` evidence; retained v3-v5 reports keep their original
+historical `needs-rerun` evidence; retained v3-v6 reports keep their original
 review status and grader semantics, including v4's budget label and v5's
-single-output read label rather than being rewritten in place.
+single-output read label, while v6 keeps its zero-duration and wrapper-success
+history rather than being rewritten in place.
 - [aoa-eval-session-mining.report.md](aoa-eval-session-mining.report.md)
   records the first `.aoa` mining pass for `aoa-eval` trigger evidence and its
   proof limits.

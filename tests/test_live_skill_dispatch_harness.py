@@ -296,6 +296,55 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
             self.assertEqual("confirmation_required", payload["status"])
             self.assertFalse(private_root.exists())
 
+    def test_run_cli_returns_nonzero_and_explicit_status_for_incomplete_cohort(self) -> None:
+        runner = self.runner
+
+        def invoke(receipt: dict) -> tuple[int, dict]:
+            stdout = io.StringIO()
+            with (
+                mock.patch.object(runner, "build_plan_packet", return_value={}),
+                mock.patch.object(runner, "run_confirmed_cohort", return_value=receipt),
+                redirect_stdout(stdout),
+            ):
+                returncode = runner.main(
+                    [
+                        "run",
+                        "--repo-root",
+                        str(REPO_ROOT),
+                        "--model",
+                        "test-model",
+                        "--confirm-live",
+                        "confirmed",
+                    ]
+                )
+            return returncode, json.loads(stdout.getvalue())
+
+        completed = {
+            "run_id": "run-completed",
+            "raw_bundle_sha256": "a" * 64,
+            "trials": [{}, {}, {}, {}],
+            "stopped_early": False,
+            "stop_reason": None,
+        }
+        returncode, payload = invoke(completed)
+        self.assertEqual(0, returncode)
+        self.assertEqual("completed", payload["status"])
+        self.assertFalse(payload["stopped_early"])
+        self.assertIsNone(payload["stop_reason"])
+
+        incomplete = {
+            **completed,
+            "run_id": "run-incomplete",
+            "trials": [{}],
+            "stopped_early": True,
+            "stop_reason": "transport_failure",
+        }
+        returncode, payload = invoke(incomplete)
+        self.assertEqual(1, returncode)
+        self.assertEqual("stopped_early", payload["status"])
+        self.assertTrue(payload["stopped_early"])
+        self.assertEqual("transport_failure", payload["stop_reason"])
+
     def test_confirmation_token_binds_head_model_effort_caps_and_sources(self) -> None:
         plan = self.runner.load_plan(self.plan_path)
         first = self.runner.build_plan_packet(REPO_ROOT, plan, "smoke", "model-a", "medium")
@@ -421,7 +470,7 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
         )
         self.assertEqual(plan["protocol_revision"], contract["protocol_revision"])
         self.assertEqual(
-            "aoa_codex_app_server_skill_input_contract_v6",
+            "aoa_codex_app_server_skill_input_contract_v7",
             contract["schema_version"],
         )
         self.assertEqual("codex-cli 0.144.1", contract["codex_version"])
@@ -447,6 +496,18 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
         self.assertIn(
             "ordered successful exact-path outputs",
             contract["evidence_binding"]["full_read_assembly"],
+        )
+        self.assertIn(
+            "preserves elapsed milliseconds",
+            contract["evidence_binding"]["transport_failure_duration"],
+        )
+        self.assertIn(
+            "partial timeout stdout and stderr",
+            contract["evidence_binding"]["transport_partial_evidence"],
+        )
+        self.assertIn(
+            "stopped-early incomplete cohort",
+            contract["evidence_binding"]["cohort_process_status"],
         )
         self.assertIn(
             "dynamically selected child",
@@ -803,6 +864,49 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
             "harness_contamination",
             receipt["trials"][0]["measure"]["failure_class"],
         )
+
+    def test_transport_timeout_preserves_observed_duration_before_early_stop(self) -> None:
+        runner = self.runner
+        plan = runner.load_plan(self.plan_path)
+        packet = runner.build_plan_packet(REPO_ROOT, plan, "smoke", "test-model", "medium")
+
+        class TimeoutTransport(FakeTransport):
+            def run_cli(self, request: dict) -> dict:
+                raise runner.subprocess.TimeoutExpired(
+                    request["argv"],
+                    180,
+                    output='{"type":"turn.started"}\n',
+                    stderr="transport remained pending",
+                )
+
+        with tempfile.TemporaryDirectory() as td:
+            with mock.patch.object(
+                runner.time,
+                "monotonic",
+                side_effect=[100.0, 280.125],
+            ):
+                receipt = runner.run_confirmed_cohort(
+                    repo_root=REPO_ROOT,
+                    plan=plan,
+                    cohort="smoke",
+                    model="test-model",
+                    effort="medium",
+                    confirmation_token=packet["confirmation_token"],
+                    high_cost_token=None,
+                    private_root=Path(td),
+                    transport=TimeoutTransport(),
+                    test_only_allow_noncanonical_private_root=True,
+                )
+
+        result = receipt["trials"][0]["result"]
+        measure = receipt["trials"][0]["measure"]
+        self.assertTrue(receipt["stopped_early"])
+        self.assertEqual("transport_failure", receipt["stop_reason"])
+        self.assertEqual("transport_failure", measure["failure_class"])
+        self.assertEqual(180125, measure["duration_ms"])
+        self.assertEqual([{"type": "turn.started"}], result["events"])
+        self.assertTrue(result["turn_started"])
+        self.assertIn("transport remained pending", result["stderr"])
 
     def test_public_validator_rejects_paths_credentials_raw_text_and_session_ids(self) -> None:
         runner = self.runner

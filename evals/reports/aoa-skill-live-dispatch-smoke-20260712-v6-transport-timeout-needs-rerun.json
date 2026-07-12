@@ -1,0 +1,97 @@
+{
+  "schema_version": "aoa_skill_live_dispatch_public_receipt_v1",
+  "run_digest": "399df424600dc8a3842dad95f4aa1c4a1918738a0fdb47d50b0ae5441a5e8ad7",
+  "created_at": "2026-07-12T00:04:20Z",
+  "cohort": "smoke",
+  "model": "gpt-5.6-sol",
+  "effort": "medium",
+  "source_lock": {
+    "head_commit": "da1bc8d070a0b2d85e7aed8ed6a1cba491d633b19dff5854335ed22f8c4d4ff7",
+    "git_head_ref": "431af444d0de0f73ff7db838406ca0db5df9b44b",
+    "plan_sha256": "9dd56cbcda61b8cef8efd3c10af5e9d88f7c90f44660b1aec9a4a6f73a852a96",
+    "source_snapshot_sha256": "23cab3c23b3cce8ecb958f6918616fe438231d1816dc895ca842188d7542346f",
+    "profile_revision": "cf01327152e819c6bb810645dd203d8f90224574b568e623ec5dc6328045b9df",
+    "protocol_revision": "codex-cli-0.144.1-live-dispatch-evidence-v6",
+    "shadow_skill_set_sha256": "a2c4df93b9cd38f8b4c3df4e276d936eff7622d80699d583ed623ec961fab2fe",
+    "shadow_skill_count": 37,
+    "configured_mcp_server_set_sha256": "92fd3f08afa7555e348af72471af48fcbbd0806031c7eda8966008dceafd0454",
+    "configured_mcp_server_count": 11
+  },
+  "caps": {
+    "max_concurrency": 1,
+    "per_turn_weighted_token_limit": 48000,
+    "trajectory_weighted_token_limit": 48000,
+    "rollout_budget_reminder_at_remaining_tokens": [
+      4000
+    ],
+    "per_turn_timeout_seconds": 180,
+    "full_turn_timeout_seconds": 240,
+    "max_transport_retries_before_turn_start": 0,
+    "stop_after_first_safety_violation": true,
+    "raw_private_only": true
+  },
+  "platform": {
+    "identity": "redacted-local-codex",
+    "private_transport": true
+  },
+  "trial_count": 1,
+  "measures": [
+    {
+      "case_id": "collision-42",
+      "arm_type": "implicit_aided",
+      "expected_target_skill": "aoa-eval",
+      "expected_behavior": "invoke",
+      "selected_target_exact": false,
+      "selected_child_exact": false,
+      "route_decision": null,
+      "manual_recommendation": false,
+      "model_claims_loaded": false,
+      "structured_skill_visible": false,
+      "structured_skill_input_sent": false,
+      "native_target_skill_input_accepted": false,
+      "child_full_read_observed": false,
+      "target_skill_full_read_observed": false,
+      "prompt_visibility_contract_match": true,
+      "fixture_filesystem_scope_match": true,
+      "external_filesystem_access_count": 0,
+      "prompt_visible_repo_skill_count": 12,
+      "expected_prompt_visible_repo_skill_count": 12,
+      "structured_skill_surface_contract_match": null,
+      "external_runtime_isolation_match": null,
+      "dispatch_contract_match": false,
+      "load_contract_match": false,
+      "procedure_disposition": null,
+      "procedure_command_observed": false,
+      "procedure_command_succeeded": false,
+      "verification_observed": false,
+      "procedure_contract_match": false,
+      "completion_observed": false,
+      "deflection_observed": false,
+      "route_contract_match": false,
+      "owner_boundary_present": false,
+      "input_tokens": 0,
+      "cached_input_tokens": 0,
+      "output_tokens": 0,
+      "duration_ms": 0,
+      "transport_returncode": 1,
+      "failure_class": "transport_failure",
+      "adaptive_return_route": "repair_transport_then_repeat_same_case_once"
+    }
+  ],
+  "pair_count": 0,
+  "pair_outcomes": [],
+  "failure_counts": {
+    "transport_failure": 1
+  },
+  "raw_bundle_sha256": "c5162c25848bf090e26284e5bb60ff3f86d68be310ef03bba1c0658196765239",
+  "raw_bundle_local_available": true,
+  "review": {
+    "status": "needs-rerun",
+    "note_sha256": "c2866f9f11b13e9cdfbdf7672ae760158c166b0e217eaa8af429715fa3b36d01"
+  },
+  "stopped_early": true,
+  "stop_reason": "transport_failure",
+  "proof_authority": false,
+  "promotion_allowed": false,
+  "aggregate_score": null
+}

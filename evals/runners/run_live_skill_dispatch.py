@@ -562,7 +562,7 @@ def _expected_codex_version(plan: dict[str, Any]) -> str:
     revision = str(plan.get("protocol_revision") or "")
     match = re.fullmatch(
         r"codex-cli-([0-9]+(?:\.[0-9]+){2})-"
-        r"(?:app-server-skill-input-v3|live-dispatch-evidence-v[456])",
+        r"(?:app-server-skill-input-v3|live-dispatch-evidence-v[4567])",
         revision,
     )
     if match is None:
@@ -2127,16 +2127,42 @@ def _model_output_contract_valid(value: Any) -> bool:
     )
 
 
-def _transport_failure_result(exc: BaseException) -> dict[str, Any]:
+def _transport_failure_result(
+    exc: BaseException,
+    *,
+    duration_ms: int,
+) -> dict[str, Any]:
+    def stream_text(value: Any) -> str:
+        if isinstance(value, bytes):
+            return value.decode("utf-8", errors="replace")
+        return value if isinstance(value, str) else ""
+
+    stdout = stream_text(getattr(exc, "stdout", None))
+    partial_stderr = stream_text(getattr(exc, "stderr", None))
+    failure_text = f"{type(exc).__name__}: {exc}"
+    stderr = "\n".join(part for part in (partial_stderr, failure_text) if part)
+    events = _jsonl_events(stdout)
+    usage = next(
+        (
+            event.get("usage")
+            for event in reversed(events)
+            if isinstance(event.get("usage"), dict)
+        ),
+        {},
+    )
     return {
         "returncode": 1,
-        "stdout": "",
-        "stderr": f"{type(exc).__name__}: {exc}",
+        "stdout": stdout,
+        "stderr": stderr,
         "final_output": None,
-        "events": [],
-        "usage": {},
-        "duration_ms": 0,
-        "turn_started": False,
+        "events": events,
+        "usage": usage,
+        "duration_ms": duration_ms,
+        "turn_started": any(
+            event.get("type") == "turn.started"
+            or event.get("method") == "turn/started"
+            for event in events
+        ),
     }
 
 
@@ -2865,15 +2891,23 @@ def run_confirmed_cohort(
                 "forced_failure_class": "harness_contamination",
             }
         elif trial.arm_type in {"implicit_aided", "implicit_control", "root_manual_child"}:
+            transport_started = time.monotonic()
             try:
                 result = transport.run_cli(request)
             except (OSError, subprocess.TimeoutExpired, TimeoutError) as exc:
-                result = _transport_failure_result(exc)
+                result = _transport_failure_result(
+                    exc,
+                    duration_ms=int((time.monotonic() - transport_started) * 1000),
+                )
         else:
+            transport_started = time.monotonic()
             try:
                 result = transport.run_app_server(request)
             except (OSError, subprocess.TimeoutExpired, TimeoutError) as exc:
-                result = _transport_failure_result(exc)
+                result = _transport_failure_result(
+                    exc,
+                    duration_ms=int((time.monotonic() - transport_started) * 1000),
+                )
         result = _enrich_transport_evidence(trial, result, fixture_root, prompt_evidence)
         measure = _trial_measure(trial, result)
         private_trials.append(
@@ -3153,20 +3187,23 @@ def main(argv: Sequence[str] | None = None) -> int:
         except ConfirmationError as exc:
             print(json.dumps({"action": "run", "status": "blocked", "error": str(exc)}, indent=2))
             return 2
+        stopped_early = receipt.get("stopped_early") is True
         print(
             json.dumps(
                 {
                     "action": "run",
-                    "status": "completed",
+                    "status": "stopped_early" if stopped_early else "completed",
                     "run_digest": sha256_text(receipt["run_id"]),
                     "raw_bundle_sha256": receipt["raw_bundle_sha256"],
                     "trial_count": len(receipt["trials"]),
+                    "stopped_early": stopped_early,
+                    "stop_reason": receipt.get("stop_reason"),
                     "review_required": True,
                 },
                 indent=2,
             )
         )
-        return 0
+        return 1 if stopped_early else 0
     raise AssertionError(f"unhandled action: {args.action}")
 
 
