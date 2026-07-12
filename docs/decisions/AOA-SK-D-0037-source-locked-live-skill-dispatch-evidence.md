@@ -59,6 +59,14 @@ but reported the equivalent `aoa-eval` root-to-child hierarchy. V9 had confused
 the fixture probe with the child procedure and model selection report with
 transport-native dispatch.
 
+The exact-merged v10 attempts exposed a separate breadth prerequisite. The
+first aided arm broadly enumerated the hidden fixture and exhausted 48k before
+final output. An unchanged repeat completed the implicit pair, then the root
+trajectory broadly listed and hashed the fixture tree before the same cap stop.
+Both runs stayed inside the filesystem boundary, but exact-path read evidence
+had become mixed with unnecessary full-tree archaeology. A path-safe command
+is therefore not automatically a scope-bounded command.
+
 ## Options Considered
 
 - Infer effectiveness from session mentions, generated trigger fixtures, and
@@ -115,11 +123,11 @@ config and explicitly disable every locked id. A shadow or MCP count/digest
 change is source/runtime drift, not a reason to reuse the old token.
 
 The corrected hermetic pre-turn and evidence contract uses schema
-`aoa_codex_app_server_skill_input_contract_v10` and protocol revision
-`codex-cli-0.144.1-live-dispatch-evidence-v10`. It follows the
+`aoa_codex_app_server_skill_input_contract_v11` and protocol revision
+`codex-cli-0.144.1-live-dispatch-evidence-v11`. It follows the
 [official App Server invocation shape](https://learn.chatgpt.com/docs/app-server#start-a-turn-invoke-a-skill)
 and Codex [progressive-disclosure load semantics](https://learn.chatgpt.com/docs/customization/overview#skills).
-Retained receipts source-locked to v1-v9 keep their original protocol and
+Retained receipts source-locked to v1-v10 keep their original protocol and
 review status and are not upgraded in place.
 
 The source-locked caps include both the rollout token limit and its required
@@ -157,6 +165,11 @@ root. Absolute host, workspace, session-memory, user-config, other-repository,
 or parent-traversal paths are `harness_contamination` before budget, dispatch,
 load, procedure, or lift interpretation. System executables and `/dev/null`
 remain tooling exceptions and do not widen the data boundary.
+Inside that root, commands must also avoid broad enumeration, recursive
+listing, and tree hashing. Exact reads of fixture guidance, the selected root
+or target skill, at most one selected child, and the named validator remain
+allowed. A completed or in-progress broad inventory command is
+`fixture_inventory_scope_violation` before budget or skill interpretation.
 Every arm receives the exact fixture probe
 `python3 fixture_validator.py`. Transport records full reads, exact command
 observation, zero exit, and `AOA_FIXTURE_VALIDATOR_OK` verification as separate
@@ -255,6 +268,9 @@ target also appears in its own neighbourhood list.
 - Positive: fixture-scope grading rejects filesystem treatment leakage even
   when prompt visibility is clean and a later budget marker would otherwise
   hide the earlier contamination.
+- Positive: inventory-scope grading rejects path-safe but causally unbounded
+  full-tree archaeology before a later budget marker can turn it into a cap
+  problem or apparent skill defect.
 - Positive: complete source exposure can be proven across ordinary bounded
   chunk reads without accepting inventory mentions, unrelated metadata, gaps,
   reverse-only coverage, or same-name shadow paths.
@@ -270,10 +286,11 @@ target also appears in its own neighbourhood list.
   repeated runs are needed before changing skill status or promotion posture.
 - Tradeoff: the 48k ceiling raises worst-case live-campaign cost; non-smoke
   cohorts therefore retain the second exact high-cost confirmation token.
-- Follow-up: v9 proved the earlier whole-task correction was insufficient.
-  Land v10's context separation, repeat the exact smoke, then design objective
-  owner-bound outcome surfaces and complete both 11/11 procedure-contract and
-  11/11 outcome-observation coverage before widening toward all 57 skills.
+- Follow-up: v10 proved context separation was necessary but insufficient while
+  full-tree inventory remained allowed. Land v11's bounded inventory contract,
+  repeat the exact smoke, then design objective owner-bound outcome surfaces
+  and complete both 11/11 procedure-contract and 11/11 outcome-observation
+  coverage before widening toward all 57 skills.
 
 ## Current Applicability
 
@@ -294,10 +311,13 @@ As of 2026-07-12:
 - Current filesystem contract: model commands may read only inside the fixture;
   external absolute or parent-traversal access is contamination before budget
   or any skill-effect interpretation.
+- Current inventory contract: commands may use exact route-required files but
+  may not enumerate, recursively list, or hash the fixture tree;
+  `fixture_inventory_scope_violation` precedes budget classification.
 - Current cap contract: every arm receives the same source-locked 48k ceiling;
   paired arms may differ in actual use but never in available budget.
-- Current contract schema: `aoa_codex_app_server_skill_input_contract_v10`.
-- Current protocol lock: `codex-cli-0.144.1-live-dispatch-evidence-v10`.
+- Current contract schema: `aoa_codex_app_server_skill_input_contract_v11`.
+- Current protocol lock: `codex-cli-0.144.1-live-dispatch-evidence-v11`.
 - Current pair contract: new receipts publish route, selected-child trajectory,
   and selected-procedure-disposition report lift separately. Sent structured
   dispatch, accepted native load, model hierarchy report, and fixture execution
@@ -353,13 +373,50 @@ As of 2026-07-12:
   `aoa-eval-apply` input but reported the equivalent root-child hierarchy. V10
   replay yields route `+1`, trajectory `+1`, procedure-disposition `0` with
   both reports correct, and no objective outcome score. The public v9 receipt
-  remains immutable `needs-rerun` harness evidence. A fresh exact-merged v10
-  smoke is required. Pilot planning exposes 1/11 procedure contracts and 0/11
+  remains immutable `needs-rerun` harness evidence. V10 is retained below.
+- Current rerun posture: the first exact-merged v10 attempt stopped the aided
+  arm on budget exhaustion after broad hidden fixture enumeration and before
+  final output or pair construction. The unchanged repeat completed the
+  implicit pair with candidate positive route lift, zero trajectory lift, and
+  correct procedure disposition, then stopped the root trajectory after broad
+  listing and tree hashing. Both public receipts are immutable `needs-rerun`
+  harness evidence. A fresh exact-merged v11 smoke is required before the
+  candidate `aoa-eval-local-need` trajectory can pressure a skill or contract.
+  Pilot planning exposes 1/11 procedure contracts and 0/11
   objective outcomes; confirmed execution is blocked before preflight until
   both reach 11/11.
 - Superseded by: none.
 
 ## Review Log
+
+### 2026-07-12 - Bound exact reads without full-tree fixture archaeology
+
+- Previous assumption: keeping every model command inside the hermetic fixture
+  was enough to make its read evidence bounded; any later cap stop could be
+  reviewed mainly as a budget or skill-trajectory question.
+- New evidence: the first exact-merged v10 aided arm used broad hidden
+  enumeration and stopped before final output. An unchanged repeat completed
+  aided/control, then the explicit root arm read the expected child but also
+  listed and hashed the full fixture before exhausting 48k. The repeated shape
+  occurred in different arms while storage, resource, runtime, prompt, and
+  external-filesystem gates remained clean.
+- Replay boundary: the v11 detector finds two distinct broad commands in the
+  first aided arm and, in the unchanged repeat, two in aided, two in control,
+  and four in the root trajectory. This validates the new grader only; the v10
+  public fields remain immutable.
+- Decision: v11 prompt and fixture guidance allow only exact route-required
+  reads: guidance, selected root or target, at most one selected child, and the
+  named validator. Command events separately detect `rg --files`, `find`,
+  `tree`, recursive `ls`, `du`, inventory pipelines, and broad tree hashing as
+  `fixture_inventory_scope_violation` before budget or skill interpretation.
+- Boundary: this does not reveal which child to choose, forbid the required
+  complete child read, raise the cap, or relabel either immutable v10 receipt.
+  The completed aided `trajectory_break` remains candidate evidence until a
+  fresh v11 run removes inventory pressure.
+- Validation: red-first tests distinguish exact reads from broad enumeration,
+  prove inventory violation outranks budget, preserve v1-v10 public receipt
+  compatibility, and retain the pilot stop at 1/11 procedure plus 0/11 outcome
+  coverage.
 
 ### 2026-07-12 - Separate native dispatch, child procedure, fixture probe, and outcome
 

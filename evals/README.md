@@ -31,6 +31,8 @@ Active first local corpus:
   selected-procedure-disposition harness. Source-authored child/procedure
   contracts live in
   [suites/aoa-skill-live-dispatch-procedures.json](suites/aoa-skill-live-dispatch-procedures.json).
+  Exact route-required fixture reads remain allowed, while broad enumeration,
+  recursive listing, and tree hashing are explicit harness-scope violations.
   The fixture has no objective external-task outcome surface, so current pairs
   publish `not_scored_no_observable_outcome` instead of relabeling a probe or
   model report as outcome lift.

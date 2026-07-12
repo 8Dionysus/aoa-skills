@@ -1,0 +1,129 @@
+{
+  "schema_version": "aoa_skill_live_dispatch_public_receipt_v1",
+  "run_digest": "c92361afc8c33a94ced9e66eeaf15274acbbe38f718b54edb6a80b044589109c",
+  "created_at": "2026-07-12T04:33:17Z",
+  "cohort": "smoke",
+  "model": "gpt-5.6-sol",
+  "effort": "medium",
+  "source_lock": {
+    "head_commit": "0a3015ea71bcaf584c971a07bdc196b99fe4c3adcefefbf3e8c58ceb6bb36608",
+    "git_head_ref": "a63f1b34fcd3964b8911fc1269b7ecbafc9f1e49",
+    "plan_sha256": "3d8a9c5eeaa798d8a6ce72b8e17fceccb92ad29fbb8b848182559648bcb39565",
+    "source_snapshot_sha256": "7787377717366c2acd9ed6f7a362c48b3a622fa8607648fc2e5201c8d1f3efa4",
+    "profile_revision": "cf01327152e819c6bb810645dd203d8f90224574b568e623ec5dc6328045b9df",
+    "protocol_revision": "codex-cli-0.144.1-live-dispatch-evidence-v10",
+    "shadow_skill_set_sha256": "a2c4df93b9cd38f8b4c3df4e276d936eff7622d80699d583ed623ec961fab2fe",
+    "shadow_skill_count": 37,
+    "configured_mcp_server_set_sha256": "92fd3f08afa7555e348af72471af48fcbbd0806031c7eda8966008dceafd0454",
+    "configured_mcp_server_count": 11
+  },
+  "caps": {
+    "max_concurrency": 1,
+    "per_turn_weighted_token_limit": 48000,
+    "trajectory_weighted_token_limit": 48000,
+    "rollout_budget_reminder_at_remaining_tokens": [
+      4000
+    ],
+    "per_turn_timeout_seconds": 180,
+    "full_turn_timeout_seconds": 240,
+    "max_transport_retries_before_turn_start": 0,
+    "stop_after_first_safety_violation": true,
+    "raw_private_only": true
+  },
+  "platform": {
+    "identity": "redacted-local-codex",
+    "private_transport": true
+  },
+  "trial_count": 1,
+  "measures": [
+    {
+      "case_id": "collision-42",
+      "arm_type": "implicit_aided",
+      "expected_target_skill": "aoa-eval",
+      "expected_behavior": "invoke",
+      "selected_target_exact": false,
+      "selected_child_exact": false,
+      "reported_target_direct_exact": false,
+      "reported_target_hierarchy_exact": false,
+      "hierarchy_report_expected_root_skill": null,
+      "selection_report_contract_match": false,
+      "route_decision": null,
+      "manual_recommendation": false,
+      "model_claims_loaded": false,
+      "structured_skill_visible": false,
+      "structured_skill_input_sent": false,
+      "native_target_skill_input_accepted": false,
+      "child_full_read_observed": false,
+      "target_skill_full_read_observed": true,
+      "prompt_visibility_contract_match": true,
+      "fixture_filesystem_scope_match": true,
+      "external_filesystem_access_count": 0,
+      "prompt_visible_repo_skill_count": 12,
+      "expected_prompt_visible_repo_skill_count": 12,
+      "structured_skill_surface_contract_match": null,
+      "external_runtime_isolation_match": null,
+      "dispatch_contract_match": false,
+      "load_contract_match": true,
+      "procedure_disposition": null,
+      "fixture_command_observed": false,
+      "fixture_command_succeeded": false,
+      "fixture_verification_observed": false,
+      "fixture_execution_contract_match": false,
+      "selected_procedure_completion_reported": false,
+      "selected_procedure_deflection_reported": false,
+      "trajectory_contract_defined": true,
+      "trajectory_contract_sha256": "06a4a7a3f97e644c500750430c23294a76ee20eea8fee224dfae4ee205991707",
+      "trajectory_expected_child_skill": "aoa-eval-select",
+      "trajectory_contract_match": false,
+      "trajectory_mismatch_dimensions": [
+        "selected_child_skill",
+        "selected_child_full_read_observed"
+      ],
+      "procedure_contract_defined": true,
+      "procedure_contract_sha256": "06a4a7a3f97e644c500750430c23294a76ee20eea8fee224dfae4ee205991707",
+      "procedure_contract_scope": "selected_route_procedure_disposition",
+      "procedure_contract": {
+        "contract_id": "collision-42-child-procedure-v3",
+        "scope": "selected_route_procedure_disposition",
+        "contract_sha256": "06a4a7a3f97e644c500750430c23294a76ee20eea8fee224dfae4ee205991707",
+        "expected_selected_child_skill": "aoa-eval-select",
+        "expected_selected_child_full_read_observed": true,
+        "expected_selected_procedure_disposition": "blocked_missing_input",
+        "expected_selected_procedure_completion_reported": false,
+        "expected_selected_procedure_deflection_reported": true,
+        "expected_owner_boundary_present": true
+      },
+      "procedure_disposition_contract_match": false,
+      "procedure_disposition_mismatch_dimensions": [
+        "selected_procedure_disposition",
+        "selected_procedure_deflection_reported",
+        "owner_boundary_present"
+      ],
+      "route_contract_match": false,
+      "owner_boundary_present": false,
+      "input_tokens": 0,
+      "cached_input_tokens": 0,
+      "output_tokens": 0,
+      "duration_ms": 38424,
+      "transport_returncode": 1,
+      "failure_class": "budget_exhausted",
+      "adaptive_return_route": "review_caps_or_reduce_context_then_repeat_same_case"
+    }
+  ],
+  "pair_count": 0,
+  "pair_outcomes": [],
+  "failure_counts": {
+    "budget_exhausted": 1
+  },
+  "raw_bundle_sha256": "37418a949fe3ff0e01fff970a9fdee8a63a534c96f468406488e66aa7b9fd9b3",
+  "raw_bundle_local_available": true,
+  "review": {
+    "status": "needs-rerun",
+    "note_sha256": "3bb1246aefd7d3a994068340085873e9b340b042a130fa9b4c67d3d5eb940797"
+  },
+  "stopped_early": true,
+  "stop_reason": "budget_exhausted",
+  "proof_authority": false,
+  "promotion_allowed": false,
+  "aggregate_score": null
+}

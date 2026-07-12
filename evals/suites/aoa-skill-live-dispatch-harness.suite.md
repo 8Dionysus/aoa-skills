@@ -47,7 +47,7 @@ and selected-procedure-disposition report lift separately. The shared source
 contract is authored from the case, root, child, model-output, and fixture
 sources before the live run. `python3 fixture_validator.py` is an independent
 fixture-execution probe, not the child procedure. This fixture exposes no
-objective external-task outcome, so v10 publishes null outcome lift with
+objective external-task outcome, so v11 publishes null outcome lift with
 `not_scored_no_observable_outcome`. No dimension is collapsed into an aggregate
 score.
 
@@ -103,6 +103,10 @@ The current posture is 1/11 procedure contracts and 0/11 objective outcomes.
   absolute host, workspace, session-memory, user-config, other-repository, or
   parent-traversal paths are `harness_contamination` before any budget or skill
   interpretation, while system executables and `/dev/null` remain tooling;
+- broad in-fixture enumeration, recursive listing, or tree hashing is
+  `fixture_inventory_scope_violation` before budget or skill interpretation;
+  exact reads of guidance, the selected root or target, at most one selected
+  child, and the named validator remain allowed;
 - every arm receives the independent fixture-execution probe
   `python3 fixture_validator.py`; verification is atomic and succeeds only when
   the same completed command event carries zero exit plus exactly one
@@ -210,7 +214,19 @@ immutable receipt
 `aoa-skill-live-dispatch-smoke-20260712-v9-child-route-native-dispatch-needs-rerun.json`
 is harness evidence only. V10 replay yields route `+1`, trajectory `+1`,
 procedure-disposition `0` with both reports correct, and no observable outcome
-score. A fresh exact-merged v10 smoke remains required.
+score. The exact-merged v10 attempts are retained below.
+
+The first exact-merged-tree v10 attempt stopped the aided arm on budget
+exhaustion after broad hidden fixture enumeration and before final output or a
+pair. An unchanged repeat completed the implicit pair, recorded candidate
+positive route lift plus a `trajectory_break` for `aoa-eval-local-need`, then
+stopped the explicit root arm after broad listing and tree hashing consumed the
+cap. Both immutable public receipts are `needs-rerun` harness evidence. V11
+adds an explicit bounded inventory contract and requires another exact-merged
+smoke before interpreting that trajectory observation or widening. Read-only
+v11 replay finds broad-command counts `2` in the first aided arm and `2/2/4`
+across aided/control/root in the repeat; replay validates the grader and does
+not rewrite either v10 receipt.
 
 ## Safety And Privacy
 
@@ -228,8 +244,8 @@ therefore disable every locked id explicitly. Deterministic adapter tests guard
 both sides of this transport-specific contract.
 
 These hermetic invocation rules use contract schema
-`aoa_codex_app_server_skill_input_contract_v10` and protocol revision
-`codex-cli-0.144.1-live-dispatch-evidence-v10`. Retained v1-v9 receipts remain
+`aoa_codex_app_server_skill_input_contract_v11` and protocol revision
+`codex-cli-0.144.1-live-dispatch-evidence-v11`. Retained v1-v10 receipts remain
 source-locked to their original protocol and review status and are not upgraded
 in place.
 
@@ -274,6 +290,9 @@ expected implicit, manual, trajectory, or explicit dispatch policy. A
 structured model report that misses both the exact direct target and the
 source-declared root-child edge is `selection_report_miss`; native
 dispatch/load facts remain unchanged. A
+wide fixture listing, recursive inventory, or tree hash is
+`fixture_inventory_scope_violation` and returns to fixture guidance and command
+grading before any cap increase or skill edit. A
 zero-return transport with invalid structured output is
 `output_contract_invalid`; actual transport failure or timeout remains
 `transport_failure`. Budget exhaustion is separate when the source-locked cap
@@ -289,9 +308,10 @@ adjacent family before widening again. If a later observation exposes
 an ambiguous fixture or grader, return to the harness and invalidate affected
 downstream interpretations before changing a skill.
 
-Filesystem-scope contamination precedes budget classification: once a model
-command leaves the fixture, later token exhaustion cannot make that arm
-evaluable or justify a cap increase.
+Filesystem-scope contamination and internal inventory-scope violation precede
+budget classification: once a model command leaves the fixture or broadly
+enumerates it, later token exhaustion cannot make that arm evaluable or justify
+a cap increase.
 
 Pair scoring is defined only when both implicit arms produced evaluable
 dispatch evidence. Output-contract invalidity, transport failure, budget

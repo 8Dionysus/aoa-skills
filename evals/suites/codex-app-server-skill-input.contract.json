@@ -1,7 +1,7 @@
 {
-  "schema_version": "aoa_codex_app_server_skill_input_contract_v10",
+  "schema_version": "aoa_codex_app_server_skill_input_contract_v11",
   "codex_version": "codex-cli 0.144.1",
-  "protocol_revision": "codex-cli-0.144.1-live-dispatch-evidence-v10",
+  "protocol_revision": "codex-cli-0.144.1-live-dispatch-evidence-v11",
   "official_contract_ref": "https://learn.chatgpt.com/docs/app-server#start-a-turn-invoke-a-skill",
   "schema_generation_command": "codex app-server generate-json-schema --experimental --out DIR",
   "request_sequence": [
@@ -35,6 +35,7 @@
     "fixture_execution_boundary": "python3 fixture_validator.py proves hermetic fixture executability only; it is not the selected child procedure or whole-task outcome",
     "selected_child": "an expected or dynamically selected child requires a complete exact fixture-path SKILL.md read before the route load contract can pass",
     "fixture_filesystem_scope": "completed or in-progress command paths outside the fixture root are counted and become harness contamination before budget, dispatch, load, procedure, or lift interpretation; system executables and /dev/null remain allowed tooling",
+    "fixture_inventory_scope": "completed or in-progress broad fixture enumeration, recursive listing, or tree hashing commands are counted separately and become fixture_inventory_scope_violation before budget or skill interpretation; exact guidance, selected-skill, selected-child, and validator reads remain allowed",
     "output_failure": "a zero-return structured output that violates the bounded output contract is output_contract_invalid, not transport_failure"
   },
   "preturn_isolation": {

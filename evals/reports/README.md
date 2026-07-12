@@ -121,10 +121,25 @@ temporary root and must not be copied into this directory.
   `dispatch_policy_gap`; v10 source review shows both are harness semantics, not
   skill defects. Replay yields route `+1`, trajectory `+1`,
   procedure-disposition `0` with both reports correct, and objective outcome
-  unscored. The historical v9 fields remain immutable and a fresh exact-merged
-  v10 smoke is required.
+  unscored. The historical v9 fields remain immutable; the exact-merged v10
+  attempts are retained next.
+- [aoa-skill-live-dispatch-smoke-20260712-v10-aided-inventory-budget-needs-rerun.json](aoa-skill-live-dispatch-smoke-20260712-v10-aided-inventory-budget-needs-rerun.json)
+  preserves the first exact-merged v10 attempt. Prompt, filesystem, storage,
+  resource, and runtime gates passed, but the aided arm broadly enumerated the
+  hidden fixture, read `aoa-eval-local-need`, and exhausted 48k before a final
+  output, probe result, or pair. It is incomplete harness-pressure evidence,
+  not a route or skill verdict.
+- [aoa-skill-live-dispatch-smoke-20260712-v10-repeat-inventory-budget-needs-rerun.json](aoa-skill-live-dispatch-smoke-20260712-v10-repeat-inventory-budget-needs-rerun.json)
+  preserves the unchanged v10 repeat. The implicit pair completed with
+  positive route lift, zero trajectory lift, zero procedure-disposition lift,
+  and objective outcome unscored; its aided arm selected
+  `aoa-eval-local-need`. The root arm then exhausted 48k after broad listing
+  and fixture-tree hashing, so the cohort stopped at three of four turns. The
+  candidate trajectory observation remains reviewable, but the incomplete
+  cohort and repeated inventory pressure require v11 harness repair and a
+  fresh exact-merged rerun before skill interpretation.
 
-Corrected live receipts under the v10 evidence protocol are reviewable only
+Corrected live receipts under the v11 evidence protocol are reviewable only
 after canonical user-skill shadows, plugins, and every configured MCP id are
 isolated with the adapter-appropriate mechanism (`--ignore-user-config` for
 CLI exec, explicit per-id disables for prompt inspection and App Server);
@@ -140,13 +155,15 @@ while overlaps are accepted and gaps, reverse-only coverage, unrelated output,
 inventory mentions, and shadow paths remain insufficient; zero-return
 output-contract invalidity remains separate from transport failure; every
 model command remains within the fixture root, with external or parent-path
-access classified as contamination before budget; one atomic
+access classified as contamination before budget; broad internal enumeration,
+recursive listing, and tree hashing are separately rejected before budget while
+exact route-required reads remain allowed; one atomic
 guidance-bound validator event is proved; caught transport exceptions preserve
 elapsed duration and partial private stdout/stderr so recoverable events retain
 their normal precedence; incomplete stopped-early cohorts return nonzero after
 their private receipt is written, while complete negative cohorts remain valid
 executions; and invalid pairs are
-omitted without rewriting arm history. Public v10 pairs name route,
+omitted without rewriting arm history. Public v11 pairs name route,
 selected-child trajectory, and selected-procedure-disposition report lift
 separately. Fixture execution is its own contract. Objective outcome lift is
 `not_scored_no_observable_outcome` until an owner-bound observable surface
@@ -154,11 +171,12 @@ exists; the probe and model report never become their own grader. Public
 validation rejects embedded absolute host
 paths as well as raw prompts,
 transport ids, and credential-shaped values. Retained v1/v2 smokes remain
-historical `needs-rerun` evidence; retained v3-v9 reports keep their original
+historical `needs-rerun` evidence; retained v3-v10 reports keep their original
 review status and grader semantics, including v4's budget label and v5's
 single-output read label, while v6 keeps its zero-duration and wrapper-success
 history, v7 keeps its generic route-derived lift, v8 keeps its invalid answer
-key, and v9 keeps its child/probe/native-dispatch conflation rather than being
+key, v9 keeps its child/probe/native-dispatch conflation, and both v10 attempts
+keep their incomplete inventory/budget observations rather than being
 rewritten in place.
 - [aoa-eval-session-mining.report.md](aoa-eval-session-mining.report.md)
   records the first `.aoa` mining pass for `aoa-eval` trigger evidence and its

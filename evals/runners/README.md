@@ -62,9 +62,9 @@ equivalent hierarchy report, and a direct target report carrying a conflicting
 child is not exact either. Those report-only mismatches are
 `selection_report_miss`; they do not rewrite successful native dispatch or load
 evidence as `dispatch_policy_gap`.
-These rules use contract schema `aoa_codex_app_server_skill_input_contract_v10`
-and protocol revision `codex-cli-0.144.1-live-dispatch-evidence-v10`. Retained
-v1-v9 receipts stay source-locked to their original protocol and review status;
+These rules use contract schema `aoa_codex_app_server_skill_input_contract_v11`
+and protocol revision `codex-cli-0.144.1-live-dispatch-evidence-v11`. Retained
+v1-v10 receipts stay source-locked to their original protocol and review status;
 they are never upgraded in place.
 
 Run the confirmed command only as the child of the plan packet's
@@ -84,7 +84,7 @@ tool is available for evidence-bearing reads and the independent hermetic
 fixture probe. Read-only skill-file inspection commands collect load evidence.
 All arms run the exact probe `python3 fixture_validator.py`; it proves fixture
 executability only and does not define the selected child procedure or external
-task outcome. New v10 private and public measures name its command, exit, and
+task outcome. V10+ private and public measures name its command, exit, and
 sentinel facts only with `fixture_*` fields; the runner accepts historical
 `procedure_command_*` fields solely as a read-only replay fallback for retained
 v1-v9 receipts. Transport evidence records full `SKILL.md`
@@ -103,6 +103,11 @@ host, workspace, session-memory, user-config, other-repository, or
 parent-traversal path is `harness_contamination` before budget, dispatch, load,
 procedure, or lift interpretation. System executables and `/dev/null` are
 tooling exceptions; they do not authorize data reads outside the fixture.
+V11 additionally forbids broad in-fixture enumeration, recursive listing, and
+tree hashing. `rg --files`, `find`, `tree`, recursive `ls`, `du`, and inventory
+pipelines return `fixture_inventory_scope_violation` before a later budget
+marker. Exact reads of fixture guidance, the selected root or target, at most
+one selected child, and the named validator remain allowed.
 Verification requires the same completed exact-command event to carry zero
 exit and exactly one `AOA_FIXTURE_VALIDATOR_OK` JSON payload bound to the
 current fixture-guidance digest; split success/sentinel events do not pass.
@@ -127,7 +132,7 @@ objective outcome posture separate. Each implicit pair reports route lift,
 source-locked child-trajectory lift, and source-locked procedure-disposition
 report lift as distinct dimensions. `python3 fixture_validator.py` has its own
 fixture-execution match. Because this fixture exposes no objective external-task
-outcome, current v10 pairs set outcome lift to null with
+outcome, current v11 pairs set outcome lift to null with
 `not_scored_no_observable_outcome`; neither command success nor model self-report
 may fill that gap. A
 correct selection without the required native-load or child/full-read evidence
@@ -222,6 +227,15 @@ contexts: v9 becomes route `+1`, trajectory `+1`, procedure-disposition `0`
 with both reports correct, and objective outcome unscored. The public v9
 receipt remains historical `needs-rerun`; replay is grader validation, not a
 replacement live result or proof.
+
+The first exact-merged v10 smoke stopped its aided arm on budget exhaustion
+after broad hidden fixture enumeration and before any final output or pair. An
+unchanged repeat completed the implicit pair, recorded a candidate
+`trajectory_break` for `aoa-eval-local-need`, then stopped the explicit root
+arm after broad listing and tree hashing consumed the cap. Both receipts are
+immutable `needs-rerun` harness evidence. V11 makes inventory breadth explicit
+in prompt guidance and command-event grading before another exact-merged smoke;
+neither incomplete v10 run authorizes a skill edit or pilot widening.
 
 See `evals/suites/aoa-skill-live-dispatch-harness.suite.md` and
 `docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md` for

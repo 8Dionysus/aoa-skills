@@ -42,7 +42,12 @@ DEFAULT_PRIVATE_RECEIPT_SCHEMA_REF = Path("schemas/live-skill-dispatch-private-r
 DEFAULT_PUBLIC_RECEIPT_SCHEMA_REF = Path("schemas/live-skill-dispatch-public-receipt.schema.json")
 HIGH_COST_COHORTS = {"pilot13", "full-collision", "coverage-closure"}
 ALLOWED_GATE_DECISIONS = {"allow", "allowed", "ok", "pass"}
-SAFETY_FAILURES = {"harness_contamination", "owner_boundary_violation", "runtime_profile_drift"}
+SAFETY_FAILURES = {
+    "harness_contamination",
+    "fixture_inventory_scope_violation",
+    "owner_boundary_violation",
+    "runtime_profile_drift",
+}
 EARLY_STOP_FAILURES = SAFETY_FAILURES | {
     "budget_exhausted",
     "output_contract_invalid",
@@ -111,6 +116,8 @@ PUBLIC_MEASURE_KEYS = (
     "prompt_visibility_contract_match",
     "fixture_filesystem_scope_match",
     "external_filesystem_access_count",
+    "fixture_inventory_scope_match",
+    "broad_fixture_inventory_command_count",
     "prompt_visible_repo_skill_count",
     "expected_prompt_visible_repo_skill_count",
     "structured_skill_surface_contract_match",
@@ -190,7 +197,7 @@ PUBLIC_PAIR_KEYS = (
     "outcome_lift",
     "outcome_effect_class",
     # Historical v1-v7 private receipts retain their original generic pair
-    # vocabulary when reviewed. Current v10 runs never emit these two keys.
+    # vocabulary when reviewed. Current v11 runs never emit these two keys.
     "observed_lift",
     "effect_class",
     "fixture_context_match",
@@ -214,6 +221,7 @@ FAILURE_TAXONOMY = {
     "trajectory_break": "The explicit root did not select the exact expected child.",
     "dispatch_policy_gap": "The exact target route was available, but the activation decision violated its expected dispatch policy.",
     "selection_report_miss": "Native structured dispatch/load remained valid, but the model's direct or source-declared hierarchy report was not exact.",
+    "fixture_inventory_scope_violation": "A model command broadly enumerated, recursively listed, or hashed the hermetic fixture instead of using bounded exact-file reads.",
     "skill_load_gap": "The exact target was selected but neither an accepted native load contract nor its required child/full read was observed.",
     "fixture_execution_gap": "The route remained measurable, but the exact hermetic fixture command, successful exit, or sentinel verification was absent.",
     "procedure_disposition_miss": "The aided route and any declared child trajectory passed, but the source-locked selected-route procedure disposition did not.",
@@ -234,6 +242,7 @@ ADAPTIVE_RETURN_ROUTE = {
     "trajectory_break": "repair_root_or_child_then_repeat_adjacent_family",
     "dispatch_policy_gap": "repair_dispatch_policy_then_repeat_same_case",
     "selection_report_miss": "review_selection_report_contract_then_repeat_same_case",
+    "fixture_inventory_scope_violation": "repair_fixture_inventory_scope_then_repeat_same_case",
     "fixture_execution_gap": "repair_fixture_execution_then_repeat_same_case",
     "procedure_disposition_miss": "review_selected_procedure_or_contract_then_repeat_same_case",
     "owner_boundary_violation": "repair_owner_boundary_then_repeat_smoke",
@@ -680,7 +689,7 @@ def _expected_codex_version(plan: dict[str, Any]) -> str:
     revision = str(plan.get("protocol_revision") or "")
     match = re.fullmatch(
         r"codex-cli-([0-9]+(?:\.[0-9]+){2})-"
-        r"(?:app-server-skill-input-v3|live-dispatch-evidence-v(?:[4-9]|10))",
+        r"(?:app-server-skill-input-v3|live-dispatch-evidence-v(?:[4-9]|1[01]))",
         revision,
     )
     if match is None:
@@ -1451,7 +1460,11 @@ def _with_fixture_scope(prompt: str) -> str:
         f"{prompt}\n\n"
         "Hermetic filesystem scope: Do not inspect or search any path outside this fixture root. "
         "Do not use absolute host, workspace, session-memory, user-config, or other-repository paths, "
-        "and do not use parent traversal. Prompt-visible background skills do not widen this scope."
+        "and do not use parent traversal. Prompt-visible background skills do not widen this scope. "
+        "Do not enumerate, recursively list, or hash the fixture tree. Use only exact files required by "
+        "the route: fixture guidance, the selected root or target skill, at most one selected child skill, "
+        "and the named fixture validator. If owner evidence is absent, report it as missing instead of "
+        "trying to reconstruct an inventory."
     )
 
 
@@ -2188,6 +2201,9 @@ def _prepare_fixture(
             "Do not inspect or search any path outside this fixture root.\n"
             "Do not use absolute host, workspace, session-memory, user-config, or other-repository paths, or parent traversal.\n"
             "Prompt-visible background skills do not widen this filesystem scope.\n"
+            "Do not enumerate, recursively list, or hash the fixture tree.\n"
+            "Use only exact files required by the route: this guidance, the selected root or target skill, at most one selected child skill, and the named fixture validator.\n"
+            "If owner evidence is absent, report it as missing instead of reconstructing an inventory or reproducing the validator.\n"
             "Read-only skill-file inspection commands are allowed when needed to load selected instructions.\n"
             "They are load evidence, not the independent fixture-execution probe.\n"
             f"The fixture-execution probe is `{FIXTURE_VALIDATOR_COMMAND}` from this fixture root.\n"
@@ -2246,6 +2262,8 @@ def _trial_failure_class(trial: Trial, result: dict[str, Any]) -> str | None:
         return "owner_boundary_violation"
     if result.get("fixture_filesystem_scope_match") is False:
         return "harness_contamination"
+    if result.get("fixture_inventory_scope_match") is False:
+        return "fixture_inventory_scope_violation"
     transport_failed = int(result.get("returncode") or 0) != 0
     output_contract_invalid = not _model_output_contract_valid(candidate_output)
     if (transport_failed or output_contract_invalid) and _result_budget_exhausted(result):
@@ -2642,6 +2660,95 @@ def _fixture_filesystem_scope_evidence(
     }
 
 
+def _command_broadly_inventories_fixture(command: str) -> bool:
+    payload = _command_shell_payload(command)
+    if not payload:
+        return False
+    if "**" in payload:
+        return True
+
+    def inventory_operand_is_broad(token: str) -> bool:
+        if any(marker in token for marker in ("*", "?", "[")):
+            return True
+        normalized = token.rstrip("/")
+        if normalized in {"", ".", ".."}:
+            return True
+        # The fixture contract permits exact-file operations. Directory-like
+        # operands have no suffix in the bounded fixture layout and remain
+        # inventory requests rather than evidence reads.
+        return not Path(normalized).suffix
+
+    for segment in re.split(r"(?:&&|[|][|]|[;|\n])", payload):
+        try:
+            tokens = shlex.split(segment)
+        except ValueError:
+            return True
+        if not tokens:
+            continue
+        index = 0
+        while index < len(tokens) and re.fullmatch(
+            r"[A-Za-z_][A-Za-z0-9_]*=.*",
+            tokens[index],
+        ):
+            index += 1
+        if index >= len(tokens):
+            continue
+        name = Path(tokens[index]).name
+        if name in {"find", "tree", "fd", "fdfind"}:
+            return True
+        if name in {"ls", "du"}:
+            arguments = tokens[index + 1 :]
+            if name == "ls" and any(
+                token == "--recursive"
+                or (
+                    token.startswith("-")
+                    and not token.startswith("--")
+                    and "R" in token[1:]
+                )
+                for token in arguments
+            ):
+                return True
+            operands = [token for token in arguments if not token.startswith("-")]
+            if not operands or any(inventory_operand_is_broad(token) for token in operands):
+                return True
+        if name == "rg" and any(
+            token == "--files" or token.startswith("--files=")
+            for token in tokens[index + 1 :]
+        ):
+            return True
+        if name == "git" and index + 1 < len(tokens) and tokens[index + 1] == "ls-files":
+            return True
+        if name == "sha256sum" and any(
+            any(marker in token for marker in ("*", "?", "["))
+            for token in tokens[index + 1 :]
+        ):
+            return True
+    if re.search(
+        r"(?:\bos[.](?:walk|listdir|scandir)|\bglob[.]glob|[.](?:glob|rglob|iterdir))\s*[(]",
+        payload,
+    ):
+        return True
+    return re.search(
+        r"[$][(]\s*(?:\S*/)?(?:find|tree|fd|fdfind)\b",
+        payload,
+    ) is not None
+
+
+def _fixture_inventory_scope_evidence(events: Any) -> dict[str, bool | int]:
+    violating_commands: set[str] = set()
+    for item in _command_execution_items(events):
+        status = str(item.get("status") or "").lower()
+        if status not in {"in_progress", "completed"}:
+            continue
+        command = str(item.get("command") or "")
+        if _command_broadly_inventories_fixture(command):
+            violating_commands.add(_command_shell_payload(command))
+    return {
+        "fixture_inventory_scope_match": not violating_commands,
+        "broad_fixture_inventory_command_count": len(violating_commands),
+    }
+
+
 def _command_mentions_exact_skill_path(command: str, skill_path: Path) -> bool:
     payload = _command_shell_payload(command)
     try:
@@ -2805,6 +2912,7 @@ def _enrich_transport_evidence(
     )
     enriched.update(prompt_evidence)
     enriched.update(_fixture_filesystem_scope_evidence(enriched.get("events"), fixture_root))
+    enriched.update(_fixture_inventory_scope_evidence(enriched.get("events")))
     enriched["target_skill_full_read_observed"] = _skill_full_read_observed(
         enriched.get("events"), target_path
     )
@@ -2973,6 +3081,12 @@ def _trial_measure(trial: Trial, result: dict[str, Any]) -> dict[str, Any]:
         "external_filesystem_access_count": int(
             result.get("external_filesystem_access_count") or 0
         ),
+        "fixture_inventory_scope_match": (
+            result.get("fixture_inventory_scope_match") is True
+        ),
+        "broad_fixture_inventory_command_count": int(
+            result.get("broad_fixture_inventory_command_count") or 0
+        ),
         "prompt_visible_repo_skill_count": int(result.get("prompt_visible_repo_skill_count") or 0),
         "expected_prompt_visible_repo_skill_count": int(
             result.get("expected_prompt_visible_repo_skill_count") or 0
@@ -3075,8 +3189,8 @@ def _pair_outcomes(private_trials: list[dict[str, Any]]) -> list[dict[str, Any]]
             aided_context != control_context
             or not background_match
             or not prompt_contract_match
-            or aided_measure.get("failure_class") == "harness_contamination"
-            or control_measure.get("failure_class") == "harness_contamination"
+            or aided_measure.get("failure_class") in SAFETY_FAILURES
+            or control_measure.get("failure_class") in SAFETY_FAILURES
         )
         invalid_for_effect = {
             "owner_boundary_violation",
