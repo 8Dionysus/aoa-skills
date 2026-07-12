@@ -26,27 +26,27 @@
     {
       "path": "evals/suites/aoa-eval-trigger-corpus.suite.md",
       "kind": "file",
-      "sha256": "6517ee0fd02dd3ea3464d9e00eb787b71580c3d2939e3a8a343aa6827e82a2a4"
+      "sha256": "12abd36e4325cbc15a5214640ebb4078e2a8e0f0a65636385e40545c3caefe5d"
     },
     {
       "path": "tests/test_aoa_eval_prompt_trigger_harness.py",
       "kind": "file",
-      "sha256": "1029499ad5e3011a9755ed2597c2e8c2d93e4661581d76715e033d52b60a2c53"
+      "sha256": "4e4776c8081bd4619dc113e503e38f19b3de77797bc41308f457a9f644efa354"
     },
     {
       "path": "tests/fixtures/skill_evaluation_cases.yaml",
       "kind": "file",
-      "sha256": "508db2b4575cae351eb29eacd4a9249de47f6e82709091e23681c1f741c91588"
+      "sha256": "f6108d46934e4572de0b9b7682dbe24041f55d7ae1ea5d20edc96fc5f33b495e"
     },
     {
       "path": "skills/core/engineering/aoa-eval/SKILL.md",
       "kind": "file",
-      "sha256": "6006849ed0c7afc805fa9afb3f887d1b70841f6be15af72d041c95cd0e6306ea"
+      "sha256": "8ea5a49e518266fb423e749c8d1ae6072d849087e52daff7c8ab027e713e81b7"
     },
     {
       "path": "skills/core/engineering/aoa-eval/examples/runtime.md",
       "kind": "file",
-      "sha256": "8a0aca095266658b8fab8a7378d9ff1de085ef1382b0f482b9f036c38a25e949"
+      "sha256": "9dbefd042cd3d456235203cdf8c5dae053ef53990b08046f26e364a0f51db074"
     },
     {
       "path": "skills/core/engineering/aoa-eval-apply/SKILL.md",
@@ -71,7 +71,7 @@
     {
       "path": "tests/fixtures/skill_evaluation_snapshots/aoa-eval",
       "kind": "tree",
-      "sha256": "bf0cc97fc37dfd54ca46a7d88717d0039307871a0f1c71a7ab65df26de3d6d75"
+      "sha256": "f3bbfd7bf2978b8dd605a6beff941b299e12542212614d965de8e2b507cd6550"
     },
     {
       "path": "tests/fixtures/skill_evaluation_snapshots/aoa-eval-apply",

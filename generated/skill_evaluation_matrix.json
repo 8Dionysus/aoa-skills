@@ -304,8 +304,8 @@
       "selected_runtime_artifact_path": "skills/core/engineering/aoa-eval/examples/runtime.md",
       "skill_path": "skills/core/engineering/aoa-eval/SKILL.md",
       "status": "scaffold",
-      "use_case_count": 6,
-      "use_snapshot_count": 2
+      "use_case_count": 7,
+      "use_snapshot_count": 3
     },
     {
       "autonomy_check_count": 1,

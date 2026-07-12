@@ -286,10 +286,10 @@ target also appears in its own neighbourhood list.
   repeated runs are needed before changing skill status or promotion posture.
 - Tradeoff: the 48k ceiling raises worst-case live-campaign cost; non-smoke
   cohorts therefore retain the second exact high-cost confirmation token.
-- Follow-up: the exact-merged v11 smoke closed the bounded-inventory return and
-  exposed the next procedure layer. Align `aoa-eval` with exact-source posture
-  and `aoa-eval-apply` with the owner JIT local-suite contract, repeat the exact
-  smoke against those source changes, then design objective owner-bound outcome
+- Follow-up: the exact-merged v11 smoke closed the bounded-inventory return, and
+  the post-JIT alignment smoke exposed an unknown-fit selection-precedence gap.
+  Make `aoa-eval-select` fail-closed before local intake, repeat the exact smoke
+  against that source change, then design objective owner-bound outcome
   surfaces and complete both 11/11 procedure-contract and 11/11
   outcome-observation coverage before widening toward all 57 skills.
 
@@ -404,9 +404,38 @@ As of 2026-07-12:
   posture, and write a private source-linked receipt. Readiness and MCP remain
   inspect-only, `source-contract-ready` is not runtime reproducibility, and the
   change requires a fresh exact-merged smoke before pilot widening.
+- Current reviewed return: that exact-merged post-alignment smoke completed all
+  four arms with clean harness evidence and route lift `+1`, but the aided root
+  selected `aoa-eval-local-need` while target-repository fit was still unknown.
+  The required child was `aoa-eval-select`; trajectory lift is `0` with both
+  arms incorrect, procedure disposition is correct in both arms, and outcome is
+  unscored. Missing evidence must not become a no-fit conclusion. Preserve the
+  receipt and harden selection precedence before the next exact smoke.
 - Superseded by: none.
 
 ## Review Log
+
+### 2026-07-12 - Keep unknown fit in selection before local intake
+
+- Previous assumption: the existing phrases "existing eval may fit" and
+  "inspect current surfaces before local need" were strong enough to keep an
+  underspecified target in `aoa-eval-select`.
+- New evidence: the exact-merged post-JIT smoke passed every prompt, fixture,
+  filesystem, inventory, transport, and owner-boundary gate, but its aided arm
+  selected and fully read `aoa-eval-local-need`. It correctly returned
+  `blocked_missing_input` without mutation; the route itself was premature
+  because no selection had established no-fit.
+- Decision: unknown fit, missing target evidence, or an inspect/decide request
+  routes to `aoa-eval-select`, which may stop on missing input. Local need is
+  allowed only after an explicit no-fit result from selection or equivalent
+  owner inspection.
+- Evidence posture: preserve the reviewed receipt with route lift `+1`,
+  trajectory lift `0` and both incorrect, procedure-disposition lift `0` and
+  both correct, and unscored outcome. It is candidate evidence, not a central
+  verdict or family claim.
+- Validation: red-first source regression, dedicated trigger snapshot,
+  generated/export parity, exact owner JIT suite execution, and a fresh
+  exact-merged smoke before pilot widening.
 
 ### 2026-07-12 - Carry the owner JIT execution contract into the selected skill
 

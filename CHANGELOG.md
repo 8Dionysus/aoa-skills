@@ -102,6 +102,13 @@ Tracking starts with the community-docs baseline for this repository.
   explicitly unscored objective outcome. Direct root-to-child and structured
   App Server activation also passed; pilot execution remains blocked at 1/11
   procedure contracts and 0/11 observable outcomes.
+- The first exact-merged v11 smoke after adopting the owner JIT/source-posture
+  contract is preserved as reviewed candidate evidence. It kept route lift
+  `+1`, clean fixture/isolation evidence, and correct procedure disposition in
+  both implicit arms, but the aided router chose `aoa-eval-local-need` before
+  the required unknown-fit selection step. Selected-child trajectory lift is
+  therefore `0` with both arms incorrect, objective outcome remains unscored,
+  and the adaptive return is selection precedence rather than harness repair.
 - `AOA-SK-D-0037` records why live cohorts remain operator-confirmed candidate
   evidence and now clarifies prompt-surface isolation and evidence-stage grading
   after the contaminated smoke; deterministic harness validation, not model
@@ -149,6 +156,11 @@ Tracking starts with the community-docs baseline for this repository.
 
 ### Changed
 
+- `aoa-eval` now fails closed to `aoa-eval-select` when fit or target evidence
+  is unknown. Missing input cannot synthesize a no-fit result, and
+  `aoa-eval-local-need` becomes eligible only after selection or equivalent
+  owner inspection explicitly establishes that no existing surface fits. A
+  dedicated trigger snapshot and source regression preserve the distinction.
 - `aoa-eval` now reports live-workspace root/commit/dirty posture separately
   from exact-source evidence, and preserves dirty canonical checkouts.
   `aoa-eval-apply` now adopts the owner JIT contract for reviewed local-suite

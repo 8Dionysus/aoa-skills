@@ -1367,6 +1367,7 @@
       ],
       "verification": [
         "confirm exactly one subskill route was selected",
+        "when fit was unknown or target evidence was missing, confirm the route stayed in `aoa-eval-select` and did not authorize local intake without an explicit no-fit result",
         "confirm the selected subskill's complete `SKILL.md` was read before its procedure; a selected child name alone is not load evidence",
         "confirm local `evals/PORT.yaml` was inspected or the absence was named",
         "if a workspace inventory was used, name the inventory command or MCP resource and the route recommendation it returned",
@@ -1392,6 +1393,7 @@
         "MCP tools are access planes and must not silently promote local pressure into central proof",
         "workspace inventories and route read-models are advisory selectors; source files and owner validators remain stronger",
         "a live-workspace packet and exact commit evidence answer different questions; neither may silently overwrite the other",
+        "unknown fit and missing evidence route to selection, not to a synthetic no-fit conclusion or local intake",
         "the router chooses one subskill to control scope and avoid mixed authority",
         "new evals should be created only after existing local and central surfaces were inspected"
       ],
@@ -1427,8 +1429,8 @@
         ],
         "verification_notes": [
           "confirm exactly one subskill route was selected",
-          "confirm the selected subskill's complete `SKILL.md` was read before its procedure; a selected child name alone is not load evidence",
-          "confirm local `evals/PORT.yaml` was inspected or the absence was named"
+          "when fit was unknown or target evidence was missing, confirm the route stayed in `aoa-eval-select` and did not authorize local intake without an explicit no-fit result",
+          "confirm the selected subskill's complete `SKILL.md` was read before its procedure; a selected child name alone is not load evidence"
         ],
         "contract_notes": [
           "`aoa-evals` owns proof doctrine and central eval verdicts",

@@ -29,7 +29,7 @@ evaluation fixtures, and authored snapshot-backed evidence files.
 | aoa-decision-create | evaluated | core | explicit-preferred | 1 | 1 | 1 | 1 | 1 | `skills/core/engineering/aoa-decision-create/checks/review.md` | `docs/reviews/status-promotions/aoa-decision-create.md` | - | true | - |
 | aoa-decision-find | evaluated | core | explicit-preferred | 1 | 1 | 1 | 1 | 1 | `skills/core/engineering/aoa-decision-find/checks/review.md` | `docs/reviews/status-promotions/aoa-decision-find.md` | - | true | - |
 | aoa-dry-run-first | canonical | risk | explicit-only | 1 | 1 | 2 | 1 | 1 | `skills/risk/aoa-dry-run-first/examples/runtime.md` | `docs/reviews/status-promotions/aoa-dry-run-first.md` | `docs/reviews/canonical-candidates/aoa-dry-run-first.md` | true | - |
-| aoa-eval | scaffold | core | explicit-preferred | 1 | 6 | 3 | 2 | 2 | `skills/core/engineering/aoa-eval/examples/runtime.md` | - | - | true | - |
+| aoa-eval | scaffold | core | explicit-preferred | 1 | 7 | 3 | 3 | 2 | `skills/core/engineering/aoa-eval/examples/runtime.md` | - | - | true | - |
 | aoa-eval-apply | scaffold | core | explicit-preferred | 1 | 2 | 1 | 2 | 1 | `skills/core/engineering/aoa-eval-apply/examples/runtime.md` | - | - | true | - |
 | aoa-eval-design | scaffold | core | explicit-preferred | 1 | 1 | 1 | 1 | 1 | `skills/core/engineering/aoa-eval-design/examples/runtime.md` | - | - | true | - |
 | aoa-eval-local-need | scaffold | core | explicit-preferred | 1 | 1 | 1 | 1 | 1 | `skills/core/engineering/aoa-eval-local-need/examples/runtime.md` | - | - | true | - |
