@@ -29,6 +29,11 @@ not by itself prove an exact merged or published source state. When an eval
 claim is commit-bound, preserve the live workspace and verify the claim from an
 exact source tree or commit with the owner validator.
 
+Selection precedence is fail-closed: `aoa-eval-select` is the default while fit
+is unknown. Missing target-repository evidence is not evidence that no eval
+fits; stop inside `aoa-eval-select` with the missing input rather than inferring
+a no-fit result.
+
 When that packet exposes `eval_forge_front_door`, use it as the live Eval Forge
 orientation surface. It should point to the Forge operating path
 `mechanics/proof-object/parts/eval-authoring/docs/EVAL_FORGE_OPERATING_PATH.md`,
@@ -145,10 +150,15 @@ Do not use this skill when:
    `python scripts/validate_eval_candidate_packets.py --schema-only`; validate
    any actual packet path before using it as candidate evidence
 3. classify the pressure:
-   - existing eval may fit: use `aoa-eval-select`
-   - existing eval or validator should run: use `aoa-eval-apply`
-   - no eval fits and a repo-local pressure packet is needed: use
-     `aoa-eval-local-need`
+   - fit is unknown, the target repository or its eval evidence is missing, or
+     the task asks to inspect or decide among current surfaces: use
+     `aoa-eval-select`; if selection cannot finish, report
+     `blocked_missing_input` from that child
+   - an exact existing eval or validator is already selected and should run:
+     use `aoa-eval-apply`
+   - `aoa-eval-local-need` is allowed only after `aoa-eval-select` or an
+     equivalent owner inspection records an explicit no-fit result for existing
+     evals, validators, tests, and scripts; missing input alone never qualifies
    - a local eval suite or report needs design: use `aoa-eval-design`
    - `.aoa` evidence should be mined for missed trigger cases: use
      `aoa-eval-session-mining`
@@ -209,6 +219,8 @@ Do not use this skill when:
   files and owner validators remain stronger
 - a live-workspace packet and exact commit evidence answer different questions;
   neither may silently overwrite the other
+- unknown fit and missing evidence route to selection, not to a synthetic
+  no-fit conclusion or local intake
 - the router chooses one subskill to control scope and avoid mixed authority
 - new evals should be created only after existing local and central surfaces were
   inspected
@@ -217,6 +229,8 @@ Do not use this skill when:
 
 - treating every test as an eval or every eval as a central `aoa-evals` object
 - creating a local eval need before checking existing validators and tests
+- treating an absent target repository or missing selection input as proof that
+  no existing eval fits
 - skipping an available session-start packet and then designing from stale local
   memory
 - letting `.aoa` search hits override repo-local source files
@@ -236,6 +250,9 @@ Do not use this skill when:
 ## Verification
 
 - confirm exactly one subskill route was selected
+- when fit was unknown or target evidence was missing, confirm the route stayed
+  in `aoa-eval-select` and did not authorize local intake without an explicit
+  no-fit result
 - confirm the selected subskill's complete `SKILL.md` was read before its
   procedure; a selected child name alone is not load evidence
 - confirm local `evals/PORT.yaml` was inspected or the absence was named

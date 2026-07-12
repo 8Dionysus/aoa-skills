@@ -249,6 +249,18 @@ changes alter the source lock, so the reviewed smoke remains historical
 candidate evidence and a fresh exact-merged v11 smoke is required before pilot
 widening.
 
+That required smoke completed all four arms with clean prompt, filesystem,
+inventory, fixture, transport, and owner-boundary evidence. Route lift remained
+`+1`, but the aided arm selected and fully read `aoa-eval-local-need` while
+target-repository fit was still unknown; the source contract requires
+`aoa-eval-select`. Selected-child trajectory lift is therefore `0` with both
+arms incorrect, procedure-disposition lift is `0` with both reports correct,
+and objective outcome remains unscored. The reviewed public receipt is
+`aoa-skill-live-dispatch-smoke-20260712-v11-reviewed-local-need-trajectory-break.json`.
+This is a valid skill-route candidate, not a harness rerun condition. Return to
+selection precedence, preserve the receipt unchanged, and repeat the exact
+smoke before pilot widening.
+
 ## Safety And Privacy
 
 The plan locks Git head, all portable skill files, generated/config inputs,

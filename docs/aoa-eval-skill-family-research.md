@@ -282,3 +282,27 @@ and MCP remain inspect-only. The execution receipt is candidate evidence with
 proof and promotion authority false. These boundaries are now fixture-backed
 in the trigger corpus and must be regenerated into portable/runtime skill
 surfaces before the next exact-merged live smoke.
+
+## 2026-07-12 selection precedence return
+
+The exact-merged smoke after that handoff passed every harness, prompt,
+filesystem, inventory, fixture, transport, and owner-boundary gate. It still
+found a skill-level ambiguity: with no target-repository evidence, the aided
+router selected `aoa-eval-local-need` and then correctly blocked instead of
+mutating. The source-declared trajectory expected `aoa-eval-select` because the
+task asks to inspect existing surfaces and no selection has established fit or
+no-fit.
+
+The durable rule is now explicit:
+
+- unknown fit, missing target evidence, or a request to inspect/decide among
+  existing surfaces routes to `aoa-eval-select`;
+- the selection child may return `blocked_missing_input` without changing
+  route;
+- missing evidence never counts as a no-fit result;
+- `aoa-eval-local-need` requires an explicit no-fit result from selection or an
+  equivalent owner inspection.
+
+The reviewed negative-trajectory receipt remains immutable candidate evidence.
+A source regression and snapshot guard the precedence, and a fresh exact-merged
+smoke is required before widening the pilot.

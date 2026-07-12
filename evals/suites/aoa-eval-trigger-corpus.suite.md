@@ -182,6 +182,23 @@ Fixture-backed generalization:
   owner-local receipt. Source readiness is not runtime reproducibility or
   central proof acceptance.
 
+### unknown_fit_selects_before_local_need
+
+- route: `aoa-eval`, then `aoa-eval-select`
+- fixture case: `eval_router_unknown_fit_selects_before_local_need`
+- fixture file: `tests/fixtures/skill_evaluation_cases.yaml`
+- snapshot:
+  `tests/fixtures/skill_evaluation_snapshots/aoa-eval/eval_router_unknown_fit_selects_before_local_need.md`
+- live source: exact-merged v11 smoke after the owner JIT/source-posture skill
+  upgrade
+- reviewed public receipt:
+  `evals/reports/aoa-skill-live-dispatch-smoke-20260712-v11-reviewed-local-need-trajectory-break.json`
+- reason: the aided arm selected and loaded `aoa-eval` but chose
+  `aoa-eval-local-need` while target-repository evidence and fit were still
+  unknown. Missing evidence is not a no-fit result. Selection must remain the
+  first child and may itself return `blocked_missing_input`; local intake is
+  eligible only after explicit owner-reviewed no-fit evidence.
+
 ### should_not_trigger_eval
 
 - route: no `aoa-eval` trigger
@@ -247,4 +264,6 @@ Fixture-backed generalization:
   invocation; inspect-only readiness or MCP output never executes it.
 - Live-workspace readiness and exact-source validation remain separate evidence
   statements, and unrelated dirty canonical work is preserved.
+- Unknown fit or missing target evidence routes to `aoa-eval-select`; local
+  intake requires an explicit no-fit result and never follows absence alone.
 - Local files remain candidate evidence until reviewed by the proper owner.

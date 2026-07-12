@@ -37,6 +37,8 @@ A repo change may need an eval, but the owner route is unclear.
 ## Boundary notes
 
 - `aoa-eval` is a router, not a proof owner
+- unknown fit routes to `aoa-eval-select`
+- missing repository evidence does not authorize `aoa-eval-local-need`
 - session-start packets and generated dashboards are read-only route aids
 - preserve a dirty canonical checkout; do not rewrite it to imitate an exact
   merged source
@@ -48,6 +50,8 @@ A repo change may need an eval, but the owner route is unclear.
 ## Verification notes
 
 - verify that one route is chosen
+- verify local intake follows an explicit no-fit result rather than missing
+  input
 - read the selected child's complete `SKILL.md` before applying its procedure;
   a returned child name proves selection, not load
 - verify local and central owner surfaces are named

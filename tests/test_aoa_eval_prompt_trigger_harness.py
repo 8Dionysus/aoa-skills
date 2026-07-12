@@ -261,6 +261,27 @@ class AoaEvalPromptTriggerHarnessTests(unittest.TestCase):
             with self.subTest(runtime_example=expected):
                 self.assertIn(normalize(expected), runtime_example)
 
+    def test_router_selects_before_local_need_when_fit_is_unknown(self) -> None:
+        skill_text = normalize(SKILL_PATH.read_text(encoding="utf-8"))
+
+        for expected in (
+            "`aoa-eval-select` is the default while fit is unknown",
+            "Missing target-repository evidence is not evidence that no eval fits",
+            "`aoa-eval-local-need` is allowed only after",
+            "an explicit no-fit result",
+            "stop inside `aoa-eval-select` with the missing input",
+        ):
+            with self.subTest(expected=expected):
+                self.assertIn(normalize(expected), skill_text)
+
+        runtime_example = normalize(RUNTIME_EXAMPLE_PATH.read_text(encoding="utf-8"))
+        for expected in (
+            "unknown fit routes to `aoa-eval-select`",
+            "missing repository evidence does not authorize `aoa-eval-local-need`",
+        ):
+            with self.subTest(runtime_example=expected):
+                self.assertIn(normalize(expected), runtime_example)
+
     def test_apply_skill_jit_revalidates_local_suite_execution_contract(self) -> None:
         skill_text = normalize(APPLY_SKILL_PATH.read_text(encoding="utf-8"))
 

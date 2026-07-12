@@ -311,7 +311,7 @@
     {
       "inputs_short": "Needs: user intent, target repository, touched paths, failure mode, or eval name; local evals/PORT.yaml, evals/intake/, scripts, tests, validators, and repo route cards; central aoa-evals docs, schemas, validators,...",
       "invocation_mode": "explicit-preferred",
-      "main_anti_patterns_short": "Avoid: treating every test as an eval or every eval as a central aoa-evals object; creating a local eval need before checking existing validators and tests; skipping an available session-start packet and then...",
+      "main_anti_patterns_short": "Avoid: treating every test as an eval or every eval as a central aoa-evals object; creating a local eval need before checking existing validators and tests; treating an absent target repository or missing selection...",
       "name": "aoa-eval",
       "outputs_short": "Produces: exactly one chosen route: aoa-eval-select, aoa-eval-apply, aoa-eval-local-need, aoa-eval-design, or aoa-eval-session-mining; owner-boundary statement naming proof owner, local port owner, and any MCP or...",
       "scope": "core",
@@ -324,7 +324,7 @@
         "AOA-T-0094"
       ],
       "trigger_boundary_short": "Use when the user asks whether an eval exists, whether one should be added, or how to connect evals to a repository; a repeated failure, validation gap, proof gap, regression, trigger miss, or local evals/ port...",
-      "verification_short": "Checks: confirm exactly one subskill route was selected; confirm the selected subskill's complete SKILL.md was read before its procedure; a selected child name alone is not load evidence; confirm local...",
+      "verification_short": "Checks: confirm exactly one subskill route was selected; when fit was unknown or target evidence was missing, confirm the route stayed in aoa-eval-select and did not authorize local intake without an explicit no-fit...",
       "workflow_short": "Purpose: this skill as the front door for AoA evaluation work. Flow: when an OS Abyss aoa-evals checkout is available, raise the read-only session readiness packet before choosing a subskill -> from the aoa-evals repo, run python..."
     },
     {
