@@ -2080,14 +2080,14 @@
         "Adaptation points"
       ],
       "section_summaries": {
-        "Intent": "Use this skill to apply an existing eval surface after selection is clear. The output is an evidence report, not a proof promotion.",
+        "Intent": "Use this skill to apply an existing eval surface after selection is clear. The output is an evidence report, not a proof promotion. When a selected local suite exposes `evals/suites/<slug>.suite.json`, treat that sidecar as typed source execution intent: it must be JIT-revalid...",
         "Trigger boundary": "an existing eval, validator, test, or script has already been selected; a local or central evaluation command should be run or routed",
         "Inputs": "selected eval or validation command; repo-local route law and command prerequisites",
         "Outputs": "commands run and results observed; artifacts or reports produced",
-        "Procedure": "confirm the selected eval surface and owner repo; inspect prerequisites and choose the smallest command that exercises the",
-        "Contracts": "applying an eval does not create a central verdict unless `aoa-evals` owns and; failed or inconclusive runs are evidence, not permission to guess",
+        "Procedure": "confirm the selected eval surface, owner repo, source root, and source ref;; inspect prerequisites and choose the smallest command that exercises the",
+        "Contracts": "applying an eval does not create a central verdict unless `aoa-evals` owns and; `source-contract-ready` proves reviewed source shape and hashes only; runtime",
         "Risks and anti-patterns": "running a broad release gate when a focused validator is enough; treating green tests as complete proof outside their scope",
-        "Verification": "confirm the selected eval existed before running; confirm command, cwd, and result",
+        "Verification": "confirm the selected eval existed before running; confirm source root/ref and whether the observation came from a live dirty",
         "Technique traceability": "AOA-T-0003 from `8Dionysus/aoa-techniques` at `1a7d146957108ecefc24219c7d56357c5a4a2c2c` using path `techniques/proof/evaluation-chain/contract-first-smoke-summary/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Risks, Validation; AOA-T-0007 fro...",
         "Adaptation points": "repo-local command runner; report artifact format"
       },

@@ -1349,6 +1349,7 @@
         "central `aoa-evals` docs, schemas, validators, reports, and review surfaces",
         "optional repo-family or workspace local-port inventory/read-model; in OS Abyss this may be `aoa-evals/scripts/build_local_eval_port_inventory.py`",
         "optional OS Abyss eval session-start/readiness command; when present this is `aoa-evals/scripts/aoa_eval_session_start.py`",
+        "source identity reported by readiness or MCP: selected root, Git commit, dirty/divergent posture, generated-reader freshness, and mirror status",
         "optional `eval_forge_front_door` packet fields from session-start/readiness: `surface_refs`, `exact_commands`, `surface_status`, stop-lines, and non-proof boundary flags",
         "optional candidate-packet validator; when present this is `aoa-evals/scripts/validate_eval_candidate_packets.py`",
         "`aoa-evals-mcp` packets when available, treated as access-plane data",
@@ -1359,6 +1360,7 @@
         "exactly one chosen route: `aoa-eval-select`, `aoa-eval-apply`, `aoa-eval-local-need`, `aoa-eval-design`, or `aoa-eval-session-mining`",
         "owner-boundary statement naming proof owner, local port owner, and any MCP or `.aoa` evidence role",
         "session-start status when a workspace readiness command exists, including freshness blockers and stop lines that constrain the route",
+        "source posture distinguishing a live-workspace packet from any exact commit-bound evidence used for application or publication",
         "selected Eval Forge front-door refs and commands when the readiness packet exposes them, with proof authority explicitly kept false",
         "selected existing eval, validation command, intake packet path, draft suite, or session-mining report",
         "stop line when no owner surface is safe to write"
@@ -1369,6 +1371,7 @@
         "confirm local `evals/PORT.yaml` was inspected or the absence was named",
         "if a workspace inventory was used, name the inventory command or MCP resource and the route recommendation it returned",
         "if a session-start readiness packet was available, confirm it was run and name any freshness blocker or stop line that constrained the route",
+        "name the selected source root and commit, distinguish live-workspace evidence from exact-source validation, and preserve unrelated dirty work",
         "when `eval_forge_front_door` is available, confirm its operating path, criteria, local-port matrix, route-review or worksheet refs, and exact commands were considered as routing evidence only",
         "confirm central `aoa-evals` authority was kept separate from local intake",
         "confirm existing scripts, tests, and validators were considered before new design",
@@ -1388,6 +1391,7 @@
         "candidate packets must remain candidate-only until reviewed by the owning local or central surface",
         "MCP tools are access planes and must not silently promote local pressure into central proof",
         "workspace inventories and route read-models are advisory selectors; source files and owner validators remain stronger",
+        "a live-workspace packet and exact commit evidence answer different questions; neither may silently overwrite the other",
         "the router chooses one subskill to control scope and avoid mixed authority",
         "new evals should be created only after existing local and central surfaces were inspected"
       ],
@@ -1397,14 +1401,15 @@
         "central-aoa-evals-docs-schemas-validators-reports-and-review-sur",
         "optional-repo-family-or-workspace-local-port-inventory-read-mode",
         "optional-os-abyss-eval-session-start-readiness-command-when-pres",
+        "source-identity-reported-by-readiness-or-mcp-selected-root-git-c",
         "optional-eval-forge-front-door-packet-fields-from-session-start-",
-        "optional-candidate-packet-validator-when-present-this-is-aoa-eva",
-        "aoa-evals-mcp-packets-when-available-treated-as-access-plane-dat"
+        "optional-candidate-packet-validator-when-present-this-is-aoa-eva"
       ],
       "provides_artifact_tags": [
         "exactly-one-chosen-route-aoa-eval-select-aoa-eval-apply-aoa-eval",
         "owner-boundary-statement-naming-proof-owner-local-port-owner-and",
         "session-start-status-when-a-workspace-readiness-command-exists-i",
+        "source-posture-distinguishing-a-live-workspace-packet-from-any-e",
         "selected-eval-forge-front-door-refs-and-commands-when-the-readin",
         "selected-existing-eval-validation-command-intake-packet-path-dra",
         "stop-line-when-no-owner-surface-is-safe-to-write"
@@ -1415,6 +1420,7 @@
           "exactly-one-chosen-route-aoa-eval-select-aoa-eval-apply-aoa-eval",
           "owner-boundary-statement-naming-proof-owner-local-port-owner-and",
           "session-start-status-when-a-workspace-readiness-command-exists-i",
+          "source-posture-distinguishing-a-live-workspace-packet-from-any-e",
           "selected-eval-forge-front-door-refs-and-commands-when-the-readin",
           "selected-existing-eval-validation-command-intake-packet-path-dra",
           "stop-line-when-no-owner-surface-is-safe-to-write"
@@ -1440,24 +1446,33 @@
       "inputs": [
         "selected eval or validation command",
         "repo-local route law and command prerequisites",
+        "optional `evals/suites/<slug>.suite.json` sidecar plus the current owner schema/validator that classifies it as absent, invalid, stale, or ready",
+        "exact source tree or commit when the result will be merge-, release-, or publication-bound",
         "expected artifacts, reports, generated outputs, and pass/fail criteria",
         "prior failure or regression context"
       ],
       "outputs": [
         "commands run and results observed",
         "artifacts or reports produced",
-        "evidence classification: green proof, regression, inconclusive, blocked, or outside coverage",
+        "evidence classification: passed candidate evidence, regression candidate, inconclusive, blocked, or outside coverage",
+        "for a sidecar-backed suite: JIT state, exact invocation, environment capture, and owner-local execution receipt",
         "next route if failure should become an intake need or suite design"
       ],
       "verification": [
         "confirm the selected eval existed before running",
-        "confirm command, cwd, and result",
+        "confirm source root/ref and whether the observation came from a live dirty workspace or an exact source tree",
+        "for a sidecar-backed suite, confirm the owner validator reported ready immediately before execution and no inventory/MCP surface executed it",
+        "confirm exact command, cwd, timeout, accepted exit codes, and result",
+        "confirm environment capture and the private execution receipt's source-head and sidecar-digest links",
         "confirm artifacts and generated drift status",
         "confirm proof limits and next route",
         "confirm no central proof file was written through MCP"
       ],
       "contracts": [
         "applying an eval does not create a central verdict unless `aoa-evals` owns and validates that promotion",
+        "`source-contract-ready` proves reviewed source shape and hashes only; runtime reproducibility remains false unless a stronger owner proves a pinned environment",
+        "a stale or invalid sidecar blocks execution until its source owner repairs or refreshes it; live output cannot author its own tracked hashes",
+        "inventory, MCP, and generated readiness surfaces never gain execution or receipt-publication authority from discovering a sidecar",
         "failed or inconclusive runs are evidence, not permission to guess",
         "generated drift must be resolved through owner builders",
         "local eval reports must stay under local repo surfaces unless central review accepts them"
@@ -1465,13 +1480,16 @@
       "consumes_artifact_tags": [
         "selected-eval-or-validation-command",
         "repo-local-route-law-and-command-prerequisites",
+        "optional-evals-suites-slug-suite-json-sidecar-plus-the-current-o",
+        "exact-source-tree-or-commit-when-the-result-will-be-merge-releas",
         "expected-artifacts-reports-generated-outputs-and-pass-fail-crite",
         "prior-failure-or-regression-context"
       ],
       "provides_artifact_tags": [
         "commands-run-and-results-observed",
         "artifacts-or-reports-produced",
-        "evidence-classification-green-proof-regression-inconclusive-bloc",
+        "evidence-classification-passed-candidate-evidence-regression-can",
+        "for-a-sidecar-backed-suite-jit-state-exact-invocation-environmen",
         "next-route-if-failure-should-become-an-intake-need-or-suite-desi"
       ],
       "handoff_packet_template": {
@@ -1479,18 +1497,19 @@
         "produced_artifacts": [
           "commands-run-and-results-observed",
           "artifacts-or-reports-produced",
-          "evidence-classification-green-proof-regression-inconclusive-bloc",
+          "evidence-classification-passed-candidate-evidence-regression-can",
+          "for-a-sidecar-backed-suite-jit-state-exact-invocation-environmen",
           "next-route-if-failure-should-become-an-intake-need-or-suite-desi"
         ],
         "verification_notes": [
           "confirm the selected eval existed before running",
-          "confirm command, cwd, and result",
-          "confirm artifacts and generated drift status"
+          "confirm source root/ref and whether the observation came from a live dirty workspace or an exact source tree",
+          "for a sidecar-backed suite, confirm the owner validator reported ready immediately before execution and no inventory/MCP surface executed it"
         ],
         "contract_notes": [
           "applying an eval does not create a central verdict unless `aoa-evals` owns and validates that promotion",
-          "failed or inconclusive runs are evidence, not permission to guess",
-          "generated drift must be resolved through owner builders"
+          "`source-contract-ready` proves reviewed source shape and hashes only; runtime reproducibility remains false unless a stronger owner proves a pinned environment",
+          "a stale or invalid sidecar blocks execution until its source owner repairs or refreshes it; live output cannot author its own tracked hashes"
         ],
         "next_recommended_skills": []
       }

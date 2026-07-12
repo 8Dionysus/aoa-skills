@@ -328,11 +328,11 @@
       "workflow_short": "Purpose: this skill as the front door for AoA evaluation work. Flow: when an OS Abyss aoa-evals checkout is available, raise the read-only session readiness packet before choosing a subskill -> from the aoa-evals repo, run python..."
     },
     {
-      "inputs_short": "Needs: selected eval or validation command; repo-local route law and command prerequisites; expected artifacts, reports, generated outputs, and pass/fail criteria; prior failure or regression context.",
+      "inputs_short": "Needs: selected eval or validation command; repo-local route law and command prerequisites; optional evals/suites/<slug>.suite.json sidecar plus the current owner schema/validator that classifies it as absent,...",
       "invocation_mode": "explicit-preferred",
-      "main_anti_patterns_short": "Avoid: running a broad release gate when a focused validator is enough; treating green tests as complete proof outside their scope; hiding generated drift; promoting failure observations without a reproducible command.",
+      "main_anti_patterns_short": "Avoid: running a broad release gate when a focused validator is enough; treating green tests as complete proof outside their scope; executing a sidecar from inventory/MCP output without immediate owner JIT...",
       "name": "aoa-eval-apply",
-      "outputs_short": "Produces: commands run and results observed; artifacts or reports produced; evidence classification: green proof, regression, inconclusive, blocked, or outside coverage; next route if failure should become an intake...",
+      "outputs_short": "Produces: commands run and results observed; artifacts or reports produced; evidence classification: passed candidate evidence, regression candidate, inconclusive, blocked, or outside coverage; for a sidecar-backed...",
       "scope": "core",
       "skill_path": "skills/core/engineering/aoa-eval-apply/SKILL.md",
       "status": "scaffold",
@@ -343,8 +343,8 @@
         "AOA-T-0096"
       ],
       "trigger_boundary_short": "Use when an existing eval, validator, test, or script has already been selected; a local or central evaluation command should be run or routed; Avoid when no existing eval has been selected yet; use aoa-eval-select;...",
-      "verification_short": "Checks: confirm the selected eval existed before running; confirm command, cwd, and result; confirm artifacts and generated drift status; confirm proof limits and next route.",
-      "workflow_short": "Purpose: apply an existing eval surface after selection is clear. Flow: confirm the selected eval surface and owner repo -> inspect prerequisites and choose the smallest command that exercises the intended evidence surface -> run deterministic local..."
+      "verification_short": "Checks: confirm the selected eval existed before running; confirm source root/ref and whether the observation came from a live dirty workspace or an exact source tree; for a sidecar-backed suite, confirm the owner...",
+      "workflow_short": "Purpose: apply an existing eval surface after selection is clear. Flow: confirm the selected eval surface, owner repo, source root, and source ref if exact merged evidence is required, use a clean exact tree without modifying a dirty canonical checkout ->..."
     },
     {
       "inputs_short": "Needs: selected failure mode, target behavior, invariant, or trigger boundary; local repo tests, scripts, validators, fixtures, generated surfaces, and evals/ port; evidence refs and rejected existing evals; central...",

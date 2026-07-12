@@ -531,6 +531,12 @@ trigger_cases:
     required_phrases:
       - an existing eval, validator, test, or script has already been selected
   - skill: aoa-eval-apply
+    case_id: eval_apply_selected_local_suite_sidecar
+    prompt: The repo-local suite is already selected and exposes a reviewed evals/suites/example.suite.json sidecar; JIT-validate and run its exact typed invocation with environment and receipt capture.
+    expected: use
+    required_phrases:
+      - a selected repo-local suite has a machine-readable execution sidecar
+  - skill: aoa-eval-apply
     case_id: eval_apply_no_selection_yet
     prompt: We have not inspected the local eval port or central eval bundles yet, but need to know which proof surface might apply.
     expected: do_not_use
@@ -2881,6 +2887,16 @@ snapshot_cases:
     required_output_phrases:
       - use
       - 'Decision: use `aoa-eval-apply`. Run the selected eval surface and report evidence, artifacts, and proof limits.'
+    forbidden_output_phrases: []
+  - skill: aoa-eval-apply
+    case_id: eval_apply_selected_local_suite_sidecar
+    prompt: The repo-local suite is already selected and exposes a reviewed evals/suites/example.suite.json sidecar; JIT-validate and run its exact typed invocation with environment and receipt capture.
+    expected: use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-eval-apply/eval_apply_selected_local_suite_sidecar.md
+    required_output_phrases:
+      - use
+      - 'Decision: use `aoa-eval-apply`. JIT-validate the selected sidecar, execute only its exact typed runner, and preserve environment plus private receipt evidence.'
+      - source-contract readiness, not runtime reproducibility or proof acceptance
     forbidden_output_phrases: []
   - skill: aoa-eval-apply
     case_id: eval_apply_no_selection_yet

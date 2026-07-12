@@ -26,6 +26,11 @@ raising the read-only eval session readiness packet so a fresh agent can see the
 current tools, local eval ports, stop lines, freshness blockers, and
 candidate-only packet contract before choosing a subskill.
 
+A readiness or MCP packet describes the live workspace it inspected. It does
+not by itself prove an exact merged or published source state. When an eval
+claim is commit-bound, preserve the live workspace and verify the claim from an
+exact source tree or commit with the owner validator.
+
 When that packet exposes `eval_forge_front_door`, use it as the live Eval Forge
 orientation surface. It should point to the Forge operating path
 `mechanics/proof-object/parts/eval-authoring/docs/EVAL_FORGE_OPERATING_PATH.md`,
@@ -77,6 +82,8 @@ Do not use this skill when:
   Abyss this may be `aoa-evals/scripts/build_local_eval_port_inventory.py`
 - optional OS Abyss eval session-start/readiness command; when present this is
   `aoa-evals/scripts/aoa_eval_session_start.py`
+- source identity reported by readiness or MCP: selected root, Git commit,
+  dirty/divergent posture, generated-reader freshness, and mirror status
 - optional `eval_forge_front_door` packet fields from session-start/readiness:
   `surface_refs`, `exact_commands`, `surface_status`, stop-lines, and
   non-proof boundary flags
@@ -101,6 +108,8 @@ Do not use this skill when:
   `.aoa` evidence role
 - session-start status when a workspace readiness command exists, including
   freshness blockers and stop lines that constrain the route
+- source posture distinguishing a live-workspace packet from any exact
+  commit-bound evidence used for application or publication
 - selected Eval Forge front-door refs and commands when the readiness packet
   exposes them, with proof authority explicitly kept false
 - selected existing eval, validation command, intake packet path, draft suite, or
@@ -114,6 +123,12 @@ Do not use this skill when:
      `python scripts/aoa_eval_session_start.py --json`
    - treat its active repo routes, support registry, candidate queue summary,
      freshness blockers, and stop lines as advisory routing evidence
+   - record the reported source root, Git commit, and dirty or divergent posture
+   - treat a packet over a dirty or divergent checkout as a live-workspace packet;
+     for exact merged or published evidence, run the owner validator from the
+     exact source tree or commit
+   - do not fast-forward, reset, or rewrite a dirty canonical checkout merely to
+     make a readiness packet look current
    - if it exposes `eval_forge_front_door`, inspect `surface_refs`,
      `exact_commands`, `surface_status`, and non-proof boundary flags before
      classifying the route
@@ -189,6 +204,8 @@ Do not use this skill when:
   central proof
 - workspace inventories and route read-models are advisory selectors; source
   files and owner validators remain stronger
+- a live-workspace packet and exact commit evidence answer different questions;
+  neither may silently overwrite the other
 - the router chooses one subskill to control scope and avoid mixed authority
 - new evals should be created only after existing local and central surfaces were
   inspected
@@ -202,6 +219,8 @@ Do not use this skill when:
 - importing trace or session evidence without candidate-packet validation
 - treating a readiness dashboard, generated reader, or candidate queue as a
   verdict, score, baseline, or proof promotion
+- reporting a dirty canonical checkout as exact merged evidence, or mutating it
+  to manufacture apparent freshness
 - treating the Eval Forge front door as a central proof bundle instead of a
   route into existing surfaces, local ports, worksheets, rejects, or review
 - letting MCP writes bypass owner review
@@ -219,6 +238,8 @@ Do not use this skill when:
   and the route recommendation it returned
 - if a session-start readiness packet was available, confirm it was run and
   name any freshness blocker or stop line that constrained the route
+- name the selected source root and commit, distinguish live-workspace evidence
+  from exact-source validation, and preserve unrelated dirty work
 - when `eval_forge_front_door` is available, confirm its operating path,
   criteria, local-port matrix, route-review or worksheet refs, and exact
   commands were considered as routing evidence only

@@ -741,6 +741,7 @@ Common expand sections:
 - exactly one chosen route: aoa-eval-select, aoa-eval-apply, aoa-eval-local-need, aoa-eval-design, or aoa-eval-session-mining
 - owner-boundary statement naming proof owner, local port owner, and any MCP or aoa evidence role
 - session-start status when a workspace readiness command exists, including freshness blockers and stop lines that constrain the route
+- source posture distinguishing a live-workspace packet from any exact commit-bound evidence used for application or publication
 - selected Eval Forge front-door refs and commands when the readiness packet exposes them, with proof authority explicitly kept false
 - selected existing eval, validation command, intake packet path, draft suite, or session-mining report
 - stop line when no owner surface is safe to write
@@ -763,6 +764,7 @@ Common expand sections:
 - a local or central evaluation command should be run or routed
 - the user needs to know what the run proves, what failed, and what remains outside coverage
 - generated outputs need to be rebuilt or checked as part of the selected eval
+- a selected repo-local suite has a machine-readable execution sidecar whose freshness and runtime invocation must be applied
 
 ### Do not use when
 
@@ -775,7 +777,8 @@ Common expand sections:
 
 - commands run and results observed
 - artifacts or reports produced
-- evidence classification: green proof, regression, inconclusive, blocked, or outside coverage
+- evidence classification: passed candidate evidence, regression candidate, inconclusive, blocked, or outside coverage
+- for a sidecar-backed suite: JIT state, exact invocation, environment capture, and owner-local execution receipt
 - next route if failure should become an intake need or suite design
 
 ### Support artifacts

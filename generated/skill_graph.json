@@ -6674,7 +6674,7 @@
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "1d775f9cb49ffc4e9c9ef821d0709d0c4eb1c10c3ff2a4d7b44171d01c71c7f2",
+      "content_hash": "1111a60941af4f53bc3e8493e4b5911c7b61a229e1f7205d5489ef0c53dce30e",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -6700,7 +6700,7 @@
       "promotion_review_path": null,
       "scope": "core",
       "skill_path": "skills/core/engineering/aoa-eval/SKILL.md",
-      "skill_revision": "1d775f9cb49f",
+      "skill_revision": "1111a60941af",
       "status": "scaffold",
       "support_artifacts": [
         {
@@ -6754,7 +6754,7 @@
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "7d844fee55ea2692b2e39d58c4fd5865ca1ac78e9afe0b6ebce0127011bc6e6d",
+      "content_hash": "644d1e0cec9fcd6b2876e9b38090d0954a825ef3b24edd74d6d5e92c20f77c58",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -6780,7 +6780,7 @@
       "promotion_review_path": null,
       "scope": "core",
       "skill_path": "skills/core/engineering/aoa-eval-apply/SKILL.md",
-      "skill_revision": "7d844fee55ea",
+      "skill_revision": "644d1e0cec9f",
       "status": "scaffold",
       "support_artifacts": [
         {

@@ -239,6 +239,16 @@ input, with both matching their bounded contracts. The public reviewed receipt
 is candidate evidence, not a central verdict, family-wide claim, or permission
 to widen before pilot coverage reaches 11/11 procedure and 11/11 outcome.
 
+The next adaptive return comes from owner-contract comparison rather than a
+failed v11 arm. The accepted local-suite execution contract requires
+`aoa-eval-apply` to JIT-revalidate a selected `*.suite.json`, invoke only its
+typed runner, capture environment posture, and write a private source-linked
+receipt; readiness and MCP remain inspect-only. It also requires `aoa-eval` to
+separate live dirty-workspace packets from exact-source validation. Those skill
+changes alter the source lock, so the reviewed smoke remains historical
+candidate evidence and a fresh exact-merged v11 smoke is required before pilot
+widening.
+
 ## Safety And Privacy
 
 The plan locks Git head, all portable skill files, generated/config inputs,

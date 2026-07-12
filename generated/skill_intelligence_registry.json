@@ -4350,8 +4350,8 @@
         "skill_path": "skills/core/engineering/aoa-eval/SKILL.md",
         "techniques_path": "skills/core/engineering/aoa-eval/techniques.yaml",
         "policy_path": "skills/core/engineering/aoa-eval/agents/openai.yaml",
-        "content_hash": "1d775f9cb49ffc4e9c9ef821d0709d0c4eb1c10c3ff2a4d7b44171d01c71c7f2",
-        "skill_revision": "1d775f9cb49f"
+        "content_hash": "1111a60941af4f53bc3e8493e4b5911c7b61a229e1f7205d5489ef0c53dce30e",
+        "skill_revision": "1111a60941af"
       },
       "policy": {
         "invocation_mode": "explicit-preferred",
@@ -4494,9 +4494,9 @@
           "section_role": "intent",
           "source_path": "skills/core/engineering/aoa-eval/SKILL.md",
           "source_anchor": "## Intent",
-          "text": "Use this skill as the front door for AoA evaluation work. It decides whether a task should inspect existing evals, apply an existing eval or validator, record repo-local eval pressure, design a local eval suite, or mine `.aoa` session evidence for missed eval triggers. When the OS Abyss `aoa-evals` workspace is available, this skill also starts by raising the read-only eval session readiness packet so a fresh agent can see the current tools, local eval ports, stop lines, freshness blockers, and candidate-only packet contract before choosing a subskill. When that packet exposes `eval_forge_front_door`, use it as the live Eval Forge orientation surface. It should point to the Forge operating path `mechanics/proof-object/parts/eval-authoring/docs/EVAL_FORGE_OPERATING_PATH.md`, the session-mining criteria/reject taxonomy `mechanics/proof-object/parts/eval-authoring/docs/SESSION_MINING_CRITERIA.md`, the local-port decision matrix `mechanics/proof-object/parts/eval-authoring/docs/LOCAL_PORT_DECISION_MATRIX.md`, the latest route-review report, the worksheet example, and exact route commands. These references are routing aids, not proof authority.",
-          "text_sha256": "50d92b9e98aaa6faa63f3c4fdc5f16865cfa8af5065edb6939a2b3b3c7ebcf7d",
-          "token_count": 140
+          "text": "Use this skill as the front door for AoA evaluation work. It decides whether a task should inspect existing evals, apply an existing eval or validator, record repo-local eval pressure, design a local eval suite, or mine `.aoa` session evidence for missed eval triggers. When the OS Abyss `aoa-evals` workspace is available, this skill also starts by raising the read-only eval session readiness packet so a fresh agent can see the current tools, local eval ports, stop lines, freshness blockers, and candidate-only packet contract before choosing a subskill. A readiness or MCP packet describes the live workspace it inspected. It does not by itself prove an exact merged or published source state. When an eval claim is commit-bound, preserve the live workspace and verify the claim from an exact source tree or commit with the owner validator. When that packet exposes `eval_forge_front_door`, use it as the live Eval Forge orientation surface. It should point to the Forge operating path `mechanics/proof-object/parts/eval-authoring/docs/EVAL_FORGE_OPERATING_PATH.md`, the session-mining criteria/reject taxonomy `mechanics/proof-object/parts/eval-authoring/docs/SESSION_MINING_CRITERIA.md`, the local-port decision matrix `mechanics/proof-object/parts/eval-authoring/docs/LOCAL_PORT_DECISION_MATRIX.md`, the latest route-review report, the worksheet example, and exact route commands. These references are routing aids, not proof authority.",
+          "text_sha256": "ceddda248367bd6632aaaef098327c55f93502af9a9b9ca8bd3b8fb828b55c3a",
+          "token_count": 189
         },
         {
           "doc_id": "skill:aoa-eval:section:trigger_boundary",
@@ -4514,9 +4514,9 @@
           "section_role": "inputs",
           "source_path": "skills/core/engineering/aoa-eval/SKILL.md",
           "source_anchor": "## Inputs",
-          "text": "- user intent, target repository, touched paths, failure mode, or eval name - local `evals/PORT.yaml`, `evals/intake/`, scripts, tests, validators, and repo route cards - central `aoa-evals` docs, schemas, validators, reports, and review surfaces - optional repo-family or workspace local-port inventory/read-model; in OS Abyss this may be `aoa-evals/scripts/build_local_eval_port_inventory.py` - optional OS Abyss eval session-start/readiness command; when present this is `aoa-evals/scripts/aoa_eval_session_start.py` - optional `eval_forge_front_door` packet fields from session-start/readiness: `surface_refs`, `exact_commands`, `surface_status`, stop-lines, and non-proof boundary flags - optional candidate-packet validator; when present this is `aoa-evals/scripts/validate_eval_candidate_packets.py` - `aoa-evals-mcp` packets when available, treated as access-plane data - optional `.aoa` session evidence through a discoverable workspace/session-memory evidence route, such as an installed `aoa-session-memory-evidence-route` skill or read-only `aoa-session-memory-mcp` packet, when the task asks how an eval, validator, test, MCP, failure, or trigger was used in prior sessions; prefer a usage-chain packet when the question is about usage, outcomes, consequences, recurrence, or nearby errors for a stable eval/validator/test/MCP/failure anchor - `.aoa` search hits, segments, raw refs, and freshness only when session mining is the chosen route",
-          "text_sha256": "e20aeecdea3fa37d4548bb07c9e1253ffb88f263bb8b94d57181690d7b56bccf",
-          "token_count": 169
+          "text": "- user intent, target repository, touched paths, failure mode, or eval name - local `evals/PORT.yaml`, `evals/intake/`, scripts, tests, validators, and repo route cards - central `aoa-evals` docs, schemas, validators, reports, and review surfaces - optional repo-family or workspace local-port inventory/read-model; in OS Abyss this may be `aoa-evals/scripts/build_local_eval_port_inventory.py` - optional OS Abyss eval session-start/readiness command; when present this is `aoa-evals/scripts/aoa_eval_session_start.py` - source identity reported by readiness or MCP: selected root, Git commit, dirty/divergent posture, generated-reader freshness, and mirror status - optional `eval_forge_front_door` packet fields from session-start/readiness: `surface_refs`, `exact_commands`, `surface_status`, stop-lines, and non-proof boundary flags - optional candidate-packet validator; when present this is `aoa-evals/scripts/validate_eval_candidate_packets.py` - `aoa-evals-mcp` packets when available, treated as access-plane data - optional `.aoa` session evidence through a discoverable workspace/session-memory evidence route, such as an installed `aoa-session-memory-evidence-route` skill or read-only `aoa-session-memory-mcp` packet, when the task asks how an eval, validator, test, MCP, failure, or trigger was used in prior sessions; prefer a usage-chain packet when the question is about usage, outcomes, consequences, recurrence, or nearby errors for a stable eval/validator/test/MCP/failure anchor - `.aoa` search hits, segments, raw refs, and freshness only when session mining is the chosen route",
+          "text_sha256": "014f443da5ed1506703fde5088a65efa735cc185176cb7e54b7ca6e95d4c341d",
+          "token_count": 188
         },
         {
           "doc_id": "skill:aoa-eval:section:outputs",
@@ -4524,9 +4524,9 @@
           "section_role": "outputs",
           "source_path": "skills/core/engineering/aoa-eval/SKILL.md",
           "source_anchor": "## Outputs",
-          "text": "- exactly one chosen route: `aoa-eval-select`, `aoa-eval-apply`, `aoa-eval-local-need`, `aoa-eval-design`, or `aoa-eval-session-mining` - owner-boundary statement naming proof owner, local port owner, and any MCP or `.aoa` evidence role - session-start status when a workspace readiness command exists, including freshness blockers and stop lines that constrain the route - selected Eval Forge front-door refs and commands when the readiness packet exposes them, with proof authority explicitly kept false - selected existing eval, validation command, intake packet path, draft suite, or session-mining report - stop line when no owner surface is safe to write",
-          "text_sha256": "b97107f654930a279d296365bb8ceb6fd8fc1babe420c1ce8ee5c6e340447254",
-          "token_count": 91
+          "text": "- exactly one chosen route: `aoa-eval-select`, `aoa-eval-apply`, `aoa-eval-local-need`, `aoa-eval-design`, or `aoa-eval-session-mining` - owner-boundary statement naming proof owner, local port owner, and any MCP or `.aoa` evidence role - session-start status when a workspace readiness command exists, including freshness blockers and stop lines that constrain the route - source posture distinguishing a live-workspace packet from any exact commit-bound evidence used for application or publication - selected Eval Forge front-door refs and commands when the readiness packet exposes them, with proof authority explicitly kept false - selected existing eval, validation command, intake packet path, draft suite, or session-mining report - stop line when no owner surface is safe to write",
+          "text_sha256": "1bbcfd7f55762cc5f5bc900b9445f167f7d85e7ab8c1ea8daf294062b2a5fac5",
+          "token_count": 108
         },
         {
           "doc_id": "skill:aoa-eval:section:procedure",
@@ -4534,9 +4534,9 @@
           "section_role": "procedure",
           "source_path": "skills/core/engineering/aoa-eval/SKILL.md",
           "source_anchor": "## Procedure",
-          "text": "1. when an OS Abyss `aoa-evals` checkout is available, raise the read-only session readiness packet before choosing a subskill: - from the `aoa-evals` repo, run `python scripts/aoa_eval_session_start.py --json` - treat its active repo routes, support registry, candidate queue summary, freshness blockers, and stop lines as advisory routing evidence - if it exposes `eval_forge_front_door`, inspect `surface_refs`, `exact_commands`, `surface_status`, and non-proof boundary flags before classifying the route - use `EVAL_FORGE_OPERATING_PATH.md` for the first operating path, `SESSION_MINING_CRITERIA.md` before session mining, `LOCAL_PORT_DECISION_MATRIX.md` before local intake/design, and the worksheet example before owner-review worksheet work - if the command is missing or fails, name that gap and continue with local and central source inspection instead of inventing a route 2. before importing `.aoa` or trace-derived eval candidates, validate the candidate-only contract when the validator is available: `python scripts/validate_eval_candidate_packets.py --schema-only`; validate any actual packet path before using it as candidate evidence 3. classify the pressure: - existing eval may fit: use `aoa-eval-select` - existing eval or validator should run: use `aoa-eval-apply` - no eval fits and a repo-local pressure packet is needed: use `aoa-eval-local-need` - a local eval suite or report needs design: use `aoa-eval-design` - `.aoa` evidence should be mined for missed trigger cases: use `aoa-eval-session-mining` 4. if a repo-family or workspace local-port inventory is available, consult it before local need/design/session mining to distinguish missing, skeleton, active, invalid, and stale local surfaces; treat inventory route keys as advisory routing evidence, not proof or mutation authority 5. check local owner route first: repository `AGENTS.md`, `evals/PORT.yaml`, nearby validators, tests, scripts, and local route docs 6. check central `aoa-evals` only for proof doctrine, local-port contract, central bundles, scoring, verdicts, or review rules 7. use `aoa-evals-mcp` only as a runtime access plane; do not let an MCP packet create proof truth or write central eval bundles 8. when prior-session behavior matters and a workspace/session-memory evidence route is available, use an installed `aoa-session-memory-evidence-route` skill or the equivalent read-only `aoa-session-memory-mcp` packet; for a stable eval/validator/test/MCP/failure anchor, ask for `usage-chain` first when the question is how it was used, what happened after, or which failures/consequences followed; use `entity-dossier` when source identity, graph/cooccurrence/timeline context, related entities, or a heavier human packet is needed; expand to usage audit, neighborhood, literal, graph, or answer routes only when the first packet is stale, truncated, missing refs, or too coarse; keep those refs candidate-only until the local or central eval owner accepts them; if no workspace/session-memory route is available, name the gap and continue from current local and central eval owner files instead of treating the missing packet as a blocker 9. after classification, load exactly one selected subskill before applying its procedure: - read the selected subskill's complete `SKILL.md` - the selected child name is selection evidence only, not load or handoff evidence - do not apply the child procedure or report it loaded until that read is complete - keep every unselected subskill out of context unless the route changes 10. if no safe route exists, stop with the missing owner evidence and the next narrow source to inspect 11. after any write or eval run, report the route, owner surface, evidence used, validation command, and remaining proof risk",
-          "text_sha256": "cda2f40ce978382134543c13155f412310d3a2701d3070216378da3998bd673b",
-          "token_count": 523
+          "text": "1. when an OS Abyss `aoa-evals` checkout is available, raise the read-only session readiness packet before choosing a subskill: - from the `aoa-evals` repo, run `python scripts/aoa_eval_session_start.py --json` - treat its active repo routes, support registry, candidate queue summary, freshness blockers, and stop lines as advisory routing evidence - record the reported source root, Git commit, and dirty or divergent posture - treat a packet over a dirty or divergent checkout as a live-workspace packet; for exact merged or published evidence, run the owner validator from the exact source tree or commit - do not fast-forward, reset, or rewrite a dirty canonical checkout merely to make a readiness packet look current - if it exposes `eval_forge_front_door`, inspect `surface_refs`, `exact_commands`, `surface_status`, and non-proof boundary flags before classifying the route - use `EVAL_FORGE_OPERATING_PATH.md` for the first operating path, `SESSION_MINING_CRITERIA.md` before session mining, `LOCAL_PORT_DECISION_MATRIX.md` before local intake/design, and the worksheet example before owner-review worksheet work - if the command is missing or fails, name that gap and continue with local and central source inspection instead of inventing a route 2. before importing `.aoa` or trace-derived eval candidates, validate the candidate-only contract when the validator is available: `python scripts/validate_eval_candidate_packets.py --schema-only`; validate any actual packet path before using it as candidate evidence 3. classify the pressure: - existing eval may fit: use `aoa-eval-select` - existing eval or validator should run: use `aoa-eval-apply` - no eval fits and a repo-local pressure packet is needed: use `aoa-eval-local-need` - a local eval suite or report needs design: use `aoa-eval-design` - `.aoa` evidence should be mined for missed trigger cases: use `aoa-eval-session-mining` 4. if a repo-family or workspace local-port inventory is available, consult it before local need/design/session mining to distinguish missing, skeleton, active, invalid, and stale local surfaces; treat inventory route keys as advisory routing evidence, not proof or mutation authority 5. check local owner route first: repository `AGENTS.md`, `evals/PORT.yaml`, nearby validators, tests, scripts, and local route docs 6. check central `aoa-evals` only for proof doctrine, local-port contract, central bundles, scoring, verdicts, or review rules 7. use `aoa-evals-mcp` only as a runtime access plane; do not let an MCP packet create proof truth or write central eval bundles 8. when prior-session behavior matters and a workspace/session-memory evidence route is available, use an installed `aoa-session-memory-evidence-route` skill or the equivalent read-only `aoa-session-memory-mcp` packet; for a stable eval/validator/test/MCP/failure anchor, ask for `usage-chain` first when the question is how it was used, what happened after, or which failures/consequences followed; use `entity-dossier` when source identity, graph/cooccurrence/timeline context, related entities, or a heavier human packet is needed; expand to usage audit, neighborhood, literal, graph, or answer routes only when the first packet is stale, truncated, missing refs, or too coarse; keep those refs candidate-only until the local or central eval owner accepts them; if no workspace/session-memory route is available, name the gap and continue from current local and central eval owner files instead of treating the missing packet as a blocker 9. after classification, load exactly one selected subskill before applying its procedure: - read the selected subskill's complete `SKILL.md` - the selected child name is selection evidence only, not load or handoff evidence - do not apply the child procedure or report it loaded until that read is complete - keep every unselected subskill out of context unless the route changes 10. if no safe route exists, stop with the missing owner evidence and the next narrow source to inspect 11. after any write or eval run, report the route, owner surface, evidence used, validation command, and remaining proof risk",
+          "text_sha256": "8f65a1f9cd1c601f8da6362f22631ee6dd78a0ae9a4aeb7323c765ec18315344",
+          "token_count": 586
         },
         {
           "doc_id": "skill:aoa-eval:section:contracts",
@@ -4544,9 +4544,9 @@
           "section_role": "contracts",
           "source_path": "skills/core/engineering/aoa-eval/SKILL.md",
           "source_anchor": "## Contracts",
-          "text": "- `aoa-evals` owns proof doctrine and central eval verdicts - local repositories own their `evals/` ports and can hold intake pressure without becoming proof authorities - `.aoa` raw traces are candidate evidence, not reviewed truth - `aoa-session-memory` evidence routes can locate usage and consequences, but they do not own proof doctrine, verdicts, scoring, baselines, or eval promotion - session-start packets, generated dashboards, support registries, and candidate queue summaries are read-only routing aids, not proof objects - Eval Forge front-door references and route commands help choose the next owner route, but they do not score, promote, accept, or prove an eval - candidate packets must remain candidate-only until reviewed by the owning local or central surface - MCP tools are access planes and must not silently promote local pressure into central proof - workspace inventories and route read-models are advisory selectors; source files and owner validators remain stronger - the router chooses one subskill to control scope and avoid mixed authority - new evals should be created only after existing local and central surfaces were inspected",
-          "text_sha256": "fe208db582a791ff67d159cc18fa8dafcf5de7815e713acc3d0cf75dc4871d7d",
-          "token_count": 175
+          "text": "- `aoa-evals` owns proof doctrine and central eval verdicts - local repositories own their `evals/` ports and can hold intake pressure without becoming proof authorities - `.aoa` raw traces are candidate evidence, not reviewed truth - `aoa-session-memory` evidence routes can locate usage and consequences, but they do not own proof doctrine, verdicts, scoring, baselines, or eval promotion - session-start packets, generated dashboards, support registries, and candidate queue summaries are read-only routing aids, not proof objects - Eval Forge front-door references and route commands help choose the next owner route, but they do not score, promote, accept, or prove an eval - candidate packets must remain candidate-only until reviewed by the owning local or central surface - MCP tools are access planes and must not silently promote local pressure into central proof - workspace inventories and route read-models are advisory selectors; source files and owner validators remain stronger - a live-workspace packet and exact commit evidence answer different questions; neither may silently overwrite the other - the router chooses one subskill to control scope and avoid mixed authority - new evals should be created only after existing local and central surfaces were inspected",
+          "text_sha256": "b101cafbe0db607a1074638fd940100258d155a21649c3a60fe9e330e5d2dd59",
+          "token_count": 192
         },
         {
           "doc_id": "skill:aoa-eval:section:risk",
@@ -4554,9 +4554,9 @@
           "section_role": "risk",
           "source_path": "skills/core/engineering/aoa-eval/SKILL.md",
           "source_anchor": "## Risks and anti-patterns",
-          "text": "- treating every test as an eval or every eval as a central `aoa-evals` object - creating a local eval need before checking existing validators and tests - skipping an available session-start packet and then designing from stale local memory - letting `.aoa` search hits override repo-local source files - importing trace or session evidence without candidate-packet validation - treating a readiness dashboard, generated reader, or candidate queue as a verdict, score, baseline, or proof promotion - treating the Eval Forge front door as a central proof bundle instead of a route into existing surfaces, local ports, worksheets, rejects, or review - letting MCP writes bypass owner review - naming a selected subskill without reading its complete `SKILL.md` before applying its procedure - loading every subskill for a simple route decision - promoting scaffolded trigger pressure to canonical proof without review",
-          "text_sha256": "75c940232f7013fd850d91bebe0fba6ef01d11c22a5dd20a770b574b895dc5cb",
-          "token_count": 141
+          "text": "- treating every test as an eval or every eval as a central `aoa-evals` object - creating a local eval need before checking existing validators and tests - skipping an available session-start packet and then designing from stale local memory - letting `.aoa` search hits override repo-local source files - importing trace or session evidence without candidate-packet validation - treating a readiness dashboard, generated reader, or candidate queue as a verdict, score, baseline, or proof promotion - reporting a dirty canonical checkout as exact merged evidence, or mutating it to manufacture apparent freshness - treating the Eval Forge front door as a central proof bundle instead of a route into existing surfaces, local ports, worksheets, rejects, or review - letting MCP writes bypass owner review - naming a selected subskill without reading its complete `SKILL.md` before applying its procedure - loading every subskill for a simple route decision - promoting scaffolded trigger pressure to canonical proof without review",
+          "text_sha256": "f7cd95da2968fcdc27e1b0dd41abe812829e13b3abeb1531bf3d3db26e13952e",
+          "token_count": 158
         },
         {
           "doc_id": "skill:aoa-eval:section:verification",
@@ -4564,9 +4564,9 @@
           "section_role": "verification",
           "source_path": "skills/core/engineering/aoa-eval/SKILL.md",
           "source_anchor": "## Verification",
-          "text": "- confirm exactly one subskill route was selected - confirm the selected subskill's complete `SKILL.md` was read before its procedure; a selected child name alone is not load evidence - confirm local `evals/PORT.yaml` was inspected or the absence was named - if a workspace inventory was used, name the inventory command or MCP resource and the route recommendation it returned - if a session-start readiness packet was available, confirm it was run and name any freshness blocker or stop line that constrained the route - when `eval_forge_front_door` is available, confirm its operating path, criteria, local-port matrix, route-review or worksheet refs, and exact commands were considered as routing evidence only - confirm central `aoa-evals` authority was kept separate from local intake - confirm existing scripts, tests, and validators were considered before new design - confirm `.aoa` evidence is marked candidate-only when used - confirm session-memory usage-chain, dossier, or fallback route packets, if used, include raw/segment/session refs and did not replace local or central eval owner review; if a needed workspace/session-memory route was unavailable, confirm that the gap was named and not mistaken for proof truth - confirm session or trace-derived candidate evidence passed the candidate packet validator when the validator exists - confirm any generated or derived surfaces were rebuilt through owner builders - confirm final report names validation and skipped checks",
-          "text_sha256": "ec2c1e2b5dac15cdeca95affdf439c35ac09b3830b04404fa58ae3f10d43ced7",
-          "token_count": 221
+          "text": "- confirm exactly one subskill route was selected - confirm the selected subskill's complete `SKILL.md` was read before its procedure; a selected child name alone is not load evidence - confirm local `evals/PORT.yaml` was inspected or the absence was named - if a workspace inventory was used, name the inventory command or MCP resource and the route recommendation it returned - if a session-start readiness packet was available, confirm it was run and name any freshness blocker or stop line that constrained the route - name the selected source root and commit, distinguish live-workspace evidence from exact-source validation, and preserve unrelated dirty work - when `eval_forge_front_door` is available, confirm its operating path, criteria, local-port matrix, route-review or worksheet refs, and exact commands were considered as routing evidence only - confirm central `aoa-evals` authority was kept separate from local intake - confirm existing scripts, tests, and validators were considered before new design - confirm `.aoa` evidence is marked candidate-only when used - confirm session-memory usage-chain, dossier, or fallback route packets, if used, include raw/segment/session refs and did not replace local or central eval owner review; if a needed workspace/session-memory route was unavailable, confirm that the gap was named and not mistaken for proof truth - confirm session or trace-derived candidate evidence passed the candidate packet validator when the validator exists - confirm any generated or derived surfaces were rebuilt through owner builders - confirm final report names validation and skipped checks",
+          "text_sha256": "63621234a1237f29d04caead523dd35a1e9a29720c798cebe5fc37993882822c",
+          "token_count": 240
         },
         {
           "doc_id": "skill:aoa-eval:section:lineage",
@@ -4599,8 +4599,8 @@
         "skill_path": "skills/core/engineering/aoa-eval-apply/SKILL.md",
         "techniques_path": "skills/core/engineering/aoa-eval-apply/techniques.yaml",
         "policy_path": "skills/core/engineering/aoa-eval-apply/agents/openai.yaml",
-        "content_hash": "7d844fee55ea2692b2e39d58c4fd5865ca1ac78e9afe0b6ebce0127011bc6e6d",
-        "skill_revision": "7d844fee55ea"
+        "content_hash": "644d1e0cec9fcd6b2876e9b38090d0954a825ef3b24edd74d6d5e92c20f77c58",
+        "skill_revision": "644d1e0cec9f"
       },
       "policy": {
         "invocation_mode": "explicit-preferred",
@@ -4690,7 +4690,7 @@
       "evaluation": {
         "canonical_eval_ready": true,
         "canonical_eval_blockers": [],
-        "use_case_count": 1,
+        "use_case_count": 2,
         "do_not_use_case_count": 1,
         "autonomy_check_count": 1,
         "promotion_review_path": null,
@@ -4743,9 +4743,9 @@
           "section_role": "intent",
           "source_path": "skills/core/engineering/aoa-eval-apply/SKILL.md",
           "source_anchor": "## Intent",
-          "text": "Use this skill to apply an existing eval surface after selection is clear. The output is an evidence report, not a proof promotion.",
-          "text_sha256": "03e47faaf5aea29ad3fd2045bab741ccb037b57a7839bee21987dd8d8cfdda4f",
-          "token_count": 23
+          "text": "Use this skill to apply an existing eval surface after selection is clear. The output is an evidence report, not a proof promotion. When a selected local suite exposes `evals/suites/<slug>.suite.json`, treat that sidecar as typed source execution intent: it must be JIT-revalidated by the current owner before its exact runner may execute.",
+          "text_sha256": "00883917478c855d0f0ceb5efa368ff9cefcab905db5d5806a5fd9e131216083",
+          "token_count": 52
         },
         {
           "doc_id": "skill:aoa-eval-apply:section:trigger_boundary",
@@ -4753,9 +4753,9 @@
           "section_role": "trigger_boundary",
           "source_path": "skills/core/engineering/aoa-eval-apply/SKILL.md",
           "source_anchor": "## Trigger boundary",
-          "text": "Use this skill when: - an existing eval, validator, test, or script has already been selected - a local or central evaluation command should be run or routed - the user needs to know what the run proves, what failed, and what remains outside coverage - generated outputs need to be rebuilt or checked as part of the selected eval Do not use this skill when: - no existing eval has been selected yet; use `aoa-eval-select` - the next honest move is to record missing eval pressure; use `aoa-eval-local-need` - the task is to invent a new suite; use `aoa-eval-design` - the command would mutate production or central proof surfaces without owner permission",
-          "text_sha256": "ef38bdd66daf642c3397a7f8fbc6ffde66ba199d427784a7e542640c6f7300e4",
-          "token_count": 113
+          "text": "Use this skill when: - an existing eval, validator, test, or script has already been selected - a local or central evaluation command should be run or routed - the user needs to know what the run proves, what failed, and what remains outside coverage - generated outputs need to be rebuilt or checked as part of the selected eval - a selected repo-local suite has a machine-readable execution sidecar whose freshness and runtime invocation must be applied Do not use this skill when: - no existing eval has been selected yet; use `aoa-eval-select` - the next honest move is to record missing eval pressure; use `aoa-eval-local-need` - the task is to invent a new suite; use `aoa-eval-design` - the command would mutate production or central proof surfaces without owner permission",
+          "text_sha256": "b26aa13d29e317fe02a2b19b3261dc740aca4c6fea262de19aafe3d160050c22",
+          "token_count": 131
         },
         {
           "doc_id": "skill:aoa-eval-apply:section:inputs",
@@ -4763,9 +4763,9 @@
           "section_role": "inputs",
           "source_path": "skills/core/engineering/aoa-eval-apply/SKILL.md",
           "source_anchor": "## Inputs",
-          "text": "- selected eval or validation command - repo-local route law and command prerequisites - expected artifacts, reports, generated outputs, and pass/fail criteria - prior failure or regression context",
-          "text_sha256": "b163199118ab6f124f6f9046436b0172b7f4e86a25e2336e113a5b412b39e70f",
-          "token_count": 28
+          "text": "- selected eval or validation command - repo-local route law and command prerequisites - optional `evals/suites/<slug>.suite.json` sidecar plus the current owner schema/validator that classifies it as absent, invalid, stale, or ready - exact source tree or commit when the result will be merge-, release-, or publication-bound - expected artifacts, reports, generated outputs, and pass/fail criteria - prior failure or regression context",
+          "text_sha256": "4ca3f60bcf246257b9f04ec717b930e3fd47254006a72fdce2567a8c0c6940ea",
+          "token_count": 61
         },
         {
           "doc_id": "skill:aoa-eval-apply:section:outputs",
@@ -4773,9 +4773,9 @@
           "section_role": "outputs",
           "source_path": "skills/core/engineering/aoa-eval-apply/SKILL.md",
           "source_anchor": "## Outputs",
-          "text": "- commands run and results observed - artifacts or reports produced - evidence classification: green proof, regression, inconclusive, blocked, or outside coverage - next route if failure should become an intake need or suite design",
-          "text_sha256": "4643f9adc31ff89d716e0bb14490c936172a61cdbc8fb977284448751dda2cb8",
-          "token_count": 35
+          "text": "- commands run and results observed - artifacts or reports produced - evidence classification: passed candidate evidence, regression candidate, inconclusive, blocked, or outside coverage - for a sidecar-backed suite: JIT state, exact invocation, environment capture, and owner-local execution receipt - next route if failure should become an intake need or suite design",
+          "text_sha256": "bc5b48b6121100019b9141ff885fa729ddfaa81e2db736418d05ba515fa349d9",
+          "token_count": 52
         },
         {
           "doc_id": "skill:aoa-eval-apply:section:procedure",
@@ -4783,9 +4783,9 @@
           "section_role": "procedure",
           "source_path": "skills/core/engineering/aoa-eval-apply/SKILL.md",
           "source_anchor": "## Procedure",
-          "text": "1. confirm the selected eval surface and owner repo 2. inspect prerequisites and choose the smallest command that exercises the intended evidence surface 3. run deterministic local checks before subjective review when possible 4. capture outputs, generated drift, and artifact paths 5. classify what the run proves and explicitly name what it does not prove 6. if the run exposes missing coverage, route to `aoa-eval-local-need` 7. if the run requires new design, route to `aoa-eval-design` 8. report commands, results, artifacts, and remaining risk",
-          "text_sha256": "4c6cf943649eb5f4b94dcdb1b713e836ba7e7cd9aee93a6183259e248eff94cf",
-          "token_count": 83
+          "text": "1. confirm the selected eval surface, owner repo, source root, and source ref; if exact merged evidence is required, use a clean exact tree without modifying a dirty canonical checkout 2. inspect prerequisites and choose the smallest command that exercises the intended evidence surface 3. if a local suite sidecar exists, use the current owner validator to JIT-revalidate schema, canonical owner identity, paths, typed argv, and every tracked source hash; proceed only from `source-contract-ready` 4. inventory, readiness, dashboard, and MCP surfaces may inspect the sidecar but must not execute it 5. invoke only the validated `runner.argv`, `runner.cwd`, timeout, and accepted exit codes; do not substitute a wrapper, broader gate, or reconstructed command 6. capture interpreter, dependency inventory digest, ambient pytest plugins, config, and selected environment before interpreting the result 7. write an owner-local, private-by-default execution receipt linked to the source head and sidecar digest; keep proof and promotion authority false 8. when no sidecar exists, run the selected deterministic command with the same source, cwd, result, artifact, and proof-limit reporting discipline 9. capture outputs, generated drift, and artifact paths 10. classify what the run proves and explicitly name what it does not prove 11. if the run exposes missing coverage, route to `aoa-eval-local-need`; if it requires new design, route to `aoa-eval-design` 12. report commands, results, artifacts, source posture, environment posture, and remaining risk",
+          "text_sha256": "8aeb336da0d006eff958698245ee7d77b01d191de530d7199700bd6157c5045a",
+          "token_count": 223
         },
         {
           "doc_id": "skill:aoa-eval-apply:section:contracts",
@@ -4793,9 +4793,9 @@
           "section_role": "contracts",
           "source_path": "skills/core/engineering/aoa-eval-apply/SKILL.md",
           "source_anchor": "## Contracts",
-          "text": "- applying an eval does not create a central verdict unless `aoa-evals` owns and validates that promotion - failed or inconclusive runs are evidence, not permission to guess - generated drift must be resolved through owner builders - local eval reports must stay under local repo surfaces unless central review accepts them",
-          "text_sha256": "e5b2058c1b915cf1443521d40b4f6669a328c1063a194993d8c3787276d52f22",
-          "token_count": 52
+          "text": "- applying an eval does not create a central verdict unless `aoa-evals` owns and validates that promotion - `source-contract-ready` proves reviewed source shape and hashes only; runtime reproducibility remains false unless a stronger owner proves a pinned environment - a stale or invalid sidecar blocks execution until its source owner repairs or refreshes it; live output cannot author its own tracked hashes - inventory, MCP, and generated readiness surfaces never gain execution or receipt-publication authority from discovering a sidecar - failed or inconclusive runs are evidence, not permission to guess - generated drift must be resolved through owner builders - local eval reports must stay under local repo surfaces unless central review accepts them",
+          "text_sha256": "4edcb896afa867b29bd8d0f930fd46aa975315ded242f50ed97ba6c3414ad374",
+          "token_count": 114
         },
         {
           "doc_id": "skill:aoa-eval-apply:section:risk",
@@ -4803,9 +4803,9 @@
           "section_role": "risk",
           "source_path": "skills/core/engineering/aoa-eval-apply/SKILL.md",
           "source_anchor": "## Risks and anti-patterns",
-          "text": "- running a broad release gate when a focused validator is enough - treating green tests as complete proof outside their scope - hiding generated drift - promoting failure observations without a reproducible command",
-          "text_sha256": "b9aeb08d5415d21795fe26a2f50d1ec385ab7f8519b0bc67af0b46a4dbc49a87",
-          "token_count": 34
+          "text": "- running a broad release gate when a focused validator is enough - treating green tests as complete proof outside their scope - executing a sidecar from inventory/MCP output without immediate owner JIT validation - changing `runner.argv`, cwd, timeout, accepted codes, or tracked hashes at run time to make a stale contract pass - treating an environment capture or execution receipt as reproducible runtime, central proof, or promotion - hiding generated drift - promoting failure observations without a reproducible command",
+          "text_sha256": "b9924fc71b2d6444ceb18dec3fc37d72b40c7c5a4c2b959cf065157a5d83e653",
+          "token_count": 80
         },
         {
           "doc_id": "skill:aoa-eval-apply:section:verification",
@@ -4813,9 +4813,9 @@
           "section_role": "verification",
           "source_path": "skills/core/engineering/aoa-eval-apply/SKILL.md",
           "source_anchor": "## Verification",
-          "text": "- confirm the selected eval existed before running - confirm command, cwd, and result - confirm artifacts and generated drift status - confirm proof limits and next route - confirm no central proof file was written through MCP",
-          "text_sha256": "b331abf59add4d003f2456a28c78b57b2c8e9f7e2b2518c7fc37f196d4ac51ec",
-          "token_count": 38
+          "text": "- confirm the selected eval existed before running - confirm source root/ref and whether the observation came from a live dirty workspace or an exact source tree - for a sidecar-backed suite, confirm the owner validator reported ready immediately before execution and no inventory/MCP surface executed it - confirm exact command, cwd, timeout, accepted exit codes, and result - confirm environment capture and the private execution receipt's source-head and sidecar-digest links - confirm artifacts and generated drift status - confirm proof limits and next route - confirm no central proof file was written through MCP",
+          "text_sha256": "c23cae94238eede8e18b25781dfc1d86dbacae9b72074fba2beb51d497d8d998",
+          "token_count": 95
         },
         {
           "doc_id": "skill:aoa-eval-apply:section:lineage",
