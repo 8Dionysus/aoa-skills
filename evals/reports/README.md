@@ -110,10 +110,21 @@ temporary root and must not be copied into this directory.
   the exact downstream procedure. The aided arm completed and verified that
   fixture procedure while separately preserving external owner stop-lines.
   The recorded negative outcome is therefore answer-key pressure, not a skill
-  verdict; v9 corrects the scope from source and requires replay plus a fresh
-  exact-merged smoke.
+  verdict. V9 attempted a narrower scope; the next smoke exposed the remaining
+  child/probe conflation now superseded by v10.
+- [aoa-skill-live-dispatch-smoke-20260712-v9-child-route-native-dispatch-needs-rerun.json](aoa-skill-live-dispatch-smoke-20260712-v9-child-route-native-dispatch-needs-rerun.json)
+  preserves the complete exact-merged v9 smoke. Its aided arm selected and
+  fully read `aoa-eval-select`, ran the fixture probe, and reported the missing
+  target-repository evidence; its structured arm accepted official
+  `aoa-eval-apply` input and completed the probe but reported the equivalent
+  root-child hierarchy. V9 recorded outcome no-lift and
+  `dispatch_policy_gap`; v10 source review shows both are harness semantics, not
+  skill defects. Replay yields route `+1`, trajectory `+1`,
+  procedure-disposition `0` with both reports correct, and objective outcome
+  unscored. The historical v9 fields remain immutable and a fresh exact-merged
+  v10 smoke is required.
 
-Corrected live receipts under the v9 evidence protocol are reviewable only
+Corrected live receipts under the v10 evidence protocol are reviewable only
 after canonical user-skill shadows, plugins, and every configured MCP id are
 isolated with the adapter-appropriate mechanism (`--ignore-user-config` for
 CLI exec, explicit per-id disables for prompt inspection and App Server);
@@ -123,7 +134,7 @@ startup; the official `$skill` text plus matching `skill` item is accepted;
 native input acceptance remains separate from exact fixture-path full reads;
 model `claims_loaded` stays separate from objective load; every expected or
 dynamically selected child has a complete exact-path read; read-only inspection
-commands remain allowed evidence rather than procedure commands; one complete
+commands remain load evidence separate from the fixture probe; one complete
 output or ordered continuously covering source chunks can prove that read,
 while overlaps are accepted and gaps, reverse-only coverage, unrelated output,
 inventory mentions, and shadow paths remain insufficient; zero-return
@@ -135,19 +146,20 @@ elapsed duration and partial private stdout/stderr so recoverable events retain
 their normal precedence; incomplete stopped-early cohorts return nonzero after
 their private receipt is written, while complete negative cohorts remain valid
 executions; and invalid pairs are
-omitted without rewriting arm history. Public v9 pairs name route lift and
-bounded downstream procedure-outcome lift separately. Outcome lift is
-scored only when both arms share the same source-locked case contract; missing
-contracts are explicit `not_scored_no_contract`, the scope is not completion of
-an external repository task, and the observed live answer never becomes its own
-grader. Public validation rejects embedded absolute host
+omitted without rewriting arm history. Public v10 pairs name route,
+selected-child trajectory, and selected-procedure-disposition report lift
+separately. Fixture execution is its own contract. Objective outcome lift is
+`not_scored_no_observable_outcome` until an owner-bound observable surface
+exists; the probe and model report never become their own grader. Public
+validation rejects embedded absolute host
 paths as well as raw prompts,
 transport ids, and credential-shaped values. Retained v1/v2 smokes remain
-historical `needs-rerun` evidence; retained v3-v8 reports keep their original
+historical `needs-rerun` evidence; retained v3-v9 reports keep their original
 review status and grader semantics, including v4's budget label and v5's
 single-output read label, while v6 keeps its zero-duration and wrapper-success
-history, v7 keeps its generic route-derived lift, and v8 keeps its invalid
-whole-task answer key rather than being rewritten in place.
+history, v7 keeps its generic route-derived lift, v8 keeps its invalid answer
+key, and v9 keeps its child/probe/native-dispatch conflation rather than being
+rewritten in place.
 - [aoa-eval-session-mining.report.md](aoa-eval-session-mining.report.md)
   records the first `.aoa` mining pass for `aoa-eval` trigger evidence and its
   proof limits.

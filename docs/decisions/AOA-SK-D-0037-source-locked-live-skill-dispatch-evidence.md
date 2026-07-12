@@ -50,6 +50,15 @@ deflection of the larger unavailable repository task. The observed negative
 outcome therefore returned to contract scope review rather than authorizing a
 skill edit.
 
+The exact-merged-tree v9 rerun exposed the deeper boundary. The aided arm chose
+`aoa-eval-select`, not `aoa-eval-apply`, because the case asks to inspect
+existing eval surfaces before applying one and supplies no target repository.
+It correctly reported `blocked_missing_input` while independently running the
+fixture validator. The structured arm accepted official `aoa-eval-apply` input
+but reported the equivalent `aoa-eval` root-to-child hierarchy. V9 had confused
+the fixture probe with the child procedure and model selection report with
+transport-native dispatch.
+
 ## Options Considered
 
 - Infer effectiveness from session mentions, generated trigger fixtures, and
@@ -66,9 +75,10 @@ Choose the third option.
 
 The live harness has four observable arms:
 
-- paired implicit aided and no-skill control turns that report route lift and,
-  only for pre-authored source-locked cases, bounded downstream
-  procedure-outcome lift as a separate dimension;
+- paired implicit aided and no-skill control turns that report route,
+  selected-child trajectory, and selected-procedure-disposition report lift as
+  separate dimensions while leaving objective outcome unscored when the fixture
+  exposes none;
 - explicit root-to-child trajectories where accepted `$root` input is native
   root-load evidence and the selected child still needs a complete raw read;
 - structured App Server skill input, bound to the exact 57-skill fixture path
@@ -105,11 +115,11 @@ config and explicitly disable every locked id. A shadow or MCP count/digest
 change is source/runtime drift, not a reason to reuse the old token.
 
 The corrected hermetic pre-turn and evidence contract uses schema
-`aoa_codex_app_server_skill_input_contract_v9` and protocol revision
-`codex-cli-0.144.1-live-dispatch-evidence-v9`. It follows the
+`aoa_codex_app_server_skill_input_contract_v10` and protocol revision
+`codex-cli-0.144.1-live-dispatch-evidence-v10`. It follows the
 [official App Server invocation shape](https://learn.chatgpt.com/docs/app-server#start-a-turn-invoke-a-skill)
 and Codex [progressive-disclosure load semantics](https://learn.chatgpt.com/docs/customization/overview#skills).
-Retained receipts source-locked to v1-v8 keep their original protocol and
+Retained receipts source-locked to v1-v9 keep their original protocol and
 review status and are not upgraded in place.
 
 The source-locked caps include both the rollout token limit and its required
@@ -139,15 +149,15 @@ the resource class, agent kind, and cgroup, independently requires a storage
 write preflight for its private host-owned root, and stops on runtime drift,
 privacy contamination, owner-boundary widening, or transport failure. The
 sandbox remains read-only and network-disabled, while read-only shell execution
-is available for evidence-bearing skill reads and one hermetic fixture
-procedure. Read-only skill-file inspection commands are evidence collection,
-remain allowed before the procedure, and do not count as procedure commands.
+is available for evidence-bearing skill reads and one independent hermetic
+fixture-execution probe. Read-only skill-file inspection commands are load and
+trajectory evidence, not the probe or selected skill procedure.
 Every completed or in-progress model command must remain inside the fixture
 root. Absolute host, workspace, session-memory, user-config, other-repository,
 or parent-traversal paths are `harness_contamination` before budget, dispatch,
 load, procedure, or lift interpretation. System executables and `/dev/null`
 remain tooling exceptions and do not widen the data boundary.
-Root/child and structured arms receive the exact procedure command
+Every arm receives the exact fixture probe
 `python3 fixture_validator.py`. Transport records full reads, exact command
 observation, zero exit, and `AOA_FIXTURE_VALIDATOR_OK` verification as separate
 measures.
@@ -162,7 +172,8 @@ relabeled as a raw read. Procedure verification remains atomic: one completed
 exact-command event
 must carry both zero exit and exactly one sentinel JSON payload matching the
 fixture-guidance digest, schema/status, no-drift, and no-proof-authority fields.
-Split or forged evidence does not pass.
+Split or forged evidence does not pass. Probe success does not determine the
+selected child procedure disposition or whole-task outcome.
 An explicit `true` mutation, proof-authority, or promotion claim is classified
 as an owner-boundary safety violation before generic output invalidity, even
 though the strict response schema also forbids that value.
@@ -171,9 +182,11 @@ Raw prompts, events, transport identifiers, and model output remain in `0600`
 files below the source-locked `0700` host-private root. Public receipts are
 field-whitelisted projections with digests, per-arm observations, paired deltas,
 failure classes, and review status. Measures distinguish prompt visibility,
-selection, model load claim, accepted native input, raw full-read evidence,
-dispatch and load contracts, procedure disposition, execution, verification,
-completion, and deflection. They publish no raw text and no aggregate score.
+model selection report, sent structured dispatch, accepted native input, raw
+full-read evidence, dispatch/load contracts, selected-child trajectory,
+fixture execution, selected-procedure disposition/completion/deflection report,
+and objective-outcome availability. They publish no raw text and no aggregate
+score.
 Public safety validation walks every string and rejects an absolute host path
 even when it is embedded inside a longer prose value.
 
@@ -199,10 +212,11 @@ the planned measurement completed, not whether the model passed the case.
 
 This route measures different evidence stages without collapsing them. A skill
 surface being prompt-visible is not the same as being selected; selection is
-not accepted native input; a model load claim is neither native acceptance nor
-a complete transport-observed raw read; a read is not procedure execution; an
-exit code is not sentinel verification;
-and a route-contract match is neither observed completion nor central proof.
+not transport dispatch; sent structured input is not accepted native load; a
+model load claim is neither native acceptance nor a complete
+transport-observed raw read; a child read is not its procedure disposition; the
+fixture probe is neither the child procedure nor an objective task outcome; and
+a route-contract match is not completion or central proof.
 
 Source locks make a rerun comparable. Exact shadow disabling, pre-turn
 inventory checks, and command-level fixture-scope evidence make the
@@ -211,10 +225,12 @@ user copy or a source checkout reached through the read-only filesystem. Paired
 background digests expose other prompt-surface drift rather than crediting
 general model knowledge. Host routing bounds resource and storage pressure.
 Private/raw and public/digest separation keeps review possible without
-publishing session material. Paired route and bounded downstream
-procedure-outcome lift are
+publishing session material. Paired route, trajectory, and procedure-
+disposition report lift are
 undefined and omitted when either arm has an output-contract, transport,
-budget, runtime-profile, or owner-boundary safety failure. A
+budget, runtime-profile, or owner-boundary safety failure. Objective outcome is
+always unscored in the current fixture because no stronger observable surface
+exists. A
 zero-return invalid structured result is `output_contract_invalid`; transport
 failure is reserved for failed or timed-out transport. A contaminated pair
 remains visible without rewriting the original failure classification of
@@ -225,9 +241,9 @@ target also appears in its own neighbourhood list.
 
 ## Consequences
 
-- Positive: dispatch, manual reachability, structured selection, trajectory,
-  route lift, and source-declared bounded downstream procedure-outcome pressure
-  can be
+- Positive: dispatch, manual reachability, structured selection, route lift,
+  selected-child trajectory, fixture execution, and procedure-disposition
+  pressure can be
   reproduced against an exact source and runtime protocol without one lift
   masquerading as the other.
 - Positive: harness contamination is rejected before model spend, and public
@@ -254,11 +270,10 @@ target also appears in its own neighbourhood list.
   repeated runs are needed before changing skill status or promotion posture.
 - Tradeoff: the 48k ceiling raises worst-case live-campaign cost; non-smoke
   cohorts therefore retain the second exact high-cost confirmation token.
-- Follow-up: v8 separated route and outcome lift, but its exact-merged smoke
-  exposed a whole-task/downstream-procedure answer-key mismatch. Land v9's
-  explicit downstream-procedure scope, replay the retained v8 evidence under
-  the corrected grader, repeat a fresh exact-merged smoke, and require declared
-  pilot outcome coverage before widening toward all 57 skills.
+- Follow-up: v9 proved the earlier whole-task correction was insufficient.
+  Land v10's context separation, repeat the exact smoke, then design objective
+  owner-bound outcome surfaces and complete both 11/11 procedure-contract and
+  11/11 outcome-observation coverage before widening toward all 57 skills.
 
 ## Current Applicability
 
@@ -281,13 +296,13 @@ As of 2026-07-12:
   or any skill-effect interpretation.
 - Current cap contract: every arm receives the same source-locked 48k ceiling;
   paired arms may differ in actual use but never in available budget.
-- Current contract schema: `aoa_codex_app_server_skill_input_contract_v9`.
-- Current protocol lock: `codex-cli-0.144.1-live-dispatch-evidence-v9`.
-- Current pair contract: new receipts publish `route_lift` and
-  `route_effect_class` separately from `outcome_lift` and
-  `outcome_effect_class`. Bounded outcome grading requires the same
-  source-locked contract on both arms and publishes its explicit downstream
-  procedure scope; absent contracts are `not_scored_no_contract`.
+- Current contract schema: `aoa_codex_app_server_skill_input_contract_v10`.
+- Current protocol lock: `codex-cli-0.144.1-live-dispatch-evidence-v10`.
+- Current pair contract: new receipts publish route, selected-child trajectory,
+  and selected-procedure-disposition report lift separately. Sent structured
+  dispatch, accepted native load, model hierarchy report, and fixture execution
+  remain independent measures. Objective outcome is
+  `not_scored_no_observable_outcome` in this fixture.
 - Historical protocols: retained v1-v2 smokes are `needs-rerun`; v2 produced a
   valid candidate implicit pair but used an unsupported structured-only App
   input and cannot support its App load label. Retained v3-v6 reports keep their
@@ -331,15 +346,72 @@ As of 2026-07-12:
   of the larger unavailable repository task rather than completion of the exact
   downstream fixture procedure declared by the model-output contract. Its
   public receipt is `needs-rerun` harness evidence, not a negative skill
-  outcome. V9 corrects the contract scope from source and requires replay plus
-  a fresh exact-merged smoke. Pilot planning still exposes only 1/11 declared
-  contracts and confirmed execution remains mechanically blocked before
-  preflight until coverage reaches 11/11.
+  outcome. V9's attempted correction is superseded by the next item.
+- Current rerun posture: the exact-merged v9 smoke completed all four turns.
+  Its aided arm selected the source-correct `aoa-eval-select` child and blocked
+  on missing target-repository evidence; its structured arm accepted official
+  `aoa-eval-apply` input but reported the equivalent root-child hierarchy. V10
+  replay yields route `+1`, trajectory `+1`, procedure-disposition `0` with
+  both reports correct, and no objective outcome score. The public v9 receipt
+  remains immutable `needs-rerun` harness evidence. A fresh exact-merged v10
+  smoke is required. Pilot planning exposes 1/11 procedure contracts and 0/11
+  objective outcomes; confirmed execution is blocked before preflight until
+  both reach 11/11.
 - Superseded by: none.
 
 ## Review Log
 
+### 2026-07-12 - Separate native dispatch, child procedure, fixture probe, and outcome
+
+- Previous assumption: once v9 bound `procedure_disposition` to a downstream
+  procedure, `python3 fixture_validator.py` could stand in for that procedure;
+  structured model output also had to report the invoked child directly or the
+  native dispatch was considered wrong.
+- New evidence: the exact-merged v9 smoke selected and fully read
+  `aoa-eval-select`, correctly blocked on missing target-repository evidence,
+  and independently passed the fixture validator. Its structured arm accepted
+  official `aoa-eval-apply` input, passed the same probe, and reported
+  `aoa-eval` plus `aoa-eval-apply` as an equivalent root-child hierarchy. V9
+  recorded outcome no-lift and `dispatch_policy_gap`, revealing grader pressure
+  rather than two skill defects.
+- Boundary map: the necessary lenses are object-kind/vocabulary,
+  authority/proof, interface/handoff, and surface-state. Transport owns sent
+  structured dispatch and accepted native load. Model output owns only its
+  direct or hierarchy report. Case/root/child source owns expected trajectory
+  and procedure disposition. The fixture validator owns only hermetic probe
+  execution. A private/public live receipt is candidate evidence. No current
+  surface owns an objective external-task outcome observation.
+- Decision: v10 publishes route, selected-child trajectory, fixture execution,
+  and selected-procedure-disposition report as separate contracts. A
+  structured hierarchy report is exact only when both its root and child match
+  the source-declared `root_child_trajectories` edge. The
+  `collision-42` source contract expects `aoa-eval-select`, its complete read,
+  and `blocked_missing_input`. Official structured input sent/accepted is not
+  overridden by that report. Objective outcome lift is null with
+  `not_scored_no_observable_outcome`.
+- Adaptive return: wrong declared child is `trajectory_break`; a correct child
+  with a mismatched disposition report is `procedure_disposition_miss`; a
+  missing validator probe is `fixture_execution_gap`; a structured report that
+  matches neither the direct target nor the exact source-declared root-child
+  edge is `selection_report_miss` without changing native dispatch/load facts.
+  None authorizes a skill edit until its stronger source contract survives
+  review.
+- Boundary: v8 and v9 receipts remain immutable. V10 replay of raw evidence is
+  grader validation only: v8 becomes route `+1`, trajectory `0`, procedure
+  `-1`; v9 becomes route `+1`, trajectory `+1`, procedure `0`; both have
+  objective outcome unscored. A fresh exact-merged v10 smoke is required.
+- Validation: red-first tests cover native dispatch versus hierarchy report,
+  child trajectory versus procedure disposition, fixture-probe independence,
+  historical receipt compatibility, and pilot blocking at 1/11 procedure plus
+  0/11 objective outcome coverage before full repository and cross-surface
+  gates.
+
 ### 2026-07-12 - Bind outcome to the downstream procedure, not the whole task
+
+- Later status: superseded by the v10 review above. The fresh v9 smoke proved
+  that the fixture probe and selected child procedure did not share one scope,
+  so the positive outcome expectation in this historical step is not current
+  doctrine.
 
 - Previous assumption: because the `collision-42` prompt withholds real
   repository inputs, the pre-authored outcome key should expect
@@ -604,13 +676,14 @@ This decision does not make `aoa-skills` a central model-evaluation owner. It
 does not allow automatic skill promotion, public raw transcripts, unattended
 high-cost cohorts, or execution of repository mutation tasks. A green route
 receipt proves only the evidence dimensions it explicitly records and does not
-prove completion outside the bounded downstream fixture procedure. A
+prove selected-route procedure execution or completion outside its declared
+source contract. Fixture-probe success is not external-task completion. A
 `needs-rerun` receipt or a run
 with prompt/background contamination must not drive skill edits, promotion, or
-outcome-lift claims. A route-only contract or a pair without a pre-authored
-bounded downstream procedure-outcome contract must not be relabeled as outcome
-evidence after the run, and whole-task deflection must not be substituted for
-the contract's declared procedure scope.
+outcome-lift claims. Route, trajectory, model disposition report, and fixture
+execution must not be relabeled as objective outcome evidence. Pilot widening
+requires both complete procedure-contract coverage and separately observable
+owner-bound outcome coverage.
 
 ## Validation
 

@@ -107,7 +107,9 @@ class FakeTransport:
         if not events and "fixture_root" in request:
             if request["arm_type"] != "implicit_control":
                 events.append(self._skill_read_event(request, target))
-                child = request.get("expected_child_skill")
+                child = request.get("expected_child_skill") or request.get(
+                    "expected_selected_child_skill"
+                )
                 if child:
                     events.append(self._skill_read_event(request, child))
             if request["arm_type"] in {
@@ -117,7 +119,7 @@ class FakeTransport:
             }:
                 events.append(self._validator_event(request))
         disposition = {
-            "implicit_aided": "completed",
+            "implicit_aided": "blocked_missing_input",
             "implicit_control": "blocked_missing_input",
             "root_manual_child": "completed",
         }.get(request["arm_type"], "not_applicable")
@@ -128,7 +130,12 @@ class FakeTransport:
             "final_output": {
                 "route_decision": decision,
                 "selected_skill": target,
-                "selected_child": request.get("expected_child_skill"),
+                "selected_child": (
+                    None
+                    if request["arm_type"] == "implicit_control"
+                    else request.get("expected_child_skill")
+                    or request.get("expected_selected_child_skill")
+                ),
                 "claims_loaded": request["arm_type"] != "implicit_control",
                 "procedure_disposition": disposition,
                 "mutation_authorized": False,
@@ -202,7 +209,7 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
         plan = json.loads(self.plan_path.read_text(encoding="utf-8"))
         for filename in (
             "live-skill-dispatch-plan.schema.json",
-            "live-skill-dispatch-outcome-contracts.schema.json",
+            "live-skill-dispatch-procedure-contracts.schema.json",
             "live-skill-dispatch-model-output.schema.json",
             "live-skill-dispatch-private-receipt.schema.json",
             "live-skill-dispatch-public-receipt.schema.json",
@@ -228,6 +235,20 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
         itemless_array["properties"]["verification_steps"].pop("items")
         with self.assertRaisesRegex(ValueError, "array schema must declare items"):
             self.runner.validate_openai_strict_output_schema(itemless_array)
+
+    def test_all_committed_public_receipts_remain_schema_and_privacy_valid(self) -> None:
+        schema = self.load_schema("live-skill-dispatch-public-receipt.schema.json")
+        paths = sorted(
+            (REPO_ROOT / "evals" / "reports").glob(
+                "aoa-skill-live-dispatch*.json"
+            )
+        )
+        self.assertGreaterEqual(len(paths), 16)
+        for path in paths:
+            with self.subTest(receipt=path.name):
+                receipt = json.loads(path.read_text(encoding="utf-8"))
+                Draft202012Validator(schema).validate(receipt)
+                self.runner.validate_public_receipt(receipt)
 
     def test_cohort_expansion_closes_collision_and_manual_reachability_gaps(self) -> None:
         plan = self.runner.load_plan(self.plan_path)
@@ -258,7 +279,7 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
                         trial.trial_id,
                     )
 
-    def test_smoke_outcome_contract_is_source_locked_before_live_execution(self) -> None:
+    def test_smoke_procedure_contract_is_source_locked_before_live_execution(self) -> None:
         runner = self.runner
         plan = runner.load_plan(self.plan_path)
         smoke = runner.expand_cohort(REPO_ROOT, plan, "smoke")
@@ -269,54 +290,70 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
         ]
 
         self.assertEqual(2, len(implicit))
-        self.assertEqual("required", plan["cohorts"]["smoke"]["outcome_contract_mode"])
+        self.assertEqual("required", plan["cohorts"]["smoke"]["procedure_contract_mode"])
         for trial in implicit:
-            self.assertIsNotNone(trial.outcome_contract)
-            contract = trial.outcome_contract
+            self.assertIsNotNone(trial.procedure_contract)
+            contract = trial.procedure_contract
             assert contract is not None
-            self.assertEqual("collision-42-bounded-procedure-v2", contract.contract_id)
-            self.assertEqual("bounded_downstream_procedure_outcome", contract.scope)
-            self.assertEqual("completed", contract.expected_procedure_disposition)
-            self.assertTrue(contract.expected_procedure_command_observed)
-            self.assertTrue(contract.expected_procedure_command_succeeded)
-            self.assertTrue(contract.expected_verification_observed)
-            self.assertTrue(contract.expected_completion_observed)
-            self.assertFalse(contract.expected_deflection_observed)
+            self.assertEqual("collision-42-child-procedure-v3", contract.contract_id)
+            self.assertEqual("selected_route_procedure_disposition", contract.scope)
+            self.assertEqual("aoa-eval-select", contract.expected_selected_child_skill)
+            self.assertTrue(contract.expected_selected_child_full_read_observed)
+            self.assertEqual(
+                "blocked_missing_input",
+                contract.expected_selected_procedure_disposition,
+            )
+            self.assertFalse(contract.expected_selected_procedure_completion_reported)
+            self.assertTrue(contract.expected_selected_procedure_deflection_reported)
             self.assertTrue(contract.expected_owner_boundary_present)
 
         packet = runner.build_plan_packet(REPO_ROOT, plan, "smoke", "model-a", "medium")
-        self.assertEqual("required", packet["outcome_contract_mode"])
+        self.assertEqual("required", packet["procedure_contract_mode"])
         self.assertEqual(1, packet["implicit_pair_count"])
-        self.assertEqual(1, packet["outcome_scored_pair_count"])
-        self.assertTrue(packet["outcome_contract_coverage_complete"])
+        self.assertEqual(1, packet["procedure_scored_pair_count"])
+        self.assertTrue(packet["procedure_contract_coverage_complete"])
+        self.assertEqual(0, packet["objective_outcome_scored_pair_count"])
+        self.assertFalse(packet["objective_outcome_coverage_complete"])
         implicit_locks = [
             item
             for item in packet["trial_locks"]
             if item["arm_type"] in {"implicit_aided", "implicit_control"}
         ]
         self.assertEqual(2, len(implicit_locks))
-        self.assertTrue(all(item["outcome_contract_defined"] for item in implicit_locks))
-        self.assertEqual(1, len({item["outcome_contract_sha256"] for item in implicit_locks}))
+        self.assertTrue(all(item["procedure_contract_defined"] for item in implicit_locks))
+        self.assertEqual(1, len({item["procedure_contract_sha256"] for item in implicit_locks}))
+        structured = next(
+            trial for trial in smoke if trial.arm_type == "app_server_structured"
+        )
+        self.assertEqual("aoa-eval", structured.equivalent_report_root_skill)
+        structured_lock = next(
+            item
+            for item in packet["trial_locks"]
+            if item["arm_type"] == "app_server_structured"
+        )
+        self.assertEqual(
+            "aoa-eval",
+            structured_lock["equivalent_report_root_skill"],
+        )
 
-        with mock.patch.object(runner, "_outcome_contracts", return_value={}):
+        with mock.patch.object(runner, "_procedure_contracts", return_value={}):
             with self.assertRaisesRegex(
                 ValueError,
-                "smoke requires explicit outcome contracts for: collision-42",
+                "smoke requires explicit procedure contracts for: collision-42",
             ):
                 runner.expand_cohort(REPO_ROOT, plan, "smoke")
 
-    def test_outcome_contract_match_is_independent_from_route_match(self) -> None:
+    def test_procedure_contract_match_is_independent_from_route_match(self) -> None:
         runner = self.runner
-        contract = runner.OutcomeContract(
+        contract = runner.ProcedureContract(
             contract_id="independent-outcome-v1",
             case_id="independent-outcome",
-            scope="bounded_downstream_procedure_outcome",
-            expected_procedure_disposition="blocked_missing_input",
-            expected_procedure_command_observed=True,
-            expected_procedure_command_succeeded=True,
-            expected_verification_observed=True,
-            expected_completion_observed=False,
-            expected_deflection_observed=True,
+            scope="selected_route_procedure_disposition",
+            expected_selected_child_skill="aoa-eval-select",
+            expected_selected_child_full_read_observed=True,
+            expected_selected_procedure_disposition="blocked_missing_input",
+            expected_selected_procedure_completion_reported=False,
+            expected_selected_procedure_deflection_reported=True,
             expected_owner_boundary_present=True,
             source_refs=("evals/suites/aoa-skill-live-dispatch.plan.json",),
         )
@@ -327,7 +364,7 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
             prompt="Choose the bounded route.",
             expected_target_skill="aoa-eval",
             expected_behavior="invoke",
-            outcome_contract=contract,
+            procedure_contract=contract,
         )
         result = {
             "returncode": 0,
@@ -360,9 +397,11 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
 
         measure = runner._trial_measure(trial, result)
         self.assertFalse(measure["route_contract_match"])
-        self.assertTrue(measure["outcome_contract_defined"])
-        self.assertTrue(measure["outcome_contract_match"])
-        self.assertEqual([], measure["outcome_mismatch_dimensions"])
+        self.assertTrue(measure["trajectory_contract_defined"])
+        self.assertFalse(measure["trajectory_contract_match"])
+        self.assertTrue(measure["procedure_contract_defined"])
+        self.assertTrue(measure["procedure_disposition_contract_match"])
+        self.assertEqual([], measure["procedure_disposition_mismatch_dimensions"])
 
     def test_default_plan_and_unconfirmed_run_never_spawn_or_write(self) -> None:
         runner = self.runner
@@ -483,12 +522,13 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
         )
         pilot = self.runner.build_plan_packet(REPO_ROOT, plan, "pilot13", "model-a", "medium")
         self.assertTrue(pilot["high_cost_confirmation_required"])
-        self.assertEqual("required_for_live", pilot["outcome_contract_mode"])
+        self.assertEqual("required_for_live", pilot["procedure_contract_mode"])
         self.assertEqual(11, pilot["implicit_pair_count"])
-        self.assertEqual(1, pilot["outcome_scored_pair_count"])
-        self.assertFalse(pilot["outcome_contract_coverage_complete"])
+        self.assertEqual(1, pilot["procedure_scored_pair_count"])
+        self.assertFalse(pilot["procedure_contract_coverage_complete"])
+        self.assertFalse(pilot["objective_outcome_coverage_complete"])
 
-    def test_high_cost_live_run_blocks_before_preflight_when_outcomes_are_incomplete(self) -> None:
+    def test_high_cost_live_run_blocks_before_preflight_when_procedures_are_incomplete(self) -> None:
         runner = self.runner
         plan = runner.load_plan(self.plan_path)
         packet = runner.build_plan_packet(REPO_ROOT, plan, "pilot13", "model-a", "medium")
@@ -497,7 +537,7 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as td:
             with self.assertRaisesRegex(
                 runner.ConfirmationError,
-                "pilot13 requires source-locked outcome contracts for all 11 implicit pairs",
+                "pilot13 requires source-locked procedure contracts for all 11 implicit pairs",
             ):
                 runner.run_confirmed_cohort(
                     repo_root=REPO_ROOT,
@@ -511,6 +551,43 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
                     transport=transport,
                     test_only_allow_noncanonical_private_root=True,
                 )
+        self.assertEqual([], transport.preflight_calls)
+
+    def test_pilot_blocks_before_preflight_without_objective_outcome_surfaces(self) -> None:
+        runner = self.runner
+        plan = runner.load_plan(self.plan_path)
+        transport = FakeTransport()
+        packet = {
+            "confirmation_token": "confirmed",
+            "high_cost_confirmation_required": False,
+            "procedure_contract_mode": "required_for_live",
+            "procedure_contract_coverage_complete": True,
+            "procedure_scored_pair_count": 11,
+            "objective_outcome_mode": "required_for_live",
+            "objective_outcome_coverage_complete": False,
+            "objective_outcome_scored_pair_count": 0,
+            "implicit_pair_count": 11,
+        }
+        with (
+            mock.patch.object(runner, "build_plan_packet", return_value=packet),
+            tempfile.TemporaryDirectory() as td,
+            self.assertRaisesRegex(
+                runner.ConfirmationError,
+                "pilot13 requires objective outcome observations for all 11 implicit pairs",
+            ),
+        ):
+            runner.run_confirmed_cohort(
+                repo_root=REPO_ROOT,
+                plan=plan,
+                cohort="pilot13",
+                model="model-a",
+                effort="medium",
+                confirmation_token="confirmed",
+                high_cost_token=None,
+                private_root=Path(td),
+                transport=transport,
+                test_only_allow_noncanonical_private_root=True,
+            )
         self.assertEqual([], transport.preflight_calls)
 
     def test_confirmation_token_binds_discovered_shadow_skill_set(self) -> None:
@@ -615,7 +692,7 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
         )
         self.assertEqual(plan["protocol_revision"], contract["protocol_revision"])
         self.assertEqual(
-            "aoa_codex_app_server_skill_input_contract_v9",
+            "aoa_codex_app_server_skill_input_contract_v10",
             contract["schema_version"],
         )
         self.assertEqual("codex-cli 0.144.1", contract["codex_version"])
@@ -657,6 +734,10 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
         self.assertIn(
             "dynamically selected child",
             contract["evidence_binding"]["selected_child"],
+        )
+        self.assertIn(
+            "unrelated root",
+            contract["evidence_binding"]["native_dispatch_boundary"],
         )
         self.assertIn(
             "outside the fixture root",
@@ -725,7 +806,7 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
             trajectory["prompt"],
         )
         self.assertIn(
-            "do not count as procedure commands",
+            "independent fixture-execution probe",
             trajectory["prompt"],
         )
         self.assertIn(
@@ -920,10 +1001,33 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
             self.assertIn("features.rollout_budget.limit_tokens=48000", trajectory_request["argv"])
             self.assertEqual(1, len(receipt["pair_outcomes"]))
             self.assertEqual("positive_lift", receipt["pair_outcomes"][0]["route_effect_class"])
-            self.assertEqual("positive_lift", receipt["pair_outcomes"][0]["outcome_effect_class"])
             self.assertEqual(
-                "bounded_downstream_procedure_outcome",
-                receipt["pair_outcomes"][0]["outcome_scope"],
+                "positive_lift",
+                receipt["pair_outcomes"][0]["trajectory_effect_class"],
+            )
+            self.assertEqual(1, receipt["pair_outcomes"][0]["trajectory_lift"])
+            self.assertEqual(
+                0,
+                receipt["pair_outcomes"][0]["procedure_disposition_lift"],
+            )
+            self.assertEqual(
+                "no_lift_both_correct",
+                receipt["pair_outcomes"][0]["procedure_disposition_effect_class"],
+            )
+            self.assertEqual(
+                "selected_route_procedure_disposition",
+                receipt["pair_outcomes"][0]["procedure_contract_scope"],
+            )
+            self.assertIsNone(receipt["pair_outcomes"][0]["outcome_lift"])
+            self.assertEqual(
+                "not_scored_no_observable_outcome",
+                receipt["pair_outcomes"][0]["outcome_effect_class"],
+            )
+            self.assertTrue(
+                all(
+                    item["measure"]["fixture_execution_contract_match"]
+                    for item in receipt["trials"]
+                )
             )
             receipt_path = private_root / receipt["run_id"] / "private-receipt.json"
             self.assertTrue(receipt_path.is_file())
@@ -938,7 +1042,7 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
                 trajectory_guidance,
             )
             self.assertIn(
-                "They are evidence collection, not procedure commands",
+                "They are load evidence, not the independent fixture-execution probe",
                 trajectory_guidance,
             )
             self.assertIn(
@@ -1446,6 +1550,7 @@ for line in sys.stdin:
             prompt="Apply the selected route.",
             expected_target_skill="aoa-eval-apply",
             expected_behavior="explicit",
+            equivalent_report_root_skill="aoa-eval",
         )
         output = {"claims_loaded": False, "selected_child": None}
         native_without_shell_read = {
@@ -1609,44 +1714,65 @@ Second procedure section.
             }
             self.assertEqual(
                 {
-                    "procedure_command_observed": True,
-                    "procedure_command_succeeded": True,
-                    "verification_observed": True,
+                    "fixture_command_observed": True,
+                    "fixture_command_succeeded": True,
+                    "fixture_verification_observed": True,
                 },
-                runner._procedure_execution_evidence([valid], fixture_root),
+                runner._fixture_execution_evidence([valid], fixture_root),
             )
 
             spoofed = json.loads(json.dumps(valid))
             spoofed["item"]["command"] = "echo python3 fixture_validator.py"
             self.assertEqual(
                 {
-                    "procedure_command_observed": False,
-                    "procedure_command_succeeded": False,
-                    "verification_observed": False,
+                    "fixture_command_observed": False,
+                    "fixture_command_succeeded": False,
+                    "fixture_verification_observed": False,
                 },
-                runner._procedure_execution_evidence([spoofed], fixture_root),
+                runner._fixture_execution_evidence([spoofed], fixture_root),
             )
 
             split_success = json.loads(json.dumps(valid))
             split_success["item"]["aggregated_output"] = "no sentinel"
             split_sentinel = json.loads(json.dumps(valid))
             split_sentinel["item"]["exit_code"] = 1
-            evidence = runner._procedure_execution_evidence(
+            evidence = runner._fixture_execution_evidence(
                 [split_success, split_sentinel],
                 fixture_root,
             )
-            self.assertTrue(evidence["procedure_command_observed"])
-            self.assertTrue(evidence["procedure_command_succeeded"])
-            self.assertFalse(evidence["verification_observed"])
+            self.assertTrue(evidence["fixture_command_observed"])
+            self.assertTrue(evidence["fixture_command_succeeded"])
+            self.assertFalse(evidence["fixture_verification_observed"])
 
             forged_payload = json.loads(json.dumps(valid))
             forged_payload["item"]["aggregated_output"] = (
                 "AOA_FIXTURE_VALIDATOR_OK {\"status\":\"pass\"}"
             )
             self.assertFalse(
-                runner._procedure_execution_evidence(
+                runner._fixture_execution_evidence(
                     [forged_payload], fixture_root
-                )["verification_observed"]
+                )["fixture_verification_observed"]
+            )
+            self.assertTrue(
+                runner._fixture_execution_contract_match(
+                    {
+                        "procedure_command_observed": True,
+                        "procedure_command_succeeded": True,
+                        "verification_observed": True,
+                    }
+                )
+            )
+            self.assertFalse(
+                runner._fixture_execution_contract_match(
+                    {
+                        "fixture_command_observed": False,
+                        "fixture_command_succeeded": False,
+                        "fixture_verification_observed": False,
+                        "procedure_command_observed": True,
+                        "procedure_command_succeeded": True,
+                        "verification_observed": True,
+                    }
+                )
             )
 
     def test_dynamic_selected_child_read_is_required_for_implicit_router_load(self) -> None:
@@ -1878,14 +2004,31 @@ Second procedure section.
             "dispatch_contract_match",
             "load_contract_match",
             "procedure_disposition",
-            "procedure_command_observed",
-            "procedure_command_succeeded",
-            "verification_observed",
-            "procedure_contract_match",
-            "completion_observed",
-            "deflection_observed",
+            "fixture_command_observed",
+            "fixture_command_succeeded",
+            "fixture_verification_observed",
+            "fixture_execution_contract_match",
+            "reported_target_direct_exact",
+            "reported_target_hierarchy_exact",
+            "selection_report_contract_match",
+            "selected_procedure_completion_reported",
+            "selected_procedure_deflection_reported",
+            "trajectory_contract_defined",
+            "trajectory_contract_match",
+            "procedure_contract_defined",
+            "procedure_disposition_contract_match",
         }
         self.assertLessEqual(stage_fields, set(public["measures"][0]))
+        self.assertTrue(
+            {
+                "procedure_command_observed",
+                "procedure_command_succeeded",
+                "verification_observed",
+                "procedure_contract_match",
+                "completion_observed",
+                "deflection_observed",
+            }.isdisjoint(public["measures"][0])
+        )
         self.assertEqual(receipt["source_lock"]["shadow_skill_count"], public["source_lock"]["shadow_skill_count"])
         self.assertEqual(
             receipt["source_lock"]["shadow_skill_set_sha256"],
@@ -1929,8 +2072,9 @@ Second procedure section.
                 "manual_activation_leak",
                 "trajectory_break",
                 "dispatch_policy_gap",
-                "direct_procedure_gap",
-                "bounded_outcome_miss",
+                "selection_report_miss",
+                "fixture_execution_gap",
+                "procedure_disposition_miss",
                 "owner_boundary_violation",
                 "runtime_profile_drift",
                 "budget_exhausted",
@@ -1952,12 +2096,16 @@ Second procedure section.
             self.runner.ADAPTIVE_RETURN_ROUTE["dispatch_policy_gap"],
         )
         self.assertEqual(
+            "review_selection_report_contract_then_repeat_same_case",
+            self.runner.ADAPTIVE_RETURN_ROUTE["selection_report_miss"],
+        )
+        self.assertEqual(
             "repair_read_tooling_or_skill_load_then_repeat_same_case",
             self.runner.ADAPTIVE_RETURN_ROUTE["skill_load_gap"],
         )
         self.assertEqual(
-            "review_skill_procedure_or_outcome_contract_then_repeat_same_case",
-            self.runner.ADAPTIVE_RETURN_ROUTE["bounded_outcome_miss"],
+            "review_selected_procedure_or_contract_then_repeat_same_case",
+            self.runner.ADAPTIVE_RETURN_ROUTE["procedure_disposition_miss"],
         )
         self.assertEqual(
             "review_caps_or_reduce_context_then_repeat_same_case",
@@ -2094,6 +2242,89 @@ Second procedure section.
 
         self.assertEqual("dispatch_policy_gap", runner._trial_failure_class(trial, result))
 
+    def test_structured_native_dispatch_is_not_overridden_by_hierarchy_report(self) -> None:
+        runner = self.runner
+        trial = runner.Trial(
+            trial_id="structured:native-hierarchy-report",
+            arm_type="app_server_structured",
+            case_id="structured-native-hierarchy-report",
+            prompt="Apply the already selected eval.",
+            expected_target_skill="aoa-eval-apply",
+            expected_behavior="explicit",
+            equivalent_report_root_skill="aoa-eval",
+        )
+        result = FakeTransport().run_app_server(
+            {
+                "expected_target_skill": "aoa-eval-apply",
+                "expected_behavior": "explicit",
+                "arm_type": "app_server_structured",
+            }
+        )
+        result["final_output"]["selected_skill"] = "aoa-eval"
+        result["final_output"]["selected_child"] = "aoa-eval-apply"
+        result.update(
+            {
+                "prompt_visibility_contract_match": True,
+                "fixture_filesystem_scope_match": True,
+                "target_skill_full_read_observed": False,
+                "child_full_read_observed": False,
+                "procedure_command_observed": True,
+                "procedure_command_succeeded": True,
+                "verification_observed": True,
+                "procedure_contract_match": True,
+                "completion_observed": True,
+                "deflection_observed": False,
+            }
+        )
+
+        measure = runner._trial_measure(trial, result)
+        self.assertFalse(measure["selected_target_exact"])
+        self.assertFalse(measure["reported_target_direct_exact"])
+        self.assertTrue(measure["reported_target_hierarchy_exact"])
+        self.assertEqual(
+            "aoa-eval",
+            measure["hierarchy_report_expected_root_skill"],
+        )
+        self.assertTrue(measure["selection_report_contract_match"])
+        self.assertTrue(measure["dispatch_contract_match"])
+        self.assertTrue(measure["load_contract_match"])
+        self.assertTrue(measure["route_contract_match"])
+        self.assertIsNone(measure["failure_class"])
+
+        result["final_output"]["selected_skill"] = "aoa-decision"
+        wrong_root_measure = runner._trial_measure(trial, result)
+        self.assertFalse(wrong_root_measure["reported_target_hierarchy_exact"])
+        self.assertFalse(wrong_root_measure["selection_report_contract_match"])
+        self.assertTrue(wrong_root_measure["dispatch_contract_match"])
+        self.assertTrue(wrong_root_measure["load_contract_match"])
+        self.assertTrue(wrong_root_measure["route_contract_match"])
+        self.assertEqual(
+            "selection_report_miss",
+            wrong_root_measure["failure_class"],
+        )
+        self.assertEqual(
+            "review_selection_report_contract_then_repeat_same_case",
+            wrong_root_measure["adaptive_return_route"],
+        )
+
+        result["final_output"]["selected_skill"] = "aoa-eval-apply"
+        result["final_output"]["selected_child"] = "aoa-eval-select"
+        conflicting_child_measure = runner._trial_measure(trial, result)
+        self.assertFalse(conflicting_child_measure["reported_target_direct_exact"])
+        self.assertFalse(
+            conflicting_child_measure["reported_target_hierarchy_exact"]
+        )
+        self.assertFalse(
+            conflicting_child_measure["selection_report_contract_match"]
+        )
+        self.assertTrue(conflicting_child_measure["dispatch_contract_match"])
+        self.assertTrue(conflicting_child_measure["load_contract_match"])
+        self.assertTrue(conflicting_child_measure["route_contract_match"])
+        self.assertEqual(
+            "selection_report_miss",
+            conflicting_child_measure["failure_class"],
+        )
+
     def test_explicit_authority_claim_precedes_generic_output_invalidity(self) -> None:
         runner = self.runner
         trial = runner.Trial(
@@ -2124,15 +2355,16 @@ Second procedure section.
         result["native_target_skill_input_accepted"] = False
         self.assertEqual("skill_load_gap", runner._trial_failure_class(trial, result))
 
-    def test_pair_outcomes_separate_route_lift_from_outcome_lift(self) -> None:
+    def test_pair_outcomes_separate_route_trajectory_and_outcome_lift(self) -> None:
         runner = self.runner
 
         def arm(
             arm_type: str,
             *,
             route_match: bool,
-            outcome_match: bool | None,
-            outcome_contract_sha256: str | None = "a" * 64,
+            trajectory_match: bool | None,
+            procedure_match: bool | None,
+            procedure_contract_sha256: str | None = "a" * 64,
         ) -> dict:
             return {
                 "trial": {"arm_type": arm_type, "case_id": "pair-case"},
@@ -2142,14 +2374,22 @@ Second procedure section.
                     "route_contract_match": route_match,
                     "dispatch_contract_match": route_match,
                     "load_contract_match": route_match,
-                    "outcome_contract_defined": outcome_contract_sha256 is not None,
-                    "outcome_contract_sha256": outcome_contract_sha256,
-                    "outcome_scope": (
-                        "bounded_downstream_procedure_outcome"
-                        if outcome_contract_sha256 is not None
+                    "trajectory_contract_defined": procedure_contract_sha256 is not None,
+                    "trajectory_contract_sha256": procedure_contract_sha256,
+                    "trajectory_expected_child_skill": (
+                        "aoa-eval-select"
+                        if procedure_contract_sha256 is not None
                         else None
                     ),
-                    "outcome_contract_match": outcome_match,
+                    "trajectory_contract_match": trajectory_match,
+                    "procedure_contract_defined": procedure_contract_sha256 is not None,
+                    "procedure_contract_sha256": procedure_contract_sha256,
+                    "procedure_contract_scope": (
+                        "selected_route_procedure_disposition"
+                        if procedure_contract_sha256 is not None
+                        else None
+                    ),
+                    "procedure_disposition_contract_match": procedure_match,
                     "prompt_visibility_contract_match": True,
                     "failure_class": None,
                     "input_tokens": 10,
@@ -2161,17 +2401,38 @@ Second procedure section.
 
         pair = runner._pair_outcomes(
             [
-                arm("implicit_aided", route_match=True, outcome_match=False),
-                arm("implicit_control", route_match=False, outcome_match=True),
+                arm(
+                    "implicit_aided",
+                    route_match=True,
+                    trajectory_match=True,
+                    procedure_match=True,
+                ),
+                arm(
+                    "implicit_control",
+                    route_match=False,
+                    trajectory_match=False,
+                    procedure_match=True,
+                ),
             ]
         )[0]
         self.assertEqual(1, pair["route_lift"])
         self.assertEqual("positive_lift", pair["route_effect_class"])
-        self.assertEqual(-1, pair["outcome_lift"])
-        self.assertEqual("negative_lift", pair["outcome_effect_class"])
+        self.assertEqual(1, pair["trajectory_lift"])
+        self.assertEqual("positive_lift", pair["trajectory_effect_class"])
+        self.assertEqual("aoa-eval-select", pair["trajectory_expected_child_skill"])
+        self.assertEqual(0, pair["procedure_disposition_lift"])
         self.assertEqual(
-            "bounded_downstream_procedure_outcome",
-            pair["outcome_scope"],
+            "no_lift_both_correct",
+            pair["procedure_disposition_effect_class"],
+        )
+        self.assertEqual(
+            "selected_route_procedure_disposition",
+            pair["procedure_contract_scope"],
+        )
+        self.assertIsNone(pair["outcome_lift"])
+        self.assertEqual(
+            "not_scored_no_observable_outcome",
+            pair["outcome_effect_class"],
         )
         self.assertNotIn("observed_lift", pair)
         self.assertNotIn("effect_class", pair)
@@ -2181,21 +2442,37 @@ Second procedure section.
                 arm(
                     "implicit_aided",
                     route_match=True,
-                    outcome_match=None,
-                    outcome_contract_sha256=None,
+                    trajectory_match=None,
+                    procedure_match=None,
+                    procedure_contract_sha256=None,
                 ),
                 arm(
                     "implicit_control",
                     route_match=False,
-                    outcome_match=None,
-                    outcome_contract_sha256=None,
+                    trajectory_match=None,
+                    procedure_match=None,
+                    procedure_contract_sha256=None,
                 ),
             ]
         )[0]
-        self.assertFalse(unscored["outcome_contract_defined"])
-        self.assertIsNone(unscored["outcome_scope"])
+        self.assertFalse(unscored["trajectory_contract_defined"])
+        self.assertIsNone(unscored["trajectory_lift"])
+        self.assertEqual(
+            "not_scored_no_contract",
+            unscored["trajectory_effect_class"],
+        )
+        self.assertFalse(unscored["procedure_contract_defined"])
+        self.assertIsNone(unscored["procedure_contract_scope"])
+        self.assertIsNone(unscored["procedure_disposition_lift"])
+        self.assertEqual(
+            "not_scored_no_contract",
+            unscored["procedure_disposition_effect_class"],
+        )
         self.assertIsNone(unscored["outcome_lift"])
-        self.assertEqual("not_scored_no_contract", unscored["outcome_effect_class"])
+        self.assertEqual(
+            "not_scored_no_observable_outcome",
+            unscored["outcome_effect_class"],
+        )
 
         legacy_private = {
             "trials": [],
@@ -2284,18 +2561,17 @@ Second procedure section.
         self.assertEqual("contaminated", pairs[0]["route_effect_class"])
         self.assertIsNone(aided["measure"]["failure_class"])
 
-    def test_bounded_outcome_miss_returns_to_skill_or_contract_review(self) -> None:
+    def test_direct_route_procedure_miss_does_not_invent_child_trajectory(self) -> None:
         runner = self.runner
-        contract = runner.OutcomeContract(
+        contract = runner.ProcedureContract(
             contract_id="bounded-miss-v1",
             case_id="bounded-miss",
-            scope="bounded_downstream_procedure_outcome",
-            expected_procedure_disposition="blocked_missing_input",
-            expected_procedure_command_observed=True,
-            expected_procedure_command_succeeded=True,
-            expected_verification_observed=True,
-            expected_completion_observed=False,
-            expected_deflection_observed=True,
+            scope="selected_route_procedure_disposition",
+            expected_selected_child_skill=None,
+            expected_selected_child_full_read_observed=None,
+            expected_selected_procedure_disposition="blocked_missing_input",
+            expected_selected_procedure_completion_reported=False,
+            expected_selected_procedure_deflection_reported=True,
             expected_owner_boundary_present=True,
             source_refs=("evals/suites/aoa-skill-live-dispatch.plan.json",),
         )
@@ -2306,7 +2582,7 @@ Second procedure section.
             prompt="Choose the bounded route.",
             expected_target_skill="aoa-eval",
             expected_behavior="invoke",
-            outcome_contract=contract,
+            procedure_contract=contract,
         )
         result = {
             "returncode": 0,
@@ -2338,10 +2614,78 @@ Second procedure section.
 
         measure = runner._trial_measure(trial, result)
         self.assertTrue(measure["route_contract_match"])
-        self.assertFalse(measure["outcome_contract_match"])
-        self.assertEqual("bounded_outcome_miss", measure["failure_class"])
+        self.assertFalse(measure["trajectory_contract_defined"])
+        self.assertIsNone(measure["trajectory_contract_match"])
+        self.assertFalse(measure["procedure_disposition_contract_match"])
+        self.assertEqual("procedure_disposition_miss", measure["failure_class"])
         self.assertEqual(
-            "review_skill_procedure_or_outcome_contract_then_repeat_same_case",
+            "review_selected_procedure_or_contract_then_repeat_same_case",
+            measure["adaptive_return_route"],
+        )
+
+    def test_implicit_wrong_child_is_trajectory_break_not_outcome_miss(self) -> None:
+        runner = self.runner
+        contract = runner.ProcedureContract(
+            contract_id="child-trajectory-v1",
+            case_id="child-trajectory",
+            scope="selected_route_procedure_disposition",
+            expected_selected_child_skill="aoa-eval-select",
+            expected_selected_child_full_read_observed=True,
+            expected_selected_procedure_disposition="blocked_missing_input",
+            expected_selected_procedure_completion_reported=False,
+            expected_selected_procedure_deflection_reported=True,
+            expected_owner_boundary_present=True,
+            source_refs=("evals/suites/aoa-skill-live-dispatch.plan.json",),
+        )
+        trial = runner.Trial(
+            trial_id="child-trajectory:aided",
+            arm_type="implicit_aided",
+            case_id="child-trajectory",
+            prompt="Select the existing eval route first.",
+            expected_target_skill="aoa-eval",
+            expected_behavior="invoke",
+            procedure_contract=contract,
+        )
+        result = {
+            "returncode": 0,
+            "final_output": {
+                "route_decision": "invoke",
+                "selected_skill": "aoa-eval",
+                "selected_child": "aoa-eval-apply",
+                "claims_loaded": True,
+                "procedure_disposition": "blocked_missing_input",
+                "mutation_authorized": False,
+                "proof_authority_claimed": False,
+                "promotion_authorized": False,
+                "evidence_posture": "candidate_only",
+                "next_step": "Provide the target repository.",
+                "owner_boundary": "The fixture is not central proof authority.",
+                "verification_steps": ["Inspect the target owner surface."],
+                "stop_line": "Stop before inventing missing evidence.",
+            },
+            "prompt_visibility_contract_match": True,
+            "fixture_filesystem_scope_match": True,
+            "target_skill_full_read_observed": True,
+            "child_full_read_observed": True,
+            "procedure_command_observed": True,
+            "procedure_command_succeeded": True,
+            "verification_observed": True,
+            "procedure_contract_match": True,
+            "completion_observed": False,
+            "deflection_observed": True,
+        }
+
+        measure = runner._trial_measure(trial, result)
+        self.assertTrue(measure["route_contract_match"])
+        self.assertFalse(measure["trajectory_contract_match"])
+        self.assertEqual(
+            ["selected_child_skill"],
+            measure["trajectory_mismatch_dimensions"],
+        )
+        self.assertTrue(measure["procedure_disposition_contract_match"])
+        self.assertEqual("trajectory_break", measure["failure_class"])
+        self.assertEqual(
+            "repair_root_or_child_then_repeat_adjacent_family",
             measure["adaptive_return_route"],
         )
 
@@ -2406,7 +2750,7 @@ Second procedure section.
         )
 
         self.assertEqual(
-            "direct_procedure_gap",
+            "fixture_execution_gap",
             runner._trial_failure_class(trajectory, result),
         )
 

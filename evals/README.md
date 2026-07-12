@@ -27,11 +27,13 @@ Active first local corpus:
   records the session-mining method, provider freshness, and handoff limits.
 - [suites/aoa-skill-live-dispatch-harness.suite.md](suites/aoa-skill-live-dispatch-harness.suite.md)
   and [runners](runners/) define the source-locked, operator-confirmed live
-  dispatch, manual reachability, trajectory, route-lift, and declared bounded
-  downstream procedure-outcome-lift harness. The outcome answer keys live in
-  [suites/aoa-skill-live-dispatch-outcomes.json](suites/aoa-skill-live-dispatch-outcomes.json)
-  and remain fixture-scoped local candidate contracts rather than whole-task or
-  central proof verdicts.
+  dispatch, manual reachability, trajectory, fixture-execution, and
+  selected-procedure-disposition harness. Source-authored child/procedure
+  contracts live in
+  [suites/aoa-skill-live-dispatch-procedures.json](suites/aoa-skill-live-dispatch-procedures.json).
+  The fixture has no objective external-task outcome surface, so current pairs
+  publish `not_scored_no_observable_outcome` instead of relabeling a probe or
+  model report as outcome lift.
 
 These files are local evidence notes. They do not publish central proof
 acceptance, scoring, verdicts, regression truth, or proof doctrine.

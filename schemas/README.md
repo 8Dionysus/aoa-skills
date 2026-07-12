@@ -21,8 +21,8 @@ meaning, keep schema changes paired with examples and validators, and do not
 loosen a schema only to quiet an example.
 
 The `live-skill-dispatch-*` contracts validate the source plan, pre-authored
-bounded downstream procedure-outcome expectations, constrained model output,
+selected-child/procedure-disposition expectations, constrained model output,
 private raw receipt, and public field-whitelisted projection for the local
-live-dispatch harness. Outcome contracts are source answer keys for a hermetic
-fixture procedure, not live-run observations, whole-task or real-repository
-completion claims, eval verdicts, or proof authority.
+live-dispatch harness. Procedure contracts do not turn the independent fixture
+probe or a model disposition report into an objective outcome observation,
+whole-task completion claim, eval verdict, or proof authority.
