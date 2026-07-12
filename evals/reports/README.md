@@ -147,8 +147,16 @@ temporary root and must not be copied into this directory.
   activation also passed their bounded contracts. This is reviewed candidate
   evidence only; it neither proves family-wide effectiveness nor authorizes
   pilot widening, proof acceptance, or promotion.
+- [aoa-skill-live-dispatch-smoke-20260712-v12-reviewed-owner-action-no-lift.json](aoa-skill-live-dispatch-smoke-20260712-v12-reviewed-owner-action-no-lift.json)
+  preserves the complete exact-merged v12 smoke that first exercised the
+  separate owner-action outcome contract. All four arms completed without
+  failure; route and selected-child trajectory lift are `+1`, while procedure
+  disposition and the one-attempt outcome are correct in both arms (`0` lift).
+  The receipt validates observability and anti-inspection boundaries only; it
+  does not prove skill-specific outcome lift, whole-task completion, or pilot
+  readiness beyond the still-incomplete 1/11 plus 1/11 coverage posture.
 
-Corrected live receipts under the v11 evidence protocol are reviewable only
+Corrected live receipts under the v11/v12 evidence protocols are reviewable only
 after canonical user-skill shadows, plugins, and every configured MCP id are
 isolated with the adapter-appropriate mechanism (`--ignore-user-config` for
 CLI exec, explicit per-id disables for prompt inspection and App Server);

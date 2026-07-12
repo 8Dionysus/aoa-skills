@@ -290,6 +290,17 @@ exact-merged v12 smoke is required before expanding the same contract shape to
 the remaining ten pilot cases. Pilot coverage is now 1/11 on both required
 axes.
 
+That exact-merged v12 smoke completed four of four arms with no failure class.
+Both implicit arms used exactly one outcome command, passed the contract-bound
+sentinel, and did not inspect or retry the validator. The aided arm retained
+route lift `+1` and selected-child trajectory lift `+1`; procedure disposition
+and owner-action outcome were correct in both arms, producing `0` lift for each
+dimension. The reviewed public receipt is
+`aoa-skill-live-dispatch-smoke-20260712-v12-reviewed-owner-action-no-lift.json`.
+This validates the outcome seam, not skill-specific outcome lift or pilot
+authorization; expand the reviewed contract shape to the remaining ten cases
+before pilot execution.
+
 ## Safety And Privacy
 
 The plan locks Git head, all portable skill files, generated/config inputs,

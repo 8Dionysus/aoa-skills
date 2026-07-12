@@ -124,6 +124,12 @@ Tracking starts with the community-docs baseline for this repository.
   posture is now 1/11 procedure contracts and 1/11 outcomes pending a fresh
   exact-merged smoke and review before wider contract authoring. Smoke marks
   both axes required so removing either source contract fails before preflight.
+- The fresh exact-merged v12 smoke completed all four arms without failure or
+  contamination. Route and selected-child trajectory lift are each `+1`;
+  procedure disposition and the owner-action outcome are correct in both arms,
+  so each reports `0` lift with both correct. The reviewed receipt validates
+  one-attempt outcome observability and anti-inspection boundaries, not
+  skill-specific outcome lift, whole-task completion, or pilot authorization.
 - `AOA-SK-D-0037` records why live cohorts remain operator-confirmed candidate
   evidence and now clarifies prompt-surface isolation and evidence-stage grading
   after the contaminated smoke; deterministic harness validation, not model
