@@ -96,11 +96,11 @@ config and explicitly disable every locked id. A shadow or MCP count/digest
 change is source/runtime drift, not a reason to reuse the old token.
 
 The corrected hermetic pre-turn and evidence contract uses schema
-`aoa_codex_app_server_skill_input_contract_v6` and protocol revision
-`codex-cli-0.144.1-live-dispatch-evidence-v6`. It follows the
+`aoa_codex_app_server_skill_input_contract_v7` and protocol revision
+`codex-cli-0.144.1-live-dispatch-evidence-v7`. It follows the
 [official App Server invocation shape](https://learn.chatgpt.com/docs/app-server#start-a-turn-invoke-a-skill)
 and Codex [progressive-disclosure load semantics](https://learn.chatgpt.com/docs/customization/overview#skills).
-Retained receipts source-locked to v1-v5 keep their original protocol and
+Retained receipts source-locked to v1-v6 keep their original protocol and
 review status and are not upgraded in place.
 
 The source-locked caps include both the rollout token limit and its required
@@ -178,6 +178,14 @@ defect.
 decision violated the expected implicit, manual, trajectory, or explicit
 dispatch policy. It returns to dispatch policy, not read tooling.
 
+Transport exceptions preserve their observed elapsed duration and partial
+private stdout/stderr. Recoverable JSONL events and usage retain their normal
+turn-start, budget, filesystem-scope, and failure-precedence meaning. Once the
+private receipt is safely written, an incomplete `stopped_early` cohort reports its
+bounded stop reason and returns process exit 1. A complete cohort returns exit
+0 even when it records negative skill behavior: shell status describes whether
+the planned measurement completed, not whether the model passed the case.
+
 ## Rationale
 
 This route measures different evidence stages without collapsing them. A skill
@@ -221,6 +229,9 @@ target also appears in its own neighbourhood list.
 - Positive: complete source exposure can be proven across ordinary bounded
   chunk reads without accepting inventory mentions, unrelated metadata, gaps,
   reverse-only coverage, or same-name shadow paths.
+- Positive: host orchestration can distinguish a complete negative cohort from
+  an incomplete transport or safety stop, and timeout duration no longer
+  collapses to zero.
 - Positive: failures carry bounded adaptive return routes instead of one score.
 - Positive: ordinary CI proves the harness contract without spending model
   turns or treating model quality as deterministic repository proof.
@@ -230,11 +241,11 @@ target also appears in its own neighbourhood list.
   repeated runs are needed before changing skill status or promotion posture.
 - Tradeoff: the 48k ceiling raises worst-case live-campaign cost; non-smoke
   cohorts therefore retain the second exact high-cost confirmation token.
-- Follow-up: v5 repaired fixture scope, but its exact-merged-tree rerun exposed
-  a false load failure when one complete target read was split across two
-  ordered outputs. Land the v6 continuous-coverage grader and repeat the exact
-  smoke before any pilot widening, then use reviewed pilot receipts to continue
-  toward all 57 skills.
+- Follow-up: v6 repaired continuous read coverage, but its exact-merged-tree
+  rerun timed out before the first turn and exposed a zero process exit for an
+  incomplete cohort. Land v7 duration and exit-status semantics, wait for
+  runtime availability, and repeat the exact smoke before any pilot widening;
+  only then use reviewed pilot receipts to continue toward all 57 skills.
 
 ## Current Applicability
 
@@ -257,11 +268,11 @@ As of 2026-07-11:
   or any skill-effect interpretation.
 - Current cap contract: every arm receives the same source-locked 48k ceiling;
   paired arms may differ in actual use but never in available budget.
-- Current contract schema: `aoa_codex_app_server_skill_input_contract_v6`.
-- Current protocol lock: `codex-cli-0.144.1-live-dispatch-evidence-v6`.
+- Current contract schema: `aoa_codex_app_server_skill_input_contract_v7`.
+- Current protocol lock: `codex-cli-0.144.1-live-dispatch-evidence-v7`.
 - Historical protocols: retained v1-v2 smokes are `needs-rerun`; v2 produced a
   valid candidate implicit pair but used an unsupported structured-only App
-  input and cannot support its App load label. Retained v3-v5 reports keep their
+  input and cannot support its App load label. Retained v3-v6 reports keep their
   original review status and old grader semantics.
 - Reviewed v3 candidate: the implicit pair records positive lift and the App
   arm passes its native-load/procedure path, while the explicit `aoa-eval`
@@ -282,11 +293,46 @@ As of 2026-07-11:
   It kept prompt and filesystem scope clean and completed all four arms, but its
   aided target read was split across two ordered exact-path outputs. The v5
   single-output detector recorded a false `skill_load_gap` and no-lift result;
-  its historical fields remain immutable. V6 smoke must pass before pilot
-  widening.
+  its historical fields remain immutable. V6 smoke was required before pilot
+  widening and is now retained separately below.
+- Current rerun posture: the exact-merged-tree v6 smoke is also `needs-rerun`.
+  It passed prompt visibility and fixture scope, then the first CLI transport
+  timed out at 180 seconds before any turn event, output, usage, or pair. Its
+  private receipt stopped early, but the v6 command returned zero and the host
+  wrapper reported success. The old zero duration and process status remain
+  immutable; v7 must rerun after runtime availability before pilot widening.
 - Superseded by: none.
 
 ## Review Log
+
+### 2026-07-12 - Make process exit report cohort completeness
+
+- Previous assumption: writing a private receipt was sufficient for the live
+  runner to return process exit 0, because semantic failure remained visible in
+  the receipt.
+- New evidence: the exact merged v6 smoke passed prompt and fixture-scope gates,
+  then the first CLI transport timed out at 180 seconds before any turn event,
+  model output, usage, or pair. The receipt correctly set
+  `stopped_early=true` and `transport_failure`, but reset duration to zero and
+  the `run` command returned 0, causing the host wrapper to report success for
+  an incomplete cohort.
+- Decision: measure elapsed time around CLI and App Server transport calls;
+  preserve that duration plus partial private streams, parsed JSONL events, and
+  usage on caught exceptions; publish `stopped_early` and `stop_reason` in the
+  bounded command summary; and return exit 1 only for an incomplete cohort
+  after its private receipt has been written. Complete negative model evidence
+  remains a successfully executed cohort and exits 0.
+- Boundary: the v6 public receipt remains immutable under its historical
+  zero-duration and process-success behavior. A prior rate-limit packet at full
+  primary utilization is runtime context, not proof of the sole timeout cause;
+  no skill, pair, lift, status, promotion, or family conclusion follows.
+- Tradeoff: orchestration now treats stopped-early runs as command failures and
+  must inspect the preserved receipt for the bounded reason. This is deliberate:
+  the wrapper should not equate artifact creation with completed measurement.
+- Validation: red-first tests must distinguish complete-negative exit 0 from
+  incomplete exit 1, prove the bounded summary fields, and preserve observed
+  timeout duration before landing v7 and repeating only after runtime
+  availability.
 
 ### 2026-07-11 - Assemble complete skill reads across ordered transport events
 

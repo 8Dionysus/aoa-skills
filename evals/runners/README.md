@@ -46,9 +46,9 @@ turn follows the
 the text begins with the exact `$skill` mention and the adjacent structured
 `skill` item carries the same fixture name and path. An accepted official input
 is version-locked native-load evidence, distinct from a raw shell full read.
-These rules use contract schema `aoa_codex_app_server_skill_input_contract_v6`
-and protocol revision `codex-cli-0.144.1-live-dispatch-evidence-v6`. Retained
-v1-v5 receipts stay source-locked to their original protocol and review status;
+These rules use contract schema `aoa_codex_app_server_skill_input_contract_v7`
+and protocol revision `codex-cli-0.144.1-live-dispatch-evidence-v7`. Retained
+v1-v6 receipts stay source-locked to their original protocol and review status;
 they are never upgraded in place.
 
 Run the confirmed command only as the child of the plan packet's
@@ -111,6 +111,15 @@ transport whose final structured result violates the bounded output schema is
 `output_contract_invalid`, not `transport_failure`; none of these classes is
 proof of a skill defect or completed work.
 
+A caught CLI or App Server transport exception preserves its observed elapsed
+milliseconds plus any partial stdout/stderr; recoverable JSONL events and usage
+continue through turn-start, budget, filesystem-scope, and failure-precedence
+grading. After the private receipt is safely written, the `run` command
+returns exit 1 with `status=stopped_early` and the bounded stop reason when the
+cohort is incomplete. A complete cohort still returns exit 0 even when it
+records negative skill evidence; process status reports measurement completeness,
+not model quality.
+
 Implicit lift is omitted when either arm has an output-contract, transport,
 budget, runtime, or owner-boundary safety failure. Contamination remains an
 explicit pair outcome but never rewrites either arm's recorded classification.
@@ -146,6 +155,15 @@ therefore recorded a false `skill_load_gap` and `no_lift_both_incorrect`. Its
 public receipt remains immutable `needs-rerun` evidence; raw replay under v6 is
 a harness regression check, not a replacement live result. Repeat the smoke on
 an exact merged v6 tree before widening to `pilot13`.
+
+The exact-merged-tree v6 rerun passed prompt and fixture-scope gates, then its
+first CLI transport timed out at the 180-second cap before any turn event,
+output, usage, or pair. The historical v6 runner wrote a correct private
+stopped-early receipt but returned process exit 0, so the host wrapper reported
+success for an incomplete cohort. The public receipt remains immutable
+`needs-rerun` evidence. V7 repairs duration and process-status observability;
+the same smoke must wait for runtime availability and then run on an exact
+merged v7 tree before `pilot13`.
 
 See `evals/suites/aoa-skill-live-dispatch-harness.suite.md` and
 `docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md` for
