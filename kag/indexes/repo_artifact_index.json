@@ -3682,7 +3682,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "e72a542167f72fb614852881d0bf58d1369c72438e3ec37117b76b342f802942",
+      "content_hash": "94bd0de15d74f82027a952f3ab3bc9c9a12829305719a7f2c8272a43f16a173e",
       "id": "artifact:file:changelog.md:06572a96a5",
       "path": "CHANGELOG.md",
       "source_record_id": "file:changelog.md:06572a96a5",
@@ -4226,7 +4226,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "cd416c424b47aa8f695c9e47569c544a853c656e9ca93f218738fbb40986c0b6",
+      "content_hash": "a0d2d2ad68dba19995048f5efc72cd57b97872d2befc481dca3b4d455048891d",
       "id": "artifact:file:docs/decisions/aoa-sk-d-0037-source-locked-live-skill-dispatch-evidence.md:ca6ee4ca5a",
       "path": "docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md",
       "source_record_id": "file:docs/decisions/aoa-sk-d-0037-source-locked-live-skill-dispatch-evidence.md:ca6ee4ca5a",
@@ -4762,7 +4762,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "82b10215ca226c248f92b0ada6ac5c810b7b81cefd3d11b0f6294f0c52a5c72d",
+      "content_hash": "efcdc60b1afbfbf74ac30702fd51fe80484888f768d4580e4ed0ffa6e1d71aff",
       "id": "artifact:file:docs/testing/test_topology.md:aecbbf32b8",
       "path": "docs/testing/TEST_TOPOLOGY.md",
       "source_record_id": "file:docs/testing/test_topology.md:aecbbf32b8",
@@ -4842,7 +4842,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "57f26317daaf5268da1345e63a7576a283b994423b972921f36e2f465d64043d",
+      "content_hash": "b18cdede1a7cbe1d59ac4827e6ff7eb58abb4a401a93ccff44eb7fb8b113c7ff",
       "id": "artifact:file:evals/readme.md:a1a9eeb43d",
       "path": "evals/README.md",
       "source_record_id": "file:evals/readme.md:a1a9eeb43d",
@@ -4858,7 +4858,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "04f81f8a3d2e7fdf9887a94fe90ab1aca35fa77c712e017f712ded771a91c602",
+      "content_hash": "34493f0e3d19cf53e7bd31b090b43092ff0f3c96d344d446df35b60d976ab61d",
       "id": "artifact:file:evals/reports/readme.md:ac5e016ca2",
       "path": "evals/reports/README.md",
       "source_record_id": "file:evals/reports/readme.md:ac5e016ca2",
@@ -5009,8 +5009,16 @@
       "surface_state": "authored_source"
     },
     {
+      "artifact_kind": "config",
+      "content_hash": "99cb0098832f9296e1b53b13395856ffab3d76405834509c8d11f401624525d0",
+      "id": "artifact:file:evals/reports/aoa-skill-live-dispatch-smoke-20260712-v7-reviewed-route-lift.json:64fa531a0e",
+      "path": "evals/reports/aoa-skill-live-dispatch-smoke-20260712-v7-reviewed-route-lift.json",
+      "source_record_id": "file:evals/reports/aoa-skill-live-dispatch-smoke-20260712-v7-reviewed-route-lift.json:64fa531a0e",
+      "surface_state": "authored_source"
+    },
+    {
       "artifact_kind": "document",
-      "content_hash": "49004aecb93831c09a51ba218920952a3ca54bdbd30f3b1ce991a8ba6c8e006f",
+      "content_hash": "097c9b4978615c990730e7efaf4e8d17732b50212eb11c5446a422b2de7c0e24",
       "id": "artifact:file:evals/runners/readme.md:194095a363",
       "path": "evals/runners/README.md",
       "source_record_id": "file:evals/runners/readme.md:194095a363",
@@ -5018,7 +5026,7 @@
     },
     {
       "artifact_kind": "script",
-      "content_hash": "04eb41b9d7d574716882bc05af5b385942c1e6dff3a58466d57a4e492d2fea12",
+      "content_hash": "4db93ab64806c68740410f7bcf9b0a8e5c70b4c72f32d5551bd1e5671fc440ef",
       "id": "artifact:file:evals/runners/run_live_skill_dispatch.py:e7cd5c0ae9",
       "path": "evals/runners/run_live_skill_dispatch.py",
       "source_record_id": "file:evals/runners/run_live_skill_dispatch.py:e7cd5c0ae9",
@@ -5026,7 +5034,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "ec0e9c87fde1e82eaf20cb00808f69a21d6231e3960c5a2e7441ec7cf426d075",
+      "content_hash": "3ff25deba01be0f566be8c5d8a05a256b795684b4e9cc73490872c915ff523e5",
       "id": "artifact:file:evals/suites/readme.md:8611332c6f",
       "path": "evals/suites/README.md",
       "source_record_id": "file:evals/suites/readme.md:8611332c6f",
@@ -5050,7 +5058,7 @@
     },
     {
       "artifact_kind": "config",
-      "content_hash": "dbdf180d2715358a1952cdeb8454dd330b2808c3ffc69d7d3149e0f7276a0105",
+      "content_hash": "8292483c33e4395721e27e13a4ff8424aa7821d30e7cfeaf08027729b46e332f",
       "id": "artifact:file:evals/suites/aoa-skill-live-dispatch-harness.suite.json:beeca555d0",
       "path": "evals/suites/aoa-skill-live-dispatch-harness.suite.json",
       "source_record_id": "file:evals/suites/aoa-skill-live-dispatch-harness.suite.json:beeca555d0",
@@ -5058,7 +5066,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "51f59747654d591b2f5067bd644ccd9468cbf0ae44ad74c0a370aade9fb853d6",
+      "content_hash": "bd5034a7ddaa69e61aa5b147873ec9501ff04890aeda3506f2eca0c430c24c20",
       "id": "artifact:file:evals/suites/aoa-skill-live-dispatch-harness.suite.md:dc83328e65",
       "path": "evals/suites/aoa-skill-live-dispatch-harness.suite.md",
       "source_record_id": "file:evals/suites/aoa-skill-live-dispatch-harness.suite.md:dc83328e65",
@@ -5066,7 +5074,15 @@
     },
     {
       "artifact_kind": "config",
-      "content_hash": "4bfa37b768fe9f6b3af6727929ab95329584cf47b8022829d44555dff4325c14",
+      "content_hash": "dad2d1cf6b38bb7079b3d21d4fe293fb52b52110013ecae173252e627c3a0c61",
+      "id": "artifact:file:evals/suites/aoa-skill-live-dispatch-outcomes.json:8b883063fe",
+      "path": "evals/suites/aoa-skill-live-dispatch-outcomes.json",
+      "source_record_id": "file:evals/suites/aoa-skill-live-dispatch-outcomes.json:8b883063fe",
+      "surface_state": "authored_source"
+    },
+    {
+      "artifact_kind": "config",
+      "content_hash": "15cadb766876e468ab88f18e56511bcb6a54fe8d758b93f718677b0d1f3ea3cc",
       "id": "artifact:file:evals/suites/aoa-skill-live-dispatch.plan.json:c8f8bbbc88",
       "path": "evals/suites/aoa-skill-live-dispatch.plan.json",
       "source_record_id": "file:evals/suites/aoa-skill-live-dispatch.plan.json:c8f8bbbc88",
@@ -5074,7 +5090,7 @@
     },
     {
       "artifact_kind": "config",
-      "content_hash": "40d9a271f1d3e3b0559b2ed02b1e8653ba28e11ee442ea813f03d60cb4327014",
+      "content_hash": "a73c65aaed3db2380471f3eda36771cbac448a504af9eb0e42c1e83274855359",
       "id": "artifact:file:evals/suites/codex-app-server-skill-input.contract.json:b1bc17a34b",
       "path": "evals/suites/codex-app-server-skill-input.contract.json",
       "source_record_id": "file:evals/suites/codex-app-server-skill-input.contract.json:b1bc17a34b",
@@ -9002,7 +9018,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "f0b501ef34e69e6408764d2f3fff3ac6e503d072e69bef79a6028f6df325554d",
+      "content_hash": "ab86db565f5938ba79f44cc61693edae13b3885fd2f58a75fdf3825c27ba8f22",
       "id": "artifact:file:schemas/readme.md:b0566199e4",
       "path": "schemas/README.md",
       "source_record_id": "file:schemas/readme.md:b0566199e4",
@@ -9034,7 +9050,15 @@
     },
     {
       "artifact_kind": "schema",
-      "content_hash": "021143bd17c213c22d890a1787572d2951c61ef5406e16f35abf0de86b8733f1",
+      "content_hash": "fe859f1120b11a58cf9db965a3e416cc3d0521566818498e14671502d306b2e8",
+      "id": "artifact:file:schemas/live-skill-dispatch-outcome-contracts.schema.json:6e2ad11053",
+      "path": "schemas/live-skill-dispatch-outcome-contracts.schema.json",
+      "source_record_id": "file:schemas/live-skill-dispatch-outcome-contracts.schema.json:6e2ad11053",
+      "surface_state": "authored_source"
+    },
+    {
+      "artifact_kind": "schema",
+      "content_hash": "e6b13e784307424cae3686da8516dd82e51f5e60fbf79d3ad878839a92143721",
       "id": "artifact:file:schemas/live-skill-dispatch-plan.schema.json:ba7d5d70d0",
       "path": "schemas/live-skill-dispatch-plan.schema.json",
       "source_record_id": "file:schemas/live-skill-dispatch-plan.schema.json:ba7d5d70d0",
@@ -9050,7 +9074,7 @@
     },
     {
       "artifact_kind": "schema",
-      "content_hash": "de2815afc85452070fd4de2962e9dfc25f64251b6084e37107303033cf5666ea",
+      "content_hash": "b668423638766eb87a707671f3fbaebfcd134072134b0b6a61cb006ae4c4f20f",
       "id": "artifact:file:schemas/live-skill-dispatch-public-receipt.schema.json:6248b34177",
       "path": "schemas/live-skill-dispatch-public-receipt.schema.json",
       "source_record_id": "file:schemas/live-skill-dispatch-public-receipt.schema.json:6248b34177",
@@ -14778,7 +14802,7 @@
     },
     {
       "artifact_kind": "test",
-      "content_hash": "0be8238ac5d186041aac6568a65f87388480c8b12d8d82b4e6bda1d827a555e0",
+      "content_hash": "5fbc7f0eac26bede95af610d7242d3c05cd174e01822215a60a99be62a6e25fd",
       "id": "artifact:file:tests/test_live_skill_dispatch_harness.py:27c0f74cd0",
       "path": "tests/test_live_skill_dispatch_harness.py",
       "source_record_id": "file:tests/test_live_skill_dispatch_harness.py:27c0f74cd0",
@@ -15171,7 +15195,7 @@
   ],
   "index_identity": {
     "artifact_kind": "repository_artifact_index",
-    "content_digest": "f15eb17b9b85ba571f5ff49cc4a16b91d58bb0e60ab8685a01ce4f5e7cbaaa2b",
+    "content_digest": "d4ce457c027ad2ecad3fc5e2dd1494520d0c42b4a0ba32c54ab39529aa70b11a",
     "index_kind": "artifact",
     "local_id": "index:repo-local:artifacts",
     "schema_ref": "aoa-kag:schemas/repo-local-kag-repository-index.schema.json"
@@ -15195,15 +15219,15 @@
   },
   "schema_version": "aoa-repo-local-kag-repository-index-v1",
   "source_index": {
-    "content_digest": "9cc4a5f7a6c82d586a61fab1821be3c12cce31f33f9b2a46196821a65db19d17",
+    "content_digest": "c945ac6ad29955b346f4c119fd629a30fe880ee24821f585ef28f85f60b0ccf2",
     "local_id": "index:repo-local:source-surfaces",
     "path": "kag/indexes/source_surface_index.json"
   },
   "summary": {
-    "entry_count": 1896,
+    "entry_count": 1899,
     "kind_counts": {
       "asset": 114,
-      "config": 335,
+      "config": 337,
       "data_table": 2,
       "dependency_manifest": 1,
       "directory_marker": 4,
@@ -15216,7 +15240,7 @@
       "projection": 1,
       "receipt": 4,
       "record_log": 4,
-      "schema": 64,
+      "schema": 65,
       "script": 68,
       "security": 1,
       "source_code": 63,

@@ -15,3 +15,6 @@ Active local suite notes:
   bounded smoke, pilot, collision, and coverage-closure cohorts. Its live runs
   require exact confirmation and host resource/storage gates; its deterministic
   harness contract is the only part eligible for ordinary local-suite execution.
+  [aoa-skill-live-dispatch-outcomes.json](aoa-skill-live-dispatch-outcomes.json)
+  holds source-authored bounded outcome expectations; missing contracts remain
+  explicitly unscored and live observations cannot write their own answer key.

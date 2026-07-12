@@ -8766,6 +8766,20 @@
     },
     {
       "coordinates": {
+        "artifact_kind": "config",
+        "code_role": "none",
+        "command_role": "none",
+        "document_role": "none",
+        "mechanics_role": "none",
+        "surface_state": "authored_source"
+      },
+      "entity_kind": "artifact",
+      "id": "entity:file:evals/reports/aoa-skill-live-dispatch-smoke-20260712-v7-reviewed-route-lift.json:64fa531a0e",
+      "label": "evals/reports/aoa-skill-live-dispatch-smoke-20260712-v7-reviewed-route-lift.json",
+      "source_record_id": "file:evals/reports/aoa-skill-live-dispatch-smoke-20260712-v7-reviewed-route-lift.json:64fa531a0e"
+    },
+    {
+      "coordinates": {
         "artifact_kind": "document",
         "code_role": "none",
         "command_role": "none",
@@ -8861,6 +8875,20 @@
       "id": "entity:file:evals/suites/aoa-skill-live-dispatch-harness.suite.md:dc83328e65",
       "label": "evals/suites/aoa-skill-live-dispatch-harness.suite.md",
       "source_record_id": "file:evals/suites/aoa-skill-live-dispatch-harness.suite.md:dc83328e65"
+    },
+    {
+      "coordinates": {
+        "artifact_kind": "config",
+        "code_role": "none",
+        "command_role": "none",
+        "document_role": "none",
+        "mechanics_role": "none",
+        "surface_state": "authored_source"
+      },
+      "entity_kind": "artifact",
+      "id": "entity:file:evals/suites/aoa-skill-live-dispatch-outcomes.json:8b883063fe",
+      "label": "evals/suites/aoa-skill-live-dispatch-outcomes.json",
+      "source_record_id": "file:evals/suites/aoa-skill-live-dispatch-outcomes.json:8b883063fe"
     },
     {
       "coordinates": {
@@ -15805,6 +15833,20 @@
       "id": "entity:file:schemas/live-skill-dispatch-model-output.schema.json:a717256676",
       "label": "schemas/live-skill-dispatch-model-output.schema.json",
       "source_record_id": "file:schemas/live-skill-dispatch-model-output.schema.json:a717256676"
+    },
+    {
+      "coordinates": {
+        "artifact_kind": "schema",
+        "code_role": "none",
+        "command_role": "none",
+        "document_role": "none",
+        "mechanics_role": "none",
+        "surface_state": "authored_source"
+      },
+      "entity_kind": "contract",
+      "id": "entity:file:schemas/live-skill-dispatch-outcome-contracts.schema.json:6e2ad11053",
+      "label": "schemas/live-skill-dispatch-outcome-contracts.schema.json",
+      "source_record_id": "file:schemas/live-skill-dispatch-outcome-contracts.schema.json:6e2ad11053"
     },
     {
       "coordinates": {
@@ -26547,7 +26589,7 @@
   ],
   "index_identity": {
     "artifact_kind": "repository_entity_index",
-    "content_digest": "44735009274739420d58d7f177acbd6363b235e480265b4f82ee5081d75afb1d",
+    "content_digest": "d7fb8cf348c405d6598b1f78d157b3e669adb2dff24718d501be2c040b23576c",
     "index_kind": "entity",
     "local_id": "index:repo-local:entities",
     "schema_ref": "aoa-kag:schemas/repo-local-kag-repository-index.schema.json"
@@ -26570,18 +26612,18 @@
   },
   "schema_version": "aoa-repo-local-kag-repository-index-v1",
   "source_index": {
-    "content_digest": "9cc4a5f7a6c82d586a61fab1821be3c12cce31f33f9b2a46196821a65db19d17",
+    "content_digest": "c945ac6ad29955b346f4c119fd629a30fe880ee24821f585ef28f85f60b0ccf2",
     "local_id": "index:repo-local:source-surfaces",
     "path": "kag/indexes/source_surface_index.json"
   },
   "summary": {
-    "entry_count": 1896,
+    "entry_count": 1899,
     "kind_counts": {
       "agent_route": 29,
-      "artifact": 397,
+      "artifact": 399,
       "code": 66,
       "command": 156,
-      "contract": 42,
+      "contract": 43,
       "decision": 44,
       "document": 703,
       "mechanic_package": 260,

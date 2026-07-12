@@ -1,7 +1,7 @@
 {
-  "schema_version": "aoa_codex_app_server_skill_input_contract_v7",
+  "schema_version": "aoa_codex_app_server_skill_input_contract_v8",
   "codex_version": "codex-cli 0.144.1",
-  "protocol_revision": "codex-cli-0.144.1-live-dispatch-evidence-v7",
+  "protocol_revision": "codex-cli-0.144.1-live-dispatch-evidence-v8",
   "official_contract_ref": "https://learn.chatgpt.com/docs/app-server#start-a-turn-invoke-a-skill",
   "schema_generation_command": "codex app-server generate-json-schema --experimental --out DIR",
   "request_sequence": [
@@ -29,6 +29,8 @@
     "transport_failure_duration": "a caught CLI or App Server transport exception preserves elapsed milliseconds in the arm measure instead of resetting duration to zero",
     "transport_partial_evidence": "partial timeout stdout and stderr remain private transport evidence; JSONL events and usage are recovered so turn start, budget, command scope, and failure precedence are not erased",
     "cohort_process_status": "a complete cohort exits zero even when its model evidence is negative; a stopped-early incomplete cohort reports its stop reason and exits nonzero after preserving the private receipt",
+    "route_outcome_split": "new matched pairs publish route lift from dispatch plus load separately from bounded outcome lift; neither field aliases the other",
+    "outcome_answer_key": "bounded outcome scoring requires the same source-locked pre-live contract on both arms; missing contracts are not_scored_no_contract and observed output never becomes its own answer key",
     "selected_child": "an expected or dynamically selected child requires a complete exact fixture-path SKILL.md read before the route load contract can pass",
     "fixture_filesystem_scope": "completed or in-progress command paths outside the fixture root are counted and become harness contamination before budget, dispatch, load, procedure, or lift interpretation; system executables and /dev/null remain allowed tooling",
     "output_failure": "a zero-return structured output that violates the bounded output contract is output_contract_invalid, not transport_failure"

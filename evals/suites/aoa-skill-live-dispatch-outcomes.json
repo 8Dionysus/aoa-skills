@@ -1,0 +1,27 @@
+{
+  "schema_version": "aoa_skill_live_dispatch_outcome_contracts_v1",
+  "derivation_boundary": "source_case_skill_and_fixture_only",
+  "proof_authority": false,
+  "contracts": [
+    {
+      "contract_id": "collision-42-bounded-fixture-v1",
+      "case_id": "collision-42",
+      "scope": "bounded_fixture_outcome",
+      "expected_procedure_disposition": "blocked_missing_input",
+      "expected_procedure_command_observed": true,
+      "expected_procedure_command_succeeded": true,
+      "expected_verification_observed": true,
+      "expected_completion_observed": false,
+      "expected_deflection_observed": true,
+      "expected_owner_boundary_present": true,
+      "source_refs": [
+        "generated/skill_trigger_collision_matrix.json",
+        "skills/core/engineering/aoa-eval/SKILL.md",
+        "skills/core/engineering/aoa-eval-apply/SKILL.md",
+        "evals/suites/codex-app-server-skill-input.contract.json",
+        "evals/runners/run_live_skill_dispatch.py"
+      ],
+      "rationale": "The source case asks for an eval-lane decision from local and central owner evidence, but the bounded fixture supplies only portable skill instructions and its hermetic validator. The correct fixture outcome is therefore a verified validator run followed by an explicit missing-input deflection, not invented repository inspection or a false completion claim. This expectation was authored from source case, skill, and fixture contracts; live v7 observations are not an authority input."
+    }
+  ]
+}

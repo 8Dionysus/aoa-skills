@@ -16,6 +16,9 @@ verdicts, scoring, regression truth, proof acceptance, or promotion.
 The default action is a read-only plan. A live run additionally requires the
 exact confirmation token printed by that plan. `pilot13`, `full-collision`, and
 `coverage-closure` require the printed high-cost token as well.
+The pilot plan also publishes outcome-contract coverage and remains executable
+only at 11 of 11 implicit pairs; an incomplete pilot stops before storage,
+resource, runtime, or model preflight even when both confirmation tokens match.
 
 Planning discovers exact external `SKILL.md` files whose canonical names
 shadow the repo export, including canonical targets behind symlinked user-skill
@@ -46,9 +49,9 @@ turn follows the
 the text begins with the exact `$skill` mention and the adjacent structured
 `skill` item carries the same fixture name and path. An accepted official input
 is version-locked native-load evidence, distinct from a raw shell full read.
-These rules use contract schema `aoa_codex_app_server_skill_input_contract_v7`
-and protocol revision `codex-cli-0.144.1-live-dispatch-evidence-v7`. Retained
-v1-v6 receipts stay source-locked to their original protocol and review status;
+These rules use contract schema `aoa_codex_app_server_skill_input_contract_v8`
+and protocol revision `codex-cli-0.144.1-live-dispatch-evidence-v8`. Retained
+v1-v7 receipts stay source-locked to their original protocol and review status;
 they are never upgraded in place.
 
 Run the confirmed command only as the child of the plan packet's
@@ -103,7 +106,12 @@ and use the runner's `review` action to create a field-whitelisted public
 receipt under `evals/reports/` only after assigning an explicit review status.
 Public measures keep prompt visibility, selection, model load claim, accepted
 native input, raw full-read evidence, dispatch/load matches, procedure
-disposition, execution, verification, completion, and deflection separate. A
+disposition, execution, verification, completion, and deflection separate.
+Each implicit pair always reports route lift. It reports bounded outcome lift
+only when both arms carry the same source-locked outcome contract; otherwise
+the outcome dimension is `not_scored_no_contract`. The outcome matcher compares
+only the predeclared disposition, command, verification, completion/deflection,
+and owner-boundary dimensions and does not depend on route correctness. A
 correct selection without the required native-load or child/full-read evidence
 returns `skill_load_gap` to the same case. A wrong activation decision after the
 route is available is instead `dispatch_policy_gap`. A normal zero-return
@@ -120,9 +128,12 @@ cohort is incomplete. A complete cohort still returns exit 0 even when it
 records negative skill evidence; process status reports measurement completeness,
 not model quality.
 
-Implicit lift is omitted when either arm has an output-contract, transport,
-budget, runtime, or owner-boundary safety failure. Contamination remains an
-explicit pair outcome but never rewrites either arm's recorded classification.
+Both lift dimensions are omitted when either arm has an output-contract,
+transport, budget, runtime, or owner-boundary safety failure. Contamination
+remains an explicit pair outcome but never rewrites either arm's recorded
+classification. A source-locked aided route whose bounded outcome misses the
+declared contract returns `bounded_outcome_miss` to joint skill-procedure and
+contract review before the same case is repeated.
 Public review also
 walks every string value and rejects an absolute host path even when it is
 embedded in prose, in addition to credential and transport-id leakage.
@@ -164,6 +175,15 @@ success for an incomplete cohort. The public receipt remains immutable
 `needs-rerun` evidence. V7 repairs duration and process-status observability;
 the same smoke must wait for runtime availability and then run on an exact
 merged v7 tree before `pilot13`.
+
+The exact-merged-tree v7 smoke then completed all four arms and recorded a
+positive generic pair lift. Its v7 implementation derived that field solely
+from route-contract correctness, even though the implicit arms reported
+different deflection dispositions and neither reported completion. The reviewed
+public receipt therefore preserves v7 as positive route-contract evidence only.
+V8 removes the ambiguous generic fields from new pairs, source-locks the smoke
+outcome contract before planning, and requires a fresh exact-merged smoke before
+`pilot13`.
 
 See `evals/suites/aoa-skill-live-dispatch-harness.suite.md` and
 `docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md` for
