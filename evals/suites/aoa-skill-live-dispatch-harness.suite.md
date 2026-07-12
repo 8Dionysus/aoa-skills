@@ -41,8 +41,12 @@ digests also match. Those digests bind the model-visible name, resolved path,
 and description fingerprint for every entry, so a description-only change is
 background drift rather than an invisible treatment difference.
 
-The paired implicit arms publish per-case observed lift in `{-1, 0, 1}` and an
-effect class. They do not publish an aggregate score.
+The paired implicit arms publish route lift separately from bounded outcome
+lift. Route lift is always graded from dispatch plus load. Outcome lift is
+graded only when both arms share a source-locked case contract authored from
+the case, selected skill procedures, and fixture semantics before the live
+run. A pair without such a contract is explicitly `not_scored_no_contract`;
+neither dimension is collapsed into an aggregate score.
 
 ## Cohorts
 
@@ -55,6 +59,9 @@ effect class. They do not publish an aggregate score.
 
 Every cohort beyond smoke requires a second exact high-cost token. Widen only
 after reviewing the preceding cohort and repairing any return route it opens.
+`pilot13` is additionally `required_for_live`: planning may expose incomplete
+outcome coverage, but confirmed execution stops before preflight or model spend
+until all 11 implicit pairs have source-locked contracts.
 
 ## Evidence Semantics
 
@@ -90,6 +97,11 @@ after reviewing the preceding cohort and repairing any return route it opens.
 - procedure disposition, execution, verification, completion, and deflection
   are published separately; a route-contract match is not task completion or
   central proof;
+- bounded outcome contracts declare the expected disposition, command,
+  verification, completion/deflection, and owner-boundary dimensions before
+  live execution; the matcher is independent of route correctness, publishes
+  bounded mismatch dimensions, and never treats observed live output as its
+  own answer key;
 - a competing-neighbourhood entry becomes a collision only when the selected
   skill differs from the expected target;
 - a late budget marker cannot replace a contract-valid, zero-return model
@@ -156,6 +168,15 @@ look successful. V7 preserves timeout duration and returns nonzero for an
 incomplete cohort. Repeat only after runtime availability and exact-merged v7
 validation.
 
+The exact-merged-tree v7 smoke completed all four turns with clean prompt,
+fixture, load, procedure, and safety evidence. Its historical pair grader
+computed generic `observed_lift=1` only from `route_contract_match`. Review
+therefore accepts it as bounded positive route-contract evidence, not as
+completion or outcome lift. The immutable public receipt is
+`aoa-skill-live-dispatch-smoke-20260712-v7-reviewed-route-lift.json`. V8 returns
+to the grader, source-locks the smoke outcome before execution, and requires a
+fresh exact-merged rerun before pilot widening.
+
 ## Safety And Privacy
 
 The plan locks Git head, all portable skill files, generated/config inputs,
@@ -172,8 +193,8 @@ therefore disable every locked id explicitly. Deterministic adapter tests guard
 both sides of this transport-specific contract.
 
 These hermetic invocation rules use contract schema
-`aoa_codex_app_server_skill_input_contract_v7` and protocol revision
-`codex-cli-0.144.1-live-dispatch-evidence-v7`. Retained v1-v6 receipts remain
+`aoa_codex_app_server_skill_input_contract_v8` and protocol revision
+`codex-cli-0.144.1-live-dispatch-evidence-v8`. Retained v1-v7 receipts remain
 source-locked to their original protocol and review status and are not upgraded
 in place.
 
@@ -206,8 +227,9 @@ value.
 
 Each bounded failure class names an earlier layer to repair: harness,
 description/policy, collision family, manual policy, root/child trajectory,
-native-load/full-read tooling, direct procedure, owner boundary, runtime
-profile/source lock, reviewed budget, or transport. `skill_load_gap` returns to
+native-load/full-read tooling, direct procedure, bounded outcome contract,
+owner boundary, runtime profile/source lock, reviewed budget, or transport.
+`skill_load_gap` returns to
 the same case when the exact skill was selected but required native-load or
 child/full-read evidence is absent; it must not be mislabeled as a trigger,
 trajectory, or procedure defect. `dispatch_policy_gap` is separate: it means the
@@ -217,7 +239,10 @@ zero-return transport with invalid structured output is
 `output_contract_invalid`; actual transport failure or timeout remains
 `transport_failure`. Budget exhaustion is separate when the source-locked cap
 stops the turn before a valid result; a late marker after a valid result does
-not hide the result's semantic classification. After repair, repeat smoke or
+not hide the result's semantic classification. `bounded_outcome_miss` returns
+to both the selected skill procedure and the pre-authored source contract,
+because candidate live evidence alone cannot decide which side is wrong. After
+repair, repeat smoke or
 the smallest
 affected adjacent family before widening again. If a later observation exposes
 an ambiguous fixture or grader, return to the harness and invalidate affected

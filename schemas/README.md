@@ -20,6 +20,9 @@ Use [AGENTS](AGENTS.md) before editing. Identify the owner surface for the
 meaning, keep schema changes paired with examples and validators, and do not
 loosen a schema only to quiet an example.
 
-The `live-skill-dispatch-*` contracts validate the source plan, constrained
-model output, private raw receipt, and public field-whitelisted projection for
-the local live-dispatch harness. They carry no eval verdict or proof authority.
+The `live-skill-dispatch-*` contracts validate the source plan, pre-authored
+bounded outcome expectations, constrained model output, private raw receipt,
+and public field-whitelisted projection for the local live-dispatch harness.
+Outcome contracts are source answer keys for a hermetic fixture, not live-run
+observations, real-repository completion claims, eval verdicts, or proof
+authority.

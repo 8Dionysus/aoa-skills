@@ -35,6 +35,9 @@ PUBLIC_RECEIPT_SCHEMA_VERSION = "aoa_skill_live_dispatch_public_receipt_v1"
 DEFAULT_PLAN_REF = Path("evals/suites/aoa-skill-live-dispatch.plan.json")
 DEFAULT_OUTPUT_SCHEMA_REF = Path("schemas/live-skill-dispatch-model-output.schema.json")
 DEFAULT_PLAN_SCHEMA_REF = Path("schemas/live-skill-dispatch-plan.schema.json")
+DEFAULT_OUTCOME_CONTRACT_SCHEMA_REF = Path(
+    "schemas/live-skill-dispatch-outcome-contracts.schema.json"
+)
 DEFAULT_PRIVATE_RECEIPT_SCHEMA_REF = Path("schemas/live-skill-dispatch-private-receipt.schema.json")
 DEFAULT_PUBLIC_RECEIPT_SCHEMA_REF = Path("schemas/live-skill-dispatch-public-receipt.schema.json")
 HIGH_COST_COHORTS = {"pilot13", "full-collision", "coverage-closure"}
@@ -117,6 +120,11 @@ PUBLIC_MEASURE_KEYS = (
     "procedure_contract_match",
     "completion_observed",
     "deflection_observed",
+    "outcome_contract_defined",
+    "outcome_contract_sha256",
+    "outcome_contract",
+    "outcome_contract_match",
+    "outcome_mismatch_dimensions",
     "route_contract_match",
     "owner_boundary_present",
     "input_tokens",
@@ -133,6 +141,17 @@ PUBLIC_PAIR_KEYS = (
     "expected_behavior",
     "aided_route_contract_match",
     "control_route_contract_match",
+    "route_lift",
+    "route_effect_class",
+    "outcome_contract_defined",
+    "outcome_contract_consistent",
+    "outcome_contract_sha256",
+    "aided_outcome_contract_match",
+    "control_outcome_contract_match",
+    "outcome_lift",
+    "outcome_effect_class",
+    # Historical v1-v7 private receipts retain their original generic pair
+    # vocabulary when reviewed. Current v8 runs never emit these two keys.
     "observed_lift",
     "effect_class",
     "fixture_context_match",
@@ -155,6 +174,7 @@ FAILURE_TAXONOMY = {
     "dispatch_policy_gap": "The exact target route was available, but the activation decision violated its expected dispatch policy.",
     "skill_load_gap": "The exact target was selected but neither an accepted native load contract nor its required child/full read was observed.",
     "direct_procedure_gap": "Selection and the load contract succeeded but the exact fixture command, successful exit, or sentinel verification was absent.",
+    "bounded_outcome_miss": "The aided route and load contract passed, but the source-locked bounded fixture outcome did not.",
     "owner_boundary_violation": "The result widened mutation, proof, promotion, or owner authority.",
     "runtime_profile_drift": "Codex, model, source, profile, or protocol identity drifted after planning.",
     "budget_exhausted": "The source-locked weighted token cap stopped the turn before a valid result.",
@@ -171,6 +191,7 @@ ADAPTIVE_RETURN_ROUTE = {
     "trajectory_break": "repair_root_or_child_then_repeat_adjacent_family",
     "dispatch_policy_gap": "repair_dispatch_policy_then_repeat_same_case",
     "direct_procedure_gap": "repair_child_procedure_then_repeat_direct_arm",
+    "bounded_outcome_miss": "review_skill_procedure_or_outcome_contract_then_repeat_same_case",
     "owner_boundary_violation": "repair_owner_boundary_then_repeat_smoke",
     "runtime_profile_drift": "refresh_profile_and_source_lock_then_repeat_smoke",
     "budget_exhausted": "review_caps_or_reduce_context_then_repeat_same_case",
@@ -229,6 +250,39 @@ class PublicReceiptSafetyError(ValueError):
 
 
 @dataclasses.dataclass(frozen=True, slots=True)
+class OutcomeContract:
+    contract_id: str
+    case_id: str
+    scope: str
+    expected_procedure_disposition: str | None
+    expected_procedure_command_observed: bool | None
+    expected_procedure_command_succeeded: bool | None
+    expected_verification_observed: bool | None
+    expected_completion_observed: bool | None
+    expected_deflection_observed: bool | None
+    expected_owner_boundary_present: bool | None
+    source_refs: tuple[str, ...]
+    rationale: str = ""
+
+    def sha256(self) -> str:
+        return sha256_bytes(canonical_json_bytes(dataclasses.asdict(self)))
+
+    def public_expectation(self) -> dict[str, Any]:
+        return {
+            "contract_id": self.contract_id,
+            "scope": self.scope,
+            "contract_sha256": self.sha256(),
+            "expected_procedure_disposition": self.expected_procedure_disposition,
+            "expected_procedure_command_observed": self.expected_procedure_command_observed,
+            "expected_procedure_command_succeeded": self.expected_procedure_command_succeeded,
+            "expected_verification_observed": self.expected_verification_observed,
+            "expected_completion_observed": self.expected_completion_observed,
+            "expected_deflection_observed": self.expected_deflection_observed,
+            "expected_owner_boundary_present": self.expected_owner_boundary_present,
+        }
+
+
+@dataclasses.dataclass(frozen=True, slots=True)
 class Trial:
     trial_id: str
     arm_type: str
@@ -239,6 +293,7 @@ class Trial:
     competing_skills: tuple[str, ...] = ()
     root_skill: str | None = None
     expected_child_skill: str | None = None
+    outcome_contract: OutcomeContract | None = None
 
     def public_descriptor(self) -> dict[str, Any]:
         return {
@@ -250,6 +305,10 @@ class Trial:
             "competing_skills": list(self.competing_skills),
             "root_skill": self.root_skill,
             "expected_child_skill": self.expected_child_skill,
+            "outcome_contract_defined": self.outcome_contract is not None,
+            "outcome_contract_sha256": (
+                self.outcome_contract.sha256() if self.outcome_contract is not None else None
+            ),
             "prompt_sha256": sha256_text(self.prompt),
         }
 
@@ -351,8 +410,13 @@ def load_plan(path: Path) -> dict[str, Any]:
     output_schema = _read_json(repo_root / DEFAULT_OUTPUT_SCHEMA_REF)
     Draft202012Validator.check_schema(output_schema)
     validate_openai_strict_output_schema(output_schema)
+    outcome_schema = _read_json(repo_root / DEFAULT_OUTCOME_CONTRACT_SCHEMA_REF)
+    Draft202012Validator.check_schema(outcome_schema)
+    outcome_ref = _safe_source_ref(str(payload["sources"]["outcome_contracts"]))
+    Draft202012Validator(outcome_schema).validate(_read_json(repo_root / outcome_ref))
     if payload.get("failure_taxonomy") != list(FAILURE_TAXONOMY):
         raise ValueError("live dispatch plan failure taxonomy drifted from the runner contract")
+    _outcome_contracts(repo_root, payload)
     return payload
 
 
@@ -562,7 +626,7 @@ def _expected_codex_version(plan: dict[str, Any]) -> str:
     revision = str(plan.get("protocol_revision") or "")
     match = re.fullmatch(
         r"codex-cli-([0-9]+(?:\.[0-9]+){2})-"
-        r"(?:app-server-skill-input-v3|live-dispatch-evidence-v[4567])",
+        r"(?:app-server-skill-input-v3|live-dispatch-evidence-v[4-8])",
         revision,
     )
     if match is None:
@@ -622,11 +686,65 @@ def _catalog_entries(repo_root: Path, plan: dict[str, Any]) -> dict[str, dict[st
     return {str(item["name"]): item for item in payload.get("skills", [])}
 
 
+def _outcome_contracts(
+    repo_root: Path,
+    plan: dict[str, Any],
+) -> dict[str, OutcomeContract]:
+    path = repo_root / _safe_source_ref(str(plan["sources"]["outcome_contracts"]))
+    payload = _read_json(path)
+    records: dict[str, OutcomeContract] = {}
+    locked_refs = {str(value) for value in plan.get("source_refs", [])}
+    expectation_fields = (
+        "expected_procedure_disposition",
+        "expected_procedure_command_observed",
+        "expected_procedure_command_succeeded",
+        "expected_verification_observed",
+        "expected_completion_observed",
+        "expected_deflection_observed",
+        "expected_owner_boundary_present",
+    )
+    for item in payload.get("contracts", []):
+        refs = tuple(str(value) for value in item.get("source_refs", []))
+        for ref in refs:
+            _safe_source_ref(ref)
+            if ref not in locked_refs:
+                raise ValueError(
+                    f"outcome contract source ref is not in the plan source lock: {ref}"
+                )
+        if all(item.get(field) is None for field in expectation_fields):
+            raise ValueError("outcome contract must score at least one explicit dimension")
+        contract = OutcomeContract(
+            contract_id=str(item["contract_id"]),
+            case_id=str(item["case_id"]),
+            scope=str(item["scope"]),
+            expected_procedure_disposition=item.get("expected_procedure_disposition"),
+            expected_procedure_command_observed=item.get(
+                "expected_procedure_command_observed"
+            ),
+            expected_procedure_command_succeeded=item.get(
+                "expected_procedure_command_succeeded"
+            ),
+            expected_verification_observed=item.get("expected_verification_observed"),
+            expected_completion_observed=item.get("expected_completion_observed"),
+            expected_deflection_observed=item.get("expected_deflection_observed"),
+            expected_owner_boundary_present=item.get("expected_owner_boundary_present"),
+            source_refs=refs,
+            rationale=str(item.get("rationale") or ""),
+        )
+        if contract.case_id in records:
+            raise ValueError(f"duplicate outcome contract case: {contract.case_id}")
+        records[contract.case_id] = contract
+    return records
+
+
 def _expected_behavior(item: dict[str, Any]) -> str:
     return "invoke" if item.get("expected_behavior") in {"invoke", "invoke-skill"} else "manual"
 
 
-def _implicit_pair(item: dict[str, Any]) -> list[Trial]:
+def _implicit_pair(
+    item: dict[str, Any],
+    outcome_contract: OutcomeContract | None,
+) -> list[Trial]:
     case_id = str(item["case_id"])
     target = str(item.get("skill_name") or item.get("expected_skill") or "")
     behavior = _expected_behavior(item)
@@ -636,6 +754,7 @@ def _implicit_pair(item: dict[str, Any]) -> list[Trial]:
         "expected_target_skill": target,
         "expected_behavior": behavior,
         "competing_skills": tuple(str(value) for value in item.get("competing_skills", [])),
+        "outcome_contract": outcome_contract,
     }
     return [
         Trial(trial_id=f"{case_id}:aided", arm_type="implicit_aided", **common),
@@ -708,6 +827,14 @@ def expand_cohort(repo_root: Path, plan: dict[str, Any], cohort: str) -> list[Tr
     descriptions = _description_cases(repo_root, plan)
     policies = _policy_entries(repo_root, plan)
     catalog = _catalog_entries(repo_root, plan)
+    outcome_contracts = _outcome_contracts(repo_root, plan)
+    known_case_ids = set(collisions) | set(descriptions)
+    unknown_contracts = sorted(set(outcome_contracts) - known_case_ids)
+    if unknown_contracts:
+        raise ValueError(
+            "outcome contracts reference unknown live dispatch cases: "
+            + ", ".join(unknown_contracts)
+        )
     cohorts = plan.get("cohorts", {})
     if cohort not in cohorts:
         raise ValueError(f"unknown cohort: {cohort}")
@@ -733,7 +860,27 @@ def expand_cohort(repo_root: Path, plan: dict[str, Any], cohort: str) -> list[Tr
     else:
         implicit_ids = [str(value) for value in config.get("implicit_case_ids", [])]
     for case_id in implicit_ids:
-        trials.extend(_implicit_pair(_case_lookup(case_id, collisions, descriptions)))
+        trials.extend(
+            _implicit_pair(
+                _case_lookup(case_id, collisions, descriptions),
+                outcome_contracts.get(case_id),
+            )
+        )
+
+    if config.get("outcome_contract_mode") == "required":
+        missing_contracts = sorted(
+            {
+                trial.case_id
+                for trial in trials
+                if trial.arm_type in {"implicit_aided", "implicit_control"}
+                and trial.outcome_contract is None
+            }
+        )
+        if missing_contracts:
+            raise ValueError(
+                f"cohort {cohort} requires explicit outcome contracts for: "
+                + ", ".join(missing_contracts)
+            )
 
     trajectory_ids = config.get("trajectory_case_ids", [])
     if trajectory_ids == "all-root-child-trajectories":
@@ -778,6 +925,18 @@ def build_plan_packet(
         raise ValueError("live dispatch profile revision conflicts with generated release manifest")
     expected_codex_version = _expected_codex_version(plan)
     trials = expand_cohort(repo_root, plan, cohort)
+    implicit_case_ids = {
+        trial.case_id
+        for trial in trials
+        if trial.arm_type in {"implicit_aided", "implicit_control"}
+    }
+    outcome_case_ids = {
+        trial.case_id
+        for trial in trials
+        if trial.arm_type in {"implicit_aided", "implicit_control"}
+        and trial.outcome_contract is not None
+    }
+    outcome_contract_coverage_complete = outcome_case_ids == implicit_case_ids
     source_digest, source_records = source_snapshot(repo_root, plan)
     git_head_ref = read_git_head(repo_root)
     head_digest = sha256_text(git_head_ref)
@@ -802,6 +961,10 @@ def build_plan_packet(
         **shadow_lock,
         **configured_mcp_server_lock,
         "caps": caps,
+        "outcome_contract_mode": str(plan["cohorts"][cohort]["outcome_contract_mode"]),
+        "implicit_pair_count": len(implicit_case_ids),
+        "outcome_scored_pair_count": len(outcome_case_ids),
+        "outcome_contract_coverage_complete": outcome_contract_coverage_complete,
         "trial_locks": [trial.public_descriptor() for trial in trials],
     }
     confirmation_token = sha256_bytes(b"aoa-live-skill-confirm-v1\0" + canonical_json_bytes(lock))
@@ -826,6 +989,12 @@ def build_plan_packet(
         **shadow_lock,
         **configured_mcp_server_lock,
         "caps": caps,
+        "outcome_contract_mode": lock["outcome_contract_mode"],
+        "implicit_pair_count": lock["implicit_pair_count"],
+        "outcome_scored_pair_count": lock["outcome_scored_pair_count"],
+        "outcome_contract_coverage_complete": lock[
+            "outcome_contract_coverage_complete"
+        ],
         "trial_count": len(trials),
         "trial_locks": [trial.public_descriptor() for trial in trials],
         "confirmation_token": confirmation_token,
@@ -2017,6 +2186,13 @@ def _trial_failure_class(trial: Trial, result: dict[str, Any]) -> str | None:
             return "manual_activation_leak"
         if not _dispatch_contract_match(trial, output):
             return "dispatch_policy_gap"
+    if (
+        trial.arm_type == "implicit_aided"
+        and trial.outcome_contract is not None
+        and _route_contract_match(trial, output, result)
+        and not _outcome_contract_evidence(trial, output, result)["match"]
+    ):
+        return "bounded_outcome_miss"
     if trial.arm_type == "root_manual_child":
         if (
             selected != trial.expected_target_skill
@@ -2454,7 +2630,12 @@ def _enrich_transport_evidence(
         and enriched["procedure_command_succeeded"]
         and enriched["verification_observed"]
     )
-    enriched["completion_observed"] = enriched["procedure_contract_match"]
+    enriched["completion_observed"] = bool(
+        output.get("procedure_disposition") == "completed"
+        and enriched["procedure_command_observed"]
+        and enriched["procedure_command_succeeded"]
+        and enriched["verification_observed"]
+    )
     enriched["deflection_observed"] = output.get("procedure_disposition") in {
         "blocked_missing_input",
         "deferred_owner_boundary",
@@ -2487,12 +2668,59 @@ def _route_contract_match(trial: Trial, output: dict[str, Any], result: dict[str
     return _dispatch_contract_match(trial, output) and _load_contract_match(trial, output, result)
 
 
+def _outcome_contract_evidence(
+    trial: Trial,
+    output: dict[str, Any],
+    result: dict[str, Any],
+) -> dict[str, Any]:
+    contract = trial.outcome_contract
+    if contract is None:
+        return {
+            "defined": False,
+            "sha256": None,
+            "contract": None,
+            "match": None,
+            "mismatch_dimensions": [],
+        }
+    observed = {
+        "procedure_disposition": output.get("procedure_disposition"),
+        "procedure_command_observed": result.get("procedure_command_observed") is True,
+        "procedure_command_succeeded": result.get("procedure_command_succeeded") is True,
+        "verification_observed": result.get("verification_observed") is True,
+        "completion_observed": result.get("completion_observed") is True,
+        "deflection_observed": result.get("deflection_observed") is True,
+        "owner_boundary_present": bool(output.get("owner_boundary")),
+    }
+    expected = {
+        "procedure_disposition": contract.expected_procedure_disposition,
+        "procedure_command_observed": contract.expected_procedure_command_observed,
+        "procedure_command_succeeded": contract.expected_procedure_command_succeeded,
+        "verification_observed": contract.expected_verification_observed,
+        "completion_observed": contract.expected_completion_observed,
+        "deflection_observed": contract.expected_deflection_observed,
+        "owner_boundary_present": contract.expected_owner_boundary_present,
+    }
+    mismatches = [
+        name
+        for name, expected_value in expected.items()
+        if expected_value is not None and observed[name] != expected_value
+    ]
+    return {
+        "defined": True,
+        "sha256": contract.sha256(),
+        "contract": contract.public_expectation(),
+        "match": not mismatches,
+        "mismatch_dimensions": mismatches,
+    }
+
+
 def _trial_measure(trial: Trial, result: dict[str, Any]) -> dict[str, Any]:
     output = result.get("final_output") if isinstance(result.get("final_output"), dict) else {}
     usage = result.get("usage") if isinstance(result.get("usage"), dict) else {}
     failure_class = _trial_failure_class(trial, result)
     dispatch_match = _dispatch_contract_match(trial, output)
     load_match = _load_contract_match(trial, output, result)
+    outcome = _outcome_contract_evidence(trial, output, result)
     return {
         "case_id": trial.case_id,
         "arm_type": trial.arm_type,
@@ -2541,6 +2769,11 @@ def _trial_measure(trial: Trial, result: dict[str, Any]) -> dict[str, Any]:
         "procedure_contract_match": result.get("procedure_contract_match") is True,
         "completion_observed": result.get("completion_observed") is True,
         "deflection_observed": result.get("deflection_observed") is True,
+        "outcome_contract_defined": outcome["defined"],
+        "outcome_contract_sha256": outcome["sha256"],
+        "outcome_contract": outcome["contract"],
+        "outcome_contract_match": outcome["match"],
+        "outcome_mismatch_dimensions": outcome["mismatch_dimensions"],
         "route_contract_match": dispatch_match and load_match,
         "owner_boundary_present": bool(output.get("owner_boundary")),
         "input_tokens": int(usage.get("input_tokens") or 0),
@@ -2551,6 +2784,17 @@ def _trial_measure(trial: Trial, result: dict[str, Any]) -> dict[str, Any]:
         "failure_class": failure_class,
         "adaptive_return_route": ADAPTIVE_RETURN_ROUTE.get(failure_class) if failure_class else None,
     }
+
+
+def _effect_class(aided_correct: bool, control_correct: bool) -> str:
+    lift = int(aided_correct) - int(control_correct)
+    if lift > 0:
+        return "positive_lift"
+    if lift < 0:
+        return "negative_lift"
+    if aided_correct:
+        return "no_lift_both_correct"
+    return "no_lift_both_incorrect"
 
 
 def _pair_outcomes(private_trials: list[dict[str, Any]]) -> list[dict[str, Any]]:
@@ -2601,28 +2845,76 @@ def _pair_outcomes(private_trials: list[dict[str, Any]]) -> list[dict[str, Any]]
             # evaluable dispatch observation. Keep the arm evidence, but emit
             # no pair score.
             continue
-        aided_correct = bool(aided_measure.get("route_contract_match")) and not contaminated
-        control_correct = bool(control_measure.get("route_contract_match")) and not contaminated
-        lift = int(aided_correct) - int(control_correct)
-        if contaminated:
-            effect = "contaminated"
-        elif lift > 0:
-            effect = "positive_lift"
-        elif lift < 0:
-            effect = "negative_lift"
-        elif aided_correct:
-            effect = "no_lift_both_correct"
+        aided_route_correct = bool(aided_measure.get("route_contract_match"))
+        control_route_correct = bool(control_measure.get("route_contract_match"))
+        route_lift = (
+            None
+            if contaminated
+            else int(aided_route_correct) - int(control_route_correct)
+        )
+        route_effect = (
+            "contaminated"
+            if contaminated
+            else _effect_class(aided_route_correct, control_route_correct)
+        )
+        aided_outcome_defined = aided_measure.get("outcome_contract_defined") is True
+        control_outcome_defined = control_measure.get("outcome_contract_defined") is True
+        aided_outcome_sha = aided_measure.get("outcome_contract_sha256")
+        control_outcome_sha = control_measure.get("outcome_contract_sha256")
+        outcome_contract_consistent = bool(
+            aided_outcome_defined == control_outcome_defined
+            and (
+                not aided_outcome_defined
+                or (
+                    isinstance(aided_outcome_sha, str)
+                    and aided_outcome_sha == control_outcome_sha
+                )
+            )
+        )
+        outcome_contract_defined = bool(
+            outcome_contract_consistent and aided_outcome_defined
+        )
+        if not outcome_contract_consistent:
+            outcome_lift: int | None = None
+            outcome_effect = "contaminated"
+            outcome_sha = None
+            aided_outcome_match: bool | None = None
+            control_outcome_match: bool | None = None
+        elif not outcome_contract_defined:
+            outcome_lift = None
+            outcome_effect = "not_scored_no_contract"
+            outcome_sha = None
+            aided_outcome_match = None
+            control_outcome_match = None
         else:
-            effect = "no_lift_both_incorrect"
+            outcome_sha = str(aided_outcome_sha)
+            aided_outcome_match = aided_measure.get("outcome_contract_match") is True
+            control_outcome_match = control_measure.get("outcome_contract_match") is True
+            if contaminated:
+                outcome_lift = None
+                outcome_effect = "contaminated"
+            else:
+                outcome_lift = int(aided_outcome_match) - int(control_outcome_match)
+                outcome_effect = _effect_class(
+                    aided_outcome_match,
+                    control_outcome_match,
+                )
         outcomes.append(
             {
                 "case_id": case_id,
                 "expected_target_skill": aided_measure.get("expected_target_skill"),
                 "expected_behavior": aided_measure.get("expected_behavior"),
-                "aided_route_contract_match": aided_correct,
-                "control_route_contract_match": control_correct,
-                "observed_lift": lift,
-                "effect_class": effect,
+                "aided_route_contract_match": aided_route_correct,
+                "control_route_contract_match": control_route_correct,
+                "route_lift": route_lift,
+                "route_effect_class": route_effect,
+                "outcome_contract_defined": outcome_contract_defined,
+                "outcome_contract_consistent": outcome_contract_consistent,
+                "outcome_contract_sha256": outcome_sha,
+                "aided_outcome_contract_match": aided_outcome_match,
+                "control_outcome_contract_match": control_outcome_match,
+                "outcome_lift": outcome_lift,
+                "outcome_effect_class": outcome_effect,
                 "fixture_context_match": aided_context == control_context,
                 "prompt_background_match": bool(background_match),
                 "prompt_visibility_contract_match": prompt_contract_match,
@@ -2678,6 +2970,15 @@ def run_confirmed_cohort(
         raise ConfirmationError("live confirmation token does not match the current source-locked plan")
     if packet["high_cost_confirmation_required"] and high_cost_token != packet["high_cost_confirmation_token"]:
         raise ConfirmationError("high-cost cohort requires the exact second confirmation token")
+    if (
+        packet["outcome_contract_mode"] in {"required", "required_for_live"}
+        and packet["outcome_contract_coverage_complete"] is not True
+    ):
+        raise ConfirmationError(
+            f"{cohort} requires source-locked outcome contracts for all "
+            f"{packet['implicit_pair_count']} implicit pairs before live execution "
+            f"({packet['outcome_scored_pair_count']} declared)"
+        )
     private_root = _validate_private_root(
         plan,
         private_root,
@@ -2927,7 +3228,10 @@ def run_confirmed_cohort(
             break
 
     pair_outcomes = _pair_outcomes(private_trials)
-    if any(pair["effect_class"] == "contaminated" for pair in pair_outcomes):
+    if any(
+        pair.get("route_effect_class", pair.get("effect_class")) == "contaminated"
+        for pair in pair_outcomes
+    ):
         stopped_early = True
         stop_reason = "harness_contamination"
 
@@ -3067,9 +3371,26 @@ def validate_public_receipt(public: dict[str, Any]) -> None:
         "no_lift_both_incorrect",
         "contaminated",
     }
+    outcome_effect_classes = effect_classes | {"not_scored_no_contract"}
     for pair in public.get("pair_outcomes", []):
-        if not isinstance(pair, dict) or pair.get("effect_class") not in effect_classes:
+        if not isinstance(pair, dict):
             raise PublicReceiptSafetyError("public pair outcome escaped the bounded effect vocabulary")
+        legacy_effect = pair.get("effect_class")
+        route_effect = pair.get("route_effect_class")
+        if legacy_effect is not None:
+            if route_effect is not None or legacy_effect not in effect_classes:
+                raise PublicReceiptSafetyError(
+                    "public legacy pair outcome escaped the bounded effect vocabulary"
+                )
+            continue
+        if route_effect not in effect_classes:
+            raise PublicReceiptSafetyError(
+                "public route pair outcome escaped the bounded effect vocabulary"
+            )
+        if pair.get("outcome_effect_class") not in outcome_effect_classes:
+            raise PublicReceiptSafetyError(
+                "public outcome pair escaped the bounded effect vocabulary"
+            )
 
 
 def _parser() -> argparse.ArgumentParser:

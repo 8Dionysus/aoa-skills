@@ -58,8 +58,9 @@ Choose the third option.
 
 The live harness has four observable arms:
 
-- paired implicit aided and no-skill control turns for dispatch and observed
-  outcome lift;
+- paired implicit aided and no-skill control turns that report route lift and,
+  only for pre-authored source-locked cases, bounded outcome lift as separate
+  dimensions;
 - explicit root-to-child trajectories where accepted `$root` input is native
   root-load evidence and the selected child still needs a complete raw read;
 - structured App Server skill input, bound to the exact 57-skill fixture path
@@ -96,11 +97,11 @@ config and explicitly disable every locked id. A shadow or MCP count/digest
 change is source/runtime drift, not a reason to reuse the old token.
 
 The corrected hermetic pre-turn and evidence contract uses schema
-`aoa_codex_app_server_skill_input_contract_v7` and protocol revision
-`codex-cli-0.144.1-live-dispatch-evidence-v7`. It follows the
+`aoa_codex_app_server_skill_input_contract_v8` and protocol revision
+`codex-cli-0.144.1-live-dispatch-evidence-v8`. It follows the
 [official App Server invocation shape](https://learn.chatgpt.com/docs/app-server#start-a-turn-invoke-a-skill)
 and Codex [progressive-disclosure load semantics](https://learn.chatgpt.com/docs/customization/overview#skills).
-Retained receipts source-locked to v1-v6 keep their original protocol and
+Retained receipts source-locked to v1-v7 keep their original protocol and
 review status and are not upgraded in place.
 
 The source-locked caps include both the rollout token limit and its required
@@ -198,16 +199,17 @@ and a route-contract match is neither observed completion nor central proof.
 Source locks make a rerun comparable. Exact shadow disabling, pre-turn
 inventory checks, and command-level fixture-scope evidence make the
 aided/control difference attributable to the fixture instead of an installed
-user copy or a source checkout reached through the read-only filesystem. Paired background digests expose other
-prompt-surface drift rather than crediting general model knowledge. Host routing
-bounds resource and storage pressure. Private/raw and public/digest separation
-keeps review possible without publishing session material.
-Paired lift is undefined and omitted when either arm has an output-contract,
-transport, budget, runtime-profile, or owner-boundary safety failure. A
+user copy or a source checkout reached through the read-only filesystem. Paired
+background digests expose other prompt-surface drift rather than crediting
+general model knowledge. Host routing bounds resource and storage pressure.
+Private/raw and public/digest separation keeps review possible without
+publishing session material. Paired route and bounded outcome lift are
+undefined and omitted when either arm has an output-contract, transport,
+budget, runtime-profile, or owner-boundary safety failure. A
 zero-return invalid structured result is `output_contract_invalid`; transport
 failure is reserved for failed or timed-out transport. A contaminated pair
-remains
-visible without rewriting the original failure classification of either arm.
+remains visible without rewriting the original failure classification of
+either arm.
 Collision neighbourhoods are contextual candidates rather than adversarial
 truth: selecting the expected target is never a collision merely because the
 target also appears in its own neighbourhood list.
@@ -215,8 +217,9 @@ target also appears in its own neighbourhood list.
 ## Consequences
 
 - Positive: dispatch, manual reachability, structured selection, trajectory,
-  and paired outcome-lift pressure can be reproduced against an exact source and
-  runtime protocol.
+  route lift, and source-declared bounded outcome-lift pressure can be
+  reproduced against an exact source and runtime protocol without one lift
+  masquerading as the other.
 - Positive: harness contamination is rejected before model spend, and public
   evidence can locate a gap at visibility, dispatch, load, procedure,
   verification, completion, or deflection instead of collapsing stages.
@@ -241,11 +244,11 @@ target also appears in its own neighbourhood list.
   repeated runs are needed before changing skill status or promotion posture.
 - Tradeoff: the 48k ceiling raises worst-case live-campaign cost; non-smoke
   cohorts therefore retain the second exact high-cost confirmation token.
-- Follow-up: v6 repaired continuous read coverage, but its exact-merged-tree
-  rerun timed out before the first turn and exposed a zero process exit for an
-  incomplete cohort. Land v7 duration and exit-status semantics, wait for
-  runtime availability, and repeat the exact smoke before any pilot widening;
-  only then use reviewed pilot receipts to continue toward all 57 skills.
+- Follow-up: v7 repaired duration and exit-status semantics and its exact-merged
+  smoke completed, but review showed that generic `observed_lift` was only
+  route-contract lift. Land v8's pre-authored outcome contracts and split pair
+  vocabulary, repeat the exact smoke, and require declared pilot outcome
+  coverage before widening toward all 57 skills.
 
 ## Current Applicability
 
@@ -268,12 +271,18 @@ As of 2026-07-11:
   or any skill-effect interpretation.
 - Current cap contract: every arm receives the same source-locked 48k ceiling;
   paired arms may differ in actual use but never in available budget.
-- Current contract schema: `aoa_codex_app_server_skill_input_contract_v7`.
-- Current protocol lock: `codex-cli-0.144.1-live-dispatch-evidence-v7`.
+- Current contract schema: `aoa_codex_app_server_skill_input_contract_v8`.
+- Current protocol lock: `codex-cli-0.144.1-live-dispatch-evidence-v8`.
+- Current pair contract: new receipts publish `route_lift` and
+  `route_effect_class` separately from `outcome_lift` and
+  `outcome_effect_class`. Bounded outcome grading requires the same
+  source-locked contract on both arms; absent contracts are
+  `not_scored_no_contract`.
 - Historical protocols: retained v1-v2 smokes are `needs-rerun`; v2 produced a
   valid candidate implicit pair but used an unsupported structured-only App
   input and cannot support its App load label. Retained v3-v6 reports keep their
-  original review status and old grader semantics.
+  original review status and old grader semantics. The reviewed v7 report also
+  keeps its historical generic route-derived lift rather than being rewritten.
 - Reviewed v3 candidate: the implicit pair records positive lift and the App
   arm passes its native-load/procedure path, while the explicit `aoa-eval`
   trajectory selects `aoa-eval-apply` without a complete child read. That
@@ -300,10 +309,52 @@ As of 2026-07-11:
   timed out at 180 seconds before any turn event, output, usage, or pair. Its
   private receipt stopped early, but the v6 command returned zero and the host
   wrapper reported success. The old zero duration and process status remain
-  immutable; v7 must rerun after runtime availability before pilot widening.
+  immutable; v7 was required to rerun after runtime availability.
+- Reviewed v7 candidate: the exact-merged smoke completed four of four arms,
+  passed prompt/background, fixture, load, procedure, and safety gates, and
+  recorded generic `observed_lift=1`. Code and raw review show that v7 derived
+  this field solely from route-contract correctness. It is therefore positive
+  route evidence, not completion or outcome lift.
+- Current rerun posture: v8 source-locks the `collision-42` bounded fixture
+  expectation before planning and refuses required smoke coverage when that
+  contract is absent. A fresh exact-merged v8 smoke must establish both route
+  and outcome dimensions before `pilot13`; pilot planning currently exposes
+  1/11 declared contracts and confirmed execution is mechanically blocked
+  before preflight until coverage reaches 11/11.
 - Superseded by: none.
 
 ## Review Log
+
+### 2026-07-12 - Split route lift from source-locked bounded outcome lift
+
+- Previous assumption: a matched implicit pair could publish one generic
+  `observed_lift` and `effect_class` derived from route-contract correctness
+  while procedure disposition, completion, and deflection remained separate
+  arm measures.
+- New evidence: the exact-merged v7 smoke completed all four arms and produced
+  a clean positive pair. The aided arm routed and loaded `aoa-eval`, ran and
+  verified the fixture validator, then correctly reported missing owner input;
+  the control ran the same validator but deferred to an owner boundary. The v7
+  pair code nevertheless used only `route_contract_match`, so its generic
+  positive label could be misread as completion or outcome lift.
+- Decision: preserve v7 unchanged as reviewed route-contract evidence. For v8,
+  replace generic new-pair fields with explicit route and outcome dimensions;
+  source-lock bounded outcome contracts authored from case, skill, and fixture
+  sources before live execution; make outcome matching independent of route;
+  publish bounded mismatch dimensions; and report missing contracts as
+  `not_scored_no_contract` rather than false or zero lift.
+- Boundary: the `collision-42` contract proves only the hermetic fixture
+  outcome. It does not prove inspection or completion in a real target repo,
+  does not use the v7 observation as an answer key, and does not widen local or
+  central proof authority. Historical v1-v7 pair fields remain reviewable but
+  are not upgraded in place.
+- Adaptive return: when an aided route/load passes but its declared bounded
+  outcome does not, use `bounded_outcome_miss` to review both the skill
+  procedure and the source-authored contract before repeating the same case.
+- Validation: red-first tests must force route and outcome lift to opposite
+  signs, reject required smoke planning without its contract, preserve legacy
+  pair review, validate public privacy/schema shape, and rerun the full harness
+  before a fresh exact-merged v8 smoke.
 
 ### 2026-07-12 - Make process exit report cohort completeness
 
@@ -506,7 +557,9 @@ high-cost cohorts, or execution of repository mutation tasks. A green route
 receipt proves only the evidence dimensions it explicitly records and does not
 prove completion outside the bounded fixture. A `needs-rerun` receipt or a run
 with prompt/background contamination must not drive skill edits, promotion, or
-outcome-lift claims.
+outcome-lift claims. A route-only contract or a pair without a pre-authored
+bounded outcome contract must not be relabeled as outcome evidence after the
+run.
 
 ## Validation
 

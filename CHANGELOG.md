@@ -12,10 +12,11 @@ Tracking starts with the community-docs baseline for this repository.
 - A source-locked live skill-dispatch harness now separates prompt visibility,
   implicit aided/control dispatch, activation and full reads, explicit
   root-child trajectories, structured App Server input, procedure execution,
-  verification, completion/deflection, paired outcome lift, host gates, private
-  raw receipts, and public-safe candidate projections without claiming central
-  proof authority. Structured turns additionally require the exact enabled map
-  for all 57 repo skills and prove that no configured MCP runtime started.
+  verification, completion/deflection, route lift, source-declared bounded
+  outcome lift, host gates, private raw receipts, and public-safe candidate
+  projections without claiming central proof authority. Structured turns
+  additionally require the exact enabled map for all 57 repo skills and prove
+  that no configured MCP runtime started.
 - The complete post-classifier-fix smoke now has a public-safe `needs-rerun`
   receipt. Model-visible user-skill contamination, a disabled full-read/shell
   path, and an ambiguous route/procedure grader make its former trigger,
@@ -57,6 +58,14 @@ Tracking starts with the community-docs baseline for this repository.
   out at 180 seconds before any turn event, output, usage, or pair. V7 preserves
   elapsed failure duration and returns nonzero for an incomplete stopped-early
   cohort after safely writing its private receipt.
+- The complete exact-merged-tree v7 smoke now has a reviewed public-safe
+  receipt. Its generic positive pair field is explicitly bounded to route
+  correctness because the v7 grader used only `route_contract_match`. V8
+  replaces generic new-pair fields with distinct route/outcome lift, requires a
+  source-authored smoke outcome contract before planning, and keeps missing
+  contracts unscored instead of inferring an answer from live output. Pilot
+  execution is blocked before preflight until all 11 implicit pairs have
+  declared contracts.
 - `AOA-SK-D-0037` records why live cohorts remain operator-confirmed candidate
   evidence and now clarifies prompt-surface isolation and evidence-stage grading
   after the contaminated smoke; deterministic harness validation, not model
@@ -151,18 +160,19 @@ Tracking starts with the community-docs baseline for this repository.
   corpus after the landed child-handoff change. The central `aoa-evals`
   validator therefore reports the full local eval port source-contract-ready
   instead of silently retaining transitive stale state.
-- Paired lift is not scored when either arm has a transport, budget, runtime,
-  or owner-boundary safety failure. Contamination is retained as a pair result
-  without rewriting either arm's historical failure class, and public-receipt
-  validation rejects absolute host paths even when embedded inside prose.
+- Route and bounded outcome lift are not scored when either arm has a
+  transport, budget, runtime, or owner-boundary safety failure. Contamination
+  is retained as a pair result without rewriting either arm's historical
+  failure class, and public-receipt validation rejects absolute host paths even
+  when embedded inside prose.
 - Caught CLI and App Server transport exceptions retain elapsed duration,
   partial private stdout/stderr, recoverable JSONL events, and usage.
   Complete cohorts exit zero even for negative model evidence, while incomplete
   stopped-early cohorts publish their stop reason and exit nonzero after the
   private receipt is preserved.
 - The hermetic evidence contract is now
-  `aoa_codex_app_server_skill_input_contract_v7` with protocol revision
-  `codex-cli-0.144.1-live-dispatch-evidence-v7`; retained v1-v6 receipts remain
+  `aoa_codex_app_server_skill_input_contract_v8` with protocol revision
+  `codex-cli-0.144.1-live-dispatch-evidence-v8`; retained v1-v7 receipts remain
   immutable under their original protocol and review status.
 - Live dispatch now locks and passes Codex rollout-budget reminder thresholds
   as a TOML list for both CLI and App Server arms, rejects invalid thresholds

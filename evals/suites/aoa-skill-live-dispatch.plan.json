@@ -3,7 +3,7 @@
   "owner_repo": "aoa-skills",
   "profile": "repo-default",
   "profile_revision": "cf01327152e819c6bb810645dd203d8f90224574b568e623ec5dc6328045b9df",
-  "protocol_revision": "codex-cli-0.144.1-live-dispatch-evidence-v7",
+  "protocol_revision": "codex-cli-0.144.1-live-dispatch-evidence-v8",
   "proof_authority": false,
   "promotion_allowed": false,
   "default_action": "plan",
@@ -17,10 +17,14 @@
     "config/skill_policy_matrix.json",
     "config/skill_pack_profiles.json",
     "schemas/live-skill-dispatch-plan.schema.json",
+    "schemas/live-skill-dispatch-outcome-contracts.schema.json",
     "schemas/live-skill-dispatch-model-output.schema.json",
     "schemas/live-skill-dispatch-private-receipt.schema.json",
     "schemas/live-skill-dispatch-public-receipt.schema.json",
     "evals/suites/codex-app-server-skill-input.contract.json",
+    "evals/suites/aoa-skill-live-dispatch-outcomes.json",
+    "skills/core/engineering/aoa-eval/SKILL.md",
+    "skills/core/engineering/aoa-eval-apply/SKILL.md",
     "evals/runners/run_live_skill_dispatch.py"
   ],
   "sources": {
@@ -29,7 +33,8 @@
     "skill_catalog": "generated/skill_catalog.json",
     "policy_matrix": "config/skill_policy_matrix.json",
     "pack_profiles": "config/skill_pack_profiles.json",
-    "protocol_contract": "evals/suites/codex-app-server-skill-input.contract.json"
+    "protocol_contract": "evals/suites/codex-app-server-skill-input.contract.json",
+    "outcome_contracts": "evals/suites/aoa-skill-live-dispatch-outcomes.json"
   },
   "caps": {
     "max_concurrency": 1,
@@ -53,6 +58,7 @@
       "structured_skills": [
         "aoa-eval-apply"
       ],
+      "outcome_contract_mode": "required",
       "expected_turn_count": 4,
       "estimated_private_bytes": 67108864,
       "estimated_memory_demand_mib": 256,
@@ -84,6 +90,7 @@
         "os-abyss-artifact-trust-loop",
         "titan-appserver-bridge"
       ],
+      "outcome_contract_mode": "required_for_live",
       "expected_turn_count": 30,
       "estimated_private_bytes": 536870912,
       "estimated_memory_demand_mib": 512,
@@ -93,6 +100,7 @@
       "implicit_case_ids": "all-collision-cases",
       "trajectory_case_ids": [],
       "structured_skills": [],
+      "outcome_contract_mode": "declared_only",
       "expected_turn_count": 98,
       "estimated_private_bytes": 2147483648,
       "estimated_memory_demand_mib": 1024,
@@ -102,6 +110,7 @@
       "implicit_case_ids": "all-uncovered-skills",
       "trajectory_case_ids": "all-root-child-trajectories",
       "structured_skills": "all-non-invoke-skills",
+      "outcome_contract_mode": "declared_only",
       "expected_turn_count": 87,
       "estimated_private_bytes": 2147483648,
       "estimated_memory_demand_mib": 1024,
@@ -159,6 +168,7 @@
     "dispatch_policy_gap",
     "skill_load_gap",
     "direct_procedure_gap",
+    "bounded_outcome_miss",
     "owner_boundary_violation",
     "runtime_profile_drift",
     "budget_exhausted",

@@ -104,12 +104,23 @@ class FakeTransport:
         target = request["expected_target_skill"]
         decision = "manual_required" if request["expected_behavior"] == "manual" else "invoke"
         events = list(request.get("mock_events", []))
-        if request["arm_type"] != "implicit_control" and not events and "fixture_root" in request:
-            events.append(self._skill_read_event(request, target))
-            child = request.get("expected_child_skill")
-            if child:
-                events.append(self._skill_read_event(request, child))
+        if not events and "fixture_root" in request:
+            if request["arm_type"] != "implicit_control":
+                events.append(self._skill_read_event(request, target))
+                child = request.get("expected_child_skill")
+                if child:
+                    events.append(self._skill_read_event(request, child))
+            if request["arm_type"] in {
+                "implicit_aided",
+                "implicit_control",
+                "root_manual_child",
+            }:
                 events.append(self._validator_event(request))
+        disposition = {
+            "implicit_aided": "blocked_missing_input",
+            "implicit_control": "deferred_owner_boundary",
+            "root_manual_child": "completed",
+        }.get(request["arm_type"], "not_applicable")
         return {
             "returncode": 0,
             "stdout": "{\"type\":\"turn.completed\"}\n",
@@ -119,9 +130,7 @@ class FakeTransport:
                 "selected_skill": target,
                 "selected_child": request.get("expected_child_skill"),
                 "claims_loaded": request["arm_type"] != "implicit_control",
-                "procedure_disposition": (
-                    "completed" if request["arm_type"] == "root_manual_child" else "not_applicable"
-                ),
+                "procedure_disposition": disposition,
                 "mutation_authorized": False,
                 "proof_authority_claimed": False,
                 "promotion_authorized": False,
@@ -193,6 +202,7 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
         plan = json.loads(self.plan_path.read_text(encoding="utf-8"))
         for filename in (
             "live-skill-dispatch-plan.schema.json",
+            "live-skill-dispatch-outcome-contracts.schema.json",
             "live-skill-dispatch-model-output.schema.json",
             "live-skill-dispatch-private-receipt.schema.json",
             "live-skill-dispatch-public-receipt.schema.json",
@@ -247,6 +257,111 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
                         self.runner.TEXTUAL_SKILL_ACTIVATION_RE.search(trial.prompt),
                         trial.trial_id,
                     )
+
+    def test_smoke_outcome_contract_is_source_locked_before_live_execution(self) -> None:
+        runner = self.runner
+        plan = runner.load_plan(self.plan_path)
+        smoke = runner.expand_cohort(REPO_ROOT, plan, "smoke")
+        implicit = [
+            trial
+            for trial in smoke
+            if trial.arm_type in {"implicit_aided", "implicit_control"}
+        ]
+
+        self.assertEqual(2, len(implicit))
+        self.assertEqual("required", plan["cohorts"]["smoke"]["outcome_contract_mode"])
+        for trial in implicit:
+            self.assertIsNotNone(trial.outcome_contract)
+            contract = trial.outcome_contract
+            assert contract is not None
+            self.assertEqual("collision-42-bounded-fixture-v1", contract.contract_id)
+            self.assertEqual("blocked_missing_input", contract.expected_procedure_disposition)
+            self.assertTrue(contract.expected_procedure_command_observed)
+            self.assertTrue(contract.expected_procedure_command_succeeded)
+            self.assertTrue(contract.expected_verification_observed)
+            self.assertFalse(contract.expected_completion_observed)
+            self.assertTrue(contract.expected_deflection_observed)
+            self.assertTrue(contract.expected_owner_boundary_present)
+
+        packet = runner.build_plan_packet(REPO_ROOT, plan, "smoke", "model-a", "medium")
+        self.assertEqual("required", packet["outcome_contract_mode"])
+        self.assertEqual(1, packet["implicit_pair_count"])
+        self.assertEqual(1, packet["outcome_scored_pair_count"])
+        self.assertTrue(packet["outcome_contract_coverage_complete"])
+        implicit_locks = [
+            item
+            for item in packet["trial_locks"]
+            if item["arm_type"] in {"implicit_aided", "implicit_control"}
+        ]
+        self.assertEqual(2, len(implicit_locks))
+        self.assertTrue(all(item["outcome_contract_defined"] for item in implicit_locks))
+        self.assertEqual(1, len({item["outcome_contract_sha256"] for item in implicit_locks}))
+
+        with mock.patch.object(runner, "_outcome_contracts", return_value={}):
+            with self.assertRaisesRegex(
+                ValueError,
+                "smoke requires explicit outcome contracts for: collision-42",
+            ):
+                runner.expand_cohort(REPO_ROOT, plan, "smoke")
+
+    def test_outcome_contract_match_is_independent_from_route_match(self) -> None:
+        runner = self.runner
+        contract = runner.OutcomeContract(
+            contract_id="independent-outcome-v1",
+            case_id="independent-outcome",
+            scope="bounded_fixture_outcome",
+            expected_procedure_disposition="blocked_missing_input",
+            expected_procedure_command_observed=True,
+            expected_procedure_command_succeeded=True,
+            expected_verification_observed=True,
+            expected_completion_observed=False,
+            expected_deflection_observed=True,
+            expected_owner_boundary_present=True,
+            source_refs=("evals/suites/aoa-skill-live-dispatch.plan.json",),
+        )
+        trial = runner.Trial(
+            trial_id="independent-outcome:aided",
+            arm_type="implicit_aided",
+            case_id="independent-outcome",
+            prompt="Choose the bounded route.",
+            expected_target_skill="aoa-eval",
+            expected_behavior="invoke",
+            outcome_contract=contract,
+        )
+        result = {
+            "returncode": 0,
+            "final_output": {
+                "route_decision": "do_not_use",
+                "selected_skill": None,
+                "selected_child": None,
+                "claims_loaded": False,
+                "procedure_disposition": "blocked_missing_input",
+                "mutation_authorized": False,
+                "proof_authority_claimed": False,
+                "promotion_authorized": False,
+                "evidence_posture": "candidate_only",
+                "next_step": "Provide the missing owner inputs.",
+                "owner_boundary": "The fixture is not central proof authority.",
+                "verification_steps": ["Keep the result candidate-only."],
+                "stop_line": "Stop before inventing missing owner evidence.",
+            },
+            "usage": {},
+            "duration_ms": 1,
+            "prompt_visibility_contract_match": True,
+            "fixture_filesystem_scope_match": True,
+            "procedure_command_observed": True,
+            "procedure_command_succeeded": True,
+            "verification_observed": True,
+            "procedure_contract_match": False,
+            "completion_observed": False,
+            "deflection_observed": True,
+        }
+
+        measure = runner._trial_measure(trial, result)
+        self.assertFalse(measure["route_contract_match"])
+        self.assertTrue(measure["outcome_contract_defined"])
+        self.assertTrue(measure["outcome_contract_match"])
+        self.assertEqual([], measure["outcome_mismatch_dimensions"])
 
     def test_default_plan_and_unconfirmed_run_never_spawn_or_write(self) -> None:
         runner = self.runner
@@ -367,6 +482,35 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
         )
         pilot = self.runner.build_plan_packet(REPO_ROOT, plan, "pilot13", "model-a", "medium")
         self.assertTrue(pilot["high_cost_confirmation_required"])
+        self.assertEqual("required_for_live", pilot["outcome_contract_mode"])
+        self.assertEqual(11, pilot["implicit_pair_count"])
+        self.assertEqual(1, pilot["outcome_scored_pair_count"])
+        self.assertFalse(pilot["outcome_contract_coverage_complete"])
+
+    def test_high_cost_live_run_blocks_before_preflight_when_outcomes_are_incomplete(self) -> None:
+        runner = self.runner
+        plan = runner.load_plan(self.plan_path)
+        packet = runner.build_plan_packet(REPO_ROOT, plan, "pilot13", "model-a", "medium")
+        transport = FakeTransport()
+
+        with tempfile.TemporaryDirectory() as td:
+            with self.assertRaisesRegex(
+                runner.ConfirmationError,
+                "pilot13 requires source-locked outcome contracts for all 11 implicit pairs",
+            ):
+                runner.run_confirmed_cohort(
+                    repo_root=REPO_ROOT,
+                    plan=plan,
+                    cohort="pilot13",
+                    model="model-a",
+                    effort="medium",
+                    confirmation_token=packet["confirmation_token"],
+                    high_cost_token=packet["high_cost_confirmation_token"],
+                    private_root=Path(td),
+                    transport=transport,
+                    test_only_allow_noncanonical_private_root=True,
+                )
+        self.assertEqual([], transport.preflight_calls)
 
     def test_confirmation_token_binds_discovered_shadow_skill_set(self) -> None:
         runner = self.runner
@@ -470,7 +614,7 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
         )
         self.assertEqual(plan["protocol_revision"], contract["protocol_revision"])
         self.assertEqual(
-            "aoa_codex_app_server_skill_input_contract_v7",
+            "aoa_codex_app_server_skill_input_contract_v8",
             contract["schema_version"],
         )
         self.assertEqual("codex-cli 0.144.1", contract["codex_version"])
@@ -774,7 +918,8 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
                 self.assertIn("features.rollout_budget.limit_tokens=48000", implicit_request["argv"])
             self.assertIn("features.rollout_budget.limit_tokens=48000", trajectory_request["argv"])
             self.assertEqual(1, len(receipt["pair_outcomes"]))
-            self.assertEqual("positive_lift", receipt["pair_outcomes"][0]["effect_class"])
+            self.assertEqual("positive_lift", receipt["pair_outcomes"][0]["route_effect_class"])
+            self.assertEqual("positive_lift", receipt["pair_outcomes"][0]["outcome_effect_class"])
             receipt_path = private_root / receipt["run_id"] / "private-receipt.json"
             self.assertTrue(receipt_path.is_file())
             self.assertEqual(0o700, private_root.stat().st_mode & 0o777)
@@ -1780,6 +1925,7 @@ Second procedure section.
                 "trajectory_break",
                 "dispatch_policy_gap",
                 "direct_procedure_gap",
+                "bounded_outcome_miss",
                 "owner_boundary_violation",
                 "runtime_profile_drift",
                 "budget_exhausted",
@@ -1803,6 +1949,10 @@ Second procedure section.
         self.assertEqual(
             "repair_read_tooling_or_skill_load_then_repeat_same_case",
             self.runner.ADAPTIVE_RETURN_ROUTE["skill_load_gap"],
+        )
+        self.assertEqual(
+            "review_skill_procedure_or_outcome_contract_then_repeat_same_case",
+            self.runner.ADAPTIVE_RETURN_ROUTE["bounded_outcome_miss"],
         )
         self.assertEqual(
             "review_caps_or_reduce_context_then_repeat_same_case",
@@ -1969,6 +2119,99 @@ Second procedure section.
         result["native_target_skill_input_accepted"] = False
         self.assertEqual("skill_load_gap", runner._trial_failure_class(trial, result))
 
+    def test_pair_outcomes_separate_route_lift_from_outcome_lift(self) -> None:
+        runner = self.runner
+
+        def arm(
+            arm_type: str,
+            *,
+            route_match: bool,
+            outcome_match: bool | None,
+            outcome_contract_sha256: str | None = "a" * 64,
+        ) -> dict:
+            return {
+                "trial": {"arm_type": arm_type, "case_id": "pair-case"},
+                "measure": {
+                    "expected_target_skill": "aoa-eval",
+                    "expected_behavior": "invoke",
+                    "route_contract_match": route_match,
+                    "dispatch_contract_match": route_match,
+                    "load_contract_match": route_match,
+                    "outcome_contract_defined": outcome_contract_sha256 is not None,
+                    "outcome_contract_sha256": outcome_contract_sha256,
+                    "outcome_contract_match": outcome_match,
+                    "prompt_visibility_contract_match": True,
+                    "failure_class": None,
+                    "input_tokens": 10,
+                    "duration_ms": 5,
+                },
+                "fixture_context_sha256": "same",
+                "prompt_background_sha256": "same",
+            }
+
+        pair = runner._pair_outcomes(
+            [
+                arm("implicit_aided", route_match=True, outcome_match=False),
+                arm("implicit_control", route_match=False, outcome_match=True),
+            ]
+        )[0]
+        self.assertEqual(1, pair["route_lift"])
+        self.assertEqual("positive_lift", pair["route_effect_class"])
+        self.assertEqual(-1, pair["outcome_lift"])
+        self.assertEqual("negative_lift", pair["outcome_effect_class"])
+        self.assertNotIn("observed_lift", pair)
+        self.assertNotIn("effect_class", pair)
+
+        unscored = runner._pair_outcomes(
+            [
+                arm(
+                    "implicit_aided",
+                    route_match=True,
+                    outcome_match=None,
+                    outcome_contract_sha256=None,
+                ),
+                arm(
+                    "implicit_control",
+                    route_match=False,
+                    outcome_match=None,
+                    outcome_contract_sha256=None,
+                ),
+            ]
+        )[0]
+        self.assertFalse(unscored["outcome_contract_defined"])
+        self.assertIsNone(unscored["outcome_lift"])
+        self.assertEqual("not_scored_no_contract", unscored["outcome_effect_class"])
+
+        legacy_private = {
+            "trials": [],
+            "pair_outcomes": [
+                {
+                    "case_id": "pair-case",
+                    "expected_target_skill": "aoa-eval",
+                    "expected_behavior": "invoke",
+                    "aided_route_contract_match": True,
+                    "control_route_contract_match": False,
+                    "observed_lift": 1,
+                    "effect_class": "positive_lift",
+                    "fixture_context_match": True,
+                    "prompt_background_match": True,
+                    "prompt_visibility_contract_match": True,
+                    "aided_dispatch_contract_match": True,
+                    "control_dispatch_contract_match": False,
+                    "aided_load_contract_match": True,
+                    "control_load_contract_match": False,
+                    "input_token_delta": 1,
+                    "duration_ms_delta": 1,
+                }
+            ],
+            "source_lock": {},
+            "caps": {},
+            "review": {},
+        }
+        legacy_public = runner.build_public_receipt(legacy_private)
+        self.assertEqual(1, legacy_public["pair_outcomes"][0]["observed_lift"])
+        self.assertNotIn("route_lift", legacy_public["pair_outcomes"][0])
+
     def test_invalid_or_contaminated_pairs_never_rewrite_arm_history(self) -> None:
         runner = self.runner
 
@@ -2023,8 +2266,69 @@ Second procedure section.
             route_match=False,
         )
         pairs = runner._pair_outcomes([aided, contaminated_control])
-        self.assertEqual("contaminated", pairs[0]["effect_class"])
+        self.assertEqual("contaminated", pairs[0]["route_effect_class"])
         self.assertIsNone(aided["measure"]["failure_class"])
+
+    def test_bounded_outcome_miss_returns_to_skill_or_contract_review(self) -> None:
+        runner = self.runner
+        contract = runner.OutcomeContract(
+            contract_id="bounded-miss-v1",
+            case_id="bounded-miss",
+            scope="bounded_fixture_outcome",
+            expected_procedure_disposition="blocked_missing_input",
+            expected_procedure_command_observed=True,
+            expected_procedure_command_succeeded=True,
+            expected_verification_observed=True,
+            expected_completion_observed=False,
+            expected_deflection_observed=True,
+            expected_owner_boundary_present=True,
+            source_refs=("evals/suites/aoa-skill-live-dispatch.plan.json",),
+        )
+        trial = runner.Trial(
+            trial_id="bounded-miss:aided",
+            arm_type="implicit_aided",
+            case_id="bounded-miss",
+            prompt="Choose the bounded route.",
+            expected_target_skill="aoa-eval",
+            expected_behavior="invoke",
+            outcome_contract=contract,
+        )
+        result = {
+            "returncode": 0,
+            "final_output": {
+                "route_decision": "invoke",
+                "selected_skill": "aoa-eval",
+                "selected_child": None,
+                "claims_loaded": True,
+                "procedure_disposition": "completed",
+                "mutation_authorized": False,
+                "proof_authority_claimed": False,
+                "promotion_authorized": False,
+                "evidence_posture": "candidate_only",
+                "next_step": "Report the bounded result.",
+                "owner_boundary": "The fixture is not central proof authority.",
+                "verification_steps": ["Keep the result candidate-only."],
+                "stop_line": "Stop before proof promotion.",
+            },
+            "prompt_visibility_contract_match": True,
+            "fixture_filesystem_scope_match": True,
+            "target_skill_full_read_observed": True,
+            "procedure_command_observed": True,
+            "procedure_command_succeeded": True,
+            "verification_observed": True,
+            "procedure_contract_match": False,
+            "completion_observed": True,
+            "deflection_observed": False,
+        }
+
+        measure = runner._trial_measure(trial, result)
+        self.assertTrue(measure["route_contract_match"])
+        self.assertFalse(measure["outcome_contract_match"])
+        self.assertEqual("bounded_outcome_miss", measure["failure_class"])
+        self.assertEqual(
+            "review_skill_procedure_or_outcome_contract_then_repeat_same_case",
+            measure["adaptive_return_route"],
+        )
 
     def test_competing_skill_win_is_classified_before_generic_trigger_miss(self) -> None:
         runner = self.runner
