@@ -155,15 +155,20 @@
         },
         "outcome_contract_defined": {"type": "boolean"},
         "outcome_contract_sha256": {"anyOf": [{"$ref": "#/$defs/sha256"}, {"type": "null"}]},
-        "outcome_scope": {"type": ["string", "null"], "enum": ["bounded_fixture_outcome", "bounded_downstream_procedure_outcome", null]},
-        "outcome_contract": {"anyOf": [{"$ref": "#/$defs/outcome_expectation"}, {"type": "null"}]},
+        "outcome_scope": {"type": ["string", "null"], "enum": ["bounded_fixture_outcome", "bounded_downstream_procedure_outcome", "fixture_owner_observable_decision", null]},
+        "outcome_contract": {"anyOf": [{"$ref": "#/$defs/outcome_expectation"}, {"$ref": "#/$defs/owner_observable_outcome_expectation"}, {"type": "null"}]},
         "outcome_contract_match": {"type": ["boolean", "null"]},
+        "outcome_command_observed": {"type": "boolean"},
+        "outcome_single_attempt": {"type": "boolean"},
+        "outcome_command_succeeded": {"type": "boolean"},
+        "outcome_verification_observed": {"type": "boolean"},
+        "outcome_validator_not_inspected": {"type": "boolean"},
         "outcome_mismatch_dimensions": {
           "type": "array",
           "uniqueItems": true,
-          "maxItems": 7,
+          "maxItems": 12,
           "items": {
-            "enum": ["procedure_disposition", "procedure_command_observed", "procedure_command_succeeded", "verification_observed", "completion_observed", "deflection_observed", "owner_boundary_present"]
+            "enum": ["procedure_disposition", "procedure_command_observed", "procedure_command_succeeded", "verification_observed", "completion_observed", "deflection_observed", "owner_boundary_present", "outcome_command_observed", "outcome_single_attempt", "outcome_command_succeeded", "outcome_verification_observed", "outcome_validator_not_inspected"]
           }
         },
         "owner_boundary_present": {"type": "boolean"},
@@ -191,6 +196,22 @@
         "expected_completion_observed": {"type": ["boolean", "null"]},
         "expected_deflection_observed": {"type": ["boolean", "null"]},
         "expected_owner_boundary_present": {"type": ["boolean", "null"]}
+      }
+    },
+    "owner_observable_outcome_expectation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["contract_id", "scope", "contract_sha256", "candidate_set_sha256", "expected_outcome_command_observed", "expected_outcome_single_attempt", "expected_outcome_command_succeeded", "expected_outcome_verification_observed", "expected_outcome_validator_not_inspected"],
+      "properties": {
+        "contract_id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]+-v[0-9]+$", "maxLength": 160},
+        "scope": {"const": "fixture_owner_observable_decision"},
+        "contract_sha256": {"$ref": "#/$defs/sha256"},
+        "candidate_set_sha256": {"$ref": "#/$defs/sha256"},
+        "expected_outcome_command_observed": {"const": true},
+        "expected_outcome_single_attempt": {"const": true},
+        "expected_outcome_command_succeeded": {"const": true},
+        "expected_outcome_verification_observed": {"const": true},
+        "expected_outcome_validator_not_inspected": {"const": true}
       }
     },
     "procedure_expectation": {
@@ -269,7 +290,7 @@
         "outcome_contract_defined": {"type": "boolean"},
         "outcome_contract_consistent": {"type": "boolean"},
         "outcome_contract_sha256": {"anyOf": [{"$ref": "#/$defs/sha256"}, {"type": "null"}]},
-        "outcome_scope": {"type": ["string", "null"], "enum": ["bounded_fixture_outcome", "bounded_downstream_procedure_outcome", null]},
+        "outcome_scope": {"type": ["string", "null"], "enum": ["bounded_fixture_outcome", "bounded_downstream_procedure_outcome", "fixture_owner_observable_decision", null]},
         "aided_outcome_contract_match": {"type": ["boolean", "null"]},
         "control_outcome_contract_match": {"type": ["boolean", "null"]},
         "outcome_lift": {"type": ["integer", "null"], "minimum": -1, "maximum": 1},

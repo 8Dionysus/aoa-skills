@@ -3,7 +3,7 @@
   "owner_repo": "aoa-skills",
   "profile": "repo-default",
   "profile_revision": "5cdd8373bb772044f67f720d42106f1d1b354963fe148194e56d1406b019558f",
-  "protocol_revision": "codex-cli-0.144.1-live-dispatch-evidence-v11",
+  "protocol_revision": "codex-cli-0.144.1-live-dispatch-evidence-v12",
   "proof_authority": false,
   "promotion_allowed": false,
   "default_action": "plan",
@@ -18,11 +18,13 @@
     "config/skill_pack_profiles.json",
     "schemas/live-skill-dispatch-plan.schema.json",
     "schemas/live-skill-dispatch-procedure-contracts.schema.json",
+    "schemas/live-skill-dispatch-outcome-contracts.schema.json",
     "schemas/live-skill-dispatch-model-output.schema.json",
     "schemas/live-skill-dispatch-private-receipt.schema.json",
     "schemas/live-skill-dispatch-public-receipt.schema.json",
     "evals/suites/codex-app-server-skill-input.contract.json",
     "evals/suites/aoa-skill-live-dispatch-procedures.json",
+    "evals/suites/aoa-skill-live-dispatch-outcomes.json",
     "skills/core/engineering/aoa-eval/SKILL.md",
     "skills/core/engineering/aoa-eval-select/SKILL.md",
     "skills/core/engineering/aoa-eval-apply/SKILL.md",
@@ -35,7 +37,8 @@
     "policy_matrix": "config/skill_policy_matrix.json",
     "pack_profiles": "config/skill_pack_profiles.json",
     "protocol_contract": "evals/suites/codex-app-server-skill-input.contract.json",
-    "procedure_contracts": "evals/suites/aoa-skill-live-dispatch-procedures.json"
+    "procedure_contracts": "evals/suites/aoa-skill-live-dispatch-procedures.json",
+    "outcome_contracts": "evals/suites/aoa-skill-live-dispatch-outcomes.json"
   },
   "caps": {
     "max_concurrency": 1,
@@ -60,7 +63,7 @@
         "aoa-eval-apply"
       ],
       "procedure_contract_mode": "required",
-      "objective_outcome_mode": "not_scored_fixture_only",
+      "objective_outcome_mode": "required",
       "expected_turn_count": 4,
       "estimated_private_bytes": 67108864,
       "estimated_memory_demand_mib": 256,

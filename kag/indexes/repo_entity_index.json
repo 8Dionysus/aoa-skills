@@ -8984,6 +8984,20 @@
         "surface_state": "authored_source"
       },
       "entity_kind": "artifact",
+      "id": "entity:file:evals/suites/aoa-skill-live-dispatch-outcomes.json:8b883063fe",
+      "label": "evals/suites/aoa-skill-live-dispatch-outcomes.json",
+      "source_record_id": "file:evals/suites/aoa-skill-live-dispatch-outcomes.json:8b883063fe"
+    },
+    {
+      "coordinates": {
+        "artifact_kind": "config",
+        "code_role": "none",
+        "command_role": "none",
+        "document_role": "none",
+        "mechanics_role": "none",
+        "surface_state": "authored_source"
+      },
+      "entity_kind": "artifact",
       "id": "entity:file:evals/suites/aoa-skill-live-dispatch-procedures.json:7114401ba3",
       "label": "evals/suites/aoa-skill-live-dispatch-procedures.json",
       "source_record_id": "file:evals/suites/aoa-skill-live-dispatch-procedures.json:7114401ba3"
@@ -15931,6 +15945,20 @@
       "id": "entity:file:schemas/live-skill-dispatch-model-output.schema.json:a717256676",
       "label": "schemas/live-skill-dispatch-model-output.schema.json",
       "source_record_id": "file:schemas/live-skill-dispatch-model-output.schema.json:a717256676"
+    },
+    {
+      "coordinates": {
+        "artifact_kind": "schema",
+        "code_role": "none",
+        "command_role": "none",
+        "document_role": "none",
+        "mechanics_role": "none",
+        "surface_state": "authored_source"
+      },
+      "entity_kind": "contract",
+      "id": "entity:file:schemas/live-skill-dispatch-outcome-contracts.schema.json:6e2ad11053",
+      "label": "schemas/live-skill-dispatch-outcome-contracts.schema.json",
+      "source_record_id": "file:schemas/live-skill-dispatch-outcome-contracts.schema.json:6e2ad11053"
     },
     {
       "coordinates": {
@@ -26715,7 +26743,7 @@
   ],
   "index_identity": {
     "artifact_kind": "repository_entity_index",
-    "content_digest": "7a96a63104a53f98f3e94ed9b28542bb83386b824585a404dd49d9749c538398",
+    "content_digest": "a482d52f77bdb28a30e72d95b767c146bb5fdc03fa5f4aa47194832a36d0f154",
     "index_kind": "entity",
     "local_id": "index:repo-local:entities",
     "schema_ref": "aoa-kag:schemas/repo-local-kag-repository-index.schema.json"
@@ -26738,18 +26766,18 @@
   },
   "schema_version": "aoa-repo-local-kag-repository-index-v1",
   "source_index": {
-    "content_digest": "252394be9c8b422fc76d806ecf434669b00c2379517ba13e4b02051758507055",
+    "content_digest": "38cf29ec8f90aa2fbdec465f367511139f07d909e59b0b49ac61b464aa318fe7",
     "local_id": "index:repo-local:source-surfaces",
     "path": "kag/indexes/source_surface_index.json"
   },
   "summary": {
-    "entry_count": 1908,
+    "entry_count": 1910,
     "kind_counts": {
       "agent_route": 29,
-      "artifact": 406,
+      "artifact": 407,
       "code": 66,
       "command": 156,
-      "contract": 43,
+      "contract": 44,
       "decision": 44,
       "document": 705,
       "mechanic_package": 260,

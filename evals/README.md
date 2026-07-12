@@ -31,11 +31,14 @@ Active first local corpus:
   selected-procedure-disposition harness. Source-authored child/procedure
   contracts live in
   [suites/aoa-skill-live-dispatch-procedures.json](suites/aoa-skill-live-dispatch-procedures.json).
+  Source-authored bounded owner-action choices live separately in
+  [suites/aoa-skill-live-dispatch-outcomes.json](suites/aoa-skill-live-dispatch-outcomes.json).
   Exact route-required fixture reads remain allowed, while broad enumeration,
   recursive listing, and tree hashing are explicit harness-scope violations.
-  The fixture has no objective external-task outcome surface, so current pairs
-  publish `not_scored_no_observable_outcome` instead of relabeling a probe or
-  model report as outcome lift.
+  An outcome is scored only when one atomic transport-observed validator event
+  records a source-declared owner action; the generic fixture probe and model
+  report remain insufficient. The initial corpus covers `collision-42`, so
+  pilot coverage is 1/11 procedure contracts and 1/11 outcomes.
 
 These files are local evidence notes. They do not publish central proof
 acceptance, scoring, verdicts, regression truth, or proof doctrine.
