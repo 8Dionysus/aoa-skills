@@ -312,3 +312,21 @@ and selected-child trajectory lift, retained correct procedure disposition in
 both implicit arms, and kept outcome unscored. This closes the bounded
 precedence return; it does not change the next coverage gate of 11/11 declared
 procedures plus 11/11 owner-observable outcomes.
+
+## 2026-07-12 owner-observable outcome seam
+
+The earlier v8 answer key failed because it graded an unavailable whole-task
+result through the same fields used for selected-procedure disposition. V12
+keeps those dimensions separate. A source-authored outcome contract now asks
+one bounded owner question, exposes several adjacent candidate actions but not
+the answer key in the plan lock, and accepts only one atomic
+`outcome_validator.py` transport event. Generic fixture-probe success, route
+selection, disposition prose, and model self-report cannot satisfy it.
+
+This does not prove target-repository completion. It makes the next justified
+owner action observable under the hermetic fixture. Reading, hashing, copying,
+importing, reproducing, or retrying the validator invalidates causal
+measurement; one wrong choice remains a valid negative outcome. The first
+contract covers `collision-42`, bringing both pilot axes to 1/11. A fresh
+exact-merged smoke must validate this seam before the same design expands to
+the other ten implicit pilot cases.

@@ -18,12 +18,15 @@ exact confirmation token printed by that plan. `pilot13`, `full-collision`, and
 `coverage-closure` require the printed high-cost token as well.
 The pilot plan publishes selected-procedure contract coverage and objective
 outcome-observation coverage separately. It remains executable only at 11 of
-11 for both; the current corpus has 1/11 procedure contracts and 0/11 objective
+11 for both; the current corpus has 1/11 procedure contracts and 1/11 objective
 outcomes, so pilot execution stops before storage, resource, runtime, or model
 preflight even when both confirmation tokens match.
-The current source contract lives at
-`evals/suites/aoa-skill-live-dispatch-procedures.json`; it does not claim an
-objective outcome answer key.
+The procedure source contract lives at
+`evals/suites/aoa-skill-live-dispatch-procedures.json`; the separate bounded
+owner-action corpus lives at
+`evals/suites/aoa-skill-live-dispatch-outcomes.json`.
+Smoke marks both dimensions `required`; deleting either contract makes planning
+fail before confirmation or preflight.
 
 Planning discovers exact external `SKILL.md` files whose canonical names
 shadow the repo export, including canonical targets behind symlinked user-skill
@@ -63,8 +66,8 @@ child is not exact either. Those report-only mismatches are
 `selection_report_miss`; they do not rewrite successful native dispatch or load
 evidence as `dispatch_policy_gap`.
 These rules use contract schema `aoa_codex_app_server_skill_input_contract_v11`
-and protocol revision `codex-cli-0.144.1-live-dispatch-evidence-v11`. Retained
-v1-v10 receipts stay source-locked to their original protocol and review status;
+and protocol revision `codex-cli-0.144.1-live-dispatch-evidence-v12`. Retained
+v1-v11 receipts stay source-locked to their original protocol and review status;
 they are never upgraded in place.
 
 Run the confirmed command only as the child of the plan packet's
@@ -84,7 +87,11 @@ tool is available for evidence-bearing reads and the independent hermetic
 fixture probe. Read-only skill-file inspection commands collect load evidence.
 All arms run the exact probe `python3 fixture_validator.py`; it proves fixture
 executability only and does not define the selected child procedure or external
-task outcome. V10+ private and public measures name its command, exit, and
+task outcome. A declared owner-action outcome instead requires exactly one
+`python3 outcome_validator.py --candidate <value>` event. Reading, copying,
+hashing, importing, reproducing, or retrying that validator contaminates the
+measurement; a missing or wrong single choice remains a negative outcome rather
+than a transport or procedure failure. V10+ private and public measures name its command, exit, and
 sentinel facts only with `fixture_*` fields; the runner accepts historical
 `procedure_command_*` fields solely as a read-only replay fallback for retained
 v1-v9 receipts. Transport evidence records full `SKILL.md`
@@ -131,10 +138,10 @@ trajectory, fixture execution, model-reported procedure disposition, and
 objective outcome posture separate. Each implicit pair reports route lift,
 source-locked child-trajectory lift, and source-locked procedure-disposition
 report lift as distinct dimensions. `python3 fixture_validator.py` has its own
-fixture-execution match. Because this fixture exposes no objective external-task
-outcome, current v11 pairs set outcome lift to null with
-`not_scored_no_observable_outcome`; neither command success nor model self-report
-may fill that gap. A
+fixture-execution match. When no owner-action contract exists, pairs keep null
+outcome lift with `not_scored_no_observable_outcome`. Under v12, a source-locked
+contract may instead score one atomic transport-observed owner choice; neither
+generic probe success nor model self-report may fill that gap. A
 correct selection without the required native-load or child/full-read evidence
 returns `skill_load_gap` to the same case. A wrong activation decision after the
 route is available is instead `dispatch_policy_gap`. A normal zero-return

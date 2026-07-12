@@ -124,7 +124,7 @@ change is source/runtime drift, not a reason to reuse the old token.
 
 The corrected hermetic pre-turn and evidence contract uses schema
 `aoa_codex_app_server_skill_input_contract_v11` and protocol revision
-`codex-cli-0.144.1-live-dispatch-evidence-v11`. It follows the
+`codex-cli-0.144.1-live-dispatch-evidence-v12`. It follows the
 [official App Server invocation shape](https://learn.chatgpt.com/docs/app-server#start-a-turn-invoke-a-skill)
 and Codex [progressive-disclosure load semantics](https://learn.chatgpt.com/docs/customization/overview#skills).
 Retained receipts source-locked to v1-v10 keep their original protocol and
@@ -187,6 +187,12 @@ must carry both zero exit and exactly one sentinel JSON payload matching the
 fixture-guidance digest, schema/status, no-drift, and no-proof-authority fields.
 Split or forged evidence does not pass. Probe success does not determine the
 selected child procedure disposition or whole-task outcome.
+A separate source-locked owner-action contract may add exactly one bounded
+candidate choice through `python3 outcome_validator.py --candidate <value>`.
+The answer is not present in the plan lock. One atomic zero-exit sentinel event
+is observable outcome evidence; reading, copying, hashing, importing,
+reproducing, or retrying the validator contaminates the measurement. A wrong
+single choice is a negative outcome, not a procedure or transport failure.
 An explicit `true` mutation, proof-authority, or promotion claim is classified
 as an owner-boundary safety violation before generic output invalidity, even
 though the strict response schema also forbids that value.
@@ -242,8 +248,8 @@ publishing session material. Paired route, trajectory, and procedure-
 disposition report lift are
 undefined and omitted when either arm has an output-contract, transport,
 budget, runtime-profile, or owner-boundary safety failure. Objective outcome is
-always unscored in the current fixture because no stronger observable surface
-exists. A
+unscored when no separate contract exists; when the source declares a bounded
+owner-action contract, only its atomic transport observation may be scored. A
 zero-return invalid structured result is `output_contract_invalid`; transport
 failure is reserved for failed or timed-out transport. A contaminated pair
 remains visible without rewriting the original failure classification of
@@ -286,12 +292,9 @@ target also appears in its own neighbourhood list.
   repeated runs are needed before changing skill status or promotion posture.
 - Tradeoff: the 48k ceiling raises worst-case live-campaign cost; non-smoke
   cohorts therefore retain the second exact high-cost confirmation token.
-- Follow-up: the exact-merged v11 smoke closed the bounded-inventory return, and
-  the post-JIT alignment smoke exposed an unknown-fit selection-precedence gap.
-  Make `aoa-eval-select` fail-closed before local intake, repeat the exact smoke
-  against that source change, then design objective owner-bound outcome
-  surfaces and complete both 11/11 procedure-contract and 11/11
-  outcome-observation coverage before widening toward all 57 skills.
+- Follow-up: validate the first v12 owner-action contract through a fresh
+  exact-merged smoke, then expand the reviewed shape to all eleven pilot cases
+  and close both 11/11 coverage gates before widening toward all 57 skills.
 
 ## Current Applicability
 
@@ -318,12 +321,14 @@ As of 2026-07-12:
 - Current cap contract: every arm receives the same source-locked 48k ceiling;
   paired arms may differ in actual use but never in available budget.
 - Current contract schema: `aoa_codex_app_server_skill_input_contract_v11`.
-- Current protocol lock: `codex-cli-0.144.1-live-dispatch-evidence-v11`.
+- Current protocol lock: `codex-cli-0.144.1-live-dispatch-evidence-v12`.
 - Current pair contract: new receipts publish route, selected-child trajectory,
   and selected-procedure-disposition report lift separately. Sent structured
   dispatch, accepted native load, model hierarchy report, and fixture execution
   remain independent measures. Objective outcome is
-  `not_scored_no_observable_outcome` in this fixture.
+  `not_scored_no_observable_outcome` without a source contract; the first v12
+  contract separately observes the bounded next owner action for
+  `collision-42`.
 - Historical protocols: retained v1-v2 smokes are `needs-rerun`; v2 produced a
   valid candidate implicit pair but used an unsupported structured-only App
   input and cannot support its App load label. Retained v3-v6 reports keep their
@@ -417,9 +422,34 @@ As of 2026-07-12:
   `+1`, both procedure dispositions are correct, outcome remains unscored, and
   all isolation/fixture gates pass. This closes the precedence return as
   candidate evidence; pilot coverage remains 1/11 procedures and 0/11 outcomes.
+- Current v12 contract posture: deterministic validation now covers 1/11
+  procedure contracts and 1/11 owner-observable outcomes. Pilot execution is
+  still blocked before preflight; the new contract requires a fresh exact-
+  merged smoke before expansion to the other ten cases.
 - Superseded by: none.
 
 ## Review Log
+
+### 2026-07-12 - Add one-attempt owner-observable outcome seam
+
+- Previous assumption: because the fixture could not complete the external
+  repository task, every objective outcome had to remain unscored.
+- New distinction: external task completion is still unavailable, but a
+  source-authored next owner action can be observed independently through one
+  bounded command event without reusing route, disposition, or generic probe
+  evidence.
+- Decision: store candidate choices and the expected owner action in a separate
+  source-locked corpus; omit the answer from the plan lock; accept exactly one
+  atomic zero-exit sentinel event; classify validator inspection or retry as
+  contamination; keep a wrong single choice as negative outcome evidence; and
+  make both smoke contract axes required before preflight.
+- Boundary: this is a fixture-scoped decision outcome, not repository mutation,
+  whole-task completion, a central eval verdict, proof acceptance, or skill
+  promotion authority.
+- Validation: red-first tests cover source/schema locks, answer-key omission,
+  atomic command success, validator-inspection rejection, pair scoring, public
+  projection, and retained v1-v11 receipt compatibility. A fresh exact-merged
+  v12 smoke must pass before the shape expands beyond `collision-42`.
 
 ### 2026-07-12 - Validate fail-closed selection precedence on exact-merged source
 
@@ -859,9 +889,11 @@ source contract. Fixture-probe success is not external-task completion. A
 `needs-rerun` receipt or a run
 with prompt/background contamination must not drive skill edits, promotion, or
 outcome-lift claims. Route, trajectory, model disposition report, and fixture
-execution must not be relabeled as objective outcome evidence. Pilot widening
-requires both complete procedure-contract coverage and separately observable
-owner-bound outcome coverage.
+execution must not be relabeled as objective outcome evidence. Only a separate
+source-locked owner-action validator event can fill that dimension, and it does
+not imply whole-task completion. Pilot widening requires both complete
+procedure-contract coverage and separately observable owner-bound outcome
+coverage.
 
 ## Validation
 
@@ -873,3 +905,5 @@ owner-bound outcome coverage.
   storage preflight, shadow-set lock, and `codex debug prompt-input` inventory
   checks before a live turn
 - corrected smoke review before any pilot widening or skill-defect claim
+- one-attempt outcome-validator, no-answer-in-plan, and anti-inspection tests
+  before any owner-action outcome is scored

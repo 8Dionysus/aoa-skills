@@ -21,10 +21,12 @@ meaning, keep schema changes paired with examples and validators, and do not
 loosen a schema only to quiet an example.
 
 The `live-skill-dispatch-*` contracts validate the source plan, pre-authored
-selected-child/procedure-disposition expectations, constrained model output,
-private raw receipt, and public field-whitelisted projection for the local
-live-dispatch harness. Procedure contracts do not turn the independent fixture
-probe or a model disposition report into an objective outcome observation,
-whole-task completion claim, eval verdict, or proof authority. Public measures
-also keep external-filesystem scope distinct from broad in-fixture inventory
-scope so a later budget marker cannot erase either boundary.
+selected-child/procedure-disposition expectations, separate bounded owner-action
+outcomes, constrained model output, private raw receipt, and public
+field-whitelisted projection for the local live-dispatch harness. Procedure
+contracts do not turn the independent fixture probe or a model disposition
+report into outcome evidence. Outcome contracts require one atomic
+transport-observed candidate command and still do not claim whole-task
+completion, an eval verdict, or proof authority. Public measures also keep
+external-filesystem scope distinct from broad in-fixture inventory scope so a
+later budget marker cannot erase either boundary.

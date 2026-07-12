@@ -39,7 +39,7 @@
     "sources": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["collision_matrix", "description_cases", "skill_catalog", "policy_matrix", "pack_profiles", "protocol_contract", "procedure_contracts"],
+      "required": ["collision_matrix", "description_cases", "skill_catalog", "policy_matrix", "pack_profiles", "protocol_contract", "procedure_contracts", "outcome_contracts"],
       "properties": {
         "collision_matrix": {"type": "string"},
         "description_cases": {"type": "string"},
@@ -47,7 +47,8 @@
         "policy_matrix": {"type": "string"},
         "pack_profiles": {"type": "string"},
         "protocol_contract": {"const": "evals/suites/codex-app-server-skill-input.contract.json"},
-        "procedure_contracts": {"const": "evals/suites/aoa-skill-live-dispatch-procedures.json"}
+        "procedure_contracts": {"const": "evals/suites/aoa-skill-live-dispatch-procedures.json"},
+        "outcome_contracts": {"const": "evals/suites/aoa-skill-live-dispatch-outcomes.json"}
       }
     },
     "caps": {
@@ -139,7 +140,7 @@
           ]
         },
         "procedure_contract_mode": {"enum": ["required", "required_for_live", "declared_only"]},
-        "objective_outcome_mode": {"enum": ["not_scored_fixture_only", "required_for_live", "declared_only"]},
+        "objective_outcome_mode": {"enum": ["not_scored_fixture_only", "required", "required_for_live", "declared_only"]},
         "expected_turn_count": {"type": "integer", "minimum": 1, "maximum": 200},
         "estimated_private_bytes": {"type": "integer", "minimum": 1048576, "maximum": 2147483648},
         "estimated_memory_demand_mib": {"type": "integer", "minimum": 128, "maximum": 2048},

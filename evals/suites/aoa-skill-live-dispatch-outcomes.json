@@ -1,0 +1,27 @@
+{
+  "schema_version": "aoa_skill_live_dispatch_outcome_contracts_v1",
+  "derivation_boundary": "source_case_skill_and_fixture_owner_action_only",
+  "proof_authority": false,
+  "contracts": [
+    {
+      "contract_id": "collision-42-owner-action-v1",
+      "case_id": "collision-42",
+      "scope": "fixture_owner_observable_decision",
+      "decision_prompt": "Which next owner action is justified before classifying this target repository's eval route?",
+      "candidate_values": [
+        "declare_local_need_without_target_evidence",
+        "inspect_target_eval_surfaces_before_classification",
+        "mine_session_evidence_before_owner_surfaces"
+      ],
+      "expected_candidate_value": "inspect_target_eval_surfaces_before_classification",
+      "source_refs": [
+        "generated/skill_trigger_collision_matrix.json",
+        "skills/core/engineering/aoa-eval/SKILL.md",
+        "skills/core/engineering/aoa-eval-select/SKILL.md",
+        "schemas/live-skill-dispatch-outcome-contracts.schema.json",
+        "evals/runners/run_live_skill_dispatch.py"
+      ],
+      "rationale": "The case asks for selection among existing eval surfaces but supplies no target repository evidence. The bounded owner action is therefore to inspect the target's local and central eval surfaces before classification. The fixture command makes that choice transport-observable without treating the generic fixture probe, model prose, or unavailable repository task as an outcome."
+    }
+  ]
+}

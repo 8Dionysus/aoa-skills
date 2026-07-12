@@ -5,6 +5,7 @@ import hashlib
 import importlib.util
 import io
 import json
+import subprocess
 import sys
 import tempfile
 import unittest
@@ -99,6 +100,35 @@ class FakeTransport:
             },
         }
 
+    @staticmethod
+    def _outcome_event(request: dict) -> dict | None:
+        candidates = request.get("objective_outcome_candidate_values")
+        if not isinstance(candidates, list):
+            return None
+        fixture = Path(request["fixture_root"])
+        for candidate in candidates:
+            completed = subprocess.run(
+                ["python3", "outcome_validator.py", "--candidate", candidate],
+                cwd=fixture,
+                check=False,
+                text=True,
+                capture_output=True,
+            )
+            if completed.returncode == 0:
+                return {
+                    "type": "item.completed",
+                    "item": {
+                        "type": "command_execution",
+                        "status": "completed",
+                        "exit_code": 0,
+                        "command": (
+                            "python3 outcome_validator.py --candidate " + candidate
+                        ),
+                        "aggregated_output": completed.stdout,
+                    },
+                }
+        raise AssertionError("fixture outcome contract has no accepted candidate")
+
     def run_cli(self, request: dict) -> dict:
         self.cli_calls.append(request)
         target = request["expected_target_skill"]
@@ -118,6 +148,9 @@ class FakeTransport:
                 "root_manual_child",
             }:
                 events.append(self._validator_event(request))
+            outcome_event = self._outcome_event(request)
+            if outcome_event is not None:
+                events.append(outcome_event)
         disposition = {
             "implicit_aided": "blocked_missing_input",
             "implicit_control": "blocked_missing_input",
@@ -210,6 +243,7 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
         for filename in (
             "live-skill-dispatch-plan.schema.json",
             "live-skill-dispatch-procedure-contracts.schema.json",
+            "live-skill-dispatch-outcome-contracts.schema.json",
             "live-skill-dispatch-model-output.schema.json",
             "live-skill-dispatch-private-receipt.schema.json",
             "live-skill-dispatch-public-receipt.schema.json",
@@ -312,8 +346,8 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
         self.assertEqual(1, packet["implicit_pair_count"])
         self.assertEqual(1, packet["procedure_scored_pair_count"])
         self.assertTrue(packet["procedure_contract_coverage_complete"])
-        self.assertEqual(0, packet["objective_outcome_scored_pair_count"])
-        self.assertFalse(packet["objective_outcome_coverage_complete"])
+        self.assertEqual(1, packet["objective_outcome_scored_pair_count"])
+        self.assertTrue(packet["objective_outcome_coverage_complete"])
         implicit_locks = [
             item
             for item in packet["trial_locks"]
@@ -340,6 +374,160 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
             with self.assertRaisesRegex(
                 ValueError,
                 "smoke requires explicit procedure contracts for: collision-42",
+            ):
+                runner.expand_cohort(REPO_ROOT, plan, "smoke")
+
+    def test_smoke_objective_outcome_is_source_locked_and_transport_observable(self) -> None:
+        runner = self.runner
+        plan = runner.load_plan(self.plan_path)
+        smoke = runner.expand_cohort(REPO_ROOT, plan, "smoke")
+        implicit = [
+            trial
+            for trial in smoke
+            if trial.arm_type in {"implicit_aided", "implicit_control"}
+        ]
+
+        self.assertEqual(2, len(implicit))
+        for trial in implicit:
+            self.assertIsNotNone(trial.outcome_contract)
+            contract = trial.outcome_contract
+            assert contract is not None
+            self.assertEqual("collision-42-owner-action-v1", contract.contract_id)
+            self.assertEqual("fixture_owner_observable_decision", contract.scope)
+            self.assertEqual(
+                "inspect_target_eval_surfaces_before_classification",
+                contract.expected_candidate_value,
+            )
+            descriptor = trial.public_descriptor()
+            self.assertTrue(descriptor["outcome_contract_defined"])
+            self.assertEqual(contract.sha256(), descriptor["outcome_contract_sha256"])
+            self.assertNotIn("expected_candidate_value", descriptor)
+
+        packet = runner.build_plan_packet(
+            REPO_ROOT,
+            plan,
+            "smoke",
+            "model-a",
+            "medium",
+        )
+        self.assertEqual("required", packet["objective_outcome_mode"])
+        self.assertEqual(1, packet["objective_outcome_scored_pair_count"])
+        self.assertTrue(packet["objective_outcome_coverage_complete"])
+
+        trial = implicit[0]
+        contract = trial.outcome_contract
+        assert contract is not None
+        with tempfile.TemporaryDirectory() as td:
+            run_root = Path(td)
+            (run_root / "fixtures").mkdir()
+            fixture, _context_sha, _skill_sha = runner._prepare_fixture(
+                REPO_ROOT,
+                run_root,
+                0,
+                include_skills=False,
+                trial=trial,
+            )
+            validator = fixture / runner.OUTCOME_VALIDATOR_RELATIVE_PATH
+            self.assertTrue(validator.is_file())
+            completed = subprocess.run(
+                [
+                    "python3",
+                    validator.name,
+                    "--candidate",
+                    contract.expected_candidate_value,
+                ],
+                cwd=fixture,
+                check=False,
+                text=True,
+                capture_output=True,
+            )
+            self.assertEqual(0, completed.returncode)
+            event = {
+                "type": "item.completed",
+                "item": {
+                    "type": "command_execution",
+                    "status": "completed",
+                    "exit_code": completed.returncode,
+                    "command": (
+                        "python3 outcome_validator.py --candidate "
+                        + contract.expected_candidate_value
+                    ),
+                    "aggregated_output": completed.stdout,
+                },
+            }
+            evidence = runner._objective_outcome_evidence(
+                contract,
+                [event],
+                fixture,
+            )
+            self.assertTrue(evidence["outcome_contract_match"])
+            self.assertTrue(evidence["outcome_single_attempt"])
+            self.assertTrue(evidence["outcome_validator_not_inspected"])
+
+            wrong_candidate = next(
+                value
+                for value in contract.candidate_values
+                if value != contract.expected_candidate_value
+            )
+            wrong = subprocess.run(
+                ["python3", validator.name, "--candidate", wrong_candidate],
+                cwd=fixture,
+                check=False,
+                text=True,
+                capture_output=True,
+            )
+            wrong_event = {
+                "type": "item.completed",
+                "item": {
+                    "type": "command_execution",
+                    "status": "completed",
+                    "exit_code": wrong.returncode,
+                    "command": (
+                        "python3 outcome_validator.py --candidate " + wrong_candidate
+                    ),
+                    "aggregated_output": wrong.stdout,
+                },
+            }
+            negative = runner._objective_outcome_evidence(
+                contract,
+                [wrong_event],
+                fixture,
+            )
+            self.assertFalse(negative["outcome_contract_match"])
+            self.assertTrue(negative["outcome_single_attempt"])
+            self.assertTrue(negative["outcome_validator_not_inspected"])
+
+            retried = runner._objective_outcome_evidence(
+                contract,
+                [wrong_event, event],
+                fixture,
+            )
+            self.assertFalse(retried["outcome_contract_match"])
+            self.assertFalse(retried["outcome_single_attempt"])
+            self.assertEqual(2, retried["outcome_attempt_count"])
+
+            inspected = {
+                "type": "item.completed",
+                "item": {
+                    "type": "command_execution",
+                    "status": "completed",
+                    "exit_code": 0,
+                    "command": "sed -n '1,200p' outcome_validator.py",
+                    "aggregated_output": validator.read_text(encoding="utf-8"),
+                },
+            }
+            contaminated = runner._objective_outcome_evidence(
+                contract,
+                [inspected, event],
+                fixture,
+            )
+            self.assertFalse(contaminated["outcome_contract_match"])
+            self.assertFalse(contaminated["outcome_validator_not_inspected"])
+
+        with mock.patch.object(runner, "_outcome_contracts", return_value={}):
+            with self.assertRaisesRegex(
+                ValueError,
+                "smoke requires explicit outcome contracts for: collision-42",
             ):
                 runner.expand_cohort(REPO_ROOT, plan, "smoke")
 
@@ -1022,9 +1210,9 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
                 "selected_route_procedure_disposition",
                 receipt["pair_outcomes"][0]["procedure_contract_scope"],
             )
-            self.assertIsNone(receipt["pair_outcomes"][0]["outcome_lift"])
+            self.assertEqual(0, receipt["pair_outcomes"][0]["outcome_lift"])
             self.assertEqual(
-                "not_scored_no_observable_outcome",
+                "no_lift_both_correct",
                 receipt["pair_outcomes"][0]["outcome_effect_class"],
             )
             self.assertTrue(

@@ -46,15 +46,18 @@ The paired implicit arms publish route lift, selected-child trajectory lift,
 and selected-procedure-disposition report lift separately. The shared source
 contract is authored from the case, root, child, model-output, and fixture
 sources before the live run. `python3 fixture_validator.py` is an independent
-fixture-execution probe, not the child procedure. This fixture exposes no
-objective external-task outcome, so v11 publishes null outcome lift with
-`not_scored_no_observable_outcome`. No dimension is collapsed into an aggregate
-score.
+fixture-execution probe, not the child procedure. V12 adds a separate
+source-locked owner-action contract: exactly one
+`python3 outcome_validator.py --candidate <value>` event can make a bounded
+decision observable without claiming that the unavailable repository task
+completed. No dimension is collapsed into an aggregate score.
 
-The current source corpus is
-`evals/suites/aoa-skill-live-dispatch-procedures.json`; it is a child/procedure
-contract surface, not an outcome corpus despite the retained historical receipt
-vocabulary.
+The current source corpora are
+`evals/suites/aoa-skill-live-dispatch-procedures.json` for child/procedure
+disposition and `evals/suites/aoa-skill-live-dispatch-outcomes.json` for the
+separate bounded owner-action choice.
+Smoke requires both source contracts; a missing contract fails planning rather
+than silently reverting the outcome dimension to unscored.
 
 ## Cohorts
 
@@ -70,7 +73,7 @@ after reviewing the preceding cohort and repairing any return route it opens.
 `pilot13` is additionally `required_for_live`: planning may expose incomplete
 procedure-contract and objective-outcome coverage, but confirmed execution
 stops before preflight or model spend until both reach all 11 implicit pairs.
-The current posture is 1/11 procedure contracts and 0/11 objective outcomes.
+The current posture is 1/11 procedure contracts and 1/11 objective outcomes.
 
 ## Evidence Semantics
 
@@ -112,6 +115,12 @@ The current posture is 1/11 procedure contracts and 0/11 objective outcomes.
   the same completed command event carries zero exit plus exactly one
   `AOA_FIXTURE_VALIDATOR_OK` JSON payload matching status, schema, no generated
   drift, no proof authority, and the current fixture `AGENTS.md` digest;
+- a declared objective outcome is a separate single-attempt owner-action
+  choice. The model receives a bounded candidate set but not the answer key;
+  only one exact completed outcome-validator command with zero exit and its
+  contract-bound sentinel passes. Reading, copying, printing, hashing,
+  importing, reproducing, or retrying the validator contaminates the pair;
+  generic probe success and model prose never satisfy this contract;
 - fixture execution, selected-child trajectory, model-reported procedure
   disposition, completion/deflection report, and objective outcome posture are
   published separately; none is task completion or central proof;
@@ -272,6 +281,15 @@ public receipt is
 This closes the selection-precedence return as bounded candidate evidence;
 pilot widening remains blocked by 1/11 procedure and 0/11 outcome coverage.
 
+V12 now source-locks the first owner-observable outcome contract for
+`collision-42`. It asks for the next justified eval-owner action, not external
+repository completion, and binds the answer to a one-attempt transport event.
+Deterministic tests prove the answer is absent from the plan lock and that
+validator inspection or retry invalidates causal measurement. A fresh
+exact-merged v12 smoke is required before expanding the same contract shape to
+the remaining ten pilot cases. Pilot coverage is now 1/11 on both required
+axes.
+
 ## Safety And Privacy
 
 The plan locks Git head, all portable skill files, generated/config inputs,
@@ -289,7 +307,7 @@ both sides of this transport-specific contract.
 
 These hermetic invocation rules use contract schema
 `aoa_codex_app_server_skill_input_contract_v11` and protocol revision
-`codex-cli-0.144.1-live-dispatch-evidence-v11`. Retained v1-v10 receipts remain
+`codex-cli-0.144.1-live-dispatch-evidence-v12`. Retained v1-v11 receipts remain
 source-locked to their original protocol and review status and are not upgraded
 in place.
 
@@ -346,7 +364,7 @@ aided root with the wrong declared child to root/child review;
 `procedure_disposition_miss` returns a correct trajectory with a mismatched
 model report to the selected procedure and source contract;
 `fixture_execution_gap` returns only to the hermetic probe. Absence of an
-objective outcome surface remains `not_scored_no_observable_outcome`, not a
+objective outcome contract remains `not_scored_no_observable_outcome`, not a
 failure or inferred score. After repair, repeat smoke or the smallest affected
 adjacent family before widening again. If a later observation exposes
 an ambiguous fixture or grader, return to the harness and invalidate affected

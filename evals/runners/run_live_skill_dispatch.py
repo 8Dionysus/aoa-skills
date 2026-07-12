@@ -38,6 +38,9 @@ DEFAULT_PLAN_SCHEMA_REF = Path("schemas/live-skill-dispatch-plan.schema.json")
 DEFAULT_PROCEDURE_CONTRACT_SCHEMA_REF = Path(
     "schemas/live-skill-dispatch-procedure-contracts.schema.json"
 )
+DEFAULT_OUTCOME_CONTRACT_SCHEMA_REF = Path(
+    "schemas/live-skill-dispatch-outcome-contracts.schema.json"
+)
 DEFAULT_PRIVATE_RECEIPT_SCHEMA_REF = Path("schemas/live-skill-dispatch-private-receipt.schema.json")
 DEFAULT_PUBLIC_RECEIPT_SCHEMA_REF = Path("schemas/live-skill-dispatch-public-receipt.schema.json")
 HIGH_COST_COHORTS = {"pilot13", "full-collision", "coverage-closure"}
@@ -56,6 +59,8 @@ EARLY_STOP_FAILURES = SAFETY_FAILURES | {
 FIXTURE_VALIDATOR_RELATIVE_PATH = Path("fixture_validator.py")
 FIXTURE_VALIDATOR_COMMAND = "python3 fixture_validator.py"
 FIXTURE_VALIDATOR_SENTINEL = "AOA_FIXTURE_VALIDATOR_OK"
+OUTCOME_VALIDATOR_RELATIVE_PATH = Path("outcome_validator.py")
+OUTCOME_VALIDATOR_SENTINEL = "AOA_OBJECTIVE_OUTCOME_OK"
 FIXTURE_VALIDATOR_SOURCE = '''#!/usr/bin/env python3
 import hashlib
 import json
@@ -154,6 +159,11 @@ PUBLIC_MEASURE_KEYS = (
     "outcome_contract",
     "outcome_contract_match",
     "outcome_mismatch_dimensions",
+    "outcome_command_observed",
+    "outcome_single_attempt",
+    "outcome_command_succeeded",
+    "outcome_verification_observed",
+    "outcome_validator_not_inspected",
     "route_contract_match",
     "owner_boundary_present",
     "input_tokens",
@@ -342,6 +352,36 @@ class ProcedureContract:
 
 
 @dataclasses.dataclass(frozen=True, slots=True)
+class OutcomeContract:
+    contract_id: str
+    case_id: str
+    scope: str
+    decision_prompt: str
+    candidate_values: tuple[str, ...]
+    expected_candidate_value: str
+    source_refs: tuple[str, ...]
+    rationale: str = ""
+
+    def sha256(self) -> str:
+        return sha256_bytes(canonical_json_bytes(dataclasses.asdict(self)))
+
+    def public_expectation(self) -> dict[str, Any]:
+        return {
+            "contract_id": self.contract_id,
+            "scope": self.scope,
+            "contract_sha256": self.sha256(),
+            "candidate_set_sha256": sha256_bytes(
+                canonical_json_bytes(list(self.candidate_values))
+            ),
+            "expected_outcome_command_observed": True,
+            "expected_outcome_single_attempt": True,
+            "expected_outcome_command_succeeded": True,
+            "expected_outcome_verification_observed": True,
+            "expected_outcome_validator_not_inspected": True,
+        }
+
+
+@dataclasses.dataclass(frozen=True, slots=True)
 class Trial:
     trial_id: str
     arm_type: str
@@ -354,6 +394,7 @@ class Trial:
     expected_child_skill: str | None = None
     equivalent_report_root_skill: str | None = None
     procedure_contract: ProcedureContract | None = None
+    outcome_contract: OutcomeContract | None = None
 
     def public_descriptor(self) -> dict[str, Any]:
         return {
@@ -370,6 +411,12 @@ class Trial:
             "procedure_contract_sha256": (
                 self.procedure_contract.sha256()
                 if self.procedure_contract is not None
+                else None
+            ),
+            "outcome_contract_defined": self.outcome_contract is not None,
+            "outcome_contract_sha256": (
+                self.outcome_contract.sha256()
+                if self.outcome_contract is not None
                 else None
             ),
             "prompt_sha256": sha256_text(self.prompt),
@@ -477,9 +524,14 @@ def load_plan(path: Path) -> dict[str, Any]:
     Draft202012Validator.check_schema(procedure_schema)
     procedure_ref = _safe_source_ref(str(payload["sources"]["procedure_contracts"]))
     Draft202012Validator(procedure_schema).validate(_read_json(repo_root / procedure_ref))
+    outcome_schema = _read_json(repo_root / DEFAULT_OUTCOME_CONTRACT_SCHEMA_REF)
+    Draft202012Validator.check_schema(outcome_schema)
+    outcome_ref = _safe_source_ref(str(payload["sources"]["outcome_contracts"]))
+    Draft202012Validator(outcome_schema).validate(_read_json(repo_root / outcome_ref))
     if payload.get("failure_taxonomy") != list(FAILURE_TAXONOMY):
         raise ValueError("live dispatch plan failure taxonomy drifted from the runner contract")
     _procedure_contracts(repo_root, payload)
+    _outcome_contracts(repo_root, payload)
     return payload
 
 
@@ -689,7 +741,7 @@ def _expected_codex_version(plan: dict[str, Any]) -> str:
     revision = str(plan.get("protocol_revision") or "")
     match = re.fullmatch(
         r"codex-cli-([0-9]+(?:\.[0-9]+){2})-"
-        r"(?:app-server-skill-input-v3|live-dispatch-evidence-v(?:[4-9]|1[01]))",
+        r"(?:app-server-skill-input-v3|live-dispatch-evidence-v(?:[4-9]|1[0-2]))",
         revision,
     )
     if match is None:
@@ -802,6 +854,46 @@ def _procedure_contracts(
     return records
 
 
+def _outcome_contracts(
+    repo_root: Path,
+    plan: dict[str, Any],
+) -> dict[str, OutcomeContract]:
+    path = repo_root / _safe_source_ref(str(plan["sources"]["outcome_contracts"]))
+    payload = _read_json(path)
+    records: dict[str, OutcomeContract] = {}
+    locked_refs = {str(value) for value in plan.get("source_refs", [])}
+    for item in payload.get("contracts", []):
+        refs = tuple(str(value) for value in item.get("source_refs", []))
+        for ref in refs:
+            _safe_source_ref(ref)
+            if ref not in locked_refs:
+                raise ValueError(
+                    f"outcome contract source ref is not in the plan source lock: {ref}"
+                )
+        candidates = tuple(str(value) for value in item["candidate_values"])
+        if tuple(sorted(set(candidates))) != candidates:
+            raise ValueError(
+                "outcome candidate values must be unique and deterministically sorted"
+            )
+        expected = str(item["expected_candidate_value"])
+        if expected not in candidates:
+            raise ValueError("expected outcome candidate is not in the declared candidate set")
+        contract = OutcomeContract(
+            contract_id=str(item["contract_id"]),
+            case_id=str(item["case_id"]),
+            scope=str(item["scope"]),
+            decision_prompt=str(item["decision_prompt"]),
+            candidate_values=candidates,
+            expected_candidate_value=expected,
+            source_refs=refs,
+            rationale=str(item.get("rationale") or ""),
+        )
+        if contract.case_id in records:
+            raise ValueError(f"duplicate outcome contract case: {contract.case_id}")
+        records[contract.case_id] = contract
+    return records
+
+
 def _expected_behavior(item: dict[str, Any]) -> str:
     return "invoke" if item.get("expected_behavior") in {"invoke", "invoke-skill"} else "manual"
 
@@ -809,6 +901,7 @@ def _expected_behavior(item: dict[str, Any]) -> str:
 def _implicit_pair(
     item: dict[str, Any],
     procedure_contract: ProcedureContract | None,
+    outcome_contract: OutcomeContract | None,
 ) -> list[Trial]:
     case_id = str(item["case_id"])
     target = str(item.get("skill_name") or item.get("expected_skill") or "")
@@ -820,6 +913,7 @@ def _implicit_pair(
         "expected_behavior": behavior,
         "competing_skills": tuple(str(value) for value in item.get("competing_skills", [])),
         "procedure_contract": procedure_contract,
+        "outcome_contract": outcome_contract,
     }
     return [
         Trial(trial_id=f"{case_id}:aided", arm_type="implicit_aided", **common),
@@ -895,12 +989,19 @@ def expand_cohort(repo_root: Path, plan: dict[str, Any], cohort: str) -> list[Tr
     policies = _policy_entries(repo_root, plan)
     catalog = _catalog_entries(repo_root, plan)
     procedure_contracts = _procedure_contracts(repo_root, plan)
+    outcome_contracts = _outcome_contracts(repo_root, plan)
     known_case_ids = set(collisions) | set(descriptions)
     unknown_contracts = sorted(set(procedure_contracts) - known_case_ids)
     if unknown_contracts:
         raise ValueError(
             "procedure contracts reference unknown live dispatch cases: "
             + ", ".join(unknown_contracts)
+        )
+    unknown_outcome_contracts = sorted(set(outcome_contracts) - known_case_ids)
+    if unknown_outcome_contracts:
+        raise ValueError(
+            "outcome contracts reference unknown live dispatch cases: "
+            + ", ".join(unknown_outcome_contracts)
         )
     cohorts = plan.get("cohorts", {})
     if cohort not in cohorts:
@@ -931,6 +1032,7 @@ def expand_cohort(repo_root: Path, plan: dict[str, Any], cohort: str) -> list[Tr
             _implicit_pair(
                 _case_lookup(case_id, collisions, descriptions),
                 procedure_contracts.get(case_id),
+                outcome_contracts.get(case_id),
             )
         )
 
@@ -947,6 +1049,21 @@ def expand_cohort(repo_root: Path, plan: dict[str, Any], cohort: str) -> list[Tr
             raise ValueError(
                 f"cohort {cohort} requires explicit procedure contracts for: "
                 + ", ".join(missing_contracts)
+            )
+
+    if config.get("objective_outcome_mode") == "required":
+        missing_outcomes = sorted(
+            {
+                trial.case_id
+                for trial in trials
+                if trial.arm_type in {"implicit_aided", "implicit_control"}
+                and trial.outcome_contract is None
+            }
+        )
+        if missing_outcomes:
+            raise ValueError(
+                f"cohort {cohort} requires explicit outcome contracts for: "
+                + ", ".join(missing_outcomes)
             )
 
     trajectory_ids = config.get("trajectory_case_ids", [])
@@ -1023,7 +1140,12 @@ def build_plan_packet(
         and trial.procedure_contract is not None
     }
     procedure_contract_coverage_complete = procedure_case_ids == implicit_case_ids
-    objective_outcome_case_ids: set[str] = set()
+    objective_outcome_case_ids = {
+        trial.case_id
+        for trial in trials
+        if trial.arm_type in {"implicit_aided", "implicit_control"}
+        and trial.outcome_contract is not None
+    }
     objective_outcome_coverage_complete = (
         objective_outcome_case_ids == implicit_case_ids
     )
@@ -1436,14 +1558,18 @@ def build_implicit_cli_request(
     target_skill: str,
     expected_behavior: str,
     control: bool,
+    outcome_contract: OutcomeContract | None = None,
 ) -> dict[str, Any]:
     argv = _base_codex_exec_argv(context)
     argv.append("-")
-    return {
+    request = {
         "transport": "codex_exec_jsonl",
         "arm_type": "implicit_control" if control else "implicit_aided",
         "argv": argv,
-        "prompt": _with_fixture_scope(prompt),
+        "prompt": _with_objective_outcome(
+            _with_fixture_scope(prompt),
+            outcome_contract,
+        ),
         "timeout_seconds": context.timeout_seconds,
         "fixture_root": str(context.fixture_root),
         "final_output_path": str(context.final_output_path),
@@ -1453,6 +1579,12 @@ def build_implicit_cli_request(
         "skill_surface": "none" if control else "repo-default-profile",
         "retry_policy": "transport-only-before-turn-start",
     }
+    if outcome_contract is not None:
+        request["objective_outcome_candidate_values"] = list(
+            outcome_contract.candidate_values
+        )
+        request["objective_outcome_contract_sha256"] = outcome_contract.sha256()
+    return request
 
 
 def _with_fixture_scope(prompt: str) -> str:
@@ -1465,6 +1597,26 @@ def _with_fixture_scope(prompt: str) -> str:
         "the route: fixture guidance, the selected root or target skill, at most one selected child skill, "
         "and the named fixture validator. If owner evidence is absent, report it as missing instead of "
         "trying to reconstruct an inventory."
+    )
+
+
+def _with_objective_outcome(
+    prompt: str,
+    contract: OutcomeContract | None,
+) -> str:
+    if contract is None:
+        return prompt
+    candidates = ", ".join(f"`{value}`" for value in contract.candidate_values)
+    return (
+        f"{prompt}\n\n"
+        "Owner-observable objective outcome: after classifying the route and selected procedure, "
+        f"answer this bounded owner question: {contract.decision_prompt} "
+        f"Choose exactly one of these source-declared candidate values: {candidates}. "
+        "Run exactly one command from the fixture root using the chosen value: "
+        "`python3 outcome_validator.py --candidate <value>`. "
+        "Execute that validator only; do not read, copy, print, hash, import, or reproduce its source, "
+        "and do not retry with another candidate. A zero exit plus its atomic sentinel is the observable "
+        "bounded outcome. It remains candidate evidence and is neither whole-task completion nor proof authority."
     )
 
 
@@ -2184,17 +2336,54 @@ def _harden_private_tree(root: Path) -> None:
     root.chmod(PRIVATE_DIR_MODE)
 
 
+def _outcome_validator_source(contract: OutcomeContract) -> str:
+    allowed = json.dumps(list(contract.candidate_values), ensure_ascii=True)
+    expected_sha256 = sha256_text(contract.expected_candidate_value)
+    contract_sha256 = contract.sha256()
+    return f'''#!/usr/bin/env python3
+import argparse
+import hashlib
+import json
+
+ALLOWED = {allowed}
+EXPECTED_SHA256 = {json.dumps(expected_sha256)}
+CONTRACT_SHA256 = {json.dumps(contract_sha256)}
+
+parser = argparse.ArgumentParser()
+parser.add_argument("--candidate", required=True, choices=ALLOWED)
+args = parser.parse_args()
+candidate_sha256 = hashlib.sha256(args.candidate.encode("utf-8")).hexdigest()
+if candidate_sha256 != EXPECTED_SHA256:
+    raise SystemExit(3)
+payload = {{
+    "candidate_sha256": candidate_sha256,
+    "contract_sha256": CONTRACT_SHA256,
+    "proof_authority": False,
+    "schema_version": "aoa_live_dispatch_objective_outcome_v1",
+    "status": "pass",
+}}
+print("AOA_OBJECTIVE_OUTCOME_OK " + json.dumps(payload, sort_keys=True, separators=(",", ":")))
+'''
+
+
 def _prepare_fixture(
     repo_root: Path,
     run_root: Path,
     fixture_index: int,
     *,
     include_skills: bool,
+    trial: Trial | None = None,
 ) -> tuple[Path, str, str | None]:
     fixture = run_root / "fixtures" / f"fixture-{fixture_index:03d}"
     _ensure_private_dir(fixture)
     guidance = fixture / "AGENTS.md"
     if not guidance.exists():
+        outcome_guidance = (
+            "The objective outcome validator is `outcome_validator.py`; execute it only through the exact source-declared candidate command.\n"
+            "Do not inspect, copy, print, hash, import, reproduce, or retry the objective outcome validator.\n"
+            if trial is not None and trial.outcome_contract is not None
+            else ""
+        )
         guidance.write_text(
             "# Hermetic skill-dispatch fixture\n\n"
             "Read-only evaluation fixture. Do not mutate files, use network, or widen owner authority.\n"
@@ -2207,7 +2396,8 @@ def _prepare_fixture(
             "Read-only skill-file inspection commands are allowed when needed to load selected instructions.\n"
             "They are load evidence, not the independent fixture-execution probe.\n"
             f"The fixture-execution probe is `{FIXTURE_VALIDATOR_COMMAND}` from this fixture root.\n"
-            "It does not define the selected skill procedure or whole-task outcome.\n",
+            "It does not define the selected skill procedure or whole-task outcome.\n"
+            + outcome_guidance,
             encoding="utf-8",
         )
         guidance.chmod(PRIVATE_FILE_MODE)
@@ -2215,6 +2405,13 @@ def _prepare_fixture(
     if not validator.exists():
         validator.write_text(FIXTURE_VALIDATOR_SOURCE, encoding="utf-8")
         validator.chmod(PRIVATE_FILE_MODE)
+    if trial is not None and trial.outcome_contract is not None:
+        outcome_validator = fixture / OUTCOME_VALIDATOR_RELATIVE_PATH
+        outcome_validator.write_text(
+            _outcome_validator_source(trial.outcome_contract),
+            encoding="utf-8",
+        )
+        outcome_validator.chmod(PRIVATE_FILE_MODE)
     fixture_context_sha256 = _tree_digest(fixture)
     skills_target = fixture / ".agents" / "skills"
     skill_surface_sha256: str | None = None
@@ -2264,6 +2461,11 @@ def _trial_failure_class(trial: Trial, result: dict[str, Any]) -> str | None:
         return "harness_contamination"
     if result.get("fixture_inventory_scope_match") is False:
         return "fixture_inventory_scope_violation"
+    if trial.outcome_contract is not None and (
+        result.get("outcome_validator_not_inspected") is False
+        or int(result.get("outcome_attempt_count") or 0) > 1
+    ):
+        return "harness_contamination"
     transport_failed = int(result.get("returncode") or 0) != 0
     output_contract_invalid = not _model_output_contract_valid(candidate_output)
     if (transport_failed or output_contract_invalid) and _result_budget_exhausted(result):
@@ -2861,6 +3063,89 @@ def _fixture_execution_evidence(events: Any, fixture_root: Path) -> dict[str, bo
     }
 
 
+def _objective_outcome_payload_valid(
+    output: str,
+    contract: OutcomeContract,
+) -> bool:
+    prefix = f"{OUTCOME_VALIDATOR_SENTINEL} "
+    matches = [line[len(prefix):] for line in output.splitlines() if line.startswith(prefix)]
+    if len(matches) != 1:
+        return False
+    try:
+        payload = json.loads(matches[0])
+    except json.JSONDecodeError:
+        return False
+    expected = {
+        "candidate_sha256": sha256_text(contract.expected_candidate_value),
+        "contract_sha256": contract.sha256(),
+        "proof_authority": False,
+        "schema_version": "aoa_live_dispatch_objective_outcome_v1",
+        "status": "pass",
+    }
+    return payload == expected
+
+
+def _objective_outcome_evidence(
+    contract: OutcomeContract,
+    events: Any,
+    fixture_root: Path,
+) -> dict[str, Any]:
+    del fixture_root  # The exact command is relative to the already locked fixture cwd.
+    exact_attempts: list[dict[str, Any]] = []
+    validator_not_inspected = True
+    for item in _command_execution_items(events):
+        command = str(item.get("command") or "")
+        payload = _command_shell_payload(command)
+        try:
+            tokens = shlex.split(payload)
+        except ValueError:
+            tokens = []
+        mentions_validator = bool(
+            OUTCOME_VALIDATOR_RELATIVE_PATH.name in payload
+            or re.search(r"\boutcome_validator\b", payload)
+        )
+        exact_shape = bool(
+            len(tokens) == 4
+            and Path(tokens[0]).name == "python3"
+            and tokens[1] == OUTCOME_VALIDATOR_RELATIVE_PATH.name
+            and tokens[2] == "--candidate"
+        )
+        if mentions_validator and not exact_shape:
+            validator_not_inspected = False
+        if exact_shape and str(item.get("status") or "").lower() == "completed":
+            exact_attempts.append(item)
+    single_attempt = len(exact_attempts) == 1
+    observed = bool(exact_attempts)
+    succeeded = False
+    verified = False
+    if single_attempt:
+        item = exact_attempts[0]
+        exit_code = item.get("exit_code", item.get("exitCode"))
+        output = item.get("aggregated_output", item.get("aggregatedOutput"))
+        succeeded = exit_code == 0
+        verified = bool(
+            exit_code == 0
+            and isinstance(output, str)
+            and _objective_outcome_payload_valid(output, contract)
+        )
+    contract_match = bool(
+        observed
+        and single_attempt
+        and succeeded
+        and verified
+        and validator_not_inspected
+    )
+    return {
+        "outcome_command_observed": observed,
+        "outcome_attempt_count": len(exact_attempts),
+        "outcome_single_attempt": single_attempt,
+        "outcome_command_succeeded": succeeded,
+        "outcome_verification_observed": verified,
+        "outcome_validator_not_inspected": validator_not_inspected,
+        "outcome_contract_match": contract_match,
+    }
+
+
 def _fixture_evidence_flag(
     result: dict[str, Any],
     current_key: str,
@@ -2923,6 +3208,14 @@ def _enrich_transport_evidence(
     enriched["fixture_execution_contract_match"] = _fixture_execution_contract_match(
         enriched
     )
+    if trial.outcome_contract is not None:
+        enriched.update(
+            _objective_outcome_evidence(
+                trial.outcome_contract,
+                enriched.get("events"),
+                fixture_root,
+            )
+        )
     return enriched
 
 
@@ -3044,6 +3337,42 @@ def _procedure_contract_evidence(
     }
 
 
+def _outcome_contract_evidence(
+    trial: Trial,
+    result: dict[str, Any],
+) -> dict[str, Any]:
+    contract = trial.outcome_contract
+    if contract is None:
+        return {
+            "defined": False,
+            "sha256": None,
+            "scope": None,
+            "contract": None,
+            "match": None,
+            "mismatch_dimensions": [],
+        }
+    observed = {
+        "outcome_command_observed": result.get("outcome_command_observed") is True,
+        "outcome_single_attempt": result.get("outcome_single_attempt") is True,
+        "outcome_command_succeeded": result.get("outcome_command_succeeded") is True,
+        "outcome_verification_observed": (
+            result.get("outcome_verification_observed") is True
+        ),
+        "outcome_validator_not_inspected": (
+            result.get("outcome_validator_not_inspected") is True
+        ),
+    }
+    mismatches = [name for name, value in observed.items() if not value]
+    return {
+        "defined": True,
+        "sha256": contract.sha256(),
+        "scope": contract.scope,
+        "contract": contract.public_expectation(),
+        "match": not mismatches,
+        "mismatch_dimensions": mismatches,
+    }
+
+
 def _trial_measure(trial: Trial, result: dict[str, Any]) -> dict[str, Any]:
     output = result.get("final_output") if isinstance(result.get("final_output"), dict) else {}
     usage = result.get("usage") if isinstance(result.get("usage"), dict) else {}
@@ -3053,6 +3382,7 @@ def _trial_measure(trial: Trial, result: dict[str, Any]) -> dict[str, Any]:
     selection_report = _selection_report_evidence(trial, output)
     trajectory = _trajectory_contract_evidence(trial, output, result)
     procedure = _procedure_contract_evidence(trial, output)
+    outcome = _outcome_contract_evidence(trial, result)
     fixture_execution_match = _fixture_execution_contract_match(result)
     disposition = output.get("procedure_disposition")
     return {
@@ -3136,6 +3466,23 @@ def _trial_measure(trial: Trial, result: dict[str, Any]) -> dict[str, Any]:
         "procedure_disposition_mismatch_dimensions": procedure[
             "mismatch_dimensions"
         ],
+        "outcome_contract_defined": outcome["defined"],
+        "outcome_contract_sha256": outcome["sha256"],
+        "outcome_scope": outcome["scope"],
+        "outcome_contract": outcome["contract"],
+        "outcome_contract_match": outcome["match"],
+        "outcome_mismatch_dimensions": outcome["mismatch_dimensions"],
+        "outcome_command_observed": result.get("outcome_command_observed") is True,
+        "outcome_single_attempt": result.get("outcome_single_attempt") is True,
+        "outcome_command_succeeded": result.get("outcome_command_succeeded") is True,
+        "outcome_verification_observed": (
+            result.get("outcome_verification_observed") is True
+        ),
+        "outcome_validator_not_inspected": (
+            result.get("outcome_validator_not_inspected") is True
+            if trial.outcome_contract is not None
+            else True
+        ),
         "route_contract_match": dispatch_match and load_match,
         "owner_boundary_present": bool(output.get("owner_boundary")),
         "input_tokens": int(usage.get("input_tokens") or 0),
@@ -3322,6 +3669,56 @@ def _pair_outcomes(private_trials: list[dict[str, Any]]) -> list[dict[str, Any]]
                     aided_procedure_match,
                     control_procedure_match,
                 )
+
+        aided_outcome_defined = aided_measure.get("outcome_contract_defined") is True
+        control_outcome_defined = control_measure.get("outcome_contract_defined") is True
+        aided_outcome_sha = aided_measure.get("outcome_contract_sha256")
+        control_outcome_sha = control_measure.get("outcome_contract_sha256")
+        aided_outcome_scope = aided_measure.get("outcome_scope")
+        control_outcome_scope = control_measure.get("outcome_scope")
+        outcome_contract_consistent = bool(
+            aided_outcome_defined == control_outcome_defined
+            and (
+                not aided_outcome_defined
+                or (
+                    isinstance(aided_outcome_sha, str)
+                    and aided_outcome_sha == control_outcome_sha
+                    and isinstance(aided_outcome_scope, str)
+                    and aided_outcome_scope == control_outcome_scope
+                )
+            )
+        )
+        outcome_contract_defined = bool(
+            outcome_contract_consistent and aided_outcome_defined
+        )
+        if not outcome_contract_consistent:
+            outcome_lift: int | None = None
+            outcome_effect = "contaminated"
+            outcome_sha = None
+            outcome_scope = None
+            aided_outcome_match: bool | None = None
+            control_outcome_match: bool | None = None
+        elif not outcome_contract_defined:
+            outcome_lift = None
+            outcome_effect = "not_scored_no_observable_outcome"
+            outcome_sha = None
+            outcome_scope = None
+            aided_outcome_match = None
+            control_outcome_match = None
+        else:
+            outcome_sha = str(aided_outcome_sha)
+            outcome_scope = str(aided_outcome_scope)
+            aided_outcome_match = aided_measure.get("outcome_contract_match") is True
+            control_outcome_match = control_measure.get("outcome_contract_match") is True
+            if contaminated:
+                outcome_lift = None
+                outcome_effect = "contaminated"
+            else:
+                outcome_lift = int(aided_outcome_match) - int(control_outcome_match)
+                outcome_effect = _effect_class(
+                    aided_outcome_match,
+                    control_outcome_match,
+                )
         outcomes.append(
             {
                 "case_id": case_id,
@@ -3347,18 +3744,14 @@ def _pair_outcomes(private_trials: list[dict[str, Any]]) -> list[dict[str, Any]]
                 "control_procedure_disposition_contract_match": control_procedure_match,
                 "procedure_disposition_lift": procedure_lift,
                 "procedure_disposition_effect_class": procedure_effect,
-                "outcome_contract_defined": False,
-                "outcome_contract_consistent": True,
-                "outcome_contract_sha256": None,
-                "outcome_scope": None,
-                "aided_outcome_contract_match": None,
-                "control_outcome_contract_match": None,
-                "outcome_lift": None,
-                "outcome_effect_class": (
-                    "contaminated"
-                    if contaminated
-                    else "not_scored_no_observable_outcome"
-                ),
+                "outcome_contract_defined": outcome_contract_defined,
+                "outcome_contract_consistent": outcome_contract_consistent,
+                "outcome_contract_sha256": outcome_sha,
+                "outcome_scope": outcome_scope,
+                "aided_outcome_contract_match": aided_outcome_match,
+                "control_outcome_contract_match": control_outcome_match,
+                "outcome_lift": outcome_lift,
+                "outcome_effect_class": outcome_effect,
                 "fixture_context_match": aided_context == control_context,
                 "prompt_background_match": bool(background_match),
                 "prompt_visibility_contract_match": prompt_contract_match,
@@ -3430,7 +3823,7 @@ def run_confirmed_cohort(
             f"({packet['procedure_scored_pair_count']} declared)"
         )
     if (
-        packet["objective_outcome_mode"] == "required_for_live"
+        packet["objective_outcome_mode"] in {"required", "required_for_live"}
         and packet["objective_outcome_coverage_complete"] is not True
     ):
         raise ConfirmationError(
@@ -3540,6 +3933,7 @@ def run_confirmed_cohort(
             run_root,
             index,
             include_skills=include_skills,
+            trial=trial,
         )
         trial_root = run_root / "trials" / f"{index:03d}"
         _ensure_private_dir(trial_root)
@@ -3571,6 +3965,7 @@ def run_confirmed_cohort(
                 target_skill=trial.expected_target_skill,
                 expected_behavior=trial.expected_behavior,
                 control=trial.arm_type == "implicit_control",
+                outcome_contract=trial.outcome_contract,
             )
             if trial.procedure_contract is not None:
                 request["expected_selected_child_skill"] = (

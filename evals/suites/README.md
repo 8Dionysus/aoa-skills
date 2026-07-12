@@ -17,7 +17,9 @@ Active local suite notes:
   harness contract is the only part eligible for ordinary local-suite execution.
   [aoa-skill-live-dispatch-procedures.json](aoa-skill-live-dispatch-procedures.json)
   holds source-authored selected-child and procedure-disposition expectations.
-  Missing contracts remain explicitly unscored; the independent fixture probe
-  stays separate, whole-task outcome stays outside this corpus, broad fixture
-  inventory is rejected before budget interpretation, and live observations
-  cannot write their own answer key.
+  [aoa-skill-live-dispatch-outcomes.json](aoa-skill-live-dispatch-outcomes.json)
+  separately holds bounded owner-action choices. Missing outcome contracts
+  remain explicitly unscored; the independent fixture probe and whole-task
+  completion stay separate, broad fixture inventory and outcome-validator
+  inspection are rejected, and live observations cannot write or inspect their
+  own answer key.
