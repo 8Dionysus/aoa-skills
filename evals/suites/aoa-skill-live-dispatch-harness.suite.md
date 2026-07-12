@@ -41,12 +41,14 @@ digests also match. Those digests bind the model-visible name, resolved path,
 and description fingerprint for every entry, so a description-only change is
 background drift rather than an invisible treatment difference.
 
-The paired implicit arms publish route lift separately from bounded outcome
-lift. Route lift is always graded from dispatch plus load. Outcome lift is
-graded only when both arms share a source-locked case contract authored from
-the case, selected skill procedures, and fixture semantics before the live
-run. A pair without such a contract is explicitly `not_scored_no_contract`;
-neither dimension is collapsed into an aggregate score.
+The paired implicit arms publish route lift separately from bounded downstream
+procedure-outcome lift. Route lift is always graded from dispatch plus load.
+Outcome lift is graded only when both arms share a source-locked case contract
+authored from the case, selected skill procedures, and fixture semantics before
+the live run. Its scope is the selected downstream procedure inside the
+hermetic fixture, not completion of an external repository task. A pair without
+such a contract is explicitly `not_scored_no_contract`; neither dimension is
+collapsed into an aggregate score.
 
 ## Cohorts
 
@@ -97,11 +99,11 @@ until all 11 implicit pairs have source-locked contracts.
 - procedure disposition, execution, verification, completion, and deflection
   are published separately; a route-contract match is not task completion or
   central proof;
-- bounded outcome contracts declare the expected disposition, command,
-  verification, completion/deflection, and owner-boundary dimensions before
-  live execution; the matcher is independent of route correctness, publishes
-  bounded mismatch dimensions, and never treats observed live output as its
-  own answer key;
+- bounded outcome contracts declare the expected downstream procedure
+  disposition, command, verification, completion/deflection, and owner-boundary
+  dimensions before live execution; the matcher is independent of route
+  correctness, publishes bounded mismatch dimensions, and never treats either
+  observed live output or whole-task completion as its own answer key;
 - a competing-neighbourhood entry becomes a collision only when the selected
   skill differs from the expected target;
 - a late budget marker cannot replace a contract-valid, zero-return model
@@ -177,6 +179,21 @@ completion or outcome lift. The immutable public receipt is
 to the grader, source-locks the smoke outcome before execution, and requires a
 fresh exact-merged rerun before pilot widening.
 
+The exact-merged-tree v8 smoke completed all four turns and separated positive
+route lift from a recorded negative outcome lift. Adaptive review returned to
+the source contract instead of editing the skill: the constrained model-output
+schema defines `procedure_disposition` as the disposition of the downstream
+skill procedure, and the fixture names that procedure exactly as
+`python3 fixture_validator.py`. The aided arm selected and fully read
+`aoa-eval` and `aoa-eval-apply`, executed and verified that procedure, and
+reported its bounded completion while separately preserving the missing
+real-repository inputs and owner stop-lines. V8's pre-authored answer key had
+incorrectly expected whole-task deflection, so its immutable public receipt is
+`aoa-skill-live-dispatch-smoke-20260712-v8-outcome-answer-key-needs-rerun.json`.
+It proves a harness-contract mismatch, not negative skill outcome. V9 binds the
+answer key explicitly to the bounded downstream procedure and requires both a
+grader replay and a fresh exact-merged smoke before pilot widening.
+
 ## Safety And Privacy
 
 The plan locks Git head, all portable skill files, generated/config inputs,
@@ -193,8 +210,8 @@ therefore disable every locked id explicitly. Deterministic adapter tests guard
 both sides of this transport-specific contract.
 
 These hermetic invocation rules use contract schema
-`aoa_codex_app_server_skill_input_contract_v8` and protocol revision
-`codex-cli-0.144.1-live-dispatch-evidence-v8`. Retained v1-v7 receipts remain
+`aoa_codex_app_server_skill_input_contract_v9` and protocol revision
+`codex-cli-0.144.1-live-dispatch-evidence-v9`. Retained v1-v8 receipts remain
 source-locked to their original protocol and review status and are not upgraded
 in place.
 
@@ -227,7 +244,8 @@ value.
 
 Each bounded failure class names an earlier layer to repair: harness,
 description/policy, collision family, manual policy, root/child trajectory,
-native-load/full-read tooling, direct procedure, bounded outcome contract,
+native-load/full-read tooling, direct procedure, bounded downstream procedure
+outcome contract,
 owner boundary, runtime profile/source lock, reviewed budget, or transport.
 `skill_load_gap` returns to
 the same case when the exact skill was selected but required native-load or
@@ -241,7 +259,9 @@ zero-return transport with invalid structured output is
 stops the turn before a valid result; a late marker after a valid result does
 not hide the result's semantic classification. `bounded_outcome_miss` returns
 to both the selected skill procedure and the pre-authored source contract,
-because candidate live evidence alone cannot decide which side is wrong. After
+because candidate live evidence alone cannot decide which side is wrong. The
+review must re-read the declared scope and source semantics before interpreting
+whole-task deflection as downstream procedure failure. After
 repair, repeat smoke or
 the smallest
 affected adjacent family before widening again. If a later observation exposes

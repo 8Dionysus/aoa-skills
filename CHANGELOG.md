@@ -13,7 +13,8 @@ Tracking starts with the community-docs baseline for this repository.
   implicit aided/control dispatch, activation and full reads, explicit
   root-child trajectories, structured App Server input, procedure execution,
   verification, completion/deflection, route lift, source-declared bounded
-  outcome lift, host gates, private raw receipts, and public-safe candidate
+  downstream procedure-outcome lift, host gates, private raw receipts, and
+  public-safe candidate
   projections without claiming central proof authority. Structured turns
   additionally require the exact enabled map for all 57 repo skills and prove
   that no configured MCP runtime started.
@@ -66,6 +67,14 @@ Tracking starts with the community-docs baseline for this repository.
   contracts unscored instead of inferring an answer from live output. Pilot
   execution is blocked before preflight until all 11 implicit pairs have
   declared contracts.
+- The complete exact-merged-tree v8 smoke now has a public-safe `needs-rerun`
+  receipt. It preserves positive route lift, negative outcome lift, and one
+  `bounded_outcome_miss` under the historical answer key. Source review found
+  that key had graded deflection of the unavailable whole repository task even
+  though the constrained output and fixture define disposition for the exact
+  downstream procedure. V9 names that scope explicitly, corrects the
+  pre-authored expectation from source, preserves v8 unchanged, and requires a
+  grader replay plus fresh exact-merged smoke before pilot widening.
 - `AOA-SK-D-0037` records why live cohorts remain operator-confirmed candidate
   evidence and now clarifies prompt-surface isolation and evidence-stage grading
   after the contaminated smoke; deterministic harness validation, not model
@@ -160,8 +169,8 @@ Tracking starts with the community-docs baseline for this repository.
   corpus after the landed child-handoff change. The central `aoa-evals`
   validator therefore reports the full local eval port source-contract-ready
   instead of silently retaining transitive stale state.
-- Route and bounded outcome lift are not scored when either arm has a
-  transport, budget, runtime, or owner-boundary safety failure. Contamination
+- Route and bounded downstream procedure-outcome lift are not scored when
+  either arm has a transport, budget, runtime, or owner-boundary safety failure. Contamination
   is retained as a pair result without rewriting either arm's historical
   failure class, and public-receipt validation rejects absolute host paths even
   when embedded inside prose.
@@ -170,9 +179,14 @@ Tracking starts with the community-docs baseline for this repository.
   Complete cohorts exit zero even for negative model evidence, while incomplete
   stopped-early cohorts publish their stop reason and exit nonzero after the
   private receipt is preserved.
+- Source-locked outcome grading now binds `scope` to
+  `bounded_downstream_procedure_outcome`. Completion and deflection describe the
+  exact selected fixture procedure rather than the larger external repository
+  task; current measures and pairs expose that scope, while historical v8
+  receipts remain readable and immutable under their original answer key.
 - The hermetic evidence contract is now
-  `aoa_codex_app_server_skill_input_contract_v8` with protocol revision
-  `codex-cli-0.144.1-live-dispatch-evidence-v8`; retained v1-v7 receipts remain
+  `aoa_codex_app_server_skill_input_contract_v9` with protocol revision
+  `codex-cli-0.144.1-live-dispatch-evidence-v9`; retained v1-v8 receipts remain
   immutable under their original protocol and review status.
 - Live dispatch now locks and passes Codex rollout-budget reminder thresholds
   as a TOML list for both CLI and App Server arms, rejects invalid thresholds

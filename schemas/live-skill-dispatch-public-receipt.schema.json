@@ -122,6 +122,7 @@
         "deflection_observed": {"type": "boolean"},
         "outcome_contract_defined": {"type": "boolean"},
         "outcome_contract_sha256": {"anyOf": [{"$ref": "#/$defs/sha256"}, {"type": "null"}]},
+        "outcome_scope": {"type": ["string", "null"], "enum": ["bounded_fixture_outcome", "bounded_downstream_procedure_outcome", null]},
         "outcome_contract": {"anyOf": [{"$ref": "#/$defs/outcome_expectation"}, {"type": "null"}]},
         "outcome_contract_match": {"type": ["boolean", "null"]},
         "outcome_mismatch_dimensions": {
@@ -148,7 +149,7 @@
       "required": ["contract_id", "scope", "contract_sha256", "expected_procedure_disposition", "expected_procedure_command_observed", "expected_procedure_command_succeeded", "expected_verification_observed", "expected_completion_observed", "expected_deflection_observed", "expected_owner_boundary_present"],
       "properties": {
         "contract_id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]+-v[0-9]+$", "maxLength": 160},
-        "scope": {"const": "bounded_fixture_outcome"},
+        "scope": {"enum": ["bounded_fixture_outcome", "bounded_downstream_procedure_outcome"]},
         "contract_sha256": {"$ref": "#/$defs/sha256"},
         "expected_procedure_disposition": {"anyOf": [{"$ref": "#/$defs/procedure_disposition"}, {"type": "null"}]},
         "expected_procedure_command_observed": {"type": ["boolean", "null"]},
@@ -203,6 +204,7 @@
         "outcome_contract_defined": {"type": "boolean"},
         "outcome_contract_consistent": {"type": "boolean"},
         "outcome_contract_sha256": {"anyOf": [{"$ref": "#/$defs/sha256"}, {"type": "null"}]},
+        "outcome_scope": {"type": ["string", "null"], "enum": ["bounded_fixture_outcome", "bounded_downstream_procedure_outcome", null]},
         "aided_outcome_contract_match": {"type": ["boolean", "null"]},
         "control_outcome_contract_match": {"type": ["boolean", "null"]},
         "outcome_lift": {"type": ["integer", "null"], "minimum": -1, "maximum": 1},

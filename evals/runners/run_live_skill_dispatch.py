@@ -122,6 +122,7 @@ PUBLIC_MEASURE_KEYS = (
     "deflection_observed",
     "outcome_contract_defined",
     "outcome_contract_sha256",
+    "outcome_scope",
     "outcome_contract",
     "outcome_contract_match",
     "outcome_mismatch_dimensions",
@@ -146,12 +147,13 @@ PUBLIC_PAIR_KEYS = (
     "outcome_contract_defined",
     "outcome_contract_consistent",
     "outcome_contract_sha256",
+    "outcome_scope",
     "aided_outcome_contract_match",
     "control_outcome_contract_match",
     "outcome_lift",
     "outcome_effect_class",
     # Historical v1-v7 private receipts retain their original generic pair
-    # vocabulary when reviewed. Current v8 runs never emit these two keys.
+    # vocabulary when reviewed. Current v9 runs never emit these two keys.
     "observed_lift",
     "effect_class",
     "fixture_context_match",
@@ -174,7 +176,7 @@ FAILURE_TAXONOMY = {
     "dispatch_policy_gap": "The exact target route was available, but the activation decision violated its expected dispatch policy.",
     "skill_load_gap": "The exact target was selected but neither an accepted native load contract nor its required child/full read was observed.",
     "direct_procedure_gap": "Selection and the load contract succeeded but the exact fixture command, successful exit, or sentinel verification was absent.",
-    "bounded_outcome_miss": "The aided route and load contract passed, but the source-locked bounded fixture outcome did not.",
+    "bounded_outcome_miss": "The aided route and load contract passed, but the source-locked bounded downstream procedure outcome did not.",
     "owner_boundary_violation": "The result widened mutation, proof, promotion, or owner authority.",
     "runtime_profile_drift": "Codex, model, source, profile, or protocol identity drifted after planning.",
     "budget_exhausted": "The source-locked weighted token cap stopped the turn before a valid result.",
@@ -626,7 +628,7 @@ def _expected_codex_version(plan: dict[str, Any]) -> str:
     revision = str(plan.get("protocol_revision") or "")
     match = re.fullmatch(
         r"codex-cli-([0-9]+(?:\.[0-9]+){2})-"
-        r"(?:app-server-skill-input-v3|live-dispatch-evidence-v[4-8])",
+        r"(?:app-server-skill-input-v3|live-dispatch-evidence-v[4-9])",
         revision,
     )
     if match is None:
@@ -2678,6 +2680,7 @@ def _outcome_contract_evidence(
         return {
             "defined": False,
             "sha256": None,
+            "scope": None,
             "contract": None,
             "match": None,
             "mismatch_dimensions": [],
@@ -2708,6 +2711,7 @@ def _outcome_contract_evidence(
     return {
         "defined": True,
         "sha256": contract.sha256(),
+        "scope": contract.scope,
         "contract": contract.public_expectation(),
         "match": not mismatches,
         "mismatch_dimensions": mismatches,
@@ -2771,6 +2775,7 @@ def _trial_measure(trial: Trial, result: dict[str, Any]) -> dict[str, Any]:
         "deflection_observed": result.get("deflection_observed") is True,
         "outcome_contract_defined": outcome["defined"],
         "outcome_contract_sha256": outcome["sha256"],
+        "outcome_scope": outcome["scope"],
         "outcome_contract": outcome["contract"],
         "outcome_contract_match": outcome["match"],
         "outcome_mismatch_dimensions": outcome["mismatch_dimensions"],
@@ -2861,6 +2866,8 @@ def _pair_outcomes(private_trials: list[dict[str, Any]]) -> list[dict[str, Any]]
         control_outcome_defined = control_measure.get("outcome_contract_defined") is True
         aided_outcome_sha = aided_measure.get("outcome_contract_sha256")
         control_outcome_sha = control_measure.get("outcome_contract_sha256")
+        aided_outcome_scope = aided_measure.get("outcome_scope")
+        control_outcome_scope = control_measure.get("outcome_scope")
         outcome_contract_consistent = bool(
             aided_outcome_defined == control_outcome_defined
             and (
@@ -2868,6 +2875,8 @@ def _pair_outcomes(private_trials: list[dict[str, Any]]) -> list[dict[str, Any]]
                 or (
                     isinstance(aided_outcome_sha, str)
                     and aided_outcome_sha == control_outcome_sha
+                    and isinstance(aided_outcome_scope, str)
+                    and aided_outcome_scope == control_outcome_scope
                 )
             )
         )
@@ -2878,16 +2887,19 @@ def _pair_outcomes(private_trials: list[dict[str, Any]]) -> list[dict[str, Any]]
             outcome_lift: int | None = None
             outcome_effect = "contaminated"
             outcome_sha = None
+            outcome_scope = None
             aided_outcome_match: bool | None = None
             control_outcome_match: bool | None = None
         elif not outcome_contract_defined:
             outcome_lift = None
             outcome_effect = "not_scored_no_contract"
             outcome_sha = None
+            outcome_scope = None
             aided_outcome_match = None
             control_outcome_match = None
         else:
             outcome_sha = str(aided_outcome_sha)
+            outcome_scope = str(aided_outcome_scope)
             aided_outcome_match = aided_measure.get("outcome_contract_match") is True
             control_outcome_match = control_measure.get("outcome_contract_match") is True
             if contaminated:
@@ -2911,6 +2923,7 @@ def _pair_outcomes(private_trials: list[dict[str, Any]]) -> list[dict[str, Any]]
                 "outcome_contract_defined": outcome_contract_defined,
                 "outcome_contract_consistent": outcome_contract_consistent,
                 "outcome_contract_sha256": outcome_sha,
+                "outcome_scope": outcome_scope,
                 "aided_outcome_contract_match": aided_outcome_match,
                 "control_outcome_contract_match": control_outcome_match,
                 "outcome_lift": outcome_lift,

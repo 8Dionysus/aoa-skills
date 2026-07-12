@@ -117,8 +117,8 @@ class FakeTransport:
             }:
                 events.append(self._validator_event(request))
         disposition = {
-            "implicit_aided": "blocked_missing_input",
-            "implicit_control": "deferred_owner_boundary",
+            "implicit_aided": "completed",
+            "implicit_control": "blocked_missing_input",
             "root_manual_child": "completed",
         }.get(request["arm_type"], "not_applicable")
         return {
@@ -274,13 +274,14 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
             self.assertIsNotNone(trial.outcome_contract)
             contract = trial.outcome_contract
             assert contract is not None
-            self.assertEqual("collision-42-bounded-fixture-v1", contract.contract_id)
-            self.assertEqual("blocked_missing_input", contract.expected_procedure_disposition)
+            self.assertEqual("collision-42-bounded-procedure-v2", contract.contract_id)
+            self.assertEqual("bounded_downstream_procedure_outcome", contract.scope)
+            self.assertEqual("completed", contract.expected_procedure_disposition)
             self.assertTrue(contract.expected_procedure_command_observed)
             self.assertTrue(contract.expected_procedure_command_succeeded)
             self.assertTrue(contract.expected_verification_observed)
-            self.assertFalse(contract.expected_completion_observed)
-            self.assertTrue(contract.expected_deflection_observed)
+            self.assertTrue(contract.expected_completion_observed)
+            self.assertFalse(contract.expected_deflection_observed)
             self.assertTrue(contract.expected_owner_boundary_present)
 
         packet = runner.build_plan_packet(REPO_ROOT, plan, "smoke", "model-a", "medium")
@@ -309,7 +310,7 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
         contract = runner.OutcomeContract(
             contract_id="independent-outcome-v1",
             case_id="independent-outcome",
-            scope="bounded_fixture_outcome",
+            scope="bounded_downstream_procedure_outcome",
             expected_procedure_disposition="blocked_missing_input",
             expected_procedure_command_observed=True,
             expected_procedure_command_succeeded=True,
@@ -614,7 +615,7 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
         )
         self.assertEqual(plan["protocol_revision"], contract["protocol_revision"])
         self.assertEqual(
-            "aoa_codex_app_server_skill_input_contract_v8",
+            "aoa_codex_app_server_skill_input_contract_v9",
             contract["schema_version"],
         )
         self.assertEqual("codex-cli 0.144.1", contract["codex_version"])
@@ -920,6 +921,10 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
             self.assertEqual(1, len(receipt["pair_outcomes"]))
             self.assertEqual("positive_lift", receipt["pair_outcomes"][0]["route_effect_class"])
             self.assertEqual("positive_lift", receipt["pair_outcomes"][0]["outcome_effect_class"])
+            self.assertEqual(
+                "bounded_downstream_procedure_outcome",
+                receipt["pair_outcomes"][0]["outcome_scope"],
+            )
             receipt_path = private_root / receipt["run_id"] / "private-receipt.json"
             self.assertTrue(receipt_path.is_file())
             self.assertEqual(0o700, private_root.stat().st_mode & 0o777)
@@ -2139,6 +2144,11 @@ Second procedure section.
                     "load_contract_match": route_match,
                     "outcome_contract_defined": outcome_contract_sha256 is not None,
                     "outcome_contract_sha256": outcome_contract_sha256,
+                    "outcome_scope": (
+                        "bounded_downstream_procedure_outcome"
+                        if outcome_contract_sha256 is not None
+                        else None
+                    ),
                     "outcome_contract_match": outcome_match,
                     "prompt_visibility_contract_match": True,
                     "failure_class": None,
@@ -2159,6 +2169,10 @@ Second procedure section.
         self.assertEqual("positive_lift", pair["route_effect_class"])
         self.assertEqual(-1, pair["outcome_lift"])
         self.assertEqual("negative_lift", pair["outcome_effect_class"])
+        self.assertEqual(
+            "bounded_downstream_procedure_outcome",
+            pair["outcome_scope"],
+        )
         self.assertNotIn("observed_lift", pair)
         self.assertNotIn("effect_class", pair)
 
@@ -2179,6 +2193,7 @@ Second procedure section.
             ]
         )[0]
         self.assertFalse(unscored["outcome_contract_defined"])
+        self.assertIsNone(unscored["outcome_scope"])
         self.assertIsNone(unscored["outcome_lift"])
         self.assertEqual("not_scored_no_contract", unscored["outcome_effect_class"])
 
@@ -2274,7 +2289,7 @@ Second procedure section.
         contract = runner.OutcomeContract(
             contract_id="bounded-miss-v1",
             case_id="bounded-miss",
-            scope="bounded_fixture_outcome",
+            scope="bounded_downstream_procedure_outcome",
             expected_procedure_disposition="blocked_missing_input",
             expected_procedure_command_observed=True,
             expected_procedure_command_succeeded=True,
@@ -2357,6 +2372,7 @@ Second procedure section.
         result["final_output"]["selected_skill"] = None
         result["final_output"]["route_decision"] = "do_not_use"
         result["final_output"]["claims_loaded"] = False
+        result["final_output"]["procedure_disposition"] = "not_applicable"
         self.assertEqual("implicit_trigger_miss", runner._trial_failure_class(trial, result))
 
     def test_reached_root_child_with_missing_concrete_procedure_is_not_trajectory_break(self) -> None:

@@ -42,6 +42,14 @@ the control used the read-only shell to reach an external canonical checkout
 and read a complete repo skill before exhausting its cap. Prompt isolation did
 not imply filesystem isolation, and budget was downstream of contamination.
 
+The exact-merged-tree v8 rerun exposed a semantic prerequisite in the outcome
+answer key itself. Its constrained model-output contract defines
+`procedure_disposition` for the downstream skill procedure, and the fixture
+names that procedure exactly. The pre-authored v8 key nevertheless expected
+deflection of the larger unavailable repository task. The observed negative
+outcome therefore returned to contract scope review rather than authorizing a
+skill edit.
+
 ## Options Considered
 
 - Infer effectiveness from session mentions, generated trigger fixtures, and
@@ -59,8 +67,8 @@ Choose the third option.
 The live harness has four observable arms:
 
 - paired implicit aided and no-skill control turns that report route lift and,
-  only for pre-authored source-locked cases, bounded outcome lift as separate
-  dimensions;
+  only for pre-authored source-locked cases, bounded downstream
+  procedure-outcome lift as a separate dimension;
 - explicit root-to-child trajectories where accepted `$root` input is native
   root-load evidence and the selected child still needs a complete raw read;
 - structured App Server skill input, bound to the exact 57-skill fixture path
@@ -97,11 +105,11 @@ config and explicitly disable every locked id. A shadow or MCP count/digest
 change is source/runtime drift, not a reason to reuse the old token.
 
 The corrected hermetic pre-turn and evidence contract uses schema
-`aoa_codex_app_server_skill_input_contract_v8` and protocol revision
-`codex-cli-0.144.1-live-dispatch-evidence-v8`. It follows the
+`aoa_codex_app_server_skill_input_contract_v9` and protocol revision
+`codex-cli-0.144.1-live-dispatch-evidence-v9`. It follows the
 [official App Server invocation shape](https://learn.chatgpt.com/docs/app-server#start-a-turn-invoke-a-skill)
 and Codex [progressive-disclosure load semantics](https://learn.chatgpt.com/docs/customization/overview#skills).
-Retained receipts source-locked to v1-v7 keep their original protocol and
+Retained receipts source-locked to v1-v8 keep their original protocol and
 review status and are not upgraded in place.
 
 The source-locked caps include both the rollout token limit and its required
@@ -203,7 +211,8 @@ user copy or a source checkout reached through the read-only filesystem. Paired
 background digests expose other prompt-surface drift rather than crediting
 general model knowledge. Host routing bounds resource and storage pressure.
 Private/raw and public/digest separation keeps review possible without
-publishing session material. Paired route and bounded outcome lift are
+publishing session material. Paired route and bounded downstream
+procedure-outcome lift are
 undefined and omitted when either arm has an output-contract, transport,
 budget, runtime-profile, or owner-boundary safety failure. A
 zero-return invalid structured result is `output_contract_invalid`; transport
@@ -217,7 +226,8 @@ target also appears in its own neighbourhood list.
 ## Consequences
 
 - Positive: dispatch, manual reachability, structured selection, trajectory,
-  route lift, and source-declared bounded outcome-lift pressure can be
+  route lift, and source-declared bounded downstream procedure-outcome pressure
+  can be
   reproduced against an exact source and runtime protocol without one lift
   masquerading as the other.
 - Positive: harness contamination is rejected before model spend, and public
@@ -244,15 +254,15 @@ target also appears in its own neighbourhood list.
   repeated runs are needed before changing skill status or promotion posture.
 - Tradeoff: the 48k ceiling raises worst-case live-campaign cost; non-smoke
   cohorts therefore retain the second exact high-cost confirmation token.
-- Follow-up: v7 repaired duration and exit-status semantics and its exact-merged
-  smoke completed, but review showed that generic `observed_lift` was only
-  route-contract lift. Land v8's pre-authored outcome contracts and split pair
-  vocabulary, repeat the exact smoke, and require declared pilot outcome
-  coverage before widening toward all 57 skills.
+- Follow-up: v8 separated route and outcome lift, but its exact-merged smoke
+  exposed a whole-task/downstream-procedure answer-key mismatch. Land v9's
+  explicit downstream-procedure scope, replay the retained v8 evidence under
+  the corrected grader, repeat a fresh exact-merged smoke, and require declared
+  pilot outcome coverage before widening toward all 57 skills.
 
 ## Current Applicability
 
-As of 2026-07-11:
+As of 2026-07-12:
 
 - Still valid: central verdict, scoring, regression, proof doctrine, and proof
   acceptance remain in `aoa-evals`.
@@ -271,13 +281,13 @@ As of 2026-07-11:
   or any skill-effect interpretation.
 - Current cap contract: every arm receives the same source-locked 48k ceiling;
   paired arms may differ in actual use but never in available budget.
-- Current contract schema: `aoa_codex_app_server_skill_input_contract_v8`.
-- Current protocol lock: `codex-cli-0.144.1-live-dispatch-evidence-v8`.
+- Current contract schema: `aoa_codex_app_server_skill_input_contract_v9`.
+- Current protocol lock: `codex-cli-0.144.1-live-dispatch-evidence-v9`.
 - Current pair contract: new receipts publish `route_lift` and
   `route_effect_class` separately from `outcome_lift` and
   `outcome_effect_class`. Bounded outcome grading requires the same
-  source-locked contract on both arms; absent contracts are
-  `not_scored_no_contract`.
+  source-locked contract on both arms and publishes its explicit downstream
+  procedure scope; absent contracts are `not_scored_no_contract`.
 - Historical protocols: retained v1-v2 smokes are `needs-rerun`; v2 produced a
   valid candidate implicit pair but used an unsupported structured-only App
   input and cannot support its App load label. Retained v3-v6 reports keep their
@@ -315,15 +325,54 @@ As of 2026-07-11:
   recorded generic `observed_lift=1`. Code and raw review show that v7 derived
   this field solely from route-contract correctness. It is therefore positive
   route evidence, not completion or outcome lift.
-- Current rerun posture: v8 source-locks the `collision-42` bounded fixture
-  expectation before planning and refuses required smoke coverage when that
-  contract is absent. A fresh exact-merged v8 smoke must establish both route
-  and outcome dimensions before `pilot13`; pilot planning currently exposes
-  1/11 declared contracts and confirmed execution is mechanically blocked
-  before preflight until coverage reaches 11/11.
+- Current rerun posture: the exact-merged v8 smoke completed all four turns and
+  recorded positive route lift plus negative outcome lift under its immutable
+  source lock. Review found that its answer key incorrectly graded deflection
+  of the larger unavailable repository task rather than completion of the exact
+  downstream fixture procedure declared by the model-output contract. Its
+  public receipt is `needs-rerun` harness evidence, not a negative skill
+  outcome. V9 corrects the contract scope from source and requires replay plus
+  a fresh exact-merged smoke. Pilot planning still exposes only 1/11 declared
+  contracts and confirmed execution remains mechanically blocked before
+  preflight until coverage reaches 11/11.
 - Superseded by: none.
 
 ## Review Log
+
+### 2026-07-12 - Bind outcome to the downstream procedure, not the whole task
+
+- Previous assumption: because the `collision-42` prompt withholds real
+  repository inputs, the pre-authored outcome key should expect
+  `blocked_missing_input`, no completion, and deflection even after the exact
+  hermetic fixture procedure succeeds.
+- New evidence: the exact-merged v8 smoke recorded positive route lift and
+  negative outcome lift. The aided arm selected and fully read `aoa-eval` and
+  `aoa-eval-apply`, executed `python3 fixture_validator.py`, observed its zero
+  return and guidance-bound sentinel, and reported the bounded procedure as
+  completed while separately preserving the missing real-repository inputs and
+  owner stop-lines. More importantly, the pre-existing constrained model-output
+  schema defines `procedure_disposition` as the disposition of the downstream
+  skill procedure; the fixture and selected child procedure agree with that
+  scope. The live observation triggered review but did not author the new key.
+- Decision: v9 names the scope
+  `bounded_downstream_procedure_outcome`, derives the `collision-42` expectation
+  as completed/verified/non-deflected from the model-output, case, fixture, and
+  skill sources, publishes that scope on current measures and pairs, and keeps
+  outcome matching independent of route correctness.
+- Boundary: bounded procedure completion is not completion of an external
+  repository task, proof acceptance, or permission to ignore missing owner
+  inputs. The v8 receipt and its negative outcome remain immutable under the
+  invalid historical key and are classified `needs-rerun`; they are not
+  silently relabeled by v9. Historical public receipts remain schema-readable.
+- Adaptive return: an apparent `bounded_outcome_miss` must first be checked
+  against the declared scope and the authoritative procedure semantics. Only
+  after the key survives that review may the same evidence pressure a skill
+  procedure.
+- Validation: red-first tests require the corrected scope/key, preserve legacy
+  v8 public validation, and force replayed aided/control arms to produce
+  positive route and positive downstream procedure-outcome lift. Full harness,
+  repo lanes, local eval-port, decision-index, generated/export parity, and a
+  fresh exact-merged v9 smoke remain required before `pilot13`.
 
 ### 2026-07-12 - Split route lift from source-locked bounded outcome lift
 
@@ -555,11 +604,13 @@ This decision does not make `aoa-skills` a central model-evaluation owner. It
 does not allow automatic skill promotion, public raw transcripts, unattended
 high-cost cohorts, or execution of repository mutation tasks. A green route
 receipt proves only the evidence dimensions it explicitly records and does not
-prove completion outside the bounded fixture. A `needs-rerun` receipt or a run
+prove completion outside the bounded downstream fixture procedure. A
+`needs-rerun` receipt or a run
 with prompt/background contamination must not drive skill edits, promotion, or
 outcome-lift claims. A route-only contract or a pair without a pre-authored
-bounded outcome contract must not be relabeled as outcome evidence after the
-run.
+bounded downstream procedure-outcome contract must not be relabeled as outcome
+evidence after the run, and whole-task deflection must not be substituted for
+the contract's declared procedure scope.
 
 ## Validation
 

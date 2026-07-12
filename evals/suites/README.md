@@ -16,5 +16,6 @@ Active local suite notes:
   require exact confirmation and host resource/storage gates; its deterministic
   harness contract is the only part eligible for ordinary local-suite execution.
   [aoa-skill-live-dispatch-outcomes.json](aoa-skill-live-dispatch-outcomes.json)
-  holds source-authored bounded outcome expectations; missing contracts remain
-  explicitly unscored and live observations cannot write their own answer key.
+  holds source-authored bounded downstream procedure-outcome expectations;
+  missing contracts remain explicitly unscored, whole-task completion stays
+  outside their scope, and live observations cannot write their own answer key.
