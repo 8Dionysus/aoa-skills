@@ -28,9 +28,10 @@ Active first local corpus:
 - [suites/aoa-skill-live-dispatch-harness.suite.md](suites/aoa-skill-live-dispatch-harness.suite.md)
   and [runners](runners/) define the source-locked, operator-confirmed live
   dispatch, manual reachability, trajectory, route-lift, and declared bounded
-  outcome-lift harness. The outcome answer keys live in
+  downstream procedure-outcome-lift harness. The outcome answer keys live in
   [suites/aoa-skill-live-dispatch-outcomes.json](suites/aoa-skill-live-dispatch-outcomes.json)
-  and remain local candidate contracts rather than central proof verdicts.
+  and remain fixture-scoped local candidate contracts rather than whole-task or
+  central proof verdicts.
 
 These files are local evidence notes. They do not publish central proof
 acceptance, scoring, verdicts, regression truth, or proof doctrine.

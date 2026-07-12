@@ -49,9 +49,9 @@ turn follows the
 the text begins with the exact `$skill` mention and the adjacent structured
 `skill` item carries the same fixture name and path. An accepted official input
 is version-locked native-load evidence, distinct from a raw shell full read.
-These rules use contract schema `aoa_codex_app_server_skill_input_contract_v8`
-and protocol revision `codex-cli-0.144.1-live-dispatch-evidence-v8`. Retained
-v1-v7 receipts stay source-locked to their original protocol and review status;
+These rules use contract schema `aoa_codex_app_server_skill_input_contract_v9`
+and protocol revision `codex-cli-0.144.1-live-dispatch-evidence-v9`. Retained
+v1-v8 receipts stay source-locked to their original protocol and review status;
 they are never upgraded in place.
 
 Run the confirmed command only as the child of the plan packet's
@@ -107,11 +107,13 @@ receipt under `evals/reports/` only after assigning an explicit review status.
 Public measures keep prompt visibility, selection, model load claim, accepted
 native input, raw full-read evidence, dispatch/load matches, procedure
 disposition, execution, verification, completion, and deflection separate.
-Each implicit pair always reports route lift. It reports bounded outcome lift
-only when both arms carry the same source-locked outcome contract; otherwise
-the outcome dimension is `not_scored_no_contract`. The outcome matcher compares
-only the predeclared disposition, command, verification, completion/deflection,
-and owner-boundary dimensions and does not depend on route correctness. A
+Each implicit pair always reports route lift. It reports bounded downstream
+procedure-outcome lift only when both arms carry the same source-locked outcome
+contract; otherwise the outcome dimension is `not_scored_no_contract`. The
+outcome matcher compares only the predeclared downstream procedure disposition,
+command, verification, completion/deflection, and owner-boundary dimensions and
+does not depend on route correctness. It does not grade completion of a real
+repository task outside the fixture. A
 correct selection without the required native-load or child/full-read evidence
 returns `skill_load_gap` to the same case. A wrong activation decision after the
 route is available is instead `dispatch_policy_gap`. A normal zero-return
@@ -131,9 +133,9 @@ not model quality.
 Both lift dimensions are omitted when either arm has an output-contract,
 transport, budget, runtime, or owner-boundary safety failure. Contamination
 remains an explicit pair outcome but never rewrites either arm's recorded
-classification. A source-locked aided route whose bounded outcome misses the
-declared contract returns `bounded_outcome_miss` to joint skill-procedure and
-contract review before the same case is repeated.
+classification. A source-locked aided route whose bounded downstream procedure
+outcome misses the declared contract returns `bounded_outcome_miss` to joint
+skill-procedure and contract review before the same case is repeated.
 Public review also
 walks every string value and rejects an absolute host path even when it is
 embedded in prose, in addition to credential and transport-id leakage.
@@ -183,6 +185,18 @@ different deflection dispositions and neither reported completion. The reviewed
 public receipt therefore preserves v7 as positive route-contract evidence only.
 V8 removes the ambiguous generic fields from new pairs, source-locks the smoke
 outcome contract before planning, and requires a fresh exact-merged smoke before
+`pilot13`.
+
+The exact-merged v8 smoke completed four of four arms and reported positive
+route lift but negative outcome lift. Source review showed that the answer key,
+not the observed downstream procedure, had crossed its declared boundary: the
+model-output contract defines `procedure_disposition` for the downstream skill
+procedure, while the v8 key expected deflection of the larger unavailable
+repository task. The aided arm completed and verified the exact fixture
+procedure while preserving those external owner stop-lines. Its reviewed
+public receipt therefore remains immutable `needs-rerun` harness evidence. V9
+names the downstream-procedure scope explicitly, corrects the pre-authored key
+from source, and requires replay plus a fresh exact-merged smoke before
 `pilot13`.
 
 See `evals/suites/aoa-skill-live-dispatch-harness.suite.md` and

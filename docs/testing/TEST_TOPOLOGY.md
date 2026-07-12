@@ -42,7 +42,7 @@ Test files are not command authority. Blocking lane sequences live in
 | `release/ci-lane` | CI/release command order and lane composition. | `config/validation_lanes.json`, `scripts/ci_gate.py`, `scripts/release_check.py` | `release` | Fix lane manifest before changing workflow YAML. |
 | `advisory/*` | quality, promotion pressure, workspace adoption, technique drift. | audit/report scripts | `advisory` | Treat as review evidence unless an explicit failing flag is invoked. |
 | `external/*` / `live` | sibling fixtures or external tools such as `aoa-sdk` and `skills-ref`. | bridge scripts and referenced sibling artifacts | `advisory` / `live` | Keep soft unless the lane explicitly declares the dependency. |
-| `live-harness/dispatch` | source locks, cohort expansion, safe adapters, host gates, private/public separation, and distinct route/source-declared outcome projection without model calls. | `evals/runners/run_live_skill_dispatch.py` and its plan/schemas | `source` | Repair the deterministic harness contract before spending any live turn. |
+| `live-harness/dispatch` | source locks, cohort expansion, safe adapters, host gates, private/public separation, and distinct route/source-declared downstream procedure-outcome projection without model calls. | `evals/runners/run_live_skill_dispatch.py` and its plan/schemas | `source` | Repair the deterministic harness contract before spending any live turn. |
 | `mechanics/*` | mechanic-local schema, examples, generated companions, and Agon candidate surfaces. | nearest mechanic package | `source` / `release` | Fix the mechanic-local owner surface first. |
 
 ## Lane Rules
