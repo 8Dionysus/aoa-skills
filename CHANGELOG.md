@@ -95,6 +95,13 @@ Tracking starts with the community-docs baseline for this repository.
   a bounded inventory contract, permits exact route-required reads, and grades
   broad internal enumeration as `fixture_inventory_scope_violation` before a
   later budget marker or skill interpretation.
+- The fresh exact-merged v11 smoke completed all four arms with zero broad
+  inventory commands and no trial failures. Its reviewed candidate receipt
+  reports route lift `+1`, selected-child trajectory lift `+1`, correct
+  source-locked procedure disposition in both implicit arms (`0` lift), and an
+  explicitly unscored objective outcome. Direct root-to-child and structured
+  App Server activation also passed; pilot execution remains blocked at 1/11
+  procedure contracts and 0/11 observable outcomes.
 - `AOA-SK-D-0037` records why live cohorts remain operator-confirmed candidate
   evidence and now clarifies prompt-surface isolation and evidence-stage grading
   after the contaminated smoke; deterministic harness validation, not model

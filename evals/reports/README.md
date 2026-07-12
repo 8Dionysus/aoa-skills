@@ -138,6 +138,15 @@ temporary root and must not be copied into this directory.
   candidate trajectory observation remains reviewable, but the incomplete
   cohort and repeated inventory pressure require v11 harness repair and a
   fresh exact-merged rerun before skill interpretation.
+- [aoa-skill-live-dispatch-smoke-20260712-v11-reviewed-route-trajectory-lift.json](aoa-skill-live-dispatch-smoke-20260712-v11-reviewed-route-trajectory-lift.json)
+  preserves the complete exact-merged v11 smoke. All four arms completed with
+  no failure class, external path access, or broad fixture inventory. The
+  implicit pair reports route lift `+1`, source-locked selected-child
+  trajectory lift `+1`, procedure-disposition lift `0` with both arms correct,
+  and no objective outcome score. Direct root-to-child and official structured
+  activation also passed their bounded contracts. This is reviewed candidate
+  evidence only; it neither proves family-wide effectiveness nor authorizes
+  pilot widening, proof acceptance, or promotion.
 
 Corrected live receipts under the v11 evidence protocol are reviewable only
 after canonical user-skill shadows, plugins, and every configured MCP id are

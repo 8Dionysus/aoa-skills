@@ -21,7 +21,7 @@
   "timeout_seconds": 300,
   "success_exit_codes": [0],
   "tracked_sources": [
-    {"path": "evals/suites/aoa-skill-live-dispatch-harness.suite.md", "kind": "file", "sha256": "f9c38d979c9184b6db324b1422162fa39e0d7a5cf8d210582aeb5dad8da13666"},
+    {"path": "evals/suites/aoa-skill-live-dispatch-harness.suite.md", "kind": "file", "sha256": "fc91c0d1eb72d90842764c4278f0850d024a19edae82b3d84f1f47d47c0306fd"},
     {"path": "evals/runners/run_live_skill_dispatch.py", "kind": "file", "sha256": "d456e3cad492e5e496389f759f6cc64aa12ef9712508de87da9256e626ad41d0"},
     {"path": "evals/suites/aoa-skill-live-dispatch.plan.json", "kind": "file", "sha256": "90ff2483085b84bbfb72183d258da18523d7e035fc5a0d3e385cdaa565e2485b"},
     {"path": "evals/suites/aoa-skill-live-dispatch-procedures.json", "kind": "file", "sha256": "20bd19b591d4c51e7cc07f251aec36aa9216b040cc4427e0d53e73f82fa4ee8f"},

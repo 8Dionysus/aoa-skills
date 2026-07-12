@@ -237,6 +237,16 @@ immutable `needs-rerun` harness evidence. V11 makes inventory breadth explicit
 in prompt guidance and command-event grading before another exact-merged smoke;
 neither incomplete v10 run authorizes a skill edit or pilot widening.
 
+The exact-merged v11 smoke completed all four arms with zero broad inventory
+commands and no failures. Its reviewed pair separates positive route lift
+`+1`, positive source-locked selected-child trajectory lift `+1`, correct
+procedure disposition in both arms (`0` lift), and an unavailable objective
+outcome. The manual root and structured App Server arms also matched their
+dispatch, load, fixture-execution, and boundary contracts. This closes the
+inventory-harness return only; pilot execution remains blocked until the
+source corpus supplies 11/11 procedure contracts and 11/11 owner-bound outcome
+observations.
+
 See `evals/suites/aoa-skill-live-dispatch-harness.suite.md` and
 `docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md` for
 the evidence and authority boundaries.

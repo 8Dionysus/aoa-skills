@@ -380,14 +380,49 @@ As of 2026-07-12:
   implicit pair with candidate positive route lift, zero trajectory lift, and
   correct procedure disposition, then stopped the root trajectory after broad
   listing and tree hashing. Both public receipts are immutable `needs-rerun`
-  harness evidence. A fresh exact-merged v11 smoke is required before the
-  candidate `aoa-eval-local-need` trajectory can pressure a skill or contract.
-  Pilot planning exposes 1/11 procedure contracts and 0/11
-  objective outcomes; confirmed execution is blocked before preflight until
-  both reach 11/11.
+  harness evidence. Their former requirement for a fresh v11 rerun is satisfied
+  by the next item; the inventory-pressured `aoa-eval-local-need` observation
+  does not pressure a skill or contract.
+- Current reviewed smoke: exact-merged v11 completed all four arms with no
+  failures, external reads, or broad inventory commands. The aided arm selected
+  `aoa-eval`, fully read the source-correct `aoa-eval-select` child, and
+  reported `blocked_missing_input`; the control had no skill surface and did
+  not select either route. The pair therefore records route `+1`, trajectory
+  `+1`, procedure-disposition `0` with both reports correct, and objective
+  outcome unscored. The direct root-to-`aoa-eval-apply` and official structured
+  `aoa-eval-apply` arms also matched their dispatch, load, probe, and boundary
+  contracts. This is reviewed candidate evidence, not a family verdict or
+  promotion signal. Pilot planning still exposes 1/11 procedure contracts and
+  0/11 objective outcomes; confirmed execution remains blocked before
+  preflight until both reach 11/11.
 - Superseded by: none.
 
 ## Review Log
+
+### 2026-07-12 - Validate bounded route and trajectory lift on exact-merged v11
+
+- Previous pressure: v10 could not distinguish a genuine child-route problem
+  from the context cost and causal noise of full-tree fixture archaeology.
+- New evidence: the source-locked v11 smoke completed all four arms. Every arm
+  stayed inside the fixture, used zero broad inventory commands, passed the
+  independent fixture probe, and retained owner/proof/promotion stop lines.
+- Pair readout: aided `aoa-eval` selected and fully read `aoa-eval-select`;
+  control did neither. Route and selected-child trajectory lift are each `+1`.
+  Both arms correctly reported the selected procedure as
+  `blocked_missing_input`, so procedure-disposition lift is `0` with both
+  correct. No owner-bound objective outcome exists, so outcome lift remains
+  null and `not_scored_no_observable_outcome`.
+- Direct/structured readout: the manual root arm selected
+  `aoa-eval-apply`, and the App Server arm accepted official structured
+  `aoa-eval-apply` input. Both matched dispatch/load and fixture-execution
+  contracts without rewriting native evidence from model reporting.
+- Decision: treat v11 as reviewed positive route/trajectory candidate evidence
+  and close the inventory-harness return. Do not edit or promote `aoa-eval`
+  from this single smoke. Return next to the source corpus and owner-bound
+  observation design until pilot coverage reaches 11/11 on both required axes.
+- Boundary: `completed` means the bounded four-arm measurement completed. It
+  does not mean whole-task outcome, central eval verdict, proof acceptance,
+  family-wide effectiveness, or promotion.
 
 ### 2026-07-12 - Bound exact reads without full-tree fixture archaeology
 
