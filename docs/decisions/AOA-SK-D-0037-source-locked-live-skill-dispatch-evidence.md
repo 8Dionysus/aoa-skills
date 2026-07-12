@@ -411,9 +411,34 @@ As of 2026-07-12:
   arms incorrect, procedure disposition is correct in both arms, and outcome is
   unscored. Missing evidence must not become a no-fit conclusion. Preserve the
   receipt and harden selection precedence before the next exact smoke.
+- Current repaired rerun: exact-merged v11 after the fail-closed precedence
+  change completed four of four arms with no failure class. The aided root
+  selected and fully read `aoa-eval-select`; route and trajectory lift are each
+  `+1`, both procedure dispositions are correct, outcome remains unscored, and
+  all isolation/fixture gates pass. This closes the precedence return as
+  candidate evidence; pilot coverage remains 1/11 procedures and 0/11 outcomes.
 - Superseded by: none.
 
 ## Review Log
+
+### 2026-07-12 - Validate fail-closed selection precedence on exact-merged source
+
+- Previous evidence: the post-JIT smoke chose `aoa-eval-local-need` while fit
+  was unknown, yielding route lift `+1` but trajectory lift `0` with both arms
+  incorrect.
+- Source repair: make unknown fit, missing target evidence, and inspect/decide
+  requests route to `aoa-eval-select`; local need requires an explicit no-fit
+  result.
+- New evidence: the fresh exact-merged rerun completed all four arms. The aided
+  root selected and fully read `aoa-eval-select`; control had no repo skill.
+  Route and trajectory lift are each `+1`, both procedure dispositions are
+  correct, and every prompt, fixture, filesystem, inventory, transport, and
+  owner-boundary gate passes.
+- Boundary: objective outcome remains unscored and one successful smoke is not
+  a family verdict, status promotion, or permission to run the pilot before its
+  11/11 procedure and outcome coverage gates close.
+- Decision: close the precedence adaptive return, preserve both before/after
+  receipts, and move next to owner-observable pilot contract design.
 
 ### 2026-07-12 - Keep unknown fit in selection before local intake
 

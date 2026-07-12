@@ -306,3 +306,9 @@ The durable rule is now explicit:
 The reviewed negative-trajectory receipt remains immutable candidate evidence.
 A source regression and snapshot guard the precedence, and a fresh exact-merged
 smoke is required before widening the pilot.
+
+That rerun selected and fully read `aoa-eval-select`, restored positive route
+and selected-child trajectory lift, retained correct procedure disposition in
+both implicit arms, and kept outcome unscored. This closes the bounded
+precedence return; it does not change the next coverage gate of 11/11 declared
+procedures plus 11/11 owner-observable outcomes.

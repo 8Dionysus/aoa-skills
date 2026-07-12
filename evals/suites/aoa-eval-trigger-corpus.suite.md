@@ -193,11 +193,15 @@ Fixture-backed generalization:
   upgrade
 - reviewed public receipt:
   `evals/reports/aoa-skill-live-dispatch-smoke-20260712-v11-reviewed-local-need-trajectory-break.json`
+- verified rerun receipt:
+  `evals/reports/aoa-skill-live-dispatch-smoke-20260712-v11-reviewed-select-precedence-lift.json`
 - reason: the aided arm selected and loaded `aoa-eval` but chose
   `aoa-eval-local-need` while target-repository evidence and fit were still
   unknown. Missing evidence is not a no-fit result. Selection must remain the
   first child and may itself return `blocked_missing_input`; local intake is
-  eligible only after explicit owner-reviewed no-fit evidence.
+  eligible only after explicit owner-reviewed no-fit evidence. The fresh
+  exact-merged rerun selected and fully read `aoa-eval-select`, restoring
+  positive selected-child trajectory lift while leaving outcome unscored.
 
 ### should_not_trigger_eval
 

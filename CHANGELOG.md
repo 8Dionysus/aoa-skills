@@ -109,6 +109,13 @@ Tracking starts with the community-docs baseline for this repository.
   the required unknown-fit selection step. Selected-child trajectory lift is
   therefore `0` with both arms incorrect, objective outcome remains unscored,
   and the adaptive return is selection precedence rather than harness repair.
+- The fresh exact-merged rerun after fail-closed selection precedence completed
+  all four arms without failure. The aided root selected and fully read
+  `aoa-eval-select`; route and selected-child trajectory lift are each `+1`,
+  both implicit procedure dispositions remain correct, objective outcome stays
+  explicitly unscored, and prompt/fixture/filesystem/inventory/transport/owner
+  gates remain clean. This closes the precedence return as reviewed candidate
+  evidence without widening the still-incomplete pilot.
 - `AOA-SK-D-0037` records why live cohorts remain operator-confirmed candidate
   evidence and now clarifies prompt-surface isolation and evidence-stage grading
   after the contaminated smoke; deterministic harness validation, not model

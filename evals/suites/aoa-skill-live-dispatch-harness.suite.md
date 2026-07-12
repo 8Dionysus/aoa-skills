@@ -261,6 +261,17 @@ This is a valid skill-route candidate, not a harness rerun condition. Return to
 selection precedence, preserve the receipt unchanged, and repeat the exact
 smoke before pilot widening.
 
+The fresh exact-merged rerun after that repair also completed all four arms.
+The aided root selected and fully read `aoa-eval-select`; control selected no
+repo skill. Route and selected-child trajectory lift are each `+1`, both
+implicit arms correctly report `blocked_missing_input`, procedure-disposition
+lift is `0` with both correct, and objective outcome remains unscored. No arm
+has a failure class, external read, or broad inventory command. The reviewed
+public receipt is
+`aoa-skill-live-dispatch-smoke-20260712-v11-reviewed-select-precedence-lift.json`.
+This closes the selection-precedence return as bounded candidate evidence;
+pilot widening remains blocked by 1/11 procedure and 0/11 outcome coverage.
+
 ## Safety And Privacy
 
 The plan locks Git head, all portable skill files, generated/config inputs,
