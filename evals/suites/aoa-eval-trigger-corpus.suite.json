@@ -26,7 +26,7 @@
     {
       "path": "evals/suites/aoa-eval-trigger-corpus.suite.md",
       "kind": "file",
-      "sha256": "12abd36e4325cbc15a5214640ebb4078e2a8e0f0a65636385e40545c3caefe5d"
+      "sha256": "4c60ed5257ce19cc93ed4f72cf27785fb8913cf64ce31821333feb9bba8bcc82"
     },
     {
       "path": "tests/test_aoa_eval_prompt_trigger_harness.py",

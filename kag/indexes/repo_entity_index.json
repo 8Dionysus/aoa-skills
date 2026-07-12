@@ -8816,6 +8816,20 @@
         "surface_state": "authored_source"
       },
       "entity_kind": "artifact",
+      "id": "entity:file:evals/reports/aoa-skill-live-dispatch-smoke-20260712-v11-reviewed-select-precedence-lift.json:76fce66551",
+      "label": "evals/reports/aoa-skill-live-dispatch-smoke-20260712-v11-reviewed-select-precedence-lift.json",
+      "source_record_id": "file:evals/reports/aoa-skill-live-dispatch-smoke-20260712-v11-reviewed-select-precedence-lift.json:76fce66551"
+    },
+    {
+      "coordinates": {
+        "artifact_kind": "config",
+        "code_role": "none",
+        "command_role": "none",
+        "document_role": "none",
+        "mechanics_role": "none",
+        "surface_state": "authored_source"
+      },
+      "entity_kind": "artifact",
       "id": "entity:file:evals/reports/aoa-skill-live-dispatch-smoke-20260712-v6-transport-timeout-needs-rerun.json:e6bd2cb570",
       "label": "evals/reports/aoa-skill-live-dispatch-smoke-20260712-v6-transport-timeout-needs-rerun.json",
       "source_record_id": "file:evals/reports/aoa-skill-live-dispatch-smoke-20260712-v6-transport-timeout-needs-rerun.json:e6bd2cb570"
@@ -26701,7 +26715,7 @@
   ],
   "index_identity": {
     "artifact_kind": "repository_entity_index",
-    "content_digest": "acb30c5826ebc692ed7c69488836dea9761669f4cedb9f684f7486ee76094efb",
+    "content_digest": "7a96a63104a53f98f3e94ed9b28542bb83386b824585a404dd49d9749c538398",
     "index_kind": "entity",
     "local_id": "index:repo-local:entities",
     "schema_ref": "aoa-kag:schemas/repo-local-kag-repository-index.schema.json"
@@ -26724,15 +26738,15 @@
   },
   "schema_version": "aoa-repo-local-kag-repository-index-v1",
   "source_index": {
-    "content_digest": "0b934bdb742a919638fa78a83a369c534a4f53929ff6898971b0d7895015cd1f",
+    "content_digest": "252394be9c8b422fc76d806ecf434669b00c2379517ba13e4b02051758507055",
     "local_id": "index:repo-local:source-surfaces",
     "path": "kag/indexes/source_surface_index.json"
   },
   "summary": {
-    "entry_count": 1907,
+    "entry_count": 1908,
     "kind_counts": {
       "agent_route": 29,
-      "artifact": 405,
+      "artifact": 406,
       "code": 66,
       "command": 156,
       "contract": 43,
