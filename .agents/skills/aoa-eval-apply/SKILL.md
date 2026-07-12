@@ -17,7 +17,10 @@ metadata:
 
 ## Intent
 Use this skill to apply an existing eval surface after selection is clear. The
-output is an evidence report, not a proof promotion.
+output is an evidence report, not a proof promotion. When a selected local
+suite exposes `evals/suites/<slug>.suite.json`, treat that sidecar as typed
+source execution intent: it must be JIT-revalidated by the current owner before
+its exact runner may execute.
 
 ## Trigger boundary
 Use this skill when:
@@ -26,6 +29,8 @@ Use this skill when:
 - the user needs to know what the run proves, what failed, and what remains
   outside coverage
 - generated outputs need to be rebuilt or checked as part of the selected eval
+- a selected repo-local suite has a machine-readable execution sidecar whose
+  freshness and runtime invocation must be applied
 
 Do not use this skill when:
 - no existing eval has been selected yet; use `aoa-eval-select`
@@ -38,30 +43,59 @@ Do not use this skill when:
 ## Inputs
 - selected eval or validation command
 - repo-local route law and command prerequisites
+- optional `evals/suites/<slug>.suite.json` sidecar plus the current owner
+  schema/validator that classifies it as absent, invalid, stale, or ready
+- exact source tree or commit when the result will be merge-, release-, or
+  publication-bound
 - expected artifacts, reports, generated outputs, and pass/fail criteria
 - prior failure or regression context
 
 ## Outputs
 - commands run and results observed
 - artifacts or reports produced
-- evidence classification: green proof, regression, inconclusive, blocked, or
-  outside coverage
+- evidence classification: passed candidate evidence, regression candidate,
+  inconclusive, blocked, or outside coverage
+- for a sidecar-backed suite: JIT state, exact invocation, environment capture,
+  and owner-local execution receipt
 - next route if failure should become an intake need or suite design
 
 ## Procedure
-1. confirm the selected eval surface and owner repo
+1. confirm the selected eval surface, owner repo, source root, and source ref;
+   if exact merged evidence is required, use a clean exact tree without
+   modifying a dirty canonical checkout
 2. inspect prerequisites and choose the smallest command that exercises the
    intended evidence surface
-3. run deterministic local checks before subjective review when possible
-4. capture outputs, generated drift, and artifact paths
-5. classify what the run proves and explicitly name what it does not prove
-6. if the run exposes missing coverage, route to `aoa-eval-local-need`
-7. if the run requires new design, route to `aoa-eval-design`
-8. report commands, results, artifacts, and remaining risk
+3. if a local suite sidecar exists, use the current owner validator to
+   JIT-revalidate schema, canonical owner identity, paths, typed argv, and every
+   tracked source hash; proceed only from `source-contract-ready`
+4. inventory, readiness, dashboard, and MCP surfaces may inspect the sidecar but
+   must not execute it
+5. invoke only the validated `runner.argv`, `runner.cwd`, timeout, and accepted
+   exit codes; do not substitute a wrapper, broader gate, or reconstructed
+   command
+6. capture interpreter, dependency inventory digest, ambient pytest plugins,
+   config, and selected environment before interpreting the result
+7. write an owner-local, private-by-default execution receipt linked to the
+   source head and sidecar digest; keep proof and promotion authority false
+8. when no sidecar exists, run the selected deterministic command with the same
+   source, cwd, result, artifact, and proof-limit reporting discipline
+9. capture outputs, generated drift, and artifact paths
+10. classify what the run proves and explicitly name what it does not prove
+11. if the run exposes missing coverage, route to `aoa-eval-local-need`; if it
+    requires new design, route to `aoa-eval-design`
+12. report commands, results, artifacts, source posture, environment posture,
+    and remaining risk
 
 ## Contracts
 - applying an eval does not create a central verdict unless `aoa-evals` owns and
   validates that promotion
+- `source-contract-ready` proves reviewed source shape and hashes only; runtime
+  reproducibility remains false unless a stronger owner proves a pinned
+  environment
+- a stale or invalid sidecar blocks execution until its source owner repairs or
+  refreshes it; live output cannot author its own tracked hashes
+- inventory, MCP, and generated readiness surfaces never gain execution or
+  receipt-publication authority from discovering a sidecar
 - failed or inconclusive runs are evidence, not permission to guess
 - generated drift must be resolved through owner builders
 - local eval reports must stay under local repo surfaces unless central review
@@ -70,12 +104,24 @@ Do not use this skill when:
 ## Risks and anti-patterns
 - running a broad release gate when a focused validator is enough
 - treating green tests as complete proof outside their scope
+- executing a sidecar from inventory/MCP output without immediate owner JIT
+  validation
+- changing `runner.argv`, cwd, timeout, accepted codes, or tracked hashes at run
+  time to make a stale contract pass
+- treating an environment capture or execution receipt as reproducible runtime,
+  central proof, or promotion
 - hiding generated drift
 - promoting failure observations without a reproducible command
 
 ## Verification
 - confirm the selected eval existed before running
-- confirm command, cwd, and result
+- confirm source root/ref and whether the observation came from a live dirty
+  workspace or an exact source tree
+- for a sidecar-backed suite, confirm the owner validator reported ready
+  immediately before execution and no inventory/MCP surface executed it
+- confirm exact command, cwd, timeout, accepted exit codes, and result
+- confirm environment capture and the private execution receipt's source-head
+  and sidecar-digest links
 - confirm artifacts and generated drift status
 - confirm proof limits and next route
 - confirm no central proof file was written through MCP

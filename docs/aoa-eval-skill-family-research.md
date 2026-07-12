@@ -254,3 +254,31 @@ status and marks the mining output as candidate evidence, not central proof.
   local-port validation green.
 - Central `aoa-evals` adoption is not warranted from this slice. The evidence
   is local trigger/runtime pressure, not central proof doctrine.
+
+## 2026-07-12 source and execution handoff
+
+The reviewed v11 live-dispatch smoke showed that `aoa-eval` can add bounded
+route and selected-child trajectory lift without broad fixture archaeology.
+The next adaptive return came from comparing that successful dispatch path
+with the newer `aoa-evals` local-suite execution contract, not from treating a
+single smoke as proof that the whole procedure was complete.
+
+Two distinctions now belong in the skill family itself:
+
+- A session-start, readiness, dashboard, generated reader, or MCP packet
+  describes the live workspace it inspected. It must report root, commit,
+  dirty/divergent posture, and freshness, but it does not turn a dirty canonical
+  checkout into exact merged evidence. Commit-bound claims use the owner
+  validator from a clean exact source tree while preserving the live checkout.
+- A reviewed `local_eval_suite_execution_v1` sidecar is typed source execution
+  intent. `ready` means `source-contract-ready` only. The repo owner or
+  `aoa-eval-apply` must JIT-revalidate schema, canonical owner, paths, argv, and
+  hashes; execute only the validated argv/cwd/timeout/exit contract; capture
+  interpreter, dependency, plugin, config, and selected environment posture;
+  and write a private receipt linked to source head and sidecar digest.
+
+Inventory, Eval Forge, readiness, dashboards, session-start, generated readers,
+and MCP remain inspect-only. The execution receipt is candidate evidence with
+proof and promotion authority false. These boundaries are now fixture-backed
+in the trigger corpus and must be regenerated into portable/runtime skill
+surfaces before the next exact-merged live smoke.

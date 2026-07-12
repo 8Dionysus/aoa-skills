@@ -286,11 +286,12 @@ target also appears in its own neighbourhood list.
   repeated runs are needed before changing skill status or promotion posture.
 - Tradeoff: the 48k ceiling raises worst-case live-campaign cost; non-smoke
   cohorts therefore retain the second exact high-cost confirmation token.
-- Follow-up: v10 proved context separation was necessary but insufficient while
-  full-tree inventory remained allowed. Land v11's bounded inventory contract,
-  repeat the exact smoke, then design objective owner-bound outcome surfaces
-  and complete both 11/11 procedure-contract and 11/11 outcome-observation
-  coverage before widening toward all 57 skills.
+- Follow-up: the exact-merged v11 smoke closed the bounded-inventory return and
+  exposed the next procedure layer. Align `aoa-eval` with exact-source posture
+  and `aoa-eval-apply` with the owner JIT local-suite contract, repeat the exact
+  smoke against those source changes, then design objective owner-bound outcome
+  surfaces and complete both 11/11 procedure-contract and 11/11
+  outcome-observation coverage before widening toward all 57 skills.
 
 ## Current Applicability
 
@@ -395,9 +396,40 @@ As of 2026-07-12:
   promotion signal. Pilot planning still exposes 1/11 procedure contracts and
   0/11 objective outcomes; confirmed execution remains blocked before
   preflight until both reach 11/11.
+- Current adaptive return: comparing the successful v11 route with the accepted
+  `aoa-evals` local-suite execution contract found a procedure gap in the skill
+  source. `aoa-eval` must distinguish live-workspace readiness from exact-source
+  evidence; `aoa-eval-apply` must JIT-revalidate a selected sidecar with the
+  owner validator, execute only its typed invocation, capture environment
+  posture, and write a private source-linked receipt. Readiness and MCP remain
+  inspect-only, `source-contract-ready` is not runtime reproducibility, and the
+  change requires a fresh exact-merged smoke before pilot widening.
 - Superseded by: none.
 
 ## Review Log
+
+### 2026-07-12 - Carry the owner JIT execution contract into the selected skill
+
+- Previous assumption: once `aoa-eval-apply` had selected an existing
+  deterministic eval, its general command/artifact/proof-limit procedure was
+  enough to apply any local suite safely.
+- New evidence: the accepted `aoa-evals` local-port contract gives reviewed
+  `*.suite.json` files a narrower handoff. Readiness, dashboards, generated
+  readers, and MCP may report `source-contract-ready` but cannot execute;
+  owner/apply must JIT-revalidate the current source, invoke the exact typed
+  runner, capture environment posture, and write a private execution receipt.
+  Live MCP status also described a dirty divergent canonical workspace while
+  exact merged validation remained available from a separate clean tree.
+- Decision: make source identity explicit in `aoa-eval`, preserve dirty
+  canonical workspaces, and make sidecar JIT validation plus exact invocation,
+  environment capture, and private receipt part of `aoa-eval-apply`. Add a
+  positive trigger/snapshot case for an already-selected sidecar.
+- Boundary: this adopts the owner handoff; it does not move schema, readiness,
+  proof, verdict, scoring, promotion, or execution authority into MCP or
+  generated readers. A green execution remains candidate evidence.
+- Validation: focused trigger/snapshot tests, owner sidecar validation against
+  an exact source tree, generated/export parity, private post-commit receipts,
+  and a fresh exact-merged v11 smoke before pilot widening.
 
 ### 2026-07-12 - Validate bounded route and trajectory lift on exact-merged v11
 

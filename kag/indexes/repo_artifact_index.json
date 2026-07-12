@@ -946,7 +946,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "c291bb24b45e56acf7c0c646ebba21f673015ce59e8435e36ea1139d48f803df",
+      "content_hash": "ed8e9239556429706be28116410afe72345eac92c6acecf11aba55a53b6d1e56",
       "id": "artifact:file:.agents/skills/aoa-eval-apply/skill.md:2bf389e8cc",
       "path": ".agents/skills/aoa-eval-apply/SKILL.md",
       "source_record_id": "file:.agents/skills/aoa-eval-apply/skill.md:2bf389e8cc",
@@ -978,7 +978,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "5c2a08db14fc97d5ee09fdc0bbefcd9f921ce826d9da96fda133ad88ee7add7f",
+      "content_hash": "2c7324f6bc5ea40cff400dbc5b25b36a6adc3107d0faf196c3bdb555964ad341",
       "id": "artifact:file:.agents/skills/aoa-eval-apply/examples/runtime.md:e2544c456a",
       "path": ".agents/skills/aoa-eval-apply/examples/runtime.md",
       "source_record_id": "file:.agents/skills/aoa-eval-apply/examples/runtime.md:e2544c456a",
@@ -1146,7 +1146,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "4333749811a7ee1a6fc6e2dc1b9728db8a751fcb1f51a3ccf66116eecda9d4a5",
+      "content_hash": "b7f455bf6ba1640eb4086bc7b1055ccab3af82a08285ac4a7681e157922c69aa",
       "id": "artifact:file:.agents/skills/aoa-eval/skill.md:dbbc0a7730",
       "path": ".agents/skills/aoa-eval/SKILL.md",
       "source_record_id": "file:.agents/skills/aoa-eval/skill.md:dbbc0a7730",
@@ -1178,7 +1178,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "5d3babe485f5c87505a7f9a3826425f745a24fc165b1589e9bc993b657f9ad35",
+      "content_hash": "8a0aca095266658b8fab8a7378d9ff1de085ef1382b0f482b9f036c38a25e949",
       "id": "artifact:file:.agents/skills/aoa-eval/examples/runtime.md:0d7dde509c",
       "path": ".agents/skills/aoa-eval/examples/runtime.md",
       "source_record_id": "file:.agents/skills/aoa-eval/examples/runtime.md:0d7dde509c",
@@ -3682,7 +3682,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "ffc3a67609911df067ab4297d519bf3c3bc07e4e059d7d664c9aeafde2b8caeb",
+      "content_hash": "bd4dc5cce7f48432c076d882ac9dc3cd64fca9b5a9a94fd2e0a2a97c8910deaf",
       "id": "artifact:file:changelog.md:06572a96a5",
       "path": "CHANGELOG.md",
       "source_record_id": "file:changelog.md:06572a96a5",
@@ -3922,7 +3922,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "16c33c4bed1dd1689581295ce77c25f1861730b96917b9f6fa5d4734371fcd59",
+      "content_hash": "93f90f28c62e00b2677f38994270c5bd9bd032caa4b5143758a2aed5f8f0fe7a",
       "id": "artifact:file:docs/aoa-eval-skill-family-research.md:f392da1f19",
       "path": "docs/aoa-eval-skill-family-research.md",
       "source_record_id": "file:docs/aoa-eval-skill-family-research.md:f392da1f19",
@@ -4226,7 +4226,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "3b69c3a67a4dd0118156bf7177453b22fa9c856979519234433e57afcf3086d5",
+      "content_hash": "90fcb9d280535652de20eae882cafaa9f8faec6a4380b70e13b7127a0014006b",
       "id": "artifact:file:docs/decisions/aoa-sk-d-0037-source-locked-live-skill-dispatch-evidence.md:ca6ee4ca5a",
       "path": "docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md",
       "source_record_id": "file:docs/decisions/aoa-sk-d-0037-source-locked-live-skill-dispatch-evidence.md:ca6ee4ca5a",
@@ -5082,7 +5082,7 @@
     },
     {
       "artifact_kind": "config",
-      "content_hash": "59909802d87f987c0e0e9db4f5973ed291b166d00681c00ce3e7e0355a850c04",
+      "content_hash": "e519ed3fc2bdcb2bff1ae2ec4045407ad0982a58b26078d8e4df3527d6029b2a",
       "id": "artifact:file:evals/suites/aoa-eval-trigger-corpus.suite.json:32274551c1",
       "path": "evals/suites/aoa-eval-trigger-corpus.suite.json",
       "source_record_id": "file:evals/suites/aoa-eval-trigger-corpus.suite.json:32274551c1",
@@ -5090,7 +5090,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "a5f6df423654f093d52a0e9eabb44007359a7095d94f71d6c5c13627cd7ecb10",
+      "content_hash": "6517ee0fd02dd3ea3464d9e00eb787b71580c3d2939e3a8a343aa6827e82a2a4",
       "id": "artifact:file:evals/suites/aoa-eval-trigger-corpus.suite.md:8fd354f387",
       "path": "evals/suites/aoa-eval-trigger-corpus.suite.md",
       "source_record_id": "file:evals/suites/aoa-eval-trigger-corpus.suite.md:8fd354f387",
@@ -5098,7 +5098,7 @@
     },
     {
       "artifact_kind": "config",
-      "content_hash": "591fa3283c3bd0ce12766c2e675e5632e08684c79cb13e5a926d5d9d9ef5e50e",
+      "content_hash": "a1cc8d41957a783dfeadad705aaa0e4a387eb16ff7f2d9c8cd15e7d2f9de7e80",
       "id": "artifact:file:evals/suites/aoa-skill-live-dispatch-harness.suite.json:beeca555d0",
       "path": "evals/suites/aoa-skill-live-dispatch-harness.suite.json",
       "source_record_id": "file:evals/suites/aoa-skill-live-dispatch-harness.suite.json:beeca555d0",
@@ -5106,7 +5106,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "fc91c0d1eb72d90842764c4278f0850d024a19edae82b3d84f1f47d47c0306fd",
+      "content_hash": "26fe73f10262c4b957f36e2939d4470efaf0dd540be4aa037508f2077604b40e",
       "id": "artifact:file:evals/suites/aoa-skill-live-dispatch-harness.suite.md:dc83328e65",
       "path": "evals/suites/aoa-skill-live-dispatch-harness.suite.md",
       "source_record_id": "file:evals/suites/aoa-skill-live-dispatch-harness.suite.md:dc83328e65",
@@ -5122,7 +5122,7 @@
     },
     {
       "artifact_kind": "config",
-      "content_hash": "90ff2483085b84bbfb72183d258da18523d7e035fc5a0d3e385cdaa565e2485b",
+      "content_hash": "0d01e5cacd7ce1200dfb0821c0f1e851c9c4205b099f495dddee892c9b48a980",
       "id": "artifact:file:evals/suites/aoa-skill-live-dispatch.plan.json:c8f8bbbc88",
       "path": "evals/suites/aoa-skill-live-dispatch.plan.json",
       "source_record_id": "file:evals/suites/aoa-skill-live-dispatch.plan.json:c8f8bbbc88",
@@ -5442,7 +5442,7 @@
     },
     {
       "artifact_kind": "generated_readmodel",
-      "content_hash": "eca8a1fe7c8b72d133a37d579812f1513ba04573806ff94aea7f3670e53a6e66",
+      "content_hash": "9cb9433f60adb91a44bc5d526057180e014f0e17e152d9172640a6f602b8e030",
       "id": "artifact:file:generated/release_manifest.json:0d2f8dd349",
       "path": "generated/release_manifest.json",
       "source_record_id": "file:generated/release_manifest.json:0d2f8dd349",
@@ -5466,7 +5466,7 @@
     },
     {
       "artifact_kind": "generated_readmodel",
-      "content_hash": "f49ab3abee2919d762b1e86fce29613ccd405c531dc32504c3c34f367b7bf9f0",
+      "content_hash": "c360756e5a345c13fbe59c5f68c1f22f32c497eaee491eff0fc60bd8992817f3",
       "id": "artifact:file:generated/runtime_disclosure_index.json:b5f6668ecc",
       "path": "generated/runtime_disclosure_index.json",
       "source_record_id": "file:generated/runtime_disclosure_index.json:b5f6668ecc",
@@ -5578,7 +5578,7 @@
     },
     {
       "artifact_kind": "generated_readmodel",
-      "content_hash": "c6d7962adbfdad3db07037b7ecbaadde41e0d6867db49686e88b02018ffce1df",
+      "content_hash": "12c6903bfc9903a8805e1f2101797850463d73edbccc3878bc9b6ed4da33c238",
       "id": "artifact:file:generated/skill_bundle_index.json:21c110a25c",
       "path": "generated/skill_bundle_index.json",
       "source_record_id": "file:generated/skill_bundle_index.json:21c110a25c",
@@ -5586,7 +5586,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "b96ef6291146568ffd887daf2f5cca3d39b87cd28cc6e5ac9b4ee31e9532a21c",
+      "content_hash": "294d7ea93b658469cd63d650a609897b3feef190678463f3a2b001a2d21a2a95",
       "id": "artifact:file:generated/skill_bundle_index.md:1f0f1423c6",
       "path": "generated/skill_bundle_index.md",
       "source_record_id": "file:generated/skill_bundle_index.md:1f0f1423c6",
@@ -5594,7 +5594,7 @@
     },
     {
       "artifact_kind": "generated_readmodel",
-      "content_hash": "972fb83b872bd3152acb42a136c716131217cbedf293c61f073b631ec9e19849",
+      "content_hash": "c631f9e4c5c8dd3e40c3c64b85e3e19a6299f2e43931a0f0658840f32e1dee6f",
       "id": "artifact:file:generated/skill_capsules.json:51dc0080ee",
       "path": "generated/skill_capsules.json",
       "source_record_id": "file:generated/skill_capsules.json:51dc0080ee",
@@ -5634,7 +5634,7 @@
     },
     {
       "artifact_kind": "generated_readmodel",
-      "content_hash": "317c8ee03ede28b6db5b6717b42371816a8d7cbf3d5075bf346a2968bcddb3fa",
+      "content_hash": "97151f4b71bfde7c4c0d3c8e89b862e7eebadee8cac02041e1c2ba3302b7ddea",
       "id": "artifact:file:generated/skill_context_guard_manifest.json:5ca774e6ca",
       "path": "generated/skill_context_guard_manifest.json",
       "source_record_id": "file:generated/skill_context_guard_manifest.json:5ca774e6ca",
@@ -5650,7 +5650,7 @@
     },
     {
       "artifact_kind": "generated_readmodel",
-      "content_hash": "56a7d4123fe81d4c13901b52125292508aa2b066171808bda5f95d23e8571cc0",
+      "content_hash": "9172f444985886469999e15fd4dee893d7824d06cdbd1d7268897e5719722ad5",
       "id": "artifact:file:generated/skill_evaluation_matrix.json:6e4900a48b",
       "path": "generated/skill_evaluation_matrix.json",
       "source_record_id": "file:generated/skill_evaluation_matrix.json:6e4900a48b",
@@ -5658,7 +5658,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "a3180b50aaec8104e96bd7e40e5a41fe11492f676a87e4938111f154b7b7789a",
+      "content_hash": "a71e52bdcdc7e02e48fb0276fb46c86646c8ec004efe818f6cf047d09b15ca16",
       "id": "artifact:file:generated/skill_evaluation_matrix.md:01aa16b70b",
       "path": "generated/skill_evaluation_matrix.md",
       "source_record_id": "file:generated/skill_evaluation_matrix.md:01aa16b70b",
@@ -5666,7 +5666,7 @@
     },
     {
       "artifact_kind": "generated_readmodel",
-      "content_hash": "e1c687aba2369f1749711f6f27b0f846d38d4adabe4ba520f6e6d11b913e0674",
+      "content_hash": "9e377bc5cf226bf33957761136042dd6fba06b5052d5ec502578105197549a93",
       "id": "artifact:file:generated/skill_graph.json:d1304faa7e",
       "path": "generated/skill_graph.json",
       "source_record_id": "file:generated/skill_graph.json:d1304faa7e",
@@ -5682,7 +5682,7 @@
     },
     {
       "artifact_kind": "generated_readmodel",
-      "content_hash": "4a709c0f13671e95e02091c6a92e6797b1f66e2433b6ac28b4744014f990b965",
+      "content_hash": "1cf85d0254552e0bd5d26a325ed38d93b265199416881c7ba53fc62f830b174a",
       "id": "artifact:file:generated/skill_handoff_contracts.json:1dcb04ba96",
       "path": "generated/skill_handoff_contracts.json",
       "source_record_id": "file:generated/skill_handoff_contracts.json:1dcb04ba96",
@@ -5690,7 +5690,7 @@
     },
     {
       "artifact_kind": "generated_readmodel",
-      "content_hash": "9adfe26f408d76f6e6fb46f3baab20999b7b63eb596e600750cc5dac093a65a5",
+      "content_hash": "11dc5ab74b9a7e804806ab3611eba14efa0c6bd4df60baed61b2a894b8053b6c",
       "id": "artifact:file:generated/skill_intelligence_registry.json:6c0fbe1c8a",
       "path": "generated/skill_intelligence_registry.json",
       "source_record_id": "file:generated/skill_intelligence_registry.json:6c0fbe1c8a",
@@ -5698,7 +5698,7 @@
     },
     {
       "artifact_kind": "generated_readmodel",
-      "content_hash": "63ac6336e4021df78a0fd5689a15513063319f91bcf0c3a38db8a6d8745429b8",
+      "content_hash": "b6dfbd4775ce9e55f1ed2d65ab8f8917d92083767c3ff2a4e3b295218b03ab70",
       "id": "artifact:file:generated/skill_intelligence_registry.min.json:83ed727446",
       "path": "generated/skill_intelligence_registry.min.json",
       "source_record_id": "file:generated/skill_intelligence_registry.min.json:83ed727446",
@@ -5786,7 +5786,7 @@
     },
     {
       "artifact_kind": "generated_readmodel",
-      "content_hash": "852bb3f572d09010d208522f5fcd67f506a9c812e06bd856a0adbf28d22e98ba",
+      "content_hash": "6c992a0d19de9e1f464af434d9a4e65aceff80257f1ffae25246b36ecbaea663",
       "id": "artifact:file:generated/skill_sections.full.json:9b842fc1bc",
       "path": "generated/skill_sections.full.json",
       "source_record_id": "file:generated/skill_sections.full.json:9b842fc1bc",
@@ -5818,7 +5818,7 @@
     },
     {
       "artifact_kind": "generated_readmodel",
-      "content_hash": "2190a7cf481ec24a92380f517ed563cf0075e2185e3bb11d4e6f4cf705104668",
+      "content_hash": "d72ef52bd996777afef47982cf4d8933ef3c0f3161623e12ed9970de5d9bac33",
       "id": "artifact:file:generated/skill_walkthroughs.json:cb5ffa1986",
       "path": "generated/skill_walkthroughs.json",
       "source_record_id": "file:generated/skill_walkthroughs.json:cb5ffa1986",
@@ -5826,7 +5826,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "a9fa7595a094e9ce05de2c0e4311076985f8ed69a921d79d3b6f8832ac88d7c2",
+      "content_hash": "ab80904c81b389c71ab438ef34f74d153f099991ee8b896fdcfb3ab60f90a112",
       "id": "artifact:file:generated/skill_walkthroughs.md:7a0c75e93c",
       "path": "generated/skill_walkthroughs.md",
       "source_record_id": "file:generated/skill_walkthroughs.md:7a0c75e93c",
@@ -10682,7 +10682,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "79633607e029d80a6d8a9a0cee68cabd18d40660e8b5d683e6197270e6903fd3",
+      "content_hash": "8c69d29fbebe1b4416861e48db15cc7baa06e8a27e3e72ba1e3aef051dad946e",
       "id": "artifact:file:skills/core/engineering/aoa-eval-apply/skill.md:69deed4a7e",
       "path": "skills/core/engineering/aoa-eval-apply/SKILL.md",
       "source_record_id": "file:skills/core/engineering/aoa-eval-apply/skill.md:69deed4a7e",
@@ -10698,7 +10698,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "5c2a08db14fc97d5ee09fdc0bbefcd9f921ce826d9da96fda133ad88ee7add7f",
+      "content_hash": "2c7324f6bc5ea40cff400dbc5b25b36a6adc3107d0faf196c3bdb555964ad341",
       "id": "artifact:file:skills/core/engineering/aoa-eval-apply/examples/runtime.md:8d2862601f",
       "path": "skills/core/engineering/aoa-eval-apply/examples/runtime.md",
       "source_record_id": "file:skills/core/engineering/aoa-eval-apply/examples/runtime.md:8d2862601f",
@@ -10842,7 +10842,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "ba9e0349bf988fc7ece71989c1f216e04e13d7065e947569cba22d629945f016",
+      "content_hash": "6006849ed0c7afc805fa9afb3f887d1b70841f6be15af72d041c95cd0e6306ea",
       "id": "artifact:file:skills/core/engineering/aoa-eval/skill.md:919dc95cee",
       "path": "skills/core/engineering/aoa-eval/SKILL.md",
       "source_record_id": "file:skills/core/engineering/aoa-eval/skill.md:919dc95cee",
@@ -10858,7 +10858,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "5d3babe485f5c87505a7f9a3826425f745a24fc165b1589e9bc993b657f9ad35",
+      "content_hash": "8a0aca095266658b8fab8a7378d9ff1de085ef1382b0f482b9f036c38a25e949",
       "id": "artifact:file:skills/core/engineering/aoa-eval/examples/runtime.md:009ca2b8c9",
       "path": "skills/core/engineering/aoa-eval/examples/runtime.md",
       "source_record_id": "file:skills/core/engineering/aoa-eval/examples/runtime.md:009ca2b8c9",
@@ -13234,7 +13234,7 @@
     },
     {
       "artifact_kind": "config",
-      "content_hash": "0dd6b6f6eab65a654f15623c575db4f5e1fcec3204523d08591da737ba195110",
+      "content_hash": "508db2b4575cae351eb29eacd4a9249de47f6e82709091e23681c1f741c91588",
       "id": "artifact:file:tests/fixtures/skill_evaluation_cases.yaml:1c6caffedc",
       "path": "tests/fixtures/skill_evaluation_cases.yaml",
       "source_record_id": "file:tests/fixtures/skill_evaluation_cases.yaml:1c6caffedc",
@@ -13718,6 +13718,14 @@
       "id": "artifact:file:tests/fixtures/skill_evaluation_snapshots/aoa-eval-apply/eval_apply_no_selection_yet.md:87f9aaa4aa",
       "path": "tests/fixtures/skill_evaluation_snapshots/aoa-eval-apply/eval_apply_no_selection_yet.md",
       "source_record_id": "file:tests/fixtures/skill_evaluation_snapshots/aoa-eval-apply/eval_apply_no_selection_yet.md:87f9aaa4aa",
+      "surface_state": "authored_source"
+    },
+    {
+      "artifact_kind": "document",
+      "content_hash": "2b4eb0a164c271f28388651debbc035bdc9ca15b1a8560028a8524e89c9dacc3",
+      "id": "artifact:file:tests/fixtures/skill_evaluation_snapshots/aoa-eval-apply/eval_apply_selected_local_suite_sidecar.md:a16cfc732a",
+      "path": "tests/fixtures/skill_evaluation_snapshots/aoa-eval-apply/eval_apply_selected_local_suite_sidecar.md",
+      "source_record_id": "file:tests/fixtures/skill_evaluation_snapshots/aoa-eval-apply/eval_apply_selected_local_suite_sidecar.md:a16cfc732a",
       "surface_state": "authored_source"
     },
     {
@@ -14626,7 +14634,7 @@
     },
     {
       "artifact_kind": "test",
-      "content_hash": "628158c3a0461624224bd2d948c6ddbdec7331f78606e8ac08d02a1d2321f538",
+      "content_hash": "1029499ad5e3011a9755ed2597c2e8c2d93e4661581d76715e033d52b60a2c53",
       "id": "artifact:file:tests/test_aoa_eval_prompt_trigger_harness.py:462516f6f9",
       "path": "tests/test_aoa_eval_prompt_trigger_harness.py",
       "source_record_id": "file:tests/test_aoa_eval_prompt_trigger_harness.py:462516f6f9",
@@ -15235,7 +15243,7 @@
   ],
   "index_identity": {
     "artifact_kind": "repository_artifact_index",
-    "content_digest": "8fa7415912c720ed199fec9b967faccf691ac8ba578c0fd43473bab0ecd52d02",
+    "content_digest": "5025231ff54062f0bada171d92aedf4525d9f75b9635fc0f2a9aa0e55da5c57d",
     "index_kind": "artifact",
     "local_id": "index:repo-local:artifacts",
     "schema_ref": "aoa-kag:schemas/repo-local-kag-repository-index.schema.json"
@@ -15259,19 +15267,19 @@
   },
   "schema_version": "aoa-repo-local-kag-repository-index-v1",
   "source_index": {
-    "content_digest": "9f797b9a3648179f8f7ca04f711726239a9aca04d41e72ee5d85750239fd00f1",
+    "content_digest": "d3ddfc79fd66d2e25ffcf200c6a011bcbb6cc6fa357949a6b6fe89a2ad07d096",
     "local_id": "index:repo-local:source-surfaces",
     "path": "kag/indexes/source_surface_index.json"
   },
   "summary": {
-    "entry_count": 1904,
+    "entry_count": 1905,
     "kind_counts": {
       "asset": 114,
       "config": 342,
       "data_table": 2,
       "dependency_manifest": 1,
       "directory_marker": 4,
-      "document": 1046,
+      "document": 1047,
       "generated_readmodel": 84,
       "index": 1,
       "license": 1,

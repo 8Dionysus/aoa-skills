@@ -149,6 +149,12 @@ Tracking starts with the community-docs baseline for this repository.
 
 ### Changed
 
+- `aoa-eval` now reports live-workspace root/commit/dirty posture separately
+  from exact-source evidence, and preserves dirty canonical checkouts.
+  `aoa-eval-apply` now adopts the owner JIT contract for reviewed local-suite
+  sidecars: exact typed invocation, environment capture, private source-linked
+  receipt, inspect-only readiness/MCP, and explicit non-proof/non-reproducible
+  boundaries. A trigger/snapshot regression covers the selected-sidecar route.
 - `aoa-eval` now requires a complete read of exactly one selected child's
   `SKILL.md` before applying or claiming its procedure. A returned child name
   remains selection evidence only, and focused regression coverage protects

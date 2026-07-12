@@ -15,6 +15,18 @@ SKILL_PATH = REPO_ROOT / "skills" / "core" / "engineering" / "aoa-eval" / "SKILL
 RUNTIME_EXAMPLE_PATH = (
     REPO_ROOT / "skills" / "core" / "engineering" / "aoa-eval" / "examples" / "runtime.md"
 )
+APPLY_SKILL_PATH = (
+    REPO_ROOT / "skills" / "core" / "engineering" / "aoa-eval-apply" / "SKILL.md"
+)
+APPLY_RUNTIME_EXAMPLE_PATH = (
+    REPO_ROOT
+    / "skills"
+    / "core"
+    / "engineering"
+    / "aoa-eval-apply"
+    / "examples"
+    / "runtime.md"
+)
 
 AOA_EVAL_SKILLS = {
     "aoa-eval",
@@ -41,6 +53,7 @@ REQUIRED_TRIGGER_CLASSES = {
         "eval_design_local_suite",
     },
     "validator/test route": {"eval_apply_selected_validator"},
+    "local suite JIT apply": {"eval_apply_selected_local_suite_sidecar"},
     "session mining after gates": {"eval_session_mining_missed_triggers"},
     "negative non-eval prompts": {
         "eval_router_plain_unit_test",
@@ -222,6 +235,58 @@ class AoaEvalPromptTriggerHarnessTests(unittest.TestCase):
         for expected in (
             "read the selected child's complete `SKILL.md` before applying its procedure",
             "a returned child name proves selection, not load",
+        ):
+            with self.subTest(runtime_example=expected):
+                self.assertIn(normalize(expected), runtime_example)
+
+    def test_router_separates_live_workspace_readiness_from_exact_source_evidence(self) -> None:
+        skill_text = normalize(SKILL_PATH.read_text(encoding="utf-8"))
+
+        for expected in (
+            "record the reported source root, Git commit, and dirty or divergent posture",
+            "live-workspace packet",
+            "exact merged or published evidence",
+            "run the owner validator from the exact source tree or commit",
+            "do not fast-forward, reset, or rewrite a dirty canonical checkout",
+        ):
+            with self.subTest(expected=expected):
+                self.assertIn(normalize(expected), skill_text)
+
+        runtime_example = normalize(RUNTIME_EXAMPLE_PATH.read_text(encoding="utf-8"))
+        for expected in (
+            "live-workspace routing evidence",
+            "exact source tree or commit",
+            "preserve a dirty canonical checkout",
+        ):
+            with self.subTest(runtime_example=expected):
+                self.assertIn(normalize(expected), runtime_example)
+
+    def test_apply_skill_jit_revalidates_local_suite_execution_contract(self) -> None:
+        skill_text = normalize(APPLY_SKILL_PATH.read_text(encoding="utf-8"))
+
+        for expected in (
+            "`evals/suites/<slug>.suite.json`",
+            "`source-contract-ready`",
+            "JIT-revalidate",
+            "`runner.argv`, `runner.cwd`, timeout, and accepted exit codes",
+            "inventory, readiness, dashboard, and MCP surfaces may inspect the sidecar but must not execute it",
+            "interpreter, dependency inventory digest, ambient pytest plugins, config, and selected environment",
+            "execution receipt linked to the source head and sidecar digest",
+            "runtime reproducibility remains false",
+            "passed candidate evidence",
+        ):
+            with self.subTest(expected=expected):
+                self.assertIn(normalize(expected), skill_text)
+
+        self.assertNotIn("green proof", skill_text.lower())
+
+        runtime_example = normalize(APPLY_RUNTIME_EXAMPLE_PATH.read_text(encoding="utf-8"))
+        for expected in (
+            "JIT source validation",
+            "exact validated argv",
+            "environment capture",
+            "private execution receipt",
+            "not central proof acceptance",
         ):
             with self.subTest(runtime_example=expected):
                 self.assertIn(normalize(expected), runtime_example)

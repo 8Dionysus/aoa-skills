@@ -114,7 +114,7 @@
       "heading_ref": {
         "anchor": "040-2026-05-18",
         "level": 2,
-        "line": 326,
+        "line": 332,
         "ref": "CHANGELOG.md#040-2026-05-18",
         "title": "[0.4.0] - 2026-05-18"
       },
@@ -129,7 +129,7 @@
       "heading_ref": {
         "anchor": "010-2026-03-23",
         "level": 2,
-        "line": 622,
+        "line": 628,
         "ref": "CHANGELOG.md#010-2026-03-23",
         "title": "[0.1.0] - 2026-03-23"
       },
@@ -144,7 +144,7 @@
       "heading_ref": {
         "anchor": "032-2026-04-19",
         "level": 2,
-        "line": 464,
+        "line": 470,
         "ref": "CHANGELOG.md#032-2026-04-19",
         "title": "[0.3.2] - 2026-04-19"
       },
@@ -159,7 +159,7 @@
       "heading_ref": {
         "anchor": "031-2026-04-12",
         "level": 2,
-        "line": 496,
+        "line": 502,
         "ref": "CHANGELOG.md#031-2026-04-12",
         "title": "[0.3.1] - 2026-04-12"
       },
@@ -174,7 +174,7 @@
       "heading_ref": {
         "anchor": "033-2026-04-23",
         "level": 2,
-        "line": 415,
+        "line": 421,
         "ref": "CHANGELOG.md#033-2026-04-23",
         "title": "[0.3.3] - 2026-04-23"
       },
@@ -189,7 +189,7 @@
       "heading_ref": {
         "anchor": "020-2026-04-01",
         "level": 2,
-        "line": 578,
+        "line": 584,
         "ref": "CHANGELOG.md#020-2026-04-01",
         "title": "[0.2.0] - 2026-04-01"
       },
@@ -204,7 +204,7 @@
       "heading_ref": {
         "anchor": "030-2026-04-10",
         "level": 2,
-        "line": 532,
+        "line": 538,
         "ref": "CHANGELOG.md#030-2026-04-10",
         "title": "[0.3.0] - 2026-04-10"
       },
@@ -2058,7 +2058,7 @@
   ],
   "index_identity": {
     "artifact_kind": "repository_event_index",
-    "content_digest": "39e7d13b0b88a7198987b7d6b361213e8622420bbe27949042d0a1ae5df4f310",
+    "content_digest": "573d8bc5e3e8c74078ea9e27b3bf72283630a6e2d081015920f0a52752cd03ad",
     "index_kind": "event",
     "local_id": "index:repo-local:events",
     "schema_ref": "aoa-kag:schemas/repo-local-kag-repository-index.schema.json"
@@ -2083,7 +2083,7 @@
   },
   "schema_version": "aoa-repo-local-kag-repository-index-v1",
   "source_index": {
-    "content_digest": "9f797b9a3648179f8f7ca04f711726239a9aca04d41e72ee5d85750239fd00f1",
+    "content_digest": "d3ddfc79fd66d2e25ffcf200c6a011bcbb6cc6fa357949a6b6fe89a2ad07d096",
     "local_id": "index:repo-local:source-surfaces",
     "path": "kag/indexes/source_surface_index.json"
   },

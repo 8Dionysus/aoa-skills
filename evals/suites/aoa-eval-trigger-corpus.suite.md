@@ -161,6 +161,27 @@ Fixture-backed generalization:
   pressure. The trigger should prefer an existing deterministic surface before
   creating new eval intake.
 
+### selected_local_suite_jit_apply
+
+- route: `aoa-eval-apply`
+- fixture case: `eval_apply_selected_local_suite_sidecar`
+- fixture file: `tests/fixtures/skill_evaluation_cases.yaml`
+- snapshot:
+  `tests/fixtures/skill_evaluation_snapshots/aoa-eval-apply/eval_apply_selected_local_suite_sidecar.md`
+- selected source surface: reviewed
+  `evals/suites/<slug>.suite.json` with
+  `schema_version: local_eval_suite_execution_v1`
+- owner handoff: the current `aoa-evals` local-port validator must report
+  `source-contract-ready` against the selected source tree immediately before
+  execution
+- reason: discovery, readiness, dashboard, and MCP packets may identify a
+  runnable candidate but may not invoke it. The repo owner or
+  `aoa-eval-apply` must preserve a dirty canonical workspace, JIT-revalidate an
+  exact source tree when the claim is commit-bound, invoke only the typed
+  argv/cwd/timeout/exit contract, capture the environment, and write a private
+  owner-local receipt. Source readiness is not runtime reproducibility or
+  central proof acceptance.
+
 ### should_not_trigger_eval
 
 - route: no `aoa-eval` trigger
@@ -222,4 +243,8 @@ Fixture-backed generalization:
 - Negative cases stay negative when there is no eval-lane pressure.
 - Owner-boundary cases name the wrong route and stop before proof authority
   moves out of `aoa-evals`.
+- A selected execution sidecar routes to JIT owner validation and exact typed
+  invocation; inspect-only readiness or MCP output never executes it.
+- Live-workspace readiness and exact-source validation remain separate evidence
+  statements, and unrelated dirty canonical work is preserved.
 - Local files remain candidate evidence until reviewed by the proper owner.
