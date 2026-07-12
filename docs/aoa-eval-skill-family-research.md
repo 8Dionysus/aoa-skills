@@ -330,3 +330,12 @@ measurement; one wrong choice remains a valid negative outcome. The first
 contract covers `collision-42`, bringing both pilot axes to 1/11. A fresh
 exact-merged smoke must validate this seam before the same design expands to
 the other ten implicit pilot cases.
+
+That exact-merged v12 smoke completed all four arms with no failure class,
+external read, broad fixture inventory, outcome-validator inspection, or
+retry. The aided arm retained positive route and selected-child trajectory
+lift; both arms chose the correct bounded owner action in one attempt, so
+outcome lift is `0` with both correct. The result validates that the new seam is
+measurable and independent. It does not show skill-specific outcome lift. The
+next honest move is to preserve this reviewed receipt and author the remaining
+ten pilot procedure/outcome contracts from their source skills.

@@ -424,11 +424,30 @@ As of 2026-07-12:
   candidate evidence; pilot coverage remains 1/11 procedures and 0/11 outcomes.
 - Current v12 contract posture: deterministic validation now covers 1/11
   procedure contracts and 1/11 owner-observable outcomes. Pilot execution is
-  still blocked before preflight; the new contract requires a fresh exact-
-  merged smoke before expansion to the other ten cases.
+  still blocked before preflight. The exact-merged v12 smoke validated one-
+  attempt observability with both arms correct and no contamination; expand
+  the reviewed shape to the other ten cases before pilot execution.
 - Superseded by: none.
 
 ## Review Log
+
+### 2026-07-12 - Validate the owner-action seam on exact-merged v12
+
+- Source posture: PR #313 merged as `25596566`; its squash tree exactly matched
+  the reviewed feature tree. The smoke planned and ran from a clean detached
+  worktree at that exact commit under protocol v12.
+- New evidence: all four arms completed with no failure class, external read,
+  broad fixture inventory, outcome-validator inspection, or retry. Route and
+  selected-child trajectory lift are `+1`. Procedure disposition and the
+  owner-action outcome are correct in both arms, so each reports `0` lift.
+- Decision: accept the public receipt as evidence that the outcome seam is
+  independently observable and anti-inspection guards hold. Do not infer
+  skill-specific outcome lift from a no-lift-both-correct pair.
+- Boundary: the receipt remains owner-local candidate evidence. It does not
+  prove target-repository completion, family-wide effectiveness, central eval
+  acceptance, promotion, or pilot readiness.
+- Next route: preserve the reviewed receipt, then author procedure and outcome
+  contracts for the remaining ten pilot cases before any 30-turn execution.
 
 ### 2026-07-12 - Add one-attempt owner-observable outcome seam
 
