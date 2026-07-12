@@ -228,6 +228,17 @@ v11 replay finds broad-command counts `2` in the first aided arm and `2/2/4`
 across aided/control/root in the repeat; replay validates the grader and does
 not rewrite either v10 receipt.
 
+The fresh exact-merged-tree v11 smoke completed four of four arms. Every arm
+stayed inside the fixture, emitted zero broad inventory commands, passed the
+independent fixture probe, and had no failure class. The implicit pair records
+route `+1`, source-locked selected-child trajectory `+1`, and
+procedure-disposition `0` with both arms correct; objective outcome remains
+unscored because the fixture exposes none. The manual root selected
+`aoa-eval-apply`, and the structured arm accepted official `aoa-eval-apply`
+input, with both matching their bounded contracts. The public reviewed receipt
+is candidate evidence, not a central verdict, family-wide claim, or permission
+to widen before pilot coverage reaches 11/11 procedure and 11/11 outcome.
+
 ## Safety And Privacy
 
 The plan locks Git head, all portable skill files, generated/config inputs,
