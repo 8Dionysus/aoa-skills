@@ -339,3 +339,22 @@ outcome lift is `0` with both correct. The result validates that the new seam is
 measurable and independent. It does not show skill-specific outcome lift. The
 next honest move is to preserve this reviewed receipt and author the remaining
 ten pilot procedure/outcome contracts from their source skills.
+
+## 2026-07-12 full pilot contract corpus
+
+The reviewed seam has now been expanded from `collision-42` to all eleven
+implicit `pilot13` cases without deriving answers from live output. Source
+review separates three direct invoke routes that lack repository evidence, two
+rooted routes that must select and fully read their first child, and six
+explicit-only routes that must remain unloaded under implicit pressure. Their
+procedure dispositions are respectively `blocked_missing_input` or
+`not_applicable`, never fixture-probe completion.
+
+Each case has a separate owner-action question with three deterministic,
+sorted candidate values and one source-authored expected choice. The plan locks
+the contract digests but does not reveal those choices; the live model receives
+only the candidates and may complete exactly one validator attempt. Focused
+harness validation now reports 11/11 procedure coverage and 11/11 objective
+outcome coverage. The next claim boundary is narrow: the corpus makes the
+30-turn pilot plan-eligible, but only an exact-merged, operator-confirmed,
+host-routed run and review can say what the runtime actually does.

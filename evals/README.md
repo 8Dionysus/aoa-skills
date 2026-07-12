@@ -37,8 +37,10 @@ Active first local corpus:
   recursive listing, and tree hashing are explicit harness-scope violations.
   An outcome is scored only when one atomic transport-observed validator event
   records a source-declared owner action; the generic fixture probe and model
-  report remain insufficient. The initial corpus covers `collision-42`, so
-  pilot coverage is 1/11 procedure contracts and 1/11 outcomes.
+  report remain insufficient. After validating the first `collision-42` seam
+  on exact-merged v12, the source corpus now covers all 11 implicit pilot
+  pairs on both axes. This closes the deterministic coverage stop gate; it does
+  not itself authorize or report a live `pilot13` run.
 
 These files are local evidence notes. They do not publish central proof
 acceptance, scoring, verdicts, regression truth, or proof doctrine.

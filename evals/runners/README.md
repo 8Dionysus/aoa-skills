@@ -18,9 +18,11 @@ exact confirmation token printed by that plan. `pilot13`, `full-collision`, and
 `coverage-closure` require the printed high-cost token as well.
 The pilot plan publishes selected-procedure contract coverage and objective
 outcome-observation coverage separately. It remains executable only at 11 of
-11 for both; the current corpus has 1/11 procedure contracts and 1/11 objective
-outcomes, so pilot execution stops before storage, resource, runtime, or model
-preflight even when both confirmation tokens match.
+11 for both; the current corpus now has 11/11 procedure contracts and 11/11
+objective outcomes. This makes planning eligible to print the two exact live
+confirmation tokens, but does not bypass storage, resource, runtime, prompt,
+shadow, or operator-confirmation gates and does not imply that `pilot13` has
+run.
 The procedure source contract lives at
 `evals/suites/aoa-skill-live-dispatch-procedures.json`; the separate bounded
 owner-action corpus lives at

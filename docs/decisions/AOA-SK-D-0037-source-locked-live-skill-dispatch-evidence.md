@@ -292,9 +292,9 @@ target also appears in its own neighbourhood list.
   repeated runs are needed before changing skill status or promotion posture.
 - Tradeoff: the 48k ceiling raises worst-case live-campaign cost; non-smoke
   cohorts therefore retain the second exact high-cost confirmation token.
-- Follow-up: validate the first v12 owner-action contract through a fresh
-  exact-merged smoke, then expand the reviewed shape to all eleven pilot cases
-  and close both 11/11 coverage gates before widening toward all 57 skills.
+- Follow-up: with the first v12 seam reviewed and both pilot coverage gates now
+  at 11/11, validate and merge the complete source corpus, then run and review
+  the guarded 30-turn pilot before widening toward all 57 skills.
 
 ## Current Applicability
 
@@ -326,9 +326,9 @@ As of 2026-07-12:
   and selected-procedure-disposition report lift separately. Sent structured
   dispatch, accepted native load, model hierarchy report, and fixture execution
   remain independent measures. Objective outcome is
-  `not_scored_no_observable_outcome` without a source contract; the first v12
-  contract separately observes the bounded next owner action for
-  `collision-42`.
+  `not_scored_no_observable_outcome` without a source contract; the v12 corpus
+  separately observes one bounded next owner action for every implicit pilot
+  case.
 - Historical protocols: retained v1-v2 smokes are `needs-rerun`; v2 produced a
   valid candidate implicit pair but used an unsupported structured-only App
   input and cannot support its App load label. Retained v3-v6 reports keep their
@@ -389,7 +389,7 @@ As of 2026-07-12:
   harness evidence. Their former requirement for a fresh v11 rerun is satisfied
   by the next item; the inventory-pressured `aoa-eval-local-need` observation
   does not pressure a skill or contract.
-- Current reviewed smoke: exact-merged v11 completed all four arms with no
+- Reviewed v11 smoke: exact-merged v11 completed all four arms with no
   failures, external reads, or broad inventory commands. The aided arm selected
   `aoa-eval`, fully read the source-correct `aoa-eval-select` child, and
   reported `blocked_missing_input`; the control had no skill surface and did
@@ -398,9 +398,9 @@ As of 2026-07-12:
   outcome unscored. The direct root-to-`aoa-eval-apply` and official structured
   `aoa-eval-apply` arms also matched their dispatch, load, probe, and boundary
   contracts. This is reviewed candidate evidence, not a family verdict or
-  promotion signal. Pilot planning still exposes 1/11 procedure contracts and
-  0/11 objective outcomes; confirmed execution remains blocked before
-  preflight until both reach 11/11.
+  promotion signal. At that source head, pilot planning exposed 1/11 procedure
+  contracts and 0/11 objective outcomes; confirmed execution was blocked
+  before preflight until both reached 11/11.
 - Current adaptive return: comparing the successful v11 route with the accepted
   `aoa-evals` local-suite execution contract found a procedure gap in the skill
   source. `aoa-eval` must distinguish live-workspace readiness from exact-source
@@ -416,20 +416,47 @@ As of 2026-07-12:
   arms incorrect, procedure disposition is correct in both arms, and outcome is
   unscored. Missing evidence must not become a no-fit conclusion. Preserve the
   receipt and harden selection precedence before the next exact smoke.
-- Current repaired rerun: exact-merged v11 after the fail-closed precedence
+- Reviewed repaired v11 rerun: exact-merged v11 after the fail-closed precedence
   change completed four of four arms with no failure class. The aided root
   selected and fully read `aoa-eval-select`; route and trajectory lift are each
   `+1`, both procedure dispositions are correct, outcome remains unscored, and
   all isolation/fixture gates pass. This closes the precedence return as
-  candidate evidence; pilot coverage remains 1/11 procedures and 0/11 outcomes.
-- Current v12 contract posture: deterministic validation now covers 1/11
-  procedure contracts and 1/11 owner-observable outcomes. Pilot execution is
-  still blocked before preflight. The exact-merged v12 smoke validated one-
-  attempt observability with both arms correct and no contamination; expand
-  the reviewed shape to the other ten cases before pilot execution.
+  candidate evidence; at that source head pilot coverage remained 1/11
+  procedures and 0/11 outcomes.
+- Reviewed v12 seam posture: deterministic validation covered 1/11 procedure
+  contracts and 1/11 owner-observable outcomes. The exact-merged v12 smoke
+  validated one-attempt observability with both arms correct and no
+  contamination, authorizing source review of the other ten cases.
+- Current pilot contract posture: all 11 implicit pairs have source-locked
+  procedure contracts and separate owner-observable outcome contracts.
+  Deterministic planning reports 11/11 on both required axes. The coverage stop
+  is closed, but `pilot13` has not yet run; exact merged source, both operator
+  tokens, host/runtime preflights, and adaptive result review remain required.
 - Superseded by: none.
 
 ## Review Log
+
+### 2026-07-12 - Close both pilot contract coverage gates
+
+- Previous posture: the exact-merged v12 smoke validated one `collision-42`
+  owner-action seam, leaving ten implicit pilot cases without complete
+  procedure and outcome contracts.
+- Source review: three direct invoke cases lack the repository evidence needed
+  to complete their procedures; two root routes must select and fully read
+  their first child before blocking; six explicit-only skills must stay
+  unloaded and report `not_applicable` under implicit pressure.
+- Decision: author one source-locked procedure contract and one independent,
+  sorted three-choice owner-action contract for every implicit pilot case.
+  Keep child-read expectations null where no child exists, and keep fixture
+  execution, procedure disposition, bounded owner choice, and whole-task
+  completion separate.
+- Validation boundary: deterministic expansion and plan tests now report 11/11
+  procedure coverage and 11/11 outcome coverage while preserving fail-closed
+  tests for an incomplete corpus. This makes the pilot plan-eligible only; it
+  is not live evidence, a family verdict, central proof, or promotion authority.
+- Next route: merge the exact source, obtain the source-bound plan and high-cost
+  tokens, run through host resource gates, and review every return before any
+  broader cohort.
 
 ### 2026-07-12 - Validate the owner-action seam on exact-merged v12
 
@@ -923,6 +950,7 @@ coverage.
 - exact `codex --version`, App Server schema contract, resource-wrapper cgroup,
   storage preflight, shadow-set lock, and `codex debug prompt-input` inventory
   checks before a live turn
-- corrected smoke review before any pilot widening or skill-defect claim
+- exact-merged complete-corpus review before pilot execution, then reviewed
+  pilot evidence before any broader widening or skill-defect claim
 - one-attempt outcome-validator, no-answer-in-plan, and anti-inspection tests
   before any owner-action outcome is scored
