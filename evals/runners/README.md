@@ -16,9 +16,14 @@ verdicts, scoring, regression truth, proof acceptance, or promotion.
 The default action is a read-only plan. A live run additionally requires the
 exact confirmation token printed by that plan. `pilot13`, `full-collision`, and
 `coverage-closure` require the printed high-cost token as well.
-The pilot plan also publishes outcome-contract coverage and remains executable
-only at 11 of 11 implicit pairs; an incomplete pilot stops before storage,
-resource, runtime, or model preflight even when both confirmation tokens match.
+The pilot plan publishes selected-procedure contract coverage and objective
+outcome-observation coverage separately. It remains executable only at 11 of
+11 for both; the current corpus has 1/11 procedure contracts and 0/11 objective
+outcomes, so pilot execution stops before storage, resource, runtime, or model
+preflight even when both confirmation tokens match.
+The current source contract lives at
+`evals/suites/aoa-skill-live-dispatch-procedures.json`; it does not claim an
+objective outcome answer key.
 
 Planning discovers exact external `SKILL.md` files whose canonical names
 shadow the repo export, including canonical targets behind symlinked user-skill
@@ -49,9 +54,17 @@ turn follows the
 the text begins with the exact `$skill` mention and the adjacent structured
 `skill` item carries the same fixture name and path. An accepted official input
 is version-locked native-load evidence, distinct from a raw shell full read.
-These rules use contract schema `aoa_codex_app_server_skill_input_contract_v9`
-and protocol revision `codex-cli-0.144.1-live-dispatch-evidence-v9`. Retained
-v1-v8 receipts stay source-locked to their original protocol and review status;
+Sending that validated input is transport-owned dispatch evidence; the model's
+later direct-target report or exact root-to-child hierarchy declared by
+`root_child_trajectories` is retained separately and cannot override the native
+dispatch/load facts. A correct child under an unrelated root is not an
+equivalent hierarchy report, and a direct target report carrying a conflicting
+child is not exact either. Those report-only mismatches are
+`selection_report_miss`; they do not rewrite successful native dispatch or load
+evidence as `dispatch_policy_gap`.
+These rules use contract schema `aoa_codex_app_server_skill_input_contract_v10`
+and protocol revision `codex-cli-0.144.1-live-dispatch-evidence-v10`. Retained
+v1-v9 receipts stay source-locked to their original protocol and review status;
 they are never upgraded in place.
 
 Run the confirmed command only as the child of the plan packet's
@@ -67,11 +80,14 @@ control selects a longer source-locked ambient route; widening only one side
 would invalidate paired lift.
 
 The sandbox remains read-only and network-disabled, but the read-only shell
-tool is available for evidence-bearing reads and the hermetic fixture
-procedure. Read-only skill-file inspection commands may precede the procedure;
-they collect evidence and do not count as procedure commands. Root/child and
-structured arms receive the one exact procedure command
-`python3 fixture_validator.py`. Transport evidence records full `SKILL.md`
+tool is available for evidence-bearing reads and the independent hermetic
+fixture probe. Read-only skill-file inspection commands collect load evidence.
+All arms run the exact probe `python3 fixture_validator.py`; it proves fixture
+executability only and does not define the selected child procedure or external
+task outcome. New v10 private and public measures name its command, exit, and
+sentinel facts only with `fixture_*` fields; the runner accepts historical
+`procedure_command_*` fields solely as a read-only replay fallback for retained
+v1-v9 receipts. Transport evidence records full `SKILL.md`
 reads only from the exact fixture paths with complete source content. One
 successful output may contain the whole file, or ordered successful outputs may
 continuously cover it; overlapping chunks are allowed, unrelated exact-path
@@ -104,16 +120,16 @@ python evals/runners/run_live_skill_dispatch.py plan \
 Do not paste raw receipts into Git, issue trackers, or chat. Review them locally
 and use the runner's `review` action to create a field-whitelisted public
 receipt under `evals/reports/` only after assigning an explicit review status.
-Public measures keep prompt visibility, selection, model load claim, accepted
-native input, raw full-read evidence, dispatch/load matches, procedure
-disposition, execution, verification, completion, and deflection separate.
-Each implicit pair always reports route lift. It reports bounded downstream
-procedure-outcome lift only when both arms carry the same source-locked outcome
-contract; otherwise the outcome dimension is `not_scored_no_contract`. The
-outcome matcher compares only the predeclared downstream procedure disposition,
-command, verification, completion/deflection, and owner-boundary dimensions and
-does not depend on route correctness. It does not grade completion of a real
-repository task outside the fixture. A
+Public measures keep prompt visibility, model selection report, transport-owned
+structured dispatch, accepted native load, exact reads, route, selected-child
+trajectory, fixture execution, model-reported procedure disposition, and
+objective outcome posture separate. Each implicit pair reports route lift,
+source-locked child-trajectory lift, and source-locked procedure-disposition
+report lift as distinct dimensions. `python3 fixture_validator.py` has its own
+fixture-execution match. Because this fixture exposes no objective external-task
+outcome, current v10 pairs set outcome lift to null with
+`not_scored_no_observable_outcome`; neither command success nor model self-report
+may fill that gap. A
 correct selection without the required native-load or child/full-read evidence
 returns `skill_load_gap` to the same case. A wrong activation decision after the
 route is available is instead `dispatch_policy_gap`. A normal zero-return
@@ -130,12 +146,13 @@ cohort is incomplete. A complete cohort still returns exit 0 even when it
 records negative skill evidence; process status reports measurement completeness,
 not model quality.
 
-Both lift dimensions are omitted when either arm has an output-contract,
+All scored lift dimensions are omitted when either arm has an output-contract,
 transport, budget, runtime, or owner-boundary safety failure. Contamination
 remains an explicit pair outcome but never rewrites either arm's recorded
-classification. A source-locked aided route whose bounded downstream procedure
-outcome misses the declared contract returns `bounded_outcome_miss` to joint
-skill-procedure and contract review before the same case is repeated.
+classification. A source-locked aided route with the wrong declared child
+returns `trajectory_break`; a correct child whose disposition report misses the
+source contract returns `procedure_disposition_miss`; a missing probe returns
+`fixture_execution_gap` to harness repair rather than child-skill repair.
 Public review also
 walks every string value and rejects an absolute host path even when it is
 embedded in prose, in addition to credential and transport-id leakage.
@@ -188,16 +205,23 @@ outcome contract before planning, and requires a fresh exact-merged smoke before
 `pilot13`.
 
 The exact-merged v8 smoke completed four of four arms and reported positive
-route lift but negative outcome lift. Source review showed that the answer key,
-not the observed downstream procedure, had crossed its declared boundary: the
-model-output contract defines `procedure_disposition` for the downstream skill
-procedure, while the v8 key expected deflection of the larger unavailable
-repository task. The aided arm completed and verified the exact fixture
-procedure while preserving those external owner stop-lines. Its reviewed
-public receipt therefore remains immutable `needs-rerun` harness evidence. V9
-names the downstream-procedure scope explicitly, corrects the pre-authored key
-from source, and requires replay plus a fresh exact-merged smoke before
-`pilot13`.
+route lift but negative outcome lift. V9 first corrected the whole-task versus
+downstream-procedure wording, but the next live run showed that this still
+treated the fixture probe as if it were the selected child procedure. V8's
+aided arm selected `aoa-eval-apply`; source review of `collision-42` instead
+requires `aoa-eval-select` before any apply/local-need/design decision. The v8
+receipt therefore remains immutable `needs-rerun` harness evidence.
+
+The exact-merged v9 smoke also completed four of four arms. It selected and
+fully read `aoa-eval-select`, correctly reported missing target-repository
+evidence, and retained positive route lift. Its structured arm accepted the
+official `aoa-eval-apply` input and completed the fixture probe but reported the
+equivalent root-to-child hierarchy, which v9 incorrectly allowed model
+self-report to override as `dispatch_policy_gap`. V10 replay separates these
+contexts: v9 becomes route `+1`, trajectory `+1`, procedure-disposition `0`
+with both reports correct, and objective outcome unscored. The public v9
+receipt remains historical `needs-rerun`; replay is grader validation, not a
+replacement live result or proof.
 
 See `evals/suites/aoa-skill-live-dispatch-harness.suite.md` and
 `docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md` for

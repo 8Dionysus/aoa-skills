@@ -39,7 +39,7 @@
     "sources": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["collision_matrix", "description_cases", "skill_catalog", "policy_matrix", "pack_profiles", "protocol_contract", "outcome_contracts"],
+      "required": ["collision_matrix", "description_cases", "skill_catalog", "policy_matrix", "pack_profiles", "protocol_contract", "procedure_contracts"],
       "properties": {
         "collision_matrix": {"type": "string"},
         "description_cases": {"type": "string"},
@@ -47,7 +47,7 @@
         "policy_matrix": {"type": "string"},
         "pack_profiles": {"type": "string"},
         "protocol_contract": {"const": "evals/suites/codex-app-server-skill-input.contract.json"},
-        "outcome_contracts": {"const": "evals/suites/aoa-skill-live-dispatch-outcomes.json"}
+        "procedure_contracts": {"const": "evals/suites/aoa-skill-live-dispatch-procedures.json"}
       }
     },
     "caps": {
@@ -95,8 +95,8 @@
     },
     "failure_taxonomy": {
       "type": "array",
-      "minItems": 14,
-      "maxItems": 14,
+      "minItems": 15,
+      "maxItems": 15,
       "uniqueItems": true,
       "items": {"type": "string"}
     },
@@ -118,7 +118,7 @@
     "cohort": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["implicit_case_ids", "trajectory_case_ids", "structured_skills", "outcome_contract_mode", "expected_turn_count", "estimated_private_bytes", "estimated_memory_demand_mib", "resource_class"],
+      "required": ["implicit_case_ids", "trajectory_case_ids", "structured_skills", "procedure_contract_mode", "objective_outcome_mode", "expected_turn_count", "estimated_private_bytes", "estimated_memory_demand_mib", "resource_class"],
       "properties": {
         "implicit_case_ids": {
           "oneOf": [
@@ -138,7 +138,8 @@
             {"const": "all-non-invoke-skills"}
           ]
         },
-        "outcome_contract_mode": {"enum": ["required", "required_for_live", "declared_only"]},
+        "procedure_contract_mode": {"enum": ["required", "required_for_live", "declared_only"]},
+        "objective_outcome_mode": {"enum": ["not_scored_fixture_only", "required_for_live", "declared_only"]},
         "expected_turn_count": {"type": "integer", "minimum": 1, "maximum": 200},
         "estimated_private_bytes": {"type": "integer", "minimum": 1048576, "maximum": 2147483648},
         "estimated_memory_demand_mib": {"type": "integer", "minimum": 128, "maximum": 2048},

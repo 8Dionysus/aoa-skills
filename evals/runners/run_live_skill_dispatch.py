@@ -35,8 +35,8 @@ PUBLIC_RECEIPT_SCHEMA_VERSION = "aoa_skill_live_dispatch_public_receipt_v1"
 DEFAULT_PLAN_REF = Path("evals/suites/aoa-skill-live-dispatch.plan.json")
 DEFAULT_OUTPUT_SCHEMA_REF = Path("schemas/live-skill-dispatch-model-output.schema.json")
 DEFAULT_PLAN_SCHEMA_REF = Path("schemas/live-skill-dispatch-plan.schema.json")
-DEFAULT_OUTCOME_CONTRACT_SCHEMA_REF = Path(
-    "schemas/live-skill-dispatch-outcome-contracts.schema.json"
+DEFAULT_PROCEDURE_CONTRACT_SCHEMA_REF = Path(
+    "schemas/live-skill-dispatch-procedure-contracts.schema.json"
 )
 DEFAULT_PRIVATE_RECEIPT_SCHEMA_REF = Path("schemas/live-skill-dispatch-private-receipt.schema.json")
 DEFAULT_PUBLIC_RECEIPT_SCHEMA_REF = Path("schemas/live-skill-dispatch-public-receipt.schema.json")
@@ -96,6 +96,10 @@ PUBLIC_MEASURE_KEYS = (
     "expected_behavior",
     "selected_target_exact",
     "selected_child_exact",
+    "reported_target_direct_exact",
+    "reported_target_hierarchy_exact",
+    "hierarchy_report_expected_root_skill",
+    "selection_report_contract_match",
     "route_decision",
     "manual_recommendation",
     "model_claims_loaded",
@@ -118,8 +122,25 @@ PUBLIC_MEASURE_KEYS = (
     "procedure_command_succeeded",
     "verification_observed",
     "procedure_contract_match",
+    "fixture_command_observed",
+    "fixture_command_succeeded",
+    "fixture_verification_observed",
+    "fixture_execution_contract_match",
     "completion_observed",
     "deflection_observed",
+    "selected_procedure_completion_reported",
+    "selected_procedure_deflection_reported",
+    "trajectory_contract_defined",
+    "trajectory_contract_sha256",
+    "trajectory_expected_child_skill",
+    "trajectory_contract_match",
+    "trajectory_mismatch_dimensions",
+    "procedure_contract_defined",
+    "procedure_contract_sha256",
+    "procedure_contract_scope",
+    "procedure_contract",
+    "procedure_disposition_contract_match",
+    "procedure_disposition_mismatch_dimensions",
     "outcome_contract_defined",
     "outcome_contract_sha256",
     "outcome_scope",
@@ -144,6 +165,22 @@ PUBLIC_PAIR_KEYS = (
     "control_route_contract_match",
     "route_lift",
     "route_effect_class",
+    "trajectory_contract_defined",
+    "trajectory_contract_consistent",
+    "trajectory_contract_sha256",
+    "trajectory_expected_child_skill",
+    "aided_trajectory_contract_match",
+    "control_trajectory_contract_match",
+    "trajectory_lift",
+    "trajectory_effect_class",
+    "procedure_contract_defined",
+    "procedure_contract_consistent",
+    "procedure_contract_sha256",
+    "procedure_contract_scope",
+    "aided_procedure_disposition_contract_match",
+    "control_procedure_disposition_contract_match",
+    "procedure_disposition_lift",
+    "procedure_disposition_effect_class",
     "outcome_contract_defined",
     "outcome_contract_consistent",
     "outcome_contract_sha256",
@@ -153,7 +190,7 @@ PUBLIC_PAIR_KEYS = (
     "outcome_lift",
     "outcome_effect_class",
     # Historical v1-v7 private receipts retain their original generic pair
-    # vocabulary when reviewed. Current v9 runs never emit these two keys.
+    # vocabulary when reviewed. Current v10 runs never emit these two keys.
     "observed_lift",
     "effect_class",
     "fixture_context_match",
@@ -163,6 +200,8 @@ PUBLIC_PAIR_KEYS = (
     "control_dispatch_contract_match",
     "aided_load_contract_match",
     "control_load_contract_match",
+    "aided_fixture_execution_contract_match",
+    "control_fixture_execution_contract_match",
     "input_token_delta",
     "duration_ms_delta",
 )
@@ -174,15 +213,17 @@ FAILURE_TAXONOMY = {
     "manual_activation_leak": "A manual/suggest skill was claimed loaded by implicit routing.",
     "trajectory_break": "The explicit root did not select the exact expected child.",
     "dispatch_policy_gap": "The exact target route was available, but the activation decision violated its expected dispatch policy.",
+    "selection_report_miss": "Native structured dispatch/load remained valid, but the model's direct or source-declared hierarchy report was not exact.",
     "skill_load_gap": "The exact target was selected but neither an accepted native load contract nor its required child/full read was observed.",
-    "direct_procedure_gap": "Selection and the load contract succeeded but the exact fixture command, successful exit, or sentinel verification was absent.",
-    "bounded_outcome_miss": "The aided route and load contract passed, but the source-locked bounded downstream procedure outcome did not.",
+    "fixture_execution_gap": "The route remained measurable, but the exact hermetic fixture command, successful exit, or sentinel verification was absent.",
+    "procedure_disposition_miss": "The aided route and any declared child trajectory passed, but the source-locked selected-route procedure disposition did not.",
     "owner_boundary_violation": "The result widened mutation, proof, promotion, or owner authority.",
     "runtime_profile_drift": "Codex, model, source, profile, or protocol identity drifted after planning.",
     "budget_exhausted": "The source-locked weighted token cap stopped the turn before a valid result.",
     "output_contract_invalid": "The transport returned normally, but the final structured model output did not satisfy the bounded output contract.",
     "transport_failure": "The bounded transport failed or timed out before producing an evaluable result.",
 }
+LEGACY_FAILURE_CLASSES = {"direct_procedure_gap", "bounded_outcome_miss"}
 
 ADAPTIVE_RETURN_ROUTE = {
     "harness_contamination": "repair_harness_then_repeat_smoke",
@@ -192,8 +233,9 @@ ADAPTIVE_RETURN_ROUTE = {
     "manual_activation_leak": "repair_manual_policy_then_repeat_smoke",
     "trajectory_break": "repair_root_or_child_then_repeat_adjacent_family",
     "dispatch_policy_gap": "repair_dispatch_policy_then_repeat_same_case",
-    "direct_procedure_gap": "repair_child_procedure_then_repeat_direct_arm",
-    "bounded_outcome_miss": "review_skill_procedure_or_outcome_contract_then_repeat_same_case",
+    "selection_report_miss": "review_selection_report_contract_then_repeat_same_case",
+    "fixture_execution_gap": "repair_fixture_execution_then_repeat_same_case",
+    "procedure_disposition_miss": "review_selected_procedure_or_contract_then_repeat_same_case",
     "owner_boundary_violation": "repair_owner_boundary_then_repeat_smoke",
     "runtime_profile_drift": "refresh_profile_and_source_lock_then_repeat_smoke",
     "budget_exhausted": "review_caps_or_reduce_context_then_repeat_same_case",
@@ -252,16 +294,15 @@ class PublicReceiptSafetyError(ValueError):
 
 
 @dataclasses.dataclass(frozen=True, slots=True)
-class OutcomeContract:
+class ProcedureContract:
     contract_id: str
     case_id: str
     scope: str
-    expected_procedure_disposition: str | None
-    expected_procedure_command_observed: bool | None
-    expected_procedure_command_succeeded: bool | None
-    expected_verification_observed: bool | None
-    expected_completion_observed: bool | None
-    expected_deflection_observed: bool | None
+    expected_selected_child_skill: str | None
+    expected_selected_child_full_read_observed: bool | None
+    expected_selected_procedure_disposition: str | None
+    expected_selected_procedure_completion_reported: bool | None
+    expected_selected_procedure_deflection_reported: bool | None
     expected_owner_boundary_present: bool | None
     source_refs: tuple[str, ...]
     rationale: str = ""
@@ -274,12 +315,19 @@ class OutcomeContract:
             "contract_id": self.contract_id,
             "scope": self.scope,
             "contract_sha256": self.sha256(),
-            "expected_procedure_disposition": self.expected_procedure_disposition,
-            "expected_procedure_command_observed": self.expected_procedure_command_observed,
-            "expected_procedure_command_succeeded": self.expected_procedure_command_succeeded,
-            "expected_verification_observed": self.expected_verification_observed,
-            "expected_completion_observed": self.expected_completion_observed,
-            "expected_deflection_observed": self.expected_deflection_observed,
+            "expected_selected_child_skill": self.expected_selected_child_skill,
+            "expected_selected_child_full_read_observed": (
+                self.expected_selected_child_full_read_observed
+            ),
+            "expected_selected_procedure_disposition": (
+                self.expected_selected_procedure_disposition
+            ),
+            "expected_selected_procedure_completion_reported": (
+                self.expected_selected_procedure_completion_reported
+            ),
+            "expected_selected_procedure_deflection_reported": (
+                self.expected_selected_procedure_deflection_reported
+            ),
             "expected_owner_boundary_present": self.expected_owner_boundary_present,
         }
 
@@ -295,7 +343,8 @@ class Trial:
     competing_skills: tuple[str, ...] = ()
     root_skill: str | None = None
     expected_child_skill: str | None = None
-    outcome_contract: OutcomeContract | None = None
+    equivalent_report_root_skill: str | None = None
+    procedure_contract: ProcedureContract | None = None
 
     def public_descriptor(self) -> dict[str, Any]:
         return {
@@ -307,9 +356,12 @@ class Trial:
             "competing_skills": list(self.competing_skills),
             "root_skill": self.root_skill,
             "expected_child_skill": self.expected_child_skill,
-            "outcome_contract_defined": self.outcome_contract is not None,
-            "outcome_contract_sha256": (
-                self.outcome_contract.sha256() if self.outcome_contract is not None else None
+            "equivalent_report_root_skill": self.equivalent_report_root_skill,
+            "procedure_contract_defined": self.procedure_contract is not None,
+            "procedure_contract_sha256": (
+                self.procedure_contract.sha256()
+                if self.procedure_contract is not None
+                else None
             ),
             "prompt_sha256": sha256_text(self.prompt),
         }
@@ -412,13 +464,13 @@ def load_plan(path: Path) -> dict[str, Any]:
     output_schema = _read_json(repo_root / DEFAULT_OUTPUT_SCHEMA_REF)
     Draft202012Validator.check_schema(output_schema)
     validate_openai_strict_output_schema(output_schema)
-    outcome_schema = _read_json(repo_root / DEFAULT_OUTCOME_CONTRACT_SCHEMA_REF)
-    Draft202012Validator.check_schema(outcome_schema)
-    outcome_ref = _safe_source_ref(str(payload["sources"]["outcome_contracts"]))
-    Draft202012Validator(outcome_schema).validate(_read_json(repo_root / outcome_ref))
+    procedure_schema = _read_json(repo_root / DEFAULT_PROCEDURE_CONTRACT_SCHEMA_REF)
+    Draft202012Validator.check_schema(procedure_schema)
+    procedure_ref = _safe_source_ref(str(payload["sources"]["procedure_contracts"]))
+    Draft202012Validator(procedure_schema).validate(_read_json(repo_root / procedure_ref))
     if payload.get("failure_taxonomy") != list(FAILURE_TAXONOMY):
         raise ValueError("live dispatch plan failure taxonomy drifted from the runner contract")
-    _outcome_contracts(repo_root, payload)
+    _procedure_contracts(repo_root, payload)
     return payload
 
 
@@ -628,7 +680,7 @@ def _expected_codex_version(plan: dict[str, Any]) -> str:
     revision = str(plan.get("protocol_revision") or "")
     match = re.fullmatch(
         r"codex-cli-([0-9]+(?:\.[0-9]+){2})-"
-        r"(?:app-server-skill-input-v3|live-dispatch-evidence-v[4-9])",
+        r"(?:app-server-skill-input-v3|live-dispatch-evidence-v(?:[4-9]|10))",
         revision,
     )
     if match is None:
@@ -688,21 +740,20 @@ def _catalog_entries(repo_root: Path, plan: dict[str, Any]) -> dict[str, dict[st
     return {str(item["name"]): item for item in payload.get("skills", [])}
 
 
-def _outcome_contracts(
+def _procedure_contracts(
     repo_root: Path,
     plan: dict[str, Any],
-) -> dict[str, OutcomeContract]:
-    path = repo_root / _safe_source_ref(str(plan["sources"]["outcome_contracts"]))
+) -> dict[str, ProcedureContract]:
+    path = repo_root / _safe_source_ref(str(plan["sources"]["procedure_contracts"]))
     payload = _read_json(path)
-    records: dict[str, OutcomeContract] = {}
+    records: dict[str, ProcedureContract] = {}
     locked_refs = {str(value) for value in plan.get("source_refs", [])}
     expectation_fields = (
-        "expected_procedure_disposition",
-        "expected_procedure_command_observed",
-        "expected_procedure_command_succeeded",
-        "expected_verification_observed",
-        "expected_completion_observed",
-        "expected_deflection_observed",
+        "expected_selected_child_skill",
+        "expected_selected_child_full_read_observed",
+        "expected_selected_procedure_disposition",
+        "expected_selected_procedure_completion_reported",
+        "expected_selected_procedure_deflection_reported",
         "expected_owner_boundary_present",
     )
     for item in payload.get("contracts", []):
@@ -711,30 +762,33 @@ def _outcome_contracts(
             _safe_source_ref(ref)
             if ref not in locked_refs:
                 raise ValueError(
-                    f"outcome contract source ref is not in the plan source lock: {ref}"
+                    f"procedure contract source ref is not in the plan source lock: {ref}"
                 )
         if all(item.get(field) is None for field in expectation_fields):
-            raise ValueError("outcome contract must score at least one explicit dimension")
-        contract = OutcomeContract(
+            raise ValueError("procedure contract must score at least one explicit dimension")
+        contract = ProcedureContract(
             contract_id=str(item["contract_id"]),
             case_id=str(item["case_id"]),
             scope=str(item["scope"]),
-            expected_procedure_disposition=item.get("expected_procedure_disposition"),
-            expected_procedure_command_observed=item.get(
-                "expected_procedure_command_observed"
+            expected_selected_child_skill=item.get("expected_selected_child_skill"),
+            expected_selected_child_full_read_observed=item.get(
+                "expected_selected_child_full_read_observed"
             ),
-            expected_procedure_command_succeeded=item.get(
-                "expected_procedure_command_succeeded"
+            expected_selected_procedure_disposition=item.get(
+                "expected_selected_procedure_disposition"
             ),
-            expected_verification_observed=item.get("expected_verification_observed"),
-            expected_completion_observed=item.get("expected_completion_observed"),
-            expected_deflection_observed=item.get("expected_deflection_observed"),
+            expected_selected_procedure_completion_reported=item.get(
+                "expected_selected_procedure_completion_reported"
+            ),
+            expected_selected_procedure_deflection_reported=item.get(
+                "expected_selected_procedure_deflection_reported"
+            ),
             expected_owner_boundary_present=item.get("expected_owner_boundary_present"),
             source_refs=refs,
             rationale=str(item.get("rationale") or ""),
         )
         if contract.case_id in records:
-            raise ValueError(f"duplicate outcome contract case: {contract.case_id}")
+            raise ValueError(f"duplicate procedure contract case: {contract.case_id}")
         records[contract.case_id] = contract
     return records
 
@@ -745,7 +799,7 @@ def _expected_behavior(item: dict[str, Any]) -> str:
 
 def _implicit_pair(
     item: dict[str, Any],
-    outcome_contract: OutcomeContract | None,
+    procedure_contract: ProcedureContract | None,
 ) -> list[Trial]:
     case_id = str(item["case_id"])
     target = str(item.get("skill_name") or item.get("expected_skill") or "")
@@ -756,7 +810,7 @@ def _implicit_pair(
         "expected_target_skill": target,
         "expected_behavior": behavior,
         "competing_skills": tuple(str(value) for value in item.get("competing_skills", [])),
-        "outcome_contract": outcome_contract,
+        "procedure_contract": procedure_contract,
     }
     return [
         Trial(trial_id=f"{case_id}:aided", arm_type="implicit_aided", **common),
@@ -786,6 +840,7 @@ def _structured_trial(
     prompt: str,
     case_id: str,
     expected_behavior: str = "explicit",
+    equivalent_report_root_skill: str | None = None,
 ) -> Trial:
     return Trial(
         trial_id=f"{case_id}:structured:{skill_name}",
@@ -794,6 +849,7 @@ def _structured_trial(
         prompt=TEXTUAL_SKILL_ACTIVATION_RE.sub(lambda match: match.group("name"), prompt),
         expected_target_skill=skill_name,
         expected_behavior=expected_behavior,
+        equivalent_report_root_skill=equivalent_report_root_skill,
     )
 
 
@@ -829,12 +885,12 @@ def expand_cohort(repo_root: Path, plan: dict[str, Any], cohort: str) -> list[Tr
     descriptions = _description_cases(repo_root, plan)
     policies = _policy_entries(repo_root, plan)
     catalog = _catalog_entries(repo_root, plan)
-    outcome_contracts = _outcome_contracts(repo_root, plan)
+    procedure_contracts = _procedure_contracts(repo_root, plan)
     known_case_ids = set(collisions) | set(descriptions)
-    unknown_contracts = sorted(set(outcome_contracts) - known_case_ids)
+    unknown_contracts = sorted(set(procedure_contracts) - known_case_ids)
     if unknown_contracts:
         raise ValueError(
-            "outcome contracts reference unknown live dispatch cases: "
+            "procedure contracts reference unknown live dispatch cases: "
             + ", ".join(unknown_contracts)
         )
     cohorts = plan.get("cohorts", {})
@@ -865,22 +921,22 @@ def expand_cohort(repo_root: Path, plan: dict[str, Any], cohort: str) -> list[Tr
         trials.extend(
             _implicit_pair(
                 _case_lookup(case_id, collisions, descriptions),
-                outcome_contracts.get(case_id),
+                procedure_contracts.get(case_id),
             )
         )
 
-    if config.get("outcome_contract_mode") == "required":
+    if config.get("procedure_contract_mode") == "required":
         missing_contracts = sorted(
             {
                 trial.case_id
                 for trial in trials
                 if trial.arm_type in {"implicit_aided", "implicit_control"}
-                and trial.outcome_contract is None
+                and trial.procedure_contract is None
             }
         )
         if missing_contracts:
             raise ValueError(
-                f"cohort {cohort} requires explicit outcome contracts for: "
+                f"cohort {cohort} requires explicit procedure contracts for: "
                 + ", ".join(missing_contracts)
             )
 
@@ -901,9 +957,28 @@ def expand_cohort(repo_root: Path, plan: dict[str, Any], cohort: str) -> list[Tr
             for name, policy in policies.items()
             if policy.get("implicit_activation_policy") != "invoke"
         )
+    equivalent_report_roots: dict[str, str] = {}
+    for item in plan.get("root_child_trajectories", []):
+        child = str(item["child_skill"])
+        root = str(item["root_skill"])
+        existing = equivalent_report_roots.get(child)
+        if existing is not None and existing != root:
+            raise ValueError(
+                f"structured hierarchy child has multiple declared roots: {child}"
+            )
+        equivalent_report_roots[child] = root
     for skill_name in structured_skills:
         case_id, prompt = _explicit_prompt_for_skill(str(skill_name), descriptions)
-        trials.append(_structured_trial(str(skill_name), prompt=prompt, case_id=case_id))
+        trials.append(
+            _structured_trial(
+                str(skill_name),
+                prompt=prompt,
+                case_id=case_id,
+                equivalent_report_root_skill=equivalent_report_roots.get(
+                    str(skill_name)
+                ),
+            )
+        )
 
     trial_ids = [trial.trial_id for trial in trials]
     if len(trial_ids) != len(set(trial_ids)):
@@ -932,13 +1007,17 @@ def build_plan_packet(
         for trial in trials
         if trial.arm_type in {"implicit_aided", "implicit_control"}
     }
-    outcome_case_ids = {
+    procedure_case_ids = {
         trial.case_id
         for trial in trials
         if trial.arm_type in {"implicit_aided", "implicit_control"}
-        and trial.outcome_contract is not None
+        and trial.procedure_contract is not None
     }
-    outcome_contract_coverage_complete = outcome_case_ids == implicit_case_ids
+    procedure_contract_coverage_complete = procedure_case_ids == implicit_case_ids
+    objective_outcome_case_ids: set[str] = set()
+    objective_outcome_coverage_complete = (
+        objective_outcome_case_ids == implicit_case_ids
+    )
     source_digest, source_records = source_snapshot(repo_root, plan)
     git_head_ref = read_git_head(repo_root)
     head_digest = sha256_text(git_head_ref)
@@ -963,10 +1042,17 @@ def build_plan_packet(
         **shadow_lock,
         **configured_mcp_server_lock,
         "caps": caps,
-        "outcome_contract_mode": str(plan["cohorts"][cohort]["outcome_contract_mode"]),
+        "procedure_contract_mode": str(
+            plan["cohorts"][cohort]["procedure_contract_mode"]
+        ),
+        "objective_outcome_mode": str(
+            plan["cohorts"][cohort]["objective_outcome_mode"]
+        ),
         "implicit_pair_count": len(implicit_case_ids),
-        "outcome_scored_pair_count": len(outcome_case_ids),
-        "outcome_contract_coverage_complete": outcome_contract_coverage_complete,
+        "procedure_scored_pair_count": len(procedure_case_ids),
+        "procedure_contract_coverage_complete": procedure_contract_coverage_complete,
+        "objective_outcome_scored_pair_count": len(objective_outcome_case_ids),
+        "objective_outcome_coverage_complete": objective_outcome_coverage_complete,
         "trial_locks": [trial.public_descriptor() for trial in trials],
     }
     confirmation_token = sha256_bytes(b"aoa-live-skill-confirm-v1\0" + canonical_json_bytes(lock))
@@ -991,11 +1077,18 @@ def build_plan_packet(
         **shadow_lock,
         **configured_mcp_server_lock,
         "caps": caps,
-        "outcome_contract_mode": lock["outcome_contract_mode"],
+        "procedure_contract_mode": lock["procedure_contract_mode"],
+        "objective_outcome_mode": lock["objective_outcome_mode"],
         "implicit_pair_count": lock["implicit_pair_count"],
-        "outcome_scored_pair_count": lock["outcome_scored_pair_count"],
-        "outcome_contract_coverage_complete": lock[
-            "outcome_contract_coverage_complete"
+        "procedure_scored_pair_count": lock["procedure_scored_pair_count"],
+        "procedure_contract_coverage_complete": lock[
+            "procedure_contract_coverage_complete"
+        ],
+        "objective_outcome_scored_pair_count": lock[
+            "objective_outcome_scored_pair_count"
+        ],
+        "objective_outcome_coverage_complete": lock[
+            "objective_outcome_coverage_complete"
         ],
         "trial_count": len(trials),
         "trial_locks": [trial.public_descriptor() for trial in trials],
@@ -1365,13 +1458,14 @@ def _with_fixture_scope(prompt: str) -> str:
 def _with_fixture_procedure(prompt: str) -> str:
     return (
         f"{_with_fixture_scope(prompt)}\n\n"
-        "Hermetic fixture contract: Read-only skill-file inspection commands are allowed and do not count "
-        "as procedure commands. If the route selects a child, resolve and read the complete selected child "
-        "`SKILL.md` before the procedure. "
-        f"The only selected procedure command is exactly `{FIXTURE_VALIDATOR_COMMAND}`. "
+        "Hermetic fixture contract: Read-only skill-file inspection commands are allowed. If the route "
+        "selects a child, resolve and read the complete selected child `SKILL.md` before following or "
+        "classifying that child procedure. "
+        f"The independent fixture-execution probe is exactly `{FIXTURE_VALIDATOR_COMMAND}`. "
         "Run it from the fixture root, capture its exit status and sentinel output, and report generated drift "
-        "and proof limits. The route decision describes skill activation only; a downstream procedure block "
-        "must be represented separately in procedure_disposition."
+        "and proof limits. The probe does not define the selected skill procedure or whole-task outcome. "
+        "The route decision describes skill activation only; report the selected skill procedure separately "
+        "in procedure_disposition."
     )
 
 
@@ -2095,8 +2189,9 @@ def _prepare_fixture(
             "Do not use absolute host, workspace, session-memory, user-config, or other-repository paths, or parent traversal.\n"
             "Prompt-visible background skills do not widen this filesystem scope.\n"
             "Read-only skill-file inspection commands are allowed when needed to load selected instructions.\n"
-            "They are evidence collection, not procedure commands.\n"
-            f"The only selected procedure command is `{FIXTURE_VALIDATOR_COMMAND}` from this fixture root.\n",
+            "They are load evidence, not the independent fixture-execution probe.\n"
+            f"The fixture-execution probe is `{FIXTURE_VALIDATOR_COMMAND}` from this fixture root.\n"
+            "It does not define the selected skill procedure or whole-task outcome.\n",
             encoding="utf-8",
         )
         guidance.chmod(PRIVATE_FILE_MODE)
@@ -2186,34 +2281,52 @@ def _trial_failure_class(trial: Trial, result: dict[str, Any]) -> str | None:
             or output.get("route_decision") == "invoke"
         ):
             return "manual_activation_leak"
-        if not _dispatch_contract_match(trial, output):
+        if not _dispatch_contract_match(trial, output, result):
             return "dispatch_policy_gap"
+    trajectory = _trajectory_contract_evidence(trial, output, result)
     if (
         trial.arm_type == "implicit_aided"
-        and trial.outcome_contract is not None
         and _route_contract_match(trial, output, result)
-        and not _outcome_contract_evidence(trial, output, result)["match"]
+        and trajectory["defined"]
+        and not trajectory["match"]
     ):
-        return "bounded_outcome_miss"
+        return "trajectory_break"
+    if (
+        trial.arm_type.startswith("implicit")
+        and not _fixture_execution_contract_match(result)
+    ):
+        return "fixture_execution_gap"
+    if (
+        trial.arm_type == "implicit_aided"
+        and trial.procedure_contract is not None
+        and _route_contract_match(trial, output, result)
+        and (not trajectory["defined"] or trajectory["match"])
+        and not _procedure_contract_evidence(trial, output)["match"]
+    ):
+        return "procedure_disposition_miss"
     if trial.arm_type == "root_manual_child":
         if (
             selected != trial.expected_target_skill
             or output.get("selected_child") != trial.expected_child_skill
         ):
             return "trajectory_break"
-        if not _dispatch_contract_match(trial, output):
+        if not _dispatch_contract_match(trial, output, result):
             return "dispatch_policy_gap"
         if not _load_contract_match(trial, output, result):
             return "skill_load_gap"
-        if result.get("procedure_contract_match") is not True:
-            return "direct_procedure_gap"
+        if not _fixture_execution_contract_match(result):
+            return "fixture_execution_gap"
     if trial.arm_type == "app_server_structured":
-        if not _dispatch_contract_match(trial, output):
+        if not _dispatch_contract_match(trial, output, result):
             return "dispatch_policy_gap"
         if not _load_contract_match(trial, output, result):
             return "skill_load_gap"
-        if result.get("procedure_contract_match") is not True:
-            return "direct_procedure_gap"
+        if not _fixture_execution_contract_match(result):
+            return "fixture_execution_gap"
+        if not _selection_report_evidence(trial, output)[
+            "selection_report_contract_match"
+        ]:
+            return "selection_report_miss"
     return None
 
 
@@ -2344,7 +2457,49 @@ def _transport_failure_result(
     }
 
 
-def _dispatch_contract_match(trial: Trial, output: dict[str, Any]) -> bool:
+def _selection_report_evidence(
+    trial: Trial,
+    output: dict[str, Any],
+) -> dict[str, bool | str | None]:
+    selected_child = output.get("selected_child")
+    direct_name_exact = output.get("selected_skill") == trial.expected_target_skill
+    direct_exact = bool(
+        direct_name_exact
+        and (
+            trial.arm_type != "app_server_structured"
+            or selected_child is None
+        )
+    )
+    hierarchy_exact = bool(
+        trial.arm_type == "app_server_structured"
+        and trial.equivalent_report_root_skill is not None
+        and output.get("selected_skill") == trial.equivalent_report_root_skill
+        and selected_child == trial.expected_target_skill
+    )
+    if trial.arm_type == "app_server_structured":
+        report_match = direct_exact or hierarchy_exact
+    elif trial.expected_behavior == "trajectory":
+        report_match = bool(
+            direct_exact
+            and output.get("selected_child") == trial.expected_child_skill
+        )
+    else:
+        report_match = direct_exact
+    return {
+        "reported_target_direct_exact": direct_exact,
+        "reported_target_hierarchy_exact": hierarchy_exact,
+        "hierarchy_report_expected_root_skill": (
+            trial.equivalent_report_root_skill
+        ),
+        "selection_report_contract_match": report_match,
+    }
+
+
+def _dispatch_contract_match(
+    trial: Trial,
+    output: dict[str, Any],
+    result: dict[str, Any],
+) -> bool:
     selected = output.get("selected_skill")
     decision = output.get("route_decision")
     if trial.expected_behavior == "invoke":
@@ -2355,7 +2510,10 @@ def _dispatch_contract_match(trial: Trial, output: dict[str, Any]) -> bool:
             and selected in {trial.expected_target_skill, None}
         )
     if trial.expected_behavior == "explicit":
-        return decision == "invoke" and selected == trial.expected_target_skill
+        return bool(
+            decision == "invoke"
+            and result.get("structured_skill_input_sent") is True
+        )
     if trial.expected_behavior == "trajectory":
         return (
             decision == "invoke"
@@ -2563,7 +2721,7 @@ def _fixture_validator_payload_valid(output: str, fixture_root: Path) -> bool:
     return payload == expected
 
 
-def _procedure_execution_evidence(events: Any, fixture_root: Path) -> dict[str, bool]:
+def _fixture_execution_evidence(events: Any, fixture_root: Path) -> dict[str, bool]:
     observed = False
     succeeded = False
     verified = False
@@ -2590,10 +2748,40 @@ def _procedure_execution_evidence(events: Any, fixture_root: Path) -> dict[str, 
         ):
             verified = True
     return {
-        "procedure_command_observed": observed,
-        "procedure_command_succeeded": succeeded,
-        "verification_observed": verified,
+        "fixture_command_observed": observed,
+        "fixture_command_succeeded": succeeded,
+        "fixture_verification_observed": verified,
     }
+
+
+def _fixture_evidence_flag(
+    result: dict[str, Any],
+    current_key: str,
+    legacy_key: str,
+) -> bool:
+    if current_key in result:
+        return result.get(current_key) is True
+    return result.get(legacy_key) is True
+
+
+def _fixture_execution_contract_match(result: dict[str, Any]) -> bool:
+    return bool(
+        _fixture_evidence_flag(
+            result,
+            "fixture_command_observed",
+            "procedure_command_observed",
+        )
+        and _fixture_evidence_flag(
+            result,
+            "fixture_command_succeeded",
+            "procedure_command_succeeded",
+        )
+        and _fixture_evidence_flag(
+            result,
+            "fixture_verification_observed",
+            "verification_observed",
+        )
+    )
 
 
 def _enrich_transport_evidence(
@@ -2623,25 +2811,10 @@ def _enrich_transport_evidence(
     enriched["child_full_read_observed"] = bool(
         child_path is not None and _skill_full_read_observed(enriched.get("events"), child_path)
     )
-    enriched.update(_procedure_execution_evidence(enriched.get("events"), fixture_root))
-    procedure_required = trial.arm_type in {"root_manual_child", "app_server_structured"}
-    enriched["procedure_contract_match"] = bool(
-        procedure_required
-        and output.get("procedure_disposition") == "completed"
-        and enriched["procedure_command_observed"]
-        and enriched["procedure_command_succeeded"]
-        and enriched["verification_observed"]
+    enriched.update(_fixture_execution_evidence(enriched.get("events"), fixture_root))
+    enriched["fixture_execution_contract_match"] = _fixture_execution_contract_match(
+        enriched
     )
-    enriched["completion_observed"] = bool(
-        output.get("procedure_disposition") == "completed"
-        and enriched["procedure_command_observed"]
-        and enriched["procedure_command_succeeded"]
-        and enriched["verification_observed"]
-    )
-    enriched["deflection_observed"] = output.get("procedure_disposition") in {
-        "blocked_missing_input",
-        "deferred_owner_boundary",
-    }
     return enriched
 
 
@@ -2652,7 +2825,9 @@ def _load_contract_match(trial: Trial, output: dict[str, Any], result: dict[str,
     )
     if trial.expected_behavior == "manual":
         return not target_loaded
-    if trial.expected_behavior in {"invoke", "explicit", "trajectory"}:
+    if trial.expected_behavior == "explicit":
+        return target_loaded
+    if trial.expected_behavior in {"invoke", "trajectory"}:
         child_required = bool(
             trial.expected_child_skill or output.get("selected_child")
         )
@@ -2667,15 +2842,56 @@ def _load_contract_match(trial: Trial, output: dict[str, Any], result: dict[str,
 
 
 def _route_contract_match(trial: Trial, output: dict[str, Any], result: dict[str, Any]) -> bool:
-    return _dispatch_contract_match(trial, output) and _load_contract_match(trial, output, result)
+    return _dispatch_contract_match(trial, output, result) and _load_contract_match(
+        trial, output, result
+    )
 
 
-def _outcome_contract_evidence(
+def _trajectory_contract_evidence(
     trial: Trial,
     output: dict[str, Any],
     result: dict[str, Any],
 ) -> dict[str, Any]:
-    contract = trial.outcome_contract
+    contract = trial.procedure_contract
+    if contract is None or contract.expected_selected_child_skill is None:
+        return {
+            "defined": False,
+            "sha256": None,
+            "expected_child_skill": None,
+            "match": None,
+            "mismatch_dimensions": [],
+        }
+    observed = {
+        "selected_child_skill": output.get("selected_child"),
+        "selected_child_full_read_observed": (
+            result.get("child_full_read_observed") is True
+        ),
+    }
+    expected = {
+        "selected_child_skill": contract.expected_selected_child_skill,
+        "selected_child_full_read_observed": (
+            contract.expected_selected_child_full_read_observed
+        ),
+    }
+    mismatches = [
+        name
+        for name, expected_value in expected.items()
+        if expected_value is not None and observed[name] != expected_value
+    ]
+    return {
+        "defined": True,
+        "sha256": contract.sha256(),
+        "expected_child_skill": contract.expected_selected_child_skill,
+        "match": not mismatches,
+        "mismatch_dimensions": mismatches,
+    }
+
+
+def _procedure_contract_evidence(
+    trial: Trial,
+    output: dict[str, Any],
+) -> dict[str, Any]:
+    contract = trial.procedure_contract
     if contract is None:
         return {
             "defined": False,
@@ -2685,22 +2901,24 @@ def _outcome_contract_evidence(
             "match": None,
             "mismatch_dimensions": [],
         }
+    disposition = output.get("procedure_disposition")
     observed = {
-        "procedure_disposition": output.get("procedure_disposition"),
-        "procedure_command_observed": result.get("procedure_command_observed") is True,
-        "procedure_command_succeeded": result.get("procedure_command_succeeded") is True,
-        "verification_observed": result.get("verification_observed") is True,
-        "completion_observed": result.get("completion_observed") is True,
-        "deflection_observed": result.get("deflection_observed") is True,
+        "selected_procedure_disposition": disposition,
+        "selected_procedure_completion_reported": disposition == "completed",
+        "selected_procedure_deflection_reported": disposition
+        in {"blocked_missing_input", "deferred_owner_boundary"},
         "owner_boundary_present": bool(output.get("owner_boundary")),
     }
     expected = {
-        "procedure_disposition": contract.expected_procedure_disposition,
-        "procedure_command_observed": contract.expected_procedure_command_observed,
-        "procedure_command_succeeded": contract.expected_procedure_command_succeeded,
-        "verification_observed": contract.expected_verification_observed,
-        "completion_observed": contract.expected_completion_observed,
-        "deflection_observed": contract.expected_deflection_observed,
+        "selected_procedure_disposition": (
+            contract.expected_selected_procedure_disposition
+        ),
+        "selected_procedure_completion_reported": (
+            contract.expected_selected_procedure_completion_reported
+        ),
+        "selected_procedure_deflection_reported": (
+            contract.expected_selected_procedure_deflection_reported
+        ),
         "owner_boundary_present": contract.expected_owner_boundary_present,
     }
     mismatches = [
@@ -2722,9 +2940,13 @@ def _trial_measure(trial: Trial, result: dict[str, Any]) -> dict[str, Any]:
     output = result.get("final_output") if isinstance(result.get("final_output"), dict) else {}
     usage = result.get("usage") if isinstance(result.get("usage"), dict) else {}
     failure_class = _trial_failure_class(trial, result)
-    dispatch_match = _dispatch_contract_match(trial, output)
+    dispatch_match = _dispatch_contract_match(trial, output, result)
     load_match = _load_contract_match(trial, output, result)
-    outcome = _outcome_contract_evidence(trial, output, result)
+    selection_report = _selection_report_evidence(trial, output)
+    trajectory = _trajectory_contract_evidence(trial, output, result)
+    procedure = _procedure_contract_evidence(trial, output)
+    fixture_execution_match = _fixture_execution_contract_match(result)
+    disposition = output.get("procedure_disposition")
     return {
         "case_id": trial.case_id,
         "arm_type": trial.arm_type,
@@ -2735,6 +2957,7 @@ def _trial_measure(trial: Trial, result: dict[str, Any]) -> dict[str, Any]:
             trial.expected_child_skill
             and output.get("selected_child") == trial.expected_child_skill
         ),
+        **selection_report,
         "route_decision": output.get("route_decision"),
         "manual_recommendation": output.get("route_decision") == "manual_required",
         "model_claims_loaded": output.get("claims_loaded") is True,
@@ -2767,18 +2990,38 @@ def _trial_measure(trial: Trial, result: dict[str, Any]) -> dict[str, Any]:
         "dispatch_contract_match": dispatch_match,
         "load_contract_match": load_match,
         "procedure_disposition": output.get("procedure_disposition"),
-        "procedure_command_observed": result.get("procedure_command_observed") is True,
-        "procedure_command_succeeded": result.get("procedure_command_succeeded") is True,
-        "verification_observed": result.get("verification_observed") is True,
-        "procedure_contract_match": result.get("procedure_contract_match") is True,
-        "completion_observed": result.get("completion_observed") is True,
-        "deflection_observed": result.get("deflection_observed") is True,
-        "outcome_contract_defined": outcome["defined"],
-        "outcome_contract_sha256": outcome["sha256"],
-        "outcome_scope": outcome["scope"],
-        "outcome_contract": outcome["contract"],
-        "outcome_contract_match": outcome["match"],
-        "outcome_mismatch_dimensions": outcome["mismatch_dimensions"],
+        "fixture_command_observed": _fixture_evidence_flag(
+            result,
+            "fixture_command_observed",
+            "procedure_command_observed",
+        ),
+        "fixture_command_succeeded": _fixture_evidence_flag(
+            result,
+            "fixture_command_succeeded",
+            "procedure_command_succeeded",
+        ),
+        "fixture_verification_observed": _fixture_evidence_flag(
+            result,
+            "fixture_verification_observed",
+            "verification_observed",
+        ),
+        "fixture_execution_contract_match": fixture_execution_match,
+        "selected_procedure_completion_reported": disposition == "completed",
+        "selected_procedure_deflection_reported": disposition
+        in {"blocked_missing_input", "deferred_owner_boundary"},
+        "trajectory_contract_defined": trajectory["defined"],
+        "trajectory_contract_sha256": trajectory["sha256"],
+        "trajectory_expected_child_skill": trajectory["expected_child_skill"],
+        "trajectory_contract_match": trajectory["match"],
+        "trajectory_mismatch_dimensions": trajectory["mismatch_dimensions"],
+        "procedure_contract_defined": procedure["defined"],
+        "procedure_contract_sha256": procedure["sha256"],
+        "procedure_contract_scope": procedure["scope"],
+        "procedure_contract": procedure["contract"],
+        "procedure_disposition_contract_match": procedure["match"],
+        "procedure_disposition_mismatch_dimensions": procedure[
+            "mismatch_dimensions"
+        ],
         "route_contract_match": dispatch_match and load_match,
         "owner_boundary_present": bool(output.get("owner_boundary")),
         "input_tokens": int(usage.get("input_tokens") or 0),
@@ -2862,54 +3105,108 @@ def _pair_outcomes(private_trials: list[dict[str, Any]]) -> list[dict[str, Any]]
             if contaminated
             else _effect_class(aided_route_correct, control_route_correct)
         )
-        aided_outcome_defined = aided_measure.get("outcome_contract_defined") is True
-        control_outcome_defined = control_measure.get("outcome_contract_defined") is True
-        aided_outcome_sha = aided_measure.get("outcome_contract_sha256")
-        control_outcome_sha = control_measure.get("outcome_contract_sha256")
-        aided_outcome_scope = aided_measure.get("outcome_scope")
-        control_outcome_scope = control_measure.get("outcome_scope")
-        outcome_contract_consistent = bool(
-            aided_outcome_defined == control_outcome_defined
+        aided_trajectory_defined = aided_measure.get("trajectory_contract_defined") is True
+        control_trajectory_defined = control_measure.get("trajectory_contract_defined") is True
+        aided_trajectory_sha = aided_measure.get("trajectory_contract_sha256")
+        control_trajectory_sha = control_measure.get("trajectory_contract_sha256")
+        aided_expected_child = aided_measure.get("trajectory_expected_child_skill")
+        control_expected_child = control_measure.get("trajectory_expected_child_skill")
+        trajectory_contract_consistent = bool(
+            aided_trajectory_defined == control_trajectory_defined
             and (
-                not aided_outcome_defined
+                not aided_trajectory_defined
                 or (
-                    isinstance(aided_outcome_sha, str)
-                    and aided_outcome_sha == control_outcome_sha
-                    and isinstance(aided_outcome_scope, str)
-                    and aided_outcome_scope == control_outcome_scope
+                    isinstance(aided_trajectory_sha, str)
+                    and aided_trajectory_sha == control_trajectory_sha
+                    and isinstance(aided_expected_child, str)
+                    and aided_expected_child == control_expected_child
                 )
             )
         )
-        outcome_contract_defined = bool(
-            outcome_contract_consistent and aided_outcome_defined
+        trajectory_contract_defined = bool(
+            trajectory_contract_consistent and aided_trajectory_defined
         )
-        if not outcome_contract_consistent:
-            outcome_lift: int | None = None
-            outcome_effect = "contaminated"
-            outcome_sha = None
-            outcome_scope = None
-            aided_outcome_match: bool | None = None
-            control_outcome_match: bool | None = None
-        elif not outcome_contract_defined:
-            outcome_lift = None
-            outcome_effect = "not_scored_no_contract"
-            outcome_sha = None
-            outcome_scope = None
-            aided_outcome_match = None
-            control_outcome_match = None
+        if not trajectory_contract_consistent:
+            trajectory_lift: int | None = None
+            trajectory_effect = "contaminated"
+            trajectory_sha = None
+            trajectory_expected_child = None
+            aided_trajectory_match: bool | None = None
+            control_trajectory_match: bool | None = None
+        elif not trajectory_contract_defined:
+            trajectory_lift = None
+            trajectory_effect = "not_scored_no_contract"
+            trajectory_sha = None
+            trajectory_expected_child = None
+            aided_trajectory_match = None
+            control_trajectory_match = None
         else:
-            outcome_sha = str(aided_outcome_sha)
-            outcome_scope = str(aided_outcome_scope)
-            aided_outcome_match = aided_measure.get("outcome_contract_match") is True
-            control_outcome_match = control_measure.get("outcome_contract_match") is True
+            trajectory_sha = str(aided_trajectory_sha)
+            trajectory_expected_child = str(aided_expected_child)
+            aided_trajectory_match = aided_measure.get("trajectory_contract_match") is True
+            control_trajectory_match = control_measure.get("trajectory_contract_match") is True
             if contaminated:
-                outcome_lift = None
-                outcome_effect = "contaminated"
+                trajectory_lift = None
+                trajectory_effect = "contaminated"
             else:
-                outcome_lift = int(aided_outcome_match) - int(control_outcome_match)
-                outcome_effect = _effect_class(
-                    aided_outcome_match,
-                    control_outcome_match,
+                trajectory_lift = int(aided_trajectory_match) - int(control_trajectory_match)
+                trajectory_effect = _effect_class(
+                    aided_trajectory_match,
+                    control_trajectory_match,
+                )
+
+        aided_procedure_defined = aided_measure.get("procedure_contract_defined") is True
+        control_procedure_defined = control_measure.get("procedure_contract_defined") is True
+        aided_procedure_sha = aided_measure.get("procedure_contract_sha256")
+        control_procedure_sha = control_measure.get("procedure_contract_sha256")
+        aided_procedure_scope = aided_measure.get("procedure_contract_scope")
+        control_procedure_scope = control_measure.get("procedure_contract_scope")
+        procedure_contract_consistent = bool(
+            aided_procedure_defined == control_procedure_defined
+            and (
+                not aided_procedure_defined
+                or (
+                    isinstance(aided_procedure_sha, str)
+                    and aided_procedure_sha == control_procedure_sha
+                    and isinstance(aided_procedure_scope, str)
+                    and aided_procedure_scope == control_procedure_scope
+                )
+            )
+        )
+        procedure_contract_defined = bool(
+            procedure_contract_consistent and aided_procedure_defined
+        )
+        if not procedure_contract_consistent:
+            procedure_lift: int | None = None
+            procedure_effect = "contaminated"
+            procedure_sha = None
+            procedure_scope = None
+            aided_procedure_match: bool | None = None
+            control_procedure_match: bool | None = None
+        elif not procedure_contract_defined:
+            procedure_lift = None
+            procedure_effect = "not_scored_no_contract"
+            procedure_sha = None
+            procedure_scope = None
+            aided_procedure_match = None
+            control_procedure_match = None
+        else:
+            procedure_sha = str(aided_procedure_sha)
+            procedure_scope = str(aided_procedure_scope)
+            aided_procedure_match = (
+                aided_measure.get("procedure_disposition_contract_match") is True
+            )
+            control_procedure_match = (
+                control_measure.get("procedure_disposition_contract_match") is True
+            )
+            if contaminated:
+                procedure_lift = None
+                procedure_effect = "contaminated"
+            else:
+                procedure_lift = int(aided_procedure_match) - int(control_procedure_match)
+                procedure_effect = _effect_class(
+                    aided_procedure_match,
+                    control_procedure_match,
                 )
         outcomes.append(
             {
@@ -2920,14 +3217,34 @@ def _pair_outcomes(private_trials: list[dict[str, Any]]) -> list[dict[str, Any]]
                 "control_route_contract_match": control_route_correct,
                 "route_lift": route_lift,
                 "route_effect_class": route_effect,
-                "outcome_contract_defined": outcome_contract_defined,
-                "outcome_contract_consistent": outcome_contract_consistent,
-                "outcome_contract_sha256": outcome_sha,
-                "outcome_scope": outcome_scope,
-                "aided_outcome_contract_match": aided_outcome_match,
-                "control_outcome_contract_match": control_outcome_match,
-                "outcome_lift": outcome_lift,
-                "outcome_effect_class": outcome_effect,
+                "trajectory_contract_defined": trajectory_contract_defined,
+                "trajectory_contract_consistent": trajectory_contract_consistent,
+                "trajectory_contract_sha256": trajectory_sha,
+                "trajectory_expected_child_skill": trajectory_expected_child,
+                "aided_trajectory_contract_match": aided_trajectory_match,
+                "control_trajectory_contract_match": control_trajectory_match,
+                "trajectory_lift": trajectory_lift,
+                "trajectory_effect_class": trajectory_effect,
+                "procedure_contract_defined": procedure_contract_defined,
+                "procedure_contract_consistent": procedure_contract_consistent,
+                "procedure_contract_sha256": procedure_sha,
+                "procedure_contract_scope": procedure_scope,
+                "aided_procedure_disposition_contract_match": aided_procedure_match,
+                "control_procedure_disposition_contract_match": control_procedure_match,
+                "procedure_disposition_lift": procedure_lift,
+                "procedure_disposition_effect_class": procedure_effect,
+                "outcome_contract_defined": False,
+                "outcome_contract_consistent": True,
+                "outcome_contract_sha256": None,
+                "outcome_scope": None,
+                "aided_outcome_contract_match": None,
+                "control_outcome_contract_match": None,
+                "outcome_lift": None,
+                "outcome_effect_class": (
+                    "contaminated"
+                    if contaminated
+                    else "not_scored_no_observable_outcome"
+                ),
                 "fixture_context_match": aided_context == control_context,
                 "prompt_background_match": bool(background_match),
                 "prompt_visibility_contract_match": prompt_contract_match,
@@ -2935,6 +3252,12 @@ def _pair_outcomes(private_trials: list[dict[str, Any]]) -> list[dict[str, Any]]
                 "control_dispatch_contract_match": bool(control_measure.get("dispatch_contract_match")),
                 "aided_load_contract_match": bool(aided_measure.get("load_contract_match")),
                 "control_load_contract_match": bool(control_measure.get("load_contract_match")),
+                "aided_fixture_execution_contract_match": bool(
+                    aided_measure.get("fixture_execution_contract_match")
+                ),
+                "control_fixture_execution_contract_match": bool(
+                    control_measure.get("fixture_execution_contract_match")
+                ),
                 "input_token_delta": int(aided_measure.get("input_tokens") or 0)
                 - int(control_measure.get("input_tokens") or 0),
                 "duration_ms_delta": int(aided_measure.get("duration_ms") or 0)
@@ -2984,13 +3307,22 @@ def run_confirmed_cohort(
     if packet["high_cost_confirmation_required"] and high_cost_token != packet["high_cost_confirmation_token"]:
         raise ConfirmationError("high-cost cohort requires the exact second confirmation token")
     if (
-        packet["outcome_contract_mode"] in {"required", "required_for_live"}
-        and packet["outcome_contract_coverage_complete"] is not True
+        packet["procedure_contract_mode"] in {"required", "required_for_live"}
+        and packet["procedure_contract_coverage_complete"] is not True
     ):
         raise ConfirmationError(
-            f"{cohort} requires source-locked outcome contracts for all "
+            f"{cohort} requires source-locked procedure contracts for all "
             f"{packet['implicit_pair_count']} implicit pairs before live execution "
-            f"({packet['outcome_scored_pair_count']} declared)"
+            f"({packet['procedure_scored_pair_count']} declared)"
+        )
+    if (
+        packet["objective_outcome_mode"] == "required_for_live"
+        and packet["objective_outcome_coverage_complete"] is not True
+    ):
+        raise ConfirmationError(
+            f"{cohort} requires objective outcome observations for all "
+            f"{packet['implicit_pair_count']} implicit pairs before live execution "
+            f"({packet['objective_outcome_scored_pair_count']} declared)"
         )
     private_root = _validate_private_root(
         plan,
@@ -3126,6 +3458,10 @@ def run_confirmed_cohort(
                 expected_behavior=trial.expected_behavior,
                 control=trial.arm_type == "implicit_control",
             )
+            if trial.procedure_contract is not None:
+                request["expected_selected_child_skill"] = (
+                    trial.procedure_contract.expected_selected_child_skill
+                )
             request["competing_skills"] = list(trial.competing_skills)
         elif trial.arm_type == "root_manual_child":
             request = build_root_manual_child_request(
@@ -3375,7 +3711,9 @@ def validate_public_receipt(public: dict[str, Any]) -> None:
     if public.get("aggregate_score") is not None:
         raise PublicReceiptSafetyError("live dispatch arms must not collapse into one aggregate score")
     failure_counts = public.get("failure_counts")
-    if not isinstance(failure_counts, dict) or not set(failure_counts).issubset(FAILURE_TAXONOMY):
+    if not isinstance(failure_counts, dict) or not set(failure_counts).issubset(
+        set(FAILURE_TAXONOMY) | LEGACY_FAILURE_CLASSES
+    ):
         raise PublicReceiptSafetyError("public failure counts escaped the bounded taxonomy")
     effect_classes = {
         "positive_lift",
@@ -3384,7 +3722,10 @@ def validate_public_receipt(public: dict[str, Any]) -> None:
         "no_lift_both_incorrect",
         "contaminated",
     }
-    outcome_effect_classes = effect_classes | {"not_scored_no_contract"}
+    contract_effect_classes = effect_classes | {"not_scored_no_contract"}
+    outcome_effect_classes = contract_effect_classes | {
+        "not_scored_no_observable_outcome"
+    }
     for pair in public.get("pair_outcomes", []):
         if not isinstance(pair, dict):
             raise PublicReceiptSafetyError("public pair outcome escaped the bounded effect vocabulary")
@@ -3400,6 +3741,12 @@ def validate_public_receipt(public: dict[str, Any]) -> None:
             raise PublicReceiptSafetyError(
                 "public route pair outcome escaped the bounded effect vocabulary"
             )
+        for key in ("trajectory_effect_class", "procedure_disposition_effect_class"):
+            value = pair.get(key)
+            if value is not None and value not in contract_effect_classes:
+                raise PublicReceiptSafetyError(
+                    f"public {key} escaped the bounded effect vocabulary"
+                )
         if pair.get("outcome_effect_class") not in outcome_effect_classes:
             raise PublicReceiptSafetyError(
                 "public outcome pair escaped the bounded effect vocabulary"

@@ -11,9 +11,11 @@ Tracking starts with the community-docs baseline for this repository.
 
 - A source-locked live skill-dispatch harness now separates prompt visibility,
   implicit aided/control dispatch, activation and full reads, explicit
-  root-child trajectories, structured App Server input, procedure execution,
-  verification, completion/deflection, route lift, source-declared bounded
-  downstream procedure-outcome lift, host gates, private raw receipts, and
+  root-child trajectories, structured App Server input, independent fixture
+  execution/verification, selected-procedure disposition plus
+  completion/deflection reports, route lift, selected-child trajectory lift,
+  procedure-disposition lift, explicit unscored objective
+  outcome posture, host gates, private raw receipts, and
   public-safe candidate
   projections without claiming central proof authority. Structured turns
   additionally require the exact enabled map for all 57 repo skills and prove
@@ -75,6 +77,17 @@ Tracking starts with the community-docs baseline for this repository.
   downstream procedure. V9 names that scope explicitly, corrects the
   pre-authored expectation from source, preserves v8 unchanged, and requires a
   grader replay plus fresh exact-merged smoke before pilot widening.
+- The complete exact-merged-tree v9 smoke now has a public-safe `needs-rerun`
+  receipt. It preserves the child-route and structured hierarchy observations
+  that exposed the remaining grader ambiguity. V10 separates model selection
+  report from transport dispatch/native load, selected-child trajectory from
+  procedure-disposition report, requires both source-declared root and child
+  for an equivalent hierarchy report, and separates the independent fixture
+  probe from both. A report-only mismatch now has its own
+  `selection_report_miss` return route without relabeling successful native
+  dispatch or load evidence.
+  Current pairs explicitly leave objective outcome unscored because the fixture
+  has no observable external-task result.
 - `AOA-SK-D-0037` records why live cohorts remain operator-confirmed candidate
   evidence and now clarifies prompt-surface isolation and evidence-stage grading
   after the contaminated smoke; deterministic harness validation, not model
@@ -142,7 +155,7 @@ Tracking starts with the community-docs baseline for this repository.
   the official dual invocation: an exact `$skill` text prefix plus the matching
   structured `skill` item.
 - Read-only shell execution is now available to prove complete skill reads and
-  run the exact hermetic `python3 fixture_validator.py` procedure. A full read
+  run the exact hermetic `python3 fixture_validator.py` probe. A full read
   must name the exact fixture `SKILL.md` path and expose its complete content in
   one output or continuous ordered chunks;
   verification requires one atomic command event whose exact command, zero
@@ -169,8 +182,8 @@ Tracking starts with the community-docs baseline for this repository.
   corpus after the landed child-handoff change. The central `aoa-evals`
   validator therefore reports the full local eval port source-contract-ready
   instead of silently retaining transitive stale state.
-- Route and bounded downstream procedure-outcome lift are not scored when
-  either arm has a transport, budget, runtime, or owner-boundary safety failure. Contamination
+- Route, selected-child trajectory, and procedure-disposition lift are not
+  scored when either arm has a transport, budget, runtime, or owner-boundary safety failure. Contamination
   is retained as a pair result without rewriting either arm's historical
   failure class, and public-receipt validation rejects absolute host paths even
   when embedded inside prose.
@@ -179,14 +192,21 @@ Tracking starts with the community-docs baseline for this repository.
   Complete cohorts exit zero even for negative model evidence, while incomplete
   stopped-early cohorts publish their stop reason and exit nonzero after the
   private receipt is preserved.
-- Source-locked outcome grading now binds `scope` to
-  `bounded_downstream_procedure_outcome`. Completion and deflection describe the
-  exact selected fixture procedure rather than the larger external repository
-  task; current measures and pairs expose that scope, while historical v8
-  receipts remain readable and immutable under their original answer key.
+- Source-locked route/procedure grading now binds `scope` to
+  `selected_route_procedure_disposition`. The contract can declare an expected
+  child and full read when the route has one, then separately declares the
+  selected procedure's disposition report and owner boundary. This also fits
+  direct pilot routes without inventing a child. Fixture execution is objective
+  but independent; whole-task outcome remains explicitly unavailable.
+  Historical v8-v9 receipts remain readable and immutable under their original
+  graders.
+- The source corpus and schema are now named
+  `aoa-skill-live-dispatch-procedures.json` and
+  `live-skill-dispatch-procedure-contracts.schema.json`; the old outcome names
+  are retained only inside historical receipt vocabulary.
 - The hermetic evidence contract is now
-  `aoa_codex_app_server_skill_input_contract_v9` with protocol revision
-  `codex-cli-0.144.1-live-dispatch-evidence-v9`; retained v1-v8 receipts remain
+  `aoa_codex_app_server_skill_input_contract_v10` with protocol revision
+  `codex-cli-0.144.1-live-dispatch-evidence-v10`; retained v1-v9 receipts remain
   immutable under their original protocol and review status.
 - Live dispatch now locks and passes Codex rollout-budget reminder thresholds
   as a TOML list for both CLI and App Server arms, rejects invalid thresholds
