@@ -400,6 +400,16 @@ temporary root and must not be copied into this directory.
   stop. This closes only the common direct-target contract return; there is no
   matched pair, aggregate score, proof, or promotion claim, and no skill source
   changed. Structured Titan remains a separate exact-gated wave.
+- [aoa-skill-live-dispatch-coverage-closure-structured-titan-20260713-v22-reviewed-all-structured-targets-clean.json](aoa-skill-live-dispatch-coverage-closure-structured-titan-20260713-v22-reviewed-all-structured-targets-clean.json)
+  preserves the exact-merged 15-turn structured-Titan wave. Every Titan target
+  receives accepted official structured input, reports `invoke` with the exact
+  direct target and no child, stops at `blocked_missing_input`, and passes
+  dispatch, load, selection-report, fixture, prompt, runtime-isolation,
+  filesystem/inventory, and owner-boundary checks. Fourteen targets also have
+  an independent raw full read; mutation-gate relies on accepted native load,
+  which is sufficient under the source-locked App Server contract. There is no
+  failure or early stop, no matched pair or aggregate score, and no proof,
+  promotion, or Titan source-change claim.
 
 Corrected live receipts under the v11-v22 evidence protocols are reviewable only
 after canonical user-skill shadows, plugins, and every configured MCP id are
