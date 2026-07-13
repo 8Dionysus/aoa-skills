@@ -489,11 +489,38 @@ As of 2026-07-12:
   then corrects the hidden-manual observability assumption before live spend.
   The exact eight-turn v18 return completes with every objective
   non-activation, fixture, and owner-outcome contract correct in both arms and
-  keeps target route/procedure effects unscored. The authority-routing wave is
-  next, but remains subject to its own complete preflight and source lock.
+  keeps target route/procedure effects unscored. The authority-routing source
+  pass then closes its deterministic gate at 11/11 procedure and 11/11 outcome
+  pairs, with six score-eligible routes and five hidden-manual guards. No live
+  authority-routing result exists before exact merge and fresh runtime/host
+  gates.
 - Superseded by: none.
 
 ## Review Log
+
+### 2026-07-13 - Close authority-routing source contracts
+
+- Trigger: exact-merged planning for `full-collision-authority-routing` was
+  fail-closed at 3/11 procedure contracts and 3/11 owner outcomes.
+- Authority map: collision cases and authored skill sources define the bounded
+  route; procedure/outcome corpora own only the eval answer key. Generated
+  cases, runtime receipts, and central proof surfaces remain weaker consumers
+  and cannot author the expected values.
+- Routable cases: source-of-truth and bounded-context collisions 34, 36, 37,
+  and 43 require target-repository files or owner-interface packets and stop at
+  `blocked_missing_input`. Existing routed anchors 38 and 42 remain unchanged.
+- Manual cases: the explicit Abyss overlay at 35 and decision children 39-41
+  remain hidden and `not_applicable`; collision 49 keeps the same artifact-trust
+  boundary. These five pairs use objective manual non-activation guards rather
+  than target route/procedure scores.
+- Source lock: add decision-create and decision-correct beside the already
+  locked decision root/find sources. Do not change skill behavior, grader
+  semantics, protocol v18, or retained receipts.
+- Result: the packet reaches 11/11 procedure contracts, six scored procedures,
+  five manual guards, and 11/11 owner outcomes. The focused 22-turn synthetic
+  execution and both receipt schemas pass. This is readiness only; exact merge,
+  installed parity, host gates, confirmations, and reviewed live evidence are
+  still required.
 
 ### 2026-07-13 - Review the v18 hidden-manual bounded return
 

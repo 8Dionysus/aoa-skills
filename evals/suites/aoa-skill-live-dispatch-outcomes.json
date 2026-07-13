@@ -631,6 +631,82 @@
       "rationale": "aoa-summon is explicit-only and named outputs do not themselves authorize delegation. The next action is to require explicit invocation before selecting or launching a child lane, preserving the parent route's authority and return-plan obligations."
     },
     {
+      "contract_id": "collision-34-owner-action-v1",
+      "case_id": "collision-34",
+      "scope": "fixture_owner_observable_decision",
+      "decision_prompt": "Which next owner action is justified before assigning authority across the named doctrine, receipt, and re-entry surfaces?",
+      "candidate_values": [
+        "declare_runtime_receipt_authoritative",
+        "request_target_repo_and_authority_surfaces",
+        "treat_entrypoint_labels_as_source_truth"
+      ],
+      "expected_candidate_value": "request_target_repo_and_authority_surfaces",
+      "source_refs": [
+        "generated/skill_trigger_collision_matrix.json",
+        "skills/core/engineering/aoa-source-of-truth-check/SKILL.md",
+        "schemas/live-skill-dispatch-outcome-contracts.schema.json",
+        "evals/runners/run_live_skill_dispatch.py"
+      ],
+      "rationale": "Source-of-truth mapping requires the target repository and the actual candidate authority surfaces before classifying authored, generated, operational, or entrypoint roles. Requesting that packet is the only justified owner action; a runtime receipt or a label in prompt prose cannot be promoted into source authority."
+    },
+    {
+      "contract_id": "collision-35-owner-action-v1",
+      "case_id": "collision-35",
+      "scope": "fixture_owner_observable_decision",
+      "decision_prompt": "Which next owner action is justified before the hidden Abyss infrastructure overlay may plan the requested repair?",
+      "candidate_values": [
+        "plan_host_mutation_from_repo_label",
+        "require_explicit_invocation_and_local_authority",
+        "treat_rollback_wording_as_execution_approval"
+      ],
+      "expected_candidate_value": "require_explicit_invocation_and_local_authority",
+      "source_refs": [
+        "generated/skill_trigger_collision_matrix.json",
+        "skills/project/abyss/abyss-safe-infra-change/SKILL.md",
+        "schemas/live-skill-dispatch-outcome-contracts.schema.json",
+        "evals/runners/run_live_skill_dispatch.py"
+      ],
+      "rationale": "The Abyss overlay is explicit-only and requires a locally owned surface plus explicit authority, stop, rollback, and verification evidence. The bounded next action is to require explicit invocation and local authority. A repository label or rollback wording does not authorize planning a host or sibling-owner mutation."
+    },
+    {
+      "contract_id": "collision-36-owner-action-v1",
+      "case_id": "collision-36",
+      "scope": "fixture_owner_observable_decision",
+      "decision_prompt": "Which next owner action is justified before drawing bounded contexts for the four named surface families?",
+      "candidate_values": [
+        "draft_decision_before_context_evidence",
+        "request_target_context_surfaces_and_owner_interfaces",
+        "separate_labels_without_owner_handoffs"
+      ],
+      "expected_candidate_value": "request_target_context_surfaces_and_owner_interfaces",
+      "source_refs": [
+        "generated/skill_trigger_collision_matrix.json",
+        "skills/core/engineering/aoa-bounded-context-map/SKILL.md",
+        "schemas/live-skill-dispatch-outcome-contracts.schema.json",
+        "evals/runners/run_live_skill_dispatch.py"
+      ],
+      "rationale": "A bounded-context map needs concrete responsibilities, owner surfaces, and interfaces, not only four category labels. Requesting the target surfaces and owner handoffs is the justified next action. Drafting an ADR first or separating labels without interfaces would preserve the ambiguity rather than reduce it."
+    },
+    {
+      "contract_id": "collision-37-owner-action-v1",
+      "case_id": "collision-37",
+      "scope": "fixture_owner_observable_decision",
+      "decision_prompt": "Which next owner action is justified before writing a memo candidate about the conflicting workspace-memory guidance?",
+      "candidate_values": [
+        "inspect_candidate_authority_files_before_memo_writeback",
+        "make_root_route_card_memory_owner_by_default",
+        "write_memo_candidate_from_conflict_summary"
+      ],
+      "expected_candidate_value": "inspect_candidate_authority_files_before_memo_writeback",
+      "source_refs": [
+        "generated/skill_trigger_collision_matrix.json",
+        "skills/core/engineering/aoa-source-of-truth-check/SKILL.md",
+        "schemas/live-skill-dispatch-outcome-contracts.schema.json",
+        "evals/runners/run_live_skill_dispatch.py"
+      ],
+      "rationale": "The reported conflict cannot establish whether the memo port, route card, or a stronger workspace-memory owner is authoritative. The next action is to inspect the candidate files and their owner routes before memo writeback. Choosing a local owner or writing a candidate from the conflict summary would embed unresolved authority drift."
+    },
+    {
       "contract_id": "collision-38-owner-action-v1",
       "case_id": "collision-38",
       "scope": "fixture_owner_observable_decision",
@@ -651,6 +727,66 @@
       "rationale": "The root decision route requires graph-first classification and the smallest relevant impact packet before choosing find, create, or correct. The owner-observable next action is therefore to inspect graph status and narrow that packet, not create a record from prompt prose or rewrite generated indexes."
     },
     {
+      "contract_id": "collision-39-owner-action-v1",
+      "case_id": "collision-39",
+      "scope": "fixture_owner_observable_decision",
+      "decision_prompt": "Which next owner action is justified before the hidden decision-find child performs graph lookup?",
+      "candidate_values": [
+        "query_decision_graph_from_hidden_child",
+        "route_through_decision_root_before_graph_lookup",
+        "treat_prompt_match_as_source_verified_rationale"
+      ],
+      "expected_candidate_value": "route_through_decision_root_before_graph_lookup",
+      "source_refs": [
+        "generated/skill_trigger_collision_matrix.json",
+        "skills/core/engineering/aoa-decision/SKILL.md",
+        "skills/core/engineering/aoa-decision-find/SKILL.md",
+        "schemas/live-skill-dispatch-outcome-contracts.schema.json",
+        "evals/runners/run_live_skill_dispatch.py"
+      ],
+      "rationale": "Decision-find is a child route, not an independently implicit entrypoint. The owner-observable next action is to route through aoa-decision before any graph lookup. Querying from the hidden child bypasses parent classification, while a prompt match cannot substitute for source-note verification."
+    },
+    {
+      "contract_id": "collision-40-owner-action-v1",
+      "case_id": "collision-40",
+      "scope": "fixture_owner_observable_decision",
+      "decision_prompt": "Which next owner action is justified before the hidden decision-create child writes a new record?",
+      "candidate_values": [
+        "create_record_and_indexes_from_prompt",
+        "route_through_decision_root_before_record_creation",
+        "select_next_decision_id_from_memory"
+      ],
+      "expected_candidate_value": "route_through_decision_root_before_record_creation",
+      "source_refs": [
+        "generated/skill_trigger_collision_matrix.json",
+        "skills/core/engineering/aoa-decision/SKILL.md",
+        "skills/core/engineering/aoa-decision-create/SKILL.md",
+        "schemas/live-skill-dispatch-outcome-contracts.schema.json",
+        "evals/runners/run_live_skill_dispatch.py"
+      ],
+      "rationale": "Decision-create requires parent lane classification, a real chosen decision, target-repository law, graph issue posture, and source-derived ID context. The justified next action is to route through aoa-decision first. Creating a note or choosing an ID from prompt prose or memory would bypass the owner decision lane."
+    },
+    {
+      "contract_id": "collision-41-owner-action-v1",
+      "case_id": "collision-41",
+      "scope": "fixture_owner_observable_decision",
+      "decision_prompt": "Which next owner action is justified before the hidden decision-correct child repairs the stale note and index?",
+      "candidate_values": [
+        "edit_generated_index_before_source_note",
+        "route_through_decision_root_before_source_correction",
+        "silently_rewrite_stale_decision_history"
+      ],
+      "expected_candidate_value": "route_through_decision_root_before_source_correction",
+      "source_refs": [
+        "generated/skill_trigger_collision_matrix.json",
+        "skills/core/engineering/aoa-decision/SKILL.md",
+        "skills/core/engineering/aoa-decision-correct/SKILL.md",
+        "schemas/live-skill-dispatch-outcome-contracts.schema.json",
+        "evals/runners/run_live_skill_dispatch.py"
+      ],
+      "rationale": "Decision-correct must be selected through the decision router and inspect the owning source note before generated indexes or graph cache. Routing through the parent is therefore the next owner action. Editing the generated index first or silently rewriting history would reverse the source-authority contract."
+    },
+    {
       "contract_id": "collision-42-owner-action-v1",
       "case_id": "collision-42",
       "scope": "fixture_owner_observable_decision",
@@ -669,6 +805,25 @@
         "evals/runners/run_live_skill_dispatch.py"
       ],
       "rationale": "The case asks for selection among existing eval surfaces but supplies no target repository evidence. The bounded owner action is therefore to inspect the target's local and central eval surfaces before classification. The fixture command makes that choice transport-observable without treating the generic fixture probe, model prose, or unavailable repository task as an outcome."
+    },
+    {
+      "contract_id": "collision-43-owner-action-v1",
+      "case_id": "collision-43",
+      "scope": "fixture_owner_observable_decision",
+      "decision_prompt": "Which next owner action is justified before adding or designing an eval suite under conflicting local guidance?",
+      "candidate_values": [
+        "add_eval_suite_before_authority_mapping",
+        "inspect_eval_guidance_authority_before_suite_design",
+        "pick_port_yaml_by_filename"
+      ],
+      "expected_candidate_value": "inspect_eval_guidance_authority_before_suite_design",
+      "source_refs": [
+        "generated/skill_trigger_collision_matrix.json",
+        "skills/core/engineering/aoa-source-of-truth-check/SKILL.md",
+        "schemas/live-skill-dispatch-outcome-contracts.schema.json",
+        "evals/runners/run_live_skill_dispatch.py"
+      ],
+      "rationale": "The local eval guidance files must be inspected and assigned authored, entrypoint, or route-card roles before eval design begins. Inspecting their authority is the justified owner action. Adding a suite first or choosing PORT.yaml solely by filename would let an unresolved companion surface masquerade as source truth."
     },
     {
       "contract_id": "collision-49-owner-action-v1",

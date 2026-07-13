@@ -679,6 +679,131 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
         ):
             self.runner.validate_public_receipt(tampered)
 
+    def test_authority_routing_partition_wave_is_contract_complete(self) -> None:
+        plan = self.runner.load_plan(self.plan_path)
+        authority = self.runner.expand_cohort(
+            REPO_ROOT,
+            plan,
+            "full-collision-authority-routing",
+        )
+        expected_procedures = {
+            "collision-34": (None, "blocked_missing_input", False, True),
+            "collision-35": (None, "not_applicable", False, False),
+            "collision-36": (None, "blocked_missing_input", False, True),
+            "collision-37": (None, "blocked_missing_input", False, True),
+            "collision-38": (
+                "aoa-decision-find",
+                "blocked_missing_input",
+                False,
+                True,
+            ),
+            "collision-39": (None, "not_applicable", False, False),
+            "collision-40": (None, "not_applicable", False, False),
+            "collision-41": (None, "not_applicable", False, False),
+            "collision-42": (
+                "aoa-eval-select",
+                "blocked_missing_input",
+                False,
+                True,
+            ),
+            "collision-43": (None, "blocked_missing_input", False, True),
+            "collision-49": (None, "not_applicable", False, False),
+        }
+        expected_outcomes = {
+            "collision-34": "request_target_repo_and_authority_surfaces",
+            "collision-35": "require_explicit_invocation_and_local_authority",
+            "collision-36": "request_target_context_surfaces_and_owner_interfaces",
+            "collision-37": "inspect_candidate_authority_files_before_memo_writeback",
+            "collision-38": "inspect_graph_status_and_narrow_impact_packet",
+            "collision-39": "route_through_decision_root_before_graph_lookup",
+            "collision-40": "route_through_decision_root_before_record_creation",
+            "collision-41": "route_through_decision_root_before_source_correction",
+            "collision-42": "inspect_target_eval_surfaces_before_classification",
+            "collision-43": "inspect_eval_guidance_authority_before_suite_design",
+            "collision-49": "require_explicit_invocation_before_trust_loop",
+        }
+        self.assertEqual(22, len(authority))
+        self.assertEqual(set(expected_procedures), {trial.case_id for trial in authority})
+        self.assertEqual(set(expected_procedures), set(expected_outcomes))
+        for trial in authority:
+            with self.subTest(case_id=trial.case_id, arm=trial.arm_type):
+                self.assertIsNotNone(trial.procedure_contract)
+                self.assertIsNotNone(trial.outcome_contract)
+                procedure = trial.procedure_contract
+                outcome = trial.outcome_contract
+                assert procedure is not None
+                assert outcome is not None
+                child, disposition, completion, deflection = expected_procedures[
+                    trial.case_id
+                ]
+                self.assertEqual(
+                    "manual" if disposition == "not_applicable" else "invoke",
+                    trial.expected_behavior,
+                )
+                self.assertEqual(child, procedure.expected_selected_child_skill)
+                self.assertEqual(
+                    True if child is not None else None,
+                    procedure.expected_selected_child_full_read_observed,
+                )
+                self.assertEqual(
+                    disposition,
+                    procedure.expected_selected_procedure_disposition,
+                )
+                self.assertEqual(
+                    completion,
+                    procedure.expected_selected_procedure_completion_reported,
+                )
+                self.assertEqual(
+                    deflection,
+                    procedure.expected_selected_procedure_deflection_reported,
+                )
+                self.assertTrue(procedure.expected_owner_boundary_present)
+                self.assertEqual(
+                    expected_outcomes[trial.case_id],
+                    outcome.expected_candidate_value,
+                )
+
+        packet = self.runner.build_plan_packet(
+            REPO_ROOT,
+            plan,
+            "full-collision-authority-routing",
+            "model-a",
+            "medium",
+        )
+        self.assertEqual(11, packet["implicit_pair_count"])
+        self.assertEqual(6, packet["target_route_scored_pair_count"])
+        self.assertEqual(11, packet["procedure_contract_pair_count"])
+        self.assertEqual(6, packet["procedure_scored_pair_count"])
+        self.assertEqual(5, packet["manual_non_activation_pair_count"])
+        self.assertTrue(packet["procedure_contract_coverage_complete"])
+        self.assertEqual(11, packet["objective_outcome_scored_pair_count"])
+        self.assertTrue(packet["objective_outcome_coverage_complete"])
+        self.assertTrue(packet["high_cost_confirmation_required"])
+        with tempfile.TemporaryDirectory() as td:
+            receipt = self.runner.run_confirmed_cohort(
+                repo_root=REPO_ROOT,
+                plan=plan,
+                cohort="full-collision-authority-routing",
+                model="model-a",
+                effort="medium",
+                confirmation_token=packet["confirmation_token"],
+                high_cost_token=packet["high_cost_confirmation_token"],
+                private_root=Path(td),
+                transport=FakeTransport(),
+                test_only_allow_noncanonical_private_root=True,
+            )
+        Draft202012Validator(
+            self.load_schema("live-skill-dispatch-private-receipt.schema.json")
+        ).validate(receipt)
+        public = self.runner.build_public_receipt(receipt)
+        Draft202012Validator(
+            self.load_schema("live-skill-dispatch-public-receipt.schema.json")
+        ).validate(public)
+        self.runner.validate_public_receipt(public)
+        self.assertEqual("full-collision-authority-routing", public["cohort"])
+        self.assertEqual(22, public["trial_count"])
+        self.assertEqual(11, public["pair_count"])
+
     def test_core_engineering_return_cohort_repeats_only_fixture_gap_pairs(self) -> None:
         plan = self.runner.load_plan(self.plan_path)
         returns = self.runner.expand_cohort(

@@ -585,6 +585,21 @@ with proof and promotion authority false. The next semantic wave is
 `full-collision-authority-routing`; this result does not pre-authorize it or
 substitute for its own preflight.
 
+The authority-routing source pass closes that preflight design gate. The wave
+contains both arms of collisions 34-43 plus 49: 22 turns and 11 pairs. Existing
+decision-root, eval-root, and artifact-trust anchors 38, 42, and 49 stay
+unchanged. New contracts make prompt-visible cases 34, 36, 37, and 43 stop at
+`blocked_missing_input`; hidden manual cases 35, 39, 40, and 41 remain
+`not_applicable` and receive objective non-activation guards. The decision
+create/correct child sources newly enter the confirmation lock.
+
+The packet is now complete at 11/11 procedure and 11/11 owner-outcome
+contracts, with six route/procedure-score-eligible pairs and five hidden-manual
+pairs. The focused deterministic execution completes 22/22 and validates both
+receipt schemas. This is source-contract readiness only. Exact merge, runtime
+parity, host admission, both confirmation tokens, and a reviewed live receipt
+remain mandatory; proof and promotion authority stay false.
+
 ## Safety And Privacy
 
 The plan locks Git head, all portable skill files, generated/config inputs,
