@@ -40,7 +40,10 @@ Active first local corpus:
   report remain insufficient. After validating the first `collision-42` seam
   on exact-merged v12, the source corpus now covers all 11 implicit pilot
   pairs on both axes. This closes the deterministic coverage stop gate; it does
-  not itself authorize or report a live `pilot13` run.
+  not itself authorize a live `pilot13` run. The first subsequently reviewed
+  exact-merged pilot is preserved as mixed `needs-rerun` candidate evidence:
+  its clean outcome seam coexists with separate harness/contract and skill-route
+  returns that must be isolated before widening.
 
 These files are local evidence notes. They do not publish central proof
 acceptance, scoring, verdicts, regression truth, or proof doctrine.

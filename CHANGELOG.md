@@ -137,6 +137,17 @@ Tracking starts with the community-docs baseline for this repository.
   Deterministic plan coverage is 11/11 on both required axes. This closes the
   preflight coverage stop only; live pilot execution still requires an exact
   merged source plan, both operator tokens, host gates, and adaptive review.
+- The first exact-merged 30-turn `pilot13` now has a reviewed public-safe
+  `needs-rerun` receipt. All 30 arms completed with clean prompt, transport,
+  filesystem, inventory, fixture, owner-action, and authority evidence, and
+  all 11 outcome pairs were correct in both arms. Review separates three
+  manual-policy collision candidates from a premature decision-child contract,
+  ambient-control failure overclassification, manual no-dispatch disposition
+  ambiguity, and one unrecognized overlay-to-base structured hierarchy.
+- Public receipt privacy validation now treats canonical portable skill names
+  as typed source identifiers only in skill-name fields. This permits public
+  names such as `aoa-session-donor-harvest` without weakening rejection of
+  bare transport/session ids, UUIDs, paths, credentials, or raw fields.
 - `AOA-SK-D-0037` records why live cohorts remain operator-confirmed candidate
   evidence and now clarifies prompt-surface isolation and evidence-stage grading
   after the contaminated smoke; deterministic harness validation, not model

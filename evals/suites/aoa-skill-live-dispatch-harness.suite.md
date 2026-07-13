@@ -74,9 +74,9 @@ after reviewing the preceding cohort and repairing any return route it opens.
 procedure-contract and objective-outcome coverage, but confirmed execution
 stops before preflight or model spend until both reach all 11 implicit pairs.
 The current posture is 11/11 procedure contracts and 11/11 objective outcomes.
-This closes only the deterministic coverage gate: the pilot has not yet run,
-and its exact source token, high-cost token, and host/runtime preflights remain
-mandatory.
+This closes only the deterministic coverage gate. The first pilot has since run
+as mixed `needs-rerun` evidence, and every rerun still requires an exact source
+token, high-cost token, and all host/runtime preflights.
 
 ## Evidence Semantics
 
@@ -314,6 +314,17 @@ tests now report 11/11 on both axes. This authorizes only the next guarded step:
 review and merge the exact source, then plan and run `pilot13` with its printed
 operator tokens and host gates.
 
+The first exact-merged `pilot13` then completed all 30 turns without transport,
+prompt, filesystem, inventory, fixture, outcome-validator, or authority
+failure. All eleven owner-action pairs were correct in both arms. Review still
+marks the receipt `needs-rerun`: `collision-33`, `collision-09`, and
+`collision-14` expose manual-policy collision pressure, while `collision-38`,
+ambient manual controls, manual no-dispatch disposition, and the
+`abyss-safe-infra-change` to `aoa-safe-infra-change` report expose contract or
+harness returns that must be corrected before skill conclusions or another
+full pilot. Preserve the receipt and repeat only the smallest affected cases
+after each repair.
+
 ## Safety And Privacy
 
 The plan locks Git head, all portable skill files, generated/config inputs,
@@ -358,7 +369,9 @@ Raw artifacts stay under
 file mode `0600`. Public receipts whitelist fields and reject paths,
 credentials, transport/session ids, raw-note fields, or proof/promotion
 authority, including an absolute host path embedded inside a longer prose
-value.
+value. Public canonical skill names are accepted only in their schema-typed
+skill-name fields; bare `session-*`, `thread-*`, or `turn-*` identifiers remain
+rejected.
 
 ## Adaptive Return
 

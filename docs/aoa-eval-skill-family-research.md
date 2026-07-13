@@ -358,3 +358,33 @@ harness validation now reports 11/11 procedure coverage and 11/11 objective
 outcome coverage. The next claim boundary is narrow: the corpus makes the
 30-turn pilot plan-eligible, but only an exact-merged, operator-confirmed,
 host-routed run and review can say what the runtime actually does.
+
+## 2026-07-12 first full pilot readout
+
+The exact-merged 30-turn pilot completed under the medium host route with no
+early stop. All prompt inventories, filesystem and broad-inventory guards,
+fixture probes, transport returns, and authority boundaries passed. Every one
+of the 22 implicit arms made exactly one owner-action attempt, did not inspect
+the validator, and chose the source-correct action. The outcome seam therefore
+generalized across the pilot, but produced `no_lift_both_correct` in all eleven
+pairs rather than skill-specific outcome lift.
+
+The adaptive returns are heterogeneous. `aoa-change-protocol` won implicit
+manual-policy pressure for `aoa-summon`, `aoa-approval-gate-check`, and the
+`atm10` overlay; those are candidate description/collision gaps. They must not
+be conflated with three harness-side discoveries:
+
+- `collision-38` should stop at graph-status evidence before choosing
+  `aoa-decision-find`; the v1 child expectation was premature;
+- a no-skill control that invokes an ambient non-target route did not load the
+  manual target and must not be labelled a manual activation leak;
+- `abyss-safe-infra-change` explicitly starts from `aoa-safe-infra-change`, so
+  its target-plus-base-child report needs a source-declared hierarchy instead
+  of `selection_report_miss`.
+
+Manual-policy arms also consistently described the unavailable procedure as
+blocked or owner-deferred rather than `not_applicable`. That may be prompt and
+output-contract pressure, because no procedure is dispatched when the target
+is manual-required. Preserve the reviewed `needs-rerun` receipt, repair and
+replay these harness semantics first, then isolate the three skill collision
+candidates through the smallest adjacent reruns before another full pilot.

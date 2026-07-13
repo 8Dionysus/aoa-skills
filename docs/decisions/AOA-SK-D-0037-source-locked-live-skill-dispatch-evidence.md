@@ -292,9 +292,9 @@ target also appears in its own neighbourhood list.
   repeated runs are needed before changing skill status or promotion posture.
 - Tradeoff: the 48k ceiling raises worst-case live-campaign cost; non-smoke
   cohorts therefore retain the second exact high-cost confirmation token.
-- Follow-up: with the first v12 seam reviewed and both pilot coverage gates now
-  at 11/11, validate and merge the complete source corpus, then run and review
-  the guarded 30-turn pilot before widening toward all 57 skills.
+- Follow-up: preserve the first full pilot, correct its harness and contract
+  returns, isolate the manual-policy skill candidates with bounded reruns, and
+  repeat the guarded pilot before widening toward all 57 skills.
 
 ## Current Applicability
 
@@ -429,12 +429,45 @@ As of 2026-07-12:
   contamination, authorizing source review of the other ten cases.
 - Current pilot contract posture: all 11 implicit pairs have source-locked
   procedure contracts and separate owner-observable outcome contracts.
-  Deterministic planning reports 11/11 on both required axes. The coverage stop
-  is closed, but `pilot13` has not yet run; exact merged source, both operator
-  tokens, host/runtime preflights, and adaptive result review remain required.
+  Deterministic planning reports 11/11 on both required axes.
+- Current pilot evidence: the first exact-merged 30-turn run completed with all
+  prompt, transport, filesystem, inventory, fixture, owner-action, and
+  authority gates clean. All 11 outcome pairs were correct in both arms. The
+  reviewed receipt is `needs-rerun`, not a negative family verdict, because it
+  contains both manual-policy skill collision candidates and distinct
+  harness/contract return routes that must be corrected first.
 - Superseded by: none.
 
 ## Review Log
+
+### 2026-07-12 - Preserve the first full pilot as mixed adaptive returns
+
+- Source posture: PR #315 merged as `7d5fcd0f`; its squash tree exactly matched
+  the reviewed feature tree. The 30-turn plan and both operator tokens were
+  bound to that clean detached source under protocol v12.
+- Host posture: storage allowed the 512 MiB private target and the source-
+  printed medium/agent resource route launched without force. The wrapper
+  returned zero with 163.4 MiB peak memory and 18.6 MiB peak swap.
+- Clean evidence: all 30 turns completed; no prompt, filesystem, broad
+  inventory, transport, fixture, outcome-validator, owner-boundary, proof, or
+  promotion gate failed. All eleven owner-action pairs were correct in both
+  arms with exactly one uninspected attempt.
+- Skill candidates: implicit pressure selected `aoa-change-protocol` instead
+  of preserving the manual boundaries of `aoa-summon`,
+  `aoa-approval-gate-check`, and `atm10-change-protocol`.
+- Harness and contract returns: `collision-38` prematurely required
+  `aoa-decision-find` before graph status; ambient non-target control routes
+  were labelled manual activation leaks; manual no-dispatch procedures did not
+  share the authored `not_applicable` vocabulary; and the structured grader
+  rejected the source-valid `abyss-safe-infra-change` to
+  `aoa-safe-infra-change` hierarchy.
+- Decision: preserve a public-safe `needs-rerun` receipt. Repair privacy
+  projection, source contracts, and grader semantics before changing skills;
+  then rerun the smallest affected cases before another full pilot.
+- Privacy return: typed canonical skill names containing `session`, `thread`,
+  or `turn` are public repo identifiers, not transport ids. Accept them only in
+  schema-typed skill-name fields while retaining UUID, bare transport-id, path,
+  credential, and raw-field rejection everywhere else.
 
 ### 2026-07-12 - Close both pilot contract coverage gates
 
@@ -950,7 +983,7 @@ coverage.
 - exact `codex --version`, App Server schema contract, resource-wrapper cgroup,
   storage preflight, shadow-set lock, and `codex debug prompt-input` inventory
   checks before a live turn
-- exact-merged complete-corpus review before pilot execution, then reviewed
+- exact-merged complete-corpus review before each pilot rerun, then reviewed
   pilot evidence before any broader widening or skill-defect claim
 - one-attempt outcome-validator, no-answer-in-plan, and anti-inspection tests
   before any owner-action outcome is scored

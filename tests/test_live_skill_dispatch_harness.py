@@ -1519,6 +1519,35 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
         with self.assertRaises(runner.PublicReceiptSafetyError):
             runner.validate_public_receipt(forbidden_key)
 
+    def test_public_validator_distinguishes_typed_skill_names_from_transport_ids(self) -> None:
+        runner = self.runner
+        plan = runner.load_plan(self.plan_path)
+        packet = runner.build_plan_packet(REPO_ROOT, plan, "smoke", "test-model", "medium")
+        with tempfile.TemporaryDirectory() as td:
+            receipt = runner.run_confirmed_cohort(
+                repo_root=REPO_ROOT,
+                plan=plan,
+                cohort="smoke",
+                model="test-model",
+                effort="medium",
+                confirmation_token=packet["confirmation_token"],
+                high_cost_token=None,
+                private_root=Path(td),
+                transport=FakeTransport(),
+                test_only_allow_noncanonical_private_root=True,
+            )
+        public = runner.build_public_receipt(receipt)
+        public["measures"][0]["expected_target_skill"] = "aoa-session-donor-harvest"
+        public["pair_outcomes"][0]["expected_target_skill"] = (
+            "aoa-session-donor-harvest"
+        )
+        runner.validate_public_receipt(public)
+
+        leaked = json.loads(json.dumps(public))
+        leaked["measures"][0]["expected_target_skill"] = "session-deadbeef"
+        with self.assertRaises(runner.PublicReceiptSafetyError):
+            runner.validate_public_receipt(leaked)
+
     def test_review_cli_blocks_public_write_outside_reports_without_traceback(self) -> None:
         runner = self.runner
         plan = runner.load_plan(self.plan_path)
