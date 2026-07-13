@@ -471,11 +471,33 @@ As of 2026-07-12:
   probes require the smallest paired `collision-01`/`collision-02` return. That
   exact four-turn return is now clean and confirms an observation-layer gap,
   not a skill defect. The remaining unclean evidence is limited to opposite
-  single-arm owner-action gaps in `collision-05` and `collision-06`; a second
-  four-turn paired return isolates them before further widening.
+  single-arm owner-action gaps in `collision-05` and `collision-06`; the second
+  exact four-turn paired return is also clean. Together the returns close every
+  outstanding core-wave observation gap without changing skill source or
+  evidence rules. The safety-overlay wave is next but remains fail-closed on
+  incomplete source-authored contracts.
 - Superseded by: none.
 
 ## Review Log
+
+### 2026-07-12 - Close the core-wave observation loop
+
+- Exact source: the outcome return runs from the merged return contract with
+  the unchanged installed skill profile, v16 protocol, isolated shadow/MCP
+  sets, medium host wrapper, and both confirmations.
+- Outcome closure: all four `collision-05`/`collision-06` arms observe one
+  successful fixture command and one successful owner-action command, expose
+  both required sentinels, verify, and retain no failure class or output gap.
+- Skill signal: both aided arms again select and load the intended skill and
+  produce positive route plus procedure lift; both outcome pairs are clean and
+  correct in both arms.
+- Combined decision: the fixture return and outcome return now cover every
+  observation gap from the first core execution. Keep the original receipt as
+  historical `needs-rerun` evidence and both returns as reviewed candidate
+  evidence; do not rewrite history or widen authority.
+- Next gate: close the core wave as evidence-complete and move contract design
+  to the safety-overlay wave. Live execution remains blocked until that wave
+  has complete source-owned procedure and outcome contracts.
 
 ### 2026-07-12 - Close the fixture return and isolate the outcome return
 

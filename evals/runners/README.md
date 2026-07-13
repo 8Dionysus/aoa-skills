@@ -398,6 +398,14 @@ skill source. The original `collision-05` and `collision-06` owner-action gaps
 remain outside that receipt, so the separate outcome-return cohort repeats
 only those two pairs before another collision wave can open.
 
+That exact outcome return also completes 4/4 with no failure class. Every
+fixture and owner-action probe for `collision-05` and `collision-06` is
+observed once, succeeds, exposes its required sentinel, and verifies. Both
+aided arms retain positive route and procedure lift, and both outcomes are
+observation-clean and correct in both arms. Together the two paired returns
+close all outstanding observation gaps from the first core wave. The next
+collision wave still cannot run until its own contract coverage is complete.
+
 See `evals/suites/aoa-skill-live-dispatch-harness.suite.md` and
 `docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md` for
 the evidence and authority boundaries.

@@ -723,3 +723,30 @@ outcome-unclean, even though their route and procedure evidence is usable. Add
 `full-collision-core-engineering-outcome-returns` with both arms of exactly
 those two pairs, keep both contract axes required and second-confirmed, and
 review that four-turn result before opening the safety-overlay wave.
+
+## 2026-07-12 outcome return closes the core observation loop
+
+The exact-merged `full-collision-core-engineering-outcome-returns` execution
+completes all four `collision-05` and `collision-06` arms with no failure
+class. Every fixture and owner-action command is observed once, exits zero,
+exposes the required sentinel, and verifies. Both aided arms again select and
+load `aoa-port-adapter-refactor` or `aoa-tdd-slice`, report the source-locked
+`blocked_missing_input` disposition, and gain route plus procedure correctness
+over control. Both owner-action comparisons are observation-clean and correct
+in both arms.
+
+The original single-arm outcome gaps were therefore observation-layer misses,
+not evidence for changing either skill, its answer key, or the outcome
+validator. Combined with the clean `collision-01`/`collision-02` fixture
+return, all outstanding observation gaps from the first 16-turn
+core-engineering execution now have exact paired clean returns. Preserve all
+three receipts: the first as historical `needs-rerun` evidence and the two
+returns as reviewed candidate evidence. None grants central proof, regression,
+or promotion authority.
+
+The core wave can now close as an evidence-complete bounded slice: all eight
+original aided pairs have route and procedure lift, six original outcomes were
+clean immediately, and the four pairs affected by fixture or owner-action
+observation gaps have clean exact returns. The next admissible widening is the
+safety-overlay wave, but it remains preflight-blocked until every one of its
+implicit procedure and outcome contracts is source-authored and validated.
