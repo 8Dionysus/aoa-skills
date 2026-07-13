@@ -249,6 +249,22 @@ Active first local corpus:
   reviewed candidate evidence; it does not create implicit lift, outcome,
   proof, or promotion claims. After this writeback lands and all exact gates
   are repeated, the 30-turn `coverage-closure-structured-core` wave is next.
+  That exact-merged v21 run is preserved as
+  [`aoa-skill-live-dispatch-coverage-closure-structured-core-20260713-v21-reviewed-structured-report-and-dispatch-gaps-needs-rerun.json`](reports/aoa-skill-live-dispatch-coverage-closure-structured-core-20260713-v21-reviewed-structured-report-and-dispatch-gaps-needs-rerun.json).
+  All 30 turns complete and 27 targets pass every structured dispatch, load,
+  report, fixture, isolation, and owner-boundary check. Public projection first
+  exposes a sanitizer false positive because the source case id for
+  `aoa-eval-session-mining` contains `session-`; v22 treats `case_id` as a
+  source-typed portable slug while still rejecting identifiers that begin with
+  a transport prefix. After projection, decision-find and eval-session-mining
+  show report-only redundant `selected_child` values despite correct native
+  dispatch/load/read, while ATM10 change protocol reports `manual_required`
+  despite accepted explicit input. V22 now states that the official dual input
+  is explicit activation, the direct target is `selected_skill`,
+  `selected_child` is null, and missing task inputs affect disposition rather
+  than dispatch. The three-turn
+  `coverage-closure-structured-core-returns` cohort repeats only those targets
+  before structured Titan may open.
 
 These files are local evidence notes. They do not publish central proof
 acceptance, scoring, verdicts, regression truth, or proof doctrine.

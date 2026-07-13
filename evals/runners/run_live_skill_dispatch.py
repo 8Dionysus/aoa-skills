@@ -314,7 +314,7 @@ PUBLIC_SKILL_NAME_KEYS = frozenset(
         "trajectory_expected_child_skill",
     }
 )
-PUBLIC_PLAN_SLUG_KEYS = frozenset({"cohort"})
+PUBLIC_PLAN_SLUG_KEYS = frozenset({"case_id", "cohort"})
 SKILL_ROOT_LINE_RE = re.compile(r"^- `(?P<alias>r[0-9]+)` = `(?P<path>/[^`]+)`$")
 SKILL_ENTRY_LINE_RE = re.compile(
     r"^- (?P<name>[A-Za-z0-9][A-Za-z0-9:-]*): (?P<description>.*) "
@@ -782,7 +782,7 @@ def _expected_codex_version(plan: dict[str, Any]) -> str:
     revision = str(plan.get("protocol_revision") or "")
     match = re.fullmatch(
         r"codex-cli-([0-9]+(?:\.[0-9]+){2})-"
-        r"(?:app-server-skill-input-v3|live-dispatch-evidence-v(?:[4-9]|1[0-9]|2[01]))",
+        r"(?:app-server-skill-input-v3|live-dispatch-evidence-v(?:[4-9]|1[0-9]|2[0-2]))",
         revision,
     )
     if match is None:
@@ -1847,6 +1847,19 @@ def _with_fixture_procedure(prompt: str) -> str:
     )
 
 
+def _with_structured_direct_target_contract(prompt: str, skill_name: str) -> str:
+    return (
+        f"{_with_fixture_procedure(prompt)}\n\n"
+        "Structured direct-target contract: the adjacent textual and structured skill inputs are "
+        f"explicit activation of `{skill_name}`. Set `route_decision` to `invoke`, set "
+        f"`selected_skill` to `{skill_name}`; `selected_child` must be `null`; do not repeat "
+        "the direct target as its own child. Missing task or repository input changes "
+        "`procedure_disposition`, not `route_decision`; use `blocked_missing_input` when required "
+        "inputs are absent, or `deferred_owner_boundary` only when the source declares that owner "
+        "boundary."
+    )
+
+
 def _target_report_contract_text(*, hidden_manual_target: bool = False) -> str:
     contract = (
         "Target report contract: `route_decision` concerns the expected target skill only. A background "
@@ -1974,7 +1987,7 @@ def build_app_server_structured_request(
             "input": [
                 {
                     "type": "text",
-                    "text": f"${skill_name} {_with_fixture_procedure(prompt)}",
+                    "text": f"${skill_name} {_with_structured_direct_target_contract(prompt, skill_name)}",
                 },
                 {"type": "skill", "name": skill_name, "path": str(skill_path)},
             ],

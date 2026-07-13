@@ -95,6 +95,7 @@
         "coverage-closure-titan-implicit-b-returns",
         "coverage-closure-root-trajectories",
         "coverage-closure-structured-core",
+        "coverage-closure-structured-core-returns",
         "coverage-closure-structured-titan"
       ],
       "properties": {
@@ -120,6 +121,7 @@
         "coverage-closure-titan-implicit-b-returns": {"$ref": "#/$defs/cohort"},
         "coverage-closure-root-trajectories": {"$ref": "#/$defs/cohort"},
         "coverage-closure-structured-core": {"$ref": "#/$defs/cohort"},
+        "coverage-closure-structured-core-returns": {"$ref": "#/$defs/cohort"},
         "coverage-closure-structured-titan": {"$ref": "#/$defs/cohort"}
       }
     },
