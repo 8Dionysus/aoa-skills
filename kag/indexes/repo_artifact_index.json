@@ -3682,7 +3682,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "8e60abdaccb311a20449adff750e4036acfa590524afb148b9f043abe4c27c13",
+      "content_hash": "0ac5b56de3fb8029aef59c7e7ef1c8be9e9d2c9290fd0f41cdd7aa1c6b0413d9",
       "id": "artifact:file:changelog.md:06572a96a5",
       "path": "CHANGELOG.md",
       "source_record_id": "file:changelog.md:06572a96a5",
@@ -3922,7 +3922,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "54c32f414ca297a5f37c73a8beadecdcb59535fbc86941c4933aef5e4152ee82",
+      "content_hash": "4286bdab4f9ed0d3d71a22d977c898f4b938fc797fce37efdb58fcccf72e8783",
       "id": "artifact:file:docs/aoa-eval-skill-family-research.md:f392da1f19",
       "path": "docs/aoa-eval-skill-family-research.md",
       "source_record_id": "file:docs/aoa-eval-skill-family-research.md:f392da1f19",
@@ -4226,7 +4226,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "adcc083c7d45b309f15ec2daf844f8dba91cc8e90fbfdede77d0fabefec354ca",
+      "content_hash": "8822dc95a7208e3e15514b1527c81105a0ded25f4609b6a7295e63a4e4491d80",
       "id": "artifact:file:docs/decisions/aoa-sk-d-0037-source-locked-live-skill-dispatch-evidence.md:ca6ee4ca5a",
       "path": "docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md",
       "source_record_id": "file:docs/decisions/aoa-sk-d-0037-source-locked-live-skill-dispatch-evidence.md:ca6ee4ca5a",
@@ -4842,7 +4842,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "c54f1c46b83fe5634297555d60caf3ed6a53a59cd36ebd67d9ea163b624848c7",
+      "content_hash": "07912a06407b9093365cb8d65f51288f180938dd12e5b061799f1cff517d3355",
       "id": "artifact:file:evals/readme.md:a1a9eeb43d",
       "path": "evals/README.md",
       "source_record_id": "file:evals/readme.md:a1a9eeb43d",
@@ -4858,7 +4858,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "db57d7e35dd9ccab852856301e1c0c94726abd2c5cc125b0d8086815d342956e",
+      "content_hash": "596a36436774c12c6694ddbcfd3e04c1d1fee84f8c19a2edce6b2dc2ac321c52",
       "id": "artifact:file:evals/reports/readme.md:ac5e016ca2",
       "path": "evals/reports/README.md",
       "source_record_id": "file:evals/reports/readme.md:ac5e016ca2",
@@ -5106,7 +5106,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "c1459fd97033639caaeb4969e44786f5a0968375faba2af944ac51942370fdca",
+      "content_hash": "ac9f5c0a2f69440540e6a958401942a1c03a21815e330d94132c07a08392a413",
       "id": "artifact:file:evals/runners/readme.md:194095a363",
       "path": "evals/runners/README.md",
       "source_record_id": "file:evals/runners/readme.md:194095a363",
@@ -5114,7 +5114,7 @@
     },
     {
       "artifact_kind": "script",
-      "content_hash": "799122b1e169c6e4d78f6ff1de63d9feb9fd7b2f4323b273f379cfee4257b81b",
+      "content_hash": "91a91b5d12bed7fc13780c5b2296a2c4778bec4448880683ab0abd1883edff01",
       "id": "artifact:file:evals/runners/run_live_skill_dispatch.py:e7cd5c0ae9",
       "path": "evals/runners/run_live_skill_dispatch.py",
       "source_record_id": "file:evals/runners/run_live_skill_dispatch.py:e7cd5c0ae9",
@@ -5146,7 +5146,7 @@
     },
     {
       "artifact_kind": "config",
-      "content_hash": "b469c6229dbf6031cbd45b2f191db84871f7724cf8bef8007c595e4e00af930e",
+      "content_hash": "f134d15d03a791422761a049638fbc27c3fa59541e7bff2ea39a604531fd5892",
       "id": "artifact:file:evals/suites/aoa-skill-live-dispatch-harness.suite.json:beeca555d0",
       "path": "evals/suites/aoa-skill-live-dispatch-harness.suite.json",
       "source_record_id": "file:evals/suites/aoa-skill-live-dispatch-harness.suite.json:beeca555d0",
@@ -5154,7 +5154,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "bcf44dd0d16d4bfbf284bf31d04423f0eae3fa2c95f893899ce02051b4e03298",
+      "content_hash": "4c974fa3deca67a19a0051d08f17cdd3c5f00edb820e72f331c01387b96cdd89",
       "id": "artifact:file:evals/suites/aoa-skill-live-dispatch-harness.suite.md:dc83328e65",
       "path": "evals/suites/aoa-skill-live-dispatch-harness.suite.md",
       "source_record_id": "file:evals/suites/aoa-skill-live-dispatch-harness.suite.md:dc83328e65",
@@ -5178,7 +5178,7 @@
     },
     {
       "artifact_kind": "config",
-      "content_hash": "cf42ba56381bb4ed3697ac88d8a4de66a7f47b4599b98eb4ae1441e0d2a13c9c",
+      "content_hash": "b761db4a4f242801401ca68c8b3b32ef677b7f3d7f1ac9419eb81d6bf2dcac64",
       "id": "artifact:file:evals/suites/aoa-skill-live-dispatch.plan.json:c8f8bbbc88",
       "path": "evals/suites/aoa-skill-live-dispatch.plan.json",
       "source_record_id": "file:evals/suites/aoa-skill-live-dispatch.plan.json:c8f8bbbc88",
@@ -5186,7 +5186,7 @@
     },
     {
       "artifact_kind": "config",
-      "content_hash": "85fccdf87e64213607cf1fc5123f5e568049cf2a0edc2a3b0561f1d7bf8b5059",
+      "content_hash": "6a4694aaf660cdc4eb8b08e495546f9a5107b79cf3cd39ff448374d6a265b6d0",
       "id": "artifact:file:evals/suites/codex-app-server-skill-input.contract.json:b1bc17a34b",
       "path": "evals/suites/codex-app-server-skill-input.contract.json",
       "source_record_id": "file:evals/suites/codex-app-server-skill-input.contract.json:b1bc17a34b",
@@ -9138,7 +9138,7 @@
     },
     {
       "artifact_kind": "schema",
-      "content_hash": "6a4adb40e9fb2d80976628696961f200cef2093c00289ddf71964be2a379f0a3",
+      "content_hash": "a703c03217ceb2c1477e823d0cdaab2987657e2c1dba233361ee29c8b56be23b",
       "id": "artifact:file:schemas/live-skill-dispatch-model-output.schema.json:a717256676",
       "path": "schemas/live-skill-dispatch-model-output.schema.json",
       "source_record_id": "file:schemas/live-skill-dispatch-model-output.schema.json:a717256676",
@@ -9178,7 +9178,7 @@
     },
     {
       "artifact_kind": "schema",
-      "content_hash": "0070643bac6b0ebc0da7c863719101c08de768bd9a186c6217f611d817b41ec3",
+      "content_hash": "5226d9aebabd489e5583198c6ddbb54372420c5c6fe377ead8c9826af5f9b1a9",
       "id": "artifact:file:schemas/live-skill-dispatch-public-receipt.schema.json:6248b34177",
       "path": "schemas/live-skill-dispatch-public-receipt.schema.json",
       "source_record_id": "file:schemas/live-skill-dispatch-public-receipt.schema.json:6248b34177",
@@ -14922,7 +14922,7 @@
     },
     {
       "artifact_kind": "test",
-      "content_hash": "b65b06ddc708b6dc83ecdcbf2dda674c29027b77d70986619280b94292b8eab5",
+      "content_hash": "dfceefdf2b43bf99d11621505f3cc7d4850c307320742e3471981e2f5be3eecf",
       "id": "artifact:file:tests/test_live_skill_dispatch_harness.py:27c0f74cd0",
       "path": "tests/test_live_skill_dispatch_harness.py",
       "source_record_id": "file:tests/test_live_skill_dispatch_harness.py:27c0f74cd0",
@@ -15315,7 +15315,7 @@
   ],
   "index_identity": {
     "artifact_kind": "repository_artifact_index",
-    "content_digest": "3d6c3e31b582755cf890527305e92578c4addf72f137dfd8b10f78d14f7a41bc",
+    "content_digest": "bb990d9ef8820af6cda2c5659dbe864ce18d0e97fdbf1af4ee8642ecb9d497c4",
     "index_kind": "artifact",
     "local_id": "index:repo-local:artifacts",
     "schema_ref": "aoa-kag:schemas/repo-local-kag-repository-index.schema.json"
@@ -15339,7 +15339,7 @@
   },
   "schema_version": "aoa-repo-local-kag-repository-index-v1",
   "source_index": {
-    "content_digest": "3111d2786ee181c04469ccd989a6d17709e67da647cedc4d5b30a252a75e1511",
+    "content_digest": "85b9acdef29f348bedc4a9dcbce9390a868cd1141b9e745873bb190422edb6c3",
     "local_id": "index:repo-local:source-surfaces",
     "path": "kag/indexes/source_surface_index.json"
   },

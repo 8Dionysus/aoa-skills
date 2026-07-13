@@ -353,6 +353,16 @@ that the plan/schema cohort addition had not reached the private/public receipt
 cohort enums. Close that schema parity with a real private-to-public synthetic
 receipt test before interpreting or rerunning the live cohort.
 
+V14 separates the reported selection surface from the target policy. The exact
+prompt-visible repo name set determines whether a reported selection belongs
+to the treatment; external ambient routes are reported separately and do not
+load an explicit-only target. The target-report contract now reaches implicit
+arms, defines procedure disposition for the target rather than an ambient
+procedure, and requires `claims_loaded=false` when `selected_skill` is null.
+Replay of the 14-turn v13 raw evidence changes only two aided classifications,
+from dispatch policy gaps to target procedure disposition misses. It leaves all
+other failures intact and never alters the reviewed v13 receipt.
+
 ## Safety And Privacy
 
 The plan locks Git head, all portable skill files, generated/config inputs,
@@ -370,7 +380,7 @@ both sides of this transport-specific contract.
 
 These hermetic invocation rules use contract schema
 `aoa_codex_app_server_skill_input_contract_v11` and protocol revision
-`codex-cli-0.144.1-live-dispatch-evidence-v13`. Retained v1-v12 receipts remain
+`codex-cli-0.144.1-live-dispatch-evidence-v14`. Retained v1-v13 receipts remain
 source-locked to their original protocol and review status and are not upgraded
 in place.
 

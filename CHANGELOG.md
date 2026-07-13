@@ -165,6 +165,14 @@ Tracking starts with the community-docs baseline for this repository.
   6/15 stopped on transport, while a fresh 14/15 run passed that point and
   stopped on an internally contradictory model output before the final
   structured arm.
+- V14 separates reported repo-treatment selection from external ambient
+  routing. Manual target policy now remains correct when the target stays
+  unloaded behind `aoa-session-memory-global-route` or `abyss-machine`, while
+  repo-visible activations still fail. The target report contract is appended
+  to implicit prompts, makes null-selection load claims explicitly false, and
+  defines procedure disposition for the target rather than an ambient route.
+  Read-only v13 replay moves exactly two aided failures from dispatch policy to
+  procedure disposition; it removes no remaining failure.
 - `AOA-SK-D-0037` records why live cohorts remain operator-confirmed candidate
   evidence and now clarifies prompt-surface isolation and evidence-stage grading
   after the contaminated smoke; deterministic harness validation, not model
@@ -297,7 +305,7 @@ Tracking starts with the community-docs baseline for this repository.
   vocabulary remains readable only for historical receipt compatibility.
 - The hermetic evidence contract is now
   `aoa_codex_app_server_skill_input_contract_v11` with protocol revision
-  `codex-cli-0.144.1-live-dispatch-evidence-v13`; retained v1-v12 receipts remain
+  `codex-cli-0.144.1-live-dispatch-evidence-v14`; retained v1-v13 receipts remain
   immutable under their original protocol and review status.
 - Live dispatch now locks and passes Codex rollout-budget reminder thresholds
   as a TOML list for both CLI and App Server arms, rejects invalid thresholds

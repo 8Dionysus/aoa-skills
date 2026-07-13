@@ -1048,10 +1048,14 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
             (REPO_ROOT / plan["sources"]["protocol_contract"]).read_text(encoding="utf-8")
         )
         self.assertEqual(plan["protocol_revision"], contract["protocol_revision"])
+        self.assertEqual(
+            "codex-cli-0.144.1-live-dispatch-evidence-v14",
+            plan["protocol_revision"],
+        )
         self.assertEqual("codex-cli 0.144.1", self.runner._expected_codex_version(plan))
         unsupported_plan = dict(plan)
         unsupported_plan["protocol_revision"] = (
-            "codex-cli-0.144.1-live-dispatch-evidence-v14"
+            "codex-cli-0.144.1-live-dispatch-evidence-v15"
         )
         with self.assertRaisesRegex(ValueError, "unsupported Codex protocol revision"):
             self.runner._expected_codex_version(unsupported_plan)
@@ -1074,6 +1078,14 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
         self.assertIn(
             "do not gate objective load evidence",
             contract["evidence_binding"]["model_load_claim"],
+        )
+        self.assertIn(
+            "external background or ambient route",
+            contract["evidence_binding"]["reported_selection_surface"],
+        )
+        self.assertIn(
+            "must be false when selected_skill is null",
+            contract["evidence_binding"]["target_report_semantics"],
         )
         self.assertIn(
             "read-only skill-file inspection commands",
@@ -1113,6 +1125,15 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
         )
         self.assertEqual(10, len(contract["schema_sha256"]))
         self.assertFalse(contract["proof_authority"])
+        output_schema = self.load_schema("live-skill-dispatch-model-output.schema.json")
+        self.assertIn(
+            "background ambient skill",
+            output_schema["properties"]["selected_skill"]["description"],
+        )
+        self.assertIn(
+            "expected target skill procedure",
+            output_schema["properties"]["procedure_disposition"]["description"],
+        )
 
     def test_arm_adapters_are_exact_read_only_and_never_use_dangerous_flags(self) -> None:
         runner = self.runner
@@ -1166,6 +1187,19 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
         )
         self.assertIn(
             "Do not enumerate, recursively list, or hash the fixture tree",
+            implicit["prompt"],
+        )
+        self.assertIn(
+            "`route_decision` concerns the expected target skill only",
+            implicit["prompt"],
+        )
+        self.assertIn("background or ambient skill", implicit["prompt"])
+        self.assertIn(
+            "`claims_loaded` must be `false` when `selected_skill` is `null`",
+            implicit["prompt"],
+        )
+        self.assertIn(
+            "`procedure_disposition` describes the target skill procedure",
             implicit["prompt"],
         )
         self.assertTrue(trajectory["prompt"].startswith("$aoa-eval "))
@@ -2512,6 +2546,8 @@ Second procedure section.
             "dispatch_contract_match",
             "load_contract_match",
             "procedure_disposition",
+            "reported_selected_skill_repo_visible",
+            "reported_non_treatment_skill",
             "fixture_command_observed",
             "fixture_command_succeeded",
             "fixture_verification_observed",
@@ -2965,10 +3001,96 @@ Second procedure section.
         )
         self.assertIsNone(runner._trial_failure_class(trial, result))
 
+    def test_manual_aided_external_ambient_route_is_not_repo_treatment_activation(self) -> None:
+        runner = self.runner
+        trial = runner.Trial(
+            trial_id="manual-ambient:aided",
+            arm_type="implicit_aided",
+            case_id="manual-ambient",
+            prompt="Keep the explicit target unloaded while using ambient routing.",
+            expected_target_skill="aoa-session-donor-harvest",
+            expected_behavior="manual",
+            procedure_contract=runner.ProcedureContract(
+                contract_id="manual-ambient-target-procedure-v1",
+                case_id="manual-ambient",
+                scope="selected_route_procedure_disposition",
+                expected_selected_child_skill=None,
+                expected_selected_child_full_read_observed=None,
+                expected_selected_procedure_disposition="not_applicable",
+                expected_selected_procedure_completion_reported=False,
+                expected_selected_procedure_deflection_reported=False,
+                expected_owner_boundary_present=True,
+                source_refs=(
+                    "evals/suites/aoa-skill-live-dispatch-procedures.json",
+                ),
+            ),
+        )
+        result = FakeTransport().run_cli(
+            {
+                "expected_target_skill": "aoa-session-donor-harvest",
+                "expected_behavior": "manual",
+                "arm_type": "implicit_aided",
+            }
+        )
+        result["final_output"].update(
+            {
+                "route_decision": "manual_required",
+                "selected_skill": "aoa-session-memory-global-route",
+                "selected_child": None,
+                "claims_loaded": True,
+                "procedure_disposition": "not_applicable",
+            }
+        )
+        result.update(
+            {
+                "actual_prompt_skill_paths": {
+                    "aoa-change-protocol": [
+                        "/private/fixture/.agents/skills/aoa-change-protocol/SKILL.md"
+                    ]
+                },
+                "target_skill_full_read_observed": False,
+                "fixture_command_observed": True,
+                "fixture_command_succeeded": True,
+                "fixture_verification_observed": True,
+            }
+        )
+        measure = runner._trial_measure(trial, result)
+        self.assertFalse(measure["reported_selected_skill_repo_visible"])
+        self.assertTrue(measure["reported_non_treatment_skill"])
+        self.assertTrue(measure["dispatch_contract_match"])
+        self.assertTrue(measure["route_contract_match"])
+        self.assertIsNone(measure["failure_class"])
+
+        result["final_output"].update(
+            {
+                "route_decision": "invoke",
+                "selected_skill": "aoa-change-protocol",
+            }
+        )
+        repo_measure = runner._trial_measure(trial, result)
+        self.assertTrue(repo_measure["reported_selected_skill_repo_visible"])
+        self.assertFalse(repo_measure["reported_non_treatment_skill"])
+        self.assertEqual("manual_activation_leak", repo_measure["failure_class"])
+
+        result["final_output"].update(
+            {
+                "route_decision": "manual_required",
+                "selected_skill": "aoa-session-memory-global-route",
+                "claims_loaded": True,
+                "procedure_disposition": "blocked_missing_input",
+            }
+        )
+        procedure_measure = runner._trial_measure(trial, result)
+        self.assertTrue(procedure_measure["dispatch_contract_match"])
+        self.assertEqual(
+            "procedure_disposition_miss",
+            procedure_measure["failure_class"],
+        )
+
     def test_manual_no_dispatch_prompt_requires_not_applicable_disposition(self) -> None:
         prompt = self.runner._with_fixture_procedure("Classify the bounded route.")
         self.assertIn(
-            "manual_required` or `do_not_use` and no target procedure was dispatched",
+            "target route is `manual_required` or `do_not_use` and the target procedure was not dispatched",
             prompt,
         )
         self.assertIn("procedure_disposition` must be `not_applicable`", prompt)

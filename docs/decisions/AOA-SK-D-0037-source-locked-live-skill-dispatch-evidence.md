@@ -124,7 +124,7 @@ change is source/runtime drift, not a reason to reuse the old token.
 
 The corrected hermetic pre-turn and evidence contract uses schema
 `aoa_codex_app_server_skill_input_contract_v11` and protocol revision
-`codex-cli-0.144.1-live-dispatch-evidence-v13`. It follows the
+`codex-cli-0.144.1-live-dispatch-evidence-v14`. It follows the
 [official App Server invocation shape](https://learn.chatgpt.com/docs/app-server#start-a-turn-invoke-a-skill)
 and Codex [progressive-disclosure load semantics](https://learn.chatgpt.com/docs/customization/overview#skills).
 Retained receipts source-locked to v1-v10 keep their original protocol and
@@ -321,7 +321,7 @@ As of 2026-07-12:
 - Current cap contract: every arm receives the same source-locked 48k ceiling;
   paired arms may differ in actual use but never in available budget.
 - Current contract schema: `aoa_codex_app_server_skill_input_contract_v11`.
-- Current protocol lock: `codex-cli-0.144.1-live-dispatch-evidence-v13`.
+- Current protocol lock: `codex-cli-0.144.1-live-dispatch-evidence-v14`.
 - Current pair contract: new receipts publish route, selected-child trajectory,
   and selected-procedure-disposition report lift separately. Sent structured
   dispatch, accepted native load, model hierarchy report, and fixture execution
@@ -450,9 +450,39 @@ As of 2026-07-12:
   6/15 on a post-start transport timeout. A fresh attempt passed that point and
   stopped at 14/15 on an output contradiction. Both receipts are preserved as
   `needs-rerun`; the final structured arm remains unobserved.
+- Current v14 posture: selected reports are classified against the exact
+  prompt-visible repo surface; external ambient routes do not become treatment
+  activation. Target-specific report guidance now reaches implicit arms.
+  Read-only replay moves two aided failures from dispatch policy to procedure
+  disposition and removes no remaining failure.
 - Superseded by: none.
 
 ## Review Log
+
+### 2026-07-12 - Separate repo treatment from ambient target reporting in v14
+
+- Live evidence: `collision-20` aided reported
+  `aoa-session-memory-global-route`, while `collision-49` aided reported
+  `abyss-machine`. Both kept the explicit target unloaded and chose
+  `manual_required`, but v13 rejected the non-target selected name.
+- Counter-evidence: `aoa-change-protocol` and `aoa-eval` were prompt-visible
+  repo selections and were invoked or claimed loaded. Those remain real
+  treatment-side collision/leak candidates.
+- Prompt return: v13 no-dispatch guidance lived only in
+  `_with_fixture_procedure`; implicit arms used `_with_fixture_scope` directly,
+  so the instruction never reached the pilot pairs.
+- Output return: Titan control combined `selected_skill=null` with
+  `claims_loaded=true`. Keep this invalid, and make the null-load invariant
+  explicit in the final target-report guidance and output schema description.
+- Decision: classify reported selection against the exact prompt-visible repo
+  names; let manual target dispatch depend on `manual_required` while target
+  load remains independently false; append target procedure semantics to every
+  arm; publish only booleans for repo-visible versus non-treatment reporting.
+- Replay: under v14, only `collision-20` aided and `collision-49` aided change,
+  each from `dispatch_policy_gap` to `procedure_disposition_miss`. Two
+  collisions, two repo activation leaks, one existing procedure miss, and one
+  output-contract failure remain. Preserve v13 receipts unchanged and require a
+  fresh exact-merged v14 run before editing skills.
 
 ### 2026-07-12 - Preserve partial v13 returns and close receipt schema parity
 

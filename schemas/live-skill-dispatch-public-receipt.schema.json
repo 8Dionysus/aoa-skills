@@ -102,6 +102,8 @@
         "route_decision": {"type": ["string", "null"], "enum": ["invoke", "manual_required", "do_not_use", null]},
         "manual_recommendation": {"type": "boolean"},
         "model_claims_loaded": {"type": "boolean"},
+        "reported_selected_skill_repo_visible": {"type": "boolean"},
+        "reported_non_treatment_skill": {"type": "boolean"},
         "structured_skill_visible": {"type": "boolean"},
         "structured_skill_input_sent": {"type": "boolean"},
         "native_target_skill_input_accepted": {"type": "boolean"},

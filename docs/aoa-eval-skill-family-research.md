@@ -440,3 +440,28 @@ in the plan schema but not in private/public receipt cohort enums. Preserve the
 two receipts under their original v13 measures, close schema parity with a
 synthetic private-to-public test, then repair repo-vs-ambient activation and
 output-field semantics before another live attempt.
+
+## 2026-07-12 v14 target-report boundary
+
+V14 makes the treatment boundary explicit. The runner classifies the reported
+selected skill against the exact prompt-visible repo fixture names. A selected
+external ambient route is recorded but is not repo-treatment activation, while
+a selected prompt-visible repo skill remains a manual leak or collision
+candidate. For manual targets, dispatch correctness now depends on
+`route_decision=manual_required`; the independent target-load contract still
+requires that the target was not read or natively loaded.
+
+The same contract text now reaches implicit arms; v13 had appended its
+`not_applicable` instruction only through the root/structured fixture-procedure
+builder. The final prompt section states that route decision and procedure
+disposition concern the expected target, that an ambient route does not make
+the target invoked or blocked, and that `claims_loaded` must be false when no
+skill is selected. The output schema descriptions preserve those distinctions.
+
+Read-only replay of the 14-turn v13 private receipt changes only
+`collision-20` and `collision-49` aided: each moves from
+`dispatch_policy_gap` to `procedure_disposition_miss`. The replay leaves two
+collision misroutes, two repo-skill manual activation leaks, one earlier
+procedure miss, and the Titan output-contract failure. It validates v14
+classification only and does not rewrite either v13 public receipt. A fresh
+exact-merged v14 run remains required before skill edits.
