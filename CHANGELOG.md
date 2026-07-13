@@ -226,6 +226,13 @@ Tracking starts with the community-docs baseline for this repository.
   and blocks live execution while any implicit procedure or outcome contract
   is missing. The first 16-turn core-engineering wave is contract-complete at
   8/8 pairs.
+- The first exact-merged v16 core-engineering wave completes 16/16 turns and
+  gives all eight aided arms positive route and procedure lift. Six outcomes
+  are observation-clean and correct in both arms. Three exact fixture probes
+  exit zero with zero captured output and retain `fixture_execution_gap`; two
+  outcome contrasts are likewise observation-unclean. A new four-turn return
+  cohort repeats only the affected `collision-01` and `collision-02` pairs
+  without changing skill source or relaxing verification.
 - `AOA-SK-D-0037` records why live cohorts remain operator-confirmed candidate
   evidence and now clarifies prompt-surface isolation and evidence-stage grading
   after the contaminated smoke; deterministic harness validation, not model

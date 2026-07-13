@@ -36,6 +36,9 @@ V16 keeps the two broad cohorts as inventory parents and names eleven bounded
 execution waves below them. Runner validation requires disjoint waves whose
 trial identities exactly cover each parent, rejects any child wider than 30
 turns or 512 MiB, and forbids `declared_only` contract posture on a wave.
+The four-turn `full-collision-core-engineering-returns` cohort preserves both
+arms of only `collision-01` and `collision-02`, the pairs affected by the first
+wave's zero-output fixture observation return.
 The procedure source contract lives at
 `evals/suites/aoa-skill-live-dispatch-procedures.json`; the separate bounded
 owner-action corpus lives at
@@ -373,6 +376,15 @@ pairs source-locked. The remaining implicit waves stay plan-visible but
 fail-closed until their own contracts are complete; root and structured waves
 have no implicit pair dimension and retain separate dispatch, load, hierarchy,
 and fixture checks.
+
+The first exact v16 core wave completes 16/16. Every aided arm gains route and
+procedure correctness, while six outcome pairs are observation-clean and
+correct in both arms. Three fixture commands across `collision-01` and
+`collision-02` are observed once and exit zero but expose no output bytes;
+their sentinel verification remains false and the public receipt is
+`needs-rerun`. Two other outcome contrasts are observation-unclean. The return
+cohort therefore repeats only those first two paired cases after exact merge;
+it does not relax fixture verification or justify a skill-source change.
 
 See `evals/suites/aoa-skill-live-dispatch-harness.suite.md` and
 `docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md` for

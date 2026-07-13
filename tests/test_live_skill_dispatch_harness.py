@@ -516,6 +516,64 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
             )
         self.assertEqual([], transport.preflight_calls)
 
+    def test_core_engineering_return_cohort_repeats_only_fixture_gap_pairs(self) -> None:
+        plan = self.runner.load_plan(self.plan_path)
+        returns = self.runner.expand_cohort(
+            REPO_ROOT,
+            plan,
+            "full-collision-core-engineering-returns",
+        )
+        self.assertEqual(4, len(returns))
+        self.assertEqual(
+            {"collision-01", "collision-02"},
+            {trial.case_id for trial in returns},
+        )
+        self.assertTrue(
+            all(
+                trial.arm_type in {"implicit_aided", "implicit_control"}
+                and trial.procedure_contract is not None
+                and trial.outcome_contract is not None
+                for trial in returns
+            )
+        )
+        packet = self.runner.build_plan_packet(
+            REPO_ROOT,
+            plan,
+            "full-collision-core-engineering-returns",
+            "model-a",
+            "medium",
+        )
+        self.assertEqual(2, packet["implicit_pair_count"])
+        self.assertEqual(2, packet["procedure_scored_pair_count"])
+        self.assertTrue(packet["procedure_contract_coverage_complete"])
+        self.assertEqual(2, packet["objective_outcome_scored_pair_count"])
+        self.assertTrue(packet["objective_outcome_coverage_complete"])
+        self.assertTrue(packet["high_cost_confirmation_required"])
+        with tempfile.TemporaryDirectory() as td:
+            receipt = self.runner.run_confirmed_cohort(
+                repo_root=REPO_ROOT,
+                plan=plan,
+                cohort="full-collision-core-engineering-returns",
+                model="model-a",
+                effort="medium",
+                confirmation_token=packet["confirmation_token"],
+                high_cost_token=packet["high_cost_confirmation_token"],
+                private_root=Path(td),
+                transport=FakeTransport(),
+                test_only_allow_noncanonical_private_root=True,
+            )
+        Draft202012Validator(
+            self.load_schema("live-skill-dispatch-private-receipt.schema.json")
+        ).validate(receipt)
+        public = self.runner.build_public_receipt(receipt)
+        Draft202012Validator(
+            self.load_schema("live-skill-dispatch-public-receipt.schema.json")
+        ).validate(public)
+        self.runner.validate_public_receipt(public)
+        self.assertEqual("full-collision-core-engineering-returns", public["cohort"])
+        self.assertEqual(4, public["trial_count"])
+        self.assertEqual(2, public["pair_count"])
+
     def test_smoke_procedure_contract_is_source_locked_before_live_execution(self) -> None:
         runner = self.runner
         plan = runner.load_plan(self.plan_path)

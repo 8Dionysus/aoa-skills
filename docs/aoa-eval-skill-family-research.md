@@ -672,3 +672,29 @@ Together with the three earlier pilot anchors, the wave is 8/8 on procedure and
 before preflight until their own answer keys are authored; root and structured
 waves have no implicit pair axis and retain their existing dispatch/load
 contracts.
+
+## 2026-07-12 first v16 core-engineering execution return
+
+The exact-merged core wave completes all sixteen turns and eight pairs. All
+eight aided arms select the intended skill, satisfy load, report the
+source-locked `blocked_missing_input` procedure, and gain route plus procedure
+correctness over control. Six owner-action comparisons are observation-clean
+and correct in both arms. This is strong candidate evidence that the core
+engineering skills add routing and procedural discipline when concrete source
+inputs are absent, but it is not yet a clean wave receipt.
+
+Three arms retain `fixture_execution_gap`: `collision-01` control and both
+`collision-02` arms. In each, the one exact fixture command is observed and
+exits zero, but its captured output is exactly zero bytes; the other thirteen
+arms expose the same 234-byte valid sentinel payload. This is a fixture-output
+observation return, not evidence to edit `aoa-invariant-coverage-audit` or
+`aoa-property-invariants`, and the sentinel requirement remains unchanged.
+
+Outcome telemetry independently qualifies two comparisons. `collision-05` is
+`aided_only` and `collision-06` is `control_only`, so their raw negative and
+positive lifts are observation-unclean. The other six pairs are clean
+no-lift-both-correct outcomes. Preserve the full receipt as `needs-rerun`, add
+`full-collision-core-engineering-returns` with both arms of only
+`collision-01` and `collision-02`, and repeat after exact merge. Do not rerun
+the other six pairs or widen to the next collision wave until the fixture
+return is classified.

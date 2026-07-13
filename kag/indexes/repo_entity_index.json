@@ -8592,6 +8592,20 @@
         "surface_state": "authored_source"
       },
       "entity_kind": "artifact",
+      "id": "entity:file:evals/reports/aoa-skill-live-dispatch-full-collision-core-engineering-20260712-v16-reviewed-fixture-output-observation-gaps-needs-rerun.json:1799a28d5c",
+      "label": "evals/reports/aoa-skill-live-dispatch-full-collision-core-engineering-20260712-v16-reviewed-fixture-output-observation-gaps-needs-rerun.json",
+      "source_record_id": "file:evals/reports/aoa-skill-live-dispatch-full-collision-core-engineering-20260712-v16-reviewed-fixture-output-observation-gaps-needs-rerun.json:1799a28d5c"
+    },
+    {
+      "coordinates": {
+        "artifact_kind": "config",
+        "code_role": "none",
+        "command_role": "none",
+        "document_role": "none",
+        "mechanics_role": "none",
+        "surface_state": "authored_source"
+      },
+      "entity_kind": "artifact",
       "id": "entity:file:evals/reports/aoa-skill-live-dispatch-pilot13-20260712-v12-reviewed-mixed-returns-needs-rerun.json:6972e4b1c9",
       "label": "evals/reports/aoa-skill-live-dispatch-pilot13-20260712-v12-reviewed-mixed-returns-needs-rerun.json",
       "source_record_id": "file:evals/reports/aoa-skill-live-dispatch-pilot13-20260712-v12-reviewed-mixed-returns-needs-rerun.json:6972e4b1c9"
@@ -26855,7 +26869,7 @@
   ],
   "index_identity": {
     "artifact_kind": "repository_entity_index",
-    "content_digest": "1da462b8b8ae7a8a78dedb5cff99c0e1c0a64bd795349ea750a0fab13de7c0ae",
+    "content_digest": "190dd236acabb14524e3c064140079423d98589b06c3c2a9b17b623aafd09270",
     "index_kind": "entity",
     "local_id": "index:repo-local:entities",
     "schema_ref": "aoa-kag:schemas/repo-local-kag-repository-index.schema.json"
@@ -26878,15 +26892,15 @@
   },
   "schema_version": "aoa-repo-local-kag-repository-index-v1",
   "source_index": {
-    "content_digest": "3e79edf9e4653344302c7b17d66ce398845ae9e074ae70bae7d7287450715dc7",
+    "content_digest": "5d16e6d1098c85210cdbb714ed281d61fa9cbb92bbd37de110da84d98b421f01",
     "local_id": "index:repo-local:source-surfaces",
     "path": "kag/indexes/source_surface_index.json"
   },
   "summary": {
-    "entry_count": 1918,
+    "entry_count": 1919,
     "kind_counts": {
       "agent_route": 29,
-      "artifact": 415,
+      "artifact": 416,
       "code": 66,
       "command": 156,
       "contract": 44,
