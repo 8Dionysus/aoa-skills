@@ -102,9 +102,9 @@ equivalent hierarchy report, and a direct target report carrying a conflicting
 child is not exact either. Those report-only mismatches are
 `selection_report_miss`; they do not rewrite successful native dispatch or load
 evidence as `dispatch_policy_gap`.
-These rules use contract schema `aoa_codex_app_server_skill_input_contract_v14`
-and protocol revision `codex-cli-0.144.1-live-dispatch-evidence-v21`. Retained
-v1-v20 receipts stay source-locked to their original protocol and review status;
+These rules use contract schema `aoa_codex_app_server_skill_input_contract_v15`
+and protocol revision `codex-cli-0.144.1-live-dispatch-evidence-v22`. Retained
+v1-v21 receipts stay source-locked to their original protocol and review status;
 they are never upgraded in place.
 The reviewed exact-merged v18 session-growth return completes 8/8 arms with all
 four manual non-activation, fixture, and owner-outcome pairs correct in both
@@ -474,6 +474,21 @@ its absent pair/trajectory-corpus fields are intentionally unscored rather than
 missing evidence. Preserve the reviewed receipt as candidate-only and, after
 its writeback lands, reopen runtime and host admission for the 30-turn
 `coverage-closure-structured-core` cohort.
+
+The exact-merged structured-core wave completes all 30 transport turns. After
+review-time projection, 27 direct targets are clean. Decision-find and
+eval-session-mining have accepted native input, exact target selection, complete
+target reads, and passing dispatch/load, but each repeats its direct target in
+`selected_child`; both remain report-only misses. ATM10 change protocol accepts
+the same official input but reports `manual_required`, so it remains a real
+dispatch-policy gap. Projection itself first failed because a source-authored
+case id containing `session-mining` matched the generic transport-id regex.
+V22 treats typed `case_id` like the already typed cohort slug, still rejects a
+slug beginning with `session-`, and gives every structured prompt an explicit
+direct-target contract: dual input is activation, route is `invoke`,
+`selected_skill` is the target, `selected_child` is null, and missing task input
+changes procedure disposition only. The three-turn structured-core return
+repeats only those targets before structured Titan.
 
 The first exact v16 core wave completes 16/16. Every aided arm gains route and
 procedure correctness, while six outcome pairs are observation-clean and

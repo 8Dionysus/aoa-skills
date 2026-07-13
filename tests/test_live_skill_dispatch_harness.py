@@ -711,6 +711,80 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
         self.assertEqual(4, public["trial_count"])
         self.assertEqual(2, public["pair_count"])
 
+    def test_structured_core_return_is_small_exact_and_source_locked(self) -> None:
+        plan = self.runner.load_plan(self.plan_path)
+        cohort = "coverage-closure-structured-core-returns"
+        config = plan["cohorts"][cohort]
+        trials = self.runner.expand_cohort(REPO_ROOT, plan, cohort)
+        expected_targets = {
+            "aoa-decision-find",
+            "aoa-eval-session-mining",
+            "atm10-change-protocol",
+        }
+
+        self.assertEqual(3, len(trials))
+        self.assertEqual(
+            expected_targets,
+            {trial.expected_target_skill for trial in trials},
+        )
+        self.assertEqual(
+            {
+                "desc-decision-find-explicit",
+                "desc-eval-session-mining-explicit",
+                "desc-16-explicit",
+            },
+            {trial.case_id for trial in trials},
+        )
+        self.assertTrue(
+            all(
+                trial.arm_type == "app_server_structured"
+                and trial.expected_behavior == "explicit"
+                for trial in trials
+            )
+        )
+        self.assertEqual(3, config["expected_turn_count"])
+        self.assertTrue(config["second_confirmation_required"])
+        self.assertEqual("medium", config["resource_class"])
+        self.assertLessEqual(config["estimated_private_bytes"], 67_108_864)
+        self.assertLessEqual(config["estimated_memory_demand_mib"], 512)
+
+        packet = self.runner.build_plan_packet(
+            REPO_ROOT,
+            plan,
+            cohort,
+            "model-a",
+            "medium",
+        )
+        self.assertEqual(3, packet["trial_count"])
+        self.assertTrue(packet["high_cost_confirmation_required"])
+        self.assertTrue(packet["procedure_contract_coverage_complete"])
+        self.assertTrue(packet["objective_outcome_coverage_complete"])
+
+        with tempfile.TemporaryDirectory() as td:
+            receipt = self.runner.run_confirmed_cohort(
+                repo_root=REPO_ROOT,
+                plan=plan,
+                cohort=cohort,
+                model="model-a",
+                effort="medium",
+                confirmation_token=packet["confirmation_token"],
+                high_cost_token=packet["high_cost_confirmation_token"],
+                private_root=Path(td),
+                transport=FakeTransport(),
+                test_only_allow_noncanonical_private_root=True,
+            )
+        Draft202012Validator(
+            self.load_schema("live-skill-dispatch-private-receipt.schema.json")
+        ).validate(receipt)
+        public = self.runner.build_public_receipt(receipt)
+        Draft202012Validator(
+            self.load_schema("live-skill-dispatch-public-receipt.schema.json")
+        ).validate(public)
+        self.runner.validate_public_receipt(public)
+        self.assertEqual(3, public["trial_count"])
+        self.assertEqual({}, public["failure_counts"])
+        self.assertEqual(0, public["pair_count"])
+
     def test_safety_overlay_partition_wave_is_contract_complete(self) -> None:
         plan = self.runner.load_plan(self.plan_path)
         safety = self.runner.expand_cohort(
@@ -2170,18 +2244,18 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
         )
         self.assertEqual(plan["protocol_revision"], contract["protocol_revision"])
         self.assertEqual(
-            "codex-cli-0.144.1-live-dispatch-evidence-v21",
+            "codex-cli-0.144.1-live-dispatch-evidence-v22",
             plan["protocol_revision"],
         )
         self.assertEqual("codex-cli 0.144.1", self.runner._expected_codex_version(plan))
         unsupported_plan = dict(plan)
         unsupported_plan["protocol_revision"] = (
-            "codex-cli-0.144.1-live-dispatch-evidence-v22"
+            "codex-cli-0.144.1-live-dispatch-evidence-v23"
         )
         with self.assertRaisesRegex(ValueError, "unsupported Codex protocol revision"):
             self.runner._expected_codex_version(unsupported_plan)
         self.assertEqual(
-            "aoa_codex_app_server_skill_input_contract_v14",
+            "aoa_codex_app_server_skill_input_contract_v15",
             contract["schema_version"],
         )
         self.assertEqual("codex-cli 0.144.1", contract["codex_version"])
@@ -2274,6 +2348,14 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
         self.assertIn(
             "expected target skill procedure",
             output_schema["properties"]["procedure_disposition"]["description"],
+        )
+        self.assertIn(
+            "direct structured target",
+            output_schema["properties"]["selected_child"]["description"],
+        )
+        self.assertIn(
+            "selected_child=null",
+            contract["evidence_binding"]["structured_direct_target_report"],
         )
 
     def test_arm_adapters_are_exact_read_only_and_never_use_dangerous_flags(self) -> None:
@@ -2416,6 +2498,18 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
             structured["turn_start_params"]["input"][0]["text"].count(
                 "$aoa-eval-apply"
             ),
+        )
+        self.assertIn(
+            "the adjacent textual and structured skill inputs are explicit activation",
+            structured["turn_start_params"]["input"][0]["text"],
+        )
+        self.assertIn(
+            "`selected_child` must be `null`",
+            structured["turn_start_params"]["input"][0]["text"],
+        )
+        self.assertIn(
+            "Missing task or repository input changes `procedure_disposition`, not `route_decision`",
+            structured["turn_start_params"]["input"][0]["text"],
         )
         self.assertEqual("thread/start", structured["thread_start_request"]["method"])
         self.assertEqual(180, implicit["timeout_seconds"])
@@ -2904,6 +2998,19 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
 
         leaked = json.loads(json.dumps(public))
         leaked["cohort"] = "session-deadbeef"
+        with self.assertRaises(runner.PublicReceiptSafetyError):
+            runner.validate_public_receipt(leaked)
+
+        public["measures"][0]["case_id"] = (
+            "structured-aoa-eval-session-mining"
+        )
+        public["pair_outcomes"][0]["case_id"] = (
+            "structured-aoa-eval-session-mining"
+        )
+        runner.validate_public_receipt(public)
+
+        leaked = json.loads(json.dumps(public))
+        leaked["measures"][0]["case_id"] = "session-deadbeef"
         with self.assertRaises(runner.PublicReceiptSafetyError):
             runner.validate_public_receipt(leaked)
 

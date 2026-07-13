@@ -85,6 +85,7 @@ than silently reverting the outcome dimension to unscored.
 | `coverage-closure-titan-implicit-b-returns` | 4 | paired outcome-observation return for Titan implicit cases 12-13 | medium |
 | `coverage-closure-root-trajectories` | 8 | all decision/eval root-child trajectories | medium |
 | `coverage-closure-structured-core` | 30 | all non-Titan non-invoke structured routes | medium |
+| `coverage-closure-structured-core-returns` | 3 | direct-target report and dispatch return for decision-find, eval-session-mining, and ATM10 change protocol | medium |
 | `coverage-closure-structured-titan` | 15 | all Titan structured routes | medium |
 
 Every cohort beyond smoke currently requires a second exact high-cost token,
@@ -814,6 +815,22 @@ reviewed candidate receipt, keep proof and promotion false, and open the
 30-turn structured-core wave only after this writeback lands and fresh exact
 runtime/model/local-eval/storage/resource/memory gates pass.
 
+That exact-merged structured-core wave reaches all 30 turns. Twenty-seven
+targets pass every native visibility/input, dispatch, load, selection-report,
+fixture, isolation, filesystem/inventory, and owner-boundary check. Public
+projection first fails on the source-authored eval-session-mining case id,
+whose internal `session-` token is not a transport id. The corrected v22 guard
+allows only portable typed case slugs and still rejects a `session-` prefix.
+The projected v21 receipt then exposes two report-only misses: decision-find
+and eval-session-mining repeat the direct target as `selected_child` despite
+passing native dispatch/load/read. ATM10 change protocol instead reports
+`manual_required` after accepted explicit input. V22 adds one common structured
+direct-target contract: official dual input is explicit activation, the route
+is `invoke`, `selected_skill` is the direct target, `selected_child` is null,
+and missing task/repository input changes disposition rather than dispatch. The
+three-turn return repeats only those targets; do not edit the three skills or
+open structured Titan until that return is reviewed.
+
 ## Safety And Privacy
 
 The plan locks Git head, authored portable overrides, all portable skill files,
@@ -831,8 +848,8 @@ therefore disable every locked id explicitly. Deterministic adapter tests guard
 both sides of this transport-specific contract.
 
 These hermetic invocation rules use contract schema
-`aoa_codex_app_server_skill_input_contract_v14` and protocol revision
-`codex-cli-0.144.1-live-dispatch-evidence-v21`. Retained v1-v20 receipts remain
+`aoa_codex_app_server_skill_input_contract_v15` and protocol revision
+`codex-cli-0.144.1-live-dispatch-evidence-v22`. Retained v1-v21 receipts remain
 source-locked to their original protocol and review status and are not upgraded
 in place.
 

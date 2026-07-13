@@ -377,8 +377,21 @@ temporary root and must not be copied into this directory.
   no matched implicit pair and therefore publishes no lift or owner-outcome
   score. It is reviewed candidate evidence only; structured-core remains a
   separate native-dispatch/load wave with its own exact gates.
+- [aoa-skill-live-dispatch-coverage-closure-structured-core-20260713-v21-reviewed-structured-report-and-dispatch-gaps-needs-rerun.json](aoa-skill-live-dispatch-coverage-closure-structured-core-20260713-v21-reviewed-structured-report-and-dispatch-gaps-needs-rerun.json)
+  preserves the complete exact-merged 30-turn structured-core wave. Twenty-seven
+  direct targets pass native visibility, official dual input, dispatch, load,
+  selection report, fixture, runtime isolation, filesystem/inventory scope,
+  and owner-boundary checks. Decision-find and eval-session-mining retain
+  correct native dispatch/load/read but redundantly report the target as its own
+  child, producing two `selection_report_miss` results. ATM10 change protocol
+  accepts native explicit input but reports `manual_required`, producing one
+  `dispatch_policy_gap`. Review-time public projection also revealed that the
+  source-authored session-mining case id falsely matched the transport-id guard.
+  Preserve this v21 receipt as `needs-rerun`; v22 repairs only the typed slug and
+  common structured direct-target contract, then repeats exactly those three
+  turns. Proof and promotion remain false.
 
-Corrected live receipts under the v11-v21 evidence protocols are reviewable only
+Corrected live receipts under the v11-v22 evidence protocols are reviewable only
 after canonical user-skill shadows, plugins, and every configured MCP id are
 isolated with the adapter-appropriate mechanism (`--ignore-user-config` for
 CLI exec, explicit per-id disables for prompt inspection and App Server);

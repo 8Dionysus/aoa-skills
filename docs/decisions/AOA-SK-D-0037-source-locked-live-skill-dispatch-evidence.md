@@ -123,11 +123,11 @@ config and explicitly disable every locked id. A shadow or MCP count/digest
 change is source/runtime drift, not a reason to reuse the old token.
 
 The corrected hermetic pre-turn and evidence contract uses schema
-`aoa_codex_app_server_skill_input_contract_v14` and protocol revision
-`codex-cli-0.144.1-live-dispatch-evidence-v21`. It follows the
+`aoa_codex_app_server_skill_input_contract_v15` and protocol revision
+`codex-cli-0.144.1-live-dispatch-evidence-v22`. It follows the
 [official App Server invocation shape](https://learn.chatgpt.com/docs/app-server#start-a-turn-invoke-a-skill)
 and Codex [progressive-disclosure load semantics](https://learn.chatgpt.com/docs/customization/overview#skills).
-Retained receipts source-locked to v1-v20 keep their original protocol and
+Retained receipts source-locked to v1-v21 keep their original protocol and
 review status and are not upgraded in place.
 
 The source-locked caps include both the rollout token limit and its required
@@ -320,8 +320,8 @@ As of 2026-07-13:
   `fixture_inventory_scope_violation` precedes budget classification.
 - Current cap contract: every arm receives the same source-locked 48k ceiling;
   paired arms may differ in actual use but never in available budget.
-- Current contract schema: `aoa_codex_app_server_skill_input_contract_v14`.
-- Current protocol lock: `codex-cli-0.144.1-live-dispatch-evidence-v21`.
+- Current contract schema: `aoa_codex_app_server_skill_input_contract_v15`.
+- Current protocol lock: `codex-cli-0.144.1-live-dispatch-evidence-v22`.
 - Current pair contract: new receipts publish route, selected-child trajectory,
   and selected-procedure-disposition report lift separately. Sent structured
   dispatch, accepted native load, model hierarchy report, and fixture execution
@@ -533,12 +533,58 @@ As of 2026-07-13:
   select/apply/local-need/design/session-mining, and every root plus child is
   read completely with clean dispatch, load, fixture, prompt, filesystem,
   inventory, and owner-boundary evidence. This closes the root-child lane as
-  reviewed candidate evidence. After that writeback lands, the next bounded
-  wave is the 30-turn structured-core partition under fresh exact runtime and
-  host gates.
+  reviewed candidate evidence. The subsequent 30-turn structured-core wave
+  completes transport for every target. Twenty-seven are clean; decision-find
+  and eval-session-mining have report-only redundant-child misses despite
+  correct native dispatch/load/read, and ATM10 change protocol has one explicit
+  dispatch-policy gap. Review-time projection also reveals that an internal
+  `session-mining` source slug falsely matches the transport-id guard. V22
+  repairs the typed slug and common direct-target prompt contract, then repeats
+  only those three turns before structured Titan may open.
 - Superseded by: none.
 
 ## Review Log
+
+### 2026-07-13 - Return from structured-core to three direct targets
+
+- Exact source and run: merged commit `beb448d`, protocol v21, current
+  `gpt-5.6-sol` at medium effort, repo profile 57/57, installed foundation
+  36/36, both prompt surfaces 12/12, 37 isolated shadow paths, 11 disabled MCP
+  ids, local eval readiness 2/2, and one source-locked App Server turn for each
+  of 30 unique non-Titan structured targets.
+- Host admission: the independent 512 MiB storage preflight allowed the run.
+  The forced interactive medium plan had no blocked, denied, or overridden
+  reason, projected warm memory with zero PSI, sampled a green 65 C thermal
+  class, kept `MemoryHigh` soft, set no `MemoryMax`, and passed its dry run. The
+  wrapper used about 306 MiB peak memory and no swap.
+- Projection return: the private receipt completed all 30 turns, but the v21
+  public sanitizer rejected the source-authored
+  `desc-eval-session-mining-explicit` case id because its internal `session-`
+  token matched a generic transport-id pattern. This is a typed source-slug
+  false positive, not leaked runtime identity. V22 permits portable `case_id`
+  values through the same typed path as cohort while still rejecting a value
+  that begins with `session-`, `thread-`, or `turn-`.
+- Reviewed result after safe projection: 27 targets pass every structured
+  surface, native dual-input, dispatch, load, selection-report, fixture,
+  isolation, filesystem/inventory, and owner-boundary check. Decision-find and
+  eval-session-mining each have correct native dispatch/load/read but report
+  the direct target again as `selected_child`, producing two report-only
+  `selection_report_miss` results. ATM10 change protocol accepts native
+  explicit input but reports `manual_required`, producing one
+  `dispatch_policy_gap`.
+- Decision: advance to contract v15 and protocol v22 without changing any of
+  the three skills. Every structured prompt now states that the adjacent
+  textual plus structured skill input is explicit activation: report
+  `invoke`, name the exact direct target in `selected_skill`, keep
+  `selected_child` null, and route missing task/repository inputs through
+  `procedure_disposition` rather than activation. Preserve the complete v21
+  receipt as `needs-rerun` evidence.
+- Return and stop-line: add a three-turn
+  `coverage-closure-structured-core-returns` cohort for exactly decision-find,
+  eval-session-mining, and ATM10 change protocol, with medium bounds and both
+  confirmations. Land v22, repeat exact runtime/model/local-eval and host
+  gates, and review that return before editing skill source or opening
+  structured Titan.
 
 ### 2026-07-13 - Close all decision and eval root-child trajectories
 
