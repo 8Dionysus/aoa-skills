@@ -468,10 +468,33 @@ As of 2026-07-12:
   wave on missing contracts; the 16-turn core-engineering wave is the first
   contract-complete widening. Its first exact run completes every arm and gives
   all eight aided pairs route/procedure lift, but three zero-output fixture
-  probes require the smallest paired `collision-01`/`collision-02` return.
+  probes require the smallest paired `collision-01`/`collision-02` return. That
+  exact four-turn return is now clean and confirms an observation-layer gap,
+  not a skill defect. The remaining unclean evidence is limited to opposite
+  single-arm owner-action gaps in `collision-05` and `collision-06`; a second
+  four-turn paired return isolates them before further widening.
 - Superseded by: none.
 
 ## Review Log
+
+### 2026-07-12 - Close the fixture return and isolate the outcome return
+
+- Exact source: the four-turn return runs from the merged evidence contract
+  with the same skill-source profile, v16 protocol, isolated shadows and MCPs,
+  medium host wrapper, and both confirmations.
+- Fixture closure: all four `collision-01`/`collision-02` arms observe one
+  successful exact fixture command and the required sentinel; all fixture
+  execution contracts now match and no failure class remains.
+- Skill signal: both aided arms again select and load the intended skill,
+  report the source-locked `blocked_missing_input` procedure, and produce
+  positive route plus procedure lift over control.
+- Outcome signal: both returned owner-action pairs are observation-clean and
+  correct in both arms. The result is reviewed candidate evidence only and
+  grants no proof or promotion authority.
+- Remaining return: the first full-wave receipt still has opposite single-arm
+  owner-action observation gaps for `collision-05` and `collision-06`. Add a
+  separate four-turn paired outcome return for exactly those cases and keep the
+  next collision wave closed until it is reviewed.
 
 ### 2026-07-12 - Return the first core wave to fixture output observation
 

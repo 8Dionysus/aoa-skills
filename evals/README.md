@@ -87,7 +87,10 @@ Active first local corpus:
   wave is now complete at 8/8 procedure and outcome pairs. Its first exact run
   completes 16/16 with positive aided route/procedure lift in all eight pairs,
   but three zero-output fixture probes require a paired four-turn return for
-  `collision-01` and `collision-02` before the wave is called clean.
+  `collision-01` and `collision-02`. That exact return is now clean at 4/4
+  arms and classifies the fixture failures as observation gaps. A second
+  four-turn return isolates the still-unclean owner-action observations for
+  `collision-05` and `collision-06` before the next wave opens.
 
 These files are local evidence notes. They do not publish central proof
 acceptance, scoring, verdicts, regression truth, or proof doctrine.

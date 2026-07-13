@@ -39,6 +39,9 @@ turns or 512 MiB, and forbids `declared_only` contract posture on a wave.
 The four-turn `full-collision-core-engineering-returns` cohort preserves both
 arms of only `collision-01` and `collision-02`, the pairs affected by the first
 wave's zero-output fixture observation return.
+The separate four-turn `full-collision-core-engineering-outcome-returns`
+cohort preserves both arms of only `collision-05` and `collision-06`, whose
+first-run owner-action sentinels were observed in opposite single arms.
 The procedure source contract lives at
 `evals/suites/aoa-skill-live-dispatch-procedures.json`; the separate bounded
 owner-action corpus lives at
@@ -385,6 +388,15 @@ their sentinel verification remains false and the public receipt is
 `needs-rerun`. Two other outcome contrasts are observation-unclean. The return
 cohort therefore repeats only those first two paired cases after exact merge;
 it does not relax fixture verification or justify a skill-source change.
+
+That exact fixture return completes 4/4 with no failure class. All fixture and
+owner-action probes are observed once, succeed, expose their required
+sentinels, and verify; both aided arms retain positive route and procedure
+lift, and both outcomes are observation-clean and correct in both arms. This
+classifies the earlier fixture failures as observation gaps without changing
+skill source. The original `collision-05` and `collision-06` owner-action gaps
+remain outside that receipt, so the separate outcome-return cohort repeats
+only those two pairs before another collision wave can open.
 
 See `evals/suites/aoa-skill-live-dispatch-harness.suite.md` and
 `docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md` for

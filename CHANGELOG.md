@@ -233,6 +233,13 @@ Tracking starts with the community-docs baseline for this repository.
   outcome contrasts are likewise observation-unclean. A new four-turn return
   cohort repeats only the affected `collision-01` and `collision-02` pairs
   without changing skill source or relaxing verification.
+- The exact-merged four-turn fixture return clears all three prior zero-output
+  gaps: every fixture and owner-action probe is observed, single-attempt,
+  successful, and verified, while both pairs retain positive aided route and
+  procedure lift. The original full-wave receipt remains historical
+  `needs-rerun` evidence. A second four-turn outcome return now isolates only
+  `collision-05` and `collision-06`, whose first-run outcome contrasts remain
+  observation-unclean, before widening to another collision wave.
 - `AOA-SK-D-0037` records why live cohorts remain operator-confirmed candidate
   evidence and now clarifies prompt-surface isolation and evidence-stage grading
   after the contaminated smoke; deterministic harness validation, not model

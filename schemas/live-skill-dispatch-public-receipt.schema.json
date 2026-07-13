@@ -15,7 +15,7 @@
     "schema_version": {"const": "aoa_skill_live_dispatch_public_receipt_v1"},
     "run_digest": {"$ref": "#/$defs/sha256"},
     "created_at": {"type": "string", "format": "date-time"},
-    "cohort": {"enum": ["smoke", "pilot13", "pilot13-returns", "pilot13-skill-returns", "full-collision", "coverage-closure", "full-collision-core-engineering", "full-collision-core-engineering-returns", "full-collision-safety-overlays", "full-collision-session-growth", "full-collision-authority-routing", "full-collision-eval-children", "coverage-closure-core-implicit", "coverage-closure-titan-implicit-a", "coverage-closure-titan-implicit-b", "coverage-closure-root-trajectories", "coverage-closure-structured-core", "coverage-closure-structured-titan"]},
+    "cohort": {"enum": ["smoke", "pilot13", "pilot13-returns", "pilot13-skill-returns", "full-collision", "coverage-closure", "full-collision-core-engineering", "full-collision-core-engineering-returns", "full-collision-core-engineering-outcome-returns", "full-collision-safety-overlays", "full-collision-session-growth", "full-collision-authority-routing", "full-collision-eval-children", "coverage-closure-core-implicit", "coverage-closure-titan-implicit-a", "coverage-closure-titan-implicit-b", "coverage-closure-root-trajectories", "coverage-closure-structured-core", "coverage-closure-structured-titan"]},
     "model": {"type": "string", "minLength": 1, "maxLength": 160},
     "effort": {"enum": ["low", "medium", "high", "xhigh"]},
     "source_lock": {"$ref": "#/$defs/source_lock"},
