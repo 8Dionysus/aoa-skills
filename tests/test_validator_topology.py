@@ -193,6 +193,57 @@ class ValidatorTopologyTests(unittest.TestCase):
         export_full = validation_lanes.EXPORT_FULL_COMMAND_SEQUENCE
         export_full_export = export_full.index(export_command)
         self.assertIn(catalog_build, export_full[export_full_export + 1 :])
+        export_dependencies = (
+            ("python", "scripts/runtime/build_runtime_seam.py", "--repo-root", "."),
+            (
+                "python",
+                "scripts/runtime/build_runtime_guardrails.py",
+                "--repo-root",
+                ".",
+            ),
+            (
+                "python",
+                "scripts/builders/build_trigger_eval_cases.py",
+                "--repo-root",
+                ".",
+            ),
+            (
+                "python",
+                "scripts/builders/build_description_trigger_evals.py",
+                "--repo-root",
+                ".",
+            ),
+            (
+                "python",
+                "scripts/builders/build_support_resources.py",
+                "--repo-root",
+                ".",
+            ),
+            (
+                "python",
+                "scripts/builders/build_tiny_router_inputs.py",
+                "--repo-root",
+                ".",
+            ),
+        )
+        final_export_catalog = max(
+            index for index, command in enumerate(export_full) if command == catalog_build
+        )
+        self.assertGreater(
+            final_export_catalog,
+            max(export_full.index(command) for command in export_dependencies),
+        )
+        self.assertLess(
+            final_export_catalog,
+            export_full.index(
+                (
+                    "python",
+                    "scripts/validation/validate_agent_skills.py",
+                    "--repo-root",
+                    ".",
+                )
+            ),
+        )
 
         release = validation_lanes.RELEASE_CHECK_COMMAND_SEQUENCE
         release_export = release.index(export_command)
@@ -201,6 +252,22 @@ class ValidatorTopologyTests(unittest.TestCase):
             ("python", "scripts/builders/build_catalog.py"),
             release[release_export + 1 : release_test],
         )
+        release_catalog = ("python", "scripts/builders/build_catalog.py")
+        final_release_catalog = max(
+            index for index, command in enumerate(release) if command == release_catalog
+        )
+        self.assertGreater(
+            final_release_catalog,
+            release.index(
+                (
+                    "python",
+                    "scripts/builders/build_tiny_router_inputs.py",
+                    "--repo-root",
+                    ".",
+                )
+            ),
+        )
+        self.assertLess(final_release_catalog, release_test)
 
         self.assertIn(
             "generated/skill_intelligence_registry.json",

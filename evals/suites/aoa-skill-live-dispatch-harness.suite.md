@@ -716,6 +716,18 @@ registries are blocking drift paths. This prevents a portable-only skill repair
 from appearing export-clean while its model-facing intelligence projection is
 stale.
 
+The complete exact-merge rerun closes the earlier apply owner-action miss and
+both root-prefix gaps, but still does not close the wave. Preserve the second
+reviewed candidate-only return as
+[`aoa-skill-live-dispatch-full-collision-eval-children-20260713-v19-second-needs-rerun.json`](../reports/aoa-skill-live-dispatch-full-collision-eval-children-20260713-v19-second-needs-rerun.json).
+Cases 44-46 and 48 are clean across root load, intended child load, procedure,
+and owner outcome. Case 47 reads the root to EOF yet routes the explicit bounded
+suite design request to select, then fully reads the wrong child. The root now
+gives explicit design intent precedence over general missing-input selection;
+missing invariant or target inputs must block inside design rather than change
+the route. Exact merge, runtime parity, host admission, and another full
+ten-turn rerun remain mandatory. Proof and promotion stay false.
+
 ## Safety And Privacy
 
 The plan locks Git head, authored portable overrides, all portable skill files,

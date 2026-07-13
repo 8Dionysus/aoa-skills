@@ -389,7 +389,7 @@
       "name": "aoa-eval",
       "invocation_mode": "explicit-preferred",
       "implicit_activation_policy": "invoke",
-      "description_sha256": "7850521de76e921cbb2b545730de7c468ccdee0fe0d3776f799dcf0943fb0bda",
+      "description_sha256": "8c0d1722f1844efee60f4a5b334447814195df89d98b72f836646d93c49b53e3",
       "family": "eval-proof-routing-family",
       "total_cases": 8,
       "case_class_totals": {

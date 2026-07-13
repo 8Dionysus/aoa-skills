@@ -1,6 +1,6 @@
 ---
 name: aoa-eval
-description: Route AoA eval-lane work by raising the available session readiness packet, checking existing local and central eval surfaces first, including any available repo-family or workspace eval-port inventory with missing/skeleton/active/invalid status, then choosing apply, local intake need, local design, or session mining while preserving owner boundaries. Use when a task asks whether an eval exists, whether one should be added, how local evals connect to aoa-evals, how local eval-port status should route work, or how validators, tests, scripts, traces, regressions, trigger misses, local eval ports, aoa-evals-mcp, candidate packets, or per-session eval readiness should be used as evaluation surfaces. Before acting, read this root skill to EOF and then fully read exactly one selected child; a bounded prefix is not a complete load. Do not use for ordinary one-off tests, source-of-truth mapping, decision records, memo writeback, or direct central aoa-evals proof-authority edits.
+description: Route AoA eval-lane work by raising the session readiness packet, checking local and central eval surfaces plus any repo-family or workspace port inventory, then selecting exactly one apply, local-need, design, or session-mining child while preserving owner boundaries. Use when work concerns existing or new evals, local ports, aoa-evals, validators, tests, scripts, traces, regressions, trigger misses, MCP candidate packets, or session readiness as evaluation surfaces. An explicit request to design a bounded local eval suite selects aoa-eval-design even when invariant or target inputs are missing; that child blocks for them instead of rerouting to select. Before acting, read this root skill to EOF and fully read exactly one selected child; a bounded prefix is not a complete load. Do not use for ordinary one-off tests, source-of-truth mapping, decision records, memo writeback, or direct central proof-authority edits.
 license: Apache-2.0
 compatibility: Designed for Codex or similar coding agents with repository file access and an interactive shell. Network access is optional and only needed when repository validation or referenced workflows require it.
 metadata:
@@ -35,6 +35,14 @@ Selection precedence is fail-closed: `aoa-eval-select` is the default while fit
 is unknown. Missing target-repository evidence is not evidence that no eval
 fits; stop inside `aoa-eval-select` with the missing input rather than inferring
 a no-fit result.
+
+An explicit owner request to design a bounded local eval suite or report has
+design precedence: select `aoa-eval-design` even when the named invariant,
+target repository, or other design inputs are incomplete. Let that child stop
+with `blocked_missing_input`; do not reroute the design request to
+`aoa-eval-select`. Selection remains the default only when the task asks
+whether or which existing eval fits, or asks to inspect current surfaces before
+choosing an action.
 
 Before choosing a child, read this root `SKILL.md` to EOF. A bounded prefix is
 not a complete load: if a read tool returns only part of the file, continue
@@ -157,16 +165,19 @@ Do not use this skill when:
    `python scripts/validate_eval_candidate_packets.py --schema-only`; validate
    any actual packet path before using it as candidate evidence
 4. classify the pressure:
+   - an explicit request to design a bounded local eval suite or report uses
+     `aoa-eval-design` even when invariant, target-repository, or other design
+     inputs are missing; let the selected child stop with
+     `blocked_missing_input` instead of rerouting to selection
    - fit is unknown, the target repository or its eval evidence is missing, or
-     the task asks to inspect or decide among current surfaces: use
-     `aoa-eval-select`; if selection cannot finish, report
-     `blocked_missing_input` from that child
+     the task asks whether or which existing eval fits or to inspect current
+     surfaces before choosing an action: use `aoa-eval-select`; if selection
+     cannot finish, report `blocked_missing_input` from that child
    - an exact existing eval or validator is already selected and should run:
      use `aoa-eval-apply`
    - `aoa-eval-local-need` is allowed only after `aoa-eval-select` or an
      equivalent owner inspection records an explicit no-fit result for existing
      evals, validators, tests, and scripts; missing input alone never qualifies
-   - a local eval suite or report needs design: use `aoa-eval-design`
    - `.aoa` evidence should be mined for missed trigger cases: use
      `aoa-eval-session-mining`
 5. if a repo-family or workspace local-port inventory is available, consult it
@@ -227,6 +238,8 @@ Do not use this skill when:
   neither may silently overwrite the other
 - unknown fit and missing evidence route to selection, not to a synthetic
   no-fit conclusion or local intake
+- explicit local-suite or report design intent routes to `aoa-eval-design`;
+  missing design inputs block inside that child rather than changing the route
 - the router chooses one subskill to control scope and avoid mixed authority
 - new evals should be created only after existing local and central surfaces were
   inspected
@@ -236,6 +249,8 @@ Do not use this skill when:
 - creating a local eval need before checking existing validators and tests
 - treating an absent target repository or missing selection input as proof that
   no existing eval fits
+- rerouting an explicit bounded-suite design request to `aoa-eval-select`
+  merely because an invariant or target input is missing
 - skipping an available session-start packet and then designing from stale local
   memory
 - letting `.aoa` search hits override repo-local source files
@@ -258,6 +273,9 @@ Do not use this skill when:
 - confirm this root `SKILL.md` was read to EOF in the current turn; a bounded
   prefix or prior-turn read is not current load evidence
 - confirm exactly one subskill route was selected
+- when the task explicitly requested bounded local-suite or report design,
+  confirm the route stayed in `aoa-eval-design` and any missing design inputs
+  stopped inside that child
 - when fit was unknown or target evidence was missing, confirm the route stayed
   in `aoa-eval-select` and did not authorize local intake without an explicit
   no-fit result
