@@ -148,6 +148,13 @@ Active first local corpus:
   four-turn return containing only both arms of 40-41. This closes only the
   deterministic repair gate; exact merge, runtime parity, host admission, and
   reviewed live evidence remain required.
+  The exact-merged return now completes 4/4 with no failure class. Both aided
+  routes select `aoa-decision`, fully read the exact create/correct child, and
+  report `blocked_missing_input`; controls remain `not_applicable`, and all
+  fixture/owner observations are clean. Preserve the reviewed candidate receipt
+  without claiming proof or promotion. Authority routing is now closed for this
+  bounded return; the eval-child wave remains blocked at 0/5 procedure and 0/5
+  owner-outcome contracts before any live spend.
 
 These files are local evidence notes. They do not publish central proof
 acceptance, scoring, verdicts, regression truth, or proof doctrine.

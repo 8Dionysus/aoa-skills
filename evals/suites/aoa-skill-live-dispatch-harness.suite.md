@@ -662,6 +662,21 @@ arms of cases 40-41. Deterministic validation is necessary but does not claim a
 live correction; exact merge, runtime parity, host admission, both
 confirmations, and reviewed execution remain mandatory before widening.
 
+The exact-merged four-turn return now completes all four arms and both pairs
+without a failure class, early stop, prompt/fixture contamination, external
+access, broad inventory, or outcome-observation gap. Both aided arms select
+prompt-visible `aoa-decision`, fully read the exact create/correct child, and
+report `blocked_missing_input`; both controls remain correctly
+`not_applicable`. Route, child trajectory, and procedure disposition each gain
+positive aided lift, while both owner outcomes are observation-clean and
+correct in both arms. Preserve the reviewed candidate receipt as
+[`aoa-skill-live-dispatch-full-collision-authority-routing-procedure-returns-20260713-v19-reviewed-clean.json`](../reports/aoa-skill-live-dispatch-full-collision-authority-routing-procedure-returns-20260713-v19-reviewed-clean.json).
+This closes the authority procedure return without granting proof or promotion.
+The next declared wave, `full-collision-eval-children`, is still only a plan:
+its five pairs are route-score-eligible but have 0/5 procedure and 0/5 owner
+outcome contracts, so live execution remains unauthorized until that
+source-owned design gate is closed.
+
 ## Safety And Privacy
 
 The plan locks Git head, authored portable overrides, all portable skill files,

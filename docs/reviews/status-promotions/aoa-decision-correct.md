@@ -27,6 +27,7 @@
 - `config/portable_skill_overrides.json`
 - `tests/test_live_skill_dispatch_harness.py`
 - `evals/reports/aoa-skill-live-dispatch-full-collision-authority-routing-returns-20260713-v19-reviewed-procedure-returns-needs-rerun.json`
+- `evals/reports/aoa-skill-live-dispatch-full-collision-authority-routing-procedure-returns-20260713-v19-reviewed-clean.json`
 - `tests/fixtures/skill_evaluation_cases.yaml`
 
 ## Findings
@@ -42,14 +43,13 @@
 
 ## Gaps and blockers
 
-- blockers for this target status: none at the deterministic bundle gate; the
-  bounded live correction remains intentionally unclaimed.
-- blockers for the next status step: the four-turn 40-41 return must verify the
-  new terminal after exact merge, and canonical promotion would still need
-  repeated real corrections with clean post-graph evidence.
+- blockers for this target status: none; the deterministic bundle and exact-
+  merged four-turn return both preserve the evaluated boundary.
+- blockers for the next status step: canonical promotion would still need
+  repeated real corrections with clean source/index/graph closeout.
 
 ## Recommendation
 
-Keep `aoa-decision-correct` at evaluated status. Require the bounded live return
-before claiming the terminal repair, and retain source-first correction plus
-graph validation checks for successful repairs.
+Keep `aoa-decision-correct` at evaluated status. The bounded live return now
+supports the missing-input terminal; retain source-first correction plus graph
+validation checks for successful repairs before any wider promotion.
