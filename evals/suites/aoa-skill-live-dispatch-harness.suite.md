@@ -677,6 +677,22 @@ its five pairs are route-score-eligible but have 0/5 procedure and 0/5 owner
 outcome contracts, so live execution remains unauthorized until that
 source-owned design gate is closed.
 
+The eval-child source pass now closes that deterministic design gate without
+changing protocol v19. Each hidden child has an explicit parent-classified
+missing-input terminal in source and portable description: select lacks target
+eval surfaces; apply lacks the exact selected command and source context;
+local-need lacks the owned port/schema and packet evidence; design lacks the
+explicit invariant and local owner path; session-mining lacks trigger classes,
+provider freshness, and the target owner map. Each child must be fully read and
+then stop at `blocked_missing_input`, never substitute the fixture probe,
+invent a write/ref, or relabel missing input as `deferred_owner_boundary`.
+Cases 44-48 now have 5/5 source-locked procedure contracts and 5/5 independent
+owner-action contracts. The plan confirmation additionally locks all five child
+sources rather than only root/select/apply. The existing ten-turn
+`full-collision-eval-children` cohort is deterministic-contract-complete, but
+exact merge, installed runtime parity, host admission, both confirmations, and
+reviewed live evidence remain mandatory before any family conclusion.
+
 ## Safety And Privacy
 
 The plan locks Git head, authored portable overrides, all portable skill files,

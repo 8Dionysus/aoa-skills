@@ -1,6 +1,6 @@
 ---
 name: aoa-eval-apply
-description: 'Explicit activation required: do not invoke or load this skill from an implicit match; wait for explicit user or operator invocation or a source-authorized parent-route selection. Run or route an already selected eval, validator, test, or script, then report command results, artifacts, generated drift, proof limits, and next route. Use when the eval surface is already selected and the task is to apply it rather than choose or design it. Do not use when no existing eval has been selected, when an intake need should be recorded first, or when central proof promotion is being requested.'
+description: 'Explicit activation required: do not invoke or load this skill from an implicit match; wait for explicit user or operator invocation or a source-authorized parent-route selection. Run or route an already selected eval, validator, test, or script, then report command results, artifacts, generated drift, proof limits, and next route. Use when the eval surface is already selected and the task is to apply it rather than choose or design it. When the parent has classified apply but the exact command, source root/ref, prerequisites, expected artifacts, or pass/fail criteria is unavailable inside the active evidence boundary, stop with blocked_missing_input; do not relabel missing input as deferred_owner_boundary or substitute another command. Do not use when no existing eval has been selected, when an intake need should be recorded first, or when central proof promotion is being requested.'
 license: Apache-2.0
 compatibility: Designed for Codex or similar coding agents with repository file access and an interactive shell. Network access is optional and only needed when repository validation or referenced workflows require it.
 metadata:
@@ -31,6 +31,10 @@ Use this skill when:
 - generated outputs need to be rebuilt or checked as part of the selected eval
 - a selected repo-local suite has a machine-readable execution sidecar whose
   freshness and runtime invocation must be applied
+- the parent has classified apply, but the exact selected command, source
+  root/ref, prerequisites, expected artifacts, or pass/fail criteria is
+  unavailable inside the active evidence boundary; select this child only to
+  stop with `blocked_missing_input` rather than substitute another command
 
 Do not use this skill when:
 - no existing eval has been selected yet; use `aoa-eval-select`
@@ -60,30 +64,35 @@ Do not use this skill when:
 - next route if failure should become an intake need or suite design
 
 ## Procedure
-1. confirm the selected eval surface, owner repo, source root, and source ref;
+1. if the apply route is selected but the exact selected command, source
+   root/ref, prerequisites, expected artifacts, or pass/fail criteria is
+   unavailable inside the active evidence boundary and no permitted packet or
+   source read can supply it, stop with `blocked_missing_input`; do not relabel
+   missing input as `deferred_owner_boundary` or substitute a fixture probe
+2. confirm the selected eval surface, owner repo, source root, and source ref;
    if exact merged evidence is required, use a clean exact tree without
    modifying a dirty canonical checkout
-2. inspect prerequisites and choose the smallest command that exercises the
+3. inspect prerequisites and choose the smallest command that exercises the
    intended evidence surface
-3. if a local suite sidecar exists, use the current owner validator to
+4. if a local suite sidecar exists, use the current owner validator to
    JIT-revalidate schema, canonical owner identity, paths, typed argv, and every
    tracked source hash; proceed only from `source-contract-ready`
-4. inventory, readiness, dashboard, and MCP surfaces may inspect the sidecar but
+5. inventory, readiness, dashboard, and MCP surfaces may inspect the sidecar but
    must not execute it
-5. invoke only the validated `runner.argv`, `runner.cwd`, timeout, and accepted
+6. invoke only the validated `runner.argv`, `runner.cwd`, timeout, and accepted
    exit codes; do not substitute a wrapper, broader gate, or reconstructed
    command
-6. capture interpreter, dependency inventory digest, ambient pytest plugins,
+7. capture interpreter, dependency inventory digest, ambient pytest plugins,
    config, and selected environment before interpreting the result
-7. write an owner-local, private-by-default execution receipt linked to the
+8. write an owner-local, private-by-default execution receipt linked to the
    source head and sidecar digest; keep proof and promotion authority false
-8. when no sidecar exists, run the selected deterministic command with the same
+9. when no sidecar exists, run the selected deterministic command with the same
    source, cwd, result, artifact, and proof-limit reporting discipline
-9. capture outputs, generated drift, and artifact paths
-10. classify what the run proves and explicitly name what it does not prove
-11. if the run exposes missing coverage, route to `aoa-eval-local-need`; if it
+10. capture outputs, generated drift, and artifact paths
+11. classify what the run proves and explicitly name what it does not prove
+12. if the run exposes missing coverage, route to `aoa-eval-local-need`; if it
     requires new design, route to `aoa-eval-design`
-12. report commands, results, artifacts, source posture, environment posture,
+13. report commands, results, artifacts, source posture, environment posture,
     and remaining risk
 
 ## Contracts
@@ -100,6 +109,8 @@ Do not use this skill when:
 - generated drift must be resolved through owner builders
 - local eval reports must stay under local repo surfaces unless central review
   accepts them
+- missing application context inside the active evidence boundary ends as
+  `blocked_missing_input`, not as command substitution or owner-boundary deferral
 
 ## Risks and anti-patterns
 - running a broad release gate when a focused validator is enough
@@ -112,9 +123,12 @@ Do not use this skill when:
   central proof, or promotion
 - hiding generated drift
 - promoting failure observations without a reproducible command
+- relabelling absent application inputs as `deferred_owner_boundary`
 
 ## Verification
 - confirm the selected eval existed before running
+- confirm absent application inputs stopped as `blocked_missing_input` without
+  being relabelled as `deferred_owner_boundary` or replaced by another command
 - confirm source root/ref and whether the observation came from a live dirty
   workspace or an exact source tree
 - for a sidecar-backed suite, confirm the owner validator reported ready

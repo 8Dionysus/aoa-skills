@@ -1,6 +1,6 @@
 ---
 name: aoa-eval-select
-description: 'Explicit activation required: do not invoke or load this skill from an implicit match; wait for explicit user or operator invocation or a source-authorized parent-route selection. Inspect repo-local eval ports, tests, validators, scripts, reports, intake files, and central aoa-evals standards before new eval work, then select the smallest existing surface or a no-fit route. Use when the task asks which eval should apply to a change, failure, regression, or trigger miss. Do not use when the eval is already selected and should run, when no-fit has already been established, or when the real issue is source authority rather than eval coverage.'
+description: 'Explicit activation required: do not invoke or load this skill from an implicit match; wait for explicit user or operator invocation or a source-authorized parent-route selection. Inspect repo-local eval ports, tests, validators, scripts, reports, intake files, and central aoa-evals standards before new eval work, then select the smallest existing surface or a no-fit route. Use when the task asks which eval should apply to a change, failure, regression, or trigger miss. When the parent has classified selection but the target repository, touched paths, local eval port, nearby proof surfaces, or central standard is unavailable inside the active evidence boundary, stop with blocked_missing_input; do not relabel missing input as deferred_owner_boundary or infer fit/no-fit. Do not use when the eval is already selected and should run, when no-fit has already been established, or when the real issue is source authority rather than eval coverage.'
 license: Apache-2.0
 compatibility: Designed for Codex or similar coding agents with repository file access and an interactive shell. Network access is optional and only needed when repository validation or referenced workflows require it.
 metadata:
@@ -28,6 +28,10 @@ Use this skill when:
 - central `aoa-evals` may already contain the relevant proof pattern or local
   port contract
 - existing validators, tests, or scripts may be the honest eval surface
+- the parent has classified selection, but the target repository, touched
+  paths, local eval port, nearby proof surfaces, or central standard is
+  unavailable inside the active evidence boundary; select this child only to
+  stop with `blocked_missing_input` rather than infer fit or no-fit
 
 Do not use this skill when:
 - an already selected eval simply needs to be run; use `aoa-eval-apply`
@@ -51,18 +55,23 @@ Do not use this skill when:
 - next route: apply, local need, design, or stop
 
 ## Procedure
-1. read the target repo route law and local `evals/PORT.yaml` when present
-2. inventory local `evals/`, tests, validators, and scripts around the touched
+1. if the selection route is chosen but the target repository, touched paths,
+   local eval port, nearby proof surfaces, or central standard is unavailable
+   inside the active evidence boundary and no permitted packet or source read
+   can supply it, stop with `blocked_missing_input`; do not relabel missing
+   input as `deferred_owner_boundary`
+2. read the target repo route law and local `evals/PORT.yaml` when present
+3. inventory local `evals/`, tests, validators, and scripts around the touched
    paths
-3. inspect central `aoa-evals` only for reusable proof doctrine, local-port
+4. inspect central `aoa-evals` only for reusable proof doctrine, local-port
    standard, or central bundle matches
-4. prefer deterministic local scripts and tests for coding-agent behavior when
+5. prefer deterministic local scripts and tests for coding-agent behavior when
    they already constrain the outcome
-5. use MCP list/inspect only to narrow the search; verify important claims
+6. use MCP list/inspect only to narrow the search; verify important claims
    against source files
-6. classify the result as exact fit, partial fit, nearest wrong target, no fit,
+7. classify the result as exact fit, partial fit, nearest wrong target, no fit,
    or blocked by stale/missing owner evidence
-7. hand off to `aoa-eval-apply`, `aoa-eval-local-need`, or `aoa-eval-design`
+8. hand off to `aoa-eval-apply`, `aoa-eval-local-need`, or `aoa-eval-design`
    only after selection is clear
 
 ## Contracts
@@ -70,18 +79,23 @@ Do not use this skill when:
 - central proof doctrine may guide but not absorb repo-local intake
 - selection reports confidence and nearest wrong target instead of guessing
 - generated indexes and MCP packets are read models until source-verified
+- missing selection context inside the active evidence boundary ends as
+  `blocked_missing_input`, not as fit, no-fit, or owner-boundary deferral
 
 ## Risks and anti-patterns
 - skipping local validators because a central eval sounds more official
 - selecting a test that only checks incidental behavior
 - turning a partial fit into a proof verdict
 - reading all repos when touched paths already narrow the search
+- relabelling absent selection inputs as `deferred_owner_boundary`
 
 ## Verification
 - confirm local port presence, absence, and status
 - confirm selected surface and owner route
 - confirm why nearest alternatives were rejected
 - confirm next route is one of apply, local need, design, or stop
+- confirm absent selection inputs stopped as `blocked_missing_input` without
+  being relabelled as `deferred_owner_boundary`
 - confirm central `aoa-evals` was not rewritten
 
 ## Technique traceability

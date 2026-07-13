@@ -343,8 +343,8 @@
         "AOA-T-0096"
       ],
       "trigger_boundary_short": "Use when an existing eval, validator, test, or script has already been selected; a local or central evaluation command should be run or routed; Avoid when no existing eval has been selected yet; use aoa-eval-select;...",
-      "verification_short": "Checks: confirm the selected eval existed before running; confirm source root/ref and whether the observation came from a live dirty workspace or an exact source tree; for a sidecar-backed suite, confirm the owner...",
-      "workflow_short": "Purpose: apply an existing eval surface after selection is clear. Flow: confirm the selected eval surface, owner repo, source root, and source ref if exact merged evidence is required, use a clean exact tree without modifying a dirty canonical checkout ->..."
+      "verification_short": "Checks: confirm the selected eval existed before running; confirm absent application inputs stopped as blockedmissinginput without being relabelled as deferredownerboundary or replaced by another command; confirm...",
+      "workflow_short": "Purpose: apply an existing eval surface after selection is clear. Flow: if the apply route is selected but the exact selected command, source root/ref, prerequisites, expected artifacts, or pass/fail criteria is unavailable inside the active evidence..."
     },
     {
       "inputs_short": "Needs: selected failure mode, target behavior, invariant, or trigger boundary; local repo tests, scripts, validators, fixtures, generated surfaces, and evals/ port; evidence refs and rejected existing evals; central...",
@@ -363,7 +363,7 @@
       ],
       "trigger_boundary_short": "Use when a local eval needs design from a clear failure mode or missing invariant; deterministic tests, validators, or scripts should be planned before rubric or transcript graders; Avoid when an existing eval...",
       "verification_short": "Checks: confirm the target invariant or behavior is explicit; confirm positive, negative, and regression cases exist or are deliberately deferred; confirm deterministic checks were considered first; confirm local...",
-      "workflow_short": "Purpose: design a bounded local eval suite, prompt set, report, or validator plan after existing surfaces have been inspected and found insufficient. Flow: restate the behavior or invariant to evaluate -> choose the lowest-level deterministic checks that..."
+      "workflow_short": "Purpose: design a bounded local eval suite, prompt set, report, or validator plan after existing surfaces have been inspected and found insufficient. Flow: if the design route is selected but the explicit invariant or behavior, target repository, local..."
     },
     {
       "inputs_short": "Needs: target repository and local evals/PORT.yaml; failure or behavior needing evaluation; evidence refs, touched paths, expected invariant, and rejected existing surfaces; owner route and validation commands.",
@@ -382,7 +382,7 @@
       ],
       "trigger_boundary_short": "Use when a local repository needs an eval pressure packet but not a central proof bundle yet; no existing local validator, test, script, or central eval bundle covers the failure or behavior; Avoid when an existing...",
       "verification_short": "Checks: confirm no existing eval fit; confirm the target repo owns the local port; confirm packet path and schema posture; confirm evidence refs and proof limits.",
-      "workflow_short": "Purpose: record bounded local eval pressure under a repository's evals/intake/ surface after selection confirms that no existing eval fits. Flow: verify that aoa-eval-select or equivalent inspection found no adequate existing surface -> read local..."
+      "workflow_short": "Purpose: record bounded local eval pressure under a repository's evals/intake/ surface after selection confirms that no existing eval fits. Flow: if the local-need route is selected but the target repository, local-port owner/schema, evidence refs, or..."
     },
     {
       "inputs_short": "Needs: target repo and touched paths; local evals/PORT.yaml, evals/README.md, evals/intake/, and eval reports; scripts, tests, validators, schemas, generated manifests, and route docs; central aoa-evals docs and...",
@@ -401,7 +401,7 @@
       ],
       "trigger_boundary_short": "Use when a task asks which eval should be used for a change, failure, or regression; a repository has a local evals/ port and the agent needs to inspect it before writing anything new; Avoid when an already selected...",
       "verification_short": "Checks: confirm local port presence, absence, and status; confirm selected surface and owner route; confirm why nearest alternatives were rejected; confirm next route is one of apply, local need, design, or stop.",
-      "workflow_short": "Purpose: find whether an existing eval, validator, test, script, report, or local-port artifact already covers the current pressure before designing a new eval. Flow: read the target repo route law and local evals/PORT.yaml when present -> inventory local..."
+      "workflow_short": "Purpose: find whether an existing eval, validator, test, script, report, or local-port artifact already covers the current pressure before designing a new eval. Flow: if the selection route is chosen but the target repository, touched paths, local eval..."
     },
     {
       "inputs_short": "Needs: trigger classes or target failure modes from prior research; aoa search index status, raw refs, segment refs, freshness, and diagnostics; target repositories, touched paths, validators, tests, and local eval...",
@@ -420,7 +420,7 @@
       ],
       "trigger_boundary_short": "Use when the user asks to study sessions for eval moments, missed triggers, regressions, or repeated failures; repo and web research has already defined candidate trigger classes; Avoid when the task is only .aoa...",
       "verification_short": "Checks: confirm index freshness and provider; confirm each example has session, segment, event, raw ref, and freshness; confirm candidate owner route and rejected nearest wrong owner; confirm no raw evidence was...",
-      "workflow_short": "Purpose: mine .aoa session evidence for missed eval-trigger moments, candidate regression cases, and local eval pressure after external and repo owner surfaces have already been studied. Flow: confirm the research gates: web sources, repo-local eval..."
+      "workflow_short": "Purpose: mine .aoa session evidence for missed eval-trigger moments, candidate regression cases, and local eval pressure after external and repo owner surfaces have already been studied. Flow: if the session-mining route is selected but the trigger..."
     },
     {
       "inputs_short": "Needs: target rule or stable truth; current tests, checks, schemas, fixtures, reports, generated parity checks, proof reports, or examples; known edge cases and stress cases; the input space or states that matter most.",

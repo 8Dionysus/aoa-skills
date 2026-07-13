@@ -1,6 +1,6 @@
 ---
 name: aoa-eval-design
-description: 'Explicit activation required: do not invoke or load this skill from an implicit match; wait for explicit user or operator invocation or a source-authorized parent-route selection. Design a bounded local eval suite, prompt set, report, or validator plan after selection finds no adequate existing surface, using deterministic checks first and trace or rubric review only when needed. Use when a local eval needs positive, negative, collision, or regression cases around a clear behavior or invariant. Do not use when an existing eval should simply run, when only a local intake packet is needed, or when central aoa-evals proof doctrine is the target.'
+description: 'Explicit activation required: do not invoke or load this skill from an implicit match; wait for explicit user or operator invocation or a source-authorized parent-route selection. Design a bounded local eval suite, prompt set, report, or validator plan after selection finds no adequate existing surface, using deterministic checks first and trace or rubric review only when needed. Use when a local eval needs positive, negative, collision, or regression cases around a clear behavior or invariant. When the parent has classified design but the explicit invariant or behavior, target repository, local owner path, or rejected existing surfaces is unavailable inside the active evidence boundary, stop with blocked_missing_input; do not relabel missing input as deferred_owner_boundary. Do not use when an existing eval should simply run, when only a local intake packet is needed, or when central aoa-evals proof doctrine is the target.'
 license: Apache-2.0
 compatibility: Designed for Codex or similar coding agents with repository file access and an interactive shell. Network access is optional and only needed when repository validation or referenced workflows require it.
 metadata:
@@ -28,6 +28,10 @@ Use this skill when:
 - positive, negative, collision, or regression cases need to be shaped for a
   local repo
 - the output is a draft suite or report, not central proof acceptance
+- the parent has classified design after selection, but the explicit invariant
+  or behavior, target repository, local owner path, or rejected existing
+  surfaces is unavailable inside the active evidence boundary; select this
+  child only to stop with `blocked_missing_input` rather than design generically
 
 Do not use this skill when:
 - an existing eval should simply run now
@@ -49,15 +53,20 @@ Do not use this skill when:
 - proof limit and owner handoff
 
 ## Procedure
-1. restate the behavior or invariant to evaluate
-2. choose the lowest-level deterministic checks that can constrain it
-3. add positive and negative examples; add collision cases for trigger or router
+1. if the design route is selected but the explicit invariant or behavior,
+   target repository, local owner path, or rejected existing surfaces is
+   unavailable inside the active evidence boundary and no permitted packet or
+   source read can supply it, stop with `blocked_missing_input`; do not relabel
+   missing input as `deferred_owner_boundary`
+2. restate the behavior or invariant to evaluate
+3. choose the lowest-level deterministic checks that can constrain it
+4. add positive and negative examples; add collision cases for trigger or router
    behavior
-4. add trace or rubric review only where deterministic checks cannot cover the
+5. add trace or rubric review only where deterministic checks cannot cover the
    behavior
-5. place the draft in the local eval port or report surface named by the repo
-6. keep central acceptance language out of the draft
-7. hand off to `aoa-eval-apply` when a runnable check exists
+6. place the draft in the local eval port or report surface named by the repo
+7. keep central acceptance language out of the draft
+8. hand off to `aoa-eval-apply` when a runnable check exists
 
 ## Contracts
 - design starts after selection fails, not before
@@ -65,12 +74,15 @@ Do not use this skill when:
 - deterministic checks are preferred for coding-agent behavior
 - transcript and rubric grading are supporting layers when objective checks are
   insufficient
+- missing design context inside the active evidence boundary ends as
+  `blocked_missing_input`, not as a generic draft or owner-boundary deferral
 
 ## Risks and anti-patterns
 - designing a suite around vague success criteria
 - using only positive examples
 - creating rubric-only evals where a script or test can check the behavior
 - making one local report sound like system-wide proof
+- relabelling absent design inputs as `deferred_owner_boundary`
 
 ## Verification
 - confirm the target invariant or behavior is explicit
@@ -78,6 +90,8 @@ Do not use this skill when:
   deferred
 - confirm deterministic checks were considered first
 - confirm local owner path and proof limit
+- confirm absent design inputs stopped as `blocked_missing_input` without being
+  relabelled as `deferred_owner_boundary`
 - confirm next runnable command or review route
 
 ## Technique traceability

@@ -507,6 +507,34 @@ As of 2026-07-13:
 
 ## Review Log
 
+### 2026-07-13 - Close the eval-child deterministic source gate under v19
+
+- Trigger: after the reviewed decision-child return closed authority routing,
+  `full-collision-eval-children` exposed five score-eligible parent routes but
+  0/5 procedure and 0/5 owner-outcome contracts. Live execution therefore had
+  no source-authored procedure or observable owner-action answer key.
+- Route boundary: keep `aoa-eval` as the prompt-visible scored parent and the
+  declared select/apply/local-need/design/session-mining child as the separate
+  full-read trajectory and procedure identity. Hidden-child activation policy
+  remains manual.
+- Child source correction: every child now preserves a parent-classified route
+  but stops as `blocked_missing_input` when its required target, command,
+  owner-port, invariant, trigger-class, provider, or freshness inputs cannot be
+  supplied inside the active evidence boundary. Missing input may not become
+  `deferred_owner_boundary`, a substitute fixture command, an invented packet,
+  a generic design, broad session mining, or fabricated refs.
+- Contract completion: author one procedure and one independent owner-action
+  contract for each of collisions 44-48. The wave reaches 5/5 coverage on both
+  axes, five scored parent routes, five required child reads, and zero manual
+  non-activation guards.
+- Source-lock correction: add local-need, design, and session-mining to the live
+  plan snapshot beside the already locked eval root, select, and apply sources.
+  Authored portable overrides and all generated projections remain locked too.
+- Protocol and authority: keep protocol v19 and contract v14 because grader
+  semantics did not change. Deterministic completion does not establish live
+  behavior, proof, promotion, or a family verdict; exact merge, runtime parity,
+  host gates, both confirmations, and reviewed ten-turn execution remain open.
+
 ### 2026-07-13 - Preserve the clean v19 decision-child terminal return
 
 - Exact execution: merged commit `4e9cf05`, inspected 36 skills and 270/270

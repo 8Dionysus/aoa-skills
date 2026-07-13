@@ -155,6 +155,12 @@ Active first local corpus:
   without claiming proof or promotion. Authority routing is now closed for this
   bounded return; the eval-child wave remains blocked at 0/5 procedure and 0/5
   owner-outcome contracts before any live spend.
+  The next source pass now closes that deterministic block at 5/5 on both axes.
+  Select, apply, local-need, design, and session-mining each carry an explicit
+  parent-classified `blocked_missing_input` terminal in source and portable
+  description, and the live confirmation locks every child source. The
+  ten-turn eval-child cohort is source-ready only; exact merge, runtime parity,
+  host gates, and reviewed live execution remain open.
 
 These files are local evidence notes. They do not publish central proof
 acceptance, scoring, verdicts, regression truth, or proof doctrine.

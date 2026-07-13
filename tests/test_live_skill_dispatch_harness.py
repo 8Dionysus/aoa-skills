@@ -956,6 +956,32 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
                 self.assertEqual("invoke", trial.expected_behavior)
                 self.assertEqual(expected_children[trial.case_id], trial.expected_child_skill)
                 self.assertNotIn("aoa-eval", trial.competing_skills)
+                self.assertIsNotNone(trial.procedure_contract)
+                self.assertIsNotNone(trial.outcome_contract)
+        overrides = json.loads(
+            (REPO_ROOT / "config" / "portable_skill_overrides.json").read_text()
+        )["skills"]
+        for skill_name in expected_children.values():
+            source = (
+                REPO_ROOT
+                / "skills/core/engineering"
+                / skill_name
+                / "SKILL.md"
+            ).read_text()
+            normalized_source = " ".join(source.split())
+            description = overrides[skill_name]["description"]
+            with self.subTest(skill_name=skill_name, surface="source"):
+                self.assertIn("stop with `blocked_missing_input`", normalized_source)
+                self.assertIn(
+                    "do not relabel missing input as `deferred_owner_boundary`",
+                    normalized_source,
+                )
+            with self.subTest(skill_name=skill_name, surface="portable-description"):
+                self.assertIn("stop with blocked_missing_input", description)
+                self.assertIn(
+                    "do not relabel missing input as deferred_owner_boundary",
+                    description,
+                )
         packet = runner.build_plan_packet(
             REPO_ROOT,
             plan,
@@ -964,9 +990,12 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
             "medium",
         )
         self.assertEqual(5, packet["target_route_scored_pair_count"])
-        self.assertEqual(0, packet["procedure_scored_pair_count"])
+        self.assertEqual(5, packet["procedure_contract_pair_count"])
+        self.assertEqual(5, packet["procedure_scored_pair_count"])
         self.assertEqual(0, packet["manual_non_activation_pair_count"])
-        self.assertFalse(packet["procedure_contract_coverage_complete"])
+        self.assertEqual(5, packet["objective_outcome_scored_pair_count"])
+        self.assertTrue(packet["procedure_contract_coverage_complete"])
+        self.assertTrue(packet["objective_outcome_coverage_complete"])
 
         duplicate = json.loads(json.dumps(plan))
         duplicate["root_child_trajectories"][-1] = {

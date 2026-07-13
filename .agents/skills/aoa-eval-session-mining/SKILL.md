@@ -1,6 +1,6 @@
 ---
 name: aoa-eval-session-mining
-description: 'Explicit activation required: do not invoke or load this skill from an implicit match; wait for explicit user or operator invocation or a source-authorized parent-route selection. Mine .aoa session evidence for missed eval triggers, candidate regression cases, and local eval pressure only after web research and repo owner surfaces are checked, returning raw and segment refs with freshness rather than proof. Use when the user asks to study sessions for eval moments, missed triggers, repeated failures, or session-derived eval cases. Do not use for raw .aoa preservation, hook repair, search-index maintenance, memo writeback, decision records, or treating session history as reviewed proof.'
+description: 'Explicit activation required: do not invoke or load this skill from an implicit match; wait for explicit user or operator invocation or a source-authorized parent-route selection. Mine .aoa session evidence for missed eval triggers, candidate regression cases, and local eval pressure only after web research and repo owner surfaces are checked, returning raw and segment refs with freshness rather than proof. Use when the user asks to study sessions for eval moments, missed triggers, repeated failures, or session-derived eval cases. When the parent has classified session mining but the trigger classes, target owner map, session provider/status, or freshness evidence is unavailable inside the active evidence boundary, stop with blocked_missing_input; do not relabel missing input as deferred_owner_boundary or invent refs. Do not use for raw .aoa preservation, hook repair, search-index maintenance, memo writeback, decision records, or treating session history as reviewed proof.'
 license: Apache-2.0
 compatibility: Designed for Codex or similar coding agents with repository file access and an interactive shell. Network access is optional and only needed when repository validation or referenced workflows require it.
 metadata:
@@ -28,6 +28,10 @@ Use this skill when:
 - `.aoa` search hits can reveal real prompts, failures, validations, or
   corrections that should become eval cases
 - the output should be candidate evidence with raw/segment refs and freshness
+- the parent has classified session mining after research, but the trigger
+  classes, target owner map, session provider/status, or freshness evidence is
+  unavailable inside the active evidence boundary; select this child only to
+  stop with `blocked_missing_input` rather than search broadly or invent refs
 
 Do not use this skill when:
 - the task is only `.aoa` preservation, hook repair, or search-index maintenance
@@ -51,15 +55,20 @@ Do not use this skill when:
 - local intake or design handoff when evidence is strong enough
 
 ## Procedure
-1. confirm the research gates: web sources, repo-local eval surfaces, and owner
+1. if the session-mining route is selected but the trigger classes, target owner
+   map, session provider/status, or freshness evidence is unavailable inside the
+   active evidence boundary and no permitted packet or source read can supply
+   it, stop with `blocked_missing_input`; do not relabel missing input as
+   `deferred_owner_boundary`
+2. confirm the research gates: web sources, repo-local eval surfaces, and owner
    boundaries are already mapped
-2. check `.aoa` search provider status and index freshness
-3. run narrow searches by trigger class, not one broad vague query
-4. inspect enough surrounding segment context to avoid false positives
-5. classify each hit as candidate eval trigger, candidate local need, existing
+3. check `.aoa` search provider status and index freshness
+4. run narrow searches by trigger class, not one broad vague query
+5. inspect enough surrounding segment context to avoid false positives
+6. classify each hit as candidate eval trigger, candidate local need, existing
    eval apply moment, non-eval validation, or wrong owner route
-6. preserve raw and segment refs; do not summarize them into authority
-7. hand off accepted candidates to `aoa-eval-local-need` or `aoa-eval-design`
+7. preserve raw and segment refs; do not summarize them into authority
+8. hand off accepted candidates to `aoa-eval-local-need` or `aoa-eval-design`
    only after owner-route checks
 
 ## Contracts
@@ -68,18 +77,23 @@ Do not use this skill when:
 - raw transcript evidence cannot override source-owned repo files
 - mining happens after owner boundaries are known, not as a replacement for
   source archaeology
+- missing mining context inside the active evidence boundary ends as
+  `blocked_missing_input`, not as broad search or owner-boundary deferral
 
 ## Risks and anti-patterns
 - using session snippets as proof without source verification
 - mining all sessions before trigger classes are defined
 - confusing `.aoa` maintenance with eval mining
 - turning repeated frustration into a generic eval without a reproducible case
+- relabelling absent mining inputs as `deferred_owner_boundary`
 
 ## Verification
 - confirm index freshness and provider
 - confirm each example has session, segment, event, raw ref, and freshness
 - confirm candidate owner route and rejected nearest wrong owner
 - confirm no raw evidence was promoted to proof
+- confirm absent mining inputs stopped as `blocked_missing_input` without being
+  relabelled as `deferred_owner_boundary`
 - confirm next local need/design/apply route when applicable
 
 ## Technique traceability

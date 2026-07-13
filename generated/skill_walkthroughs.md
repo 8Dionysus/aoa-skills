@@ -772,6 +772,7 @@ Common expand sections:
 - the user needs to know what the run proves, what failed, and what remains outside coverage
 - generated outputs need to be rebuilt or checked as part of the selected eval
 - a selected repo-local suite has a machine-readable execution sidecar whose freshness and runtime invocation must be applied
+- the parent has classified apply, but the exact selected command, source root/ref, prerequisites, expected artifacts, or pass/fail criteria is unavailable inside the active evidence boundary; select this child only to stop with blocked_missing_input rather than substitute another command
 
 ### Do not use when
 
@@ -806,6 +807,7 @@ Common expand sections:
 - deterministic tests, validators, or scripts should be planned before rubric or transcript graders
 - positive, negative, collision, or regression cases need to be shaped for a local repo
 - the output is a draft suite or report, not central proof acceptance
+- the parent has classified design after selection, but the explicit invariant or behavior, target repository, local owner path, or rejected existing surfaces is unavailable inside the active evidence boundary; select this child only to stop with blocked_missing_input rather than design generically
 
 ### Do not use when
 
@@ -839,6 +841,7 @@ Common expand sections:
 - no existing local validator, test, script, or central eval bundle covers the failure or behavior
 - a repeated session or implementation failure needs owner-routed follow-up
 - the right next artifact is evals/intake/*.eval_need.json
+- the parent has classified local need from an explicit no-fit result, but the target repository, local-port owner/schema, evidence refs, or rejected alternatives is unavailable inside the active evidence boundary; select this child only to stop with blocked_missing_input rather than invent a packet
 
 ### Do not use when
 
@@ -872,6 +875,7 @@ Common expand sections:
 - a repository has a local evals/ port and the agent needs to inspect it before writing anything new
 - central aoa-evals may already contain the relevant proof pattern or local port contract
 - existing validators, tests, or scripts may be the honest eval surface
+- the parent has classified selection, but the target repository, touched paths, local eval port, nearby proof surfaces, or central standard is unavailable inside the active evidence boundary; select this child only to stop with blocked_missing_input rather than infer fit or no-fit
 
 ### Do not use when
 
@@ -905,6 +909,7 @@ Common expand sections:
 - repo and web research has already defined candidate trigger classes
 - aoa search hits can reveal real prompts, failures, validations, or corrections that should become eval cases
 - the output should be candidate evidence with raw/segment refs and freshness
+- the parent has classified session mining after research, but the trigger classes, target owner map, session provider/status, or freshness evidence is unavailable inside the active evidence boundary; select this child only to stop with blocked_missing_input rather than search broadly or invent refs
 
 ### Do not use when
 
