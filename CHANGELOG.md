@@ -148,6 +148,13 @@ Tracking starts with the community-docs baseline for this repository.
   as typed source identifiers only in skill-name fields. This permits public
   names such as `aoa-session-donor-harvest` without weakening rejection of
   bare transport/session ids, UUIDs, paths, credentials, or raw fields.
+- V13 returns from the first full pilot without rewriting its v12 receipt.
+  Manual-policy failure classification is now aided-only; no-dispatch manual
+  and do-not-use prompts require `not_applicable`; and structured reports may
+  use a separately source-locked target-to-base-child hierarchy. Replay removes
+  three control-side failure labels and the valid Abyss overlay report miss.
+  Source reread keeps `collision-38` as an `aoa-decision` child-handoff
+  candidate rather than weakening its pre-authored contract.
 - `AOA-SK-D-0037` records why live cohorts remain operator-confirmed candidate
   evidence and now clarifies prompt-surface isolation and evidence-stage grading
   after the contaminated smoke; deterministic harness validation, not model
@@ -280,7 +287,7 @@ Tracking starts with the community-docs baseline for this repository.
   vocabulary remains readable only for historical receipt compatibility.
 - The hermetic evidence contract is now
   `aoa_codex_app_server_skill_input_contract_v11` with protocol revision
-  `codex-cli-0.144.1-live-dispatch-evidence-v12`; retained v1-v11 receipts remain
+  `codex-cli-0.144.1-live-dispatch-evidence-v13`; retained v1-v12 receipts remain
   immutable under their original protocol and review status.
 - Live dispatch now locks and passes Codex rollout-budget reminder thresholds
   as a TOML list for both CLI and App Server arms, rejects invalid thresholds

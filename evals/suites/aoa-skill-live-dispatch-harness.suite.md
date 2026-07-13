@@ -325,6 +325,16 @@ harness returns that must be corrected before skill conclusions or another
 full pilot. Preserve the receipt and repeat only the smallest affected cases
 after each repair.
 
+Source reread retains `collision-38` as a root-to-`aoa-decision-find` handoff
+candidate: it is not a grader correction. V13 repairs the other demonstrated
+harness returns. Manual failure labels apply only to aided arms; no-dispatch
+manual/do-not-use prompts require `not_applicable`; and a separate
+`structured_report_child_hierarchies` source map accepts an exact target plus
+its declared base child. Replay of the immutable v12 private evidence removes
+three control-side labels and the Abyss structured report miss, leaving seven
+aided return candidates. Replay validates v13 grading and does not alter the
+reviewed v12 receipt.
+
 ## Safety And Privacy
 
 The plan locks Git head, all portable skill files, generated/config inputs,
@@ -342,7 +352,7 @@ both sides of this transport-specific contract.
 
 These hermetic invocation rules use contract schema
 `aoa_codex_app_server_skill_input_contract_v11` and protocol revision
-`codex-cli-0.144.1-live-dispatch-evidence-v12`. Retained v1-v11 receipts remain
+`codex-cli-0.144.1-live-dispatch-evidence-v13`. Retained v1-v12 receipts remain
 source-locked to their original protocol and review status and are not upgraded
 in place.
 

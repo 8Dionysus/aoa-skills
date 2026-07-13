@@ -43,7 +43,11 @@ Active first local corpus:
   not itself authorize a live `pilot13` run. The first subsequently reviewed
   exact-merged pilot is preserved as mixed `needs-rerun` candidate evidence:
   its clean outcome seam coexists with separate harness/contract and skill-route
-  returns that must be isolated before widening.
+  returns that must be isolated before widening. V13 keeps the decision child
+  handoff as a live skill candidate, removes ambient-control and structured
+  hierarchy false labels, and makes no-dispatch disposition explicit. Its
+  read-only replay validates grading only; the v12 receipt remains immutable
+  and a fresh bounded rerun is still required.
 
 These files are local evidence notes. They do not publish central proof
 acceptance, scoring, verdicts, regression truth, or proof doctrine.

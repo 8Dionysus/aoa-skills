@@ -372,10 +372,8 @@ pairs rather than skill-specific outcome lift.
 The adaptive returns are heterogeneous. `aoa-change-protocol` won implicit
 manual-policy pressure for `aoa-summon`, `aoa-approval-gate-check`, and the
 `atm10` overlay; those are candidate description/collision gaps. They must not
-be conflated with three harness-side discoveries:
+be conflated with the harness-side discoveries:
 
-- `collision-38` should stop at graph-status evidence before choosing
-  `aoa-decision-find`; the v1 child expectation was premature;
 - a no-skill control that invokes an ambient non-target route did not load the
   manual target and must not be labelled a manual activation leak;
 - `abyss-safe-infra-change` explicitly starts from `aoa-safe-infra-change`, so
@@ -388,3 +386,25 @@ output-contract pressure, because no procedure is dispatched when the target
 is manual-required. Preserve the reviewed `needs-rerun` receipt, repair and
 replay these harness semantics first, then isolate the three skill collision
 candidates through the smallest adjacent reruns before another full pilot.
+
+## 2026-07-12 v13 harness return
+
+Source reread corrected the initial `collision-38` hypothesis. `aoa-decision`
+requires one chosen find/create/correct route, classifies find-or-understand
+first, and loads only that child; `aoa-decision-find` then owns the narrow graph
+lookup. The root-only live response is therefore still a child-handoff
+candidate, not a reason to erase the source-authored child contract.
+
+V13 repairs only the demonstrated harness pressure. Manual-policy failure
+classification now applies to the aided treatment arm; an ambient non-target
+control route may remain route-incorrect but is not a target activation leak.
+Fixture guidance states that `manual_required` or `do_not_use` without target
+dispatch has `procedure_disposition=not_applicable`. Structured reports gain a
+separate source-locked target-to-base-child hierarchy, initially
+`abyss-safe-infra-change` to `aoa-safe-infra-change`; an undeclared child still
+fails report matching. Read-only replay of the immutable v12 raw pilot under
+these grader rules removes the three control-side labels and the structured
+selection miss, leaving 23 clean arms and seven aided returns: one decision
+child handoff, three manual-policy procedure reports, and three manual-policy
+collision routes. Replay validates the grader only and does not rewrite the
+v12 receipt.

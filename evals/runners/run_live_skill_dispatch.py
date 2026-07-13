@@ -109,6 +109,7 @@ PUBLIC_MEASURE_KEYS = (
     "reported_target_direct_exact",
     "reported_target_hierarchy_exact",
     "hierarchy_report_expected_root_skill",
+    "hierarchy_report_expected_child_skill",
     "selection_report_contract_match",
     "route_decision",
     "manual_recommendation",
@@ -282,6 +283,7 @@ PUBLIC_SKILL_NAME_KEYS = frozenset(
     {
         "expected_selected_child_skill",
         "expected_target_skill",
+        "hierarchy_report_expected_child_skill",
         "hierarchy_report_expected_root_skill",
         "trajectory_expected_child_skill",
     }
@@ -402,6 +404,7 @@ class Trial:
     root_skill: str | None = None
     expected_child_skill: str | None = None
     equivalent_report_root_skill: str | None = None
+    equivalent_report_child_skill: str | None = None
     procedure_contract: ProcedureContract | None = None
     outcome_contract: OutcomeContract | None = None
 
@@ -416,6 +419,7 @@ class Trial:
             "root_skill": self.root_skill,
             "expected_child_skill": self.expected_child_skill,
             "equivalent_report_root_skill": self.equivalent_report_root_skill,
+            "equivalent_report_child_skill": self.equivalent_report_child_skill,
             "procedure_contract_defined": self.procedure_contract is not None,
             "procedure_contract_sha256": (
                 self.procedure_contract.sha256()
@@ -750,7 +754,7 @@ def _expected_codex_version(plan: dict[str, Any]) -> str:
     revision = str(plan.get("protocol_revision") or "")
     match = re.fullmatch(
         r"codex-cli-([0-9]+(?:\.[0-9]+){2})-"
-        r"(?:app-server-skill-input-v3|live-dispatch-evidence-v(?:[4-9]|1[0-2]))",
+        r"(?:app-server-skill-input-v3|live-dispatch-evidence-v(?:[4-9]|1[0-3]))",
         revision,
     )
     if match is None:
@@ -953,6 +957,7 @@ def _structured_trial(
     case_id: str,
     expected_behavior: str = "explicit",
     equivalent_report_root_skill: str | None = None,
+    equivalent_report_child_skill: str | None = None,
 ) -> Trial:
     return Trial(
         trial_id=f"{case_id}:structured:{skill_name}",
@@ -962,6 +967,7 @@ def _structured_trial(
         expected_target_skill=skill_name,
         expected_behavior=expected_behavior,
         equivalent_report_root_skill=equivalent_report_root_skill,
+        equivalent_report_child_skill=equivalent_report_child_skill,
     )
 
 
@@ -1102,6 +1108,16 @@ def expand_cohort(repo_root: Path, plan: dict[str, Any], cohort: str) -> list[Tr
                 f"structured hierarchy child has multiple declared roots: {child}"
             )
         equivalent_report_roots[child] = root
+    equivalent_report_children: dict[str, str] = {}
+    for item in plan.get("structured_report_child_hierarchies", []):
+        target = str(item["target_skill"])
+        child = str(item["child_skill"])
+        existing = equivalent_report_children.get(target)
+        if existing is not None and existing != child:
+            raise ValueError(
+                f"structured hierarchy target has multiple declared children: {target}"
+            )
+        equivalent_report_children[target] = child
     for skill_name in structured_skills:
         case_id, prompt = _explicit_prompt_for_skill(str(skill_name), descriptions)
         trials.append(
@@ -1110,6 +1126,9 @@ def expand_cohort(repo_root: Path, plan: dict[str, Any], cohort: str) -> list[Tr
                 prompt=prompt,
                 case_id=case_id,
                 equivalent_report_root_skill=equivalent_report_roots.get(
+                    str(skill_name)
+                ),
+                equivalent_report_child_skill=equivalent_report_children.get(
                     str(skill_name)
                 ),
             )
@@ -1639,7 +1658,9 @@ def _with_fixture_procedure(prompt: str) -> str:
         "Run it from the fixture root, capture its exit status and sentinel output, and report generated drift "
         "and proof limits. The probe does not define the selected skill procedure or whole-task outcome. "
         "The route decision describes skill activation only; report the selected skill procedure separately "
-        "in procedure_disposition."
+        "in procedure_disposition. If `route_decision` is `manual_required` or `do_not_use` and no target "
+        "procedure was dispatched, `procedure_disposition` must be `not_applicable`; do not relabel the "
+        "absence of dispatch as a blocked or owner-deferred procedure."
     )
 
 
@@ -2503,7 +2524,7 @@ def _trial_failure_class(trial: Trial, result: dict[str, Any]) -> str | None:
             return "dispatch_policy_gap"
         if not _load_contract_match(trial, output, result):
             return "skill_load_gap"
-    if trial.expected_behavior == "manual" and trial.arm_type.startswith("implicit"):
+    if trial.expected_behavior == "manual" and trial.arm_type == "implicit_aided":
         if (
             claims_loaded
             or result.get("target_skill_full_read_observed") is True
@@ -2705,8 +2726,14 @@ def _selection_report_evidence(
         and output.get("selected_skill") == trial.equivalent_report_root_skill
         and selected_child == trial.expected_target_skill
     )
+    child_hierarchy_exact = bool(
+        trial.arm_type == "app_server_structured"
+        and trial.equivalent_report_child_skill is not None
+        and output.get("selected_skill") == trial.expected_target_skill
+        and selected_child == trial.equivalent_report_child_skill
+    )
     if trial.arm_type == "app_server_structured":
-        report_match = direct_exact or hierarchy_exact
+        report_match = direct_exact or hierarchy_exact or child_hierarchy_exact
     elif trial.expected_behavior == "trajectory":
         report_match = bool(
             direct_exact
@@ -2716,9 +2743,12 @@ def _selection_report_evidence(
         report_match = direct_exact
     return {
         "reported_target_direct_exact": direct_exact,
-        "reported_target_hierarchy_exact": hierarchy_exact,
+        "reported_target_hierarchy_exact": hierarchy_exact or child_hierarchy_exact,
         "hierarchy_report_expected_root_skill": (
             trial.equivalent_report_root_skill
+        ),
+        "hierarchy_report_expected_child_skill": (
+            trial.equivalent_report_child_skill
         ),
         "selection_report_contract_match": report_match,
     }

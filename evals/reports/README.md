@@ -164,9 +164,12 @@ temporary root and must not be copied into this directory.
   from premature child/procedure expectations, ambient-control failure
   overclassification, and one valid overlay-to-base hierarchy that the
   structured report grader did not recognize. It is an adaptive-return map,
-  not a negative family verdict.
+  not a negative family verdict. Later source reread keeps the
+  `aoa-decision-find` expectation as a root-handoff candidate; v13 replay
+  corrects only the ambient-control, no-dispatch prompt, and overlay hierarchy
+  grader pressure without rewriting this v12 receipt.
 
-Corrected live receipts under the v11/v12 evidence protocols are reviewable only
+Corrected live receipts under the v11-v13 evidence protocols are reviewable only
 after canonical user-skill shadows, plugins, and every configured MCP id are
 isolated with the adapter-appropriate mechanism (`--ignore-user-config` for
 CLI exec, explicit per-id disables for prompt inspection and App Server);
