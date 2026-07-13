@@ -401,6 +401,16 @@ fail-closed until their own contracts are complete; root and structured waves
 have no implicit pair dimension and retain separate dispatch, load, hierarchy,
 and fixture checks.
 
+The coverage-closure source audit now closes the three implicit waves at 17/17
+procedure and 17/17 owner-action contracts. The two core pairs contain one
+score-eligible ADR route and one memo-writeback manual guard; the fifteen Titan
+pairs remain manual guards with no hidden-target route or procedure score.
+Every contract owner skill is part of the source snapshot lock. Synthetic
+confirmed execution validates all 34 paired turns through private/public receipt
+contracts, but creates no live evidence. Run the four-turn core implicit wave
+first after exact merge, runtime parity, host admission, and fresh confirmations;
+review and return before either Titan wave.
+
 The first exact v16 core wave completes 16/16. Every aided arm gains route and
 procedure correctness, while six outcome pairs are observation-clean and
 correct in both arms. Three fixture commands across `collision-01` and

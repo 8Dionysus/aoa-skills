@@ -737,7 +737,18 @@ load, trajectory, `blocked_missing_input` procedure, owner-boundary, fixture,
 and owner-outcome contracts. All five pairs have positive route, trajectory,
 and procedure lift; outcomes are observation-clean. This closes the bounded
 full-collision eval-child wave, not central proof or promotion. The next live
-boundary is the coverage-closure partition after its source-contract audit.
+boundary is the coverage-closure partition. Its source audit now closes all 17
+implicit pairs at 17/17 procedure and 17/17 owner-action coverage. One ADR pair
+is route/procedure-score eligible; memo writeback and all fifteen Titan pairs
+remain deliberate/manual non-activation guards. The source snapshot locks every
+referenced owner skill, and synthetic confirmed execution covers all 34 paired
+turns. The local eval execution sidecar mirrors every file in the live plan's
+source lock, not only the runner and previously exercised skills; a deterministic
+test requires both complete coverage and current file hashes. This is
+deterministic readiness rather than live evidence. After exact merge, runtime
+parity, host admission, and fresh confirmation tokens, execute the four-turn
+`coverage-closure-core-implicit` wave first and review it before either Titan
+child wave.
 
 ## Safety And Privacy
 

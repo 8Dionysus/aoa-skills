@@ -270,6 +270,31 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "array schema must declare items"):
             self.runner.validate_openai_strict_output_schema(itemless_array)
 
+    def test_local_eval_sidecar_covers_and_locks_every_live_plan_source(self) -> None:
+        plan = json.loads(self.plan_path.read_text(encoding="utf-8"))
+        sidecar = json.loads(
+            (
+                REPO_ROOT
+                / "evals"
+                / "suites"
+                / "aoa-skill-live-dispatch-harness.suite.json"
+            ).read_text(encoding="utf-8")
+        )
+        tracked = {
+            str(item["path"]): item
+            for item in sidecar["tracked_sources"]
+        }
+        missing = sorted(set(plan["source_refs"]) - set(tracked))
+        self.assertEqual([], missing)
+        for source_ref in plan["source_refs"]:
+            with self.subTest(source_ref=source_ref):
+                item = tracked[source_ref]
+                self.assertEqual("file", item["kind"])
+                actual = hashlib.sha256(
+                    (REPO_ROOT / source_ref).read_bytes()
+                ).hexdigest()
+                self.assertEqual(item["sha256"], actual)
+
     def test_all_committed_public_receipts_remain_schema_and_privacy_valid(self) -> None:
         schema = self.load_schema("live-skill-dispatch-public-receipt.schema.json")
         paths = sorted(
@@ -482,6 +507,123 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
         ] = "declared_only"
         with self.assertRaisesRegex(ValueError, "permits unscored procedures"):
             self.runner._validate_cohort_partitions(REPO_ROOT, unscored)
+
+    def test_coverage_closure_implicit_partition_waves_are_contract_complete(self) -> None:
+        plan = self.runner.load_plan(self.plan_path)
+        expectations = {
+            "coverage-closure-core-implicit": {
+                "case_ids": {"desc-01-implicit", "desc-memo-writeback-manual"},
+                "implicit_pairs": 2,
+                "route_scored": 1,
+                "procedure_scored": 1,
+                "manual_guards": 1,
+            },
+            "coverage-closure-titan-implicit-a": {
+                "case_ids": {
+                    f"desc-titan-{index:02d}-manual" for index in range(1, 9)
+                },
+                "implicit_pairs": 8,
+                "route_scored": 0,
+                "procedure_scored": 0,
+                "manual_guards": 8,
+            },
+            "coverage-closure-titan-implicit-b": {
+                "case_ids": {
+                    f"desc-titan-{index:02d}-manual" for index in range(9, 16)
+                },
+                "implicit_pairs": 7,
+                "route_scored": 0,
+                "procedure_scored": 0,
+                "manual_guards": 7,
+            },
+        }
+
+        for cohort, expected in expectations.items():
+            with self.subTest(cohort=cohort):
+                trials = self.runner.expand_cohort(REPO_ROOT, plan, cohort)
+                self.assertEqual(
+                    expected["case_ids"],
+                    {trial.case_id for trial in trials},
+                )
+                self.assertTrue(
+                    all(
+                        trial.procedure_contract is not None
+                        and trial.outcome_contract is not None
+                        for trial in trials
+                    )
+                )
+                for trial in trials:
+                    if trial.expected_behavior == "manual":
+                        self.assertEqual(
+                            "not_applicable",
+                            trial.procedure_contract.expected_selected_procedure_disposition,
+                        )
+                        self.assertFalse(
+                            trial.procedure_contract.expected_selected_procedure_completion_reported
+                        )
+                        self.assertFalse(
+                            trial.procedure_contract.expected_selected_procedure_deflection_reported
+                        )
+
+                packet = self.runner.build_plan_packet(
+                    REPO_ROOT,
+                    plan,
+                    cohort,
+                    "model-a",
+                    "medium",
+                )
+                self.assertEqual(
+                    expected["implicit_pairs"], packet["implicit_pair_count"]
+                )
+                self.assertEqual(
+                    expected["route_scored"],
+                    packet["target_route_scored_pair_count"],
+                )
+                self.assertEqual(
+                    expected["implicit_pairs"],
+                    packet["procedure_contract_pair_count"],
+                )
+                self.assertEqual(
+                    expected["procedure_scored"],
+                    packet["procedure_scored_pair_count"],
+                )
+                self.assertEqual(
+                    expected["manual_guards"],
+                    packet["manual_non_activation_pair_count"],
+                )
+                self.assertTrue(packet["procedure_contract_coverage_complete"])
+                self.assertEqual(
+                    expected["implicit_pairs"],
+                    packet["objective_outcome_scored_pair_count"],
+                )
+                self.assertTrue(packet["objective_outcome_coverage_complete"])
+                self.assertTrue(packet["high_cost_confirmation_required"])
+                with tempfile.TemporaryDirectory() as td:
+                    receipt = self.runner.run_confirmed_cohort(
+                        repo_root=REPO_ROOT,
+                        plan=plan,
+                        cohort=cohort,
+                        model="model-a",
+                        effort="medium",
+                        confirmation_token=packet["confirmation_token"],
+                        high_cost_token=packet["high_cost_confirmation_token"],
+                        private_root=Path(td),
+                        transport=FakeTransport(),
+                        test_only_allow_noncanonical_private_root=True,
+                    )
+                Draft202012Validator(
+                    self.load_schema("live-skill-dispatch-private-receipt.schema.json")
+                ).validate(receipt)
+                public = self.runner.build_public_receipt(receipt)
+                Draft202012Validator(
+                    self.load_schema("live-skill-dispatch-public-receipt.schema.json")
+                ).validate(public)
+                self.runner.validate_public_receipt(public)
+                self.assertEqual(cohort, public["cohort"])
+                self.assertEqual(len(trials), public["trial_count"])
+                self.assertEqual(
+                    expected["implicit_pairs"], public["pair_count"]
+                )
 
     def test_safety_overlay_partition_wave_is_contract_complete(self) -> None:
         plan = self.runner.load_plan(self.plan_path)
