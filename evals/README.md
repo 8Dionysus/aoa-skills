@@ -76,8 +76,9 @@ Active first local corpus:
   the same six-turn cohort must still rerun after exact merge and runtime parity.
   That exact rerun now has no aided failure classes and closes both source
   returns. Two controls still lack observable sentinel bytes after exact
-  zero-exit outcome commands, so telemetry must separate observation gaps from
-  treatment lift before the full pilot widens again.
+  zero-exit outcome commands. V15 now separates those gaps from treatment lift
+  with per-arm flags, pair effect class, and an observation-clean marker while
+  keeping both outcomes unverified; the full pilot is the next live widening.
 
 These files are local evidence notes. They do not publish central proof
 acceptance, scoring, verdicts, regression truth, or proof doctrine.

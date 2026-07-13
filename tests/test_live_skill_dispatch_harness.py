@@ -1084,13 +1084,13 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
         )
         self.assertEqual(plan["protocol_revision"], contract["protocol_revision"])
         self.assertEqual(
-            "codex-cli-0.144.1-live-dispatch-evidence-v14",
+            "codex-cli-0.144.1-live-dispatch-evidence-v15",
             plan["protocol_revision"],
         )
         self.assertEqual("codex-cli 0.144.1", self.runner._expected_codex_version(plan))
         unsupported_plan = dict(plan)
         unsupported_plan["protocol_revision"] = (
-            "codex-cli-0.144.1-live-dispatch-evidence-v15"
+            "codex-cli-0.144.1-live-dispatch-evidence-v16"
         )
         with self.assertRaisesRegex(ValueError, "unsupported Codex protocol revision"):
             self.runner._expected_codex_version(unsupported_plan)
@@ -2634,8 +2634,33 @@ Second procedure section.
             "trajectory_contract_match",
             "procedure_contract_defined",
             "procedure_disposition_contract_match",
+            "outcome_output_observation_gap",
         }
         self.assertLessEqual(stage_fields, set(public["measures"][0]))
+        self.assertLessEqual(
+            {
+                "aided_outcome_output_observation_gap",
+                "control_outcome_output_observation_gap",
+                "outcome_output_observation_gap_effect_class",
+                "outcome_lift_observation_clean",
+            },
+            set(public["pair_outcomes"][0]),
+        )
+        self.assertFalse(
+            public["pair_outcomes"][0]["aided_outcome_output_observation_gap"]
+        )
+        self.assertFalse(
+            public["pair_outcomes"][0]["control_outcome_output_observation_gap"]
+        )
+        self.assertEqual(
+            "none",
+            public["pair_outcomes"][0][
+                "outcome_output_observation_gap_effect_class"
+            ],
+        )
+        self.assertTrue(
+            public["pair_outcomes"][0]["outcome_lift_observation_clean"]
+        )
         self.assertTrue(
             {
                 "procedure_command_observed",
@@ -2658,6 +2683,15 @@ Second procedure section.
         Draft202012Validator(
             self.load_schema("live-skill-dispatch-public-receipt.schema.json")
         ).validate(public)
+        invalid_gap_effect = json.loads(json.dumps(public))
+        invalid_gap_effect["pair_outcomes"][0][
+            "outcome_output_observation_gap_effect_class"
+        ] = "ambiguous"
+        with self.assertRaisesRegex(
+            runner.PublicReceiptSafetyError,
+            "observation-gap effect vocabulary",
+        ):
+            runner.validate_public_receipt(invalid_gap_effect)
 
         legacy_receipt = json.loads(json.dumps(receipt))
         legacy_receipt["source_lock"].pop("shadow_skill_count")
@@ -2673,7 +2707,12 @@ Second procedure section.
         self.assertNotIn("configured_mcp_server_count", legacy_public["source_lock"])
         self.assertNotIn("configured_mcp_server_set_sha256", legacy_public["source_lock"])
         for measure in legacy_public["measures"]:
-            self.assertTrue(stage_fields.isdisjoint(measure))
+            self.assertTrue(
+                (stage_fields - {"outcome_output_observation_gap"}).isdisjoint(
+                    measure
+                )
+            )
+            self.assertIn("outcome_output_observation_gap", measure)
         Draft202012Validator(
             self.load_schema("live-skill-dispatch-public-receipt.schema.json")
         ).validate(legacy_public)
@@ -3316,6 +3355,91 @@ Second procedure section.
             "not_scored_no_observable_outcome",
             unscored["outcome_effect_class"],
         )
+
+    def test_outcome_output_observation_gap_is_explicit_and_marks_pair_lift_unclean(self) -> None:
+        runner = self.runner
+        gap_evidence = {
+            "outcome_command_observed": True,
+            "outcome_single_attempt": True,
+            "outcome_command_succeeded": True,
+            "outcome_verification_observed": False,
+            "outcome_validator_not_inspected": True,
+        }
+        self.assertTrue(
+            runner._outcome_output_observation_gap(True, gap_evidence)
+        )
+        verified = dict(gap_evidence, outcome_verification_observed=True)
+        self.assertFalse(
+            runner._outcome_output_observation_gap(True, verified)
+        )
+        self.assertFalse(
+            runner._outcome_output_observation_gap(False, gap_evidence)
+        )
+
+        def arm(arm_type: str, *, outcome_match: bool, gap: bool) -> dict:
+            return {
+                "trial": {"arm_type": arm_type, "case_id": "gap-case"},
+                "measure": {
+                    "expected_target_skill": "aoa-eval",
+                    "expected_behavior": "invoke",
+                    "route_contract_match": True,
+                    "dispatch_contract_match": True,
+                    "load_contract_match": True,
+                    "trajectory_contract_defined": False,
+                    "trajectory_contract_sha256": None,
+                    "trajectory_expected_child_skill": None,
+                    "trajectory_contract_match": None,
+                    "procedure_contract_defined": False,
+                    "procedure_contract_sha256": None,
+                    "procedure_contract_scope": None,
+                    "procedure_disposition_contract_match": None,
+                    "outcome_contract_defined": True,
+                    "outcome_contract_sha256": "b" * 64,
+                    "outcome_scope": "fixture_owner_observable_decision",
+                    "outcome_contract_match": outcome_match,
+                    "outcome_command_observed": True,
+                    "outcome_single_attempt": True,
+                    "outcome_command_succeeded": True,
+                    "outcome_verification_observed": not gap,
+                    "outcome_validator_not_inspected": True,
+                    "outcome_output_observation_gap": gap,
+                    "prompt_visibility_contract_match": True,
+                    "fixture_execution_contract_match": True,
+                    "failure_class": None,
+                    "input_tokens": 10,
+                    "duration_ms": 5,
+                },
+                "fixture_context_sha256": "same",
+                "prompt_background_sha256": "same",
+            }
+
+        pair = runner._pair_outcomes(
+            [
+                arm("implicit_aided", outcome_match=True, gap=False),
+                arm("implicit_control", outcome_match=False, gap=True),
+            ]
+        )[0]
+        self.assertFalse(pair["aided_outcome_output_observation_gap"])
+        self.assertTrue(pair["control_outcome_output_observation_gap"])
+        self.assertEqual(
+            "control_only",
+            pair["outcome_output_observation_gap_effect_class"],
+        )
+        self.assertFalse(pair["outcome_lift_observation_clean"])
+        self.assertEqual(1, pair["outcome_lift"])
+
+        schema = self.load_schema("live-skill-dispatch-public-receipt.schema.json")
+        self.assertIn(
+            "outcome_output_observation_gap",
+            schema["$defs"]["measure"]["properties"],
+        )
+        for field in (
+            "aided_outcome_output_observation_gap",
+            "control_outcome_output_observation_gap",
+            "outcome_output_observation_gap_effect_class",
+            "outcome_lift_observation_clean",
+        ):
+            self.assertIn(field, schema["$defs"]["route_outcome_pair"]["properties"])
 
         legacy_private = {
             "trials": [],

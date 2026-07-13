@@ -459,12 +459,32 @@ As of 2026-07-12:
   closes the approval-gate collision and confirms the `aoa-decision-find`
   handoff. After the second source repair and runtime refresh, the exact rerun
   has no aided failure class and closes the child disposition plus concrete
-  ATM10 collision. Missing sentinel bytes recur in two controls, so the next
-  change is telemetry-only before full-pilot widening; lift remains candidate
-  evidence rather than proof.
+  ATM10 collision. V15 now exposes recurring missing sentinel bytes as per-arm
+  and pair-level observation-gap telemetry, while keeping affected outcomes
+  unverified. Full-pilot widening remains candidate evidence rather than proof.
 - Superseded by: none.
 
 ## Review Log
+
+### 2026-07-12 - Separate outcome observation gaps from lift in v15
+
+- Trigger: exact single-attempt outcome commands exited zero without sentinel
+  bytes first in one aided arm, then in two controls after the source repair.
+- Telemetry: publish a per-arm `outcome_output_observation_gap`, aided/control
+  pair flags, a bounded gap effect class, and
+  `outcome_lift_observation_clean`.
+- Proof boundary: a gap requires every command-side prerequisite except the
+  sentinel; it never changes `outcome_verification_observed`, outcome contract
+  match, failure precedence, proof authority, or promotion authority.
+- Compatibility: new public fields are optional in the v1 receipt schema;
+  current projections backfill them from existing bounded measures, while
+  committed historical receipts remain immutable.
+- Replay: the reviewed v14 clean-aided receipt yields `none` for
+  `collision-09` and `control_only` for `collision-14` and `collision-38`; the
+  latter two lift values remain visible but observation-unclean.
+- Decision: bump the live evidence protocol to v15, validate the bounded
+  vocabulary and flag consistency, then widen to the full pilot after exact
+  merge rather than changing skill source again.
 
 ### 2026-07-12 - Close aided source returns and retain control observation gaps
 
