@@ -93,7 +93,8 @@ PYTHONPATH=scripts python scripts/validation/lint_pack_profiles.py --repo-root .
 
 ## Verification posture
 
-Portable descriptions are runtime activation surfaces, not decorative labels.
+Portable descriptions are runtime activation surfaces when a consumer actually
+surfaces them; they are not decorative labels.
 The exporter derives a leading sentence from each skill's
 `implicit_activation_policy`: `manual` forbids load from an implicit match,
 `suggest` may recommend but not load, and both accept explicit user/operator
@@ -103,10 +104,20 @@ copied into every portable override so SKILL frontmatter, catalogs, runtime
 contracts, context retention, description evals, and installed profile digests
 cannot silently disagree.
 
+Do not confuse installed parity with native prompt visibility. Codex's implicit
+Available-skills inventory includes repo or user skills only when
+`allow_implicit_invocation=true`; a `manual` skill can be installed and verified
+while remaining intentionally absent from that inventory. Its policy-prefixed
+description becomes relevant to explicit structured invocation or another
+router that deliberately surfaces non-invoke candidates. Use
+`codex debug prompt-input` to prove the concrete prompt inventory, and use a
+native structured skill item to prove explicit reachability.
+
 After changing activation-policy export behavior, a repo-local build is not
 runtime proof. Stage, inspect, import, and verify the affected profile, then use
-the live Codex prompt-input inspection surface before claiming the installed
-descriptions are available to a new session.
+the live Codex prompt-input inspection surface before claiming any installed
+description is available to a new session. A 36/36 profile verification alone
+is not that claim.
 
 If you need a machine-readable packaging check rather than only a dry-run install plan:
 

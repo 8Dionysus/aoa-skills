@@ -86,9 +86,9 @@ equivalent hierarchy report, and a direct target report carrying a conflicting
 child is not exact either. Those report-only mismatches are
 `selection_report_miss`; they do not rewrite successful native dispatch or load
 evidence as `dispatch_policy_gap`.
-These rules use contract schema `aoa_codex_app_server_skill_input_contract_v12`
-and protocol revision `codex-cli-0.144.1-live-dispatch-evidence-v17`. Retained
-v1-v16 receipts stay source-locked to their original protocol and review status;
+These rules use contract schema `aoa_codex_app_server_skill_input_contract_v13`
+and protocol revision `codex-cli-0.144.1-live-dispatch-evidence-v18`. Retained
+v1-v17 receipts stay source-locked to their original protocol and review status;
 they are never upgraded in place.
 
 Run the confirmed command only as the child of the plan packet's
@@ -453,7 +453,14 @@ expected target remains unread, reports `manual_required`, and keeps its
 procedure `not_applicable`; a target-facing `invoke` report or target read
 still produces a manual activation failure. The eight-turn
 `full-collision-session-growth-returns` cohort repeats only both arms of cases
-21, 22, 25, and 33 under the v17 source lock.
+21, 22, 25, and 33. V18 records that their manual targets are absent from the
+native implicit inventory: objective target read/load is therefore the scored
+non-activation guard, while raw target route and procedure reports are retained
+but marked `not_scored_target_not_prompt_visible`. Source-authored procedure
+contracts remain locked and discoverable without being mislabeled as scored;
+owner-observable outcome contracts remain scored. Explicit reachability for
+these skills belongs to the structured-input closure cohort, where the target
+is actually supplied to Codex.
 
 See `evals/suites/aoa-skill-live-dispatch-harness.suite.md` and
 `docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md` for

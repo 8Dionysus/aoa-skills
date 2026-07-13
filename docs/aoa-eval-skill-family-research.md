@@ -911,3 +911,42 @@ retained v16 receipts are not regraded or rewritten. The new paired return is
 `full-collision-session-growth-returns`: both arms of only collisions 21, 22,
 25, and 33, eight turns total, with four complete procedure and owner-action
 contracts, medium host class, and the second exact confirmation gate.
+
+## 2026-07-12 v18 hidden-manual observability correction
+
+The required runtime parity check changed the interpretation before any return
+turn was spent. The exact-merged bundle materialized 36 skills and 270 files,
+passed bundle integrity, imported cleanly, and independently verified 36/36 at
+the Codex user root. A fresh `codex debug prompt-input` nevertheless exposed
+only the twelve repo/user skills with `allow_implicit_invocation=true`. The four
+return targets are all `manual`; none of their names or descriptions entered
+the implicit Available-skills inventory. Installed parity and prompt visibility
+are therefore distinct facts.
+
+This invalidates the first v17 causal explanation for collisions 21, 22, and
+25. Their objective target reads were already false. A raw `route_decision` or
+procedure disposition about a policy and description the model never received
+cannot establish a target-specific route or procedure defect. The ambient
+selection is still useful context, but it is not a manual-target treatment.
+The v17 portable prefixes remain accurate artifact contracts for explicit or
+other consumers that surface those descriptions; they are not retroactively
+removed and are not misrepresented as native implicit evidence.
+
+V18 adds an observability gate before grading. Each arm records whether the
+target was prompt-visible and whether target route/procedure scoring is
+eligible. Hidden manual targets keep their raw report fields for review but
+receive `not_scored_target_not_prompt_visible`. They instead receive an
+objective manual non-activation score: any full target read, accepted native
+load, or exact target load claim remains a failure; an ambient skill may load
+without becoming the hidden target. Fixture execution and owner-observable
+outcomes remain independently scored.
+
+The plan packet now separates four quantities that v17 conflated: implicit
+pair count, source-authored procedure-contract count, score-eligible procedure
+count, and manual non-activation-guard count. For the bounded return these are
+4, 4, 0, and 4 respectively; all four owner-outcome pairs remain scored. The
+existing `coverage-closure-structured-core` cohort still supplies each manual
+skill through native structured input and therefore remains the correct owner
+for explicit reachability and target-procedure evidence. V18 advances the
+protocol and app-server evidence contract without rewriting the reviewed v16
+receipt or pretending that v17 produced live evidence.

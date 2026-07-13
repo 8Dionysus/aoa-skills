@@ -108,6 +108,17 @@ Active first local corpus:
   V17 makes activation policy visible in every non-invoke portable description,
   permits a correctly reported manual target to coexist with an ambient repo
   skill, and adds an eight-turn paired return for exactly those four cases.
+  Exact-merged `codex debug prompt-input` inspection then corrected the causal
+  hypothesis: native Codex omits every `manual` target from implicit prompt
+  inventory while `allow_implicit_invocation=false`, so a raw route or
+  procedure report about that unseen target is not target-specific scoring
+  evidence. V18 keeps those raw fields, marks them
+  `not_scored_target_not_prompt_visible`, scores objective non-activation
+  (`read/load=false`) plus owner-observable outcomes, and leaves explicit
+  reachability to the already planned structured-input closure cohort. In the
+  four-pair return this means four complete source contracts, zero
+  route/procedure-score-eligible pairs, four manual non-activation guards, and
+  four owner-outcome pairs.
   The return still requires exact merge, refreshed installed-profile parity,
   host gates, and both confirmation tokens.
 

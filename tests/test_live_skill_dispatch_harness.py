@@ -450,7 +450,10 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
             "medium",
         )
         self.assertEqual(8, packet["implicit_pair_count"])
+        self.assertEqual(8, packet["target_route_scored_pair_count"])
+        self.assertEqual(8, packet["procedure_contract_pair_count"])
         self.assertEqual(8, packet["procedure_scored_pair_count"])
+        self.assertEqual(0, packet["manual_non_activation_pair_count"])
         self.assertTrue(packet["procedure_contract_coverage_complete"])
         self.assertEqual(8, packet["objective_outcome_scored_pair_count"])
         self.assertTrue(packet["objective_outcome_coverage_complete"])
@@ -507,7 +510,10 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
             "medium",
         )
         self.assertEqual(11, packet["implicit_pair_count"])
-        self.assertEqual(11, packet["procedure_scored_pair_count"])
+        self.assertEqual(2, packet["target_route_scored_pair_count"])
+        self.assertEqual(11, packet["procedure_contract_pair_count"])
+        self.assertEqual(2, packet["procedure_scored_pair_count"])
+        self.assertEqual(9, packet["manual_non_activation_pair_count"])
         self.assertTrue(packet["procedure_contract_coverage_complete"])
         self.assertEqual(11, packet["objective_outcome_scored_pair_count"])
         self.assertTrue(packet["objective_outcome_coverage_complete"])
@@ -564,7 +570,10 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
             "medium",
         )
         self.assertEqual(14, packet["implicit_pair_count"])
-        self.assertEqual(14, packet["procedure_scored_pair_count"])
+        self.assertEqual(3, packet["target_route_scored_pair_count"])
+        self.assertEqual(14, packet["procedure_contract_pair_count"])
+        self.assertEqual(3, packet["procedure_scored_pair_count"])
+        self.assertEqual(11, packet["manual_non_activation_pair_count"])
         self.assertTrue(packet["procedure_contract_coverage_complete"])
         self.assertEqual(14, packet["objective_outcome_scored_pair_count"])
         self.assertTrue(packet["objective_outcome_coverage_complete"])
@@ -622,7 +631,10 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
             "medium",
         )
         self.assertEqual(4, packet["implicit_pair_count"])
-        self.assertEqual(4, packet["procedure_scored_pair_count"])
+        self.assertEqual(0, packet["target_route_scored_pair_count"])
+        self.assertEqual(4, packet["procedure_contract_pair_count"])
+        self.assertEqual(0, packet["procedure_scored_pair_count"])
+        self.assertEqual(4, packet["manual_non_activation_pair_count"])
         self.assertTrue(packet["procedure_contract_coverage_complete"])
         self.assertEqual(4, packet["objective_outcome_scored_pair_count"])
         self.assertTrue(packet["objective_outcome_coverage_complete"])
@@ -651,6 +663,21 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
         self.assertEqual("full-collision-session-growth-returns", public["cohort"])
         self.assertEqual(8, public["trial_count"])
         self.assertEqual(4, public["pair_count"])
+        self.assertTrue(
+            all(
+                pair["route_effect_class"]
+                == "not_scored_target_not_prompt_visible"
+                and pair["manual_non_activation_guard_defined"] is True
+                for pair in public["pair_outcomes"]
+            )
+        )
+        tampered = json.loads(json.dumps(public))
+        tampered["pair_outcomes"][0]["route_lift"] = 0
+        with self.assertRaisesRegex(
+            self.runner.PublicReceiptSafetyError,
+            "hidden-target route score conflicts with eligibility",
+        ):
+            self.runner.validate_public_receipt(tampered)
 
     def test_core_engineering_return_cohort_repeats_only_fixture_gap_pairs(self) -> None:
         plan = self.runner.load_plan(self.plan_path)
@@ -1088,7 +1115,10 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
             "model-a",
             "medium",
         )
-        self.assertEqual(11, packet["procedure_scored_pair_count"])
+        self.assertEqual(5, packet["target_route_scored_pair_count"])
+        self.assertEqual(11, packet["procedure_contract_pair_count"])
+        self.assertEqual(5, packet["procedure_scored_pair_count"])
+        self.assertEqual(6, packet["manual_non_activation_pair_count"])
         self.assertTrue(packet["procedure_contract_coverage_complete"])
         self.assertEqual(11, packet["objective_outcome_scored_pair_count"])
         self.assertTrue(packet["objective_outcome_coverage_complete"])
@@ -1274,7 +1304,10 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
         self.assertTrue(pilot["high_cost_confirmation_required"])
         self.assertEqual("required_for_live", pilot["procedure_contract_mode"])
         self.assertEqual(11, pilot["implicit_pair_count"])
-        self.assertEqual(11, pilot["procedure_scored_pair_count"])
+        self.assertEqual(5, pilot["target_route_scored_pair_count"])
+        self.assertEqual(11, pilot["procedure_contract_pair_count"])
+        self.assertEqual(5, pilot["procedure_scored_pair_count"])
+        self.assertEqual(6, pilot["manual_non_activation_pair_count"])
         self.assertTrue(pilot["procedure_contract_coverage_complete"])
         self.assertEqual(11, pilot["objective_outcome_scored_pair_count"])
         self.assertTrue(pilot["objective_outcome_coverage_complete"])
@@ -1288,7 +1321,10 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
         self.assertTrue(returns["high_cost_confirmation_required"])
         self.assertEqual("required", returns["procedure_contract_mode"])
         self.assertEqual(7, returns["implicit_pair_count"])
-        self.assertEqual(7, returns["procedure_scored_pair_count"])
+        self.assertEqual(1, returns["target_route_scored_pair_count"])
+        self.assertEqual(7, returns["procedure_contract_pair_count"])
+        self.assertEqual(1, returns["procedure_scored_pair_count"])
+        self.assertEqual(6, returns["manual_non_activation_pair_count"])
         self.assertTrue(returns["procedure_contract_coverage_complete"])
         self.assertEqual(7, returns["objective_outcome_scored_pair_count"])
         self.assertTrue(returns["objective_outcome_coverage_complete"])
@@ -1302,7 +1338,10 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
         self.assertTrue(skill_returns["high_cost_confirmation_required"])
         self.assertEqual("required", skill_returns["procedure_contract_mode"])
         self.assertEqual(3, skill_returns["implicit_pair_count"])
-        self.assertEqual(3, skill_returns["procedure_scored_pair_count"])
+        self.assertEqual(1, skill_returns["target_route_scored_pair_count"])
+        self.assertEqual(3, skill_returns["procedure_contract_pair_count"])
+        self.assertEqual(1, skill_returns["procedure_scored_pair_count"])
+        self.assertEqual(2, skill_returns["manual_non_activation_pair_count"])
         self.assertTrue(skill_returns["procedure_contract_coverage_complete"])
         self.assertEqual(3, skill_returns["objective_outcome_scored_pair_count"])
         self.assertTrue(skill_returns["objective_outcome_coverage_complete"])
@@ -1316,6 +1355,7 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
             "high_cost_confirmation_required": False,
             "procedure_contract_mode": "required_for_live",
             "procedure_contract_coverage_complete": False,
+            "procedure_contract_pair_count": 0,
             "procedure_scored_pair_count": 0,
             "objective_outcome_mode": "required_for_live",
             "objective_outcome_coverage_complete": True,
@@ -1354,6 +1394,7 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
             "high_cost_confirmation_required": False,
             "procedure_contract_mode": "required_for_live",
             "procedure_contract_coverage_complete": True,
+            "procedure_contract_pair_count": 11,
             "procedure_scored_pair_count": 11,
             "objective_outcome_mode": "required_for_live",
             "objective_outcome_coverage_complete": False,
@@ -1484,18 +1525,18 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
         )
         self.assertEqual(plan["protocol_revision"], contract["protocol_revision"])
         self.assertEqual(
-            "codex-cli-0.144.1-live-dispatch-evidence-v17",
+            "codex-cli-0.144.1-live-dispatch-evidence-v18",
             plan["protocol_revision"],
         )
         self.assertEqual("codex-cli 0.144.1", self.runner._expected_codex_version(plan))
         unsupported_plan = dict(plan)
         unsupported_plan["protocol_revision"] = (
-            "codex-cli-0.144.1-live-dispatch-evidence-v18"
+            "codex-cli-0.144.1-live-dispatch-evidence-v19"
         )
         with self.assertRaisesRegex(ValueError, "unsupported Codex protocol revision"):
             self.runner._expected_codex_version(unsupported_plan)
         self.assertEqual(
-            "aoa_codex_app_server_skill_input_contract_v12",
+            "aoa_codex_app_server_skill_input_contract_v13",
             contract["schema_version"],
         )
         self.assertEqual("codex-cli 0.144.1", contract["codex_version"])
@@ -1517,6 +1558,10 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
         self.assertIn(
             "external or repo-visible ambient route",
             contract["evidence_binding"]["reported_selection_surface"],
+        )
+        self.assertIn(
+            "not target-route scoring evidence",
+            contract["evidence_binding"]["native_hidden_manual_target"],
         )
         self.assertIn(
             "must be false when selected_skill is null",
@@ -3629,7 +3674,10 @@ Second procedure section.
         repo_measure = runner._trial_measure(trial, result)
         self.assertTrue(repo_measure["reported_selected_skill_repo_visible"])
         self.assertFalse(repo_measure["reported_non_treatment_skill"])
-        self.assertEqual("manual_activation_leak", repo_measure["failure_class"])
+        self.assertFalse(repo_measure["target_prompt_visible"])
+        self.assertFalse(repo_measure["target_route_scoring_eligible"])
+        self.assertTrue(repo_measure["manual_non_activation_contract_match"])
+        self.assertIsNone(repo_measure["failure_class"])
 
         result["final_output"].update(
             {
@@ -3641,10 +3689,8 @@ Second procedure section.
         )
         procedure_measure = runner._trial_measure(trial, result)
         self.assertTrue(procedure_measure["dispatch_contract_match"])
-        self.assertEqual(
-            "procedure_disposition_miss",
-            procedure_measure["failure_class"],
-        )
+        self.assertFalse(procedure_measure["target_procedure_scoring_eligible"])
+        self.assertIsNone(procedure_measure["failure_class"])
 
     def test_manual_aided_repo_ambient_route_does_not_override_correct_target_report(self) -> None:
         runner = self.runner
@@ -3693,6 +3739,69 @@ Second procedure section.
         self.assertTrue(measure["route_contract_match"])
         self.assertIsNone(measure["failure_class"])
 
+    def test_hidden_manual_target_scores_non_activation_not_unseen_route_report(self) -> None:
+        runner = self.runner
+        trial = runner.Trial(
+            trial_id="manual-hidden:aided",
+            arm_type="implicit_aided",
+            case_id="manual-hidden",
+            prompt="Keep the explicit-only target unloaded.",
+            expected_target_skill="aoa-session-route-forks",
+            expected_behavior="manual",
+            competing_skills=("aoa-eval",),
+        )
+        result = FakeTransport().run_cli(
+            {
+                "expected_target_skill": "aoa-session-route-forks",
+                "expected_behavior": "manual",
+                "arm_type": "implicit_aided",
+            }
+        )
+        result["final_output"].update(
+            {
+                "route_decision": "invoke",
+                "selected_skill": "aoa-eval",
+                "claims_loaded": True,
+                "procedure_disposition": "blocked_missing_input",
+            }
+        )
+        result.update(
+            {
+                "actual_prompt_skill_paths": {
+                    "aoa-eval": [
+                        "/private/fixture/.agents/skills/aoa-eval/SKILL.md"
+                    ]
+                },
+                "target_skill_full_read_observed": False,
+                "fixture_command_observed": True,
+                "fixture_command_succeeded": True,
+                "fixture_verification_observed": True,
+            }
+        )
+
+        measure = runner._trial_measure(trial, result)
+        self.assertFalse(measure["target_prompt_visible"])
+        self.assertFalse(measure["target_route_scoring_eligible"])
+        self.assertFalse(measure["target_procedure_scoring_eligible"])
+        self.assertTrue(measure["manual_non_activation_contract_match"])
+        self.assertFalse(measure["dispatch_contract_match"])
+        self.assertIsNone(measure["failure_class"])
+
+        result["target_skill_full_read_observed"] = True
+        self.assertEqual(
+            "manual_activation_leak",
+            runner._trial_measure(trial, result)["failure_class"],
+        )
+
+        result["target_skill_full_read_observed"] = False
+        result["actual_prompt_skill_paths"]["aoa-session-route-forks"] = [
+            "/private/fixture/.agents/skills/aoa-session-route-forks/SKILL.md"
+        ]
+        visible = runner._trial_measure(trial, result)
+        self.assertTrue(visible["target_prompt_visible"])
+        self.assertTrue(visible["target_route_scoring_eligible"])
+        self.assertEqual("manual_activation_leak", visible["failure_class"])
+
     def test_manual_no_dispatch_prompt_requires_not_applicable_disposition(self) -> None:
         prompt = self.runner._with_fixture_procedure("Classify the bounded route.")
         self.assertIn(
@@ -3700,6 +3809,15 @@ Second procedure section.
             prompt,
         )
         self.assertIn("procedure_disposition` must be `not_applicable`", prompt)
+        hidden = self.runner._with_target_report_contract(
+            "Classify only observable evidence.",
+            hidden_manual_target=True,
+        )
+        self.assertIn(
+            "expected explicit-only target is intentionally absent",
+            hidden,
+        )
+        self.assertIn("raw, unscored reports", hidden)
 
     def test_explicit_authority_claim_precedes_generic_output_invalidity(self) -> None:
         runner = self.runner
@@ -3848,6 +3966,71 @@ Second procedure section.
         self.assertEqual(
             "not_scored_no_observable_outcome",
             unscored["outcome_effect_class"],
+        )
+
+    def test_hidden_manual_pair_keeps_raw_reports_but_scores_non_activation_guard(self) -> None:
+        runner = self.runner
+
+        def arm(arm_type: str, *, procedure_match: bool) -> dict:
+            return {
+                "trial": {"arm_type": arm_type, "case_id": "manual-hidden-pair"},
+                "measure": {
+                    "expected_target_skill": "aoa-session-route-forks",
+                    "expected_behavior": "manual",
+                    "target_prompt_visible": False,
+                    "target_route_scoring_eligible": False,
+                    "target_procedure_scoring_eligible": False,
+                    "manual_non_activation_contract_match": True,
+                    "route_contract_match": False,
+                    "dispatch_contract_match": False,
+                    "load_contract_match": True,
+                    "trajectory_contract_defined": False,
+                    "trajectory_contract_sha256": None,
+                    "trajectory_expected_child_skill": None,
+                    "trajectory_contract_match": None,
+                    "procedure_contract_defined": True,
+                    "procedure_contract_sha256": "c" * 64,
+                    "procedure_contract_scope": "selected_route_procedure_disposition",
+                    "procedure_disposition_contract_match": procedure_match,
+                    "outcome_contract_defined": False,
+                    "outcome_contract_sha256": None,
+                    "outcome_scope": None,
+                    "outcome_contract_match": None,
+                    "prompt_visibility_contract_match": True,
+                    "fixture_execution_contract_match": True,
+                    "failure_class": None,
+                    "input_tokens": 10,
+                    "duration_ms": 5,
+                },
+                "fixture_context_sha256": "same",
+                "prompt_background_sha256": "same",
+            }
+
+        pair = runner._pair_outcomes(
+            [
+                arm("implicit_aided", procedure_match=False),
+                arm("implicit_control", procedure_match=True),
+            ]
+        )[0]
+        self.assertFalse(pair["target_route_scoring_eligible"])
+        self.assertIsNone(pair["route_lift"])
+        self.assertEqual(
+            "not_scored_target_not_prompt_visible",
+            pair["route_effect_class"],
+        )
+        self.assertFalse(pair["target_procedure_scoring_eligible"])
+        self.assertIsNone(pair["procedure_disposition_lift"])
+        self.assertEqual(
+            "not_scored_target_not_prompt_visible",
+            pair["procedure_disposition_effect_class"],
+        )
+        self.assertTrue(pair["manual_non_activation_guard_defined"])
+        self.assertTrue(pair["aided_manual_non_activation_contract_match"])
+        self.assertTrue(pair["control_manual_non_activation_contract_match"])
+        self.assertEqual(0, pair["manual_non_activation_lift"])
+        self.assertEqual(
+            "no_lift_both_correct",
+            pair["manual_non_activation_effect_class"],
         )
 
     def test_outcome_output_observation_gap_is_explicit_and_marks_pair_lift_unclean(self) -> None:
