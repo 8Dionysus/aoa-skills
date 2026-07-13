@@ -764,6 +764,18 @@ exact requested model and effort to be visible in a fresh
 created. After exact merge, runtime parity, host admission, and fresh tokens,
 `coverage-closure-titan-implicit-a` is the next bounded wave.
 
+The exact-merged v20 Titan A wave now completes all 16 turns and eight pairs.
+The preflight records an allowed account-visible model plus medium effort. Every
+hidden Titan target remains unselected, unread, and unloaded in both arms;
+manual non-activation, fixture execution, owner boundary, and owner outcome are
+all correct. No failure, external filesystem access, broad fixture inventory,
+or outcome observation gap occurs. Route and procedure effects are
+`not_scored_target_not_prompt_visible` by design. Preserve the reviewed public
+receipt as candidate evidence without widening implicit activation, proof, or
+promotion. After this writeback lands, repeat exact runtime parity, model
+catalog, local eval, storage, resource, memory, and confirmation gates before
+`coverage-closure-titan-implicit-b`.
+
 ## Safety And Privacy
 
 The plan locks Git head, authored portable overrides, all portable skill files,

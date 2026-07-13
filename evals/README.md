@@ -205,6 +205,15 @@ Active first local corpus:
   fail-closes confirmed execution against the account-visible
   `codex debug models` catalog before model spend; after exact merge and fresh
   runtime/host gates, Titan implicit A is the next bounded wave.
+  That exact-merged v20 wave is preserved as
+  [`aoa-skill-live-dispatch-coverage-closure-titan-implicit-a-20260713-v20-reviewed.json`](reports/aoa-skill-live-dispatch-coverage-closure-titan-implicit-a-20260713-v20-reviewed.json).
+  All 16 turns and eight pairs complete without a failure or observation gap.
+  Every hidden Titan target remains unselected, unread, and unloaded in both
+  arms; manual non-activation, fixture, owner-boundary, and owner-outcome
+  contracts are all correct. These deliberately unscored route/procedure pairs
+  confirm the explicit-only boundary rather than creating skill-source pressure.
+  After this writeback lands and exact runtime/host gates are repeated,
+  `coverage-closure-titan-implicit-b` is the next bounded wave.
 
 These files are local evidence notes. They do not publish central proof
 acceptance, scoring, verdicts, regression truth, or proof doctrine.
