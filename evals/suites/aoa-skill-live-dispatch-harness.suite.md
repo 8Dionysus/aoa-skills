@@ -529,6 +529,23 @@ contract readiness only. No live session-growth conclusion exists before the
 exact-merged source, runtime parity, host gates, both confirmations, and a
 reviewed candidate receipt.
 
+The first exact-merged session-growth run completes all 28 arms and 14 pairs.
+Every fixture and owner-action probe is observed exactly once, succeeds,
+exposes its sentinel, and verifies; all outcome pairs are observation-clean and
+correct in both arms. Prompt visibility, filesystem scope, inventory, owner,
+proof, promotion, and post-run host boundaries remain clean.
+
+The wave still remains `needs-rerun`. In collisions 21, 22, and 25 the aided
+arm leaves the explicit-only target unread but selects ambient
+`aoa-eval`/`aoa-eval-session-mining`, then misreports the target-facing route
+as `invoke`. Collision 33 keeps `aoa-summon` manual and its procedure
+`not_applicable`, but an ambient `aoa-change-protocol` selection reaches the
+competing-skill classifier before the correct manual target contract. These
+are shared prompt-visible invocation-policy and measurement-ordering gaps, not
+evidence to rewrite the four target skills independently. Preserve the full
+receipt and repeat only both arms of cases 21, 22, 25, and 33 after a red-first
+repair.
+
 ## Safety And Privacy
 
 The plan locks Git head, all portable skill files, generated/config inputs,

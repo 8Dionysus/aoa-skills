@@ -845,3 +845,36 @@ run then validates 28/28 arms, 14/14 contracts on both axes, and both receipt
 schemas. This is contract readiness only; exact merge, installed-profile
 parity, host gates, both confirmations, and reviewed live evidence remain
 mandatory.
+
+## 2026-07-12 session-growth live execution and bounded return
+
+An initial packet used `gpt-5.2-codex`, which the current ChatGPT-account Codex
+transport rejected before skill execution. That one-arm private transport
+failure is not skill evidence. The single permitted transport return uses the
+same supported `gpt-5.6-sol` model as the reviewed v16 core and safety receipts,
+with a fresh source-locked token pair and fresh host gates.
+
+The exact-merged return completes all 28 turns and 14 pairs. Every fixture and
+owner-action command is observed once, exits successfully, exposes its
+sentinel, and verifies. Outcome effects are clean
+`no_lift_both_correct` for all fourteen pairs, with no output observation gap.
+External filesystem access, broad fixture inventory, owner-boundary misses,
+prompt-visibility mismatches, and host post-validation issues remain zero.
+
+Four aided measurements prevent closure. Collisions 21, 22, and 25 do not read
+their explicit-only target skills; instead they select the ambient
+`aoa-eval`/`aoa-eval-session-mining` trajectory and incorrectly report the
+target-facing `route_decision` as `invoke`. Collision 33 correctly leaves
+`aoa-summon` manual with a `not_applicable` procedure, but reports ambient
+`aoa-change-protocol`; the current classifier checks a competing skill before
+the already-correct manual target contract and emits `collision_misroute`.
+
+This exposes two shared boundaries rather than four isolated skill defects.
+Portable runtime descriptions carry `aoa_invocation_mode` only as metadata,
+while the trigger-visible description still says `Use when`; explicit-only
+activation therefore is not prompt-legible. Separately, failure
+classification does not permit a repo-visible ambient route for a correctly
+manual target despite the target-report contract explicitly allowing ambient
+skills. Preserve the complete receipt as `needs-rerun`, repair both shared
+contracts red-first, and repeat only both arms of collisions 21, 22, 25, and
+33 before opening another broad wave.
