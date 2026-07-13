@@ -103,8 +103,8 @@ child is not exact either. Those report-only mismatches are
 `selection_report_miss`; they do not rewrite successful native dispatch or load
 evidence as `dispatch_policy_gap`.
 These rules use contract schema `aoa_codex_app_server_skill_input_contract_v14`
-and protocol revision `codex-cli-0.144.1-live-dispatch-evidence-v20`. Retained
-v1-v19 receipts stay source-locked to their original protocol and review status;
+and protocol revision `codex-cli-0.144.1-live-dispatch-evidence-v21`. Retained
+v1-v20 receipts stay source-locked to their original protocol and review status;
 they are never upgraded in place.
 The reviewed exact-merged v18 session-growth return completes 8/8 arms with all
 four manual non-activation, fixture, and owner-outcome pairs correct in both
@@ -136,7 +136,7 @@ fixture probe. Read-only skill-file inspection commands collect load evidence.
 All arms run the exact probe `python3 fixture_validator.py`; it proves fixture
 executability only and does not define the selected child procedure or external
 task outcome. A declared owner-action outcome instead requires exactly one
-`python3 outcome_validator.py --candidate <value>` event. Reading, copying,
+`python3 -u outcome_validator.py --candidate <value>` event. Reading, copying,
 hashing, importing, reproducing, or retrying that validator contaminates the
 measurement; a missing or wrong single choice remains a negative outcome rather
 than a transport or procedure failure. V10+ private and public measures name its command, exit, and
@@ -444,6 +444,16 @@ raw negative and positive lifts are observation-unclean and support no skill
 effect. Preserve the full receipt as `needs-rerun`; the four-turn
 `coverage-closure-titan-implicit-b-returns` cohort repeats only both arms of
 those cases with unchanged source contracts and both confirmation tokens.
+
+That first v20 return closes case 12 but repeats the case-13 control gap: the
+exact single command exits zero and its CLI event again carries no sentinel
+output. The unchanged fixture validator emits the 296-byte sentinel in three
+diagnostic runs, so replay without repair would only repeat transport pressure.
+V21 makes the source-declared command
+`python3 -u outcome_validator.py --candidate <value>`. The grader accepts only
+that five-token form; buffered or inspected forms remain non-exact, and the
+single-attempt, zero-exit, atomic-sentinel, and no-retry rules are unchanged.
+Repeat the same four-turn cohort only after exact merge and all runtime gates.
 
 The first exact v16 core wave completes 16/16. Every aided arm gains route and
 procedure correctness, while six outcome pairs are observation-clean and

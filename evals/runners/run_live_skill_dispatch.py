@@ -59,6 +59,15 @@ FIXTURE_VALIDATOR_RELATIVE_PATH = Path("fixture_validator.py")
 FIXTURE_VALIDATOR_COMMAND = "python3 fixture_validator.py"
 FIXTURE_VALIDATOR_SENTINEL = "AOA_FIXTURE_VALIDATOR_OK"
 OUTCOME_VALIDATOR_RELATIVE_PATH = Path("outcome_validator.py")
+OUTCOME_VALIDATOR_COMMAND_TEMPLATE = (
+    "python3 -u outcome_validator.py --candidate <value>"
+)
+OUTCOME_VALIDATOR_COMMAND_PREFIX = (
+    "python3",
+    "-u",
+    OUTCOME_VALIDATOR_RELATIVE_PATH.name,
+    "--candidate",
+)
 OUTCOME_VALIDATOR_SENTINEL = "AOA_OBJECTIVE_OUTCOME_OK"
 FIXTURE_VALIDATOR_SOURCE = '''#!/usr/bin/env python3
 import hashlib
@@ -773,7 +782,7 @@ def _expected_codex_version(plan: dict[str, Any]) -> str:
     revision = str(plan.get("protocol_revision") or "")
     match = re.fullmatch(
         r"codex-cli-([0-9]+(?:\.[0-9]+){2})-"
-        r"(?:app-server-skill-input-v3|live-dispatch-evidence-v(?:[4-9]|1[0-9]|20))",
+        r"(?:app-server-skill-input-v3|live-dispatch-evidence-v(?:[4-9]|1[0-9]|2[01]))",
         revision,
     )
     if match is None:
@@ -1818,7 +1827,7 @@ def _with_objective_outcome(
         f"answer this bounded owner question: {contract.decision_prompt} "
         f"Choose exactly one of these source-declared candidate values: {candidates}. "
         "Run exactly one command from the fixture root using the chosen value: "
-        "`python3 outcome_validator.py --candidate <value>`. "
+        f"`{OUTCOME_VALIDATOR_COMMAND_TEMPLATE}`. "
         "Execute that validator only; do not read, copy, print, hash, import, or reproduce its source, "
         "and do not retry with another candidate. A zero exit plus its atomic sentinel is the observable "
         "bounded outcome. It remains candidate evidence and is neither whole-task completion nor proof authority."
@@ -2717,7 +2726,8 @@ def _prepare_fixture(
     guidance = fixture / "AGENTS.md"
     if not guidance.exists():
         outcome_guidance = (
-            "The objective outcome validator is `outcome_validator.py`; execute it only through the exact source-declared candidate command.\n"
+            "The objective outcome validator is `outcome_validator.py`; execute it only through the exact source-declared command "
+            f"`{OUTCOME_VALIDATOR_COMMAND_TEMPLATE}`.\n"
             "Do not inspect, copy, print, hash, import, reproduce, or retry the objective outcome validator.\n"
             if trial is not None and trial.outcome_contract is not None
             else ""
@@ -3519,10 +3529,9 @@ def _objective_outcome_evidence(
             or re.search(r"\boutcome_validator\b", payload)
         )
         exact_shape = bool(
-            len(tokens) == 4
-            and Path(tokens[0]).name == "python3"
-            and tokens[1] == OUTCOME_VALIDATOR_RELATIVE_PATH.name
-            and tokens[2] == "--candidate"
+            len(tokens) == len(OUTCOME_VALIDATOR_COMMAND_PREFIX) + 1
+            and Path(tokens[0]).name == OUTCOME_VALIDATOR_COMMAND_PREFIX[0]
+            and tuple(tokens[1:-1]) == OUTCOME_VALIDATOR_COMMAND_PREFIX[1:]
         )
         if mentions_validator and not exact_shape:
             validator_not_inspected = False

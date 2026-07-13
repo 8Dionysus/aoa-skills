@@ -108,7 +108,7 @@ class FakeTransport:
         fixture = Path(request["fixture_root"])
         for candidate in candidates:
             completed = subprocess.run(
-                ["python3", "outcome_validator.py", "--candidate", candidate],
+                ["python3", "-u", "outcome_validator.py", "--candidate", candidate],
                 cwd=fixture,
                 check=False,
                 text=True,
@@ -122,7 +122,7 @@ class FakeTransport:
                         "status": "completed",
                         "exit_code": 0,
                         "command": (
-                            "python3 outcome_validator.py --candidate " + candidate
+                            "python3 -u outcome_validator.py --candidate " + candidate
                         ),
                         "aggregated_output": completed.stdout,
                     },
@@ -1540,6 +1540,7 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
             completed = subprocess.run(
                 [
                     "python3",
+                    "-u",
                     validator.name,
                     "--candidate",
                     contract.expected_candidate_value,
@@ -1557,7 +1558,7 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
                     "status": "completed",
                     "exit_code": completed.returncode,
                     "command": (
-                        "python3 outcome_validator.py --candidate "
+                        "python3 -u outcome_validator.py --candidate "
                         + contract.expected_candidate_value
                     ),
                     "aggregated_output": completed.stdout,
@@ -1571,6 +1572,27 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
             self.assertTrue(evidence["outcome_contract_match"])
             self.assertTrue(evidence["outcome_single_attempt"])
             self.assertTrue(evidence["outcome_validator_not_inspected"])
+            prompt = runner._with_objective_outcome("route prompt", contract)
+            self.assertIn(
+                "`python3 -u outcome_validator.py --candidate <value>`",
+                prompt,
+            )
+            self.assertIn(
+                "`python3 -u outcome_validator.py --candidate <value>`",
+                (fixture / "AGENTS.md").read_text(encoding="utf-8"),
+            )
+
+            buffered_event = json.loads(json.dumps(event))
+            buffered_event["item"]["command"] = buffered_event["item"][
+                "command"
+            ].replace("python3 -u ", "python3 ")
+            buffered = runner._objective_outcome_evidence(
+                contract,
+                [buffered_event],
+                fixture,
+            )
+            self.assertFalse(buffered["outcome_command_observed"])
+            self.assertFalse(buffered["outcome_validator_not_inspected"])
 
             wrong_candidate = next(
                 value
@@ -1578,7 +1600,7 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
                 if value != contract.expected_candidate_value
             )
             wrong = subprocess.run(
-                ["python3", validator.name, "--candidate", wrong_candidate],
+                ["python3", "-u", validator.name, "--candidate", wrong_candidate],
                 cwd=fixture,
                 check=False,
                 text=True,
@@ -1591,7 +1613,7 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
                     "status": "completed",
                     "exit_code": wrong.returncode,
                     "command": (
-                        "python3 outcome_validator.py --candidate " + wrong_candidate
+                        "python3 -u outcome_validator.py --candidate " + wrong_candidate
                     ),
                     "aggregated_output": wrong.stdout,
                 },
@@ -2148,13 +2170,13 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
         )
         self.assertEqual(plan["protocol_revision"], contract["protocol_revision"])
         self.assertEqual(
-            "codex-cli-0.144.1-live-dispatch-evidence-v20",
+            "codex-cli-0.144.1-live-dispatch-evidence-v21",
             plan["protocol_revision"],
         )
         self.assertEqual("codex-cli 0.144.1", self.runner._expected_codex_version(plan))
         unsupported_plan = dict(plan)
         unsupported_plan["protocol_revision"] = (
-            "codex-cli-0.144.1-live-dispatch-evidence-v21"
+            "codex-cli-0.144.1-live-dispatch-evidence-v22"
         )
         with self.assertRaisesRegex(ValueError, "unsupported Codex protocol revision"):
             self.runner._expected_codex_version(unsupported_plan)
@@ -2166,6 +2188,10 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
         self.assertIn(
             "codex debug models",
             contract["preturn_isolation"]["model_catalog"],
+        )
+        self.assertIn(
+            "python3 -u outcome_validator.py",
+            contract["evidence_binding"]["unbuffered_outcome_command"],
         )
         self.assertEqual(
             "https://learn.chatgpt.com/docs/app-server#start-a-turn-invoke-a-skill",

@@ -1924,6 +1924,7 @@
     {"assertion_kind":"classification","confidence":1.0,"evidence_anchor_ids":["aoa:aoa-skills:anchor:1c168128e531adfe07d9fb24"],"evidence_class":"deterministic","id":"aoa:aoa-skills:assertion:7e64158c7781c80f6ad1589c","object":{"kind":"literal","value":"command"},"predicate":"classified_as","provenance_ref":"deterministic","quality_state":"accepted","source_record_ids":["aoa:aoa-skills:artifact:fe9958c9b9fc2555d533bf4d"],"subject_id":"aoa:aoa-skills:artifact:fe9958c9b9fc2555d533bf4d","temporal_ref":"current","trust_ref":"deterministic"},
     {"assertion_kind":"classification","confidence":1.0,"evidence_anchor_ids":["aoa:aoa-skills:anchor:d106505dc3ce6ed75122f428"],"evidence_class":"deterministic","id":"aoa:aoa-skills:assertion:a11ac1f96291a2d9d2c7fe72","object":{"kind":"literal","value":"surface"},"predicate":"classified_as","provenance_ref":"deterministic","quality_state":"accepted","source_record_ids":["aoa:aoa-skills:artifact:fed3248b2c06db6ed9ddce22"],"subject_id":"aoa:aoa-skills:artifact:fed3248b2c06db6ed9ddce22","temporal_ref":"current","trust_ref":"deterministic"},
     {"assertion_kind":"classification","confidence":1.0,"evidence_anchor_ids":["aoa:aoa-skills:anchor:e615ebd7e777b4afcf1f2571"],"evidence_class":"deterministic","id":"aoa:aoa-skills:assertion:c81c0f7661757b17b5ef7876","object":{"kind":"literal","value":"surface"},"predicate":"classified_as","provenance_ref":"deterministic","quality_state":"accepted","source_record_ids":["aoa:aoa-skills:artifact:feef9ab3f8c8458bee10b391"],"subject_id":"aoa:aoa-skills:artifact:feef9ab3f8c8458bee10b391","temporal_ref":"current","trust_ref":"deterministic"},
+    {"assertion_kind":"classification","confidence":1.0,"evidence_anchor_ids":["aoa:aoa-skills:anchor:77a1db331618efdf95ebff03"],"evidence_class":"deterministic","id":"aoa:aoa-skills:assertion:701a5c5da943ba7deafacdd8","object":{"kind":"literal","value":"surface"},"predicate":"classified_as","provenance_ref":"deterministic","quality_state":"accepted","source_record_ids":["aoa:aoa-skills:artifact:fefb8c3b2f1e3bd169d70d25"],"subject_id":"aoa:aoa-skills:artifact:fefb8c3b2f1e3bd169d70d25","temporal_ref":"current","trust_ref":"deterministic"},
     {"assertion_kind":"classification","confidence":1.0,"evidence_anchor_ids":["aoa:aoa-skills:anchor:fe12ea8c6cad97dcd7557486"],"evidence_class":"deterministic","id":"aoa:aoa-skills:assertion:a6107c4464e214d2e826c9bd","object":{"kind":"literal","value":"artifact"},"predicate":"classified_as","provenance_ref":"deterministic","quality_state":"accepted","source_record_ids":["aoa:aoa-skills:artifact:ff090c61f64bdf2c37db2b3f"],"subject_id":"aoa:aoa-skills:artifact:ff090c61f64bdf2c37db2b3f","temporal_ref":"current","trust_ref":"deterministic"},
     {"assertion_kind":"classification","confidence":1.0,"evidence_anchor_ids":["aoa:aoa-skills:anchor:ad5923a68fc8f7ba52f0f409"],"evidence_class":"deterministic","id":"aoa:aoa-skills:assertion:eb25222183abe44319f8cd1d","object":{"kind":"literal","value":"document"},"predicate":"classified_as","provenance_ref":"deterministic","quality_state":"accepted","source_record_ids":["aoa:aoa-skills:artifact:ff21b6b9a3a33e9d9056ac96"],"subject_id":"aoa:aoa-skills:artifact:ff21b6b9a3a33e9d9056ac96","temporal_ref":"current","trust_ref":"deterministic"},
     {"assertion_kind":"classification","confidence":1.0,"evidence_anchor_ids":["aoa:aoa-skills:anchor:51cd56586f8eac7ed44e10bb"],"evidence_class":"deterministic","id":"aoa:aoa-skills:assertion:03493bab034a9d163ab88fb3","object":{"kind":"literal","value":"artifact"},"predicate":"classified_as","provenance_ref":"deterministic","quality_state":"accepted","source_record_ids":["aoa:aoa-skills:artifact:ff48f2b1eda51875912e7e4f"],"subject_id":"aoa:aoa-skills:artifact:ff48f2b1eda51875912e7e4f","temporal_ref":"current","trust_ref":"deterministic"},
@@ -2166,6 +2167,7 @@
     {"assertion_kind":"contract","confidence":0.75,"evidence_anchor_ids":["aoa:aoa-skills:anchor:1fdaa245cf78936b3af8f91e"],"evidence_class":"declared","id":"aoa:aoa-skills:assertion:a3f5a8256df4680dc8321dce","object":{"kind":"literal","value":"aoa-local-kag-record-v1"},"predicate":"declares_schema_version","provenance_ref":"declared","quality_state":"accepted","source_record_ids":["aoa:aoa-skills:artifact:fae2377028222335a6a8d4b5"],"subject_id":"aoa:aoa-skills:artifact:fae2377028222335a6a8d4b5","temporal_ref":"current","trust_ref":"declared"},
     {"assertion_kind":"contract","confidence":0.75,"evidence_anchor_ids":["aoa:aoa-skills:anchor:d98e78173aee3ecb8cefbd88"],"evidence_class":"declared","id":"aoa:aoa-skills:assertion:06d6d8e01929f23b7a2ad76e","object":{"kind":"literal","value":"aoa_hook_binding_set_v1"},"predicate":"declares_schema_version","provenance_ref":"declared","quality_state":"accepted","source_record_ids":["aoa:aoa-skills:artifact:fb72dc0dbf535f8e63bde0a0"],"subject_id":"aoa:aoa-skills:artifact:fb72dc0dbf535f8e63bde0a0","temporal_ref":"current","trust_ref":"declared"},
     {"assertion_kind":"contract","confidence":0.75,"evidence_anchor_ids":["aoa:aoa-skills:anchor:9b02e2652491f3059f46e39c"],"evidence_class":"declared","id":"aoa:aoa-skills:assertion:63d47c601509085c6f4ae603","object":{"kind":"literal","value":"aoa_skill_live_dispatch_public_receipt_v1"},"predicate":"declares_schema_version","provenance_ref":"declared","quality_state":"accepted","source_record_ids":["aoa:aoa-skills:artifact:fd9d0d0f07db11356c4eb714"],"subject_id":"aoa:aoa-skills:artifact:fd9d0d0f07db11356c4eb714","temporal_ref":"current","trust_ref":"declared"},
+    {"assertion_kind":"contract","confidence":0.75,"evidence_anchor_ids":["aoa:aoa-skills:anchor:77a1db331618efdf95ebff03"],"evidence_class":"declared","id":"aoa:aoa-skills:assertion:38dc45478979a1803d7ee1e8","object":{"kind":"literal","value":"aoa_skill_live_dispatch_public_receipt_v1"},"predicate":"declares_schema_version","provenance_ref":"declared","quality_state":"accepted","source_record_ids":["aoa:aoa-skills:artifact:fefb8c3b2f1e3bd169d70d25"],"subject_id":"aoa:aoa-skills:artifact:fefb8c3b2f1e3bd169d70d25","temporal_ref":"current","trust_ref":"declared"},
     {"assertion_kind":"contract","confidence":0.75,"evidence_anchor_ids":["aoa:aoa-skills:anchor:691c0e1c9a8c0d0d886c6edb"],"evidence_class":"declared","id":"aoa:aoa-skills:assertion:0a4fa3877cbfbcc15c161eef","object":{"kind":"literal","value":"1"},"predicate":"declares_schema_version","provenance_ref":"declared","quality_state":"accepted","source_record_ids":["aoa:aoa-skills:artifact:ffd35af1476c108fbafc820e"],"subject_id":"aoa:aoa-skills:artifact:ffd35af1476c108fbafc820e","temporal_ref":"current","trust_ref":"declared"},
     {"assertion_kind":"role","confidence":1.0,"evidence_anchor_ids":["aoa:aoa-skills:anchor:820eea22ed07b60942f2ddbb"],"evidence_class":"deterministic","id":"aoa:aoa-skills:assertion:4550691a223fc294a17bbc19","object":{"kind":"literal","value":"parts"},"predicate":"document_role","provenance_ref":"deterministic","quality_state":"accepted","source_record_ids":["aoa:aoa-skills:artifact:0005dd1f769882e57df585ef"],"subject_id":"aoa:aoa-skills:artifact:0005dd1f769882e57df585ef","temporal_ref":"current","trust_ref":"deterministic"},
     {"assertion_kind":"role","confidence":1.0,"evidence_anchor_ids":["aoa:aoa-skills:anchor:820eea22ed07b60942f2ddbb"],"evidence_class":"deterministic","id":"aoa:aoa-skills:assertion:6a153faef23decff2e15154a","object":{"kind":"literal","value":"mechanic_package"},"predicate":"mechanics_role","provenance_ref":"deterministic","quality_state":"accepted","source_record_ids":["aoa:aoa-skills:artifact:0005dd1f769882e57df585ef"],"subject_id":"aoa:aoa-skills:artifact:0005dd1f769882e57df585ef","temporal_ref":"current","trust_ref":"deterministic"},
@@ -3741,7 +3743,7 @@
   ],
   "index_identity": {
     "artifact_kind": "repository_assertion_index",
-    "content_digest": "1e947ac0e3d6c9a689de82e33a10ca96d321fc3dc0abcf80b40a058964b143cd",
+    "content_digest": "701fd3e2569b5a2a4f95393a62348bfb92d6f88e596dee20ea816ad04e4fccdf",
     "index_kind": "assertion",
     "local_id": "index:repo-local:assertions",
     "schema_ref": "aoa-kag:schemas/repo-local-kag-repository-index.schema.json"
@@ -3831,15 +3833,15 @@
   },
   "schema_version": "aoa-repo-local-kag-repository-index-v2",
   "source_index": {
-    "content_digest": "4cecbbc0690f3862fc9f3b831152bc5d987b0db922a20f4ef70fe16b67463ad5",
+    "content_digest": "361d72468d99dc5712bf444223c5c68a671a29e3ce0e2c82777ff4f6726ea55c",
     "local_id": "index:repo-local:source-surfaces",
     "path": "kag/indexes/source_surface_index.json"
   },
   "summary": {
-    "entry_count": 3738,
+    "entry_count": 3740,
     "kind_counts": {
-      "classification": 1934,
-      "contract": 233,
+      "classification": 1935,
+      "contract": 234,
       "role": 1571
     }
   }

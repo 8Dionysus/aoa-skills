@@ -48,7 +48,7 @@ contract is authored from the case, root, child, model-output, and fixture
 sources before the live run. `python3 fixture_validator.py` is an independent
 fixture-execution probe, not the child procedure. V12 adds a separate
 source-locked owner-action contract: exactly one
-`python3 outcome_validator.py --candidate <value>` event can make a bounded
+`python3 -u outcome_validator.py --candidate <value>` event can make a bounded
 decision observable without claiming that the unavailable repository task
 completed. No dimension is collapsed into an aggregate score.
 
@@ -789,6 +789,16 @@ arms of those two cases with the same procedure/outcome contracts, medium host
 bounds, and second exact confirmation. Do not edit Titan skill source or open
 root trajectories until that paired observation return is reviewed.
 
+The first exact-merged v20 return closes case 12 but case 13 control repeats the
+same zero-exit command event without sentinel output. The fixture validator
+itself emits the expected 296-byte sentinel in three diagnostic runs, so this
+is recurring CLI output-capture pressure rather than a Titan source defect.
+V21 keeps one owner-action attempt and the same contract but makes the exact
+command `python3 -u outcome_validator.py --candidate <value>`. Prompt, fixture
+guidance, FakeTransport, command matcher, and versioned contract share that one
+form; the formerly buffered command is non-exact. Land v21 and rerun only the
+same four arms before opening root trajectories.
+
 ## Safety And Privacy
 
 The plan locks Git head, authored portable overrides, all portable skill files,
@@ -807,7 +817,7 @@ both sides of this transport-specific contract.
 
 These hermetic invocation rules use contract schema
 `aoa_codex_app_server_skill_input_contract_v14` and protocol revision
-`codex-cli-0.144.1-live-dispatch-evidence-v20`. Retained v1-v19 receipts remain
+`codex-cli-0.144.1-live-dispatch-evidence-v21`. Retained v1-v20 receipts remain
 source-locked to their original protocol and review status and are not upgraded
 in place.
 

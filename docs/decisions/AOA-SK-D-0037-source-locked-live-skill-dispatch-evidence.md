@@ -124,10 +124,10 @@ change is source/runtime drift, not a reason to reuse the old token.
 
 The corrected hermetic pre-turn and evidence contract uses schema
 `aoa_codex_app_server_skill_input_contract_v14` and protocol revision
-`codex-cli-0.144.1-live-dispatch-evidence-v20`. It follows the
+`codex-cli-0.144.1-live-dispatch-evidence-v21`. It follows the
 [official App Server invocation shape](https://learn.chatgpt.com/docs/app-server#start-a-turn-invoke-a-skill)
 and Codex [progressive-disclosure load semantics](https://learn.chatgpt.com/docs/customization/overview#skills).
-Retained receipts source-locked to v1-v19 keep their original protocol and
+Retained receipts source-locked to v1-v20 keep their original protocol and
 review status and are not upgraded in place.
 
 The source-locked caps include both the rollout token limit and its required
@@ -188,7 +188,7 @@ fixture-guidance digest, schema/status, no-drift, and no-proof-authority fields.
 Split or forged evidence does not pass. Probe success does not determine the
 selected child procedure disposition or whole-task outcome.
 A separate source-locked owner-action contract may add exactly one bounded
-candidate choice through `python3 outcome_validator.py --candidate <value>`.
+candidate choice through `python3 -u outcome_validator.py --candidate <value>`.
 The answer is not present in the plan lock. One atomic zero-exit sentinel event
 is observable outcome evidence; reading, copying, hashing, importing,
 reproducing, or retrying the validator contaminates the measurement. A wrong
@@ -321,7 +321,7 @@ As of 2026-07-13:
 - Current cap contract: every arm receives the same source-locked 48k ceiling;
   paired arms may differ in actual use but never in available budget.
 - Current contract schema: `aoa_codex_app_server_skill_input_contract_v14`.
-- Current protocol lock: `codex-cli-0.144.1-live-dispatch-evidence-v20`.
+- Current protocol lock: `codex-cli-0.144.1-live-dispatch-evidence-v21`.
 - Current pair contract: new receipts publish route, selected-child trajectory,
   and selected-procedure-disposition report lift separately. Sent structured
   dispatch, accepted native load, model hierarchy report, and fixture execution
@@ -514,19 +514,51 @@ As of 2026-07-13:
   unchanged current-model rerun completed 4/4 turns and 2/2 pairs without a
   failure or observation gap. ADR gained positive route plus procedure lift;
   memo writeback stayed manually inactive in both arms; both owner outcomes
-  were correct in both arms. Protocol v20 now fail-closes on the fresh local
-  model catalog before spend. The exact-merged Titan A wave then completed all
+  were correct in both arms. Protocol v20 introduced fail-closed admission on
+  the fresh local model catalog before spend. The exact-merged Titan A wave then completed all
   16 turns and eight pairs: every hidden target stayed unselected, unread, and
   unloaded in both arms, while all manual non-activation, fixture,
   owner-boundary, and owner-outcome contracts were correct. The subsequent
   14-turn Titan B wave also keeps every manual target inactive and has no
   failure, but two successful exact owner-outcome commands expose no sentinel
   in opposite arms. Its raw outcome lifts remain observation-unclean. A new
-  four-turn return repeats only both arms of cases 12 and 13 after exact merge,
+  four-turn return repeats only both arms of cases 12 and 13. Its first v20
+  execution closes case 12 but repeats the case-13 control stdout loss. V21
+  keeps the same single-attempt contract and sentinel while making the exact
+  validator command unbuffered. Repeat the same four turns after exact merge,
   runtime parity, host admission, and fresh confirmation tokens.
 - Superseded by: none.
 
 ## Review Log
+
+### 2026-07-13 - Return from recurrent outcome loss to an unbuffered command
+
+- Trigger: the exact-merged v20 four-turn return closed the case-12 observation
+  gap, but `desc-titan-13-manual` control repeated its zero-exit command event
+  without sentinel output. This is the same arm and mismatch seen in the full
+  Titan B wave, so a third identical replay would not be an adaptive return.
+- Evidence: both receipts contain the same exact runtime-gate candidate command
+  and a completed exit-zero event with zero aggregated-output bytes. Every
+  manual, target-isolation, fixture, owner-boundary, command-count,
+  anti-inspection, filesystem, and inventory measure remains correct. The
+  unchanged private fixture validator emits the expected 296-byte sentinel in
+  three diagnostic-only executions; those diagnostics locate the transport
+  seam but do not become receipt outcome evidence.
+- Decision: advance the evidence protocol to v21 without changing contract
+  schema v14. The only exact owner-outcome form becomes
+  `python3 -u outcome_validator.py --candidate <value>` across prompt, fixture
+  guidance, FakeTransport, grader, test, and versioned contract. The old
+  buffered form is non-exact. Keep one attempt, no source inspection, zero exit,
+  exact sentinel, and no retry/fallback; do not edit Titan skills or accept
+  model self-report as owner evidence.
+- Host boundary: the v20 return ran on exact merged commit `ec79a94`, current
+  model and medium effort, both skill profiles, prompt parity 12/12, local eval
+  2/2, and clean 64 MiB storage/resource admission. The wrapper returned zero
+  with about 822 MiB peak memory and no swap. Post-run storage, resource, and
+  memory validators were 19/19, 16/16, and 35/35 with no warning.
+- Next: land v21, repeat exact merged runtime/model/host gates, and execute only
+  the same four-turn return. Root trajectories remain closed until both pairs
+  are observation-clean and reviewed.
 
 ### 2026-07-13 - Return from Titan B to two outcome observations
 
