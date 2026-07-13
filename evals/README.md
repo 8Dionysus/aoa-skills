@@ -265,6 +265,15 @@ Active first local corpus:
   than dispatch. The three-turn
   `coverage-closure-structured-core-returns` cohort repeats only those targets
   before structured Titan may open.
+  The exact-merged v22 return is preserved as
+  [`aoa-skill-live-dispatch-coverage-closure-structured-core-returns-20260713-v22-reviewed-direct-target-contract-clean.json`](reports/aoa-skill-live-dispatch-coverage-closure-structured-core-returns-20260713-v22-reviewed-direct-target-contract-clean.json).
+  All three targets now report `invoke`, the exact direct target, a null child,
+  and `blocked_missing_input`; official dual input, native acceptance, dispatch,
+  load, full target read, selection report, fixture, isolation,
+  filesystem/inventory scope, and owner-boundary checks all pass with no failure
+  class. This closes the common direct-target contract return without a skill
+  source edit. After this reviewed writeback lands and fresh exact gates pass,
+  the 15-turn `coverage-closure-structured-titan` wave is next.
 
 These files are local evidence notes. They do not publish central proof
 acceptance, scoring, verdicts, regression truth, or proof doctrine.

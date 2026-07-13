@@ -490,6 +490,17 @@ direct-target contract: dual input is activation, route is `invoke`,
 changes procedure disposition only. The three-turn structured-core return
 repeats only those targets before structured Titan.
 
+That exact-merged v22 return completes 3/3 with no failure or early stop.
+Decision-find, eval-session-mining, and ATM10 change protocol each accept the
+official structured input, report `invoke`, name the exact direct target, keep
+`selected_child` null, and stop at `blocked_missing_input`. Native dispatch,
+load, complete target read, selection-report, fixture, prompt, isolation,
+filesystem/inventory, and owner-boundary checks all pass. This confirms the
+common direct-target contract repair and does not create skill-source pressure.
+Preserve the reviewed candidate receipt with proof and promotion false; open
+the 15-turn structured-Titan wave only after this writeback lands and all exact
+runtime and host gates are repeated.
+
 The first exact v16 core wave completes 16/16. Every aided arm gains route and
 procedure correctness, while six outcome pairs are observation-clean and
 correct in both arms. Three fixture commands across `collision-01` and

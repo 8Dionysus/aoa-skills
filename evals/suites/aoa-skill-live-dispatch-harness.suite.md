@@ -831,6 +831,17 @@ and missing task/repository input changes disposition rather than dispatch. The
 three-turn return repeats only those targets; do not edit the three skills or
 open structured Titan until that return is reviewed.
 
+The exact-merged v22 return then completes all three turns without a failure,
+early stop, external access, broad inventory, prompt/fixture mismatch, or
+owner-boundary violation. All three official structured inputs are visible,
+sent, and accepted; every target reports `invoke`, the exact direct target,
+`selected_child` null, and `blocked_missing_input`, and every target source is
+read completely. This closes the shared direct-target contract return without
+editing decision-find, eval-session-mining, or ATM10 change protocol. Preserve
+the reviewed candidate receipt, keep proof and promotion false, and open the
+15-turn structured-Titan wave only after this writeback lands and fresh exact
+runtime/model/local-eval/storage/resource/memory gates pass.
+
 ## Safety And Privacy
 
 The plan locks Git head, authored portable overrides, all portable skill files,
