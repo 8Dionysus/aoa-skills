@@ -173,6 +173,13 @@ Tracking starts with the community-docs baseline for this repository.
   defines procedure disposition for the target rather than an ambient route.
   Read-only v13 replay moves exactly two aided failures from dispatch policy to
   procedure disposition; it removes no remaining failure.
+- The complete exact-merged v14 `pilot13-returns` run now preserves 15/15 turns
+  and seven pairs with every harness, transport, owner, safety, and Abyss
+  structured-arm boundary clean. Its three aided failures contract the next
+  source change to `aoa-decision` child handoff and `aoa-change-protocol`
+  exclusion boundaries for approval-gate and ATM10 overlay owners; the reviewed
+  receipt remains non-proof `needs-rerun` evidence pending the smallest affected
+  rerun.
 - `AOA-SK-D-0037` records why live cohorts remain operator-confirmed candidate
   evidence and now clarifies prompt-surface isolation and evidence-stage grading
   after the contaminated smoke; deterministic harness validation, not model

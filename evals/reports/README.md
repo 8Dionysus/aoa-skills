@@ -181,6 +181,17 @@ temporary root and must not be copied into this directory.
   the cohort before the final Abyss structured arm. The completed arms expose
   both real repo-skill collision pressure and remaining ambient/procedure
   grader ambiguity; the receipt remains candidate-only `needs-rerun` evidence.
+- [aoa-skill-live-dispatch-pilot13-returns-20260712-v14-reviewed-complete-skill-returns-needs-rerun.json](aoa-skill-live-dispatch-pilot13-returns-20260712-v14-reviewed-complete-skill-returns-needs-rerun.json)
+  preserves the first complete exact-merged v14 return: all 15 turns and seven
+  pairs completed with prompt, filesystem, inventory, fixture, transport,
+  owner, and authority boundaries clean. The corrected Abyss structured arm,
+  both external ambient routes, the earlier timeout case, and Titan now pass.
+  Three aided failures remain: `aoa-decision` stops before the required
+  `aoa-decision-find` child, while `aoa-change-protocol` is selected once for an
+  explicit-only approval-gate classification and once instead of the ATM10
+  project overlay. This `needs-rerun` receipt narrows source repair to those two
+  skills and requires the smallest affected rerun; it grants no proof or
+  promotion authority.
 
 Corrected live receipts under the v11-v14 evidence protocols are reviewable only
 after canonical user-skill shadows, plugins, and every configured MCP id are

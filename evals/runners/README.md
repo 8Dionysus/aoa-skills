@@ -298,6 +298,18 @@ not make the target procedure blocked, and null selection requires
 ambient aided arms from dispatch-policy failure to procedure-disposition
 failure and changes nothing else.
 
+The fresh exact-merged v14 execution completes all 15 turns and seven pairs.
+Prompt visibility, filesystem scope, inventory scope, fixture execution,
+transport, owner action, and authority boundaries all stay clean; the final
+Abyss structured arm also matches native dispatch, load, hierarchy, and fixture
+contracts. `collision-20`, `collision-33`, `collision-49`, and the Titan pair
+now have no failure class. The only remaining aided failures are the
+`collision-38` root-only decision trajectory, the `collision-09` explicit-only
+approval-gate activation by `aoa-change-protocol`, and the `collision-14` ATM10
+overlay displacement by the same generic skill. Preserve the reviewed v14
+receipt, repair only `aoa-decision` and `aoa-change-protocol`, and rerun the
+smallest affected set before widening.
+
 See `evals/suites/aoa-skill-live-dispatch-harness.suite.md` and
 `docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md` for
 the evidence and authority boundaries.

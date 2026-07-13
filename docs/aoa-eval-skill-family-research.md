@@ -463,5 +463,31 @@ Read-only replay of the 14-turn v13 private receipt changes only
 `dispatch_policy_gap` to `procedure_disposition_miss`. The replay leaves two
 collision misroutes, two repo-skill manual activation leaks, one earlier
 procedure miss, and the Titan output-contract failure. It validates v14
-classification only and does not rewrite either v13 public receipt. A fresh
-exact-merged v14 run remains required before skill edits.
+classification only and does not rewrite either v13 public receipt.
+
+## 2026-07-12 complete v14 live return
+
+The fresh exact-merged v14 execution completes all 15 turns and all seven
+pairs. It records zero prompt, filesystem, inventory, fixture, transport,
+owner-action, or authority failures. The final Abyss structured arm now proves
+the source-declared overlay-to-base hierarchy without overriding native target
+dispatch/load. The earlier `collision-33` timeout, the external ambient routes
+in `collision-20` and `collision-49`, and Titan's null-selection contract all
+return clean under fresh transport rather than replay alone.
+
+Only three aided failures remain. `collision-38` selects and fully reads
+`aoa-decision` but stops at the root: route and outcome improve, while the
+source-authored `aoa-decision-find` trajectory and procedure remain incorrect
+in both arms. `collision-09` correctly keeps `aoa-approval-gate-check` unloaded
+and reports `manual_required`, yet loads the prompt-visible generic
+`aoa-change-protocol`, so the remaining failure is a real treatment activation
+leak. `collision-14` selects that same generic skill instead of
+`atm10-change-protocol`; route and procedure show negative lift and the bounded
+outcome remains incorrect in both arms.
+
+The evidence now supports a two-skill source return rather than another harness
+revision: strengthen the `aoa-decision` root-to-find handoff and narrow
+`aoa-change-protocol` around explicit-only approval-gate and project-overlay
+owners. Preserve the v14 receipt as `needs-rerun`, add deterministic regression
+cases first, then execute only the smallest affected live cohort before any
+full-pilot or family widening.
