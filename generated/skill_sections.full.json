@@ -1055,7 +1055,7 @@
           "key": "intent"
         },
         {
-          "content_markdown": "Use this skill when:\n- an existing eval, validator, test, or script has already been selected\n- a local or central evaluation command should be run or routed\n- the user needs to know what the run proves, what failed, and what remains\n  outside coverage\n- generated outputs need to be rebuilt or checked as part of the selected eval\n- a selected repo-local suite has a machine-readable execution sidecar whose\n  freshness and runtime invocation must be applied\n\nDo not use this skill when:\n- no existing eval has been selected yet; use `aoa-eval-select`\n- the next honest move is to record missing eval pressure; use\n  `aoa-eval-local-need`\n- the task is to invent a new suite; use `aoa-eval-design`\n- the command would mutate production or central proof surfaces without owner\n  permission",
+          "content_markdown": "Use this skill when:\n- an existing eval, validator, test, or script has already been selected\n- a local or central evaluation command should be run or routed\n- the user needs to know what the run proves, what failed, and what remains\n  outside coverage\n- generated outputs need to be rebuilt or checked as part of the selected eval\n- a selected repo-local suite has a machine-readable execution sidecar whose\n  freshness and runtime invocation must be applied\n- the parent has classified apply, but the exact selected command, source\n  root/ref, prerequisites, expected artifacts, or pass/fail criteria is\n  unavailable inside the active evidence boundary; select this child only to\n  stop with `blocked_missing_input` rather than substitute another command\n\nDo not use this skill when:\n- no existing eval has been selected yet; use `aoa-eval-select`\n- the next honest move is to record missing eval pressure; use\n  `aoa-eval-local-need`\n- the task is to invent a new suite; use `aoa-eval-design`\n- the command would mutate production or central proof surfaces without owner\n  permission",
           "heading": "Trigger boundary",
           "key": "trigger_boundary"
         },
@@ -1070,22 +1070,22 @@
           "key": "outputs"
         },
         {
-          "content_markdown": "1. confirm the selected eval surface, owner repo, source root, and source ref;\n   if exact merged evidence is required, use a clean exact tree without\n   modifying a dirty canonical checkout\n2. inspect prerequisites and choose the smallest command that exercises the\n   intended evidence surface\n3. if a local suite sidecar exists, use the current owner validator to\n   JIT-revalidate schema, canonical owner identity, paths, typed argv, and every\n   tracked source hash; proceed only from `source-contract-ready`\n4. inventory, readiness, dashboard, and MCP surfaces may inspect the sidecar but\n   must not execute it\n5. invoke only the validated `runner.argv`, `runner.cwd`, timeout, and accepted\n   exit codes; do not substitute a wrapper, broader gate, or reconstructed\n   command\n6. capture interpreter, dependency inventory digest, ambient pytest plugins,\n   config, and selected environment before interpreting the result\n7. write an owner-local, private-by-default execution receipt linked to the\n   source head and sidecar digest; keep proof and promotion authority false\n8. when no sidecar exists, run the selected deterministic command with the same\n   source, cwd, result, artifact, and proof-limit reporting discipline\n9. capture outputs, generated drift, and artifact paths\n10. classify what the run proves and explicitly name what it does not prove\n11. if the run exposes missing coverage, route to `aoa-eval-local-need`; if it\n    requires new design, route to `aoa-eval-design`\n12. report commands, results, artifacts, source posture, environment posture,\n    and remaining risk",
+          "content_markdown": "1. if the apply route is selected but the exact selected command, source\n   root/ref, prerequisites, expected artifacts, or pass/fail criteria is\n   unavailable inside the active evidence boundary and no permitted packet or\n   source read can supply it, stop with `blocked_missing_input`; do not relabel\n   missing input as `deferred_owner_boundary` or substitute a fixture probe\n2. confirm the selected eval surface, owner repo, source root, and source ref;\n   if exact merged evidence is required, use a clean exact tree without\n   modifying a dirty canonical checkout\n3. inspect prerequisites and choose the smallest command that exercises the\n   intended evidence surface\n4. if a local suite sidecar exists, use the current owner validator to\n   JIT-revalidate schema, canonical owner identity, paths, typed argv, and every\n   tracked source hash; proceed only from `source-contract-ready`\n5. inventory, readiness, dashboard, and MCP surfaces may inspect the sidecar but\n   must not execute it\n6. invoke only the validated `runner.argv`, `runner.cwd`, timeout, and accepted\n   exit codes; do not substitute a wrapper, broader gate, or reconstructed\n   command\n7. capture interpreter, dependency inventory digest, ambient pytest plugins,\n   config, and selected environment before interpreting the result\n8. write an owner-local, private-by-default execution receipt linked to the\n   source head and sidecar digest; keep proof and promotion authority false\n9. when no sidecar exists, run the selected deterministic command with the same\n   source, cwd, result, artifact, and proof-limit reporting discipline\n10. capture outputs, generated drift, and artifact paths\n11. classify what the run proves and explicitly name what it does not prove\n12. if the run exposes missing coverage, route to `aoa-eval-local-need`; if it\n    requires new design, route to `aoa-eval-design`\n13. report commands, results, artifacts, source posture, environment posture,\n    and remaining risk",
           "heading": "Procedure",
           "key": "procedure"
         },
         {
-          "content_markdown": "- applying an eval does not create a central verdict unless `aoa-evals` owns and\n  validates that promotion\n- `source-contract-ready` proves reviewed source shape and hashes only; runtime\n  reproducibility remains false unless a stronger owner proves a pinned\n  environment\n- a stale or invalid sidecar blocks execution until its source owner repairs or\n  refreshes it; live output cannot author its own tracked hashes\n- inventory, MCP, and generated readiness surfaces never gain execution or\n  receipt-publication authority from discovering a sidecar\n- failed or inconclusive runs are evidence, not permission to guess\n- generated drift must be resolved through owner builders\n- local eval reports must stay under local repo surfaces unless central review\n  accepts them",
+          "content_markdown": "- applying an eval does not create a central verdict unless `aoa-evals` owns and\n  validates that promotion\n- `source-contract-ready` proves reviewed source shape and hashes only; runtime\n  reproducibility remains false unless a stronger owner proves a pinned\n  environment\n- a stale or invalid sidecar blocks execution until its source owner repairs or\n  refreshes it; live output cannot author its own tracked hashes\n- inventory, MCP, and generated readiness surfaces never gain execution or\n  receipt-publication authority from discovering a sidecar\n- failed or inconclusive runs are evidence, not permission to guess\n- generated drift must be resolved through owner builders\n- local eval reports must stay under local repo surfaces unless central review\n  accepts them\n- missing application context inside the active evidence boundary ends as\n  `blocked_missing_input`, not as command substitution or owner-boundary deferral",
           "heading": "Contracts",
           "key": "contracts"
         },
         {
-          "content_markdown": "- running a broad release gate when a focused validator is enough\n- treating green tests as complete proof outside their scope\n- executing a sidecar from inventory/MCP output without immediate owner JIT\n  validation\n- changing `runner.argv`, cwd, timeout, accepted codes, or tracked hashes at run\n  time to make a stale contract pass\n- treating an environment capture or execution receipt as reproducible runtime,\n  central proof, or promotion\n- hiding generated drift\n- promoting failure observations without a reproducible command",
+          "content_markdown": "- running a broad release gate when a focused validator is enough\n- treating green tests as complete proof outside their scope\n- executing a sidecar from inventory/MCP output without immediate owner JIT\n  validation\n- changing `runner.argv`, cwd, timeout, accepted codes, or tracked hashes at run\n  time to make a stale contract pass\n- treating an environment capture or execution receipt as reproducible runtime,\n  central proof, or promotion\n- hiding generated drift\n- promoting failure observations without a reproducible command\n- relabelling absent application inputs as `deferred_owner_boundary`",
           "heading": "Risks and anti-patterns",
           "key": "risks_and_anti_patterns"
         },
         {
-          "content_markdown": "- confirm the selected eval existed before running\n- confirm source root/ref and whether the observation came from a live dirty\n  workspace or an exact source tree\n- for a sidecar-backed suite, confirm the owner validator reported ready\n  immediately before execution and no inventory/MCP surface executed it\n- confirm exact command, cwd, timeout, accepted exit codes, and result\n- confirm environment capture and the private execution receipt's source-head\n  and sidecar-digest links\n- confirm artifacts and generated drift status\n- confirm proof limits and next route\n- confirm no central proof file was written through MCP",
+          "content_markdown": "- confirm the selected eval existed before running\n- confirm absent application inputs stopped as `blocked_missing_input` without\n  being relabelled as `deferred_owner_boundary` or replaced by another command\n- confirm source root/ref and whether the observation came from a live dirty\n  workspace or an exact source tree\n- for a sidecar-backed suite, confirm the owner validator reported ready\n  immediately before execution and no inventory/MCP surface executed it\n- confirm exact command, cwd, timeout, accepted exit codes, and result\n- confirm environment capture and the private execution receipt's source-head\n  and sidecar-digest links\n- confirm artifacts and generated drift status\n- confirm proof limits and next route\n- confirm no central proof file was written through MCP",
           "heading": "Verification",
           "key": "verification"
         },
@@ -1113,7 +1113,7 @@
           "key": "intent"
         },
         {
-          "content_markdown": "Use this skill when:\n- a local eval needs design from a clear failure mode or missing invariant\n- deterministic tests, validators, or scripts should be planned before rubric or\n  transcript graders\n- positive, negative, collision, or regression cases need to be shaped for a\n  local repo\n- the output is a draft suite or report, not central proof acceptance\n\nDo not use this skill when:\n- an existing eval should simply run now\n- the right next artifact is only an intake pressure packet\n- the invariant is unknown and discovery is still needed\n- the user asks for central `aoa-evals` proof doctrine changes",
+          "content_markdown": "Use this skill when:\n- a local eval needs design from a clear failure mode or missing invariant\n- deterministic tests, validators, or scripts should be planned before rubric or\n  transcript graders\n- positive, negative, collision, or regression cases need to be shaped for a\n  local repo\n- the output is a draft suite or report, not central proof acceptance\n- the parent has classified design after selection, but the explicit invariant\n  or behavior, target repository, local owner path, or rejected existing\n  surfaces is unavailable inside the active evidence boundary; select this\n  child only to stop with `blocked_missing_input` rather than design generically\n\nDo not use this skill when:\n- an existing eval should simply run now\n- the right next artifact is only an intake pressure packet\n- the invariant is unknown and discovery is still needed\n- the user asks for central `aoa-evals` proof doctrine changes",
           "heading": "Trigger boundary",
           "key": "trigger_boundary"
         },
@@ -1128,22 +1128,22 @@
           "key": "outputs"
         },
         {
-          "content_markdown": "1. restate the behavior or invariant to evaluate\n2. choose the lowest-level deterministic checks that can constrain it\n3. add positive and negative examples; add collision cases for trigger or router\n   behavior\n4. add trace or rubric review only where deterministic checks cannot cover the\n   behavior\n5. place the draft in the local eval port or report surface named by the repo\n6. keep central acceptance language out of the draft\n7. hand off to `aoa-eval-apply` when a runnable check exists",
+          "content_markdown": "1. if the design route is selected but the explicit invariant or behavior,\n   target repository, local owner path, or rejected existing surfaces is\n   unavailable inside the active evidence boundary and no permitted packet or\n   source read can supply it, stop with `blocked_missing_input`; do not relabel\n   missing input as `deferred_owner_boundary`\n2. restate the behavior or invariant to evaluate\n3. choose the lowest-level deterministic checks that can constrain it\n4. add positive and negative examples; add collision cases for trigger or router\n   behavior\n5. add trace or rubric review only where deterministic checks cannot cover the\n   behavior\n6. place the draft in the local eval port or report surface named by the repo\n7. keep central acceptance language out of the draft\n8. hand off to `aoa-eval-apply` when a runnable check exists",
           "heading": "Procedure",
           "key": "procedure"
         },
         {
-          "content_markdown": "- design starts after selection fails, not before\n- local design remains local until central review accepts it\n- deterministic checks are preferred for coding-agent behavior\n- transcript and rubric grading are supporting layers when objective checks are\n  insufficient",
+          "content_markdown": "- design starts after selection fails, not before\n- local design remains local until central review accepts it\n- deterministic checks are preferred for coding-agent behavior\n- transcript and rubric grading are supporting layers when objective checks are\n  insufficient\n- missing design context inside the active evidence boundary ends as\n  `blocked_missing_input`, not as a generic draft or owner-boundary deferral",
           "heading": "Contracts",
           "key": "contracts"
         },
         {
-          "content_markdown": "- designing a suite around vague success criteria\n- using only positive examples\n- creating rubric-only evals where a script or test can check the behavior\n- making one local report sound like system-wide proof",
+          "content_markdown": "- designing a suite around vague success criteria\n- using only positive examples\n- creating rubric-only evals where a script or test can check the behavior\n- making one local report sound like system-wide proof\n- relabelling absent design inputs as `deferred_owner_boundary`",
           "heading": "Risks and anti-patterns",
           "key": "risks_and_anti_patterns"
         },
         {
-          "content_markdown": "- confirm the target invariant or behavior is explicit\n- confirm positive, negative, and regression cases exist or are deliberately\n  deferred\n- confirm deterministic checks were considered first\n- confirm local owner path and proof limit\n- confirm next runnable command or review route",
+          "content_markdown": "- confirm the target invariant or behavior is explicit\n- confirm positive, negative, and regression cases exist or are deliberately\n  deferred\n- confirm deterministic checks were considered first\n- confirm local owner path and proof limit\n- confirm absent design inputs stopped as `blocked_missing_input` without being\n  relabelled as `deferred_owner_boundary`\n- confirm next runnable command or review route",
           "heading": "Verification",
           "key": "verification"
         },
@@ -1171,7 +1171,7 @@
           "key": "intent"
         },
         {
-          "content_markdown": "Use this skill when:\n- a local repository needs an eval pressure packet but not a central proof\n  bundle yet\n- no existing local validator, test, script, or central eval bundle covers the\n  failure or behavior\n- a repeated session or implementation failure needs owner-routed follow-up\n- the right next artifact is `evals/intake/*.eval_need.json`\n\nDo not use this skill when:\n- an existing eval can be applied now\n- the missing object is a memory candidate, decision record, or source-truth map\n- the target repo has no local eval port and no owner permission to create one\n- the user asks for central `aoa-evals` proof acceptance",
+          "content_markdown": "Use this skill when:\n- a local repository needs an eval pressure packet but not a central proof\n  bundle yet\n- no existing local validator, test, script, or central eval bundle covers the\n  failure or behavior\n- a repeated session or implementation failure needs owner-routed follow-up\n- the right next artifact is `evals/intake/*.eval_need.json`\n- the parent has classified local need from an explicit no-fit result, but the\n  target repository, local-port owner/schema, evidence refs, or rejected\n  alternatives is unavailable inside the active evidence boundary; select this\n  child only to stop with `blocked_missing_input` rather than invent a packet\n\nDo not use this skill when:\n- an existing eval can be applied now\n- the missing object is a memory candidate, decision record, or source-truth map\n- the target repo has no local eval port and no owner permission to create one\n- the user asks for central `aoa-evals` proof acceptance",
           "heading": "Trigger boundary",
           "key": "trigger_boundary"
         },
@@ -1186,22 +1186,22 @@
           "key": "outputs"
         },
         {
-          "content_markdown": "1. verify that `aoa-eval-select` or equivalent inspection found no adequate\n   existing surface\n2. read local eval-port rules and confirm `evals/intake/` is the right write\n   surface\n3. write one bounded need packet with target behavior, evidence refs, owner\n   route, rejected alternatives, proposed checks, and proof limits\n4. avoid central `aoa-evals/evals/**` writes\n5. run the local eval-port validator if available\n6. report the packet path, owner route, and next review route",
+          "content_markdown": "1. if the local-need route is selected but the target repository, local-port\n   owner/schema, evidence refs, or rejected alternatives is unavailable inside\n   the active evidence boundary and no permitted packet or source read can\n   supply it, stop with `blocked_missing_input`; do not relabel missing input as\n   `deferred_owner_boundary`\n2. verify that `aoa-eval-select` or equivalent inspection found no adequate\n   existing surface\n3. read local eval-port rules and confirm `evals/intake/` is the right write\n   surface\n4. write one bounded need packet with target behavior, evidence refs, owner\n   route, rejected alternatives, proposed checks, and proof limits\n5. avoid central `aoa-evals/evals/**` writes\n6. run the local eval-port validator if available\n7. report the packet path, owner route, and next review route",
           "heading": "Procedure",
           "key": "procedure"
         },
         {
-          "content_markdown": "- local intake is pressure, not acceptance\n- central proof promotion requires `aoa-evals` review\n- packets must name rejected alternatives so later agents do not repeat the same\n  search\n- raw session refs must remain candidate evidence until reviewed",
+          "content_markdown": "- local intake is pressure, not acceptance\n- central proof promotion requires `aoa-evals` review\n- packets must name rejected alternatives so later agents do not repeat the same\n  search\n- raw session refs must remain candidate evidence until reviewed\n- missing local-need context inside the active evidence boundary ends as\n  `blocked_missing_input`, not as an invented packet or owner-boundary deferral",
           "heading": "Contracts",
           "key": "contracts"
         },
         {
-          "content_markdown": "- using `candidates/` or another ad hoc directory when `intake/` is the local\n  port route\n- creating many broad packets instead of one bounded need\n- omitting rejected existing evals\n- smuggling central verdict language into local intake",
+          "content_markdown": "- using `candidates/` or another ad hoc directory when `intake/` is the local\n  port route\n- creating many broad packets instead of one bounded need\n- omitting rejected existing evals\n- smuggling central verdict language into local intake\n- relabelling absent local-need inputs as `deferred_owner_boundary`",
           "heading": "Risks and anti-patterns",
           "key": "risks_and_anti_patterns"
         },
         {
-          "content_markdown": "- confirm no existing eval fit\n- confirm the target repo owns the local port\n- confirm packet path and schema posture\n- confirm evidence refs and proof limits\n- confirm central proof surfaces were not changed",
+          "content_markdown": "- confirm no existing eval fit\n- confirm the target repo owns the local port\n- confirm packet path and schema posture\n- confirm evidence refs and proof limits\n- confirm absent local-need inputs stopped as `blocked_missing_input` without\n  being relabelled as `deferred_owner_boundary`\n- confirm central proof surfaces were not changed",
           "heading": "Verification",
           "key": "verification"
         },
@@ -1229,7 +1229,7 @@
           "key": "intent"
         },
         {
-          "content_markdown": "Use this skill when:\n- a task asks which eval should be used for a change, failure, or regression\n- a repository has a local `evals/` port and the agent needs to inspect it\n  before writing anything new\n- central `aoa-evals` may already contain the relevant proof pattern or local\n  port contract\n- existing validators, tests, or scripts may be the honest eval surface\n\nDo not use this skill when:\n- an already selected eval simply needs to be run; use `aoa-eval-apply`\n- no eval exists and the next move is a local intake packet; use\n  `aoa-eval-local-need`\n- the user asks for a new suite design after selection has already failed; use\n  `aoa-eval-design`\n- source authority rather than eval coverage is the problem",
+          "content_markdown": "Use this skill when:\n- a task asks which eval should be used for a change, failure, or regression\n- a repository has a local `evals/` port and the agent needs to inspect it\n  before writing anything new\n- central `aoa-evals` may already contain the relevant proof pattern or local\n  port contract\n- existing validators, tests, or scripts may be the honest eval surface\n- the parent has classified selection, but the target repository, touched\n  paths, local eval port, nearby proof surfaces, or central standard is\n  unavailable inside the active evidence boundary; select this child only to\n  stop with `blocked_missing_input` rather than infer fit or no-fit\n\nDo not use this skill when:\n- an already selected eval simply needs to be run; use `aoa-eval-apply`\n- no eval exists and the next move is a local intake packet; use\n  `aoa-eval-local-need`\n- the user asks for a new suite design after selection has already failed; use\n  `aoa-eval-design`\n- source authority rather than eval coverage is the problem",
           "heading": "Trigger boundary",
           "key": "trigger_boundary"
         },
@@ -1244,22 +1244,22 @@
           "key": "outputs"
         },
         {
-          "content_markdown": "1. read the target repo route law and local `evals/PORT.yaml` when present\n2. inventory local `evals/`, tests, validators, and scripts around the touched\n   paths\n3. inspect central `aoa-evals` only for reusable proof doctrine, local-port\n   standard, or central bundle matches\n4. prefer deterministic local scripts and tests for coding-agent behavior when\n   they already constrain the outcome\n5. use MCP list/inspect only to narrow the search; verify important claims\n   against source files\n6. classify the result as exact fit, partial fit, nearest wrong target, no fit,\n   or blocked by stale/missing owner evidence\n7. hand off to `aoa-eval-apply`, `aoa-eval-local-need`, or `aoa-eval-design`\n   only after selection is clear",
+          "content_markdown": "1. if the selection route is chosen but the target repository, touched paths,\n   local eval port, nearby proof surfaces, or central standard is unavailable\n   inside the active evidence boundary and no permitted packet or source read\n   can supply it, stop with `blocked_missing_input`; do not relabel missing\n   input as `deferred_owner_boundary`\n2. read the target repo route law and local `evals/PORT.yaml` when present\n3. inventory local `evals/`, tests, validators, and scripts around the touched\n   paths\n4. inspect central `aoa-evals` only for reusable proof doctrine, local-port\n   standard, or central bundle matches\n5. prefer deterministic local scripts and tests for coding-agent behavior when\n   they already constrain the outcome\n6. use MCP list/inspect only to narrow the search; verify important claims\n   against source files\n7. classify the result as exact fit, partial fit, nearest wrong target, no fit,\n   or blocked by stale/missing owner evidence\n8. hand off to `aoa-eval-apply`, `aoa-eval-local-need`, or `aoa-eval-design`\n   only after selection is clear",
           "heading": "Procedure",
           "key": "procedure"
         },
         {
-          "content_markdown": "- existing local proof surfaces beat new design pressure\n- central proof doctrine may guide but not absorb repo-local intake\n- selection reports confidence and nearest wrong target instead of guessing\n- generated indexes and MCP packets are read models until source-verified",
+          "content_markdown": "- existing local proof surfaces beat new design pressure\n- central proof doctrine may guide but not absorb repo-local intake\n- selection reports confidence and nearest wrong target instead of guessing\n- generated indexes and MCP packets are read models until source-verified\n- missing selection context inside the active evidence boundary ends as\n  `blocked_missing_input`, not as fit, no-fit, or owner-boundary deferral",
           "heading": "Contracts",
           "key": "contracts"
         },
         {
-          "content_markdown": "- skipping local validators because a central eval sounds more official\n- selecting a test that only checks incidental behavior\n- turning a partial fit into a proof verdict\n- reading all repos when touched paths already narrow the search",
+          "content_markdown": "- skipping local validators because a central eval sounds more official\n- selecting a test that only checks incidental behavior\n- turning a partial fit into a proof verdict\n- reading all repos when touched paths already narrow the search\n- relabelling absent selection inputs as `deferred_owner_boundary`",
           "heading": "Risks and anti-patterns",
           "key": "risks_and_anti_patterns"
         },
         {
-          "content_markdown": "- confirm local port presence, absence, and status\n- confirm selected surface and owner route\n- confirm why nearest alternatives were rejected\n- confirm next route is one of apply, local need, design, or stop\n- confirm central `aoa-evals` was not rewritten",
+          "content_markdown": "- confirm local port presence, absence, and status\n- confirm selected surface and owner route\n- confirm why nearest alternatives were rejected\n- confirm next route is one of apply, local need, design, or stop\n- confirm absent selection inputs stopped as `blocked_missing_input` without\n  being relabelled as `deferred_owner_boundary`\n- confirm central `aoa-evals` was not rewritten",
           "heading": "Verification",
           "key": "verification"
         },
@@ -1287,7 +1287,7 @@
           "key": "intent"
         },
         {
-          "content_markdown": "Use this skill when:\n- the user asks to study sessions for eval moments, missed triggers, regressions,\n  or repeated failures\n- repo and web research has already defined candidate trigger classes\n- `.aoa` search hits can reveal real prompts, failures, validations, or\n  corrections that should become eval cases\n- the output should be candidate evidence with raw/segment refs and freshness\n\nDo not use this skill when:\n- the task is only `.aoa` preservation, hook repair, or search-index maintenance\n- a current repository source file can answer the question without session\n  mining\n- session evidence would be treated as reviewed proof\n- memory writeback, decision records, or checkpoint closeout are the real owner\n  routes",
+          "content_markdown": "Use this skill when:\n- the user asks to study sessions for eval moments, missed triggers, regressions,\n  or repeated failures\n- repo and web research has already defined candidate trigger classes\n- `.aoa` search hits can reveal real prompts, failures, validations, or\n  corrections that should become eval cases\n- the output should be candidate evidence with raw/segment refs and freshness\n- the parent has classified session mining after research, but the trigger\n  classes, target owner map, session provider/status, or freshness evidence is\n  unavailable inside the active evidence boundary; select this child only to\n  stop with `blocked_missing_input` rather than search broadly or invent refs\n\nDo not use this skill when:\n- the task is only `.aoa` preservation, hook repair, or search-index maintenance\n- a current repository source file can answer the question without session\n  mining\n- session evidence would be treated as reviewed proof\n- memory writeback, decision records, or checkpoint closeout are the real owner\n  routes",
           "heading": "Trigger boundary",
           "key": "trigger_boundary"
         },
@@ -1302,22 +1302,22 @@
           "key": "outputs"
         },
         {
-          "content_markdown": "1. confirm the research gates: web sources, repo-local eval surfaces, and owner\n   boundaries are already mapped\n2. check `.aoa` search provider status and index freshness\n3. run narrow searches by trigger class, not one broad vague query\n4. inspect enough surrounding segment context to avoid false positives\n5. classify each hit as candidate eval trigger, candidate local need, existing\n   eval apply moment, non-eval validation, or wrong owner route\n6. preserve raw and segment refs; do not summarize them into authority\n7. hand off accepted candidates to `aoa-eval-local-need` or `aoa-eval-design`\n   only after owner-route checks",
+          "content_markdown": "1. if the session-mining route is selected but the trigger classes, target owner\n   map, session provider/status, or freshness evidence is unavailable inside the\n   active evidence boundary and no permitted packet or source read can supply\n   it, stop with `blocked_missing_input`; do not relabel missing input as\n   `deferred_owner_boundary`\n2. confirm the research gates: web sources, repo-local eval surfaces, and owner\n   boundaries are already mapped\n3. check `.aoa` search provider status and index freshness\n4. run narrow searches by trigger class, not one broad vague query\n5. inspect enough surrounding segment context to avoid false positives\n6. classify each hit as candidate eval trigger, candidate local need, existing\n   eval apply moment, non-eval validation, or wrong owner route\n7. preserve raw and segment refs; do not summarize them into authority\n8. hand off accepted candidates to `aoa-eval-local-need` or `aoa-eval-design`\n   only after owner-route checks",
           "heading": "Procedure",
           "key": "procedure"
         },
         {
-          "content_markdown": "- `.aoa` evidence is candidate evidence until reviewed\n- session search must include freshness and refs\n- raw transcript evidence cannot override source-owned repo files\n- mining happens after owner boundaries are known, not as a replacement for\n  source archaeology",
+          "content_markdown": "- `.aoa` evidence is candidate evidence until reviewed\n- session search must include freshness and refs\n- raw transcript evidence cannot override source-owned repo files\n- mining happens after owner boundaries are known, not as a replacement for\n  source archaeology\n- missing mining context inside the active evidence boundary ends as\n  `blocked_missing_input`, not as broad search or owner-boundary deferral",
           "heading": "Contracts",
           "key": "contracts"
         },
         {
-          "content_markdown": "- using session snippets as proof without source verification\n- mining all sessions before trigger classes are defined\n- confusing `.aoa` maintenance with eval mining\n- turning repeated frustration into a generic eval without a reproducible case",
+          "content_markdown": "- using session snippets as proof without source verification\n- mining all sessions before trigger classes are defined\n- confusing `.aoa` maintenance with eval mining\n- turning repeated frustration into a generic eval without a reproducible case\n- relabelling absent mining inputs as `deferred_owner_boundary`",
           "heading": "Risks and anti-patterns",
           "key": "risks_and_anti_patterns"
         },
         {
-          "content_markdown": "- confirm index freshness and provider\n- confirm each example has session, segment, event, raw ref, and freshness\n- confirm candidate owner route and rejected nearest wrong owner\n- confirm no raw evidence was promoted to proof\n- confirm next local need/design/apply route when applicable",
+          "content_markdown": "- confirm index freshness and provider\n- confirm each example has session, segment, event, raw ref, and freshness\n- confirm candidate owner route and rejected nearest wrong owner\n- confirm no raw evidence was promoted to proof\n- confirm absent mining inputs stopped as `blocked_missing_input` without being\n  relabelled as `deferred_owner_boundary`\n- confirm next local need/design/apply route when applicable",
           "heading": "Verification",
           "key": "verification"
         },

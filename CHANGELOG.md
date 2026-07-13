@@ -344,6 +344,13 @@ Tracking starts with the community-docs baseline for this repository.
   This closes the bounded authority return only; proof/promotion stay false and
   the five-pair eval-child wave remains preflight-incomplete at 0/5 procedure
   and 0/5 owner-outcome contracts.
+- The five-pair eval-child wave is now source-contract-complete. Eval select,
+  apply, local-need, design, and session-mining explicitly stop a
+  parent-classified route at `blocked_missing_input` when their required owner
+  inputs are unavailable, with the same rule in portable descriptions. Cases
+  44-48 now have 5/5 procedure and 5/5 owner-action contracts, and confirmation
+  locks every child source. This removes only the deterministic design block;
+  exact-merged runtime parity and reviewed ten-turn live evidence remain open.
 - Live-dispatch evidence v17 repairs both shared boundaries red-first. Portable
   export now prepends a policy-derived activation sentence to all 43 `manual`
   and two `suggest` descriptions, allowing only explicit invocation or a

@@ -826,6 +826,106 @@
       "rationale": "The local eval guidance files must be inspected and assigned authored, entrypoint, or route-card roles before eval design begins. Inspecting their authority is the justified owner action. Adding a suite first or choosing PORT.yaml solely by filename would let an unresolved companion surface masquerade as source truth."
     },
     {
+      "contract_id": "collision-44-owner-action-v1",
+      "case_id": "collision-44",
+      "scope": "fixture_owner_observable_decision",
+      "decision_prompt": "Which next owner action is justified before the selected eval child classifies fit or no-fit?",
+      "candidate_values": [
+        "design_new_suite_before_selection",
+        "infer_no_fit_from_missing_repo",
+        "request_target_eval_surfaces_for_selection"
+      ],
+      "expected_candidate_value": "request_target_eval_surfaces_for_selection",
+      "source_refs": [
+        "generated/skill_trigger_collision_matrix.json",
+        "skills/core/engineering/aoa-eval/SKILL.md",
+        "skills/core/engineering/aoa-eval-select/SKILL.md",
+        "schemas/live-skill-dispatch-outcome-contracts.schema.json",
+        "evals/runners/run_live_skill_dispatch.py"
+      ],
+      "rationale": "Selection needs the target repository, local eval port, and nearby validators, tests, scripts, and reports. The justified owner action is to request those surfaces before classifying fit. Missing repository evidence is not a no-fit result, and designing first would bypass the existing-surface check."
+    },
+    {
+      "contract_id": "collision-45-owner-action-v1",
+      "case_id": "collision-45",
+      "scope": "fixture_owner_observable_decision",
+      "decision_prompt": "Which next owner action is justified before applying the already selected validator?",
+      "candidate_values": [
+        "claim_pass_from_prompt",
+        "request_exact_selected_command_and_source_context",
+        "run_fixture_validator_as_selected_eval"
+      ],
+      "expected_candidate_value": "request_exact_selected_command_and_source_context",
+      "source_refs": [
+        "generated/skill_trigger_collision_matrix.json",
+        "skills/core/engineering/aoa-eval/SKILL.md",
+        "skills/core/engineering/aoa-eval-apply/SKILL.md",
+        "schemas/live-skill-dispatch-outcome-contracts.schema.json",
+        "evals/runners/run_live_skill_dispatch.py"
+      ],
+      "rationale": "Application requires the exact selected command, source identity, prerequisites, expected artifacts, and pass/fail criteria. Requesting that context is the bounded next action. The generic fixture probe is independent harness evidence and cannot replace or prove the unavailable selected validator."
+    },
+    {
+      "contract_id": "collision-46-owner-action-v1",
+      "case_id": "collision-46",
+      "scope": "fixture_owner_observable_decision",
+      "decision_prompt": "Which next owner action is justified before writing the no-fit local eval need packet?",
+      "candidate_values": [
+        "promote_no_fit_to_central_verdict",
+        "request_target_local_port_owner_and_schema",
+        "write_intake_packet_without_owner_port"
+      ],
+      "expected_candidate_value": "request_target_local_port_owner_and_schema",
+      "source_refs": [
+        "generated/skill_trigger_collision_matrix.json",
+        "skills/core/engineering/aoa-eval/SKILL.md",
+        "skills/core/engineering/aoa-eval-local-need/SKILL.md",
+        "schemas/live-skill-dispatch-outcome-contracts.schema.json",
+        "evals/runners/run_live_skill_dispatch.py"
+      ],
+      "rationale": "The no-fit classification authorizes local-need routing but not a source-free write. The target local port, owner permission, schema, evidence refs, and rejected alternatives must be requested before creating one bounded intake packet. Local no-fit pressure also cannot become a central verdict."
+    },
+    {
+      "contract_id": "collision-47-owner-action-v1",
+      "case_id": "collision-47",
+      "scope": "fixture_owner_observable_decision",
+      "decision_prompt": "Which next owner action is justified before designing the bounded deterministic-first eval suite?",
+      "candidate_values": [
+        "design_generic_rubric_from_prompt",
+        "publish_local_draft_as_central_proof",
+        "request_invariant_owner_port_and_rejected_surfaces"
+      ],
+      "expected_candidate_value": "request_invariant_owner_port_and_rejected_surfaces",
+      "source_refs": [
+        "generated/skill_trigger_collision_matrix.json",
+        "skills/core/engineering/aoa-eval/SKILL.md",
+        "skills/core/engineering/aoa-eval-design/SKILL.md",
+        "schemas/live-skill-dispatch-outcome-contracts.schema.json",
+        "evals/runners/run_live_skill_dispatch.py"
+      ],
+      "rationale": "A bounded design needs the explicit invariant or behavior, target owner path, local port, current proof surfaces, and rejected alternatives. Requesting those inputs is the justified next action. A generic rubric is not a deterministic design, and a local draft cannot claim central proof."
+    },
+    {
+      "contract_id": "collision-48-owner-action-v1",
+      "case_id": "collision-48",
+      "scope": "fixture_owner_observable_decision",
+      "decision_prompt": "Which next owner action is justified before mining session evidence for eval candidates?",
+      "candidate_values": [
+        "mine_all_sessions_without_trigger_classes",
+        "request_trigger_classes_provider_freshness_and_owner_map",
+        "treat_session_recurrence_as_proof"
+      ],
+      "expected_candidate_value": "request_trigger_classes_provider_freshness_and_owner_map",
+      "source_refs": [
+        "generated/skill_trigger_collision_matrix.json",
+        "skills/core/engineering/aoa-eval/SKILL.md",
+        "skills/core/engineering/aoa-eval-session-mining/SKILL.md",
+        "schemas/live-skill-dispatch-outcome-contracts.schema.json",
+        "evals/runners/run_live_skill_dispatch.py"
+      ],
+      "rationale": "Bounded mining requires source-derived trigger classes, a target owner map, and a known session provider with current freshness evidence. Requesting those inputs is the only justified action. Broadly mining all sessions would violate scope, while repeated history remains candidate evidence rather than proof."
+    },
+    {
       "contract_id": "collision-49-owner-action-v1",
       "case_id": "collision-49",
       "scope": "fixture_owner_observable_decision",
