@@ -136,8 +136,12 @@ Active first local corpus:
   route, while its one hidden child is separate trajectory/procedure evidence.
   The repair leaves nine scored authority pairs and two true hidden-manual
   guards, and adds a six-turn return containing both arms of cases 39-41.
-  Deterministic validation is green; exact merge and a fresh live return are
-  still required.
+  The exact-merged return now completes 6/6 with every aided parent and child
+  correctly selected and fully read. Case 39 is clean; cases 40 and 41 report
+  `deferred_owner_boundary` instead of source-locked `blocked_missing_input` and
+  remain reviewed `procedure_disposition_miss` candidates. Preserve that v19
+  receipt as `needs-rerun`, repair the two child terminal rules, and repeat only
+  both arms of 40-41 before widening.
 
 These files are local evidence notes. They do not publish central proof
 acceptance, scoring, verdicts, regression truth, or proof doctrine.

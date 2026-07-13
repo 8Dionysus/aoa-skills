@@ -323,6 +323,14 @@ Tracking starts with the community-docs baseline for this repository.
   authority wave becomes nine scored pairs plus two true hidden-manual guards,
   and a bounded six-turn return repeats only both arms of collisions 39-41.
   Protocol v19 and contract v14 keep all v1-v18 receipts immutable.
+- The exact-merged v19 authority return completes all 6 turns and 3 pairs with
+  clean prompt, fixture, filesystem, inventory, transport, and owner-outcome
+  observation. Every aided arm selects `aoa-decision`, fully reads the exact
+  find/create/correct child, and gains positive route plus trajectory lift;
+  collision 39 is clean. Create and correct still report
+  `deferred_owner_boundary` instead of `blocked_missing_input`, yielding two
+  reviewed `procedure_disposition_miss` candidates. Preserve the receipt as
+  `needs-rerun`; repair those two child terminal rules and repeat only 40-41.
 - Live-dispatch evidence v17 repairs both shared boundaries red-first. Portable
   export now prepends a policy-derived activation sentence to all 43 `manual`
   and two `suggest` descriptions, allowing only explicit invocation or a

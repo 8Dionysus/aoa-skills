@@ -631,6 +631,20 @@ parent and child source so the future eval-child wave cannot inherit stale
 authored guidance. Exact merge, installed runtime parity, host admission, both
 confirmation tokens, and a reviewed live return remain mandatory.
 
+The exact-merged v19 return now completes all six arms and all three pairs
+without an early stop, prompt/fixture contamination, external access, broad
+inventory, transport failure, or outcome-observation gap. Every aided arm
+selects prompt-visible `aoa-decision`, fully reads the one declared child, and
+gains positive route and trajectory lift. Case 39 also reaches the expected
+`blocked_missing_input` terminal. Cases 40 and 41 instead report
+`deferred_owner_boundary` after correctly selecting and reading
+`aoa-decision-create` or `aoa-decision-correct`; both are
+`procedure_disposition_miss`. Preserve the candidate-only result as
+[`aoa-skill-live-dispatch-full-collision-authority-routing-returns-20260713-v19-reviewed-procedure-returns-needs-rerun.json`](../reports/aoa-skill-live-dispatch-full-collision-authority-routing-returns-20260713-v19-reviewed-procedure-returns-needs-rerun.json).
+Repair the two child missing-input terminals red-first and repeat only both arms
+of cases 40-41. The receipt does not authorize proof, promotion, or the next
+eval-child wave.
+
 ## Safety And Privacy
 
 The plan locks Git head, all portable skill files, generated/config inputs,

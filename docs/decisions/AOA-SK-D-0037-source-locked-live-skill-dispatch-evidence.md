@@ -500,11 +500,36 @@ As of 2026-07-13:
   `needs-rerun` because v18 cannot distinguish two source-authorized
   decision-root child reads from direct hidden-child activation. V19 now carries
   the declared parent/child identity into implicit trials, yielding nine scored
-  parent routes and two true hidden-manual guards; its exact six-turn live return
-  remains required before interpreting the three affected cases.
+  parent routes and two true hidden-manual guards. The exact six-turn return now
+  confirms all three parent/child handoffs; case 39 is clean, while create and
+  correct expose two real terminal-disposition returns.
 - Superseded by: none.
 
 ## Review Log
+
+### 2026-07-13 - Preserve the v19 parent-authorized procedure return
+
+- Exact execution: merged commit `fdac95b`, verified 36/36 installed profile,
+  protocol v19, 37 isolated shadows, 11 disabled MCP ids, medium agent wrapper,
+  concurrency one, and separate green storage/resource admission.
+- Complete observation: 6/6 arms and 3/3 pairs finish without early stop,
+  contamination, external filesystem access, broad inventory, transport
+  failure, or outcome-output gap. Fixture and owner-action contracts are clean.
+- Parent/child result: every aided arm selects prompt-visible `aoa-decision`,
+  fully reads exactly the declared find/create/correct child, and gains positive
+  route plus trajectory lift. This confirms the v19 observability correction;
+  no manual-activation label remains.
+- Procedure result: case 39 reaches `blocked_missing_input` and is clean. Cases
+  40 and 41 select and read create/correct but report
+  `deferred_owner_boundary`, so both remain `procedure_disposition_miss` against
+  the source-locked missing-input contract.
+- Review: preserve the public-safe receipt as candidate-only `needs-rerun`; do
+  not rewrite it after source repair. Repair create/correct terminal guidance
+  red-first and repeat only both arms of 40-41. Proof, promotion, and the next
+  eval-child wave remain unauthorized.
+- Host closeout: storage passes 19/19 and resource 16/16 with no warnings;
+  memory has zero failures and the pre-existing v3-index/v2-validator schema
+  warning only.
 
 ### 2026-07-13 - Separate parent dispatch from hidden-child trajectory in v19
 
