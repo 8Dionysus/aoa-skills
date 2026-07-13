@@ -414,3 +414,29 @@ The next live step is therefore not another full pilot. The source-locked
 the corrected Abyss structured report, for 15 turns total. This is the smallest
 run that can confirm the v13 harness repairs while preserving the remaining
 skill-route evidence and paired control boundary.
+
+## 2026-07-12 bounded v13 live returns
+
+Two exact-merged `pilot13-returns` attempts remain partial. The first stopped
+at 6 of 15 turns on a post-start transport timeout. A fresh run passed that
+point and reached 14 of 15, then failed the model-output contract because Titan
+control combined `selected_skill=null` with `claims_loaded=true`. The final
+Abyss structured arm therefore remains unobserved; neither receipt can close
+the cohort.
+
+The completed evidence still changes the next question. External ambient
+routes such as `aoa-session-memory-global-route` and `abyss-machine` preserved
+the explicit-only target boundary but were labelled as aided dispatch gaps,
+whereas repo-visible `aoa-change-protocol` and `aoa-eval` activations are real
+treatment-side collision or leak candidates. Manual no-target arms continued
+to report blocked or deferred procedures despite the v13 `not_applicable`
+instruction, so target-procedure semantics remain under-specified. The two
+partial runs also varied on decision procedure disposition while preserving a
+correct root-to-`aoa-decision-find` handoff in both, arguing against a decision
+skill edit before the reporting contract is repaired.
+
+Review exposed one earlier source-surface omission too: the new cohort existed
+in the plan schema but not in private/public receipt cohort enums. Preserve the
+two receipts under their original v13 measures, close schema parity with a
+synthetic private-to-public test, then repair repo-vs-ambient activation and
+output-field semantics before another live attempt.

@@ -1363,6 +1363,7 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
                 if call["arm_type"] in {"implicit_aided", "implicit_control"}
             ]
             trajectory_request = next(call for call in transport.cli_calls if call["arm_type"] == "root_manual_child")
+
             self.assertEqual(2, len(implicit_requests))
             for implicit_request in implicit_requests:
                 self.assertIn("features.rollout_budget.limit_tokens=48000", implicit_request["argv"])
@@ -1451,6 +1452,46 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
             Draft202012Validator(
                 self.load_schema("live-skill-dispatch-public-receipt.schema.json")
             ).validate(legacy_public)
+
+    def test_pilot_return_private_and_public_receipt_schemas_accept_the_cohort(self) -> None:
+        runner = self.runner
+        plan = runner.load_plan(self.plan_path)
+        packet = runner.build_plan_packet(
+            REPO_ROOT,
+            plan,
+            "pilot13-returns",
+            "test-model",
+            "medium",
+        )
+        with tempfile.TemporaryDirectory() as td:
+            receipt = runner.run_confirmed_cohort(
+                repo_root=REPO_ROOT,
+                plan=plan,
+                cohort="pilot13-returns",
+                model="test-model",
+                effort="medium",
+                confirmation_token=packet["confirmation_token"],
+                high_cost_token=packet["high_cost_confirmation_token"],
+                private_root=Path(td),
+                transport=FakeTransport(),
+                test_only_allow_noncanonical_private_root=True,
+            )
+        private_schema = self.load_schema(
+            "live-skill-dispatch-private-receipt.schema.json"
+        )
+        Draft202012Validator(private_schema).validate(receipt)
+        receipt["review"] = {
+            "status": "needs-rerun",
+            "note": "bounded synthetic receipt schema coverage",
+        }
+        public = runner.build_public_receipt(receipt)
+        public_schema = self.load_schema(
+            "live-skill-dispatch-public-receipt.schema.json"
+        )
+        Draft202012Validator(public_schema).validate(public)
+        runner.validate_public_receipt(public)
+        self.assertEqual("pilot13-returns", public["cohort"])
+        self.assertEqual(15, public["trial_count"])
 
     def test_prompt_visibility_contamination_stops_before_any_model_turn(self) -> None:
         runner = self.runner

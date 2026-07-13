@@ -49,7 +49,11 @@ Active first local corpus:
   read-only replay validates grading only; the v12 receipt remains immutable
   and a fresh bounded rerun is still required. That rerun is source-locked as
   `pilot13-returns`: 15 turns covering only the seven affected implicit pairs
-  and the corrected Abyss structured report.
+  and the corrected Abyss structured report. Its first two exact-merged runs
+  are preserved as partial `needs-rerun` receipts: one stopped on transport at
+  6 turns, the next on a contradictory output contract at 14 turns. The final
+  structured arm remains unobserved, and receipt-schema parity must close
+  before another run.
 
 These files are local evidence notes. They do not publish central proof
 acceptance, scoring, verdicts, regression truth, or proof doctrine.

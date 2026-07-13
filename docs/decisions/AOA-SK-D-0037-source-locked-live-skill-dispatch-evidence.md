@@ -446,9 +446,33 @@ As of 2026-07-12:
   implicit pairs and the corrected Abyss structured-report case, exactly 15
   turns. It requires both source contract axes and a second high-cost token,
   while omitting already-clean pilot and unaffected trajectory arms.
+- Current bounded-rerun evidence: the first exact-merged attempt stopped at
+  6/15 on a post-start transport timeout. A fresh attempt passed that point and
+  stopped at 14/15 on an output contradiction. Both receipts are preserved as
+  `needs-rerun`; the final structured arm remains unobserved.
 - Superseded by: none.
 
 ## Review Log
+
+### 2026-07-12 - Preserve partial v13 returns and close receipt schema parity
+
+- First attempt: stopped after six turns when `collision-33` control reached
+  the source-locked 180-second transport cap after turn start. Scope and prior
+  owner-action gates remained clean.
+- Fresh attempt: passed the earlier timeout and reached fourteen turns. Titan
+  control then combined no selected skill with `claims_loaded=true`; the model
+  output validator correctly stopped before the final Abyss structured arm.
+- Live return: external ambient routes preserved the explicit target boundary
+  but were still graded as aided policy gaps, while repo-visible
+  `aoa-change-protocol` and `aoa-eval` activations remain real collision/leak
+  candidates. Manual target procedure disposition also stayed ambiguous.
+- Source return: `pilot13-returns` was added to the plan schema but omitted from
+  private and public receipt cohort enums, so review rejected the new raw
+  receipts before projection.
+- Decision: preserve both partial receipts under their original v13 measures;
+  add the missing cohort enum and an end-to-end synthetic private/public test;
+  land this evidence repair before changing grader semantics or spending on a
+  third live attempt.
 
 ### 2026-07-12 - Bind the smallest live confirmation of v13 returns
 
