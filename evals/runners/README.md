@@ -455,6 +455,16 @@ that five-token form; buffered or inspected forms remain non-exact, and the
 single-attempt, zero-exit, atomic-sentinel, and no-retry rules are unchanged.
 Repeat the same four-turn cohort only after exact merge and all runtime gates.
 
+The exact-merged v21 return completes 4/4 turns and 2/2 pairs with no failure
+or observation gap. Both cases keep their hidden manual targets unselected and
+unloaded, pass the manual non-activation contract in both arms, and verify the
+owner outcome in both arms. Prompt/background, fixture, filesystem, inventory,
+and owner boundaries remain clean. This closes the recurring output-capture
+return, not a Titan skill defect, proof claim, or promotion signal. Preserve
+both v20 `needs-rerun` receipts and the v21 reviewed receipt; after its writeback
+lands, `coverage-closure-root-trajectories` must start from a fresh exact merge
+and repeat every runtime and host gate.
+
 The first exact v16 core wave completes 16/16. Every aided arm gains route and
 procedure correctness, while six outcome pairs are observation-clean and
 correct in both arms. Three fixture commands across `collision-01` and
