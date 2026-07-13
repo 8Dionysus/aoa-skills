@@ -997,6 +997,13 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
             (REPO_ROOT / plan["sources"]["protocol_contract"]).read_text(encoding="utf-8")
         )
         self.assertEqual(plan["protocol_revision"], contract["protocol_revision"])
+        self.assertEqual("codex-cli 0.144.1", self.runner._expected_codex_version(plan))
+        unsupported_plan = dict(plan)
+        unsupported_plan["protocol_revision"] = (
+            "codex-cli-0.144.1-live-dispatch-evidence-v14"
+        )
+        with self.assertRaisesRegex(ValueError, "unsupported Codex protocol revision"):
+            self.runner._expected_codex_version(unsupported_plan)
         self.assertEqual(
             "aoa_codex_app_server_skill_input_contract_v11",
             contract["schema_version"],
@@ -2752,6 +2759,127 @@ Second procedure section.
             "selection_report_miss",
             conflicting_child_measure["failure_class"],
         )
+
+    def test_structured_target_can_report_a_source_declared_base_child(self) -> None:
+        runner = self.runner
+        plan = runner.load_plan(self.plan_path)
+        pilot = runner.expand_cohort(REPO_ROOT, plan, "pilot13")
+        trial = next(item for item in pilot if item.case_id == "desc-18-explicit")
+        self.assertEqual(
+            "aoa-safe-infra-change",
+            trial.equivalent_report_child_skill,
+        )
+        packet = runner.build_plan_packet(
+            REPO_ROOT,
+            plan,
+            "pilot13",
+            "model-a",
+            "medium",
+        )
+        trial_lock = next(
+            item
+            for item in packet["trial_locks"]
+            if item["case_id"] == "desc-18-explicit"
+        )
+        self.assertEqual(
+            "aoa-safe-infra-change",
+            trial_lock["equivalent_report_child_skill"],
+        )
+
+        result = FakeTransport().run_app_server(
+            {
+                "expected_target_skill": "abyss-safe-infra-change",
+                "expected_behavior": "explicit",
+                "arm_type": "app_server_structured",
+            }
+        )
+        result["final_output"]["selected_skill"] = "abyss-safe-infra-change"
+        result["final_output"]["selected_child"] = "aoa-safe-infra-change"
+        result.update(
+            {
+                "prompt_visibility_contract_match": True,
+                "fixture_filesystem_scope_match": True,
+                "fixture_inventory_scope_match": True,
+                "target_skill_full_read_observed": True,
+                "fixture_command_observed": True,
+                "fixture_command_succeeded": True,
+                "fixture_verification_observed": True,
+            }
+        )
+        measure = runner._trial_measure(trial, result)
+        self.assertTrue(measure["reported_target_hierarchy_exact"])
+        self.assertEqual(
+            "aoa-safe-infra-change",
+            measure["hierarchy_report_expected_child_skill"],
+        )
+        self.assertTrue(measure["selection_report_contract_match"])
+        self.assertIsNone(measure["failure_class"])
+
+        result["final_output"]["selected_child"] = "aoa-eval-apply"
+        wrong_child = runner._trial_measure(trial, result)
+        self.assertFalse(wrong_child["reported_target_hierarchy_exact"])
+        self.assertFalse(wrong_child["selection_report_contract_match"])
+        self.assertEqual("selection_report_miss", wrong_child["failure_class"])
+
+        ambiguous = json.loads(json.dumps(plan))
+        ambiguous["structured_report_child_hierarchies"].append(
+            {
+                "target_skill": "abyss-safe-infra-change",
+                "child_skill": "aoa-eval-apply",
+            }
+        )
+        with self.assertRaisesRegex(
+            ValueError,
+            "structured hierarchy target has multiple declared children",
+        ):
+            runner.expand_cohort(REPO_ROOT, ambiguous, "pilot13")
+
+    def test_manual_control_ambient_route_is_not_a_target_activation_leak(self) -> None:
+        runner = self.runner
+        trial = runner.Trial(
+            trial_id="manual-ambient:control",
+            arm_type="implicit_control",
+            case_id="manual-ambient",
+            prompt="Keep the explicit target unloaded.",
+            expected_target_skill="aoa-session-donor-harvest",
+            expected_behavior="manual",
+        )
+        result = FakeTransport().run_cli(
+            {
+                "expected_target_skill": "aoa-session-donor-harvest",
+                "expected_behavior": "manual",
+                "arm_type": "implicit_control",
+            }
+        )
+        result["final_output"].update(
+            {
+                "route_decision": "invoke",
+                "selected_skill": "aoa-session-memory-global-route",
+                "claims_loaded": True,
+                "procedure_disposition": "blocked_missing_input",
+            }
+        )
+        result["target_skill_full_read_observed"] = False
+        result.update(
+            {
+                "fixture_command_observed": True,
+                "fixture_command_succeeded": True,
+                "fixture_verification_observed": True,
+            }
+        )
+        self.assertTrue(runner._load_contract_match(trial, result["final_output"], result))
+        self.assertFalse(
+            runner._dispatch_contract_match(trial, result["final_output"], result)
+        )
+        self.assertIsNone(runner._trial_failure_class(trial, result))
+
+    def test_manual_no_dispatch_prompt_requires_not_applicable_disposition(self) -> None:
+        prompt = self.runner._with_fixture_procedure("Classify the bounded route.")
+        self.assertIn(
+            "manual_required` or `do_not_use` and no target procedure was dispatched",
+            prompt,
+        )
+        self.assertIn("procedure_disposition` must be `not_applicable`", prompt)
 
     def test_explicit_authority_claim_precedes_generic_output_invalidity(self) -> None:
         runner = self.runner

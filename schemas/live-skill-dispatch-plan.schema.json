@@ -18,6 +18,7 @@
     "caps",
     "cohorts",
     "root_child_trajectories",
+    "structured_report_child_hierarchies",
     "failure_taxonomy",
     "privacy"
   ],
@@ -91,6 +92,21 @@
           "case_id": {"type": "string", "pattern": "^collision-[0-9]{2}$"},
           "root_skill": {"enum": ["aoa-decision", "aoa-eval"]},
           "child_skill": {"type": "string", "pattern": "^aoa-[a-z0-9-]+$"}
+        }
+      }
+    },
+    "structured_report_child_hierarchies": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 57,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["target_skill", "child_skill"],
+        "properties": {
+          "target_skill": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]+$", "maxLength": 120},
+          "child_skill": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]+$", "maxLength": 120}
         }
       }
     },

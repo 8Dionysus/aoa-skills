@@ -68,8 +68,8 @@ child is not exact either. Those report-only mismatches are
 `selection_report_miss`; they do not rewrite successful native dispatch or load
 evidence as `dispatch_policy_gap`.
 These rules use contract schema `aoa_codex_app_server_skill_input_contract_v11`
-and protocol revision `codex-cli-0.144.1-live-dispatch-evidence-v12`. Retained
-v1-v11 receipts stay source-locked to their original protocol and review status;
+and protocol revision `codex-cli-0.144.1-live-dispatch-evidence-v13`. Retained
+v1-v12 receipts stay source-locked to their original protocol and review status;
 they are never upgraded in place.
 
 Run the confirmed command only as the child of the plan packet's
@@ -265,6 +265,15 @@ decision graph-first routing, ambient control routes, manual no-dispatch
 disposition, and an Abyss overlay-to-base hierarchy. Treat those as distinct
 adaptive returns; do not collapse them into one pilot score or edit a skill
 until the harness-side returns are removed.
+
+V13 makes those harness returns explicit. Manual-policy failure classes apply
+to the aided arm, while an ambient non-target control route remains available
+for pair contrast without being called a target activation leak. No-dispatch
+manual or do-not-use outputs are prompted to report `not_applicable`. A new
+source-locked structured child-hierarchy map accepts target-plus-declared-base
+reports separately from the existing declared-root-plus-target shape. Replay
+of v12 raw evidence under v13 is grader validation only and never rewrites the
+reviewed public receipt.
 
 See `evals/suites/aoa-skill-live-dispatch-harness.suite.md` and
 `docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md` for

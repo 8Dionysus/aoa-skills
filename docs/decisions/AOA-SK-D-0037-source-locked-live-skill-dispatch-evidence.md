@@ -124,7 +124,7 @@ change is source/runtime drift, not a reason to reuse the old token.
 
 The corrected hermetic pre-turn and evidence contract uses schema
 `aoa_codex_app_server_skill_input_contract_v11` and protocol revision
-`codex-cli-0.144.1-live-dispatch-evidence-v12`. It follows the
+`codex-cli-0.144.1-live-dispatch-evidence-v13`. It follows the
 [official App Server invocation shape](https://learn.chatgpt.com/docs/app-server#start-a-turn-invoke-a-skill)
 and Codex [progressive-disclosure load semantics](https://learn.chatgpt.com/docs/customization/overview#skills).
 Retained receipts source-locked to v1-v10 keep their original protocol and
@@ -321,7 +321,7 @@ As of 2026-07-12:
 - Current cap contract: every arm receives the same source-locked 48k ceiling;
   paired arms may differ in actual use but never in available budget.
 - Current contract schema: `aoa_codex_app_server_skill_input_contract_v11`.
-- Current protocol lock: `codex-cli-0.144.1-live-dispatch-evidence-v12`.
+- Current protocol lock: `codex-cli-0.144.1-live-dispatch-evidence-v13`.
 - Current pair contract: new receipts publish route, selected-child trajectory,
   and selected-procedure-disposition report lift separately. Sent structured
   dispatch, accepted native load, model hierarchy report, and fixture execution
@@ -436,9 +436,41 @@ As of 2026-07-12:
   reviewed receipt is `needs-rerun`, not a negative family verdict, because it
   contains both manual-policy skill collision candidates and distinct
   harness/contract return routes that must be corrected first.
+- Current v13 replay posture: source reread retains `collision-38` as a real
+  root-child handoff candidate. Aided-only manual failure classification,
+  explicit no-dispatch disposition guidance, and one source-declared
+  target-to-base-child structured hierarchy remove three control-side labels
+  and the Abyss selection-report miss from read-only replay. The immutable v12
+  receipt is not rewritten; a fresh bounded rerun is still required.
 - Superseded by: none.
 
 ## Review Log
+
+### 2026-07-12 - Separate v13 harness repairs from remaining skill candidates
+
+- Corrected interpretation: the first review tentatively treated the
+  `collision-38` child expectation as premature. Source reread shows that
+  `aoa-decision` must choose one find/create/correct route, classifies
+  find-or-understand first, and loads only that child. Keep
+  `aoa-decision-find` as the source-authored handoff candidate.
+- Manual control boundary: a control arm that invokes an ambient non-target
+  route did not load the explicit-only target. Keep its target route match
+  false for pair contrast, but do not call it a target activation leak or route
+  it to a skill repair.
+- Procedure boundary: when manual-required or do-not-use selects no target
+  procedure, the selected-procedure disposition is `not_applicable`; blocked
+  and owner-deferred describe a dispatched procedure and need explicit prompt
+  separation.
+- Structured report boundary: `abyss-safe-infra-change` source starts from
+  `aoa-safe-infra-change`. Add a separate source-locked target-to-base-child
+  hierarchy; do not weaken direct-target or unrelated-child checks.
+- Replay result: v13 read-only regrading of the immutable v12 raw pilot yields
+  23 clean arms and seven aided returns: one decision handoff, three manual
+  procedure reports, and three manual collision routes. This validates the
+  corrected grader only and does not replace or rewrite the public receipt.
+- Decision: bump the live evidence protocol to v13, bind both hierarchy source
+  skills into the plan and JIT sidecar, then run the smallest affected live
+  cases before any new full pilot or skill promotion claim.
 
 ### 2026-07-12 - Preserve the first full pilot as mixed adaptive returns
 

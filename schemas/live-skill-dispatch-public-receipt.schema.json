@@ -97,6 +97,7 @@
         "reported_target_direct_exact": {"type": "boolean"},
         "reported_target_hierarchy_exact": {"type": "boolean"},
         "hierarchy_report_expected_root_skill": {"type": ["string", "null"], "pattern": "^[a-z0-9][a-z0-9-]+$", "maxLength": 120},
+        "hierarchy_report_expected_child_skill": {"type": ["string", "null"], "pattern": "^[a-z0-9][a-z0-9-]+$", "maxLength": 120},
         "selection_report_contract_match": {"type": "boolean"},
         "route_decision": {"type": ["string", "null"], "enum": ["invoke", "manual_required", "do_not_use", null]},
         "manual_recommendation": {"type": "boolean"},
