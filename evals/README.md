@@ -185,8 +185,13 @@ Active first local corpus:
   exact eval root and child, reads both completely, and matches route, load,
   procedure, owner-boundary, fixture, and owner-outcome contracts. The bounded
   eval-child wave is closed as reviewed candidate evidence; central proof and
-  promotion remain false. Audit coverage-closure contracts before the next live
-  wave.
+  promotion remain false. The subsequent coverage-closure audit closes all 17
+  implicit pairs at 17/17 source-locked procedure and 17/17 owner-action
+  coverage. Sixteen pairs remain deliberate/manual non-activation guards; the
+  ADR pair is the only route/procedure-scored implicit case. This is
+  deterministic readiness only. After exact merge, runtime parity, host gates,
+  and fresh tokens, the four-turn `coverage-closure-core-implicit` child is the
+  next live wave.
 
 These files are local evidence notes. They do not publish central proof
 acceptance, scoring, verdicts, regression truth, or proof doctrine.
