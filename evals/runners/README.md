@@ -52,6 +52,12 @@ plus 49. Its source corpus is complete at 11/11 procedure and owner-outcome
 pairs: six prompt-visible routes are score-eligible, while five hidden manual
 targets use objective non-activation guards. Contract readiness does not
 authorize live execution or supply proof/promotion authority.
+Its first v18 execution is retained as `needs-rerun`: cases 39 and 41 expose
+that implicit grading must distinguish direct hidden-child activation from a
+prompt-visible root selecting and reading a source-authorized child. The
+smallest return is both arms of cases 39-41 after that observability repair;
+case-40 child loading and case-41 terminal disposition remain independent
+checks.
 The procedure source contract lives at
 `evals/suites/aoa-skill-live-dispatch-procedures.json`; the separate bounded
 owner-action corpus lives at

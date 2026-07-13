@@ -600,6 +600,21 @@ receipt schemas. This is source-contract readiness only. Exact merge, runtime
 parity, host admission, both confirmation tokens, and a reviewed live receipt
 remain mandatory; proof and promotion authority stay false.
 
+The first exact-merged live execution completes all 22 arms. Fixture and
+owner-action contracts match in every arm; filesystem scope, inventory scope,
+and outcome observation stay clean. All six prompt-visible routes gain positive
+aided route and procedure lift. Preserve the reviewed v18 receipt as
+[`aoa-skill-live-dispatch-full-collision-authority-routing-20260713-v18-reviewed-parent-trajectory-observability-needs-rerun.json`](../reports/aoa-skill-live-dispatch-full-collision-authority-routing-20260713-v18-reviewed-parent-trajectory-observability-needs-rerun.json).
+
+Its two `manual_activation_leak` labels are not sufficient evidence of direct
+manual activation. Cases 39 and 41 select the prompt-visible decision root and
+read the exact child already declared by `root_child_trajectories`; the
+implicit trial fails to carry that parent contract into v18 grading. After a
+red-first observability repair, repeat only both arms of cases 39-41. That
+return must still expose the case-40 missing child read and the case-41 terminal
+disposition rather than automatically converting parent authorization into a
+pass.
+
 ## Safety And Privacy
 
 The plan locks Git head, all portable skill files, generated/config inputs,

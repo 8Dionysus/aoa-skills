@@ -1004,3 +1004,29 @@ owner-observable outcomes. The focused deterministic execution completes all
 readiness. It does not authorize or predict a live run, grant proof or
 promotion authority, or replace exact merge, installed-profile parity, host
 admission, both confirmation tokens, and reviewed live evidence.
+
+## 2026-07-13 authority-routing live execution and parent return
+
+The exact-merged v18 run completes all 22 arms and 11 pairs. Every fixture and
+owner-action probe is observed, succeeds, and matches its source contract.
+External filesystem access, broad fixture inventory, and outcome observation
+gaps remain zero. All six prompt-visible pairs gain positive aided route and
+procedure lift; all eleven outcomes are correct in both arms.
+
+Two aided arms keep the receipt at `needs-rerun`. Collisions 39 and 41 select
+the prompt-visible `aoa-decision` root and objectively read the exact
+decision-find or decision-correct child, but the implicit trial drops the
+already-authored `root_child_trajectories` relation and grades any hidden child
+read as a manual activation leak. Source reread changes the diagnosis: the
+children are not direct implicit treatments, but the root explicitly owns
+selection and full reading of exactly one child. The v18 receipt remains
+immutable under its original grader.
+
+Correcting parent-authorized observability will not make the whole slice green
+by definition. Collision 40 selects the decision root but does not read its
+create child, while collision 41 reads the correct child but reports
+`deferred_owner_boundary` instead of the source-owned missing-input terminal.
+The next red-first pass must carry root and expected-child identity into these
+implicit cases, score objective parent-to-child handoff separately from direct
+manual activation, and add a six-turn return containing only both arms of
+collisions 39-41. Proof and promotion authority remain false.

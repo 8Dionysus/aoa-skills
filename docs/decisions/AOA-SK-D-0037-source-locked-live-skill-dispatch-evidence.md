@@ -492,11 +492,37 @@ As of 2026-07-12:
   keeps target route/procedure effects unscored. The authority-routing source
   pass then closes its deterministic gate at 11/11 procedure and 11/11 outcome
   pairs, with six score-eligible routes and five hidden-manual guards. No live
-  authority-routing result exists before exact merge and fresh runtime/host
-  gates.
+  authority-routing result existed before exact merge and fresh runtime/host
+  gates. The subsequent 22-turn execution is observation-complete but remains
+  `needs-rerun` because v18 cannot distinguish two source-authorized
+  decision-root child reads from direct hidden-child activation.
 - Superseded by: none.
 
 ## Review Log
+
+### 2026-07-13 - Preserve the authority-routing parent-observability return
+
+- Exact execution: merged commit `0e3775f`, verified 36/36 installed profile,
+  protocol v18, 37 isolated shadows, 11 disabled MCP ids, medium agent wrapper,
+  concurrency one, and separate green storage/resource admission.
+- Complete observation: 22/22 arms and 11/11 pairs finish. Every fixture and
+  owner action matches; external access, broad inventory, and outcome
+  observation gaps are zero. All six prompt-visible pairs gain positive route
+  and procedure lift.
+- Return evidence: aided cases 39 and 41 select prompt-visible `aoa-decision`
+  and fully read the exact decision-find or decision-correct child, but v18
+  labels both reads as direct manual activation because the implicit trial has
+  no root/child identity.
+- Revised judgment: `root_child_trajectories` and the decision root source
+  already authorize selecting and fully reading exactly one child. Preserve
+  the receipt under v18 as `needs-rerun`; do not regrade or rewrite it.
+- Remaining independent candidates: case 40 selects the root without reading
+  decision-create; case 41 reports `deferred_owner_boundary` rather than the
+  source terminal after reading decision-correct.
+- Return: add parent-authorized observability red-first and repeat only both
+  arms of cases 39-41. Proof and promotion stay false. Post-run storage and
+  resource validation pass; memory repeats the pre-existing zero-fail v2/v3
+  index-schema warning.
 
 ### 2026-07-13 - Close authority-routing source contracts
 
