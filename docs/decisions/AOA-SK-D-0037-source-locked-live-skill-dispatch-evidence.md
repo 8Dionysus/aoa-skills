@@ -483,10 +483,37 @@ As of 2026-07-12:
   pairs are both-correct without lift and the two generic invoke pairs gain
   positive route/procedure lift. Session-growth is next; its subsequent source
   pass closes all 14 contracts on both axes and the typed cohort-slug sanitizer
-  gap, but no live session-growth evidence exists yet.
+  gap. Its first exact live run completes 28/28 but remains `needs-rerun` on
+  three manual target-report gaps and one ambient competing-skill
+  classification; no later wave is open yet.
 - Superseded by: none.
 
 ## Review Log
+
+### 2026-07-12 - Preserve the session-growth routing return
+
+- Exact source: the completed run uses merged commit `7c5803c`, the verified
+  installed foundation profile, v16 protocol, 37 isolated shadows, 11 disabled
+  MCP ids, medium agent wrapper, concurrency one, and fresh storage/resource
+  gates. A prior unsupported-model transport failure stops before skill work
+  and is not promoted into public skill evidence.
+- Complete observation: 28/28 turns and 14/14 pairs complete; every fixture and
+  owner-action probe is single-attempt, successful, observed, and verified.
+  All outcomes are observation-clean and correct in both arms. External access,
+  broad inventory, owner-boundary, prompt-visibility, and post-host issues are
+  zero.
+- Aided gaps: cases 21, 22, and 25 leave their explicit-only target unread but
+  select ambient eval/session-mining and misreport the target route as
+  `invoke`. Case 33 keeps the target manual with `not_applicable`, but ambient
+  `aoa-change-protocol` reaches the competing-skill classifier first.
+- Diagnosis: explicit-only policy exists in portable metadata but not in the
+  trigger-visible description, while the classifier contradicts its ambient
+  skill report contract for an otherwise-correct manual target. Treat these as
+  shared runtime-description and measurement-order gaps, not four independent
+  target-skill defects.
+- Return: preserve the public-safe receipt as reviewed `needs-rerun`; repair
+  both shared contracts red-first and add a paired return containing only
+  collisions 21, 22, 25, and 33. Proof and promotion authority remain false.
 
 ### 2026-07-12 - Close the session-growth source contracts
 

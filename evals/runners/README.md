@@ -432,6 +432,17 @@ such as `session-deadbeef` remain rejected. Contract readiness is not live
 evidence; execute only after exact merge, runtime parity, host gates, and both
 confirmations.
 
+That exact-merged execution now completes 28/28 turns and 14/14 pairs. Every
+fixture and owner-action probe is single-attempt, successful, observed, and
+verified; no output gap, external filesystem access, broad inventory command,
+or owner-boundary failure occurs. The receipt is nevertheless
+`needs-rerun`: collisions 21, 22, and 25 report the manual target route as
+`invoke` while selecting the ambient `aoa-eval` session-mining trajectory, and
+collision 33 is classified as a competing-skill win even though its target
+route and procedure remain correctly manual and `not_applicable`. Preserve the
+full receipt, repair the prompt-visible explicit-only policy and ambient-route
+classification, and return only both arms of those four cases.
+
 See `evals/suites/aoa-skill-live-dispatch-harness.suite.md` and
 `docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md` for
 the evidence and authority boundaries.

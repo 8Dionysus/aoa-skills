@@ -256,6 +256,16 @@ temporary root and must not be copied into this directory.
   owner-action command is observed once, succeeds, exposes its sentinel, and
   verifies. This is reviewed candidate evidence only and grants no proof or
   promotion authority.
+- [aoa-skill-live-dispatch-full-collision-session-growth-20260712-v16-reviewed-routing-gaps-needs-rerun.json](aoa-skill-live-dispatch-full-collision-session-growth-20260712-v16-reviewed-routing-gaps-needs-rerun.json)
+  preserves the first exact-merged 28-turn session-growth wave. All fourteen
+  pairs complete with clean fixture and owner-action observation, no external
+  filesystem or broad inventory access, and no owner-boundary failure. Aided
+  collisions 21, 22, and 25 select ambient eval/session-mining while
+  misreporting the manual target route; collision 33 keeps its target manual
+  but is classified against ambient `aoa-change-protocol`. This is reviewed
+  `needs-rerun` candidate evidence. Repair the shared prompt-visible
+  explicit-only and ambient-classification boundaries, then repeat only both
+  arms of cases 21, 22, 25, and 33.
 
 Corrected live receipts under the v11-v16 evidence protocols are reviewable only
 after canonical user-skill shadows, plugins, and every configured MCP id are

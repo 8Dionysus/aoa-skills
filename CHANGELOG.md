@@ -269,6 +269,15 @@ Tracking starts with the community-docs baseline for this repository.
   `session` wording while transport-shaped prefixes such as
   `session-deadbeef` remain rejected. This is contract readiness only; no
   session-growth live result is claimed before exact merge and fresh gates.
+- The first exact-merged session-growth execution completes 28/28 turns and
+  14/14 pairs with clean fixture and owner-action observation, zero external
+  filesystem access, and clean host post-validation, but remains
+  `needs-rerun`. Aided collisions 21, 22, and 25 report the manual target as
+  invoked while loading the ambient eval/session-mining route; collision 33
+  keeps the target manual but the classifier treats ambient
+  `aoa-change-protocol` as a competing-skill win. The receipt is preserved
+  without rewriting. The next pass must repair prompt-visible explicit-only
+  policy plus ambient-route classification, then repeat only those four pairs.
 - `AOA-SK-D-0037` records why live cohorts remain operator-confirmed candidate
   evidence and now clarifies prompt-surface isolation and evidence-stage grading
   after the contaminated smoke; deterministic harness validation, not model

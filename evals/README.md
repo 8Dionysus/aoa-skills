@@ -100,8 +100,11 @@ Active first local corpus:
   and fixture observation is clean. The next session-growth source pass now
   closes all 14 procedure and 14 owner-action contracts and validates the
   28-turn synthetic cohort. That removes only the deterministic preflight
-  design block; exact-merged runtime and host gates still precede any live
-  claim.
+  design block. The subsequent exact-merged live run completes all 28 arms and
+  14 pairs with clean fixture/outcome observation, but preserves three aided
+  manual-route report failures and one ambient competing-skill classification
+  as `needs-rerun`. Repair the shared runtime-description/report boundary and
+  repeat only collisions 21, 22, 25, and 33 before widening.
 
 These files are local evidence notes. They do not publish central proof
 acceptance, scoring, verdicts, regression truth, or proof doctrine.
