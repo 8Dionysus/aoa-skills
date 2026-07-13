@@ -773,7 +773,7 @@ def _expected_codex_version(plan: dict[str, Any]) -> str:
     revision = str(plan.get("protocol_revision") or "")
     match = re.fullmatch(
         r"codex-cli-([0-9]+(?:\.[0-9]+){2})-"
-        r"(?:app-server-skill-input-v3|live-dispatch-evidence-v(?:[4-9]|1[0-9]))",
+        r"(?:app-server-skill-input-v3|live-dispatch-evidence-v(?:[4-9]|1[0-9]|20))",
         revision,
     )
     if match is None:
@@ -2274,6 +2274,96 @@ class RealTransport:
             actual_codex_version = "unavailable"
             runtime_allowed = False
 
+        requested_model = str(request["model"])
+        requested_effort = str(request["effort"])
+        catalog_error: str | None = None
+        catalog_models: list[dict[str, Any]] = []
+        try:
+            catalog_result = subprocess.run(
+                ["codex", "debug", "models"],
+                check=False,
+                capture_output=True,
+                text=True,
+                timeout=30,
+            )
+            if catalog_result.returncode != 0:
+                catalog_error = "catalog_command_failed"
+            else:
+                try:
+                    catalog_payload = json.loads(catalog_result.stdout)
+                except json.JSONDecodeError:
+                    catalog_error = "invalid_catalog_json"
+                else:
+                    raw_models = (
+                        catalog_payload.get("models")
+                        if isinstance(catalog_payload, dict)
+                        else None
+                    )
+                    if not isinstance(raw_models, list) or not all(
+                        isinstance(item, dict) for item in raw_models
+                    ):
+                        catalog_error = "invalid_catalog_shape"
+                    else:
+                        catalog_models = list(raw_models)
+        except (OSError, subprocess.TimeoutExpired) as exc:
+            catalog_error = type(exc).__name__
+
+        matching_models = [
+            item for item in catalog_models if item.get("slug") == requested_model
+        ]
+        selected_model = matching_models[0] if len(matching_models) == 1 else None
+        selected_visibility = (
+            str(selected_model.get("visibility"))
+            if isinstance(selected_model, dict)
+            else None
+        )
+        selected_reasoning_levels = (
+            selected_model.get("supported_reasoning_levels", [])
+            if isinstance(selected_model, dict)
+            else []
+        )
+        if not isinstance(selected_reasoning_levels, list):
+            selected_reasoning_levels = []
+        supported_efforts = {
+            str(item.get("effort"))
+            for item in selected_reasoning_levels
+            if isinstance(item, dict) and isinstance(item.get("effort"), str)
+        }
+        if catalog_error is None:
+            if selected_model is None:
+                catalog_error = "model_not_uniquely_listed"
+            elif selected_visibility != "list":
+                catalog_error = "model_not_visible"
+            elif requested_effort not in supported_efforts:
+                catalog_error = "effort_not_supported"
+        model_catalog_allowed = catalog_error is None
+        catalog_lock = []
+        for item in catalog_models:
+            if not isinstance(item.get("slug"), str):
+                continue
+            levels = item.get("supported_reasoning_levels", [])
+            if not isinstance(levels, list):
+                levels = []
+            catalog_lock.append(
+                {
+                    "slug": item.get("slug"),
+                    "visibility": item.get("visibility"),
+                    "efforts": sorted(
+                        str(level.get("effort"))
+                        for level in levels
+                        if isinstance(level, dict)
+                        and isinstance(level.get("effort"), str)
+                    ),
+                }
+            )
+        catalog_lock.sort(key=lambda item: str(item["slug"]))
+        model_catalog_sha256 = (
+            sha256_bytes(canonical_json_bytes(catalog_lock))
+            if catalog_models
+            else None
+        )
+        runtime_allowed = runtime_allowed and model_catalog_allowed
+
         allowed = (
             result.returncode == 0
             and storage_decision in ALLOWED_GATE_DECISIONS
@@ -2295,6 +2385,18 @@ class RealTransport:
                 "decision": "allow" if runtime_allowed else "deny",
                 "expected_codex_version": request["expected_codex_version"],
                 "actual_codex_version": actual_codex_version,
+                "model_catalog_decision": (
+                    "allow" if model_catalog_allowed else "deny"
+                ),
+                "model_catalog_error": catalog_error,
+                "model_catalog_count": len(catalog_models),
+                "model_catalog_sha256": model_catalog_sha256,
+                "selected_model": requested_model,
+                "selected_model_visibility": selected_visibility,
+                "selected_effort": requested_effort,
+                "selected_effort_supported": (
+                    requested_effort in supported_efforts
+                ),
             },
             "allowed": allowed,
             "storage_command_returncode": result.returncode,
@@ -4335,6 +4437,8 @@ def run_confirmed_cohort(
         "trial_count": packet["trial_count"],
         "max_concurrency": packet["caps"]["max_concurrency"],
         "expected_codex_version": packet["expected_codex_version"],
+        "model": model,
+        "effort": effort,
     }
     preflight = transport.preflight(preflight_request)
     storage_decision = str(
@@ -4350,7 +4454,10 @@ def run_confirmed_cohort(
         or resource_decision not in ALLOWED_GATE_DECISIONS
         or runtime_decision not in ALLOWED_GATE_DECISIONS
     ):
-        raise ConfirmationError("storage, resource-wrapper, and runtime preflight must all allow the cohort")
+        raise ConfirmationError(
+            "storage, resource-wrapper, runtime, and model-catalog preflight "
+            "must all allow the cohort"
+        )
 
     run_id = "run-" + sha256_bytes(
         canonical_json_bytes(

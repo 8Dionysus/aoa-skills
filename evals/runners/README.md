@@ -102,9 +102,9 @@ equivalent hierarchy report, and a direct target report carrying a conflicting
 child is not exact either. Those report-only mismatches are
 `selection_report_miss`; they do not rewrite successful native dispatch or load
 evidence as `dispatch_policy_gap`.
-These rules use contract schema `aoa_codex_app_server_skill_input_contract_v13`
-and protocol revision `codex-cli-0.144.1-live-dispatch-evidence-v18`. Retained
-v1-v17 receipts stay source-locked to their original protocol and review status;
+These rules use contract schema `aoa_codex_app_server_skill_input_contract_v14`
+and protocol revision `codex-cli-0.144.1-live-dispatch-evidence-v20`. Retained
+v1-v19 receipts stay source-locked to their original protocol and review status;
 they are never upgraded in place.
 The reviewed exact-merged v18 session-growth return completes 8/8 arms with all
 four manual non-activation, fixture, and owner-outcome pairs correct in both
@@ -116,8 +116,14 @@ Run the confirmed command only as the child of the plan packet's
 `resource_launch_prefix`. The wrapper must produce the expected
 `ABYSS_RESOURCE_CLASS`, `ABYSS_RESOURCE_KIND=agent`, and
 `abyss-machine-agent-<class>-*.service` cgroup. The runner independently calls
-the storage write preflight and checks the exact Codex version before creating
-its private run directory.
+the storage write preflight, checks the exact Codex version, and reads the
+account-visible `codex debug models` catalog before creating its private run
+directory. The exact requested model must have `visibility=list`, and the
+requested reasoning effort must occur in that model's supported levels. Only a
+sanitized catalog digest and selected-model compatibility fields enter the
+private preflight receipt; base instructions and the raw catalog are not copied.
+Catalog absence, ambiguity, hidden visibility, unsupported effort, command
+failure, or invalid JSON fail closed before any model turn.
 
 Every live arm has the same source-locked 48k weighted-token ceiling. In
 particular, aided and control arms must remain cap-symmetric even when the
@@ -410,6 +416,16 @@ confirmed execution validates all 34 paired turns through private/public receipt
 contracts, but creates no live evidence. Run the four-turn core implicit wave
 first after exact merge, runtime parity, host admission, and fresh confirmations;
 review and return before either Titan wave.
+
+The first exact-merged v19 core-implicit attempt stopped at one turn because a
+deprecated requested model was no longer accepted by the ChatGPT-backed Codex
+runtime. It is retained as transport-only `needs-rerun` evidence. The unchanged
+rerun on the current account-visible model completed 4/4 turns and 2/2 pairs
+without failure or observation gaps: ADR gained positive route plus procedure
+lift, memo writeback stayed manually inactive in both arms, and both outcomes
+were correct in both arms. The model change is part of each receipt's source
+lock and prevents unqualified aggregate comparison. V20 adds the catalog gate
+above before Titan implicit A may run.
 
 The first exact v16 core wave completes 16/16. Every aided arm gains route and
 procedure correctness, while six outcome pairs are observation-clean and

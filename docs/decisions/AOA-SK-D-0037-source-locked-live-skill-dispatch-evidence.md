@@ -124,10 +124,10 @@ change is source/runtime drift, not a reason to reuse the old token.
 
 The corrected hermetic pre-turn and evidence contract uses schema
 `aoa_codex_app_server_skill_input_contract_v14` and protocol revision
-`codex-cli-0.144.1-live-dispatch-evidence-v19`. It follows the
+`codex-cli-0.144.1-live-dispatch-evidence-v20`. It follows the
 [official App Server invocation shape](https://learn.chatgpt.com/docs/app-server#start-a-turn-invoke-a-skill)
 and Codex [progressive-disclosure load semantics](https://learn.chatgpt.com/docs/customization/overview#skills).
-Retained receipts source-locked to v1-v18 keep their original protocol and
+Retained receipts source-locked to v1-v19 keep their original protocol and
 review status and are not upgraded in place.
 
 The source-locked caps include both the rollout token limit and its required
@@ -321,7 +321,7 @@ As of 2026-07-13:
 - Current cap contract: every arm receives the same source-locked 48k ceiling;
   paired arms may differ in actual use but never in available budget.
 - Current contract schema: `aoa_codex_app_server_skill_input_contract_v14`.
-- Current protocol lock: `codex-cli-0.144.1-live-dispatch-evidence-v19`.
+- Current protocol lock: `codex-cli-0.144.1-live-dispatch-evidence-v20`.
 - Current pair contract: new receipts publish route, selected-child trajectory,
   and selected-procedure-disposition report lift separately. Sent structured
   dispatch, accepted native load, model hierarchy report, and fixture execution
@@ -509,12 +509,51 @@ As of 2026-07-13:
   all 15 Titan scaffold pairs remain deliberate/manual non-activation guards.
   The eight root-child and 45 structured turns retain their separate
   trajectory, native-dispatch, load, hierarchy, fixture, and boundary
-  contracts. This closes only deterministic readiness; the four-turn core
-  implicit wave remains the first live step after exact merge, runtime parity,
-  host admission, and fresh confirmation tokens.
+  contracts. The exact-merged v19 core wave is now reviewed: its first
+  deprecated-model attempt stopped before pair construction, while the
+  unchanged current-model rerun completed 4/4 turns and 2/2 pairs without a
+  failure or observation gap. ADR gained positive route plus procedure lift;
+  memo writeback stayed manually inactive in both arms; both owner outcomes
+  were correct in both arms. Protocol v20 now fail-closes on the fresh local
+  model catalog before spend. Titan implicit A is the next live step after
+  exact merge, runtime parity, host admission, and fresh confirmation tokens.
 - Superseded by: none.
 
 ## Review Log
+
+### 2026-07-13 - Preserve core closure evidence and gate current model support
+
+- Trigger: the first exact-merged v19 core-implicit run passed storage,
+  resource-wrapper, prompt, and runtime-version checks but stopped on its first
+  CLI turn because `gpt-5.2` was no longer supported for ChatGPT-backed Codex.
+  The local `codex debug models` catalog exposed an account-aware read-only
+  capability surface that could have blocked the run before model spend; the
+  current [official Codex model guide](https://learn.chatgpt.com/docs/models)
+  also identified `gpt-5.6-sol` as the supported Power default.
+- Evidence: preserve the one-turn/zero-pair attempt as `needs-rerun` transport
+  evidence. The unchanged source-locked rerun on `gpt-5.6-sol` completed all
+  four turns and both pairs with no failure, external access, broad inventory,
+  or observation gap. ADR gained positive aided route and
+  procedure-disposition lift. Memo writeback stayed unloaded and manual in both
+  arms. Both owner outcomes were correct in both arms. The receipts remain
+  separate; the model change is not an aggregate comparison or proof claim.
+- Decision: advance the live protocol to v20 without changing contract schema
+  v14. Before creating the private run root, real transport preflight must read
+  `codex debug models`, require exactly one `visibility=list` match for the
+  requested slug, and require the requested reasoning effort. Record only a
+  sanitized catalog digest and compatibility fields; never copy raw catalog
+  instructions. Command, JSON, shape, visibility, slug, or effort failures deny
+  the run. Retain every v19 receipt unchanged.
+- Host boundary: the successful run entered through the medium agent wrapper
+  after explicit interactive force because zram was critical but memory PSI
+  showed no active stall. Peak cgroup memory was about 450 MiB with no swap.
+  Post-run storage validation was 19/19, resource validation 16/16, and memory
+  validation had 35 checks, zero failures, and the pre-existing
+  `memory/index.json` schema warning only.
+- Next: land and runtime-verify v20, then plan Titan implicit A against the
+  fresh account catalog and repeat all storage/resource/memory gates plus both
+  confirmations. Candidate evidence still cannot grant central proof or
+  promotion authority.
 
 ### 2026-07-13 - Close the coverage-closure implicit source contracts
 
