@@ -194,7 +194,7 @@
         "validate",
         ".agents/skills/aoa-eval"
       ],
-      "description_sha256": "40f45070af8cc9cb2b701c7aa94b01933934884777b3adfc847fd6a0645115e4"
+      "description_sha256": "7850521de76e921cbb2b545730de7c468ccdee0fe0d3776f799dcf0943fb0bda"
     },
     {
       "skill_name": "aoa-eval-apply",
@@ -204,7 +204,7 @@
         "validate",
         ".agents/skills/aoa-eval-apply"
       ],
-      "description_sha256": "5fb0afa1ad767fab43dfa051840bef1038bca5729b265989663a86e3111da39d"
+      "description_sha256": "82cd3beca7c0ccfa1c335e6103bbed75c2b97d89de45c36f58830670eda5229c"
     },
     {
       "skill_name": "aoa-eval-design",

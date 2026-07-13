@@ -1,6 +1,6 @@
 ---
 name: aoa-eval-apply
-description: 'Explicit activation required: do not invoke or load this skill from an implicit match; wait for explicit user or operator invocation or a source-authorized parent-route selection. Run or route an already selected eval, validator, test, or script, then report command results, artifacts, generated drift, proof limits, and next route. Use when the eval surface is already selected and the task is to apply it rather than choose or design it. When the parent has classified apply but the exact command, source root/ref, prerequisites, expected artifacts, or pass/fail criteria is unavailable inside the active evidence boundary, stop with blocked_missing_input; do not relabel missing input as deferred_owner_boundary or substitute another command. Do not use when no existing eval has been selected, when an intake need should be recorded first, or when central proof promotion is being requested.'
+description: 'Explicit activation required: do not invoke or load this skill from an implicit match; wait for explicit user or operator invocation or a source-authorized parent-route selection. Apply an already selected eval, validator, test, or script and report results, artifacts, drift, proof limits, and next route. Use when the surface is selected and must run. If the parent selects apply but the exact command, source root/ref, prerequisites, expected artifacts, or pass/fail criteria is missing, stop with blocked_missing_input; do not relabel missing input as deferred_owner_boundary or substitute another command. Request the exact selected command, source root/ref, prerequisites, expected artifacts, and pass/fail criteria as the next owner action; never choose a fixture probe as the selected eval. Do not use before selection, for intake or design, or for central proof promotion.'
 license: Apache-2.0
 compatibility: Designed for Codex or similar coding agents with repository file access and an interactive shell. Network access is optional and only needed when repository validation or referenced workflows require it.
 metadata:
@@ -68,7 +68,10 @@ Do not use this skill when:
    root/ref, prerequisites, expected artifacts, or pass/fail criteria is
    unavailable inside the active evidence boundary and no permitted packet or
    source read can supply it, stop with `blocked_missing_input`; do not relabel
-   missing input as `deferred_owner_boundary` or substitute a fixture probe
+   missing input as `deferred_owner_boundary` or substitute a fixture probe;
+   request the exact selected command, source root/ref, prerequisites, expected
+   artifacts, and pass/fail criteria as the next owner action, and never choose
+   a fixture probe as the selected eval
 2. confirm the selected eval surface, owner repo, source root, and source ref;
    if exact merged evidence is required, use a clean exact tree without
    modifying a dirty canonical checkout
@@ -124,11 +127,16 @@ Do not use this skill when:
 - hiding generated drift
 - promoting failure observations without a reproducible command
 - relabelling absent application inputs as `deferred_owner_boundary`
+- choosing an independent fixture probe instead of requesting the exact
+  selected command and its source context as the next owner action
 
 ## Verification
 - confirm the selected eval existed before running
 - confirm absent application inputs stopped as `blocked_missing_input` without
   being relabelled as `deferred_owner_boundary` or replaced by another command
+- confirm the report requests the exact selected command, source root/ref,
+  prerequisites, expected artifacts, and pass/fail criteria as the next owner
+  action and never chooses a fixture probe as the selected eval
 - confirm source root/ref and whether the observation came from a live dirty
   workspace or an exact source tree
 - for a sidecar-backed suite, confirm the owner validator reported ready

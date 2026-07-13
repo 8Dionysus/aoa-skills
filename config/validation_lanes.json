@@ -11,6 +11,8 @@
       ".agents/skills",
       "generated/agent_skill_catalog.json",
       "generated/agent_skill_catalog.min.json",
+      "generated/skill_intelligence_registry.json",
+      "generated/skill_intelligence_registry.min.json",
       "generated/portable_export_map.json",
       "generated/local_adapter_manifest.json",
       "generated/local_adapter_manifest.min.json",
@@ -89,6 +91,13 @@
         "scripts/export/build_agent_skills.py",
         "--repo-root",
         "."
+      ],
+      [
+        "python",
+        "scripts/builders/build_catalog.py",
+        "--check",
+        "--group",
+        "all"
       ],
       [
         "python",
@@ -175,6 +184,8 @@
         ".agents/skills",
         "generated/agent_skill_catalog.json",
         "generated/agent_skill_catalog.min.json",
+        "generated/skill_intelligence_registry.json",
+        "generated/skill_intelligence_registry.min.json",
         "generated/portable_export_map.json",
         "generated/local_adapter_manifest.json",
         "generated/local_adapter_manifest.min.json",
@@ -262,6 +273,12 @@
         "scripts/export/build_agent_skills.py",
         "--repo-root",
         "."
+      ],
+      [
+        "python",
+        "scripts/builders/build_catalog.py",
+        "--group",
+        "all"
       ],
       [
         "python",
@@ -357,6 +374,8 @@
         ".agents/skills",
         "generated/agent_skill_catalog.json",
         "generated/agent_skill_catalog.min.json",
+        "generated/skill_intelligence_registry.json",
+        "generated/skill_intelligence_registry.min.json",
         "generated/portable_export_map.json",
         "generated/local_adapter_manifest.json",
         "generated/local_adapter_manifest.min.json",
@@ -425,6 +444,10 @@
         "scripts/export/build_agent_skills.py",
         "--repo-root",
         "."
+      ],
+      [
+        "python",
+        "scripts/builders/build_catalog.py"
       ],
       [
         "python",

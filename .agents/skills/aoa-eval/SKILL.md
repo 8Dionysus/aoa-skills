@@ -1,6 +1,6 @@
 ---
 name: aoa-eval
-description: Route AoA eval-lane work by raising the available session readiness packet, checking existing local and central eval surfaces first, including any available repo-family or workspace eval-port inventory with missing/skeleton/active/invalid status, then choosing apply, local intake need, local design, or session mining while preserving owner boundaries. Use when a task asks whether an eval exists, whether one should be added, how local evals connect to aoa-evals, how local eval-port status should route work, or how validators, tests, scripts, traces, regressions, trigger misses, local eval ports, aoa-evals-mcp, candidate packets, or per-session eval readiness should be used as evaluation surfaces. Do not use for ordinary one-off tests, source-of-truth mapping, decision records, memo writeback, or direct central aoa-evals proof-authority edits.
+description: Route AoA eval-lane work by raising the available session readiness packet, checking existing local and central eval surfaces first, including any available repo-family or workspace eval-port inventory with missing/skeleton/active/invalid status, then choosing apply, local intake need, local design, or session mining while preserving owner boundaries. Use when a task asks whether an eval exists, whether one should be added, how local evals connect to aoa-evals, how local eval-port status should route work, or how validators, tests, scripts, traces, regressions, trigger misses, local eval ports, aoa-evals-mcp, candidate packets, or per-session eval readiness should be used as evaluation surfaces. Before acting, read this root skill to EOF and then fully read exactly one selected child; a bounded prefix is not a complete load. Do not use for ordinary one-off tests, source-of-truth mapping, decision records, memo writeback, or direct central aoa-evals proof-authority edits.
 license: Apache-2.0
 compatibility: Designed for Codex or similar coding agents with repository file access and an interactive shell. Network access is optional and only needed when repository validation or referenced workflows require it.
 metadata:
@@ -35,6 +35,12 @@ Selection precedence is fail-closed: `aoa-eval-select` is the default while fit
 is unknown. Missing target-repository evidence is not evidence that no eval
 fits; stop inside `aoa-eval-select` with the missing input rather than inferring
 a no-fit result.
+
+Before choosing a child, read this root `SKILL.md` to EOF. A bounded prefix is
+not a complete load: if a read tool returns only part of the file, continue
+from the next unread line to EOF before classifying the route or opening a
+child. Do not reuse another turn's or session's earlier read as current load
+evidence.
 
 When that packet exposes `eval_forge_front_door`, use it as the live Eval Forge
 orientation surface. It should point to the Forge operating path
@@ -122,7 +128,10 @@ Do not use this skill when:
 - stop line when no owner surface is safe to write
 
 ## Procedure
-1. when an OS Abyss `aoa-evals` checkout is available, raise the read-only
+1. read this root `SKILL.md` to EOF before classifying or loading a child; a
+   bounded prefix is not a complete load, so continue every truncated or
+   range-limited read from the next unread line until EOF
+2. when an OS Abyss `aoa-evals` checkout is available, raise the read-only
    session readiness packet before choosing a subskill:
    - from the `aoa-evals` repo, run
      `python scripts/aoa_eval_session_start.py --json`
@@ -143,11 +152,11 @@ Do not use this skill when:
      worksheet example before owner-review worksheet work
    - if the command is missing or fails, name that gap and continue with local
      and central source inspection instead of inventing a route
-2. before importing `.aoa` or trace-derived eval candidates, validate the
+3. before importing `.aoa` or trace-derived eval candidates, validate the
    candidate-only contract when the validator is available:
    `python scripts/validate_eval_candidate_packets.py --schema-only`; validate
    any actual packet path before using it as candidate evidence
-3. classify the pressure:
+4. classify the pressure:
    - fit is unknown, the target repository or its eval evidence is missing, or
      the task asks to inspect or decide among current surfaces: use
      `aoa-eval-select`; if selection cannot finish, report
@@ -160,17 +169,17 @@ Do not use this skill when:
    - a local eval suite or report needs design: use `aoa-eval-design`
    - `.aoa` evidence should be mined for missed trigger cases: use
      `aoa-eval-session-mining`
-4. if a repo-family or workspace local-port inventory is available, consult it
+5. if a repo-family or workspace local-port inventory is available, consult it
    before local need/design/session mining to distinguish missing, skeleton,
    active, invalid, and stale local surfaces; treat inventory route keys as
    advisory routing evidence, not proof or mutation authority
-5. check local owner route first: repository `AGENTS.md`, `evals/PORT.yaml`,
+6. check local owner route first: repository `AGENTS.md`, `evals/PORT.yaml`,
    nearby validators, tests, scripts, and local route docs
-6. check central `aoa-evals` only for proof doctrine, local-port contract,
+7. check central `aoa-evals` only for proof doctrine, local-port contract,
    central bundles, scoring, verdicts, or review rules
-7. use `aoa-evals-mcp` only as a runtime access plane; do not let an MCP packet
+8. use `aoa-evals-mcp` only as a runtime access plane; do not let an MCP packet
    create proof truth or write central eval bundles
-8. when prior-session behavior matters and a workspace/session-memory evidence
+9. when prior-session behavior matters and a workspace/session-memory evidence
    route is available, use an installed `aoa-session-memory-evidence-route`
    skill or the equivalent read-only `aoa-session-memory-mcp` packet; for a
    stable eval/validator/test/MCP/failure anchor, ask for `usage-chain` first
@@ -183,7 +192,7 @@ Do not use this skill when:
    owner accepts them; if no workspace/session-memory route is available, name
    the gap and continue from current local and central eval owner files instead
    of treating the missing packet as a blocker
-9. after classification, load exactly one selected subskill before applying its
+10. after classification, load exactly one selected subskill before applying its
    procedure:
    - read the selected subskill's complete `SKILL.md`
    - the selected child name is selection evidence only, not load or handoff
@@ -191,9 +200,9 @@ Do not use this skill when:
    - do not apply the child procedure or report it loaded until that read is
      complete
    - keep every unselected subskill out of context unless the route changes
-10. if no safe route exists, stop with the missing owner evidence and the next
+11. if no safe route exists, stop with the missing owner evidence and the next
    narrow source to inspect
-11. after any write or eval run, report the route, owner surface, evidence used,
+12. after any write or eval run, report the route, owner surface, evidence used,
    validation command, and remaining proof risk
 
 ## Contracts
@@ -238,12 +247,16 @@ Do not use this skill when:
 - treating the Eval Forge front door as a central proof bundle instead of a
   route into existing surfaces, local ports, worksheets, rejects, or review
 - letting MCP writes bypass owner review
+- treating a bounded prefix of this root skill as a complete load, then opening
+  or applying a child before the root read reaches EOF
 - naming a selected subskill without reading its complete `SKILL.md` before
   applying its procedure
 - loading every subskill for a simple route decision
 - promoting scaffolded trigger pressure to canonical proof without review
 
 ## Verification
+- confirm this root `SKILL.md` was read to EOF in the current turn; a bounded
+  prefix or prior-turn read is not current load evidence
 - confirm exactly one subskill route was selected
 - when fit was unknown or target evidence was missing, confirm the route stayed
   in `aoa-eval-select` and did not authorize local intake without an explicit

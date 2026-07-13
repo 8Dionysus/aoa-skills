@@ -961,6 +961,17 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
         overrides = json.loads(
             (REPO_ROOT / "config" / "portable_skill_overrides.json").read_text()
         )["skills"]
+        root_source = " ".join(
+            (
+                REPO_ROOT
+                / "skills/core/engineering/aoa-eval/SKILL.md"
+            ).read_text().split()
+        )
+        root_description = overrides["aoa-eval"]["description"]
+        self.assertIn("read this root `SKILL.md` to EOF", root_source)
+        self.assertIn("a bounded prefix is not a complete load", root_source)
+        self.assertIn("read this root skill to EOF", root_description)
+        self.assertIn("a bounded prefix is not a complete load", root_description)
         for skill_name in expected_children.values():
             source = (
                 REPO_ROOT
@@ -982,6 +993,27 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
                     "do not relabel missing input as deferred_owner_boundary",
                     description,
                 )
+        apply_source = " ".join(
+            (
+                REPO_ROOT
+                / "skills/core/engineering/aoa-eval-apply/SKILL.md"
+            ).read_text().split()
+        )
+        apply_description = overrides["aoa-eval-apply"]["description"]
+        exact_next_action = (
+            "request the exact selected command, source root/ref, prerequisites, "
+            "expected artifacts, and pass/fail criteria as the next owner action"
+        )
+        self.assertIn(exact_next_action, apply_source.lower())
+        self.assertIn(exact_next_action, apply_description.lower())
+        self.assertIn(
+            "never choose a fixture probe as the selected eval",
+            apply_source.lower(),
+        )
+        self.assertIn(
+            "never choose a fixture probe as the selected eval",
+            apply_description.lower(),
+        )
         packet = runner.build_plan_packet(
             REPO_ROOT,
             plan,

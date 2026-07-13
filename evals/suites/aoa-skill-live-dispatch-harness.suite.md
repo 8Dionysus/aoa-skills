@@ -693,6 +693,29 @@ sources rather than only root/select/apply. The existing ten-turn
 exact merge, installed runtime parity, host admission, both confirmations, and
 reviewed live evidence remain mandatory before any family conclusion.
 
+The first exact-merged/runtime-parity execution completed all ten turns but did
+not close the wave. Preserve the reviewed candidate-only return as
+[`aoa-skill-live-dispatch-full-collision-eval-children-20260713-v19-needs-rerun.json`](../reports/aoa-skill-live-dispatch-full-collision-eval-children-20260713-v19-needs-rerun.json).
+All five aided arms selected and fully read their intended child and reported
+the expected `blocked_missing_input` procedure. Cases 47-48 nevertheless read
+only the first 240 lines of the prompt-visible eval root, so both retain
+`skill_load_gap`; case 45 chose the wrong single objective candidate even
+though its final blocked next step requested the correct selected-command
+context. The bounded source return now makes a current root read to EOF
+explicit after every prefix-limited read and makes the exact apply
+command/source-context request the mandatory next owner action while forbidding
+the fixture probe as the selected eval. Exact merge, runtime parity, host
+admission, and a full ten-turn rerun remain required. Proof and promotion stay
+false.
+
+The same source return exposed a generated-lane dependency: portable export
+updated the apply description after Skill Intelligence had already been built.
+The owner lane manifest now refreshes or checks the catalog after portable
+export in generated, export, and release routes, and both Skill Intelligence
+registries are blocking drift paths. This prevents a portable-only skill repair
+from appearing export-clean while its model-facing intelligence projection is
+stale.
+
 ## Safety And Privacy
 
 The plan locks Git head, authored portable overrides, all portable skill files,

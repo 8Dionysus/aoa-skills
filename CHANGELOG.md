@@ -351,6 +351,22 @@ Tracking starts with the community-docs baseline for this repository.
   44-48 now have 5/5 procedure and 5/5 owner-action contracts, and confirmation
   locks every child source. This removes only the deterministic design block;
   exact-merged runtime parity and reviewed ten-turn live evidence remain open.
+- The first exact-merged ten-turn eval-child pass is preserved as reviewed
+  `needs-rerun` evidence rather than promoted. All five aided arms selected and
+  fully read the intended child and reported the required missing-input
+  terminal, but design and session-mining read only the first 240 lines of the
+  eval root, while apply chose the wrong single-attempt objective candidate
+  despite reporting the correct next request. The eval root now requires a
+  current read to EOF after any bounded prefix, and apply now requires the exact
+  command/source-context request as the next owner action while forbidding a
+  fixture probe as the selected eval. Exact merge, runtime parity, and a full
+  reviewed rerun remain open.
+- Portable-export lanes now refresh or recheck the catalog after
+  `build_agent_skills.py` and track both Skill Intelligence registries as
+  generated drift. The first repair pass exposed that catalog-before-export
+  could leave intelligence descriptions stale while the export lane still
+  appeared green; generated, export, and release sequences now close that
+  dependency before validation or full tests.
 - Live-dispatch evidence v17 repairs both shared boundaries red-first. Portable
   export now prepends a policy-derived activation sentence to all 43 `manual`
   and two `suggest` descriptions, allowing only explicit invocation or a

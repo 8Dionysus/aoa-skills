@@ -70,7 +70,10 @@ Do not use this skill when:
    root/ref, prerequisites, expected artifacts, or pass/fail criteria is
    unavailable inside the active evidence boundary and no permitted packet or
    source read can supply it, stop with `blocked_missing_input`; do not relabel
-   missing input as `deferred_owner_boundary` or substitute a fixture probe
+   missing input as `deferred_owner_boundary` or substitute a fixture probe;
+   request the exact selected command, source root/ref, prerequisites, expected
+   artifacts, and pass/fail criteria as the next owner action, and never choose
+   a fixture probe as the selected eval
 2. confirm the selected eval surface, owner repo, source root, and source ref;
    if exact merged evidence is required, use a clean exact tree without
    modifying a dirty canonical checkout
@@ -128,12 +131,17 @@ Do not use this skill when:
 - hiding generated drift
 - promoting failure observations without a reproducible command
 - relabelling absent application inputs as `deferred_owner_boundary`
+- choosing an independent fixture probe instead of requesting the exact
+  selected command and its source context as the next owner action
 
 ## Verification
 
 - confirm the selected eval existed before running
 - confirm absent application inputs stopped as `blocked_missing_input` without
   being relabelled as `deferred_owner_boundary` or replaced by another command
+- confirm the report requests the exact selected command, source root/ref,
+  prerequisites, expected artifacts, and pass/fail criteria as the next owner
+  action and never chooses a fixture probe as the selected eval
 - confirm source root/ref and whether the observation came from a live dirty
   workspace or an exact source tree
 - for a sidecar-backed suite, confirm the owner validator reported ready

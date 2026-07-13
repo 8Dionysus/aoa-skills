@@ -41,7 +41,7 @@
     {
       "path": "skills/core/engineering/aoa-eval/SKILL.md",
       "kind": "file",
-      "sha256": "8ea5a49e518266fb423e749c8d1ae6072d849087e52daff7c8ab027e713e81b7"
+      "sha256": "dc63e1c2407f3b1d1da7f7319b6192dfd38619a9c2b7df6b8f7f91bab00862aa"
     },
     {
       "path": "skills/core/engineering/aoa-eval/examples/runtime.md",
@@ -51,7 +51,7 @@
     {
       "path": "skills/core/engineering/aoa-eval-apply/SKILL.md",
       "kind": "file",
-      "sha256": "d2197beb170236e50a1210983d8711a0ccd2a5a763a440671d4922c42f63a4cd"
+      "sha256": "2bbf7b2c3d896220b2b6927a3413e22827172c56896f586b48932a29ff332043"
     },
     {
       "path": "skills/core/engineering/aoa-eval-apply/examples/runtime.md",

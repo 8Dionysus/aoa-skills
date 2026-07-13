@@ -507,6 +507,44 @@ As of 2026-07-13:
 
 ## Review Log
 
+### 2026-07-13 - Return from the first eval-child live pass to root load and apply action
+
+- Trigger: the exact-merged `full-collision-eval-children` run completed all
+  ten turns after verified user-profile installation and prompt visibility, but
+  the reviewed safe projection retained two `skill_load_gap` returns and one
+  owner-outcome miss.
+- Root-load evidence: aided cases 47-48 selected the correct eval child and
+  fully read that child, yet read only lines 1-240 of the prompt-visible
+  `aoa-eval` root. Selection, child load, procedure disposition, and owner
+  outcome were otherwise correct. A selected child cannot compensate for an
+  incomplete root load.
+- Apply evidence: aided case 45 selected and fully read `aoa-eval-apply`,
+  stopped at `blocked_missing_input`, and reported the correct request for the
+  selected command and source context, but used the wrong single-attempt
+  objective candidate. Correct prose after a failed candidate does not satisfy
+  the observable owner-action contract.
+- Decision: require a current read of the eval root to EOF before child
+  classification, explicitly state that a bounded prefix is not load evidence,
+  and require apply's missing-input report to request the exact selected
+  command, source root/ref, prerequisites, artifacts, and pass/fail criteria as
+  the next owner action. An independent fixture probe may not be chosen as the
+  selected eval.
+- Lane consequence: the repair also exposed a catalog/export dependency. A
+  portable-only description change was exported after the catalog build,
+  leaving both Skill Intelligence registries stale until full tests. Require a
+  post-export catalog refresh or check in generated, export, and release lanes,
+  and include both registries in the blocking export drift set rather than
+  relying on a later full-test failure.
+- Evidence boundary: preserve the first public-safe receipt as
+  `needs-rerun`; do not overwrite or reinterpret it after repair. Keep protocol
+  v19 because transport, schemas, and scoring semantics are unchanged. Land the
+  source repair, restore runtime parity from the exact merge, and repeat the
+  complete five-pair cohort rather than sampling only the failed cases.
+- Host posture: the run completed through a medium agent resource wrapper with
+  storage and resource validators fully green; memory had zero failures and
+  only the pre-existing memory-index schema warning. Proof authority and
+  promotion remain false.
+
 ### 2026-07-13 - Close the eval-child deterministic source gate under v19
 
 - Trigger: after the reviewed decision-child return closed authority routing,

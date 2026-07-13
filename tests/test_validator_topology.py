@@ -165,6 +165,52 @@ class ValidatorTopologyTests(unittest.TestCase):
             validation_lanes.EXPORT_FULL_COMMAND_SEQUENCE,
         )
 
+    def test_portable_export_refreshes_catalog_before_validation_or_tests(self) -> None:
+        export_command = (
+            "python",
+            "scripts/export/build_agent_skills.py",
+            "--repo-root",
+            ".",
+        )
+        catalog_build = (
+            "python",
+            "scripts/builders/build_catalog.py",
+            "--group",
+            "all",
+        )
+        catalog_check = (
+            "python",
+            "scripts/builders/build_catalog.py",
+            "--check",
+            "--group",
+            "all",
+        )
+
+        generated = validation_lanes.EXPORT_GENERATED_CHECK_COMMAND_SEQUENCE
+        generated_export = generated.index(export_command)
+        self.assertGreater(generated.index(catalog_check), generated_export)
+
+        export_full = validation_lanes.EXPORT_FULL_COMMAND_SEQUENCE
+        export_full_export = export_full.index(export_command)
+        self.assertIn(catalog_build, export_full[export_full_export + 1 :])
+
+        release = validation_lanes.RELEASE_CHECK_COMMAND_SEQUENCE
+        release_export = release.index(export_command)
+        release_test = release.index(("python", "-m", "pytest", "-q", "tests"))
+        self.assertIn(
+            ("python", "scripts/builders/build_catalog.py"),
+            release[release_export + 1 : release_test],
+        )
+
+        self.assertIn(
+            "generated/skill_intelligence_registry.json",
+            validation_lanes.EXPORT_GENERATED_DRIFT_PATHS,
+        )
+        self.assertIn(
+            "generated/skill_intelligence_registry.min.json",
+            validation_lanes.EXPORT_GENERATED_DRIFT_PATHS,
+        )
+
     def test_validation_lanes_root_ingress_is_safe_manifest_cli(self) -> None:
         help_result = subprocess.run(
             (sys.executable, "scripts/validation_lanes.py", "--help"),
