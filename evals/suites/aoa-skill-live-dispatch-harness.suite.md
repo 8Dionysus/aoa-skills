@@ -804,6 +804,16 @@ control arms. Preserve this as reviewed candidate evidence, keep proof and
 promotion false, and open root trajectories only after this writeback lands and
 their own exact-merge/runtime/host gates pass.
 
+The exact-merged root-trajectory wave then completes 8/8 without a failure,
+external access, broad inventory, prompt/fixture mismatch, or owner-boundary
+violation. All three decision children and all five eval children are selected
+exactly and read completely after accepted explicit root input; both roots are
+also read completely and every fixture probe passes. This closes the dedicated
+root-child lane, not an implicit-pair or owner-outcome score. Preserve the
+reviewed candidate receipt, keep proof and promotion false, and open the
+30-turn structured-core wave only after this writeback lands and fresh exact
+runtime/model/local-eval/storage/resource/memory gates pass.
+
 ## Safety And Privacy
 
 The plan locks Git head, authored portable overrides, all portable skill files,

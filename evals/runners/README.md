@@ -465,6 +465,16 @@ both v20 `needs-rerun` receipts and the v21 reviewed receipt; after its writebac
 lands, `coverage-closure-root-trajectories` must start from a fresh exact merge
 and repeat every runtime and host gate.
 
+That exact-merged root wave completes all eight turns without a failure. Each
+accepted explicit decision or eval root input selects the exact expected child;
+transport shows complete root and child reads plus the bounded fixture probe.
+Prompt isolation, dispatch, load, selection report, filesystem/inventory scope,
+and owner boundaries all match. The root arm is not a matched implicit pair, so
+its absent pair/trajectory-corpus fields are intentionally unscored rather than
+missing evidence. Preserve the reviewed receipt as candidate-only and, after
+its writeback lands, reopen runtime and host admission for the 30-turn
+`coverage-closure-structured-core` cohort.
+
 The first exact v16 core wave completes 16/16. Every aided arm gains route and
 procedure correctness, while six outcome pairs are observation-clean and
 correct in both arms. Three fixture commands across `collision-01` and

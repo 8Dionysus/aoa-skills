@@ -368,6 +368,15 @@ temporary root and must not be copied into this directory.
   CLI capture return without editing Titan skill source. It remains bounded
   candidate evidence with proof and promotion false; root trajectories still
   require their own exact-merge, runtime-parity, and host-admission loop.
+- [aoa-skill-live-dispatch-coverage-closure-root-trajectories-20260713-v21-reviewed.json](aoa-skill-live-dispatch-coverage-closure-root-trajectories-20260713-v21-reviewed.json)
+  preserves the exact-merged eight-turn root-child wave. Accepted explicit root
+  input, exact child selection, complete root and child reads, dispatch, load,
+  fixture execution, prompt isolation, filesystem/inventory scope, and owner
+  boundary all pass for the three decision and five eval children. There is no
+  failure, early stop, external access, or broad inventory. This arm family has
+  no matched implicit pair and therefore publishes no lift or owner-outcome
+  score. It is reviewed candidate evidence only; structured-core remains a
+  separate native-dispatch/load wave with its own exact gates.
 
 Corrected live receipts under the v11-v21 evidence protocols are reviewable only
 after canonical user-skill shadows, plugins, and every configured MCP id are

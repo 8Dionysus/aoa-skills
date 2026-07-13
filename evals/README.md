@@ -238,7 +238,17 @@ Active first local corpus:
   clean. This closes the paired Titan B observation return as reviewed
   candidate evidence without changing Titan skill source or widening proof or
   promotion. After this writeback lands and exact runtime/host gates are
-  repeated, `coverage-closure-root-trajectories` is the next bounded wave.
+  repeated, `coverage-closure-root-trajectories` is the next bounded wave. Its
+  exact-merged v21 execution is preserved as
+  [`aoa-skill-live-dispatch-coverage-closure-root-trajectories-20260713-v21-reviewed.json`](reports/aoa-skill-live-dispatch-coverage-closure-root-trajectories-20260713-v21-reviewed.json).
+  All eight explicit root turns complete without a failure. The decision root
+  selects and fully reads find, create, and correct; the eval root selects and
+  fully reads select, apply, local-need, design, and session-mining. Every root
+  load, exact child selection/read, fixture, prompt, filesystem, inventory, and
+  owner-boundary contract passes. This closes the root-child coverage lane as
+  reviewed candidate evidence; it does not create implicit lift, outcome,
+  proof, or promotion claims. After this writeback lands and all exact gates
+  are repeated, the 30-turn `coverage-closure-structured-core` wave is next.
 
 These files are local evidence notes. They do not publish central proof
 acceptance, scoring, verdicts, regression truth, or proof doctrine.
