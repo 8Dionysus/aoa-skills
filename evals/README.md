@@ -94,8 +94,11 @@ Active first local corpus:
   two exact returns close every outstanding core-wave observation gap. The
   safety-overlay wave is now source-contract-complete at 11/11 procedure and
   11/11 owner-action pairs. That removes the preflight design block but is not
-  live evidence; exact merge, runtime parity, host gates, both confirmations,
-  and receipt review still precede any widening claim.
+  live evidence by itself. The exact-merged execution is now reviewed and clean
+  at 22/22: nine manual pairs are both-correct without lift, while the two
+  generic invoke pairs gain positive route and procedure lift; every outcome
+  and fixture observation is clean. Session-growth remains preflight-blocked
+  at 2/14 contracts on each axis.
 
 These files are local evidence notes. They do not publish central proof
 acceptance, scoring, verdicts, regression truth, or proof doctrine.

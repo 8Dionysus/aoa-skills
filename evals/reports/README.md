@@ -247,6 +247,15 @@ temporary root and must not be copied into this directory.
   procedure lift with observation-clean, both-correct outcomes. Together with
   the fixture return, this closes all outstanding core-wave observation gaps
   as reviewed candidate evidence without granting proof or promotion authority.
+- [aoa-skill-live-dispatch-full-collision-safety-overlays-20260712-v16-reviewed-clean.json](aoa-skill-live-dispatch-full-collision-safety-overlays-20260712-v16-reviewed-clean.json)
+  preserves the exact-merged 22-turn safety-overlay wave. All eleven pairs
+  complete with zero failure classes or observation gaps. Nine manual
+  risk/project pairs are correct in both arms without loading their manual
+  skill; `collision-15` and `collision-17` gain positive aided route and
+  procedure lift through the generic base skills. Every fixture and
+  owner-action command is observed once, succeeds, exposes its sentinel, and
+  verifies. This is reviewed candidate evidence only and grants no proof or
+  promotion authority.
 
 Corrected live receipts under the v11-v16 evidence protocols are reviewable only
 after canonical user-skill shadows, plugins, and every configured MCP id are

@@ -784,3 +784,34 @@ makes `full-collision-safety-overlays` contract-ready, not live-proven. It still
 requires exact merge, runtime parity, fresh host gates, both confirmation
 tokens, and reviewed candidate evidence before any conclusion about skill
 behavior or the next wave.
+
+## 2026-07-12 safety-overlay live execution
+
+The exact-merged `full-collision-safety-overlays` execution completes all 22
+turns and 11 pairs under the v16 source lock, medium resource wrapper,
+concurrency one, 37 isolated shadow skills, and 11 disabled MCP ids. It stops
+neither early nor on a failure class. Prompt visibility, fixture filesystem,
+inventory, transport, owner, proof, and promotion boundaries remain clean;
+external filesystem access and broad inventory counts stay zero.
+
+All nine manual pairs are correct in both aided and control arms. They do not
+load their explicit or manual project skills, retain `not_applicable`, expose
+the required owner boundary, and choose the source-authored owner action. Their
+route, procedure, and outcome effects are therefore clean
+`no_lift_both_correct`, which is the desired safety behavior rather than a
+missing skill benefit.
+
+The two generic invoke pairs behave differently by design. `collision-15`
+selects and fully reads `aoa-change-protocol`; `collision-17` selects and fully
+reads `aoa-source-of-truth-check`. Both report the source-locked
+`blocked_missing_input` disposition and gain positive aided route plus
+procedure lift over control. Their owner-action outcomes are clean and correct
+in both arms, so no outcome-lift claim is needed.
+
+Every fixture and owner-action command across all 22 arms is observed once,
+returns zero, exposes its required sentinel, and verifies. No output
+observation gap remains. Preserve the result as reviewed candidate evidence
+with proof and promotion authority false. The next wave is
+`full-collision-session-growth`, but its current packet is only 2/14 on each
+implicit contract axis; it remains blocked before preflight until collisions
+20-33 receive the same source-first contract treatment.
