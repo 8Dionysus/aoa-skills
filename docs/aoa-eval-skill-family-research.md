@@ -408,3 +408,9 @@ selection miss, leaving 23 clean arms and seven aided returns: one decision
 child handoff, three manual-policy procedure reports, and three manual-policy
 collision routes. Replay validates the grader only and does not rewrite the
 v12 receipt.
+
+The next live step is therefore not another full pilot. The source-locked
+`pilot13-returns` cohort keeps both arms for those seven implicit cases and only
+the corrected Abyss structured report, for 15 turns total. This is the smallest
+run that can confirm the v13 harness repairs while preserving the remaining
+skill-route evidence and paired control boundary.

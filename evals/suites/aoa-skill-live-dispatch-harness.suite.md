@@ -65,6 +65,7 @@ than silently reverting the outcome dimension to unscored.
 | --- | ---: | --- | --- |
 | `smoke` | 4 | one implicit pair, one trajectory, one structured input | light |
 | `pilot13` | 30 | representative core, risk, project, and Titan pressure | medium |
+| `pilot13-returns` | 15 | seven mixed-return pairs plus the corrected Abyss structured report | medium |
 | `full-collision` | 98 | all 49 collision cases as aided/control pairs | sustained |
 | `coverage-closure` | 87 | uncovered skills, all root-child trajectories, and all non-invoke structured routes | sustained |
 
@@ -77,6 +78,14 @@ The current posture is 11/11 procedure contracts and 11/11 objective outcomes.
 This closes only the deterministic coverage gate. The first pilot has since run
 as mixed `needs-rerun` evidence, and every rerun still requires an exact source
 token, high-cost token, and all host/runtime preflights.
+
+`pilot13-returns` is the bounded v13 confirmation cohort. It preserves both
+arms for the seven implicit cases that remained after read-only regrading and
+adds only the Abyss structured case whose source-declared overlay-to-base report
+was newly recognized. It intentionally excludes already-clean pilot cases and
+unaffected trajectory/structured arms. Passing it validates the repaired live
+measurement path; it does not by itself promote any skill or replace the
+reviewed v12 pilot receipt.
 
 ## Evidence Semantics
 

@@ -47,7 +47,9 @@ Active first local corpus:
   handoff as a live skill candidate, removes ambient-control and structured
   hierarchy false labels, and makes no-dispatch disposition explicit. Its
   read-only replay validates grading only; the v12 receipt remains immutable
-  and a fresh bounded rerun is still required.
+  and a fresh bounded rerun is still required. That rerun is source-locked as
+  `pilot13-returns`: 15 turns covering only the seven affected implicit pairs
+  and the corrected Abyss structured report.
 
 These files are local evidence notes. They do not publish central proof
 acceptance, scoring, verdicts, regression truth, or proof doctrine.

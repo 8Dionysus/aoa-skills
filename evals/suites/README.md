@@ -12,9 +12,10 @@ Active local suite notes:
   the first `aoa-eval` trigger corpus with session refs, owner routes, and a
   no-trigger case.
 - [aoa-skill-live-dispatch-harness.suite.md](aoa-skill-live-dispatch-harness.suite.md) defines
-  bounded smoke, pilot, collision, and coverage-closure cohorts. Its live runs
-  require exact confirmation and host resource/storage gates; its deterministic
-  harness contract is the only part eligible for ordinary local-suite execution.
+  bounded smoke, pilot, pilot-return, collision, and coverage-closure cohorts.
+  Its live runs require exact confirmation and host resource/storage gates; its
+  deterministic harness contract is the only part eligible for ordinary
+  local-suite execution.
   [aoa-skill-live-dispatch-procedures.json](aoa-skill-live-dispatch-procedures.json)
   holds source-authored selected-child and procedure-disposition expectations.
   [aoa-skill-live-dispatch-outcomes.json](aoa-skill-live-dispatch-outcomes.json)

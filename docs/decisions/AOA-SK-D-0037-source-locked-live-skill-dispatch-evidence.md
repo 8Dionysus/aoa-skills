@@ -442,9 +442,30 @@ As of 2026-07-12:
   target-to-base-child structured hierarchy remove three control-side labels
   and the Abyss selection-report miss from read-only replay. The immutable v12
   receipt is not rewritten; a fresh bounded rerun is still required.
+- Current bounded-rerun posture: `pilot13-returns` contains the seven affected
+  implicit pairs and the corrected Abyss structured-report case, exactly 15
+  turns. It requires both source contract axes and a second high-cost token,
+  while omitting already-clean pilot and unaffected trajectory arms.
 - Superseded by: none.
 
 ## Review Log
+
+### 2026-07-12 - Bind the smallest live confirmation of v13 returns
+
+- Input: v13 read-only replay leaves seven aided returns and removes four
+  harness-side false labels, but replay cannot replace a fresh transport run.
+- Rejected option: rerunning all 30 pilot turns would repeat thirteen already
+  clean arms and spend evidence budget without increasing discrimination.
+- Cohort contract: retain both aided and control arms for `collision-38`,
+  `collision-20`, `collision-33`, `collision-09`, `collision-14`,
+  `collision-49`, and `desc-titan-03-manual`; add only structured
+  `abyss-safe-infra-change`; include no trajectory arms.
+- Safety: require complete procedure and owner-outcome contracts for all seven
+  pairs, the exact source confirmation token, the second high-cost token, and
+  normal storage/resource/runtime/prompt isolation preflights.
+- Decision: add `pilot13-returns` as a 15-turn medium cohort. A clean rerun may
+  validate the repaired measurement path; it cannot promote a skill, rewrite
+  the v12 receipt, or authorize wider cohorts by itself.
 
 ### 2026-07-12 - Separate v13 harness repairs from remaining skill candidates
 

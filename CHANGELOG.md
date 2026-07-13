@@ -155,6 +155,10 @@ Tracking starts with the community-docs baseline for this repository.
   three control-side failure labels and the valid Abyss overlay report miss.
   Source reread keeps `collision-38` as an `aoa-decision` child-handoff
   candidate rather than weakening its pre-authored contract.
+- The source-locked `pilot13-returns` cohort narrows the next live confirmation
+  to 15 turns: seven affected implicit pairs plus the corrected Abyss
+  structured-report case. It requires complete procedure/outcome contracts and
+  the exact high-cost token while excluding already-clean pilot arms.
 - `AOA-SK-D-0037` records why live cohorts remain operator-confirmed candidate
   evidence and now clarifies prompt-surface isolation and evidence-stage grading
   after the contaminated smoke; deterministic harness validation, not model
