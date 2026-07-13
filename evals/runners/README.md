@@ -421,8 +421,16 @@ the two generic invoke pairs, `collision-15` and `collision-17`, gain positive
 aided route plus procedure lift, while their owner-action outcomes remain clean
 and correct in both arms. Every fixture and outcome probe is single-attempt,
 successful, and verified. The reviewed public receipt remains candidate-only.
-The next 28-turn session-growth wave is still fail-closed at 2/14 procedure and
-2/14 outcome contracts.
+The next 28-turn session-growth wave is now source-contract-complete at 14/14
+procedure and 14/14 outcome pairs. Eleven explicit or deliberately manual
+cases remain `not_applicable`; generic cases 28, 30, and 32 select their base
+routes and stop at `blocked_missing_input`. The focused synthetic execution
+validates all 28 arms and both receipt schemas. Public receipt validation now
+treats `cohort` as a bounded plan slug: interior wording such as
+`full-collision-session-growth` is valid, while transport-shaped leading ids
+such as `session-deadbeef` remain rejected. Contract readiness is not live
+evidence; execute only after exact merge, runtime parity, host gates, and both
+confirmations.
 
 See `evals/suites/aoa-skill-live-dispatch-harness.suite.md` and
 `docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md` for

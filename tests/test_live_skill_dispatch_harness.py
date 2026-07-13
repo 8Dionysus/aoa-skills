@@ -537,6 +537,63 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
         self.assertEqual(22, public["trial_count"])
         self.assertEqual(11, public["pair_count"])
 
+    def test_session_growth_partition_wave_is_contract_complete(self) -> None:
+        plan = self.runner.load_plan(self.plan_path)
+        session_growth = self.runner.expand_cohort(
+            REPO_ROOT,
+            plan,
+            "full-collision-session-growth",
+        )
+        self.assertEqual(28, len(session_growth))
+        self.assertEqual(
+            {f"collision-{index:02d}" for index in range(20, 34)},
+            {trial.case_id for trial in session_growth},
+        )
+        self.assertTrue(
+            all(
+                trial.procedure_contract is not None
+                and trial.outcome_contract is not None
+                for trial in session_growth
+            )
+        )
+        packet = self.runner.build_plan_packet(
+            REPO_ROOT,
+            plan,
+            "full-collision-session-growth",
+            "model-a",
+            "medium",
+        )
+        self.assertEqual(14, packet["implicit_pair_count"])
+        self.assertEqual(14, packet["procedure_scored_pair_count"])
+        self.assertTrue(packet["procedure_contract_coverage_complete"])
+        self.assertEqual(14, packet["objective_outcome_scored_pair_count"])
+        self.assertTrue(packet["objective_outcome_coverage_complete"])
+        self.assertTrue(packet["high_cost_confirmation_required"])
+        with tempfile.TemporaryDirectory() as td:
+            receipt = self.runner.run_confirmed_cohort(
+                repo_root=REPO_ROOT,
+                plan=plan,
+                cohort="full-collision-session-growth",
+                model="model-a",
+                effort="medium",
+                confirmation_token=packet["confirmation_token"],
+                high_cost_token=packet["high_cost_confirmation_token"],
+                private_root=Path(td),
+                transport=FakeTransport(),
+                test_only_allow_noncanonical_private_root=True,
+            )
+        Draft202012Validator(
+            self.load_schema("live-skill-dispatch-private-receipt.schema.json")
+        ).validate(receipt)
+        public = self.runner.build_public_receipt(receipt)
+        Draft202012Validator(
+            self.load_schema("live-skill-dispatch-public-receipt.schema.json")
+        ).validate(public)
+        self.runner.validate_public_receipt(public)
+        self.assertEqual("full-collision-session-growth", public["cohort"])
+        self.assertEqual(28, public["trial_count"])
+        self.assertEqual(14, public["pair_count"])
+
     def test_core_engineering_return_cohort_repeats_only_fixture_gap_pairs(self) -> None:
         plan = self.runner.load_plan(self.plan_path)
         returns = self.runner.expand_cohort(
@@ -2075,6 +2132,14 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
 
         leaked = json.loads(json.dumps(public))
         leaked["measures"][0]["expected_target_skill"] = "session-deadbeef"
+        with self.assertRaises(runner.PublicReceiptSafetyError):
+            runner.validate_public_receipt(leaked)
+
+        public["cohort"] = "full-collision-session-growth"
+        runner.validate_public_receipt(public)
+
+        leaked = json.loads(json.dumps(public))
+        leaked["cohort"] = "session-deadbeef"
         with self.assertRaises(runner.PublicReceiptSafetyError):
             runner.validate_public_receipt(leaked)
 

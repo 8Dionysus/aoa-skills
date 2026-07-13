@@ -481,11 +481,36 @@ As of 2026-07-12:
   evidence existed at that checkpoint. The subsequent exact-merged execution
   completes 22/22 with zero failure classes or observation gaps; nine manual
   pairs are both-correct without lift and the two generic invoke pairs gain
-  positive route/procedure lift. Session-growth is next and remains fail-closed
-  at 2/14 contracts on both axes.
+  positive route/procedure lift. Session-growth is next; its subsequent source
+  pass closes all 14 contracts on both axes and the typed cohort-slug sanitizer
+  gap, but no live session-growth evidence exists yet.
 - Superseded by: none.
 
 ## Review Log
+
+### 2026-07-12 - Close the session-growth source contracts
+
+- Scope: `full-collision-session-growth` contains exactly both arms of
+  `collision-20` through `collision-33`, for 28 turns and 14 pairs.
+- Procedure split: cases 20-27, 29, 31, and 33 are explicit-only or
+  deliberately manual and remain `not_applicable`; generic invoke cases 28,
+  30, and 32 select their intended base route but stop at
+  `blocked_missing_input` for absent owner surfaces.
+- Owner actions: all fourteen pairs now select one source-derived decision from
+  three sorted candidates without granting writeback, delegation, diagnosis,
+  repair, automation, commit, push, or fabricated change authority.
+- Source lock: add the nine session-growth and Abyss skill sources newly cited
+  by collisions 21-32; preserve existing collision-20 and collision-33
+  anchors unchanged.
+- Sanitizer return: the focused synthetic receipt exposed a false positive on
+  the plan-owned `full-collision-session-growth` slug. Treat typed cohort
+  fields as bounded portable slugs while continuing to reject leading
+  transport-shaped ids such as `session-deadbeef` and all untyped leaks.
+- Verification and authority: the focused synthetic cohort completes 28/28,
+  validates both receipt schemas, and reaches 14/14 on both contract axes.
+  This removes only the source-design block. Exact merge, runtime parity, host
+  gates, both confirmations, and reviewed live evidence remain mandatory;
+  proof and promotion authority stay false.
 
 ### 2026-07-12 - Review the exact safety-overlay execution
 
@@ -504,8 +529,9 @@ As of 2026-07-12:
 - Fixture confidence: all 22 fixture and owner-action probes are observed once,
   succeed, expose their sentinel, and verify.
 - Authority and next gate: preserve a reviewed candidate receipt with proof and
-  promotion false. Session-growth remains blocked at 2/14 procedure and 2/14
-  owner-action contracts; source contract design must precede its live run.
+  promotion false. Session-growth was blocked at 2/14 procedure and 2/14
+  owner-action contracts at this checkpoint; source contract design had to
+  precede its live run.
 
 ### 2026-07-12 - Close the safety-overlay source contracts
 

@@ -97,8 +97,11 @@ Active first local corpus:
   live evidence by itself. The exact-merged execution is now reviewed and clean
   at 22/22: nine manual pairs are both-correct without lift, while the two
   generic invoke pairs gain positive route and procedure lift; every outcome
-  and fixture observation is clean. Session-growth remains preflight-blocked
-  at 2/14 contracts on each axis.
+  and fixture observation is clean. The next session-growth source pass now
+  closes all 14 procedure and 14 owner-action contracts and validates the
+  28-turn synthetic cohort. That removes only the deterministic preflight
+  design block; exact-merged runtime and host gates still precede any live
+  claim.
 
 These files are local evidence notes. They do not publish central proof
 acceptance, scoring, verdicts, regression truth, or proof doctrine.
