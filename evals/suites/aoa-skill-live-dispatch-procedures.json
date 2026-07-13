@@ -692,11 +692,11 @@
       "contract_id": "collision-39-procedure-v1",
       "case_id": "collision-39",
       "scope": "selected_route_procedure_disposition",
-      "expected_selected_child_skill": null,
-      "expected_selected_child_full_read_observed": null,
-      "expected_selected_procedure_disposition": "not_applicable",
+      "expected_selected_child_skill": "aoa-decision-find",
+      "expected_selected_child_full_read_observed": true,
+      "expected_selected_procedure_disposition": "blocked_missing_input",
       "expected_selected_procedure_completion_reported": false,
-      "expected_selected_procedure_deflection_reported": false,
+      "expected_selected_procedure_deflection_reported": true,
       "expected_owner_boundary_present": true,
       "source_refs": [
         "generated/skill_trigger_collision_matrix.json",
@@ -705,17 +705,17 @@
         "schemas/live-skill-dispatch-model-output.schema.json",
         "evals/runners/run_live_skill_dispatch.py"
       ],
-      "rationale": "aoa-decision-find is a child of the decision router for implicit work. The child is hidden from the native implicit inventory and must be selected only after aoa-decision classifies the lane. Its direct implicit procedure is not_applicable: it must not read decision graphs or claim a match before the parent route and an owner-scoped lookup packet exist."
+      "rationale": "aoa-decision-find is hidden as an independent implicit target but is source-authorized through the prompt-visible aoa-decision parent. The parent must classify find, select and fully read exactly that child, and then stop at blocked_missing_input because the fixture contains no graph status, target repository, owner packet, or source note to verify."
     },
     {
       "contract_id": "collision-40-procedure-v1",
       "case_id": "collision-40",
       "scope": "selected_route_procedure_disposition",
-      "expected_selected_child_skill": null,
-      "expected_selected_child_full_read_observed": null,
-      "expected_selected_procedure_disposition": "not_applicable",
+      "expected_selected_child_skill": "aoa-decision-create",
+      "expected_selected_child_full_read_observed": true,
+      "expected_selected_procedure_disposition": "blocked_missing_input",
       "expected_selected_procedure_completion_reported": false,
-      "expected_selected_procedure_deflection_reported": false,
+      "expected_selected_procedure_deflection_reported": true,
       "expected_owner_boundary_present": true,
       "source_refs": [
         "generated/skill_trigger_collision_matrix.json",
@@ -724,17 +724,17 @@
         "schemas/live-skill-dispatch-model-output.schema.json",
         "evals/runners/run_live_skill_dispatch.py"
       ],
-      "rationale": "aoa-decision-create is a decision-router child and cannot be implicitly selected merely because a prompt asks for a new record. The hidden child needs parent classification, a chosen durable decision, owner repository context, graph issue posture, and local decision law. Its direct implicit procedure is not_applicable and must not create a source note or rebuild indexes."
+      "rationale": "aoa-decision-create is hidden as an independent implicit target but becomes the one source-authorized child after the prompt-visible aoa-decision parent classifies a real create task. The child must be fully read, then stop at blocked_missing_input because the fixture has no chosen decision, target-repository law, graph issue posture, or source-derived ID context."
     },
     {
       "contract_id": "collision-41-procedure-v1",
       "case_id": "collision-41",
       "scope": "selected_route_procedure_disposition",
-      "expected_selected_child_skill": null,
-      "expected_selected_child_full_read_observed": null,
-      "expected_selected_procedure_disposition": "not_applicable",
+      "expected_selected_child_skill": "aoa-decision-correct",
+      "expected_selected_child_full_read_observed": true,
+      "expected_selected_procedure_disposition": "blocked_missing_input",
       "expected_selected_procedure_completion_reported": false,
-      "expected_selected_procedure_deflection_reported": false,
+      "expected_selected_procedure_deflection_reported": true,
       "expected_owner_boundary_present": true,
       "source_refs": [
         "generated/skill_trigger_collision_matrix.json",
@@ -743,7 +743,7 @@
         "schemas/live-skill-dispatch-model-output.schema.json",
         "evals/runners/run_live_skill_dispatch.py"
       ],
-      "rationale": "aoa-decision-correct is a hidden decision-router child. A semantic match does not authorize direct correction: the parent must classify the lane, and the child must inspect the owner source note before any generated index. Its implicit procedure is not_applicable and must not edit a record, generated index, or workspace graph from prompt prose alone."
+      "rationale": "aoa-decision-correct is hidden as an independent implicit target but becomes the one source-authorized child after the prompt-visible aoa-decision parent classifies a correction task. The child must be fully read, then stop at blocked_missing_input because the fixture contains neither the owner source note nor the local index contract needed before any correction."
     },
     {
       "contract_id": "collision-42-child-procedure-v3",

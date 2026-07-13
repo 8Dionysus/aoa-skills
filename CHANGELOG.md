@@ -314,6 +314,15 @@ Tracking starts with the community-docs baseline for this repository.
   The existing trajectory map makes this an observability return. A bounded
   39-41 rerun must still test the create-child read gap and correct-child
   terminal after that grader repair.
+- Live-dispatch evidence v19 repairs that parent-observability seam red-first.
+  Implicit cases declared by `root_child_trajectories` now score the
+  prompt-visible root as the dispatch target and score its one hidden child as
+  separate trajectory/procedure evidence. Parent-authorized child reads no
+  longer become manual leaks, while missing child reads, wrong child reports,
+  and wrong terminal dispositions retain their own failure classes. The
+  authority wave becomes nine scored pairs plus two true hidden-manual guards,
+  and a bounded six-turn return repeats only both arms of collisions 39-41.
+  Protocol v19 and contract v14 keep all v1-v18 receipts immutable.
 - Live-dispatch evidence v17 repairs both shared boundaries red-first. Portable
   export now prepends a policy-derived activation sentence to all 43 `manual`
   and two `suggest` descriptions, allowing only explicit invocation or a

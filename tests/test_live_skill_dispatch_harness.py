@@ -697,9 +697,24 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
                 False,
                 True,
             ),
-            "collision-39": (None, "not_applicable", False, False),
-            "collision-40": (None, "not_applicable", False, False),
-            "collision-41": (None, "not_applicable", False, False),
+            "collision-39": (
+                "aoa-decision-find",
+                "blocked_missing_input",
+                False,
+                True,
+            ),
+            "collision-40": (
+                "aoa-decision-create",
+                "blocked_missing_input",
+                False,
+                True,
+            ),
+            "collision-41": (
+                "aoa-decision-correct",
+                "blocked_missing_input",
+                False,
+                True,
+            ),
             "collision-42": (
                 "aoa-eval-select",
                 "blocked_missing_input",
@@ -740,6 +755,11 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
                     "manual" if disposition == "not_applicable" else "invoke",
                     trial.expected_behavior,
                 )
+                if trial.case_id in {"collision-39", "collision-40", "collision-41"}:
+                    self.assertEqual("aoa-decision", trial.expected_target_skill)
+                    self.assertEqual("aoa-decision", trial.root_skill)
+                    self.assertEqual(child, trial.expected_child_skill)
+                    self.assertNotIn("aoa-decision", trial.competing_skills)
                 self.assertEqual(child, procedure.expected_selected_child_skill)
                 self.assertEqual(
                     True if child is not None else None,
@@ -771,10 +791,10 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
             "medium",
         )
         self.assertEqual(11, packet["implicit_pair_count"])
-        self.assertEqual(6, packet["target_route_scored_pair_count"])
+        self.assertEqual(9, packet["target_route_scored_pair_count"])
         self.assertEqual(11, packet["procedure_contract_pair_count"])
-        self.assertEqual(6, packet["procedure_scored_pair_count"])
-        self.assertEqual(5, packet["manual_non_activation_pair_count"])
+        self.assertEqual(9, packet["procedure_scored_pair_count"])
+        self.assertEqual(2, packet["manual_non_activation_pair_count"])
         self.assertTrue(packet["procedure_contract_coverage_complete"])
         self.assertEqual(11, packet["objective_outcome_scored_pair_count"])
         self.assertTrue(packet["objective_outcome_coverage_complete"])
@@ -803,6 +823,111 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
         self.assertEqual("full-collision-authority-routing", public["cohort"])
         self.assertEqual(22, public["trial_count"])
         self.assertEqual(11, public["pair_count"])
+
+    def test_authority_routing_return_cohort_repeats_only_parent_child_pairs(self) -> None:
+        plan = self.runner.load_plan(self.plan_path)
+        returns = self.runner.expand_cohort(
+            REPO_ROOT,
+            plan,
+            "full-collision-authority-routing-returns",
+        )
+        self.assertEqual(6, len(returns))
+        self.assertEqual(
+            {"collision-39", "collision-40", "collision-41"},
+            {trial.case_id for trial in returns},
+        )
+        self.assertTrue(
+            all(
+                trial.arm_type in {"implicit_aided", "implicit_control"}
+                and trial.expected_target_skill == "aoa-decision"
+                and trial.expected_behavior == "invoke"
+                and trial.root_skill == "aoa-decision"
+                and trial.expected_child_skill is not None
+                and trial.procedure_contract is not None
+                and trial.outcome_contract is not None
+                for trial in returns
+            )
+        )
+        packet = self.runner.build_plan_packet(
+            REPO_ROOT,
+            plan,
+            "full-collision-authority-routing-returns",
+            "model-a",
+            "medium",
+        )
+        self.assertEqual(3, packet["implicit_pair_count"])
+        self.assertEqual(3, packet["target_route_scored_pair_count"])
+        self.assertEqual(3, packet["procedure_scored_pair_count"])
+        self.assertEqual(0, packet["manual_non_activation_pair_count"])
+        self.assertTrue(packet["procedure_contract_coverage_complete"])
+        self.assertTrue(packet["objective_outcome_coverage_complete"])
+        self.assertTrue(packet["high_cost_confirmation_required"])
+
+    def test_root_child_implicit_map_is_policy_bound_and_covers_eval_children(self) -> None:
+        runner = self.runner
+        plan = runner.load_plan(self.plan_path)
+        eval_children = runner.expand_cohort(
+            REPO_ROOT,
+            plan,
+            "full-collision-eval-children",
+        )
+        expected_children = {
+            "collision-44": "aoa-eval-select",
+            "collision-45": "aoa-eval-apply",
+            "collision-46": "aoa-eval-local-need",
+            "collision-47": "aoa-eval-design",
+            "collision-48": "aoa-eval-session-mining",
+        }
+        self.assertEqual(10, len(eval_children))
+        for trial in eval_children:
+            with self.subTest(case_id=trial.case_id, arm=trial.arm_type):
+                self.assertEqual("aoa-eval", trial.expected_target_skill)
+                self.assertEqual("aoa-eval", trial.root_skill)
+                self.assertEqual("invoke", trial.expected_behavior)
+                self.assertEqual(expected_children[trial.case_id], trial.expected_child_skill)
+                self.assertNotIn("aoa-eval", trial.competing_skills)
+        packet = runner.build_plan_packet(
+            REPO_ROOT,
+            plan,
+            "full-collision-eval-children",
+            "model-a",
+            "medium",
+        )
+        self.assertEqual(5, packet["target_route_scored_pair_count"])
+        self.assertEqual(0, packet["procedure_scored_pair_count"])
+        self.assertEqual(0, packet["manual_non_activation_pair_count"])
+        self.assertFalse(packet["procedure_contract_coverage_complete"])
+
+        duplicate = json.loads(json.dumps(plan))
+        duplicate["root_child_trajectories"][-1] = {
+            "case_id": "collision-39",
+            "root_skill": "aoa-eval",
+            "child_skill": "aoa-decision-find",
+        }
+        with self.assertRaisesRegex(ValueError, "duplicate root-child trajectory case"):
+            runner.expand_cohort(
+                REPO_ROOT,
+                duplicate,
+                "full-collision-authority-routing",
+            )
+
+        policies = runner._policy_entries(REPO_ROOT, plan)
+        policies["aoa-decision"] = {
+            **policies["aoa-decision"],
+            "implicit_activation_policy": "manual",
+        }
+        with (
+            mock.patch.object(runner, "_policy_entries", return_value=policies),
+            self.assertRaisesRegex(
+                ValueError,
+                "root-child trajectory parent must be implicit invoke",
+            ),
+        ):
+            runner.expand_cohort(
+                REPO_ROOT,
+                plan,
+                "full-collision-authority-routing",
+            )
 
     def test_core_engineering_return_cohort_repeats_only_fixture_gap_pairs(self) -> None:
         plan = self.runner.load_plan(self.plan_path)
@@ -1650,18 +1775,18 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
         )
         self.assertEqual(plan["protocol_revision"], contract["protocol_revision"])
         self.assertEqual(
-            "codex-cli-0.144.1-live-dispatch-evidence-v18",
+            "codex-cli-0.144.1-live-dispatch-evidence-v19",
             plan["protocol_revision"],
         )
         self.assertEqual("codex-cli 0.144.1", self.runner._expected_codex_version(plan))
         unsupported_plan = dict(plan)
         unsupported_plan["protocol_revision"] = (
-            "codex-cli-0.144.1-live-dispatch-evidence-v19"
+            "codex-cli-0.144.1-live-dispatch-evidence-v20"
         )
         with self.assertRaisesRegex(ValueError, "unsupported Codex protocol revision"):
             self.runner._expected_codex_version(unsupported_plan)
         self.assertEqual(
-            "aoa_codex_app_server_skill_input_contract_v13",
+            "aoa_codex_app_server_skill_input_contract_v14",
             contract["schema_version"],
         )
         self.assertEqual("codex-cli 0.144.1", contract["codex_version"])
@@ -1687,6 +1812,14 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
         self.assertIn(
             "not target-route scoring evidence",
             contract["evidence_binding"]["native_hidden_manual_target"],
+        )
+        self.assertIn(
+            "prompt-visible parent",
+            contract["evidence_binding"]["parent_authorized_hidden_child"],
+        )
+        self.assertIn(
+            "separate trajectory evidence",
+            contract["evidence_binding"]["parent_authorized_hidden_child"],
         )
         self.assertIn(
             "must be false when selected_skill is null",
@@ -4456,6 +4589,77 @@ Second procedure section.
         self.assertEqual(
             "repair_root_or_child_then_repeat_adjacent_family",
             measure["adaptive_return_route"],
+        )
+
+    def test_parent_authorized_hidden_child_keeps_real_stage_failures(self) -> None:
+        runner = self.runner
+        plan = runner.load_plan(self.plan_path)
+        trial = next(
+            item
+            for item in runner.expand_cohort(
+                REPO_ROOT,
+                plan,
+                "full-collision-authority-routing-returns",
+            )
+            if item.case_id == "collision-39"
+            and item.arm_type == "implicit_aided"
+        )
+        self.assertEqual("aoa-decision", trial.expected_target_skill)
+        self.assertEqual("aoa-decision-find", trial.expected_child_skill)
+
+        result = FakeTransport().run_cli(
+            {
+                "expected_target_skill": "aoa-decision",
+                "expected_behavior": "invoke",
+                "expected_selected_child_skill": "aoa-decision-find",
+                "arm_type": "implicit_aided",
+            }
+        )
+        result.update(
+            {
+                "prompt_visibility_contract_match": True,
+                "fixture_filesystem_scope_match": True,
+                "fixture_inventory_scope_match": True,
+                "target_skill_full_read_observed": True,
+                "child_full_read_observed": True,
+                "fixture_command_observed": True,
+                "fixture_command_succeeded": True,
+                "fixture_verification_observed": True,
+            }
+        )
+        result["final_output"]["selected_child"] = None
+        report_gap = runner._trial_measure(trial, result)
+        self.assertNotEqual("manual_activation_leak", report_gap["failure_class"])
+        self.assertEqual("trajectory_break", report_gap["failure_class"])
+        self.assertTrue(report_gap["route_contract_match"])
+        self.assertFalse(report_gap["trajectory_contract_match"])
+        self.assertEqual(
+            ["selected_child_skill"],
+            report_gap["trajectory_mismatch_dimensions"],
+        )
+
+        result["final_output"]["selected_child"] = "aoa-decision-find"
+        result["child_full_read_observed"] = False
+        missing_read = runner._trial_measure(trial, result)
+        self.assertNotEqual("manual_activation_leak", missing_read["failure_class"])
+        self.assertEqual("skill_load_gap", missing_read["failure_class"])
+        self.assertFalse(missing_read["load_contract_match"])
+        self.assertFalse(missing_read["trajectory_contract_match"])
+        self.assertEqual(
+            ["selected_child_full_read_observed"],
+            missing_read["trajectory_mismatch_dimensions"],
+        )
+
+        result["child_full_read_observed"] = True
+        result["final_output"]["procedure_disposition"] = "deferred_owner_boundary"
+        wrong_terminal = runner._trial_measure(trial, result)
+        self.assertNotEqual("manual_activation_leak", wrong_terminal["failure_class"])
+        self.assertEqual("procedure_disposition_miss", wrong_terminal["failure_class"])
+        self.assertTrue(wrong_terminal["trajectory_contract_match"])
+        self.assertFalse(wrong_terminal["procedure_disposition_contract_match"])
+        self.assertEqual(
+            ["selected_procedure_disposition"],
+            wrong_terminal["procedure_disposition_mismatch_dimensions"],
         )
 
     def test_competing_skill_win_is_classified_before_generic_trigger_miss(self) -> None:

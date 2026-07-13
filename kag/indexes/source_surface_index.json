@@ -77,7 +77,7 @@
     "command_count": 162,
     "document_count": 1056,
     "generated_count": 110,
-    "heading_count": 7493,
+    "heading_count": 7494,
     "mechanics_count": 353,
     "record_count": 1925,
     "schema_count": 66,
@@ -88,7 +88,7 @@
   },
   "index_identity": {
     "artifact_kind": "source_surface_index",
-    "content_digest": "c3dc93339d5515603de0b36d2f9c6ac71d76c4eff76d2127b9d6d639e803daf3",
+    "content_digest": "3447231a5873952351b5815a005c668f41e4c2e02dfabd123de8ff43b5548d5d",
     "local_id": "index:repo-local:source-surfaces",
     "schema_ref": "aoa-kag:schemas/repo-local-kag-index.schema.json"
   },
@@ -51314,13 +51314,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "eedb7ba2582bf73c9549112e9143235e56b2cd01d0df40d3c93632ec7592059c",
+        "content_hash": "6bc233e8d3042312b1f68d148d2f892da1da4cb63690904648fa09da48b32ecb",
         "git_ref": "git-index-source-tree",
         "id": "file:changelog.md:06572a96a5",
         "mime": "text/markdown",
         "path": "CHANGELOG.md",
         "repo": "aoa-skills",
-        "size_bytes": 54683
+        "size_bytes": 55358
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -51370,336 +51370,336 @@
           {
             "anchor": "changed",
             "level": 3,
-            "line": 370,
+            "line": 379,
             "ref": "CHANGELOG.md#changed",
             "title": "Changed"
           },
           {
             "anchor": "fixed",
             "level": 3,
-            "line": 552,
+            "line": 561,
             "ref": "CHANGELOG.md#fixed",
             "title": "Fixed"
           },
           {
             "anchor": "040-2026-05-18",
             "level": 2,
-            "line": 560,
+            "line": 569,
             "ref": "CHANGELOG.md#040-2026-05-18",
             "title": "[0.4.0] - 2026-05-18"
           },
           {
             "anchor": "summary",
             "level": 3,
-            "line": 562,
+            "line": 571,
             "ref": "CHANGELOG.md#summary",
             "title": "Summary"
           },
           {
             "anchor": "added-1",
             "level": 3,
-            "line": 574,
+            "line": 583,
             "ref": "CHANGELOG.md#added-1",
             "title": "Added"
           },
           {
             "anchor": "changed-1",
             "level": 3,
-            "line": 594,
+            "line": 603,
             "ref": "CHANGELOG.md#changed-1",
             "title": "Changed"
           },
           {
             "anchor": "included-in-this-release",
             "level": 3,
-            "line": 625,
+            "line": 634,
             "ref": "CHANGELOG.md#included-in-this-release",
             "title": "Included in this release"
           },
           {
             "anchor": "validation",
             "level": 3,
-            "line": 638,
+            "line": 647,
             "ref": "CHANGELOG.md#validation",
             "title": "Validation"
           },
           {
             "anchor": "notes",
             "level": 3,
-            "line": 643,
+            "line": 652,
             "ref": "CHANGELOG.md#notes",
             "title": "Notes"
           },
           {
             "anchor": "033-2026-04-23",
             "level": 2,
-            "line": 649,
+            "line": 658,
             "ref": "CHANGELOG.md#033-2026-04-23",
             "title": "[0.3.3] - 2026-04-23"
           },
           {
             "anchor": "summary-1",
             "level": 3,
-            "line": 651,
+            "line": 660,
             "ref": "CHANGELOG.md#summary-1",
             "title": "Summary"
           },
           {
             "anchor": "added-2",
             "level": 3,
-            "line": 662,
+            "line": 671,
             "ref": "CHANGELOG.md#added-2",
             "title": "Added"
           },
           {
             "anchor": "changed-2",
             "level": 3,
-            "line": 676,
+            "line": 685,
             "ref": "CHANGELOG.md#changed-2",
             "title": "Changed"
           },
           {
             "anchor": "validation-1",
             "level": 3,
-            "line": 685,
+            "line": 694,
             "ref": "CHANGELOG.md#validation-1",
             "title": "Validation"
           },
           {
             "anchor": "notes-1",
             "level": 3,
-            "line": 692,
+            "line": 701,
             "ref": "CHANGELOG.md#notes-1",
             "title": "Notes"
           },
           {
             "anchor": "032-2026-04-19",
             "level": 2,
-            "line": 698,
+            "line": 707,
             "ref": "CHANGELOG.md#032-2026-04-19",
             "title": "[0.3.2] - 2026-04-19"
           },
           {
             "anchor": "summary-2",
             "level": 3,
-            "line": 700,
+            "line": 709,
             "ref": "CHANGELOG.md#summary-2",
             "title": "Summary"
           },
           {
             "anchor": "added-3",
             "level": 3,
-            "line": 709,
+            "line": 718,
             "ref": "CHANGELOG.md#added-3",
             "title": "Added"
           },
           {
             "anchor": "changed-3",
             "level": 3,
-            "line": 716,
+            "line": 725,
             "ref": "CHANGELOG.md#changed-3",
             "title": "Changed"
           },
           {
             "anchor": "validation-2",
             "level": 3,
-            "line": 721,
+            "line": 730,
             "ref": "CHANGELOG.md#validation-2",
             "title": "Validation"
           },
           {
             "anchor": "notes-2",
             "level": 3,
-            "line": 725,
+            "line": 734,
             "ref": "CHANGELOG.md#notes-2",
             "title": "Notes"
           },
           {
             "anchor": "031-2026-04-12",
             "level": 2,
-            "line": 730,
+            "line": 739,
             "ref": "CHANGELOG.md#031-2026-04-12",
             "title": "[0.3.1] - 2026-04-12"
           },
           {
             "anchor": "summary-3",
             "level": 3,
-            "line": 732,
+            "line": 741,
             "ref": "CHANGELOG.md#summary-3",
             "title": "Summary"
           },
           {
             "anchor": "validation-3",
             "level": 3,
-            "line": 741,
+            "line": 750,
             "ref": "CHANGELOG.md#validation-3",
             "title": "Validation"
           },
           {
             "anchor": "notes-3",
             "level": 3,
-            "line": 745,
+            "line": 754,
             "ref": "CHANGELOG.md#notes-3",
             "title": "Notes"
           },
           {
             "anchor": "added-4",
             "level": 3,
-            "line": 750,
+            "line": 759,
             "ref": "CHANGELOG.md#added-4",
             "title": "Added"
           },
           {
             "anchor": "changed-4",
             "level": 3,
-            "line": 761,
+            "line": 770,
             "ref": "CHANGELOG.md#changed-4",
             "title": "Changed"
           },
           {
             "anchor": "030-2026-04-10",
             "level": 2,
-            "line": 766,
+            "line": 775,
             "ref": "CHANGELOG.md#030-2026-04-10",
             "title": "[0.3.0] - 2026-04-10"
           },
           {
             "anchor": "summary-4",
             "level": 3,
-            "line": 768,
+            "line": 777,
             "ref": "CHANGELOG.md#summary-4",
             "title": "Summary"
           },
           {
             "anchor": "validation-4",
             "level": 3,
-            "line": 774,
+            "line": 783,
             "ref": "CHANGELOG.md#validation-4",
             "title": "Validation"
           },
           {
             "anchor": "notes-4",
             "level": 3,
-            "line": 778,
+            "line": 787,
             "ref": "CHANGELOG.md#notes-4",
             "title": "Notes"
           },
           {
             "anchor": "added-5",
             "level": 3,
-            "line": 782,
+            "line": 791,
             "ref": "CHANGELOG.md#added-5",
             "title": "Added"
           },
           {
             "anchor": "changed-5",
             "level": 3,
-            "line": 792,
+            "line": 801,
             "ref": "CHANGELOG.md#changed-5",
             "title": "Changed"
           },
           {
             "anchor": "included-in-this-release-1",
             "level": 3,
-            "line": 799,
+            "line": 808,
             "ref": "CHANGELOG.md#included-in-this-release-1",
             "title": "Included in this release"
           },
           {
             "anchor": "020-2026-04-01",
             "level": 2,
-            "line": 812,
+            "line": 821,
             "ref": "CHANGELOG.md#020-2026-04-01",
             "title": "[0.2.0] - 2026-04-01"
           },
           {
             "anchor": "summary-5",
             "level": 3,
-            "line": 818,
+            "line": 827,
             "ref": "CHANGELOG.md#summary-5",
             "title": "Summary"
           },
           {
             "anchor": "added-6",
             "level": 3,
-            "line": 824,
+            "line": 833,
             "ref": "CHANGELOG.md#added-6",
             "title": "Added"
           },
           {
             "anchor": "changed-6",
             "level": 3,
-            "line": 835,
+            "line": 844,
             "ref": "CHANGELOG.md#changed-6",
             "title": "Changed"
           },
           {
             "anchor": "included-in-this-release-2",
             "level": 3,
-            "line": 842,
+            "line": 851,
             "ref": "CHANGELOG.md#included-in-this-release-2",
             "title": "Included in this release"
           },
           {
             "anchor": "validation-5",
             "level": 3,
-            "line": 847,
+            "line": 856,
             "ref": "CHANGELOG.md#validation-5",
             "title": "Validation"
           },
           {
             "anchor": "notes-5",
             "level": 3,
-            "line": 851,
+            "line": 860,
             "ref": "CHANGELOG.md#notes-5",
             "title": "Notes"
           },
           {
             "anchor": "010-2026-03-23",
             "level": 2,
-            "line": 856,
+            "line": 865,
             "ref": "CHANGELOG.md#010-2026-03-23",
             "title": "[0.1.0] - 2026-03-23"
           },
           {
             "anchor": "summary-6",
             "level": 3,
-            "line": 862,
+            "line": 871,
             "ref": "CHANGELOG.md#summary-6",
             "title": "Summary"
           },
           {
             "anchor": "added-7",
             "level": 3,
-            "line": 866,
+            "line": 875,
             "ref": "CHANGELOG.md#added-7",
             "title": "Added"
           },
           {
             "anchor": "changed-7",
             "level": 3,
-            "line": 873,
+            "line": 882,
             "ref": "CHANGELOG.md#changed-7",
             "title": "Changed"
           },
           {
             "anchor": "included-in-this-release-3",
             "level": 3,
-            "line": 879,
+            "line": 888,
             "ref": "CHANGELOG.md#included-in-this-release-3",
             "title": "Included in this release"
           },
           {
             "anchor": "validation-6",
             "level": 3,
-            "line": 885,
+            "line": 894,
             "ref": "CHANGELOG.md#validation-6",
             "title": "Validation"
           },
           {
             "anchor": "notes-6",
             "level": 3,
-            "line": 890,
+            "line": 899,
             "ref": "CHANGELOG.md#notes-6",
             "title": "Notes"
           }
@@ -51711,7 +51711,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "eedb7ba2582bf73c9549112e9143235e56b2cd01d0df40d3c93632ec7592059c",
+        "digest": "6bc233e8d3042312b1f68d148d2f892da1da4cb63690904648fa09da48b32ecb",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -61103,13 +61103,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "b49f9bb84824023b8b63bdfc70ed67d670867225d75fbefeed66f4026da2e87d",
+        "content_hash": "754b00615a87c83975e9290b442e7cae456cd77b582c0fd3daa9f6f15b59b018",
         "git_ref": "git-index-source-tree",
         "id": "file:docs/decisions/aoa-sk-d-0037-source-locked-live-skill-dispatch-evidence.md:ca6ee4ca5a",
         "mime": "text/markdown",
         "path": "docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md",
         "repo": "aoa-skills",
-        "size_bytes": 99956
+        "size_bytes": 102246
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -61194,336 +61194,343 @@
           {
             "anchor": "review-log",
             "level": 2,
-            "line": 501,
+            "line": 507,
             "ref": "docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md#review-log",
             "title": "Review Log"
           },
           {
+            "anchor": "2026-07-13-separate-parent-dispatch-from-hidden-child-trajectory-in-v19",
+            "level": 3,
+            "line": 509,
+            "ref": "docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md#2026-07-13-separate-parent-dispatch-from-hidden-child-trajectory-in-v19",
+            "title": "2026-07-13 - Separate parent dispatch from hidden-child trajectory in v19"
+          },
+          {
             "anchor": "2026-07-13-preserve-the-authority-routing-parent-observability-return",
             "level": 3,
-            "line": 503,
+            "line": 538,
             "ref": "docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md#2026-07-13-preserve-the-authority-routing-parent-observability-return",
             "title": "2026-07-13 - Preserve the authority-routing parent-observability return"
           },
           {
             "anchor": "2026-07-13-close-authority-routing-source-contracts",
             "level": 3,
-            "line": 527,
+            "line": 562,
             "ref": "docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md#2026-07-13-close-authority-routing-source-contracts",
             "title": "2026-07-13 - Close authority-routing source contracts"
           },
           {
             "anchor": "2026-07-13-review-the-v18-hidden-manual-bounded-return",
             "level": 3,
-            "line": 551,
+            "line": 586,
             "ref": "docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md#2026-07-13-review-the-v18-hidden-manual-bounded-return",
             "title": "2026-07-13 - Review the v18 hidden-manual bounded return"
           },
           {
             "anchor": "2026-07-12-correct-hidden-manual-observability-in-v18",
             "level": 3,
-            "line": 576,
+            "line": 611,
             "ref": "docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md#2026-07-12-correct-hidden-manual-observability-in-v18",
             "title": "2026-07-12 - Correct hidden-manual observability in v18"
           },
           {
             "anchor": "2026-07-12-bind-the-session-growth-routing-repair-in-v17",
             "level": 3,
-            "line": 606,
+            "line": 641,
             "ref": "docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md#2026-07-12-bind-the-session-growth-routing-repair-in-v17",
             "title": "2026-07-12 - Bind the session-growth routing repair in v17"
           },
           {
             "anchor": "2026-07-12-preserve-the-session-growth-routing-return",
             "level": 3,
-            "line": 629,
+            "line": 664,
             "ref": "docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md#2026-07-12-preserve-the-session-growth-routing-return",
             "title": "2026-07-12 - Preserve the session-growth routing return"
           },
           {
             "anchor": "2026-07-12-close-the-session-growth-source-contracts",
             "level": 3,
-            "line": 654,
+            "line": 689,
             "ref": "docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md#2026-07-12-close-the-session-growth-source-contracts",
             "title": "2026-07-12 - Close the session-growth source contracts"
           },
           {
             "anchor": "2026-07-12-review-the-exact-safety-overlay-execution",
             "level": 3,
-            "line": 678,
+            "line": 713,
             "ref": "docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md#2026-07-12-review-the-exact-safety-overlay-execution",
             "title": "2026-07-12 - Review the exact safety-overlay execution"
           },
           {
             "anchor": "2026-07-12-close-the-safety-overlay-source-contracts",
             "level": 3,
-            "line": 699,
+            "line": 734,
             "ref": "docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md#2026-07-12-close-the-safety-overlay-source-contracts",
             "title": "2026-07-12 - Close the safety-overlay source contracts"
           },
           {
             "anchor": "2026-07-12-close-the-core-wave-observation-loop",
             "level": 3,
-            "line": 720,
+            "line": 755,
             "ref": "docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md#2026-07-12-close-the-core-wave-observation-loop",
             "title": "2026-07-12 - Close the core-wave observation loop"
           },
           {
             "anchor": "2026-07-12-close-the-fixture-return-and-isolate-the-outcome-return",
             "level": 3,
-            "line": 739,
+            "line": 774,
             "ref": "docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md#2026-07-12-close-the-fixture-return-and-isolate-the-outcome-return",
             "title": "2026-07-12 - Close the fixture return and isolate the outcome return"
           },
           {
             "anchor": "2026-07-12-return-the-first-core-wave-to-fixture-output-observation",
             "level": 3,
-            "line": 758,
+            "line": 793,
             "ref": "docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md#2026-07-12-return-the-first-core-wave-to-fixture-output-observation",
             "title": "2026-07-12 - Return the first core wave to fixture output observation"
           },
           {
             "anchor": "2026-07-12-make-broad-widening-an-exact-bounded-partition-contract",
             "level": 3,
-            "line": 778,
+            "line": 813,
             "ref": "docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md#2026-07-12-make-broad-widening-an-exact-bounded-partition-contract",
             "title": "2026-07-12 - Make broad widening an exact bounded partition contract"
           },
           {
             "anchor": "2026-07-12-review-the-complete-v15-full-pilot-and-contract-the-next-widening",
             "level": 3,
-            "line": 802,
+            "line": 837,
             "ref": "docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md#2026-07-12-review-the-complete-v15-full-pilot-and-contract-the-next-widening",
             "title": "2026-07-12 - Review the complete v15 full pilot and contract the next widening"
           },
           {
             "anchor": "2026-07-12-separate-outcome-observation-gaps-from-lift-in-v15",
             "level": 3,
-            "line": 821,
+            "line": 856,
             "ref": "docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md#2026-07-12-separate-outcome-observation-gaps-from-lift-in-v15",
             "title": "2026-07-12 - Separate outcome observation gaps from lift in v15"
           },
           {
             "anchor": "2026-07-12-close-aided-source-returns-and-retain-control-observation-gaps",
             "level": 3,
-            "line": 841,
+            "line": 876,
             "ref": "docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md#2026-07-12-close-aided-source-returns-and-retain-control-observation-gaps",
             "title": "2026-07-12 - Close aided source returns and retain control observation gaps"
           },
           {
             "anchor": "2026-07-12-repair-the-two-narrowed-source-returns",
             "level": 3,
-            "line": 860,
+            "line": 895,
             "ref": "docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md#2026-07-12-repair-the-two-narrowed-source-returns",
             "title": "2026-07-12 - Repair the two narrowed source returns"
           },
           {
             "anchor": "2026-07-12-preserve-the-mixed-first-skill-return-execution",
             "level": 3,
-            "line": 881,
+            "line": 916,
             "ref": "docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md#2026-07-12-preserve-the-mixed-first-skill-return-execution",
             "title": "2026-07-12 - Preserve the mixed first skill-return execution"
           },
           {
             "anchor": "2026-07-12-repair-two-source-boundaries-and-bind-a-six-turn-return",
             "level": 3,
-            "line": 905,
+            "line": 940,
             "ref": "docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md#2026-07-12-repair-two-source-boundaries-and-bind-a-six-turn-return",
             "title": "2026-07-12 - Repair two source boundaries and bind a six-turn return"
           },
           {
             "anchor": "2026-07-12-contract-the-complete-v14-return-to-two-source-skills",
             "level": 3,
-            "line": 926,
+            "line": 961,
             "ref": "docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md#2026-07-12-contract-the-complete-v14-return-to-two-source-skills",
             "title": "2026-07-12 - Contract the complete v14 return to two source skills"
           },
           {
             "anchor": "2026-07-12-separate-repo-treatment-from-ambient-target-reporting-in-v14",
             "level": 3,
-            "line": 945,
+            "line": 980,
             "ref": "docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md#2026-07-12-separate-repo-treatment-from-ambient-target-reporting-in-v14",
             "title": "2026-07-12 - Separate repo treatment from ambient target reporting in v14"
           },
           {
             "anchor": "2026-07-12-preserve-partial-v13-returns-and-close-receipt-schema-parity",
             "level": 3,
-            "line": 970,
+            "line": 1005,
             "ref": "docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md#2026-07-12-preserve-partial-v13-returns-and-close-receipt-schema-parity",
             "title": "2026-07-12 - Preserve partial v13 returns and close receipt schema parity"
           },
           {
             "anchor": "2026-07-12-bind-the-smallest-live-confirmation-of-v13-returns",
             "level": 3,
-            "line": 990,
+            "line": 1025,
             "ref": "docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md#2026-07-12-bind-the-smallest-live-confirmation-of-v13-returns",
             "title": "2026-07-12 - Bind the smallest live confirmation of v13 returns"
           },
           {
             "anchor": "2026-07-12-separate-v13-harness-repairs-from-remaining-skill-candidates",
             "level": 3,
-            "line": 1007,
+            "line": 1042,
             "ref": "docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md#2026-07-12-separate-v13-harness-repairs-from-remaining-skill-candidates",
             "title": "2026-07-12 - Separate v13 harness repairs from remaining skill candidates"
           },
           {
             "anchor": "2026-07-12-preserve-the-first-full-pilot-as-mixed-adaptive-returns",
             "level": 3,
-            "line": 1033,
+            "line": 1068,
             "ref": "docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md#2026-07-12-preserve-the-first-full-pilot-as-mixed-adaptive-returns",
             "title": "2026-07-12 - Preserve the first full pilot as mixed adaptive returns"
           },
           {
             "anchor": "2026-07-12-close-both-pilot-contract-coverage-gates",
             "level": 3,
-            "line": 1062,
+            "line": 1097,
             "ref": "docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md#2026-07-12-close-both-pilot-contract-coverage-gates",
             "title": "2026-07-12 - Close both pilot contract coverage gates"
           },
           {
             "anchor": "2026-07-12-validate-the-owner-action-seam-on-exact-merged-v12",
             "level": 3,
-            "line": 1084,
+            "line": 1119,
             "ref": "docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md#2026-07-12-validate-the-owner-action-seam-on-exact-merged-v12",
             "title": "2026-07-12 - Validate the owner-action seam on exact-merged v12"
           },
           {
             "anchor": "2026-07-12-add-one-attempt-owner-observable-outcome-seam",
             "level": 3,
-            "line": 1102,
+            "line": 1137,
             "ref": "docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md#2026-07-12-add-one-attempt-owner-observable-outcome-seam",
             "title": "2026-07-12 - Add one-attempt owner-observable outcome seam"
           },
           {
             "anchor": "2026-07-12-validate-fail-closed-selection-precedence-on-exact-merged-source",
             "level": 3,
-            "line": 1123,
+            "line": 1158,
             "ref": "docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md#2026-07-12-validate-fail-closed-selection-precedence-on-exact-merged-source",
             "title": "2026-07-12 - Validate fail-closed selection precedence on exact-merged source"
           },
           {
             "anchor": "2026-07-12-keep-unknown-fit-in-selection-before-local-intake",
             "level": 3,
-            "line": 1142,
+            "line": 1177,
             "ref": "docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md#2026-07-12-keep-unknown-fit-in-selection-before-local-intake",
             "title": "2026-07-12 - Keep unknown fit in selection before local intake"
           },
           {
             "anchor": "2026-07-12-carry-the-owner-jit-execution-contract-into-the-selected-skill",
             "level": 3,
-            "line": 1164,
+            "line": 1199,
             "ref": "docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md#2026-07-12-carry-the-owner-jit-execution-contract-into-the-selected-skill",
             "title": "2026-07-12 - Carry the owner JIT execution contract into the selected skill"
           },
           {
             "anchor": "2026-07-12-validate-bounded-route-and-trajectory-lift-on-exact-merged-v11",
             "level": 3,
-            "line": 1187,
+            "line": 1222,
             "ref": "docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md#2026-07-12-validate-bounded-route-and-trajectory-lift-on-exact-merged-v11",
             "title": "2026-07-12 - Validate bounded route and trajectory lift on exact-merged v11"
           },
           {
             "anchor": "2026-07-12-bound-exact-reads-without-full-tree-fixture-archaeology",
             "level": 3,
-            "line": 1212,
+            "line": 1247,
             "ref": "docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md#2026-07-12-bound-exact-reads-without-full-tree-fixture-archaeology",
             "title": "2026-07-12 - Bound exact reads without full-tree fixture archaeology"
           },
           {
             "anchor": "2026-07-12-separate-native-dispatch-child-procedure-fixture-probe-and-outcome",
             "level": 3,
-            "line": 1241,
+            "line": 1276,
             "ref": "docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md#2026-07-12-separate-native-dispatch-child-procedure-fixture-probe-and-outcome",
             "title": "2026-07-12 - Separate native dispatch, child procedure, fixture probe, and outcome"
           },
           {
             "anchor": "2026-07-12-bind-outcome-to-the-downstream-procedure-not-the-whole-task",
             "level": 3,
-            "line": 1286,
+            "line": 1321,
             "ref": "docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md#2026-07-12-bind-outcome-to-the-downstream-procedure-not-the-whole-task",
             "title": "2026-07-12 - Bind outcome to the downstream procedure, not the whole task"
           },
           {
             "anchor": "2026-07-12-split-route-lift-from-source-locked-bounded-outcome-lift",
             "level": 3,
-            "line": 1326,
+            "line": 1361,
             "ref": "docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md#2026-07-12-split-route-lift-from-source-locked-bounded-outcome-lift",
             "title": "2026-07-12 - Split route lift from source-locked bounded outcome lift"
           },
           {
             "anchor": "2026-07-12-make-process-exit-report-cohort-completeness",
             "level": 3,
-            "line": 1357,
+            "line": 1392,
             "ref": "docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md#2026-07-12-make-process-exit-report-cohort-completeness",
             "title": "2026-07-12 - Make process exit report cohort completeness"
           },
           {
             "anchor": "2026-07-11-assemble-complete-skill-reads-across-ordered-transport-events",
             "level": 3,
-            "line": 1386,
+            "line": 1421,
             "ref": "docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md#2026-07-11-assemble-complete-skill-reads-across-ordered-transport-events",
             "title": "2026-07-11 - Assemble complete skill reads across ordered transport events"
           },
           {
             "anchor": "2026-07-11-grade-fixture-filesystem-scope-before-budget-or-skill-effect",
             "level": 3,
-            "line": 1411,
+            "line": 1446,
             "ref": "docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md#2026-07-11-grade-fixture-filesystem-scope-before-budget-or-skill-effect",
             "title": "2026-07-11 - Grade fixture filesystem scope before budget or skill effect"
           },
           {
             "anchor": "2026-07-11-separate-objective-load-evidence-from-self-report-and-procedure-commands",
             "level": 3,
-            "line": 1436,
+            "line": 1471,
             "ref": "docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md#2026-07-11-separate-objective-load-evidence-from-self-report-and-procedure-commands",
             "title": "2026-07-11 - Separate objective load evidence from self-report and procedure commands"
           },
           {
             "anchor": "2026-07-11-return-a-valid-child-load-gap-to-the-root-workflow",
             "level": 3,
-            "line": 1459,
+            "line": 1494,
             "ref": "docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md#2026-07-11-return-a-valid-child-load-gap-to-the-root-workflow",
             "title": "2026-07-11 - Return a valid child-load gap to the root workflow"
           },
           {
             "anchor": "2026-07-11-align-native-load-evidence-with-the-official-codex-contract",
             "level": 3,
-            "line": 1483,
+            "line": 1518,
             "ref": "docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md#2026-07-11-align-native-load-evidence-with-the-official-codex-contract",
             "title": "2026-07-11 - Align native-load evidence with the official Codex contract"
           },
           {
             "anchor": "2026-07-11-preserve-matched-pair-symmetry-across-an-ambient-route",
             "level": 3,
-            "line": 1500,
+            "line": 1535,
             "ref": "docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md#2026-07-11-preserve-matched-pair-symmetry-across-an-ambient-route",
             "title": "2026-07-11 - Preserve matched-pair symmetry across an ambient route"
           },
           {
             "anchor": "2026-07-11-correct-cli-mcp-isolation-without-weakening-app-gates",
             "level": 3,
-            "line": 1514,
+            "line": 1549,
             "ref": "docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md#2026-07-11-correct-cli-mcp-isolation-without-weakening-app-gates",
             "title": "2026-07-11 - Correct CLI MCP isolation without weakening App gates"
           },
           {
             "anchor": "2026-07-11-correct-prompt-isolation-and-evidence-stage-grading",
             "level": 3,
-            "line": 1530,
+            "line": 1565,
             "ref": "docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md#2026-07-11-correct-prompt-isolation-and-evidence-stage-grading",
             "title": "2026-07-11 - Correct prompt isolation and evidence-stage grading"
           },
           {
             "anchor": "boundaries",
             "level": 2,
-            "line": 1550,
+            "line": 1585,
             "ref": "docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md#boundaries",
             "title": "Boundaries"
           },
           {
             "anchor": "validation",
             "level": 2,
-            "line": 1567,
+            "line": 1602,
             "ref": "docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md#validation",
             "title": "Validation"
           }
@@ -61535,7 +61542,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "b49f9bb84824023b8b63bdfc70ed67d670867225d75fbefeed66f4026da2e87d",
+        "digest": "754b00615a87c83975e9290b442e7cae456cd77b582c0fd3daa9f6f15b59b018",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -71861,13 +71868,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "d7c3ec842856a95f15114fa658428f6caadddd0577722992368b49f47dd7f2f4",
+        "content_hash": "4bd61b15ce4ca4ab4fdfc7e54daa225a257833920824a169c9750cb3caef65b3",
         "git_ref": "git-index-source-tree",
         "id": "file:evals/readme.md:a1a9eeb43d",
         "mime": "text/markdown",
         "path": "evals/README.md",
         "repo": "aoa-skills",
-        "size_bytes": 9239
+        "size_bytes": 9671
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -71922,7 +71929,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "d7c3ec842856a95f15114fa658428f6caadddd0577722992368b49f47dd7f2f4",
+        "digest": "4bd61b15ce4ca4ab4fdfc7e54daa225a257833920824a169c9750cb3caef65b3",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -76200,13 +76207,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "3ab5f0d6840e4b63d971d5aecaf117dcbe13c70f1e5ae361cc4054e24f8e23cb",
+        "content_hash": "39acf79a23538c24c481644f167ca43db94e3c72c51aba1615d99279a52054aa",
         "git_ref": "git-index-source-tree",
         "id": "file:evals/runners/run_live_skill_dispatch.py:e7cd5c0ae9",
         "mime": "text/x-python",
         "path": "evals/runners/run_live_skill_dispatch.py",
         "repo": "aoa-skills",
-        "size_bytes": 204336
+        "size_bytes": 207043
       },
       "mechanics_role": "none",
       "observed_form": "command",
@@ -76239,7 +76246,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "3ab5f0d6840e4b63d971d5aecaf117dcbe13c70f1e5ae361cc4054e24f8e23cb",
+        "digest": "39acf79a23538c24c481644f167ca43db94e3c72c51aba1615d99279a52054aa",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -76689,13 +76696,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "d7f57351ec2e71bdfe6f1983169ea6f004055938d41fe7d6bbc940ca1c6dc0c8",
+        "content_hash": "fa5f61058b932b8509e10ad1d1164f51677c4eb45075c4b175b12e59f54a1108",
         "git_ref": "git-index-source-tree",
         "id": "file:evals/suites/aoa-skill-live-dispatch-harness.suite.json:beeca555d0",
         "mime": "application/json",
         "path": "evals/suites/aoa-skill-live-dispatch-harness.suite.json",
         "repo": "aoa-skills",
-        "size_bytes": 8001
+        "size_bytes": 8822
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -76728,7 +76735,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "d7f57351ec2e71bdfe6f1983169ea6f004055938d41fe7d6bbc940ca1c6dc0c8",
+        "digest": "fa5f61058b932b8509e10ad1d1164f51677c4eb45075c4b175b12e59f54a1108",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -76778,13 +76785,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "1e5fa108ca9dc9e2b734b13f681b4b68e45c283d6d275566d77e53c662296eda",
+        "content_hash": "e1849b0f8b15f54f74233cd411d031a7be01a07f96cf85d295f6a3505de2b4c6",
         "git_ref": "git-index-source-tree",
         "id": "file:evals/suites/aoa-skill-live-dispatch-harness.suite.md:dc83328e65",
         "mime": "text/markdown",
         "path": "evals/suites/aoa-skill-live-dispatch-harness.suite.md",
         "repo": "aoa-skills",
-        "size_bytes": 45897
+        "size_bytes": 47002
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -76848,14 +76855,14 @@
           {
             "anchor": "safety-and-privacy",
             "level": 2,
-            "line": 618,
+            "line": 634,
             "ref": "evals/suites/aoa-skill-live-dispatch-harness.suite.md#safety-and-privacy",
             "title": "Safety And Privacy"
           },
           {
             "anchor": "adaptive-return",
             "level": 2,
-            "line": 666,
+            "line": 682,
             "ref": "evals/suites/aoa-skill-live-dispatch-harness.suite.md#adaptive-return",
             "title": "Adaptive Return"
           }
@@ -76867,7 +76874,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "1e5fa108ca9dc9e2b734b13f681b4b68e45c283d6d275566d77e53c662296eda",
+        "digest": "e1849b0f8b15f54f74233cd411d031a7be01a07f96cf85d295f6a3505de2b4c6",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -77004,13 +77011,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "bb454c4ae692c9999d534d12b07f40ab6b0db4acc3ced82274d777f9f41bb80b",
+        "content_hash": "2f7dd679aefedf3858f7bccf521e01d422d7becfd312d8f5318d73bb81a2b6a9",
         "git_ref": "git-index-source-tree",
         "id": "file:evals/suites/aoa-skill-live-dispatch-procedures.json:7114401ba3",
         "mime": "application/json",
         "path": "evals/suites/aoa-skill-live-dispatch-procedures.json",
         "repo": "aoa-skills",
-        "size_bytes": 52336
+        "size_bytes": 52407
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -77043,7 +77050,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "bb454c4ae692c9999d534d12b07f40ab6b0db4acc3ced82274d777f9f41bb80b",
+        "digest": "2f7dd679aefedf3858f7bccf521e01d422d7becfd312d8f5318d73bb81a2b6a9",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -77093,13 +77100,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "e678241a68741cf71ce69744107df16a8eab5e8642b550b4adeb8c2463a531da",
+        "content_hash": "29a7407958fd8e6d8eaa2f29800e6f298c681b55efba98f75866372268eb4883",
         "git_ref": "git-index-source-tree",
         "id": "file:evals/suites/aoa-skill-live-dispatch.plan.json:c8f8bbbc88",
         "mime": "application/json",
         "path": "evals/suites/aoa-skill-live-dispatch.plan.json",
         "repo": "aoa-skills",
-        "size_bytes": 20301
+        "size_bytes": 20815
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -77132,7 +77139,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "e678241a68741cf71ce69744107df16a8eab5e8642b550b4adeb8c2463a531da",
+        "digest": "29a7407958fd8e6d8eaa2f29800e6f298c681b55efba98f75866372268eb4883",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -77158,7 +77165,7 @@
         "artifact_class": "config",
         "compatibility": "stable",
         "contract_version": "none",
-        "schema_version": "aoa_codex_app_server_skill_input_contract_v13"
+        "schema_version": "aoa_codex_app_server_skill_input_contract_v14"
       },
       "access": {
         "scope": "public",
@@ -77182,13 +77189,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "6ea32b0537a8e78d6d8269faae390023f286db5921183c623a20a3422b8af88e",
+        "content_hash": "f40f5ed64732ab47b33e3087c03f98746639c6b0af831ee801fd1fb6c3a98f5e",
         "git_ref": "git-index-source-tree",
         "id": "file:evals/suites/codex-app-server-skill-input.contract.json:b1bc17a34b",
         "mime": "application/json",
         "path": "evals/suites/codex-app-server-skill-input.contract.json",
         "repo": "aoa-skills",
-        "size_bytes": 7788
+        "size_bytes": 8185
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -77221,7 +77228,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "6ea32b0537a8e78d6d8269faae390023f286db5921183c623a20a3422b8af88e",
+        "digest": "f40f5ed64732ab47b33e3087c03f98746639c6b0af831ee801fd1fb6c3a98f5e",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -135428,13 +135435,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "188a72e1a38174ce641b60f4f41264ad6a93b1c9497fad9912d7ca9e36ae37c4",
+        "content_hash": "e3c3812cb3cf9ccb7694ea49d6738af4bbb6c4efb01e1f996abdd8775bd77c7e",
         "git_ref": "git-index-source-tree",
         "id": "file:schemas/live-skill-dispatch-plan.schema.json:ba7d5d70d0",
         "mime": "application/json",
         "path": "schemas/live-skill-dispatch-plan.schema.json",
         "repo": "aoa-skills",
-        "size_bytes": 10239
+        "size_bytes": 10371
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -135467,7 +135474,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "188a72e1a38174ce641b60f4f41264ad6a93b1c9497fad9912d7ca9e36ae37c4",
+        "digest": "e3c3812cb3cf9ccb7694ea49d6738af4bbb6c4efb01e1f996abdd8775bd77c7e",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -135517,13 +135524,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "e5522b6153d6b65088634e675c2c7c9181938caf449e55cc9da4185bde905991",
+        "content_hash": "8e8012015ec2beb7f61005f06c70fe8938dd0e534c586fa2c64ea88a985226f3",
         "git_ref": "git-index-source-tree",
         "id": "file:schemas/live-skill-dispatch-private-receipt.schema.json:a5ead8166f",
         "mime": "application/json",
         "path": "schemas/live-skill-dispatch-private-receipt.schema.json",
         "repo": "aoa-skills",
-        "size_bytes": 3634
+        "size_bytes": 3678
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -135556,7 +135563,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "e5522b6153d6b65088634e675c2c7c9181938caf449e55cc9da4185bde905991",
+        "digest": "8e8012015ec2beb7f61005f06c70fe8938dd0e534c586fa2c64ea88a985226f3",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -135695,13 +135702,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "f118693fbc467140761c96d1fcff06bffb1e6a4a4db83d981ff5eae422318d1b",
+        "content_hash": "d98cdf7eaba356170ad8a268028104ccf7649b6c7ed8f146c7f48427bf52ea00",
         "git_ref": "git-index-source-tree",
         "id": "file:schemas/live-skill-dispatch-public-receipt.schema.json:6248b34177",
         "mime": "application/json",
         "path": "schemas/live-skill-dispatch-public-receipt.schema.json",
         "repo": "aoa-skills",
-        "size_bytes": 26166
+        "size_bytes": 26210
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -135734,7 +135741,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "f118693fbc467140761c96d1fcff06bffb1e6a4a4db83d981ff5eae422318d1b",
+        "digest": "d98cdf7eaba356170ad8a268028104ccf7649b6c7ed8f146c7f48427bf52ea00",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -218445,13 +218452,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "a5add1ea7f25cc495dbcdab6c46206f8cfb0034bd5b12b1ad3bab9de6a1ed02b",
+        "content_hash": "d5c63696d60cfa9eab04a696cd11cd37ab886a8fbb6c919cc0b773fc145a2e54",
         "git_ref": "git-index-source-tree",
         "id": "file:tests/test_live_skill_dispatch_harness.py:27c0f74cd0",
         "mime": "text/x-python",
         "path": "tests/test_live_skill_dispatch_harness.py",
         "repo": "aoa-skills",
-        "size_bytes": 197205
+        "size_bytes": 205807
       },
       "mechanics_role": "none",
       "observed_form": "command",
@@ -218484,7 +218491,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "a5add1ea7f25cc495dbcdab6c46206f8cfb0034bd5b12b1ad3bab9de6a1ed02b",
+        "digest": "d5c63696d60cfa9eab04a696cd11cd37ab886a8fbb6c919cc0b773fc145a2e54",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
