@@ -326,6 +326,14 @@ procedure, and owner outcome right but still loads repo-visible
 source boundaries, and repeat the affected cohort without changing proof
 semantics.
 
+The second source repair makes those boundaries literal in prompt-visible
+text. `aoa-decision-find` stops with `blocked_missing_input` only when the
+permitted boundary supplies neither graph/fallback lookup nor graph and owner
+inputs. `aoa-change-protocol` stays unloaded for concrete ATM10 repo-relative
+path, local-command, or approval-note requests and does not load the explicit
+overlay. The six-turn cohort remains unchanged so the closed approval pair and
+the missing aided outcome sentinel are both checked again under fresh transport.
+
 See `evals/suites/aoa-skill-live-dispatch-harness.suite.md` and
 `docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md` for
 the evidence and authority boundaries.

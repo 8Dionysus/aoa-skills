@@ -464,6 +464,27 @@ As of 2026-07-12:
 
 ## Review Log
 
+### 2026-07-12 - Repair the two narrowed source returns
+
+- Decision child: when the active permitted boundary has neither graph or
+  fallback lookup nor graph status, changed paths, target records, or an owner
+  repository packet, `aoa-decision-find` now stops with
+  `blocked_missing_input`; it does not reinterpret missing inputs as
+  `deferred_owner_boundary`.
+- ATM10 exclusion: a prompt that names an ATM10 repository and asks for
+  repo-relative paths, local commands, or local approval notes now reports the
+  manual owner route without loading generic `aoa-change-protocol` or the
+  explicit overlay.
+- Preserved behavior: decision graph lookup and source-note verification remain
+  active when their evidence is available; generic bounded changes remain
+  implicitly routable; both explicit targets and the owner-action answer keys
+  remain unchanged.
+- Proof boundary: the empty aided sentinel event remains an observation return.
+  Exact command identity and zero exit do not become outcome verification.
+- Decision: bind both changes red-first in source and prompt-visible contracts,
+  refresh generated/export/runtime parity, then repeat the existing six-turn
+  cohort before any full-pilot widening.
+
 ### 2026-07-12 - Preserve the mixed first skill-return execution
 
 - Exact evidence: all six `pilot13-skill-returns` turns and all three pairs

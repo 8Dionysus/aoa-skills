@@ -401,6 +401,13 @@ and exits zero, but its command event contains no sentinel output; the harness
 correctly leaves outcome verification false. Preserve that observation gap,
 repair only the two source boundaries, and rerun before widening.
 
+The red-first second source repair gives the selected decision child the exact
+`blocked_missing_input` terminal for an evidence boundary with no graph,
+fallback, or owner inputs, and gives the generic change protocol the exact
+ATM10 repo-relative do-not-load boundary. Neither the explicit target policies,
+the owner-action answer keys, nor the absent-sentinel proof rule changes. The
+existing six-turn cohort remains the next source-locked live step.
+
 ## Safety And Privacy
 
 The plan locks Git head, all portable skill files, generated/config inputs,

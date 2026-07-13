@@ -16,11 +16,40 @@ class DescriptionTriggerBuilderTests(unittest.TestCase):
             (REPO_ROOT / "config" / "portable_skill_overrides.json").read_text()
         )["skills"]
         decision = overrides["aoa-decision"]["description"]
+        decision_find = overrides["aoa-decision-find"]["description"]
         change = overrides["aoa-change-protocol"]["description"]
 
         self.assertIn("select and fully read exactly one", decision)
+        self.assertIn(
+            "no graph status, changed paths, target records, or owner repository packet",
+            decision_find,
+        )
+        self.assertIn("blocked_missing_input", decision_find)
         self.assertIn("production or sensitive action is allowed", change)
         self.assertIn("project-specific manual overlay is the semantic owner", change)
+        self.assertIn("names an `atm10-*` repository", change)
+        self.assertIn(
+            "repo-relative paths, local commands, or local approval notes", change
+        )
+        self.assertIn("without loading this generic skill or the explicit overlay", change)
+
+    def test_second_live_return_source_contracts_are_explicit(self):
+        decision_find = (
+            REPO_ROOT / "skills/core/engineering/aoa-decision-find/SKILL.md"
+        ).read_text()
+        change = (
+            REPO_ROOT / "skills/core/engineering/aoa-change-protocol/SKILL.md"
+        ).read_text()
+
+        self.assertIn("stop with `blocked_missing_input`", decision_find)
+        self.assertIn(
+            "do not relabel missing input as `deferred_owner_boundary`", decision_find
+        )
+        self.assertIn("names an `atm10-*` repository", change)
+        self.assertIn(
+            "repo-relative paths, local commands, or local approval notes", change
+        )
+        self.assertIn("without loading this generic skill or the explicit overlay", change)
 
     def test_builder_has_no_drift(self):
         completed = subprocess.run(

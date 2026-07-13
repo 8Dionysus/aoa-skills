@@ -2,7 +2,7 @@
   "schema_version": "aoa_skill_live_dispatch_plan_v1",
   "owner_repo": "aoa-skills",
   "profile": "repo-default",
-  "profile_revision": "65de853bc211218b54640d1dc1ae708790387301afaede8de2cd349b282ee6a8",
+  "profile_revision": "dda7c15a82e9af4517893f19b9b70c6c151d2d5326ddc01aa1c75e13e1ba9c33",
   "protocol_revision": "codex-cli-0.144.1-live-dispatch-evidence-v14",
   "proof_authority": false,
   "promotion_allowed": false,

@@ -345,6 +345,7 @@ Common expand sections:
 - a more specific risk skill should be used instead
 - the task is only to classify whether a production or sensitive action is allowed; keep the explicit-only approval-gate owner unloaded and require a deliberate manual route
 - a project-specific manual overlay is the semantic owner; do not substitute the generic base workflow or load the overlay implicitly
+- a prompt names an atm10-* repository and requests repo-relative paths, local commands, or local approval notes; report the manual owner route without loading this generic skill or the explicit overlay
 
 ### Object use shape
 
@@ -653,6 +654,7 @@ Common expand sections:
 - a task needs relevant prior decision context before editing code, docs, validation, MCP, skill, or repo topology
 - a cross-repo comparison needs decision IDs, owner surfaces, source surfaces, statuses, or supersession links
 - graph search can prevent broad manual reads across many decision lanes
+- no graph status, changed paths, target records, or owner repository packet is available inside the active evidence boundary, and no permitted graph or fallback index can supply them; select this route only to stop with blocked_missing_input rather than invent lookup results
 
 ### Do not use when
 

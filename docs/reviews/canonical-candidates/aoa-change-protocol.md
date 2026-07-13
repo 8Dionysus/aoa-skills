@@ -69,3 +69,23 @@
 
 Canonical promotion landed in this pass.
 Keep this review record as the historical decision surface for why `aoa-change-protocol` became part of the first canonical pair, and use future reviews only if its default-use rationale or bounded meaning starts to drift.
+
+## 2026-07-12 concrete ATM10 return audit
+
+- audit trigger: the first exact-merged six-turn source-return run closed the
+  approval-only collision but still loaded the generic workflow for the
+  concrete ATM10 repo-relative overlay prompt.
+- evidence checked: the reviewed public six-turn receipt, `collision-14`
+  procedure and owner-action contracts, the ATM10 explicit-overlay policy,
+  generic source and portable descriptions, and red-first trigger fixtures.
+- runtime `SKILL.md` meaning changed: yes, boundedly. ATM10 repo-relative path,
+  local-command, or approval-note requests now report the manual owner route
+  without loading either the generic skill or the explicit overlay.
+- preserved behavior: ordinary generic bounded changes remain implicit; the
+  ATM10 target stays explicit-only; neither target procedure nor answer key
+  changes.
+- decision: keep the skill canonical. The change is a concrete negative-boundary
+  clarification of the prior adaptive audit, not a new project overlay inside
+  the generic workflow.
+- blocker status: the exact affected cohort must rerun after runtime parity;
+  deterministic source checks alone do not close the observed collision.
