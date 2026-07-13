@@ -367,6 +367,14 @@ Tracking starts with the community-docs baseline for this repository.
   could leave intelligence descriptions stale while the export lane still
   appeared green; generated, export, and release sequences now close that
   dependency before validation or full tests.
+- The complete eval-child rerun is preserved as a second reviewed
+  `needs-rerun` receipt. It closes the prior apply-action and root-prefix gaps;
+  four aided pairs are clean, while collision 47 reads the eval root fully but
+  routes an explicit bounded-suite design request to select. The eval root and
+  prompt-visible description now give explicit design intent precedence, with
+  missing invariant or target inputs stopping inside `aoa-eval-design` rather
+  than changing the route. Exact merge, runtime parity, and another full rerun
+  remain required; proof and promotion stay false.
 - Live-dispatch evidence v17 repairs both shared boundaries red-first. Portable
   export now prepends a policy-derived activation sentence to all 43 `manual`
   and two `suggest` descriptions, allowing only explicit invocation or a

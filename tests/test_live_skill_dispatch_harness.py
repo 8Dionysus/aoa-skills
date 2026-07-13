@@ -972,6 +972,20 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
         self.assertIn("a bounded prefix is not a complete load", root_source)
         self.assertIn("read this root skill to EOF", root_description)
         self.assertIn("a bounded prefix is not a complete load", root_description)
+        self.assertIn(
+            "an explicit owner request to design a bounded local eval suite or "
+            "report has design precedence",
+            root_source.lower(),
+        )
+        self.assertIn(
+            "do not reroute the design request to `aoa-eval-select`",
+            root_source.lower(),
+        )
+        self.assertIn(
+            "an explicit request to design a bounded local eval suite selects "
+            "aoa-eval-design even when invariant or target inputs are missing",
+            root_description.lower(),
+        )
         for skill_name in expected_children.values():
             source = (
                 REPO_ROOT

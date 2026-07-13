@@ -507,6 +507,31 @@ As of 2026-07-13:
 
 ## Review Log
 
+### 2026-07-13 - Return from the full eval-child rerun to design precedence
+
+- Exact execution: after the root-EOF, apply-action, and export-parity repair
+  merged, the installed foundation profile verified at 36/36 and the prompt
+  exposed exactly all 12 implicit skills while keeping all five eval children
+  hidden. The full ten-turn cohort then completed under the medium agent wrapper
+  without early stop, transport failure, external access, or fixture gap.
+- Closed cases: aided cases 44-46 and 48 selected the intended child, read both
+  root and child completely, stopped at `blocked_missing_input`, and matched
+  their procedure and owner-action contracts. The apply owner-action miss and
+  the prior design/session-mining root-prefix gaps are closed.
+- Remaining return: aided case 47 read the eval root to EOF but selected and
+  fully read `aoa-eval-select` instead of the expected `aoa-eval-design`.
+  Procedure and owner-action observations remained correct, so the remaining
+  failure is route precedence, not child load, transport, or outcome tooling.
+- Decision: explicit owner intent to design a bounded local eval suite or report
+  has precedence over the general unknown-fit/missing-evidence selector. Missing
+  invariant, target-repository, or other design inputs must stop inside
+  `aoa-eval-design` as `blocked_missing_input`; they must not silently change the
+  selected route to `aoa-eval-select`.
+- Evidence boundary: preserve the second full public-safe receipt as
+  `needs-rerun`, keep proof and promotion false, land the root and portable
+  description repair, restore exact-merge runtime parity, and repeat the full
+  cohort rather than accepting four clean pairs as a family conclusion.
+
 ### 2026-07-13 - Return from the first eval-child live pass to root load and apply action
 
 - Trigger: the exact-merged `full-collision-eval-children` run completed all

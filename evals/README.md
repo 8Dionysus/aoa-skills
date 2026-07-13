@@ -171,6 +171,14 @@ Active first local corpus:
   EOF and makes the exact apply request the mandatory next owner action. This
   repair still requires exact merge, prompt-visible runtime parity, and a full
   ten-turn rerun; proof and promotion remain false.
+  That rerun completes all ten turns and closes the apply-action plus both
+  root-prefix failures, but is preserved separately as
+  [`aoa-skill-live-dispatch-full-collision-eval-children-20260713-v19-second-needs-rerun.json`](reports/aoa-skill-live-dispatch-full-collision-eval-children-20260713-v19-second-needs-rerun.json).
+  Four aided pairs are clean; collision 47 reads the root fully but selects
+  `aoa-eval-select` for an explicit bounded-suite design request. The next
+  source return gives explicit design intent precedence and requires missing
+  design inputs to stop inside `aoa-eval-design`. Exact merge, runtime parity,
+  and a complete rerun remain open; proof and promotion remain false.
 
 These files are local evidence notes. They do not publish central proof
 acceptance, scoring, verdicts, regression truth, or proof doctrine.
