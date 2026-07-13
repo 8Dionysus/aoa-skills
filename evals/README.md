@@ -201,8 +201,8 @@ Active first local corpus:
   All four turns and both pairs complete without a failure or observation gap.
   ADR gains positive route and procedure-disposition lift; memo writeback stays
   correctly manual and unloaded in both arms; both owner outcomes are correct
-  in both arms. The reviewed receipt remains candidate-only. Protocol v20 now
-  fail-closes confirmed execution against the account-visible
+  in both arms. The reviewed receipt remains candidate-only. Protocol v20
+  introduced fail-closed admission against the account-visible
   `codex debug models` catalog before model spend; after exact merge and fresh
   runtime/host gates, Titan implicit A is the next bounded wave.
   That exact-merged v20 wave is preserved as
@@ -222,6 +222,14 @@ Active first local corpus:
   remain observation-unclean. The new four-turn
   `coverage-closure-titan-implicit-b-returns` cohort repeats only both arms of
   cases 12 and 13. Land and execute that return before opening root trajectories.
+  The exact-merged v20 return is preserved as
+  [`aoa-skill-live-dispatch-coverage-closure-titan-implicit-b-returns-20260713-v20-reviewed-recurrent-control-observation-gap-needs-rerun.json`](reports/aoa-skill-live-dispatch-coverage-closure-titan-implicit-b-returns-20260713-v20-reviewed-recurrent-control-observation-gap-needs-rerun.json).
+  Case 12 becomes clean; case 13 control repeats the same zero-exit,
+  missing-sentinel observation. Diagnostic execution proves the unchanged
+  validator emits its sentinel, so v21 changes only the exact command to
+  `python3 -u outcome_validator.py --candidate <value>`. Single attempt,
+  anti-inspection, exit, sentinel, and proof boundaries remain unchanged. Land
+  v21 and repeat the same four turns before root trajectories.
 
 These files are local evidence notes. They do not publish central proof
 acceptance, scoring, verdicts, regression truth, or proof doctrine.

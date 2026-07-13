@@ -350,8 +350,17 @@ temporary root and must not be copied into this directory.
   negative and positive outcome lifts are therefore observation-unclean. This
   is reviewed `needs-rerun` candidate evidence; repeat only both arms of those
   two cases without changing Titan skill source or proof/promotion posture.
+- [aoa-skill-live-dispatch-coverage-closure-titan-implicit-b-returns-20260713-v20-reviewed-recurrent-control-observation-gap-needs-rerun.json](aoa-skill-live-dispatch-coverage-closure-titan-implicit-b-returns-20260713-v20-reviewed-recurrent-control-observation-gap-needs-rerun.json)
+  preserves the exact-merged four-turn return. Case 12 is clean in both arms;
+  case 13 control repeats its missing-sentinel observation despite the exact
+  command exiting zero. All manual, fixture, owner-boundary, target-isolation,
+  command-count, filesystem, and inventory contracts remain correct. The
+  unchanged fixture validator emits its sentinel in diagnostic execution, so
+  this is recurring CLI stdout-capture pressure, not a Titan skill effect.
+  Preserve the v20 receipt as `needs-rerun`; v21 uses the same one-attempt
+  command with unbuffered Python before repeating the paired cohort.
 
-Corrected live receipts under the v11-v20 evidence protocols are reviewable only
+Corrected live receipts under the v11-v21 evidence protocols are reviewable only
 after canonical user-skill shadows, plugins, and every configured MCP id are
 isolated with the adapter-appropriate mechanism (`--ignore-user-config` for
 CLI exec, explicit per-id disables for prompt inspection and App Server);
