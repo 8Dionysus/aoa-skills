@@ -507,6 +507,33 @@ As of 2026-07-13:
 
 ## Review Log
 
+### 2026-07-13 - Preserve the clean v19 eval-child full rerun
+
+- Exact source and runtime: merged commit `6b9a183` stages and inspects 36
+  foundation skills with 270/270 files, verifies repo and bundle installation at
+  36/36, and exposes exactly all 12 implicit profile skills in prompt input.
+  `aoa-eval` carries the design-precedence description while all five child
+  skills remain hidden as independent implicit targets.
+- Host boundary: separate storage admission allowed 1 GiB below the private
+  host root. The medium agent wrapper applied the routed CPU set and soft memory
+  high, completed all ten turns in 10 minutes 21 seconds, peaked at 240.8 MiB,
+  and used no swap. Storage and resource validators pass all checks; memory has
+  zero failures and only the pre-existing memory-index schema warning.
+- Complete route evidence: every aided arm selects `aoa-eval` plus its exact
+  select/apply/local-need/design/session-mining child, reads root and child
+  completely, and matches dispatch, load, trajectory, `blocked_missing_input`
+  procedure, owner boundary, fixture, and owner-outcome contracts. No failure
+  class, early stop, observation gap, external filesystem access, or broad
+  inventory command remains.
+- Pair result: all five pairs show positive route, child-trajectory, and
+  procedure-disposition lift. Apply also shows positive owner-outcome lift;
+  the other four outcomes are clean `no_lift_both_correct` observations.
+- Boundary and next route: preserve the reviewed public-safe receipt as
+  candidate evidence with proof and promotion false. This closes the bounded
+  full-collision eval-child wave and, together with the earlier reviewed waves,
+  permits full-collision family synthesis. Audit the coverage-closure partition
+  contracts before any further live spend.
+
 ### 2026-07-13 - Return from the full eval-child rerun to design precedence
 
 - Exact execution: after the root-EOF, apply-action, and export-parity repair
