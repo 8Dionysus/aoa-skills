@@ -501,6 +501,16 @@ Preserve the reviewed candidate receipt with proof and promotion false; open
 the 15-turn structured-Titan wave only after this writeback lands and all exact
 runtime and host gates are repeated.
 
+That exact-merged structured-Titan wave completes 15/15 with no failure or
+early stop. Every explicit-only Titan target accepts the official structured
+input, reports `invoke`, names the exact direct target, keeps `selected_child`
+null, and stops at `blocked_missing_input`. Native dispatch/load,
+selection-report, fixture, prompt, isolation, filesystem/inventory, and
+owner-boundary checks all pass. Fourteen targets additionally expose a raw
+full read; mutation-gate uses the separately authoritative accepted native
+load. Preserve the reviewed candidate receipt with proof and promotion false;
+this closes the planned structured-Titan partition without skill-source edits.
+
 The first exact v16 core wave completes 16/16. Every aided arm gains route and
 procedure correctness, while six outcome pairs are observation-clean and
 correct in both arms. Three fixture commands across `collision-01` and

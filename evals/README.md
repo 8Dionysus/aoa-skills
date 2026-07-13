@@ -274,6 +274,15 @@ Active first local corpus:
   class. This closes the common direct-target contract return without a skill
   source edit. After this reviewed writeback lands and fresh exact gates pass,
   the 15-turn `coverage-closure-structured-titan` wave is next.
+  That exact-merged v22 Titan wave is preserved as
+  [`aoa-skill-live-dispatch-coverage-closure-structured-titan-20260713-v22-reviewed-all-structured-targets-clean.json`](reports/aoa-skill-live-dispatch-coverage-closure-structured-titan-20260713-v22-reviewed-all-structured-targets-clean.json).
+  All fifteen explicit-only Titan targets report `invoke`, the exact direct
+  target, a null child, and `blocked_missing_input`; official dual input,
+  native acceptance, dispatch, load, selection report, fixture, isolation,
+  filesystem/inventory scope, and owner-boundary checks all pass with no
+  failure class. Fourteen also expose a separate raw full read; mutation-gate
+  is correctly loaded through accepted native structured input alone. This
+  closes the planned structured-Titan partition without changing Titan source.
 
 These files are local evidence notes. They do not publish central proof
 acceptance, scoring, verdicts, regression truth, or proof doctrine.

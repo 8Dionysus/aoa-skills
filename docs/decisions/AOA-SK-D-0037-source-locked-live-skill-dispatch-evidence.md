@@ -544,10 +544,45 @@ As of 2026-07-13:
   direct-target reports, null children, `blocked_missing_input`, complete reads,
   and every dispatch/load/fixture/isolation/scope check green. This closes the
   common contract return without changing any of the three skill sources;
-  structured Titan is the next exact-gated wave after writeback.
+  the subsequent exact-merged structured-Titan wave completes 15/15 with exact
+  direct-target reports, accepted native loads, clean fixture/isolation/scope
+  evidence, and no failure. Fourteen targets add raw full reads; mutation-gate
+  relies on the accepted native structured load. This closes the planned
+  structured-Titan partition without changing Titan source.
 - Superseded by: none.
 
 ## Review Log
+
+### 2026-07-13 - Close all structured Titan targets under v22
+
+- Exact source and runtime: merged commit `621dc60`, protocol v22,
+  `gpt-5.6-sol` at medium effort, repo profile 57/57, installed foundation
+  36/36, both isolated prompt surfaces exactly 12/12 with no Titan target
+  implicitly visible, 37 disabled shadow paths, 11 disabled MCP ids, and local
+  eval readiness 2/2. The source-locked cohort contains exactly the fifteen
+  Titan structured targets.
+- Host admission: the independent 256 MiB storage write preflight allows the
+  host-private target. The forced interactive medium resource plan has no
+  blocked, denied, or overridden reason, projects warm memory from about 14 GiB
+  available with zero PSI, samples a green 62 C thermal class, keeps
+  `MemoryHigh` soft, sets no `MemoryMax`, and passes the exact launch dry run.
+  The live wrapper peaks near 233 MiB with zero cgroup swap.
+- Reviewed result: all fifteen turns complete without a failure or early stop.
+  Every official structured input is visible, sent, and natively accepted.
+  Each target reports `invoke`, the exact target in `selected_skill`, null in
+  `selected_child`, and `blocked_missing_input`; dispatch, load,
+  selection-report, fixture, prompt visibility, runtime isolation,
+  filesystem/inventory scope, and owner-boundary checks all pass.
+- Load interpretation: fourteen targets also expose a separate raw full read.
+  Mutation-gate does not shell-read its source, but its accepted official
+  structured input supplies the source-locked native load evidence, so its load
+  contract remains clean. Do not manufacture a raw-read requirement or edit
+  Titan source for this difference.
+- Host closeout and boundary: storage, resource, and memory validators pass
+  19/19, 16/16, and 35/35 with zero warnings. The receipt has no matched pair or
+  aggregate score and grants no central proof or promotion authority. Land the
+  reviewed public receipt and rationale, then return to the whole-family
+  coverage map before declaring the broader skill-upgrade loop complete.
 
 ### 2026-07-13 - Close the v22 structured direct-target return
 

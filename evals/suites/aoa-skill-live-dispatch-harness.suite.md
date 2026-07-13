@@ -842,6 +842,16 @@ the reviewed candidate receipt, keep proof and promotion false, and open the
 15-turn structured-Titan wave only after this writeback lands and fresh exact
 runtime/model/local-eval/storage/resource/memory gates pass.
 
+The exact-merged v22 structured-Titan wave then completes all fifteen turns
+without a failure, early stop, external access, broad inventory,
+prompt/fixture mismatch, or owner-boundary violation. Every official
+structured input is visible, sent, and accepted; all targets report `invoke`,
+the exact direct target, `selected_child` null, and `blocked_missing_input`.
+Fourteen targets also have a raw full read, while mutation-gate correctly
+relies on the native structured load contract. Preserve the reviewed candidate
+receipt and keep proof and promotion false. This closes the planned
+structured-Titan partition, not central proof or a Titan source change.
+
 ## Safety And Privacy
 
 The plan locks Git head, authored portable overrides, all portable skill files,
