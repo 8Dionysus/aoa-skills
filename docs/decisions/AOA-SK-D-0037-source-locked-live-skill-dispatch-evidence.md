@@ -525,11 +525,43 @@ As of 2026-07-13:
   four-turn return repeats only both arms of cases 12 and 13. Its first v20
   execution closes case 12 but repeats the case-13 control stdout loss. V21
   keeps the same single-attempt contract and sentinel while making the exact
-  validator command unbuffered. Repeat the same four turns after exact merge,
-  runtime parity, host admission, and fresh confirmation tokens.
+  validator command unbuffered. The exact-merged v21 return completes 4/4 turns
+  and 2/2 pairs with both manual guards and both owner outcomes correct in both
+  arms, no failure, and no observation gap. That closes the recurring capture
+  return without changing Titan skills; the next bounded wave is root-child
+  trajectories after this reviewed writeback lands and all exact runtime and
+  host gates are repeated.
 - Superseded by: none.
 
 ## Review Log
+
+### 2026-07-13 - Close the Titan B observation return under v21
+
+- Exact source: merged commit `39cec43`, protocol v21, current account-visible
+  `gpt-5.6-sol` at medium effort, repo profile 57/57, installed foundation
+  profile 36/36, implicit prompt parity 12/12, and local eval readiness 2/2.
+  The source-locked packet contained exactly four turns, two manual guards, two
+  procedure contracts, and two owner-outcome contracts.
+- Host admission: the independent 64 MiB storage preflight allowed the run.
+  The forced interactive medium resource plan had no blocked, denied, or
+  overridden reason, kept `MemoryHigh` soft, and set no `MemoryMax`; its dry run
+  passed before execution. The wrapper returned zero at about 391 MiB peak
+  memory and no swap.
+- Reviewed result: 4/4 arms and 2/2 pairs complete without an early stop or
+  failure class. Cases 12 and 13 keep the hidden Titan targets unselected,
+  unread, and unloaded; manual non-activation and owner outcomes are correct in
+  aided and control arms. Both per-arm observation-gap flags are false, while
+  prompt/background, fixture, filesystem, inventory, and owner boundaries all
+  match their locks.
+- Interpretation: the unbuffered exact command repaired the bounded CLI
+  output-capture seam. The result creates no pressure to edit Titan skills and
+  grants no proof or promotion authority. Preserve both v20 `needs-rerun`
+  receipts as historical evidence rather than rewriting them.
+- Host closeout and next: post-run storage, resource, and memory validators pass
+  19/19, 16/16, and 35/35 with zero warnings. Land this reviewed public
+  writeback, repeat exact merged runtime/model/local-eval and host gates, then
+  open only `coverage-closure-root-trajectories` unless new evidence requires a
+  narrower return first.
 
 ### 2026-07-13 - Return from recurrent outcome loss to an unbuffered command
 

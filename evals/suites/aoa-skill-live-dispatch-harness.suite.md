@@ -796,8 +796,13 @@ is recurring CLI output-capture pressure rather than a Titan source defect.
 V21 keeps one owner-action attempt and the same contract but makes the exact
 command `python3 -u outcome_validator.py --candidate <value>`. Prompt, fixture
 guidance, FakeTransport, command matcher, and versioned contract share that one
-form; the formerly buffered command is non-exact. Land v21 and rerun only the
-same four arms before opening root trajectories.
+form; the formerly buffered command is non-exact. The exact-merged v21 return
+then completes all four arms and both pairs without a failure, external access,
+broad inventory, prompt/fixture mismatch, or outcome-observation gap. Cases 12
+and 13 are both-correct for manual non-activation and owner outcome in aided and
+control arms. Preserve this as reviewed candidate evidence, keep proof and
+promotion false, and open root trajectories only after this writeback lands and
+their own exact-merge/runtime/host gates pass.
 
 ## Safety And Privacy
 

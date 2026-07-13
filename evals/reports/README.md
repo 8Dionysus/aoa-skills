@@ -359,6 +359,15 @@ temporary root and must not be copied into this directory.
   this is recurring CLI stdout-capture pressure, not a Titan skill effect.
   Preserve the v20 receipt as `needs-rerun`; v21 uses the same one-attempt
   command with unbuffered Python before repeating the paired cohort.
+- [aoa-skill-live-dispatch-coverage-closure-titan-implicit-b-returns-20260713-v21-reviewed-clean.json](aoa-skill-live-dispatch-coverage-closure-titan-implicit-b-returns-20260713-v21-reviewed-clean.json)
+  preserves the exact-merged v21 four-turn return. Both cases now have clean
+  sentinel observations in aided and control arms, so manual non-activation and
+  owner outcomes are `no_lift_both_correct` with no output-observation gap.
+  There is no failure, early stop, external filesystem access, broad inventory,
+  prompt drift, or fixture mismatch. The reviewed result closes the recurring
+  CLI capture return without editing Titan skill source. It remains bounded
+  candidate evidence with proof and promotion false; root trajectories still
+  require their own exact-merge, runtime-parity, and host-admission loop.
 
 Corrected live receipts under the v11-v21 evidence protocols are reviewable only
 after canonical user-skill shadows, plugins, and every configured MCP id are

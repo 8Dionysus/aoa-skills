@@ -229,7 +229,16 @@ Active first local corpus:
   validator emits its sentinel, so v21 changes only the exact command to
   `python3 -u outcome_validator.py --candidate <value>`. Single attempt,
   anti-inspection, exit, sentinel, and proof boundaries remain unchanged. Land
-  v21 and repeat the same four turns before root trajectories.
+  v21 and repeat the same four turns before root trajectories. The exact-merged
+  v21 return is preserved as
+  [`aoa-skill-live-dispatch-coverage-closure-titan-implicit-b-returns-20260713-v21-reviewed-clean.json`](reports/aoa-skill-live-dispatch-coverage-closure-titan-implicit-b-returns-20260713-v21-reviewed-clean.json).
+  All four turns and both pairs complete without a failure or observation gap.
+  Cases 12 and 13 preserve correct manual non-activation and owner outcomes in
+  both arms; fixture, prompt, filesystem, inventory, and owner boundaries stay
+  clean. This closes the paired Titan B observation return as reviewed
+  candidate evidence without changing Titan skill source or widening proof or
+  promotion. After this writeback lands and exact runtime/host gates are
+  repeated, `coverage-closure-root-trajectories` is the next bounded wave.
 
 These files are local evidence notes. They do not publish central proof
 acceptance, scoring, verdicts, regression truth, or proof doctrine.
