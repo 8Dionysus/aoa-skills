@@ -573,6 +573,18 @@ states four procedure contracts, zero route/procedure-score-eligible pairs,
 four manual non-activation guards, and four owner-outcome pairs. Explicit
 reachability remains in `coverage-closure-structured-core`.
 
+The exact-merged v18 return completes all eight arms and four pairs with no
+failure class, external filesystem access, broad fixture inventory, or outcome
+observation gap. All four hidden targets stay prompt-invisible and unread in
+both arms; every manual non-activation, fixture-execution, and owner-outcome
+contract matches. Route and procedure effects remain
+`not_scored_target_not_prompt_visible`, while the objective guard is
+`no_lift_both_correct`. Preserve the result as the reviewed candidate receipt
+[`aoa-skill-live-dispatch-full-collision-session-growth-returns-20260713-v18-reviewed-hidden-manual-non-activation.json`](../reports/aoa-skill-live-dispatch-full-collision-session-growth-returns-20260713-v18-reviewed-hidden-manual-non-activation.json),
+with proof and promotion authority false. The next semantic wave is
+`full-collision-authority-routing`; this result does not pre-authorize it or
+substitute for its own preflight.
+
 ## Safety And Privacy
 
 The plan locks Git head, all portable skill files, generated/config inputs,

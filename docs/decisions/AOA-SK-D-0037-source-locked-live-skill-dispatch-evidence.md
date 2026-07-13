@@ -485,11 +485,40 @@ As of 2026-07-12:
   pass closes all 14 contracts on both axes and the typed cohort-slug sanitizer
   gap. Its first exact live run completes 28/28 but remains `needs-rerun` on
   three manual target-report gaps and one ambient competing-skill
-  classification. V17 repairs the shared description and grader owners and
-  opens only the exact eight-turn paired return; no later wave is open yet.
+  classification. V17 repairs the shared description and grader owners; v18
+  then corrects the hidden-manual observability assumption before live spend.
+  The exact eight-turn v18 return completes with every objective
+  non-activation, fixture, and owner-outcome contract correct in both arms and
+  keeps target route/procedure effects unscored. The authority-routing wave is
+  next, but remains subject to its own complete preflight and source lock.
 - Superseded by: none.
 
 ## Review Log
+
+### 2026-07-13 - Review the v18 hidden-manual bounded return
+
+- Exact source: merged commit `abbe182`, verified 36/36 foundation install,
+  protocol v18, 37 isolated shadows, 11 disabled MCP ids, medium agent wrapper,
+  concurrency one, and fresh storage/resource admission gates.
+- Complete observation: 8/8 arms and 4/4 pairs finish without an early stop,
+  failure class, external filesystem access, broad fixture inventory, or
+  outcome-output observation gap. Every fixture and owner-action probe is
+  observed, successful, and contract-matching.
+- Manual boundary: all four targets are absent from native implicit prompt
+  visibility in both arms, stay unread, receive no accepted native input, and
+  are not claimed loaded. All eight objective non-activation checks pass.
+- Interpretation: route and procedure effects remain
+  `not_scored_target_not_prompt_visible`; each non-activation pair is
+  `no_lift_both_correct`. Review closes the invalid target-specific causal
+  return but does not claim selection lift, explicit reachability, proof, or
+  promotion.
+- Host boundary: post-run storage and resource validation pass. Memory has zero
+  failures and one pre-existing v2/v3 index-schema warning generated before
+  the run; keep that version skew with the host owner rather than treating it
+  as skill evidence.
+- Consequence: preserve the whitelisted public receipt as reviewed candidate
+  evidence and open `full-collision-authority-routing` only through its own
+  contract-readiness, source-lock, runtime-parity, and host-admission loop.
 
 ### 2026-07-12 - Correct hidden-manual observability in v18
 

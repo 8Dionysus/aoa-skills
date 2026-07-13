@@ -42,6 +42,11 @@ wave's zero-output fixture observation return.
 The separate four-turn `full-collision-core-engineering-outcome-returns`
 cohort preserves both arms of only `collision-05` and `collision-06`, whose
 first-run owner-action sentinels were observed in opposite single arms.
+The eight-turn `full-collision-session-growth-returns` cohort preserves both
+arms of only `collision-21`, `collision-22`, `collision-25`, and
+`collision-33`. Under v18 its four hidden manual targets have objective
+non-activation guards, while target route and procedure effects remain
+ineligible unless the native prompt actually exposes the target.
 The procedure source contract lives at
 `evals/suites/aoa-skill-live-dispatch-procedures.json`; the separate bounded
 owner-action corpus lives at
@@ -90,6 +95,11 @@ These rules use contract schema `aoa_codex_app_server_skill_input_contract_v13`
 and protocol revision `codex-cli-0.144.1-live-dispatch-evidence-v18`. Retained
 v1-v17 receipts stay source-locked to their original protocol and review status;
 they are never upgraded in place.
+The reviewed exact-merged v18 session-growth return completes 8/8 arms with all
+four manual non-activation, fixture, and owner-outcome pairs correct in both
+arms. Its route and procedure effects are intentionally unscored because the
+manual targets are absent from native implicit prompt visibility; the receipt
+therefore remains candidate evidence rather than lift, proof, or promotion.
 
 Run the confirmed command only as the child of the plan packet's
 `resource_launch_prefix`. The wrapper must produce the expected
