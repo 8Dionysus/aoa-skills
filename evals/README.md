@@ -78,7 +78,10 @@ Active first local corpus:
   returns. Two controls still lack observable sentinel bytes after exact
   zero-exit outcome commands. V15 now separates those gaps from treatment lift
   with per-arm flags, pair effect class, and an observation-clean marker while
-  keeping both outcomes unverified; the full pilot is the next live widening.
+  keeping both outcomes unverified. The full pilot now completes 30/30 with no
+  failure classes: five route/procedure pairs and two child trajectories show
+  positive lift, while four outcome contrasts remain observation-unclean.
+  Partition the much larger declared-only cohorts before further live spend.
 
 These files are local evidence notes. They do not publish central proof
 acceptance, scoring, verdicts, regression truth, or proof doctrine.

@@ -213,6 +213,12 @@ Tracking starts with the community-docs baseline for this repository.
   and validator-not-inspected conditions still cannot verify an absent sentinel.
   Read-only replay classifies the two affected v14 controls as `control_only`
   gaps without rewriting their reviewed receipt or adding a skill failure.
+- The exact-merged v15 full `pilot13` now preserves 30/30 turns and 11/11
+  pairs with zero failure classes and every safety/owner boundary clean. Five
+  pairs show positive route and procedure lift, including two positive child
+  trajectories. Seven outcomes are observation-clean and correct in both arms;
+  four apparent outcome lifts are explicitly observation-unclean and therefore
+  not stable skill-effect evidence.
 - `AOA-SK-D-0037` records why live cohorts remain operator-confirmed candidate
   evidence and now clarifies prompt-surface isolation and evidence-stage grading
   after the contaminated smoke; deterministic harness validation, not model

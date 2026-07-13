@@ -210,8 +210,18 @@ temporary root and must not be copied into this directory.
   therefore closes the aided source returns as reviewed candidate evidence but
   reserves control-lift interpretation for explicit observation-gap telemetry;
   it grants no proof or promotion authority.
+- [aoa-skill-live-dispatch-pilot13-20260712-v15-reviewed-clean-routing-observation-qualified-outcomes.json](aoa-skill-live-dispatch-pilot13-20260712-v15-reviewed-clean-routing-observation-qualified-outcomes.json)
+  preserves the complete exact-merged v15 pilot after the observation-gap
+  telemetry repair. All 30 turns and 11 pairs complete with zero safety or
+  failure class; five pairs gain route and procedure correctness and two gain
+  selected-child trajectory correctness. Seven outcome comparisons are
+  observation-clean and correct in both arms. The remaining four comparisons
+  have a single missing-sentinel arm despite one successful exact command, so
+  their two positive and two negative raw outcome lifts are explicitly
+  observation-unclean and support no skill-effect interpretation. This is
+  reviewed candidate evidence only and grants no proof or promotion authority.
 
-Corrected live receipts under the v11-v14 evidence protocols are reviewable only
+Corrected live receipts under the v11-v15 evidence protocols are reviewable only
 after canonical user-skill shadows, plugins, and every configured MCP id are
 isolated with the adapter-appropriate mechanism (`--ignore-user-config` for
 CLI exec, explicit per-id disables for prompt inspection and App Server);
