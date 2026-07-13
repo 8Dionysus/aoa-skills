@@ -120,6 +120,10 @@ PUBLIC_MEASURE_KEYS = (
     "native_target_skill_input_accepted",
     "child_full_read_observed",
     "target_skill_full_read_observed",
+    "target_prompt_visible",
+    "target_route_scoring_eligible",
+    "target_procedure_scoring_eligible",
+    "manual_non_activation_contract_match",
     "prompt_visibility_contract_match",
     "fixture_filesystem_scope_match",
     "external_filesystem_access_count",
@@ -181,6 +185,13 @@ PUBLIC_PAIR_KEYS = (
     "case_id",
     "expected_target_skill",
     "expected_behavior",
+    "target_route_scoring_eligible",
+    "target_procedure_scoring_eligible",
+    "manual_non_activation_guard_defined",
+    "aided_manual_non_activation_contract_match",
+    "control_manual_non_activation_contract_match",
+    "manual_non_activation_lift",
+    "manual_non_activation_effect_class",
     "aided_route_contract_match",
     "control_route_contract_match",
     "route_lift",
@@ -762,7 +773,7 @@ def _expected_codex_version(plan: dict[str, Any]) -> str:
     revision = str(plan.get("protocol_revision") or "")
     match = re.fullmatch(
         r"codex-cli-([0-9]+(?:\.[0-9]+){2})-"
-        r"(?:app-server-skill-input-v3|live-dispatch-evidence-v(?:[4-9]|1[0-7]))",
+        r"(?:app-server-skill-input-v3|live-dispatch-evidence-v(?:[4-9]|1[0-8]))",
         revision,
     )
     if match is None:
@@ -1233,6 +1244,24 @@ def build_plan_packet(
         and trial.procedure_contract is not None
     }
     procedure_contract_coverage_complete = procedure_case_ids == implicit_case_ids
+    prompt_visible_skill_names = set(_prompt_visible_repo_skill_names(repo_root))
+    target_route_scored_case_ids = {
+        trial.case_id
+        for trial in trials
+        if trial.arm_type in {"implicit_aided", "implicit_control"}
+        and (
+            trial.expected_behavior != "manual"
+            or trial.expected_target_skill in prompt_visible_skill_names
+        )
+    }
+    procedure_scored_case_ids = procedure_case_ids & target_route_scored_case_ids
+    manual_non_activation_case_ids = {
+        trial.case_id
+        for trial in trials
+        if trial.arm_type in {"implicit_aided", "implicit_control"}
+        and trial.expected_behavior == "manual"
+        and trial.expected_target_skill not in prompt_visible_skill_names
+    }
     objective_outcome_case_ids = {
         trial.case_id
         for trial in trials
@@ -1276,7 +1305,10 @@ def build_plan_packet(
             plan["cohorts"][cohort]["second_confirmation_required"]
         ),
         "implicit_pair_count": len(implicit_case_ids),
-        "procedure_scored_pair_count": len(procedure_case_ids),
+        "target_route_scored_pair_count": len(target_route_scored_case_ids),
+        "procedure_contract_pair_count": len(procedure_case_ids),
+        "procedure_scored_pair_count": len(procedure_scored_case_ids),
+        "manual_non_activation_pair_count": len(manual_non_activation_case_ids),
         "procedure_contract_coverage_complete": procedure_contract_coverage_complete,
         "objective_outcome_scored_pair_count": len(objective_outcome_case_ids),
         "objective_outcome_coverage_complete": objective_outcome_coverage_complete,
@@ -1307,7 +1339,14 @@ def build_plan_packet(
         "procedure_contract_mode": lock["procedure_contract_mode"],
         "objective_outcome_mode": lock["objective_outcome_mode"],
         "implicit_pair_count": lock["implicit_pair_count"],
+        "target_route_scored_pair_count": lock[
+            "target_route_scored_pair_count"
+        ],
+        "procedure_contract_pair_count": lock["procedure_contract_pair_count"],
         "procedure_scored_pair_count": lock["procedure_scored_pair_count"],
+        "manual_non_activation_pair_count": lock[
+            "manual_non_activation_pair_count"
+        ],
         "procedure_contract_coverage_complete": lock[
             "procedure_contract_coverage_complete"
         ],
@@ -1668,7 +1707,8 @@ def build_implicit_cli_request(
             _with_objective_outcome(
                 _with_fixture_scope(prompt),
                 outcome_contract,
-            )
+            ),
+            hidden_manual_target=expected_behavior == "manual",
         ),
         "timeout_seconds": context.timeout_seconds,
         "fixture_root": str(context.fixture_root),
@@ -1733,8 +1773,8 @@ def _with_fixture_procedure(prompt: str) -> str:
     )
 
 
-def _target_report_contract_text() -> str:
-    return (
+def _target_report_contract_text(*, hidden_manual_target: bool = False) -> str:
+    contract = (
         "Target report contract: `route_decision` concerns the expected target skill only. A background "
         "or ambient skill may be reported in `selected_skill`, but it does not make the target route "
         "`invoke`. `claims_loaded` describes the reported `selected_skill` only, and `claims_loaded` must "
@@ -1744,10 +1784,25 @@ def _target_report_contract_text() -> str:
         "`procedure_disposition` must be `not_applicable`; do not relabel target non-dispatch as blocked "
         "or owner-deferred."
     )
+    if hidden_manual_target:
+        contract += (
+            " Hidden-manual observability: the expected explicit-only target is intentionally absent "
+            "from the native prompt-visible skill inventory. Do not infer or claim that an unseen target "
+            "was loaded. Its `route_decision` and `procedure_disposition` remain raw, unscored reports; "
+            "objective target read/load evidence is the non-activation contract."
+        )
+    return contract
 
 
-def _with_target_report_contract(prompt: str) -> str:
-    return f"{prompt}\n\n{_target_report_contract_text()}"
+def _with_target_report_contract(
+    prompt: str,
+    *,
+    hidden_manual_target: bool = False,
+) -> str:
+    return (
+        f"{prompt}\n\n"
+        f"{_target_report_contract_text(hidden_manual_target=hidden_manual_target)}"
+    )
 
 
 def build_root_manual_child_request(
@@ -2615,16 +2670,22 @@ def _trial_failure_class(trial: Trial, result: dict[str, Any]) -> str | None:
         if not _load_contract_match(trial, output, result):
             return "skill_load_gap"
     if trial.expected_behavior == "manual" and trial.arm_type == "implicit_aided":
+        route_scoring_eligible = _target_route_scoring_eligible(trial, result)
         if (
             result.get("target_skill_full_read_observed") is True
-            or output.get("route_decision") == "invoke"
             or (
                 output.get("selected_skill") == trial.expected_target_skill
                 and claims_loaded
             )
+            or (
+                route_scoring_eligible
+                and output.get("route_decision") == "invoke"
+            )
         ):
             return "manual_activation_leak"
-        if not _dispatch_contract_match(trial, output, result):
+        if route_scoring_eligible and not _dispatch_contract_match(
+            trial, output, result
+        ):
             return "dispatch_policy_gap"
     trajectory = _trajectory_contract_evidence(trial, output, result)
     if (
@@ -2642,6 +2703,7 @@ def _trial_failure_class(trial: Trial, result: dict[str, Any]) -> str | None:
     if (
         trial.arm_type == "implicit_aided"
         and trial.procedure_contract is not None
+        and _target_procedure_scoring_eligible(trial, result)
         and _route_contract_match(trial, output, result)
         and (not trajectory["defined"] or trajectory["match"])
         and not _procedure_contract_evidence(trial, output)["match"]
@@ -2867,6 +2929,40 @@ def _reported_selection_surface_evidence(
             and not selected_is_target
         ),
     }
+
+
+def _target_prompt_visible(trial: Trial, result: dict[str, Any]) -> bool:
+    if trial.arm_type == "app_server_structured":
+        return bool(
+            result.get("structured_skill_visible") is True
+            and result.get("structured_skill_input_sent") is True
+        )
+    if trial.arm_type == "root_manual_child":
+        return bool(
+            result.get("native_target_skill_input_accepted") is True
+            or result.get("target_skill_full_read_observed") is True
+        )
+    raw_paths = result.get("actual_prompt_skill_paths")
+    if not isinstance(raw_paths, dict):
+        return False
+    paths = raw_paths.get(trial.expected_target_skill)
+    return bool(isinstance(paths, list) and paths)
+
+
+def _target_route_scoring_eligible(trial: Trial, result: dict[str, Any]) -> bool:
+    if not (
+        trial.expected_behavior == "manual"
+        and trial.arm_type in {"implicit_aided", "implicit_control"}
+    ):
+        return True
+    return _target_prompt_visible(trial, result)
+
+
+def _target_procedure_scoring_eligible(
+    trial: Trial,
+    result: dict[str, Any],
+) -> bool:
+    return _target_route_scoring_eligible(trial, result)
 
 
 def _dispatch_contract_match(
@@ -3531,6 +3627,17 @@ def _trial_measure(trial: Trial, result: dict[str, Any]) -> dict[str, Any]:
     failure_class = _trial_failure_class(trial, result)
     dispatch_match = _dispatch_contract_match(trial, output, result)
     load_match = _load_contract_match(trial, output, result)
+    target_prompt_visible = _target_prompt_visible(trial, result)
+    target_route_scoring_eligible = _target_route_scoring_eligible(trial, result)
+    target_procedure_scoring_eligible = _target_procedure_scoring_eligible(
+        trial, result
+    )
+    manual_non_activation_match = (
+        load_match
+        if trial.expected_behavior == "manual"
+        and trial.arm_type in {"implicit_aided", "implicit_control"}
+        else None
+    )
     selection_report = _selection_report_evidence(trial, output)
     trajectory = _trajectory_contract_evidence(trial, output, result)
     procedure = _procedure_contract_evidence(trial, output)
@@ -3560,6 +3667,10 @@ def _trial_measure(trial: Trial, result: dict[str, Any]) -> dict[str, Any]:
         ),
         "child_full_read_observed": result.get("child_full_read_observed") is True,
         "target_skill_full_read_observed": result.get("target_skill_full_read_observed") is True,
+        "target_prompt_visible": target_prompt_visible,
+        "target_route_scoring_eligible": target_route_scoring_eligible,
+        "target_procedure_scoring_eligible": target_procedure_scoring_eligible,
+        "manual_non_activation_contract_match": manual_non_activation_match,
         "prompt_visibility_contract_match": result.get("prompt_visibility_contract_match") is True,
         "fixture_filesystem_scope_match": result.get("fixture_filesystem_scope_match") is True,
         "external_filesystem_access_count": int(
@@ -3752,16 +3863,37 @@ def _pair_outcomes(private_trials: list[dict[str, Any]]) -> list[dict[str, Any]]
             continue
         aided_route_correct = bool(aided_measure.get("route_contract_match"))
         control_route_correct = bool(control_measure.get("route_contract_match"))
-        route_lift = (
-            None
-            if contaminated
-            else int(aided_route_correct) - int(control_route_correct)
+        aided_route_scoring_eligible = bool(
+            aided_measure.get("target_route_scoring_eligible", True)
         )
-        route_effect = (
-            "contaminated"
-            if contaminated
-            else _effect_class(aided_route_correct, control_route_correct)
+        control_route_scoring_eligible = bool(
+            control_measure.get("target_route_scoring_eligible", True)
         )
+        target_route_scoring_eligible = bool(
+            aided_route_scoring_eligible and control_route_scoring_eligible
+        )
+        aided_procedure_scoring_eligible = bool(
+            aided_measure.get("target_procedure_scoring_eligible", True)
+        )
+        control_procedure_scoring_eligible = bool(
+            control_measure.get("target_procedure_scoring_eligible", True)
+        )
+        target_procedure_scoring_eligible = bool(
+            aided_procedure_scoring_eligible
+            and control_procedure_scoring_eligible
+        )
+        if contaminated:
+            route_lift: int | None = None
+            route_effect = "contaminated"
+        elif not target_route_scoring_eligible:
+            route_lift = None
+            route_effect = "not_scored_target_not_prompt_visible"
+        else:
+            route_lift = int(aided_route_correct) - int(control_route_correct)
+            route_effect = _effect_class(
+                aided_route_correct,
+                control_route_correct,
+            )
         aided_trajectory_defined = aided_measure.get("trajectory_contract_defined") is True
         control_trajectory_defined = control_measure.get("trajectory_contract_defined") is True
         aided_trajectory_sha = aided_measure.get("trajectory_contract_sha256")
@@ -3795,6 +3927,13 @@ def _pair_outcomes(private_trials: list[dict[str, Any]]) -> list[dict[str, Any]]
             trajectory_effect = "not_scored_no_contract"
             trajectory_sha = None
             trajectory_expected_child = None
+            aided_trajectory_match = None
+            control_trajectory_match = None
+        elif not target_procedure_scoring_eligible:
+            trajectory_lift = None
+            trajectory_effect = "not_scored_target_not_prompt_visible"
+            trajectory_sha = str(aided_trajectory_sha)
+            trajectory_expected_child = str(aided_expected_child)
             aided_trajectory_match = None
             control_trajectory_match = None
         else:
@@ -3847,6 +3986,13 @@ def _pair_outcomes(private_trials: list[dict[str, Any]]) -> list[dict[str, Any]]
             procedure_scope = None
             aided_procedure_match = None
             control_procedure_match = None
+        elif not target_procedure_scoring_eligible:
+            procedure_lift = None
+            procedure_effect = "not_scored_target_not_prompt_visible"
+            procedure_sha = str(aided_procedure_sha)
+            procedure_scope = str(aided_procedure_scope)
+            aided_procedure_match = None
+            control_procedure_match = None
         else:
             procedure_sha = str(aided_procedure_sha)
             procedure_scope = str(aided_procedure_scope)
@@ -3865,6 +4011,33 @@ def _pair_outcomes(private_trials: list[dict[str, Any]]) -> list[dict[str, Any]]
                     aided_procedure_match,
                     control_procedure_match,
                 )
+
+        aided_manual_non_activation_match = aided_measure.get(
+            "manual_non_activation_contract_match"
+        )
+        control_manual_non_activation_match = control_measure.get(
+            "manual_non_activation_contract_match"
+        )
+        manual_non_activation_guard_defined = bool(
+            aided_measure.get("expected_behavior") == "manual"
+            and control_measure.get("expected_behavior") == "manual"
+            and isinstance(aided_manual_non_activation_match, bool)
+            and isinstance(control_manual_non_activation_match, bool)
+        )
+        if contaminated:
+            manual_non_activation_lift: int | None = None
+            manual_non_activation_effect = "contaminated"
+        elif manual_non_activation_guard_defined:
+            manual_non_activation_lift = int(
+                aided_manual_non_activation_match
+            ) - int(control_manual_non_activation_match)
+            manual_non_activation_effect = _effect_class(
+                bool(aided_manual_non_activation_match),
+                bool(control_manual_non_activation_match),
+            )
+        else:
+            manual_non_activation_lift = None
+            manual_non_activation_effect = "not_scored_non_manual"
 
         aided_outcome_defined = aided_measure.get("outcome_contract_defined") is True
         control_outcome_defined = control_measure.get("outcome_contract_defined") is True
@@ -3937,6 +4110,27 @@ def _pair_outcomes(private_trials: list[dict[str, Any]]) -> list[dict[str, Any]]
                 "case_id": case_id,
                 "expected_target_skill": aided_measure.get("expected_target_skill"),
                 "expected_behavior": aided_measure.get("expected_behavior"),
+                "target_route_scoring_eligible": target_route_scoring_eligible,
+                "target_procedure_scoring_eligible": (
+                    target_procedure_scoring_eligible
+                ),
+                "manual_non_activation_guard_defined": (
+                    manual_non_activation_guard_defined
+                ),
+                "aided_manual_non_activation_contract_match": (
+                    aided_manual_non_activation_match
+                    if manual_non_activation_guard_defined
+                    else None
+                ),
+                "control_manual_non_activation_contract_match": (
+                    control_manual_non_activation_match
+                    if manual_non_activation_guard_defined
+                    else None
+                ),
+                "manual_non_activation_lift": manual_non_activation_lift,
+                "manual_non_activation_effect_class": (
+                    manual_non_activation_effect
+                ),
                 "aided_route_contract_match": aided_route_correct,
                 "control_route_contract_match": control_route_correct,
                 "route_lift": route_lift,
@@ -4043,7 +4237,7 @@ def run_confirmed_cohort(
         raise ConfirmationError(
             f"{cohort} requires source-locked procedure contracts for all "
             f"{packet['implicit_pair_count']} implicit pairs before live execution "
-            f"({packet['procedure_scored_pair_count']} declared)"
+            f"({packet['procedure_contract_pair_count']} declared)"
         )
     if (
         packet["objective_outcome_mode"] in {"required", "required_for_live"}
@@ -4505,9 +4699,16 @@ def validate_public_receipt(public: dict[str, Any]) -> None:
         "no_lift_both_incorrect",
         "contaminated",
     }
-    contract_effect_classes = effect_classes | {"not_scored_no_contract"}
-    outcome_effect_classes = contract_effect_classes | {
+    route_effect_classes = effect_classes | {
+        "not_scored_target_not_prompt_visible"
+    }
+    contract_effect_classes = route_effect_classes | {"not_scored_no_contract"}
+    outcome_effect_classes = effect_classes | {
+        "not_scored_no_contract",
         "not_scored_no_observable_outcome"
+    }
+    manual_non_activation_effect_classes = effect_classes | {
+        "not_scored_non_manual"
     }
     for pair in public.get("pair_outcomes", []):
         if not isinstance(pair, dict):
@@ -4520,16 +4721,93 @@ def validate_public_receipt(public: dict[str, Any]) -> None:
                     "public legacy pair outcome escaped the bounded effect vocabulary"
                 )
             continue
-        if route_effect not in effect_classes:
+        if route_effect not in route_effect_classes:
             raise PublicReceiptSafetyError(
                 "public route pair outcome escaped the bounded effect vocabulary"
             )
+        route_eligible = pair.get("target_route_scoring_eligible")
+        if route_eligible is False and (
+            pair.get("route_lift") is not None
+            or route_effect
+            not in {"not_scored_target_not_prompt_visible", "contaminated"}
+        ):
+            raise PublicReceiptSafetyError(
+                "public hidden-target route score conflicts with eligibility"
+            )
+        if route_eligible is True and route_effect == (
+            "not_scored_target_not_prompt_visible"
+        ):
+            raise PublicReceiptSafetyError(
+                "public visible-target route score conflicts with eligibility"
+            )
+        manual_non_activation_effect = pair.get(
+            "manual_non_activation_effect_class"
+        )
+        if (
+            manual_non_activation_effect is not None
+            and manual_non_activation_effect
+            not in manual_non_activation_effect_classes
+        ):
+            raise PublicReceiptSafetyError(
+                "public manual non-activation outcome escaped the bounded effect vocabulary"
+            )
+        manual_guard_defined = pair.get("manual_non_activation_guard_defined")
+        if manual_guard_defined is not None:
+            aided_guard = pair.get("aided_manual_non_activation_contract_match")
+            control_guard = pair.get("control_manual_non_activation_contract_match")
+            guard_lift = pair.get("manual_non_activation_lift")
+            if manual_guard_defined is True:
+                if (
+                    pair.get("expected_behavior") != "manual"
+                    or not isinstance(aided_guard, bool)
+                    or not isinstance(control_guard, bool)
+                ):
+                    raise PublicReceiptSafetyError(
+                        "public manual non-activation guard lacks boolean arm evidence"
+                    )
+                contaminated_pair = route_effect == "contaminated"
+                expected_guard_lift = (
+                    None
+                    if contaminated_pair
+                    else int(aided_guard) - int(control_guard)
+                )
+                expected_guard_effect = (
+                    "contaminated"
+                    if contaminated_pair
+                    else _effect_class(aided_guard, control_guard)
+                )
+                if (
+                    guard_lift != expected_guard_lift
+                    or manual_non_activation_effect != expected_guard_effect
+                ):
+                    raise PublicReceiptSafetyError(
+                        "public manual non-activation guard conflicts with arm evidence"
+                    )
+            elif (
+                aided_guard is not None
+                or control_guard is not None
+                or guard_lift is not None
+                or manual_non_activation_effect != "not_scored_non_manual"
+            ):
+                raise PublicReceiptSafetyError(
+                    "public non-manual pair carries a manual non-activation score"
+                )
         for key in ("trajectory_effect_class", "procedure_disposition_effect_class"):
             value = pair.get(key)
             if value is not None and value not in contract_effect_classes:
                 raise PublicReceiptSafetyError(
                     f"public {key} escaped the bounded effect vocabulary"
                 )
+        procedure_eligible = pair.get("target_procedure_scoring_eligible")
+        procedure_effect = pair.get("procedure_disposition_effect_class")
+        if procedure_eligible is False and procedure_effect not in {
+            "not_scored_target_not_prompt_visible",
+            "not_scored_no_contract",
+            "contaminated",
+        }:
+            raise PublicReceiptSafetyError(
+                "public hidden-target procedure score conflicts with eligibility"
+            )
         if pair.get("outcome_effect_class") not in outcome_effect_classes:
             raise PublicReceiptSafetyError(
                 "public outcome pair escaped the bounded effect vocabulary"

@@ -278,6 +278,17 @@ Tracking starts with the community-docs baseline for this repository.
   `aoa-change-protocol` as a competing-skill win. The receipt is preserved
   without rewriting. The next pass must repair prompt-visible explicit-only
   policy plus ambient-route classification, then repeat only those four pairs.
+- Live-dispatch evidence v18 corrects the manual-target observability model
+  before spending the eight-turn return. Exact-merged bundle/import verification
+  proves 36/36 installed parity, while fresh `codex debug prompt-input` proves
+  that native implicit inventory exposes only the 12
+  `allow_implicit_invocation=true` repo skills; manual targets remain hidden.
+  The runner now preserves their raw route/procedure reports but marks them
+  `not_scored_target_not_prompt_visible`, scores objective target non-activation
+  plus owner outcomes, distinguishes procedure-contract coverage from actually
+  score-eligible pairs in the plan packet, and leaves explicit reachability to
+  native structured-input coverage. Protocol v18 and contract v13 retain all
+  v1-v17 receipts under their original source locks.
 - Live-dispatch evidence v17 repairs both shared boundaries red-first. Portable
   export now prepends a policy-derived activation sentence to all 43 `manual`
   and two `suggest` descriptions, allowing only explicit invocation or a

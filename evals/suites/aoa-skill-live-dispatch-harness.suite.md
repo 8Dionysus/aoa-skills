@@ -74,7 +74,7 @@ than silently reverting the outcome dimension to unscored.
 | `full-collision-core-engineering-outcome-returns` | 4 | paired owner-action output return for collisions 05-06 | medium |
 | `full-collision-safety-overlays` | 22 | collisions 09-19 | medium |
 | `full-collision-session-growth` | 28 | collisions 20-33 | medium |
-| `full-collision-session-growth-returns` | 8 | paired routing return for collisions 21, 22, 25, and 33 | medium |
+| `full-collision-session-growth-returns` | 8 | paired hidden-manual non-activation and ambient-classification return for collisions 21, 22, 25, and 33 | medium |
 | `full-collision-authority-routing` | 22 | collisions 34-43 plus artifact-trust collision 49 | medium |
 | `full-collision-eval-children` | 10 | collisions 44-48 | medium |
 | `coverage-closure-core-implicit` | 4 | ADR and memo-writeback implicit reachability | medium |
@@ -559,6 +559,20 @@ selection as a competing win. The paired
 cases 21, 22, 25, and 33 and retains their existing procedure and owner-action
 contracts.
 
+Exact-merged prompt-input inspection subsequently revises the first v17 causal
+hypothesis. Native Codex includes only skills with
+`allow_implicit_invocation=true` in the implicit Available-skills inventory;
+all four return targets are manual and absent in both arms. V18 therefore
+separates raw report fields from score eligibility. For an unseen manual target,
+`route_decision` and procedure disposition remain reviewable raw observations
+but neither can establish target-specific routing or procedure adherence.
+Objective full-read/native-load evidence remains the strict non-activation
+guard, fixture and owner-outcome contracts remain scored, and an exact target
+claim plus load or any objective target read still fails. The return packet now
+states four procedure contracts, zero route/procedure-score-eligible pairs,
+four manual non-activation guards, and four owner-outcome pairs. Explicit
+reachability remains in `coverage-closure-structured-core`.
+
 ## Safety And Privacy
 
 The plan locks Git head, all portable skill files, generated/config inputs,
@@ -575,8 +589,8 @@ therefore disable every locked id explicitly. Deterministic adapter tests guard
 both sides of this transport-specific contract.
 
 These hermetic invocation rules use contract schema
-`aoa_codex_app_server_skill_input_contract_v12` and protocol revision
-`codex-cli-0.144.1-live-dispatch-evidence-v17`. Retained v1-v16 receipts remain
+`aoa_codex_app_server_skill_input_contract_v13` and protocol revision
+`codex-cli-0.144.1-live-dispatch-evidence-v18`. Retained v1-v17 receipts remain
 source-locked to their original protocol and review status and are not upgraded
 in place.
 

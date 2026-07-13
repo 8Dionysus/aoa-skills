@@ -123,11 +123,11 @@ config and explicitly disable every locked id. A shadow or MCP count/digest
 change is source/runtime drift, not a reason to reuse the old token.
 
 The corrected hermetic pre-turn and evidence contract uses schema
-`aoa_codex_app_server_skill_input_contract_v11` and protocol revision
-`codex-cli-0.144.1-live-dispatch-evidence-v14`. It follows the
+`aoa_codex_app_server_skill_input_contract_v13` and protocol revision
+`codex-cli-0.144.1-live-dispatch-evidence-v18`. It follows the
 [official App Server invocation shape](https://learn.chatgpt.com/docs/app-server#start-a-turn-invoke-a-skill)
 and Codex [progressive-disclosure load semantics](https://learn.chatgpt.com/docs/customization/overview#skills).
-Retained receipts source-locked to v1-v10 keep their original protocol and
+Retained receipts source-locked to v1-v17 keep their original protocol and
 review status and are not upgraded in place.
 
 The source-locked caps include both the rollout token limit and its required
@@ -320,8 +320,8 @@ As of 2026-07-12:
   `fixture_inventory_scope_violation` precedes budget classification.
 - Current cap contract: every arm receives the same source-locked 48k ceiling;
   paired arms may differ in actual use but never in available budget.
-- Current contract schema: `aoa_codex_app_server_skill_input_contract_v12`.
-- Current protocol lock: `codex-cli-0.144.1-live-dispatch-evidence-v17`.
+- Current contract schema: `aoa_codex_app_server_skill_input_contract_v13`.
+- Current protocol lock: `codex-cli-0.144.1-live-dispatch-evidence-v18`.
 - Current pair contract: new receipts publish route, selected-child trajectory,
   and selected-procedure-disposition report lift separately. Sent structured
   dispatch, accepted native load, model hierarchy report, and fixture execution
@@ -491,12 +491,44 @@ As of 2026-07-12:
 
 ## Review Log
 
+### 2026-07-12 - Correct hidden-manual observability in v18
+
+- New runtime evidence: after exact merge and a staged, inspected, imported,
+  independently verified 36/36 foundation profile, `codex debug prompt-input`
+  still lists only the 12 repo skills whose
+  `allow_implicit_invocation=true`. Collisions 21, 22, 25, and 33 target manual
+  skills and those names/descriptions are absent from the native implicit
+  inventory in both arms.
+- Revised causal judgment: the v17 policy prefix is a valid portable artifact
+  contract for consumers that surface non-invoke descriptions, but it is not a
+  native implicit treatment for hidden manual skills. The three raw
+  target-facing `invoke` reports cannot prove a target route defect when the
+  target policy and description were never presented to the model.
+- Measurement owner: add `target_prompt_visible`, route/procedure score
+  eligibility, and an objective manual non-activation contract. Preserve raw
+  route and procedure reports, but emit
+  `not_scored_target_not_prompt_visible` for hidden manual targets. Continue to
+  fail any objective target read/native load or exact target load claim.
+- Preflight owner: distinguish procedure-contract coverage from actually
+  score-eligible procedure pairs. The four-pair return has four source-locked
+  procedure contracts, zero route/procedure-score-eligible pairs, four manual
+  non-activation guards, and four owner-observable outcome pairs.
+- Reachability boundary: manual skill reachability is not dropped or inferred;
+  it remains explicitly measured through native structured skill input in
+  `coverage-closure-structured-core`, where the target is actually visible and
+  accepted.
+- Protocol: advance to live evidence v18 and app-server evidence contract v13;
+  keep v17 source and any v1-v17 receipts immutable rather than regrading them
+  in place.
+
 ### 2026-07-12 - Bind the session-growth routing repair in v17
 
-- Prompt-visible owner: derive a policy preamble during portable export for all
+- Portable-description owner: derive a policy preamble during portable export for all
   45 non-invoke skills. `manual` forbids an implicit load; `suggest` may only
   recommend. Explicit user/operator invocation and source-authorized parent
   selection remain valid, so root-child trajectories are not broken.
+- Later v18 prompt-input evidence limits this claim: native Codex does not place
+  `allow_implicit_invocation=false` skills in the implicit prompt inventory.
 - Measurement owner: a correctly manual unread target may coexist with a
   repo-visible ambient skill. Continue to fail target-facing `invoke`, target
   load, wrong target procedure disposition, and competing wins for non-manual

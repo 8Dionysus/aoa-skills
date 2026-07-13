@@ -89,12 +89,32 @@ As of 2026-06-13:
 
 ## Review Log
 
-### 2026-07-12 - Make non-invoke activation visible at the user root
+### 2026-07-12 - Separate installed parity from native prompt visibility
+
+- Live check: the exact-merged foundation bundle stages and inspects at 36
+  skills and 270/270 files, then imports and independently verifies at 36/36.
+  This proves installed content parity only.
+- Runtime truth: a fresh `codex debug prompt-input` lists the 12 repo/user skills
+  with `allow_implicit_invocation=true`; manual skills remain absent from the
+  implicit Available-skills inventory even though their installed files contain
+  the policy prefix.
+- Consequence: never claim that `verify_skill_pack.py` makes a manual
+  description prompt-visible. A non-invoke description is visible only to a
+  consumer that actually surfaces it or after explicit structured invocation.
+  Native implicit evaluation must score hidden manual cases as objective
+  non-activation guards; explicit reachability needs structured skill input.
+- The installed foundation profile remains correct and does not need rollback.
+  The correction belongs to evaluation and reporting semantics, not to the
+  user-root path or bundle contents.
+
+### 2026-07-12 - Encode non-invoke activation in portable user-root artifacts
 
 - Trigger: the installed profile carried `implicit_activation_policy` and
   `aoa_invocation_mode` as generated metadata, but Codex routing primarily saw
-  a description that still said `Use when`; live session-growth evidence
-  exposed three false target-facing invoke reports.
+  a description that still said `Use when`; live session-growth evidence first
+  suggested a connection to three target-facing invoke reports. The later
+  prompt-input review above limits that causal hypothesis because native Codex
+  omitted those manual descriptions from the implicit inventory.
 - Decision: derive a leading activation sentence from the policy matrix during
   portable export. Manual skills require explicit invocation or a
   source-authorized parent selection; suggest skills may be recommended but
