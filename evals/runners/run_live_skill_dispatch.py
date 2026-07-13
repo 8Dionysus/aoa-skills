@@ -119,6 +119,8 @@ PUBLIC_MEASURE_KEYS = (
     "route_decision",
     "manual_recommendation",
     "model_claims_loaded",
+    "reported_selected_skill_repo_visible",
+    "reported_non_treatment_skill",
     "structured_skill_visible",
     "structured_skill_input_sent",
     "native_target_skill_input_accepted",
@@ -759,7 +761,7 @@ def _expected_codex_version(plan: dict[str, Any]) -> str:
     revision = str(plan.get("protocol_revision") or "")
     match = re.fullmatch(
         r"codex-cli-([0-9]+(?:\.[0-9]+){2})-"
-        r"(?:app-server-skill-input-v3|live-dispatch-evidence-v(?:[4-9]|1[0-3]))",
+        r"(?:app-server-skill-input-v3|live-dispatch-evidence-v(?:[4-9]|1[0-4]))",
         revision,
     )
     if match is None:
@@ -1599,9 +1601,11 @@ def build_implicit_cli_request(
         "transport": "codex_exec_jsonl",
         "arm_type": "implicit_control" if control else "implicit_aided",
         "argv": argv,
-        "prompt": _with_objective_outcome(
-            _with_fixture_scope(prompt),
-            outcome_contract,
+        "prompt": _with_target_report_contract(
+            _with_objective_outcome(
+                _with_fixture_scope(prompt),
+                outcome_contract,
+            )
         ),
         "timeout_seconds": context.timeout_seconds,
         "fixture_root": str(context.fixture_root),
@@ -1661,12 +1665,26 @@ def _with_fixture_procedure(prompt: str) -> str:
         "classifying that child procedure. "
         f"The independent fixture-execution probe is exactly `{FIXTURE_VALIDATOR_COMMAND}`. "
         "Run it from the fixture root, capture its exit status and sentinel output, and report generated drift "
-        "and proof limits. The probe does not define the selected skill procedure or whole-task outcome. "
-        "The route decision describes skill activation only; report the selected skill procedure separately "
-        "in procedure_disposition. If `route_decision` is `manual_required` or `do_not_use` and no target "
-        "procedure was dispatched, `procedure_disposition` must be `not_applicable`; do not relabel the "
-        "absence of dispatch as a blocked or owner-deferred procedure."
+        "and proof limits. The probe does not define the target skill procedure or whole-task outcome.\n\n"
+        f"{_target_report_contract_text()}"
     )
+
+
+def _target_report_contract_text() -> str:
+    return (
+        "Target report contract: `route_decision` concerns the expected target skill only. A background "
+        "or ambient skill may be reported in `selected_skill`, but it does not make the target route "
+        "`invoke`. `claims_loaded` describes the reported `selected_skill` only, and `claims_loaded` must "
+        "be `false` when `selected_skill` is `null`. `procedure_disposition` describes the target skill "
+        "procedure, not an ambient procedure or the fixture probe. If the target route is "
+        "`manual_required` or `do_not_use` and the target procedure was not dispatched, "
+        "`procedure_disposition` must be `not_applicable`; do not relabel target non-dispatch as blocked "
+        "or owner-deferred."
+    )
+
+
+def _with_target_report_contract(prompt: str) -> str:
+    return f"{prompt}\n\n{_target_report_contract_text()}"
 
 
 def build_root_manual_child_request(
@@ -2512,6 +2530,7 @@ def _trial_failure_class(trial: Trial, result: dict[str, Any]) -> str | None:
     output = candidate_output
     selected = output.get("selected_skill")
     claims_loaded = output.get("claims_loaded") is True
+    selection_surface = _reported_selection_surface_evidence(trial, output, result)
     if result.get("prompt_visibility_contract_match") is False:
         return "harness_contamination"
     if trial.arm_type == "app_server_structured" and (
@@ -2531,9 +2550,17 @@ def _trial_failure_class(trial: Trial, result: dict[str, Any]) -> str | None:
             return "skill_load_gap"
     if trial.expected_behavior == "manual" and trial.arm_type == "implicit_aided":
         if (
-            claims_loaded
-            or result.get("target_skill_full_read_observed") is True
-            or output.get("route_decision") == "invoke"
+            result.get("target_skill_full_read_observed") is True
+            or (
+                (
+                    selection_surface["reported_selected_skill_repo_visible"]
+                    or output.get("selected_skill") == trial.expected_target_skill
+                )
+                and (
+                    claims_loaded
+                    or output.get("route_decision") == "invoke"
+                )
+            )
         ):
             return "manual_activation_leak"
         if not _dispatch_contract_match(trial, output, result):
@@ -2759,6 +2786,28 @@ def _selection_report_evidence(
     }
 
 
+def _reported_selection_surface_evidence(
+    trial: Trial,
+    output: dict[str, Any],
+    result: dict[str, Any],
+) -> dict[str, bool]:
+    raw_paths = result.get("actual_prompt_skill_paths")
+    repo_visible_names = set(raw_paths) if isinstance(raw_paths, dict) else set()
+    selected = output.get("selected_skill")
+    selected_is_target = selected == trial.expected_target_skill
+    selected_repo_visible = bool(
+        isinstance(selected, str) and selected in repo_visible_names
+    )
+    return {
+        "reported_selected_skill_repo_visible": selected_repo_visible,
+        "reported_non_treatment_skill": bool(
+            isinstance(selected, str)
+            and not selected_repo_visible
+            and not selected_is_target
+        ),
+    }
+
+
 def _dispatch_contract_match(
     trial: Trial,
     output: dict[str, Any],
@@ -2769,10 +2818,7 @@ def _dispatch_contract_match(
     if trial.expected_behavior == "invoke":
         return decision == "invoke" and selected == trial.expected_target_skill
     if trial.expected_behavior == "manual":
-        return (
-            decision == "manual_required"
-            and selected in {trial.expected_target_skill, None}
-        )
+        return decision == "manual_required"
     if trial.expected_behavior == "explicit":
         return bool(
             decision == "invoke"
@@ -3240,6 +3286,7 @@ def _enrich_transport_evidence(
         else None
     )
     enriched.update(prompt_evidence)
+    enriched.update(_reported_selection_surface_evidence(trial, output, enriched))
     enriched.update(_fixture_filesystem_scope_evidence(enriched.get("events"), fixture_root))
     enriched.update(_fixture_inventory_scope_evidence(enriched.get("events")))
     enriched["target_skill_full_read_observed"] = _skill_full_read_observed(
@@ -3427,6 +3474,7 @@ def _trial_measure(trial: Trial, result: dict[str, Any]) -> dict[str, Any]:
     trajectory = _trajectory_contract_evidence(trial, output, result)
     procedure = _procedure_contract_evidence(trial, output)
     outcome = _outcome_contract_evidence(trial, result)
+    selection_surface = _reported_selection_surface_evidence(trial, output, result)
     fixture_execution_match = _fixture_execution_contract_match(result)
     disposition = output.get("procedure_disposition")
     return {
@@ -3443,6 +3491,7 @@ def _trial_measure(trial: Trial, result: dict[str, Any]) -> dict[str, Any]:
         "route_decision": output.get("route_decision"),
         "manual_recommendation": output.get("route_decision") == "manual_required",
         "model_claims_loaded": output.get("claims_loaded") is True,
+        **selection_surface,
         "structured_skill_visible": result.get("structured_skill_visible") is True,
         "structured_skill_input_sent": result.get("structured_skill_input_sent") is True,
         "native_target_skill_input_accepted": (

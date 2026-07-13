@@ -72,8 +72,8 @@ child is not exact either. Those report-only mismatches are
 `selection_report_miss`; they do not rewrite successful native dispatch or load
 evidence as `dispatch_policy_gap`.
 These rules use contract schema `aoa_codex_app_server_skill_input_contract_v11`
-and protocol revision `codex-cli-0.144.1-live-dispatch-evidence-v13`. Retained
-v1-v12 receipts stay source-locked to their original protocol and review status;
+and protocol revision `codex-cli-0.144.1-live-dispatch-evidence-v14`. Retained
+v1-v13 receipts stay source-locked to their original protocol and review status;
 they are never upgraded in place.
 
 Run the confirmed command only as the child of the plan packet's
@@ -286,6 +286,17 @@ failed the output contract on `selected_skill=null` plus
 `claims_loaded=true`. Review also found that the receipt schemas had not added
 the new cohort enum. Private/public schema parity and an end-to-end synthetic
 receipt test are required before any further live review or grader revision.
+
+V14 classifies `selected_skill` against the exact repo-visible prompt surface.
+An external ambient route can coexist with a correct manual target decision;
+it does not become repo-treatment activation. A prompt-visible repo selection
+still fails the manual policy when invoked or claimed loaded. The target-report
+contract is now appended to implicit prompts as well as root/structured arms:
+route decision and procedure disposition are target-specific, ambient work does
+not make the target procedure blocked, and null selection requires
+`claims_loaded=false`. Read-only replay of the 14-turn v13 receipt moves two
+ambient aided arms from dispatch-policy failure to procedure-disposition
+failure and changes nothing else.
 
 See `evals/suites/aoa-skill-live-dispatch-harness.suite.md` and
 `docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md` for

@@ -182,7 +182,7 @@ temporary root and must not be copied into this directory.
   both real repo-skill collision pressure and remaining ambient/procedure
   grader ambiguity; the receipt remains candidate-only `needs-rerun` evidence.
 
-Corrected live receipts under the v11-v13 evidence protocols are reviewable only
+Corrected live receipts under the v11-v14 evidence protocols are reviewable only
 after canonical user-skill shadows, plugins, and every configured MCP id are
 isolated with the adapter-appropriate mechanism (`--ignore-user-config` for
 CLI exec, explicit per-id disables for prompt inspection and App Server);

@@ -1,7 +1,7 @@
 {
   "schema_version": "aoa_codex_app_server_skill_input_contract_v11",
   "codex_version": "codex-cli 0.144.1",
-  "protocol_revision": "codex-cli-0.144.1-live-dispatch-evidence-v13",
+  "protocol_revision": "codex-cli-0.144.1-live-dispatch-evidence-v14",
   "official_contract_ref": "https://learn.chatgpt.com/docs/app-server#start-a-turn-invoke-a-skill",
   "schema_generation_command": "codex app-server generate-json-schema --experimental --out DIR",
   "request_sequence": [
@@ -24,6 +24,8 @@
   },
   "evidence_binding": {
     "model_load_claim": "claims_loaded remains a separate model self-report; model self-reports do not gate objective load evidence",
+    "reported_selection_surface": "the reported selected skill is classified against the exact prompt-visible repo fixture names; an external background or ambient route is not treatment-skill activation",
+    "target_report_semantics": "route_decision and procedure_disposition describe the expected target skill and its procedure; selected_skill may separately name an ambient route, while claims_loaded describes that reported name and must be false when selected_skill is null",
     "read_command_boundary": "read-only skill-file inspection commands are evidence collection, remain allowed before the one exact fixture-probe command, and do not count as fixture-probe commands",
     "full_read_assembly": "one successful exact-path output may contain the complete SKILL.md, or ordered successful exact-path outputs may continuously cover it; overlapping source chunks are allowed, unrelated outputs are ignored, and gaps or reverse-only coverage remain incomplete",
     "transport_failure_duration": "a caught CLI or App Server transport exception preserves elapsed milliseconds in the arm measure instead of resetting duration to zero",

@@ -53,7 +53,10 @@ Active first local corpus:
   are preserved as partial `needs-rerun` receipts: one stopped on transport at
   6 turns, the next on a contradictory output contract at 14 turns. The final
   structured arm remains unobserved, and receipt-schema parity must close
-  before another run.
+  before another run. V14 then separates external ambient routing from
+  repo-treatment activation and appends target-specific report semantics to
+  implicit arms; read-only replay moves two aided failures to the correct
+  procedure axis without removing them.
 
 These files are local evidence notes. They do not publish central proof
 acceptance, scoring, verdicts, regression truth, or proof doctrine.
