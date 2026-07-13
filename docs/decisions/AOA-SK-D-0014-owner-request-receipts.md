@@ -54,11 +54,5 @@ accepted but not landed.
 
 ## Verification
 
-Verify with:
-
-```bash
-python -m pytest -q tests/test_mechanics_topology.py tests/test_roadmap_parity.py tests/test_current_direction_routes.py
-python scripts/validate_nested_agents.py
-python scripts/build_catalog.py --check
-python scripts/validate_skills.py --fail-on-review-truth-sync
-```
+Verification covered mechanics routes and topology, nested agent cards,
+catalog parity, and review-truth synchronization in skill validation.

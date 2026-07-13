@@ -8,11 +8,8 @@ It does not create canonical skills.
 
 ## Validation
 
-```bash
-python scripts/build_agon_skill_binding_candidates.py --check
-python scripts/validate_agon_skill_binding_candidates.py
-python -m pytest -q tests/test_agon_skill_binding_candidates.py
-```
+Candidate generation parity, candidate validation, and focused skill-binding
+tests passed.
 
 ## Exit criteria
 

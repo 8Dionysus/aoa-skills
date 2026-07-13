@@ -27,8 +27,8 @@ A release should make it easy to answer:
    - this is equivalent to the bounded repo-level release check with packaging
      smoke: `python scripts/release_check.py --include-packaging-smoke`
    - the authoritative command sequence lives in
-     `scripts/validation_lanes.py` as `RELEASE_CHECK_COMMAND_SEQUENCE` plus
-     `PACKAGING_SMOKE_COMMAND`
+     `config/validation_lanes.json`; the lane loader and release entrypoint
+     execute it without redefining it
    - the release lane covers catalog and decision-index generation,
      portable/runtime/support/tiny-router builders, trigger and
      description-trigger eval builders and lints, Agon candidate checks,

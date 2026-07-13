@@ -9,6 +9,10 @@ Tracking starts with the community-docs baseline for this repository.
 
 ### Added
 
+- Added the owner-local `stats/` port for description-trigger contract
+  coverage, with a source-revision census, explicit authority ceiling, central
+  protocol delegation, and negative checks against false numerators and
+  case-count denominators.
 - A source-locked live skill-dispatch harness now separates prompt visibility,
   implicit aided/control dispatch, activation and full reads, explicit
   root-child trajectories, structured App Server input, independent fixture
@@ -709,8 +713,8 @@ Tracking starts with the community-docs baseline for this repository.
 
 ### Validation
 
-- `python scripts/release_check.py`
-- `python scripts/release_check.py --include-packaging-smoke`
+- the release lane
+- the packaging-smoke extension of the release lane
 
 ### Notes
 
@@ -756,10 +760,9 @@ Tracking starts with the community-docs baseline for this repository.
 
 ### Validation
 
-- `python scripts/release_check.py`
-- `python scripts/build_agon_skill_binding_candidates.py --check`
-- `python scripts/validate_agon_skill_binding_candidates.py`
-- `python -m pytest -q tests/test_agon_skill_binding_candidates.py`
+- the release lane
+- the Agon candidate builder and validator
+- the focused Agon binding tests
 
 ### Notes
 
@@ -792,7 +795,7 @@ Tracking starts with the community-docs baseline for this repository.
 
 ### Validation
 
-- `python scripts/release_check.py`
+- the release lane
 
 ### Notes
 
@@ -812,7 +815,7 @@ Tracking starts with the community-docs baseline for this repository.
 
 ### Validation
 
-- `python scripts/release_check.py`
+- the release lane
 
 ### Notes
 
@@ -845,7 +848,7 @@ Tracking starts with the community-docs baseline for this repository.
 
 ### Validation
 
-- `python scripts/release_check.py`
+- the release lane
 
 ### Notes
 
@@ -918,7 +921,7 @@ This changelog entry uses the release-prep merge date.
 
 ### Validation
 
-- `python scripts/release_check.py`
+- the release lane
 
 ### Notes
 
@@ -938,7 +941,7 @@ This changelog entry uses the release-prep merge date.
 ### Added
 
 - public baseline release of `17` committed skill bundles across core, risk, and project-overlay surfaces
-- repo-level release foundation through `mechanics/release-support/docs/RELEASING.md` and `python scripts/release_check.py`
+- repo-level release foundation through `mechanics/release-support/docs/RELEASING.md` and the release lane
 - release-backed validation path in `.github/workflows/repo-validation.yml`
 - public repository entry docs and community docs including `README.md`, `AGENTS.md`, `CONTRIBUTING.md`, `CHANGELOG.md`, `CODE_OF_CONDUCT.md`, `SECURITY.md`, and `SKILL_INDEX.md`
 
@@ -956,8 +959,9 @@ This changelog entry uses the release-prep merge date.
 
 ### Validation
 
-- `python scripts/release_check.py`
-- the bounded release check runs `python scripts/build_catalog.py`, `python -m unittest discover -s tests`, `python scripts/validate_skills.py`, and `python scripts/build_catalog.py --check`
+- the release lane
+- the bounded release check covered catalog generation and parity, the
+  repository test suite, and skill-source validation
 
 ### Notes
 

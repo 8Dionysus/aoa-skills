@@ -19,7 +19,8 @@ It does not change the base skill boundary.
 
 - route cards: `AGENTS.md` plus the nearest nested `AGENTS.md` for every touched path
 - source-of-truth files: repo-relative docs such as `README.md`, `MANIFEST.md`, `ROADMAP.md`, `docs/SOURCE_OF_TRUTH.md`, `docs/RUNBOOK.md`, `docs/PRODUCT_EDGE_POSTURE.md`, `docs/QWEN3_MODEL_STACK.md`, and `docs/ARCHIVED_TRACKS.md`
-- commands: repo-relative checks such as `python -m pytest`, public-doc hardening tests, `python scripts/[local-check].py`, or another local validator chosen downstream
+- verification route: repo-relative tests and owner validators selected by the
+  nearest downstream `AGENTS.md`
 - rollback path: revert the bounded local change and re-run the smallest relevant local check
 - verification path: use the smallest repo-relative check that matches the touched surface
 - safety posture: safe automation stays dry-run or report-only by default unless downstream ATM10-owned docs, implementation, tests, and maintainer approval explicitly support a stronger path

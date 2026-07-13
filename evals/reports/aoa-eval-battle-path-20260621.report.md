@@ -46,8 +46,8 @@ Route decision:
 
 ## MCP Evidence
 
-Command from the `abyss-stack` source checkout:
-`PYTHONPATH=mcp/services/aoa-evals-mcp/src python -m aoa_evals_mcp.cli --workspace-root /srv/AbyssOS --evals-root /srv/AbyssOS/aoa-evals local-port aoa-skills`.
+The `aoa-evals-mcp` local-port view read the current `aoa-skills` port from the
+`abyss-stack` source checkout.
 
 Observed:
 
@@ -57,8 +57,9 @@ Observed:
 - route: `aoa-eval-apply`
 - validation: valid with no issues
 
-Command from the `abyss-stack` source checkout:
-`PYTHONPATH=mcp/services/aoa-evals-mcp/src python -m aoa_evals_mcp.cli --workspace-root /srv/AbyssOS --evals-root /srv/AbyssOS/aoa-evals find-or-propose-local aoa-skills --proof-question "Does the aoa-eval skill trigger and route OS Abyss eval pressure through existing local surfaces before designing new evals?"`.
+The `aoa-evals-mcp` `find-or-propose-local` read used the `aoa-skills` owner
+and asked whether existing local surfaces route eval pressure before new eval
+design.
 
 Observed:
 
@@ -75,12 +76,10 @@ than model-scored central proof.
 
 Checks run for this battle path:
 
-- `AOA_EVALS_ROOT=/srv/AbyssOS/aoa-evals python /srv/AbyssOS/aoa-evals/scripts/validate_local_eval_port.py --target-root .`
-- `PYTHONPATH=scripts python scripts/validation/validate_skills.py --skill aoa-eval`
-- `python -m pytest -q tests/test_aoa_eval_trigger_corpus.py tests/test_evaluated_status_checks.py`
-- `PYTHONPATH=scripts python scripts/validation/lint_trigger_evals.py --repo-root .`
-- `PYTHONPATH=scripts python scripts/validation/lint_description_trigger_evals.py --repo-root .`
-- `PYTHONPATH=scripts python scripts/lanes/ci_gate.py --mode source-fast`
+- central local-port protocol validation;
+- focused `aoa-eval` skill validation and tests;
+- trigger and description-trigger lint;
+- the `source-fast` lane.
 
 Observed results:
 
@@ -91,16 +90,12 @@ Observed results:
 - description-trigger lint passed: 265 cases across 56 skills
 - source-fast gate passed
 
-Post-write local-port validation:
-
-`AOA_EVALS_ROOT=/srv/AbyssOS/aoa-evals python /srv/AbyssOS/aoa-evals/scripts/validate_local_eval_port.py --target-root .`
+Post-write local-port validation reran the central protocol against this owner.
 
 Observed result: `Local eval port validation passed.`
 
-Post-write MCP readback:
-
-Command from the `abyss-stack` source checkout:
-`PYTHONPATH=mcp/services/aoa-evals-mcp/src python -m aoa_evals_mcp.cli --workspace-root /srv/AbyssOS --evals-root /srv/AbyssOS/aoa-evals local-port aoa-skills`.
+Post-write MCP readback used the `aoa-evals-mcp` local-port view for
+`aoa-skills`.
 
 Observed:
 

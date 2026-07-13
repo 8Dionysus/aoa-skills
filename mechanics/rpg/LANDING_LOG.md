@@ -23,5 +23,5 @@ Preserved stop-lines:
 
 Checks:
 
-- `python scripts/validate_nested_agents.py`
-- `python -m pytest -q tests/test_generated_surface_schemas.py tests/test_roadmap_parity.py tests/test_current_direction_routes.py tests/test_mechanics_topology.py`
+- generated-surface schemas, mechanics routes and topology, and nested agent
+  cards all passed

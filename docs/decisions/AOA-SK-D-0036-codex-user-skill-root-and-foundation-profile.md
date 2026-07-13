@@ -167,9 +167,5 @@ override.
 
 ## Validation
 
-- `PYTHONPATH=scripts python scripts/export/build_agent_skills.py --repo-root .`
-- `PYTHONPATH=scripts python scripts/builders/build_catalog.py --check`
-- `PYTHONPATH=scripts python scripts/runtime/build_runtime_guardrails.py --check --repo-root .`
-- `PYTHONPATH=scripts python scripts/decisions/generate_decision_indexes.py --check`
-- `PYTHONPATH=scripts python scripts/validation/validate_skills.py`
-- `PYTHONPATH=scripts python scripts/bundles/verify_skill_pack.py --repo-root . --profile user-aoa-foundation --install-root /home/dionysus/.codex/skills`
+Validation covered portable export generation, catalog and decision-index
+parity, runtime guardrails, skill source, and the installed foundation profile.

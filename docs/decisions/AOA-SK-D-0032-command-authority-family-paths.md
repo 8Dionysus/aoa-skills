@@ -91,7 +91,5 @@ paths.
 
 ## Validation
 
-- `python -m pytest -q tests/test_validator_topology.py tests/test_release_check.py tests/test_script_topology.py`
-- `python scripts/lanes/ci_gate.py --help`
-- `python scripts/lanes/release_check.py --help`
-- `python scripts/ci_gate.py --mode source-fast`
+Validation covered validator, release, and script topology tests; both lane
+entrypoint help surfaces; and the `source-fast` lane.

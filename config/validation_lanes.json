@@ -80,6 +80,10 @@
       ],
       [
         "python",
+        "scripts/validation/validate_local_stats_port.py"
+      ],
+      [
+        "python",
         "scripts/validation/validate_skills.py",
         "--skip-generated",
         "--fail-on-review-truth-sync"
@@ -562,6 +566,10 @@
       [
         "python",
         "scripts/validation/validate_nested_agents.py"
+      ],
+      [
+        "python",
+        "scripts/validation/validate_local_stats_port.py"
       ],
       [
         "python",

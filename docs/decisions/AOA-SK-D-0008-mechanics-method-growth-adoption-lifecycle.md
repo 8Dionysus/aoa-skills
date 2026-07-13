@@ -64,9 +64,5 @@ lifecycle slice.
 
 ## Verification
 
-Verify with:
-
-```bash
-python -m pytest -q tests/test_experience_wave3_seed_contracts.py tests/test_mechanics_topology.py tests/test_roadmap_parity.py tests/test_current_direction_routes.py
-python scripts/validate_nested_agents.py
-```
+Verification covered the experience lifecycle contracts, mechanics routes and
+topology, and nested agent cards.

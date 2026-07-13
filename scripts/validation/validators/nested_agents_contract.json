@@ -221,6 +221,16 @@
         "thin overlay",
         "downstream integration"
       ]
+    },
+    {
+      "path": "stats/AGENTS.md",
+      "required_snippets": [
+        "# AGENTS.md",
+        "`stats/`",
+        "reference-only",
+        "python scripts/validation/validate_local_stats_port.py",
+        "source-fast"
+      ]
     }
   ]
 }

@@ -68,6 +68,19 @@ its identity is the bounded workflow it gives an agent.
 A skill is not the home of recurring scenario method; that boundary stays in
 `aoa-playbooks`.
 
+### Owner-local stats port
+
+`stats/` declares statistical questions whose domain meaning belongs to the
+skill canon. Its measurement contracts name a population, unit, derivation,
+evidence refs, reference/live posture, and authority ceiling. The central
+`aoa-stats` organ owns the shared grammar and cross-owner composition.
+
+Current reference packets are derived from public source-backed skill
+projections. They remain weaker than authored skill bundles, activation
+policy, cases, builders, validators, and review evidence. They do not turn
+coverage into runtime success, proof, adoption, promotion, or human
+assessment.
+
 ## Layering
 
 ### Layer 1: origin project
@@ -112,6 +125,8 @@ A project-local overlay adds:
 9. project overlays should remain thin
 10. dangerous or operationally sensitive skills should default to explicit invocation
 11. narrow skill wrappers need review evidence that they add executable value
+12. owner-local statistics may summarize declared skill cohorts but may not
+    absorb proof, runtime, routing, adoption, or cross-owner authority
 
 ## Skill categories
 

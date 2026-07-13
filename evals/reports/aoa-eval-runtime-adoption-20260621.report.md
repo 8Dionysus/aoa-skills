@@ -45,11 +45,9 @@ This matches the `aoa-eval` contract: the front-door chooses `select`, `apply`, 
 
 ### Prompt-visible availability
 
-Command used:
-
-```bash
-codex debug prompt-input "Есть ли eval для локального eval port и надо ли добавить eval, если его нет?" | rg -n -C 4 "aoa-eval|local eval ports|aoa-evals-mcp|eval-lane|evals/"
-```
+Prompt-visible availability was checked through the Codex prompt-input debug
+surface with an eval-port existence question and a focused read of the visible
+eval-route context.
 
 Observed result:
 

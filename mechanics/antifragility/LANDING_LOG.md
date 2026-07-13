@@ -26,8 +26,5 @@ Preserved stop-lines:
 
 Checks:
 
-- `python scripts/lint_trigger_evals.py --repo-root .`
-- `python scripts/lint_description_trigger_evals.py --repo-root .`
-- `python scripts/validate_tiny_router_inputs.py --repo-root .`
-- `python scripts/validate_nested_agents.py`
-- `python -m pytest -q tests/test_mechanics_topology.py tests/test_roadmap_parity.py tests/test_current_direction_routes.py`
+- trigger and description-trigger lint, tiny-router inputs, nested agent cards,
+  mechanics topology, roadmap parity, and current-direction routing all passed

@@ -67,11 +67,7 @@ compatibility aliases under `skills/<name>`.
 
 ## Verification
 
-Verified with:
-
-```bash
-python scripts/release_check.py
-```
+Verified through the release lane.
 
 The release check rebuilt catalogs, portable export, runtime seams,
 description-trigger cases, support resources, tiny-router inputs, and then ran

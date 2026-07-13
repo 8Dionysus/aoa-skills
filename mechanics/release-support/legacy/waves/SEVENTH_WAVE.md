@@ -43,17 +43,10 @@ This wave does not replace the older trigger suite.
 
 ## Build order
 
-```bash
-python scripts/build_agent_skills.py --repo-root .
-python scripts/build_runtime_seam.py --repo-root .
-python scripts/build_runtime_guardrails.py --repo-root .
-python scripts/build_description_trigger_evals.py --repo-root .
-python scripts/validate_agent_skills.py --repo-root .
-python scripts/lint_trigger_evals.py --repo-root .
-python scripts/lint_description_trigger_evals.py --repo-root .
-python scripts/lint_pack_profiles.py --repo-root .
-python scripts/run_skills_ref_validation.py --repo-root .
-```
+The wave built the portable agent-skill export, runtime seam, runtime
+guardrails, and description-trigger cases in that order, then validated the
+portable export, both trigger suites, pack profiles, and skill-reference
+contracts.
 
 ## Result
 

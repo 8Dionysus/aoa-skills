@@ -20,7 +20,8 @@
 
 - keep every path repository-relative to the downstream repo
 - example docs surface: `README.md`, `docs/ARCHITECTURE.md`, `mechanics/boundary-bridge/docs/BRIDGE_SPEC.md`
-- example commands: `PYTHONPATH=scripts python scripts/validation/validate_skills.py`, `PYTHONPATH=scripts python scripts/builders/build_catalog.py --check`
+- example verification route: the nearest downstream `AGENTS.md`, skill
+  validator, and catalog parity owner
 
 ## Local verification
 

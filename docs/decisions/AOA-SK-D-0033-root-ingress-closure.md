@@ -46,7 +46,7 @@ Root `scripts/*.py` compatibility ingress is limited to three public classes:
 
 All internal builder, validator, audit, report, refresh, receipt, adapter, and
 skill-model tools run from organ paths. Direct organ commands use the explicit
-contract `PYTHONPATH=scripts python scripts/<organ>/<tool>.py ...`; lane runners
+contract that exposes the `scripts/` package on their module path; lane runners
 inject that path automatically.
 
 `docs/validation/script_inventory.json` now stores the allowlist with owner,
@@ -111,6 +111,5 @@ downstream contracts move.
 
 ## Validation
 
-- `python -m pytest -q tests/test_script_topology.py`
-- `python -m pytest -q tests/test_validator_topology.py tests/test_test_topology.py tests/test_script_topology.py tests/test_tiny_router_inputs.py tests/test_skills_ref_validation.py tests/test_validate_skills_generated_drift.py tests/test_component_refresh_law.py tests/test_runtime_seam_toolchain.py tests/test_runtime_guardrails_builder.py`
-- `python -m pytest -q tests/test_validate_skill_mcp_wiring.py`
+Validation covered script topology, the affected validator/test/runtime
+topologies, and skill MCP-wiring behavior.

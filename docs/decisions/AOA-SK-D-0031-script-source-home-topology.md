@@ -71,9 +71,8 @@ refreshes, and skill source contracts. A flat root makes those owner boundaries
 invisible.
 
 Keeping root command ingress wrappers is intentional. Current CI, generated
-payloads, docs, and downstream invocations still know paths such as
-`python scripts/build_catalog.py` and `python scripts/release_check.py`.
-Breaking those paths would be churn, not maturity. The durable change is that
+payloads, docs, and downstream invocations still know those allowlisted ingress
+paths. Breaking them would be churn, not maturity. The durable change is that
 new implementation and helper libraries can no longer hide in root.
 
 ## Consequences

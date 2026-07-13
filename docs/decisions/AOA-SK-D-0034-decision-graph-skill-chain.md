@@ -113,8 +113,5 @@ decision route cards, templates, generated indexes, or validation commands.
 
 ## Validation
 
-- `PYTHONPATH=scripts python scripts/validation/validate_skills.py`
-- `PYTHONPATH=scripts python scripts/builders/build_catalog.py --check`
-- `PYTHONPATH=scripts python scripts/validation/validate_agent_skills.py --repo-root .`
-- `PYTHONPATH=scripts python scripts/validation/validate_skill_mcp_wiring.py --workspace-config "${CODEX_HOME:-$HOME/.codex}/config.toml" --local-adapter-manifest generated/local_adapter_manifest.min.json --allow-missing-mcp`
-- `PYTHONPATH=scripts python scripts/decisions/generate_decision_indexes.py --check`
+Validation covered skill source, catalog parity, portable agent skills,
+workspace MCP-wiring compatibility, and decision-index parity.

@@ -35,9 +35,9 @@ The wrapper is meant to run in CI after the portable export is built.
 Recommended order:
 
 1. build export and downstream layers
-2. run `validate_agent_skills.py`
-3. run `lint_description_trigger_evals.py`
-4. run `run_skills_ref_validation.py`
+2. validate the portable agent-skill surface
+3. lint the description-trigger projection
+4. run upstream `skills-ref` conformance
 
 The wrapper remains soft by default for local advisory use:
 

@@ -62,13 +62,5 @@ explanation, and status views.
 
 ## Verification
 
-Verify with:
-
-```bash
-python scripts/build_catalog.py --check
-python scripts/skill_intelligence.py build --check
-python scripts/skill_intelligence.py query "source truth docs conflict canonical guidance" --limit 3
-python scripts/skill_intelligence.py explain aoa-source-of-truth-check --intent "docs conflict over authoritative source"
-python -m pytest -q tests/test_skill_intelligence_surface.py tests/test_generated_surface_schemas.py tests/test_build_catalog.py
-python scripts/release_check.py
-```
+Verification covered catalog parity, skill-intelligence build/query/explain
+behavior, focused generated-surface tests, and the release lane.

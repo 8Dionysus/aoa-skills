@@ -36,4 +36,5 @@ The governed seam resolves path templates for:
 - user scope: `$HOME/.codex/skills/<skill-name>`
 - admin scope: `/etc/codex/skills/<skill-name>`
 
-The merged allowlist is emitted by `scripts/skill_runtime_guardrails.py allowlist`.
+The governed runtime owner's `allowlist` operation emits the merged result;
+`RUNTIME_GOVERNANCE_LAYER.md` owns its exact invocation.

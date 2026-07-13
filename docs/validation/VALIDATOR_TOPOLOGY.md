@@ -39,13 +39,13 @@ Use this route before editing validator code:
 
 ## Lanes
 
-| Lane | Role | Typical command |
+| Lane | Role | Command owner |
 |---|---|---|
-| `source-fast` | Fast source gate for authored skill contracts and route law. | `python scripts/lanes/ci_gate.py --mode source-fast` |
-| `generated` | Read-model freshness and parity for generated companions. | `python scripts/lanes/ci_gate.py --mode generated --group all` |
-| `export` | Portable export, runtime, support-resource, tiny-router, and adapter transport checks. | `python scripts/lanes/ci_gate.py --mode export` |
-| `release` | Frozen release gate plus packaging smoke. | `python scripts/lanes/ci_gate.py --mode release` |
-| `nightly` | Moving-main growth sentinel plus release identity readout. | `python scripts/lanes/ci_gate.py --mode nightly` |
+| `source-fast` | Fast source gate for authored skill contracts and route law. | `config/validation_lanes.json` `source_fast` sequence |
+| `generated` | Read-model freshness and parity for generated companions. | generated command groups and drift paths in `config/validation_lanes.json` |
+| `export` | Portable export, runtime, support-resource, tiny-router, and adapter transport checks. | export sequences in `config/validation_lanes.json` |
+| `release` | Frozen release gate plus packaging smoke. | `config/validation_lanes.json` `release_check` sequence |
+| `nightly` | Moving-main growth sentinel plus release identity readout. | lane composition in `scripts/lanes/ci_gate.py` |
 | `advisory` | Reports and audits that guide review but do not fail ordinary CI by default. | Run the named report directly. |
 | `manual` | Workspace, sibling, or operator-context check used when that surface is in scope. | Run the named command directly. |
 
@@ -54,6 +54,7 @@ Use this route before editing validator code:
 | Family | Protects | Owner module or surface | Failure route |
 |---|---|---|---|
 | Source/topology | `skills/**/SKILL.md`, `techniques.yaml`, skill status, route cards, questbook source shape. | `scripts/validation/validate_skills.py`, `scripts/validation/validate_nested_agents.py`, `scripts/validation/validators/questbook_surface.py` | Fix authored source, route card, or manifest; rerun `source-fast`. |
+| Source/stats-port | Owner-local description-trigger contract coverage packet and its central protocol compatibility. | `stats/port.manifest.json`, `scripts/validation/validate_local_stats_port.py` | Fix the local manifest or packet; change shared protocol semantics only in `aoa-stats`, then update the pinned dependency deliberately. |
 | AGENTS/route-law | Required nested `AGENTS.md` snippets and agent-facing contract shape. | `scripts/validation/validators/nested_agents_contract.json` | Update the local card or contract manifest; do not add a one-off Python validator. |
 | Activation/trigger | Explicit/manual posture, collision cases, description signals, trigger cases, tiny-router surfaces. | `scripts/validation/validators/trigger_eval_surface.py`, `scripts/validation/validators/tiny_router_surface.py` | Fix source skill description/policy, rebuild generated cases, then lint. |
 | Skill-native eval | Snapshot-backed local evidence and generated evaluation matrix. | `scripts/skill_model/skill_evaluation_contract.py`, `scripts/skill_model/skill_evaluation_surface.py` | Repair fixture/snapshot/source bundle mismatch; keep broad proof outside required gates. |

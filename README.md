@@ -27,6 +27,7 @@ linked owner surface instead of expanding this page.
 | Public skill catalog | [SKILL_INDEX](SKILL_INDEX.md) |
 | Canonical skill bundles | [skills](skills/README.md) |
 | Owner-local skill mechanics | [mechanics](mechanics/README.md) |
+| Owner-local statistical questions | [stats](stats/README.md) |
 | Derived reader surfaces | [generated](generated/README.md) |
 | Portable skill export and Spark agent lane | [.agents](.agents/AGENTS.md) |
 
@@ -44,6 +45,7 @@ Read only what matches your entry need.
 | Shortest honest overview | this README, then [CHARTER](CHARTER.md), [DESIGN](DESIGN.md), [SKILL_INDEX](SKILL_INDEX.md), and [ARCHITECTURE](docs/ARCHITECTURE.md) |
 | Agent editing route | [AGENTS](AGENTS.md), then the nearest nested `AGENTS.md` |
 | Skill source topology | [skills](skills/README.md) |
+| Skill-domain measurements and evidence handoffs | [stats](stats/README.md) |
 | Boundary with sibling owner repos | [LAYER_POSITION](mechanics/boundary-bridge/docs/LAYER_POSITION.md) |
 | Runtime use path | [RUNTIME_PATH](mechanics/release-support/docs/RUNTIME_PATH.md) |
 | Public status and evaluation | [PUBLIC_SURFACE](mechanics/audit/docs/PUBLIC_SURFACE.md) and [EVALUATION_PATH](mechanics/audit/docs/EVALUATION_PATH.md) |

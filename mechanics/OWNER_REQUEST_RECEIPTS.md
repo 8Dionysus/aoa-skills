@@ -69,7 +69,7 @@ Validation evidence:
 - `tests/test_mechanics_topology.py`
 - `tests/test_session_checkpoint_note.py`
 - `tests/test_session_growth_kernel_maturity.py`
-- `PYTHONPATH=scripts python scripts/validation/validate_nested_agents.py`
+- nested agent-card validation
 
 ## ORQ-DISTILLATION-SKILLS-001
 
@@ -121,7 +121,7 @@ Validation evidence:
 
 - `tests/test_mechanics_topology.py`
 - `tests/test_session_growth_kernel_maturity.py`
-- `PYTHONPATH=scripts python scripts/validation/validate_skills.py --fail-on-review-truth-sync`
+- skill-source validation with review-truth synchronization
 
 ## ORQ-CHECKPOINT-SKILLS-001
 
@@ -146,7 +146,7 @@ Validation evidence:
 
 - `tests/test_session_checkpoint_note.py`
 - `tests/test_mechanics_topology.py`
-- `PYTHONPATH=scripts python scripts/validation/validate_skills.py --fail-on-review-truth-sync`
+- skill-source validation with review-truth synchronization
 
 ## ORQ-EXPERIENCE-SKILLS-001
 

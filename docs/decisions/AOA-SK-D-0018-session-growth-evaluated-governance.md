@@ -95,11 +95,5 @@ default-reference decisions remain separate comparative reviews.
 
 ## Verification
 
-Verified with:
-
-```bash
-python scripts/release_check.py
-python -m pytest -q tests
-python scripts/audit_skill_quality.py --repo-root . --write-json generated/skill_quality_audit.json --write-markdown generated/skill_quality_audit.md --format json
-python scripts/report_skill_promotion_pressure.py --repo-root . --workspace-root /srv/AbyssOS --write-json generated/skill_promotion_pressure.json --write-markdown generated/skill_promotion_pressure.md --format json
-```
+Verified through the release lane, repository tests, skill-quality audit, and
+promotion-pressure report generation.

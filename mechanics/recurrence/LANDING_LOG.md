@@ -23,7 +23,6 @@ Preserved stop-lines:
 
 Checks:
 
-- `python -m pytest -q tests/test_roadmap_parity.py tests/test_current_direction_routes.py tests/test_mechanics_topology.py`
-- `python -m json.tool mechanics/recurrence/manifests/component.skills.bundle-and-activation-beacons.json`
-- `python -m json.tool mechanics/recurrence/manifests/hooks/component.skills.bundle-and-activation-beacons.hooks.json`
-- `python scripts/validate_nested_agents.py`
+- mechanics route/topology checks and nested agent cards passed
+- the recurrence bundle-and-activation-beacons manifest and hook manifest both
+  parsed as valid JSON

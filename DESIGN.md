@@ -55,6 +55,8 @@ It is composed of:
 - mechanics packages that describe skill-layer movement, review pressure,
   release support, adoption, recurrence, checkpoint, quest, and bridge routes;
 - configuration seams for policy, profiles, export, and adapter metadata;
+- an owner-local `stats/` port for bounded skill-domain measurement questions
+  and evidence handoffs;
 - scripts, schemas, tests, templates, examples, and manifests that keep the
   canon buildable and reviewable;
 - generated companions under `generated/`;
@@ -148,8 +150,10 @@ skill canon.
 ### 9. Evidence layers stay separate
 
 Selection, runtime inspection, evaluation evidence, public status, promotion
-pressure, and downstream adoption audits are adjacent layers. Mixing them makes
-claims harder to verify.
+pressure, owner-local statistical views, and downstream adoption audits are
+adjacent layers. Mixing them makes claims harder to verify. A stats packet may
+summarize a declared cohort without becoming proof, runtime truth, or adoption
+authority.
 
 ### 10. Growth routes outward cleanly
 
@@ -190,6 +194,8 @@ agent-facing guidance mesh.
 [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) explains the technical model and
 layering details.
 [`mechanics/README.md`](mechanics/README.md) routes owner-local skill mechanics.
+[`stats/README.md`](stats/README.md) routes owner-local statistical questions
+and evidence-linked reference packets.
 [`mechanics/boundary-bridge/docs/LAYER_POSITION.md`](mechanics/boundary-bridge/docs/LAYER_POSITION.md)
 names the boundary between skills, techniques, and sibling owners.
 [`mechanics/ROADMAP.md`](mechanics/ROADMAP.md) routes future work into package

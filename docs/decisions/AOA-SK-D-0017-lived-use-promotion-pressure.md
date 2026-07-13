@@ -55,9 +55,5 @@ watch, or watch.
 
 ## Verification
 
-Verify with:
-
-```bash
-python scripts/report_skill_promotion_pressure.py --repo-root . --workspace-root /srv/AbyssOS --format markdown
-python -m pytest -q tests/test_skill_promotion_pressure.py
-```
+Verification covered the promotion-pressure report and its focused behavior
+tests.

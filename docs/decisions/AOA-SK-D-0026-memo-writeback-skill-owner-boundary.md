@@ -87,11 +87,7 @@ knowing the skill name.
 
 ## Verification
 
-Verified with:
-
-```bash
-python scripts/release_check.py
-```
+Verified through the release lane.
 
 The release check rebuilt generated surfaces, portable exports, trigger evals,
 runtime seams, support resources, and tiny-router inputs; then it ran the full

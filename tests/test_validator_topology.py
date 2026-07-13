@@ -20,31 +20,41 @@ from lanes import validation_lanes
 INVENTORY_PATH = REPO_ROOT / "docs" / "validation" / "validator_inventory.json"
 TOPOLOGY_PATH = REPO_ROOT / "docs" / "validation" / "VALIDATOR_TOPOLOGY.md"
 VALIDATION_LANES_MANIFEST_PATH = REPO_ROOT / "config" / "validation_lanes.json"
+AOA_STATS_REF = "25f0044ec46cbed9b7d595e6daa2056ec6d964e3"
 AGENTS_VALIDATION_PREAMBLE = (
     "Full lane command sequences live in `config/validation_lanes.json`; "
     "this local card may name only focused owner checks, lane ids, or the "
     "nearest route for the changed surface."
 )
-VALIDATION_COMMAND_BLOCK_RE = re.compile(
-    r"```(?:bash|sh)?\n(?:(?!```).)*(?:python scripts/|python -m|"
-    r"git diff --check|git diff --exit-code|scripts/ci_gate.py|"
-    r"scripts/release_check.py)",
-    re.S,
+COMMAND_BLOCK_LINE = re.compile(
+    r"^\s*(?:\$\s*)?(?:(?:[A-Z_][A-Z0-9_]*=\S+)\s+)*"
+    r"(?:python(?:3)?|git|gh|pytest|pip|uv|make|bash|sh|find|"
+    r"cargo|npm|node|ruff|mypy|jq|rg|curl|docker|podman|aoa|"
+    r"codex|abyss-machine|cd|sed|awk|xargs|systemctl|journalctl|\./)\s"
 )
-NON_AGENTS_COMMAND_BLOCK_ALLOWED_PREFIXES = (
-    "docs/decisions/AOA-SK-D-",
-    "mechanics/agon/legacy/",
-    "mechanics/boundary-bridge/legacy/",
-    "mechanics/growth-cycle/legacy/",
-    "mechanics/release-support/legacy/",
+SHELL_FENCE_OPENING = re.compile(
+    r"^```(?:bash|sh|shell|console|zsh|fish|powershell|pwsh)\s*$",
+    re.IGNORECASE,
 )
-NON_AGENTS_COMMAND_BLOCK_ALLOWED_FILES = {
+REPO_COMMAND_LITERAL = re.compile(
+    r"python(?:3)? (?:scripts/|mechanics/|\.agents/|-m (?:unittest|pytest|pip))|"
+    r"git (?:diff --|status --|status -|mv )|"
+    r"(?:scripts|evals|mechanics|\.agents)/[^`\s]+\.py\s+"
+    r"(?:--?[a-zA-Z0-9]|[a-z][a-z0-9_-]*)|"
+    r"(?:aoa|codex|abyss-machine)\s+[^`\n]*--[a-zA-Z]"
+)
+MARKDOWN_COMMAND_OWNER_FILES = {
+    "evals/runners/README.md",
+    "evals/suites/aoa-eval-trigger-corpus.suite.md",
     "mechanics/audit/docs/SKILLS_REF_VALIDATION.md",
+    "mechanics/boundary-bridge/docs/CODEX_SKILL_MCP_WIRING.md",
     "mechanics/method-growth/docs/PROMOTION_PRESSURE.md",
     "mechanics/release-support/docs/CODEX_CONFIG_SNIPPETS.md",
+    "mechanics/release-support/docs/COMPONENT_REFRESH_LAW.md",
     "mechanics/release-support/docs/INSTALL_AND_PROFILES.md",
-    "mechanics/release-support/docs/LOCAL_ADAPTER_CONTRACT.md",
+    "mechanics/release-support/docs/RELEASING.md",
     "mechanics/release-support/docs/RUNTIME_GOVERNANCE_LAYER.md",
+    "mechanics/release-support/docs/RUNTIME_PATH.md",
 }
 THIN_VALIDATION_CLI_ADAPTERS = (
     "scripts/validation/validate_agent_skills.py",
@@ -80,6 +90,21 @@ def python_script_paths_from(commands: tuple[tuple[str, ...], ...]) -> set[str]:
 
 def command_sequence_from_manifest(manifest: dict, name: str) -> tuple[tuple[str, ...], ...]:
     return tuple(tuple(command) for command in manifest["command_sequences"][name])
+
+
+def markdown_command_nonowners() -> tuple[Path, ...]:
+    paths: list[Path] = []
+    for path in REPO_ROOT.rglob("*.md"):
+        relative = path.relative_to(REPO_ROOT)
+        relative_text = relative.as_posix()
+        if path.name == "AGENTS.md":
+            continue
+        if relative.parts and relative.parts[0] in {".agents", "skills"}:
+            continue
+        if relative_text in MARKDOWN_COMMAND_OWNER_FILES:
+            continue
+        paths.append(path)
+    return tuple(sorted(paths))
 
 
 class ValidatorTopologyTests(unittest.TestCase):
@@ -166,6 +191,38 @@ class ValidatorTopologyTests(unittest.TestCase):
             ),
             validation_lanes.EXPORT_FULL_COMMAND_SEQUENCE,
         )
+
+    def test_stats_port_validator_is_in_owner_lanes_and_pinned_workflows(self) -> None:
+        stats_command = ("python", "scripts/validation/validate_local_stats_port.py")
+        self.assertIn(stats_command, validation_lanes.SOURCE_FAST_COMMAND_SEQUENCE)
+        self.assertIn(stats_command, validation_lanes.RELEASE_CHECK_COMMAND_SEQUENCE)
+
+        repo_validation = (
+            REPO_ROOT / ".github" / "workflows" / "repo-validation.yml"
+        ).read_text(encoding="utf-8")
+        self.assertIn("repository: 8Dionysus/aoa-stats", repo_validation)
+        self.assertIn(f"ref: {AOA_STATS_REF}", repo_validation)
+        self.assertIn("AOA_STATS_ROOT: ${{ github.workspace }}/.deps/aoa-stats", repo_validation)
+
+        release_audit = (
+            REPO_ROOT / ".github" / "workflows" / "release-audit.yml"
+        ).read_text(encoding="utf-8")
+        self.assertIn("repository: 8Dionysus/aoa-stats", release_audit)
+        self.assertIn(f"ref: {AOA_STATS_REF}", release_audit)
+        self.assertIn(
+            "AOA_STATS_ROOT: ${{ github.workspace }}/workspace/aoa-stats",
+            release_audit,
+        )
+
+        nightly = (
+            REPO_ROOT / ".github" / "workflows" / "nightly-sentinel.yml"
+        ).read_text(encoding="utf-8")
+        main_growth, latest_release = nightly.split("  latest_release_repro:", maxsplit=1)
+        self.assertIn("repository: 8Dionysus/aoa-stats", main_growth)
+        self.assertIn(f"ref: {AOA_STATS_REF}", main_growth)
+        self.assertIn("AOA_STATS_ROOT: ${{ github.workspace }}/.deps/aoa-stats", main_growth)
+        self.assertNotIn("repository: 8Dionysus/aoa-stats", latest_release)
+        self.assertNotIn("AOA_STATS_ROOT", latest_release)
 
     def test_portable_export_refreshes_catalog_before_validation_or_tests(self) -> None:
         export_command = (
@@ -350,19 +407,38 @@ class ValidatorTopologyTests(unittest.TestCase):
         self.assertIn("run: python scripts/release_check.py", workflow)
         self.assertNotIn("run: python scripts/lanes/release_check.py", workflow)
 
-    def test_active_non_agents_docs_do_not_store_validation_command_blocks(self) -> None:
+    def test_markdown_nonowners_do_not_store_command_blocks(self) -> None:
         offenders: list[str] = []
-        for path in sorted(REPO_ROOT.rglob("*.md")):
+        for path in markdown_command_nonowners():
             rel = path.relative_to(REPO_ROOT).as_posix()
-            if rel == "AGENTS.md" or rel.endswith("/AGENTS.md"):
-                continue
-            if rel in NON_AGENTS_COMMAND_BLOCK_ALLOWED_FILES:
-                continue
-            if any(rel.startswith(prefix) for prefix in NON_AGENTS_COMMAND_BLOCK_ALLOWED_PREFIXES):
-                continue
-            text = path.read_text(encoding="utf-8")
-            if VALIDATION_COMMAND_BLOCK_RE.search(text):
-                offenders.append(rel)
+            lines = path.read_text(encoding="utf-8").splitlines()
+            index = 0
+            while index < len(lines):
+                if not lines[index].lstrip().startswith("```"):
+                    index += 1
+                    continue
+                shell_fence = bool(SHELL_FENCE_OPENING.match(lines[index].strip()))
+                start = index + 1
+                index += 1
+                body: list[str] = []
+                while index < len(lines) and not lines[index].lstrip().startswith("```"):
+                    body.append(lines[index])
+                    index += 1
+                if shell_fence or any(COMMAND_BLOCK_LINE.match(line) for line in body):
+                    offenders.append(f"{rel}:{start}")
+                index += 1
+
+        self.assertEqual([], offenders)
+
+    def test_markdown_nonowners_do_not_store_repo_command_literals(self) -> None:
+        offenders: list[str] = []
+        for path in markdown_command_nonowners():
+            rel = path.relative_to(REPO_ROOT).as_posix()
+            for line_number, line in enumerate(
+                path.read_text(encoding="utf-8").splitlines(), 1
+            ):
+                if REPO_COMMAND_LITERAL.search(line):
+                    offenders.append(f"{rel}:{line_number}")
 
         self.assertEqual([], offenders)
 

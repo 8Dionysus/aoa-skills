@@ -47,11 +47,5 @@ Keep `docs/` as the route map and decision/review district. Keep root
 
 ## Verification
 
-Verify with:
-
-```bash
-python scripts/validate_agents_design.py
-python scripts/validate_nested_agents.py
-python -m pytest -q tests/test_session_growth_kernel_maturity.py tests/test_session_checkpoint_note.py tests/test_mechanics_topology.py
-git diff --check
-```
+Verification covered root and nested agent-card design, session-growth and
+checkpoint behavior, mechanics topology, and diff hygiene.

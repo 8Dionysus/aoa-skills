@@ -28,6 +28,7 @@ class CiGateTests(unittest.TestCase):
             [
                 ("python", "scripts/validation/validate_agents_design.py"),
                 ("python", "scripts/validation/validate_nested_agents.py"),
+                ("python", "scripts/validation/validate_local_stats_port.py"),
                 (
                     "python",
                     "scripts/validation/validate_skills.py",
@@ -164,6 +165,7 @@ class CiGateTests(unittest.TestCase):
             [
                 ("python", "scripts/validation/validate_agents_design.py"),
                 ("python", "scripts/validation/validate_nested_agents.py"),
+                ("python", "scripts/validation/validate_local_stats_port.py"),
                 (
                     "python",
                     "scripts/validation/validate_skills.py",
