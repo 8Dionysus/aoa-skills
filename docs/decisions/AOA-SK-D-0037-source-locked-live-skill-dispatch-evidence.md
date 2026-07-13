@@ -518,12 +518,45 @@ As of 2026-07-13:
   model catalog before spend. The exact-merged Titan A wave then completed all
   16 turns and eight pairs: every hidden target stayed unselected, unread, and
   unloaded in both arms, while all manual non-activation, fixture,
-  owner-boundary, and owner-outcome contracts were correct. Titan implicit B is
-  the next live step after this writeback lands, runtime parity, host admission,
-  and fresh confirmation tokens.
+  owner-boundary, and owner-outcome contracts were correct. The subsequent
+  14-turn Titan B wave also keeps every manual target inactive and has no
+  failure, but two successful exact owner-outcome commands expose no sentinel
+  in opposite arms. Its raw outcome lifts remain observation-unclean. A new
+  four-turn return repeats only both arms of cases 12 and 13 after exact merge,
+  runtime parity, host admission, and fresh confirmation tokens.
 - Superseded by: none.
 
 ## Review Log
+
+### 2026-07-13 - Return from Titan B to two outcome observations
+
+- Trigger: the exact-merged v20 Titan B wave completed all 14 turns and seven
+  pairs with every explicit-only target unselected, unread, and unloaded. The
+  `titan-receipt` aided arm and `titan-runtime-gate` control each ran the exact
+  owner-outcome command once with exit zero but exposed no verification
+  sentinel. All other owner outcomes verified.
+- Classification: both affected arms preserve correct manual non-activation,
+  fixture execution, owner boundary, command count, successful exit,
+  anti-inspection, filesystem scope, and inventory scope. The only mismatch is
+  `outcome_verification_observed`. The apparent negative and positive lifts are
+  therefore observation gaps, not Titan skill effects or source pressure.
+- Admission: exact merged commit `d70c616` verified both skill profiles,
+  prompt visibility 12/12 with no hidden children, current model plus medium
+  effort, and local eval 2/2 ready. Storage allowed 256 MiB. Zram was full and
+  memory PSI avg10 was about 0.24%, so the standard interactive medium override
+  was required; the forced plan had no denied reason, kept soft `MemoryHigh`,
+  and set no `MemoryMax`. The wrapper returned zero with about 904 MiB peak and
+  no swap. Post-run validators remained 19/19 storage, 16/16 resource, and 35
+  memory checks with zero failures plus the existing index-schema warning.
+- Decision: preserve the full public receipt as reviewed `needs-rerun` evidence.
+  Add a four-turn `coverage-closure-titan-implicit-b-returns` cohort containing
+  only both arms of cases 12 and 13, reuse the existing source-locked procedure
+  and outcome contracts, require medium bounds plus both confirmations, and
+  extend plan/private/public schemas without adding the return to the broad
+  partition exact-cover list. Do not edit Titan skills or relax sentinel proof.
+- Next: land the return topology, verify exact merged runtime and host gates,
+  execute the four turns, and review both pair observations before opening the
+  root-trajectory closure wave.
 
 ### 2026-07-13 - Preserve Titan A explicit-only evidence under v20
 

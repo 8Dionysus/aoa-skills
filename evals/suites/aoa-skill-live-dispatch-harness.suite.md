@@ -82,6 +82,7 @@ than silently reverting the outcome dimension to unscored.
 | `coverage-closure-core-implicit` | 4 | ADR and memo-writeback implicit reachability | medium |
 | `coverage-closure-titan-implicit-a` | 16 | Titan implicit cases 01-08 | medium |
 | `coverage-closure-titan-implicit-b` | 14 | Titan implicit cases 09-15 | medium |
+| `coverage-closure-titan-implicit-b-returns` | 4 | paired outcome-observation return for Titan implicit cases 12-13 | medium |
 | `coverage-closure-root-trajectories` | 8 | all decision/eval root-child trajectories | medium |
 | `coverage-closure-structured-core` | 30 | all non-Titan non-invoke structured routes | medium |
 | `coverage-closure-structured-titan` | 15 | all Titan structured routes | medium |
@@ -775,6 +776,18 @@ receipt as candidate evidence without widening implicit activation, proof, or
 promotion. After this writeback lands, repeat exact runtime parity, model
 catalog, local eval, storage, resource, memory, and confirmation gates before
 `coverage-closure-titan-implicit-b`.
+
+That first exact-merged Titan B wave completes all 14 turns and seven pairs
+without a failure. Every hidden target remains unselected, unread, and unloaded;
+manual non-activation, fixture execution, filesystem/inventory scope, and owner
+boundaries are clean. The case-12 aided and case-13 control owner-outcome
+commands each run exactly once and exit zero but expose no required sentinel.
+Their apparent negative and positive outcome lifts are therefore marked
+observation-unclean. Preserve the full public receipt as `needs-rerun`. The
+four-turn `coverage-closure-titan-implicit-b-returns` cohort repeats only both
+arms of those two cases with the same procedure/outcome contracts, medium host
+bounds, and second exact confirmation. Do not edit Titan skill source or open
+root trajectories until that paired observation return is reviewed.
 
 ## Safety And Privacy
 
