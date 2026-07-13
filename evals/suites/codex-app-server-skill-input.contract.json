@@ -1,7 +1,7 @@
 {
   "schema_version": "aoa_codex_app_server_skill_input_contract_v11",
   "codex_version": "codex-cli 0.144.1",
-  "protocol_revision": "codex-cli-0.144.1-live-dispatch-evidence-v15",
+  "protocol_revision": "codex-cli-0.144.1-live-dispatch-evidence-v16",
   "official_contract_ref": "https://learn.chatgpt.com/docs/app-server#start-a-turn-invoke-a-skill",
   "schema_generation_command": "codex app-server generate-json-schema --experimental --out DIR",
   "request_sequence": [
@@ -31,6 +31,7 @@
     "transport_failure_duration": "a caught CLI or App Server transport exception preserves elapsed milliseconds in the arm measure instead of resetting duration to zero",
     "transport_partial_evidence": "partial timeout stdout and stderr remain private transport evidence; JSONL events and usage are recovered so turn start, budget, command scope, and failure precedence are not erased",
     "cohort_process_status": "a complete cohort exits zero even when its model evidence is negative; a stopped-early incomplete cohort reports its stop reason and exits nonzero after preserving the private receipt",
+    "cohort_partition_boundary": "each declared broad-cohort wave must be disjoint, together exactly cover its parent trial identities, stay at or below 30 turns, 512 MiB estimated memory, and 512 MiB private evidence, require a second exact confirmation, and fail closed before live execution while any implicit procedure or outcome contract is missing",
     "pair_dimension_split": "new matched pairs publish route, selected-child trajectory, and selected-child procedure-disposition report lift separately; objective outcome lift remains not_scored_no_observable_outcome unless a stronger observable contract exists",
     "outcome_output_observation_gap": "an exact single-attempt outcome command that exits zero without the required sentinel remains unverified and is published as per-arm plus pair-level observation-gap telemetry; any pair with such a gap marks outcome_lift_observation_clean=false",
     "procedure_and_outcome_contract_boundary": "trajectory and procedure-disposition scoring require the same source-locked pre-live contract on both arms; fixture execution and model self-report never become an objective outcome answer key",

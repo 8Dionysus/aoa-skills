@@ -14,9 +14,9 @@ verdicts, scoring, regression truth, proof acceptance, or promotion.
   source-locked host-private root.
 
 The default action is a read-only plan. A live run additionally requires the
-exact confirmation token printed by that plan. `pilot13`, `pilot13-returns`,
-`pilot13-skill-returns`, `full-collision`, and `coverage-closure` require the
-printed high-cost token as well.
+exact confirmation token printed by that plan. The source-locked cohort field
+`second_confirmation_required` decides whether the printed high-cost token is
+also mandatory; only `smoke` currently sets it false.
 The pilot plan publishes selected-procedure contract coverage and objective
 outcome-observation coverage separately. It remains executable only at 11 of
 11 for both; the current corpus now has 11/11 procedure contracts and 11/11
@@ -32,6 +32,10 @@ the three pairs changed by the v14 skill-source repair: `collision-38`,
 `collision-09`, and `collision-14`. It requires complete procedure and outcome
 contracts plus the high-cost token and contains no unrelated trajectory or
 structured arms.
+V16 keeps the two broad cohorts as inventory parents and names eleven bounded
+execution waves below them. Runner validation requires disjoint waves whose
+trial identities exactly cover each parent, rejects any child wider than 30
+turns or 512 MiB, and forbids `declared_only` contract posture on a wave.
 The procedure source contract lives at
 `evals/suites/aoa-skill-live-dispatch-procedures.json`; the separate bounded
 owner-action corpus lives at
@@ -77,8 +81,8 @@ child is not exact either. Those report-only mismatches are
 `selection_report_miss`; they do not rewrite successful native dispatch or load
 evidence as `dispatch_policy_gap`.
 These rules use contract schema `aoa_codex_app_server_skill_input_contract_v11`
-and protocol revision `codex-cli-0.144.1-live-dispatch-evidence-v15`. Retained
-v1-v14 receipts stay source-locked to their original protocol and review status;
+and protocol revision `codex-cli-0.144.1-live-dispatch-evidence-v16`. Retained
+v1-v15 receipts stay source-locked to their original protocol and review status;
 they are never upgraded in place.
 
 Run the confirmed command only as the child of the plan packet's
@@ -359,6 +363,16 @@ control-only and two aided-only sentinel gaps make the remaining apparent
 outcome lift observation-unclean. Preserve the reviewed receipt, then partition
 and contract-complete the 98-turn full-collision and 87-turn coverage-closure
 surfaces before sustained execution.
+
+V16 implements that return as an exact partition contract. The five collision
+waves and six closure waves have no overlap and reproduce both parents exactly;
+each wave is bounded and second-confirmed. Missing implicit contracts now stop
+a wave before preflight. The first runnable widening is the 16-turn
+`full-collision-core-engineering` wave with all eight procedure and outcome
+pairs source-locked. The remaining implicit waves stay plan-visible but
+fail-closed until their own contracts are complete; root and structured waves
+have no implicit pair dimension and retain separate dispatch, load, hierarchy,
+and fixture checks.
 
 See `evals/suites/aoa-skill-live-dispatch-harness.suite.md` and
 `docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md` for

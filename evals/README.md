@@ -81,7 +81,10 @@ Active first local corpus:
   keeping both outcomes unverified. The full pilot now completes 30/30 with no
   failure classes: five route/procedure pairs and two child trajectories show
   positive lift, while four outcome contrasts remain observation-unclean.
-  Partition the much larger declared-only cohorts before further live spend.
+  V16 partitions the much larger declared-only parents into eleven disjoint
+  exact-cover waves. Every wave is bounded to at most 30 turns and fails closed
+  before live spend on missing implicit contracts; the 16-turn core-engineering
+  wave is now complete at 8/8 procedure and outcome pairs.
 
 These files are local evidence notes. They do not publish central proof
 acceptance, scoring, verdicts, regression truth, or proof doctrine.
