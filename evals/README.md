@@ -131,7 +131,13 @@ Active first local corpus:
   `needs-rerun`. V18 mistakes source-authorized decision-root child reads in
   cases 39 and 41 for direct manual activation. Repair that observability seam
   and repeat only cases 39-41 while retaining the create-child read and
-  correct-child terminal as independent checks.
+  correct-child terminal as independent checks. V19 now carries the declared
+  root/child identity into implicit trials: `aoa-decision` is the scored parent
+  route, while its one hidden child is separate trajectory/procedure evidence.
+  The repair leaves nine scored authority pairs and two true hidden-manual
+  guards, and adds a six-turn return containing both arms of cases 39-41.
+  Deterministic validation is green; exact merge and a fresh live return are
+  still required.
 
 These files are local evidence notes. They do not publish central proof
 acceptance, scoring, verdicts, regression truth, or proof doctrine.

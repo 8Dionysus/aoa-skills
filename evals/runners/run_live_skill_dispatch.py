@@ -773,7 +773,7 @@ def _expected_codex_version(plan: dict[str, Any]) -> str:
     revision = str(plan.get("protocol_revision") or "")
     match = re.fullmatch(
         r"codex-cli-([0-9]+(?:\.[0-9]+){2})-"
-        r"(?:app-server-skill-input-v3|live-dispatch-evidence-v(?:[4-9]|1[0-8]))",
+        r"(?:app-server-skill-input-v3|live-dispatch-evidence-v(?:[4-9]|1[0-9]))",
         revision,
     )
     if match is None:
@@ -930,20 +930,81 @@ def _expected_behavior(item: dict[str, Any]) -> str:
     return "invoke" if item.get("expected_behavior") in {"invoke", "invoke-skill"} else "manual"
 
 
+def _root_child_trajectory_map(
+    plan: dict[str, Any],
+    collisions: dict[str, dict[str, Any]],
+    policies: dict[str, dict[str, Any]],
+) -> dict[str, tuple[str, str]]:
+    records: dict[str, tuple[str, str]] = {}
+    for item in plan.get("root_child_trajectories", []):
+        case_id = str(item["case_id"])
+        root_skill = str(item["root_skill"])
+        child_skill = str(item["child_skill"])
+        if case_id in records:
+            raise ValueError(f"duplicate root-child trajectory case: {case_id}")
+        collision = collisions.get(case_id)
+        if collision is None:
+            raise ValueError(f"root-child trajectory references unknown collision: {case_id}")
+        collision_child = str(
+            collision.get("skill_name") or collision.get("expected_skill") or ""
+        )
+        if collision_child != child_skill:
+            raise ValueError(
+                f"root-child trajectory child conflicts with implicit case {case_id}"
+            )
+        root_policy = policies.get(root_skill, {}).get("implicit_activation_policy")
+        child_policy = policies.get(child_skill, {}).get("implicit_activation_policy")
+        if root_policy != "invoke":
+            raise ValueError(
+                f"root-child trajectory parent must be implicit invoke: {case_id}"
+            )
+        if child_policy not in {"manual", "suggest"}:
+            raise ValueError(
+                f"root-child trajectory child must be non-invoke: {case_id}"
+            )
+        records[case_id] = (root_skill, child_skill)
+    return records
+
+
 def _implicit_pair(
     item: dict[str, Any],
     procedure_contract: ProcedureContract | None,
     outcome_contract: OutcomeContract | None,
+    root_child_trajectory: tuple[str, str] | None = None,
 ) -> list[Trial]:
     case_id = str(item["case_id"])
     target = str(item.get("skill_name") or item.get("expected_skill") or "")
     behavior = _expected_behavior(item)
+    root_skill: str | None = None
+    expected_child_skill: str | None = None
+    if root_child_trajectory is not None:
+        root_skill, expected_child_skill = root_child_trajectory
+        if target != expected_child_skill:
+            raise ValueError(
+                f"root-child trajectory child conflicts with implicit case {case_id}"
+            )
+        target = root_skill
+        behavior = "invoke"
+        if (
+            procedure_contract is not None
+            and procedure_contract.expected_selected_child_skill
+            != expected_child_skill
+        ):
+            raise ValueError(
+                f"procedure contract child conflicts with root-child trajectory {case_id}"
+            )
     common = {
         "case_id": case_id,
         "prompt": str(item["prompt"]),
         "expected_target_skill": target,
         "expected_behavior": behavior,
-        "competing_skills": tuple(str(value) for value in item.get("competing_skills", [])),
+        "competing_skills": tuple(
+            str(value)
+            for value in item.get("competing_skills", [])
+            if str(value) != target
+        ),
+        "root_skill": root_skill,
+        "expected_child_skill": expected_child_skill,
         "procedure_contract": procedure_contract,
         "outcome_contract": outcome_contract,
     }
@@ -1042,6 +1103,11 @@ def expand_cohort(repo_root: Path, plan: dict[str, Any], cohort: str) -> list[Tr
         raise ValueError(f"unknown cohort: {cohort}")
     config = cohorts[cohort]
     trials: list[Trial] = []
+    root_child_trajectories = _root_child_trajectory_map(
+        plan,
+        collisions,
+        policies,
+    )
 
     if config.get("implicit_case_ids") == "all-collision-cases":
         implicit_ids = sorted(collisions)
@@ -1067,6 +1133,7 @@ def expand_cohort(repo_root: Path, plan: dict[str, Any], cohort: str) -> list[Tr
                 _case_lookup(case_id, collisions, descriptions),
                 procedure_contracts.get(case_id),
                 outcome_contracts.get(case_id),
+                root_child_trajectories.get(case_id),
             )
         )
 
@@ -1104,8 +1171,8 @@ def expand_cohort(repo_root: Path, plan: dict[str, Any], cohort: str) -> list[Tr
     if trajectory_ids == "all-root-child-trajectories":
         trajectory_ids = [str(item["case_id"]) for item in plan["root_child_trajectories"]]
     trajectory_roots = {
-        str(item["case_id"]): str(item["root_skill"])
-        for item in plan.get("root_child_trajectories", [])
+        case_id: root_child[0]
+        for case_id, root_child in root_child_trajectories.items()
     }
     for case_id in trajectory_ids:
         trials.append(_trajectory_trial(collisions[str(case_id)], trajectory_roots[str(case_id)]))
@@ -1118,9 +1185,7 @@ def expand_cohort(repo_root: Path, plan: dict[str, Any], cohort: str) -> list[Tr
             if policy.get("implicit_activation_policy") != "invoke"
         )
     equivalent_report_roots: dict[str, str] = {}
-    for item in plan.get("root_child_trajectories", []):
-        child = str(item["child_skill"])
-        root = str(item["root_skill"])
+    for root, child in root_child_trajectories.values():
         existing = equivalent_report_roots.get(child)
         if existing is not None and existing != root:
             raise ValueError(
@@ -4388,6 +4453,8 @@ def run_confirmed_cohort(
                 request["expected_selected_child_skill"] = (
                     trial.procedure_contract.expected_selected_child_skill
                 )
+            if trial.expected_child_skill is not None:
+                request["expected_child_skill"] = trial.expected_child_skill
             request["competing_skills"] = list(trial.competing_skills)
         elif trial.arm_type == "root_manual_child":
             request = build_root_manual_child_request(

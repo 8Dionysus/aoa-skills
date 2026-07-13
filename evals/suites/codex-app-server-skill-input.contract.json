@@ -1,7 +1,7 @@
 {
-  "schema_version": "aoa_codex_app_server_skill_input_contract_v13",
+  "schema_version": "aoa_codex_app_server_skill_input_contract_v14",
   "codex_version": "codex-cli 0.144.1",
-  "protocol_revision": "codex-cli-0.144.1-live-dispatch-evidence-v18",
+  "protocol_revision": "codex-cli-0.144.1-live-dispatch-evidence-v19",
   "official_contract_ref": "https://learn.chatgpt.com/docs/app-server#start-a-turn-invoke-a-skill",
   "schema_generation_command": "codex app-server generate-json-schema --experimental --out DIR",
   "request_sequence": [
@@ -27,6 +27,7 @@
     "reported_selection_surface": "the reported selected skill is classified separately from the expected target; an external or repo-visible ambient route may coexist with a correct manual target decision when the target remains unread, while target invoke reporting or target loading remains a manual activation leak",
     "portable_activation_policy": "every non-invoke portable description begins with a policy-derived manual or suggest boundary for consumers that surface that description; this does not imply native Codex prompt visibility when allow_implicit_invocation is false",
     "native_hidden_manual_target": "a native implicit prompt omits manual targets when allow_implicit_invocation is false; raw route and procedure reports about that unseen target are not target-route scoring evidence, while objective target read/load remains a strict non-activation guard and explicit reachability is measured through structured skill input",
+    "parent_authorized_hidden_child": "a source-declared root-child trajectory makes the prompt-visible parent the implicit dispatch target and the hidden child separate trajectory evidence; selecting and fully reading that one child through the parent is not direct manual activation, while a missing or wrong child read, child report, or procedure disposition remains independently observable",
     "target_report_semantics": "route_decision and procedure_disposition describe the expected target skill and its procedure; selected_skill may separately name an ambient route, while claims_loaded describes that reported name and must be false when selected_skill is null",
     "read_command_boundary": "read-only skill-file inspection commands are evidence collection, remain allowed before the one exact fixture-probe command, and do not count as fixture-probe commands",
     "full_read_assembly": "one successful exact-path output may contain the complete SKILL.md, or ordered successful exact-path outputs may continuously cover it; overlapping source chunks are allowed, unrelated outputs are ignored, and gaps or reverse-only coverage remain incomplete",

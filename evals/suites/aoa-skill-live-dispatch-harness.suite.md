@@ -615,6 +615,22 @@ return must still expose the case-40 missing child read and the case-41 terminal
 disposition rather than automatically converting parent authorization into a
 pass.
 
+V19 completes that red-first repair without changing the decision skills. For
+implicit cases declared in `root_child_trajectories`, the prompt-visible root is
+now the scored dispatch target and its one source-declared hidden child is a
+separate trajectory/procedure obligation. A parent-selected child read can no
+longer become `manual_activation_leak`; a missing full child read remains
+`skill_load_gap`, a wrong or absent child report remains `trajectory_break`, and
+an incorrect terminal remains `procedure_disposition_miss`. The authority wave
+therefore has nine scored route/procedure pairs and only two independent hidden
+manual guards. The new
+`full-collision-authority-routing-returns` cohort contains exactly both arms of
+cases 39-41, for six turns. Deterministic replay and both receipt schemas are
+green. The suite freshness sidecar now tracks every declared decision/eval
+parent and child source so the future eval-child wave cannot inherit stale
+authored guidance. Exact merge, installed runtime parity, host admission, both
+confirmation tokens, and a reviewed live return remain mandatory.
+
 ## Safety And Privacy
 
 The plan locks Git head, all portable skill files, generated/config inputs,
@@ -631,8 +647,8 @@ therefore disable every locked id explicitly. Deterministic adapter tests guard
 both sides of this transport-specific contract.
 
 These hermetic invocation rules use contract schema
-`aoa_codex_app_server_skill_input_contract_v13` and protocol revision
-`codex-cli-0.144.1-live-dispatch-evidence-v18`. Retained v1-v17 receipts remain
+`aoa_codex_app_server_skill_input_contract_v14` and protocol revision
+`codex-cli-0.144.1-live-dispatch-evidence-v19`. Retained v1-v18 receipts remain
 source-locked to their original protocol and review status and are not upgraded
 in place.
 

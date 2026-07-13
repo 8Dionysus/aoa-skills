@@ -123,11 +123,11 @@ config and explicitly disable every locked id. A shadow or MCP count/digest
 change is source/runtime drift, not a reason to reuse the old token.
 
 The corrected hermetic pre-turn and evidence contract uses schema
-`aoa_codex_app_server_skill_input_contract_v13` and protocol revision
-`codex-cli-0.144.1-live-dispatch-evidence-v18`. It follows the
+`aoa_codex_app_server_skill_input_contract_v14` and protocol revision
+`codex-cli-0.144.1-live-dispatch-evidence-v19`. It follows the
 [official App Server invocation shape](https://learn.chatgpt.com/docs/app-server#start-a-turn-invoke-a-skill)
 and Codex [progressive-disclosure load semantics](https://learn.chatgpt.com/docs/customization/overview#skills).
-Retained receipts source-locked to v1-v17 keep their original protocol and
+Retained receipts source-locked to v1-v18 keep their original protocol and
 review status and are not upgraded in place.
 
 The source-locked caps include both the rollout token limit and its required
@@ -298,7 +298,7 @@ target also appears in its own neighbourhood list.
 
 ## Current Applicability
 
-As of 2026-07-12:
+As of 2026-07-13:
 
 - Still valid: central verdict, scoring, regression, proof doctrine, and proof
   acceptance remain in `aoa-evals`.
@@ -320,12 +320,15 @@ As of 2026-07-12:
   `fixture_inventory_scope_violation` precedes budget classification.
 - Current cap contract: every arm receives the same source-locked 48k ceiling;
   paired arms may differ in actual use but never in available budget.
-- Current contract schema: `aoa_codex_app_server_skill_input_contract_v13`.
-- Current protocol lock: `codex-cli-0.144.1-live-dispatch-evidence-v18`.
+- Current contract schema: `aoa_codex_app_server_skill_input_contract_v14`.
+- Current protocol lock: `codex-cli-0.144.1-live-dispatch-evidence-v19`.
 - Current pair contract: new receipts publish route, selected-child trajectory,
   and selected-procedure-disposition report lift separately. Sent structured
   dispatch, accepted native load, model hierarchy report, and fixture execution
-  remain independent measures. Objective outcome is
+  remain independent measures. A source-declared implicit root/child case scores
+  the prompt-visible root as dispatch target and the one hidden child as separate
+  trajectory/procedure evidence; direct hidden-target policy is unchanged.
+  Objective outcome is
   `not_scored_no_observable_outcome` without a source contract; the v12 corpus
   separately observes one bounded next owner action for every implicit pilot
   case.
@@ -495,10 +498,42 @@ As of 2026-07-12:
   authority-routing result existed before exact merge and fresh runtime/host
   gates. The subsequent 22-turn execution is observation-complete but remains
   `needs-rerun` because v18 cannot distinguish two source-authorized
-  decision-root child reads from direct hidden-child activation.
+  decision-root child reads from direct hidden-child activation. V19 now carries
+  the declared parent/child identity into implicit trials, yielding nine scored
+  parent routes and two true hidden-manual guards; its exact six-turn live return
+  remains required before interpreting the three affected cases.
 - Superseded by: none.
 
 ## Review Log
+
+### 2026-07-13 - Separate parent dispatch from hidden-child trajectory in v19
+
+- Red evidence: the v18 authority receipt proves that cases 39 and 41 select
+  prompt-visible `aoa-decision` and fully read the exact source-declared child,
+  while the implicit `Trial` retains only the hidden child as target. The two
+  manual-leak labels therefore conflate direct hidden activation with a parent
+  handoff.
+- Source boundary: keep collision metadata and hidden-child activation policy
+  unchanged. When an implicit case is also declared in
+  `root_child_trajectories`, make its root the `invoke` dispatch target and carry
+  the child as the one required trajectory/procedure identity. Remove the root
+  from its own competing set.
+- Failure preservation: parent authorization does not grant a pass. A missing
+  child full read remains `skill_load_gap`; an absent or wrong child report with
+  a complete read remains `trajectory_break`; a correct handoff with the wrong
+  terminal remains `procedure_disposition_miss`.
+- Contract correction: cases 39-41 now require decision-find, create, or correct
+  respectively, a complete child read, and `blocked_missing_input`. The full
+  authority packet changes from six scored pairs plus five manual guards to nine
+  scored pairs plus two true hidden-manual guards.
+- Bounded return: add only both arms of cases 39-41 as
+  `full-collision-authority-routing-returns`, six turns with source-locked
+  procedure/outcome contracts and second confirmation. Deterministic replay and
+  receipt schemas pass; exact merge, runtime parity, host gates, and reviewed
+  live evidence remain open.
+- Protocol: advance to live evidence v19 and evidence contract v14. Preserve all
+  v1-v18 receipts, especially the reviewed v18 `needs-rerun` receipt, under their
+  original source locks rather than regrading them.
 
 ### 2026-07-13 - Preserve the authority-routing parent-observability return
 
