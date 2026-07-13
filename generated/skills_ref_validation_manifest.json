@@ -154,7 +154,7 @@
         "validate",
         ".agents/skills/aoa-decision-correct"
       ],
-      "description_sha256": "7b2ef57a458015d284ce55ba09e7ce8c920138106d6b5996267d9da937290292"
+      "description_sha256": "ce37784c114ebe8a6cf814dc103eb14b3068637ad62e1e41e87a362e3c69cb19"
     },
     {
       "skill_name": "aoa-decision-create",
@@ -164,7 +164,7 @@
         "validate",
         ".agents/skills/aoa-decision-create"
       ],
-      "description_sha256": "316956357c62c26c286d836cbdc483fdac9619114ea2c9f3b54d4e9df64cc11d"
+      "description_sha256": "5e245d9d62e6a751c08238033a57cebe83f94efdfd0667c8f15a060067ace976"
     },
     {
       "skill_name": "aoa-decision-find",

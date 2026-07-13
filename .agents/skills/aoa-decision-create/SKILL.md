@@ -1,6 +1,6 @@
 ---
 name: aoa-decision-create
-description: 'Explicit activation required: do not invoke or load this skill from an implicit match; wait for explicit user or operator invocation or a source-authorized parent-route selection. Create a new AoA decision record in the owning repository by checking graph status/issues, using impact packets for placement, and following repo-local decision law for the actual source note and indexes. Use when a real structural, workflow, tooling, source/export, MCP, skill, or authority decision needs durable rationale. Do not use when no decision has been made, the change is trivial, the target repo has unresolved graph issues, or an existing note only needs correction.'
+description: 'Explicit activation required: do not invoke or load this skill from an implicit match; wait for explicit user or operator invocation or a source-authorized parent-route selection. Create a new AoA decision record in the owning repository by checking graph status/issues, using impact packets for placement, and following repo-local decision law for the actual source note and indexes. Use when a real structural, workflow, tooling, source/export, MCP, skill, or authority decision needs durable rationale. When the parent has classified create but the chosen decision, target repository, source surfaces, graph status, or repo-local decision law is unavailable inside the active evidence boundary, stop with blocked_missing_input; do not relabel missing input as deferred_owner_boundary. Do not use when no decision has been made, the change is trivial, the target repo has unresolved graph issues, or an existing note only needs correction.'
 license: Apache-2.0
 compatibility: Designed for Codex or similar coding agents with repository file access and an interactive shell. Network access is optional and only needed when repository validation or referenced workflows require it.
 metadata:
@@ -26,6 +26,10 @@ Use this skill when:
 - the owner repository already has or intentionally needs a `docs/decisions/` lane
 - graph lookup should identify similar prior decisions, next ID, source surfaces, or symmetry constraints
 - a decision note must be created alongside code, docs, MCP, skill, validator, or generated-index changes
+- the parent has classified a create route, but the chosen decision, target
+  repository, source surfaces, graph status, or repo-local decision law is
+  unavailable inside the active evidence boundary; select this child only to
+  stop with `blocked_missing_input` rather than invent creation context
 
 Do not use this skill when:
 - no decision has been made yet and the work is still option framing
@@ -49,25 +53,30 @@ Do not use this skill when:
 - validation summary and any remaining owner-route risk
 
 ## Procedure
-1. confirm a real decision exists and is worth preserving
-2. use `aoa_decisions` status and issues first; if the target repo has graph
+1. if the create route is selected but the chosen decision, target repository,
+   source surfaces, graph status, or repo-local decision law is unavailable
+   inside the active evidence boundary and no permitted packet or source read
+   can supply it, stop with `blocked_missing_input`; do not relabel missing
+   input as `deferred_owner_boundary`
+2. confirm a real decision exists and is worth preserving
+3. use `aoa_decisions` status and issues first; if the target repo has graph
    issues, stop and route to correction before creating a new record
-3. use changed-path, source-surface, owner-surface, repo, and decision packets
+4. use changed-path, source-surface, owner-surface, repo, and decision packets
    to collect related records and repo decision-lane context
-4. use broad search only when the narrower packets do not identify enough
+5. use broad search only when the narrower packets do not identify enough
    placement context; split long free-text intent into path, repo, surface, or
    decision anchors first
-5. read the target repo's `docs/decisions/AGENTS.md`, `README.md`, `TEMPLATE.md`,
+6. read the target repo's `docs/decisions/AGENTS.md`, `README.md`, `TEMPLATE.md`,
    generated index shape, and latest decision records
-6. choose the next canonical ID from source files, not from memory alone
-7. write the note in the target repo's established format and metadata language
-8. name only the source surfaces this decision actually explains
-9. keep graph, generated indexes, tests, and runtime evidence as context rather
+7. choose the next canonical ID from source files, not from memory alone
+8. write the note in the target repo's established format and metadata language
+9. name only the source surfaces this decision actually explains
+10. keep graph, generated indexes, tests, and runtime evidence as context rather
    than decision authority
-10. run the repo-local decision-index generator, then the check form and any
+11. run the repo-local decision-index generator, then the check form and any
    affected surface validator
-11. refresh or check the workspace graph and run the decision-graph lane when available
-12. report the new decision path, graph freshness, and validation
+12. refresh or check the workspace graph and run the decision-graph lane when available
+13. report the new decision path, graph freshness, and validation
 
 ## Contracts
 - a decision note records why; it does not replace the active source surface
@@ -76,6 +85,8 @@ Do not use this skill when:
 - generated indexes must be rebuilt from source metadata, not hand-edited as truth
 - workspace graph refresh is part of done after creating a record
 - unresolved graph issues in the target repo block creation until corrected
+- missing required creation context inside the active evidence boundary ends as
+  `blocked_missing_input`, not as an owner-boundary deferral
 
 ## Risks and anti-patterns
 - creating process noise for trivial changes
@@ -86,6 +97,7 @@ Do not use this skill when:
 - forgetting generated indexes or workspace graph refresh
 - using MCP output as if it created or accepted the decision
 - creating a new note while unknown decision-lane surfaces are already present
+- relabelling absent creation inputs as `deferred_owner_boundary`
 
 ## Verification
 - confirm the new record has canonical ID, status, date, owner surface, and index metadata
@@ -93,6 +105,8 @@ Do not use this skill when:
 - confirm repo-local decision indexes were regenerated and checked
 - confirm graph issue posture was checked before writing
 - confirm broad search was needed, or skipped because narrower packets were sufficient
+- confirm absent creation inputs stopped as `blocked_missing_input` without
+  being relabelled as `deferred_owner_boundary`
 - confirm affected validators were run or explicitly skipped with reason
 - confirm workspace graph refresh/check and decision-graph lane see the new record
 

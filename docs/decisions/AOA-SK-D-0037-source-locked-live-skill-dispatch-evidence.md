@@ -507,6 +507,32 @@ As of 2026-07-13:
 
 ## Review Log
 
+### 2026-07-13 - Repair decision child missing-input terminals under v19
+
+- Return evidence: the reviewed v19 authority return proves that cases 40 and
+  41 select prompt-visible `aoa-decision`, fully read the declared create or
+  correct child, and then report `deferred_owner_boundary` instead of the
+  source-locked `blocked_missing_input` terminal. The remaining gap is child
+  procedure guidance, not parent dispatch, child visibility, or load evidence.
+- Source correction: when the parent has classified create or correct but the
+  required decision/source/index/graph context cannot be supplied inside the
+  permitted evidence boundary, both child sources now stop explicitly as
+  `blocked_missing_input` and forbid relabeling that state as an owner-boundary
+  deferral. Portable descriptions carry the same rule into prompt visibility.
+- Source-lock correction: include the authored
+  `config/portable_skill_overrides.json` in the live source snapshot and local
+  eval freshness packet, rather than binding only its generated
+  `.agents/skills` projection.
+- Bounded return: add
+  `full-collision-authority-routing-procedure-returns`, exactly four turns for
+  both arms of cases 40-41, with complete procedure and owner-outcome contracts
+  plus the second confirmation. Keep protocol v19 and contract v14 because the
+  grader semantics are unchanged.
+- Boundary: deterministic success does not establish a live correction or
+  authorize the eval-child wave. Exact merge, installed runtime parity, host
+  gates, confirmed live execution, and reviewed candidate evidence remain
+  required.
+
 ### 2026-07-13 - Preserve the v19 parent-authorized procedure return
 
 - Exact execution: merged commit `fdac95b`, verified 36/36 installed profile,

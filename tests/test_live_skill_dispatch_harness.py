@@ -863,6 +863,76 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
         self.assertTrue(packet["objective_outcome_coverage_complete"])
         self.assertTrue(packet["high_cost_confirmation_required"])
 
+    def test_authority_procedure_return_cohort_repeats_only_open_terminals(self) -> None:
+        plan = self.runner.load_plan(self.plan_path)
+        self.assertIn(
+            "config/portable_skill_overrides.json",
+            plan["source_refs"],
+        )
+        overrides = json.loads(
+            (REPO_ROOT / "config" / "portable_skill_overrides.json").read_text()
+        )["skills"]
+        for skill_name in ("aoa-decision-create", "aoa-decision-correct"):
+            source = (
+                REPO_ROOT
+                / "skills/core/engineering"
+                / skill_name
+                / "SKILL.md"
+            ).read_text()
+            normalized_source = " ".join(source.split())
+            description = overrides[skill_name]["description"]
+            with self.subTest(skill_name=skill_name, surface="source"):
+                self.assertIn("stop with `blocked_missing_input`", normalized_source)
+                self.assertIn(
+                    "do not relabel missing input as `deferred_owner_boundary`",
+                    normalized_source,
+                )
+                self.assertIn("inside the active evidence boundary", normalized_source)
+            with self.subTest(skill_name=skill_name, surface="portable-description"):
+                self.assertIn("stop with blocked_missing_input", description)
+                self.assertIn(
+                    "do not relabel missing input as deferred_owner_boundary",
+                    description,
+                )
+        returns = self.runner.expand_cohort(
+            REPO_ROOT,
+            plan,
+            "full-collision-authority-routing-procedure-returns",
+        )
+        self.assertEqual(4, len(returns))
+        self.assertEqual(
+            {"collision-40", "collision-41"},
+            {trial.case_id for trial in returns},
+        )
+        self.assertTrue(
+            all(
+                trial.arm_type in {"implicit_aided", "implicit_control"}
+                and trial.expected_target_skill == "aoa-decision"
+                and trial.expected_behavior == "invoke"
+                and trial.root_skill == "aoa-decision"
+                and trial.expected_child_skill
+                in {"aoa-decision-create", "aoa-decision-correct"}
+                and trial.procedure_contract is not None
+                and trial.outcome_contract is not None
+                for trial in returns
+            )
+        )
+        packet = self.runner.build_plan_packet(
+            REPO_ROOT,
+            plan,
+            "full-collision-authority-routing-procedure-returns",
+            "model-a",
+            "medium",
+        )
+        self.assertEqual(2, packet["implicit_pair_count"])
+        self.assertEqual(2, packet["target_route_scored_pair_count"])
+        self.assertEqual(2, packet["procedure_scored_pair_count"])
+        self.assertEqual(0, packet["manual_non_activation_pair_count"])
+        self.assertEqual(2, packet["objective_outcome_scored_pair_count"])
+        self.assertTrue(packet["procedure_contract_coverage_complete"])
+        self.assertTrue(packet["objective_outcome_coverage_complete"])
+        self.assertTrue(packet["high_cost_confirmation_required"])
+
     def test_root_child_implicit_map_is_policy_bound_and_covers_eval_children(self) -> None:
         runner = self.runner
         plan = runner.load_plan(self.plan_path)

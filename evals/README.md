@@ -142,6 +142,12 @@ Active first local corpus:
   remain reviewed `procedure_disposition_miss` candidates. Preserve that v19
   receipt as `needs-rerun`, repair the two child terminal rules, and repeat only
   both arms of 40-41 before widening.
+  That red-first source repair now makes `blocked_missing_input` explicit in
+  decision-create/correct source and prompt-visible descriptions, source-locks
+  the authored portable override beside its generated export, and adds a
+  four-turn return containing only both arms of 40-41. This closes only the
+  deterministic repair gate; exact merge, runtime parity, host admission, and
+  reviewed live evidence remain required.
 
 These files are local evidence notes. They do not publish central proof
 acceptance, scoring, verdicts, regression truth, or proof doctrine.

@@ -3339,8 +3339,8 @@
         "skill_path": "skills/core/engineering/aoa-decision-correct/SKILL.md",
         "techniques_path": "skills/core/engineering/aoa-decision-correct/techniques.yaml",
         "policy_path": "skills/core/engineering/aoa-decision-correct/agents/openai.yaml",
-        "content_hash": "18f68b1173b405c35c90d98a0dd50a7d0979c52071151d32f5b2ef272e478790",
-        "skill_revision": "18f68b1173b4"
+        "content_hash": "4a07913f76e6621ad4336cb29f6be039abae5605c536c9cc0a0e1322e597aaa6",
+        "skill_revision": "4a07913f76e6"
       },
       "policy": {
         "invocation_mode": "explicit-preferred",
@@ -3352,7 +3352,7 @@
         "requires_confirmation_seam": false
       },
       "runtime": {
-        "description": "Explicit activation required: do not invoke or load this skill from an implicit match; wait for explicit user or operator invocation or a source-authorized parent-route selection. Correct, supersede, reindex, or repair graph-coverage drift in AoA decision records by checking graph issues, editing source notes first, rebuilding repo-local indexes, and refreshing the workspace decision graph. Use when a decision note, index metadata, source-surface list, status, supersession, generated index, unknown surface, or graph packet is stale or wrong. Do not use for pure lookup or for creating a new decision note.",
+        "description": "Explicit activation required: do not invoke or load this skill from an implicit match; wait for explicit user or operator invocation or a source-authorized parent-route selection. Correct, supersede, reindex, or repair graph-coverage drift in AoA decision records by checking graph issues, editing source notes first, rebuilding repo-local indexes, and refreshing the workspace decision graph. Use when a decision note, index metadata, source-surface list, status, supersession, generated index, unknown surface, or graph packet is stale or wrong. When the parent has classified correction but the target decision record, owning source note, repo-local index contract, or graph/owner packet is unavailable inside the active evidence boundary, stop with blocked_missing_input; do not relabel missing input as deferred_owner_boundary. Do not use for pure lookup or for creating a new decision note.",
         "allow_implicit_invocation": false
       },
       "tiny_router": {
@@ -3499,9 +3499,9 @@
           "section_role": "trigger_boundary",
           "source_path": "skills/core/engineering/aoa-decision-correct/SKILL.md",
           "source_anchor": "## Trigger boundary",
-          "text": "Use this skill when: - a decision record is stale, incomplete, misindexed, wrongly sourced, or needs supersession - generated decision indexes are out of date with source metadata - graph lookup shows a mismatch that must be verified against the source note - a correction must preserve local decision-lane law and validation Do not use this skill when: - the task is only to find relevant rationale; use `aoa-decision-find` - a new durable decision is required instead; use `aoa-decision-create` - the source surface itself is wrong and no decision-lane change is needed - a generated graph or index can be refreshed without source-note drift - the correction would rewrite history instead of adding an explicit supersession or status change",
-          "text_sha256": "f2e795c258dd7d6dd61f576e49ce78f9edf263f19aa5cf78745169628c3efe33",
-          "token_count": 119
+          "text": "Use this skill when: - a decision record is stale, incomplete, misindexed, wrongly sourced, or needs supersession - generated decision indexes are out of date with source metadata - graph lookup shows a mismatch that must be verified against the source note - a correction must preserve local decision-lane law and validation - the parent has classified a correction route, but the target decision record, owning source note, repo-local index contract, or graph/owner packet is unavailable inside the active evidence boundary; select this child only to stop with `blocked_missing_input` rather than invent correction context Do not use this skill when: - the task is only to find relevant rationale; use `aoa-decision-find` - a new durable decision is required instead; use `aoa-decision-create` - the source surface itself is wrong and no decision-lane change is needed - a generated graph or index can be refreshed without source-note drift - the correction would rewrite history instead of adding an explicit supersession or status change",
+          "text_sha256": "5875853b9a7d8d361345b01236ef412192595eae86dd821d3dc1f9e2419f39cb",
+          "token_count": 161
         },
         {
           "doc_id": "skill:aoa-decision-correct:section:inputs",
@@ -3529,9 +3529,9 @@
           "section_role": "procedure",
           "source_path": "skills/core/engineering/aoa-decision-correct/SKILL.md",
           "source_anchor": "## Procedure",
-          "text": "1. use `aoa_decisions` status and issues first, then fetch the target decision, changed-path, source-surface, owner-surface, or repo packet when available 2. if graph issues exist for the target repo, classify whether the fix belongs to the source note, local index contract, workspace graph registry, or cache refresh 3. read the source decision note before editing anything 4. read the repo-local decision route card and generated index contract 5. classify the correction as metadata, source-surface list, status, supersession, typo-only, or generated-index drift 6. edit the source note first; use explicit supersession or status language for semantic changes instead of silent history rewrite 7. regenerate repo-local decision indexes when metadata or source-record shape changed 8. run the repo-local decision validator/check and any affected surface validator 9. refresh or check the workspace graph, run the decision-graph lane when available, and compare the corrected graph packet 10. report whether the graph, source note, and local indexes are now aligned",
-          "text_sha256": "b305bedb1b3d136d0689dd6f893d774f7d4cbce0482882d17b94b6e5c38df744",
-          "token_count": 155
+          "text": "1. if the correction route is selected but the target decision record, owning source note, repo-local index contract, or graph/owner packet is unavailable inside the active evidence boundary and no permitted packet or source read can supply it, stop with `blocked_missing_input`; do not relabel missing input as `deferred_owner_boundary` 2. use `aoa_decisions` status and issues first, then fetch the target decision, changed-path, source-surface, owner-surface, or repo packet when available 3. if graph issues exist for the target repo, classify whether the fix belongs to the source note, local index contract, workspace graph registry, or cache refresh 4. read the source decision note before editing anything 5. read the repo-local decision route card and generated index contract 6. classify the correction as metadata, source-surface list, status, supersession, typo-only, or generated-index drift 7. edit the source note first; use explicit supersession or status language for semantic changes instead of silent history rewrite 8. regenerate repo-local decision indexes when metadata or source-record shape changed 9. run the repo-local decision validator/check and any affected surface validator 10. refresh or check the workspace graph, run the decision-graph lane when available, and compare the corrected graph packet 11. report whether the graph, source note, and local indexes are now aligned",
+          "text_sha256": "b3694c224accc4bf069c3094c212e49ba0a5840a0a5d9679cec2b548a7d5abb4",
+          "token_count": 203
         },
         {
           "doc_id": "skill:aoa-decision-correct:section:contracts",
@@ -3539,9 +3539,9 @@
           "section_role": "contracts",
           "source_path": "skills/core/engineering/aoa-decision-correct/SKILL.md",
           "source_anchor": "## Contracts",
-          "text": "- source notes are edited before generated indexes or graph cache - generated graph/cache refresh cannot be used to hide source drift - semantic corrections must preserve reviewable history through status or supersession - typo-only fixes should not inflate into new rationale - validation must cover the owner repo, not only the workspace graph - graph issue packets are triage inputs; they do not replace source-note or local-contract inspection",
-          "text_sha256": "9e6fd438db2ca858b71be26e60a0793b563061f250a0312c294174875f3ad7e1",
-          "token_count": 69
+          "text": "- source notes are edited before generated indexes or graph cache - generated graph/cache refresh cannot be used to hide source drift - semantic corrections must preserve reviewable history through status or supersession - typo-only fixes should not inflate into new rationale - validation must cover the owner repo, not only the workspace graph - graph issue packets are triage inputs; they do not replace source-note or local-contract inspection - missing required correction context inside the active evidence boundary ends as `blocked_missing_input`, not as an owner-boundary deferral",
+          "text_sha256": "5384c616d4fa876af53fc8c3a8cd64f5c5b5657cd3b30c4dd521d2b4b2d61ab0",
+          "token_count": 87
         },
         {
           "doc_id": "skill:aoa-decision-correct:section:risk",
@@ -3549,9 +3549,9 @@
           "section_role": "risk",
           "source_path": "skills/core/engineering/aoa-decision-correct/SKILL.md",
           "source_anchor": "## Risks and anti-patterns",
-          "text": "- fixing only generated indexes while leaving source metadata wrong - changing meaning silently without status or supersession - broad rewriting because a small metadata fix was requested - trusting a stale graph packet after editing source files - applying another repo's metadata vocabulary where it does not fit - clearing cache freshness while leaving an unknown decision-lane surface unmodeled",
-          "text_sha256": "ec7b6ae68ceead5719387c42c490b89a94842ebee51a0f7439f6ead8f4d7f6b2",
-          "token_count": 60
+          "text": "- fixing only generated indexes while leaving source metadata wrong - changing meaning silently without status or supersession - broad rewriting because a small metadata fix was requested - trusting a stale graph packet after editing source files - applying another repo's metadata vocabulary where it does not fit - clearing cache freshness while leaving an unknown decision-lane surface unmodeled - relabelling absent correction inputs as `deferred_owner_boundary`",
+          "text_sha256": "caf94d321bb407351316dd4b1fd1f2ad6e62bd6902caac39841ee9f4bfcab602",
+          "token_count": 67
         },
         {
           "doc_id": "skill:aoa-decision-correct:section:verification",
@@ -3559,9 +3559,9 @@
           "section_role": "verification",
           "source_path": "skills/core/engineering/aoa-decision-correct/SKILL.md",
           "source_anchor": "## Verification",
-          "text": "- confirm the source note was inspected and, if needed, edited - confirm generated indexes were regenerated only from source metadata - confirm repo-local decision checks passed or failures are explicit - confirm workspace graph refresh/check and decision-graph lane see the corrected state - confirm semantic rewrites are avoided or made explicit through supersession/status",
-          "text_sha256": "6b777b74ca0e447a1c517974baa8ba352e28ea16287c898e38de4c4b862a25a3",
-          "token_count": 54
+          "text": "- confirm the source note was inspected and, if needed, edited - confirm generated indexes were regenerated only from source metadata - confirm repo-local decision checks passed or failures are explicit - confirm absent correction inputs stopped as `blocked_missing_input` without being relabelled as `deferred_owner_boundary` - confirm workspace graph refresh/check and decision-graph lane see the corrected state - confirm semantic rewrites are avoided or made explicit through supersession/status",
+          "text_sha256": "8f9ef31946b09a5430c848200c64779ab6e61b10f334111f11a4cd2a3ac94688",
+          "token_count": 67
         },
         {
           "doc_id": "skill:aoa-decision-correct:section:lineage",
@@ -3594,8 +3594,8 @@
         "skill_path": "skills/core/engineering/aoa-decision-create/SKILL.md",
         "techniques_path": "skills/core/engineering/aoa-decision-create/techniques.yaml",
         "policy_path": "skills/core/engineering/aoa-decision-create/agents/openai.yaml",
-        "content_hash": "10a15b8bd5d282f2fbe6752fc9793bef46739c65ef91c6ba51fbceb5802545c3",
-        "skill_revision": "10a15b8bd5d2"
+        "content_hash": "97d779ad97b8cae496698716c96d95e34a14f789b061f10a9957fdddaf011460",
+        "skill_revision": "97d779ad97b8"
       },
       "policy": {
         "invocation_mode": "explicit-preferred",
@@ -3607,7 +3607,7 @@
         "requires_confirmation_seam": false
       },
       "runtime": {
-        "description": "Explicit activation required: do not invoke or load this skill from an implicit match; wait for explicit user or operator invocation or a source-authorized parent-route selection. Create a new AoA decision record in the owning repository by checking graph status/issues, using impact packets for placement, and following repo-local decision law for the actual source note and indexes. Use when a real structural, workflow, tooling, source/export, MCP, skill, or authority decision needs durable rationale. Do not use when no decision has been made, the change is trivial, the target repo has unresolved graph issues, or an existing note only needs correction.",
+        "description": "Explicit activation required: do not invoke or load this skill from an implicit match; wait for explicit user or operator invocation or a source-authorized parent-route selection. Create a new AoA decision record in the owning repository by checking graph status/issues, using impact packets for placement, and following repo-local decision law for the actual source note and indexes. Use when a real structural, workflow, tooling, source/export, MCP, skill, or authority decision needs durable rationale. When the parent has classified create but the chosen decision, target repository, source surfaces, graph status, or repo-local decision law is unavailable inside the active evidence boundary, stop with blocked_missing_input; do not relabel missing input as deferred_owner_boundary. Do not use when no decision has been made, the change is trivial, the target repo has unresolved graph issues, or an existing note only needs correction.",
         "allow_implicit_invocation": false
       },
       "tiny_router": {
@@ -3746,9 +3746,9 @@
           "section_role": "trigger_boundary",
           "source_path": "skills/core/engineering/aoa-decision-create/SKILL.md",
           "source_anchor": "## Trigger boundary",
-          "text": "Use this skill when: - a change creates durable rationale that future agents need before repeating the route - the owner repository already has or intentionally needs a `docs/decisions/` lane - graph lookup should identify similar prior decisions, next ID, source surfaces, or symmetry constraints - a decision note must be created alongside code, docs, MCP, skill, validator, or generated-index changes Do not use this skill when: - no decision has been made yet and the work is still option framing - the change is self-evident and a commit or change summary is enough - the target repository has no appropriate decision lane and the task does not explicitly add one - an existing record can be corrected instead; use `aoa-decision-correct` - the decision would copy another repo's rationale without local owner evidence",
-          "text_sha256": "b43c94549e60fe28ae4566cd49f78719d3c2357724ca1e250b07efca316ac0c1",
-          "token_count": 133
+          "text": "Use this skill when: - a change creates durable rationale that future agents need before repeating the route - the owner repository already has or intentionally needs a `docs/decisions/` lane - graph lookup should identify similar prior decisions, next ID, source surfaces, or symmetry constraints - a decision note must be created alongside code, docs, MCP, skill, validator, or generated-index changes - the parent has classified a create route, but the chosen decision, target repository, source surfaces, graph status, or repo-local decision law is unavailable inside the active evidence boundary; select this child only to stop with `blocked_missing_input` rather than invent creation context Do not use this skill when: - no decision has been made yet and the work is still option framing - the change is self-evident and a commit or change summary is enough - the target repository has no appropriate decision lane and the task does not explicitly add one - an existing record can be corrected instead; use `aoa-decision-correct` - the decision would copy another repo's rationale without local owner evidence",
+          "text_sha256": "11aaf3f598ca8664917cd407f7b7c73782ea2192815de49e77f56c4dd38b4afa",
+          "token_count": 175
         },
         {
           "doc_id": "skill:aoa-decision-create:section:inputs",
@@ -3776,9 +3776,9 @@
           "section_role": "procedure",
           "source_path": "skills/core/engineering/aoa-decision-create/SKILL.md",
           "source_anchor": "## Procedure",
-          "text": "1. confirm a real decision exists and is worth preserving 2. use `aoa_decisions` status and issues first; if the target repo has graph issues, stop and route to correction before creating a new record 3. use changed-path, source-surface, owner-surface, repo, and decision packets to collect related records and repo decision-lane context 4. use broad search only when the narrower packets do not identify enough placement context; split long free-text intent into path, repo, surface, or decision anchors first 5. read the target repo's `docs/decisions/AGENTS.md`, `README.md`, `TEMPLATE.md`, generated index shape, and latest decision records 6. choose the next canonical ID from source files, not from memory alone 7. write the note in the target repo's established format and metadata language 8. name only the source surfaces this decision actually explains 9. keep graph, generated indexes, tests, and runtime evidence as context rather than decision authority 10. run the repo-local decision-index generator, then the check form and any affected surface validator 11. refresh or check the workspace graph and run the decision-graph lane when available 12. report the new decision path, graph freshness, and validation",
-          "text_sha256": "12eff50a2d3d8c3786cc0cdbb158403c400e97939b71bbf91d2fcda0a7a4aa10",
-          "token_count": 183
+          "text": "1. if the create route is selected but the chosen decision, target repository, source surfaces, graph status, or repo-local decision law is unavailable inside the active evidence boundary and no permitted packet or source read can supply it, stop with `blocked_missing_input`; do not relabel missing input as `deferred_owner_boundary` 2. confirm a real decision exists and is worth preserving 3. use `aoa_decisions` status and issues first; if the target repo has graph issues, stop and route to correction before creating a new record 4. use changed-path, source-surface, owner-surface, repo, and decision packets to collect related records and repo decision-lane context 5. use broad search only when the narrower packets do not identify enough placement context; split long free-text intent into path, repo, surface, or decision anchors first 6. read the target repo's `docs/decisions/AGENTS.md`, `README.md`, `TEMPLATE.md`, generated index shape, and latest decision records 7. choose the next canonical ID from source files, not from memory alone 8. write the note in the target repo's established format and metadata language 9. name only the source surfaces this decision actually explains 10. keep graph, generated indexes, tests, and runtime evidence as context rather than decision authority 11. run the repo-local decision-index generator, then the check form and any affected surface validator 12. refresh or check the workspace graph and run the decision-graph lane when available 13. report the new decision path, graph freshness, and validation",
+          "text_sha256": "ba5fbc44eff48a60b5f46c07701659787cd85a9a0fa2d41d41e2cab584c38794",
+          "token_count": 231
         },
         {
           "doc_id": "skill:aoa-decision-create:section:contracts",
@@ -3786,9 +3786,9 @@
           "section_role": "contracts",
           "source_path": "skills/core/engineering/aoa-decision-create/SKILL.md",
           "source_anchor": "## Contracts",
-          "text": "- a decision note records why; it does not replace the active source surface - next ID selection must be verified from source files - sibling decisions may inform shape, but the target repo owns its own rationale - generated indexes must be rebuilt from source metadata, not hand-edited as truth - workspace graph refresh is part of done after creating a record - unresolved graph issues in the target repo block creation until corrected",
-          "text_sha256": "5fa77a26536f82c03dbec7d2348243762da3260cbd60f21ffb1daed037bce585",
-          "token_count": 75
+          "text": "- a decision note records why; it does not replace the active source surface - next ID selection must be verified from source files - sibling decisions may inform shape, but the target repo owns its own rationale - generated indexes must be rebuilt from source metadata, not hand-edited as truth - workspace graph refresh is part of done after creating a record - unresolved graph issues in the target repo block creation until corrected - missing required creation context inside the active evidence boundary ends as `blocked_missing_input`, not as an owner-boundary deferral",
+          "text_sha256": "8ade36c2c89785067897e0c9e4226ec2e90e8a67b7ad2ad10bd1f8f0cf6d0ec8",
+          "token_count": 93
         },
         {
           "doc_id": "skill:aoa-decision-create:section:risk",
@@ -3796,9 +3796,9 @@
           "section_role": "risk",
           "source_path": "skills/core/engineering/aoa-decision-create/SKILL.md",
           "source_anchor": "## Risks and anti-patterns",
-          "text": "- creating process noise for trivial changes - writing a decision before the choice is actually made - copying a sibling record and leaving mismatched owner surfaces - omitting rejected options or consequences when they shaped the choice - using broad graph search before available path, repo, or surface packets - forgetting generated indexes or workspace graph refresh - using MCP output as if it created or accepted the decision - creating a new note while unknown decision-lane surfaces are already present",
-          "text_sha256": "639f294875560998d6d2d6c7ed58bfd27abdabbd64ffe0d4571f2630f50df8f4",
-          "token_count": 82
+          "text": "- creating process noise for trivial changes - writing a decision before the choice is actually made - copying a sibling record and leaving mismatched owner surfaces - omitting rejected options or consequences when they shaped the choice - using broad graph search before available path, repo, or surface packets - forgetting generated indexes or workspace graph refresh - using MCP output as if it created or accepted the decision - creating a new note while unknown decision-lane surfaces are already present - relabelling absent creation inputs as `deferred_owner_boundary`",
+          "text_sha256": "4a76cece8c1fbd0a42d7d1f6161a0eaa81b36f4c24ce2279d74116bf365f138b",
+          "token_count": 89
         },
         {
           "doc_id": "skill:aoa-decision-create:section:verification",
@@ -3806,9 +3806,9 @@
           "section_role": "verification",
           "source_path": "skills/core/engineering/aoa-decision-create/SKILL.md",
           "source_anchor": "## Verification",
-          "text": "- confirm the new record has canonical ID, status, date, owner surface, and index metadata - confirm source surfaces match the actual diff - confirm repo-local decision indexes were regenerated and checked - confirm graph issue posture was checked before writing - confirm broad search was needed, or skipped because narrower packets were sufficient - confirm affected validators were run or explicitly skipped with reason - confirm workspace graph refresh/check and decision-graph lane see the new record",
-          "text_sha256": "0a52bd7cf43d8fb0436d8b1506507daa49bb56ee99b2bab2085a9a9572bf0e28",
-          "token_count": 77
+          "text": "- confirm the new record has canonical ID, status, date, owner surface, and index metadata - confirm source surfaces match the actual diff - confirm repo-local decision indexes were regenerated and checked - confirm graph issue posture was checked before writing - confirm broad search was needed, or skipped because narrower packets were sufficient - confirm absent creation inputs stopped as `blocked_missing_input` without being relabelled as `deferred_owner_boundary` - confirm affected validators were run or explicitly skipped with reason - confirm workspace graph refresh/check and decision-graph lane see the new record",
+          "text_sha256": "6641afe0794b8cfd26ea1267284d32ed769091c24dc5de0b22d5395852083b2f",
+          "token_count": 90
         },
         {
           "doc_id": "skill:aoa-decision-create:section:lineage",

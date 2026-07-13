@@ -331,6 +331,12 @@ Tracking starts with the community-docs baseline for this repository.
   `deferred_owner_boundary` instead of `blocked_missing_input`, yielding two
   reviewed `procedure_disposition_miss` candidates. Preserve the receipt as
   `needs-rerun`; repair those two child terminal rules and repeat only 40-41.
+- Decision-create and decision-correct now preserve the parent-classified route
+  while terminating unavailable required context as `blocked_missing_input`,
+  never `deferred_owner_boundary`, in both source procedure and prompt-visible
+  portable descriptions. The live source snapshot additionally locks the
+  authored portable override, and a four-turn cohort repeats only both arms of
+  collisions 40-41 after exact merge and runtime parity.
 - Live-dispatch evidence v17 repairs both shared boundaries red-first. Portable
   export now prepends a policy-derived activation sentence to all 43 `manual`
   and two `suggest` descriptions, allowing only explicit invocation or a

@@ -2,7 +2,7 @@
   "schema_version": "aoa_skill_live_dispatch_plan_v1",
   "owner_repo": "aoa-skills",
   "profile": "repo-default",
-  "profile_revision": "dda7c15a82e9af4517893f19b9b70c6c151d2d5326ddc01aa1c75e13e1ba9c33",
+  "profile_revision": "af74c2c002d391b18df6c6d9cd40861226c22e6f3505c34d76031b25e5a7b0af",
   "protocol_revision": "codex-cli-0.144.1-live-dispatch-evidence-v19",
   "proof_authority": false,
   "promotion_allowed": false,
@@ -16,6 +16,7 @@
     "generated/release_manifest.json",
     "config/skill_policy_matrix.json",
     "config/skill_pack_profiles.json",
+    "config/portable_skill_overrides.json",
     "schemas/live-skill-dispatch-plan.schema.json",
     "schemas/live-skill-dispatch-procedure-contracts.schema.json",
     "schemas/live-skill-dispatch-outcome-contracts.schema.json",
@@ -356,6 +357,21 @@
       "objective_outcome_mode": "required",
       "second_confirmation_required": true,
       "expected_turn_count": 6,
+      "estimated_private_bytes": 134217728,
+      "estimated_memory_demand_mib": 512,
+      "resource_class": "medium"
+    },
+    "full-collision-authority-routing-procedure-returns": {
+      "implicit_case_ids": [
+        "collision-40",
+        "collision-41"
+      ],
+      "trajectory_case_ids": [],
+      "structured_skills": [],
+      "procedure_contract_mode": "required",
+      "objective_outcome_mode": "required",
+      "second_confirmation_required": true,
+      "expected_turn_count": 4,
       "estimated_private_bytes": 134217728,
       "estimated_memory_demand_mib": 512,
       "resource_class": "medium"

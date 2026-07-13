@@ -25,6 +25,10 @@ Use this skill when:
 - generated decision indexes are out of date with source metadata
 - graph lookup shows a mismatch that must be verified against the source note
 - a correction must preserve local decision-lane law and validation
+- the parent has classified a correction route, but the target decision record,
+  owning source note, repo-local index contract, or graph/owner packet is
+  unavailable inside the active evidence boundary; select this child only to
+  stop with `blocked_missing_input` rather than invent correction context
 
 Do not use this skill when:
 - the task is only to find relevant rationale; use `aoa-decision-find`
@@ -51,21 +55,26 @@ Do not use this skill when:
 
 ## Procedure
 
-1. use `aoa_decisions` status and issues first, then fetch the target decision,
+1. if the correction route is selected but the target decision record, owning
+   source note, repo-local index contract, or graph/owner packet is unavailable
+   inside the active evidence boundary and no permitted packet or source read
+   can supply it, stop with `blocked_missing_input`; do not relabel missing
+   input as `deferred_owner_boundary`
+2. use `aoa_decisions` status and issues first, then fetch the target decision,
    changed-path, source-surface, owner-surface, or repo packet when available
-2. if graph issues exist for the target repo, classify whether the fix belongs
+3. if graph issues exist for the target repo, classify whether the fix belongs
    to the source note, local index contract, workspace graph registry, or cache refresh
-3. read the source decision note before editing anything
-4. read the repo-local decision route card and generated index contract
-5. classify the correction as metadata, source-surface list, status,
+4. read the source decision note before editing anything
+5. read the repo-local decision route card and generated index contract
+6. classify the correction as metadata, source-surface list, status,
    supersession, typo-only, or generated-index drift
-6. edit the source note first; use explicit supersession or status language for
+7. edit the source note first; use explicit supersession or status language for
    semantic changes instead of silent history rewrite
-7. regenerate repo-local decision indexes when metadata or source-record shape changed
-8. run the repo-local decision validator/check and any affected surface validator
-9. refresh or check the workspace graph, run the decision-graph lane when available,
+8. regenerate repo-local decision indexes when metadata or source-record shape changed
+9. run the repo-local decision validator/check and any affected surface validator
+10. refresh or check the workspace graph, run the decision-graph lane when available,
    and compare the corrected graph packet
-10. report whether the graph, source note, and local indexes are now aligned
+11. report whether the graph, source note, and local indexes are now aligned
 
 ## Contracts
 
@@ -76,6 +85,8 @@ Do not use this skill when:
 - validation must cover the owner repo, not only the workspace graph
 - graph issue packets are triage inputs; they do not replace source-note or
   local-contract inspection
+- missing required correction context inside the active evidence boundary ends
+  as `blocked_missing_input`, not as an owner-boundary deferral
 
 ## Risks and anti-patterns
 
@@ -85,12 +96,15 @@ Do not use this skill when:
 - trusting a stale graph packet after editing source files
 - applying another repo's metadata vocabulary where it does not fit
 - clearing cache freshness while leaving an unknown decision-lane surface unmodeled
+- relabelling absent correction inputs as `deferred_owner_boundary`
 
 ## Verification
 
 - confirm the source note was inspected and, if needed, edited
 - confirm generated indexes were regenerated only from source metadata
 - confirm repo-local decision checks passed or failures are explicit
+- confirm absent correction inputs stopped as `blocked_missing_input` without
+  being relabelled as `deferred_owner_boundary`
 - confirm workspace graph refresh/check and decision-graph lane see the corrected state
 - confirm semantic rewrites are avoided or made explicit through supersession/status
 

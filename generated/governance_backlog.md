@@ -90,8 +90,8 @@ Read those rows as per-skill maintenance signals, not as missing canonical-decis
 | aoa-contract-test | canonical | published | default_reference | docs/reviews/status-promotions/aoa-contract-test.md | 5643013a5d81 | 5643013a5d81 | True | - | true |
 | aoa-core-logic-boundary | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-core-logic-boundary.md | 4c1fe5d5fc55 | 4c1fe5d5fc55 | True | - | true |
 | aoa-decision | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-decision.md | c30d86bc4859 | c30d86bc4859 | True | - | true |
-| aoa-decision-correct | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-decision-correct.md | 18f68b1173b4 | 18f68b1173b4 | True | - | true |
-| aoa-decision-create | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-decision-create.md | 10a15b8bd5d2 | 10a15b8bd5d2 | True | - | true |
+| aoa-decision-correct | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-decision-correct.md | 4a07913f76e6 | 4a07913f76e6 | True | - | true |
+| aoa-decision-create | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-decision-create.md | 97d779ad97b8 | 97d779ad97b8 | True | - | true |
 | aoa-decision-find | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-decision-find.md | 21e7560eb13c | 21e7560eb13c | True | - | true |
 | aoa-dry-run-first | canonical | published | default_reference | docs/reviews/status-promotions/aoa-dry-run-first.md | fe0e70f084f5 | fe0e70f084f5 | True | - | true |
 | aoa-invariant-coverage-audit | canonical | published | default_reference | docs/reviews/status-promotions/aoa-invariant-coverage-audit.md | 9ec574c0f128 | 9ec574c0f128 | True | - | true |

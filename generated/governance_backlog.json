@@ -188,25 +188,25 @@
       "truth_synced": true
     },
     {
-      "current_revision": "18f68b1173b4",
+      "current_revision": "4a07913f76e6",
       "governance_decision": "stay_evaluated",
       "issues": [],
       "lineage_state": "published",
       "name": "aoa-decision-correct",
       "review_path": "docs/reviews/status-promotions/aoa-decision-correct.md",
-      "reviewed_revision": "18f68b1173b4",
+      "reviewed_revision": "4a07913f76e6",
       "runtime_skill_md_meaning_changed": true,
       "status": "evaluated",
       "truth_synced": true
     },
     {
-      "current_revision": "10a15b8bd5d2",
+      "current_revision": "97d779ad97b8",
       "governance_decision": "stay_evaluated",
       "issues": [],
       "lineage_state": "published",
       "name": "aoa-decision-create",
       "review_path": "docs/reviews/status-promotions/aoa-decision-create.md",
-      "reviewed_revision": "10a15b8bd5d2",
+      "reviewed_revision": "97d779ad97b8",
       "runtime_skill_md_meaning_changed": true,
       "status": "evaluated",
       "truth_synced": true
