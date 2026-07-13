@@ -22,6 +22,10 @@ Use this skill when:
 - a task needs relevant prior decision context before editing code, docs, validation, MCP, skill, or repo topology
 - a cross-repo comparison needs decision IDs, owner surfaces, source surfaces, statuses, or supersession links
 - graph search can prevent broad manual reads across many decision lanes
+- no graph status, changed paths, target records, or owner repository packet is
+  available inside the active evidence boundary, and no permitted graph or
+  fallback index can supply them; select this route only to stop with
+  `blocked_missing_input` rather than invent lookup results
 
 Do not use this skill when:
 - a new decision note must be written; use `aoa-decision-create`
@@ -59,15 +63,19 @@ Do not use this skill when:
    smaller anchors before searching
 4. if MCP is unavailable, use the latest workspace graph output or repo-local
    generated indexes as a search aid
-5. read the source decision note before making a rationale, authority, or
+5. when no graph status, changed paths, target records, or owner repository
+   packet is available inside the active evidence boundary, and no permitted
+   graph or fallback index can supply them, stop with `blocked_missing_input`;
+   do not relabel missing input as `deferred_owner_boundary`
+6. read the source decision note before making a rationale, authority, or
    supersession claim
-6. compare source-surface lists and owner metadata against the user's target
+7. compare source-surface lists and owner metadata against the user's target
    paths when judging relevance
-7. distinguish exact matches, likely matches, weak analogies, and missing
+8. distinguish exact matches, likely matches, weak analogies, and missing
    records
-8. if no adequate record exists, route to `aoa-decision-create`; if a record is
+9. if no adequate record exists, route to `aoa-decision-create`; if a record is
    stale or wrong, route to `aoa-decision-correct`
-9. return compact evidence: decision ID, source path, key reason, and remaining uncertainty
+10. return compact evidence: decision ID, source path, key reason, and remaining uncertainty
 
 ## Contracts
 
@@ -75,6 +83,8 @@ Do not use this skill when:
 - source-note claims must cite the repo and decision path
 - related sibling decisions are examples, not templates to copy blindly
 - missing evidence should be reported as missing, not filled with doctrine
+- missing graph and owner inputs inside the permitted evidence boundary end as
+  `blocked_missing_input`, not as an owner-boundary deferral
 - avoid loading unrelated decision lanes after a sufficient match is found
 - graph issues reduce confidence; they do not authorize guessing
 
@@ -95,6 +105,8 @@ Do not use this skill when:
 - confirm broad search was needed, or skipped because a narrower packet was sufficient
 - confirm final claims came from source notes, not only generated graph data
 - confirm match confidence and any uncertainty are visible
+- confirm absent graph and owner inputs stopped as `blocked_missing_input`
+  without being relabelled as `deferred_owner_boundary`
 - confirm missing or stale records route to create or correct instead of being hidden
 - confirm the answer stays compact enough for the current task
 

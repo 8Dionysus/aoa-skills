@@ -194,6 +194,12 @@ Tracking starts with the community-docs baseline for this repository.
   zero. `collision-14` still loads the generic change protocol. The public-safe
   receipt preserves both source and observation returns as non-proof
   `needs-rerun` evidence without weakening outcome verification.
+- Red-first second-return contracts now make `aoa-decision-find` stop with
+  `blocked_missing_input` when the permitted boundary contains neither graph
+  or fallback lookup nor graph/owner inputs, and make `aoa-change-protocol`
+  reject concrete ATM10 repo-relative path, local-command, or approval-note
+  prompts before either generic or explicit-overlay load. The output-observation
+  return remains evidence for rerun rather than a relaxed proof rule.
 - `AOA-SK-D-0037` records why live cohorts remain operator-confirmed candidate
   evidence and now clarifies prompt-surface isolation and evidence-stage grading
   after the contaminated smoke; deterministic harness validation, not model

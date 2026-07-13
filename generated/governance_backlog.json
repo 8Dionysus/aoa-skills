@@ -212,13 +212,13 @@
       "truth_synced": true
     },
     {
-      "current_revision": "2a8865aacede",
+      "current_revision": "21e7560eb13c",
       "governance_decision": "stay_evaluated",
       "issues": [],
       "lineage_state": "published",
       "name": "aoa-decision-find",
       "review_path": "docs/reviews/status-promotions/aoa-decision-find.md",
-      "reviewed_revision": "2a8865aacede",
+      "reviewed_revision": "21e7560eb13c",
       "runtime_skill_md_meaning_changed": true,
       "status": "evaluated",
       "truth_synced": true

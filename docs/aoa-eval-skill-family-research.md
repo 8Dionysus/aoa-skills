@@ -542,3 +542,26 @@ make the decision child name the missing-input terminal disposition, make the
 generic change-protocol description reject ATM10 repo-relative paths, commands,
 and approval notes before load, preserve the outcome observation gap, and rerun
 the affected cohort without changing the explicit targets or the proof rule.
+
+## 2026-07-12 second skill-return repair
+
+The second repair follows the narrower live evidence rather than widening the
+root skills again. `aoa-decision-find` now distinguishes missing evidence from
+an owner refusal: when the permitted boundary offers neither graph or fallback
+lookup nor graph status, changed paths, target records, or an owner repository
+packet, its procedure stops with `blocked_missing_input` and explicitly rejects
+`deferred_owner_boundary`. Existing graph-first lookup, source-note authority,
+and create/correct handoffs remain unchanged.
+
+The generic change protocol now carries the concrete prompt-visible negative
+signal that the first repair lacked. An ATM10 repository request for
+repo-relative paths, local commands, or local approval notes reports the manual
+owner route without loading either generic `aoa-change-protocol` or the
+explicit overlay. This is an overlay-owned boundary, not a rule that makes
+ordinary generic change work manual.
+
+Both contracts were introduced red-first against source and portable
+descriptions. The existing six-turn cohort remains the smallest safe rerun: it
+rechecks the already-closed approval pair, the repaired decision disposition,
+the concrete ATM10 exclusion, and the still-unverified outcome sentinel under
+fresh transport. No deterministic result closes that live observation return.

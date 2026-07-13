@@ -3,3 +3,4 @@ policy:
   implicit_activation_policy: invoke
 notes:
 - This skill may be invoked implicitly for bounded non-trivial changes, but must stay out when the task is only production approval classification or a project-specific manual overlay owns the route.
+- An ATM10 repo-relative path, local-command, or approval-note request reports the manual owner route without loading either this generic skill or the explicit overlay.

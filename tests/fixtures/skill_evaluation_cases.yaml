@@ -425,6 +425,13 @@ trigger_cases:
     required_phrases:
       - a new decision note must be written; use `aoa-decision-create`
       - an existing note or metadata must be edited; use `aoa-decision-correct`
+  - skill: aoa-decision-find
+    case_id: decision_find_missing_graph_owner_packet
+    prompt: Find the relevant decision before work continues, but no graph status, changed paths, target records, or owner repository packet is available.
+    expected: use
+    required_phrases:
+      - no graph status, changed paths, target records, or owner repository packet is available inside the active evidence boundary
+      - select this route only to stop with `blocked_missing_input` rather than invent lookup results
   - skill: aoa-decision-create
     case_id: decision_create_structural_rationale
     prompt: Create a durable decision note for a structural source/export boundary that changed after review.
@@ -734,6 +741,7 @@ trigger_cases:
     expected: do_not_use
     required_phrases:
       - a project-specific manual overlay is the semantic owner; do not substitute the generic base workflow or load the overlay implicitly
+      - a prompt names an `atm10-*` repository and requests repo-relative paths, local commands, or local approval notes; report the manual owner route without loading this generic skill or the explicit overlay
   - skill: aoa-commit-growth-seam
     case_id: commit_growth_seam_bounded_verified_diff
     prompt: The bounded diff is already applied, the targeted checks are green, and the next honest move is one local commit with an explicit stop line before push.

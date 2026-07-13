@@ -1,6 +1,6 @@
 ---
 name: aoa-change-protocol
-description: Plan and execute a bounded, non-trivial repository change with explicit verification and reporting. Use when code, config, docs, or operational surfaces change meaningfully and no narrower owner controls the route. Do not use when the task is only to classify whether a production or sensitive action is allowed; keep the explicit-only approval-gate owner unloaded and require a deliberate manual route. Do not use when a project-specific manual overlay is the semantic owner; do not substitute the generic base workflow or load the overlay implicitly. Do not use for trivial wording fixes.
+description: Plan and execute a bounded, non-trivial repository change with explicit verification and reporting. Use when code, config, docs, or operational surfaces change meaningfully and no narrower owner controls the route. Do not use when the task is only to classify whether a production or sensitive action is allowed; keep the explicit-only approval-gate owner unloaded and require a deliberate manual route. Do not use when a project-specific manual overlay is the semantic owner; do not substitute the generic base workflow or load the overlay implicitly. When a prompt names an `atm10-*` repository and requests repo-relative paths, local commands, or local approval notes, report the manual owner route without loading this generic skill or the explicit overlay. Do not use for trivial wording fixes.
 license: Apache-2.0
 compatibility: Designed for Codex or similar coding agents with repository file access and an interactive shell. Network access is optional and only needed when repository validation or referenced workflows require it.
 metadata:
@@ -30,6 +30,7 @@ Do not use this skill when:
 - a more specific risk skill should be used instead
 - the task is only to classify whether a production or sensitive action is allowed; keep the explicit-only approval-gate owner unloaded and require a deliberate manual route
 - a project-specific manual overlay is the semantic owner; do not substitute the generic base workflow or load the overlay implicitly
+- a prompt names an `atm10-*` repository and requests repo-relative paths, local commands, or local approval notes; report the manual owner route without loading this generic skill or the explicit overlay
 
 ## Inputs
 - target goal
@@ -56,7 +57,10 @@ Do not use this skill when:
 2. before treating the generic workflow as selected, check whether the task is
    only approval classification or whether a manual project overlay owns the
    repo-relative route. In either case, keep the explicit owner unloaded,
-   report the deliberate manual route, and stop this generic procedure
+   report the deliberate manual route, and stop this generic procedure. When a
+   prompt names an `atm10-*` repository and requests repo-relative paths, local
+   commands, or local approval notes, do this without loading this generic skill
+   or the explicit overlay
 3. state the goal, touched surfaces, and evidence already inspected; if the request depends on prior work, inspect the current repo state rather than relying on memory
 4. when prior-session behavior matters for risk, speed, or recurrence, use
    `aoa-session-memory-evidence-route` or an equivalent read-only
@@ -100,6 +104,9 @@ Do not use this skill when:
 - confirm the owner route and relevant source surfaces were inspected before apply
 - confirm approval-classification and manual project-overlay tasks were not
   absorbed by the generic workflow or used to load an explicit owner implicitly
+- confirm ATM10 repo-relative path, command, or approval-note requests reported
+  the manual owner route without loading this generic skill or the explicit
+  overlay
 - confirm the change stayed scoped
 - confirm at least one explicit verification step was run or intentionally skipped with explanation
 - if prior-session evidence was used, confirm the usage-chain, dossier, or

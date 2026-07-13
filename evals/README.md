@@ -71,6 +71,9 @@ Active first local corpus:
   repo-relative wording before load. The aided decision outcome command exits
   zero without observable sentinel bytes, so the reviewed receipt preserves an
   observation return and does not grant outcome proof.
+  The next red-first source repair now binds the decision child's
+  `blocked_missing_input` terminal and the concrete ATM10 do-not-load wording;
+  the same six-turn cohort must still rerun after exact merge and runtime parity.
 
 These files are local evidence notes. They do not publish central proof
 acceptance, scoring, verdicts, regression truth, or proof doctrine.
