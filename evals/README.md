@@ -192,6 +192,19 @@ Active first local corpus:
   deterministic readiness only. After exact merge, runtime parity, host gates,
   and fresh tokens, the four-turn `coverage-closure-core-implicit` child is the
   next live wave.
+  Its first exact-merged v19 attempt is preserved as
+  [`aoa-skill-live-dispatch-coverage-closure-core-implicit-20260713-v19-model-needs-rerun.json`](reports/aoa-skill-live-dispatch-coverage-closure-core-implicit-20260713-v19-model-needs-rerun.json):
+  a deprecated model stopped the first turn before pair construction, so it
+  carries transport evidence only. The unchanged cohort rerun on the current
+  account-visible Codex model is preserved as
+  [`aoa-skill-live-dispatch-coverage-closure-core-implicit-20260713-v19-reviewed.json`](reports/aoa-skill-live-dispatch-coverage-closure-core-implicit-20260713-v19-reviewed.json).
+  All four turns and both pairs complete without a failure or observation gap.
+  ADR gains positive route and procedure-disposition lift; memo writeback stays
+  correctly manual and unloaded in both arms; both owner outcomes are correct
+  in both arms. The reviewed receipt remains candidate-only. Protocol v20 now
+  fail-closes confirmed execution against the account-visible
+  `codex debug models` catalog before model spend; after exact merge and fresh
+  runtime/host gates, Titan implicit A is the next bounded wave.
 
 These files are local evidence notes. They do not publish central proof
 acceptance, scoring, verdicts, regression truth, or proof doctrine.

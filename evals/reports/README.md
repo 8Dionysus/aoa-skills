@@ -147,6 +147,18 @@ temporary root and must not be copied into this directory.
   activation also passed their bounded contracts. This is reviewed candidate
   evidence only; it neither proves family-wide effectiveness nor authorizes
   pilot widening, proof acceptance, or promotion.
+- [aoa-skill-live-dispatch-smoke-20260712-v11-reviewed-local-need-trajectory-break.json](aoa-skill-live-dispatch-smoke-20260712-v11-reviewed-local-need-trajectory-break.json)
+  preserves the exact-merged smoke after the local eval execution seam was
+  aligned. All four arms completed and the implicit pair retained positive
+  root-route lift, but the aided root selected `aoa-eval-local-need` before
+  target-repository fit was known. Both trajectory arms were therefore wrong;
+  this is a reviewed selection-precedence return, not negative skill proof.
+- [aoa-skill-live-dispatch-smoke-20260712-v11-reviewed-select-precedence-lift.json](aoa-skill-live-dispatch-smoke-20260712-v11-reviewed-select-precedence-lift.json)
+  preserves the exact-merged rerun after missing evidence was made to route
+  through `aoa-eval-select`. All four arms completed without a failure class;
+  the aided pair gains positive root and selected-child trajectory lift while
+  both procedure dispositions are correct and objective outcome remains
+  unscored. It closes only that precedence return as candidate evidence.
 - [aoa-skill-live-dispatch-smoke-20260712-v12-reviewed-owner-action-no-lift.json](aoa-skill-live-dispatch-smoke-20260712-v12-reviewed-owner-action-no-lift.json)
   preserves the complete exact-merged v12 smoke that first exercised the
   separate owner-action outcome contract. All four arms completed without
@@ -266,8 +278,61 @@ temporary root and must not be copied into this directory.
   `needs-rerun` candidate evidence. Repair the shared prompt-visible
   explicit-only and ambient-classification boundaries, then repeat only both
   arms of cases 21, 22, 25, and 33.
+- [aoa-skill-live-dispatch-full-collision-session-growth-returns-20260713-v18-reviewed-hidden-manual-non-activation.json](aoa-skill-live-dispatch-full-collision-session-growth-returns-20260713-v18-reviewed-hidden-manual-non-activation.json)
+  preserves the exact-merged eight-turn return for cases 21, 22, 25, and 33.
+  Every hidden manual target remains unloaded in both arms; all four explicit
+  non-activation guards, fixtures, and owner outcomes are correct without a
+  failure or observation gap. Route and procedure effects remain intentionally
+  unscored because those targets are absent from native implicit visibility.
+- [aoa-skill-live-dispatch-full-collision-authority-routing-20260713-v18-reviewed-parent-trajectory-observability-needs-rerun.json](aoa-skill-live-dispatch-full-collision-authority-routing-20260713-v18-reviewed-parent-trajectory-observability-needs-rerun.json)
+  preserves the complete 22-turn authority-routing wave. All fixture and owner
+  observations are clean, but v18 misclassifies source-authorized reads of two
+  decision children as direct manual activation. The receipt is reviewed
+  `needs-rerun` observability evidence and supports only the bounded 39-41
+  return under the corrected parent/child contract.
+- [aoa-skill-live-dispatch-full-collision-authority-routing-returns-20260713-v19-reviewed-procedure-returns-needs-rerun.json](aoa-skill-live-dispatch-full-collision-authority-routing-returns-20260713-v19-reviewed-procedure-returns-needs-rerun.json)
+  preserves that six-turn v19 return. All three aided arms select and fully
+  read the decision root and intended child; case 39 is clean, while create and
+  correct report `deferred_owner_boundary` instead of source-locked
+  `blocked_missing_input`. Those two procedure dispositions require the
+  smallest paired source return; other dimensions remain candidate-only.
+- [aoa-skill-live-dispatch-full-collision-authority-routing-procedure-returns-20260713-v19-reviewed-clean.json](aoa-skill-live-dispatch-full-collision-authority-routing-procedure-returns-20260713-v19-reviewed-clean.json)
+  preserves the exact-merged four-turn terminal return. Both aided arms select
+  the decision root, fully read the exact create/correct child, and report
+  `blocked_missing_input`; controls remain `not_applicable`, and every fixture
+  and owner outcome is clean. This closes the bounded authority return without
+  granting proof or promotion authority.
+- [aoa-skill-live-dispatch-full-collision-eval-children-20260713-v19-needs-rerun.json](aoa-skill-live-dispatch-full-collision-eval-children-20260713-v19-needs-rerun.json)
+  preserves the first exact-merged ten-turn eval-child wave. Cases 47-48 stop
+  the eval-root read at a bounded prefix, and case 45 chooses the wrong one of
+  several missing-input candidates. The two load gaps and apply-action return
+  require source repair plus a complete rerun; no proof or promotion follows.
+- [aoa-skill-live-dispatch-full-collision-eval-children-20260713-v19-second-needs-rerun.json](aoa-skill-live-dispatch-full-collision-eval-children-20260713-v19-second-needs-rerun.json)
+  preserves the full rerun that closes the apply action and both root-prefix
+  failures. Four pairs are clean, but the explicit bounded-suite design case
+  routes to select and fully reads the wrong child. It remains a reviewed
+  design-precedence return rather than a family verdict.
+- [aoa-skill-live-dispatch-full-collision-eval-children-20260713-v19-reviewed.json](aoa-skill-live-dispatch-full-collision-eval-children-20260713-v19-reviewed.json)
+  preserves the exact-merged rerun after design precedence was corrected. All
+  ten turns complete without a failure; every aided arm selects and fully
+  reads the eval root and exact child and matches route, trajectory, procedure,
+  fixture, owner-boundary, and owner-outcome contracts. The bounded wave is
+  closed as reviewed candidate evidence only.
+- [aoa-skill-live-dispatch-coverage-closure-core-implicit-20260713-v19-model-needs-rerun.json](aoa-skill-live-dispatch-coverage-closure-core-implicit-20260713-v19-model-needs-rerun.json)
+  preserves the first exact-merged core-closure attempt. Host and runtime
+  preflights passed, but the first turn stopped before pair construction because
+  the requested deprecated model was no longer supported by the ChatGPT-backed
+  Codex runtime. The one transport failure contains no skill-quality evidence;
+  the same source-locked cohort required a current-model rerun.
+- [aoa-skill-live-dispatch-coverage-closure-core-implicit-20260713-v19-reviewed.json](aoa-skill-live-dispatch-coverage-closure-core-implicit-20260713-v19-reviewed.json)
+  preserves that complete four-turn rerun on an account-visible current Codex
+  model. The ADR pair gains positive aided route and procedure-disposition
+  lift; memo writeback remains correctly unloaded and manual in both arms. Both
+  owner outcomes are observation-clean and correct in both arms, with no
+  failure, external access, or broad inventory. It is reviewed candidate
+  evidence only; cross-model aggregation, proof, and promotion remain false.
 
-Corrected live receipts under the v11-v16 evidence protocols are reviewable only
+Corrected live receipts under the v11-v20 evidence protocols are reviewable only
 after canonical user-skill shadows, plugins, and every configured MCP id are
 isolated with the adapter-appropriate mechanism (`--ignore-user-config` for
 CLI exec, explicit per-id disables for prompt inspection and App Server);

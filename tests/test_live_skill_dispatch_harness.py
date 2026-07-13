@@ -309,6 +309,16 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
                 Draft202012Validator(schema).validate(receipt)
                 self.runner.validate_public_receipt(receipt)
 
+    def test_all_public_receipts_are_indexed_in_local_reports_readme(self) -> None:
+        reports_root = REPO_ROOT / "evals" / "reports"
+        report_index = (reports_root / "README.md").read_text(encoding="utf-8")
+        missing = sorted(
+            path.name
+            for path in reports_root.glob("aoa-skill-live-dispatch*.json")
+            if f"]({path.name})" not in report_index
+        )
+        self.assertEqual([], missing)
+
     def test_cohort_expansion_closes_collision_and_manual_reachability_gaps(self) -> None:
         plan = self.runner.load_plan(self.plan_path)
         smoke = self.runner.expand_cohort(REPO_ROOT, plan, "smoke")
@@ -2062,13 +2072,13 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
         )
         self.assertEqual(plan["protocol_revision"], contract["protocol_revision"])
         self.assertEqual(
-            "codex-cli-0.144.1-live-dispatch-evidence-v19",
+            "codex-cli-0.144.1-live-dispatch-evidence-v20",
             plan["protocol_revision"],
         )
         self.assertEqual("codex-cli 0.144.1", self.runner._expected_codex_version(plan))
         unsupported_plan = dict(plan)
         unsupported_plan["protocol_revision"] = (
-            "codex-cli-0.144.1-live-dispatch-evidence-v20"
+            "codex-cli-0.144.1-live-dispatch-evidence-v21"
         )
         with self.assertRaisesRegex(ValueError, "unsupported Codex protocol revision"):
             self.runner._expected_codex_version(unsupported_plan)
@@ -2077,6 +2087,10 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
             contract["schema_version"],
         )
         self.assertEqual("codex-cli 0.144.1", contract["codex_version"])
+        self.assertIn(
+            "codex debug models",
+            contract["preturn_isolation"]["model_catalog"],
+        )
         self.assertEqual(
             "https://learn.chatgpt.com/docs/app-server#start-a-turn-invoke-a-skill",
             contract["official_contract_ref"],
@@ -2903,7 +2917,7 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
                 self.assertEqual([], denied.app_server_calls)
                 self.assertFalse(private_root.exists())
 
-    def test_real_preflight_requires_resource_wrapper_cgroup_and_exact_codex_version(self) -> None:
+    def test_real_preflight_requires_resource_wrapper_runtime_and_model_catalog(self) -> None:
         runner = self.runner
         storage_payload = {"decision": "allow", "ok": True}
         storage_result = runner.subprocess.CompletedProcess(
@@ -2918,15 +2932,41 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
             stdout="codex-cli 0.144.1\n",
             stderr="",
         )
+        model_result = runner.subprocess.CompletedProcess(
+            args=["codex"],
+            returncode=0,
+            stdout=json.dumps(
+                {
+                    "models": [
+                        {
+                            "slug": "gpt-current",
+                            "visibility": "list",
+                            "base_instructions": "must remain outside the preflight receipt",
+                            "supported_reasoning_levels": [
+                                {"effort": "low"},
+                                {"effort": "medium"},
+                            ],
+                        }
+                    ]
+                }
+            ),
+            stderr="",
+        )
         request = {
             "private_root": "/srv/abyss-machine/tmp/ai/aoa-skill-live-evals",
             "estimated_private_bytes": 67_108_864,
             "resource_class": "light",
             "expected_codex_version": "codex-cli 0.144.1",
+            "model": "gpt-current",
+            "effort": "medium",
         }
         cgroup = "0::/user.slice/app.slice/abyss-machine-agents.slice/abyss-machine-agent-light-abc123.service\n"
         with (
-            mock.patch.object(runner.subprocess, "run", side_effect=[storage_result, version_result]),
+            mock.patch.object(
+                runner.subprocess,
+                "run",
+                side_effect=[storage_result, version_result, model_result],
+            ),
             mock.patch.object(runner.Path, "read_text", return_value=cgroup),
             mock.patch.dict(
                 runner.os.environ,
@@ -2937,9 +2977,21 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
             allowed = runner.RealTransport().preflight(request)
         self.assertTrue(allowed["allowed"])
         self.assertEqual("allow", allowed["resource"]["decision"])
+        self.assertEqual("allow", allowed["runtime"]["model_catalog_decision"])
+        self.assertEqual("gpt-current", allowed["runtime"]["selected_model"])
+        self.assertEqual("medium", allowed["runtime"]["selected_effort"])
+        self.assertRegex(
+            str(allowed["runtime"]["model_catalog_sha256"]),
+            r"^[0-9a-f]{64}$",
+        )
+        self.assertNotIn("base_instructions", json.dumps(allowed))
 
         with (
-            mock.patch.object(runner.subprocess, "run", side_effect=[storage_result, version_result]),
+            mock.patch.object(
+                runner.subprocess,
+                "run",
+                side_effect=[storage_result, version_result, model_result],
+            ),
             mock.patch.object(runner.Path, "read_text", return_value="0::/user.slice/app.slice/other.service\n"),
             mock.patch.dict(
                 runner.os.environ,
@@ -2950,6 +3002,50 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
             denied = runner.RealTransport().preflight(request)
         self.assertFalse(denied["allowed"])
         self.assertEqual("deny", denied["resource"]["decision"])
+
+        unsupported_model_request = {**request, "model": "gpt-retired"}
+        with (
+            mock.patch.object(
+                runner.subprocess,
+                "run",
+                side_effect=[storage_result, version_result, model_result],
+            ),
+            mock.patch.object(runner.Path, "read_text", return_value=cgroup),
+            mock.patch.dict(
+                runner.os.environ,
+                {"ABYSS_RESOURCE_CLASS": "light", "ABYSS_RESOURCE_KIND": "agent"},
+                clear=False,
+            ),
+        ):
+            unsupported = runner.RealTransport().preflight(
+                unsupported_model_request
+            )
+        self.assertFalse(unsupported["allowed"])
+        self.assertEqual("deny", unsupported["runtime"]["decision"])
+        self.assertEqual("deny", unsupported["runtime"]["model_catalog_decision"])
+
+        unsupported_effort_request = {**request, "effort": "ultra"}
+        with (
+            mock.patch.object(
+                runner.subprocess,
+                "run",
+                side_effect=[storage_result, version_result, model_result],
+            ),
+            mock.patch.object(runner.Path, "read_text", return_value=cgroup),
+            mock.patch.dict(
+                runner.os.environ,
+                {"ABYSS_RESOURCE_CLASS": "light", "ABYSS_RESOURCE_KIND": "agent"},
+                clear=False,
+            ),
+        ):
+            unsupported_effort = runner.RealTransport().preflight(
+                unsupported_effort_request
+            )
+        self.assertFalse(unsupported_effort["allowed"])
+        self.assertEqual(
+            "effort_not_supported",
+            unsupported_effort["runtime"]["model_catalog_error"],
+        )
 
     def test_app_server_transport_binds_server_thread_id_and_parses_agent_message(self) -> None:
         runner = self.runner

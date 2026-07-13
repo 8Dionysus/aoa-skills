@@ -750,6 +750,20 @@ parity, host admission, and fresh confirmation tokens, execute the four-turn
 `coverage-closure-core-implicit` wave first and review it before either Titan
 child wave.
 
+The first exact-merged v19 core-implicit attempt stops before pair construction
+because its deprecated model is absent from the current ChatGPT-backed Codex
+catalog. Preserve that one-turn transport-only receipt as `needs-rerun`. The
+unchanged four-turn rerun on the current account-visible model completes both
+pairs without a failure, external access, broad inventory, or observation gap.
+ADR gains positive aided route and procedure-disposition lift; memo writeback
+remains correctly unloaded and manual in both arms; both owner-action outcomes
+are correct in both arms. The reviewed public receipt is candidate evidence,
+not cross-model aggregate evidence, proof, or promotion. V20 now requires the
+exact requested model and effort to be visible in a fresh
+`codex debug models` catalog before the private run root or a transport turn is
+created. After exact merge, runtime parity, host admission, and fresh tokens,
+`coverage-closure-titan-implicit-a` is the next bounded wave.
+
 ## Safety And Privacy
 
 The plan locks Git head, authored portable overrides, all portable skill files,
@@ -768,7 +782,7 @@ both sides of this transport-specific contract.
 
 These hermetic invocation rules use contract schema
 `aoa_codex_app_server_skill_input_contract_v14` and protocol revision
-`codex-cli-0.144.1-live-dispatch-evidence-v19`. Retained v1-v18 receipts remain
+`codex-cli-0.144.1-live-dispatch-evidence-v20`. Retained v1-v19 receipts remain
 source-locked to their original protocol and review status and are not upgraded
 in place.
 
