@@ -457,12 +457,33 @@ As of 2026-07-12:
   owner, safety, and final structured-arm boundary clean. It leaves exactly
   three aided source candidates. The first six-turn source-return execution
   closes the approval-gate collision and confirms the `aoa-decision-find`
-  handoff. Remaining source work is limited to the child missing-input
-  disposition and the concrete ATM10 exclusion in `aoa-change-protocol`; the
-  missing aided outcome bytes remain an observation return, not verified proof.
+  handoff. After the second source repair and runtime refresh, the exact rerun
+  has no aided failure class and closes the child disposition plus concrete
+  ATM10 collision. Missing sentinel bytes recur in two controls, so the next
+  change is telemetry-only before full-pilot widening; lift remains candidate
+  evidence rather than proof.
 - Superseded by: none.
 
 ## Review Log
+
+### 2026-07-12 - Close aided source returns and retain control observation gaps
+
+- Exact evidence: all six turns and all three pairs complete after exact merge
+  plus verified 36/36 runtime foundation import; every harness, owner, safety,
+  and authority boundary stays clean.
+- Decision result: `collision-38` aided gains route, complete
+  `aoa-decision-find` trajectory, `blocked_missing_input` procedure, and
+  sentinel-verified owner outcome over control.
+- ATM10 result: `collision-14` aided loads neither generic nor explicit overlay,
+  reports the manual owner route, and verifies the bounded owner outcome.
+- Approval result: `collision-09` remains correct in both arms, giving honest
+  zero lift rather than manufacturing a treatment effect.
+- Observation return: the exact owner-action command exits zero without
+  sentinel bytes in two control arms. Keep both outcomes unverified and do not
+  treat their positive aided-control lift as stable proof.
+- Decision: preserve the public-safe receipt as reviewed candidate evidence;
+  add explicit per-arm and pair-level output-observation-gap telemetry without
+  changing verification, then widen to the full pilot.
 
 ### 2026-07-12 - Repair the two narrowed source returns
 
