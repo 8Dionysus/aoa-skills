@@ -48,6 +48,7 @@ NON_AGENTS_COMMAND_BLOCK_ALLOWED_FILES = {
 }
 THIN_VALIDATION_CLI_ADAPTERS = (
     "scripts/validation/validate_agent_skills.py",
+    "scripts/validation/validate_skill_evidence_readouts.py",
     "scripts/validation/validate_tiny_router_inputs.py",
     "scripts/validation/validate_support_resources.py",
     "scripts/validation/lint_trigger_evals.py",
@@ -61,6 +62,7 @@ OWNER_MODULE_LIMITS = {
     "scripts/validation/validators/support_resource_surface.py": 180,
     "scripts/validation/validators/trigger_eval_surface.py": 180,
     "scripts/validation/validators/pack_profile_surface.py": 120,
+    "scripts/validation/validators/skill_evidence_readout_surface.py": 100,
 }
 
 

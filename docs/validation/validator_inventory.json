@@ -298,6 +298,31 @@
       "status": "active"
     },
     {
+      "path": "scripts/validation/validate_skill_evidence_readouts.py",
+      "family": "generated/evidence-readout",
+      "owner_surface": "scripts/validation/validators/skill_evidence_readout_surface.py",
+      "layer": "generated/advisory-boundary",
+      "lane": "generated-export/export/release",
+      "mode": "blocking",
+      "inputs": [
+        "generated/skill_evaluation_matrix.json",
+        "generated/skill_quality_audit.json and .md",
+        "generated/skill_promotion_pressure.json and .md"
+      ],
+      "outputs": [
+        "committed JSON membership/status/scope and Markdown projection parity verdict"
+      ],
+      "callers": [
+        "scripts/lanes/validation_lanes.py",
+        "tests/test_skill_evidence_readout_freshness.py"
+      ],
+      "overlap": "Checks deterministic JSON/Markdown completeness only; advisory builders still own live evidence collection.",
+      "pain": "Committed advisory reports could silently omit newly added skills while ordinary gates stayed green.",
+      "decision": "add",
+      "failure_route": "Regenerate quality and promotion readouts with their owner commands, then review live-evidence freshness separately.",
+      "status": "active"
+    },
+    {
       "path": "scripts/builders/build_trigger_eval_cases.py",
       "family": "activation/trigger",
       "owner_surface": "mechanics/audit/docs/TRIGGER_EVALS.md",
