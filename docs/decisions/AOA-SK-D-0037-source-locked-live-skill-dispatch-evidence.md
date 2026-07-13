@@ -474,11 +474,35 @@ As of 2026-07-12:
   single-arm owner-action gaps in `collision-05` and `collision-06`; the second
   exact four-turn paired return is also clean. Together the returns close every
   outstanding core-wave observation gap without changing skill source or
-  evidence rules. The safety-overlay wave is next but remains fail-closed on
-  incomplete source-authored contracts.
+  evidence rules. The safety-overlay wave was next and remained fail-closed on
+  incomplete source-authored contracts until its complete source pass closed
+  that design gate at 11/11 procedure and 11/11 owner-action pairs, with six
+  new skill refs entering the confirmation lock. No safety-overlay live
+  evidence exists yet.
 - Superseded by: none.
 
 ## Review Log
+
+### 2026-07-12 - Close the safety-overlay source contracts
+
+- Scope: `full-collision-safety-overlays` contains exactly both arms of
+  `collision-09` through `collision-19`, for 22 turns and 11 pairs.
+- Procedure split: manual risk/project cases 09-14, 16, 18, and 19 remain
+  `not_applicable` with visible owner boundaries; generic base cases 15 and 17
+  select their skills but stop at `blocked_missing_input` for absent owner
+  repository evidence.
+- Owner actions: every pair has one deterministic source-derived decision among
+  three sorted candidates. None authorizes production mutation, hidden overlay
+  loading, raw publication, or fabricated document/change authority.
+- Source lock: add only the six newly cited `SKILL.md` sources. Correct the
+  collision-14 rationale from `explicit-only` to the canonical
+  `explicit-preferred` mode plus the collision's deliberate manual owner route;
+  keep its expected disposition and owner action unchanged.
+- Verification: the focused synthetic cohort completes 22/22, validates both
+  receipt schemas, and raises packet coverage to 11/11 on both contract axes.
+- Authority: this is contract readiness only. Live execution still requires an
+  exact merged source, runtime parity, host gates, both confirmations, and
+  reviewed candidate evidence; proof and promotion authority remain false.
 
 ### 2026-07-12 - Close the core-wave observation loop
 

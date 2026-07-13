@@ -246,6 +246,13 @@ Tracking starts with the community-docs baseline for this repository.
   procedure lift, and produce observation-clean both-correct outcomes. Together
   the two reviewed returns close every outstanding observation gap from the
   first core-engineering wave while preserving candidate-only authority.
+- The 22-turn safety-overlay wave is now source-contract-complete at 11/11
+  procedure pairs and 11/11 owner-action pairs. Seven manual risk/project
+  routes remain `not_applicable` with explicit owner boundaries, two generic
+  routes use `blocked_missing_input`, and the existing 09/14 anchors are
+  preserved. Six newly referenced skill sources enter the confirmation lock;
+  collision-14 rationale now matches its `explicit-preferred` source while
+  retaining the collision's deliberate manual-overlay boundary.
 - `AOA-SK-D-0037` records why live cohorts remain operator-confirmed candidate
   evidence and now clarifies prompt-surface isolation and evidence-stage grading
   after the contaminated smoke; deterministic harness validation, not model
