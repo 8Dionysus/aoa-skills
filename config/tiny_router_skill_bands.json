@@ -354,14 +354,15 @@
     "aoa-decision-find": {
       "band": "decision-doc-authority",
       "positive_cues": [
+        "decision graph",
         "find decision",
         "decision lookup",
+        "source-note verification",
         "changed path impact",
         "source surface decisions",
         "owner surface decisions",
         "prior rationale",
-        "graph match",
-        "source-note verification"
+        "graph match"
       ],
       "negative_cues": [
         "new decision note",
@@ -798,6 +799,7 @@
     "aoa-safe-infra-change": {
       "band": "risk-ops-safety",
       "positive_cues": [
+        "configuration change",
         "infra change",
         "service config",
         "deployment implication",
