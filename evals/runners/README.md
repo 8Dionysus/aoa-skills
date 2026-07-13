@@ -21,8 +21,8 @@ outcome-observation coverage separately. It remains executable only at 11 of
 11 for both; the current corpus now has 11/11 procedure contracts and 11/11
 objective outcomes. This makes planning eligible to print the two exact live
 confirmation tokens, but does not bypass storage, resource, runtime, prompt,
-shadow, or operator-confirmation gates and does not imply that `pilot13` has
-run.
+shadow, or operator-confirmation gates. Planning eligibility alone never proves
+a run; the first reviewed `pilot13` result is described below.
 The procedure source contract lives at
 `evals/suites/aoa-skill-live-dispatch-procedures.json`; the separate bounded
 owner-action corpus lives at
@@ -255,6 +255,16 @@ dispatch, load, fixture-execution, and boundary contracts. This closes the
 inventory-harness return only; pilot execution remains blocked until the
 source corpus supplies 11/11 procedure contracts and 11/11 owner-bound outcome
 observations.
+
+After those gates closed, the first exact-merged 30-turn `pilot13` completed
+without transport, prompt, filesystem, inventory, fixture, owner-action, or
+authority contamination. All eleven bounded outcomes were correct in both
+arms. Its reviewed public receipt is still `needs-rerun`: the run exposed
+manual-policy collision candidates and, separately, contract/grader gaps for
+decision graph-first routing, ambient control routes, manual no-dispatch
+disposition, and an Abyss overlay-to-base hierarchy. Treat those as distinct
+adaptive returns; do not collapse them into one pilot score or edit a skill
+until the harness-side returns are removed.
 
 See `evals/suites/aoa-skill-live-dispatch-harness.suite.md` and
 `docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md` for

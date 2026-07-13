@@ -277,6 +277,15 @@ UUID_RE = re.compile(
     r"[0-9a-fA-F]{4}-[0-9a-fA-F]{12}\b"
 )
 TRANSPORT_ID_RE = re.compile(r"(?i)\b(?:turn|thread|session)[_-][A-Za-z0-9-]{3,}\b")
+TRANSPORT_ID_PREFIX_RE = re.compile(r"(?i)^(?:turn|thread|session)[_-]")
+PUBLIC_SKILL_NAME_KEYS = frozenset(
+    {
+        "expected_selected_child_skill",
+        "expected_target_skill",
+        "hierarchy_report_expected_root_skill",
+        "trajectory_expected_child_skill",
+    }
+)
 SKILL_ROOT_LINE_RE = re.compile(r"^- `(?P<alias>r[0-9]+)` = `(?P<path>/[^`]+)`$")
 SKILL_ENTRY_LINE_RE = re.compile(
     r"^- (?P<name>[A-Za-z0-9][A-Za-z0-9:-]*): (?P<description>.*) "
@@ -4213,7 +4222,18 @@ def validate_public_receipt(public: dict[str, Any]) -> None:
             raise PublicReceiptSafetyError(f"absolute path leaked at {'.'.join(path)}")
         if CREDENTIAL_RE.search(value):
             raise PublicReceiptSafetyError(f"credential-shaped value leaked at {'.'.join(path)}")
-        if UUID_RE.search(value) or TRANSPORT_ID_RE.search(value):
+        if UUID_RE.search(value):
+            raise PublicReceiptSafetyError(f"transport/session identifier leaked at {'.'.join(path)}")
+        if path and path[-1] in PUBLIC_SKILL_NAME_KEYS:
+            if (
+                PORTABLE_SKILL_NAME_RE.fullmatch(value) is None
+                or TRANSPORT_ID_PREFIX_RE.search(value)
+            ):
+                raise PublicReceiptSafetyError(
+                    f"invalid public skill identifier at {'.'.join(path)}"
+                )
+            continue
+        if TRANSPORT_ID_RE.search(value):
             raise PublicReceiptSafetyError(f"transport/session identifier leaked at {'.'.join(path)}")
     if public.get("proof_authority") is not False or public.get("promotion_allowed") is not False:
         raise PublicReceiptSafetyError("public receipt widened proof or promotion authority")

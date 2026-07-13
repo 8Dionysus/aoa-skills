@@ -155,6 +155,16 @@ temporary root and must not be copied into this directory.
   The receipt validates observability and anti-inspection boundaries only; it
   does not prove skill-specific outcome lift, whole-task completion, or pilot
   readiness beyond the still-incomplete 1/11 plus 1/11 coverage posture.
+- [aoa-skill-live-dispatch-pilot13-20260712-v12-reviewed-mixed-returns-needs-rerun.json](aoa-skill-live-dispatch-pilot13-20260712-v12-reviewed-mixed-returns-needs-rerun.json)
+  preserves the first complete exact-merged 30-turn pilot after both source
+  coverage gates reached 11/11. All transport, prompt, filesystem, inventory,
+  fixture, owner-action, and authority boundaries stayed clean, and every
+  owner-action pair was correct in both arms. The receipt remains
+  `needs-rerun` because review separated real manual-policy collision pressure
+  from premature child/procedure expectations, ambient-control failure
+  overclassification, and one valid overlay-to-base hierarchy that the
+  structured report grader did not recognize. It is an adaptive-return map,
+  not a negative family verdict.
 
 Corrected live receipts under the v11/v12 evidence protocols are reviewable only
 after canonical user-skill shadows, plugins, and every configured MCP id are
@@ -185,9 +195,10 @@ selected-child trajectory, and selected-procedure-disposition report lift
 separately. Fixture execution is its own contract. Objective outcome lift is
 `not_scored_no_observable_outcome` until an owner-bound observable surface
 exists; the probe and model report never become their own grader. Public
-validation rejects embedded absolute host
-paths as well as raw prompts,
-transport ids, and credential-shaped values. Retained v1/v2 smokes remain
+validation rejects embedded absolute host paths as well as raw prompts,
+transport ids, and credential-shaped values. Canonical repo skill names remain
+public only in schema-typed skill-name fields, so names such as
+`aoa-session-donor-harvest` do not become false transport-id leaks. Retained v1/v2 smokes remain
 historical `needs-rerun` evidence; retained v3-v10 reports keep their original
 review status and grader semantics, including v4's budget label and v5's
 single-output read label, while v6 keeps its zero-duration and wrapper-success
