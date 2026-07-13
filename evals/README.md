@@ -119,8 +119,15 @@ Active first local corpus:
   four-pair return this means four complete source contracts, zero
   route/procedure-score-eligible pairs, four manual non-activation guards, and
   four owner-outcome pairs.
-  The return still requires exact merge, refreshed installed-profile parity,
-  host gates, and both confirmation tokens.
+  The exact-merged v18 return subsequently completes all eight arms with every
+  objective non-activation, fixture, and owner-outcome contract correct; route
+  and procedure effects remain intentionally unscored. The next
+  authority-routing source pass closes all 11 procedure and 11 owner-action
+  contracts across collisions 34-43 and 49. Six pairs are route/procedure
+  score-eligible and five retain hidden-manual guards. Its focused 22-turn
+  synthetic execution validates both receipt schemas, but no live
+  authority-routing result exists before exact merge, installed-profile
+  parity, host gates, both confirmation tokens, and reviewed execution.
 
 These files are local evidence notes. They do not publish central proof
 acceptance, scoring, verdicts, regression truth, or proof doctrine.

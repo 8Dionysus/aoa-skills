@@ -47,6 +47,11 @@ arms of only `collision-21`, `collision-22`, `collision-25`, and
 `collision-33`. Under v18 its four hidden manual targets have objective
 non-activation guards, while target route and procedure effects remain
 ineligible unless the native prompt actually exposes the target.
+The 22-turn `full-collision-authority-routing` wave covers collisions 34-43
+plus 49. Its source corpus is complete at 11/11 procedure and owner-outcome
+pairs: six prompt-visible routes are score-eligible, while five hidden manual
+targets use objective non-activation guards. Contract readiness does not
+authorize live execution or supply proof/promotion authority.
 The procedure source contract lives at
 `evals/suites/aoa-skill-live-dispatch-procedures.json`; the separate bounded
 owner-action corpus lives at

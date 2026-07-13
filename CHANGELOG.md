@@ -297,6 +297,14 @@ Tracking starts with the community-docs baseline for this repository.
   owner-action outcome. Route and procedure effects remain deliberately
   `not_scored_target_not_prompt_visible`, so this reviewed candidate receipt
   closes the measurement return without manufacturing lift or proof authority.
+- The authority-routing source pass closes the next deterministic gate for
+  collisions 34-43 and 49. All 11 pairs now have procedure and owner-action
+  contracts: six prompt-visible routes are score-eligible and stop on their
+  source-authored child or missing-input boundary, while five hidden manual
+  targets keep objective non-activation guards. Decision-create and
+  decision-correct newly enter the confirmation source lock. The focused
+  22-turn synthetic run validates both receipt schemas; no live authority-wave
+  result, proof acceptance, or promotion is claimed.
 - Live-dispatch evidence v17 repairs both shared boundaries red-first. Portable
   export now prepends a policy-derived activation sentence to all 43 `manual`
   and two `suggest` descriptions, allowing only explicit invocation or a

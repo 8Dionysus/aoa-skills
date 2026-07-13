@@ -979,3 +979,28 @@ an index generated before the live run; that host-version skew is tracked as a
 separate owner issue rather than rewritten as skill evidence. With this bounded
 return closed, `full-collision-authority-routing` is the next semantic wave,
 subject to its own contract, source-lock, runtime-parity, and host gates.
+
+## 2026-07-13 authority-routing contract closure
+
+The exact-merged v18 plan initially keeps the 22-turn authority-routing wave
+fail-closed at 3/11 procedure contracts and 3/11 owner outcomes. A bounded
+authority pass separates authored skill meaning from the eval answer keys,
+generated cases, runtime receipts, and downstream proof authority before
+filling the gap. Existing anchors 38, 42, and 49 remain unchanged.
+
+Eight new paired contracts cover collisions 34-37, 39-41, and 43. Prompt-visible
+source-of-truth and bounded-context routes 34, 36, 37, and 43 stop at
+`blocked_missing_input` because the fixture supplies labels but no target
+repository, candidate files, owner interfaces, or source packet. Hidden manual
+routes 35, 39, 40, and 41 remain `not_applicable`: the Abyss infra overlay
+requires explicit invocation and local authority, while the three decision
+children require parent selection through `aoa-decision`. Decision-create and
+decision-correct enter the confirmation source lock for the first time.
+
+The resulting packet has 11 implicit pairs, 11 procedure contracts, six
+route/procedure-score-eligible pairs, five manual non-activation guards, and 11
+owner-observable outcomes. The focused deterministic execution completes all
+22 arms and validates both receipt schemas. This closes only source-contract
+readiness. It does not authorize or predict a live run, grant proof or
+promotion authority, or replace exact merge, installed-profile parity, host
+admission, both confirmation tokens, and reviewed live evidence.

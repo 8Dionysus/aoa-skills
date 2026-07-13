@@ -27,6 +27,8 @@
     "evals/suites/aoa-skill-live-dispatch-outcomes.json",
     "skills/core/engineering/aoa-decision/SKILL.md",
     "skills/core/engineering/aoa-decision-find/SKILL.md",
+    "skills/core/engineering/aoa-decision-create/SKILL.md",
+    "skills/core/engineering/aoa-decision-correct/SKILL.md",
     "skills/core/engineering/aoa-bounded-context-map/SKILL.md",
     "skills/core/engineering/aoa-change-protocol/SKILL.md",
     "skills/core/engineering/aoa-contract-test/SKILL.md",
