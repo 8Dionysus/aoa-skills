@@ -427,6 +427,15 @@ were correct in both arms. The model change is part of each receipt's source
 lock and prevents unqualified aggregate comparison. V20 adds the catalog gate
 above before Titan implicit A may run.
 
+That exact-merged v20 Titan A run completes 16/16 turns and 8/8 pairs. The
+fresh account catalog admits the exact model and medium effort before the run
+root is created. Every hidden Titan target remains unselected, unread, and
+unloaded in both arms; all manual non-activation, fixture, owner-boundary, and
+owner-outcome contracts are correct, with no external access, broad inventory,
+failure, or observation gap. Route and procedure effects remain unscored by
+design. Preserve the reviewed candidate receipt, land its writeback, and repeat
+exact runtime plus host gates before Titan implicit B.
+
 The first exact v16 core wave completes 16/16. Every aided arm gains route and
 procedure correctness, while six outcome pairs are observation-clean and
 correct in both arms. Three fixture commands across `collision-01` and

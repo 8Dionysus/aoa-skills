@@ -331,6 +331,15 @@ temporary root and must not be copied into this directory.
   owner outcomes are observation-clean and correct in both arms, with no
   failure, external access, or broad inventory. It is reviewed candidate
   evidence only; cross-model aggregation, proof, and promotion remain false.
+- [aoa-skill-live-dispatch-coverage-closure-titan-implicit-a-20260713-v20-reviewed.json](aoa-skill-live-dispatch-coverage-closure-titan-implicit-a-20260713-v20-reviewed.json)
+  preserves the exact-merged 16-turn Titan A implicit wave after the v20 model
+  catalog gate allowed the account-visible model and medium effort. All eight
+  hidden Titan targets remain unselected, unread, and unloaded in both arms;
+  every manual non-activation, fixture, owner-boundary, and owner-outcome
+  contract is correct with no failure, external access, broad inventory, or
+  observation gap. Route and procedure effects remain intentionally unscored.
+  This is reviewed candidate evidence only, not proof, promotion, or pressure
+  to make explicit Titan skills implicit.
 
 Corrected live receipts under the v11-v20 evidence protocols are reviewable only
 after canonical user-skill shadows, plugins, and every configured MCP id are

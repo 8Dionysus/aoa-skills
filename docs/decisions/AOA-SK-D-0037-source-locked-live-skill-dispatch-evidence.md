@@ -515,11 +515,44 @@ As of 2026-07-13:
   failure or observation gap. ADR gained positive route plus procedure lift;
   memo writeback stayed manually inactive in both arms; both owner outcomes
   were correct in both arms. Protocol v20 now fail-closes on the fresh local
-  model catalog before spend. Titan implicit A is the next live step after
-  exact merge, runtime parity, host admission, and fresh confirmation tokens.
+  model catalog before spend. The exact-merged Titan A wave then completed all
+  16 turns and eight pairs: every hidden target stayed unselected, unread, and
+  unloaded in both arms, while all manual non-activation, fixture,
+  owner-boundary, and owner-outcome contracts were correct. Titan implicit B is
+  the next live step after this writeback lands, runtime parity, host admission,
+  and fresh confirmation tokens.
 - Superseded by: none.
 
 ## Review Log
+
+### 2026-07-13 - Preserve Titan A explicit-only evidence under v20
+
+- Trigger: after core closure and the account-aware model gate landed, the
+  first eight Titan scaffold pairs were source-contract-complete but had no
+  live implicit evidence. All eight targets are intentionally absent from the
+  native prompt and require deliberate or explicit activation.
+- Admission: exact merged commit `87544bd` verified repo-default 57/57,
+  installed foundation 36/36, repo and installed prompt visibility 12/12, no
+  hidden decision/eval child, local eval 2/2 ready, and an account-visible
+  `gpt-5.6-sol` medium catalog entry. Storage allowed the 256 MiB estimate.
+  Critical zram with zero current memory PSI required the standard interactive
+  medium override; the forced plan had no denied reason, used a soft
+  `MemoryHigh`, and set no `MemoryMax`.
+- Evidence: the v20 run completed 16/16 turns and 8/8 pairs with no failure,
+  external access, broad inventory, or observation gap. Every target remained
+  unselected, unread, and unloaded; all 16 manual non-activation, fixture,
+  owner-boundary, and one-attempt owner-outcome observations were correct. The
+  host wrapper returned zero with about 464 MiB peak memory and no swap.
+  Post-run storage and resource validators were 19/19 and 16/16; memory had 35
+  checks, zero failures, and the pre-existing index-schema warning.
+- Decision: preserve the reviewed public receipt and keep target route plus
+  procedure effects `not_scored_target_not_prompt_visible`. Correct absence of
+  implicit activation is not evidence that the Titan skills are ineffective
+  and creates no reason to weaken their explicit-only boundary. Candidate
+  evidence still grants neither central proof nor promotion authority.
+- Next: land the receipt and indexes, verify exact merged runtime and the fresh
+  model catalog again, then run only `coverage-closure-titan-implicit-b` before
+  opening root-trajectory or structured closure waves.
 
 ### 2026-07-13 - Preserve core closure evidence and gate current model support
 
