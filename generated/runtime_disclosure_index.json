@@ -516,6 +516,7 @@
       "trust_policy_ref": "generated/trust_policy_matrix.json#aoa-approval-gate-check",
       "collision_family": "safety-and-mutation-gating",
       "collision_notes": [
+        "aoa-change-protocol is the generic bounded-change workflow and must defer when the task is only approval classification or another explicit safety owner controls the route.",
         "aoa-approval-gate-check classifies risk and whether execution is allowed at all.",
         "aoa-dry-run-first insists on preview or simulation before a real mutation.",
         "aoa-safe-infra-change handles bounded infra or config changes with rollback thinking.",
@@ -801,7 +802,7 @@
     {
       "name": "aoa-change-protocol",
       "display_name": "AoA Change Protocol",
-      "description": "Plan and execute a bounded, non-trivial repository change with explicit verification and reporting. Use when code, config, docs, or operational surfaces change in a meaningful way and the task benefits from an explicit plan. Do not use for trivial wording fixes or when a more specific risk skill fits better.",
+      "description": "Plan and execute a bounded, non-trivial repository change with explicit verification and reporting. Use when code, config, docs, or operational surfaces change meaningfully and no narrower owner controls the route. Do not use when the task is only to classify whether a production or sensitive action is allowed; keep the explicit-only approval-gate owner unloaded and require a deliberate manual route. Do not use when a project-specific manual overlay is the semantic owner; do not substitute the generic base workflow or load the overlay implicitly. Do not use for trivial wording fixes.",
       "short_description": "Plan, scope, verify, report",
       "path": ".agents/skills/aoa-change-protocol/SKILL.md",
       "skill_dir": ".agents/skills/aoa-change-protocol",
@@ -832,10 +833,10 @@
         "Trigger boundary": "the change affects code, config, docs, or operational surfaces in a meaningful way; the task benefits from an explicit plan and verification path",
         "Inputs": "target goal; owner repository or route surface",
         "Outputs": "explicit plan; scoped change",
-        "Procedure": "choose the owner repository and read the nearest route card, `AGENTS.md`, source-of-truth surfaces, and local validation path before planning; state the goal, touched surfaces, and evidence already inspected; if the request depends on prior work, inspect the current repo state...",
+        "Procedure": "choose the owner repository and read the nearest route card, `AGENTS.md`, source-of-truth surfaces, and local validation path before planning; before treating the generic workflow as selected, check whether the task is",
         "Contracts": "the change must remain reviewable; verification must be explicit, not implied",
         "Risks and anti-patterns": "over-formalizing trivial edits; symbolic verification that creates false safety",
-        "Verification": "confirm the owner route and relevant source surfaces were inspected before apply; confirm the change stayed scoped",
+        "Verification": "confirm the owner route and relevant source surfaces were inspected before apply; confirm approval-classification and manual project-overlay tasks were not",
         "Technique traceability": "AOA-T-0001 from `8Dionysus/aoa-techniques` at `cd276f040d55d490bd015b8698c7a5d594b9f875` using path `techniques/execution/agent-workflows-core/plan-diff-apply-verify-report/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Vali...",
         "Adaptation points": "local source-of-truth files; local validation commands"
       },
@@ -909,7 +910,7 @@
           }
         }
       },
-      "disclose_card_markdown": "### aoa-change-protocol\n- Summary: Plan, scope, verify, report\n- Use when: Plan and execute a bounded, non-trivial repository change with explicit verification and reporting. Use when code, config, docs, or operational surfaces change in a meaningful way and the task benefits from an explicit plan. Do not use for trivial wording fixes or when a more specific risk skill fits better.\n- Trust posture: portable-core\n- Mutation surface: repo\n"
+      "disclose_card_markdown": "### aoa-change-protocol\n- Summary: Plan, scope, verify, report\n- Use when: Plan and execute a bounded, non-trivial repository change with explicit verification and reporting. Use when code, config, docs, or operational surfaces change meaningfully and no narrower owner controls the route. Do not use when the task is only to classify whether a production or sensitive action is allowed; keep the explicit-only approval-gate owner unloaded and require a deliberate manual route. Do not use when a project-specific manual overlay is the semantic owner; do not substitute the generic base workflow or load the overlay implicitly. Do not use for trivial wording fixes.\n- Trust posture: portable-core\n- Mutation surface: repo\n"
     },
     {
       "name": "aoa-checkpoint-closeout-bridge",
@@ -1365,7 +1366,7 @@
     {
       "name": "aoa-decision",
       "display_name": "AoA Decision",
-      "description": "Route AoA decision-lane work through the workspace decision graph first, checking status/issues and the smallest impact packet before choosing find, create, or correct while keeping repo-local decision files authoritative. Use when the task mentions docs/decisions, decision indexes, decision graph, ADRs, changed paths, source-surface rationale, supersession, or cross-repo decision symmetry. Do not use for ordinary docs edits, unresolved source-of-truth mapping, or trivial changes that do not need durable rationale.",
+      "description": "Route AoA decision-lane work by classifying the task, then select and fully read exactly one find, create, or correct child before that child performs graph lookup or a write, while keeping repo-local decision files authoritative. Use when the task mentions docs/decisions, decision indexes, decision graph, ADRs, changed paths, source-surface rationale, supersession, or cross-repo decision symmetry. Do not stop at the root after naming a child. Do not use for ordinary docs edits, unresolved source-of-truth mapping, or trivial changes that do not need durable rationale.",
       "short_description": "Route decision-lane work",
       "path": ".agents/skills/aoa-decision/SKILL.md",
       "skill_dir": ".agents/skills/aoa-decision",
@@ -1399,7 +1400,7 @@
         "Procedure": "classify the task:; find or understand: use `aoa-decision-find`",
         "Contracts": "the graph accelerates lookup; it does not own decision truth; source files in the owning repository remain stronger than MCP packets,",
         "Risks and anti-patterns": "treating the workspace graph as an authority instead of a read model; loading every subskill for a simple lookup",
-        "Verification": "confirm exactly one route was selected; confirm `aoa_decisions` was used first when available, or the fallback was named",
+        "Verification": "confirm exactly one route was selected; confirm the selected child was fully read before its graph lookup or write",
         "Technique traceability": "AOA-T-0033 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/instruction/docs-boundary/decision-rationale-recording/TECHNIQUE.md` and sections: Intent, When to use, When not to use, Inputs, Outputs, Core procedure, Contracts,...",
         "Adaptation points": "stable MCP server name for the current environment; repo-local decision ID prefix and template"
       },
@@ -1475,7 +1476,7 @@
           }
         }
       },
-      "disclose_card_markdown": "### aoa-decision\n- Summary: Route decision-lane work\n- Use when: Route AoA decision-lane work through the workspace decision graph first, checking status/issues and the smallest impact packet before choosing find, create, or correct while keeping repo-local decision files authoritative. Use when the task mentions docs/decisions, decision indexes, decision graph, ADRs, changed paths, source-surface rationale, supersession, or cross-repo decision symmetry. Do not use for ordinary docs edits, unresolved source-of-truth mapping, or trivial changes that do not need durable rationale.\n- Trust posture: portable-core\n- Mutation surface: repo\n"
+      "disclose_card_markdown": "### aoa-decision\n- Summary: Route decision-lane work\n- Use when: Route AoA decision-lane work by classifying the task, then select and fully read exactly one find, create, or correct child before that child performs graph lookup or a write, while keeping repo-local decision files authoritative. Use when the task mentions docs/decisions, decision indexes, decision graph, ADRs, changed paths, source-surface rationale, supersession, or cross-repo decision symmetry. Do not stop at the root after naming a child. Do not use for ordinary docs edits, unresolved source-of-truth mapping, or trivial changes that do not need durable rationale.\n- Trust posture: portable-core\n- Mutation surface: repo\n"
     },
     {
       "name": "aoa-decision-correct",
@@ -1890,6 +1891,7 @@
       "trust_policy_ref": "generated/trust_policy_matrix.json#aoa-dry-run-first",
       "collision_family": "safety-and-mutation-gating",
       "collision_notes": [
+        "aoa-change-protocol is the generic bounded-change workflow and must defer when the task is only approval classification or another explicit safety owner controls the route.",
         "aoa-approval-gate-check classifies risk and whether execution is allowed at all.",
         "aoa-dry-run-first insists on preview or simulation before a real mutation.",
         "aoa-safe-infra-change handles bounded infra or config changes with rollback thinking.",
@@ -2814,6 +2816,7 @@
       "trust_policy_ref": "generated/trust_policy_matrix.json#aoa-local-stack-bringup",
       "collision_family": "safety-and-mutation-gating",
       "collision_notes": [
+        "aoa-change-protocol is the generic bounded-change workflow and must defer when the task is only approval classification or another explicit safety owner controls the route.",
         "aoa-approval-gate-check classifies risk and whether execution is allowed at all.",
         "aoa-dry-run-first insists on preview or simulation before a real mutation.",
         "aoa-safe-infra-change handles bounded infra or config changes with rollback thinking.",

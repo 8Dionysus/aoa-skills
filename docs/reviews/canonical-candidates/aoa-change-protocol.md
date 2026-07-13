@@ -48,6 +48,23 @@
 - decision: keep the skill canonical and strengthen it around owner-route inspection, source-grounded planning, generated/export rebuilds, and post-change route review.
 - blocker status: none; the update does not change status, scope, or invocation posture.
 
+## 2026-07-12 adaptive boundary audit
+
+- audit trigger: the complete exact-merged v14 `pilot13-returns` run selected
+  the generic workflow for an explicit-only production approval classification
+  and for an ATM10 manual-overlay prompt.
+- evidence checked: the reviewed public receipt, both target skill sources,
+  `aoa-change-protocol` source and prompt-visible portable description,
+  activation policy, collision-family config, and red-first trigger fixtures.
+- runtime `SKILL.md` meaning changed: yes, boundedly. The generic workflow now
+  excludes approval-only classification and project-specific manual-overlay
+  ownership before planning begins; it does not load either explicit owner.
+- decision: keep the skill canonical and keep implicit invocation for genuinely
+  generic bounded changes. Narrowing the negative boundary is preferable to
+  making the whole workflow manual or weakening the explicit target policies.
+- blocker status: the smallest affected exact-source live rerun remains
+  required before claiming that the runtime collision is repaired.
+
 ## Recommendation
 
 Canonical promotion landed in this pass.

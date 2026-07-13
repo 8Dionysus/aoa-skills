@@ -11,6 +11,17 @@ REPO_ROOT = pathlib.Path(__file__).resolve().parents[1]
 
 
 class DescriptionTriggerBuilderTests(unittest.TestCase):
+    def test_live_return_boundaries_are_prompt_visible(self):
+        overrides = json.loads(
+            (REPO_ROOT / "config" / "portable_skill_overrides.json").read_text()
+        )["skills"]
+        decision = overrides["aoa-decision"]["description"]
+        change = overrides["aoa-change-protocol"]["description"]
+
+        self.assertIn("select and fully read exactly one", decision)
+        self.assertIn("production or sensitive action is allowed", change)
+        self.assertIn("project-specific manual overlay is the semantic owner", change)
+
     def test_builder_has_no_drift(self):
         completed = subprocess.run(
             [

@@ -2,7 +2,7 @@
 name: aoa-change-protocol
 scope: core
 status: canonical
-summary: Bounded workflow for a local coding agent to read the owner route, plan a scoped change, verify it explicitly, and report it clearly.
+summary: Bounded workflow for a local coding agent to read the owner route, plan a scoped change, verify it explicitly, and report it clearly, while deferring approval classification and manual project overlays to their explicit owners.
 invocation_mode: explicit-preferred
 technique_dependencies:
   - AOA-T-0001
@@ -26,6 +26,8 @@ Use this skill when:
 Do not use this skill when:
 - the edit is tiny and has no meaningful review or operational consequence
 - a more specific risk skill should be used instead
+- the task is only to classify whether a production or sensitive action is allowed; keep the explicit-only approval-gate owner unloaded and require a deliberate manual route
+- a project-specific manual overlay is the semantic owner; do not substitute the generic base workflow or load the overlay implicitly
 
 ## Inputs
 
@@ -52,8 +54,12 @@ Do not use this skill when:
 ## Procedure
 
 1. choose the owner repository and read the nearest route card, `AGENTS.md`, source-of-truth surfaces, and local validation path before planning
-2. state the goal, touched surfaces, and evidence already inspected; if the request depends on prior work, inspect the current repo state rather than relying on memory
-3. when prior-session behavior matters for risk, speed, or recurrence, use
+2. before treating the generic workflow as selected, check whether the task is
+   only approval classification or whether a manual project overlay owns the
+   repo-relative route. In either case, keep the explicit owner unloaded,
+   report the deliberate manual route, and stop this generic procedure
+3. state the goal, touched surfaces, and evidence already inspected; if the request depends on prior work, inspect the current repo state rather than relying on memory
+4. when prior-session behavior matters for risk, speed, or recurrence, use
    `aoa-session-memory-evidence-route` or an equivalent read-only
    `aoa-session-memory-mcp` packet; for a stable skill/MCP/hook/tool/script/test
    anchor, ask for `usage-chain` first when the question is how it was used,
@@ -63,13 +69,13 @@ Do not use this skill when:
    audit, neighborhood, literal, graph, goal, or answer routes only when the
    first packet is stale, truncated, missing refs, or too coarse; use the result
    as route evidence only
-4. identify the main risk, owner boundary, and rollback or recovery shape before editing
-5. prepare the smallest reviewable change that follows the current source route
-6. avoid unrelated cleanup, opportunistic refactors, or importing a sibling owner's authority into the local surface
-7. apply the change inside the declared scope
-8. run or name explicit verification, including generated/export rebuilds when source surfaces feed derived outputs
-9. perform the narrow post-change route review only for surfaces whose meaning actually moved
-10. report what changed, what was verified, what was skipped, what remains risky, and where the next owner route is
+5. identify the main risk, owner boundary, and rollback or recovery shape before editing
+6. prepare the smallest reviewable change that follows the current source route
+7. avoid unrelated cleanup, opportunistic refactors, or importing a sibling owner's authority into the local surface
+8. apply the change inside the declared scope
+9. run or name explicit verification, including generated/export rebuilds when source surfaces feed derived outputs
+10. perform the narrow post-change route review only for surfaces whose meaning actually moved
+11. report what changed, what was verified, what was skipped, what remains risky, and where the next owner route is
 
 ## Contracts
 
@@ -96,6 +102,8 @@ Do not use this skill when:
 ## Verification
 
 - confirm the owner route and relevant source surfaces were inspected before apply
+- confirm approval-classification and manual project-overlay tasks were not
+  absorbed by the generic workflow or used to load an explicit owner implicitly
 - confirm the change stayed scoped
 - confirm at least one explicit verification step was run or intentionally skipped with explanation
 - if prior-session evidence was used, confirm the usage-chain, dossier, or

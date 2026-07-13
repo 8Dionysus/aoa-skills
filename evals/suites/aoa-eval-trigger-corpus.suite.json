@@ -36,7 +36,7 @@
     {
       "path": "tests/fixtures/skill_evaluation_cases.yaml",
       "kind": "file",
-      "sha256": "f6108d46934e4572de0b9b7682dbe24041f55d7ae1ea5d20edc96fc5f33b495e"
+      "sha256": "7a34da0372bdd27a89ef4a9f14cb9da1d4c0f516ec8518063ccefae75f250895"
     },
     {
       "path": "skills/core/engineering/aoa-eval/SKILL.md",

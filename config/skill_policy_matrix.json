@@ -44,7 +44,7 @@
       ],
       "requires_confirmation_seam": false,
       "implicit_activation_policy": "invoke",
-      "notes": "General bounded change workflow for non-trivial code, config, and docs work."
+      "notes": "General bounded change workflow for non-trivial code, config, and docs work; it must defer approval classification and project-specific manual overlays without loading their explicit owners."
     },
     "aoa-decision": {
       "trust_posture": "portable-core",
@@ -55,7 +55,7 @@
       ],
       "requires_confirmation_seam": false,
       "implicit_activation_policy": "invoke",
-      "notes": "Router for decision-lane lookup, creation, and correction through the decision graph and repo-local source records."
+      "notes": "Router for decision-lane lookup, creation, and correction; it must fully read exactly one selected child before that child uses the decision graph or writes repo-local source records."
     },
     "aoa-decision-find": {
       "trust_posture": "portable-core",

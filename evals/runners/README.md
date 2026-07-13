@@ -15,8 +15,8 @@ verdicts, scoring, regression truth, proof acceptance, or promotion.
 
 The default action is a read-only plan. A live run additionally requires the
 exact confirmation token printed by that plan. `pilot13`, `pilot13-returns`,
-`full-collision`, and `coverage-closure` require the printed high-cost token as
-well.
+`pilot13-skill-returns`, `full-collision`, and `coverage-closure` require the
+printed high-cost token as well.
 The pilot plan publishes selected-procedure contract coverage and objective
 outcome-observation coverage separately. It remains executable only at 11 of
 11 for both; the current corpus now has 11/11 procedure contracts and 11/11
@@ -27,6 +27,11 @@ a run; the first reviewed `pilot13` result is described below.
 The 15-turn `pilot13-returns` cohort is the smallest exact rerun of its seven
 remaining implicit pairs plus the corrected Abyss structured-report case; it
 does not repeat already-clean pilot arms.
+The 6-turn `pilot13-skill-returns` cohort narrows the next exact-source run to
+the three pairs changed by the v14 skill-source repair: `collision-38`,
+`collision-09`, and `collision-14`. It requires complete procedure and outcome
+contracts plus the high-cost token and contains no unrelated trajectory or
+structured arms.
 The procedure source contract lives at
 `evals/suites/aoa-skill-live-dispatch-procedures.json`; the separate bounded
 owner-action corpus lives at

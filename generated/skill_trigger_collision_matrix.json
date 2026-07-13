@@ -130,6 +130,7 @@
     {
       "family": "safety-and-mutation-gating",
       "skills": [
+        "aoa-change-protocol",
         "aoa-approval-gate-check",
         "aoa-dry-run-first",
         "aoa-safe-infra-change",
@@ -137,6 +138,7 @@
         "aoa-sanitized-share"
       ],
       "notes": [
+        "aoa-change-protocol is the generic bounded-change workflow and must defer when the task is only approval classification or another explicit safety owner controls the route.",
         "aoa-approval-gate-check classifies risk and whether execution is allowed at all.",
         "aoa-dry-run-first insists on preview or simulation before a real mutation.",
         "aoa-safe-infra-change handles bounded infra or config changes with rollback thinking.",

@@ -237,8 +237,8 @@
       "name": "aoa-change-protocol",
       "display_name": "AoA Change Protocol",
       "source_scope": "repo",
-      "instruction_sha256": "c13bcb4d6b58177d48a4cdf75960b2072685c017c8c318ff9aa01775ced9198d",
-      "dedupe_key": "aoa-change-protocol:c13bcb4d6b58177d48a4cdf75960b2072685c017c8c318ff9aa01775ced9198d",
+      "instruction_sha256": "fee5c337da4f9601819225adf206fa3a80dee59e0b9c918c0cd6da19f7be2353",
+      "dedupe_key": "aoa-change-protocol:fee5c337da4f9601819225adf206fa3a80dee59e0b9c918c0cd6da19f7be2353",
       "protect_from_compaction": true,
       "pin_strategy": "protected-tool-output",
       "reactivation_strategy": "compact-packet-then-activate",
@@ -255,7 +255,7 @@
         "Verification"
       ],
       "rehydration_hint": "Reload the full SKILL.md and keep policy, procedure, and verification in active context before resuming.",
-      "activation_card_markdown": "Use when: Plan and execute a bounded, non-trivial repository change with explicit verification and reporting. Use when code, config, docs, or operational surfaces change in a meaningful way and the task benefits from an explicit plan. Do not use for trivial wording fixes or when a more specific risk skill fits better.\n\nKeep in memory: target goal, owner repository or route surface, explicit plan, scoped change.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "activation_card_markdown": "Use when: Plan and execute a bounded, non-trivial repository change with explicit verification and reporting. Use when code, config, docs, or operational surfaces change meaningfully and no narrower owner controls the route. Do not use when the task is only to classify whether a production or sensitive action is allowed; keep the explicit-only approval-gate owner unloaded and require a deliberate manual route. Do not use when a project-specific manual overlay is the semantic owner; do not substitute the generic base workflow or load the overlay implicitly. Do not use for trivial wording fixes.\n\nKeep in memory: target goal, owner repository or route surface, explicit plan, scoped change.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
       "reactivation_call": {
         "name": "guarded_activate_skill",
         "arguments": {
@@ -397,8 +397,8 @@
       "name": "aoa-decision",
       "display_name": "AoA Decision",
       "source_scope": "repo",
-      "instruction_sha256": "409575c6d58d147ba3aa4fd1779669309f242b33ffa6d99696697199a311a951",
-      "dedupe_key": "aoa-decision:409575c6d58d147ba3aa4fd1779669309f242b33ffa6d99696697199a311a951",
+      "instruction_sha256": "37ee5eb516b320e99372fa437df75869e6f8182d9098c64e438e5eff695507e5",
+      "dedupe_key": "aoa-decision:37ee5eb516b320e99372fa437df75869e6f8182d9098c64e438e5eff695507e5",
       "protect_from_compaction": true,
       "pin_strategy": "protected-tool-output",
       "reactivation_strategy": "compact-packet-then-activate",
@@ -415,7 +415,7 @@
         "Verification"
       ],
       "rehydration_hint": "Reload the full SKILL.md and keep policy, procedure, and verification in active context before resuming.",
-      "activation_card_markdown": "Use when: Route AoA decision-lane work through the workspace decision graph first, checking status/issues and the smallest impact packet before choosing find, create, or correct while keeping repo-local decision files authoritative. Use when the task mentions docs/decisions, decision indexes, decision graph, ADRs, changed paths, source-surface rationale, supersession, or cross-repo decision symmetry. Do not use for ordinary docs edits, unresolved source-of-truth mapping, or trivial changes that do not need durable rationale.\n\nKeep in memory: user intent, target repository, touched paths, or decision ID when known, available `aoa_decisions` MCP tools or a local graph builder fallback, including status, issues, changed-path, source-surface, owner-surface, and repo-symmetry packets, one chosen route: `aoa-decision-find`, `aoa-decision-create`, or `aoa-decision-correct`, compact graph or source context used for the route decision.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "activation_card_markdown": "Use when: Route AoA decision-lane work by classifying the task, then select and fully read exactly one find, create, or correct child before that child performs graph lookup or a write, while keeping repo-local decision files authoritative. Use when the task mentions docs/decisions, decision indexes, decision graph, ADRs, changed paths, source-surface rationale, supersession, or cross-repo decision symmetry. Do not stop at the root after naming a child. Do not use for ordinary docs edits, unresolved source-of-truth mapping, or trivial changes that do not need durable rationale.\n\nKeep in memory: user intent, target repository, touched paths, or decision ID when known, available `aoa_decisions` MCP tools or a local graph builder fallback, including status, issues, changed-path, source-surface, owner-surface, and repo-symmetry packets, one chosen route: `aoa-decision-find`, `aoa-decision-create`, or `aoa-decision-correct`, compact graph or source context used for the route decision.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
       "reactivation_call": {
         "name": "guarded_activate_skill",
         "arguments": {

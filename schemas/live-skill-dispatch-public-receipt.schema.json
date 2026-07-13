@@ -15,7 +15,7 @@
     "schema_version": {"const": "aoa_skill_live_dispatch_public_receipt_v1"},
     "run_digest": {"$ref": "#/$defs/sha256"},
     "created_at": {"type": "string", "format": "date-time"},
-    "cohort": {"enum": ["smoke", "pilot13", "pilot13-returns", "full-collision", "coverage-closure"]},
+    "cohort": {"enum": ["smoke", "pilot13", "pilot13-returns", "pilot13-skill-returns", "full-collision", "coverage-closure"]},
     "model": {"type": "string", "minLength": 1, "maxLength": 160},
     "effort": {"enum": ["low", "medium", "high", "xhigh"]},
     "source_lock": {"$ref": "#/$defs/source_lock"},

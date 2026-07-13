@@ -109,6 +109,7 @@
         "The task is clearly low-risk, already bounded, and does not look destructive, security-sensitive, or operationally sensitive."
       ],
       "notes": [
+        "aoa-change-protocol is the generic bounded-change workflow and must defer when the task is only approval classification or another explicit safety owner controls the route.",
         "aoa-approval-gate-check classifies risk and whether execution is allowed at all.",
         "aoa-dry-run-first insists on preview or simulation before a real mutation.",
         "aoa-safe-infra-change handles bounded infra or config changes with rollback thinking.",
@@ -173,7 +174,7 @@
     },
     {
       "name": "aoa-change-protocol",
-      "description": "Plan and execute a bounded, non-trivial repository change with explicit verification and reporting. Use when code, config, docs, or operational surfaces change in a meaningful way and the task benefits from an explicit plan. Do not use for trivial wording fixes or when a more specific risk skill fits better.",
+      "description": "Plan and execute a bounded, non-trivial repository change with explicit verification and reporting. Use when code, config, docs, or operational surfaces change meaningfully and no narrower owner controls the route. Do not use when the task is only to classify whether a production or sensitive action is allowed; keep the explicit-only approval-gate owner unloaded and require a deliberate manual route. Do not use when a project-specific manual overlay is the semantic owner; do not substitute the generic base workflow or load the overlay implicitly. Do not use for trivial wording fixes.",
       "collision_family": "overlay-vs-base-skill",
       "competing_skills": [
         "aoa-tdd-slice",
@@ -294,7 +295,7 @@
     },
     {
       "name": "aoa-decision",
-      "description": "Route AoA decision-lane work through the workspace decision graph first, checking status/issues and the smallest impact packet before choosing find, create, or correct while keeping repo-local decision files authoritative. Use when the task mentions docs/decisions, decision indexes, decision graph, ADRs, changed paths, source-surface rationale, supersession, or cross-repo decision symmetry. Do not use for ordinary docs edits, unresolved source-of-truth mapping, or trivial changes that do not need durable rationale.",
+      "description": "Route AoA decision-lane work by classifying the task, then select and fully read exactly one find, create, or correct child before that child performs graph lookup or a write, while keeping repo-local decision files authoritative. Use when the task mentions docs/decisions, decision indexes, decision graph, ADRs, changed paths, source-surface rationale, supersession, or cross-repo decision symmetry. Do not stop at the root after naming a child. Do not use for ordinary docs edits, unresolved source-of-truth mapping, or trivial changes that do not need durable rationale.",
       "collision_family": "eval-proof-routing-family",
       "competing_skills": [
         "aoa-adr-write",
@@ -413,6 +414,7 @@
         "There is no meaningful preview path here, and the task is already clearly harmless and bounded."
       ],
       "notes": [
+        "aoa-change-protocol is the generic bounded-change workflow and must defer when the task is only approval classification or another explicit safety owner controls the route.",
         "aoa-approval-gate-check classifies risk and whether execution is allowed at all.",
         "aoa-dry-run-first insists on preview or simulation before a real mutation.",
         "aoa-safe-infra-change handles bounded infra or config changes with rollback thinking.",
@@ -636,6 +638,7 @@
         "This is about remote deployment and fleet operations rather than launching a bounded local multi-service stack."
       ],
       "notes": [
+        "aoa-change-protocol is the generic bounded-change workflow and must defer when the task is only approval classification or another explicit safety owner controls the route.",
         "aoa-approval-gate-check classifies risk and whether execution is allowed at all.",
         "aoa-dry-run-first insists on preview or simulation before a real mutation.",
         "aoa-safe-infra-change handles bounded infra or config changes with rollback thinking.",

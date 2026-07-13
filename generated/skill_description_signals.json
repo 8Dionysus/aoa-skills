@@ -200,6 +200,7 @@
       ],
       "adjacent_skills": [
         "abyss-safe-infra-change",
+        "aoa-change-protocol",
         "aoa-dry-run-first",
         "aoa-eval",
         "aoa-local-stack-bringup",
@@ -319,11 +320,11 @@
     },
     {
       "name": "aoa-change-protocol",
-      "description": "Plan and execute a bounded, non-trivial repository change with explicit verification and reporting. Use when code, config, docs, or operational surfaces change in a meaningful way and the task benefits from an explicit plan. Do not use for trivial wording fixes or when a more specific risk skill fits better.",
-      "description_sha256": "c6441f677758e2ea9f91d09f3291d093e1d9f6ea919674ebe2ffd046b62586aa",
+      "description": "Plan and execute a bounded, non-trivial repository change with explicit verification and reporting. Use when code, config, docs, or operational surfaces change meaningfully and no narrower owner controls the route. Do not use when the task is only to classify whether a production or sensitive action is allowed; keep the explicit-only approval-gate owner unloaded and require a deliberate manual route. Do not use when a project-specific manual overlay is the semantic owner; do not substitute the generic base workflow or load the overlay implicitly. Do not use for trivial wording fixes.",
+      "description_sha256": "1309266c0a1d613d006e7511f04a585e581619a24a99a27a38183327eb18bc2f",
       "summary_clause": "Plan and execute a bounded, non-trivial repository change with explicit verification and reporting",
-      "use_when_clause": "code, config, docs, or operational surfaces change in a meaningful way and the task benefits from an explicit plan",
-      "do_not_use_clause": "for trivial wording fixes or when a more specific risk skill fits better",
+      "use_when_clause": "code, config, docs, or operational surfaces change meaningfully and no narrower owner controls the route",
+      "do_not_use_clause": "when the task is only to classify whether a production or sensitive action is allowed; keep the explicit-only approval-gate owner unloaded and require a deliberate manual route. Do not use when a project-specific manual overlay is the semantic owner; do not substitute the generic base workflow or load the overlay implicitly. Do not use for trivial wording fixes",
       "invocation_mode": "explicit-preferred",
       "implicit_activation_policy": "invoke",
       "allow_implicit_invocation": true,
@@ -331,15 +332,19 @@
       "families": [
         "change-execution-vs-test-first",
         "overlay-vs-base-skill",
+        "safety-and-mutation-gating",
         "summon-and-route-governance"
       ],
       "adjacent_skills": [
         "abyss-safe-infra-change",
         "abyss-sanitized-share",
         "abyss-self-diagnostic-spine",
+        "aoa-approval-gate-check",
         "aoa-checkpoint-closeout-bridge",
         "aoa-commit-growth-seam",
         "aoa-contract-test",
+        "aoa-dry-run-first",
+        "aoa-local-stack-bringup",
         "aoa-safe-infra-change",
         "aoa-sanitized-share",
         "aoa-session-route-forks",
@@ -557,10 +562,10 @@
     },
     {
       "name": "aoa-decision",
-      "description": "Route AoA decision-lane work through the workspace decision graph first, checking status/issues and the smallest impact packet before choosing find, create, or correct while keeping repo-local decision files authoritative. Use when the task mentions docs/decisions, decision indexes, decision graph, ADRs, changed paths, source-surface rationale, supersession, or cross-repo decision symmetry. Do not use for ordinary docs edits, unresolved source-of-truth mapping, or trivial changes that do not need durable rationale.",
-      "description_sha256": "f76ac8c171081f4e8912c63d40b3c833ebc6b2ea155c1ea2bd629253c9e87530",
-      "summary_clause": "Route AoA decision-lane work through the workspace decision graph first, checking status/issues and the smallest impact packet before choosing find, create, or correct while keeping repo-local decision files authoritative",
-      "use_when_clause": "the task mentions docs/decisions, decision indexes, decision graph, ADRs, changed paths, source-surface rationale, supersession, or cross-repo decision symmetry",
+      "description": "Route AoA decision-lane work by classifying the task, then select and fully read exactly one find, create, or correct child before that child performs graph lookup or a write, while keeping repo-local decision files authoritative. Use when the task mentions docs/decisions, decision indexes, decision graph, ADRs, changed paths, source-surface rationale, supersession, or cross-repo decision symmetry. Do not stop at the root after naming a child. Do not use for ordinary docs edits, unresolved source-of-truth mapping, or trivial changes that do not need durable rationale.",
+      "description_sha256": "4510ab849cc3e6bf0e477ce2e11b25a8d071ad68a1e528bb198a086965e20290",
+      "summary_clause": "Route AoA decision-lane work by classifying the task, then select and fully read exactly one find, create, or correct child before that child performs graph lookup or a write, while keeping repo-local decision files authoritative",
+      "use_when_clause": "the task mentions docs/decisions, decision indexes, decision graph, ADRs, changed paths, source-surface rationale, supersession, or cross-repo decision symmetry. Do not stop at the root after naming a child",
       "do_not_use_clause": "for ordinary docs edits, unresolved source-of-truth mapping, or trivial changes that do not need durable rationale",
       "invocation_mode": "explicit-preferred",
       "implicit_activation_policy": "invoke",
@@ -749,6 +754,7 @@
       ],
       "adjacent_skills": [
         "aoa-approval-gate-check",
+        "aoa-change-protocol",
         "aoa-local-stack-bringup",
         "aoa-safe-infra-change",
         "aoa-sanitized-share"
@@ -1130,6 +1136,7 @@
       ],
       "adjacent_skills": [
         "aoa-approval-gate-check",
+        "aoa-change-protocol",
         "aoa-dry-run-first",
         "aoa-safe-infra-change",
         "aoa-sanitized-share"

@@ -77,7 +77,7 @@
     "command_count": 162,
     "document_count": 1056,
     "generated_count": 110,
-    "heading_count": 7451,
+    "heading_count": 7454,
     "mechanics_count": 353,
     "record_count": 1915,
     "schema_count": 66,
@@ -88,7 +88,7 @@
   },
   "index_identity": {
     "artifact_kind": "source_surface_index",
-    "content_digest": "556b9d547e5d00dc5dec4d316c36a4ec789ea3ce061a6ab5de27c368289815c4",
+    "content_digest": "1e8ee040675f8b1bb1fad09d0c584d36289aeff7ac4aed8f5c0386eb35dfa6eb",
     "local_id": "index:repo-local:source-surfaces",
     "schema_ref": "aoa-kag:schemas/repo-local-kag-index.schema.json"
   },
@@ -6225,13 +6225,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "45f36530528067a73fa62165cd7b417a6787c8f17e18e188fa138b1049281da6",
+        "content_hash": "3b3e67668b678c32e2afe08ac03a211ac168019dc08b7666c82d1cf92418f37b",
         "git_ref": "git-index-source-tree",
         "id": "file:.agents/skills/aoa-change-protocol/skill.md:200dfb7b98",
         "mime": "text/markdown",
         "path": ".agents/skills/aoa-change-protocol/SKILL.md",
         "repo": "aoa-skills",
-        "size_bytes": 6917
+        "size_bytes": 7964
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -6281,56 +6281,56 @@
           {
             "anchor": "inputs",
             "level": 2,
-            "line": 32,
+            "line": 34,
             "ref": ".agents/skills/aoa-change-protocol/SKILL.md#inputs",
             "title": "Inputs"
           },
           {
             "anchor": "outputs",
             "level": 2,
-            "line": 45,
+            "line": 47,
             "ref": ".agents/skills/aoa-change-protocol/SKILL.md#outputs",
             "title": "Outputs"
           },
           {
             "anchor": "procedure",
             "level": 2,
-            "line": 52,
+            "line": 54,
             "ref": ".agents/skills/aoa-change-protocol/SKILL.md#procedure",
             "title": "Procedure"
           },
           {
             "anchor": "contracts",
             "level": 2,
-            "line": 73,
+            "line": 79,
             "ref": ".agents/skills/aoa-change-protocol/SKILL.md#contracts",
             "title": "Contracts"
           },
           {
             "anchor": "risks-and-anti-patterns",
             "level": 2,
-            "line": 84,
+            "line": 90,
             "ref": ".agents/skills/aoa-change-protocol/SKILL.md#risks-and-anti-patterns",
             "title": "Risks and anti-patterns"
           },
           {
             "anchor": "verification",
             "level": 2,
-            "line": 93,
+            "line": 99,
             "ref": ".agents/skills/aoa-change-protocol/SKILL.md#verification",
             "title": "Verification"
           },
           {
             "anchor": "technique-traceability",
             "level": 2,
-            "line": 104,
+            "line": 112,
             "ref": ".agents/skills/aoa-change-protocol/SKILL.md#technique-traceability",
             "title": "Technique traceability"
           },
           {
             "anchor": "adaptation-points",
             "level": 2,
-            "line": 109,
+            "line": 117,
             "ref": ".agents/skills/aoa-change-protocol/SKILL.md#adaptation-points",
             "title": "Adaptation points"
           }
@@ -6342,7 +6342,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "45f36530528067a73fa62165cd7b417a6787c8f17e18e188fa138b1049281da6",
+        "digest": "3b3e67668b678c32e2afe08ac03a211ac168019dc08b7666c82d1cf92418f37b",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -11612,13 +11612,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "003007f73a4cc231aa279482165f6de6914970f1a324e31e8f817e7e396c1ede",
+        "content_hash": "95513d0aef4f338db65359ebee0008c36a33263aca1612bb38ecfd827db68bff",
         "git_ref": "git-index-source-tree",
         "id": "file:.agents/skills/aoa-decision/skill.md:0f857bda3a",
         "mime": "text/markdown",
         "path": ".agents/skills/aoa-decision/SKILL.md",
         "repo": "aoa-skills",
-        "size_bytes": 9565
+        "size_bytes": 10168
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -11668,56 +11668,56 @@
           {
             "anchor": "inputs",
             "level": 2,
-            "line": 39,
+            "line": 40,
             "ref": ".agents/skills/aoa-decision/SKILL.md#inputs",
             "title": "Inputs"
           },
           {
             "anchor": "outputs",
             "level": 2,
-            "line": 53,
+            "line": 54,
             "ref": ".agents/skills/aoa-decision/SKILL.md#outputs",
             "title": "Outputs"
           },
           {
             "anchor": "procedure",
             "level": 2,
-            "line": 60,
+            "line": 61,
             "ref": ".agents/skills/aoa-decision/SKILL.md#procedure",
             "title": "Procedure"
           },
           {
             "anchor": "contracts",
             "level": 2,
-            "line": 105,
+            "line": 110,
             "ref": ".agents/skills/aoa-decision/SKILL.md#contracts",
             "title": "Contracts"
           },
           {
             "anchor": "risks-and-anti-patterns",
             "level": 2,
-            "line": 119,
+            "line": 124,
             "ref": ".agents/skills/aoa-decision/SKILL.md#risks-and-anti-patterns",
             "title": "Risks and anti-patterns"
           },
           {
             "anchor": "verification",
             "level": 2,
-            "line": 129,
+            "line": 134,
             "ref": ".agents/skills/aoa-decision/SKILL.md#verification",
             "title": "Verification"
           },
           {
             "anchor": "technique-traceability",
             "level": 2,
-            "line": 143,
+            "line": 150,
             "ref": ".agents/skills/aoa-decision/SKILL.md#technique-traceability",
             "title": "Technique traceability"
           },
           {
             "anchor": "adaptation-points",
             "level": 2,
-            "line": 148,
+            "line": 155,
             "ref": ".agents/skills/aoa-decision/SKILL.md#adaptation-points",
             "title": "Adaptation points"
           }
@@ -11729,7 +11729,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "003007f73a4cc231aa279482165f6de6914970f1a324e31e8f817e7e396c1ede",
+        "digest": "95513d0aef4f338db65359ebee0008c36a33263aca1612bb38ecfd827db68bff",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -51314,13 +51314,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "178f2f8332ac333fb5c64fe77fc1785689fa86276c573dedbf780587e6b620ed",
+        "content_hash": "cf186abb085910b12cfdf34f3b4f17d0cacdddf7b476d34d2b84b42c86bad8a4",
         "git_ref": "git-index-source-tree",
         "id": "file:changelog.md:06572a96a5",
         "mime": "text/markdown",
         "path": "CHANGELOG.md",
         "repo": "aoa-skills",
-        "size_bytes": 44250
+        "size_bytes": 44767
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -51370,336 +51370,336 @@
           {
             "anchor": "changed",
             "level": 3,
-            "line": 228,
+            "line": 235,
             "ref": "CHANGELOG.md#changed",
             "title": "Changed"
           },
           {
             "anchor": "fixed",
             "level": 3,
-            "line": 410,
+            "line": 417,
             "ref": "CHANGELOG.md#fixed",
             "title": "Fixed"
           },
           {
             "anchor": "040-2026-05-18",
             "level": 2,
-            "line": 418,
+            "line": 425,
             "ref": "CHANGELOG.md#040-2026-05-18",
             "title": "[0.4.0] - 2026-05-18"
           },
           {
             "anchor": "summary",
             "level": 3,
-            "line": 420,
+            "line": 427,
             "ref": "CHANGELOG.md#summary",
             "title": "Summary"
           },
           {
             "anchor": "added-1",
             "level": 3,
-            "line": 432,
+            "line": 439,
             "ref": "CHANGELOG.md#added-1",
             "title": "Added"
           },
           {
             "anchor": "changed-1",
             "level": 3,
-            "line": 452,
+            "line": 459,
             "ref": "CHANGELOG.md#changed-1",
             "title": "Changed"
           },
           {
             "anchor": "included-in-this-release",
             "level": 3,
-            "line": 483,
+            "line": 490,
             "ref": "CHANGELOG.md#included-in-this-release",
             "title": "Included in this release"
           },
           {
             "anchor": "validation",
             "level": 3,
-            "line": 496,
+            "line": 503,
             "ref": "CHANGELOG.md#validation",
             "title": "Validation"
           },
           {
             "anchor": "notes",
             "level": 3,
-            "line": 501,
+            "line": 508,
             "ref": "CHANGELOG.md#notes",
             "title": "Notes"
           },
           {
             "anchor": "033-2026-04-23",
             "level": 2,
-            "line": 507,
+            "line": 514,
             "ref": "CHANGELOG.md#033-2026-04-23",
             "title": "[0.3.3] - 2026-04-23"
           },
           {
             "anchor": "summary-1",
             "level": 3,
-            "line": 509,
+            "line": 516,
             "ref": "CHANGELOG.md#summary-1",
             "title": "Summary"
           },
           {
             "anchor": "added-2",
             "level": 3,
-            "line": 520,
+            "line": 527,
             "ref": "CHANGELOG.md#added-2",
             "title": "Added"
           },
           {
             "anchor": "changed-2",
             "level": 3,
-            "line": 534,
+            "line": 541,
             "ref": "CHANGELOG.md#changed-2",
             "title": "Changed"
           },
           {
             "anchor": "validation-1",
             "level": 3,
-            "line": 543,
+            "line": 550,
             "ref": "CHANGELOG.md#validation-1",
             "title": "Validation"
           },
           {
             "anchor": "notes-1",
             "level": 3,
-            "line": 550,
+            "line": 557,
             "ref": "CHANGELOG.md#notes-1",
             "title": "Notes"
           },
           {
             "anchor": "032-2026-04-19",
             "level": 2,
-            "line": 556,
+            "line": 563,
             "ref": "CHANGELOG.md#032-2026-04-19",
             "title": "[0.3.2] - 2026-04-19"
           },
           {
             "anchor": "summary-2",
             "level": 3,
-            "line": 558,
+            "line": 565,
             "ref": "CHANGELOG.md#summary-2",
             "title": "Summary"
           },
           {
             "anchor": "added-3",
             "level": 3,
-            "line": 567,
+            "line": 574,
             "ref": "CHANGELOG.md#added-3",
             "title": "Added"
           },
           {
             "anchor": "changed-3",
             "level": 3,
-            "line": 574,
+            "line": 581,
             "ref": "CHANGELOG.md#changed-3",
             "title": "Changed"
           },
           {
             "anchor": "validation-2",
             "level": 3,
-            "line": 579,
+            "line": 586,
             "ref": "CHANGELOG.md#validation-2",
             "title": "Validation"
           },
           {
             "anchor": "notes-2",
             "level": 3,
-            "line": 583,
+            "line": 590,
             "ref": "CHANGELOG.md#notes-2",
             "title": "Notes"
           },
           {
             "anchor": "031-2026-04-12",
             "level": 2,
-            "line": 588,
+            "line": 595,
             "ref": "CHANGELOG.md#031-2026-04-12",
             "title": "[0.3.1] - 2026-04-12"
           },
           {
             "anchor": "summary-3",
             "level": 3,
-            "line": 590,
+            "line": 597,
             "ref": "CHANGELOG.md#summary-3",
             "title": "Summary"
           },
           {
             "anchor": "validation-3",
             "level": 3,
-            "line": 599,
+            "line": 606,
             "ref": "CHANGELOG.md#validation-3",
             "title": "Validation"
           },
           {
             "anchor": "notes-3",
             "level": 3,
-            "line": 603,
+            "line": 610,
             "ref": "CHANGELOG.md#notes-3",
             "title": "Notes"
           },
           {
             "anchor": "added-4",
             "level": 3,
-            "line": 608,
+            "line": 615,
             "ref": "CHANGELOG.md#added-4",
             "title": "Added"
           },
           {
             "anchor": "changed-4",
             "level": 3,
-            "line": 619,
+            "line": 626,
             "ref": "CHANGELOG.md#changed-4",
             "title": "Changed"
           },
           {
             "anchor": "030-2026-04-10",
             "level": 2,
-            "line": 624,
+            "line": 631,
             "ref": "CHANGELOG.md#030-2026-04-10",
             "title": "[0.3.0] - 2026-04-10"
           },
           {
             "anchor": "summary-4",
             "level": 3,
-            "line": 626,
+            "line": 633,
             "ref": "CHANGELOG.md#summary-4",
             "title": "Summary"
           },
           {
             "anchor": "validation-4",
             "level": 3,
-            "line": 632,
+            "line": 639,
             "ref": "CHANGELOG.md#validation-4",
             "title": "Validation"
           },
           {
             "anchor": "notes-4",
             "level": 3,
-            "line": 636,
+            "line": 643,
             "ref": "CHANGELOG.md#notes-4",
             "title": "Notes"
           },
           {
             "anchor": "added-5",
             "level": 3,
-            "line": 640,
+            "line": 647,
             "ref": "CHANGELOG.md#added-5",
             "title": "Added"
           },
           {
             "anchor": "changed-5",
             "level": 3,
-            "line": 650,
+            "line": 657,
             "ref": "CHANGELOG.md#changed-5",
             "title": "Changed"
           },
           {
             "anchor": "included-in-this-release-1",
             "level": 3,
-            "line": 657,
+            "line": 664,
             "ref": "CHANGELOG.md#included-in-this-release-1",
             "title": "Included in this release"
           },
           {
             "anchor": "020-2026-04-01",
             "level": 2,
-            "line": 670,
+            "line": 677,
             "ref": "CHANGELOG.md#020-2026-04-01",
             "title": "[0.2.0] - 2026-04-01"
           },
           {
             "anchor": "summary-5",
             "level": 3,
-            "line": 676,
+            "line": 683,
             "ref": "CHANGELOG.md#summary-5",
             "title": "Summary"
           },
           {
             "anchor": "added-6",
             "level": 3,
-            "line": 682,
+            "line": 689,
             "ref": "CHANGELOG.md#added-6",
             "title": "Added"
           },
           {
             "anchor": "changed-6",
             "level": 3,
-            "line": 693,
+            "line": 700,
             "ref": "CHANGELOG.md#changed-6",
             "title": "Changed"
           },
           {
             "anchor": "included-in-this-release-2",
             "level": 3,
-            "line": 700,
+            "line": 707,
             "ref": "CHANGELOG.md#included-in-this-release-2",
             "title": "Included in this release"
           },
           {
             "anchor": "validation-5",
             "level": 3,
-            "line": 705,
+            "line": 712,
             "ref": "CHANGELOG.md#validation-5",
             "title": "Validation"
           },
           {
             "anchor": "notes-5",
             "level": 3,
-            "line": 709,
+            "line": 716,
             "ref": "CHANGELOG.md#notes-5",
             "title": "Notes"
           },
           {
             "anchor": "010-2026-03-23",
             "level": 2,
-            "line": 714,
+            "line": 721,
             "ref": "CHANGELOG.md#010-2026-03-23",
             "title": "[0.1.0] - 2026-03-23"
           },
           {
             "anchor": "summary-6",
             "level": 3,
-            "line": 720,
+            "line": 727,
             "ref": "CHANGELOG.md#summary-6",
             "title": "Summary"
           },
           {
             "anchor": "added-7",
             "level": 3,
-            "line": 724,
+            "line": 731,
             "ref": "CHANGELOG.md#added-7",
             "title": "Added"
           },
           {
             "anchor": "changed-7",
             "level": 3,
-            "line": 731,
+            "line": 738,
             "ref": "CHANGELOG.md#changed-7",
             "title": "Changed"
           },
           {
             "anchor": "included-in-this-release-3",
             "level": 3,
-            "line": 737,
+            "line": 744,
             "ref": "CHANGELOG.md#included-in-this-release-3",
             "title": "Included in this release"
           },
           {
             "anchor": "validation-6",
             "level": 3,
-            "line": 743,
+            "line": 750,
             "ref": "CHANGELOG.md#validation-6",
             "title": "Validation"
           },
           {
             "anchor": "notes-6",
             "level": 3,
-            "line": 748,
+            "line": 755,
             "ref": "CHANGELOG.md#notes-6",
             "title": "Notes"
           }
@@ -51711,7 +51711,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "178f2f8332ac333fb5c64fe77fc1785689fa86276c573dedbf780587e6b620ed",
+        "digest": "cf186abb085910b12cfdf34f3b4f17d0cacdddf7b476d34d2b84b42c86bad8a4",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -53832,13 +53832,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "d86efb87d1c99e87ca21e211e8a66560be80cabeb6185c7c7f040df26643218c",
+        "content_hash": "bdfa893e39abd363abd522d8b05598dc293f476640d68b523173b4ff330c9306",
         "git_ref": "git-index-source-tree",
         "id": "file:config/portable_skill_overrides.json:a075e066e7",
         "mime": "application/json",
         "path": "config/portable_skill_overrides.json",
         "repo": "aoa-skills",
-        "size_bytes": 41451
+        "size_bytes": 41786
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -53871,7 +53871,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "d86efb87d1c99e87ca21e211e8a66560be80cabeb6185c7c7f040df26643218c",
+        "digest": "bdfa893e39abd363abd522d8b05598dc293f476640d68b523173b4ff330c9306",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -54366,13 +54366,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "1b5f06fd3e55c74217f6a3f0f3d62e925d580441d78cf93f1eb886b915c23640",
+        "content_hash": "ecab0b4f4275560ef0b5a2baf9f64f441fdb65ad6e731a965d1ca3e9d58c6b34",
         "git_ref": "git-index-source-tree",
         "id": "file:config/skill_policy_matrix.json:4e21daac96",
         "mime": "application/json",
         "path": "config/skill_policy_matrix.json",
         "repo": "aoa-skills",
-        "size_bytes": 24409
+        "size_bytes": 24591
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -54405,7 +54405,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "1b5f06fd3e55c74217f6a3f0f3d62e925d580441d78cf93f1eb886b915c23640",
+        "digest": "ecab0b4f4275560ef0b5a2baf9f64f441fdb65ad6e731a965d1ca3e9d58c6b34",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -54455,13 +54455,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "4a224e612b47abd9d7bc97c1c305a73044789cd8ce1cdddf65e02b280a72997e",
+        "content_hash": "456729825f33d9c1f0eaedeb2c2fb99cde41ac61d51261113784218ea3f73920",
         "git_ref": "git-index-source-tree",
         "id": "file:config/skill_trigger_collision_families.json:e6a72a8eb6",
         "mime": "application/json",
         "path": "config/skill_trigger_collision_families.json",
         "repo": "aoa-skills",
-        "size_bytes": 10037
+        "size_bytes": 10252
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -54494,7 +54494,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "4a224e612b47abd9d7bc97c1c305a73044789cd8ce1cdddf65e02b280a72997e",
+        "digest": "456729825f33d9c1f0eaedeb2c2fb99cde41ac61d51261113784218ea3f73920",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -55540,13 +55540,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "62d7ba44e52f1b1703ea962e9be8994f6e7a113740f9164749c6fa59ea5472ec",
+        "content_hash": "c8e02d0ed92d25ceaf8bd1effc418988c7af77c3e1b8524a2bb6826ec8264862",
         "git_ref": "git-index-source-tree",
         "id": "file:docs/aoa-eval-skill-family-research.md:f392da1f19",
         "mime": "text/markdown",
         "path": "docs/aoa-eval-skill-family-research.md",
         "repo": "aoa-skills",
-        "size_bytes": 27537
+        "size_bytes": 28928
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -55718,6 +55718,13 @@
             "line": 468,
             "ref": "docs/aoa-eval-skill-family-research.md#2026-07-12-complete-v14-live-return",
             "title": "2026-07-12 complete v14 live return"
+          },
+          {
+            "anchor": "2026-07-12-v14-skill-source-repair",
+            "level": 2,
+            "line": 495,
+            "ref": "docs/aoa-eval-skill-family-research.md#2026-07-12-v14-skill-source-repair",
+            "title": "2026-07-12 v14 skill-source repair"
           }
         ],
         "line_refs": [
@@ -55727,7 +55734,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "62d7ba44e52f1b1703ea962e9be8994f6e7a113740f9164749c6fa59ea5472ec",
+        "digest": "c8e02d0ed92d25ceaf8bd1effc418988c7af77c3e1b8524a2bb6826ec8264862",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -60956,13 +60963,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "7a6cbcf367592295b759b761610c931efc9d5edabf35fe18d7f19b138bbef40b",
+        "content_hash": "6b77b0348637250bdaeb52b6a143953f21fbd5f647e03d3653d73946a188785e",
         "git_ref": "git-index-source-tree",
         "id": "file:docs/decisions/aoa-sk-d-0037-source-locked-live-skill-dispatch-evidence.md:ca6ee4ca5a",
         "mime": "text/markdown",
         "path": "docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md",
         "repo": "aoa-skills",
-        "size_bytes": 70993
+        "size_bytes": 72415
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -61047,203 +61054,210 @@
           {
             "anchor": "review-log",
             "level": 2,
-            "line": 463,
+            "line": 465,
             "ref": "docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md#review-log",
             "title": "Review Log"
           },
           {
+            "anchor": "2026-07-12-repair-two-source-boundaries-and-bind-a-six-turn-return",
+            "level": 3,
+            "line": 467,
+            "ref": "docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md#2026-07-12-repair-two-source-boundaries-and-bind-a-six-turn-return",
+            "title": "2026-07-12 - Repair two source boundaries and bind a six-turn return"
+          },
+          {
             "anchor": "2026-07-12-contract-the-complete-v14-return-to-two-source-skills",
             "level": 3,
-            "line": 465,
+            "line": 488,
             "ref": "docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md#2026-07-12-contract-the-complete-v14-return-to-two-source-skills",
             "title": "2026-07-12 - Contract the complete v14 return to two source skills"
           },
           {
             "anchor": "2026-07-12-separate-repo-treatment-from-ambient-target-reporting-in-v14",
             "level": 3,
-            "line": 484,
+            "line": 507,
             "ref": "docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md#2026-07-12-separate-repo-treatment-from-ambient-target-reporting-in-v14",
             "title": "2026-07-12 - Separate repo treatment from ambient target reporting in v14"
           },
           {
             "anchor": "2026-07-12-preserve-partial-v13-returns-and-close-receipt-schema-parity",
             "level": 3,
-            "line": 509,
+            "line": 532,
             "ref": "docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md#2026-07-12-preserve-partial-v13-returns-and-close-receipt-schema-parity",
             "title": "2026-07-12 - Preserve partial v13 returns and close receipt schema parity"
           },
           {
             "anchor": "2026-07-12-bind-the-smallest-live-confirmation-of-v13-returns",
             "level": 3,
-            "line": 529,
+            "line": 552,
             "ref": "docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md#2026-07-12-bind-the-smallest-live-confirmation-of-v13-returns",
             "title": "2026-07-12 - Bind the smallest live confirmation of v13 returns"
           },
           {
             "anchor": "2026-07-12-separate-v13-harness-repairs-from-remaining-skill-candidates",
             "level": 3,
-            "line": 546,
+            "line": 569,
             "ref": "docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md#2026-07-12-separate-v13-harness-repairs-from-remaining-skill-candidates",
             "title": "2026-07-12 - Separate v13 harness repairs from remaining skill candidates"
           },
           {
             "anchor": "2026-07-12-preserve-the-first-full-pilot-as-mixed-adaptive-returns",
             "level": 3,
-            "line": 572,
+            "line": 595,
             "ref": "docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md#2026-07-12-preserve-the-first-full-pilot-as-mixed-adaptive-returns",
             "title": "2026-07-12 - Preserve the first full pilot as mixed adaptive returns"
           },
           {
             "anchor": "2026-07-12-close-both-pilot-contract-coverage-gates",
             "level": 3,
-            "line": 601,
+            "line": 624,
             "ref": "docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md#2026-07-12-close-both-pilot-contract-coverage-gates",
             "title": "2026-07-12 - Close both pilot contract coverage gates"
           },
           {
             "anchor": "2026-07-12-validate-the-owner-action-seam-on-exact-merged-v12",
             "level": 3,
-            "line": 623,
+            "line": 646,
             "ref": "docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md#2026-07-12-validate-the-owner-action-seam-on-exact-merged-v12",
             "title": "2026-07-12 - Validate the owner-action seam on exact-merged v12"
           },
           {
             "anchor": "2026-07-12-add-one-attempt-owner-observable-outcome-seam",
             "level": 3,
-            "line": 641,
+            "line": 664,
             "ref": "docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md#2026-07-12-add-one-attempt-owner-observable-outcome-seam",
             "title": "2026-07-12 - Add one-attempt owner-observable outcome seam"
           },
           {
             "anchor": "2026-07-12-validate-fail-closed-selection-precedence-on-exact-merged-source",
             "level": 3,
-            "line": 662,
+            "line": 685,
             "ref": "docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md#2026-07-12-validate-fail-closed-selection-precedence-on-exact-merged-source",
             "title": "2026-07-12 - Validate fail-closed selection precedence on exact-merged source"
           },
           {
             "anchor": "2026-07-12-keep-unknown-fit-in-selection-before-local-intake",
             "level": 3,
-            "line": 681,
+            "line": 704,
             "ref": "docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md#2026-07-12-keep-unknown-fit-in-selection-before-local-intake",
             "title": "2026-07-12 - Keep unknown fit in selection before local intake"
           },
           {
             "anchor": "2026-07-12-carry-the-owner-jit-execution-contract-into-the-selected-skill",
             "level": 3,
-            "line": 703,
+            "line": 726,
             "ref": "docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md#2026-07-12-carry-the-owner-jit-execution-contract-into-the-selected-skill",
             "title": "2026-07-12 - Carry the owner JIT execution contract into the selected skill"
           },
           {
             "anchor": "2026-07-12-validate-bounded-route-and-trajectory-lift-on-exact-merged-v11",
             "level": 3,
-            "line": 726,
+            "line": 749,
             "ref": "docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md#2026-07-12-validate-bounded-route-and-trajectory-lift-on-exact-merged-v11",
             "title": "2026-07-12 - Validate bounded route and trajectory lift on exact-merged v11"
           },
           {
             "anchor": "2026-07-12-bound-exact-reads-without-full-tree-fixture-archaeology",
             "level": 3,
-            "line": 751,
+            "line": 774,
             "ref": "docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md#2026-07-12-bound-exact-reads-without-full-tree-fixture-archaeology",
             "title": "2026-07-12 - Bound exact reads without full-tree fixture archaeology"
           },
           {
             "anchor": "2026-07-12-separate-native-dispatch-child-procedure-fixture-probe-and-outcome",
             "level": 3,
-            "line": 780,
+            "line": 803,
             "ref": "docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md#2026-07-12-separate-native-dispatch-child-procedure-fixture-probe-and-outcome",
             "title": "2026-07-12 - Separate native dispatch, child procedure, fixture probe, and outcome"
           },
           {
             "anchor": "2026-07-12-bind-outcome-to-the-downstream-procedure-not-the-whole-task",
             "level": 3,
-            "line": 825,
+            "line": 848,
             "ref": "docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md#2026-07-12-bind-outcome-to-the-downstream-procedure-not-the-whole-task",
             "title": "2026-07-12 - Bind outcome to the downstream procedure, not the whole task"
           },
           {
             "anchor": "2026-07-12-split-route-lift-from-source-locked-bounded-outcome-lift",
             "level": 3,
-            "line": 865,
+            "line": 888,
             "ref": "docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md#2026-07-12-split-route-lift-from-source-locked-bounded-outcome-lift",
             "title": "2026-07-12 - Split route lift from source-locked bounded outcome lift"
           },
           {
             "anchor": "2026-07-12-make-process-exit-report-cohort-completeness",
             "level": 3,
-            "line": 896,
+            "line": 919,
             "ref": "docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md#2026-07-12-make-process-exit-report-cohort-completeness",
             "title": "2026-07-12 - Make process exit report cohort completeness"
           },
           {
             "anchor": "2026-07-11-assemble-complete-skill-reads-across-ordered-transport-events",
             "level": 3,
-            "line": 925,
+            "line": 948,
             "ref": "docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md#2026-07-11-assemble-complete-skill-reads-across-ordered-transport-events",
             "title": "2026-07-11 - Assemble complete skill reads across ordered transport events"
           },
           {
             "anchor": "2026-07-11-grade-fixture-filesystem-scope-before-budget-or-skill-effect",
             "level": 3,
-            "line": 950,
+            "line": 973,
             "ref": "docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md#2026-07-11-grade-fixture-filesystem-scope-before-budget-or-skill-effect",
             "title": "2026-07-11 - Grade fixture filesystem scope before budget or skill effect"
           },
           {
             "anchor": "2026-07-11-separate-objective-load-evidence-from-self-report-and-procedure-commands",
             "level": 3,
-            "line": 975,
+            "line": 998,
             "ref": "docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md#2026-07-11-separate-objective-load-evidence-from-self-report-and-procedure-commands",
             "title": "2026-07-11 - Separate objective load evidence from self-report and procedure commands"
           },
           {
             "anchor": "2026-07-11-return-a-valid-child-load-gap-to-the-root-workflow",
             "level": 3,
-            "line": 998,
+            "line": 1021,
             "ref": "docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md#2026-07-11-return-a-valid-child-load-gap-to-the-root-workflow",
             "title": "2026-07-11 - Return a valid child-load gap to the root workflow"
           },
           {
             "anchor": "2026-07-11-align-native-load-evidence-with-the-official-codex-contract",
             "level": 3,
-            "line": 1022,
+            "line": 1045,
             "ref": "docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md#2026-07-11-align-native-load-evidence-with-the-official-codex-contract",
             "title": "2026-07-11 - Align native-load evidence with the official Codex contract"
           },
           {
             "anchor": "2026-07-11-preserve-matched-pair-symmetry-across-an-ambient-route",
             "level": 3,
-            "line": 1039,
+            "line": 1062,
             "ref": "docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md#2026-07-11-preserve-matched-pair-symmetry-across-an-ambient-route",
             "title": "2026-07-11 - Preserve matched-pair symmetry across an ambient route"
           },
           {
             "anchor": "2026-07-11-correct-cli-mcp-isolation-without-weakening-app-gates",
             "level": 3,
-            "line": 1053,
+            "line": 1076,
             "ref": "docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md#2026-07-11-correct-cli-mcp-isolation-without-weakening-app-gates",
             "title": "2026-07-11 - Correct CLI MCP isolation without weakening App gates"
           },
           {
             "anchor": "2026-07-11-correct-prompt-isolation-and-evidence-stage-grading",
             "level": 3,
-            "line": 1069,
+            "line": 1092,
             "ref": "docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md#2026-07-11-correct-prompt-isolation-and-evidence-stage-grading",
             "title": "2026-07-11 - Correct prompt isolation and evidence-stage grading"
           },
           {
             "anchor": "boundaries",
             "level": 2,
-            "line": 1089,
+            "line": 1112,
             "ref": "docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md#boundaries",
             "title": "Boundaries"
           },
           {
             "anchor": "validation",
             "level": 2,
-            "line": 1106,
+            "line": 1129,
             "ref": "docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md#validation",
             "title": "Validation"
           }
@@ -61255,7 +61269,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "7a6cbcf367592295b759b761610c931efc9d5edabf35fe18d7f19b138bbef40b",
+        "digest": "6b77b0348637250bdaeb52b6a143953f21fbd5f647e03d3653d73946a188785e",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -63967,13 +63981,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "617b2f2fa2cf7c827d672a7b10c808520afcacce36285208540efd1872d3b747",
+        "content_hash": "e90b7f773d3e4feb54b68e663dfedd4a47cfec03206fdaf2539fb29e87b2c806",
         "git_ref": "git-index-source-tree",
         "id": "file:docs/reviews/canonical-candidates/aoa-change-protocol.md:1ea3bf8b96",
         "mime": "text/markdown",
         "path": "docs/reviews/canonical-candidates/aoa-change-protocol.md",
         "repo": "aoa-skills",
-        "size_bytes": 2875
+        "size_bytes": 3944
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -64049,9 +64063,16 @@
             "title": "2026-05-03 maintenance audit"
           },
           {
-            "anchor": "recommendation",
+            "anchor": "2026-07-12-adaptive-boundary-audit",
             "level": 2,
             "line": 51,
+            "ref": "docs/reviews/canonical-candidates/aoa-change-protocol.md#2026-07-12-adaptive-boundary-audit",
+            "title": "2026-07-12 adaptive boundary audit"
+          },
+          {
+            "anchor": "recommendation",
+            "level": 2,
+            "line": 68,
             "ref": "docs/reviews/canonical-candidates/aoa-change-protocol.md#recommendation",
             "title": "Recommendation"
           }
@@ -64063,7 +64084,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "617b2f2fa2cf7c827d672a7b10c808520afcacce36285208540efd1872d3b747",
+        "digest": "e90b7f773d3e4feb54b68e663dfedd4a47cfec03206fdaf2539fb29e87b2c806",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -68049,13 +68070,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "3128c40e31d94fa68765862c7d5bd09682c39b15f962a2729c5366be4b35a906",
+        "content_hash": "3bd05836946791416b4c402c4ba0e4f9714d7032105b826692bb7900df785471",
         "git_ref": "git-index-source-tree",
         "id": "file:docs/reviews/status-promotions/aoa-decision.md:dcd36a5e7d",
         "mime": "text/markdown",
         "path": "docs/reviews/status-promotions/aoa-decision.md",
         "repo": "aoa-skills",
-        "size_bytes": 2349
+        "size_bytes": 2516
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -68112,21 +68133,21 @@
           {
             "anchor": "findings",
             "level": 2,
-            "line": 26,
+            "line": 28,
             "ref": "docs/reviews/status-promotions/aoa-decision.md#findings",
             "title": "Findings"
           },
           {
             "anchor": "gaps-and-blockers",
             "level": 2,
-            "line": 33,
+            "line": 43,
             "ref": "docs/reviews/status-promotions/aoa-decision.md#gaps-and-blockers",
             "title": "Gaps and blockers"
           },
           {
             "anchor": "recommendation",
             "level": 2,
-            "line": 38,
+            "line": 52,
             "ref": "docs/reviews/status-promotions/aoa-decision.md#recommendation",
             "title": "Recommendation"
           }
@@ -68138,7 +68159,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "3128c40e31d94fa68765862c7d5bd09682c39b15f962a2729c5366be4b35a906",
+        "digest": "3bd05836946791416b4c402c4ba0e4f9714d7032105b826692bb7900df785471",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -71567,13 +71588,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "0eaa71ba38884bfc24f193c502c48af7412a156134e65cb6e4471e1565cb7ef6",
+        "content_hash": "901420b75489a1bf7ed53e018ac42b4d024c703b0a986f5c480ce3a14024edcc",
         "git_ref": "git-index-source-tree",
         "id": "file:evals/readme.md:a1a9eeb43d",
         "mime": "text/markdown",
         "path": "evals/README.md",
         "repo": "aoa-skills",
-        "size_bytes": 3879
+        "size_bytes": 4212
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -71628,7 +71649,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "0eaa71ba38884bfc24f193c502c48af7412a156134e65cb6e4471e1565cb7ef6",
+        "digest": "901420b75489a1bf7ed53e018ac42b4d024c703b0a986f5c480ce3a14024edcc",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -74914,13 +74935,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "1ca827347f9b79fba4f8f3198e7f0d951981e71a2275710d7dcfc1bdb3dc551b",
+        "content_hash": "54fe8eed8474976903c6157c3f83579ca59cf605a5a319b3ff352b1906e80667",
         "git_ref": "git-index-source-tree",
         "id": "file:evals/runners/readme.md:194095a363",
         "mime": "text/markdown",
         "path": "evals/runners/README.md",
         "repo": "aoa-skills",
-        "size_bytes": 19679
+        "size_bytes": 20026
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -74968,7 +74989,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "1ca827347f9b79fba4f8f3198e7f0d951981e71a2275710d7dcfc1bdb3dc551b",
+        "digest": "54fe8eed8474976903c6157c3f83579ca59cf605a5a319b3ff352b1906e80667",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -75016,13 +75037,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "91a91b5d12bed7fc13780c5b2296a2c4778bec4448880683ab0abd1883edff01",
+        "content_hash": "26aadc059aca60da1ddb02530ef7e75ff3112ec611ebfbd075dd64f044c86f22",
         "git_ref": "git-index-source-tree",
         "id": "file:evals/runners/run_live_skill_dispatch.py:e7cd5c0ae9",
         "mime": "text/x-python",
         "path": "evals/runners/run_live_skill_dispatch.py",
         "repo": "aoa-skills",
-        "size_bytes": 183311
+        "size_bytes": 183340
       },
       "mechanics_role": "none",
       "observed_form": "command",
@@ -75055,7 +75076,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "91a91b5d12bed7fc13780c5b2296a2c4778bec4448880683ab0abd1883edff01",
+        "digest": "26aadc059aca60da1ddb02530ef7e75ff3112ec611ebfbd075dd64f044c86f22",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -75202,7 +75223,7 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "5075a09187b1522d3bbaa249d8eb62fc16a30e8b5f01fdcb9ab8c5cd76d87c10",
+        "content_hash": "e6c91bcc47f62f424d132c7b124dbb373eb1c083f673547b422e4bf7634db791",
         "git_ref": "git-index-source-tree",
         "id": "file:evals/suites/aoa-eval-trigger-corpus.suite.json:32274551c1",
         "mime": "application/json",
@@ -75241,7 +75262,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "5075a09187b1522d3bbaa249d8eb62fc16a30e8b5f01fdcb9ab8c5cd76d87c10",
+        "digest": "e6c91bcc47f62f424d132c7b124dbb373eb1c083f673547b422e4bf7634db791",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -75505,7 +75526,7 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "b8dee7cb10c3e935a5012cfea8a7be0c7a2bbff7d6889eb900d6eb78057a1a91",
+        "content_hash": "480e8354e558eef4e1e0369fccd803775219e3cd70263362cd882fccd6264e95",
         "git_ref": "git-index-source-tree",
         "id": "file:evals/suites/aoa-skill-live-dispatch-harness.suite.json:beeca555d0",
         "mime": "application/json",
@@ -75544,7 +75565,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "b8dee7cb10c3e935a5012cfea8a7be0c7a2bbff7d6889eb900d6eb78057a1a91",
+        "digest": "480e8354e558eef4e1e0369fccd803775219e3cd70263362cd882fccd6264e95",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -75594,13 +75615,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "9aee6b3e2c24bb966185c9b277ddfc82749555e89b906a57099bcdb926cc6f78",
+        "content_hash": "8b6773f61d5e841a4da808a61c94faa75cd8361116a6ceae4bc9eb012f4d44ae",
         "git_ref": "git-index-source-tree",
         "id": "file:evals/suites/aoa-skill-live-dispatch-harness.suite.md:dc83328e65",
         "mime": "text/markdown",
         "path": "evals/suites/aoa-skill-live-dispatch-harness.suite.md",
         "repo": "aoa-skills",
-        "size_bytes": 29363
+        "size_bytes": 30397
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -75657,21 +75678,21 @@
           {
             "anchor": "evidence-semantics",
             "level": 2,
-            "line": 90,
+            "line": 99,
             "ref": "evals/suites/aoa-skill-live-dispatch-harness.suite.md#evidence-semantics",
             "title": "Evidence Semantics"
           },
           {
             "anchor": "safety-and-privacy",
             "level": 2,
-            "line": 378,
+            "line": 394,
             "ref": "evals/suites/aoa-skill-live-dispatch-harness.suite.md#safety-and-privacy",
             "title": "Safety And Privacy"
           },
           {
             "anchor": "adaptive-return",
             "level": 2,
-            "line": 426,
+            "line": 442,
             "ref": "evals/suites/aoa-skill-live-dispatch-harness.suite.md#adaptive-return",
             "title": "Adaptive Return"
           }
@@ -75683,7 +75704,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "9aee6b3e2c24bb966185c9b277ddfc82749555e89b906a57099bcdb926cc6f78",
+        "digest": "8b6773f61d5e841a4da808a61c94faa75cd8361116a6ceae4bc9eb012f4d44ae",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -75909,13 +75930,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "b761db4a4f242801401ca68c8b3b32ef677b7f3d7f1ac9419eb81d6bf2dcac64",
+        "content_hash": "538730e14b5c1167eb43754d0e8494a41e0e172af6bf177ac0fe2acbeedec89a",
         "git_ref": "git-index-source-tree",
         "id": "file:evals/suites/aoa-skill-live-dispatch.plan.json:c8f8bbbc88",
         "mime": "application/json",
         "path": "evals/suites/aoa-skill-live-dispatch.plan.json",
         "repo": "aoa-skills",
-        "size_bytes": 7998
+        "size_bytes": 8449
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -75948,7 +75969,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "b761db4a4f242801401ca68c8b3b32ef677b7f3d7f1ac9419eb81d6bf2dcac64",
+        "digest": "538730e14b5c1167eb43754d0e8494a41e0e172af6bf177ac0fe2acbeedec89a",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -76607,13 +76628,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "56b7c0e5c4193c7ec2076119b165a800dc59604c84f635bc914dbb0e44b1fb89",
+        "content_hash": "9bf36a3ed3b9560543c6ff82cc7d53e93f4d16d7af66d4d2a3d225da1681f866",
         "git_ref": "git-index-source-tree",
         "id": "file:generated/agent_skill_catalog.json:f48e7e05f5",
         "mime": "application/json",
         "path": "generated/agent_skill_catalog.json",
         "repo": "aoa-skills",
-        "size_bytes": 106992
+        "size_bytes": 107327
       },
       "mechanics_role": "none",
       "observed_form": "generated_output",
@@ -76646,7 +76667,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "56b7c0e5c4193c7ec2076119b165a800dc59604c84f635bc914dbb0e44b1fb89",
+        "digest": "9bf36a3ed3b9560543c6ff82cc7d53e93f4d16d7af66d4d2a3d225da1681f866",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -76696,13 +76717,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "3b9c3c50014c4c577b10edeb7704a81b23ff580a35d80969743481724a87e701",
+        "content_hash": "d0b59ccc1f969ff1b569df51b667f44b4d13d3d10fbab939fb79feaa60efb3bc",
         "git_ref": "git-index-source-tree",
         "id": "file:generated/agent_skill_catalog.min.json:f2c1c1e771",
         "mime": "application/json",
         "path": "generated/agent_skill_catalog.min.json",
         "repo": "aoa-skills",
-        "size_bytes": 41447
+        "size_bytes": 41782
       },
       "mechanics_role": "none",
       "observed_form": "generated_output",
@@ -76735,7 +76756,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "3b9c3c50014c4c577b10edeb7704a81b23ff580a35d80969743481724a87e701",
+        "digest": "d0b59ccc1f969ff1b569df51b667f44b4d13d3d10fbab939fb79feaa60efb3bc",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -77052,13 +77073,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "03c7b8158fd1d7ebbf047b8f095d29cc183a2467023fb0a644c932d5d6d7b3e8",
+        "content_hash": "805bae5189f50f065e70fd9fb7fa73f71be7e7f3f04457b8a958d0e939f2cab9",
         "git_ref": "git-index-source-tree",
         "id": "file:generated/context_retention_manifest.json:ee6e7fdae5",
         "mime": "application/json",
         "path": "generated/context_retention_manifest.json",
         "repo": "aoa-skills",
-        "size_bytes": 89359
+        "size_bytes": 89694
       },
       "mechanics_role": "none",
       "observed_form": "generated_output",
@@ -77091,7 +77112,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "03c7b8158fd1d7ebbf047b8f095d29cc183a2467023fb0a644c932d5d6d7b3e8",
+        "digest": "805bae5189f50f065e70fd9fb7fa73f71be7e7f3f04457b8a958d0e939f2cab9",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -77141,7 +77162,7 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "69912e3340059c5cb53f0ec8dd3a671d8e0d3af6d3cbd170528a58cdef03144f",
+        "content_hash": "89f1baa0913d50006db931fed008f63d25a664014524c73aefae810820525c35",
         "git_ref": "git-index-source-tree",
         "id": "file:generated/description_trigger_eval_cases.csv:d9645e6c0f",
         "mime": "text/csv",
@@ -77180,7 +77201,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "69912e3340059c5cb53f0ec8dd3a671d8e0d3af6d3cbd170528a58cdef03144f",
+        "digest": "89f1baa0913d50006db931fed008f63d25a664014524c73aefae810820525c35",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -77228,7 +77249,7 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "fe2e0a9c269b6a72d4b119332cac166dc7a9205497bf0dc06149527967c1c63f",
+        "content_hash": "e20646c056d1e3742fc966b2ad37ea30ec569851c20f750c02cdcd96f6ab4dcf",
         "git_ref": "git-index-source-tree",
         "id": "file:generated/description_trigger_eval_cases.jsonl:214a3f457c",
         "mime": "application/x-ndjson",
@@ -77267,7 +77288,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "fe2e0a9c269b6a72d4b119332cac166dc7a9205497bf0dc06149527967c1c63f",
+        "digest": "e20646c056d1e3742fc966b2ad37ea30ec569851c20f750c02cdcd96f6ab4dcf",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -77315,7 +77336,7 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "370a4c1061da9904c7097b71628ec549ca8fdf58328e6126744ab34ab715ce87",
+        "content_hash": "8fa89ea65f05836f978bcf70c070f8bc58dffe78f2fb9db042a4e2b5c428f64e",
         "git_ref": "git-index-source-tree",
         "id": "file:generated/description_trigger_eval_manifest.json:604a215656",
         "mime": "application/json",
@@ -77354,7 +77375,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "370a4c1061da9904c7097b71628ec549ca8fdf58328e6126744ab34ab715ce87",
+        "digest": "8fa89ea65f05836f978bcf70c070f8bc58dffe78f2fb9db042a4e2b5c428f64e",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -77669,7 +77690,7 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "aea0d6168b02ee8f80cff22be453b00bb90104ca49e868051e86840d9ac80d5b",
+        "content_hash": "5ba40e4a169baeac90f3380b624e35ff04020c4d9ff5f9acb8b8bd178bfcc358",
         "git_ref": "git-index-source-tree",
         "id": "file:generated/governance_backlog.json:520a802849",
         "mime": "application/json",
@@ -77708,7 +77729,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "aea0d6168b02ee8f80cff22be453b00bb90104ca49e868051e86840d9ac80d5b",
+        "digest": "5ba40e4a169baeac90f3380b624e35ff04020c4d9ff5f9acb8b8bd178bfcc358",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -77758,7 +77779,7 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "7e2c11ad5ec41c93e0a6e3cf5feacc951639a4aeb7070bbf6f43019ed9f0f7d1",
+        "content_hash": "7f94afe9da3c123cc72a07c05cc5c943406e4a3027ffc1355b38b1d64f055f22",
         "git_ref": "git-index-source-tree",
         "id": "file:generated/governance_backlog.md:4dbc75853f",
         "mime": "text/markdown",
@@ -77826,7 +77847,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "7e2c11ad5ec41c93e0a6e3cf5feacc951639a4aeb7070bbf6f43019ed9f0f7d1",
+        "digest": "7f94afe9da3c123cc72a07c05cc5c943406e4a3027ffc1355b38b1d64f055f22",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -77874,13 +77895,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "878b8e103726acf17438b47d458ed2d7d53921bf0d0081efe0bde82931138f12",
+        "content_hash": "c2d708a7dcdcc63ca69d648698d43d9b9c483aafed617364a1e3b9835ff08dac",
         "git_ref": "git-index-source-tree",
         "id": "file:generated/local_adapter_manifest.json:fbb1bc801b",
         "mime": "application/json",
         "path": "generated/local_adapter_manifest.json",
         "repo": "aoa-skills",
-        "size_bytes": 102053
+        "size_bytes": 102388
       },
       "mechanics_role": "none",
       "observed_form": "generated_output",
@@ -77913,7 +77934,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "878b8e103726acf17438b47d458ed2d7d53921bf0d0081efe0bde82931138f12",
+        "digest": "c2d708a7dcdcc63ca69d648698d43d9b9c483aafed617364a1e3b9835ff08dac",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -77963,13 +77984,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "cee38f5179e71c745cf2b37217c76da8c45df10035ad8c31f668b0356cd8d0e5",
+        "content_hash": "b0a750ba95e8fc953875667cac29280859e618f8cb106b07507116cea90af596",
         "git_ref": "git-index-source-tree",
         "id": "file:generated/local_adapter_manifest.min.json:d678d4fbd3",
         "mime": "application/json",
         "path": "generated/local_adapter_manifest.min.json",
         "repo": "aoa-skills",
-        "size_bytes": 39946
+        "size_bytes": 40281
       },
       "mechanics_role": "none",
       "observed_form": "generated_output",
@@ -78002,7 +78023,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "cee38f5179e71c745cf2b37217c76da8c45df10035ad8c31f668b0356cd8d0e5",
+        "digest": "b0a750ba95e8fc953875667cac29280859e618f8cb106b07507116cea90af596",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -79147,13 +79168,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "a5c196a3f1b215bdc35574c35fa2368bf87b0fb832208244e505c8c5a319f420",
+        "content_hash": "e23dfba71ad4ffa97ce454a46d75b6907208cad06cf3ed16e7836fd8758cf65e",
         "git_ref": "git-index-source-tree",
         "id": "file:generated/public_surface.json:1a38f46b7f",
         "mime": "application/json",
         "path": "generated/public_surface.json",
         "repo": "aoa-skills",
-        "size_bytes": 71947
+        "size_bytes": 72063
       },
       "mechanics_role": "none",
       "observed_form": "generated_output",
@@ -79186,7 +79207,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "a5c196a3f1b215bdc35574c35fa2368bf87b0fb832208244e505c8c5a319f420",
+        "digest": "e23dfba71ad4ffa97ce454a46d75b6907208cad06cf3ed16e7836fd8758cf65e",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -79729,7 +79750,7 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "27e35045fdea5fa9aa28aed7fd45adc7832e5fa94a235f722668c59674af15e3",
+        "content_hash": "2660207a62ce43f4ae08343b286326fc8b76bed2d7bef649f0121c2cec942577",
         "git_ref": "git-index-source-tree",
         "id": "file:generated/release_manifest.json:0d2f8dd349",
         "mime": "application/json",
@@ -79768,7 +79789,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "27e35045fdea5fa9aa28aed7fd45adc7832e5fa94a235f722668c59674af15e3",
+        "digest": "2660207a62ce43f4ae08343b286326fc8b76bed2d7bef649f0121c2cec942577",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -79818,13 +79839,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "b58139c5305f461e7fd36f3dfc4e5bead5376d969d862d3307c269773294ca38",
+        "content_hash": "65c1534caea7518c26c7baea7bb21bfe09f3650919bd39c07ca7a42ec693bd7e",
         "git_ref": "git-index-source-tree",
         "id": "file:generated/repo_trust_gate_manifest.json:6bf75b5293",
         "mime": "application/json",
         "path": "generated/repo_trust_gate_manifest.json",
         "repo": "aoa-skills",
-        "size_bytes": 71003
+        "size_bytes": 71338
       },
       "mechanics_role": "none",
       "observed_form": "generated_output",
@@ -79857,7 +79878,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "b58139c5305f461e7fd36f3dfc4e5bead5376d969d862d3307c269773294ca38",
+        "digest": "65c1534caea7518c26c7baea7bb21bfe09f3650919bd39c07ca7a42ec693bd7e",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -79996,13 +80017,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "17daa47e1b3f34f9097d57443e6ad663056d1bc3cac34a311360d5ebfac1123e",
+        "content_hash": "de6fa2247e917b51510f8c8c77d0c1e042206b89d8405166f4d433265d5072a1",
         "git_ref": "git-index-source-tree",
         "id": "file:generated/runtime_disclosure_index.json:b5f6668ecc",
         "mime": "application/json",
         "path": "generated/runtime_disclosure_index.json",
         "repo": "aoa-skills",
-        "size_bytes": 416094
+        "size_bytes": 417289
       },
       "mechanics_role": "none",
       "observed_form": "generated_output",
@@ -80035,7 +80056,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "17daa47e1b3f34f9097d57443e6ad663056d1bc3cac34a311360d5ebfac1123e",
+        "digest": "de6fa2247e917b51510f8c8c77d0c1e042206b89d8405166f4d433265d5072a1",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -80085,13 +80106,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "330f449d84a12e6b84f4e20064db38de810c383f1a25849ae9a8dbd9d515f325",
+        "content_hash": "0cd52e5c93f340bc28a6d0fa46e3b35f6348e8d2c230b50545aab3ffee0424e5",
         "git_ref": "git-index-source-tree",
         "id": "file:generated/runtime_discovery_index.json:ccdac0ef2f",
         "mime": "application/json",
         "path": "generated/runtime_discovery_index.json",
         "repo": "aoa-skills",
-        "size_bytes": 161362
+        "size_bytes": 162139
       },
       "mechanics_role": "none",
       "observed_form": "generated_output",
@@ -80124,7 +80145,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "330f449d84a12e6b84f4e20064db38de810c383f1a25849ae9a8dbd9d515f325",
+        "digest": "0cd52e5c93f340bc28a6d0fa46e3b35f6348e8d2c230b50545aab3ffee0424e5",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -80174,13 +80195,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "991dac45a7f9c9d002a4adb3b37814e9a47c3571acf149b1fc45a84833084196",
+        "content_hash": "77df132308c667a1bd6ab9a29fb9ed7a9054e6084c37b17d4f92fe8a62e9e5f2",
         "git_ref": "git-index-source-tree",
         "id": "file:generated/runtime_discovery_index.min.json:e0c2cc6810",
         "mime": "application/json",
         "path": "generated/runtime_discovery_index.min.json",
         "repo": "aoa-skills",
-        "size_bytes": 38690
+        "size_bytes": 39025
       },
       "mechanics_role": "none",
       "observed_form": "generated_output",
@@ -80213,7 +80234,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "991dac45a7f9c9d002a4adb3b37814e9a47c3571acf149b1fc45a84833084196",
+        "digest": "77df132308c667a1bd6ab9a29fb9ed7a9054e6084c37b17d4f92fe8a62e9e5f2",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -80352,13 +80373,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "bbe0e817e613b8f8e5b88beb397bf44f5e97ed125324b432837b7b31459ef6b5",
+        "content_hash": "05a768437233225a1cdaf9387f822e7d8a66be5add389ccab4975675e1b4c05d",
         "git_ref": "git-index-source-tree",
         "id": "file:generated/runtime_guardrail_prompt_blocks.json:7c81cde83f",
         "mime": "application/json",
         "path": "generated/runtime_guardrail_prompt_blocks.json",
         "repo": "aoa-skills",
-        "size_bytes": 173214
+        "size_bytes": 175224
       },
       "mechanics_role": "none",
       "observed_form": "generated_output",
@@ -80391,7 +80412,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "bbe0e817e613b8f8e5b88beb397bf44f5e97ed125324b432837b7b31459ef6b5",
+        "digest": "05a768437233225a1cdaf9387f822e7d8a66be5add389ccab4975675e1b4c05d",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -80530,13 +80551,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "9a68dd42454ec46b7af7bcb7e81469751321a3dfd56227527b1c0e0291695403",
+        "content_hash": "ca0d7a01db2480b24e23c1eb6f0e0045fd3fd4c9bd21b7bcd00c7fce11f470d6",
         "git_ref": "git-index-source-tree",
         "id": "file:generated/runtime_prompt_blocks.json:8b8c181771",
         "mime": "application/json",
         "path": "generated/runtime_prompt_blocks.json",
         "repo": "aoa-skills",
-        "size_bytes": 113475
+        "size_bytes": 114815
       },
       "mechanics_role": "none",
       "observed_form": "generated_output",
@@ -80569,7 +80590,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "9a68dd42454ec46b7af7bcb7e81469751321a3dfd56227527b1c0e0291695403",
+        "digest": "ca0d7a01db2480b24e23c1eb6f0e0045fd3fd4c9bd21b7bcd00c7fce11f470d6",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -80619,13 +80640,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "1d8dce33bf504677e6adf830f38bacaa6b1a4cc16f9e8f1c94cba197f939fdaa",
+        "content_hash": "fd277bc3972843dc521629951df323d3f2a93958138f8e1eb48f186e7497d6e0",
         "git_ref": "git-index-source-tree",
         "id": "file:generated/runtime_router_hints.json:7c4efda18c",
         "mime": "application/json",
         "path": "generated/runtime_router_hints.json",
         "repo": "aoa-skills",
-        "size_bytes": 108559
+        "size_bytes": 109446
       },
       "mechanics_role": "none",
       "observed_form": "generated_output",
@@ -80658,7 +80679,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "1d8dce33bf504677e6adf830f38bacaa6b1a4cc16f9e8f1c94cba197f939fdaa",
+        "digest": "fd277bc3972843dc521629951df323d3f2a93958138f8e1eb48f186e7497d6e0",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -81262,7 +81283,7 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "cb4aba8d2bcef71d7c3bba0bd9c6aa799bd5efa51a915028792e29055634ee5e",
+        "content_hash": "c97e9365c6748744c649077b3f10eb3cf6de45cbf479e700240463209f8b5d14",
         "git_ref": "git-index-source-tree",
         "id": "file:generated/skill_bundle_index.json:21c110a25c",
         "mime": "application/json",
@@ -81301,7 +81322,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "cb4aba8d2bcef71d7c3bba0bd9c6aa799bd5efa51a915028792e29055634ee5e",
+        "digest": "c97e9365c6748744c649077b3f10eb3cf6de45cbf479e700240463209f8b5d14",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -81351,7 +81372,7 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "64bf43ea1f3a93e5ef8447dfb706b31d95eb28be5624fdcdc58af55eb3743b99",
+        "content_hash": "1f4c41e4b2ef105a5f5bae2cf65bfe26402d1c0823b8cc613e97cd9e77f5b300",
         "git_ref": "git-index-source-tree",
         "id": "file:generated/skill_bundle_index.md:1f0f1423c6",
         "mime": "text/markdown",
@@ -81398,7 +81419,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "64bf43ea1f3a93e5ef8447dfb706b31d95eb28be5624fdcdc58af55eb3743b99",
+        "digest": "1f4c41e4b2ef105a5f5bae2cf65bfe26402d1c0823b8cc613e97cd9e77f5b300",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -81446,13 +81467,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "d5c763caa1ab39dd82d5c1841624ea3b474eef2cc59d5165cf356c03b72f95be",
+        "content_hash": "829dfd62a72ad76b78027bf6d8ce24059f08cf3b6dea283e8665f2325952683c",
         "git_ref": "git-index-source-tree",
         "id": "file:generated/skill_capsules.json:51dc0080ee",
         "mime": "application/json",
         "path": "generated/skill_capsules.json",
         "repo": "aoa-skills",
-        "size_bytes": 109034
+        "size_bytes": 109158
       },
       "mechanics_role": "none",
       "observed_form": "generated_output",
@@ -81485,7 +81506,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "d5c763caa1ab39dd82d5c1841624ea3b474eef2cc59d5165cf356c03b72f95be",
+        "digest": "829dfd62a72ad76b78027bf6d8ce24059f08cf3b6dea283e8665f2325952683c",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -81535,13 +81556,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "e14305b5f3a81b5fd23968c10924cdf9d60d4f8bea1ac2304f715037760b0827",
+        "content_hash": "99e2ae94f1cbf8fe44ce904c52ff0bd9d6a6b47e308a60a14e9197a432b2ad77",
         "git_ref": "git-index-source-tree",
         "id": "file:generated/skill_catalog.json:7620632803",
         "mime": "application/json",
         "path": "generated/skill_catalog.json",
         "repo": "aoa-skills",
-        "size_bytes": 99749
+        "size_bytes": 99865
       },
       "mechanics_role": "none",
       "observed_form": "generated_output",
@@ -81574,7 +81595,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "e14305b5f3a81b5fd23968c10924cdf9d60d4f8bea1ac2304f715037760b0827",
+        "digest": "99e2ae94f1cbf8fe44ce904c52ff0bd9d6a6b47e308a60a14e9197a432b2ad77",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -81624,13 +81645,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "22852bb371383d9f3a627eb413e528b1f0e5cd672b7293dfa188c58d7e780b2f",
+        "content_hash": "6f289600126a512891ffae84443682ff380acdf6caf84ed656dc1659ec48e1bb",
         "git_ref": "git-index-source-tree",
         "id": "file:generated/skill_catalog.min.json:cba300f161",
         "mime": "application/json",
         "path": "generated/skill_catalog.min.json",
         "repo": "aoa-skills",
-        "size_bytes": 23212
+        "size_bytes": 23328
       },
       "mechanics_role": "none",
       "observed_form": "generated_output",
@@ -81663,7 +81684,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "22852bb371383d9f3a627eb413e528b1f0e5cd672b7293dfa188c58d7e780b2f",
+        "digest": "6f289600126a512891ffae84443682ff380acdf6caf84ed656dc1659ec48e1bb",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -81904,13 +81925,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "639218426b3d9663350751ba3def4660cea8707cb598da8f683c2dbcf9aa9919",
+        "content_hash": "e745e6603a2cfba25215fc266fdc419ae68f31624001709d347482e52a0b9da9",
         "git_ref": "git-index-source-tree",
         "id": "file:generated/skill_context_guard_manifest.json:5ca774e6ca",
         "mime": "application/json",
         "path": "generated/skill_context_guard_manifest.json",
         "repo": "aoa-skills",
-        "size_bytes": 121326
+        "size_bytes": 121661
       },
       "mechanics_role": "none",
       "observed_form": "generated_output",
@@ -81943,7 +81964,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "639218426b3d9663350751ba3def4660cea8707cb598da8f683c2dbcf9aa9919",
+        "digest": "e745e6603a2cfba25215fc266fdc419ae68f31624001709d347482e52a0b9da9",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -81993,13 +82014,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "30e712008370fd848c262e5b7c9d0d51672e2534f192d4a4a5c2048f09fa5ab5",
+        "content_hash": "a45332153881acb8b6b92f29488935c2dd05d8ed283af4cfdacc566191b42391",
         "git_ref": "git-index-source-tree",
         "id": "file:generated/skill_description_signals.json:b24fd7113a",
         "mime": "application/json",
         "path": "generated/skill_description_signals.json",
         "repo": "aoa-skills",
-        "size_bytes": 134087
+        "size_bytes": 134987
       },
       "mechanics_role": "none",
       "observed_form": "generated_output",
@@ -82032,7 +82053,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "30e712008370fd848c262e5b7c9d0d51672e2534f192d4a4a5c2048f09fa5ab5",
+        "digest": "a45332153881acb8b6b92f29488935c2dd05d8ed283af4cfdacc566191b42391",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -82082,7 +82103,7 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "c61728806d4234139c92dafc889b36b115b8ea9722f23e67d89f2210243a83f3",
+        "content_hash": "667765a8ab39cf0f3f059639dcbe301f36a1fbc20fe7efdfe071e24234fa32ef",
         "git_ref": "git-index-source-tree",
         "id": "file:generated/skill_evaluation_matrix.json:6e4900a48b",
         "mime": "application/json",
@@ -82121,7 +82142,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "c61728806d4234139c92dafc889b36b115b8ea9722f23e67d89f2210243a83f3",
+        "digest": "667765a8ab39cf0f3f059639dcbe301f36a1fbc20fe7efdfe071e24234fa32ef",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -82171,7 +82192,7 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "eaef66da8c73062ba17f86fdb034f336c9784bc3d5a4cbbe55eff505b50c04a5",
+        "content_hash": "314ae6d06a0dea71c3d5cf9ff28b79da8472b88ea4a48d15df26de9a27324fc5",
         "git_ref": "git-index-source-tree",
         "id": "file:generated/skill_evaluation_matrix.md:01aa16b70b",
         "mime": "text/markdown",
@@ -82232,7 +82253,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "eaef66da8c73062ba17f86fdb034f336c9784bc3d5a4cbbe55eff505b50c04a5",
+        "digest": "314ae6d06a0dea71c3d5cf9ff28b79da8472b88ea4a48d15df26de9a27324fc5",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -82280,7 +82301,7 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "cf83d3db6b3d36d5cef5bfe101b674be1411253bc538b4faaf4b74a0de278688",
+        "content_hash": "ac4cef4e6290074cb041eb8a597a9e8b4834ee469e0bd1830dd2628a1fe9ddb7",
         "git_ref": "git-index-source-tree",
         "id": "file:generated/skill_graph.json:d1304faa7e",
         "mime": "application/json",
@@ -82319,7 +82340,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "cf83d3db6b3d36d5cef5bfe101b674be1411253bc538b4faaf4b74a0de278688",
+        "digest": "ac4cef4e6290074cb041eb8a597a9e8b4834ee469e0bd1830dd2628a1fe9ddb7",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -82464,13 +82485,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "dc533ed8e3f1ccf162ad918f0ec078bd8e79244c7cea4a317e8a675a9d7004d3",
+        "content_hash": "30f713429db9cddd3abc6c10dd1e9f8c65a75c86d0fd362266952dd73f2308b0",
         "git_ref": "git-index-source-tree",
         "id": "file:generated/skill_handoff_contracts.json:1dcb04ba96",
         "mime": "application/json",
         "path": "generated/skill_handoff_contracts.json",
         "repo": "aoa-skills",
-        "size_bytes": 263457
+        "size_bytes": 264237
       },
       "mechanics_role": "none",
       "observed_form": "generated_output",
@@ -82503,7 +82524,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "dc533ed8e3f1ccf162ad918f0ec078bd8e79244c7cea4a317e8a675a9d7004d3",
+        "digest": "30f713429db9cddd3abc6c10dd1e9f8c65a75c86d0fd362266952dd73f2308b0",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -82553,13 +82574,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "94c0cc250315a48e2387fd45b13f95383371eb21d738f0a3536fe326b1a80bde",
+        "content_hash": "e3e1604e4bdffd123b6036c416499231950f09ee2362c8faf65d44159eb5a940",
         "git_ref": "git-index-source-tree",
         "id": "file:generated/skill_intelligence_registry.json:6c0fbe1c8a",
         "mime": "application/json",
         "path": "generated/skill_intelligence_registry.json",
         "repo": "aoa-skills",
-        "size_bytes": 916101
+        "size_bytes": 917960
       },
       "mechanics_role": "none",
       "observed_form": "generated_output",
@@ -82592,7 +82613,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "94c0cc250315a48e2387fd45b13f95383371eb21d738f0a3536fe326b1a80bde",
+        "digest": "e3e1604e4bdffd123b6036c416499231950f09ee2362c8faf65d44159eb5a940",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -82642,13 +82663,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "44b11d090a9d26576894ad8693dfffaba15658bdea6bf51daea1399709579edf",
+        "content_hash": "92bd66fb92bcc4bbb4e1516144935ef8653fc74d6f60fa2cdd278d93b9720730",
         "git_ref": "git-index-source-tree",
         "id": "file:generated/skill_intelligence_registry.min.json:83ed727446",
         "mime": "application/json",
         "path": "generated/skill_intelligence_registry.min.json",
         "repo": "aoa-skills",
-        "size_bytes": 346339
+        "size_bytes": 346792
       },
       "mechanics_role": "none",
       "observed_form": "generated_output",
@@ -82681,7 +82702,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "44b11d090a9d26576894ad8693dfffaba15658bdea6bf51daea1399709579edf",
+        "digest": "92bd66fb92bcc4bbb4e1516144935ef8653fc74d6f60fa2cdd278d93b9720730",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -83682,13 +83703,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "7df5eed839b5646af99798cd7eab4f0ece42ed477d8a05b01acd0669ce57c048",
+        "content_hash": "c72717c8d21354b3f7acc7a7cfc38682dd90d3f651de6a1846ad93c0b873fb95",
         "git_ref": "git-index-source-tree",
         "id": "file:generated/skill_runtime_contracts.json:d6b48bfe00",
         "mime": "application/json",
         "path": "generated/skill_runtime_contracts.json",
         "repo": "aoa-skills",
-        "size_bytes": 110678
+        "size_bytes": 111195
       },
       "mechanics_role": "none",
       "observed_form": "generated_output",
@@ -83721,7 +83742,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "7df5eed839b5646af99798cd7eab4f0ece42ed477d8a05b01acd0669ce57c048",
+        "digest": "c72717c8d21354b3f7acc7a7cfc38682dd90d3f651de6a1846ad93c0b873fb95",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -83771,13 +83792,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "11ed731fa2c8f05c14b105b91ceed5d01d62591c9262f40572b448b11c5468d6",
+        "content_hash": "351d1c9fffd506500d5158f0c27f0cc94e2ff10285a84e04c3f78891fd6dbba9",
         "git_ref": "git-index-source-tree",
         "id": "file:generated/skill_sections.full.json:9b842fc1bc",
         "mime": "application/json",
         "path": "generated/skill_sections.full.json",
         "repo": "aoa-skills",
-        "size_bytes": 409110
+        "size_bytes": 410440
       },
       "mechanics_role": "none",
       "observed_form": "generated_output",
@@ -83810,7 +83831,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "11ed731fa2c8f05c14b105b91ceed5d01d62591c9262f40572b448b11c5468d6",
+        "digest": "351d1c9fffd506500d5158f0c27f0cc94e2ff10285a84e04c3f78891fd6dbba9",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -83860,13 +83881,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "0b6d77b4ab3fc2e70273c3cbadec7ecd9cb25eb142354fa9e66bfae2cb5dc31d",
+        "content_hash": "5fecb681a5d89bd1a1dc38ef1e7eb6b064ada02e0fb49c799ac00a6bc4ed4067",
         "git_ref": "git-index-source-tree",
         "id": "file:generated/skill_trigger_collision_matrix.json:b959a3864c",
         "mime": "application/json",
         "path": "generated/skill_trigger_collision_matrix.json",
         "repo": "aoa-skills",
-        "size_bytes": 39404
+        "size_bytes": 39619
       },
       "mechanics_role": "none",
       "observed_form": "generated_output",
@@ -83899,7 +83920,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "0b6d77b4ab3fc2e70273c3cbadec7ecd9cb25eb142354fa9e66bfae2cb5dc31d",
+        "digest": "5fecb681a5d89bd1a1dc38ef1e7eb6b064ada02e0fb49c799ac00a6bc4ed4067",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -84123,13 +84144,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "d72ef52bd996777afef47982cf4d8933ef3c0f3161623e12ed9970de5d9bac33",
+        "content_hash": "a44f89887ba43ac413e794c1f4440c3949c4765d767b513a4ce3fc8b0c3b8929",
         "git_ref": "git-index-source-tree",
         "id": "file:generated/skill_walkthroughs.json:cb5ffa1986",
         "mime": "application/json",
         "path": "generated/skill_walkthroughs.json",
         "repo": "aoa-skills",
-        "size_bytes": 148983
+        "size_bytes": 149544
       },
       "mechanics_role": "none",
       "observed_form": "generated_output",
@@ -84162,7 +84183,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "d72ef52bd996777afef47982cf4d8933ef3c0f3161623e12ed9970de5d9bac33",
+        "digest": "a44f89887ba43ac413e794c1f4440c3949c4765d767b513a4ce3fc8b0c3b8929",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -84212,13 +84233,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "ab80904c81b389c71ab438ef34f74d153f099991ee8b896fdcfb3ab60f90a112",
+        "content_hash": "1ad4ea4a5ac40c2f3d7fdad32c69dc5d92f3639a3d96a2beaface49c51fc8b95",
         "git_ref": "git-index-source-tree",
         "id": "file:generated/skill_walkthroughs.md:7a0c75e93c",
         "mime": "text/markdown",
         "path": "generated/skill_walkthroughs.md",
         "repo": "aoa-skills",
-        "size_bytes": 106453
+        "size_bytes": 106987
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -84527,1729 +84548,1729 @@
           {
             "anchor": "object-use-shape-7",
             "level": 3,
-            "line": 347,
+            "line": 349,
             "ref": "generated/skill_walkthroughs.md#object-use-shape-7",
             "title": "Object use shape"
           },
           {
             "anchor": "support-artifacts-7",
             "level": 3,
-            "line": 355,
+            "line": 357,
             "ref": "generated/skill_walkthroughs.md#support-artifacts-7",
             "title": "Support artifacts"
           },
           {
             "anchor": "aoa-checkpoint-closeout-bridge",
             "level": 2,
-            "line": 361,
+            "line": 363,
             "ref": "generated/skill_walkthroughs.md#aoa-checkpoint-closeout-bridge",
             "title": "aoa-checkpoint-closeout-bridge"
           },
           {
             "anchor": "use-when-8",
             "level": 3,
-            "line": 369,
+            "line": 371,
             "ref": "generated/skill_walkthroughs.md#use-when-8",
             "title": "Use when"
           },
           {
             "anchor": "do-not-use-when-8",
             "level": 3,
-            "line": 377,
+            "line": 379,
             "ref": "generated/skill_walkthroughs.md#do-not-use-when-8",
             "title": "Do not use when"
           },
           {
             "anchor": "object-use-shape-8",
             "level": 3,
-            "line": 386,
+            "line": 388,
             "ref": "generated/skill_walkthroughs.md#object-use-shape-8",
             "title": "Object use shape"
           },
           {
             "anchor": "support-artifacts-8",
             "level": 3,
-            "line": 403,
+            "line": 405,
             "ref": "generated/skill_walkthroughs.md#support-artifacts-8",
             "title": "Support artifacts"
           },
           {
             "anchor": "aoa-commit-growth-seam",
             "level": 2,
-            "line": 409,
+            "line": 411,
             "ref": "generated/skill_walkthroughs.md#aoa-commit-growth-seam",
             "title": "aoa-commit-growth-seam"
           },
           {
             "anchor": "use-when-9",
             "level": 3,
-            "line": 417,
+            "line": 419,
             "ref": "generated/skill_walkthroughs.md#use-when-9",
             "title": "Use when"
           },
           {
             "anchor": "do-not-use-when-9",
             "level": 3,
-            "line": 426,
+            "line": 428,
             "ref": "generated/skill_walkthroughs.md#do-not-use-when-9",
             "title": "Do not use when"
           },
           {
             "anchor": "object-use-shape-9",
             "level": 3,
-            "line": 435,
+            "line": 437,
             "ref": "generated/skill_walkthroughs.md#object-use-shape-9",
             "title": "Object use shape"
           },
           {
             "anchor": "support-artifacts-9",
             "level": 3,
-            "line": 444,
+            "line": 446,
             "ref": "generated/skill_walkthroughs.md#support-artifacts-9",
             "title": "Support artifacts"
           },
           {
             "anchor": "aoa-contract-test",
             "level": 2,
-            "line": 450,
+            "line": 452,
             "ref": "generated/skill_walkthroughs.md#aoa-contract-test",
             "title": "aoa-contract-test"
           },
           {
             "anchor": "use-when-10",
             "level": 3,
-            "line": 458,
+            "line": 460,
             "ref": "generated/skill_walkthroughs.md#use-when-10",
             "title": "Use when"
           },
           {
             "anchor": "do-not-use-when-10",
             "level": 3,
-            "line": 467,
+            "line": 469,
             "ref": "generated/skill_walkthroughs.md#do-not-use-when-10",
             "title": "Do not use when"
           },
           {
             "anchor": "object-use-shape-10",
             "level": 3,
-            "line": 477,
+            "line": 479,
             "ref": "generated/skill_walkthroughs.md#object-use-shape-10",
             "title": "Object use shape"
           },
           {
             "anchor": "support-artifacts-10",
             "level": 3,
-            "line": 485,
+            "line": 487,
             "ref": "generated/skill_walkthroughs.md#support-artifacts-10",
             "title": "Support artifacts"
           },
           {
             "anchor": "aoa-core-logic-boundary",
             "level": 2,
-            "line": 491,
+            "line": 493,
             "ref": "generated/skill_walkthroughs.md#aoa-core-logic-boundary",
             "title": "aoa-core-logic-boundary"
           },
           {
             "anchor": "use-when-11",
             "level": 3,
-            "line": 499,
+            "line": 501,
             "ref": "generated/skill_walkthroughs.md#use-when-11",
             "title": "Use when"
           },
           {
             "anchor": "do-not-use-when-11",
             "level": 3,
-            "line": 508,
+            "line": 510,
             "ref": "generated/skill_walkthroughs.md#do-not-use-when-11",
             "title": "Do not use when"
           },
           {
             "anchor": "object-use-shape-11",
             "level": 3,
-            "line": 518,
+            "line": 520,
             "ref": "generated/skill_walkthroughs.md#object-use-shape-11",
             "title": "Object use shape"
           },
           {
             "anchor": "support-artifacts-11",
             "level": 3,
-            "line": 526,
+            "line": 528,
             "ref": "generated/skill_walkthroughs.md#support-artifacts-11",
             "title": "Support artifacts"
           },
           {
             "anchor": "aoa-decision",
             "level": 2,
-            "line": 532,
+            "line": 534,
             "ref": "generated/skill_walkthroughs.md#aoa-decision",
             "title": "aoa-decision"
           },
           {
             "anchor": "use-when-12",
             "level": 3,
-            "line": 540,
+            "line": 542,
             "ref": "generated/skill_walkthroughs.md#use-when-12",
             "title": "Use when"
           },
           {
             "anchor": "do-not-use-when-12",
             "level": 3,
-            "line": 548,
+            "line": 551,
             "ref": "generated/skill_walkthroughs.md#do-not-use-when-12",
             "title": "Do not use when"
           },
           {
             "anchor": "object-use-shape-12",
             "level": 3,
-            "line": 556,
+            "line": 559,
             "ref": "generated/skill_walkthroughs.md#object-use-shape-12",
             "title": "Object use shape"
           },
           {
             "anchor": "support-artifacts-12",
             "level": 3,
-            "line": 564,
+            "line": 567,
             "ref": "generated/skill_walkthroughs.md#support-artifacts-12",
             "title": "Support artifacts"
           },
           {
             "anchor": "aoa-decision-correct",
             "level": 2,
-            "line": 569,
+            "line": 572,
             "ref": "generated/skill_walkthroughs.md#aoa-decision-correct",
             "title": "aoa-decision-correct"
           },
           {
             "anchor": "use-when-13",
             "level": 3,
-            "line": 577,
+            "line": 580,
             "ref": "generated/skill_walkthroughs.md#use-when-13",
             "title": "Use when"
           },
           {
             "anchor": "do-not-use-when-13",
             "level": 3,
-            "line": 584,
+            "line": 587,
             "ref": "generated/skill_walkthroughs.md#do-not-use-when-13",
             "title": "Do not use when"
           },
           {
             "anchor": "object-use-shape-13",
             "level": 3,
-            "line": 592,
+            "line": 595,
             "ref": "generated/skill_walkthroughs.md#object-use-shape-13",
             "title": "Object use shape"
           },
           {
             "anchor": "support-artifacts-13",
             "level": 3,
-            "line": 599,
+            "line": 602,
             "ref": "generated/skill_walkthroughs.md#support-artifacts-13",
             "title": "Support artifacts"
           },
           {
             "anchor": "aoa-decision-create",
             "level": 2,
-            "line": 604,
+            "line": 607,
             "ref": "generated/skill_walkthroughs.md#aoa-decision-create",
             "title": "aoa-decision-create"
           },
           {
             "anchor": "use-when-14",
             "level": 3,
-            "line": 612,
+            "line": 615,
             "ref": "generated/skill_walkthroughs.md#use-when-14",
             "title": "Use when"
           },
           {
             "anchor": "do-not-use-when-14",
             "level": 3,
-            "line": 619,
+            "line": 622,
             "ref": "generated/skill_walkthroughs.md#do-not-use-when-14",
             "title": "Do not use when"
           },
           {
             "anchor": "object-use-shape-14",
             "level": 3,
-            "line": 627,
+            "line": 630,
             "ref": "generated/skill_walkthroughs.md#object-use-shape-14",
             "title": "Object use shape"
           },
           {
             "anchor": "support-artifacts-14",
             "level": 3,
-            "line": 634,
+            "line": 637,
             "ref": "generated/skill_walkthroughs.md#support-artifacts-14",
             "title": "Support artifacts"
           },
           {
             "anchor": "aoa-decision-find",
             "level": 2,
-            "line": 639,
+            "line": 642,
             "ref": "generated/skill_walkthroughs.md#aoa-decision-find",
             "title": "aoa-decision-find"
           },
           {
             "anchor": "use-when-15",
             "level": 3,
-            "line": 647,
+            "line": 650,
             "ref": "generated/skill_walkthroughs.md#use-when-15",
             "title": "Use when"
           },
           {
             "anchor": "do-not-use-when-15",
             "level": 3,
-            "line": 654,
+            "line": 657,
             "ref": "generated/skill_walkthroughs.md#do-not-use-when-15",
             "title": "Do not use when"
           },
           {
             "anchor": "object-use-shape-15",
             "level": 3,
-            "line": 662,
+            "line": 665,
             "ref": "generated/skill_walkthroughs.md#object-use-shape-15",
             "title": "Object use shape"
           },
           {
             "anchor": "support-artifacts-15",
             "level": 3,
-            "line": 669,
+            "line": 672,
             "ref": "generated/skill_walkthroughs.md#support-artifacts-15",
             "title": "Support artifacts"
           },
           {
             "anchor": "aoa-dry-run-first",
             "level": 2,
-            "line": 674,
+            "line": 677,
             "ref": "generated/skill_walkthroughs.md#aoa-dry-run-first",
             "title": "aoa-dry-run-first"
           },
           {
             "anchor": "use-when-16",
             "level": 3,
-            "line": 682,
+            "line": 685,
             "ref": "generated/skill_walkthroughs.md#use-when-16",
             "title": "Use when"
           },
           {
             "anchor": "do-not-use-when-16",
             "level": 3,
-            "line": 689,
+            "line": 692,
             "ref": "generated/skill_walkthroughs.md#do-not-use-when-16",
             "title": "Do not use when"
           },
           {
             "anchor": "object-use-shape-16",
             "level": 3,
-            "line": 696,
+            "line": 699,
             "ref": "generated/skill_walkthroughs.md#object-use-shape-16",
             "title": "Object use shape"
           },
           {
             "anchor": "support-artifacts-16",
             "level": 3,
-            "line": 704,
+            "line": 707,
             "ref": "generated/skill_walkthroughs.md#support-artifacts-16",
             "title": "Support artifacts"
           },
           {
             "anchor": "aoa-eval",
             "level": 2,
-            "line": 711,
+            "line": 714,
             "ref": "generated/skill_walkthroughs.md#aoa-eval",
             "title": "aoa-eval"
           },
           {
             "anchor": "use-when-17",
             "level": 3,
-            "line": 719,
+            "line": 722,
             "ref": "generated/skill_walkthroughs.md#use-when-17",
             "title": "Use when"
           },
           {
             "anchor": "do-not-use-when-17",
             "level": 3,
-            "line": 730,
+            "line": 733,
             "ref": "generated/skill_walkthroughs.md#do-not-use-when-17",
             "title": "Do not use when"
           },
           {
             "anchor": "object-use-shape-17",
             "level": 3,
-            "line": 739,
+            "line": 742,
             "ref": "generated/skill_walkthroughs.md#object-use-shape-17",
             "title": "Object use shape"
           },
           {
             "anchor": "support-artifacts-17",
             "level": 3,
-            "line": 749,
+            "line": 752,
             "ref": "generated/skill_walkthroughs.md#support-artifacts-17",
             "title": "Support artifacts"
           },
           {
             "anchor": "aoa-eval-apply",
             "level": 2,
-            "line": 753,
+            "line": 756,
             "ref": "generated/skill_walkthroughs.md#aoa-eval-apply",
             "title": "aoa-eval-apply"
           },
           {
             "anchor": "use-when-18",
             "level": 3,
-            "line": 761,
+            "line": 764,
             "ref": "generated/skill_walkthroughs.md#use-when-18",
             "title": "Use when"
           },
           {
             "anchor": "do-not-use-when-18",
             "level": 3,
-            "line": 769,
+            "line": 772,
             "ref": "generated/skill_walkthroughs.md#do-not-use-when-18",
             "title": "Do not use when"
           },
           {
             "anchor": "object-use-shape-18",
             "level": 3,
-            "line": 776,
+            "line": 779,
             "ref": "generated/skill_walkthroughs.md#object-use-shape-18",
             "title": "Object use shape"
           },
           {
             "anchor": "support-artifacts-18",
             "level": 3,
-            "line": 784,
+            "line": 787,
             "ref": "generated/skill_walkthroughs.md#support-artifacts-18",
             "title": "Support artifacts"
           },
           {
             "anchor": "aoa-eval-design",
             "level": 2,
-            "line": 788,
+            "line": 791,
             "ref": "generated/skill_walkthroughs.md#aoa-eval-design",
             "title": "aoa-eval-design"
           },
           {
             "anchor": "use-when-19",
             "level": 3,
-            "line": 796,
+            "line": 799,
             "ref": "generated/skill_walkthroughs.md#use-when-19",
             "title": "Use when"
           },
           {
             "anchor": "do-not-use-when-19",
             "level": 3,
-            "line": 803,
+            "line": 806,
             "ref": "generated/skill_walkthroughs.md#do-not-use-when-19",
             "title": "Do not use when"
           },
           {
             "anchor": "object-use-shape-19",
             "level": 3,
-            "line": 810,
+            "line": 813,
             "ref": "generated/skill_walkthroughs.md#object-use-shape-19",
             "title": "Object use shape"
           },
           {
             "anchor": "support-artifacts-19",
             "level": 3,
-            "line": 817,
+            "line": 820,
             "ref": "generated/skill_walkthroughs.md#support-artifacts-19",
             "title": "Support artifacts"
           },
           {
             "anchor": "aoa-eval-local-need",
             "level": 2,
-            "line": 821,
+            "line": 824,
             "ref": "generated/skill_walkthroughs.md#aoa-eval-local-need",
             "title": "aoa-eval-local-need"
           },
           {
             "anchor": "use-when-20",
             "level": 3,
-            "line": 829,
+            "line": 832,
             "ref": "generated/skill_walkthroughs.md#use-when-20",
             "title": "Use when"
           },
           {
             "anchor": "do-not-use-when-20",
             "level": 3,
-            "line": 836,
+            "line": 839,
             "ref": "generated/skill_walkthroughs.md#do-not-use-when-20",
             "title": "Do not use when"
           },
           {
             "anchor": "object-use-shape-20",
             "level": 3,
-            "line": 843,
+            "line": 846,
             "ref": "generated/skill_walkthroughs.md#object-use-shape-20",
             "title": "Object use shape"
           },
           {
             "anchor": "support-artifacts-20",
             "level": 3,
-            "line": 850,
+            "line": 853,
             "ref": "generated/skill_walkthroughs.md#support-artifacts-20",
             "title": "Support artifacts"
           },
           {
             "anchor": "aoa-eval-select",
             "level": 2,
-            "line": 854,
+            "line": 857,
             "ref": "generated/skill_walkthroughs.md#aoa-eval-select",
             "title": "aoa-eval-select"
           },
           {
             "anchor": "use-when-21",
             "level": 3,
-            "line": 862,
+            "line": 865,
             "ref": "generated/skill_walkthroughs.md#use-when-21",
             "title": "Use when"
           },
           {
             "anchor": "do-not-use-when-21",
             "level": 3,
-            "line": 869,
+            "line": 872,
             "ref": "generated/skill_walkthroughs.md#do-not-use-when-21",
             "title": "Do not use when"
           },
           {
             "anchor": "object-use-shape-21",
             "level": 3,
-            "line": 876,
+            "line": 879,
             "ref": "generated/skill_walkthroughs.md#object-use-shape-21",
             "title": "Object use shape"
           },
           {
             "anchor": "support-artifacts-21",
             "level": 3,
-            "line": 883,
+            "line": 886,
             "ref": "generated/skill_walkthroughs.md#support-artifacts-21",
             "title": "Support artifacts"
           },
           {
             "anchor": "aoa-eval-session-mining",
             "level": 2,
-            "line": 887,
+            "line": 890,
             "ref": "generated/skill_walkthroughs.md#aoa-eval-session-mining",
             "title": "aoa-eval-session-mining"
           },
           {
             "anchor": "use-when-22",
             "level": 3,
-            "line": 895,
+            "line": 898,
             "ref": "generated/skill_walkthroughs.md#use-when-22",
             "title": "Use when"
           },
           {
             "anchor": "do-not-use-when-22",
             "level": 3,
-            "line": 902,
+            "line": 905,
             "ref": "generated/skill_walkthroughs.md#do-not-use-when-22",
             "title": "Do not use when"
           },
           {
             "anchor": "object-use-shape-22",
             "level": 3,
-            "line": 909,
+            "line": 912,
             "ref": "generated/skill_walkthroughs.md#object-use-shape-22",
             "title": "Object use shape"
           },
           {
             "anchor": "support-artifacts-22",
             "level": 3,
-            "line": 916,
+            "line": 919,
             "ref": "generated/skill_walkthroughs.md#support-artifacts-22",
             "title": "Support artifacts"
           },
           {
             "anchor": "aoa-invariant-coverage-audit",
             "level": 2,
-            "line": 920,
+            "line": 923,
             "ref": "generated/skill_walkthroughs.md#aoa-invariant-coverage-audit",
             "title": "aoa-invariant-coverage-audit"
           },
           {
             "anchor": "use-when-23",
             "level": 3,
-            "line": 928,
+            "line": 931,
             "ref": "generated/skill_walkthroughs.md#use-when-23",
             "title": "Use when"
           },
           {
             "anchor": "do-not-use-when-23",
             "level": 3,
-            "line": 936,
+            "line": 939,
             "ref": "generated/skill_walkthroughs.md#do-not-use-when-23",
             "title": "Do not use when"
           },
           {
             "anchor": "object-use-shape-23",
             "level": 3,
-            "line": 943,
+            "line": 946,
             "ref": "generated/skill_walkthroughs.md#object-use-shape-23",
             "title": "Object use shape"
           },
           {
             "anchor": "support-artifacts-23",
             "level": 3,
-            "line": 952,
+            "line": 955,
             "ref": "generated/skill_walkthroughs.md#support-artifacts-23",
             "title": "Support artifacts"
           },
           {
             "anchor": "aoa-local-stack-bringup",
             "level": 2,
-            "line": 958,
+            "line": 961,
             "ref": "generated/skill_walkthroughs.md#aoa-local-stack-bringup",
             "title": "aoa-local-stack-bringup"
           },
           {
             "anchor": "use-when-24",
             "level": 3,
-            "line": 966,
+            "line": 969,
             "ref": "generated/skill_walkthroughs.md#use-when-24",
             "title": "Use when"
           },
           {
             "anchor": "do-not-use-when-24",
             "level": 3,
-            "line": 974,
+            "line": 977,
             "ref": "generated/skill_walkthroughs.md#do-not-use-when-24",
             "title": "Do not use when"
           },
           {
             "anchor": "object-use-shape-24",
             "level": 3,
-            "line": 982,
+            "line": 985,
             "ref": "generated/skill_walkthroughs.md#object-use-shape-24",
             "title": "Object use shape"
           },
           {
             "anchor": "support-artifacts-24",
             "level": 3,
-            "line": 990,
+            "line": 993,
             "ref": "generated/skill_walkthroughs.md#support-artifacts-24",
             "title": "Support artifacts"
           },
           {
             "anchor": "aoa-memo-writeback",
             "level": 2,
-            "line": 997,
+            "line": 1000,
             "ref": "generated/skill_walkthroughs.md#aoa-memo-writeback",
             "title": "aoa-memo-writeback"
           },
           {
             "anchor": "use-when-25",
             "level": 3,
-            "line": 1005,
+            "line": 1008,
             "ref": "generated/skill_walkthroughs.md#use-when-25",
             "title": "Use when"
           },
           {
             "anchor": "do-not-use-when-25",
             "level": 3,
-            "line": 1013,
+            "line": 1016,
             "ref": "generated/skill_walkthroughs.md#do-not-use-when-25",
             "title": "Do not use when"
           },
           {
             "anchor": "object-use-shape-25",
             "level": 3,
-            "line": 1021,
+            "line": 1024,
             "ref": "generated/skill_walkthroughs.md#object-use-shape-25",
             "title": "Object use shape"
           },
           {
             "anchor": "support-artifacts-25",
             "level": 3,
-            "line": 1031,
+            "line": 1034,
             "ref": "generated/skill_walkthroughs.md#support-artifacts-25",
             "title": "Support artifacts"
           },
           {
             "anchor": "aoa-port-adapter-refactor",
             "level": 2,
-            "line": 1035,
+            "line": 1038,
             "ref": "generated/skill_walkthroughs.md#aoa-port-adapter-refactor",
             "title": "aoa-port-adapter-refactor"
           },
           {
             "anchor": "use-when-26",
             "level": 3,
-            "line": 1043,
+            "line": 1046,
             "ref": "generated/skill_walkthroughs.md#use-when-26",
             "title": "Use when"
           },
           {
             "anchor": "do-not-use-when-26",
             "level": 3,
-            "line": 1052,
+            "line": 1055,
             "ref": "generated/skill_walkthroughs.md#do-not-use-when-26",
             "title": "Do not use when"
           },
           {
             "anchor": "object-use-shape-26",
             "level": 3,
-            "line": 1062,
+            "line": 1065,
             "ref": "generated/skill_walkthroughs.md#object-use-shape-26",
             "title": "Object use shape"
           },
           {
             "anchor": "support-artifacts-26",
             "level": 3,
-            "line": 1070,
+            "line": 1073,
             "ref": "generated/skill_walkthroughs.md#support-artifacts-26",
             "title": "Support artifacts"
           },
           {
             "anchor": "aoa-property-invariants",
             "level": 2,
-            "line": 1076,
+            "line": 1079,
             "ref": "generated/skill_walkthroughs.md#aoa-property-invariants",
             "title": "aoa-property-invariants"
           },
           {
             "anchor": "use-when-27",
             "level": 3,
-            "line": 1084,
+            "line": 1087,
             "ref": "generated/skill_walkthroughs.md#use-when-27",
             "title": "Use when"
           },
           {
             "anchor": "do-not-use-when-27",
             "level": 3,
-            "line": 1093,
+            "line": 1096,
             "ref": "generated/skill_walkthroughs.md#do-not-use-when-27",
             "title": "Do not use when"
           },
           {
             "anchor": "object-use-shape-27",
             "level": 3,
-            "line": 1102,
+            "line": 1105,
             "ref": "generated/skill_walkthroughs.md#object-use-shape-27",
             "title": "Object use shape"
           },
           {
             "anchor": "support-artifacts-27",
             "level": 3,
-            "line": 1110,
+            "line": 1113,
             "ref": "generated/skill_walkthroughs.md#support-artifacts-27",
             "title": "Support artifacts"
           },
           {
             "anchor": "aoa-quest-harvest",
             "level": 2,
-            "line": 1116,
+            "line": 1119,
             "ref": "generated/skill_walkthroughs.md#aoa-quest-harvest",
             "title": "aoa-quest-harvest"
           },
           {
             "anchor": "use-when-28",
             "level": 3,
-            "line": 1124,
+            "line": 1127,
             "ref": "generated/skill_walkthroughs.md#use-when-28",
             "title": "Use when"
           },
           {
             "anchor": "do-not-use-when-28",
             "level": 3,
-            "line": 1133,
+            "line": 1136,
             "ref": "generated/skill_walkthroughs.md#do-not-use-when-28",
             "title": "Do not use when"
           },
           {
             "anchor": "object-use-shape-28",
             "level": 3,
-            "line": 1145,
+            "line": 1148,
             "ref": "generated/skill_walkthroughs.md#object-use-shape-28",
             "title": "Object use shape"
           },
           {
             "anchor": "support-artifacts-28",
             "level": 3,
-            "line": 1157,
+            "line": 1160,
             "ref": "generated/skill_walkthroughs.md#support-artifacts-28",
             "title": "Support artifacts"
           },
           {
             "anchor": "aoa-safe-infra-change",
             "level": 2,
-            "line": 1163,
+            "line": 1166,
             "ref": "generated/skill_walkthroughs.md#aoa-safe-infra-change",
             "title": "aoa-safe-infra-change"
           },
           {
             "anchor": "use-when-29",
             "level": 3,
-            "line": 1171,
+            "line": 1174,
             "ref": "generated/skill_walkthroughs.md#use-when-29",
             "title": "Use when"
           },
           {
             "anchor": "do-not-use-when-29",
             "level": 3,
-            "line": 1177,
+            "line": 1180,
             "ref": "generated/skill_walkthroughs.md#do-not-use-when-29",
             "title": "Do not use when"
           },
           {
             "anchor": "object-use-shape-29",
             "level": 3,
-            "line": 1185,
+            "line": 1188,
             "ref": "generated/skill_walkthroughs.md#object-use-shape-29",
             "title": "Object use shape"
           },
           {
             "anchor": "support-artifacts-29",
             "level": 3,
-            "line": 1192,
+            "line": 1195,
             "ref": "generated/skill_walkthroughs.md#support-artifacts-29",
             "title": "Support artifacts"
           },
           {
             "anchor": "aoa-sanitized-share",
             "level": 2,
-            "line": 1199,
+            "line": 1202,
             "ref": "generated/skill_walkthroughs.md#aoa-sanitized-share",
             "title": "aoa-sanitized-share"
           },
           {
             "anchor": "use-when-30",
             "level": 3,
-            "line": 1207,
+            "line": 1210,
             "ref": "generated/skill_walkthroughs.md#use-when-30",
             "title": "Use when"
           },
           {
             "anchor": "do-not-use-when-30",
             "level": 3,
-            "line": 1214,
+            "line": 1217,
             "ref": "generated/skill_walkthroughs.md#do-not-use-when-30",
             "title": "Do not use when"
           },
           {
             "anchor": "object-use-shape-30",
             "level": 3,
-            "line": 1221,
+            "line": 1224,
             "ref": "generated/skill_walkthroughs.md#object-use-shape-30",
             "title": "Object use shape"
           },
           {
             "anchor": "support-artifacts-30",
             "level": 3,
-            "line": 1228,
+            "line": 1231,
             "ref": "generated/skill_walkthroughs.md#support-artifacts-30",
             "title": "Support artifacts"
           },
           {
             "anchor": "aoa-session-donor-harvest",
             "level": 2,
-            "line": 1235,
+            "line": 1238,
             "ref": "generated/skill_walkthroughs.md#aoa-session-donor-harvest",
             "title": "aoa-session-donor-harvest"
           },
           {
             "anchor": "use-when-31",
             "level": 3,
-            "line": 1243,
+            "line": 1246,
             "ref": "generated/skill_walkthroughs.md#use-when-31",
             "title": "Use when"
           },
           {
             "anchor": "do-not-use-when-31",
             "level": 3,
-            "line": 1253,
+            "line": 1256,
             "ref": "generated/skill_walkthroughs.md#do-not-use-when-31",
             "title": "Do not use when"
           },
           {
             "anchor": "object-use-shape-31",
             "level": 3,
-            "line": 1261,
+            "line": 1264,
             "ref": "generated/skill_walkthroughs.md#object-use-shape-31",
             "title": "Object use shape"
           },
           {
             "anchor": "support-artifacts-31",
             "level": 3,
-            "line": 1282,
+            "line": 1285,
             "ref": "generated/skill_walkthroughs.md#support-artifacts-31",
             "title": "Support artifacts"
           },
           {
             "anchor": "aoa-session-progression-lift",
             "level": 2,
-            "line": 1288,
+            "line": 1291,
             "ref": "generated/skill_walkthroughs.md#aoa-session-progression-lift",
             "title": "aoa-session-progression-lift"
           },
           {
             "anchor": "use-when-32",
             "level": 3,
-            "line": 1296,
+            "line": 1299,
             "ref": "generated/skill_walkthroughs.md#use-when-32",
             "title": "Use when"
           },
           {
             "anchor": "do-not-use-when-32",
             "level": 3,
-            "line": 1305,
+            "line": 1308,
             "ref": "generated/skill_walkthroughs.md#do-not-use-when-32",
             "title": "Do not use when"
           },
           {
             "anchor": "object-use-shape-32",
             "level": 3,
-            "line": 1314,
+            "line": 1317,
             "ref": "generated/skill_walkthroughs.md#object-use-shape-32",
             "title": "Object use shape"
           },
           {
             "anchor": "support-artifacts-32",
             "level": 3,
-            "line": 1326,
+            "line": 1329,
             "ref": "generated/skill_walkthroughs.md#support-artifacts-32",
             "title": "Support artifacts"
           },
           {
             "anchor": "aoa-session-route-forks",
             "level": 2,
-            "line": 1332,
+            "line": 1335,
             "ref": "generated/skill_walkthroughs.md#aoa-session-route-forks",
             "title": "aoa-session-route-forks"
           },
           {
             "anchor": "use-when-33",
             "level": 3,
-            "line": 1340,
+            "line": 1343,
             "ref": "generated/skill_walkthroughs.md#use-when-33",
             "title": "Use when"
           },
           {
             "anchor": "do-not-use-when-33",
             "level": 3,
-            "line": 1348,
+            "line": 1351,
             "ref": "generated/skill_walkthroughs.md#do-not-use-when-33",
             "title": "Do not use when"
           },
           {
             "anchor": "object-use-shape-33",
             "level": 3,
-            "line": 1356,
+            "line": 1359,
             "ref": "generated/skill_walkthroughs.md#object-use-shape-33",
             "title": "Object use shape"
           },
           {
             "anchor": "support-artifacts-33",
             "level": 3,
-            "line": 1366,
+            "line": 1369,
             "ref": "generated/skill_walkthroughs.md#support-artifacts-33",
             "title": "Support artifacts"
           },
           {
             "anchor": "aoa-session-self-diagnose",
             "level": 2,
-            "line": 1372,
+            "line": 1375,
             "ref": "generated/skill_walkthroughs.md#aoa-session-self-diagnose",
             "title": "aoa-session-self-diagnose"
           },
           {
             "anchor": "use-when-34",
             "level": 3,
-            "line": 1380,
+            "line": 1383,
             "ref": "generated/skill_walkthroughs.md#use-when-34",
             "title": "Use when"
           },
           {
             "anchor": "do-not-use-when-34",
             "level": 3,
-            "line": 1389,
+            "line": 1392,
             "ref": "generated/skill_walkthroughs.md#do-not-use-when-34",
             "title": "Do not use when"
           },
           {
             "anchor": "object-use-shape-34",
             "level": 3,
-            "line": 1397,
+            "line": 1400,
             "ref": "generated/skill_walkthroughs.md#object-use-shape-34",
             "title": "Object use shape"
           },
           {
             "anchor": "support-artifacts-34",
             "level": 3,
-            "line": 1408,
+            "line": 1411,
             "ref": "generated/skill_walkthroughs.md#support-artifacts-34",
             "title": "Support artifacts"
           },
           {
             "anchor": "aoa-session-self-repair",
             "level": 2,
-            "line": 1414,
+            "line": 1417,
             "ref": "generated/skill_walkthroughs.md#aoa-session-self-repair",
             "title": "aoa-session-self-repair"
           },
           {
             "anchor": "use-when-35",
             "level": 3,
-            "line": 1422,
+            "line": 1425,
             "ref": "generated/skill_walkthroughs.md#use-when-35",
             "title": "Use when"
           },
           {
             "anchor": "do-not-use-when-35",
             "level": 3,
-            "line": 1431,
+            "line": 1434,
             "ref": "generated/skill_walkthroughs.md#do-not-use-when-35",
             "title": "Do not use when"
           },
           {
             "anchor": "object-use-shape-35",
             "level": 3,
-            "line": 1439,
+            "line": 1442,
             "ref": "generated/skill_walkthroughs.md#object-use-shape-35",
             "title": "Object use shape"
           },
           {
             "anchor": "support-artifacts-35",
             "level": 3,
-            "line": 1449,
+            "line": 1452,
             "ref": "generated/skill_walkthroughs.md#support-artifacts-35",
             "title": "Support artifacts"
           },
           {
             "anchor": "aoa-source-of-truth-check",
             "level": 2,
-            "line": 1455,
+            "line": 1458,
             "ref": "generated/skill_walkthroughs.md#aoa-source-of-truth-check",
             "title": "aoa-source-of-truth-check"
           },
           {
             "anchor": "use-when-36",
             "level": 3,
-            "line": 1463,
+            "line": 1466,
             "ref": "generated/skill_walkthroughs.md#use-when-36",
             "title": "Use when"
           },
           {
             "anchor": "do-not-use-when-36",
             "level": 3,
-            "line": 1475,
+            "line": 1478,
             "ref": "generated/skill_walkthroughs.md#do-not-use-when-36",
             "title": "Do not use when"
           },
           {
             "anchor": "object-use-shape-36",
             "level": 3,
-            "line": 1485,
+            "line": 1488,
             "ref": "generated/skill_walkthroughs.md#object-use-shape-36",
             "title": "Object use shape"
           },
           {
             "anchor": "support-artifacts-36",
             "level": 3,
-            "line": 1495,
+            "line": 1498,
             "ref": "generated/skill_walkthroughs.md#support-artifacts-36",
             "title": "Support artifacts"
           },
           {
             "anchor": "aoa-summon",
             "level": 2,
-            "line": 1501,
+            "line": 1504,
             "ref": "generated/skill_walkthroughs.md#aoa-summon",
             "title": "aoa-summon"
           },
           {
             "anchor": "use-when-37",
             "level": 3,
-            "line": 1509,
+            "line": 1512,
             "ref": "generated/skill_walkthroughs.md#use-when-37",
             "title": "Use when"
           },
           {
             "anchor": "do-not-use-when-37",
             "level": 3,
-            "line": 1516,
+            "line": 1519,
             "ref": "generated/skill_walkthroughs.md#do-not-use-when-37",
             "title": "Do not use when"
           },
           {
             "anchor": "object-use-shape-37",
             "level": 3,
-            "line": 1525,
+            "line": 1528,
             "ref": "generated/skill_walkthroughs.md#object-use-shape-37",
             "title": "Object use shape"
           },
           {
             "anchor": "support-artifacts-37",
             "level": 3,
-            "line": 1535,
+            "line": 1538,
             "ref": "generated/skill_walkthroughs.md#support-artifacts-37",
             "title": "Support artifacts"
           },
           {
             "anchor": "aoa-tdd-slice",
             "level": 2,
-            "line": 1541,
+            "line": 1544,
             "ref": "generated/skill_walkthroughs.md#aoa-tdd-slice",
             "title": "aoa-tdd-slice"
           },
           {
             "anchor": "use-when-38",
             "level": 3,
-            "line": 1549,
+            "line": 1552,
             "ref": "generated/skill_walkthroughs.md#use-when-38",
             "title": "Use when"
           },
           {
             "anchor": "do-not-use-when-38",
             "level": 3,
-            "line": 1556,
+            "line": 1559,
             "ref": "generated/skill_walkthroughs.md#do-not-use-when-38",
             "title": "Do not use when"
           },
           {
             "anchor": "object-use-shape-38",
             "level": 3,
-            "line": 1566,
+            "line": 1569,
             "ref": "generated/skill_walkthroughs.md#object-use-shape-38",
             "title": "Object use shape"
           },
           {
             "anchor": "support-artifacts-38",
             "level": 3,
-            "line": 1574,
+            "line": 1577,
             "ref": "generated/skill_walkthroughs.md#support-artifacts-38",
             "title": "Support artifacts"
           },
           {
             "anchor": "atm10-change-protocol",
             "level": 2,
-            "line": 1579,
+            "line": 1582,
             "ref": "generated/skill_walkthroughs.md#atm10-change-protocol",
             "title": "atm10-change-protocol"
           },
           {
             "anchor": "use-when-39",
             "level": 3,
-            "line": 1587,
+            "line": 1590,
             "ref": "generated/skill_walkthroughs.md#use-when-39",
             "title": "Use when"
           },
           {
             "anchor": "do-not-use-when-39",
             "level": 3,
-            "line": 1596,
+            "line": 1599,
             "ref": "generated/skill_walkthroughs.md#do-not-use-when-39",
             "title": "Do not use when"
           },
           {
             "anchor": "object-use-shape-39",
             "level": 3,
-            "line": 1605,
+            "line": 1608,
             "ref": "generated/skill_walkthroughs.md#object-use-shape-39",
             "title": "Object use shape"
           },
           {
             "anchor": "support-artifacts-39",
             "level": 3,
-            "line": 1616,
+            "line": 1619,
             "ref": "generated/skill_walkthroughs.md#support-artifacts-39",
             "title": "Support artifacts"
           },
           {
             "anchor": "atm10-source-of-truth-check",
             "level": 2,
-            "line": 1622,
+            "line": 1625,
             "ref": "generated/skill_walkthroughs.md#atm10-source-of-truth-check",
             "title": "atm10-source-of-truth-check"
           },
           {
             "anchor": "use-when-40",
             "level": 3,
-            "line": 1630,
+            "line": 1633,
             "ref": "generated/skill_walkthroughs.md#use-when-40",
             "title": "Use when"
           },
           {
             "anchor": "do-not-use-when-40",
             "level": 3,
-            "line": 1640,
+            "line": 1643,
             "ref": "generated/skill_walkthroughs.md#do-not-use-when-40",
             "title": "Do not use when"
           },
           {
             "anchor": "object-use-shape-40",
             "level": 3,
-            "line": 1649,
+            "line": 1652,
             "ref": "generated/skill_walkthroughs.md#object-use-shape-40",
             "title": "Object use shape"
           },
           {
             "anchor": "support-artifacts-40",
             "level": 3,
-            "line": 1659,
+            "line": 1662,
             "ref": "generated/skill_walkthroughs.md#support-artifacts-40",
             "title": "Support artifacts"
           },
           {
             "anchor": "os-abyss-artifact-trust-loop",
             "level": 2,
-            "line": 1665,
+            "line": 1668,
             "ref": "generated/skill_walkthroughs.md#os-abyss-artifact-trust-loop",
             "title": "os-abyss-artifact-trust-loop"
           },
           {
             "anchor": "use-when-41",
             "level": 3,
-            "line": 1673,
+            "line": 1676,
             "ref": "generated/skill_walkthroughs.md#use-when-41",
             "title": "Use when"
           },
           {
             "anchor": "do-not-use-when-41",
             "level": 3,
-            "line": 1680,
+            "line": 1683,
             "ref": "generated/skill_walkthroughs.md#do-not-use-when-41",
             "title": "Do not use when"
           },
           {
             "anchor": "object-use-shape-41",
             "level": 3,
-            "line": 1687,
+            "line": 1690,
             "ref": "generated/skill_walkthroughs.md#object-use-shape-41",
             "title": "Object use shape"
           },
           {
             "anchor": "support-artifacts-41",
             "level": 3,
-            "line": 1696,
+            "line": 1699,
             "ref": "generated/skill_walkthroughs.md#support-artifacts-41",
             "title": "Support artifacts"
           },
           {
             "anchor": "titan-approval-ledger",
             "level": 2,
-            "line": 1701,
+            "line": 1704,
             "ref": "generated/skill_walkthroughs.md#titan-approval-ledger",
             "title": "titan-approval-ledger"
           },
           {
             "anchor": "use-when-42",
             "level": 3,
-            "line": 1709,
+            "line": 1712,
             "ref": "generated/skill_walkthroughs.md#use-when-42",
             "title": "Use when"
           },
           {
             "anchor": "do-not-use-when-42",
             "level": 3,
-            "line": 1715,
+            "line": 1718,
             "ref": "generated/skill_walkthroughs.md#do-not-use-when-42",
             "title": "Do not use when"
           },
           {
             "anchor": "object-use-shape-42",
             "level": 3,
-            "line": 1721,
+            "line": 1724,
             "ref": "generated/skill_walkthroughs.md#object-use-shape-42",
             "title": "Object use shape"
           },
           {
             "anchor": "support-artifacts-42",
             "level": 3,
-            "line": 1728,
+            "line": 1731,
             "ref": "generated/skill_walkthroughs.md#support-artifacts-42",
             "title": "Support artifacts"
           },
           {
             "anchor": "titan-approval-loom",
             "level": 2,
-            "line": 1733,
+            "line": 1736,
             "ref": "generated/skill_walkthroughs.md#titan-approval-loom",
             "title": "titan-approval-loom"
           },
           {
             "anchor": "use-when-43",
             "level": 3,
-            "line": 1741,
+            "line": 1744,
             "ref": "generated/skill_walkthroughs.md#use-when-43",
             "title": "Use when"
           },
           {
             "anchor": "do-not-use-when-43",
             "level": 3,
-            "line": 1747,
+            "line": 1750,
             "ref": "generated/skill_walkthroughs.md#do-not-use-when-43",
             "title": "Do not use when"
           },
           {
             "anchor": "object-use-shape-43",
             "level": 3,
-            "line": 1753,
+            "line": 1756,
             "ref": "generated/skill_walkthroughs.md#object-use-shape-43",
             "title": "Object use shape"
           },
           {
             "anchor": "support-artifacts-43",
             "level": 3,
-            "line": 1760,
+            "line": 1763,
             "ref": "generated/skill_walkthroughs.md#support-artifacts-43",
             "title": "Support artifacts"
           },
           {
             "anchor": "titan-appserver-bridge",
             "level": 2,
-            "line": 1765,
+            "line": 1768,
             "ref": "generated/skill_walkthroughs.md#titan-appserver-bridge",
             "title": "titan-appserver-bridge"
           },
           {
             "anchor": "use-when-44",
             "level": 3,
-            "line": 1773,
+            "line": 1776,
             "ref": "generated/skill_walkthroughs.md#use-when-44",
             "title": "Use when"
           },
           {
             "anchor": "do-not-use-when-44",
             "level": 3,
-            "line": 1779,
+            "line": 1782,
             "ref": "generated/skill_walkthroughs.md#do-not-use-when-44",
             "title": "Do not use when"
           },
           {
             "anchor": "object-use-shape-44",
             "level": 3,
-            "line": 1785,
+            "line": 1788,
             "ref": "generated/skill_walkthroughs.md#object-use-shape-44",
             "title": "Object use shape"
           },
           {
             "anchor": "support-artifacts-44",
             "level": 3,
-            "line": 1793,
+            "line": 1796,
             "ref": "generated/skill_walkthroughs.md#support-artifacts-44",
             "title": "Support artifacts"
           },
           {
             "anchor": "titan-appserver-plan",
             "level": 2,
-            "line": 1798,
+            "line": 1801,
             "ref": "generated/skill_walkthroughs.md#titan-appserver-plan",
             "title": "titan-appserver-plan"
           },
           {
             "anchor": "use-when-45",
             "level": 3,
-            "line": 1806,
+            "line": 1809,
             "ref": "generated/skill_walkthroughs.md#use-when-45",
             "title": "Use when"
           },
           {
             "anchor": "do-not-use-when-45",
             "level": 3,
-            "line": 1812,
+            "line": 1815,
             "ref": "generated/skill_walkthroughs.md#do-not-use-when-45",
             "title": "Do not use when"
           },
           {
             "anchor": "object-use-shape-45",
             "level": 3,
-            "line": 1818,
+            "line": 1821,
             "ref": "generated/skill_walkthroughs.md#object-use-shape-45",
             "title": "Object use shape"
           },
           {
             "anchor": "support-artifacts-45",
             "level": 3,
-            "line": 1826,
+            "line": 1829,
             "ref": "generated/skill_walkthroughs.md#support-artifacts-45",
             "title": "Support artifacts"
           },
           {
             "anchor": "titan-closeout",
             "level": 2,
-            "line": 1831,
+            "line": 1834,
             "ref": "generated/skill_walkthroughs.md#titan-closeout",
             "title": "titan-closeout"
           },
           {
             "anchor": "use-when-46",
             "level": 3,
-            "line": 1839,
+            "line": 1842,
             "ref": "generated/skill_walkthroughs.md#use-when-46",
             "title": "Use when"
           },
           {
             "anchor": "do-not-use-when-46",
             "level": 3,
-            "line": 1845,
+            "line": 1848,
             "ref": "generated/skill_walkthroughs.md#do-not-use-when-46",
             "title": "Do not use when"
           },
           {
             "anchor": "object-use-shape-46",
             "level": 3,
-            "line": 1851,
+            "line": 1854,
             "ref": "generated/skill_walkthroughs.md#object-use-shape-46",
             "title": "Object use shape"
           },
           {
             "anchor": "support-artifacts-46",
             "level": 3,
-            "line": 1859,
+            "line": 1862,
             "ref": "generated/skill_walkthroughs.md#support-artifacts-46",
             "title": "Support artifacts"
           },
           {
             "anchor": "titan-console",
             "level": 2,
-            "line": 1864,
+            "line": 1867,
             "ref": "generated/skill_walkthroughs.md#titan-console",
             "title": "titan-console"
           },
           {
             "anchor": "use-when-47",
             "level": 3,
-            "line": 1872,
+            "line": 1875,
             "ref": "generated/skill_walkthroughs.md#use-when-47",
             "title": "Use when"
           },
           {
             "anchor": "do-not-use-when-47",
             "level": 3,
-            "line": 1878,
+            "line": 1881,
             "ref": "generated/skill_walkthroughs.md#do-not-use-when-47",
             "title": "Do not use when"
           },
           {
             "anchor": "object-use-shape-47",
             "level": 3,
-            "line": 1884,
+            "line": 1887,
             "ref": "generated/skill_walkthroughs.md#object-use-shape-47",
             "title": "Object use shape"
           },
           {
             "anchor": "support-artifacts-47",
             "level": 3,
-            "line": 1892,
+            "line": 1895,
             "ref": "generated/skill_walkthroughs.md#support-artifacts-47",
             "title": "Support artifacts"
           },
           {
             "anchor": "titan-event-replay",
             "level": 2,
-            "line": 1897,
+            "line": 1900,
             "ref": "generated/skill_walkthroughs.md#titan-event-replay",
             "title": "titan-event-replay"
           },
           {
             "anchor": "use-when-48",
             "level": 3,
-            "line": 1905,
+            "line": 1908,
             "ref": "generated/skill_walkthroughs.md#use-when-48",
             "title": "Use when"
           },
           {
             "anchor": "do-not-use-when-48",
             "level": 3,
-            "line": 1911,
+            "line": 1914,
             "ref": "generated/skill_walkthroughs.md#do-not-use-when-48",
             "title": "Do not use when"
           },
           {
             "anchor": "object-use-shape-48",
             "level": 3,
-            "line": 1917,
+            "line": 1920,
             "ref": "generated/skill_walkthroughs.md#object-use-shape-48",
             "title": "Object use shape"
           },
           {
             "anchor": "support-artifacts-48",
             "level": 3,
-            "line": 1925,
+            "line": 1928,
             "ref": "generated/skill_walkthroughs.md#support-artifacts-48",
             "title": "Support artifacts"
           },
           {
             "anchor": "titan-memory-loom",
             "level": 2,
-            "line": 1930,
+            "line": 1933,
             "ref": "generated/skill_walkthroughs.md#titan-memory-loom",
             "title": "titan-memory-loom"
           },
           {
             "anchor": "use-when-49",
             "level": 3,
-            "line": 1938,
+            "line": 1941,
             "ref": "generated/skill_walkthroughs.md#use-when-49",
             "title": "Use when"
           },
           {
             "anchor": "do-not-use-when-49",
             "level": 3,
-            "line": 1944,
+            "line": 1947,
             "ref": "generated/skill_walkthroughs.md#do-not-use-when-49",
             "title": "Do not use when"
           },
           {
             "anchor": "object-use-shape-49",
             "level": 3,
-            "line": 1950,
+            "line": 1953,
             "ref": "generated/skill_walkthroughs.md#object-use-shape-49",
             "title": "Object use shape"
           },
           {
             "anchor": "support-artifacts-49",
             "level": 3,
-            "line": 1958,
+            "line": 1961,
             "ref": "generated/skill_walkthroughs.md#support-artifacts-49",
             "title": "Support artifacts"
           },
           {
             "anchor": "titan-memory-prune",
             "level": 2,
-            "line": 1963,
+            "line": 1966,
             "ref": "generated/skill_walkthroughs.md#titan-memory-prune",
             "title": "titan-memory-prune"
           },
           {
             "anchor": "use-when-50",
             "level": 3,
-            "line": 1971,
+            "line": 1974,
             "ref": "generated/skill_walkthroughs.md#use-when-50",
             "title": "Use when"
           },
           {
             "anchor": "do-not-use-when-50",
             "level": 3,
-            "line": 1977,
+            "line": 1980,
             "ref": "generated/skill_walkthroughs.md#do-not-use-when-50",
             "title": "Do not use when"
           },
           {
             "anchor": "object-use-shape-50",
             "level": 3,
-            "line": 1983,
+            "line": 1986,
             "ref": "generated/skill_walkthroughs.md#object-use-shape-50",
             "title": "Object use shape"
           },
           {
             "anchor": "support-artifacts-50",
             "level": 3,
-            "line": 1991,
+            "line": 1994,
             "ref": "generated/skill_walkthroughs.md#support-artifacts-50",
             "title": "Support artifacts"
           },
           {
             "anchor": "titan-mutation-gate",
             "level": 2,
-            "line": 1996,
+            "line": 1999,
             "ref": "generated/skill_walkthroughs.md#titan-mutation-gate",
             "title": "titan-mutation-gate"
           },
           {
             "anchor": "use-when-51",
             "level": 3,
-            "line": 2004,
+            "line": 2007,
             "ref": "generated/skill_walkthroughs.md#use-when-51",
             "title": "Use when"
           },
           {
             "anchor": "do-not-use-when-51",
             "level": 3,
-            "line": 2010,
+            "line": 2013,
             "ref": "generated/skill_walkthroughs.md#do-not-use-when-51",
             "title": "Do not use when"
           },
           {
             "anchor": "object-use-shape-51",
             "level": 3,
-            "line": 2016,
+            "line": 2019,
             "ref": "generated/skill_walkthroughs.md#object-use-shape-51",
             "title": "Object use shape"
           },
           {
             "anchor": "support-artifacts-51",
             "level": 3,
-            "line": 2024,
+            "line": 2027,
             "ref": "generated/skill_walkthroughs.md#support-artifacts-51",
             "title": "Support artifacts"
           },
           {
             "anchor": "titan-recall",
             "level": 2,
-            "line": 2029,
+            "line": 2032,
             "ref": "generated/skill_walkthroughs.md#titan-recall",
             "title": "titan-recall"
           },
           {
             "anchor": "use-when-52",
             "level": 3,
-            "line": 2037,
+            "line": 2040,
             "ref": "generated/skill_walkthroughs.md#use-when-52",
             "title": "Use when"
           },
           {
             "anchor": "do-not-use-when-52",
             "level": 3,
-            "line": 2043,
+            "line": 2046,
             "ref": "generated/skill_walkthroughs.md#do-not-use-when-52",
             "title": "Do not use when"
           },
           {
             "anchor": "object-use-shape-52",
             "level": 3,
-            "line": 2049,
+            "line": 2052,
             "ref": "generated/skill_walkthroughs.md#object-use-shape-52",
             "title": "Object use shape"
           },
           {
             "anchor": "support-artifacts-52",
             "level": 3,
-            "line": 2057,
+            "line": 2060,
             "ref": "generated/skill_walkthroughs.md#support-artifacts-52",
             "title": "Support artifacts"
           },
           {
             "anchor": "titan-receipt",
             "level": 2,
-            "line": 2062,
+            "line": 2065,
             "ref": "generated/skill_walkthroughs.md#titan-receipt",
             "title": "titan-receipt"
           },
           {
             "anchor": "use-when-53",
             "level": 3,
-            "line": 2070,
+            "line": 2073,
             "ref": "generated/skill_walkthroughs.md#use-when-53",
             "title": "Use when"
           },
           {
             "anchor": "do-not-use-when-53",
             "level": 3,
-            "line": 2076,
+            "line": 2079,
             "ref": "generated/skill_walkthroughs.md#do-not-use-when-53",
             "title": "Do not use when"
           },
           {
             "anchor": "object-use-shape-53",
             "level": 3,
-            "line": 2082,
+            "line": 2085,
             "ref": "generated/skill_walkthroughs.md#object-use-shape-53",
             "title": "Object use shape"
           },
           {
             "anchor": "support-artifacts-53",
             "level": 3,
-            "line": 2090,
+            "line": 2093,
             "ref": "generated/skill_walkthroughs.md#support-artifacts-53",
             "title": "Support artifacts"
           },
           {
             "anchor": "titan-runtime-gate",
             "level": 2,
-            "line": 2095,
+            "line": 2098,
             "ref": "generated/skill_walkthroughs.md#titan-runtime-gate",
             "title": "titan-runtime-gate"
           },
           {
             "anchor": "use-when-54",
             "level": 3,
-            "line": 2103,
+            "line": 2106,
             "ref": "generated/skill_walkthroughs.md#use-when-54",
             "title": "Use when"
           },
           {
             "anchor": "do-not-use-when-54",
             "level": 3,
-            "line": 2109,
+            "line": 2112,
             "ref": "generated/skill_walkthroughs.md#do-not-use-when-54",
             "title": "Do not use when"
           },
           {
             "anchor": "object-use-shape-54",
             "level": 3,
-            "line": 2115,
+            "line": 2118,
             "ref": "generated/skill_walkthroughs.md#object-use-shape-54",
             "title": "Object use shape"
           },
           {
             "anchor": "support-artifacts-54",
             "level": 3,
-            "line": 2123,
+            "line": 2126,
             "ref": "generated/skill_walkthroughs.md#support-artifacts-54",
             "title": "Support artifacts"
           },
           {
             "anchor": "titan-summon",
             "level": 2,
-            "line": 2128,
+            "line": 2131,
             "ref": "generated/skill_walkthroughs.md#titan-summon",
             "title": "titan-summon"
           },
           {
             "anchor": "use-when-55",
             "level": 3,
-            "line": 2136,
+            "line": 2139,
             "ref": "generated/skill_walkthroughs.md#use-when-55",
             "title": "Use when"
           },
           {
             "anchor": "do-not-use-when-55",
             "level": 3,
-            "line": 2142,
+            "line": 2145,
             "ref": "generated/skill_walkthroughs.md#do-not-use-when-55",
             "title": "Do not use when"
           },
           {
             "anchor": "object-use-shape-55",
             "level": 3,
-            "line": 2148,
+            "line": 2151,
             "ref": "generated/skill_walkthroughs.md#object-use-shape-55",
             "title": "Object use shape"
           },
           {
             "anchor": "support-artifacts-55",
             "level": 3,
-            "line": 2156,
+            "line": 2159,
             "ref": "generated/skill_walkthroughs.md#support-artifacts-55",
             "title": "Support artifacts"
           },
           {
             "anchor": "titan-thread-turn-binding",
             "level": 2,
-            "line": 2161,
+            "line": 2164,
             "ref": "generated/skill_walkthroughs.md#titan-thread-turn-binding",
             "title": "titan-thread-turn-binding"
           },
           {
             "anchor": "use-when-56",
             "level": 3,
-            "line": 2169,
+            "line": 2172,
             "ref": "generated/skill_walkthroughs.md#use-when-56",
             "title": "Use when"
           },
           {
             "anchor": "do-not-use-when-56",
             "level": 3,
-            "line": 2175,
+            "line": 2178,
             "ref": "generated/skill_walkthroughs.md#do-not-use-when-56",
             "title": "Do not use when"
           },
           {
             "anchor": "object-use-shape-56",
             "level": 3,
-            "line": 2181,
+            "line": 2184,
             "ref": "generated/skill_walkthroughs.md#object-use-shape-56",
             "title": "Object use shape"
           },
           {
             "anchor": "support-artifacts-56",
             "level": 3,
-            "line": 2189,
+            "line": 2192,
             "ref": "generated/skill_walkthroughs.md#support-artifacts-56",
             "title": "Support artifacts"
           }
@@ -86261,7 +86282,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "ab80904c81b389c71ab438ef34f74d153f099991ee8b896fdcfb3ab60f90a112",
+        "digest": "1ad4ea4a5ac40c2f3d7fdad32c69dc5d92f3639a3d96a2beaface49c51fc8b95",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -86309,7 +86330,7 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "aeb27d2f22e7315badb3bbbd50e19bfb13f69dacdf24cd6dcd075a2b71beb657",
+        "content_hash": "ce8d57714e9fb9c2e737ece7255a366e473e6c837bb02c9122f086d62f45dd66",
         "git_ref": "git-index-source-tree",
         "id": "file:generated/skills_ref_validation_manifest.json:ef176c67b1",
         "mime": "application/json",
@@ -86348,7 +86369,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "aeb27d2f22e7315badb3bbbd50e19bfb13f69dacdf24cd6dcd075a2b71beb657",
+        "digest": "ce8d57714e9fb9c2e737ece7255a366e473e6c837bb02c9122f086d62f45dd66",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -86754,13 +86775,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "ecf0b84ea35babc8b6458a28e4b7a747fdb5d19f7d1a04005b52e8cb0573d4de",
+        "content_hash": "f1a6bc9a4c0f60f2dc426cb8220db9e7f1355f31d7dad6e233d42aa5ff1da40a",
         "git_ref": "git-index-source-tree",
         "id": "file:generated/tiny_router_capsules.min.json:95ebe9512d",
         "mime": "application/json",
         "path": "generated/tiny_router_capsules.min.json",
         "repo": "aoa-skills",
-        "size_bytes": 61274
+        "size_bytes": 61270
       },
       "mechanics_role": "none",
       "observed_form": "generated_output",
@@ -86793,7 +86814,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "ecf0b84ea35babc8b6458a28e4b7a747fdb5d19f7d1a04005b52e8cb0573d4de",
+        "digest": "f1a6bc9a4c0f60f2dc426cb8220db9e7f1355f31d7dad6e233d42aa5ff1da40a",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -86930,7 +86951,7 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "9ad75e5c8097ec21e2ace81bf6d40c00e3175e8ae0948ca72270cb91e936e3e2",
+        "content_hash": "7d26ab4c670a58c95a4bfc3d21c7df2a4ed03016a0a683ce836019d487ac598a",
         "git_ref": "git-index-source-tree",
         "id": "file:generated/tiny_router_overlay_manifest.json:add71e4c83",
         "mime": "application/json",
@@ -86969,7 +86990,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "9ad75e5c8097ec21e2ace81bf6d40c00e3175e8ae0948ca72270cb91e936e3e2",
+        "digest": "7d26ab4c670a58c95a4bfc3d21c7df2a4ed03016a0a683ce836019d487ac598a",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -87019,13 +87040,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "f05711301faa63e1bbe913d7c898230fe602b3ab17d109e61ac848dc26bda063",
+        "content_hash": "b7cb2e8cb305ab78f9671e99da4eddb908a76c65a2b6289bee7ff5360a088609",
         "git_ref": "git-index-source-tree",
         "id": "file:generated/tiny_router_skill_signals.json:f336bee8db",
         "mime": "application/json",
         "path": "generated/tiny_router_skill_signals.json",
         "repo": "aoa-skills",
-        "size_bytes": 187172
+        "size_bytes": 187620
       },
       "mechanics_role": "none",
       "observed_form": "generated_output",
@@ -87058,7 +87079,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "f05711301faa63e1bbe913d7c898230fe602b3ab17d109e61ac848dc26bda063",
+        "digest": "b7cb2e8cb305ab78f9671e99da4eddb908a76c65a2b6289bee7ff5360a088609",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -87108,13 +87129,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "1dfba18cef2916cb1f1a7d515c6c6d1d205bf4793aa21b7dc8820ce7df1bd65b",
+        "content_hash": "37e1c6d4633b7c201ccec7228db980d6bb07c698ed56619322f4e7b646e8d92b",
         "git_ref": "git-index-source-tree",
         "id": "file:generated/trust_policy_matrix.json:9af49181da",
         "mime": "application/json",
         "path": "generated/trust_policy_matrix.json",
         "repo": "aoa-skills",
-        "size_bytes": 32912
+        "size_bytes": 33094
       },
       "mechanics_role": "none",
       "observed_form": "generated_output",
@@ -87147,7 +87168,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "1dfba18cef2916cb1f1a7d515c6c6d1d205bf4793aa21b7dc8820ce7df1bd65b",
+        "digest": "37e1c6d4633b7c201ccec7228db980d6bb07c698ed56619322f4e7b646e8d92b",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -134244,13 +134265,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "b6a92426235bb6d67bd8062f5f96b7cd11508604e5d1789ad1774d19e4ae0c0f",
+        "content_hash": "f8dc68bd2ecec0978b888ebb1575698ba2d43212b00cfbce6bf6405dfad89d30",
         "git_ref": "git-index-source-tree",
         "id": "file:schemas/live-skill-dispatch-plan.schema.json:ba7d5d70d0",
         "mime": "application/json",
         "path": "schemas/live-skill-dispatch-plan.schema.json",
         "repo": "aoa-skills",
-        "size_bytes": 7158
+        "size_bytes": 7244
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -134283,7 +134304,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "b6a92426235bb6d67bd8062f5f96b7cd11508604e5d1789ad1774d19e4ae0c0f",
+        "digest": "f8dc68bd2ecec0978b888ebb1575698ba2d43212b00cfbce6bf6405dfad89d30",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -134333,13 +134354,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "6a4f0be8bef76c9a3031913f9585b5f17df31d66cb42d0c9cc1740264a66d75d",
+        "content_hash": "55027b133d924d160fc5bc343993a5fe6dac97893bd4121e3890b738cd8b1bfe",
         "git_ref": "git-index-source-tree",
         "id": "file:schemas/live-skill-dispatch-private-receipt.schema.json:a5ead8166f",
         "mime": "application/json",
         "path": "schemas/live-skill-dispatch-private-receipt.schema.json",
         "repo": "aoa-skills",
-        "size_bytes": 3085
+        "size_bytes": 3110
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -134372,7 +134393,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "6a4f0be8bef76c9a3031913f9585b5f17df31d66cb42d0c9cc1740264a66d75d",
+        "digest": "55027b133d924d160fc5bc343993a5fe6dac97893bd4121e3890b738cd8b1bfe",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -134511,13 +134532,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "5226d9aebabd489e5583198c6ddbb54372420c5c6fe377ead8c9826af5f9b1a9",
+        "content_hash": "6b52d80807d83e1245e87504002480f8ccc40fffa91cbf9d600c152219a777ec",
         "git_ref": "git-index-source-tree",
         "id": "file:schemas/live-skill-dispatch-public-receipt.schema.json:6248b34177",
         "mime": "application/json",
         "path": "schemas/live-skill-dispatch-public-receipt.schema.json",
         "repo": "aoa-skills",
-        "size_bytes": 24198
+        "size_bytes": 24223
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -134550,7 +134571,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "5226d9aebabd489e5583198c6ddbb54372420c5c6fe377ead8c9826af5f9b1a9",
+        "digest": "6b52d80807d83e1245e87504002480f8ccc40fffa91cbf9d600c152219a777ec",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -149990,13 +150011,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "76ea06e858f7eeb3a4784fc706e067c36c8cdcb42780a2493e2692fbaf508434",
+        "content_hash": "1286986b41f7e657bbd19973eaa6cd667cbf5732966f43e4a7736cba94ff3af9",
         "git_ref": "git-index-source-tree",
         "id": "file:skills/core/engineering/aoa-change-protocol/skill.md:c14e84a7c8",
         "mime": "text/markdown",
         "path": "skills/core/engineering/aoa-change-protocol/SKILL.md",
         "repo": "aoa-skills",
-        "size_bytes": 6320
+        "size_bytes": 7180
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -150046,56 +150067,56 @@
           {
             "anchor": "inputs",
             "level": 2,
-            "line": 30,
+            "line": 32,
             "ref": "skills/core/engineering/aoa-change-protocol/SKILL.md#inputs",
             "title": "Inputs"
           },
           {
             "anchor": "outputs",
             "level": 2,
-            "line": 44,
+            "line": 46,
             "ref": "skills/core/engineering/aoa-change-protocol/SKILL.md#outputs",
             "title": "Outputs"
           },
           {
             "anchor": "procedure",
             "level": 2,
-            "line": 52,
+            "line": 54,
             "ref": "skills/core/engineering/aoa-change-protocol/SKILL.md#procedure",
             "title": "Procedure"
           },
           {
             "anchor": "contracts",
             "level": 2,
-            "line": 74,
+            "line": 80,
             "ref": "skills/core/engineering/aoa-change-protocol/SKILL.md#contracts",
             "title": "Contracts"
           },
           {
             "anchor": "risks-and-anti-patterns",
             "level": 2,
-            "line": 86,
+            "line": 92,
             "ref": "skills/core/engineering/aoa-change-protocol/SKILL.md#risks-and-anti-patterns",
             "title": "Risks and anti-patterns"
           },
           {
             "anchor": "verification",
             "level": 2,
-            "line": 96,
+            "line": 102,
             "ref": "skills/core/engineering/aoa-change-protocol/SKILL.md#verification",
             "title": "Verification"
           },
           {
             "anchor": "technique-traceability",
             "level": 2,
-            "line": 108,
+            "line": 116,
             "ref": "skills/core/engineering/aoa-change-protocol/SKILL.md#technique-traceability",
             "title": "Technique traceability"
           },
           {
             "anchor": "adaptation-points",
             "level": 2,
-            "line": 114,
+            "line": 122,
             "ref": "skills/core/engineering/aoa-change-protocol/SKILL.md#adaptation-points",
             "title": "Adaptation points"
           }
@@ -150107,7 +150128,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "76ea06e858f7eeb3a4784fc706e067c36c8cdcb42780a2493e2692fbaf508434",
+        "digest": "1286986b41f7e657bbd19973eaa6cd667cbf5732966f43e4a7736cba94ff3af9",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -150155,13 +150176,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "72fa09e8fe6b5b96d3b856fcf89c943af96e1933e236264c69fb1acc4fee5077",
+        "content_hash": "aa46e4ff08f356c5f18af66bca6013f02f1204ad4a5e2fce42388a0974290f4d",
         "git_ref": "git-index-source-tree",
         "id": "file:skills/core/engineering/aoa-change-protocol/agents/openai.yaml:9762df7fbf",
         "mime": "application/yaml",
         "path": "skills/core/engineering/aoa-change-protocol/agents/openai.yaml",
         "repo": "aoa-skills",
-        "size_bytes": 191
+        "size_bytes": 286
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -150194,7 +150215,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "72fa09e8fe6b5b96d3b856fcf89c943af96e1933e236264c69fb1acc4fee5077",
+        "digest": "aa46e4ff08f356c5f18af66bca6013f02f1204ad4a5e2fce42388a0974290f4d",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -153197,13 +153218,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "0eb30c4ea76fa5a361e19ca6dafbd5060635ef3a5f930054f135a832032d8fa5",
+        "content_hash": "1da47ccd25957a3a91ad6fc2c21ab101ccf03a8e84bdcda182761b029bd8ab96",
         "git_ref": "git-index-source-tree",
         "id": "file:skills/core/engineering/aoa-decision/skill.md:29f47a8f92",
         "mime": "text/markdown",
         "path": "skills/core/engineering/aoa-decision/SKILL.md",
         "repo": "aoa-skills",
-        "size_bytes": 8822
+        "size_bytes": 9393
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -153253,56 +153274,56 @@
           {
             "anchor": "inputs",
             "level": 2,
-            "line": 37,
+            "line": 38,
             "ref": "skills/core/engineering/aoa-decision/SKILL.md#inputs",
             "title": "Inputs"
           },
           {
             "anchor": "outputs",
             "level": 2,
-            "line": 52,
+            "line": 53,
             "ref": "skills/core/engineering/aoa-decision/SKILL.md#outputs",
             "title": "Outputs"
           },
           {
             "anchor": "procedure",
             "level": 2,
-            "line": 60,
+            "line": 61,
             "ref": "skills/core/engineering/aoa-decision/SKILL.md#procedure",
             "title": "Procedure"
           },
           {
             "anchor": "contracts",
             "level": 2,
-            "line": 106,
+            "line": 111,
             "ref": "skills/core/engineering/aoa-decision/SKILL.md#contracts",
             "title": "Contracts"
           },
           {
             "anchor": "risks-and-anti-patterns",
             "level": 2,
-            "line": 121,
+            "line": 126,
             "ref": "skills/core/engineering/aoa-decision/SKILL.md#risks-and-anti-patterns",
             "title": "Risks and anti-patterns"
           },
           {
             "anchor": "verification",
             "level": 2,
-            "line": 132,
+            "line": 137,
             "ref": "skills/core/engineering/aoa-decision/SKILL.md#verification",
             "title": "Verification"
           },
           {
             "anchor": "technique-traceability",
             "level": 2,
-            "line": 147,
+            "line": 154,
             "ref": "skills/core/engineering/aoa-decision/SKILL.md#technique-traceability",
             "title": "Technique traceability"
           },
           {
             "anchor": "adaptation-points",
             "level": 2,
-            "line": 153,
+            "line": 160,
             "ref": "skills/core/engineering/aoa-decision/SKILL.md#adaptation-points",
             "title": "Adaptation points"
           }
@@ -153314,7 +153335,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "0eb30c4ea76fa5a361e19ca6dafbd5060635ef3a5f930054f135a832032d8fa5",
+        "digest": "1da47ccd25957a3a91ad6fc2c21ab101ccf03a8e84bdcda182761b029bd8ab96",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -153362,13 +153383,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "8a271297be30e1699de3b71ac49f4c7a8f968019307ec094081fee74eeff5f51",
+        "content_hash": "b70aab5dd91fab6492f01d7aec7e9011025bbe2092fbc89073a8afed91aff4f0",
         "git_ref": "git-index-source-tree",
         "id": "file:skills/core/engineering/aoa-decision/agents/openai.yaml:3b21cb9154",
         "mime": "application/yaml",
         "path": "skills/core/engineering/aoa-decision/agents/openai.yaml",
         "repo": "aoa-skills",
-        "size_bytes": 232
+        "size_bytes": 324
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -153401,7 +153422,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "8a271297be30e1699de3b71ac49f4c7a8f968019307ec094081fee74eeff5f51",
+        "digest": "b70aab5dd91fab6492f01d7aec7e9011025bbe2092fbc89073a8afed91aff4f0",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -191274,13 +191295,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "f6108d46934e4572de0b9b7682dbe24041f55d7ae1ea5d20edc96fc5f33b495e",
+        "content_hash": "7a34da0372bdd27a89ef4a9f14cb9da1d4c0f516ec8518063ccefae75f250895",
         "git_ref": "git-index-source-tree",
         "id": "file:tests/fixtures/skill_evaluation_cases.yaml:1c6caffedc",
         "mime": "application/yaml",
         "path": "tests/fixtures/skill_evaluation_cases.yaml",
         "repo": "aoa-skills",
-        "size_bytes": 179635
+        "size_bytes": 180864
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -191313,7 +191334,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "f6108d46934e4572de0b9b7682dbe24041f55d7ae1ea5d20edc96fc5f33b495e",
+        "digest": "7a34da0372bdd27a89ef4a9f14cb9da1d4c0f516ec8518063ccefae75f250895",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -216260,13 +216281,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "f4b625a8f8d4e4162d4f2b909e571a670930446a146cd2f2e769a3ce9e8c0c8a",
+        "content_hash": "4360b692cf56a09295ac4964e21a681b043ab5dfb31233895dc8b01c94838e91",
         "git_ref": "git-index-source-tree",
         "id": "file:tests/test_description_trigger_builder.py:7b973d4317",
         "mime": "text/x-python",
         "path": "tests/test_description_trigger_builder.py",
         "repo": "aoa-skills",
-        "size_bytes": 2475
+        "size_bytes": 3028
       },
       "mechanics_role": "none",
       "observed_form": "command",
@@ -216299,7 +216320,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "f4b625a8f8d4e4162d4f2b909e571a670930446a146cd2f2e769a3ce9e8c0c8a",
+        "digest": "4360b692cf56a09295ac4964e21a681b043ab5dfb31233895dc8b01c94838e91",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -217261,13 +217282,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "dfceefdf2b43bf99d11621505f3cc7d4850c307320742e3471981e2f5be3eecf",
+        "content_hash": "422ee24c8b52cb034452e99f0c7ea2cdfc8bfdfa84aee04d7a28959b59392276",
         "git_ref": "git-index-source-tree",
         "id": "file:tests/test_live_skill_dispatch_harness.py:27c0f74cd0",
         "mime": "text/x-python",
         "path": "tests/test_live_skill_dispatch_harness.py",
         "repo": "aoa-skills",
-        "size_bytes": 152782
+        "size_bytes": 155786
       },
       "mechanics_role": "none",
       "observed_form": "command",
@@ -217300,7 +217321,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "dfceefdf2b43bf99d11621505f3cc7d4850c307320742e3471981e2f5be3eecf",
+        "digest": "422ee24c8b52cb034452e99f0c7ea2cdfc8bfdfa84aee04d7a28959b59392276",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
