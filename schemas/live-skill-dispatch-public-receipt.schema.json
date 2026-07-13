@@ -166,6 +166,7 @@
         "outcome_command_succeeded": {"type": "boolean"},
         "outcome_verification_observed": {"type": "boolean"},
         "outcome_validator_not_inspected": {"type": "boolean"},
+        "outcome_output_observation_gap": {"type": "boolean"},
         "outcome_mismatch_dimensions": {
           "type": "array",
           "uniqueItems": true,
@@ -298,6 +299,10 @@
         "control_outcome_contract_match": {"type": ["boolean", "null"]},
         "outcome_lift": {"type": ["integer", "null"], "minimum": -1, "maximum": 1},
         "outcome_effect_class": {"enum": ["positive_lift", "negative_lift", "no_lift_both_correct", "no_lift_both_incorrect", "contaminated", "not_scored_no_contract", "not_scored_no_observable_outcome"]},
+        "aided_outcome_output_observation_gap": {"type": "boolean"},
+        "control_outcome_output_observation_gap": {"type": "boolean"},
+        "outcome_output_observation_gap_effect_class": {"enum": ["none", "aided_only", "control_only", "both"]},
+        "outcome_lift_observation_clean": {"type": ["boolean", "null"]},
         "fixture_context_match": {"type": "boolean"},
         "prompt_background_match": {"type": "boolean"},
         "prompt_visibility_contract_match": {"type": "boolean"},

@@ -417,6 +417,14 @@ no sentinel bytes. The receipt stays reviewed candidate evidence: source repair
 is closed, while explicit observation-gap telemetry remains required before
 full-pilot outcome-lift interpretation.
 
+V15 adds that telemetry without weakening outcome proof. A per-arm gap requires
+the exact single attempt, successful exit, validator non-inspection, and missing
+sentinel together. Matched pairs publish aided/control gap flags, one bounded
+gap class, and `outcome_lift_observation_clean`; the underlying outcome match
+stays false. Read-only v14 projection labels the two affected controls
+`control_only` and leaves `collision-09` clean. Historical public receipts are
+not rewritten, and no new skill failure class is introduced.
+
 ## Safety And Privacy
 
 The plan locks Git head, all portable skill files, generated/config inputs,
@@ -434,7 +442,7 @@ both sides of this transport-specific contract.
 
 These hermetic invocation rules use contract schema
 `aoa_codex_app_server_skill_input_contract_v11` and protocol revision
-`codex-cli-0.144.1-live-dispatch-evidence-v14`. Retained v1-v13 receipts remain
+`codex-cli-0.144.1-live-dispatch-evidence-v15`. Retained v1-v14 receipts remain
 source-locked to their original protocol and review status and are not upgraded
 in place.
 

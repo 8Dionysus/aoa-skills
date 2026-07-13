@@ -173,6 +173,7 @@ PUBLIC_MEASURE_KEYS = (
     "outcome_command_succeeded",
     "outcome_verification_observed",
     "outcome_validator_not_inspected",
+    "outcome_output_observation_gap",
     "route_contract_match",
     "owner_boundary_present",
     "input_tokens",
@@ -215,6 +216,10 @@ PUBLIC_PAIR_KEYS = (
     "control_outcome_contract_match",
     "outcome_lift",
     "outcome_effect_class",
+    "aided_outcome_output_observation_gap",
+    "control_outcome_output_observation_gap",
+    "outcome_output_observation_gap_effect_class",
+    "outcome_lift_observation_clean",
     # Historical v1-v7 private receipts retain their original generic pair
     # vocabulary when reviewed. Current v11 runs never emit these two keys.
     "observed_lift",
@@ -762,7 +767,7 @@ def _expected_codex_version(plan: dict[str, Any]) -> str:
     revision = str(plan.get("protocol_revision") or "")
     match = re.fullmatch(
         r"codex-cli-([0-9]+(?:\.[0-9]+){2})-"
-        r"(?:app-server-skill-input-v3|live-dispatch-evidence-v(?:[4-9]|1[0-4]))",
+        r"(?:app-server-skill-input-v3|live-dispatch-evidence-v(?:[4-9]|1[0-5]))",
         revision,
     )
     if match is None:
@@ -3577,6 +3582,10 @@ def _trial_measure(trial: Trial, result: dict[str, Any]) -> dict[str, Any]:
             if trial.outcome_contract is not None
             else True
         ),
+        "outcome_output_observation_gap": _outcome_output_observation_gap(
+            trial.outcome_contract is not None,
+            result,
+        ),
         "route_contract_match": dispatch_match and load_match,
         "owner_boundary_present": bool(output.get("owner_boundary")),
         "input_tokens": int(usage.get("input_tokens") or 0),
@@ -3598,6 +3607,44 @@ def _effect_class(aided_correct: bool, control_correct: bool) -> str:
     if aided_correct:
         return "no_lift_both_correct"
     return "no_lift_both_incorrect"
+
+
+def _outcome_output_observation_gap(
+    outcome_contract_defined: bool,
+    evidence: dict[str, Any],
+) -> bool:
+    """Identify an exact successful outcome attempt whose proof bytes are absent."""
+
+    return bool(
+        outcome_contract_defined
+        and evidence.get("outcome_command_observed") is True
+        and evidence.get("outcome_single_attempt") is True
+        and evidence.get("outcome_command_succeeded") is True
+        and evidence.get("outcome_validator_not_inspected") is True
+        and evidence.get("outcome_verification_observed") is not True
+    )
+
+
+def _measure_outcome_output_observation_gap(measure: dict[str, Any]) -> bool:
+    if "outcome_output_observation_gap" in measure:
+        return measure.get("outcome_output_observation_gap") is True
+    return _outcome_output_observation_gap(
+        measure.get("outcome_contract_defined") is True,
+        measure,
+    )
+
+
+def _outcome_output_observation_gap_effect_class(
+    aided_gap: bool,
+    control_gap: bool,
+) -> str:
+    if aided_gap and control_gap:
+        return "both"
+    if aided_gap:
+        return "aided_only"
+    if control_gap:
+        return "control_only"
+    return "none"
 
 
 def _pair_outcomes(private_trials: list[dict[str, Any]]) -> list[dict[str, Any]]:
@@ -3813,6 +3860,23 @@ def _pair_outcomes(private_trials: list[dict[str, Any]]) -> list[dict[str, Any]]
                     aided_outcome_match,
                     control_outcome_match,
                 )
+        aided_outcome_observation_gap = _measure_outcome_output_observation_gap(
+            aided_measure
+        )
+        control_outcome_observation_gap = _measure_outcome_output_observation_gap(
+            control_measure
+        )
+        outcome_observation_gap_effect = (
+            _outcome_output_observation_gap_effect_class(
+                aided_outcome_observation_gap,
+                control_outcome_observation_gap,
+            )
+        )
+        outcome_lift_observation_clean = (
+            not (aided_outcome_observation_gap or control_outcome_observation_gap)
+            if outcome_contract_defined
+            else None
+        )
         outcomes.append(
             {
                 "case_id": case_id,
@@ -3846,6 +3910,16 @@ def _pair_outcomes(private_trials: list[dict[str, Any]]) -> list[dict[str, Any]]
                 "control_outcome_contract_match": control_outcome_match,
                 "outcome_lift": outcome_lift,
                 "outcome_effect_class": outcome_effect,
+                "aided_outcome_output_observation_gap": (
+                    aided_outcome_observation_gap
+                ),
+                "control_outcome_output_observation_gap": (
+                    control_outcome_observation_gap
+                ),
+                "outcome_output_observation_gap_effect_class": (
+                    outcome_observation_gap_effect
+                ),
+                "outcome_lift_observation_clean": outcome_lift_observation_clean,
                 "fixture_context_match": aided_context == control_context,
                 "prompt_background_match": bool(background_match),
                 "prompt_visibility_contract_match": prompt_contract_match,
@@ -4238,11 +4312,42 @@ def build_public_receipt(private: dict[str, Any]) -> dict[str, Any]:
         for item in private.get("trials", [])
         if isinstance(item, dict) and isinstance(item.get("measure"), dict)
     ]
+    for measure in measures:
+        measure.setdefault(
+            "outcome_output_observation_gap",
+            _measure_outcome_output_observation_gap(measure),
+        )
     pairs = [
         {key: item[key] for key in PUBLIC_PAIR_KEYS if key in item}
         for item in private.get("pair_outcomes", [])
         if isinstance(item, dict)
     ]
+    measures_by_case_arm = {
+        (str(measure.get("case_id")), str(measure.get("arm_type"))): measure
+        for measure in measures
+    }
+    for pair in pairs:
+        if "outcome_contract_defined" not in pair:
+            continue
+        case_id = str(pair.get("case_id"))
+        aided_gap = _measure_outcome_output_observation_gap(
+            measures_by_case_arm.get((case_id, "implicit_aided"), {})
+        )
+        control_gap = _measure_outcome_output_observation_gap(
+            measures_by_case_arm.get((case_id, "implicit_control"), {})
+        )
+        pair.setdefault("aided_outcome_output_observation_gap", aided_gap)
+        pair.setdefault("control_outcome_output_observation_gap", control_gap)
+        pair.setdefault(
+            "outcome_output_observation_gap_effect_class",
+            _outcome_output_observation_gap_effect_class(aided_gap, control_gap),
+        )
+        pair.setdefault(
+            "outcome_lift_observation_clean",
+            not (aided_gap or control_gap)
+            if pair.get("outcome_contract_defined") is True
+            else None,
+        )
     failures: dict[str, int] = {}
     for measure in measures:
         failure = measure.get("failure_class")
@@ -4364,6 +4469,35 @@ def validate_public_receipt(public: dict[str, Any]) -> None:
         if pair.get("outcome_effect_class") not in outcome_effect_classes:
             raise PublicReceiptSafetyError(
                 "public outcome pair escaped the bounded effect vocabulary"
+            )
+        gap_effect = pair.get("outcome_output_observation_gap_effect_class")
+        if gap_effect is None:
+            continue
+        if gap_effect not in {"none", "aided_only", "control_only", "both"}:
+            raise PublicReceiptSafetyError(
+                "public outcome observation-gap effect vocabulary escaped its bounded values"
+            )
+        aided_gap = pair.get("aided_outcome_output_observation_gap")
+        control_gap = pair.get("control_outcome_output_observation_gap")
+        if not isinstance(aided_gap, bool) or not isinstance(control_gap, bool):
+            raise PublicReceiptSafetyError(
+                "public outcome observation-gap flags must be boolean"
+            )
+        if gap_effect != _outcome_output_observation_gap_effect_class(
+            aided_gap,
+            control_gap,
+        ):
+            raise PublicReceiptSafetyError(
+                "public outcome observation-gap effect conflicts with arm flags"
+            )
+        expected_clean = (
+            not (aided_gap or control_gap)
+            if pair.get("outcome_contract_defined") is True
+            else None
+        )
+        if pair.get("outcome_lift_observation_clean") is not expected_clean:
+            raise PublicReceiptSafetyError(
+                "public outcome lift observation-clean flag conflicts with arm gaps"
             )
 
 

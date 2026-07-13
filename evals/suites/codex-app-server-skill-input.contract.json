@@ -1,7 +1,7 @@
 {
   "schema_version": "aoa_codex_app_server_skill_input_contract_v11",
   "codex_version": "codex-cli 0.144.1",
-  "protocol_revision": "codex-cli-0.144.1-live-dispatch-evidence-v14",
+  "protocol_revision": "codex-cli-0.144.1-live-dispatch-evidence-v15",
   "official_contract_ref": "https://learn.chatgpt.com/docs/app-server#start-a-turn-invoke-a-skill",
   "schema_generation_command": "codex app-server generate-json-schema --experimental --out DIR",
   "request_sequence": [
@@ -32,6 +32,7 @@
     "transport_partial_evidence": "partial timeout stdout and stderr remain private transport evidence; JSONL events and usage are recovered so turn start, budget, command scope, and failure precedence are not erased",
     "cohort_process_status": "a complete cohort exits zero even when its model evidence is negative; a stopped-early incomplete cohort reports its stop reason and exits nonzero after preserving the private receipt",
     "pair_dimension_split": "new matched pairs publish route, selected-child trajectory, and selected-child procedure-disposition report lift separately; objective outcome lift remains not_scored_no_observable_outcome unless a stronger observable contract exists",
+    "outcome_output_observation_gap": "an exact single-attempt outcome command that exits zero without the required sentinel remains unverified and is published as per-arm plus pair-level observation-gap telemetry; any pair with such a gap marks outcome_lift_observation_clean=false",
     "procedure_and_outcome_contract_boundary": "trajectory and procedure-disposition scoring require the same source-locked pre-live contract on both arms; fixture execution and model self-report never become an objective outcome answer key",
     "native_dispatch_boundary": "sent official structured skill input is transport-owned dispatch evidence and accepted input is native-load evidence; direct or source-declared exact root-child model selection reporting remains a separate non-authoritative observation, an unrelated root does not make a matching child hierarchy exact, and a direct target report with a conflicting child is not exact",
     "fixture_execution_boundary": "python3 fixture_validator.py proves hermetic fixture executability only; it is not the selected child procedure or whole-task outcome",

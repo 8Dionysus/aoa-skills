@@ -77,8 +77,8 @@ child is not exact either. Those report-only mismatches are
 `selection_report_miss`; they do not rewrite successful native dispatch or load
 evidence as `dispatch_policy_gap`.
 These rules use contract schema `aoa_codex_app_server_skill_input_contract_v11`
-and protocol revision `codex-cli-0.144.1-live-dispatch-evidence-v14`. Retained
-v1-v13 receipts stay source-locked to their original protocol and review status;
+and protocol revision `codex-cli-0.144.1-live-dispatch-evidence-v15`. Retained
+v1-v14 receipts stay source-locked to their original protocol and review status;
 they are never upgraded in place.
 
 Run the confirmed command only as the child of the plan packet's
@@ -341,6 +341,15 @@ aided sentinel is now observed, but the same zero-exit/no-sentinel condition
 appears in two controls. Preserve the run as reviewed candidate evidence that
 closes the source repair; add explicit observation-gap telemetry before using
 those control contrasts in a widened pilot.
+
+V15 records an outcome output-observation gap only when the source-locked exact
+command is observed once, exits zero, the validator stays uninspected, and the
+required sentinel is absent. The arm outcome remains unverified. Pairs publish
+the aided/control flags, `none`, `aided_only`, `control_only`, or `both`, and an
+`outcome_lift_observation_clean` marker. Read-only v14 replay labels the two
+clean-aided receipt controls `control_only` without rewriting the receipt or
+creating a skill failure. Exact-merged full-pilot execution is the next live
+step.
 
 See `evals/suites/aoa-skill-live-dispatch-harness.suite.md` and
 `docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md` for

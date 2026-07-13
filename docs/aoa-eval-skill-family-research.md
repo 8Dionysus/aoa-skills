@@ -586,3 +586,25 @@ the sentinel and verify. This closes the two source returns but does not make
 the resulting positive control contrast stable proof. Preserve the receipt as
 reviewed candidate evidence, add an explicit per-arm and pair-level
 output-observation-gap signal, and only then widen to the full pilot.
+
+## 2026-07-12 v15 outcome observation telemetry
+
+V15 makes the recurring transport observation explicit without changing the
+verdict. An arm receives `outcome_output_observation_gap=true` only when a
+source-locked outcome contract exists, the exact command is observed once, the
+command succeeds, the validator is not inspected, and the required sentinel is
+still absent. Outcome verification and contract match remain false.
+
+Matched pairs now publish aided and control gap booleans, one bounded effect
+class (`none`, `aided_only`, `control_only`, or `both`), and
+`outcome_lift_observation_clean`. A positive or negative lift can therefore stay
+visible while reviewers can see that its output observation is not clean. No
+new skill failure class is introduced because the gap can occur in either arm
+after a correct command and is not evidence that a source skill routed badly.
+
+Read-only projection of the reviewed clean-aided v14 private receipt produces
+`none` plus a clean lift for `collision-09`, and `control_only` plus
+`outcome_lift_observation_clean=false` for `collision-14` and `collision-38`.
+The committed v14 receipt remains immutable. V15 applies to future runs and
+keeps historical projection backward-compatible; after exact merge, the next
+live step returns to the full pilot rather than repeating a source repair.

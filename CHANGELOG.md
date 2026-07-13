@@ -207,6 +207,12 @@ Tracking starts with the community-docs baseline for this repository.
   control outcome commands exit zero without observable sentinel bytes, so the
   reviewed receipt closes the source return while reserving lift claims for an
   explicit observation-gap telemetry follow-up.
+- Live-dispatch evidence v15 now publishes per-arm outcome output-observation
+  gaps and pair-level aided/control gap class plus
+  `outcome_lift_observation_clean`. The exact command, single attempt, zero exit,
+  and validator-not-inspected conditions still cannot verify an absent sentinel.
+  Read-only replay classifies the two affected v14 controls as `control_only`
+  gaps without rewriting their reviewed receipt or adding a skill failure.
 - `AOA-SK-D-0037` records why live cohorts remain operator-confirmed candidate
   evidence and now clarifies prompt-surface isolation and evidence-stage grading
   after the contaminated smoke; deterministic harness validation, not model
