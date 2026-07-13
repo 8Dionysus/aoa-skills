@@ -455,14 +455,38 @@ As of 2026-07-12:
   activation. Target-specific report guidance now reaches implicit arms.
   The fresh exact-merged run completes 15/15 with every harness, transport,
   owner, safety, and final structured-arm boundary clean. It leaves exactly
-  three aided source candidates: the `aoa-decision-find` handoff and two
-  `aoa-change-protocol` boundary collisions. Those two source skills now carry
-  red-first source and prompt-visible regression contracts. The next live run
-  is the six-turn `pilot13-skill-returns` cohort containing only the three
-  affected pairs, with both contract axes and receipt schema parity required.
+  three aided source candidates. The first six-turn source-return execution
+  closes the approval-gate collision and confirms the `aoa-decision-find`
+  handoff. Remaining source work is limited to the child missing-input
+  disposition and the concrete ATM10 exclusion in `aoa-change-protocol`; the
+  missing aided outcome bytes remain an observation return, not verified proof.
 - Superseded by: none.
 
 ## Review Log
+
+### 2026-07-12 - Preserve the mixed first skill-return execution
+
+- Exact evidence: all six `pilot13-skill-returns` turns and all three pairs
+  complete on the merged source with clean prompt, filesystem, inventory,
+  fixture, transport-process, owner-action, safety, and authority boundaries.
+- Closed return: `collision-09` keeps the approval owner and every repo skill
+  unloaded, reports the manual target route, and gains the source-locked owner
+  outcome over control.
+- Decision return: `collision-38` now gains route and the complete
+  `aoa-decision-find` child trajectory. The child still reports
+  `deferred_owner_boundary` where the absent graph and owner packet requires
+  `blocked_missing_input`.
+- Observation return: the aided arm runs the exact owner-action command once
+  with exit zero but exposes no sentinel output bytes. Keep outcome verification
+  false and preserve the event as an observation gap rather than weakening the
+  sentinel contract or changing the answer key.
+- Boundary return: `collision-14` gets the target route, procedure, and outcome
+  right while still loading generic `aoa-change-protocol`. Strengthen only the
+  concrete ATM10 repo-relative exclusion; do not make generic changes manual or
+  alter the explicit ATM10 overlay.
+- Decision: retain the public-safe receipt as `needs-rerun`, apply the two
+  narrow source corrections, refresh prompt-visible runtime parity, and repeat
+  the affected cohort before widening.
 
 ### 2026-07-12 - Repair two source boundaries and bind a six-turn return
 

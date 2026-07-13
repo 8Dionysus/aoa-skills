@@ -315,6 +315,17 @@ overlay displacement by the same generic skill. Preserve the reviewed v14
 receipt, repair only `aoa-decision` and `aoa-change-protocol`, and rerun the
 smallest affected set before widening.
 
+The first exact-merged six-turn `pilot13-skill-returns` execution closes
+`collision-09` and confirms that `collision-38` now gains both the root route
+and complete `aoa-decision-find` child trajectory. That decision pair still
+misses its source-locked procedure disposition, and its aided exact outcome
+command exits zero without exposing the required sentinel output; outcome
+verification remains false. `collision-14` gets the manual target route,
+procedure, and owner outcome right but still loads repo-visible
+`aoa-change-protocol`. Preserve the mixed receipt, repair only those two narrow
+source boundaries, and repeat the affected cohort without changing proof
+semantics.
+
 See `evals/suites/aoa-skill-live-dispatch-harness.suite.md` and
 `docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md` for
 the evidence and authority boundaries.

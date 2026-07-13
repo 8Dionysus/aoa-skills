@@ -64,7 +64,13 @@ Active first local corpus:
   prompt-visible descriptions. The 6-turn `pilot13-skill-returns` cohort
   preserves only those three pairs and requires both contract axes, receipt
   schema parity, exact source confirmation, and the high-cost token before the
-  next live check.
+  next live check. Its first exact-merged execution closes the approval-gate
+  pair and confirms the decision root-to-find handoff. Remaining source work is
+  narrower: the decision child must report missing input rather than owner
+  deferral, and the generic change protocol must reject the concrete ATM10
+  repo-relative wording before load. The aided decision outcome command exits
+  zero without observable sentinel bytes, so the reviewed receipt preserves an
+  observation return and does not grant outcome proof.
 
 These files are local evidence notes. They do not publish central proof
 acceptance, scoring, verdicts, regression truth, or proof doctrine.
