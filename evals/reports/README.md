@@ -340,6 +340,16 @@ temporary root and must not be copied into this directory.
   observation gap. Route and procedure effects remain intentionally unscored.
   This is reviewed candidate evidence only, not proof, promotion, or pressure
   to make explicit Titan skills implicit.
+- [aoa-skill-live-dispatch-coverage-closure-titan-implicit-b-20260713-v20-reviewed-outcome-observation-gaps-needs-rerun.json](aoa-skill-live-dispatch-coverage-closure-titan-implicit-b-20260713-v20-reviewed-outcome-observation-gaps-needs-rerun.json)
+  preserves the first exact-merged 14-turn Titan B implicit wave. All seven
+  hidden targets remain unselected, unread, and unloaded in both arms; every
+  manual non-activation, fixture, and owner-boundary contract is correct, with
+  no failure, external access, or broad inventory. The `titan-receipt` aided
+  arm and `titan-runtime-gate` control each run the exact one-attempt outcome
+  command with exit zero but expose no verification sentinel. Their apparent
+  negative and positive outcome lifts are therefore observation-unclean. This
+  is reviewed `needs-rerun` candidate evidence; repeat only both arms of those
+  two cases without changing Titan skill source or proof/promotion posture.
 
 Corrected live receipts under the v11-v20 evidence protocols are reviewable only
 after canonical user-skill shadows, plugins, and every configured MCP id are

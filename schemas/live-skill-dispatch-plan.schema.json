@@ -92,6 +92,7 @@
         "coverage-closure-core-implicit",
         "coverage-closure-titan-implicit-a",
         "coverage-closure-titan-implicit-b",
+        "coverage-closure-titan-implicit-b-returns",
         "coverage-closure-root-trajectories",
         "coverage-closure-structured-core",
         "coverage-closure-structured-titan"
@@ -116,6 +117,7 @@
         "coverage-closure-core-implicit": {"$ref": "#/$defs/cohort"},
         "coverage-closure-titan-implicit-a": {"$ref": "#/$defs/cohort"},
         "coverage-closure-titan-implicit-b": {"$ref": "#/$defs/cohort"},
+        "coverage-closure-titan-implicit-b-returns": {"$ref": "#/$defs/cohort"},
         "coverage-closure-root-trajectories": {"$ref": "#/$defs/cohort"},
         "coverage-closure-structured-core": {"$ref": "#/$defs/cohort"},
         "coverage-closure-structured-titan": {"$ref": "#/$defs/cohort"}

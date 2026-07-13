@@ -469,6 +469,21 @@
       "estimated_memory_demand_mib": 512,
       "resource_class": "medium"
     },
+    "coverage-closure-titan-implicit-b-returns": {
+      "implicit_case_ids": [
+        "desc-titan-12-manual",
+        "desc-titan-13-manual"
+      ],
+      "trajectory_case_ids": [],
+      "structured_skills": [],
+      "procedure_contract_mode": "required_for_live",
+      "objective_outcome_mode": "required_for_live",
+      "second_confirmation_required": true,
+      "expected_turn_count": 4,
+      "estimated_private_bytes": 67108864,
+      "estimated_memory_demand_mib": 512,
+      "resource_class": "medium"
+    },
     "coverage-closure-root-trajectories": {
       "implicit_case_ids": [],
       "trajectory_case_ids": "all-root-child-trajectories",

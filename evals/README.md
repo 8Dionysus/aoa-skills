@@ -214,6 +214,14 @@ Active first local corpus:
   confirm the explicit-only boundary rather than creating skill-source pressure.
   After this writeback lands and exact runtime/host gates are repeated,
   `coverage-closure-titan-implicit-b` is the next bounded wave.
+  Its first exact-merged v20 run is preserved as
+  [`aoa-skill-live-dispatch-coverage-closure-titan-implicit-b-20260713-v20-reviewed-outcome-observation-gaps-needs-rerun.json`](reports/aoa-skill-live-dispatch-coverage-closure-titan-implicit-b-20260713-v20-reviewed-outcome-observation-gaps-needs-rerun.json).
+  All 14 manual non-activation arms are correct and all seven pairs complete
+  without a failure. Two exact owner-outcome commands return zero but expose no
+  sentinel, one aided-only and one control-only, so both apparent outcome lifts
+  remain observation-unclean. The new four-turn
+  `coverage-closure-titan-implicit-b-returns` cohort repeats only both arms of
+  cases 12 and 13. Land and execute that return before opening root trajectories.
 
 These files are local evidence notes. They do not publish central proof
 acceptance, scoring, verdicts, regression truth, or proof doctrine.

@@ -436,6 +436,15 @@ failure, or observation gap. Route and procedure effects remain unscored by
 design. Preserve the reviewed candidate receipt, land its writeback, and repeat
 exact runtime plus host gates before Titan implicit B.
 
+The first exact-merged Titan B run completes 14/14 turns and all seven manual
+pairs without a failure. Target selection, reads, loads, fixture scope, and
+owner boundaries are clean, but the exact one-attempt outcome command exposes
+no verification sentinel in the case-12 aided arm and case-13 control. Their
+raw negative and positive lifts are observation-unclean and support no skill
+effect. Preserve the full receipt as `needs-rerun`; the four-turn
+`coverage-closure-titan-implicit-b-returns` cohort repeats only both arms of
+those cases with unchanged source contracts and both confirmation tokens.
+
 The first exact v16 core wave completes 16/16. Every aided arm gains route and
 procedure correctness, while six outcome pairs are observation-clean and
 correct in both arms. Three fixture commands across `collision-01` and
