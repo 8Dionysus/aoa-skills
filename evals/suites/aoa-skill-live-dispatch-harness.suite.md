@@ -76,6 +76,8 @@ than silently reverting the outcome dimension to unscored.
 | `full-collision-session-growth` | 28 | collisions 20-33 | medium |
 | `full-collision-session-growth-returns` | 8 | paired hidden-manual non-activation and ambient-classification return for collisions 21, 22, 25, and 33 | medium |
 | `full-collision-authority-routing` | 22 | collisions 34-43 plus artifact-trust collision 49 | medium |
+| `full-collision-authority-routing-returns` | 6 | paired parent/child observability return for collisions 39-41 | medium |
+| `full-collision-authority-routing-procedure-returns` | 4 | paired decision-create/correct terminal return for collisions 40-41 | medium |
 | `full-collision-eval-children` | 10 | collisions 44-48 | medium |
 | `coverage-closure-core-implicit` | 4 | ADR and memo-writeback implicit reachability | medium |
 | `coverage-closure-titan-implicit-a` | 16 | Titan implicit cases 01-08 | medium |
@@ -645,9 +647,25 @@ Repair the two child missing-input terminals red-first and repeat only both arms
 of cases 40-41. The receipt does not authorize proof, promotion, or the next
 eval-child wave.
 
+The bounded source repair now makes that missing-input terminal explicit in
+both `aoa-decision-create` and `aoa-decision-correct`: once the parent has
+classified the child route, unavailable required context inside the permitted
+evidence boundary ends as `blocked_missing_input`, never
+`deferred_owner_boundary`. The same rule is present in the portable
+prompt-visible descriptions. The source snapshot now locks the authored
+`config/portable_skill_overrides.json` as well as its generated `.agents/skills`
+projection, and the freshness sidecar tracks both child sources plus that
+override. Its typed live-harness entrypoint now exercises the
+source-to-description contract directly. The four-turn
+`full-collision-authority-routing-procedure-returns` cohort repeats only both
+arms of cases 40-41. Deterministic validation is necessary but does not claim a
+live correction; exact merge, runtime parity, host admission, both
+confirmations, and reviewed execution remain mandatory before widening.
+
 ## Safety And Privacy
 
-The plan locks Git head, all portable skill files, generated/config inputs,
+The plan locks Git head, authored portable overrides, all portable skill files,
+generated/config inputs,
 profile revision, Codex protocol revision, caps, trial identities, and the
 count plus digest of exact external shadowing `SKILL.md` paths. Discovery
 resolves user-skill symlinks and locks/disables their canonical target files,

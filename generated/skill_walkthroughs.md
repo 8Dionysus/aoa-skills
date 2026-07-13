@@ -584,6 +584,7 @@ Common expand sections:
 - generated decision indexes are out of date with source metadata
 - graph lookup shows a mismatch that must be verified against the source note
 - a correction must preserve local decision-lane law and validation
+- the parent has classified a correction route, but the target decision record, owning source note, repo-local index contract, or graph/owner packet is unavailable inside the active evidence boundary; select this child only to stop with blocked_missing_input rather than invent correction context
 
 ### Do not use when
 
@@ -619,6 +620,7 @@ Common expand sections:
 - the owner repository already has or intentionally needs a docs/decisions/ lane
 - graph lookup should identify similar prior decisions, next ID, source surfaces, or symmetry constraints
 - a decision note must be created alongside code, docs, MCP, skill, validator, or generated-index changes
+- the parent has classified a create route, but the chosen decision, target repository, source surfaces, graph status, or repo-local decision law is unavailable inside the active evidence boundary; select this child only to stop with blocked_missing_input rather than invent creation context
 
 ### Do not use when
 
