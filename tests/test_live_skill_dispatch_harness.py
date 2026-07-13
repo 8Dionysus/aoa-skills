@@ -480,8 +480,25 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "permits unscored procedures"):
             self.runner._validate_cohort_partitions(REPO_ROOT, unscored)
 
-    def test_incomplete_partition_wave_blocks_before_preflight(self) -> None:
+    def test_safety_overlay_partition_wave_is_contract_complete(self) -> None:
         plan = self.runner.load_plan(self.plan_path)
+        safety = self.runner.expand_cohort(
+            REPO_ROOT,
+            plan,
+            "full-collision-safety-overlays",
+        )
+        self.assertEqual(22, len(safety))
+        self.assertEqual(
+            {f"collision-{index:02d}" for index in range(9, 20)},
+            {trial.case_id for trial in safety},
+        )
+        self.assertTrue(
+            all(
+                trial.procedure_contract is not None
+                and trial.outcome_contract is not None
+                for trial in safety
+            )
+        )
         packet = self.runner.build_plan_packet(
             REPO_ROOT,
             plan,
@@ -490,19 +507,13 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
             "medium",
         )
         self.assertEqual(11, packet["implicit_pair_count"])
-        self.assertEqual(2, packet["procedure_scored_pair_count"])
-        self.assertEqual(2, packet["objective_outcome_scored_pair_count"])
-        self.assertFalse(packet["procedure_contract_coverage_complete"])
-        self.assertFalse(packet["objective_outcome_coverage_complete"])
-        transport = FakeTransport()
-        with (
-            tempfile.TemporaryDirectory() as td,
-            self.assertRaisesRegex(
-                self.runner.ConfirmationError,
-                "full-collision-safety-overlays requires source-locked procedure contracts",
-            ),
-        ):
-            self.runner.run_confirmed_cohort(
+        self.assertEqual(11, packet["procedure_scored_pair_count"])
+        self.assertTrue(packet["procedure_contract_coverage_complete"])
+        self.assertEqual(11, packet["objective_outcome_scored_pair_count"])
+        self.assertTrue(packet["objective_outcome_coverage_complete"])
+        self.assertTrue(packet["high_cost_confirmation_required"])
+        with tempfile.TemporaryDirectory() as td:
+            receipt = self.runner.run_confirmed_cohort(
                 repo_root=REPO_ROOT,
                 plan=plan,
                 cohort="full-collision-safety-overlays",
@@ -511,10 +522,20 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
                 confirmation_token=packet["confirmation_token"],
                 high_cost_token=packet["high_cost_confirmation_token"],
                 private_root=Path(td),
-                transport=transport,
+                transport=FakeTransport(),
                 test_only_allow_noncanonical_private_root=True,
             )
-        self.assertEqual([], transport.preflight_calls)
+        Draft202012Validator(
+            self.load_schema("live-skill-dispatch-private-receipt.schema.json")
+        ).validate(receipt)
+        public = self.runner.build_public_receipt(receipt)
+        Draft202012Validator(
+            self.load_schema("live-skill-dispatch-public-receipt.schema.json")
+        ).validate(public)
+        self.runner.validate_public_receipt(public)
+        self.assertEqual("full-collision-safety-overlays", public["cohort"])
+        self.assertEqual(22, public["trial_count"])
+        self.assertEqual(11, public["pair_count"])
 
     def test_core_engineering_return_cohort_repeats_only_fixture_gap_pairs(self) -> None:
         plan = self.runner.load_plan(self.plan_path)

@@ -92,8 +92,10 @@ Active first local corpus:
   four-turn return isolates the still-unclean owner-action observations for
   `collision-05` and `collision-06`; it is also clean at 4/4 arms. Together the
   two exact returns close every outstanding core-wave observation gap. The
-  safety-overlay wave remains live-blocked until its own procedure and outcome
-  contracts are complete.
+  safety-overlay wave is now source-contract-complete at 11/11 procedure and
+  11/11 owner-action pairs. That removes the preflight design block but is not
+  live evidence; exact merge, runtime parity, host gates, both confirmations,
+  and receipt review still precede any widening claim.
 
 These files are local evidence notes. They do not publish central proof
 acceptance, scoring, verdicts, regression truth, or proof doctrine.

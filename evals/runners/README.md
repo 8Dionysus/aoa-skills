@@ -404,7 +404,16 @@ observed once, succeeds, exposes its required sentinel, and verifies. Both
 aided arms retain positive route and procedure lift, and both outcomes are
 observation-clean and correct in both arms. Together the two paired returns
 close all outstanding observation gaps from the first core wave. The next
-collision wave still cannot run until its own contract coverage is complete.
+collision wave now has complete source-authored contract coverage but has not
+run live.
+
+`full-collision-safety-overlays` expands both arms of collisions 09-19 and is
+complete at 11/11 procedure plus 11/11 owner-action pairs. Manual risk and
+project-overlay cases preserve `not_applicable` with explicit owner boundaries;
+generic base cases 15 and 17 use `blocked_missing_input` for absent repository
+evidence. Six newly cited skill sources enter the plan lock. This packet is
+eligible for exact-merged preflight only; contract completeness is not a live
+result and does not grant proof or promotion authority.
 
 See `evals/suites/aoa-skill-live-dispatch-harness.suite.md` and
 `docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md` for

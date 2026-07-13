@@ -750,3 +750,37 @@ clean immediately, and the four pairs affected by fixture or owner-action
 observation gaps have clean exact returns. The next admissible widening is the
 safety-overlay wave, but it remains preflight-blocked until every one of its
 implicit procedure and outcome contracts is source-authored and validated.
+
+## 2026-07-12 safety-overlay contract closure
+
+The second collision wave covers `collision-09` through `collision-19`: five
+explicit-only risk skills, two ATM10 overlay/base collisions, a generic
+source-of-truth route, and two explicit-only Abyss overlays. Before this pass,
+only `collision-09` and `collision-14` had procedure and owner-action answer
+keys, so the 22-turn wave correctly stopped before preflight at 2/11 plus 2/11.
+
+Full source reading supports two procedure classes. The manual collision cases
+09-14, 16, 18, and 19 remain `not_applicable`, report neither completion nor
+deflection, and expose the concrete explicit or deliberate-manual owner route.
+The generic base cases 15 and 17 select `aoa-change-protocol` and
+`aoa-source-of-truth-check` respectively, but stop at
+`blocked_missing_input`: the hermetic prompt supplies no owner repository,
+route cards, target diff, conflicting documents, or source/config role map.
+Their owner actions therefore request those real surfaces instead of loading a
+project overlay, fabricating a change, or inventing document authority.
+
+Each of the eleven pairs now has a deterministic three-choice owner-action
+contract derived from its collision case and source skill. The plan source lock
+adds exactly the six newly referenced skills: dry-run-first, local-stack
+bringup, sanitized-share, generic source-of-truth-check, the ATM10
+source-of-truth overlay, and the Abyss sanitized-share overlay. The existing
+collision-14 rationale is corrected to reflect the skill's canonical
+`explicit-preferred` invocation mode while preserving the collision matrix's
+deliberate manual-overlay boundary.
+
+The focused synthetic run now expands 22/22 arms, validates private and public
+receipt schemas, and reports 11/11 procedure plus 11/11 outcome coverage. This
+makes `full-collision-safety-overlays` contract-ready, not live-proven. It still
+requires exact merge, runtime parity, fresh host gates, both confirmation
+tokens, and reviewed candidate evidence before any conclusion about skill
+behavior or the next wave.

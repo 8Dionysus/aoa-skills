@@ -487,8 +487,19 @@ verifies; both pairs retain positive aided route and procedure lift with
 observation-clean, both-correct outcomes. Together with the clean fixture
 return, every outstanding observation gap from the first core wave now has an
 exact paired clean return. The core wave closes as evidence-complete candidate
-evidence, while proof/promotion authority stays false and the safety-overlay
-wave remains blocked on incomplete source-authored contracts.
+evidence, while proof/promotion authority stays false. At that checkpoint the
+safety-overlay wave remained blocked on incomplete source-authored contracts.
+
+The safety-overlay source pass closes that next design gate. Both arms of
+collisions 09-19 now have 11/11 procedure and 11/11 owner-action contracts.
+Manual risk and project-overlay cases preserve `not_applicable` plus a visible
+owner route; generic base cases 15 and 17 use `blocked_missing_input` for the
+absent owner repository surfaces. Six newly referenced skill files enter the
+source lock, and collision-14 rationale now matches its canonical
+`explicit-preferred` mode while preserving the deliberate manual overlay
+boundary. The focused synthetic cohort completes 22/22 and validates both
+receipt schemas. This is contract readiness only; no safety-overlay live
+receipt exists yet, and proof/promotion authority remains false.
 
 ## Safety And Privacy
 
