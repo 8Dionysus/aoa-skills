@@ -253,6 +253,13 @@ Tracking starts with the community-docs baseline for this repository.
   preserved. Six newly referenced skill sources enter the confirmation lock;
   collision-14 rationale now matches its `explicit-preferred` source while
   retaining the collision's deliberate manual-overlay boundary.
+- The exact-merged safety-overlay execution completes 22/22 with zero failure
+  classes or observation gaps. All nine manual pairs are correct in both arms
+  without lift; the two generic invoke pairs, `collision-15` and
+  `collision-17`, retain positive aided route and procedure lift. Every fixture
+  and owner-action probe is single-attempt, successful, and verified. The next
+  28-turn session-growth wave remains fail-closed at 2/14 procedure and 2/14
+  owner-action contracts.
 - `AOA-SK-D-0037` records why live cohorts remain operator-confirmed candidate
   evidence and now clarifies prompt-surface isolation and evidence-stage grading
   after the contaminated smoke; deterministic harness validation, not model

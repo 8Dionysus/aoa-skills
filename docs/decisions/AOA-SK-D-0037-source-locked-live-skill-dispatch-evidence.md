@@ -478,10 +478,34 @@ As of 2026-07-12:
   incomplete source-authored contracts until its complete source pass closed
   that design gate at 11/11 procedure and 11/11 owner-action pairs, with six
   new skill refs entering the confirmation lock. No safety-overlay live
-  evidence exists yet.
+  evidence existed at that checkpoint. The subsequent exact-merged execution
+  completes 22/22 with zero failure classes or observation gaps; nine manual
+  pairs are both-correct without lift and the two generic invoke pairs gain
+  positive route/procedure lift. Session-growth is next and remains fail-closed
+  at 2/14 contracts on both axes.
 - Superseded by: none.
 
 ## Review Log
+
+### 2026-07-12 - Review the exact safety-overlay execution
+
+- Exact source: the 22-turn run uses the merged 11/11 contract packet, unchanged
+  installed skill profile, v16 protocol, isolated shadow/MCP sets, medium host
+  wrapper, concurrency one, and both confirmation tokens.
+- Complete evidence: 22/22 turns and 11/11 pairs complete with no failure class,
+  early stop, output observation gap, external filesystem access, or broad
+  inventory command.
+- Manual safety: cases 09-14, 16, 18, and 19 are correct in both arms without
+  loading the manual skill. Route, procedure, and owner-action effects are
+  clean `no_lift_both_correct`, with the owner boundary present everywhere.
+- Generic value: cases 15 and 17 select and fully read their generic skills,
+  stop at `blocked_missing_input`, and show positive aided route plus procedure
+  lift; their owner actions are clean and correct in both arms.
+- Fixture confidence: all 22 fixture and owner-action probes are observed once,
+  succeed, expose their sentinel, and verify.
+- Authority and next gate: preserve a reviewed candidate receipt with proof and
+  promotion false. Session-growth remains blocked at 2/14 procedure and 2/14
+  owner-action contracts; source contract design must precede its live run.
 
 ### 2026-07-12 - Close the safety-overlay source contracts
 

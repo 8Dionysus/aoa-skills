@@ -8634,6 +8634,20 @@
         "surface_state": "authored_source"
       },
       "entity_kind": "artifact",
+      "id": "entity:file:evals/reports/aoa-skill-live-dispatch-full-collision-safety-overlays-20260712-v16-reviewed-clean.json:77abf928ef",
+      "label": "evals/reports/aoa-skill-live-dispatch-full-collision-safety-overlays-20260712-v16-reviewed-clean.json",
+      "source_record_id": "file:evals/reports/aoa-skill-live-dispatch-full-collision-safety-overlays-20260712-v16-reviewed-clean.json:77abf928ef"
+    },
+    {
+      "coordinates": {
+        "artifact_kind": "config",
+        "code_role": "none",
+        "command_role": "none",
+        "document_role": "none",
+        "mechanics_role": "none",
+        "surface_state": "authored_source"
+      },
+      "entity_kind": "artifact",
       "id": "entity:file:evals/reports/aoa-skill-live-dispatch-pilot13-20260712-v12-reviewed-mixed-returns-needs-rerun.json:6972e4b1c9",
       "label": "evals/reports/aoa-skill-live-dispatch-pilot13-20260712-v12-reviewed-mixed-returns-needs-rerun.json",
       "source_record_id": "file:evals/reports/aoa-skill-live-dispatch-pilot13-20260712-v12-reviewed-mixed-returns-needs-rerun.json:6972e4b1c9"
@@ -26897,7 +26911,7 @@
   ],
   "index_identity": {
     "artifact_kind": "repository_entity_index",
-    "content_digest": "91061236b769f1c5dafad7845e4a090890f2f1de78a2a1bff0fdf2cb4a2185dd",
+    "content_digest": "2c94ab547eb78f2c83f7740097060e9f2a55a4a7be08596e0de735bd73eef7c4",
     "index_kind": "entity",
     "local_id": "index:repo-local:entities",
     "schema_ref": "aoa-kag:schemas/repo-local-kag-repository-index.schema.json"
@@ -26920,15 +26934,15 @@
   },
   "schema_version": "aoa-repo-local-kag-repository-index-v1",
   "source_index": {
-    "content_digest": "06a72f20ed1f4f6c57b3b5131660c4f6a7b3458c021a579143d8f5c2e7187ce2",
+    "content_digest": "60f799166b7951cc608aead3856602a9ea0f3f0daa2434d3b227c3d3013b5737",
     "local_id": "index:repo-local:source-surfaces",
     "path": "kag/indexes/source_surface_index.json"
   },
   "summary": {
-    "entry_count": 1921,
+    "entry_count": 1922,
     "kind_counts": {
       "agent_route": 29,
-      "artifact": 418,
+      "artifact": 419,
       "code": 66,
       "command": 156,
       "contract": 44,

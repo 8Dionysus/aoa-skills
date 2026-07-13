@@ -3682,7 +3682,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "db9afc82f4d59cb1ef81ae478b7c75c23a41f1a9b6852dde753e91cb92adb55f",
+      "content_hash": "ba6179e7235ecd36f2a15e5729a7d6965bd7dd21dc9732e1b064401bb5fa976b",
       "id": "artifact:file:changelog.md:06572a96a5",
       "path": "CHANGELOG.md",
       "source_record_id": "file:changelog.md:06572a96a5",
@@ -3922,7 +3922,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "449b3482865f8d3164547aa822b5b793f6ac4b4121a007cfed56ec627066d88e",
+      "content_hash": "440758ddc47068c79e017513db66aa2358e326755fb843c55f45ad6cd36ba97e",
       "id": "artifact:file:docs/aoa-eval-skill-family-research.md:f392da1f19",
       "path": "docs/aoa-eval-skill-family-research.md",
       "source_record_id": "file:docs/aoa-eval-skill-family-research.md:f392da1f19",
@@ -4226,7 +4226,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "8c83e8ea486e232c7169d50cce300909137190585c9a696c1c01e5db752bc565",
+      "content_hash": "1689982b5b9afe7e4cb4b42e405ecb12d6b828f7de9b98dfe8a2367c0e76ae26",
       "id": "artifact:file:docs/decisions/aoa-sk-d-0037-source-locked-live-skill-dispatch-evidence.md:ca6ee4ca5a",
       "path": "docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md",
       "source_record_id": "file:docs/decisions/aoa-sk-d-0037-source-locked-live-skill-dispatch-evidence.md:ca6ee4ca5a",
@@ -4842,7 +4842,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "7cdf68b9b69d155928da0d00c05db5b2ae64d4d92eb04b60b3676543ad199374",
+      "content_hash": "6ce409cef5a606c9d9a5c2eaf9402d04322331d687bced7dc74428b2435cec41",
       "id": "artifact:file:evals/readme.md:a1a9eeb43d",
       "path": "evals/README.md",
       "source_record_id": "file:evals/readme.md:a1a9eeb43d",
@@ -4858,7 +4858,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "bebe72028edf83c8f2c51266ba3104c7cc8a64bace65ba7a2cec85b59c8bce72",
+      "content_hash": "91a16d2faef9bfa804b00870cc433a3431f1218b79b31a4c54da8730048ac389",
       "id": "artifact:file:evals/reports/readme.md:ac5e016ca2",
       "path": "evals/reports/README.md",
       "source_record_id": "file:evals/reports/readme.md:ac5e016ca2",
@@ -4926,6 +4926,14 @@
       "id": "artifact:file:evals/reports/aoa-skill-live-dispatch-full-collision-core-engineering-returns-20260712-v16-reviewed-clean.json:6ba443c65d",
       "path": "evals/reports/aoa-skill-live-dispatch-full-collision-core-engineering-returns-20260712-v16-reviewed-clean.json",
       "source_record_id": "file:evals/reports/aoa-skill-live-dispatch-full-collision-core-engineering-returns-20260712-v16-reviewed-clean.json:6ba443c65d",
+      "surface_state": "authored_source"
+    },
+    {
+      "artifact_kind": "config",
+      "content_hash": "66d450dd97900131fe03d0faff6cf84576a8b7931665ec87e43eb3cfe04b86df",
+      "id": "artifact:file:evals/reports/aoa-skill-live-dispatch-full-collision-safety-overlays-20260712-v16-reviewed-clean.json:77abf928ef",
+      "path": "evals/reports/aoa-skill-live-dispatch-full-collision-safety-overlays-20260712-v16-reviewed-clean.json",
+      "source_record_id": "file:evals/reports/aoa-skill-live-dispatch-full-collision-safety-overlays-20260712-v16-reviewed-clean.json:77abf928ef",
       "surface_state": "authored_source"
     },
     {
@@ -5162,7 +5170,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "eb7df8ea460ba4c71dd7218c5c8f544e398508dd583c9a95c754ad57d2f3fd62",
+      "content_hash": "1d488d8958674bf395f851e854be481a566420bb124ef831f1819223a1798ad9",
       "id": "artifact:file:evals/runners/readme.md:194095a363",
       "path": "evals/runners/README.md",
       "source_record_id": "file:evals/runners/readme.md:194095a363",
@@ -5202,7 +5210,7 @@
     },
     {
       "artifact_kind": "config",
-      "content_hash": "fdaa0cb24a959dbd1ef27ecbc2b6cdd0fe55dd1cb66da8a65ce0eed3b8c81107",
+      "content_hash": "31f7af466a00cb1b5d69dddcc6a4ef4452efaca21a1bd01b62a9552295e3d28c",
       "id": "artifact:file:evals/suites/aoa-skill-live-dispatch-harness.suite.json:beeca555d0",
       "path": "evals/suites/aoa-skill-live-dispatch-harness.suite.json",
       "source_record_id": "file:evals/suites/aoa-skill-live-dispatch-harness.suite.json:beeca555d0",
@@ -5210,7 +5218,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "c8c83c0b7b1ad64ca2fa6e35bf02509582e173c6f01cf20828bc7477d6335286",
+      "content_hash": "cfaee7e7c38e35f15dc9e30db34cd1fe6a08ab943ba537dec798ba67d1339fcd",
       "id": "artifact:file:evals/suites/aoa-skill-live-dispatch-harness.suite.md:dc83328e65",
       "path": "evals/suites/aoa-skill-live-dispatch-harness.suite.md",
       "source_record_id": "file:evals/suites/aoa-skill-live-dispatch-harness.suite.md:dc83328e65",
@@ -15371,7 +15379,7 @@
   ],
   "index_identity": {
     "artifact_kind": "repository_artifact_index",
-    "content_digest": "4f5b4090540b3fd781a5a6ee39e9fc15becf59696e8311da1e6fbb318d6cc676",
+    "content_digest": "8ad5b12e5a7aaca7d666e44087caae99ed94722951b6118b3f6fa6d518907540",
     "index_kind": "artifact",
     "local_id": "index:repo-local:artifacts",
     "schema_ref": "aoa-kag:schemas/repo-local-kag-repository-index.schema.json"
@@ -15395,15 +15403,15 @@
   },
   "schema_version": "aoa-repo-local-kag-repository-index-v1",
   "source_index": {
-    "content_digest": "06a72f20ed1f4f6c57b3b5131660c4f6a7b3458c021a579143d8f5c2e7187ce2",
+    "content_digest": "60f799166b7951cc608aead3856602a9ea0f3f0daa2434d3b227c3d3013b5737",
     "local_id": "index:repo-local:source-surfaces",
     "path": "kag/indexes/source_surface_index.json"
   },
   "summary": {
-    "entry_count": 1921,
+    "entry_count": 1922,
     "kind_counts": {
       "asset": 114,
-      "config": 356,
+      "config": 357,
       "data_table": 2,
       "dependency_manifest": 1,
       "directory_marker": 4,

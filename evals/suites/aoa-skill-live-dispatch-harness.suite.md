@@ -501,6 +501,16 @@ boundary. The focused synthetic cohort completes 22/22 and validates both
 receipt schemas. This is contract readiness only; no safety-overlay live
 receipt exists yet, and proof/promotion authority remains false.
 
+The subsequent exact-merged safety-overlay execution completes all 22 arms and
+11 pairs with zero failure classes or observation gaps. The nine manual pairs
+are correct in both arms without skill loading or lift, preserving their owner
+boundaries. The generic `collision-15` and `collision-17` pairs select and fully
+read their intended base skills, report `blocked_missing_input`, and gain
+positive aided route plus procedure lift. Every fixture and owner-action probe
+is observed once, succeeds, exposes its sentinel, and verifies. Preserve the
+public receipt as reviewed candidate evidence with proof/promotion false. The
+session-growth wave remains blocked at 2/14 contracts on both implicit axes.
+
 ## Safety And Privacy
 
 The plan locks Git head, all portable skill files, generated/config inputs,

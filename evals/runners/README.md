@@ -415,6 +415,15 @@ evidence. Six newly cited skill sources enter the plan lock. This packet is
 eligible for exact-merged preflight only; contract completeness is not a live
 result and does not grant proof or promotion authority.
 
+The exact-merged safety-overlay run completes 22/22 with no failure class or
+observation gap. All nine manual pairs are correct in both arms without lift;
+the two generic invoke pairs, `collision-15` and `collision-17`, gain positive
+aided route plus procedure lift, while their owner-action outcomes remain clean
+and correct in both arms. Every fixture and outcome probe is single-attempt,
+successful, and verified. The reviewed public receipt remains candidate-only.
+The next 28-turn session-growth wave is still fail-closed at 2/14 procedure and
+2/14 outcome contracts.
+
 See `evals/suites/aoa-skill-live-dispatch-harness.suite.md` and
 `docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md` for
 the evidence and authority boundaries.
