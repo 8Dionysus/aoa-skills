@@ -950,3 +950,32 @@ skill through native structured input and therefore remains the correct owner
 for explicit reachability and target-procedure evidence. V18 advances the
 protocol and app-server evidence contract without rewriting the reviewed v16
 receipt or pretending that v17 produced live evidence.
+
+## 2026-07-13 v18 bounded return result
+
+The exact-merged v18 execution uses commit `abbe182`, the independently
+verified 36/36 foundation install, the medium agent resource wrapper,
+concurrency one, 37 isolated shadow skills, and 11 disabled MCP servers. It
+completes all eight arms and four pairs without an early stop or failure class.
+The aided prompt exposes the expected twelve implicit repo skills and the
+control exposes zero; none of the four manual targets is prompt-visible in
+either arm.
+
+Every target remains unread, receives no accepted native input, and is not
+claimed loaded. All eight manual non-activation guards, fixture-execution
+contracts, and owner-outcome contracts match. External filesystem access,
+broad fixture inventory, and outcome-output observation gaps remain zero. The
+four pair results therefore retain
+`route_effect_class=not_scored_target_not_prompt_visible` and the same
+procedure effect class while recording
+`manual_non_activation_effect_class=no_lift_both_correct`. This is the intended
+v18 result: it closes the false causal return without turning non-activation
+into route lift.
+
+The reviewed public receipt remains candidate evidence with proof and
+promotion authority false. Post-run storage and resource validators pass. The
+memory validator reports zero failures and one v2/v3 index-schema warning from
+an index generated before the live run; that host-version skew is tracked as a
+separate owner issue rather than rewritten as skill evidence. With this bounded
+return closed, `full-collision-authority-routing` is the next semantic wave,
+subject to its own contract, source-lock, runtime-parity, and host gates.

@@ -289,6 +289,14 @@ Tracking starts with the community-docs baseline for this repository.
   score-eligible pairs in the plan packet, and leaves explicit reachability to
   native structured-input coverage. Protocol v18 and contract v13 retain all
   v1-v17 receipts under their original source locks.
+- The exact-merged v18 session-growth return completes 8/8 turns and all four
+  pairs without a failure class, external filesystem access, broad fixture
+  inventory, or output-observation gap. All hidden manual targets stay absent
+  from native prompt visibility, unread, and unclaimed as loaded; both arms of
+  every pair satisfy the manual non-activation guard, fixture probe, and
+  owner-action outcome. Route and procedure effects remain deliberately
+  `not_scored_target_not_prompt_visible`, so this reviewed candidate receipt
+  closes the measurement return without manufacturing lift or proof authority.
 - Live-dispatch evidence v17 repairs both shared boundaries red-first. Portable
   export now prepends a policy-derived activation sentence to all 43 `manual`
   and two `suggest` descriptions, allowing only explicit invocation or a
