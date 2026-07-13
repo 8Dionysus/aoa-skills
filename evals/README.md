@@ -90,7 +90,10 @@ Active first local corpus:
   `collision-01` and `collision-02`. That exact return is now clean at 4/4
   arms and classifies the fixture failures as observation gaps. A second
   four-turn return isolates the still-unclean owner-action observations for
-  `collision-05` and `collision-06` before the next wave opens.
+  `collision-05` and `collision-06`; it is also clean at 4/4 arms. Together the
+  two exact returns close every outstanding core-wave observation gap. The
+  safety-overlay wave remains live-blocked until its own procedure and outcome
+  contracts are complete.
 
 These files are local evidence notes. They do not publish central proof
 acceptance, scoring, verdicts, regression truth, or proof doctrine.

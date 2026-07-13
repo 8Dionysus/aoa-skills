@@ -239,6 +239,14 @@ temporary root and must not be copied into this directory.
   fixture return as reviewed candidate evidence. It does not rewrite the first
   receipt, resolve its separate `collision-05`/`collision-06` outcome gaps, or
   grant proof or promotion authority.
+- [aoa-skill-live-dispatch-full-collision-core-engineering-outcome-returns-20260712-v16-reviewed-clean.json](aoa-skill-live-dispatch-full-collision-core-engineering-outcome-returns-20260712-v16-reviewed-clean.json)
+  preserves the exact-merged four-turn paired owner-action return. All four
+  `collision-05` and `collision-06` arms complete with zero failure classes;
+  each fixture and owner-action command is observed once, succeeds, exposes
+  its sentinel, and verifies. Both pairs retain positive aided route and
+  procedure lift with observation-clean, both-correct outcomes. Together with
+  the fixture return, this closes all outstanding core-wave observation gaps
+  as reviewed candidate evidence without granting proof or promotion authority.
 
 Corrected live receipts under the v11-v16 evidence protocols are reviewable only
 after canonical user-skill shadows, plugins, and every configured MCP id are

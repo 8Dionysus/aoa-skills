@@ -480,6 +480,16 @@ Its separate `collision-05` and `collision-06` owner-action observation gaps
 remain unclean, so `full-collision-core-engineering-outcome-returns` repeats
 only both arms of those two cases before the next collision wave opens.
 
+The exact-merged outcome return then completes all four `collision-05` and
+`collision-06` arms without a failure class or output gap. Every fixture and
+owner-action command is observed once, succeeds, exposes its sentinel, and
+verifies; both pairs retain positive aided route and procedure lift with
+observation-clean, both-correct outcomes. Together with the clean fixture
+return, every outstanding observation gap from the first core wave now has an
+exact paired clean return. The core wave closes as evidence-complete candidate
+evidence, while proof/promotion authority stays false and the safety-overlay
+wave remains blocked on incomplete source-authored contracts.
+
 ## Safety And Privacy
 
 The plan locks Git head, all portable skill files, generated/config inputs,

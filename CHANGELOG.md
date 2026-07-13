@@ -240,6 +240,12 @@ Tracking starts with the community-docs baseline for this repository.
   `needs-rerun` evidence. A second four-turn outcome return now isolates only
   `collision-05` and `collision-06`, whose first-run outcome contrasts remain
   observation-unclean, before widening to another collision wave.
+- The exact-merged four-turn outcome return also completes without a failure
+  class. Both arms of `collision-05` and `collision-06` now expose and verify
+  their fixture and owner-action sentinels, retain positive aided route and
+  procedure lift, and produce observation-clean both-correct outcomes. Together
+  the two reviewed returns close every outstanding observation gap from the
+  first core-engineering wave while preserving candidate-only authority.
 - `AOA-SK-D-0037` records why live cohorts remain operator-confirmed candidate
   evidence and now clarifies prompt-surface isolation and evidence-stage grading
   after the contaminated smoke; deterministic harness validation, not model
