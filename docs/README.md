@@ -19,6 +19,7 @@ generated-surface summary.
 | Current skill map | [`../SKILL_INDEX.md`](../SKILL_INDEX.md) |
 | Canonical skill bundles | [`../skills/README.md`](../skills/README.md) |
 | Owner-local mechanics | [`../mechanics/README.md`](../mechanics/README.md) |
+| Owner-local statistics | [`../stats/README.md`](../stats/README.md) |
 | Release path | [`../mechanics/release-support/docs/RELEASING.md`](../mechanics/release-support/docs/RELEASING.md) |
 
 ## Owner Surfaces

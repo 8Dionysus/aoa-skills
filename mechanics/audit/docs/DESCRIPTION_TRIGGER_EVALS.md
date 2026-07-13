@@ -54,6 +54,17 @@ Every skill must have:
 - one description-negative case
 - one defer case when the skill participates in a collision family and supports implicit invocation
 
+## Cohort view
+
+The owner-local `stats/` port exposes the source-revision ratio of current
+skill records whose required case classes are complete. That ratio is a census
+view over this contract, not evidence that runtime selection is correct, a
+skill is high quality, an eval passed, or downstream adoption occurred.
+
+The manifest, cases, activation policy, builder, and validator remain stronger
+than the statistical packet. Use `stats/README.md` for the exact population,
+derivation, and authority ceiling.
+
 ## Why mirrored collision cases matter
 
 Single-winner collision prompts are useful, but they only prove who should win.

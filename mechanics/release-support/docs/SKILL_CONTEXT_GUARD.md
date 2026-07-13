@@ -12,10 +12,8 @@ The context guard exists because losing a skill after activation looks like noth
 
 ## Rehydration
 
-Use:
-
-- `scripts/skill_runtime_guardrails.py compact`
-- `scripts/skill_runtime_guardrails.py rehydrate`
+The governed runtime owner exposes `compact` and `rehydrate`; exact invocation
+belongs to `RUNTIME_GOVERNANCE_LAYER.md`.
 
 `compact` emits guarded packets.
 `rehydrate` rebuilds the minimal packets and, optionally, the suggested activation calls to restore full instructions.

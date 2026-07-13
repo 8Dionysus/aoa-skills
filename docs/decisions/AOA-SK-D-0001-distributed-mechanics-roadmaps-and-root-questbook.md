@@ -67,12 +67,6 @@ Distribute the former broad roadmap pressure by owner:
 
 ## Verification
 
-Use:
-
-```bash
-python -m pytest -q tests/test_current_direction_routes.py tests/test_roadmap_parity.py tests/test_mechanics_topology.py tests/test_validate_skills.py
-python scripts/build_catalog.py --check
-python scripts/validate_skills.py --fail-on-review-truth-sync
-python scripts/validate_nested_agents.py
-python -m unittest discover -s tests
-```
+Verification covered current-direction and roadmap parity, mechanics topology,
+skill-source validation, catalog parity, nested agent cards, and the repository
+test suite.

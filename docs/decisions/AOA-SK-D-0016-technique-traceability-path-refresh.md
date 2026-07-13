@@ -18,7 +18,7 @@ Status: accepted
 ## Context
 
 After the mechanics reformation pass, the repository's full verification path
-still failed on `scripts/report_technique_drift.py --techniques-repo ../aoa-techniques --fail-on-drift`.
+still failed the cross-repo technique-drift gate in strict mode.
 The failure was not caused by mechanics movement. It came from old
 `aoa-techniques` paths such as `techniques/agent-workflows/...` that no longer
 exist after the `aoa-techniques` tree reform.
@@ -63,11 +63,5 @@ meaning.
 
 ## Verification
 
-Verify with:
-
-```bash
-python scripts/report_technique_drift.py --techniques-repo ../aoa-techniques --fail-on-drift
-python scripts/build_catalog.py --check
-python scripts/validate_skills.py --fail-on-review-truth-sync
-python scripts/validate_agent_skills.py --repo-root .
-```
+Verification covered cross-repo technique drift, catalog parity, skill-source
+and review-truth validation, and the portable agent-skill projection.

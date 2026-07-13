@@ -21,7 +21,8 @@ This manual overlay groups the `titan-*` skill family for the first Titan servic
 - repository-relative review docs: `mechanics/boundary-bridge/overlays/titan/REVIEW.md` and `skills/project/titan/titan-*/checks/review.md`
 - repository-relative generated readouts: `generated/overlay_readiness.md`, `generated/governance_backlog.md`, and `generated/skill_bundle_index.md`
 - owner routes: `aoa-agents` for role and bearer identity, `aoa-sdk` for helpers and control-plane adapters, `abyss-stack` for real runtime implementation, `aoa-memo` for candidate memory, `aoa-evals` for proof canaries
-- commands stay repo-relative, such as `PYTHONPATH=scripts python scripts/validation/validate_skills.py` and `PYTHONPATH=scripts python scripts/builders/build_catalog.py --check`
+- checks stay repo-relative and route through the nearest downstream
+  `AGENTS.md`, skill validator, and catalog parity owner
 
 ## Overlayed skills
 

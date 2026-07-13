@@ -42,8 +42,5 @@ Preserved stop-lines:
 
 Checks:
 
-- `python -m pytest -q tests/test_validate_skills.py tests/test_session_checkpoint_note.py tests/test_roadmap_parity.py tests/test_current_direction_routes.py tests/test_mechanics_topology.py`
-- `python scripts/validate_nested_agents.py`
-- `python scripts/build_catalog.py --check`
-- `python scripts/validate_skills.py --fail-on-review-truth-sync`
-- `python -m pytest -q tests/test_session_growth_kernel_maturity.py tests/test_session_checkpoint_note.py tests/test_roadmap_parity.py tests/test_current_direction_routes.py tests/test_mechanics_topology.py`
+- skill-source validation, checkpoint and session-growth behavior, mechanics
+  routes and topology, nested agent cards, and catalog parity all passed

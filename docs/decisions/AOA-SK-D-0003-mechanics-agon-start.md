@@ -69,13 +69,6 @@ order.
 
 ## Verification
 
-Verify with:
-
-```bash
-python scripts/build_agon_skill_binding_candidates.py --check
-python scripts/validate_agon_skill_binding_candidates.py
-python scripts/build_agon_epistemic_skill_candidates.py --check
-python scripts/validate_agon_epistemic_skill_candidates.py
-python -m pytest -q tests/test_agon_skill_binding_candidates.py tests/test_agon_epistemic_skill_candidates.py tests/test_roadmap_parity.py tests/test_current_direction_routes.py tests/test_mechanics_topology.py
-python scripts/validate_nested_agents.py
-```
+Verification covered Agon skill-binding and epistemic candidate parity and
+validation, their focused tests, mechanics route/topology checks, and nested
+agent cards.

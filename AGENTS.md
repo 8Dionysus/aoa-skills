@@ -82,6 +82,7 @@ This repository owns:
 - skill-level technique dependency declarations;
 - generated catalogs, matrices, portable exports, and bridge manifests derived
   from canonical skills;
+- owner-local statistical questions and evidence handoffs under `stats/`;
 - repo-local mechanics that govern skill-layer movement, adoption, export,
   recurrence, checkpoint carry, quest integration, and review pressure.
 
@@ -89,7 +90,8 @@ It does not own:
 
 - reusable technique truth in `aoa-techniques`;
 - proof doctrine in `aoa-evals`;
-- routing, memory, KAG, stats, playbook, or role truth in sibling repos;
+- routing, memory, KAG, shared statistical grammar, cross-owner stats,
+  playbook, or role truth in sibling repos;
 - live quest state, runtime inventory, downstream adoption truth, or hidden
   control-plane authority.
 
@@ -103,6 +105,7 @@ For first reading or outside orientation, use this route:
 4. `SKILL_INDEX.md`
 5. `docs/ARCHITECTURE.md`
 6. `mechanics/boundary-bridge/docs/LAYER_POSITION.md`
+7. `stats/README.md` when the task concerns owner-local measurement meaning
 
 For agent editing, use this route:
 
@@ -140,6 +143,7 @@ Use the named route before widening a skill-layer claim:
 | `runtime-use` | selecting, inspecting, expanding, or using a skill object changes | `mechanics/release-support/docs/RUNTIME_PATH.md` |
 | `export-refresh` | `.agents/skills/*`, portable projection, installed packs, support resources, or component refresh posture changes | `mechanics/release-support/docs/COMPONENT_REFRESH_LAW.md` |
 | `generated-surface` | generated catalogs, manifests, matrices, runtime cards, or derived reader surfaces change | `generated/AGENTS.md` |
+| `stats-port` | owner-local measurement question, population, packet, or evidence handoff changes | `stats/AGENTS.md` |
 | `public-status` | status, governance, evaluation, promotion pressure, overlay readiness, or public claim changes | `mechanics/audit/docs/PUBLIC_SURFACE.md` |
 | `low-context-agent` | a compact machine route is needed first | `SKILL_INDEX.md` |
 
@@ -220,6 +224,8 @@ Update only the ones that moved; otherwise say no update was needed.
   ownership, workflow, validator, public-contract, export, or topology choice.
 - generated surfaces, builders, validators, and tests when a source-backed
   machine capsule changed.
+- `stats/` when an owner-local measurement question, population, packet,
+  evidence handoff, or authority ceiling changed.
 - mechanic `LANDING_LOG.md`, `OWNER_REQUESTS.md`, `PARTS.md`, `PROVENANCE.md`,
   or `ROADMAP.md` when a mechanic landing, owner request, active part, legacy
   bridge, or future contour changed.
@@ -233,7 +239,10 @@ Update only the ones that moved; otherwise say no update was needed.
 - a claim needs proof in `aoa-evals`;
 - scenario composition belongs in `aoa-playbooks`;
 - role, progression, or checkpoint posture belongs in `aoa-agents`;
-- memory, routing, KAG, or stats meaning belongs in its owner repo;
+- memory, routing, or KAG meaning belongs in its owner repo;
+- shared statistical grammar, aggregation, and cross-owner views belong in
+  `aoa-stats`; skill-local measurement meaning remains in this repository's
+  `stats/` port;
 - runtime budgets, service state, storage, or frontend presentation belongs in
   `abyss-stack`;
 - typed helpers, compatibility, activation, or handoff tooling belongs in
@@ -242,8 +251,8 @@ Update only the ones that moved; otherwise say no update was needed.
 
 ## Hard no
 
-- Do not absorb technique, proof, routing, memory, KAG, stats, playbook, role,
-  runtime, downstream, or ToS source truth into `aoa-skills`.
+- Do not absorb technique, proof, routing, memory, KAG, cross-owner stats,
+  playbook, role, runtime, downstream, or ToS source truth into `aoa-skills`.
 - Do not let generated catalogs, matrices, manifests, exported packs, runtime
   cards, or derived reports masquerade as source authority.
 - Do not hand-edit generated or exported files when the source, config, or

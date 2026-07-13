@@ -19,23 +19,13 @@ This is enough for a local router or preselector to choose which skill to activa
 
 ## Activation
 
-Primary runtime wrappers should prefer:
+Primary runtime wrappers should prefer the guarded runtime owner, with an
+explicit trust store and activation payload. Raw/debug wrappers may use the raw
+runtime seam when trust-policy behavior is intentionally outside the inspection
+scope. Legacy wrappers may continue through compatibility activation ingress
+while downstream callers migrate.
 
-```bash
-python scripts/skill_runtime_guardrails.py activate --repo-root . --skill <skill-name> --trust-store .aoa/repo-trust-store.json --format json
-```
-
-Raw/debug runtime wrappers may still use:
-
-```bash
-python scripts/skill_runtime_seam.py activate --repo-root . --skill <skill-name> --format json
-```
-
-Legacy local wrappers may continue to use:
-
-```bash
-python scripts/activate_skill.py --repo-root . --skill <skill-name> --format json
-```
+`RUNTIME_GOVERNANCE_LAYER.md` owns the exact governed operation map.
 
 The activation payload returns:
 
@@ -68,7 +58,8 @@ Allow trust-gated activation first, then allowlist the activated skill directory
 
 The trust-store hint lives at `.aoa/repo-trust-store.json`.
 The allowlist root for each activated skill is emitted in the activation payload and repeated in `generated/local_adapter_manifest.json`.
-Use `python scripts/skill_runtime_guardrails.py allowlist --repo-root . --session-file .aoa/skill-runtime-session.json --format json` to resolve the merged read-only paths for active skills.
+`scripts/skill_runtime_guardrails.py` owns resolution of the merged read-only
+allowlist paths for active skills.
 
 ## Context rules
 
@@ -79,7 +70,9 @@ Once a skill is activated:
 - do not drop the active skill during context compaction unless the task clearly moved away from it
 - prefer `context_retention` and `runtime_contract` over ad hoc wrapper notes
 
-For long-running local agents, prefer the explicit governed session path in `scripts/skill_runtime_guardrails.py status|compact|rehydrate` instead of maintaining parallel compaction notes outside the repo-owned seam.
+For long-running local agents, prefer the governed `status`, `compact`, and
+`rehydrate` operations instead of maintaining parallel compaction notes outside
+the repo-owned seam. `RUNTIME_GOVERNANCE_LAYER.md` owns their invocation.
 
 ## Intended layering
 

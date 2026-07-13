@@ -48,7 +48,7 @@ whether the skill execution object is mature.
 Read the current derived evidence layer with:
 
 - `generated/skill_evaluation_matrix.md`
-- `PYTHONPATH=scripts python scripts/reports/report_skill_evaluation.py`
+- the readout owned by `scripts/reports/report_skill_evaluation.py`
 
 ## `evaluated -> canonical`
 

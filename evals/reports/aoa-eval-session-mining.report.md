@@ -27,13 +27,9 @@ trigger corpus. It is a local evidence note for `aoa-skills`, not a central
 
 ## Provider Status
 
-Command:
-
-```bash
-python3 scripts/aoa_session_memory.py search-provider-status \
-  --workspace-root /srv/AbyssOS \
-  --aoa-root /srv/AbyssOS/.aoa
-```
+Provider status came from the `search-provider-status` operation owned by
+`scripts/aoa_session_memory.py`, scoped to the OS Abyss workspace and `.aoa`
+root.
 
 Observed on 2026-06-15T16:51:05Z:
 
@@ -50,35 +46,14 @@ Interpretation: the provider is usable for route-first mining, but the live
 session stream is still moving. Individual evidence refs below were accepted
 only when their retrieval packet reported `segment_index_live_check: fresh`.
 
-## Retrieval Commands
+## Retrieval Scope
 
-```bash
-python3 scripts/aoa_session_memory.py retrieve process-lessons \
-  --workspace-root /srv/AbyssOS \
-  --aoa-root /srv/AbyssOS/.aoa \
-  --query 'aoa-eval trigger evals local eval port validator' \
-  --limit 8 \
-  --event-limit 8
-```
+The `process-lessons` retrieval operation used three narrow packets:
 
-```bash
-python3 scripts/aoa_session_memory.py retrieve process-lessons \
-  --workspace-root /srv/AbyssOS \
-  --aoa-root /srv/AbyssOS/.aoa \
-  --query 'aoa-evals-mcp local eval port evidence candidate validator' \
-  --limit 8 \
-  --event-limit 8
-```
-
-```bash
-python3 scripts/aoa_session_memory.py retrieve process-lessons \
-  --workspace-root /srv/AbyssOS \
-  --aoa-root /srv/AbyssOS/.aoa \
-  --session '2026-06-11__006__у-меня-складывается-впечатление-что-для-всех' \
-  --query 'trigger eval skill session mining local eval port' \
-  --limit 12 \
-  --event-limit 12
-```
+- eval routing, trigger evals, local eval-port validation, and validators;
+- `aoa-evals-mcp`, local eval-port candidates, and evidence validation;
+- the named long session, constrained to trigger routing and local-port
+  evidence.
 
 Each retrieval used `portable_sqlite`, reported `ok: true`, and treated search
 hits as candidate evidence that points back to raw/segment refs.
@@ -109,15 +84,8 @@ regression truth, and proof doctrine remain outside this report and route to
 
 ## 2026-06-21 Refresh
 
-Command:
-
-```bash
-python /srv/AbyssOS/.aoa/scripts/aoa_session_memory.py maintenance-status \
-  --workspace-root /srv/AbyssOS \
-  --aoa-root /srv/AbyssOS/.aoa \
-  --no-timers \
-  --full
-```
+The refresh used the full timer-free maintenance-status operation owned by the
+workspace `.aoa` session-memory tool.
 
 Observed at `2026-06-22T00:08:52Z`:
 
@@ -131,31 +99,11 @@ Observed at `2026-06-22T00:08:52Z`:
 Interpretation: use portable SQLite search and raw/segment refs for narrow
 trigger evidence; do not use stale graph state for proof-strength claims.
 
-Refresh search commands:
+Refresh searches covered:
 
-```bash
-python /srv/AbyssOS/.aoa/scripts/aoa_session_memory.py search \
-  --workspace-root /srv/AbyssOS \
-  --aoa-root /srv/AbyssOS/.aoa \
-  --limit 5 \
-  --query "aoa-eval skill trigger local evals"
-```
-
-```bash
-python /srv/AbyssOS/.aoa/scripts/aoa_session_memory.py search \
-  --workspace-root /srv/AbyssOS \
-  --aoa-root /srv/AbyssOS/.aoa \
-  --limit 5 \
-  --query "self-awareness contract lane eval"
-```
-
-```bash
-python /srv/AbyssOS/.aoa/scripts/aoa_session_memory.py search \
-  --workspace-root /srv/AbyssOS \
-  --aoa-root /srv/AbyssOS/.aoa \
-  --limit 5 \
-  --query "aoa-evals-mcp local eval port validation"
-```
+- `aoa-eval` skill triggers and local evals;
+- self-awareness contract-lane eval evidence;
+- `aoa-evals-mcp` local-port validation.
 
 Refresh trigger families:
 

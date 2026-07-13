@@ -58,12 +58,5 @@ experience pass should decide its honest home.
 
 ## Verification
 
-Verify with:
-
-```bash
-python -m pytest -q tests/test_mechanics_topology.py tests/test_roadmap_parity.py tests/test_current_direction_routes.py
-python scripts/lint_trigger_evals.py --repo-root .
-python scripts/lint_description_trigger_evals.py --repo-root .
-python scripts/validate_tiny_router_inputs.py --repo-root .
-python scripts/validate_nested_agents.py
-```
+Verification covered mechanics route/topology checks, trigger and
+description-trigger lint, tiny-router inputs, and nested agent cards.

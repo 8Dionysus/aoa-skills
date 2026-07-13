@@ -119,9 +119,8 @@ As of 2026-05-30:
 - Source surfaces updated: `docs/decisions/`, generated decision indexes,
   `docs/decisions/indexes/index_contract.yaml`, and
   `scripts/decision_indexes.py`.
-- Validation: `python scripts/generate_decision_indexes.py --check`, focused
-  decision-index tests, `python scripts/validate_agents_design.py`, and
-  `git diff --check`.
+- Validation covered generated decision-index parity, focused decision-index
+  tests, agent-card design, and diff hygiene.
 
 ## Boundaries
 

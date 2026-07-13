@@ -52,6 +52,7 @@ It should:
 | Portable exports | `.agents/skills/*` as generated transport for compatible runtimes |
 | Skill-layer mechanics | owner-local movement around canon, including audit, release support, adoption pressure, recurrence, checkpoint carry, quest integration, boundary bridges, and candidate routing |
 | Skill review evidence | records that explain status, promotion pressure, exceptions, and public claims without replacing source bundles |
+| Owner-local stats port | skill-domain measurement questions, populations, evidence refs, and authority ceilings under `stats/` |
 
 ## Routed To Stronger Owners
 
@@ -64,7 +65,7 @@ It should:
 | role identity, persona contracts, standing posture, and handoffs | `aoa-agents` |
 | memory, retention, recall, and witness objects | `aoa-memo` |
 | graph, retrieval, and KAG substrate semantics | `aoa-kag`, derived from source owners |
-| observability summaries or movement windows | `aoa-stats`, derived from owner-local evidence |
+| shared statistical grammar, aggregation, and cross-owner views | `aoa-stats`, derived from owner-local evidence; skill-domain measurement meaning remains in `stats/` here |
 | runtime services, storage, workers, daemons, and deployment | `abyss-stack` |
 | typed helpers, compatibility, activation, and control-plane implementation | `aoa-sdk` |
 | AoA constitutional identity, federation map, and center law | `Agents-of-Abyss` |

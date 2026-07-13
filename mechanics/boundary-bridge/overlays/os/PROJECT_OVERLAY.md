@@ -25,8 +25,11 @@ It does not change the base skill boundary and does not turn `aoa-skills` into t
 - family review doc: `mechanics/boundary-bridge/overlays/os/REVIEW.md`
 - bundle-local review checklist: `skills/project/abyss/os-abyss-artifact-trust-loop/checks/review.md`
 - generated readouts: `generated/overlay_readiness.md`, `generated/governance_backlog.md`, `generated/mcp_dependency_manifest.json`, and generated skill export surfaces
-- commands stay repo-relative, such as `PYTHONPATH=scripts python scripts/validation/validate_skills.py --skill os-abyss-artifact-trust-loop`, `PYTHONPATH=scripts python scripts/builders/build_catalog.py --check`, and the local MCP wiring validator
-- artifact-trust runtime checks stay in `abyss-machine artifacts ... --json` and the existing read-only `abyss_machine` MCP surfaces
+- checks stay repo-relative and route through the nearest downstream
+  `AGENTS.md`, skill validator, catalog parity owner, and local MCP wiring
+  validator
+- artifact-trust runtime checks stay in the `abyss-machine` artifact readouts
+  and the existing read-only `abyss_machine` MCP surfaces
 
 ## Overlayed skills
 

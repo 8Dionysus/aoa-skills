@@ -86,7 +86,7 @@ If a step reveals that another route is more honest, pause and route there.
 
 - Read this file after compaction or long pause.
 - Read the current root and repo `AGENTS.md` stack.
-- Run `git status --short` in `aoa-skills`.
+- Inspect the `aoa-skills` working-tree state.
 - Name existing dirty work before adding anything.
 - Identify whether the current task is study, planning, or mutation.
 - If mutation is not explicitly in scope, stay read-only.
@@ -212,16 +212,11 @@ When mutation is in scope:
 Pick checks based on the changed surface:
 
 - mechanics `AGENTS.md` changes:
-  `python scripts/validate_nested_agents.py`
+  nested agent-card validation
 - Agon candidate surfaces:
-  `python scripts/build_agon_skill_binding_candidates.py --check`
-  `python scripts/validate_agon_skill_binding_candidates.py`
-  `python scripts/build_agon_epistemic_skill_candidates.py --check`
-  `python scripts/validate_agon_epistemic_skill_candidates.py`
+  both candidate builders in parity mode and both candidate validators
 - skill bundle source changes:
-  `python scripts/build_catalog.py`
-  `python scripts/validate_skills.py`
-  `python scripts/build_catalog.py --check`
+  catalog generation, skill-source validation, then catalog parity
 - generated/export changes:
   run the specific builder in `--check` mode first, then write only when
   source change requires it.
@@ -235,7 +230,7 @@ run.
 
 Before ending a pass:
 
-- re-run `git status --short`
+- inspect working-tree state again
 - list touched files
 - identify active source truth
 - identify legacy/provenance route
@@ -1234,7 +1229,7 @@ If context compacts, resume with this short packet:
 1. Read `aoa-skills/AGENTS.md`.
 2. Read `aoa-skills/mechanics/AGENTS.md`.
 3. Read this file.
-4. Run `git status --short`.
+4. Inspect working-tree state.
 5. Confirm whether the current task is study, plan, or mutation.
 6. Identify the one owner surface for the next pass.
 7. Re-open AoA's matching mechanic before changing local mechanics.

@@ -67,12 +67,6 @@ and dispatch projection.
 
 ## Verification
 
-Verify with:
-
-```bash
-python -m pytest -q tests/test_validate_skills.py tests/test_session_checkpoint_note.py tests/test_roadmap_parity.py tests/test_current_direction_routes.py tests/test_mechanics_topology.py
-python scripts/validate_nested_agents.py
-python scripts/validate_skills.py --fail-on-review-truth-sync
-python scripts/build_catalog.py --check
-python -m unittest discover -s tests
-```
+Verification covered skill validation, checkpoint behavior, mechanics routes
+and topology, nested agent cards, catalog parity, and the repository test
+suite.

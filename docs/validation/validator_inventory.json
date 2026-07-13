@@ -175,6 +175,31 @@
       "status": "active"
     },
     {
+      "path": "scripts/validation/validate_local_stats_port.py",
+      "family": "source/stats-port",
+      "owner_surface": "stats/port.manifest.json",
+      "layer": "source",
+      "lane": "source-fast/release",
+      "mode": "blocking-central-contract-delegation",
+      "inputs": [
+        "stats/port.manifest.json",
+        "stats/packets/*.json",
+        "aoa-stats protocol validator"
+      ],
+      "outputs": [
+        "owner-local stats protocol verdict"
+      ],
+      "callers": [
+        "config/validation_lanes.json source_fast",
+        "config/validation_lanes.json release_check"
+      ],
+      "overlap": "Delegates shared protocol semantics to aoa-stats while owner-specific census invariants remain in tests/test_local_stats_port.py.",
+      "pain": "A local schema copy would drift from the central stats contract; an unpinned CI dependency would make the lane non-reproducible.",
+      "decision": "wire",
+      "failure_route": "Fix the owner-local manifest or packet first; change the shared contract only in aoa-stats and update the pinned dependency deliberately.",
+      "status": "active"
+    },
+    {
       "path": "scripts/validation/validate_skills.py",
       "family": "source/topology",
       "owner_surface": "skills/**/SKILL.md",

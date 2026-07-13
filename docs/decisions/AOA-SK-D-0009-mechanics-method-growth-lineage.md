@@ -60,10 +60,5 @@ release-support, or audit surfaces in this slice.
 
 ## Verification
 
-Verify with:
-
-```bash
-python -m pytest -q tests/test_session_checkpoint_note.py tests/test_session_growth_kernel_maturity.py tests/test_roadmap_parity.py tests/test_current_direction_routes.py tests/test_mechanics_topology.py
-python scripts/validate_nested_agents.py
-python -m unittest discover -s tests
-```
+Verification covered checkpoint and session-growth lineage, mechanics routes
+and topology, nested agent cards, and the repository test suite.

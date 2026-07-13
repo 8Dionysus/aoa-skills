@@ -542,11 +542,10 @@ Exit gate:
 
 Goal: make routing decisions auditable.
 
-Candidate commands:
+Candidate interfaces:
 
-- `python scripts/search_skills.py query "..."`
-- `python scripts/explain_skill_candidate.py --skill <name> --intent "..."`
-- or a unified `scripts/skill_intelligence.py` with subcommands
+- separate search and candidate-explanation interfaces;
+- or a unified `scripts/skill_intelligence.py` with subcommands.
 
 Explanation packet:
 
@@ -720,40 +719,24 @@ These names are provisional.
 
 ### 5.1 Build and validate
 
-```bash
-python scripts/build_skill_intelligence_registry.py --check
-python scripts/build_skill_search_index.py --check
-python scripts/validate_skill_intelligence_registry.py
-python scripts/validate_skill_search_index.py
-```
+Build registry and search-index projections in parity mode, then validate both
+contracts.
 
 ### 5.2 Query and explain
 
-```bash
-python scripts/search_skills.py query "bounded repo change with explicit validation"
-python scripts/search_skills.py query "share logs safely" --mutation-surface public-share
-python scripts/explain_skill_candidate.py --skill aoa-source-of-truth-check --intent "docs conflict"
-python scripts/explain_skill_candidate.py --skill aoa-safe-infra-change --intent "edit systemd service" --policy
-```
+Exercise ordinary lookup, mutation-sensitive lookup, candidate explanation,
+and policy-aware explanation.
 
 ### 5.3 Status and freshness
 
-```bash
-python scripts/skill_intelligence_status.py --repo-root .
-python scripts/skill_intelligence_status.py --workspace-root /srv/AbyssOS
-python scripts/audit_workspace_skill_adoption.py --repo-root . --workspace-root /srv/AbyssOS --profile repo-project-foundation
-```
+Inspect repo-local status, workspace-wide freshness, and adoption against the
+project-foundation profile.
 
 ### 5.4 Future aoa-sdk wrapper
 
-Later, after `aoa-skills` source implementation is stable:
-
-```bash
-aoa skills search "<intent>"
-aoa skills explain <skill> --intent "<intent>"
-aoa skills graph <skill>
-aoa skills status --workspace-root /srv/AbyssOS
-```
+Later, after `aoa-skills` source implementation is stable, a future SDK wrapper
+could expose skill search, candidate explanation, skill-graph inspection, and
+workspace status as separate operations.
 
 `aoa skills ...` remains skill-only. It should not become general route
 authority, memory authority, or proof authority.
@@ -914,22 +897,15 @@ Countermeasure:
 
 ### 8.1 Narrow builder checks
 
-```bash
-python scripts/build_catalog.py --check
-python scripts/build_tiny_router_inputs.py --repo-root . --check
-python scripts/validate_tiny_router_inputs.py --repo-root .
-```
+Check catalog and tiny-router projection parity, then validate tiny-router
+inputs.
 
 ### 8.2 New registry checks
 
 Future:
 
-```bash
-python scripts/build_skill_intelligence_registry.py --check
-python scripts/validate_skill_intelligence_registry.py
-python scripts/build_skill_search_index.py --check
-python scripts/validate_skill_search_index.py
-```
+Check registry and search-index projection parity, then validate both new
+contracts.
 
 ### 8.3 Search acceptance checks
 
@@ -946,24 +922,16 @@ Required query classes:
 
 ### 8.4 Integration checks
 
-```bash
-python scripts/validate_agent_skills.py --repo-root .
-python scripts/validate_support_resources.py --repo-root . --check-portable
-python scripts/report_skill_evaluation.py --fail-on-canonical-gaps
-python scripts/audit_skill_quality.py --repo-root . --fail-on-blocked
-python scripts/report_skill_promotion_pressure.py --repo-root . --workspace-root /srv/AbyssOS
-python scripts/audit_workspace_skill_adoption.py --repo-root . --workspace-root /srv/AbyssOS --profile repo-project-foundation
-python scripts/release_check.py --include-packaging-smoke
-python -m pytest -q
-```
+Cover portable skills and support resources, evaluation and quality gates,
+promotion pressure and workspace adoption, packaging smoke, and the repository
+test suite.
 
 ### 8.5 Cross-repo checks
 
 Later, when downstream changes occur:
 
 - `aoa-routing`:
-  - `python scripts/build_two_stage_skill_router.py --routing-root . --skills-root ../aoa-skills --check`
-  - `python scripts/validate_two_stage_skill_router.py --routing-root . --skills-root ../aoa-skills`
+  - two-stage router projection parity and validation against `aoa-skills`
 - `aoa-sdk`:
   - compatibility check for `aoa-skills`
   - typed helper tests if new API wrappers land
@@ -1090,24 +1058,9 @@ semantic backend yet. First land the deterministic registry schema, builder,
 generated outputs, and tests. Keep generated surfaces source-derived.
 ```
 
-Minimum first commands:
-
-```bash
-aoa skills enter /srv/AbyssOS/aoa-skills --root /srv/AbyssOS --intent-text "implement skill intelligence registry first slice" --json
-aoa skills guard /srv/AbyssOS/aoa-skills --root /srv/AbyssOS --intent-text "implement skill intelligence registry first slice" --mutation-surface code --json
-```
-
-Then inspect:
-
-```bash
-sed -n '1,220p' AGENTS.md
-sed -n '1,220p' DESIGN.md
-sed -n '1,220p' docs/ARCHITECTURE.md
-sed -n '1,220p' generated/AGENTS.md
-sed -n '1,220p' schemas/AGENTS.md
-sed -n '1,220p' scripts/AGENTS.md
-sed -n '1,260p' legacy/2026-05-17__skill-intelligence-layer-strategy.md
-```
+The first route should enter and guard the `aoa-skills` workspace for a bounded
+code mutation, then inspect root guidance, design and architecture, the nearest
+generated/schema/script cards, and this strategy artifact before implementation.
 
 ## 16. Current Artifact Closeout
 
@@ -1172,26 +1125,13 @@ Notable correction during landing:
 
 Verification evidence:
 
-- `python scripts/build_catalog.py --check`
-- `python scripts/skill_intelligence.py build --check`
-- `python -Werror::ResourceWarning scripts/skill_intelligence.py query "source truth docs conflict canonical guidance" --limit 3`
-- `python scripts/skill_intelligence.py explain aoa-source-of-truth-check --intent "docs conflict over authoritative source"`
-- `python -m pytest -q tests/test_skill_intelligence_surface.py tests/test_generated_surface_schemas.py tests/test_build_catalog.py`
-- `python scripts/validate_agents_design.py`
-- `python scripts/validate_skills.py`
-- `python scripts/validate_agent_skills.py --repo-root .`
-- `python scripts/build_description_trigger_evals.py --repo-root . --check`
-- `python scripts/build_support_resources.py --repo-root . --check`
-- `python scripts/build_tiny_router_inputs.py --repo-root . --check`
-- `python scripts/validate_support_resources.py --repo-root . --check-portable`
-- `python scripts/validate_tiny_router_inputs.py --repo-root .`
-- `python scripts/report_skill_evaluation.py --fail-on-canonical-gaps`
-- `python scripts/audit_skill_quality.py --repo-root . --fail-on-blocked`
-- `python scripts/report_skill_promotion_pressure.py --repo-root . --workspace-root /srv/AbyssOS`
-- `python scripts/audit_workspace_skill_adoption.py --repo-root . --workspace-root /srv/AbyssOS --profile repo-project-foundation`
-- `python -m pytest -q`
-- `python scripts/release_check.py`
-- `git diff --check`
+- catalog and skill-intelligence projection parity;
+- resource-warning-clean lookup and candidate explanation;
+- focused skill-intelligence, generated-schema, and catalog tests;
+- agent-card, skill-source, and portable-export validation;
+- description-trigger, support-resource, and tiny-router parity;
+- evaluation, quality, promotion-pressure, and workspace-adoption reports;
+- the repository and release lanes, plus diff hygiene.
 
 Current next route:
 

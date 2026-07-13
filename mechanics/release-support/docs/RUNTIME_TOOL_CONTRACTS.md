@@ -45,7 +45,7 @@ Inputs:
 
 Runtime implementation:
 
-- `scripts/skill_runtime_seam.py activate`
+- the raw runtime seam's `activate` operation
 
 ## skill_session_status
 

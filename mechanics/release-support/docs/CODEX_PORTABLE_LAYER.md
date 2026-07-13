@@ -94,8 +94,8 @@ retention easier without becoming a new authoring layer.
   export stack; it is not a second release ledger.
 - `scripts/stage_skill_pack.py` materializes one profile-scoped bundle with a
   bundle-local `bundle_manifest.json` and a human-facing `README.md`.
-- `scripts/stage_skill_pack.py --archive-path ...` adds an optional ZIP
-  transport wrapper over the same staged directory.
+- the staging owner's `--archive-path` option adds an optional ZIP transport
+  wrapper over the same staged directory.
 - `scripts/inspect_skill_pack.py` checks manifest integrity, staged file
   digests, bundle digest, and archive layout before an install step.
 - `scripts/import_skill_pack.py` inspects first, then optionally installs and
@@ -187,96 +187,25 @@ It intentionally keeps three things separate:
 
 ## Build and validation
 
-Rebuild the portable layer from repo root:
+Executable ownership remains split by operation:
 
-    PYTHONPATH=scripts python scripts/export/build_agent_skills.py --repo-root .
+- `scripts/export/build_agent_skills.py` owns portable export generation;
+- `scripts/validation/validate_agent_skills.py` owns export validation;
+- `scripts/stage_skill_pack.py`, `scripts/inspect_skill_pack.py`,
+  `scripts/import_skill_pack.py`, `scripts/install_skill_pack.py`, and
+  `scripts/verify_skill_pack.py` own staged handoff and install operations;
+- `scripts/audit/audit_workspace_skill_adoption.py` owns workspace adoption
+  inspection;
+- builder, runtime, and validation modules under their named script organs own
+  description-trigger, support-resource, profile, standards, and runtime
+  surfaces;
+- `scripts/skill_runtime_guardrails.py` owns the governed runtime path,
+  `scripts/skill_runtime_seam.py` owns the raw/debug path, and
+  `scripts/activate_skill.py` remains compatibility ingress.
 
-Validate the result:
-
-    PYTHONPATH=scripts python scripts/validation/validate_agent_skills.py --repo-root .
-
-Verify one installed profile/root against the current export:
-
-    python scripts/verify_skill_pack.py --repo-root . --profile repo-default --format json
-
-Audit real workspace and repo install roots before rollout:
-
-    PYTHONPATH=scripts python scripts/audit/audit_workspace_skill_adoption.py --repo-root . --workspace-root .. --profile repo-project-foundation --format markdown
-
-Stage one profile-scoped handoff bundle:
-
-    python scripts/stage_skill_pack.py --repo-root . --profile repo-core-only --output-root /tmp/repo-core-only-bundle --execute --overwrite --format json
-
-Stage one profile-scoped handoff bundle plus ZIP transport:
-
-    python scripts/stage_skill_pack.py --repo-root . --profile repo-core-only --output-root /tmp/repo-core-only-bundle --archive-path /tmp/repo-core-only.zip --execute --overwrite --format json
-
-Inspect one staged bundle or ZIP handoff:
-
-    python scripts/inspect_skill_pack.py --bundle-root /tmp/repo-core-only-bundle --format json
-    python scripts/inspect_skill_pack.py --bundle-archive /tmp/repo-core-only.zip --format json
-
-Import one staged bundle with inspect-first receiver ergonomics:
-
-    python scripts/import_skill_pack.py --repo-root . --profile repo-core-only --bundle-root /tmp/repo-core-only-bundle --dest-root /tmp/aoa-skills --mode copy --execute --format json
-
-Import directly from the ZIP handoff:
-
-    python scripts/import_skill_pack.py --repo-root . --profile repo-core-only --bundle-archive /tmp/repo-core-only.zip --dest-root /tmp/aoa-skills --mode copy --execute --format json
-
-Keep `scripts/install_skill_pack.py` and `scripts/verify_skill_pack.py` for the advanced path when install and verification need to be run as separate explicit steps.
-
-Lint the policy-aware trigger dataset:
-
-    PYTHONPATH=scripts python scripts/validation/lint_trigger_evals.py --repo-root .
-
-Lint pack-profile authoring:
-
-    PYTHONPATH=scripts python scripts/validation/lint_pack_profiles.py --repo-root .
-
-Build the runtime seam:
-
-    PYTHONPATH=scripts python scripts/runtime/build_runtime_seam.py --repo-root .
-
-Build the runtime guardrails:
-
-    PYTHONPATH=scripts python scripts/runtime/build_runtime_guardrails.py --repo-root .
-
-Build the description-trigger suite:
-
-    PYTHONPATH=scripts python scripts/builders/build_description_trigger_evals.py --repo-root .
-
-Build the support-resource manifests:
-
-    PYTHONPATH=scripts python scripts/builders/build_support_resources.py --repo-root .
-
-Lint the description-trigger suite:
-
-    PYTHONPATH=scripts python scripts/validation/lint_description_trigger_evals.py --repo-root .
-
-Validate the support-resource bridge:
-
-    PYTHONPATH=scripts python scripts/validation/validate_support_resources.py --repo-root . --check-portable
-
-Lint the support-resource bridge:
-
-    PYTHONPATH=scripts python scripts/validation/lint_support_resources.py --repo-root .
-
-Run the export-required standards-conformance wrapper:
-
-    PYTHONPATH=scripts python scripts/validation/run_skills_ref_validation.py --repo-root . --require-skills-ref
-
-Inspect one activated raw runtime-seam payload:
-
-    python scripts/skill_runtime_seam.py activate --repo-root . --skill aoa-change-protocol --format json
-
-Inspect one activated governed runtime payload:
-
-    python scripts/skill_runtime_guardrails.py activate --repo-root . --skill aoa-change-protocol --trust-store .aoa/repo-trust-store.json --format json
-
-Inspect one activated local-adapter compatibility payload:
-
-    python scripts/activate_skill.py --repo-root . --skill aoa-change-protocol --format json
+Full blocking order lives in `config/validation_lanes.json`. Focused invocation
+syntax belongs to the executable owner and the nearest relevant `AGENTS.md`,
+not to this architectural description.
 
 ## Local-friendly path
 

@@ -237,8 +237,7 @@ This kernel is also repo-wide hard-gated in `aoa-skills`:
 - the portable export must carry both refs for every kernel skill
 - `generated/project_core_kernel_governance.min.json` is the per-skill gate
   readout
-- `python scripts/release_check.py` fails if any kernel skill drifts out of
-  that contract
+- the release lane fails if any kernel skill drifts out of that contract
 
 `repo-project-core-outer-ring` is the canonical bounded rollout profile for the
 stable engineering workbench around that kernel:

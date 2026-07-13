@@ -2164,11 +2164,10 @@ coverage.
 
 ## Validation
 
-- `python -m pytest -q tests/test_live_skill_dispatch_harness.py`
-- `python scripts/lanes/ci_gate.py --mode source-fast`
+- focused live-dispatch harness tests and the `source-fast` lane
 - local eval-port validation through the current `aoa-evals` owner
 - decision-index regeneration and parity check
-- exact `codex --version`, App Server schema contract, resource-wrapper cgroup,
+- exact Codex CLI version, App Server schema contract, resource-wrapper cgroup,
   storage preflight, shadow-set lock, and `codex debug prompt-input` inventory
   checks before a live turn
 - exact-merged complete-corpus review before each pilot rerun, then reviewed

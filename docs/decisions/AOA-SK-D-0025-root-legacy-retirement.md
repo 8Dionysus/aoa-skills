@@ -66,9 +66,4 @@ of asking future agents to read raw notebooks first.
 
 ## Verification
 
-Verify with:
-
-```bash
-python scripts/validate_nested_agents.py
-git diff --check
-```
+Verification covered nested agent-card routing and diff hygiene.

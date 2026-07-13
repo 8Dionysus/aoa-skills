@@ -37,6 +37,8 @@
 - `manifests/` — manifest route district; records live with owning mechanic packages or parts
 - `quests/` — lane-first durable obligation sources under `quests/<lane>/<state>/`
 - `skills/` — canonical skill source topology
+- `stats/` — owner-local statistical questions, measurement contracts, and
+  evidence-linked reference packets
 - `generated/` — derived reader catalogs, portable export discovery, runtime seams, support-resource manifests, and trigger-eval data
 - `scripts/` — deterministic repo-wide builders, validators, reports, inspectors, and release helpers
 - `schemas/` — repo-wide machine-readable contracts; mechanic-local schemas live with their package or part
