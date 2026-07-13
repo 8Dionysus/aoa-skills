@@ -288,13 +288,50 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
         plan = self.runner.load_plan(self.plan_path)
         smoke = self.runner.expand_cohort(REPO_ROOT, plan, "smoke")
         pilot = self.runner.expand_cohort(REPO_ROOT, plan, "pilot13")
+        returns = self.runner.expand_cohort(REPO_ROOT, plan, "pilot13-returns")
         collision = self.runner.expand_cohort(REPO_ROOT, plan, "full-collision")
         closure = self.runner.expand_cohort(REPO_ROOT, plan, "coverage-closure")
 
         self.assertEqual(4, len(smoke))
         self.assertEqual(30, len(pilot))
+        self.assertEqual(15, len(returns))
         self.assertEqual(98, len(collision))
         self.assertEqual(87, len(closure))
+        self.assertEqual(
+            {
+                "collision-09",
+                "collision-14",
+                "collision-20",
+                "collision-33",
+                "collision-38",
+                "collision-49",
+                "desc-titan-03-manual",
+            },
+            {
+                trial.case_id
+                for trial in returns
+                if trial.arm_type in {"implicit_aided", "implicit_control"}
+            },
+        )
+        self.assertEqual(
+            ["abyss-safe-infra-change"],
+            [
+                trial.expected_target_skill
+                for trial in returns
+                if trial.arm_type == "app_server_structured"
+            ],
+        )
+        self.assertFalse(
+            any(trial.arm_type == "root_manual_child" for trial in returns)
+        )
+        self.assertTrue(
+            all(
+                trial.procedure_contract is not None
+                and trial.outcome_contract is not None
+                for trial in returns
+                if trial.arm_type in {"implicit_aided", "implicit_control"}
+            )
+        )
         self.assertEqual(
             {"implicit_aided", "implicit_control", "root_manual_child", "app_server_structured"},
             {trial.arm_type for trial in smoke},
@@ -820,6 +857,20 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
         self.assertTrue(pilot["procedure_contract_coverage_complete"])
         self.assertEqual(11, pilot["objective_outcome_scored_pair_count"])
         self.assertTrue(pilot["objective_outcome_coverage_complete"])
+        returns = self.runner.build_plan_packet(
+            REPO_ROOT,
+            plan,
+            "pilot13-returns",
+            "model-a",
+            "medium",
+        )
+        self.assertTrue(returns["high_cost_confirmation_required"])
+        self.assertEqual("required", returns["procedure_contract_mode"])
+        self.assertEqual(7, returns["implicit_pair_count"])
+        self.assertEqual(7, returns["procedure_scored_pair_count"])
+        self.assertTrue(returns["procedure_contract_coverage_complete"])
+        self.assertEqual(7, returns["objective_outcome_scored_pair_count"])
+        self.assertTrue(returns["objective_outcome_coverage_complete"])
 
     def test_high_cost_live_run_blocks_before_preflight_when_procedures_are_incomplete(self) -> None:
         runner = self.runner

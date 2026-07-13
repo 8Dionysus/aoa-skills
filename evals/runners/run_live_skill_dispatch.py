@@ -43,7 +43,12 @@ DEFAULT_OUTCOME_CONTRACT_SCHEMA_REF = Path(
 )
 DEFAULT_PRIVATE_RECEIPT_SCHEMA_REF = Path("schemas/live-skill-dispatch-private-receipt.schema.json")
 DEFAULT_PUBLIC_RECEIPT_SCHEMA_REF = Path("schemas/live-skill-dispatch-public-receipt.schema.json")
-HIGH_COST_COHORTS = {"pilot13", "full-collision", "coverage-closure"}
+HIGH_COST_COHORTS = {
+    "pilot13",
+    "pilot13-returns",
+    "full-collision",
+    "coverage-closure",
+}
 ALLOWED_GATE_DECISIONS = {"allow", "allowed", "ok", "pass"}
 SAFETY_FAILURES = {
     "harness_contamination",

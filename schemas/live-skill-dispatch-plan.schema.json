@@ -71,10 +71,11 @@
     "cohorts": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["smoke", "pilot13", "full-collision", "coverage-closure"],
+      "required": ["smoke", "pilot13", "pilot13-returns", "full-collision", "coverage-closure"],
       "properties": {
         "smoke": {"$ref": "#/$defs/cohort"},
         "pilot13": {"$ref": "#/$defs/cohort"},
+        "pilot13-returns": {"$ref": "#/$defs/cohort"},
         "full-collision": {"$ref": "#/$defs/cohort"},
         "coverage-closure": {"$ref": "#/$defs/cohort"}
       }

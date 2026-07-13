@@ -115,6 +115,27 @@
       "estimated_memory_demand_mib": 512,
       "resource_class": "medium"
     },
+    "pilot13-returns": {
+      "implicit_case_ids": [
+        "collision-38",
+        "collision-20",
+        "collision-33",
+        "collision-09",
+        "collision-14",
+        "collision-49",
+        "desc-titan-03-manual"
+      ],
+      "trajectory_case_ids": [],
+      "structured_skills": [
+        "abyss-safe-infra-change"
+      ],
+      "procedure_contract_mode": "required",
+      "objective_outcome_mode": "required",
+      "expected_turn_count": 15,
+      "estimated_private_bytes": 268435456,
+      "estimated_memory_demand_mib": 512,
+      "resource_class": "medium"
+    },
     "full-collision": {
       "implicit_case_ids": "all-collision-cases",
       "trajectory_case_ids": [],
