@@ -22,6 +22,24 @@
       "rationale": "The prompt requests an invariant-coverage audit but supplies neither the parser, its tests and checks, nor an authoritative statement of the stable invariants. The direct skill route is justified, but the selected procedure must stop at blocked_missing_input, name the missing owner evidence, and avoid reporting completion from prompt examples alone."
     },
     {
+      "contract_id": "collision-02-procedure-v1",
+      "case_id": "collision-02",
+      "scope": "selected_route_procedure_disposition",
+      "expected_selected_child_skill": null,
+      "expected_selected_child_full_read_observed": null,
+      "expected_selected_procedure_disposition": "blocked_missing_input",
+      "expected_selected_procedure_completion_reported": false,
+      "expected_selected_procedure_deflection_reported": true,
+      "expected_owner_boundary_present": true,
+      "source_refs": [
+        "generated/skill_trigger_collision_matrix.json",
+        "skills/core/engineering/aoa-property-invariants/SKILL.md",
+        "schemas/live-skill-dispatch-model-output.schema.json",
+        "evals/runners/run_live_skill_dispatch.py"
+      ],
+      "rationale": "The request clearly selects property-oriented invariant authoring, but the fixture supplies no parser source, stable truths, valid input space, generator constraints, or existing examples. The procedure must stop at blocked_missing_input and request those owner surfaces instead of inventing properties or treating random volume as coverage."
+    },
+    {
       "contract_id": "collision-03-procedure-v1",
       "case_id": "collision-03",
       "scope": "selected_route_procedure_disposition",
@@ -38,6 +56,78 @@
         "evals/runners/run_live_skill_dispatch.py"
       ],
       "rationale": "The overloaded terms make the bounded-context-map route appropriate, but the hermetic prompt contains no repository vocabulary, responsibility centers, owners, or observed interfaces from which to derive an honest map. The direct procedure must therefore stop at blocked_missing_input and request owner context instead of inventing or collapsing boundaries."
+    },
+    {
+      "contract_id": "collision-04-procedure-v1",
+      "case_id": "collision-04",
+      "scope": "selected_route_procedure_disposition",
+      "expected_selected_child_skill": null,
+      "expected_selected_child_full_read_observed": null,
+      "expected_selected_procedure_disposition": "blocked_missing_input",
+      "expected_selected_procedure_completion_reported": false,
+      "expected_selected_procedure_deflection_reported": true,
+      "expected_owner_boundary_present": true,
+      "source_refs": [
+        "generated/skill_trigger_collision_matrix.json",
+        "skills/core/engineering/aoa-core-logic-boundary/SKILL.md",
+        "schemas/live-skill-dispatch-model-output.schema.json",
+        "evals/runners/run_live_skill_dispatch.py"
+      ],
+      "rationale": "The prompt identifies stable discount rules mixed with orchestration, so core-logic-boundary is the correct route. It provides no module source, current responsibilities, callers, tests, or owner constraints from which to make a bounded split. The procedure must stop at blocked_missing_input rather than fabricate a refactor or rename layers ceremonially."
+    },
+    {
+      "contract_id": "collision-05-procedure-v1",
+      "case_id": "collision-05",
+      "scope": "selected_route_procedure_disposition",
+      "expected_selected_child_skill": null,
+      "expected_selected_child_full_read_observed": null,
+      "expected_selected_procedure_disposition": "blocked_missing_input",
+      "expected_selected_procedure_completion_reported": false,
+      "expected_selected_procedure_deflection_reported": true,
+      "expected_owner_boundary_present": true,
+      "source_refs": [
+        "generated/skill_trigger_collision_matrix.json",
+        "skills/core/engineering/aoa-port-adapter-refactor/SKILL.md",
+        "schemas/live-skill-dispatch-model-output.schema.json",
+        "evals/runners/run_live_skill_dispatch.py"
+      ],
+      "rationale": "The concrete Stripe coupling makes a narrow port-and-adapter route appropriate, but no service code, caller behavior, required capability, test seam, or compatibility constraint is available. The procedure must stop at blocked_missing_input and request that evidence before defining a port, rather than mirror the provider API or claim a refactor."
+    },
+    {
+      "contract_id": "collision-06-procedure-v1",
+      "case_id": "collision-06",
+      "scope": "selected_route_procedure_disposition",
+      "expected_selected_child_skill": null,
+      "expected_selected_child_full_read_observed": null,
+      "expected_selected_procedure_disposition": "blocked_missing_input",
+      "expected_selected_procedure_completion_reported": false,
+      "expected_selected_procedure_deflection_reported": true,
+      "expected_owner_boundary_present": true,
+      "source_refs": [
+        "generated/skill_trigger_collision_matrix.json",
+        "skills/core/engineering/aoa-tdd-slice/SKILL.md",
+        "schemas/live-skill-dispatch-model-output.schema.json",
+        "evals/runners/run_live_skill_dispatch.py"
+      ],
+      "rationale": "The task explicitly requests a bounded red-green-refactor slice, but the fixture has no repository, existing password-reset behavior, observable acceptance criteria, test surface, or implementation target. The procedure must stop at blocked_missing_input before writing speculative tests or reporting a passing feature from the independent fixture probe."
+    },
+    {
+      "contract_id": "collision-07-procedure-v1",
+      "case_id": "collision-07",
+      "scope": "selected_route_procedure_disposition",
+      "expected_selected_child_skill": null,
+      "expected_selected_child_full_read_observed": null,
+      "expected_selected_procedure_disposition": "blocked_missing_input",
+      "expected_selected_procedure_completion_reported": false,
+      "expected_selected_procedure_deflection_reported": true,
+      "expected_owner_boundary_present": true,
+      "source_refs": [
+        "generated/skill_trigger_collision_matrix.json",
+        "skills/core/engineering/aoa-contract-test/SKILL.md",
+        "schemas/live-skill-dispatch-model-output.schema.json",
+        "evals/runners/run_live_skill_dispatch.py"
+      ],
+      "rationale": "The producer-consumer payload disagreement is a contract-test boundary, but neither endpoint, payload schema, compatibility rule, invalid example, nor named owner source is present. The procedure must stop at blocked_missing_input and request the stable boundary evidence instead of freezing incidental logs or guessing a public payload contract."
     },
     {
       "contract_id": "collision-08-procedure-v1",

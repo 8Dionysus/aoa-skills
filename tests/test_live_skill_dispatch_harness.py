@@ -371,6 +371,151 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
                         trial.trial_id,
                     )
 
+    def test_broad_cohort_partitions_are_exact_bounded_and_contract_gated(self) -> None:
+        plan = self.runner.load_plan(self.plan_path)
+        expected_partitions = {
+            "full-collision": [
+                "full-collision-core-engineering",
+                "full-collision-safety-overlays",
+                "full-collision-session-growth",
+                "full-collision-authority-routing",
+                "full-collision-eval-children",
+            ],
+            "coverage-closure": [
+                "coverage-closure-core-implicit",
+                "coverage-closure-titan-implicit-a",
+                "coverage-closure-titan-implicit-b",
+                "coverage-closure-root-trajectories",
+                "coverage-closure-structured-core",
+                "coverage-closure-structured-titan",
+            ],
+        }
+        self.assertEqual(expected_partitions, plan["cohort_partitions"])
+
+        for parent, wave_names in expected_partitions.items():
+            parent_trial_ids = {
+                trial.trial_id
+                for trial in self.runner.expand_cohort(REPO_ROOT, plan, parent)
+            }
+            partition_trial_ids: set[str] = set()
+            for wave_name in wave_names:
+                config = plan["cohorts"][wave_name]
+                self.assertIn(
+                    config["procedure_contract_mode"],
+                    {"required", "required_for_live"},
+                )
+                self.assertIn(
+                    config["objective_outcome_mode"],
+                    {"required", "required_for_live"},
+                )
+                self.assertTrue(config["second_confirmation_required"])
+                self.assertLessEqual(config["expected_turn_count"], 30)
+                self.assertLessEqual(config["estimated_private_bytes"], 536_870_912)
+                self.assertLessEqual(config["estimated_memory_demand_mib"], 512)
+                self.assertIn(config["resource_class"], {"light", "medium"})
+                wave_trial_ids = {
+                    trial.trial_id
+                    for trial in self.runner.expand_cohort(
+                        REPO_ROOT,
+                        plan,
+                        wave_name,
+                    )
+                }
+                self.assertTrue(partition_trial_ids.isdisjoint(wave_trial_ids))
+                partition_trial_ids.update(wave_trial_ids)
+            self.assertEqual(parent_trial_ids, partition_trial_ids)
+
+        core = self.runner.expand_cohort(
+            REPO_ROOT,
+            plan,
+            "full-collision-core-engineering",
+        )
+        self.assertEqual(16, len(core))
+        self.assertEqual(
+            {f"collision-{index:02d}" for index in range(1, 9)},
+            {trial.case_id for trial in core},
+        )
+        self.assertTrue(
+            all(
+                trial.procedure_contract is not None
+                and trial.outcome_contract is not None
+                for trial in core
+            )
+        )
+        packet = self.runner.build_plan_packet(
+            REPO_ROOT,
+            plan,
+            "full-collision-core-engineering",
+            "model-a",
+            "medium",
+        )
+        self.assertEqual(8, packet["implicit_pair_count"])
+        self.assertEqual(8, packet["procedure_scored_pair_count"])
+        self.assertTrue(packet["procedure_contract_coverage_complete"])
+        self.assertEqual(8, packet["objective_outcome_scored_pair_count"])
+        self.assertTrue(packet["objective_outcome_coverage_complete"])
+        self.assertTrue(packet["high_cost_confirmation_required"])
+
+    def test_broad_cohort_partition_validator_rejects_overlap_gap_and_unscored_wave(self) -> None:
+        plan = self.runner.load_plan(self.plan_path)
+
+        overlapping = json.loads(json.dumps(plan))
+        overlapping["cohort_partitions"]["full-collision"].append(
+            "full-collision-core-engineering"
+        )
+        with self.assertRaisesRegex(ValueError, "partition waves overlap"):
+            self.runner._validate_cohort_partitions(REPO_ROOT, overlapping)
+
+        incomplete = json.loads(json.dumps(plan))
+        incomplete["cohort_partitions"]["full-collision"].remove(
+            "full-collision-eval-children"
+        )
+        with self.assertRaisesRegex(ValueError, "does not exactly cover"):
+            self.runner._validate_cohort_partitions(REPO_ROOT, incomplete)
+
+        unscored = json.loads(json.dumps(plan))
+        unscored["cohorts"]["full-collision-safety-overlays"][
+            "procedure_contract_mode"
+        ] = "declared_only"
+        with self.assertRaisesRegex(ValueError, "permits unscored procedures"):
+            self.runner._validate_cohort_partitions(REPO_ROOT, unscored)
+
+    def test_incomplete_partition_wave_blocks_before_preflight(self) -> None:
+        plan = self.runner.load_plan(self.plan_path)
+        packet = self.runner.build_plan_packet(
+            REPO_ROOT,
+            plan,
+            "full-collision-safety-overlays",
+            "model-a",
+            "medium",
+        )
+        self.assertEqual(11, packet["implicit_pair_count"])
+        self.assertEqual(2, packet["procedure_scored_pair_count"])
+        self.assertEqual(2, packet["objective_outcome_scored_pair_count"])
+        self.assertFalse(packet["procedure_contract_coverage_complete"])
+        self.assertFalse(packet["objective_outcome_coverage_complete"])
+        transport = FakeTransport()
+        with (
+            tempfile.TemporaryDirectory() as td,
+            self.assertRaisesRegex(
+                self.runner.ConfirmationError,
+                "full-collision-safety-overlays requires source-locked procedure contracts",
+            ),
+        ):
+            self.runner.run_confirmed_cohort(
+                repo_root=REPO_ROOT,
+                plan=plan,
+                cohort="full-collision-safety-overlays",
+                model="model-a",
+                effort="medium",
+                confirmation_token=packet["confirmation_token"],
+                high_cost_token=packet["high_cost_confirmation_token"],
+                private_root=Path(td),
+                transport=transport,
+                test_only_allow_noncanonical_private_root=True,
+            )
+        self.assertEqual([], transport.preflight_calls)
+
     def test_smoke_procedure_contract_is_source_locked_before_live_execution(self) -> None:
         runner = self.runner
         plan = runner.load_plan(self.plan_path)
@@ -1084,13 +1229,13 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
         )
         self.assertEqual(plan["protocol_revision"], contract["protocol_revision"])
         self.assertEqual(
-            "codex-cli-0.144.1-live-dispatch-evidence-v15",
+            "codex-cli-0.144.1-live-dispatch-evidence-v16",
             plan["protocol_revision"],
         )
         self.assertEqual("codex-cli 0.144.1", self.runner._expected_codex_version(plan))
         unsupported_plan = dict(plan)
         unsupported_plan["protocol_revision"] = (
-            "codex-cli-0.144.1-live-dispatch-evidence-v16"
+            "codex-cli-0.144.1-live-dispatch-evidence-v17"
         )
         with self.assertRaisesRegex(ValueError, "unsupported Codex protocol revision"):
             self.runner._expected_codex_version(unsupported_plan)
@@ -1561,6 +1706,45 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
         runner.validate_public_receipt(public)
         self.assertEqual("pilot13-returns", public["cohort"])
         self.assertEqual(15, public["trial_count"])
+
+    def test_core_partition_private_and_public_receipt_schemas_accept_the_cohort(self) -> None:
+        runner = self.runner
+        plan = runner.load_plan(self.plan_path)
+        packet = runner.build_plan_packet(
+            REPO_ROOT,
+            plan,
+            "full-collision-core-engineering",
+            "test-model",
+            "medium",
+        )
+        with tempfile.TemporaryDirectory() as td:
+            receipt = runner.run_confirmed_cohort(
+                repo_root=REPO_ROOT,
+                plan=plan,
+                cohort="full-collision-core-engineering",
+                model="test-model",
+                effort="medium",
+                confirmation_token=packet["confirmation_token"],
+                high_cost_token=packet["high_cost_confirmation_token"],
+                private_root=Path(td),
+                transport=FakeTransport(),
+                test_only_allow_noncanonical_private_root=True,
+            )
+        Draft202012Validator(
+            self.load_schema("live-skill-dispatch-private-receipt.schema.json")
+        ).validate(receipt)
+        receipt["review"] = {
+            "status": "reviewed",
+            "note": "bounded synthetic core partition schema coverage",
+        }
+        public = runner.build_public_receipt(receipt)
+        Draft202012Validator(
+            self.load_schema("live-skill-dispatch-public-receipt.schema.json")
+        ).validate(public)
+        runner.validate_public_receipt(public)
+        self.assertEqual("full-collision-core-engineering", public["cohort"])
+        self.assertEqual(16, public["trial_count"])
+        self.assertEqual(8, public["pair_count"])
 
     def test_skill_return_private_and_public_receipt_schemas_accept_the_cohort(self) -> None:
         runner = self.runner

@@ -17,6 +17,7 @@
     "sources",
     "caps",
     "cohorts",
+    "cohort_partitions",
     "root_child_trajectories",
     "structured_report_child_hierarchies",
     "failure_taxonomy",
@@ -71,14 +72,81 @@
     "cohorts": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["smoke", "pilot13", "pilot13-returns", "pilot13-skill-returns", "full-collision", "coverage-closure"],
+      "required": [
+        "smoke",
+        "pilot13",
+        "pilot13-returns",
+        "pilot13-skill-returns",
+        "full-collision",
+        "coverage-closure",
+        "full-collision-core-engineering",
+        "full-collision-safety-overlays",
+        "full-collision-session-growth",
+        "full-collision-authority-routing",
+        "full-collision-eval-children",
+        "coverage-closure-core-implicit",
+        "coverage-closure-titan-implicit-a",
+        "coverage-closure-titan-implicit-b",
+        "coverage-closure-root-trajectories",
+        "coverage-closure-structured-core",
+        "coverage-closure-structured-titan"
+      ],
       "properties": {
         "smoke": {"$ref": "#/$defs/cohort"},
         "pilot13": {"$ref": "#/$defs/cohort"},
         "pilot13-returns": {"$ref": "#/$defs/cohort"},
         "pilot13-skill-returns": {"$ref": "#/$defs/cohort"},
         "full-collision": {"$ref": "#/$defs/cohort"},
-        "coverage-closure": {"$ref": "#/$defs/cohort"}
+        "coverage-closure": {"$ref": "#/$defs/cohort"},
+        "full-collision-core-engineering": {"$ref": "#/$defs/cohort"},
+        "full-collision-safety-overlays": {"$ref": "#/$defs/cohort"},
+        "full-collision-session-growth": {"$ref": "#/$defs/cohort"},
+        "full-collision-authority-routing": {"$ref": "#/$defs/cohort"},
+        "full-collision-eval-children": {"$ref": "#/$defs/cohort"},
+        "coverage-closure-core-implicit": {"$ref": "#/$defs/cohort"},
+        "coverage-closure-titan-implicit-a": {"$ref": "#/$defs/cohort"},
+        "coverage-closure-titan-implicit-b": {"$ref": "#/$defs/cohort"},
+        "coverage-closure-root-trajectories": {"$ref": "#/$defs/cohort"},
+        "coverage-closure-structured-core": {"$ref": "#/$defs/cohort"},
+        "coverage-closure-structured-titan": {"$ref": "#/$defs/cohort"}
+      }
+    },
+    "cohort_partitions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["full-collision", "coverage-closure"],
+      "properties": {
+        "full-collision": {
+          "type": "array",
+          "minItems": 5,
+          "maxItems": 5,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "full-collision-core-engineering",
+              "full-collision-safety-overlays",
+              "full-collision-session-growth",
+              "full-collision-authority-routing",
+              "full-collision-eval-children"
+            ]
+          }
+        },
+        "coverage-closure": {
+          "type": "array",
+          "minItems": 6,
+          "maxItems": 6,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "coverage-closure-core-implicit",
+              "coverage-closure-titan-implicit-a",
+              "coverage-closure-titan-implicit-b",
+              "coverage-closure-root-trajectories",
+              "coverage-closure-structured-core",
+              "coverage-closure-structured-titan"
+            ]
+          }
+        }
       }
     },
     "root_child_trajectories": {
@@ -137,7 +205,7 @@
     "cohort": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["implicit_case_ids", "trajectory_case_ids", "structured_skills", "procedure_contract_mode", "objective_outcome_mode", "expected_turn_count", "estimated_private_bytes", "estimated_memory_demand_mib", "resource_class"],
+      "required": ["implicit_case_ids", "trajectory_case_ids", "structured_skills", "procedure_contract_mode", "objective_outcome_mode", "second_confirmation_required", "expected_turn_count", "estimated_private_bytes", "estimated_memory_demand_mib", "resource_class"],
       "properties": {
         "implicit_case_ids": {
           "oneOf": [
@@ -159,6 +227,7 @@
         },
         "procedure_contract_mode": {"enum": ["required", "required_for_live", "declared_only"]},
         "objective_outcome_mode": {"enum": ["not_scored_fixture_only", "required", "required_for_live", "declared_only"]},
+        "second_confirmation_required": {"type": "boolean"},
         "expected_turn_count": {"type": "integer", "minimum": 1, "maximum": 200},
         "estimated_private_bytes": {"type": "integer", "minimum": 1048576, "maximum": 2147483648},
         "estimated_memory_demand_mib": {"type": "integer", "minimum": 128, "maximum": 2048},

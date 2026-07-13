@@ -69,8 +69,20 @@ than silently reverting the outcome dimension to unscored.
 | `pilot13-skill-returns` | 6 | three pairs affected by the v14 skill-source repair | medium |
 | `full-collision` | 98 | all 49 collision cases as aided/control pairs | sustained |
 | `coverage-closure` | 87 | uncovered skills, all root-child trajectories, and all non-invoke structured routes | sustained |
+| `full-collision-core-engineering` | 16 | collisions 01-08 with three regression anchors and five new contracts | medium |
+| `full-collision-safety-overlays` | 22 | collisions 09-19 | medium |
+| `full-collision-session-growth` | 28 | collisions 20-33 | medium |
+| `full-collision-authority-routing` | 22 | collisions 34-43 plus artifact-trust collision 49 | medium |
+| `full-collision-eval-children` | 10 | collisions 44-48 | medium |
+| `coverage-closure-core-implicit` | 4 | ADR and memo-writeback implicit reachability | medium |
+| `coverage-closure-titan-implicit-a` | 16 | Titan implicit cases 01-08 | medium |
+| `coverage-closure-titan-implicit-b` | 14 | Titan implicit cases 09-15 | medium |
+| `coverage-closure-root-trajectories` | 8 | all decision/eval root-child trajectories | medium |
+| `coverage-closure-structured-core` | 30 | all non-Titan non-invoke structured routes | medium |
+| `coverage-closure-structured-titan` | 15 | all Titan structured routes | medium |
 
-Every cohort beyond smoke requires a second exact high-cost token. Widen only
+Every cohort beyond smoke currently requires a second exact high-cost token,
+as declared by its source plan rather than inferred from its name. Widen only
 after reviewing the preceding cohort and repairing any return route it opens.
 `pilot13` is additionally `required_for_live`: planning may expose incomplete
 procedure-contract and objective-outcome coverage, but confirmed execution
@@ -432,8 +444,19 @@ Six route/procedure pairs are no-lift-both-correct. Seven outcome pairs are
 observation-clean and correct in both arms; two `control_only` and two
 `aided_only` gaps qualify the remaining apparent outcome lift. This is reviewed
 candidate evidence, not an aggregate family score. The 98-turn full-collision
-and 87-turn coverage-closure plans remain declared-only on most pairs and must
-be partitioned into contract-complete waves before sustained execution.
+and 87-turn coverage-closure plans remain declared-only inventory parents;
+live widening uses their contract-gated child waves rather than either parent.
+
+V16 turns that partition into a machine contract. Five collision waves and six
+coverage-closure waves are disjoint and together reproduce every parent trial
+identity. A wave must require both implicit contract axes, require the second
+confirmation, remain at or below 30 turns and 512 MiB, and use light or medium
+host class. Missing implicit contracts block before preflight. The first
+runnable widening, `full-collision-core-engineering`, covers collisions 01-08
+with all eight procedure and owner-action contracts present; the five new
+answer keys request the concrete source evidence needed by property, core
+logic, port/adapter, TDD, and contract-test procedures rather than fabricating
+work inside the hermetic fixture.
 
 ## Safety And Privacy
 
@@ -452,7 +475,7 @@ both sides of this transport-specific contract.
 
 These hermetic invocation rules use contract schema
 `aoa_codex_app_server_skill_input_contract_v11` and protocol revision
-`codex-cli-0.144.1-live-dispatch-evidence-v15`. Retained v1-v14 receipts remain
+`codex-cli-0.144.1-live-dispatch-evidence-v16`. Retained v1-v15 receipts remain
 source-locked to their original protocol and review status and are not upgraded
 in place.
 

@@ -30,3 +30,11 @@ transport-observed candidate command and still do not claim whole-task
 completion, an eval verdict, or proof authority. Public measures also keep
 external-filesystem scope distinct from broad in-fixture inventory scope so a
 later budget marker cannot erase either boundary.
+
+The live plan additionally owns broad-cohort partition shape and the
+source-locked second-confirmation flag. Its runner must prove that bounded waves
+are disjoint, exactly cover their parent trial identities, remain inside the
+declared turn and resource envelope, and cannot execute implicit pairs with
+declared-only procedure or outcome posture. Receipt schemas enumerate the
+reviewable parent and wave identifiers; that enumeration does not grant proof
+or promotion authority.

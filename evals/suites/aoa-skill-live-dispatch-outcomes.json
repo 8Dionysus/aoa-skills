@@ -23,6 +23,25 @@
       "rationale": "An invariant-coverage judgment requires the parser, its current checks, and an authoritative statement of stable truths. The owner-observable next action is to request those surfaces, not to treat examples in the prompt as proof or invent invariants without source evidence."
     },
     {
+      "contract_id": "collision-02-owner-action-v1",
+      "case_id": "collision-02",
+      "scope": "fixture_owner_observable_decision",
+      "decision_prompt": "Which next owner action is justified before authoring invariant-oriented parser checks?",
+      "candidate_values": [
+        "generate_random_inputs_without_stable_truth",
+        "invent_properties_from_prompt_wording",
+        "request_parser_truth_and_bounded_input_space"
+      ],
+      "expected_candidate_value": "request_parser_truth_and_bounded_input_space",
+      "source_refs": [
+        "generated/skill_trigger_collision_matrix.json",
+        "skills/core/engineering/aoa-property-invariants/SKILL.md",
+        "schemas/live-skill-dispatch-outcome-contracts.schema.json",
+        "evals/runners/run_live_skill_dispatch.py"
+      ],
+      "rationale": "Property checks require a real stable truth, a bounded valid input space, exclusions, and understandable generators. The justified next action is to request those owner surfaces, not invent properties from prompt language or confuse undirected random data with meaningful invariant coverage."
+    },
+    {
       "contract_id": "collision-03-owner-action-v1",
       "case_id": "collision-03",
       "scope": "fixture_owner_observable_decision",
@@ -40,6 +59,82 @@
         "evals/runners/run_live_skill_dispatch.py"
       ],
       "rationale": "The prompt identifies overloaded names but provides no owner responsibilities, data authority, workflows, or interfaces. The defensible next action is to request that context and interface evidence before mapping, rather than collapsing distinct meanings or renaming terms without repository proof."
+    },
+    {
+      "contract_id": "collision-04-owner-action-v1",
+      "case_id": "collision-04",
+      "scope": "fixture_owner_observable_decision",
+      "decision_prompt": "Which next owner action is justified before separating discount rules from orchestration glue?",
+      "candidate_values": [
+        "move_all_orchestration_into_core",
+        "rename_layers_without_source_evidence",
+        "request_module_rules_callers_and_tests"
+      ],
+      "expected_candidate_value": "request_module_rules_callers_and_tests",
+      "source_refs": [
+        "generated/skill_trigger_collision_matrix.json",
+        "skills/core/engineering/aoa-core-logic-boundary/SKILL.md",
+        "schemas/live-skill-dispatch-outcome-contracts.schema.json",
+        "evals/runners/run_live_skill_dispatch.py"
+      ],
+      "rationale": "A useful core-versus-glue split depends on the actual module, reusable rules, callers, tests, and execution details. The owner-observable next action is to request those surfaces, not rename layers for ceremony or promote all orchestration into a supposed reusable core."
+    },
+    {
+      "contract_id": "collision-05-owner-action-v1",
+      "case_id": "collision-05",
+      "scope": "fixture_owner_observable_decision",
+      "decision_prompt": "Which next owner action is justified before introducing the Stripe port and adapter seam?",
+      "candidate_values": [
+        "mirror_entire_stripe_sdk_as_port",
+        "refactor_without_service_source",
+        "request_service_capabilities_callers_and_tests"
+      ],
+      "expected_candidate_value": "request_service_capabilities_callers_and_tests",
+      "source_refs": [
+        "generated/skill_trigger_collision_matrix.json",
+        "skills/core/engineering/aoa-port-adapter-refactor/SKILL.md",
+        "schemas/live-skill-dispatch-outcome-contracts.schema.json",
+        "evals/runners/run_live_skill_dispatch.py"
+      ],
+      "rationale": "The reusable center should define only the capability it needs, which cannot be derived without the service source, callers, behavior, and tests. The justified next action is to request those surfaces rather than mirror the provider SDK or perform a source-free abstraction refactor."
+    },
+    {
+      "contract_id": "collision-06-owner-action-v1",
+      "case_id": "collision-06",
+      "scope": "fixture_owner_observable_decision",
+      "decision_prompt": "Which next owner action is justified before beginning the password-reset TDD slice?",
+      "candidate_values": [
+        "claim_feature_passed_from_fixture_probe",
+        "request_owner_repo_behavior_and_test_surface",
+        "write_speculative_tests_from_prompt"
+      ],
+      "expected_candidate_value": "request_owner_repo_behavior_and_test_surface",
+      "source_refs": [
+        "generated/skill_trigger_collision_matrix.json",
+        "skills/core/engineering/aoa-tdd-slice/SKILL.md",
+        "schemas/live-skill-dispatch-outcome-contracts.schema.json",
+        "evals/runners/run_live_skill_dispatch.py"
+      ],
+      "rationale": "A red-green-refactor slice needs observable password-reset behavior, the owner repository, and its current test and implementation surfaces. The next action is to request those inputs, not write speculative tests or treat the harness fixture validator as evidence that the feature passes."
+    },
+    {
+      "contract_id": "collision-07-owner-action-v1",
+      "case_id": "collision-07",
+      "scope": "fixture_owner_observable_decision",
+      "decision_prompt": "Which next owner action is justified before defining the webhook producer-consumer contract?",
+      "candidate_values": [
+        "freeze_incidental_log_wording",
+        "guess_payload_shape_from_prompt",
+        "request_endpoints_schema_and_compatibility_rules"
+      ],
+      "expected_candidate_value": "request_endpoints_schema_and_compatibility_rules",
+      "source_refs": [
+        "generated/skill_trigger_collision_matrix.json",
+        "skills/core/engineering/aoa-contract-test/SKILL.md",
+        "schemas/live-skill-dispatch-outcome-contracts.schema.json",
+        "evals/runners/run_live_skill_dispatch.py"
+      ],
+      "rationale": "The contract must name the actual producer, consumer, stable payload expectation, compatibility behavior, and invalid cases. The justified next action is to request those owner surfaces, rather than guess a payload from prompt prose or freeze incidental log wording as interface truth."
     },
     {
       "contract_id": "collision-08-owner-action-v1",

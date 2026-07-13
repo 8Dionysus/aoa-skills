@@ -463,11 +463,37 @@ As of 2026-07-12:
   and pair-level observation-gap telemetry, while keeping affected outcomes
   unverified. The exact v15 full pilot completes 30/30 with zero failure classes;
   five route/procedure pairs and two child trajectories improve, while four
-  outcome contrasts remain observation-unclean. Broader sustained cohorts must
-  be partitioned and contract-completed before execution.
+  outcome contrasts remain observation-unclean. V16 now partitions both broad
+  parents into eleven disjoint, exact-cover waves and fail-closes each implicit
+  wave on missing contracts; the 16-turn core-engineering wave is the first
+  contract-complete widening.
 - Superseded by: none.
 
 ## Review Log
+
+### 2026-07-12 - Make broad widening an exact bounded partition contract
+
+- Trigger: the 98-turn `full-collision` and 87-turn `coverage-closure` parents
+  were complete inventories but unsafe execution units, and most implicit
+  pairs were still declared-only.
+- Partition: five semantic collision waves and six closure waves must be
+  disjoint and together reproduce every parent trial identity exactly.
+- Bound: every wave requires a second exact confirmation, stays at or below 30
+  turns, 512 MiB private evidence and memory demand, and light or medium host
+  class. Parent inventory views may remain sustained and declared-only.
+- Fail-closed rule: child waves may use only `required` or
+  `required_for_live`; any missing implicit procedure or outcome contract stops
+  before preflight and model spend.
+- First slice: `full-collision-core-engineering` covers `collision-01` through
+  `collision-08`. New source-authored answer keys for property invariants,
+  core logic, port/adapter, TDD, and contract-test routes make the wave 8/8 on
+  both contract axes.
+- Confirmation ownership: the source plan now carries
+  `second_confirmation_required`; cohort names no longer form a hidden runner
+  allowlist for the second token.
+- Decision: bump the live evidence protocol to v16, land deterministic
+  partition and receipt-schema coverage first, then execute only the exact
+  merged core wave and return to source, harness, or runtime from its evidence.
 
 ### 2026-07-12 - Review the complete v15 full pilot and contract the next widening
 

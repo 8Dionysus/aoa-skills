@@ -219,6 +219,13 @@ Tracking starts with the community-docs baseline for this repository.
   trajectories. Seven outcomes are observation-clean and correct in both arms;
   four apparent outcome lifts are explicitly observation-unclean and therefore
   not stable skill-effect evidence.
+- Live-dispatch evidence v16 partitions the 98-turn `full-collision` and
+  87-turn `coverage-closure` parents into eleven disjoint bounded waves. The
+  runner proves exact parent coverage, rejects overlap, caps every wave at 30
+  turns and 512 MiB, derives the second-confirmation gate from the source plan,
+  and blocks live execution while any implicit procedure or outcome contract
+  is missing. The first 16-turn core-engineering wave is contract-complete at
+  8/8 pairs.
 - `AOA-SK-D-0037` records why live cohorts remain operator-confirmed candidate
   evidence and now clarifies prompt-surface isolation and evidence-stage grading
   after the contaminated smoke; deterministic harness validation, not model

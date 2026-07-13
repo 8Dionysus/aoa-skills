@@ -43,13 +43,6 @@ DEFAULT_OUTCOME_CONTRACT_SCHEMA_REF = Path(
 )
 DEFAULT_PRIVATE_RECEIPT_SCHEMA_REF = Path("schemas/live-skill-dispatch-private-receipt.schema.json")
 DEFAULT_PUBLIC_RECEIPT_SCHEMA_REF = Path("schemas/live-skill-dispatch-public-receipt.schema.json")
-HIGH_COST_COHORTS = {
-    "pilot13",
-    "pilot13-returns",
-    "pilot13-skill-returns",
-    "full-collision",
-    "coverage-closure",
-}
 ALLOWED_GATE_DECISIONS = {"allow", "allowed", "ok", "pass"}
 SAFETY_FAILURES = {
     "harness_contamination",
@@ -558,6 +551,7 @@ def load_plan(path: Path) -> dict[str, Any]:
         raise ValueError("live dispatch plan failure taxonomy drifted from the runner contract")
     _procedure_contracts(repo_root, payload)
     _outcome_contracts(repo_root, payload)
+    _validate_cohort_partitions(repo_root, payload)
     return payload
 
 
@@ -767,7 +761,7 @@ def _expected_codex_version(plan: dict[str, Any]) -> str:
     revision = str(plan.get("protocol_revision") or "")
     match = re.fullmatch(
         r"codex-cli-([0-9]+(?:\.[0-9]+){2})-"
-        r"(?:app-server-skill-input-v3|live-dispatch-evidence-v(?:[4-9]|1[0-5]))",
+        r"(?:app-server-skill-input-v3|live-dispatch-evidence-v(?:[4-9]|1[0-6]))",
         revision,
     )
     if match is None:
@@ -1156,6 +1150,63 @@ def expand_cohort(repo_root: Path, plan: dict[str, Any], cohort: str) -> list[Tr
     return trials
 
 
+def _validate_cohort_partitions(repo_root: Path, plan: dict[str, Any]) -> None:
+    partitions = plan.get("cohort_partitions")
+    if not isinstance(partitions, dict):
+        raise ValueError("live dispatch plan must declare cohort_partitions")
+    cohorts = plan.get("cohorts", {})
+    for parent, wave_names in partitions.items():
+        if parent not in cohorts:
+            raise ValueError(f"cohort partition parent is unknown: {parent}")
+        if not isinstance(wave_names, list) or not wave_names:
+            raise ValueError(f"cohort partition must name bounded waves: {parent}")
+        parent_trial_ids = {
+            trial.trial_id for trial in expand_cohort(repo_root, plan, str(parent))
+        }
+        partition_trial_ids: set[str] = set()
+        for wave_name in wave_names:
+            if wave_name not in cohorts:
+                raise ValueError(f"cohort partition wave is unknown: {wave_name}")
+            config = cohorts[wave_name]
+            if config.get("procedure_contract_mode") not in {
+                "required",
+                "required_for_live",
+            }:
+                raise ValueError(f"cohort partition wave permits unscored procedures: {wave_name}")
+            if config.get("objective_outcome_mode") not in {
+                "required",
+                "required_for_live",
+            }:
+                raise ValueError(f"cohort partition wave permits unscored outcomes: {wave_name}")
+            if config.get("second_confirmation_required") is not True:
+                raise ValueError(f"cohort partition wave lacks second confirmation: {wave_name}")
+            if int(config.get("expected_turn_count", 0)) > 30:
+                raise ValueError(f"cohort partition wave exceeds 30 turns: {wave_name}")
+            if int(config.get("estimated_private_bytes", 0)) > 536_870_912:
+                raise ValueError(f"cohort partition wave exceeds private-byte bound: {wave_name}")
+            if int(config.get("estimated_memory_demand_mib", 0)) > 512:
+                raise ValueError(f"cohort partition wave exceeds memory bound: {wave_name}")
+            if config.get("resource_class") not in {"light", "medium"}:
+                raise ValueError(f"cohort partition wave is not bounded: {wave_name}")
+            wave_trial_ids = {
+                trial.trial_id
+                for trial in expand_cohort(repo_root, plan, str(wave_name))
+            }
+            overlap = sorted(partition_trial_ids & wave_trial_ids)
+            if overlap:
+                raise ValueError(
+                    f"cohort partition waves overlap for {parent}: " + ", ".join(overlap)
+                )
+            partition_trial_ids.update(wave_trial_ids)
+        if partition_trial_ids != parent_trial_ids:
+            missing = sorted(parent_trial_ids - partition_trial_ids)
+            extra = sorted(partition_trial_ids - parent_trial_ids)
+            raise ValueError(
+                f"cohort partition does not exactly cover {parent}; "
+                f"missing={missing}; extra={extra}"
+            )
+
+
 def build_plan_packet(
     repo_root: Path,
     plan: dict[str, Any],
@@ -1220,6 +1271,9 @@ def build_plan_packet(
         "objective_outcome_mode": str(
             plan["cohorts"][cohort]["objective_outcome_mode"]
         ),
+        "second_confirmation_required": bool(
+            plan["cohorts"][cohort]["second_confirmation_required"]
+        ),
         "implicit_pair_count": len(implicit_case_ids),
         "procedure_scored_pair_count": len(procedure_case_ids),
         "procedure_contract_coverage_complete": procedure_contract_coverage_complete,
@@ -1265,8 +1319,10 @@ def build_plan_packet(
         "trial_count": len(trials),
         "trial_locks": [trial.public_descriptor() for trial in trials],
         "confirmation_token": confirmation_token,
-        "high_cost_confirmation_required": cohort in HIGH_COST_COHORTS,
-        "high_cost_confirmation_token": high_cost_token if cohort in HIGH_COST_COHORTS else None,
+        "high_cost_confirmation_required": lock["second_confirmation_required"],
+        "high_cost_confirmation_token": (
+            high_cost_token if lock["second_confirmation_required"] else None
+        ),
         "resource_launch_prefix": _resource_launch_prefix(plan, cohort),
         "resource_wrapper_required": True,
         "private_artifacts_written": False,

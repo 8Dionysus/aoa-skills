@@ -642,3 +642,33 @@ and outcome pairs declared, while `coverage-closure` is 87 turns with 1/17
 paired contracts plus broad root/structured arms. Before spending sustained
 cohort budget, partition those surfaces into bounded contract-complete waves;
 do not use missing answer keys as silent unscored success.
+
+## 2026-07-12 v16 bounded broad-cohort partitions
+
+The broad parents remain complete inventory views, but no longer need to be
+the execution unit. `full-collision` is partitioned into five semantic waves:
+core engineering, safety and overlays, session growth, authority routing, and
+eval children. `coverage-closure` is partitioned into core implicit cases, two
+Titan implicit waves, all root-child trajectories, non-Titan structured input,
+and Titan structured input. The eleven child waves are disjoint and their
+trial-identity union exactly equals the two parents.
+
+The partition is an executable contract, not a documentation grouping. Every
+wave must use `required` or `required_for_live` for both implicit contract axes,
+require the second source-locked confirmation, stay at or below 30 turns,
+512 MiB estimated private evidence, 512 MiB estimated memory, and the medium
+resource class. The runner rejects overlap, missing parent trials, extra
+trials, unscored modes, or a wider resource envelope during plan load.
+
+The first runnable wave is `full-collision-core-engineering`: all sixteen arms
+for `collision-01` through `collision-08`. Five new source-derived contracts
+cover property authoring, core-versus-glue separation, port and adapter
+refactoring, TDD slicing, and producer-consumer contract tests. Each prompt
+lacks the concrete repository surface needed to perform the requested change,
+so the honest procedure is `blocked_missing_input` and the bounded owner action
+requests the specific source, invariant, caller, test, or interface evidence.
+Together with the three earlier pilot anchors, the wave is 8/8 on procedure and
+8/8 on outcome coverage. Later implicit waves remain plan-visible but stop
+before preflight until their own answer keys are authored; root and structured
+waves have no implicit pair axis and retain their existing dispatch/load
+contracts.
