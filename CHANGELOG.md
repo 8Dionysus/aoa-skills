@@ -305,6 +305,15 @@ Tracking starts with the community-docs baseline for this repository.
   decision-correct newly enter the confirmation source lock. The focused
   22-turn synthetic run validates both receipt schemas; no live authority-wave
   result, proof acceptance, or promotion is claimed.
+- The first exact-merged authority-routing live run completes 22/22 with all
+  fixture and owner outcomes observed and correct, zero external or broad
+  inventory access, zero observation gaps, and positive route/procedure lift
+  for all six prompt-visible pairs. Preserve it as `needs-rerun`: v18 labels
+  aided decision-child cases 39 and 41 as manual leaks even though both select
+  the prompt-visible `aoa-decision` parent and read its source-authorized child.
+  The existing trajectory map makes this an observability return. A bounded
+  39-41 rerun must still test the create-child read gap and correct-child
+  terminal after that grader repair.
 - Live-dispatch evidence v17 repairs both shared boundaries red-first. Portable
   export now prepends a policy-derived activation sentence to all 43 `manual`
   and two `suggest` descriptions, allowing only explicit invocation or a

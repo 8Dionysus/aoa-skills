@@ -125,9 +125,13 @@ Active first local corpus:
   authority-routing source pass closes all 11 procedure and 11 owner-action
   contracts across collisions 34-43 and 49. Six pairs are route/procedure
   score-eligible and five retain hidden-manual guards. Its focused 22-turn
-  synthetic execution validates both receipt schemas, but no live
-  authority-routing result exists before exact merge, installed-profile
-  parity, host gates, both confirmation tokens, and reviewed execution.
+  synthetic execution validates both receipt schemas. The first exact-merged
+  live run then completes 22/22 with every fixture/outcome observation clean
+  and positive lift for all six prompt-visible pairs, but remains
+  `needs-rerun`. V18 mistakes source-authorized decision-root child reads in
+  cases 39 and 41 for direct manual activation. Repair that observability seam
+  and repeat only cases 39-41 while retaining the create-child read and
+  correct-child terminal as independent checks.
 
 These files are local evidence notes. They do not publish central proof
 acceptance, scoring, verdicts, regression truth, or proof doctrine.
