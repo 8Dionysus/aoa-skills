@@ -88,7 +88,7 @@
   },
   "index_identity": {
     "artifact_kind": "source_surface_index",
-    "content_digest": "7e9c3b0c11852b105559e3b62c575a8bf019a6979305f83df7cc6b0a83e98d81",
+    "content_digest": "ac827c636c61b0f2893060ff7b4e33d390ca1ac1d01a6b2095cd8aabde24aa96",
     "local_id": "index:repo-local:source-surfaces",
     "schema_ref": "aoa-kag:schemas/repo-local-kag-index.schema.json"
   },
@@ -76572,7 +76572,7 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "819d0016fdf11ae991313d5a3cd0b5d344447c5f7aaad25085bf653457d558bd",
+        "content_hash": "58f492d28d896d7683763e6222a81d36c38726274be75d4f7a614436bbd98e27",
         "git_ref": "git-index-source-tree",
         "id": "file:evals/suites/aoa-skill-live-dispatch-harness.suite.json:beeca555d0",
         "mime": "application/json",
@@ -76611,7 +76611,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "819d0016fdf11ae991313d5a3cd0b5d344447c5f7aaad25085bf653457d558bd",
+        "digest": "58f492d28d896d7683763e6222a81d36c38726274be75d4f7a614436bbd98e27",
         "signature_ref": "",
         "verification_state": "digest-only"
       },

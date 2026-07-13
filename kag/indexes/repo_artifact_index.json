@@ -5226,7 +5226,7 @@
     },
     {
       "artifact_kind": "config",
-      "content_hash": "819d0016fdf11ae991313d5a3cd0b5d344447c5f7aaad25085bf653457d558bd",
+      "content_hash": "58f492d28d896d7683763e6222a81d36c38726274be75d4f7a614436bbd98e27",
       "id": "artifact:file:evals/suites/aoa-skill-live-dispatch-harness.suite.json:beeca555d0",
       "path": "evals/suites/aoa-skill-live-dispatch-harness.suite.json",
       "source_record_id": "file:evals/suites/aoa-skill-live-dispatch-harness.suite.json:beeca555d0",
@@ -15395,7 +15395,7 @@
   ],
   "index_identity": {
     "artifact_kind": "repository_artifact_index",
-    "content_digest": "69d1e62a270125d23c54efab2ebda29a801ec7db06f8c9eb0df7a915d5ca6f3f",
+    "content_digest": "f12ff5dd0bee51b73ece6032e59d9bfc8b502edb6cf753f5d605c1c4c59d18bd",
     "index_kind": "artifact",
     "local_id": "index:repo-local:artifacts",
     "schema_ref": "aoa-kag:schemas/repo-local-kag-repository-index.schema.json"
@@ -15419,7 +15419,7 @@
   },
   "schema_version": "aoa-repo-local-kag-repository-index-v1",
   "source_index": {
-    "content_digest": "7e9c3b0c11852b105559e3b62c575a8bf019a6979305f83df7cc6b0a83e98d81",
+    "content_digest": "ac827c636c61b0f2893060ff7b4e33d390ca1ac1d01a6b2095cd8aabde24aa96",
     "local_id": "index:repo-local:source-surfaces",
     "path": "kag/indexes/source_surface_index.json"
   },
