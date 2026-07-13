@@ -390,6 +390,16 @@ temporary root and must not be copied into this directory.
   Preserve this v21 receipt as `needs-rerun`; v22 repairs only the typed slug and
   common structured direct-target contract, then repeats exactly those three
   turns. Proof and promotion remain false.
+- [aoa-skill-live-dispatch-coverage-closure-structured-core-returns-20260713-v22-reviewed-direct-target-contract-clean.json](aoa-skill-live-dispatch-coverage-closure-structured-core-returns-20260713-v22-reviewed-direct-target-contract-clean.json)
+  preserves the exact-merged three-turn v22 return. Decision-find,
+  eval-session-mining, and ATM10 change protocol each receive accepted official
+  structured input, report `invoke` with the exact direct target and no child,
+  stop at `blocked_missing_input`, and pass dispatch, load, complete target
+  read, selection-report, fixture, prompt, runtime-isolation,
+  filesystem/inventory, and owner-boundary checks. There is no failure or early
+  stop. This closes only the common direct-target contract return; there is no
+  matched pair, aggregate score, proof, or promotion claim, and no skill source
+  changed. Structured Titan remains a separate exact-gated wave.
 
 Corrected live receipts under the v11-v22 evidence protocols are reviewable only
 after canonical user-skill shadows, plugins, and every configured MCP id are

@@ -540,10 +540,44 @@ As of 2026-07-13:
   dispatch-policy gap. Review-time projection also reveals that an internal
   `session-mining` source slug falsely matches the transport-id guard. V22
   repairs the typed slug and common direct-target prompt contract, then repeats
-  only those three turns before structured Titan may open.
+  only those three turns. The exact-merged v22 return completes 3/3 with exact
+  direct-target reports, null children, `blocked_missing_input`, complete reads,
+  and every dispatch/load/fixture/isolation/scope check green. This closes the
+  common contract return without changing any of the three skill sources;
+  structured Titan is the next exact-gated wave after writeback.
 - Superseded by: none.
 
 ## Review Log
+
+### 2026-07-13 - Close the v22 structured direct-target return
+
+- Exact source and runtime: merged commit `01e68f1`, protocol v22,
+  `gpt-5.6-sol` at medium effort, repo profile 57/57, installed foundation
+  36/36, both isolated prompt surfaces exactly 12/12 with no return target
+  implicitly visible, 37 disabled shadow paths, 11 disabled MCP ids, and local
+  eval readiness 2/2. The source-locked cohort contains only decision-find,
+  eval-session-mining, and ATM10 change protocol.
+- Host admission: the independent 64 MiB storage write preflight allows the
+  host-private target. The forced interactive medium resource plan has no
+  blocked, denied, or overridden reason, projects warm memory with zero PSI,
+  keeps `MemoryHigh` soft, sets no `MemoryMax`, and permits the bounded 100-105 C
+  active thermal range under the host policy. The exact launch dry run passes;
+  the live wrapper peaks near 853 MiB with zero cgroup swap.
+- Reviewed result: all three turns complete without a failure or early stop.
+  Every official structured input is visible, sent, and natively accepted.
+  Each target reports `invoke`, the exact target in `selected_skill`, null in
+  `selected_child`, and `blocked_missing_input`; dispatch, load, full target
+  read, selection-report, fixture, prompt visibility, runtime isolation,
+  filesystem/inventory scope, and owner-boundary checks all pass.
+- Interpretation: the v21 misses belonged to the common App Server reporting
+  contract, not to decision-find, eval-session-mining, or ATM10 source. Do not
+  edit those skills for this evidence. The return has no matched pair,
+  aggregate score, central proof authority, or promotion authority.
+- Host closeout and next: storage, resource, and memory validators pass 19/19,
+  16/16, and 35/35 with zero warnings. Land the reviewed public receipt and
+  this rationale, repeat exact merged runtime/model/local-eval and host gates,
+  then open the 15-turn `coverage-closure-structured-titan` wave unless its own
+  evidence requires a narrower return.
 
 ### 2026-07-13 - Return from structured-core to three direct targets
 
