@@ -180,6 +180,13 @@ Tracking starts with the community-docs baseline for this repository.
   exclusion boundaries for approval-gate and ATM10 overlay owners; the reviewed
   receipt remains non-proof `needs-rerun` evidence pending the smallest affected
   rerun.
+- Red-first source and portable-description contracts now require
+  `aoa-decision` to fully read its one selected child before graph work and
+  require `aoa-change-protocol` to defer approval-only production
+  classification and project-specific manual overlays without loading their
+  explicit owners. A new 6-turn `pilot13-skill-returns` cohort carries only the
+  three affected pairs, requires 3/3 procedure and outcome contracts, and has
+  private/public receipt schema parity before exact-merged live execution.
 - `AOA-SK-D-0037` records why live cohorts remain operator-confirmed candidate
   evidence and now clarifies prompt-surface isolation and evidence-stage grading
   after the contaminated smoke; deterministic harness validation, not model

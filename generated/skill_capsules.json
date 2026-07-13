@@ -136,13 +136,13 @@
       "scope": "core",
       "skill_path": "skills/core/engineering/aoa-change-protocol/SKILL.md",
       "status": "canonical",
-      "summary": "Bounded workflow for a local coding agent to read the owner route, plan a scoped change, verify it explicitly, and report it clearly.",
+      "summary": "Bounded workflow for a local coding agent to read the owner route, plan a scoped change, verify it explicitly, and report it clearly, while deferring approval classification and manual project overlays to their explicit owners.",
       "technique_dependencies": [
         "AOA-T-0001",
         "AOA-T-0002"
       ],
       "trigger_boundary_short": "Use when the change affects code, config, docs, or operational surfaces in a meaningful way; the task benefits from an explicit plan and verification path; Avoid when the edit is tiny and has no meaningful review or...",
-      "verification_short": "Checks: confirm the owner route and relevant source surfaces were inspected before apply; confirm the change stayed scoped; confirm at least one explicit verification step was run or intentionally skipped with...",
+      "verification_short": "Checks: confirm the owner route and relevant source surfaces were inspected before apply; confirm approval-classification and manual project-overlay tasks were not absorbed by the generic workflow or used to load an...",
       "workflow_short": "Purpose: Ground non-trivial changes in the owner route before editing, then keep the diff reviewable and explicitly verified without hidden scope expansion. Flow: choose the owner repository and read the nearest route card, AGENTS.md, source-of-truth..."
     },
     {
@@ -227,13 +227,13 @@
       "scope": "core",
       "skill_path": "skills/core/engineering/aoa-decision/SKILL.md",
       "status": "evaluated",
-      "summary": "Route AoA decision-lane work through the workspace decision graph first, then hand off to the smallest find, create, or correct subskill while keeping repo-local decision files authoritative.",
+      "summary": "Route AoA decision-lane work by selecting and fully reading exactly one find, create, or correct subskill before that child uses the workspace decision graph, while keeping repo-local decision files authoritative.",
       "technique_dependencies": [
         "AOA-T-0033",
         "AOA-T-0002"
       ],
       "trigger_boundary_short": "Use when the task mentions docs/decisions/, decision records, ADRs, decision indexes, decision graph, or decision-lane symmetry; the user asks which prior decision, source surface, owner boundary, status,...",
-      "verification_short": "Checks: confirm exactly one route was selected; confirm aoadecisions was used first when available, or the fallback was named; confirm graph issue posture was checked before create/correct routes; confirm broad...",
+      "verification_short": "Checks: confirm exactly one route was selected; confirm the selected child was fully read before its graph lookup or write procedure began; naming a child without loading it is not a handoff; confirm aoadecisions...",
       "workflow_short": "Purpose: this skill as the front door for AoA docs/decisions/ work. Flow: classify the task -> find or understand: use aoa-decision-find -> create or record a new rationale: use aoa-decision-create -> correct, supersede, reindex, or repair metadata: use..."
     },
     {

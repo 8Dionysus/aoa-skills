@@ -491,3 +491,26 @@ revision: strengthen the `aoa-decision` root-to-find handoff and narrow
 owners. Preserve the v14 receipt as `needs-rerun`, add deterministic regression
 cases first, then execute only the smallest affected live cohort before any
 full-pilot or family widening.
+
+## 2026-07-12 v14 skill-source repair
+
+Red-first deterministic fixtures now bind the two source changes exposed by
+the complete v14 run. `aoa-decision` classifies first, then must select and
+fully read exactly one find, create, or correct child before graph lookup,
+source reads, or writes; a root-only find route is explicitly incomplete. Its
+prompt-visible portable description carries the same handoff rule.
+
+`aoa-change-protocol` retains implicit activation for genuinely generic bounded
+changes, but its source and prompt-visible description now exclude two owner
+classes before selection: approval-only classification for production or
+sensitive actions, and project-specific manual overlays such as the ATM10
+repo-relative route. The change neither relaxes the explicit target policies
+nor makes the generic workflow manual. Collision-family adjacency now records
+the observed risk boundary for derived routers as well.
+
+The next live step is source-locked as `pilot13-skill-returns`: six turns, both
+arms for `collision-38`, `collision-09`, and `collision-14`, no unrelated
+trajectory or structured cases, procedure and outcome coverage 3/3, and full
+private/public cohort schema parity. This contraction reduces model spend while
+preserving paired evidence. Exact-merged execution is still required; green
+deterministic checks alone cannot claim the runtime collision is repaired.

@@ -46,6 +46,7 @@ DEFAULT_PUBLIC_RECEIPT_SCHEMA_REF = Path("schemas/live-skill-dispatch-public-rec
 HIGH_COST_COHORTS = {
     "pilot13",
     "pilot13-returns",
+    "pilot13-skill-returns",
     "full-collision",
     "coverage-closure",
 }

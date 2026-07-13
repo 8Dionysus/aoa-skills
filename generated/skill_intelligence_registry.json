@@ -1805,13 +1805,13 @@
       "name": "aoa-change-protocol",
       "scope": "core",
       "status": "canonical",
-      "summary": "Bounded workflow for a local coding agent to read the owner route, plan a scoped change, verify it explicitly, and report it clearly.",
+      "summary": "Bounded workflow for a local coding agent to read the owner route, plan a scoped change, verify it explicitly, and report it clearly, while deferring approval classification and manual project overlays to their explicit owners.",
       "source": {
         "skill_path": "skills/core/engineering/aoa-change-protocol/SKILL.md",
         "techniques_path": "skills/core/engineering/aoa-change-protocol/techniques.yaml",
         "policy_path": "skills/core/engineering/aoa-change-protocol/agents/openai.yaml",
-        "content_hash": "c499a8ef7970c6583d818c41d4cc70549ba910a576ea27d1076f8a4a3ae559a9",
-        "skill_revision": "c499a8ef7970"
+        "content_hash": "6490165eb023f9ddeab63dd409b0ce14884316553cee7a8f5d72ceb95f4b66bd",
+        "skill_revision": "6490165eb023"
       },
       "policy": {
         "invocation_mode": "explicit-preferred",
@@ -1823,7 +1823,7 @@
         "requires_confirmation_seam": false
       },
       "runtime": {
-        "description": "Plan and execute a bounded, non-trivial repository change with explicit verification and reporting. Use when code, config, docs, or operational surfaces change in a meaningful way and the task benefits from an explicit plan. Do not use for trivial wording fixes or when a more specific risk skill fits better.",
+        "description": "Plan and execute a bounded, non-trivial repository change with explicit verification and reporting. Use when code, config, docs, or operational surfaces change meaningfully and no narrower owner controls the route. Do not use when the task is only to classify whether a production or sensitive action is allowed; keep the explicit-only approval-gate owner unloaded and require a deliberate manual route. Do not use when a project-specific manual overlay is the semantic owner; do not substitute the generic base workflow or load the overlay implicitly. Do not use for trivial wording fixes.",
         "allow_implicit_invocation": true
       },
       "tiny_router": {
@@ -1905,7 +1905,7 @@
         "canonical_eval_ready": true,
         "canonical_eval_blockers": [],
         "use_case_count": 1,
-        "do_not_use_case_count": 1,
+        "do_not_use_case_count": 3,
         "autonomy_check_count": 1,
         "promotion_review_path": null,
         "candidate_review_path": "docs/reviews/canonical-candidates/aoa-change-protocol.md"
@@ -1951,9 +1951,9 @@
           "section_role": "summary",
           "source_path": "skills/core/engineering/aoa-change-protocol/SKILL.md",
           "source_anchor": "frontmatter.summary",
-          "text": "Bounded workflow for a local coding agent to read the owner route, plan a scoped change, verify it explicitly, and report it clearly.",
-          "text_sha256": "1c568d70f15a59e41c0071944652093c22efc5112a4487e48afd1d8262f74d1b",
-          "token_count": 23
+          "text": "Bounded workflow for a local coding agent to read the owner route, plan a scoped change, verify it explicitly, and report it clearly, while deferring approval classification and manual project overlays to their explicit owners.",
+          "text_sha256": "70afab85bd454811c68048dab1aff114488c87126f41d43399f6d906fbf099bf",
+          "token_count": 35
         },
         {
           "doc_id": "skill:aoa-change-protocol:section:intent",
@@ -1971,9 +1971,9 @@
           "section_role": "trigger_boundary",
           "source_path": "skills/core/engineering/aoa-change-protocol/SKILL.md",
           "source_anchor": "## Trigger boundary",
-          "text": "Use this skill when: - the change affects code, config, docs, or operational surfaces in a meaningful way - the task benefits from an explicit plan and verification path - the task touches more than a trivial wording fix - the request references previous work, sibling repositories, root surfaces, mechanics, generated outputs, or owner boundaries that must be inspected before planning Do not use this skill when: - the edit is tiny and has no meaningful review or operational consequence - a more specific risk skill should be used instead",
-          "text_sha256": "6965c8218cd60f61f3cd5081b0bc94fe7ac46609876dada1e9f4a4642822b831",
-          "token_count": 90
+          "text": "Use this skill when: - the change affects code, config, docs, or operational surfaces in a meaningful way - the task benefits from an explicit plan and verification path - the task touches more than a trivial wording fix - the request references previous work, sibling repositories, root surfaces, mechanics, generated outputs, or owner boundaries that must be inspected before planning Do not use this skill when: - the edit is tiny and has no meaningful review or operational consequence - a more specific risk skill should be used instead - the task is only to classify whether a production or sensitive action is allowed; keep the explicit-only approval-gate owner unloaded and require a deliberate manual route - a project-specific manual overlay is the semantic owner; do not substitute the generic base workflow or load the overlay implicitly",
+          "text_sha256": "4e0f2205c7aa051d1a235961e2ce18f65d2d242f1006a10268833b5ab4366154",
+          "token_count": 138
         },
         {
           "doc_id": "skill:aoa-change-protocol:section:inputs",
@@ -2001,9 +2001,9 @@
           "section_role": "procedure",
           "source_path": "skills/core/engineering/aoa-change-protocol/SKILL.md",
           "source_anchor": "## Procedure",
-          "text": "1. choose the owner repository and read the nearest route card, `AGENTS.md`, source-of-truth surfaces, and local validation path before planning 2. state the goal, touched surfaces, and evidence already inspected; if the request depends on prior work, inspect the current repo state rather than relying on memory 3. when prior-session behavior matters for risk, speed, or recurrence, use `aoa-session-memory-evidence-route` or an equivalent read-only `aoa-session-memory-mcp` packet; for a stable skill/MCP/hook/tool/script/test anchor, ask for `usage-chain` first when the question is how it was used, what happened after, or which failures/consequences followed; use `entity-dossier` when source identity, graph/cooccurrence/timeline context, related entities, or a heavier human packet is needed; expand to usage audit, neighborhood, literal, graph, goal, or answer routes only when the first packet is stale, truncated, missing refs, or too coarse; use the result as route evidence only 4. identify the main risk, owner boundary, and rollback or recovery shape before editing 5. prepare the smallest reviewable change that follows the current source route 6. avoid unrelated cleanup, opportunistic refactors, or importing a sibling owner's authority into the local surface 7. apply the change inside the declared scope 8. run or name explicit verification, including generated/export rebuilds when source surfaces feed derived outputs 9. perform the narrow post-change route review only for surfaces whose meaning actually moved 10. report what changed, what was verified, what was skipped, what remains risky, and where the next owner route is",
-          "text_sha256": "f18fe9b6e50a624c5eddd1108ebd7cbd12321bb29ce426ebb357140a32bdb58f",
-          "token_count": 235
+          "text": "1. choose the owner repository and read the nearest route card, `AGENTS.md`, source-of-truth surfaces, and local validation path before planning 2. before treating the generic workflow as selected, check whether the task is only approval classification or whether a manual project overlay owns the repo-relative route. In either case, keep the explicit owner unloaded, report the deliberate manual route, and stop this generic procedure 3. state the goal, touched surfaces, and evidence already inspected; if the request depends on prior work, inspect the current repo state rather than relying on memory 4. when prior-session behavior matters for risk, speed, or recurrence, use `aoa-session-memory-evidence-route` or an equivalent read-only `aoa-session-memory-mcp` packet; for a stable skill/MCP/hook/tool/script/test anchor, ask for `usage-chain` first when the question is how it was used, what happened after, or which failures/consequences followed; use `entity-dossier` when source identity, graph/cooccurrence/timeline context, related entities, or a heavier human packet is needed; expand to usage audit, neighborhood, literal, graph, goal, or answer routes only when the first packet is stale, truncated, missing refs, or too coarse; use the result as route evidence only 5. identify the main risk, owner boundary, and rollback or recovery shape before editing 6. prepare the smallest reviewable change that follows the current source route 7. avoid unrelated cleanup, opportunistic refactors, or importing a sibling owner's authority into the local surface 8. apply the change inside the declared scope 9. run or name explicit verification, including generated/export rebuilds when source surfaces feed derived outputs 10. perform the narrow post-change route review only for surfaces whose meaning actually moved 11. report what changed, what was verified, what was skipped, what remains risky, and where the next owner route is",
+          "text_sha256": "2b3f82568b63ea538fad97a79abbd2437f3d35a62d2ca9130c4d4598576e4fec",
+          "token_count": 279
         },
         {
           "doc_id": "skill:aoa-change-protocol:section:contracts",
@@ -2031,9 +2031,9 @@
           "section_role": "verification",
           "source_path": "skills/core/engineering/aoa-change-protocol/SKILL.md",
           "source_anchor": "## Verification",
-          "text": "- confirm the owner route and relevant source surfaces were inspected before apply - confirm the change stayed scoped - confirm at least one explicit verification step was run or intentionally skipped with explanation - if prior-session evidence was used, confirm the usage-chain, dossier, or fallback route packet refs were named and current source/runtime evidence still controlled the change - confirm generated or export surfaces were rebuilt when canonical inputs changed - confirm the post-change route review touched only surfaces whose meaning moved - confirm the report includes outcome, rollback thinking, skipped checks, and remaining owner-route risk",
-          "text_sha256": "93fdcd0eeee9756f9366106de741cc706f0d289e3837af126b10e0f8c6fb7a6d",
-          "token_count": 97
+          "text": "- confirm the owner route and relevant source surfaces were inspected before apply - confirm approval-classification and manual project-overlay tasks were not absorbed by the generic workflow or used to load an explicit owner implicitly - confirm the change stayed scoped - confirm at least one explicit verification step was run or intentionally skipped with explanation - if prior-session evidence was used, confirm the usage-chain, dossier, or fallback route packet refs were named and current source/runtime evidence still controlled the change - confirm generated or export surfaces were rebuilt when canonical inputs changed - confirm the post-change route review touched only surfaces whose meaning moved - confirm the report includes outcome, rollback thinking, skipped checks, and remaining owner-route risk",
+          "text_sha256": "db2ad2276698300a346f03359d8b80980154a4d53e0ddc92dd2cd54d1435e060",
+          "token_count": 119
         },
         {
           "doc_id": "skill:aoa-change-protocol:section:lineage",
@@ -3087,13 +3087,13 @@
       "name": "aoa-decision",
       "scope": "core",
       "status": "evaluated",
-      "summary": "Route AoA decision-lane work through the workspace decision graph first, then hand off to the smallest find, create, or correct subskill while keeping repo-local decision files authoritative.",
+      "summary": "Route AoA decision-lane work by selecting and fully reading exactly one find, create, or correct subskill before that child uses the workspace decision graph, while keeping repo-local decision files authoritative.",
       "source": {
         "skill_path": "skills/core/engineering/aoa-decision/SKILL.md",
         "techniques_path": "skills/core/engineering/aoa-decision/techniques.yaml",
         "policy_path": "skills/core/engineering/aoa-decision/agents/openai.yaml",
-        "content_hash": "32bf356582d5d0be3b886822cdf469ce4d0111ed4f9a7fc274fe6b79c7d5f5f2",
-        "skill_revision": "32bf356582d5"
+        "content_hash": "c30d86bc4859fe08fa352c82b461dd98ae5b4265e5b4a3735468bd442e5ec76b",
+        "skill_revision": "c30d86bc4859"
       },
       "policy": {
         "invocation_mode": "explicit-preferred",
@@ -3105,7 +3105,7 @@
         "requires_confirmation_seam": false
       },
       "runtime": {
-        "description": "Route AoA decision-lane work through the workspace decision graph first, checking status/issues and the smallest impact packet before choosing find, create, or correct while keeping repo-local decision files authoritative. Use when the task mentions docs/decisions, decision indexes, decision graph, ADRs, changed paths, source-surface rationale, supersession, or cross-repo decision symmetry. Do not use for ordinary docs edits, unresolved source-of-truth mapping, or trivial changes that do not need durable rationale.",
+        "description": "Route AoA decision-lane work by classifying the task, then select and fully read exactly one find, create, or correct child before that child performs graph lookup or a write, while keeping repo-local decision files authoritative. Use when the task mentions docs/decisions, decision indexes, decision graph, ADRs, changed paths, source-surface rationale, supersession, or cross-repo decision symmetry. Do not stop at the root after naming a child. Do not use for ordinary docs edits, unresolved source-of-truth mapping, or trivial changes that do not need durable rationale.",
         "allow_implicit_invocation": true
       },
       "tiny_router": {
@@ -3177,7 +3177,7 @@
       "evaluation": {
         "canonical_eval_ready": true,
         "canonical_eval_blockers": [],
-        "use_case_count": 1,
+        "use_case_count": 2,
         "do_not_use_case_count": 1,
         "autonomy_check_count": 1,
         "promotion_review_path": "docs/reviews/status-promotions/aoa-decision.md",
@@ -3224,9 +3224,9 @@
           "section_role": "summary",
           "source_path": "skills/core/engineering/aoa-decision/SKILL.md",
           "source_anchor": "frontmatter.summary",
-          "text": "Route AoA decision-lane work through the workspace decision graph first, then hand off to the smallest find, create, or correct subskill while keeping repo-local decision files authoritative.",
-          "text_sha256": "f49f18f82c18452ae84f02c61ac5bea5ed2fcf4e9461134bb564d26f7d626311",
-          "token_count": 27
+          "text": "Route AoA decision-lane work by selecting and fully reading exactly one find, create, or correct subskill before that child uses the workspace decision graph, while keeping repo-local decision files authoritative.",
+          "text_sha256": "9b8b66256c8b797201c983732acaccecdf5048d8fa9a3f8b4f09a44d9c6b181f",
+          "token_count": 30
         },
         {
           "doc_id": "skill:aoa-decision:section:intent",
@@ -3244,9 +3244,9 @@
           "section_role": "trigger_boundary",
           "source_path": "skills/core/engineering/aoa-decision/SKILL.md",
           "source_anchor": "## Trigger boundary",
-          "text": "Use this skill when: - the task mentions `docs/decisions/`, decision records, ADRs, decision indexes, decision graph, or decision-lane symmetry - the user asks which prior decision, source surface, owner boundary, status, supersession, or rationale applies - a new durable decision record may be needed after a structural, workflow, tooling, source/export, or authority change - an existing decision note, index metadata, supersession, source-surface list, or generated decision index may need correction - the work spans more than one AoA repository and graph lookup can reduce context load Do not use this skill when: - the task is a normal docs edit with no durable decision-lane implication - the real question is only source-of-truth ambiguity; use `aoa-source-of-truth-check` - the real question is only whether a decision should be recorded; use `aoa-adr-write` - the request is only to summarize code, tests, or release notes without decision rationale - a repo-local route card forbids changing decision surfaces in the current scope",
-          "text_sha256": "2b5a85fa661546072a85d8e6f66ed6756c551ceaca895924dcdfa9c0ee9cb215",
-          "token_count": 157
+          "text": "Use this skill when: - the task mentions `docs/decisions/`, decision records, ADRs, decision indexes, decision graph, or decision-lane symmetry - the user asks which prior decision, source surface, owner boundary, status, supersession, or rationale applies - a new durable decision record may be needed after a structural, workflow, tooling, source/export, or authority change - an existing decision note, index metadata, supersession, source-surface list, or generated decision index may need correction - the work spans more than one AoA repository and graph lookup can reduce context load - after classification, the selected find, create, or correct child must be fully read before its work begins Do not use this skill when: - the task is a normal docs edit with no durable decision-lane implication - the real question is only source-of-truth ambiguity; use `aoa-source-of-truth-check` - the real question is only whether a decision should be recorded; use `aoa-adr-write` - the request is only to summarize code, tests, or release notes without decision rationale - a repo-local route card forbids changing decision surfaces in the current scope",
+          "text_sha256": "6b8e9a8aa7aa6707cbd8c7d31b1a81cb86596f49cda3f7e5ac7cf56055af7574",
+          "token_count": 175
         },
         {
           "doc_id": "skill:aoa-decision:section:inputs",
@@ -3274,9 +3274,9 @@
           "section_role": "procedure",
           "source_path": "skills/core/engineering/aoa-decision/SKILL.md",
           "source_anchor": "## Procedure",
-          "text": "1. classify the task: - find or understand: use `aoa-decision-find` - create or record a new rationale: use `aoa-decision-create` - correct, supersede, reindex, or repair metadata: use `aoa-decision-correct` 2. use the `aoa_decisions` MCP first when it is available; request status and the smallest relevant packet before broad file reads: - graph health and blockers: `aoa_decisions_status` and `aoa_decisions_issues` - touched path: `aoa_decisions_changed_path` - source surface: `aoa_decisions_source_surface` - owner surface: `aoa_decisions_owner_surface` - repo comparison: `aoa_decisions_repo_symmetry` - decision ID or known record: `aoa_decisions_decision` - repo slice when the target repo is known: `aoa_decisions_repo` 3. use `aoa_decisions_search` only after the status/issues and the relevant changed-path, source-surface, owner-surface, repo, or decision packet is missing, stale, or too narrow; split a long natural-language request into smaller anchors before broad search 4. when the user asks about prior session behavior, correction history, tool usage, impact evidence, or \"what happened after\", use `aoa-session-memory-evidence-route` or the equivalent read-only `aoa-session-memory-mcp` packet after the decision graph route; for a stable decision/tool/path anchor, ask for `usage-chain` first when the question is how it was used, what happened after, or which failures/consequences followed; use `entity-dossier` when source identity, graph/cooccurrence/timeline context, related entities, or a heavier human packet is needed; expand only if the first packet is stale, truncated, missing refs, or too coarse; treat the packet as evidence refs only, then return to repo-local decision files for truth 5. if MCP is unavailable, locate `abyss-stack` in the current workspace or a known local checkout, then run its graph builder, such as `python <abyss-stack>/scripts/build_workspace_decision_graph.py --check --json` 6. if graph lookup is unavailable too, use repo-local `rg` and generated decision indexes, then read the source decision notes directly 7. load only the chosen subskill; do not load find, create, and correct instructions at the same time 8. before any write, read the target repo's decision route card and template; if `issue_count > 0`, inspect `aoa_decisions_issues` and do not write in a repo whose decision lane has unresolved graph issues 9. after any write, run the repo-local decision-index generator/check and then refresh or check the workspace graph and decision-graph lane when available 10. report the source decision file, graph freshness posture, validation run, and any remaining owner-route risk",
-          "text_sha256": "25f9a28fa42324609a37da963f363a065e327279e0b7dddba6ab06781b661495",
-          "token_count": 362
+          "text": "1. classify the task: - find or understand: use `aoa-decision-find` - create or record a new rationale: use `aoa-decision-create` - correct, supersede, reindex, or repair metadata: use `aoa-decision-correct` 2. immediately select and fully read exactly one classified child before any graph query, source lookup, or write. The child owns the detailed route from this point. A find or understand task that stops at `aoa-decision`, or runs decision-graph lookup from the root without loading `aoa-decision-find`, is incomplete. Do not load the other two children. 3. through the selected child, use the `aoa_decisions` MCP first when it is available; request status and the smallest relevant packet before broad file reads: - graph health and blockers: `aoa_decisions_status` and `aoa_decisions_issues` - touched path: `aoa_decisions_changed_path` - source surface: `aoa_decisions_source_surface` - owner surface: `aoa_decisions_owner_surface` - repo comparison: `aoa_decisions_repo_symmetry` - decision ID or known record: `aoa_decisions_decision` - repo slice when the target repo is known: `aoa_decisions_repo` 4. use `aoa_decisions_search` only after the status/issues and the relevant changed-path, source-surface, owner-surface, repo, or decision packet is missing, stale, or too narrow; split a long natural-language request into smaller anchors before broad search 5. when the user asks about prior session behavior, correction history, tool usage, impact evidence, or \"what happened after\", use `aoa-session-memory-evidence-route` or the equivalent read-only `aoa-session-memory-mcp` packet after the decision graph route; for a stable decision/tool/path anchor, ask for `usage-chain` first when the question is how it was used, what happened after, or which failures/consequences followed; use `entity-dossier` when source identity, graph/cooccurrence/timeline context, related entities, or a heavier human packet is needed; expand only if the first packet is stale, truncated, missing refs, or too coarse; treat the packet as evidence refs only, then return to repo-local decision files for truth 6. if MCP is unavailable, locate `abyss-stack` in the current workspace or a known local checkout, then run its graph builder, such as `python <abyss-stack>/scripts/build_workspace_decision_graph.py --check --json` 7. if graph lookup is unavailable too, use repo-local `rg` and generated decision indexes, then read the source decision notes directly 8. before any write, read the target repo's decision route card and template; if `issue_count > 0`, inspect `aoa_decisions_issues` and do not write in a repo whose decision lane has unresolved graph issues 9. after any write, run the repo-local decision-index generator/check and then refresh or check the workspace graph and decision-graph lane when available 10. report the source decision file, graph freshness posture, validation run, and any remaining owner-route risk",
+          "text_sha256": "0a6e375005d66ca54878b463421e4ba25950a2aba8865d801cc88c495afcdf8c",
+          "token_count": 403
         },
         {
           "doc_id": "skill:aoa-decision:section:contracts",
@@ -3304,9 +3304,9 @@
           "section_role": "verification",
           "source_path": "skills/core/engineering/aoa-decision/SKILL.md",
           "source_anchor": "## Verification",
-          "text": "- confirm exactly one route was selected - confirm `aoa_decisions` was used first when available, or the fallback was named - confirm graph issue posture was checked before create/correct routes - confirm broad `aoa_decisions_search` was skipped when a narrower packet was sufficient, or explain why it was needed - if `.aoa` session evidence was used, confirm the usage-chain, dossier, or fallback route cited raw/segment/session refs and that decision truth stayed with repo-local files - confirm the owning repository and source decision surface are explicit - confirm any write uses repo-local route law and validators - confirm generated indexes and the workspace graph are not treated as source truth - confirm the final report names validation and any skipped check",
-          "text_sha256": "b839b6092fd717c086b18a477730455b0e17365377ba41471c1b96c75c952e35",
-          "token_count": 119
+          "text": "- confirm exactly one route was selected - confirm the selected child was fully read before its graph lookup or write procedure began; naming a child without loading it is not a handoff - confirm `aoa_decisions` was used first when available, or the fallback was named - confirm graph issue posture was checked before create/correct routes - confirm broad `aoa_decisions_search` was skipped when a narrower packet was sufficient, or explain why it was needed - if `.aoa` session evidence was used, confirm the usage-chain, dossier, or fallback route cited raw/segment/session refs and that decision truth stayed with repo-local files - confirm the owning repository and source decision surface are explicit - confirm any write uses repo-local route law and validators - confirm generated indexes and the workspace graph are not treated as source truth - confirm the final report names validation and any skipped check",
+          "text_sha256": "0d5d1bec4783cf6049a6ab779523c6cd78e3288b0bfa6e4bd7d13c5a2225c7bd",
+          "token_count": 145
         },
         {
           "doc_id": "skill:aoa-decision:section:lineage",

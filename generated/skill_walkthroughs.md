@@ -330,7 +330,7 @@ Common expand sections:
 - status: `canonical`
 - invocation mode: `explicit-preferred`
 - skill path: `skills/core/engineering/aoa-change-protocol/SKILL.md`
-- pick summary: Bounded workflow for a local coding agent to read the owner route, plan a scoped change, verify it explicitly, and report it clearly.
+- pick summary: Bounded workflow for a local coding agent to read the owner route, plan a scoped change, verify it explicitly, and report it clearly, while deferring approval classification and manual project overlays to their explicit owners.
 
 ### Use when
 
@@ -343,6 +343,8 @@ Common expand sections:
 
 - the edit is tiny and has no meaningful review or operational consequence
 - a more specific risk skill should be used instead
+- the task is only to classify whether a production or sensitive action is allowed; keep the explicit-only approval-gate owner unloaded and require a deliberate manual route
+- a project-specific manual overlay is the semantic owner; do not substitute the generic base workflow or load the overlay implicitly
 
 ### Object use shape
 
@@ -535,7 +537,7 @@ Common expand sections:
 - status: `evaluated`
 - invocation mode: `explicit-preferred`
 - skill path: `skills/core/engineering/aoa-decision/SKILL.md`
-- pick summary: Route AoA decision-lane work through the workspace decision graph first, then hand off to the smallest find, create, or correct subskill while keeping repo-local decision files authoritative.
+- pick summary: Route AoA decision-lane work by selecting and fully reading exactly one find, create, or correct subskill before that child uses the workspace decision graph, while keeping repo-local decision files authoritative.
 
 ### Use when
 
@@ -544,6 +546,7 @@ Common expand sections:
 - a new durable decision record may be needed after a structural, workflow, tooling, source/export, or authority change
 - an existing decision note, index metadata, supersession, source-surface list, or generated decision index may need correction
 - the work spans more than one AoA repository and graph lookup can reduce context load
+- after classification, the selected find, create, or correct child must be fully read before its work begins
 
 ### Do not use when
 

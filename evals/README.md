@@ -58,8 +58,13 @@ Active first local corpus:
   procedure axis without removing them. The fresh exact-merged v14 run
   completes all 15 turns with every harness, transport, owner, and safety gate
   clean. It leaves only three source candidates: the `aoa-decision-find` child
-  handoff and two `aoa-change-protocol` boundary collisions. Repair those two
-  source skills and rerun only the affected cases before widening.
+  handoff and two `aoa-change-protocol` boundary collisions. The source repair
+  now binds the child read before root graph work and excludes approval-only or
+  manual-overlay ownership from the generic workflow in both source and
+  prompt-visible descriptions. The 6-turn `pilot13-skill-returns` cohort
+  preserves only those three pairs and requires both contract axes, receipt
+  schema parity, exact source confirmation, and the high-cost token before the
+  next live check.
 
 These files are local evidence notes. They do not publish central proof
 acceptance, scoring, verdicts, regression truth, or proof doctrine.

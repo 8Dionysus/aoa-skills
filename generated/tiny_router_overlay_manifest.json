@@ -84,7 +84,7 @@
       "manual_invocation_required": false,
       "candidate_only": false,
       "project_overlay": false,
-      "description_sha256": "c6441f677758e2ea9f91d09f3291d093e1d9f6ea919674ebe2ffd046b62586aa"
+      "description_sha256": "1309266c0a1d613d006e7511f04a585e581619a24a99a27a38183327eb18bc2f"
     },
     {
       "name": "aoa-checkpoint-closeout-bridge",
@@ -129,7 +129,7 @@
       "manual_invocation_required": false,
       "candidate_only": false,
       "project_overlay": false,
-      "description_sha256": "f76ac8c171081f4e8912c63d40b3c833ebc6b2ea155c1ea2bd629253c9e87530"
+      "description_sha256": "4510ab849cc3e6bf0e477ce2e11b25a8d071ad68a1e528bb198a086965e20290"
     },
     {
       "name": "aoa-decision-correct",

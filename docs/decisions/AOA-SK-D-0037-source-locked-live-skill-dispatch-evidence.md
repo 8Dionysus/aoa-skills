@@ -456,11 +456,34 @@ As of 2026-07-12:
   The fresh exact-merged run completes 15/15 with every harness, transport,
   owner, safety, and final structured-arm boundary clean. It leaves exactly
   three aided source candidates: the `aoa-decision-find` handoff and two
-  `aoa-change-protocol` boundary collisions. Only those two source skills may
-  change before the smallest affected rerun.
+  `aoa-change-protocol` boundary collisions. Those two source skills now carry
+  red-first source and prompt-visible regression contracts. The next live run
+  is the six-turn `pilot13-skill-returns` cohort containing only the three
+  affected pairs, with both contract axes and receipt schema parity required.
 - Superseded by: none.
 
 ## Review Log
+
+### 2026-07-12 - Repair two source boundaries and bind a six-turn return
+
+- Decision root: classify first, then select and fully read exactly one
+  `aoa-decision-find`, `aoa-decision-create`, or `aoa-decision-correct` child
+  before graph lookup or a write. A root-only route that merely names the child
+  is incomplete.
+- Generic change boundary: keep `aoa-change-protocol` implicitly available for
+  generic bounded work, but exclude approval-only production classification
+  and project-specific manual-overlay ownership in both source and portable
+  prompt descriptions.
+- Rejected alternatives: do not weaken the `collision-38` child contract; do
+  not make the entire change protocol manual; do not change or implicitly load
+  the explicit-only approval and ATM10 target skills.
+- Eval contraction: add `pilot13-skill-returns` with only both arms of
+  `collision-38`, `collision-09`, and `collision-14`, 3/3 procedure contracts,
+  3/3 owner-action contracts, a high-cost token, and private/public cohort enum
+  parity.
+- Stop line: source, generated, and deterministic checks cannot close the live
+  return. Merge the exact tree, verify prompt visibility, then run the six-turn
+  cohort under normal host gates before widening.
 
 ### 2026-07-12 - Contract the complete v14 return to two source skills
 

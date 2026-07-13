@@ -325,7 +325,7 @@
       "scope": "core",
       "skill_path": "skills/core/engineering/aoa-change-protocol/SKILL.md",
       "status": "canonical",
-      "summary": "Bounded workflow for a local coding agent to read the owner route, plan a scoped change, verify it explicitly, and report it clearly.",
+      "summary": "Bounded workflow for a local coding agent to read the owner route, plan a scoped change, verify it explicitly, and report it clearly, while deferring approval classification and manual project overlays to their explicit owners.",
       "technique_dependencies": [
         "AOA-T-0001",
         "AOA-T-0002"
@@ -561,7 +561,7 @@
       "scope": "core",
       "skill_path": "skills/core/engineering/aoa-decision/SKILL.md",
       "status": "evaluated",
-      "summary": "Route AoA decision-lane work through the workspace decision graph first, then hand off to the smallest find, create, or correct subskill while keeping repo-local decision files authoritative.",
+      "summary": "Route AoA decision-lane work by selecting and fully reading exactly one find, create, or correct subskill before that child uses the workspace decision graph, while keeping repo-local decision files authoritative.",
       "technique_dependencies": [
         "AOA-T-0033",
         "AOA-T-0002"

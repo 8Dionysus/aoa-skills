@@ -592,7 +592,7 @@
     {
       "name": "aoa-change-protocol",
       "display_name": "AoA Change Protocol",
-      "description": "Plan and execute a bounded, non-trivial repository change with explicit verification and reporting. Use when code, config, docs, or operational surfaces change in a meaningful way and the task benefits from an explicit plan. Do not use for trivial wording fixes or when a more specific risk skill fits better.",
+      "description": "Plan and execute a bounded, non-trivial repository change with explicit verification and reporting. Use when code, config, docs, or operational surfaces change meaningfully and no narrower owner controls the route. Do not use when the task is only to classify whether a production or sensitive action is allowed; keep the explicit-only approval-gate owner unloaded and require a deliberate manual route. Do not use when a project-specific manual overlay is the semantic owner; do not substitute the generic base workflow or load the overlay implicitly. Do not use for trivial wording fixes.",
       "invocation_mode": "explicit-preferred",
       "inputs": [
         "target goal",
@@ -613,6 +613,7 @@
       ],
       "verification": [
         "confirm the owner route and relevant source surfaces were inspected before apply",
+        "confirm approval-classification and manual project-overlay tasks were not absorbed by the generic workflow or used to load an explicit owner implicitly",
         "confirm the change stayed scoped",
         "confirm at least one explicit verification step was run or intentionally skipped with explanation",
         "if prior-session evidence was used, confirm the usage-chain, dossier, or fallback route packet refs were named and current source/runtime evidence still controlled the change",
@@ -658,8 +659,8 @@
         ],
         "verification_notes": [
           "confirm the owner route and relevant source surfaces were inspected before apply",
-          "confirm the change stayed scoped",
-          "confirm at least one explicit verification step was run or intentionally skipped with explanation"
+          "confirm approval-classification and manual project-overlay tasks were not absorbed by the generic workflow or used to load an explicit owner implicitly",
+          "confirm the change stayed scoped"
         ],
         "contract_notes": [
           "the change must remain reviewable",
@@ -990,7 +991,7 @@
     {
       "name": "aoa-decision",
       "display_name": "AoA Decision",
-      "description": "Route AoA decision-lane work through the workspace decision graph first, checking status/issues and the smallest impact packet before choosing find, create, or correct while keeping repo-local decision files authoritative. Use when the task mentions docs/decisions, decision indexes, decision graph, ADRs, changed paths, source-surface rationale, supersession, or cross-repo decision symmetry. Do not use for ordinary docs edits, unresolved source-of-truth mapping, or trivial changes that do not need durable rationale.",
+      "description": "Route AoA decision-lane work by classifying the task, then select and fully read exactly one find, create, or correct child before that child performs graph lookup or a write, while keeping repo-local decision files authoritative. Use when the task mentions docs/decisions, decision indexes, decision graph, ADRs, changed paths, source-surface rationale, supersession, or cross-repo decision symmetry. Do not stop at the root after naming a child. Do not use for ordinary docs edits, unresolved source-of-truth mapping, or trivial changes that do not need durable rationale.",
       "invocation_mode": "explicit-preferred",
       "inputs": [
         "user intent, target repository, touched paths, or decision ID when known",
@@ -1009,6 +1010,7 @@
       ],
       "verification": [
         "confirm exactly one route was selected",
+        "confirm the selected child was fully read before its graph lookup or write procedure began; naming a child without loading it is not a handoff",
         "confirm `aoa_decisions` was used first when available, or the fallback was named",
         "confirm graph issue posture was checked before create/correct routes",
         "confirm broad `aoa_decisions_search` was skipped when a narrower packet was sufficient, or explain why it was needed",
@@ -1054,8 +1056,8 @@
         ],
         "verification_notes": [
           "confirm exactly one route was selected",
-          "confirm `aoa_decisions` was used first when available, or the fallback was named",
-          "confirm graph issue posture was checked before create/correct routes"
+          "confirm the selected child was fully read before its graph lookup or write procedure began; naming a child without loading it is not a handoff",
+          "confirm `aoa_decisions` was used first when available, or the fallback was named"
         ],
         "contract_notes": [
           "the graph accelerates lookup; it does not own decision truth",

@@ -399,6 +399,12 @@ trigger_cases:
       - the task mentions `docs/decisions/`, decision records, ADRs, decision indexes, decision graph, or decision-lane symmetry
       - the work spans more than one AoA repository and graph lookup can reduce context load
   - skill: aoa-decision
+    case_id: decision_router_requires_child_handoff
+    prompt: Find the existing decision rationale through the decision router, then continue through the one selected child rather than executing the lookup from the root.
+    expected: use
+    required_phrases:
+      - after classification, the selected find, create, or correct child must be fully read before its work begins
+  - skill: aoa-decision
     case_id: decision_router_plain_docs_edit
     prompt: Update a README paragraph that has no decision-lane or durable rationale impact.
     expected: do_not_use
@@ -716,6 +722,18 @@ trigger_cases:
     expected: do_not_use
     required_phrases:
       - the edit is tiny and has no meaningful review or operational consequence
+  - skill: aoa-change-protocol
+    case_id: change_protocol_approval_gate_owner
+    prompt: Before touching production DNS, classify whether the action is safe, approval-gated, or out of bounds.
+    expected: do_not_use
+    required_phrases:
+      - the task is only to classify whether a production or sensitive action is allowed; keep the explicit-only approval-gate owner unloaded and require a deliberate manual route
+  - skill: aoa-change-protocol
+    case_id: change_protocol_manual_project_overlay_owner
+    prompt: Inside an atm10 repository, apply the local project overlay with repo-relative paths, commands, and approval notes.
+    expected: do_not_use
+    required_phrases:
+      - a project-specific manual overlay is the semantic owner; do not substitute the generic base workflow or load the overlay implicitly
   - skill: aoa-commit-growth-seam
     case_id: commit_growth_seam_bounded_verified_diff
     prompt: The bounded diff is already applied, the targeted checks are green, and the next honest move is one local commit with an explicit stop line before push.

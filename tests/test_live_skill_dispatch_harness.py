@@ -289,12 +289,16 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
         smoke = self.runner.expand_cohort(REPO_ROOT, plan, "smoke")
         pilot = self.runner.expand_cohort(REPO_ROOT, plan, "pilot13")
         returns = self.runner.expand_cohort(REPO_ROOT, plan, "pilot13-returns")
+        skill_returns = self.runner.expand_cohort(
+            REPO_ROOT, plan, "pilot13-skill-returns"
+        )
         collision = self.runner.expand_cohort(REPO_ROOT, plan, "full-collision")
         closure = self.runner.expand_cohort(REPO_ROOT, plan, "coverage-closure")
 
         self.assertEqual(4, len(smoke))
         self.assertEqual(30, len(pilot))
         self.assertEqual(15, len(returns))
+        self.assertEqual(6, len(skill_returns))
         self.assertEqual(98, len(collision))
         self.assertEqual(87, len(closure))
         self.assertEqual(
@@ -323,6 +327,23 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
         )
         self.assertFalse(
             any(trial.arm_type == "root_manual_child" for trial in returns)
+        )
+        self.assertEqual(
+            {"collision-09", "collision-14", "collision-38"},
+            {trial.case_id for trial in skill_returns},
+        )
+        self.assertTrue(
+            all(
+                trial.arm_type in {"implicit_aided", "implicit_control"}
+                for trial in skill_returns
+            )
+        )
+        self.assertTrue(
+            all(
+                trial.procedure_contract is not None
+                and trial.outcome_contract is not None
+                for trial in skill_returns
+            )
         )
         self.assertTrue(
             all(
@@ -871,6 +892,20 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
         self.assertTrue(returns["procedure_contract_coverage_complete"])
         self.assertEqual(7, returns["objective_outcome_scored_pair_count"])
         self.assertTrue(returns["objective_outcome_coverage_complete"])
+        skill_returns = self.runner.build_plan_packet(
+            REPO_ROOT,
+            plan,
+            "pilot13-skill-returns",
+            "model-a",
+            "medium",
+        )
+        self.assertTrue(skill_returns["high_cost_confirmation_required"])
+        self.assertEqual("required", skill_returns["procedure_contract_mode"])
+        self.assertEqual(3, skill_returns["implicit_pair_count"])
+        self.assertEqual(3, skill_returns["procedure_scored_pair_count"])
+        self.assertTrue(skill_returns["procedure_contract_coverage_complete"])
+        self.assertEqual(3, skill_returns["objective_outcome_scored_pair_count"])
+        self.assertTrue(skill_returns["objective_outcome_coverage_complete"])
 
     def test_high_cost_live_run_blocks_before_preflight_when_procedures_are_incomplete(self) -> None:
         runner = self.runner
@@ -1526,6 +1561,44 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
         runner.validate_public_receipt(public)
         self.assertEqual("pilot13-returns", public["cohort"])
         self.assertEqual(15, public["trial_count"])
+
+    def test_skill_return_private_and_public_receipt_schemas_accept_the_cohort(self) -> None:
+        runner = self.runner
+        plan = runner.load_plan(self.plan_path)
+        packet = runner.build_plan_packet(
+            REPO_ROOT,
+            plan,
+            "pilot13-skill-returns",
+            "test-model",
+            "medium",
+        )
+        with tempfile.TemporaryDirectory() as td:
+            receipt = runner.run_confirmed_cohort(
+                repo_root=REPO_ROOT,
+                plan=plan,
+                cohort="pilot13-skill-returns",
+                model="test-model",
+                effort="medium",
+                confirmation_token=packet["confirmation_token"],
+                high_cost_token=packet["high_cost_confirmation_token"],
+                private_root=Path(td),
+                transport=FakeTransport(),
+                test_only_allow_noncanonical_private_root=True,
+            )
+        Draft202012Validator(
+            self.load_schema("live-skill-dispatch-private-receipt.schema.json")
+        ).validate(receipt)
+        receipt["review"] = {
+            "status": "needs-rerun",
+            "note": "bounded skill-return receipt schema coverage",
+        }
+        public = runner.build_public_receipt(receipt)
+        Draft202012Validator(
+            self.load_schema("live-skill-dispatch-public-receipt.schema.json")
+        ).validate(public)
+        runner.validate_public_receipt(public)
+        self.assertEqual("pilot13-skill-returns", public["cohort"])
+        self.assertEqual(6, public["trial_count"])
 
     def test_prompt_visibility_contamination_stops_before_any_model_turn(self) -> None:
         runner = self.runner

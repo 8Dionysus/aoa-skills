@@ -66,6 +66,7 @@ than silently reverting the outcome dimension to unscored.
 | `smoke` | 4 | one implicit pair, one trajectory, one structured input | light |
 | `pilot13` | 30 | representative core, risk, project, and Titan pressure | medium |
 | `pilot13-returns` | 15 | seven mixed-return pairs plus the corrected Abyss structured report | medium |
+| `pilot13-skill-returns` | 6 | three pairs affected by the v14 skill-source repair | medium |
 | `full-collision` | 98 | all 49 collision cases as aided/control pairs | sustained |
 | `coverage-closure` | 87 | uncovered skills, all root-child trajectories, and all non-invoke structured routes | sustained |
 
@@ -86,6 +87,14 @@ was newly recognized. It intentionally excludes already-clean pilot cases and
 unaffected trajectory/structured arms. Passing it validates the repaired live
 measurement path; it does not by itself promote any skill or replace the
 reviewed v12 pilot receipt.
+
+`pilot13-skill-returns` is the next adaptive contraction. It keeps only both
+arms of `collision-38`, `collision-09`, and `collision-14`, the three pairs
+whose exact v14 evidence changed the `aoa-decision` and `aoa-change-protocol`
+source boundaries. It requires all three procedure and owner-action contracts,
+schema parity, an exact source token, a high-cost token, and normal host gates.
+Passing it can close only these source returns; it cannot replace the wider
+pilot or authorize family promotion.
 
 ## Evidence Semantics
 
@@ -374,6 +383,13 @@ task to `aoa-decision-find`; `collision-09` loads repo-visible
 overlay. This is a source-repair boundary, not a family verdict: preserve the
 receipt, change only those two source skills, and rerun the smallest affected
 case set before widening.
+
+The source repair now makes `aoa-decision` fully read exactly one classified
+child before graph or source work, and makes prompt-visible
+`aoa-change-protocol` defer before loading on approval-only or manual-overlay
+tasks. Red-first source and portable-description tests bind both boundaries.
+The new `pilot13-skill-returns` cohort carries only the six affected arms and
+has private/public receipt schema parity before any live spend.
 
 ## Safety And Privacy
 

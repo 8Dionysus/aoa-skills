@@ -3,4 +3,4 @@ policy:
   implicit_activation_policy: invoke
 notes:
 - This router may be invoked implicitly for clear decision-lane work.
-- The router should select one subskill instead of loading the whole chain.
+- After classification, the router must fully read exactly one selected subskill before that child performs graph lookup or a write; root-only execution is incomplete.

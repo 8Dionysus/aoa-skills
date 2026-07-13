@@ -1,6 +1,6 @@
 ---
 name: aoa-decision
-description: Route AoA decision-lane work through the workspace decision graph first, checking status/issues and the smallest impact packet before choosing find, create, or correct while keeping repo-local decision files authoritative. Use when the task mentions docs/decisions, decision indexes, decision graph, ADRs, changed paths, source-surface rationale, supersession, or cross-repo decision symmetry. Do not use for ordinary docs edits, unresolved source-of-truth mapping, or trivial changes that do not need durable rationale.
+description: Route AoA decision-lane work by classifying the task, then select and fully read exactly one find, create, or correct child before that child performs graph lookup or a write, while keeping repo-local decision files authoritative. Use when the task mentions docs/decisions, decision indexes, decision graph, ADRs, changed paths, source-surface rationale, supersession, or cross-repo decision symmetry. Do not stop at the root after naming a child. Do not use for ordinary docs edits, unresolved source-of-truth mapping, or trivial changes that do not need durable rationale.
 license: Apache-2.0
 compatibility: Designed for Codex or similar coding agents with repository file access and an interactive shell. Network access is optional and only needed when repository validation or referenced workflows require it.
 metadata:
@@ -28,6 +28,7 @@ Use this skill when:
 - a new durable decision record may be needed after a structural, workflow, tooling, source/export, or authority change
 - an existing decision note, index metadata, supersession, source-surface list, or generated decision index may need correction
 - the work spans more than one AoA repository and graph lookup can reduce context load
+- after classification, the selected find, create, or correct child must be fully read before its work begins
 
 Do not use this skill when:
 - the task is a normal docs edit with no durable decision-lane implication
@@ -62,7 +63,13 @@ Do not use this skill when:
    - find or understand: use `aoa-decision-find`
    - create or record a new rationale: use `aoa-decision-create`
    - correct, supersede, reindex, or repair metadata: use `aoa-decision-correct`
-2. use the `aoa_decisions` MCP first when it is available; request status and
+2. immediately select and fully read exactly one classified child before any
+   graph query, source lookup, or write. The child owns the detailed route from
+   this point. A find or understand task that stops at `aoa-decision`, or runs
+   decision-graph lookup from the root without loading `aoa-decision-find`, is
+   incomplete. Do not load the other two children.
+3. through the selected child, use the `aoa_decisions` MCP first when it is
+   available; request status and
    the smallest relevant packet before broad file reads:
    - graph health and blockers: `aoa_decisions_status` and
      `aoa_decisions_issues`
@@ -72,11 +79,11 @@ Do not use this skill when:
    - repo comparison: `aoa_decisions_repo_symmetry`
    - decision ID or known record: `aoa_decisions_decision`
    - repo slice when the target repo is known: `aoa_decisions_repo`
-3. use `aoa_decisions_search` only after the status/issues and the relevant
+4. use `aoa_decisions_search` only after the status/issues and the relevant
    changed-path, source-surface, owner-surface, repo, or decision packet is
    missing, stale, or too narrow; split a long natural-language request into
    smaller anchors before broad search
-4. when the user asks about prior session behavior, correction history, tool
+5. when the user asks about prior session behavior, correction history, tool
    usage, impact evidence, or "what happened after", use
    `aoa-session-memory-evidence-route` or the equivalent read-only
    `aoa-session-memory-mcp` packet after the decision graph route; for a stable
@@ -87,13 +94,11 @@ Do not use this skill when:
    packet is needed; expand only if the first packet is stale, truncated,
    missing refs, or too coarse; treat the packet as evidence refs only, then
    return to repo-local decision files for truth
-5. if MCP is unavailable, locate `abyss-stack` in the current workspace or a
+6. if MCP is unavailable, locate `abyss-stack` in the current workspace or a
    known local checkout, then run its graph builder, such as
    `python <abyss-stack>/scripts/build_workspace_decision_graph.py --check --json`
-6. if graph lookup is unavailable too, use repo-local `rg` and generated
+7. if graph lookup is unavailable too, use repo-local `rg` and generated
    decision indexes, then read the source decision notes directly
-7. load only the chosen subskill; do not load find, create, and correct
-   instructions at the same time
 8. before any write, read the target repo's decision route card and template;
    if `issue_count > 0`, inspect `aoa_decisions_issues` and do not write in a
    repo whose decision lane has unresolved graph issues
@@ -128,6 +133,8 @@ Do not use this skill when:
 
 ## Verification
 - confirm exactly one route was selected
+- confirm the selected child was fully read before its graph lookup or write
+  procedure began; naming a child without loading it is not a handoff
 - confirm `aoa_decisions` was used first when available, or the fallback was named
 - confirm graph issue posture was checked before create/correct routes
 - confirm broad `aoa_decisions_search` was skipped when a narrower packet was

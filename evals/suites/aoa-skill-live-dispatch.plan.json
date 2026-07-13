@@ -2,7 +2,7 @@
   "schema_version": "aoa_skill_live_dispatch_plan_v1",
   "owner_repo": "aoa-skills",
   "profile": "repo-default",
-  "profile_revision": "5cdd8373bb772044f67f720d42106f1d1b354963fe148194e56d1406b019558f",
+  "profile_revision": "65de853bc211218b54640d1dc1ae708790387301afaede8de2cd349b282ee6a8",
   "protocol_revision": "codex-cli-0.144.1-live-dispatch-evidence-v14",
   "proof_authority": false,
   "promotion_allowed": false,
@@ -133,6 +133,21 @@
       "objective_outcome_mode": "required",
       "expected_turn_count": 15,
       "estimated_private_bytes": 268435456,
+      "estimated_memory_demand_mib": 512,
+      "resource_class": "medium"
+    },
+    "pilot13-skill-returns": {
+      "implicit_case_ids": [
+        "collision-38",
+        "collision-09",
+        "collision-14"
+      ],
+      "trajectory_case_ids": [],
+      "structured_skills": [],
+      "procedure_contract_mode": "required",
+      "objective_outcome_mode": "required",
+      "expected_turn_count": 6,
+      "estimated_private_bytes": 134217728,
       "estimated_memory_demand_mib": 512,
       "resource_class": "medium"
     },
