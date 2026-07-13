@@ -187,6 +187,13 @@ Tracking starts with the community-docs baseline for this repository.
   explicit owners. A new 6-turn `pilot13-skill-returns` cohort carries only the
   three affected pairs, requires 3/3 procedure and outcome contracts, and has
   private/public receipt schema parity before exact-merged live execution.
+- The first exact-merged `pilot13-skill-returns` execution completes all six
+  turns and closes the approval-gate return. `collision-38` now passes route and
+  child-trajectory contracts but exposes a narrower missing-input disposition
+  gap plus an unobserved aided outcome sentinel after the exact command exits
+  zero. `collision-14` still loads the generic change protocol. The public-safe
+  receipt preserves both source and observation returns as non-proof
+  `needs-rerun` evidence without weakening outcome verification.
 - `AOA-SK-D-0037` records why live cohorts remain operator-confirmed candidate
   evidence and now clarifies prompt-surface isolation and evidence-stage grading
   after the contaminated smoke; deterministic harness validation, not model

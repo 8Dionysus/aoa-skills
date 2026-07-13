@@ -192,6 +192,14 @@ temporary root and must not be copied into this directory.
   project overlay. This `needs-rerun` receipt narrows source repair to those two
   skills and requires the smallest affected rerun; it grants no proof or
   promotion authority.
+- [aoa-skill-live-dispatch-pilot13-skill-returns-20260712-v14-reviewed-mixed-source-and-observation-returns-needs-rerun.json](aoa-skill-live-dispatch-pilot13-skill-returns-20260712-v14-reviewed-mixed-source-and-observation-returns-needs-rerun.json)
+  preserves the first exact-merged six-turn source-return execution. It closes
+  `collision-09`, confirms positive route and `aoa-decision-find` trajectory
+  lift for `collision-38`, and narrows the remaining source work to that
+  child's missing-input disposition plus the concrete ATM10 exclusion in
+  `aoa-change-protocol`. The aided decision outcome command exits zero but
+  exposes no required sentinel bytes, so objective outcome verification remains
+  false. This mixed `needs-rerun` receipt grants no proof or promotion authority.
 
 Corrected live receipts under the v11-v14 evidence protocols are reviewable only
 after canonical user-skill shadows, plugins, and every configured MCP id are

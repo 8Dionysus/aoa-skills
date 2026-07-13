@@ -391,6 +391,16 @@ tasks. Red-first source and portable-description tests bind both boundaries.
 The new `pilot13-skill-returns` cohort carries only the six affected arms and
 has private/public receipt schema parity before any live spend.
 
+The exact-merged six-turn execution closes the approval-gate pair and confirms
+the decision root-to-find handoff with positive route and trajectory lift. It
+also reveals two narrower source returns: `aoa-decision-find` reports
+`deferred_owner_boundary` instead of `blocked_missing_input` when every graph
+and owner input is absent, while the concrete ATM10 repo-relative prompt still
+loads generic `aoa-change-protocol`. The aided decision outcome command is exact
+and exits zero, but its command event contains no sentinel output; the harness
+correctly leaves outcome verification false. Preserve that observation gap,
+repair only the two source boundaries, and rerun before widening.
+
 ## Safety And Privacy
 
 The plan locks Git head, all portable skill files, generated/config inputs,

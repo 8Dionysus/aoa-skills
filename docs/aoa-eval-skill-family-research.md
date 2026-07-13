@@ -514,3 +514,31 @@ trajectory or structured cases, procedure and outcome coverage 3/3, and full
 private/public cohort schema parity. This contraction reduces model spend while
 preserving paired evidence. Exact-merged execution is still required; green
 deterministic checks alone cannot claim the runtime collision is repaired.
+
+## 2026-07-12 first skill-return execution
+
+The exact-merged six-turn run completes all three pairs without prompt,
+filesystem, inventory, fixture, transport-process, owner-action, safety, or
+authority contamination. `collision-09` is now clean: the aided arm selects no
+repo skill, keeps the explicit approval owner unloaded, reports the required
+manual route, and gains the bounded owner outcome over control. This closes the
+approval-only source return.
+
+`collision-38` also confirms that the root repair worked. The aided arm selects
+`aoa-decision`, fully reads `aoa-decision-find`, and gains both route and
+trajectory over control. Its remaining procedure mismatch is narrower: with no
+graph status, changed paths, target record, or owner packet, the child reports
+`deferred_owner_boundary` rather than the source-locked
+`blocked_missing_input`. The exact expected owner-action command exits zero in
+one attempt, but the aided command event exposes no sentinel output bytes.
+Outcome verification therefore remains false; command identity and exit status
+must not substitute for the missing observable output.
+
+`collision-14` reports the correct manual target route, target procedure, and
+owner outcome, but still selects and claims the prompt-visible generic
+`aoa-change-protocol`. The abstract project-overlay exclusion is therefore too
+weak for the concrete ATM10 repo-relative wording. The next return is bounded:
+make the decision child name the missing-input terminal disposition, make the
+generic change-protocol description reject ATM10 repo-relative paths, commands,
+and approval notes before load, preserve the outcome observation gap, and rerun
+the affected cohort without changing the explicit targets or the proof rule.
