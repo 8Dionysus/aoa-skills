@@ -425,6 +425,16 @@ stays false. Read-only v14 projection labels the two affected controls
 `control_only` and leaves `collision-09` clean. Historical public receipts are
 not rewritten, and no new skill failure class is introduced.
 
+The exact-merged v15 full pilot then completes 30/30 turns and eleven pairs
+with no failure class. Five pairs show positive route and procedure lift, and
+the decision plus eval roots also show positive full-child trajectory lift.
+Six route/procedure pairs are no-lift-both-correct. Seven outcome pairs are
+observation-clean and correct in both arms; two `control_only` and two
+`aided_only` gaps qualify the remaining apparent outcome lift. This is reviewed
+candidate evidence, not an aggregate family score. The 98-turn full-collision
+and 87-turn coverage-closure plans remain declared-only on most pairs and must
+be partitioned into contract-complete waves before sustained execution.
+
 ## Safety And Privacy
 
 The plan locks Git head, all portable skill files, generated/config inputs,

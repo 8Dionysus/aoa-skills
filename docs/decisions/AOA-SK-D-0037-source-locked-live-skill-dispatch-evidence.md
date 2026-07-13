@@ -461,10 +461,32 @@ As of 2026-07-12:
   has no aided failure class and closes the child disposition plus concrete
   ATM10 collision. V15 now exposes recurring missing sentinel bytes as per-arm
   and pair-level observation-gap telemetry, while keeping affected outcomes
-  unverified. Full-pilot widening remains candidate evidence rather than proof.
+  unverified. The exact v15 full pilot completes 30/30 with zero failure classes;
+  five route/procedure pairs and two child trajectories improve, while four
+  outcome contrasts remain observation-unclean. Broader sustained cohorts must
+  be partitioned and contract-completed before execution.
 - Superseded by: none.
 
 ## Review Log
+
+### 2026-07-12 - Review the complete v15 full pilot and contract the next widening
+
+- Exact evidence: all 30 turns and eleven pairs complete with no failure class;
+  every prompt, scope, fixture, transport-process, owner, safety, proof, and
+  promotion boundary remains clean.
+- Routing effect: five pairs have positive route and procedure lift; decision
+  and eval roots also have positive full-child trajectory lift. Six pairs are
+  no-lift-both-correct at those route boundaries.
+- Clean outcome evidence: seven pairs are observation-clean and correct in both
+  arms, so they show zero owner-outcome lift.
+- Qualified outcome evidence: `collision-03` and `collision-08` are
+  `control_only`; `collision-20` and `collision-33` are `aided_only`. Their
+  apparent positive or negative outcome lift is not stable skill evidence.
+- Decision: preserve the public-safe receipt as reviewed candidate evidence,
+  with no aggregate score or promotion. Do not jump directly to the 98-turn
+  `full-collision` or 87-turn `coverage-closure` plans while their declared
+  procedure/outcome coverage is only 10/49 and 1/17; partition and complete the
+  next waves first.
 
 ### 2026-07-12 - Separate outcome observation gaps from lift in v15
 

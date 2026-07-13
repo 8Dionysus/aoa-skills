@@ -608,3 +608,37 @@ Read-only projection of the reviewed clean-aided v14 private receipt produces
 The committed v14 receipt remains immutable. V15 applies to future runs and
 keeps historical projection backward-compatible; after exact merge, the next
 live step returns to the full pilot rather than repeating a source repair.
+
+## 2026-07-12 complete v15 full pilot
+
+The exact-merged v15 widening completes all 30 turns and all eleven pairs with
+zero failure classes. Prompt and background locks, filesystem and inventory
+scope, fixture execution, dispatch and load, transport process, owner boundary,
+proof, promotion, and the root/structured arms all remain clean. Runtime parity
+was reverified at 36/36 before execution, and post-run memory, resource, and
+storage validators report zero failures or warnings.
+
+Five pairs show positive route and selected-procedure lift:
+`collision-01`, `collision-03`, `collision-08`, `collision-38`, and
+`collision-42`. The decision and eval roots (`collision-38` and
+`collision-42`) also show positive full-child trajectory lift. The other six
+pairs are no-lift-both-correct on route and procedure, which is the honest
+result for explicit/manual boundaries already recoverable from the control
+prompt.
+
+Outcome telemetry prevents overclaiming. Seven pairs are
+observation-clean and correct in both arms. `collision-03` and `collision-08`
+show apparent positive outcome lift only because the control has a
+`control_only` sentinel gap. `collision-20` and `collision-33` show apparent
+negative lift only because the aided arm has an `aided_only` gap. All four exact
+commands were single-attempt, zero-exit, and validator-uninspected, so their
+missing sentinel remains an observation defect rather than a source-skill
+verdict.
+
+The full pilot therefore closes the repaired routing slice but does not justify
+one aggregate family score. The next broad plans are much larger and only
+partially contract-covered: `full-collision` is 98 turns with 10/49 procedure
+and outcome pairs declared, while `coverage-closure` is 87 turns with 1/17
+paired contracts plus broad root/structured arms. Before spending sustained
+cohort budget, partition those surfaces into bounded contract-complete waves;
+do not use missing answer keys as silent unscored success.

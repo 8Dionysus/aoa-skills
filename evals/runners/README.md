@@ -351,6 +351,15 @@ clean-aided receipt controls `control_only` without rewriting the receipt or
 creating a skill failure. Exact-merged full-pilot execution is the next live
 step.
 
+That exact-merged v15 full pilot completes all 30 turns and eleven pairs with no
+failure class. Five pairs improve route and procedure disposition, including
+two positive root-child trajectories; six pairs are already correct in both
+arms. Seven outcome pairs are observation-clean and correct in both arms. Two
+control-only and two aided-only sentinel gaps make the remaining apparent
+outcome lift observation-unclean. Preserve the reviewed receipt, then partition
+and contract-complete the 98-turn full-collision and 87-turn coverage-closure
+surfaces before sustained execution.
+
 See `evals/suites/aoa-skill-live-dispatch-harness.suite.md` and
 `docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md` for
 the evidence and authority boundaries.
