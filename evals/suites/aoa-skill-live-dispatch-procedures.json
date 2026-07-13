@@ -364,6 +364,222 @@
       "rationale": "Session donor harvest is an explicit-only writeback workflow and the prompt alone is not a reviewed donor artifact. The implicit procedure must remain not_applicable, avoid loading or claiming a HARVEST_PACKET, and expose the owner boundary: explicit invocation and a reviewed recap or evidence artifact are required before routing reusable units."
     },
     {
+      "contract_id": "collision-21-procedure-v1",
+      "case_id": "collision-21",
+      "scope": "selected_route_procedure_disposition",
+      "expected_selected_child_skill": null,
+      "expected_selected_child_full_read_observed": null,
+      "expected_selected_procedure_disposition": "not_applicable",
+      "expected_selected_procedure_completion_reported": false,
+      "expected_selected_procedure_deflection_reported": false,
+      "expected_owner_boundary_present": true,
+      "source_refs": [
+        "generated/skill_trigger_collision_matrix.json",
+        "skills/core/session-growth/aoa-session-route-forks/SKILL.md",
+        "schemas/live-skill-dispatch-model-output.schema.json",
+        "evals/runners/run_live_skill_dispatch.py"
+      ],
+      "rationale": "Session route-forks is explicit-only and requires an actual reviewed artifact plus a deliberate fork review. The prompt is not that artifact and cannot authorize ROUTE_FORKS writeback. The implicit procedure is not_applicable, must not collapse or launch forks, and must preserve explicit invocation and owner review as the activation boundary."
+    },
+    {
+      "contract_id": "collision-22-procedure-v1",
+      "case_id": "collision-22",
+      "scope": "selected_route_procedure_disposition",
+      "expected_selected_child_skill": null,
+      "expected_selected_child_full_read_observed": null,
+      "expected_selected_procedure_disposition": "not_applicable",
+      "expected_selected_procedure_completion_reported": false,
+      "expected_selected_procedure_deflection_reported": false,
+      "expected_owner_boundary_present": true,
+      "source_refs": [
+        "generated/skill_trigger_collision_matrix.json",
+        "skills/core/session-growth/aoa-session-self-diagnose/SKILL.md",
+        "schemas/live-skill-dispatch-model-output.schema.json",
+        "evals/runners/run_live_skill_dispatch.py"
+      ],
+      "rationale": "Session self-diagnose is explicit-only and needs reviewed evidence about a recurring blocker before it can produce a diagnosis packet. Prompt hints are neither root-cause evidence nor mutation authority. The implicit procedure is not_applicable, reports no diagnosis or repair, and keeps explicit invocation plus reviewed evidence visible."
+    },
+    {
+      "contract_id": "collision-23-procedure-v1",
+      "case_id": "collision-23",
+      "scope": "selected_route_procedure_disposition",
+      "expected_selected_child_skill": null,
+      "expected_selected_child_full_read_observed": null,
+      "expected_selected_procedure_disposition": "not_applicable",
+      "expected_selected_procedure_completion_reported": false,
+      "expected_selected_procedure_deflection_reported": false,
+      "expected_owner_boundary_present": true,
+      "source_refs": [
+        "generated/skill_trigger_collision_matrix.json",
+        "skills/core/session-growth/aoa-session-self-repair/SKILL.md",
+        "schemas/live-skill-dispatch-model-output.schema.json",
+        "evals/runners/run_live_skill_dispatch.py"
+      ],
+      "rationale": "Session self-repair is explicit-only and starts from a reviewed diagnosis with bounded repair, rollback, and health-check surfaces. None exists in the fixture. The implicit procedure is not_applicable, must not patch or claim repair from prompt prose, and preserves explicit invocation and reviewed diagnosis as owner gates."
+    },
+    {
+      "contract_id": "collision-24-procedure-v1",
+      "case_id": "collision-24",
+      "scope": "selected_route_procedure_disposition",
+      "expected_selected_child_skill": null,
+      "expected_selected_child_full_read_observed": null,
+      "expected_selected_procedure_disposition": "not_applicable",
+      "expected_selected_procedure_completion_reported": false,
+      "expected_selected_procedure_deflection_reported": false,
+      "expected_owner_boundary_present": true,
+      "source_refs": [
+        "generated/skill_trigger_collision_matrix.json",
+        "skills/core/session-growth/aoa-session-progression-lift/SKILL.md",
+        "schemas/live-skill-dispatch-model-output.schema.json",
+        "evals/runners/run_live_skill_dispatch.py"
+      ],
+      "rationale": "Session progression-lift is explicit-only and requires reviewed evidence plus a comparison baseline before assessing growth. The prompt cannot prove progression or authorize a score. The implicit procedure is not_applicable, reports no lift, and preserves explicit invocation, evidence, and baseline as the owner boundary."
+    },
+    {
+      "contract_id": "collision-25-procedure-v1",
+      "case_id": "collision-25",
+      "scope": "selected_route_procedure_disposition",
+      "expected_selected_child_skill": null,
+      "expected_selected_child_full_read_observed": null,
+      "expected_selected_procedure_disposition": "not_applicable",
+      "expected_selected_procedure_completion_reported": false,
+      "expected_selected_procedure_deflection_reported": false,
+      "expected_owner_boundary_present": true,
+      "source_refs": [
+        "generated/skill_trigger_collision_matrix.json",
+        "skills/core/session-growth/aoa-quest-harvest/SKILL.md",
+        "schemas/live-skill-dispatch-model-output.schema.json",
+        "evals/runners/run_live_skill_dispatch.py"
+      ],
+      "rationale": "Quest harvest is explicit-only and requires an isolated repeated unit from reviewed evidence before triage or writeback. The fixture provides only a request describing repetition. The implicit procedure is not_applicable, must not promote a quest or treat a verdict as owner acceptance, and keeps explicit review as the gate."
+    },
+    {
+      "contract_id": "collision-26-procedure-v1",
+      "case_id": "collision-26",
+      "scope": "selected_route_procedure_disposition",
+      "expected_selected_child_skill": null,
+      "expected_selected_child_full_read_observed": null,
+      "expected_selected_procedure_disposition": "not_applicable",
+      "expected_selected_procedure_completion_reported": false,
+      "expected_selected_procedure_deflection_reported": false,
+      "expected_owner_boundary_present": true,
+      "source_refs": [
+        "generated/skill_trigger_collision_matrix.json",
+        "skills/core/session-growth/aoa-automation-opportunity-scan/SKILL.md",
+        "schemas/live-skill-dispatch-model-output.schema.json",
+        "evals/runners/run_live_skill_dispatch.py"
+      ],
+      "rationale": "Automation opportunity scan is explicit-only and needs reviewed recurring evidence, a known owner route, and risk boundaries before proposing a seed. Prompt recurrence does not authorize scheduling or mutation. The implicit procedure is not_applicable and preserves explicit invocation and owner acceptance."
+    },
+    {
+      "contract_id": "collision-27-procedure-v1",
+      "case_id": "collision-27",
+      "scope": "selected_route_procedure_disposition",
+      "expected_selected_child_skill": null,
+      "expected_selected_child_full_read_observed": null,
+      "expected_selected_procedure_disposition": "not_applicable",
+      "expected_selected_procedure_completion_reported": false,
+      "expected_selected_procedure_deflection_reported": false,
+      "expected_owner_boundary_present": true,
+      "source_refs": [
+        "generated/skill_trigger_collision_matrix.json",
+        "skills/project/abyss/abyss-self-diagnostic-spine/SKILL.md",
+        "schemas/live-skill-dispatch-model-output.schema.json",
+        "evals/runners/run_live_skill_dispatch.py"
+      ],
+      "rationale": "The Abyss diagnostic spine is explicit-preferred, but this collision deliberately tests the manual route and supplies neither an Abyss owner repository nor concrete runtime evidence and target. The manual procedure is not_applicable and must require the deliberate Abyss route before diagnosis or repair."
+    },
+    {
+      "contract_id": "collision-28-procedure-v1",
+      "case_id": "collision-28",
+      "scope": "selected_route_procedure_disposition",
+      "expected_selected_child_skill": null,
+      "expected_selected_child_full_read_observed": null,
+      "expected_selected_procedure_disposition": "blocked_missing_input",
+      "expected_selected_procedure_completion_reported": false,
+      "expected_selected_procedure_deflection_reported": true,
+      "expected_owner_boundary_present": true,
+      "source_refs": [
+        "generated/skill_trigger_collision_matrix.json",
+        "skills/core/engineering/aoa-source-of-truth-check/SKILL.md",
+        "schemas/live-skill-dispatch-model-output.schema.json",
+        "evals/runners/run_live_skill_dispatch.py"
+      ],
+      "rationale": "The request directly selects the generic source-of-truth route, but no actual conflicting documents, source or config owners, generated consumers, or current roles are present. The selected procedure must stop at blocked_missing_input and request those owner surfaces instead of choosing authority from the diagnostic story."
+    },
+    {
+      "contract_id": "collision-29-procedure-v1",
+      "case_id": "collision-29",
+      "scope": "selected_route_procedure_disposition",
+      "expected_selected_child_skill": null,
+      "expected_selected_child_full_read_observed": null,
+      "expected_selected_procedure_disposition": "not_applicable",
+      "expected_selected_procedure_completion_reported": false,
+      "expected_selected_procedure_deflection_reported": false,
+      "expected_owner_boundary_present": true,
+      "source_refs": [
+        "generated/skill_trigger_collision_matrix.json",
+        "skills/core/session-growth/aoa-checkpoint-closeout-bridge/SKILL.md",
+        "schemas/live-skill-dispatch-model-output.schema.json",
+        "evals/runners/run_live_skill_dispatch.py"
+      ],
+      "rationale": "Checkpoint closeout bridge is explicit-preferred, and this collision deliberately preserves its reviewed activation as an explicit manual step. No actual reviewed checkpoint artifact or owner closeout surfaces exist. The manual procedure is not_applicable and must not execute or declare the closeout chain from prompt prose."
+    },
+    {
+      "contract_id": "collision-30-procedure-v1",
+      "case_id": "collision-30",
+      "scope": "selected_route_procedure_disposition",
+      "expected_selected_child_skill": null,
+      "expected_selected_child_full_read_observed": null,
+      "expected_selected_procedure_disposition": "blocked_missing_input",
+      "expected_selected_procedure_completion_reported": false,
+      "expected_selected_procedure_deflection_reported": true,
+      "expected_owner_boundary_present": true,
+      "source_refs": [
+        "generated/skill_trigger_collision_matrix.json",
+        "skills/core/engineering/aoa-change-protocol/SKILL.md",
+        "schemas/live-skill-dispatch-model-output.schema.json",
+        "evals/runners/run_live_skill_dispatch.py"
+      ],
+      "rationale": "The request directly selects a bounded change protocol, but supplies no aoa-sdk or aoa-skills owner checkout, target files, bridge requirements, diff, or verification contract. The procedure must stop at blocked_missing_input and request those surfaces rather than treat the fixture probe as an implemented closeout bridge."
+    },
+    {
+      "contract_id": "collision-31-procedure-v1",
+      "case_id": "collision-31",
+      "scope": "selected_route_procedure_disposition",
+      "expected_selected_child_skill": null,
+      "expected_selected_child_full_read_observed": null,
+      "expected_selected_procedure_disposition": "not_applicable",
+      "expected_selected_procedure_completion_reported": false,
+      "expected_selected_procedure_deflection_reported": false,
+      "expected_owner_boundary_present": true,
+      "source_refs": [
+        "generated/skill_trigger_collision_matrix.json",
+        "skills/core/session-growth/aoa-commit-growth-seam/SKILL.md",
+        "schemas/live-skill-dispatch-model-output.schema.json",
+        "evals/runners/run_live_skill_dispatch.py"
+      ],
+      "rationale": "Commit growth seam is explicit-only and depends on an inspected bounded diff, explicit commit authorization, and completed validation. None exists in the fixture. The implicit procedure is not_applicable, must neither commit nor push, and keeps explicit authorization and diff ownership visible."
+    },
+    {
+      "contract_id": "collision-32-procedure-v1",
+      "case_id": "collision-32",
+      "scope": "selected_route_procedure_disposition",
+      "expected_selected_child_skill": null,
+      "expected_selected_child_full_read_observed": null,
+      "expected_selected_procedure_disposition": "blocked_missing_input",
+      "expected_selected_procedure_completion_reported": false,
+      "expected_selected_procedure_deflection_reported": true,
+      "expected_owner_boundary_present": true,
+      "source_refs": [
+        "generated/skill_trigger_collision_matrix.json",
+        "skills/core/engineering/aoa-change-protocol/SKILL.md",
+        "schemas/live-skill-dispatch-model-output.schema.json",
+        "evals/runners/run_live_skill_dispatch.py"
+      ],
+      "rationale": "The prompt calls for a bounded repository change but provides no owner route, target repository, current diff, requirements, or verification surfaces. The selected change protocol must stop at blocked_missing_input and request that evidence instead of committing an incomplete or unplanned change."
+    },
+    {
       "contract_id": "collision-33-procedure-v1",
       "case_id": "collision-33",
       "scope": "selected_route_procedure_disposition",

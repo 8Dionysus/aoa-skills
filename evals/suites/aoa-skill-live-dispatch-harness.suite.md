@@ -508,8 +508,26 @@ boundaries. The generic `collision-15` and `collision-17` pairs select and fully
 read their intended base skills, report `blocked_missing_input`, and gain
 positive aided route plus procedure lift. Every fixture and owner-action probe
 is observed once, succeeds, exposes its sentinel, and verifies. Preserve the
-public receipt as reviewed candidate evidence with proof/promotion false. The
-session-growth wave remains blocked at 2/14 contracts on both implicit axes.
+public receipt as reviewed candidate evidence with proof/promotion false. At
+that checkpoint the session-growth wave remained blocked at 2/14 contracts on
+both implicit axes.
+
+The session-growth source pass closes the next deterministic gate. Both arms
+of collisions 20-33 now have 14/14 procedure and 14/14 owner-action contracts.
+Cases 20-27, 29, 31, and 33 preserve their explicit or deliberately manual
+activation boundary as `not_applicable`; generic invoke cases 28, 30, and 32
+stop at `blocked_missing_input` for absent owner repositories, documents,
+diffs, and checks. Nine newly referenced skill files enter the source lock.
+
+The focused synthetic expansion completes 28/28 and validates private and
+public schemas. It also returns to the runner after finding that the generic
+transport-id regex rejected the typed plan slug
+`full-collision-session-growth`. Typed cohort slugs now permit interior
+`session` wording but still reject leading transport-shaped ids such as
+`session-deadbeef`; untyped strings retain the stronger generic scan. This is
+contract readiness only. No live session-growth conclusion exists before the
+exact-merged source, runtime parity, host gates, both confirmations, and a
+reviewed candidate receipt.
 
 ## Safety And Privacy
 

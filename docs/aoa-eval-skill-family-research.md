@@ -812,6 +812,36 @@ Every fixture and owner-action command across all 22 arms is observed once,
 returns zero, exposes its required sentinel, and verifies. No output
 observation gap remains. Preserve the result as reviewed candidate evidence
 with proof and promotion authority false. The next wave is
-`full-collision-session-growth`, but its current packet is only 2/14 on each
-implicit contract axis; it remains blocked before preflight until collisions
-20-33 receive the same source-first contract treatment.
+`full-collision-session-growth`; at this checkpoint its packet was only 2/14
+on each implicit contract axis and remained blocked before preflight.
+
+## 2026-07-12 session-growth contract closure
+
+The third collision wave covers both arms of `collision-20` through
+`collision-33`, for 28 turns and 14 implicit pairs. Full source review divides
+the cases by activation ownership rather than by prompt similarity. Eleven
+explicit-only or deliberately manual routes (20-27, 29, 31, and 33) remain
+`not_applicable`, report no completion or deflection, and expose the explicit
+owner gate. The generic invoke routes 28, 30, and 32 select
+`aoa-source-of-truth-check` or `aoa-change-protocol` but stop at
+`blocked_missing_input` because the fixture contains no real owner documents,
+repositories, diffs, or verification surfaces.
+
+Every pair now has a deterministic three-choice owner action derived from the
+collision and its source skill. The plan lock adds exactly nine newly cited
+skills: route forks, self diagnose, self repair, progression lift, quest
+harvest, automation opportunity scan, checkpoint closeout bridge, commit
+growth seam, and the Abyss self-diagnostic spine. No answer key grants hidden
+writeback, delegation, diagnosis, repair, automation, commit, or push
+authority.
+
+The red-first 28-turn synthetic run found a harness issue before live spend:
+the generic transport-id regex mistook the plan-owned cohort slug
+`full-collision-session-growth` for a private session identifier. Public
+validation now gives the typed `cohort` field the same bounded-slug treatment
+as typed skill names: an interior `session` token is valid, but a leading
+transport-shaped value such as `session-deadbeef` remains rejected. The focused
+run then validates 28/28 arms, 14/14 contracts on both axes, and both receipt
+schemas. This is contract readiness only; exact merge, installed-profile
+parity, host gates, both confirmations, and reviewed live evidence remain
+mandatory.

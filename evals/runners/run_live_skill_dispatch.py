@@ -294,6 +294,7 @@ PUBLIC_SKILL_NAME_KEYS = frozenset(
         "trajectory_expected_child_skill",
     }
 )
+PUBLIC_PLAN_SLUG_KEYS = frozenset({"cohort"})
 SKILL_ROOT_LINE_RE = re.compile(r"^- `(?P<alias>r[0-9]+)` = `(?P<path>/[^`]+)`$")
 SKILL_ENTRY_LINE_RE = re.compile(
     r"^- (?P<name>[A-Za-z0-9][A-Za-z0-9:-]*): (?P<description>.*) "
@@ -4477,6 +4478,15 @@ def validate_public_receipt(public: dict[str, Any]) -> None:
             ):
                 raise PublicReceiptSafetyError(
                     f"invalid public skill identifier at {'.'.join(path)}"
+                )
+            continue
+        if path and path[-1] in PUBLIC_PLAN_SLUG_KEYS:
+            if (
+                PORTABLE_SKILL_NAME_RE.fullmatch(value) is None
+                or TRANSPORT_ID_PREFIX_RE.search(value)
+            ):
+                raise PublicReceiptSafetyError(
+                    f"invalid public plan identifier at {'.'.join(path)}"
                 )
             continue
         if TRANSPORT_ID_RE.search(value):

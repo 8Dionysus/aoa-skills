@@ -258,8 +258,17 @@ Tracking starts with the community-docs baseline for this repository.
   without lift; the two generic invoke pairs, `collision-15` and
   `collision-17`, retain positive aided route and procedure lift. Every fixture
   and owner-action probe is single-attempt, successful, and verified. The next
-  28-turn session-growth wave remains fail-closed at 2/14 procedure and 2/14
-  owner-action contracts.
+  28-turn session-growth wave was still fail-closed at 2/14 procedure and 2/14
+  owner-action contracts at that checkpoint.
+- The session-growth source pass completes all 14 procedure and 14 owner-action
+  contracts for collisions 20-33. Eleven explicit or deliberately manual
+  routes remain `not_applicable`; the three generic invoke routes stop at
+  `blocked_missing_input`. Nine newly cited skill sources enter the source
+  lock. The focused 28-turn synthetic run also exposes and repairs a public
+  sanitizer false positive: a plan-owned cohort slug may contain interior
+  `session` wording while transport-shaped prefixes such as
+  `session-deadbeef` remain rejected. This is contract readiness only; no
+  session-growth live result is claimed before exact merge and fresh gates.
 - `AOA-SK-D-0037` records why live cohorts remain operator-confirmed candidate
   evidence and now clarifies prompt-surface isolation and evidence-stage grading
   after the contaminated smoke; deterministic harness validation, not model
