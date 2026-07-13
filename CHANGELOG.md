@@ -337,6 +337,13 @@ Tracking starts with the community-docs baseline for this repository.
   portable descriptions. The live source snapshot additionally locks the
   authored portable override, and a four-turn cohort repeats only both arms of
   collisions 40-41 after exact merge and runtime parity.
+- The exact-merged four-turn v19 procedure return is reviewed clean. Both aided
+  decision-parent routes fully read their exact create/correct child and now
+  report `blocked_missing_input`; controls remain `not_applicable`, every
+  fixture and owner outcome is observation-clean, and no failure class remains.
+  This closes the bounded authority return only; proof/promotion stay false and
+  the five-pair eval-child wave remains preflight-incomplete at 0/5 procedure
+  and 0/5 owner-outcome contracts.
 - Live-dispatch evidence v17 repairs both shared boundaries red-first. Portable
   export now prepends a policy-derived activation sentence to all 43 `manual`
   and two `suggest` descriptions, allowing only explicit invocation or a

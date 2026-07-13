@@ -507,6 +507,32 @@ As of 2026-07-13:
 
 ## Review Log
 
+### 2026-07-13 - Preserve the clean v19 decision-child terminal return
+
+- Exact execution: merged commit `4e9cf05`, inspected 36 skills and 270/270
+  staged files, independently verified the installed foundation profile at
+  36/36, and confirmed native prompt visibility at exactly 12/12 invoke-policy
+  profile entries. `aoa-decision` is visible while create/correct remain hidden
+  as independent implicit targets.
+- Host boundary: separate storage and medium-agent resource admission both
+  allowed; the transient unit used the routed CPU set and soft memory high,
+  completed in 4 minutes 33 seconds, peaked at 232.4 MiB, and used no swap.
+- Complete observation: all 4 arms and 2 pairs finish with no early stop,
+  failure class, contamination, external access, broad inventory, fixture gap,
+  owner-outcome mismatch, or observation gap.
+- Terminal result: both aided arms select `aoa-decision`, fully read the exact
+  create/correct child, and report `blocked_missing_input`. Controls correctly
+  remain `not_applicable`; route, child trajectory, and procedure disposition
+  each show positive aided lift.
+- Review: preserve the public-safe receipt as reviewed candidate evidence. It
+  closes the bounded authority procedure return, not central proof or
+  promotion. Storage and resource validators pass without warnings; memory has
+  zero failures and only the pre-existing paths-v3/index versus paths-v2
+  validator warning.
+- Next route: `full-collision-eval-children` has five score-eligible parent
+  routes but 0/5 procedure and 0/5 owner-outcome contracts. Close that
+  source-owned deterministic gate before any eval-child live execution.
+
 ### 2026-07-13 - Repair decision child missing-input terminals under v19
 
 - Return evidence: the reviewed v19 authority return proves that cases 40 and
