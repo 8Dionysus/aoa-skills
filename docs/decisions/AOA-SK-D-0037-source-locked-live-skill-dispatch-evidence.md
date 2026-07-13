@@ -526,12 +526,15 @@ As of 2026-07-13:
   complete under their separate checks.
 - Decision: author one procedure disposition and one independent owner-action
   contract for every uncovered implicit pair, and add every referenced owner
-  skill to the source snapshot lock. The ADR case selects and fully reads the
-  skill but stops at `blocked_missing_input` until a concrete decision and
-  canonical home exist. Memo writeback and every Titan scaffold case use
-  `not_applicable` in the implicit arm and require deliberate or explicit
-  activation before private evidence reads, writes, approvals, runtime gates,
-  replay, memory, receipts, or cohort activation.
+  skill to the source snapshot lock. Mirror every plan source ref into the local
+  eval execution sidecar and bind that equality plus file freshness in a
+  regression, rather than refreshing only the five files noticed by the first
+  stale report. The ADR case selects and fully reads the skill but stops at
+  `blocked_missing_input` until a concrete decision and canonical home exist.
+  Memo writeback and every Titan scaffold case use `not_applicable` in the
+  implicit arm and require deliberate or explicit activation before private
+  evidence reads, writes, approvals, runtime gates, replay, memory, receipts,
+  or cohort activation.
 - Boundary: manual non-activation is scored as a guard, not as hidden target
   dispatch or procedure lift. Source contracts do not prove that a current
   model will respect them, do not upgrade Titan scaffold status, and do not
@@ -541,9 +544,11 @@ As of 2026-07-13:
   contracts existed, then passed with 17/17 procedure and 17/17 outcome
   coverage. Three synthetic confirmed runs exercised all 34 paired turns
   through private receipt schemas, public projection, and public safety
-  validation. Full repository, generated/export, local eval-port, decision
-  index, KAG, exact-merge, runtime, and host gates remain required before live
-  execution.
+  validation. The first local eval-port pass then reported five stale files and
+  exposed 31 plan refs absent from the sidecar; the new fail-closed test covers
+  all 76 plan refs and the refreshed owner validation reports both local suites
+  ready. Full repository, generated/export, decision index, KAG, exact-merge,
+  runtime, and host gates remain required before live execution.
 
 ### 2026-07-13 - Preserve the clean v19 eval-child full rerun
 

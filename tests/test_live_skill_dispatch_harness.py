@@ -270,6 +270,31 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "array schema must declare items"):
             self.runner.validate_openai_strict_output_schema(itemless_array)
 
+    def test_local_eval_sidecar_covers_and_locks_every_live_plan_source(self) -> None:
+        plan = json.loads(self.plan_path.read_text(encoding="utf-8"))
+        sidecar = json.loads(
+            (
+                REPO_ROOT
+                / "evals"
+                / "suites"
+                / "aoa-skill-live-dispatch-harness.suite.json"
+            ).read_text(encoding="utf-8")
+        )
+        tracked = {
+            str(item["path"]): item
+            for item in sidecar["tracked_sources"]
+        }
+        missing = sorted(set(plan["source_refs"]) - set(tracked))
+        self.assertEqual([], missing)
+        for source_ref in plan["source_refs"]:
+            with self.subTest(source_ref=source_ref):
+                item = tracked[source_ref]
+                self.assertEqual("file", item["kind"])
+                actual = hashlib.sha256(
+                    (REPO_ROOT / source_ref).read_bytes()
+                ).hexdigest()
+                self.assertEqual(item["sha256"], actual)
+
     def test_all_committed_public_receipts_remain_schema_and_privacy_valid(self) -> None:
         schema = self.load_schema("live-skill-dispatch-public-receipt.schema.json")
         paths = sorted(
