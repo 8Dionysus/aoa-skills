@@ -83,6 +83,12 @@ Use this route before editing validator code:
   `scripts/builders/build_catalog.py`, and
   `scripts/runtime/build_runtime_seam.py`; root validation, builder, report,
   refresh, receipt, and adapter wrappers have been retired.
+- Portable export can change descriptions consumed by Skill Intelligence even
+  when authored `SKILL.md` content is unchanged. Generated/export/release lanes
+  therefore refresh or check `build_catalog.py` after
+  `scripts/export/build_agent_skills.py`, before validation or tests, and keep
+  `generated/skill_intelligence_registry.json` plus its minified projection in
+  the blocking export drift set.
 
 ## Boundary
 

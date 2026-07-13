@@ -161,6 +161,16 @@ Active first local corpus:
   description, and the live confirmation locks every child source. The
   ten-turn eval-child cohort is source-ready only; exact merge, runtime parity,
   host gates, and reviewed live execution remain open.
+  The first exact-merged/runtime-parity live pass completed all ten turns but is
+  preserved as
+  [`aoa-skill-live-dispatch-full-collision-eval-children-20260713-v19-needs-rerun.json`](reports/aoa-skill-live-dispatch-full-collision-eval-children-20260713-v19-needs-rerun.json).
+  Cases 47-48 selected and fully read the intended child yet stopped the root
+  read after a bounded 1-240 prefix, producing two `skill_load_gap` returns;
+  case 45 reported the right blocked next step but chose the wrong single
+  objective candidate. The source return now requires a current root read to
+  EOF and makes the exact apply request the mandatory next owner action. This
+  repair still requires exact merge, prompt-visible runtime parity, and a full
+  ten-turn rerun; proof and promotion remain false.
 
 These files are local evidence notes. They do not publish central proof
 acceptance, scoring, verdicts, regression truth, or proof doctrine.

@@ -324,8 +324,8 @@
         "AOA-T-0094"
       ],
       "trigger_boundary_short": "Use when the user asks whether an eval exists, whether one should be added, or how to connect evals to a repository; a repeated failure, validation gap, proof gap, regression, trigger miss, or local evals/ port...",
-      "verification_short": "Checks: confirm exactly one subskill route was selected; when fit was unknown or target evidence was missing, confirm the route stayed in aoa-eval-select and did not authorize local intake without an explicit no-fit...",
-      "workflow_short": "Purpose: this skill as the front door for AoA evaluation work. Flow: when an OS Abyss aoa-evals checkout is available, raise the read-only session readiness packet before choosing a subskill -> from the aoa-evals repo, run python..."
+      "verification_short": "Checks: confirm this root SKILL.md was read to EOF in the current turn; a bounded prefix or prior-turn read is not current load evidence; confirm exactly one subskill route was selected; when fit was unknown or...",
+      "workflow_short": "Purpose: this skill as the front door for AoA evaluation work. Flow: read this root SKILL.md to EOF before classifying or loading a child; a bounded prefix is not a complete load, so continue every truncated or range-limited read from the next unread line..."
     },
     {
       "inputs_short": "Needs: selected eval or validation command; repo-local route law and command prerequisites; optional evals/suites/<slug>.suite.json sidecar plus the current owner schema/validator that classifies it as absent,...",
