@@ -1789,6 +1789,7 @@
     {"confidence":1.0,"evidence_anchor_ids":["aoa:aoa-skills:anchor:dd89976a6301376a4a2dd0ca"],"evidence_class":"deterministic","from_id":"aoa:aoa-skills:entity:306f75ccf54720b67957adb1","id":"aoa:aoa-skills:relation:1ad574abb7394b18aefee918","provenance_ref":"deterministic","relation_kind":"contains","temporal_ref":"current","to_id":"aoa:aoa-skills:artifact:10a221bd9b605077f8e28cbb","trust_ref":"deterministic"},
     {"confidence":1.0,"evidence_anchor_ids":["aoa:aoa-skills:anchor:38a45da28305a975ee019723"],"evidence_class":"deterministic","from_id":"aoa:aoa-skills:entity:306f75ccf54720b67957adb1","id":"aoa:aoa-skills:relation:4cd5325dd2a950e3b8dc0a9e","provenance_ref":"deterministic","relation_kind":"contains","temporal_ref":"current","to_id":"aoa:aoa-skills:artifact:1528fb6aed3a24438e27cd07","trust_ref":"deterministic"},
     {"confidence":1.0,"evidence_anchor_ids":["aoa:aoa-skills:anchor:77ceaac0b0cb45fc40a7f4e4"],"evidence_class":"deterministic","from_id":"aoa:aoa-skills:entity:306f75ccf54720b67957adb1","id":"aoa:aoa-skills:relation:7bfbf8ca5bb94c75c7a8b02b","provenance_ref":"deterministic","relation_kind":"contains","temporal_ref":"current","to_id":"aoa:aoa-skills:artifact:1799a28d5ce375ea03c8a4a0","trust_ref":"deterministic"},
+    {"confidence":1.0,"evidence_anchor_ids":["aoa:aoa-skills:anchor:1568b480d5c69c7ae31dbbe5"],"evidence_class":"deterministic","from_id":"aoa:aoa-skills:entity:306f75ccf54720b67957adb1","id":"aoa:aoa-skills:relation:e2251366bd4096cf5c1e84d8","provenance_ref":"deterministic","relation_kind":"contains","temporal_ref":"current","to_id":"aoa:aoa-skills:artifact:2155b438a73c72a8f9bc565e","trust_ref":"deterministic"},
     {"confidence":1.0,"evidence_anchor_ids":["aoa:aoa-skills:anchor:5aae46aa4fc789bd7bc1367e"],"evidence_class":"deterministic","from_id":"aoa:aoa-skills:entity:306f75ccf54720b67957adb1","id":"aoa:aoa-skills:relation:81d5f4270d4871e74e3c56eb","provenance_ref":"deterministic","relation_kind":"contains","temporal_ref":"current","to_id":"aoa:aoa-skills:artifact:26b98ca0e85fe364e88c2d0d","trust_ref":"deterministic"},
     {"confidence":1.0,"evidence_anchor_ids":["aoa:aoa-skills:anchor:f9ca4129be2e8268164cba15"],"evidence_class":"deterministic","from_id":"aoa:aoa-skills:entity:306f75ccf54720b67957adb1","id":"aoa:aoa-skills:relation:f5c2530af14adfaa2e0a78e2","provenance_ref":"deterministic","relation_kind":"contains","temporal_ref":"current","to_id":"aoa:aoa-skills:artifact:29a386c43fc1ffcf5751f1fd","trust_ref":"deterministic"},
     {"confidence":1.0,"evidence_anchor_ids":["aoa:aoa-skills:anchor:7843a92fe0f26a97f855b5f4"],"evidence_class":"deterministic","from_id":"aoa:aoa-skills:entity:306f75ccf54720b67957adb1","id":"aoa:aoa-skills:relation:d8f4b6aea61c687feedcdb02","provenance_ref":"deterministic","relation_kind":"contains","temporal_ref":"current","to_id":"aoa:aoa-skills:artifact:2de3095e495b334425d6fbc8","trust_ref":"deterministic"},
@@ -6646,6 +6647,7 @@
     {"confidence":1.0,"evidence_anchor_ids":["aoa:aoa-skills:anchor:d897fec56046b0bedd565a35"],"evidence_class":"deterministic","from_id":"aoa:aoa-skills:entity:1e8af1d2b56d09ac9bcf9782","id":"aoa:aoa-skills:relation:5b8a2b2d62fe4a376de94ab3","provenance_ref":"deterministic","relation_kind":"references","temporal_ref":"current","to_id":"aoa:aoa-skills:anchor:a99038c4bf1cfaedd48245b0","trust_ref":"deterministic"},
     {"confidence":1.0,"evidence_anchor_ids":["aoa:aoa-skills:anchor:6d4fe902e2ffadbaa6b75f1c"],"evidence_class":"deterministic","from_id":"aoa:aoa-skills:entity:1e8af1d2b56d09ac9bcf9782","id":"aoa:aoa-skills:relation:208b24d8b60254acd850a398","provenance_ref":"deterministic","relation_kind":"references","temporal_ref":"current","to_id":"aoa:aoa-skills:anchor:fdf2c9585765f8839cd24dab","trust_ref":"deterministic"},
     {"confidence":1.0,"evidence_anchor_ids":["aoa:aoa-skills:anchor:852b43f48b512f83bb47b014"],"evidence_class":"deterministic","from_id":"aoa:aoa-skills:entity:1f26470be8fe4cb3ad704453","id":"aoa:aoa-skills:relation:a00976098cb78584c76ca9fe","provenance_ref":"deterministic","relation_kind":"references","temporal_ref":"current","to_id":"aoa:aoa-skills:anchor:b5ca26fb62ec52ab0cfe9068","trust_ref":"deterministic"},
+    {"confidence":1.0,"evidence_anchor_ids":["aoa:aoa-skills:anchor:5ffefdc4e4a47f71503a8452"],"evidence_class":"deterministic","from_id":"aoa:aoa-skills:entity:2248e8946a0bcf4672cf6b22","id":"aoa:aoa-skills:relation:fcc9055ec7b7d9e01b1e6f5e","provenance_ref":"deterministic","relation_kind":"references","temporal_ref":"current","to_id":"aoa:aoa-skills:anchor:1568b480d5c69c7ae31dbbe5","trust_ref":"deterministic"},
     {"confidence":1.0,"evidence_anchor_ids":["aoa:aoa-skills:anchor:3e37c504f8fe2e28cec7e829"],"evidence_class":"deterministic","from_id":"aoa:aoa-skills:entity:2248e8946a0bcf4672cf6b22","id":"aoa:aoa-skills:relation:1c02189084a15162d742e302","provenance_ref":"deterministic","relation_kind":"references","temporal_ref":"current","to_id":"aoa:aoa-skills:anchor:2aa3fc4f3525570ec20e9794","trust_ref":"deterministic"},
     {"confidence":1.0,"evidence_anchor_ids":["aoa:aoa-skills:anchor:adf1de281075e56235b052a3"],"evidence_class":"deterministic","from_id":"aoa:aoa-skills:entity:2248e8946a0bcf4672cf6b22","id":"aoa:aoa-skills:relation:dbe5de940139336899fd4a9f","provenance_ref":"deterministic","relation_kind":"references","temporal_ref":"current","to_id":"aoa:aoa-skills:anchor:4c500fd1e12d63513dd780da","trust_ref":"deterministic"},
     {"confidence":1.0,"evidence_anchor_ids":["aoa:aoa-skills:anchor:fc7cb2495dca336c12745633"],"evidence_class":"deterministic","from_id":"aoa:aoa-skills:entity:2248e8946a0bcf4672cf6b22","id":"aoa:aoa-skills:relation:129d7f5c18d58060f883ac5d","provenance_ref":"deterministic","relation_kind":"references","temporal_ref":"current","to_id":"aoa:aoa-skills:anchor:70e47094a86ccf5713180574","trust_ref":"deterministic"},
@@ -6708,6 +6710,7 @@
     {"confidence":1.0,"evidence_anchor_ids":["aoa:aoa-skills:anchor:49c7a93801f316df7ef2e283"],"evidence_class":"deterministic","from_id":"aoa:aoa-skills:entity:36ee2dc0721c8e50be231556","id":"aoa:aoa-skills:relation:36c266530e6aa6d418b0512c","provenance_ref":"deterministic","relation_kind":"references","temporal_ref":"current","to_id":"aoa:aoa-skills:anchor:e7a9abd94c3ca9f55188d3b4","trust_ref":"deterministic"},
     {"confidence":1.0,"evidence_anchor_ids":["aoa:aoa-skills:anchor:fb3d63d26d071caf658891cb"],"evidence_class":"deterministic","from_id":"aoa:aoa-skills:entity:3ab958428681d1f9b9f24be5","id":"aoa:aoa-skills:relation:816af98d7b7297396d29ec9b","provenance_ref":"deterministic","relation_kind":"references","temporal_ref":"current","to_id":"aoa:aoa-skills:anchor:a99038c4bf1cfaedd48245b0","trust_ref":"deterministic"},
     {"confidence":1.0,"evidence_anchor_ids":["aoa:aoa-skills:anchor:46843f901a7c90a130e87056"],"evidence_class":"deterministic","from_id":"aoa:aoa-skills:entity:3cfaddf8e4f2999221307283","id":"aoa:aoa-skills:relation:f5c275d6ece78037ffd5508a","provenance_ref":"deterministic","relation_kind":"references","temporal_ref":"current","to_id":"aoa:aoa-skills:anchor:1047088028c441feadb76b72","trust_ref":"deterministic"},
+    {"confidence":1.0,"evidence_anchor_ids":["aoa:aoa-skills:anchor:c78ad97375f833ced78d113f"],"evidence_class":"deterministic","from_id":"aoa:aoa-skills:entity:3cfaddf8e4f2999221307283","id":"aoa:aoa-skills:relation:ecf3b1011a50f52fe225087f","provenance_ref":"deterministic","relation_kind":"references","temporal_ref":"current","to_id":"aoa:aoa-skills:anchor:1568b480d5c69c7ae31dbbe5","trust_ref":"deterministic"},
     {"confidence":1.0,"evidence_anchor_ids":["aoa:aoa-skills:anchor:5a2704be7d64a46192595593"],"evidence_class":"deterministic","from_id":"aoa:aoa-skills:entity:3cfaddf8e4f2999221307283","id":"aoa:aoa-skills:relation:c4952c1b01d3588b23bc8f7c","provenance_ref":"deterministic","relation_kind":"references","temporal_ref":"current","to_id":"aoa:aoa-skills:anchor:23d311e75926f31999df45ed","trust_ref":"deterministic"},
     {"confidence":1.0,"evidence_anchor_ids":["aoa:aoa-skills:anchor:52bb2635f76ab53c8fd38615"],"evidence_class":"deterministic","from_id":"aoa:aoa-skills:entity:3cfaddf8e4f2999221307283","id":"aoa:aoa-skills:relation:414e6209edd19a0b229453ba","provenance_ref":"deterministic","relation_kind":"references","temporal_ref":"current","to_id":"aoa:aoa-skills:anchor:3515137ae9eb2af04ccd7611","trust_ref":"deterministic"},
     {"confidence":1.0,"evidence_anchor_ids":["aoa:aoa-skills:anchor:a764c99576c8cfcb29a43272"],"evidence_class":"deterministic","from_id":"aoa:aoa-skills:entity:3cfaddf8e4f2999221307283","id":"aoa:aoa-skills:relation:c3c26b809f3d567f90fe3f75","provenance_ref":"deterministic","relation_kind":"references","temporal_ref":"current","to_id":"aoa:aoa-skills:anchor:4c500fd1e12d63513dd780da","trust_ref":"deterministic"},
@@ -8869,7 +8872,7 @@
   ],
   "index_identity": {
     "artifact_kind": "repository_relation_index",
-    "content_digest": "d3316bad1f660c25ae41f964cf7ec5f686e6f67483cd3faec2dda330858f32ef",
+    "content_digest": "a9e2d1640248dae54e655c42c0c4b2b382147c5e176ee2bef532f465b8e73b0c",
     "index_kind": "relation",
     "local_id": "index:repo-local:relations",
     "schema_ref": "aoa-kag:schemas/repo-local-kag-repository-index.schema.json"
@@ -8955,17 +8958,17 @@
   },
   "schema_version": "aoa-repo-local-kag-repository-index-v2",
   "source_index": {
-    "content_digest": "b1330d0447f8434d4a427caaf6984539a832b5520ae26108680a413efbfd978f",
+    "content_digest": "30d40c541f6914128d4c31f2b67bb0100aa846bb0348d576483e823b4fb50dca",
     "local_id": "index:repo-local:source-surfaces",
     "path": "kag/indexes/source_surface_index.json"
   },
   "summary": {
-    "entry_count": 8866,
+    "entry_count": 8869,
     "kind_counts": {
       "calls": 1353,
-      "contains": 2768,
+      "contains": 2769,
       "defines": 2499,
-      "references": 866,
+      "references": 868,
       "represents": 1380
     }
   }

@@ -378,6 +378,14 @@ Tracking starts with the community-docs baseline for this repository.
   missing invariant or target inputs stopping inside `aoa-eval-design` rather
   than changing the route. Exact merge, runtime parity, and another full rerun
   remain required; proof and promotion stay false.
+- The exact-merge eval-child rerun after design-precedence repair is reviewed
+  clean. All ten turns complete without a failure class; every aided arm selects
+  the exact eval root and child, reads both completely, and matches dispatch,
+  load, trajectory, missing-input procedure, owner-boundary, fixture, and
+  owner-outcome contracts. All five pairs show positive route, trajectory, and
+  procedure lift with observation-clean outcomes. This closes the bounded
+  full-collision eval-child wave as candidate evidence only; proof and promotion
+  remain false, and coverage-closure contract audit is the next live boundary.
 - Live-dispatch evidence v17 repairs both shared boundaries red-first. Portable
   export now prepends a policy-derived activation sentence to all 43 `manual`
   and two `suggest` descriptions, allowing only explicit invocation or a

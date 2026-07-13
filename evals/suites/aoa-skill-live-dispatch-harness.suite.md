@@ -728,6 +728,17 @@ missing invariant or target inputs must block inside design rather than change
 the route. Exact merge, runtime parity, host admission, and another full
 ten-turn rerun remain mandatory. Proof and promotion stay false.
 
+The exact-merged rerun after that return closes the wave. Preserve the reviewed
+candidate-only result as
+[`aoa-skill-live-dispatch-full-collision-eval-children-20260713-v19-reviewed.json`](../reports/aoa-skill-live-dispatch-full-collision-eval-children-20260713-v19-reviewed.json).
+All ten turns complete without a failure class. Every aided arm selects the
+eval root and intended child, reads both completely, and matches dispatch,
+load, trajectory, `blocked_missing_input` procedure, owner-boundary, fixture,
+and owner-outcome contracts. All five pairs have positive route, trajectory,
+and procedure lift; outcomes are observation-clean. This closes the bounded
+full-collision eval-child wave, not central proof or promotion. The next live
+boundary is the coverage-closure partition after its source-contract audit.
+
 ## Safety And Privacy
 
 The plan locks Git head, authored portable overrides, all portable skill files,

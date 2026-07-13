@@ -179,6 +179,14 @@ Active first local corpus:
   source return gives explicit design intent precedence and requires missing
   design inputs to stop inside `aoa-eval-design`. Exact merge, runtime parity,
   and a complete rerun remain open; proof and promotion remain false.
+  The resulting exact-merge full rerun is preserved as
+  [`aoa-skill-live-dispatch-full-collision-eval-children-20260713-v19-reviewed.json`](reports/aoa-skill-live-dispatch-full-collision-eval-children-20260713-v19-reviewed.json).
+  All ten turns complete with no failure class. Each aided arm selects the
+  exact eval root and child, reads both completely, and matches route, load,
+  procedure, owner-boundary, fixture, and owner-outcome contracts. The bounded
+  eval-child wave is closed as reviewed candidate evidence; central proof and
+  promotion remain false. Audit coverage-closure contracts before the next live
+  wave.
 
 These files are local evidence notes. They do not publish central proof
 acceptance, scoring, verdicts, regression truth, or proof doctrine.
