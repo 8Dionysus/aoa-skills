@@ -408,6 +408,15 @@ ATM10 repo-relative do-not-load boundary. Neither the explicit target policies,
 the owner-action answer keys, nor the absent-sentinel proof rule changes. The
 existing six-turn cohort remains the next source-locked live step.
 
+The exact-merged rerun then clears every aided failure class. `collision-38`
+passes route, child trajectory, procedure, and sentinel-verified outcome;
+`collision-14` keeps both generic and explicit overlay skills unloaded and
+verifies the owner route; `collision-09` remains correct in both arms. Two
+control arms execute the exact outcome command once with exit zero but expose
+no sentinel bytes. The receipt stays reviewed candidate evidence: source repair
+is closed, while explicit observation-gap telemetry remains required before
+full-pilot outcome-lift interpretation.
+
 ## Safety And Privacy
 
 The plan locks Git head, all portable skill files, generated/config inputs,

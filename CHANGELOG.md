@@ -200,6 +200,13 @@ Tracking starts with the community-docs baseline for this repository.
   reject concrete ATM10 repo-relative path, local-command, or approval-note
   prompts before either generic or explicit-overlay load. The output-observation
   return remains evidence for rerun rather than a relaxed proof rule.
+- The exact-merged second six-turn return has no aided failure classes.
+  `collision-38` gains route, full child trajectory, procedure, and verified
+  owner outcome; `collision-14` keeps both generic and explicit overlay skills
+  unloaded and verifies its owner route; `collision-09` remains correct. Two
+  control outcome commands exit zero without observable sentinel bytes, so the
+  reviewed receipt closes the source return while reserving lift claims for an
+  explicit observation-gap telemetry follow-up.
 - `AOA-SK-D-0037` records why live cohorts remain operator-confirmed candidate
   evidence and now clarifies prompt-surface isolation and evidence-stage grading
   after the contaminated smoke; deterministic harness validation, not model

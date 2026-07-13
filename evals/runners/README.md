@@ -334,6 +334,14 @@ path, local-command, or approval-note requests and does not load the explicit
 overlay. The six-turn cohort remains unchanged so the closed approval pair and
 the missing aided outcome sentinel are both checked again under fresh transport.
 
+The exact-merged rerun has no aided failure class. The decision pair gains all
+four scored axes, ATM10 no longer loads the generic skill and verifies the owner
+outcome, and approval remains correct in both arms. The previously missing
+aided sentinel is now observed, but the same zero-exit/no-sentinel condition
+appears in two controls. Preserve the run as reviewed candidate evidence that
+closes the source repair; add explicit observation-gap telemetry before using
+those control contrasts in a widened pilot.
+
 See `evals/suites/aoa-skill-live-dispatch-harness.suite.md` and
 `docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md` for
 the evidence and authority boundaries.

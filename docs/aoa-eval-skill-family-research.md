@@ -565,3 +565,24 @@ descriptions. The existing six-turn cohort remains the smallest safe rerun: it
 rechecks the already-closed approval pair, the repaired decision disposition,
 the concrete ATM10 exclusion, and the still-unverified outcome sentinel under
 fresh transport. No deterministic result closes that live observation return.
+
+## 2026-07-12 clean aided skill return
+
+The exact-merged rerun completes all six turns with no aided failure class and
+with every prompt, filesystem, inventory, fixture, dispatch, load,
+transport-process, owner-action, safety, and authority boundary clean.
+`collision-38` now selects and fully reads `aoa-decision-find`, reports
+`blocked_missing_input`, and gains route, trajectory, procedure disposition,
+and verified owner outcome over control. `collision-14` selects no skill, keeps
+both generic and explicit overlay procedures unloaded, reports the manual ATM10
+owner route, and verifies its outcome. `collision-09` stays correct in both
+arms, so its outcome is a no-lift-both-correct result rather than a regression.
+
+The rerun also confirms that the earlier missing sentinel was not an aided
+skill defect. The exact owner-action command exits zero but exposes no sentinel
+bytes in the `collision-38` and `collision-14` control arms this time. Their
+outcome verification correctly remains false, while the aided commands expose
+the sentinel and verify. This closes the two source returns but does not make
+the resulting positive control contrast stable proof. Preserve the receipt as
+reviewed candidate evidence, add an explicit per-arm and pair-level
+output-observation-gap signal, and only then widen to the full pilot.

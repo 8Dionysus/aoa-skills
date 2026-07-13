@@ -74,6 +74,10 @@ Active first local corpus:
   The next red-first source repair now binds the decision child's
   `blocked_missing_input` terminal and the concrete ATM10 do-not-load wording;
   the same six-turn cohort must still rerun after exact merge and runtime parity.
+  That exact rerun now has no aided failure classes and closes both source
+  returns. Two controls still lack observable sentinel bytes after exact
+  zero-exit outcome commands, so telemetry must separate observation gaps from
+  treatment lift before the full pilot widens again.
 
 These files are local evidence notes. They do not publish central proof
 acceptance, scoring, verdicts, regression truth, or proof doctrine.

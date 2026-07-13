@@ -200,6 +200,16 @@ temporary root and must not be copied into this directory.
   `aoa-change-protocol`. The aided decision outcome command exits zero but
   exposes no required sentinel bytes, so objective outcome verification remains
   false. This mixed `needs-rerun` receipt grants no proof or promotion authority.
+- [aoa-skill-live-dispatch-pilot13-skill-returns-20260712-v14-reviewed-clean-aided-returns-control-observation-gap.json](aoa-skill-live-dispatch-pilot13-skill-returns-20260712-v14-reviewed-clean-aided-returns-control-observation-gap.json)
+  preserves the exact-merged rerun after the second source repair and verified
+  runtime import. All aided arms have no failure class: the decision pair gains
+  route, full child trajectory, procedure, and verified outcome; ATM10 keeps
+  both generic and explicit overlay skills unloaded and verifies the owner
+  route; approval stays correct in both arms. Two controls execute the exact
+  outcome command once with exit zero but expose no sentinel bytes. The receipt
+  therefore closes the aided source returns as reviewed candidate evidence but
+  reserves control-lift interpretation for explicit observation-gap telemetry;
+  it grants no proof or promotion authority.
 
 Corrected live receipts under the v11-v14 evidence protocols are reviewable only
 after canonical user-skill shadows, plugins, and every configured MCP id are
