@@ -159,6 +159,12 @@ Tracking starts with the community-docs baseline for this repository.
   to 15 turns: seven affected implicit pairs plus the corrected Abyss
   structured-report case. It requires complete procedure/outcome contracts and
   the exact high-cost token while excluding already-clean pilot arms.
+- Private and public receipt schemas now recognize `pilot13-returns`, with an
+  end-to-end synthetic run proving private validation, public projection, and
+  privacy validation. Two exact-merged partial v13 receipts are preserved:
+  6/15 stopped on transport, while a fresh 14/15 run passed that point and
+  stopped on an internally contradictory model output before the final
+  structured arm.
 - `AOA-SK-D-0037` records why live cohorts remain operator-confirmed candidate
   evidence and now clarifies prompt-surface isolation and evidence-stage grading
   after the contaminated smoke; deterministic harness validation, not model

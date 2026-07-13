@@ -279,6 +279,14 @@ reports separately from the existing declared-root-plus-target shape. Replay
 of v12 raw evidence under v13 is grader validation only and never rewrites the
 reviewed public receipt.
 
+The first two exact-merged `pilot13-returns` executions are intentionally
+preserved as partial `needs-rerun` receipts. One stopped on a non-repeated
+post-start timeout after 6 turns; the fresh run reached 14 turns and then
+failed the output contract on `selected_skill=null` plus
+`claims_loaded=true`. Review also found that the receipt schemas had not added
+the new cohort enum. Private/public schema parity and an end-to-end synthetic
+receipt test are required before any further live review or grader revision.
+
 See `evals/suites/aoa-skill-live-dispatch-harness.suite.md` and
 `docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md` for
 the evidence and authority boundaries.

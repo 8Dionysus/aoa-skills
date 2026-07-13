@@ -344,6 +344,15 @@ three control-side labels and the Abyss structured report miss, leaving seven
 aided return candidates. Replay validates v13 grading and does not alter the
 reviewed v12 receipt.
 
+The first exact-merged `pilot13-returns` attempt stopped after six turns on a
+post-start transport timeout. A fresh attempt passed that point and stopped at
+14 of 15 on a contradictory Titan control report: no selected skill but
+`claims_loaded=true`. Both receipts remain partial `needs-rerun` evidence, and
+the final Abyss structured arm is still unobserved. Review additionally found
+that the plan/schema cohort addition had not reached the private/public receipt
+cohort enums. Close that schema parity with a real private-to-public synthetic
+receipt test before interpreting or rerunning the live cohort.
+
 ## Safety And Privacy
 
 The plan locks Git head, all portable skill files, generated/config inputs,

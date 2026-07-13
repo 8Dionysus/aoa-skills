@@ -168,6 +168,19 @@ temporary root and must not be copied into this directory.
   `aoa-decision-find` expectation as a root-handoff candidate; v13 replay
   corrects only the ambient-control, no-dispatch prompt, and overlay hierarchy
   grader pressure without rewriting this v12 receipt.
+- [aoa-skill-live-dispatch-pilot13-returns-20260712-v13-reviewed-partial-transport-needs-rerun.json](aoa-skill-live-dispatch-pilot13-returns-20260712-v13-reviewed-partial-transport-needs-rerun.json)
+  preserves the first exact-merged bounded rerun. It stopped after 6 of 15
+  turns when the `collision-33` control transport reached the source-locked
+  180-second cap after turn start. Earlier prompt, filesystem, inventory, and
+  owner-action gates were clean. This is partial transport evidence, not a
+  completed pair verdict or a reason to widen the timeout.
+- [aoa-skill-live-dispatch-pilot13-returns-20260712-v13-reviewed-partial-output-contract-needs-rerun.json](aoa-skill-live-dispatch-pilot13-returns-20260712-v13-reviewed-partial-output-contract-needs-rerun.json)
+  preserves the fresh exact-source rerun that passed the earlier timeout point
+  and reached 14 of 15 turns. Titan control then reported no selected skill
+  together with `claims_loaded=true`, so the output contract correctly stopped
+  the cohort before the final Abyss structured arm. The completed arms expose
+  both real repo-skill collision pressure and remaining ambient/procedure
+  grader ambiguity; the receipt remains candidate-only `needs-rerun` evidence.
 
 Corrected live receipts under the v11-v13 evidence protocols are reviewable only
 after canonical user-skill shadows, plugins, and every configured MCP id are
