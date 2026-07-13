@@ -528,12 +528,46 @@ As of 2026-07-13:
   validator command unbuffered. The exact-merged v21 return completes 4/4 turns
   and 2/2 pairs with both manual guards and both owner outcomes correct in both
   arms, no failure, and no observation gap. That closes the recurring capture
-  return without changing Titan skills; the next bounded wave is root-child
-  trajectories after this reviewed writeback lands and all exact runtime and
-  host gates are repeated.
+  return without changing Titan skills. The subsequent exact-merged root wave
+  completes 8/8: decision selects find/create/correct, eval selects
+  select/apply/local-need/design/session-mining, and every root plus child is
+  read completely with clean dispatch, load, fixture, prompt, filesystem,
+  inventory, and owner-boundary evidence. This closes the root-child lane as
+  reviewed candidate evidence. After that writeback lands, the next bounded
+  wave is the 30-turn structured-core partition under fresh exact runtime and
+  host gates.
 - Superseded by: none.
 
 ## Review Log
+
+### 2026-07-13 - Close all decision and eval root-child trajectories
+
+- Exact source: merged commit `71e97f0`, protocol v21, current account-visible
+  `gpt-5.6-sol` at medium effort, repo profile 57/57, installed foundation
+  profile 36/36, isolated prompt parity 12/12 with 37 disabled shadow paths and
+  11 disabled MCP ids, and local eval readiness 2/2. The source-locked cohort
+  contained exactly three decision and five eval root-child turns.
+- Host admission: the independent 128 MiB storage preflight allowed the run.
+  The forced interactive medium resource plan had no blocked, denied, or
+  overridden reason, kept `MemoryHigh` soft, set no `MemoryMax`, and passed its
+  dry run. The live wrapper returned zero at about 223 MiB peak memory and no
+  swap.
+- Reviewed result: all 8/8 turns complete without an early stop or failure
+  class. Accepted explicit root input is native root-load evidence; every turn
+  selects the exact expected child, reads both root and child completely, and
+  passes dispatch, load, selection-report, fixture, prompt, filesystem,
+  inventory, and owner-boundary checks. External access and broad inventory are
+  both zero.
+- Interpretation: this arm family has no matched implicit pair. Its empty pair
+  list and non-applicable implicit trajectory/outcome fields therefore do not
+  represent missing evidence. The receipt closes explicit root-to-child
+  coverage only and grants no implicit-lift, completion, proof, or promotion
+  authority.
+- Host closeout and next: post-run storage, resource, and memory validators pass
+  19/19, 16/16, and 35/35 with zero warnings. Land this reviewed writeback,
+  repeat exact merged runtime/model/local-eval and host gates, then open only
+  the 30-turn `coverage-closure-structured-core` partition unless reviewed
+  evidence requires a narrower return first.
 
 ### 2026-07-13 - Close the Titan B observation return under v21
 
