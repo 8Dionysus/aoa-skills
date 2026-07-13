@@ -318,6 +318,12 @@
       ],
       [
         "python",
+        "scripts/builders/build_catalog.py",
+        "--group",
+        "all"
+      ],
+      [
+        "python",
         "scripts/validation/validate_agent_skills.py",
         "--repo-root",
         "."
@@ -493,6 +499,10 @@
         "scripts/builders/build_tiny_router_inputs.py",
         "--repo-root",
         "."
+      ],
+      [
+        "python",
+        "scripts/builders/build_catalog.py"
       ],
       [
         "python",

@@ -86,9 +86,12 @@ Use this route before editing validator code:
 - Portable export can change descriptions consumed by Skill Intelligence even
   when authored `SKILL.md` content is unchanged. Generated/export/release lanes
   therefore refresh or check `build_catalog.py` after
-  `scripts/export/build_agent_skills.py`, before validation or tests, and keep
-  `generated/skill_intelligence_registry.json` plus its minified projection in
-  the blocking export drift set.
+  `scripts/export/build_agent_skills.py`. Build lanes also perform a final
+  catalog refresh after runtime seam, trigger, support-resource, and tiny-router
+  builders, because Skill Intelligence consumes those generated inputs. That
+  final refresh occurs before validation or tests, and both
+  `generated/skill_intelligence_registry.json` and its minified projection stay
+  in the blocking export drift set.
 
 ## Boundary
 

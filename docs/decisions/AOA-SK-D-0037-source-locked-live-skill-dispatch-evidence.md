@@ -527,6 +527,12 @@ As of 2026-07-13:
   invariant, target-repository, or other design inputs must stop inside
   `aoa-eval-design` as `blocked_missing_input`; they must not silently change the
   selected route to `aoa-eval-select`.
+- Generated-lane return: the post-repair full gate proved that a catalog refresh
+  immediately after portable export was still too early. Runtime seam, support,
+  and tiny-router builders are themselves Skill Intelligence inputs and could
+  make both registries stale after that refresh. Export and release build lanes
+  now run one final catalog build after all of those generated dependencies and
+  before validators or tests; topology tests bind that ordering.
 - Evidence boundary: preserve the second full public-safe receipt as
   `needs-rerun`, keep proof and promotion false, land the root and portable
   description repair, restore exact-merge runtime parity, and repeat the full
@@ -557,9 +563,10 @@ As of 2026-07-13:
 - Lane consequence: the repair also exposed a catalog/export dependency. A
   portable-only description change was exported after the catalog build,
   leaving both Skill Intelligence registries stale until full tests. Require a
-  post-export catalog refresh or check in generated, export, and release lanes,
-  and include both registries in the blocking export drift set rather than
-  relying on a later full-test failure.
+  post-export catalog refresh or check in generated, export, and release lanes;
+  the later full-gate return strengthens this to a final refresh after all
+  generated registry inputs. Include both registries in the blocking export
+  drift set rather than relying on a later full-test failure.
 - Evidence boundary: preserve the first public-safe receipt as
   `needs-rerun`; do not overwrite or reinterpret it after repair. Keep protocol
   v19 because transport, schemas, and scoring semantics are unchanged. Land the

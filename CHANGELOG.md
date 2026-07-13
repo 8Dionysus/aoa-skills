@@ -365,8 +365,11 @@ Tracking starts with the community-docs baseline for this repository.
   `build_agent_skills.py` and track both Skill Intelligence registries as
   generated drift. The first repair pass exposed that catalog-before-export
   could leave intelligence descriptions stale while the export lane still
-  appeared green; generated, export, and release sequences now close that
-  dependency before validation or full tests.
+  appeared green. A later full-gate return proved that an immediate post-export
+  refresh was still too early because runtime seam, support, and tiny-router
+  builders also feed the registry. Export and release sequences now run a final
+  catalog build after all generated registry inputs and before validation or
+  full tests.
 - The complete eval-child rerun is preserved as a second reviewed
   `needs-rerun` receipt. It closes the prior apply-action and root-prefix gaps;
   four aided pairs are clean, while collision 47 reads the eval root fully but
