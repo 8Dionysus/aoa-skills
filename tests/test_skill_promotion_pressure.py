@@ -12,6 +12,11 @@ from tests.support.source_catalog import source_skill_count
 
 
 REPO_ROOT = pathlib.Path(__file__).resolve().parents[1]
+SCRIPTS_DIR = REPO_ROOT / "scripts"
+if str(SCRIPTS_DIR) not in sys.path:
+    sys.path.insert(0, str(SCRIPTS_DIR))
+
+from reports import report_skill_promotion_pressure
 
 
 class SkillPromotionPressureTests(unittest.TestCase):
@@ -73,14 +78,22 @@ class SkillPromotionPressureTests(unittest.TestCase):
         else:
             self.assertEqual("candidate_ready_watch", self_repair["promotion_pressure"])
             self.assertLess(self_repair["usage_evidence"]["usage_score"], 5)
-        self.assertEqual(
-            [],
-            self_repair["quality_findings"],
+        self.assertNotEqual("blocked", self_repair["quality_verdict"])
+        self.assertNotEqual("blockers_first", self_repair["promotion_pressure"])
+
+    def test_technique_drift_is_maintenance_not_a_hard_promotion_blocker(self) -> None:
+        pressure, reason = report_skill_promotion_pressure.pressure_classification(
+            status="evaluated",
+            scope="core",
+            quality_verdict="working_with_maintenance_findings",
+            quality_findings=["technique_source_drift"],
+            default_reference_readiness="ready",
+            governance_decision="stay_evaluated",
+            repeated_usage=True,
         )
-        self.assertNotIn(
-            "technique_source_drift",
-            self_repair["quality_findings"],
-        )
+
+        self.assertEqual("revisit_stay_evaluated", pressure)
+        self.assertIn("revisiting", reason)
 
     def test_workspace_root_drives_default_hook_and_dispatch_roots(self) -> None:
         with tempfile.TemporaryDirectory() as temp_dir:

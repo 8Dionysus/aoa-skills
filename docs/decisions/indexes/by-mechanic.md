@@ -18,6 +18,7 @@
 - [AOA-SK-D-0031 Script Source Home Topology](../AOA-SK-D-0031-script-source-home-topology.md) (`docs/decisions/AOA-SK-D-0031-script-source-home-topology.md`)
 - [AOA-SK-D-0032 Command Authority Family Paths](../AOA-SK-D-0032-command-authority-family-paths.md) (`docs/decisions/AOA-SK-D-0032-command-authority-family-paths.md`)
 - [AOA-SK-D-0033 Root Ingress Closure](../AOA-SK-D-0033-root-ingress-closure.md) (`docs/decisions/AOA-SK-D-0033-root-ingress-closure.md`)
+- [AOA-SK-D-0038 Committed Evidence Readout Completeness Gate](../AOA-SK-D-0038-committed-evidence-readout-completeness-gate.md) (`docs/decisions/AOA-SK-D-0038-committed-evidence-readout-completeness-gate.md`)
 
 ## boundary-bridge
 
@@ -44,6 +45,7 @@
 - [AOA-SK-D-0009 Mechanics Method-Growth Lineage](../AOA-SK-D-0009-mechanics-method-growth-lineage.md) (`docs/decisions/AOA-SK-D-0009-mechanics-method-growth-lineage.md`)
 - [AOA-SK-D-0014 Owner Request Receipts](../AOA-SK-D-0014-owner-request-receipts.md) (`docs/decisions/AOA-SK-D-0014-owner-request-receipts.md`)
 - [AOA-SK-D-0017 Lived-Use Promotion Pressure](../AOA-SK-D-0017-lived-use-promotion-pressure.md) (`docs/decisions/AOA-SK-D-0017-lived-use-promotion-pressure.md`)
+- [AOA-SK-D-0038 Committed Evidence Readout Completeness Gate](../AOA-SK-D-0038-committed-evidence-readout-completeness-gate.md) (`docs/decisions/AOA-SK-D-0038-committed-evidence-readout-completeness-gate.md`)
 
 ## questbook
 
@@ -64,6 +66,7 @@
 - [AOA-SK-D-0032 Command Authority Family Paths](../AOA-SK-D-0032-command-authority-family-paths.md) (`docs/decisions/AOA-SK-D-0032-command-authority-family-paths.md`)
 - [AOA-SK-D-0033 Root Ingress Closure](../AOA-SK-D-0033-root-ingress-closure.md) (`docs/decisions/AOA-SK-D-0033-root-ingress-closure.md`)
 - [AOA-SK-D-0036 Codex User Skill Root And Foundation Profile](../AOA-SK-D-0036-codex-user-skill-root-and-foundation-profile.md) (`docs/decisions/AOA-SK-D-0036-codex-user-skill-root-and-foundation-profile.md`)
+- [AOA-SK-D-0038 Committed Evidence Readout Completeness Gate](../AOA-SK-D-0038-committed-evidence-readout-completeness-gate.md) (`docs/decisions/AOA-SK-D-0038-committed-evidence-readout-completeness-gate.md`)
 
 ## rpg
 

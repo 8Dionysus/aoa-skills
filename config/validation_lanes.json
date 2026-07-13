@@ -101,6 +101,12 @@
       ],
       [
         "python",
+        "scripts/validation/validate_skill_evidence_readouts.py",
+        "--repo-root",
+        "."
+      ],
+      [
+        "python",
         "scripts/builders/build_trigger_eval_cases.py",
         "--repo-root",
         ".",
@@ -324,6 +330,12 @@
       ],
       [
         "python",
+        "scripts/validation/validate_skill_evidence_readouts.py",
+        "--repo-root",
+        "."
+      ],
+      [
+        "python",
         "scripts/validation/validate_agent_skills.py",
         "--repo-root",
         "."
@@ -503,6 +515,12 @@
       [
         "python",
         "scripts/builders/build_catalog.py"
+      ],
+      [
+        "python",
+        "scripts/validation/validate_skill_evidence_readouts.py",
+        "--repo-root",
+        "."
       ],
       [
         "python",
