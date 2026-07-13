@@ -70,6 +70,7 @@ than silently reverting the outcome dimension to unscored.
 | `full-collision` | 98 | all 49 collision cases as aided/control pairs | sustained |
 | `coverage-closure` | 87 | uncovered skills, all root-child trajectories, and all non-invoke structured routes | sustained |
 | `full-collision-core-engineering` | 16 | collisions 01-08 with three regression anchors and five new contracts | medium |
+| `full-collision-core-engineering-returns` | 4 | paired fixture-output return for collisions 01-02 | medium |
 | `full-collision-safety-overlays` | 22 | collisions 09-19 | medium |
 | `full-collision-session-growth` | 28 | collisions 20-33 | medium |
 | `full-collision-authority-routing` | 22 | collisions 34-43 plus artifact-trust collision 49 | medium |
@@ -457,6 +458,17 @@ with all eight procedure and owner-action contracts present; the five new
 answer keys request the concrete source evidence needed by property, core
 logic, port/adapter, TDD, and contract-test procedures rather than fabricating
 work inside the hermetic fixture.
+
+The first exact-merged v16 core wave completes all sixteen turns. Every aided
+arm gains route and procedure correctness; six outcomes are observation-clean
+and correct in both arms. Three fixture probes (`collision-01` control and both
+`collision-02` arms) are observed once and exit zero but expose zero output
+bytes, while the other thirteen expose the valid 234-byte sentinel payload.
+Those arms retain `fixture_execution_gap`. `collision-05` and `collision-06`
+also have opposite single-arm outcome observation gaps, so neither raw outcome
+contrast is stable. Preserve the full receipt as `needs-rerun` and repeat only
+both arms of `collision-01` and `collision-02` through the four-turn return
+cohort; do not change skill source or weaken either sentinel contract.
 
 ## Safety And Privacy
 

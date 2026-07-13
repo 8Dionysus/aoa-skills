@@ -220,8 +220,18 @@ temporary root and must not be copied into this directory.
   their two positive and two negative raw outcome lifts are explicitly
   observation-unclean and support no skill-effect interpretation. This is
   reviewed candidate evidence only and grants no proof or promotion authority.
+- [aoa-skill-live-dispatch-full-collision-core-engineering-20260712-v16-reviewed-fixture-output-observation-gaps-needs-rerun.json](aoa-skill-live-dispatch-full-collision-core-engineering-20260712-v16-reviewed-fixture-output-observation-gaps-needs-rerun.json)
+  preserves the first exact-merged bounded core-engineering wave. All sixteen
+  turns and eight pairs complete, and every aided arm gains route plus
+  procedure correctness. Six outcomes are observation-clean and correct in
+  both arms; `collision-05` and `collision-06` have opposite single-arm outcome
+  observation gaps. Three fixture probes also run once and exit zero but expose
+  zero captured output, so their sentinel verification remains false and the
+  receipt retains `fixture_execution_gap`. This is candidate
+  `needs-rerun` evidence; repeat only both arms of `collision-01` and
+  `collision-02` without changing skill source or verification rules.
 
-Corrected live receipts under the v11-v15 evidence protocols are reviewable only
+Corrected live receipts under the v11-v16 evidence protocols are reviewable only
 after canonical user-skill shadows, plugins, and every configured MCP id are
 isolated with the adapter-appropriate mechanism (`--ignore-user-config` for
 CLI exec, explicit per-id disables for prompt inspection and App Server);

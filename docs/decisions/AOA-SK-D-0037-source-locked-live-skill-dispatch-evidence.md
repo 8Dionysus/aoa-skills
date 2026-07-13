@@ -466,10 +466,32 @@ As of 2026-07-12:
   outcome contrasts remain observation-unclean. V16 now partitions both broad
   parents into eleven disjoint, exact-cover waves and fail-closes each implicit
   wave on missing contracts; the 16-turn core-engineering wave is the first
-  contract-complete widening.
+  contract-complete widening. Its first exact run completes every arm and gives
+  all eight aided pairs route/procedure lift, but three zero-output fixture
+  probes require the smallest paired `collision-01`/`collision-02` return.
 - Superseded by: none.
 
 ## Review Log
+
+### 2026-07-12 - Return the first core wave to fixture output observation
+
+- Complete evidence: all sixteen turns and eight pairs complete; prompt,
+  filesystem, inventory, transport process, owner, proof, and promotion
+  boundaries remain clean.
+- Skill signal: every aided arm matches its intended route and
+  source-locked procedure, producing positive route and procedure lift in all
+  eight pairs.
+- Clean outcomes: six pairs are observation-clean and correct in both arms.
+  `collision-05` is `aided_only` and `collision-06` is `control_only`, so their
+  raw outcome contrasts are not stable skill-effect evidence.
+- Fixture return: `collision-01` control plus both `collision-02` arms observe
+  the one exact fixture command and exit zero, but capture zero output bytes;
+  fixture verification stays false and all three retain
+  `fixture_execution_gap`. The other thirteen arms expose the valid 234-byte
+  sentinel payload.
+- Decision: preserve the full receipt as `needs-rerun`, make no skill-source or
+  proof relaxation, and add a four-turn paired return containing only
+  `collision-01` and `collision-02`. Do not widen until that return is reviewed.
 
 ### 2026-07-12 - Make broad widening an exact bounded partition contract
 

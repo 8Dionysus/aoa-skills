@@ -84,7 +84,10 @@ Active first local corpus:
   V16 partitions the much larger declared-only parents into eleven disjoint
   exact-cover waves. Every wave is bounded to at most 30 turns and fails closed
   before live spend on missing implicit contracts; the 16-turn core-engineering
-  wave is now complete at 8/8 procedure and outcome pairs.
+  wave is now complete at 8/8 procedure and outcome pairs. Its first exact run
+  completes 16/16 with positive aided route/procedure lift in all eight pairs,
+  but three zero-output fixture probes require a paired four-turn return for
+  `collision-01` and `collision-02` before the wave is called clean.
 
 These files are local evidence notes. They do not publish central proof
 acceptance, scoring, verdicts, regression truth, or proof doctrine.
