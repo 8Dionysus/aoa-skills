@@ -71,6 +71,7 @@ than silently reverting the outcome dimension to unscored.
 | `coverage-closure` | 87 | uncovered skills, all root-child trajectories, and all non-invoke structured routes | sustained |
 | `full-collision-core-engineering` | 16 | collisions 01-08 with three regression anchors and five new contracts | medium |
 | `full-collision-core-engineering-returns` | 4 | paired fixture-output return for collisions 01-02 | medium |
+| `full-collision-core-engineering-outcome-returns` | 4 | paired owner-action output return for collisions 05-06 | medium |
 | `full-collision-safety-overlays` | 22 | collisions 09-19 | medium |
 | `full-collision-session-growth` | 28 | collisions 20-33 | medium |
 | `full-collision-authority-routing` | 22 | collisions 34-43 plus artifact-trust collision 49 | medium |
@@ -469,6 +470,15 @@ also have opposite single-arm outcome observation gaps, so neither raw outcome
 contrast is stable. Preserve the full receipt as `needs-rerun` and repeat only
 both arms of `collision-01` and `collision-02` through the four-turn return
 cohort; do not change skill source or weaken either sentinel contract.
+
+The exact-merged fixture return then completes all four arms without a failure
+class. Every fixture and owner-action command is observed once, succeeds,
+exposes the required sentinel, and verifies. Both pairs retain positive aided
+route and procedure lift with observation-clean, both-correct outcomes. This
+closes the fixture return but does not retroactively rewrite the first receipt.
+Its separate `collision-05` and `collision-06` owner-action observation gaps
+remain unclean, so `full-collision-core-engineering-outcome-returns` repeats
+only both arms of those two cases before the next collision wave opens.
 
 ## Safety And Privacy
 

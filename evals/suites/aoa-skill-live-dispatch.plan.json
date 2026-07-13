@@ -220,6 +220,21 @@
       "estimated_memory_demand_mib": 512,
       "resource_class": "medium"
     },
+    "full-collision-core-engineering-outcome-returns": {
+      "implicit_case_ids": [
+        "collision-05",
+        "collision-06"
+      ],
+      "trajectory_case_ids": [],
+      "structured_skills": [],
+      "procedure_contract_mode": "required",
+      "objective_outcome_mode": "required",
+      "second_confirmation_required": true,
+      "expected_turn_count": 4,
+      "estimated_private_bytes": 67108864,
+      "estimated_memory_demand_mib": 512,
+      "resource_class": "medium"
+    },
     "full-collision-safety-overlays": {
       "implicit_case_ids": [
         "collision-09",

@@ -698,3 +698,28 @@ no-lift-both-correct outcomes. Preserve the full receipt as `needs-rerun`, add
 `collision-01` and `collision-02`, and repeat after exact merge. Do not rerun
 the other six pairs or widen to the next collision wave until the fixture
 return is classified.
+
+## 2026-07-12 fixture return cleared, outcome return opened
+
+The exact-merged `full-collision-core-engineering-returns` execution closes the
+fixture question without a skill or harness relaxation. All four arms for
+`collision-01` and `collision-02` complete with no failure class. Each fixture
+and owner-action command is observed once, exits zero, exposes its required
+sentinel, and verifies. Both aided arms retain exact selection, load, the
+source-locked `blocked_missing_input` disposition, and positive route plus
+procedure lift. Both owner-action comparisons are observation-clean and
+correct in both arms.
+
+This is reproducible evidence that the three earlier zero-byte fixture results
+were observation-layer gaps rather than defects in
+`aoa-invariant-coverage-audit`, `aoa-property-invariants`, their answer keys, or
+the sentinel contract. Preserve this four-turn result as a separate reviewed
+candidate receipt; do not rewrite the first 16-turn `needs-rerun` receipt or
+promote either artifact to proof authority.
+
+The fixture return does not re-observe the two independent owner-action gaps
+from the first wave. `collision-05` and `collision-06` therefore remain
+outcome-unclean, even though their route and procedure evidence is usable. Add
+`full-collision-core-engineering-outcome-returns` with both arms of exactly
+those two pairs, keep both contract axes required and second-confirmed, and
+review that four-turn result before opening the safety-overlay wave.
