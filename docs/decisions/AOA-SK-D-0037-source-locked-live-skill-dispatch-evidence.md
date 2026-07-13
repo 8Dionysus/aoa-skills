@@ -320,8 +320,8 @@ As of 2026-07-12:
   `fixture_inventory_scope_violation` precedes budget classification.
 - Current cap contract: every arm receives the same source-locked 48k ceiling;
   paired arms may differ in actual use but never in available budget.
-- Current contract schema: `aoa_codex_app_server_skill_input_contract_v11`.
-- Current protocol lock: `codex-cli-0.144.1-live-dispatch-evidence-v14`.
+- Current contract schema: `aoa_codex_app_server_skill_input_contract_v12`.
+- Current protocol lock: `codex-cli-0.144.1-live-dispatch-evidence-v17`.
 - Current pair contract: new receipts publish route, selected-child trajectory,
   and selected-procedure-disposition report lift separately. Sent structured
   dispatch, accepted native load, model hierarchy report, and fixture execution
@@ -485,10 +485,32 @@ As of 2026-07-12:
   pass closes all 14 contracts on both axes and the typed cohort-slug sanitizer
   gap. Its first exact live run completes 28/28 but remains `needs-rerun` on
   three manual target-report gaps and one ambient competing-skill
-  classification; no later wave is open yet.
+  classification. V17 repairs the shared description and grader owners and
+  opens only the exact eight-turn paired return; no later wave is open yet.
 - Superseded by: none.
 
 ## Review Log
+
+### 2026-07-12 - Bind the session-growth routing repair in v17
+
+- Prompt-visible owner: derive a policy preamble during portable export for all
+  45 non-invoke skills. `manual` forbids an implicit load; `suggest` may only
+  recommend. Explicit user/operator invocation and source-authorized parent
+  selection remain valid, so root-child trajectories are not broken.
+- Measurement owner: a correctly manual unread target may coexist with a
+  repo-visible ambient skill. Continue to fail target-facing `invoke`, target
+  load, wrong target procedure disposition, and competing wins for non-manual
+  targets.
+- Previous v14 assumption revised: repo visibility alone is not enough to call
+  a selected skill the target treatment when the output contract explicitly
+  distinguishes `selected_skill` from the expected target. Target report and
+  objective read evidence own that judgment.
+- Protocol: bump to live evidence v17 and app-server evidence contract v12;
+  keep every v16 receipt immutable under its original grader and source lock.
+- Return: add exactly both arms of collisions 21, 22, 25, and 33, for eight
+  turns and four complete pairs. Exact merge, refreshed installed-profile
+  parity, host gates, and both confirmations remain required; proof and
+  promotion authority stay false.
 
 ### 2026-07-12 - Preserve the session-growth routing return
 

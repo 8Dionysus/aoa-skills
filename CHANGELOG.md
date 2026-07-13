@@ -278,6 +278,14 @@ Tracking starts with the community-docs baseline for this repository.
   `aoa-change-protocol` as a competing-skill win. The receipt is preserved
   without rewriting. The next pass must repair prompt-visible explicit-only
   policy plus ambient-route classification, then repeat only those four pairs.
+- Live-dispatch evidence v17 repairs both shared boundaries red-first. Portable
+  export now prepends a policy-derived activation sentence to all 43 `manual`
+  and two `suggest` descriptions, allowing only explicit invocation or a
+  source-authorized parent selection while leaving all 12 `invoke`
+  descriptions unchanged. Manual target grading now permits a repo-visible
+  ambient skill only when the target stays unread, `manual_required`, and
+  `not_applicable`; target invoke reporting or loading still fails. A new
+  eight-turn return contains only collisions 21, 22, 25, and 33.
 - `AOA-SK-D-0037` records why live cohorts remain operator-confirmed candidate
   evidence and now clarifies prompt-surface isolation and evidence-stage grading
   after the contaminated smoke; deterministic harness validation, not model

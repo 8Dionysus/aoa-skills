@@ -74,6 +74,7 @@ than silently reverting the outcome dimension to unscored.
 | `full-collision-core-engineering-outcome-returns` | 4 | paired owner-action output return for collisions 05-06 | medium |
 | `full-collision-safety-overlays` | 22 | collisions 09-19 | medium |
 | `full-collision-session-growth` | 28 | collisions 20-33 | medium |
+| `full-collision-session-growth-returns` | 8 | paired routing return for collisions 21, 22, 25, and 33 | medium |
 | `full-collision-authority-routing` | 22 | collisions 34-43 plus artifact-trust collision 49 | medium |
 | `full-collision-eval-children` | 10 | collisions 44-48 | medium |
 | `coverage-closure-core-implicit` | 4 | ADR and memo-writeback implicit reachability | medium |
@@ -546,6 +547,18 @@ evidence to rewrite the four target skills independently. Preserve the full
 receipt and repeat only both arms of cases 21, 22, 25, and 33 after a red-first
 repair.
 
+V17 repairs the shared causes before that return. The portable exporter makes
+activation law prompt-visible in the description itself: 43 `manual` entries
+forbid implicit load, two `suggest` entries may be recommended but not loaded,
+and both classes still permit an explicit invocation or source-authorized
+parent selection. The 12 `invoke` descriptions keep their authored text. The
+failure classifier also evaluates a manual target by its target-facing report
+and objective read evidence rather than treating every repo-visible ambient
+selection as a competing win. The paired
+`full-collision-session-growth-returns` cohort contains exactly eight arms for
+cases 21, 22, 25, and 33 and retains their existing procedure and owner-action
+contracts.
+
 ## Safety And Privacy
 
 The plan locks Git head, all portable skill files, generated/config inputs,
@@ -562,8 +575,8 @@ therefore disable every locked id explicitly. Deterministic adapter tests guard
 both sides of this transport-specific contract.
 
 These hermetic invocation rules use contract schema
-`aoa_codex_app_server_skill_input_contract_v11` and protocol revision
-`codex-cli-0.144.1-live-dispatch-evidence-v16`. Retained v1-v15 receipts remain
+`aoa_codex_app_server_skill_input_contract_v12` and protocol revision
+`codex-cli-0.144.1-live-dispatch-evidence-v17`. Retained v1-v16 receipts remain
 source-locked to their original protocol and review status and are not upgraded
 in place.
 

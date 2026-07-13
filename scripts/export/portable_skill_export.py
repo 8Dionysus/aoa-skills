@@ -37,6 +37,15 @@ SCOPE_UI_DEFAULTS = {
     },
 }
 EXPORT_PROFILE = "codex-facing-wave-3"
+MANUAL_ACTIVATION_DESCRIPTION_PREFIX = (
+    "Explicit activation required: do not invoke or load this skill from an "
+    "implicit match; wait for explicit user or operator invocation or a "
+    "source-authorized parent-route selection. "
+)
+SUGGEST_ACTIVATION_DESCRIPTION_PREFIX = (
+    "An implicit match may suggest this skill, but must not load or execute it "
+    "until explicit invocation or a source-authorized parent-route selection. "
+)
 
 
 @dataclass(frozen=True)
@@ -90,6 +99,22 @@ def merge_dict(base: dict[str, Any], extra: dict[str, Any]) -> dict[str, Any]:
 
 def normalize_space(text: str) -> str:
     return re.sub(r"\s+", " ", text).strip()
+
+
+def with_prompt_visible_activation_policy(
+    override: dict[str, Any],
+    policy_entry: dict[str, Any],
+    skill_name: str,
+) -> dict[str, Any]:
+    activation_policy = resolve_implicit_activation_policy(policy_entry, skill_name)
+    prompt_visible = copy.deepcopy(override)
+    description = normalize_space(str(prompt_visible["description"]))
+    if activation_policy == "manual":
+        description = f"{MANUAL_ACTIVATION_DESCRIPTION_PREFIX}{description}"
+    elif activation_policy == "suggest":
+        description = f"{SUGGEST_ACTIVATION_DESCRIPTION_PREFIX}{description}"
+    prompt_visible["description"] = description
+    return prompt_visible
 
 
 def slugify(text: str) -> str:
@@ -505,8 +530,12 @@ def build_portable_skill_exports(
 
     for skill in skill_sections["skills"]:
         catalog_entry = catalog_by_name[skill["name"]]
-        override = overrides[skill["name"]]
         policy_entry = policies[skill["name"]]
+        override = with_prompt_visible_activation_policy(
+            overrides[skill["name"]],
+            policy_entry,
+            skill["name"],
+        )
 
         skill_dir = skills_root / skill["name"]
         (skill_dir / "agents").mkdir(parents=True)

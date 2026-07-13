@@ -3,7 +3,7 @@
   "owner_repo": "aoa-skills",
   "profile": "repo-default",
   "profile_revision": "dda7c15a82e9af4517893f19b9b70c6c151d2d5326ddc01aa1c75e13e1ba9c33",
-  "protocol_revision": "codex-cli-0.144.1-live-dispatch-evidence-v16",
+  "protocol_revision": "codex-cli-0.144.1-live-dispatch-evidence-v17",
   "proof_authority": false,
   "promotion_allowed": false,
   "default_action": "plan",
@@ -298,6 +298,23 @@
       "second_confirmation_required": true,
       "expected_turn_count": 28,
       "estimated_private_bytes": 536870912,
+      "estimated_memory_demand_mib": 512,
+      "resource_class": "medium"
+    },
+    "full-collision-session-growth-returns": {
+      "implicit_case_ids": [
+        "collision-21",
+        "collision-22",
+        "collision-25",
+        "collision-33"
+      ],
+      "trajectory_case_ids": [],
+      "structured_skills": [],
+      "procedure_contract_mode": "required",
+      "objective_outcome_mode": "required",
+      "second_confirmation_required": true,
+      "expected_turn_count": 8,
+      "estimated_private_bytes": 134217728,
       "estimated_memory_demand_mib": 512,
       "resource_class": "medium"
     },

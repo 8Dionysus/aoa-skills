@@ -24,7 +24,7 @@
         "validate",
         ".agents/skills/abyss-safe-infra-change"
       ],
-      "description_sha256": "e11ba355727d8866164caeb20c148111295c4486fdc868a212d164382ff4da55"
+      "description_sha256": "00e98f1f8e73fb3bc512e220280b0270f4d6224c5cb88aaffd99f985524d3dc0"
     },
     {
       "skill_name": "abyss-sanitized-share",
@@ -34,7 +34,7 @@
         "validate",
         ".agents/skills/abyss-sanitized-share"
       ],
-      "description_sha256": "f05959672d5e9437dfb398491815a99a183875aa237d0c2e8b9b3e7e12423b84"
+      "description_sha256": "334f730b2da097ec5fd283e4e9e1e1337637aa45ffd60b7a1353d3e147a66c70"
     },
     {
       "skill_name": "abyss-self-diagnostic-spine",
@@ -44,7 +44,7 @@
         "validate",
         ".agents/skills/abyss-self-diagnostic-spine"
       ],
-      "description_sha256": "3696a20155eab40023408030f20e145cab3ce3b95863f8a41e2eb22b88fe6cf9"
+      "description_sha256": "085642b471c8adf535e7f49c859bfd302fb89a875d10c560ae9f67136eb40546"
     },
     {
       "skill_name": "aoa-adr-write",
@@ -64,7 +64,7 @@
         "validate",
         ".agents/skills/aoa-approval-gate-check"
       ],
-      "description_sha256": "0242f9151a193c21c95ac982a226f7884c162fb174127b45bcda65e2a6f99d0c"
+      "description_sha256": "ed00570198b7f056620e70d9f531348621fd93f11daf43dbb25fa4246a8b6daa"
     },
     {
       "skill_name": "aoa-automation-opportunity-scan",
@@ -74,7 +74,7 @@
         "validate",
         ".agents/skills/aoa-automation-opportunity-scan"
       ],
-      "description_sha256": "b9b512a3f0c82a77b9ae897c7ab0cf03c2cdcf6385285a1bc2cd6f30628a4cd7"
+      "description_sha256": "01af8a7f186f317ba20b0c16c4fd3f95b561cbf98928e9fe41dc664ddc61f33f"
     },
     {
       "skill_name": "aoa-bounded-context-map",
@@ -104,7 +104,7 @@
         "validate",
         ".agents/skills/aoa-checkpoint-closeout-bridge"
       ],
-      "description_sha256": "417755266b47a9c47b0556216821716b52acb98cd81173bd1d8556892cc00350"
+      "description_sha256": "a936044ba9fe20ea72a86ab3eeb574bbdbafaed64ba28b7bd692d49a13b1a506"
     },
     {
       "skill_name": "aoa-commit-growth-seam",
@@ -114,7 +114,7 @@
         "validate",
         ".agents/skills/aoa-commit-growth-seam"
       ],
-      "description_sha256": "9d966375cec8d8bacf356d382c5866c18b41884e072affa5ebfae9a7e110ac12"
+      "description_sha256": "26e85cfd0676628fcaf5cbcd2bef70ccc162baded2fdb9834e028bb3b96bb42c"
     },
     {
       "skill_name": "aoa-contract-test",
@@ -154,7 +154,7 @@
         "validate",
         ".agents/skills/aoa-decision-correct"
       ],
-      "description_sha256": "531d68aba2449c36696b1dafb8dcb9a707ac88ee82168f5f0309776516fd094d"
+      "description_sha256": "7b2ef57a458015d284ce55ba09e7ce8c920138106d6b5996267d9da937290292"
     },
     {
       "skill_name": "aoa-decision-create",
@@ -164,7 +164,7 @@
         "validate",
         ".agents/skills/aoa-decision-create"
       ],
-      "description_sha256": "235b2dbdf8fbbae38702b24835e6df7a5635d743ebdb740df224f1f415c14197"
+      "description_sha256": "316956357c62c26c286d836cbdc483fdac9619114ea2c9f3b54d4e9df64cc11d"
     },
     {
       "skill_name": "aoa-decision-find",
@@ -174,7 +174,7 @@
         "validate",
         ".agents/skills/aoa-decision-find"
       ],
-      "description_sha256": "0a9d047ac21d02bb9dc6aecb50366308fee5a85d186d9591d434fb8ca09f9714"
+      "description_sha256": "ff543a21f7c9e7b014c41ca9faf70557c7692487e2ee1ab37634d167b47b700a"
     },
     {
       "skill_name": "aoa-dry-run-first",
@@ -184,7 +184,7 @@
         "validate",
         ".agents/skills/aoa-dry-run-first"
       ],
-      "description_sha256": "1a18696fe0798220e72c2582a17829dd4f8656cbd651bb2bae757039332b20bc"
+      "description_sha256": "4958667d78e99b027a7cfa3b61799ecd22d949a10247487bafd7dc9162b1f78a"
     },
     {
       "skill_name": "aoa-eval",
@@ -204,7 +204,7 @@
         "validate",
         ".agents/skills/aoa-eval-apply"
       ],
-      "description_sha256": "5b3193acd2aa17bf9e4e5df832c79f1d245601a9bcc78a3bf826f05e67cb6b11"
+      "description_sha256": "1c8ce69f98963bafb75a474494517413de255c623234d2f790a7c1b5e9a02cd5"
     },
     {
       "skill_name": "aoa-eval-design",
@@ -214,7 +214,7 @@
         "validate",
         ".agents/skills/aoa-eval-design"
       ],
-      "description_sha256": "0a71f12f9345a72eb52990ac72c66be2a8076a47163c0aa167d1ea9be09ef3ca"
+      "description_sha256": "30918de84da402113bd91882f771ebfd0cb644fd7290a60fffb80dd31b4fae31"
     },
     {
       "skill_name": "aoa-eval-local-need",
@@ -224,7 +224,7 @@
         "validate",
         ".agents/skills/aoa-eval-local-need"
       ],
-      "description_sha256": "cc830ecdad58d6943fe61004ef48f6dd61d2a2cd3d62a1eaa0ea375331945d77"
+      "description_sha256": "13f16196164ed6a1bd3e5dced762c648228b56393236a5ba0641e622e2ccc68c"
     },
     {
       "skill_name": "aoa-eval-select",
@@ -234,7 +234,7 @@
         "validate",
         ".agents/skills/aoa-eval-select"
       ],
-      "description_sha256": "0be63765d3caff0555b4090b46e68d0ce4d394c39cfbc76b76302a1e5e883636"
+      "description_sha256": "caec7f6183e22ae226cce5b1930236f69e89d53be8d48c73379127b713cc0d22"
     },
     {
       "skill_name": "aoa-eval-session-mining",
@@ -244,7 +244,7 @@
         "validate",
         ".agents/skills/aoa-eval-session-mining"
       ],
-      "description_sha256": "04d539551d617733107494195dc8cffead04bf175349a30b872dbe709798c31c"
+      "description_sha256": "36b2e8916c96801e0c6ea0e6c6bb2b558f28a39f00c49b2ccdcc364fb980a0ce"
     },
     {
       "skill_name": "aoa-invariant-coverage-audit",
@@ -264,7 +264,7 @@
         "validate",
         ".agents/skills/aoa-local-stack-bringup"
       ],
-      "description_sha256": "f878029a986286568d5254e65a58127f9bcfa51c949b0f08ddd9feadfaab6516"
+      "description_sha256": "9cb4d1adbdfcc1d84b8c93f53a199ce164aaf4e3d803299e2c0a10fc1b90e947"
     },
     {
       "skill_name": "aoa-memo-writeback",
@@ -274,7 +274,7 @@
         "validate",
         ".agents/skills/aoa-memo-writeback"
       ],
-      "description_sha256": "e6870123d0f2b8cae7facde3b47ce58e9f7f5a229fe4616b6da6e4091a6e3d12"
+      "description_sha256": "cfbd5180f84ff62ec3439a2c0bc549c4eb22be51e45478df501887a2d2265b8b"
     },
     {
       "skill_name": "aoa-port-adapter-refactor",
@@ -304,7 +304,7 @@
         "validate",
         ".agents/skills/aoa-quest-harvest"
       ],
-      "description_sha256": "331b01d53c27c36b8b793b7e32ac8a6630766b0bd1c2a47844ef4474f3a79dda"
+      "description_sha256": "d5bb261907ba1789809f2dd8d70a85634d437177e555ea46274788b997d20d53"
     },
     {
       "skill_name": "aoa-safe-infra-change",
@@ -314,7 +314,7 @@
         "validate",
         ".agents/skills/aoa-safe-infra-change"
       ],
-      "description_sha256": "c9f9c2af3a97385a9810e4397887785b6f5602fb8d75fb6b333ae747c3b6f69a"
+      "description_sha256": "11bf235999439e6c94fa51fc76c612b08b43eedfe72782a5ab10aac63bc11bb9"
     },
     {
       "skill_name": "aoa-sanitized-share",
@@ -324,7 +324,7 @@
         "validate",
         ".agents/skills/aoa-sanitized-share"
       ],
-      "description_sha256": "01a00dd8a32d808ea6fb153f7d95f7e7d98adcecb1f6f70b73bd4954142beeae"
+      "description_sha256": "3134392c56f394b3839d0280418a702dec147fec6f81f0b2da76bb66bf8e7373"
     },
     {
       "skill_name": "aoa-session-donor-harvest",
@@ -334,7 +334,7 @@
         "validate",
         ".agents/skills/aoa-session-donor-harvest"
       ],
-      "description_sha256": "12327a955b20f8d5256b711c4584c87a2cc9db0100d2083697cd4565c49801b2"
+      "description_sha256": "3e773a93c8f2076d70bcf5b357b2a4f6cf96c210d69b6c1c322bcbc8b261233f"
     },
     {
       "skill_name": "aoa-session-progression-lift",
@@ -344,7 +344,7 @@
         "validate",
         ".agents/skills/aoa-session-progression-lift"
       ],
-      "description_sha256": "2715c77c3d5ed19ab16fe4cde3e8dedcc4963fb2e140a14e8062c7e47cfe0961"
+      "description_sha256": "50299e60248cdf8a3da212c3d8d3193bfc3b0a40c5d7f952f113b977e14f65f3"
     },
     {
       "skill_name": "aoa-session-route-forks",
@@ -354,7 +354,7 @@
         "validate",
         ".agents/skills/aoa-session-route-forks"
       ],
-      "description_sha256": "22824ec5994207065055b7d44afc266c05c0f8458f1d1794441823ae8f191ed9"
+      "description_sha256": "dd8a99ecee1bc6fdfb33e5a80b79ebbd956f3b088479df14cabc3edc3cad9e63"
     },
     {
       "skill_name": "aoa-session-self-diagnose",
@@ -364,7 +364,7 @@
         "validate",
         ".agents/skills/aoa-session-self-diagnose"
       ],
-      "description_sha256": "918ebdbc962c2c4d7878d90b971136fd3186a023850a71264eb31a743fa3a0ed"
+      "description_sha256": "07f020be6852932f4222cc56e09f16bf887a5166c8982b115a264c85e1c04846"
     },
     {
       "skill_name": "aoa-session-self-repair",
@@ -374,7 +374,7 @@
         "validate",
         ".agents/skills/aoa-session-self-repair"
       ],
-      "description_sha256": "538dd2a1460463bb3d83ff8b4eb5d07553c98bc1f6f373175a791ed78bd42869"
+      "description_sha256": "d3fccb37409dbb8078eb184401c955de477afcbd9e06cd7dcdffd5c9ddfca9da"
     },
     {
       "skill_name": "aoa-source-of-truth-check",
@@ -394,7 +394,7 @@
         "validate",
         ".agents/skills/aoa-summon"
       ],
-      "description_sha256": "6aa550228eb7918497730de730de520ba45831b6dd4e65736b8ee42fda4e416e"
+      "description_sha256": "794d519f3ae7596b1a9171b9aed1f985f9d51b201314f7f201c2e6097afe688e"
     },
     {
       "skill_name": "aoa-tdd-slice",
@@ -414,7 +414,7 @@
         "validate",
         ".agents/skills/atm10-change-protocol"
       ],
-      "description_sha256": "45693932852a02321b01983411bbd463ed40e8c008367d38bbb7488f6f8f5263"
+      "description_sha256": "ac1d1e82825dae291945bf9a376da3aee9364916f30cb772fe0839ecb294a4a0"
     },
     {
       "skill_name": "atm10-source-of-truth-check",
@@ -424,7 +424,7 @@
         "validate",
         ".agents/skills/atm10-source-of-truth-check"
       ],
-      "description_sha256": "8cd17be221e3bf3352b948cc0f4e0fcd3afad8d9999de0c5f414d0eb6092a305"
+      "description_sha256": "ae0a257138c3af09ef8b21c4de190d34d50ccf01477c0ad73681f4b32ab571b2"
     },
     {
       "skill_name": "os-abyss-artifact-trust-loop",
@@ -434,7 +434,7 @@
         "validate",
         ".agents/skills/os-abyss-artifact-trust-loop"
       ],
-      "description_sha256": "4e651ff7b53f12a4cfe733dea9959ed56e75a93ff6c1d7df1c8a34bd53da5b27"
+      "description_sha256": "f235866307acd118f5fbecbefbae99efc2c7f87c36fa20dc9656dbd39a3d913c"
     },
     {
       "skill_name": "titan-approval-ledger",
@@ -444,7 +444,7 @@
         "validate",
         ".agents/skills/titan-approval-ledger"
       ],
-      "description_sha256": "7a1fbafc8a05a66f8988eab275eb9ac58f25c1b6ec72fd9a4461931dfa065479"
+      "description_sha256": "66c3ce4dc8cdb96a5a475a2e4b7240654a8e4d3ee000ed3e6118c2c4d9133f01"
     },
     {
       "skill_name": "titan-approval-loom",
@@ -454,7 +454,7 @@
         "validate",
         ".agents/skills/titan-approval-loom"
       ],
-      "description_sha256": "65b6846ba3485f41b7664a7cc7433e6f50107396eb433393a4a7dc98f5692aae"
+      "description_sha256": "6559ae1d6c3ada8108302bbfee3a44ee11969f69604946acaac5759b9fe05ecb"
     },
     {
       "skill_name": "titan-appserver-bridge",
@@ -464,7 +464,7 @@
         "validate",
         ".agents/skills/titan-appserver-bridge"
       ],
-      "description_sha256": "7931cb498844dc36e0c06e72a6953d5be5a9b7727f0e2d07c6edde8c119b6469"
+      "description_sha256": "d50fd07798f60c94560528e535a8139319b6483606e88d471bbd1414925285f9"
     },
     {
       "skill_name": "titan-appserver-plan",
@@ -474,7 +474,7 @@
         "validate",
         ".agents/skills/titan-appserver-plan"
       ],
-      "description_sha256": "f5b0c661510d6f255010fec85c145006f4897381396cc5c7ee9684a6385e85fa"
+      "description_sha256": "8a73b640caa1d3f53a3764631c57756b29eecc60c5c6b2570f2d57d333bfd7af"
     },
     {
       "skill_name": "titan-closeout",
@@ -484,7 +484,7 @@
         "validate",
         ".agents/skills/titan-closeout"
       ],
-      "description_sha256": "8cc9fed46ba8d565e65ae1b6d7391cfcb5cf6f5a922da8c2b1c9d7b63b22ed95"
+      "description_sha256": "29b66a92126aa29c995cef8767fba5171f2e92fae5408143e4493181cf30a122"
     },
     {
       "skill_name": "titan-console",
@@ -494,7 +494,7 @@
         "validate",
         ".agents/skills/titan-console"
       ],
-      "description_sha256": "793db2976fc27abcbde4b8d17732abcc1fed15b64b02e1ae574e59672a9e355f"
+      "description_sha256": "e4c6c0763888b5ba5d074f3dc982ccdea1367af4265aeaef49f52474cb2d8d11"
     },
     {
       "skill_name": "titan-event-replay",
@@ -504,7 +504,7 @@
         "validate",
         ".agents/skills/titan-event-replay"
       ],
-      "description_sha256": "a5631b0587ee599ec3a4e92239a8101048b42a137adc8afee35986ed900ea4c1"
+      "description_sha256": "141ddb8f963fb5826559740e4437aa4bc48a9b37abeda47577fc258a9eb202c5"
     },
     {
       "skill_name": "titan-memory-loom",
@@ -514,7 +514,7 @@
         "validate",
         ".agents/skills/titan-memory-loom"
       ],
-      "description_sha256": "13bc25dd0844652048efbad8ea76002559e4c21652b41adbdf571c44bafea657"
+      "description_sha256": "4b0b152f03e3208615534384a41fa65d15c052a45e1f8f27cdd8cacf7a64ec47"
     },
     {
       "skill_name": "titan-memory-prune",
@@ -524,7 +524,7 @@
         "validate",
         ".agents/skills/titan-memory-prune"
       ],
-      "description_sha256": "346cc2a0654847fcc80970756857e3d2e790cc9bb1178d0e3dfcd90b8df61514"
+      "description_sha256": "d69df675c2e6bddac59a7d639fea96e0450a4702b1a8ab13a7325a08814129e4"
     },
     {
       "skill_name": "titan-mutation-gate",
@@ -534,7 +534,7 @@
         "validate",
         ".agents/skills/titan-mutation-gate"
       ],
-      "description_sha256": "8367dbe6e147dcf7304e3cec59b362d0896a3b42e9672514a0ee65afd91a3516"
+      "description_sha256": "8945c29381b62d130ad9c2ccc3f53fc75fcad4f1e6484c37399d2499f337cbed"
     },
     {
       "skill_name": "titan-recall",
@@ -544,7 +544,7 @@
         "validate",
         ".agents/skills/titan-recall"
       ],
-      "description_sha256": "4e29f7405a252b190467113d8e2c420c23a6a0cb43981adc0e6405ae84e5dfc5"
+      "description_sha256": "b1d4fa6c4c5db8b54228f782707817701a5155a747017a02fe2fd8a918d9accf"
     },
     {
       "skill_name": "titan-receipt",
@@ -554,7 +554,7 @@
         "validate",
         ".agents/skills/titan-receipt"
       ],
-      "description_sha256": "d86c477424db249d64b6609c33ba6fef09c0ce2e5e4ef632f9dc2465c1d3b9d0"
+      "description_sha256": "2ddade96955d140112335ea715876f0b516a520979bfb9b25930428ab0958e71"
     },
     {
       "skill_name": "titan-runtime-gate",
@@ -564,7 +564,7 @@
         "validate",
         ".agents/skills/titan-runtime-gate"
       ],
-      "description_sha256": "02adc76acaa054649bf3112b5c01009e20fd1f10357fc66c6c80edbbeeac9644"
+      "description_sha256": "e72c489e7d78aca253bf229cd914da5a0294a3c9aee311d8d7d002f0d471ef2f"
     },
     {
       "skill_name": "titan-summon",
@@ -574,7 +574,7 @@
         "validate",
         ".agents/skills/titan-summon"
       ],
-      "description_sha256": "f75ab351a0b314fcd15f9d4e1fd5168a46ad5d4df722dd817c10e61ed23fb34e"
+      "description_sha256": "89a78079ca3151a3eed2c2bb62a0a83fdcd4cb27c3ec69fbd53c89da36c7a4e3"
     },
     {
       "skill_name": "titan-thread-turn-binding",
@@ -584,7 +584,7 @@
         "validate",
         ".agents/skills/titan-thread-turn-binding"
       ],
-      "description_sha256": "695868fd6f199bb5f260fc896e71bb8a00255a723f4dcbbf3e804c7a6c2f538b"
+      "description_sha256": "999fe236f634e85d37108a6923a4d43cde14734f58128ed2c9049ad42e0de971"
     }
   ],
   "ci_steps": [

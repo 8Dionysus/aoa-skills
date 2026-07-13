@@ -878,3 +878,36 @@ manual target despite the target-report contract explicitly allowing ambient
 skills. Preserve the complete receipt as `needs-rerun`, repair both shared
 contracts red-first, and repeat only both arms of collisions 21, 22, 25, and
 33 before opening another broad wave.
+
+## 2026-07-12 v17 prompt-visible activation and ambient repair
+
+The red-first repair starts from two falsifiable regressions. Every generated
+non-invoke description must carry its activation policy in the same
+frontmatter field that Codex uses for routing, and a manual target that remains
+unread with `manual_required` plus `not_applicable` must not become a
+`collision_misroute` only because a different repo-visible ambient skill was
+reported. Both tests fail under v16.
+
+Portable export now derives the activation preamble centrally from
+`config/skill_policy_matrix.json`. All 43 `manual` entries forbid invocation or
+load from an implicit semantic match and require explicit user/operator
+activation or a source-authorized parent selection. Both `suggest` entries may
+surface as recommendations but stay unloaded until the same explicit seam.
+The 12 `invoke` descriptions remain unchanged. Applying the rule in the export
+phase keeps `.agents/skills/*/SKILL.md`, full/min catalogs, runtime contracts,
+context retention, handoff, adapter manifests, description-trigger cases, and
+release profile revisions aligned instead of manually patching 45 overrides.
+
+The grader repair is intentionally narrower than ignoring repo-visible skills.
+For a manual aided target, an objective target read, a target-facing
+`route_decision=invoke`, or a selected target claimed loaded still produces
+`manual_activation_leak`. A repo-visible ambient selection is allowed only
+when the target report remains `manual_required`; its source-authored
+`not_applicable` procedure is still checked independently. Competing-skill
+precedence remains unchanged for invoke, explicit, and trajectory targets.
+
+These semantics require protocol v17 and app-server evidence contract v12;
+retained v16 receipts are not regraded or rewritten. The new paired return is
+`full-collision-session-growth-returns`: both arms of only collisions 21, 22,
+25, and 33, eight turns total, with four complete procedure and owner-action
+contracts, medium host class, and the second exact confirmation gate.

@@ -93,6 +93,21 @@ PYTHONPATH=scripts python scripts/validation/lint_pack_profiles.py --repo-root .
 
 ## Verification posture
 
+Portable descriptions are runtime activation surfaces, not decorative labels.
+The exporter derives a leading sentence from each skill's
+`implicit_activation_policy`: `manual` forbids load from an implicit match,
+`suggest` may recommend but not load, and both accept explicit user/operator
+invocation or a source-authorized parent-route selection. `invoke` keeps the
+authored description unchanged. This policy text is generated rather than
+copied into every portable override so SKILL frontmatter, catalogs, runtime
+contracts, context retention, description evals, and installed profile digests
+cannot silently disagree.
+
+After changing activation-policy export behavior, a repo-local build is not
+runtime proof. Stage, inspect, import, and verify the affected profile, then use
+the live Codex prompt-input inspection surface before claiming the installed
+descriptions are available to a new session.
+
 If you need a machine-readable packaging check rather than only a dry-run install plan:
 
 - read `generated/skill_pack_profiles.resolved.json` for the concrete profile membership

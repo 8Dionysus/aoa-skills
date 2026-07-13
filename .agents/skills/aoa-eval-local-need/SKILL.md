@@ -1,6 +1,6 @@
 ---
 name: aoa-eval-local-need
-description: Create a repo-local eval need packet under evals/intake when no existing eval fits, preserving owner route, evidence refs, rejected alternatives, proposed checks, and proof limits. Use when a repeated failure or missing behavior needs local eval pressure without central proof acceptance. Do not use when an existing eval can be applied, when the missing object is a memo or decision, or when the user asks for central aoa-evals acceptance.
+description: 'Explicit activation required: do not invoke or load this skill from an implicit match; wait for explicit user or operator invocation or a source-authorized parent-route selection. Create a repo-local eval need packet under evals/intake when no existing eval fits, preserving owner route, evidence refs, rejected alternatives, proposed checks, and proof limits. Use when a repeated failure or missing behavior needs local eval pressure without central proof acceptance. Do not use when an existing eval can be applied, when the missing object is a memo or decision, or when the user asks for central aoa-evals acceptance.'
 license: Apache-2.0
 compatibility: Designed for Codex or similar coding agents with repository file access and an interactive shell. Network access is optional and only needed when repository validation or referenced workflows require it.
 metadata:

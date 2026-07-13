@@ -5,6 +5,8 @@ import sys
 import tempfile
 import unittest
 
+import yaml
+
 from tests.support.cli import command_env
 
 
@@ -32,6 +34,34 @@ def load_jsonl(path: pathlib.Path):
 
 
 class CodexPortableContractTests(unittest.TestCase):
+    def test_non_invoke_descriptions_make_activation_policy_prompt_visible(self):
+        catalog = load_json(REPO_ROOT / "generated" / "agent_skill_catalog.json")
+        manual_prefix = (
+            "Explicit activation required: do not invoke or load this skill from an "
+            "implicit match; wait for explicit user or operator invocation or a "
+            "source-authorized parent-route selection. "
+        )
+        suggest_prefix = (
+            "An implicit match may suggest this skill, but must not load or execute it "
+            "until explicit invocation or a source-authorized parent-route selection. "
+        )
+
+        for entry in catalog["skills"]:
+            with self.subTest(skill=entry["name"]):
+                exported_text = (
+                    REPO_ROOT / ".agents" / "skills" / entry["name"] / "SKILL.md"
+                ).read_text(encoding="utf-8")
+                exported_frontmatter = yaml.safe_load(exported_text.split("---", 2)[1])
+                self.assertEqual(entry["description"], exported_frontmatter["description"])
+                self.assertLessEqual(len(entry["description"]), 1024)
+                if entry["implicit_activation_policy"] == "manual":
+                    self.assertTrue(entry["description"].startswith(manual_prefix))
+                elif entry["implicit_activation_policy"] == "suggest":
+                    self.assertTrue(entry["description"].startswith(suggest_prefix))
+                else:
+                    self.assertFalse(entry["description"].startswith(manual_prefix))
+                    self.assertFalse(entry["description"].startswith(suggest_prefix))
+
     def test_local_adapter_manifest_matches_catalog(self):
         manifest = load_json(REPO_ROOT / "generated" / "local_adapter_manifest.json")
         catalog = load_json(REPO_ROOT / "generated" / "agent_skill_catalog.json")
