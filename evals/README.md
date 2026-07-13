@@ -46,17 +46,20 @@ Active first local corpus:
   returns that must be isolated before widening. V13 keeps the decision child
   handoff as a live skill candidate, removes ambient-control and structured
   hierarchy false labels, and makes no-dispatch disposition explicit. Its
-  read-only replay validates grading only; the v12 receipt remains immutable
-  and a fresh bounded rerun is still required. That rerun is source-locked as
+  read-only replay validates grading only; the v12 receipt remains immutable.
+  The bounded rerun is source-locked as
   `pilot13-returns`: 15 turns covering only the seven affected implicit pairs
   and the corrected Abyss structured report. Its first two exact-merged runs
   are preserved as partial `needs-rerun` receipts: one stopped on transport at
-  6 turns, the next on a contradictory output contract at 14 turns. The final
-  structured arm remains unobserved, and receipt-schema parity must close
-  before another run. V14 then separates external ambient routing from
+  6 turns, the next on a contradictory output contract at 14 turns. V14 then
+  separates external ambient routing from
   repo-treatment activation and appends target-specific report semantics to
   implicit arms; read-only replay moves two aided failures to the correct
-  procedure axis without removing them.
+  procedure axis without removing them. The fresh exact-merged v14 run
+  completes all 15 turns with every harness, transport, owner, and safety gate
+  clean. It leaves only three source candidates: the `aoa-decision-find` child
+  handoff and two `aoa-change-protocol` boundary collisions. Repair those two
+  source skills and rerun only the affected cases before widening.
 
 These files are local evidence notes. They do not publish central proof
 acceptance, scoring, verdicts, regression truth, or proof doctrine.

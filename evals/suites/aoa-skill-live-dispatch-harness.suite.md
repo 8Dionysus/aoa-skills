@@ -363,6 +363,18 @@ Replay of the 14-turn v13 raw evidence changes only two aided classifications,
 from dispatch policy gaps to target procedure disposition misses. It leaves all
 other failures intact and never alters the reviewed v13 receipt.
 
+The exact-merged v14 run then completes all 15 turns. Every prompt, filesystem,
+inventory, fixture, transport, owner-action, and authority gate is clean, and
+the previously unobserved Abyss structured arm passes its dispatch, load,
+hierarchy, and fixture contracts. The return set contracts to three aided
+failures: `collision-38` reads the `aoa-decision` root but does not hand the find
+task to `aoa-decision-find`; `collision-09` loads repo-visible
+`aoa-change-protocol` for an explicit-only approval-gate classification; and
+`collision-14` selects the same generic skill instead of the ATM10 project
+overlay. This is a source-repair boundary, not a family verdict: preserve the
+receipt, change only those two source skills, and rerun the smallest affected
+case set before widening.
+
 ## Safety And Privacy
 
 The plan locks Git head, all portable skill files, generated/config inputs,

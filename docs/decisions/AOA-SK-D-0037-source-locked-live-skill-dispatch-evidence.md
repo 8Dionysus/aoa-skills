@@ -449,15 +449,37 @@ As of 2026-07-12:
 - Current bounded-rerun evidence: the first exact-merged attempt stopped at
   6/15 on a post-start transport timeout. A fresh attempt passed that point and
   stopped at 14/15 on an output contradiction. Both receipts are preserved as
-  `needs-rerun`; the final structured arm remains unobserved.
+  `needs-rerun` historical evidence.
 - Current v14 posture: selected reports are classified against the exact
   prompt-visible repo surface; external ambient routes do not become treatment
   activation. Target-specific report guidance now reaches implicit arms.
-  Read-only replay moves two aided failures from dispatch policy to procedure
-  disposition and removes no remaining failure.
+  The fresh exact-merged run completes 15/15 with every harness, transport,
+  owner, safety, and final structured-arm boundary clean. It leaves exactly
+  three aided source candidates: the `aoa-decision-find` handoff and two
+  `aoa-change-protocol` boundary collisions. Only those two source skills may
+  change before the smallest affected rerun.
 - Superseded by: none.
 
 ## Review Log
+
+### 2026-07-12 - Contract the complete v14 return to two source skills
+
+- Exact evidence: all 15 `pilot13-returns` turns and all seven pairs complete;
+  prompt, filesystem, inventory, fixture, transport, owner-action, authority,
+  and the final Abyss structured contracts stay clean.
+- Cleared returns: `collision-20`, `collision-33`, `collision-49`, Titan, and
+  the Abyss overlay-to-base hierarchy have no failure class under fresh v14
+  transport.
+- Decision return: `collision-38` reads `aoa-decision` but does not select and
+  fully read the source-required `aoa-decision-find` child. Keep the trajectory
+  contract and strengthen the root handoff rather than weakening the grader.
+- Boundary return: `aoa-change-protocol` is loaded for the explicit-only
+  `aoa-approval-gate-check` case and displaces `atm10-change-protocol` in the
+  ATM10 overlay case. The explicit targets remain unchanged; narrow the generic
+  skill boundary.
+- Decision: preserve the public-safe receipt as `needs-rerun`; add deterministic
+  regressions before editing the two source skills, then exact-merge and rerun
+  only the three affected pairs before widening.
 
 ### 2026-07-12 - Separate repo treatment from ambient target reporting in v14
 
