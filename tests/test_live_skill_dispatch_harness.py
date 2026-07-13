@@ -594,6 +594,64 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
         self.assertEqual(28, public["trial_count"])
         self.assertEqual(14, public["pair_count"])
 
+    def test_session_growth_return_repeats_only_routing_gap_pairs(self) -> None:
+        plan = self.runner.load_plan(self.plan_path)
+        returns = self.runner.expand_cohort(
+            REPO_ROOT,
+            plan,
+            "full-collision-session-growth-returns",
+        )
+        self.assertEqual(8, len(returns))
+        self.assertEqual(
+            {"collision-21", "collision-22", "collision-25", "collision-33"},
+            {trial.case_id for trial in returns},
+        )
+        self.assertTrue(
+            all(
+                trial.arm_type in {"implicit_aided", "implicit_control"}
+                and trial.procedure_contract is not None
+                and trial.outcome_contract is not None
+                for trial in returns
+            )
+        )
+        packet = self.runner.build_plan_packet(
+            REPO_ROOT,
+            plan,
+            "full-collision-session-growth-returns",
+            "model-a",
+            "medium",
+        )
+        self.assertEqual(4, packet["implicit_pair_count"])
+        self.assertEqual(4, packet["procedure_scored_pair_count"])
+        self.assertTrue(packet["procedure_contract_coverage_complete"])
+        self.assertEqual(4, packet["objective_outcome_scored_pair_count"])
+        self.assertTrue(packet["objective_outcome_coverage_complete"])
+        self.assertTrue(packet["high_cost_confirmation_required"])
+        with tempfile.TemporaryDirectory() as td:
+            receipt = self.runner.run_confirmed_cohort(
+                repo_root=REPO_ROOT,
+                plan=plan,
+                cohort="full-collision-session-growth-returns",
+                model="model-a",
+                effort="medium",
+                confirmation_token=packet["confirmation_token"],
+                high_cost_token=packet["high_cost_confirmation_token"],
+                private_root=Path(td),
+                transport=FakeTransport(),
+                test_only_allow_noncanonical_private_root=True,
+            )
+        Draft202012Validator(
+            self.load_schema("live-skill-dispatch-private-receipt.schema.json")
+        ).validate(receipt)
+        public = self.runner.build_public_receipt(receipt)
+        Draft202012Validator(
+            self.load_schema("live-skill-dispatch-public-receipt.schema.json")
+        ).validate(public)
+        self.runner.validate_public_receipt(public)
+        self.assertEqual("full-collision-session-growth-returns", public["cohort"])
+        self.assertEqual(8, public["trial_count"])
+        self.assertEqual(4, public["pair_count"])
+
     def test_core_engineering_return_cohort_repeats_only_fixture_gap_pairs(self) -> None:
         plan = self.runner.load_plan(self.plan_path)
         returns = self.runner.expand_cohort(
@@ -1426,18 +1484,18 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
         )
         self.assertEqual(plan["protocol_revision"], contract["protocol_revision"])
         self.assertEqual(
-            "codex-cli-0.144.1-live-dispatch-evidence-v16",
+            "codex-cli-0.144.1-live-dispatch-evidence-v17",
             plan["protocol_revision"],
         )
         self.assertEqual("codex-cli 0.144.1", self.runner._expected_codex_version(plan))
         unsupported_plan = dict(plan)
         unsupported_plan["protocol_revision"] = (
-            "codex-cli-0.144.1-live-dispatch-evidence-v17"
+            "codex-cli-0.144.1-live-dispatch-evidence-v18"
         )
         with self.assertRaisesRegex(ValueError, "unsupported Codex protocol revision"):
             self.runner._expected_codex_version(unsupported_plan)
         self.assertEqual(
-            "aoa_codex_app_server_skill_input_contract_v11",
+            "aoa_codex_app_server_skill_input_contract_v12",
             contract["schema_version"],
         )
         self.assertEqual("codex-cli 0.144.1", contract["codex_version"])
@@ -1457,7 +1515,7 @@ class LiveSkillDispatchHarnessTests(unittest.TestCase):
             contract["evidence_binding"]["model_load_claim"],
         )
         self.assertIn(
-            "external background or ambient route",
+            "external or repo-visible ambient route",
             contract["evidence_binding"]["reported_selection_surface"],
         )
         self.assertIn(
@@ -3587,6 +3645,53 @@ Second procedure section.
             "procedure_disposition_miss",
             procedure_measure["failure_class"],
         )
+
+    def test_manual_aided_repo_ambient_route_does_not_override_correct_target_report(self) -> None:
+        runner = self.runner
+        trial = runner.Trial(
+            trial_id="manual-repo-ambient:aided",
+            arm_type="implicit_aided",
+            case_id="manual-repo-ambient",
+            prompt="Keep the explicit target manual while an ambient workflow is loaded.",
+            expected_target_skill="aoa-summon",
+            expected_behavior="manual",
+            competing_skills=("aoa-change-protocol",),
+        )
+        result = FakeTransport().run_cli(
+            {
+                "expected_target_skill": "aoa-summon",
+                "expected_behavior": "manual",
+                "arm_type": "implicit_aided",
+            }
+        )
+        result["final_output"].update(
+            {
+                "route_decision": "manual_required",
+                "selected_skill": "aoa-change-protocol",
+                "selected_child": None,
+                "claims_loaded": True,
+                "procedure_disposition": "not_applicable",
+            }
+        )
+        result.update(
+            {
+                "actual_prompt_skill_paths": {
+                    "aoa-change-protocol": [
+                        "/private/fixture/.agents/skills/aoa-change-protocol/SKILL.md"
+                    ]
+                },
+                "target_skill_full_read_observed": False,
+                "fixture_command_observed": True,
+                "fixture_command_succeeded": True,
+                "fixture_verification_observed": True,
+            }
+        )
+
+        measure = runner._trial_measure(trial, result)
+        self.assertTrue(measure["reported_selected_skill_repo_visible"])
+        self.assertTrue(measure["dispatch_contract_match"])
+        self.assertTrue(measure["route_contract_match"])
+        self.assertIsNone(measure["failure_class"])
 
     def test_manual_no_dispatch_prompt_requires_not_applicable_disposition(self) -> None:
         prompt = self.runner._with_fixture_procedure("Classify the bounded route.")

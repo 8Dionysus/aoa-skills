@@ -1,6 +1,6 @@
 ---
 name: aoa-eval-select
-description: Inspect repo-local eval ports, tests, validators, scripts, reports, intake files, and central aoa-evals standards before new eval work, then select the smallest existing surface or a no-fit route. Use when the task asks which eval should apply to a change, failure, regression, or trigger miss. Do not use when the eval is already selected and should run, when no-fit has already been established, or when the real issue is source authority rather than eval coverage.
+description: 'Explicit activation required: do not invoke or load this skill from an implicit match; wait for explicit user or operator invocation or a source-authorized parent-route selection. Inspect repo-local eval ports, tests, validators, scripts, reports, intake files, and central aoa-evals standards before new eval work, then select the smallest existing surface or a no-fit route. Use when the task asks which eval should apply to a change, failure, regression, or trigger miss. Do not use when the eval is already selected and should run, when no-fit has already been established, or when the real issue is source authority rather than eval coverage.'
 license: Apache-2.0
 compatibility: Designed for Codex or similar coding agents with repository file access and an interactive shell. Network access is optional and only needed when repository validation or referenced workflows require it.
 metadata:

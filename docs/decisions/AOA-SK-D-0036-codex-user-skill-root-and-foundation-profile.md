@@ -89,6 +89,25 @@ As of 2026-06-13:
 
 ## Review Log
 
+### 2026-07-12 - Make non-invoke activation visible at the user root
+
+- Trigger: the installed profile carried `implicit_activation_policy` and
+  `aoa_invocation_mode` as generated metadata, but Codex routing primarily saw
+  a description that still said `Use when`; live session-growth evidence
+  exposed three false target-facing invoke reports.
+- Decision: derive a leading activation sentence from the policy matrix during
+  portable export. Manual skills require explicit invocation or a
+  source-authorized parent selection; suggest skills may be recommended but
+  not loaded implicitly; invoke descriptions stay unchanged.
+- Boundary: keep authored descriptions in
+  `config/portable_skill_overrides.json`; policy wording is an export/runtime
+  contract, not duplicated prose in 45 overrides. Parent-selected decision and
+  eval children remain valid explicit routes.
+- Validation: compare catalog descriptions to exported SKILL frontmatter,
+  enforce the 1024-character bound, rebuild every generated consumer, stage and
+  inspect the foundation bundle, import it, verify 36/36 installed parity, and
+  inspect live prompt input before rerunning the affected cohort.
+
 ### 2026-06-13 - Codex user-root repair
 
 - Previous assumption: `$HOME/.agents/skills` was a suitable user-scoped

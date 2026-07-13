@@ -1,6 +1,6 @@
 ---
 name: aoa-session-self-diagnose
-description: Classify drift, friction, proof gaps, ownership confusion, and repeated failure patterns from a reviewed session into a bounded diagnosis packet without mutating anything yet. Use when the next honest move is diagnosis before repair and the reviewed material points to repeated contradictions, blockers, or boundary blur. Do not use for live sessions, for issues that are already fully diagnosed, or when the real task is final quest-promotion triage.
+description: 'Explicit activation required: do not invoke or load this skill from an implicit match; wait for explicit user or operator invocation or a source-authorized parent-route selection. Classify drift, friction, proof gaps, ownership confusion, and repeated failure patterns from a reviewed session into a bounded diagnosis packet without mutating anything yet. Use when the next honest move is diagnosis before repair and the reviewed material points to repeated contradictions, blockers, or boundary blur. Do not use for live sessions, for issues that are already fully diagnosed, or when the real task is final quest-promotion triage.'
 license: Apache-2.0
 compatibility: Designed for Codex or similar coding agents with repository file access and an interactive shell. Network access is optional and only needed when repository validation or referenced workflows require it.
 metadata:

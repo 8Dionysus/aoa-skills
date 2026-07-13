@@ -1,6 +1,6 @@
 ---
 name: aoa-session-self-repair
-description: Turn a reviewed diagnosis packet into the smallest honest repair packet with checkpoint posture, rollback markers, health checks, and explicit owner-layer targets instead of silent self-mutation. Use when diagnosis already exists and the next honest move is a bounded repair plan or repair-ready packet. Do not use without a reviewed diagnosis, for playbook-scale rollout work, or for vague self-improvement rhetoric with no bounded target.
+description: 'Explicit activation required: do not invoke or load this skill from an implicit match; wait for explicit user or operator invocation or a source-authorized parent-route selection. Turn a reviewed diagnosis packet into the smallest honest repair packet with checkpoint posture, rollback markers, health checks, and explicit owner-layer targets instead of silent self-mutation. Use when diagnosis already exists and the next honest move is a bounded repair plan or repair-ready packet. Do not use without a reviewed diagnosis, for playbook-scale rollout work, or for vague self-improvement rhetoric with no bounded target.'
 license: Apache-2.0
 compatibility: Designed for Codex or similar coding agents with repository file access and an interactive shell. Network access is optional and only needed when repository validation or referenced workflows require it.
 metadata:

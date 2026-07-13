@@ -1,6 +1,6 @@
 ---
 name: aoa-decision-correct
-description: Correct, supersede, reindex, or repair graph-coverage drift in AoA decision records by checking graph issues, editing source notes first, rebuilding repo-local indexes, and refreshing the workspace decision graph. Use when a decision note, index metadata, source-surface list, status, supersession, generated index, unknown surface, or graph packet is stale or wrong. Do not use for pure lookup or for creating a new decision note.
+description: 'Explicit activation required: do not invoke or load this skill from an implicit match; wait for explicit user or operator invocation or a source-authorized parent-route selection. Correct, supersede, reindex, or repair graph-coverage drift in AoA decision records by checking graph issues, editing source notes first, rebuilding repo-local indexes, and refreshing the workspace decision graph. Use when a decision note, index metadata, source-surface list, status, supersession, generated index, unknown surface, or graph packet is stale or wrong. Do not use for pure lookup or for creating a new decision note.'
 license: Apache-2.0
 compatibility: Designed for Codex or similar coding agents with repository file access and an interactive shell. Network access is optional and only needed when repository validation or referenced workflows require it.
 metadata:

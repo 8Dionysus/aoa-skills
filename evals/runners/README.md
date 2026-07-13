@@ -86,9 +86,9 @@ equivalent hierarchy report, and a direct target report carrying a conflicting
 child is not exact either. Those report-only mismatches are
 `selection_report_miss`; they do not rewrite successful native dispatch or load
 evidence as `dispatch_policy_gap`.
-These rules use contract schema `aoa_codex_app_server_skill_input_contract_v11`
-and protocol revision `codex-cli-0.144.1-live-dispatch-evidence-v16`. Retained
-v1-v15 receipts stay source-locked to their original protocol and review status;
+These rules use contract schema `aoa_codex_app_server_skill_input_contract_v12`
+and protocol revision `codex-cli-0.144.1-live-dispatch-evidence-v17`. Retained
+v1-v16 receipts stay source-locked to their original protocol and review status;
 they are never upgraded in place.
 
 Run the confirmed command only as the child of the plan packet's
@@ -442,6 +442,18 @@ collision 33 is classified as a competing-skill win even though its target
 route and procedure remain correctly manual and `not_applicable`. Preserve the
 full receipt, repair the prompt-visible explicit-only policy and ambient-route
 classification, and return only both arms of those four cases.
+
+V17 performs that repair at the shared owners. Portable export derives a
+leading activation sentence from `implicit_activation_policy` for all 45
+non-invoke descriptions: `manual` forbids implicit loading, while `suggest`
+may recommend without loading; both still allow an explicit invocation or a
+source-authorized parent-route selection. The twelve `invoke` descriptions are
+unchanged. The grader now permits a repo-visible ambient selection when the
+expected target remains unread, reports `manual_required`, and keeps its
+procedure `not_applicable`; a target-facing `invoke` report or target read
+still produces a manual activation failure. The eight-turn
+`full-collision-session-growth-returns` cohort repeats only both arms of cases
+21, 22, 25, and 33 under the v17 source lock.
 
 See `evals/suites/aoa-skill-live-dispatch-harness.suite.md` and
 `docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md` for

@@ -18,8 +18,8 @@
       "project_overlay": true,
       "summary": "Thin abyss overlay for bounded infrastructure or configuration changes with repo-relative operational surfaces, explicit local authority, and reviewable risk notes.",
       "summary_short": "Thin abyss overlay for bounded infrastructure or configuration changes with repo-relative operational surfaces,...",
-      "description": "Apply the aoa-safe-infra-change workflow inside an abyss-* repository using repo-relative operational surfaces, explicit local authority notes, rollback posture, and local validation commands. Use when the base infra-change workflow is correct but a thin project overlay is needed for one abyss repo. Do not use when the base skill is sufficient without local adaptation or when the task is really about producing a shareable artifact.",
-      "description_sha256": "e11ba355727d8866164caeb20c148111295c4486fdc868a212d164382ff4da55",
+      "description": "Explicit activation required: do not invoke or load this skill from an implicit match; wait for explicit user or operator invocation or a source-authorized parent-route selection. Apply the aoa-safe-infra-change workflow inside an abyss-* repository using repo-relative operational surfaces, explicit local authority notes, rollback posture, and local validation commands. Use when the base infra-change workflow is correct but a thin project overlay is needed for one abyss repo. Do not use when the base skill is sufficient without local adaptation or when the task is really about producing a shareable artifact.",
+      "description_sha256": "00e98f1f8e73fb3bc512e220280b0270f4d6224c5cb88aaffd99f985524d3dc0",
       "positive_cues": [
         "abyss",
         "abyss stack",
@@ -101,8 +101,8 @@
       "project_overlay": true,
       "summary": "Thin abyss overlay for turning raw repo-local technical material into a shareable public-safe surface with explicit local thresholds and canonical placement notes.",
       "summary_short": "Thin abyss overlay for turning raw repo-local technical material into a shareable public-safe surface with explicit...",
-      "description": "Apply the aoa-sanitized-share workflow inside an abyss-* repository using repo-relative sharing surfaces, explicit local thresholds, and local review posture. Use when the base sanitization workflow is correct but a thin project overlay is needed for one abyss repo. Do not use when the base skill is sufficient without local adaptation or when the real task is the underlying operational mutation.",
-      "description_sha256": "f05959672d5e9437dfb398491815a99a183875aa237d0c2e8b9b3e7e12423b84",
+      "description": "Explicit activation required: do not invoke or load this skill from an implicit match; wait for explicit user or operator invocation or a source-authorized parent-route selection. Apply the aoa-sanitized-share workflow inside an abyss-* repository using repo-relative sharing surfaces, explicit local thresholds, and local review posture. Use when the base sanitization workflow is correct but a thin project overlay is needed for one abyss repo. Do not use when the base skill is sufficient without local adaptation or when the real task is the underlying operational mutation.",
+      "description_sha256": "334f730b2da097ec5fd283e4e9e1e1337637aa45ffd60b7a1353d3e147a66c70",
       "positive_cues": [
         "abyss",
         "abyss incident",
@@ -185,8 +185,8 @@
       "project_overlay": true,
       "summary": "Thin abyss overlay for turning runtime-body evidence plus optional reviewed session references into one bounded diagnostic session artifact and an honest next-move class without granting silent self-mutation.",
       "summary_short": "Thin abyss overlay for turning runtime-body evidence plus optional reviewed session references into one bounded...",
-      "description": "Apply the aoa-session-self-diagnose workflow inside an abyss-* repository using repo-relative runtime evidence, bounded diagnostic-session artifacts, last-good comparison posture, and honest owner-aware handoff. Use when the base diagnosis workflow is correct but one abyss repo needs a thin runtime-owned diagnostic read model before any repair claim becomes honest. Do not use when the request is really for silent repair, when no concrete target path exists, or when the base skill is already sufficient without local adaptation.",
-      "description_sha256": "3696a20155eab40023408030f20e145cab3ce3b95863f8a41e2eb22b88fe6cf9",
+      "description": "Explicit activation required: do not invoke or load this skill from an implicit match; wait for explicit user or operator invocation or a source-authorized parent-route selection. Apply the aoa-session-self-diagnose workflow inside an abyss-* repository using repo-relative runtime evidence, bounded diagnostic-session artifacts, last-good comparison posture, and honest owner-aware handoff. Use when the base diagnosis workflow is correct but one abyss repo needs a thin runtime-owned diagnostic read model before any repair claim becomes honest. Do not use when the request is really for silent repair, when no concrete target path exists, or when the base skill is already sufficient without local adaptation.",
+      "description_sha256": "085642b471c8adf535e7f49c859bfd302fb89a875d10c560ae9f67136eb40546",
       "positive_cues": [
         "abyss diagnostic spine",
         "runtime self diagnosis",
@@ -352,8 +352,8 @@
       "project_overlay": false,
       "summary": "Classify whether a requested action should proceed, wait for explicit approval, or be refused at the current authority level.",
       "summary_short": "Classify whether a requested action should proceed, wait for explicit approval, or be refused at the current...",
-      "description": "Classify whether a requested action is safe to proceed, requires explicit approval, or should not be executed. Use when a task may be destructive, security-sensitive, or operationally sensitive and the authority boundary is unclear. Do not use for clearly low-risk work or when the main need is previewing a mutation rather than deciding whether it may proceed.",
-      "description_sha256": "0242f9151a193c21c95ac982a226f7884c162fb174127b45bcda65e2a6f99d0c",
+      "description": "Explicit activation required: do not invoke or load this skill from an implicit match; wait for explicit user or operator invocation or a source-authorized parent-route selection. Classify whether a requested action is safe to proceed, requires explicit approval, or should not be executed. Use when a task may be destructive, security-sensitive, or operationally sensitive and the authority boundary is unclear. Do not use for clearly low-risk work or when the main need is previewing a mutation rather than deciding whether it may proceed.",
+      "description_sha256": "ed00570198b7f056620e70d9f531348621fd93f11daf43dbb25fa4246a8b6daa",
       "positive_cues": [
         "approval gate",
         "authority boundary",
@@ -435,8 +435,8 @@
       "project_overlay": false,
       "summary": "Detect reviewed or repeated project processes that are candidates for automation, classify whether they are seed-ready, name the highest honest automation mode, and route them without granting schedule or mutation authority.",
       "summary_short": "Detect reviewed or repeated project processes that are candidates for automation, classify whether they are...",
-      "description": "Detect reviewed or repeated project processes that are candidates for automation, classify whether they are seed-ready, and route them to the right owner layer without granting schedule or mutation authority. Use when a reviewed session or repeated project slice reveals a recurring manual route and the honest question is whether it should stay manual, become a bounded skill, or become a playbook automation seed candidate. Do not use for one-off exploratory work, creative synthesis with no stable trigger or output, live scheduling requests, or hidden self-change.",
-      "description_sha256": "b9b512a3f0c82a77b9ae897c7ab0cf03c2cdcf6385285a1bc2cd6f30628a4cd7",
+      "description": "Explicit activation required: do not invoke or load this skill from an implicit match; wait for explicit user or operator invocation or a source-authorized parent-route selection. Detect reviewed or repeated project processes that are candidates for automation, classify whether they are seed-ready, and route them to the right owner layer without granting schedule or mutation authority. Use when a reviewed session or repeated project slice reveals a recurring manual route and the honest question is whether it should stay manual, become a bounded skill, or become a playbook automation seed candidate. Do not use for one-off exploratory work, creative synthesis with no stable trigger or output, live scheduling requests, or hidden self-change.",
+      "description_sha256": "01af8a7f186f317ba20b0c16c4fd3f95b561cbf98928e9fe41dc664ddc61f33f",
       "positive_cues": [
         "automation opportunity",
         "automation candidate",
@@ -492,9 +492,9 @@
       ],
       "auto_tokens": [
         "automation",
+        "route",
         "project",
         "reviewed",
-        "route",
         "become",
         "manual",
         "repeated",
@@ -503,8 +503,8 @@
         "classify",
         "ready",
         "recurring",
-        "aoa",
-        "authority"
+        "skill",
+        "aoa"
       ],
       "companions": [
         "aoa-session-donor-harvest",
@@ -701,8 +701,8 @@
       "project_overlay": false,
       "summary": "Bridge local checkpoint focus hints into one reviewed closeout execution chain without turning provisional notes, mechanical reports, or skipped stages into final harvest, progression, or quest authority.",
       "summary_short": "Bridge local checkpoint focus hints into one reviewed closeout execution chain without turning provisional notes,...",
-      "description": "Bridge provisional checkpoint evidence into one explicit reviewed closeout execution chain without turning notes into final harvest, progression, or quest authority. Use when a reviewed session artifact exists, checkpoint notes or closeout handoffs already carry focus hints, and the next honest move is to reread the reviewed artifact while driving donor harvest, progression lift, and quest harvest in that fixed order. Do not use for mid-session collection only, for hidden execution inside `aoa closeout run`, or when the request tries to mint final verdicts from checkpoint notes without reviewed evidence.",
-      "description_sha256": "417755266b47a9c47b0556216821716b52acb98cd81173bd1d8556892cc00350",
+      "description": "An implicit match may suggest this skill, but must not load or execute it until explicit invocation or a source-authorized parent-route selection. Bridge provisional checkpoint evidence into one explicit reviewed closeout execution chain without turning notes into final harvest, progression, or quest authority. Use when a reviewed session artifact exists, checkpoint notes or closeout handoffs already carry focus hints, and the next honest move is to reread the reviewed artifact while driving donor harvest, progression lift, and quest harvest in that fixed order. Do not use for mid-session collection only, for hidden execution inside `aoa closeout run`, or when the request tries to mint final verdicts from checkpoint notes without reviewed evidence.",
+      "description_sha256": "a936044ba9fe20ea72a86ab3eeb574bbdbafaed64ba28b7bd692d49a13b1a506",
       "positive_cues": [
         "reviewed closeout execute",
         "closeout context",
@@ -791,8 +791,8 @@
       "project_overlay": false,
       "summary": "Turn a validated bounded diff into one authorized local commit with explicit scope review, named verification carry-forward, and a visible stop line before push or publish.",
       "summary_short": "Turn a validated bounded diff into one authorized local commit with explicit scope review, named verification...",
-      "description": "Turn a validated bounded diff into one intentional local commit with explicit scope review, named verification carry-forward, and a visible stop line before push or publish. Use when a bounded code, config, or docs diff is already prepared locally and the next honest move is one local commit boundary rather than more coding. Do not use when the task still needs more repair or verification, when no bounded diff exists, or when the main task is push, PR, release, or public-share.",
-      "description_sha256": "9d966375cec8d8bacf356d382c5866c18b41884e072affa5ebfae9a7e110ac12",
+      "description": "Explicit activation required: do not invoke or load this skill from an implicit match; wait for explicit user or operator invocation or a source-authorized parent-route selection. Turn a validated bounded diff into one intentional local commit with explicit scope review, named verification carry-forward, and a visible stop line before push or publish. Use when a bounded code, config, or docs diff is already prepared locally and the next honest move is one local commit boundary rather than more coding. Do not use when the task still needs more repair or verification, when no bounded diff exists, or when the main task is push, PR, release, or public-share.",
+      "description_sha256": "26e85cfd0676628fcaf5cbcd2bef70ccc162baded2fdb9834e028bb3b96bb42c",
       "positive_cues": [
         "commit boundary",
         "local commit",
@@ -1120,8 +1120,8 @@
       "project_overlay": false,
       "summary": "Correct, supersede, or reindex AoA decision records by editing source notes first, rebuilding repo-local indexes, and refreshing the workspace decision graph.",
       "summary_short": "Correct, supersede, or reindex AoA decision records by editing source notes first, rebuilding repo-local indexes,...",
-      "description": "Correct, supersede, reindex, or repair graph-coverage drift in AoA decision records by checking graph issues, editing source notes first, rebuilding repo-local indexes, and refreshing the workspace decision graph. Use when a decision note, index metadata, source-surface list, status, supersession, generated index, unknown surface, or graph packet is stale or wrong. Do not use for pure lookup or for creating a new decision note.",
-      "description_sha256": "531d68aba2449c36696b1dafb8dcb9a707ac88ee82168f5f0309776516fd094d",
+      "description": "Explicit activation required: do not invoke or load this skill from an implicit match; wait for explicit user or operator invocation or a source-authorized parent-route selection. Correct, supersede, reindex, or repair graph-coverage drift in AoA decision records by checking graph issues, editing source notes first, rebuilding repo-local indexes, and refreshing the workspace decision graph. Use when a decision note, index metadata, source-surface list, status, supersession, generated index, unknown surface, or graph packet is stale or wrong. Do not use for pure lookup or for creating a new decision note.",
+      "description_sha256": "7b2ef57a458015d284ce55ba09e7ce8c920138106d6b5996267d9da937290292",
       "positive_cues": [
         "correct decision",
         "stale decision record",
@@ -1200,8 +1200,8 @@
       "project_overlay": false,
       "summary": "Create a new AoA decision record in the owning repository by using graph context for placement and repo-local decision law for the actual source note and indexes.",
       "summary_short": "Create a new AoA decision record in the owning repository by using graph context for placement and repo-local...",
-      "description": "Create a new AoA decision record in the owning repository by checking graph status/issues, using impact packets for placement, and following repo-local decision law for the actual source note and indexes. Use when a real structural, workflow, tooling, source/export, MCP, skill, or authority decision needs durable rationale. Do not use when no decision has been made, the change is trivial, the target repo has unresolved graph issues, or an existing note only needs correction.",
-      "description_sha256": "235b2dbdf8fbbae38702b24835e6df7a5635d743ebdb740df224f1f415c14197",
+      "description": "Explicit activation required: do not invoke or load this skill from an implicit match; wait for explicit user or operator invocation or a source-authorized parent-route selection. Create a new AoA decision record in the owning repository by checking graph status/issues, using impact packets for placement, and following repo-local decision law for the actual source note and indexes. Use when a real structural, workflow, tooling, source/export, MCP, skill, or authority decision needs durable rationale. Do not use when no decision has been made, the change is trivial, the target repo has unresolved graph issues, or an existing note only needs correction.",
+      "description_sha256": "316956357c62c26c286d836cbdc483fdac9619114ea2c9f3b54d4e9df64cc11d",
       "positive_cues": [
         "create decision",
         "new decision record",
@@ -1252,14 +1252,14 @@
         "create",
         "has",
         "note",
-        "indexes",
         "source",
+        "indexes",
+        "route",
         "actual",
         "already",
         "been",
         "context",
-        "durable",
-        "existing"
+        "durable"
       ],
       "companions": [],
       "primary_positive_prompt": "Use $aoa-decision-create to inspect graph context, write the repo-local decision note, rebuild indexes, and refresh the workspace graph.",
@@ -1280,8 +1280,8 @@
       "project_overlay": false,
       "summary": "Find AoA decision records through the workspace graph, then verify claims against repo-local source notes and generated decision indexes.",
       "summary_short": "Find AoA decision records through the workspace graph, then verify claims against repo-local source notes and...",
-      "description": "Find AoA decision records through workspace graph search and impact packets, then verify claims against repo-local source notes and generated decision indexes. Use when prior decision rationale, changed paths, owner surfaces, source surfaces, status, or supersession links are needed before work continues. When no graph status, changed paths, target records, or owner repository packet is available inside the active evidence boundary and no permitted graph or fallback index can supply them, stop with blocked_missing_input; do not relabel missing input as deferred_owner_boundary. Do not use when the task is to create or edit a decision record.",
-      "description_sha256": "0a9d047ac21d02bb9dc6aecb50366308fee5a85d186d9591d434fb8ca09f9714",
+      "description": "Explicit activation required: do not invoke or load this skill from an implicit match; wait for explicit user or operator invocation or a source-authorized parent-route selection. Find AoA decision records through workspace graph search and impact packets, then verify claims against repo-local source notes and generated decision indexes. Use when prior decision rationale, changed paths, owner surfaces, source surfaces, status, or supersession links are needed before work continues. When no graph status, changed paths, target records, or owner repository packet is available inside the active evidence boundary and no permitted graph or fallback index can supply them, stop with blocked_missing_input; do not relabel missing input as deferred_owner_boundary. Do not use when the task is to create or edit a decision record.",
+      "description_sha256": "ff543a21f7c9e7b014c41ca9faf70557c7692487e2ee1ab37634d167b47b700a",
       "positive_cues": [
         "find decision",
         "decision lookup",
@@ -1328,9 +1328,9 @@
       "auto_tokens": [
         "decision",
         "graph",
+        "source",
         "aoa",
         "find",
-        "source",
         "boundary",
         "notes",
         "owner",
@@ -1360,8 +1360,8 @@
       "project_overlay": false,
       "summary": "Prefer simulation, inspection, or preview paths before real execution, and require one explicit confirmation seam before any mutating step runs.",
       "summary_short": "Prefer simulation, inspection, or preview paths before real execution, and require one explicit confirmation seam...",
-      "description": "Prefer simulation, preview, or inspect-only paths before any real mutation, then require one explicit confirmation for the concrete mutating step. Use when the action can be previewed and mistakes would be costly, such as delete, restore, migrate, or reconfigure operations. Do not use for purely analytical tasks or when the primary question is whether execution is authorized at all.",
-      "description_sha256": "1a18696fe0798220e72c2582a17829dd4f8656cbd651bb2bae757039332b20bc",
+      "description": "Explicit activation required: do not invoke or load this skill from an implicit match; wait for explicit user or operator invocation or a source-authorized parent-route selection. Prefer simulation, preview, or inspect-only paths before any real mutation, then require one explicit confirmation for the concrete mutating step. Use when the action can be previewed and mistakes would be costly, such as delete, restore, migrate, or reconfigure operations. Do not use for purely analytical tasks or when the primary question is whether execution is authorized at all.",
+      "description_sha256": "4958667d78e99b027a7cfa3b61799ecd22d949a10247487bafd7dc9162b1f78a",
       "positive_cues": [
         "dry run",
         "preview path",
@@ -1414,11 +1414,11 @@
         "action",
         "any",
         "aoa",
+        "authorized",
         "delete",
         "first",
         "migrate",
-        "mutating",
-        "mutation"
+        "mutating"
       ],
       "companions": [
         "aoa-safe-infra-change",
@@ -1540,8 +1540,8 @@
       "project_overlay": false,
       "summary": "Run or route an already selected eval, validator, test, or script, then report what the evidence proves and what remains unproven.",
       "summary_short": "Run or route an already selected eval, validator, test, or script, then report what the evidence proves and what...",
-      "description": "Run or route an already selected eval, validator, test, or script, then report command results, artifacts, generated drift, proof limits, and next route. Use when the eval surface is already selected and the task is to apply it rather than choose or design it. Do not use when no existing eval has been selected, when an intake need should be recorded first, or when central proof promotion is being requested.",
-      "description_sha256": "5b3193acd2aa17bf9e4e5df832c79f1d245601a9bcc78a3bf826f05e67cb6b11",
+      "description": "Explicit activation required: do not invoke or load this skill from an implicit match; wait for explicit user or operator invocation or a source-authorized parent-route selection. Run or route an already selected eval, validator, test, or script, then report command results, artifacts, generated drift, proof limits, and next route. Use when the eval surface is already selected and the task is to apply it rather than choose or design it. Do not use when no existing eval has been selected, when an intake need should be recorded first, or when central proof promotion is being requested.",
+      "description_sha256": "1c8ce69f98963bafb75a474494517413de255c623234d2f790a7c1b5e9a02cd5",
       "positive_cues": [
         "run selected eval",
         "apply existing validator",
@@ -1600,14 +1600,14 @@
         "been",
         "existing",
         "has",
+        "route",
         "run",
         "script",
         "test",
         "validator",
         "aoa",
         "apply",
-        "central",
-        "command"
+        "central"
       ],
       "companions": [
         "aoa-eval",
@@ -1633,8 +1633,8 @@
       "project_overlay": false,
       "summary": "Design a local eval suite or report after selection fails, using deterministic checks first and leaving central proof acceptance to aoa-evals.",
       "summary_short": "Design a local eval suite or report after selection fails, using deterministic checks first and leaving central...",
-      "description": "Design a bounded local eval suite, prompt set, report, or validator plan after selection finds no adequate existing surface, using deterministic checks first and trace or rubric review only when needed. Use when a local eval needs positive, negative, collision, or regression cases around a clear behavior or invariant. Do not use when an existing eval should simply run, when only a local intake packet is needed, or when central aoa-evals proof doctrine is the target.",
-      "description_sha256": "0a71f12f9345a72eb52990ac72c66be2a8076a47163c0aa167d1ea9be09ef3ca",
+      "description": "Explicit activation required: do not invoke or load this skill from an implicit match; wait for explicit user or operator invocation or a source-authorized parent-route selection. Design a bounded local eval suite, prompt set, report, or validator plan after selection finds no adequate existing surface, using deterministic checks first and trace or rubric review only when needed. Use when a local eval needs positive, negative, collision, or regression cases around a clear behavior or invariant. Do not use when an existing eval should simply run, when only a local intake packet is needed, or when central aoa-evals proof doctrine is the target.",
+      "description_sha256": "30918de84da402113bd91882f771ebfd0cb644fd7290a60fffb80dd31b4fae31",
       "positive_cues": [
         "design eval suite",
         "local eval draft",
@@ -1698,9 +1698,9 @@
         "existing",
         "first",
         "proof",
+        "selection",
         "acceptance",
-        "after",
-        "clear"
+        "after"
       ],
       "companions": [
         "aoa-eval",
@@ -1726,8 +1726,8 @@
       "project_overlay": false,
       "summary": "Create a repo-local eval need packet when no existing eval fits, preserving owner route, evidence, rejected alternatives, and proof limits.",
       "summary_short": "Create a repo-local eval need packet when no existing eval fits, preserving owner route, evidence, rejected...",
-      "description": "Create a repo-local eval need packet under evals/intake when no existing eval fits, preserving owner route, evidence refs, rejected alternatives, proposed checks, and proof limits. Use when a repeated failure or missing behavior needs local eval pressure without central proof acceptance. Do not use when an existing eval can be applied, when the missing object is a memo or decision, or when the user asks for central aoa-evals acceptance.",
-      "description_sha256": "cc830ecdad58d6943fe61004ef48f6dd61d2a2cd3d62a1eaa0ea375331945d77",
+      "description": "Explicit activation required: do not invoke or load this skill from an implicit match; wait for explicit user or operator invocation or a source-authorized parent-route selection. Create a repo-local eval need packet under evals/intake when no existing eval fits, preserving owner route, evidence refs, rejected alternatives, proposed checks, and proof limits. Use when a repeated failure or missing behavior needs local eval pressure without central proof acceptance. Do not use when an existing eval can be applied, when the missing object is a memo or decision, or when the user asks for central aoa-evals acceptance.",
+      "description_sha256": "13f16196164ed6a1bd3e5dced762c648228b56393236a5ba0641e622e2ccc68c",
       "positive_cues": [
         "eval need packet",
         "evals intake",
@@ -1785,14 +1785,14 @@
         "central",
         "evals",
         "packet",
+        "route",
         "aoa",
         "behavior",
         "create",
         "evidence",
         "limits",
         "owner",
-        "rejected",
-        "route"
+        "rejected"
       ],
       "companions": [
         "aoa-eval",
@@ -1818,8 +1818,8 @@
       "project_overlay": false,
       "summary": "Inspect central and repo-local eval surfaces before new work, then select the smallest existing eval, validator, test, or stop line.",
       "summary_short": "Inspect central and repo-local eval surfaces before new work, then select the smallest existing eval, validator,...",
-      "description": "Inspect repo-local eval ports, tests, validators, scripts, reports, intake files, and central aoa-evals standards before new eval work, then select the smallest existing surface or a no-fit route. Use when the task asks which eval should apply to a change, failure, regression, or trigger miss. Do not use when the eval is already selected and should run, when no-fit has already been established, or when the real issue is source authority rather than eval coverage.",
-      "description_sha256": "0be63765d3caff0555b4090b46e68d0ce4d394c39cfbc76b76302a1e5e883636",
+      "description": "Explicit activation required: do not invoke or load this skill from an implicit match; wait for explicit user or operator invocation or a source-authorized parent-route selection. Inspect repo-local eval ports, tests, validators, scripts, reports, intake files, and central aoa-evals standards before new eval work, then select the smallest existing surface or a no-fit route. Use when the task asks which eval should apply to a change, failure, regression, or trigger miss. Do not use when the eval is already selected and should run, when no-fit has already been established, or when the real issue is source authority rather than eval coverage.",
+      "description_sha256": "caec7f6183e22ae226cce5b1930236f69e89d53be8d48c73379127b713cc0d22",
       "positive_cues": [
         "select existing eval",
         "inspect eval port",
@@ -1911,8 +1911,8 @@
       "project_overlay": false,
       "summary": "Mine .aoa session evidence for missed eval triggers only after web and repo owner surfaces are checked, producing candidate refs rather than proof.",
       "summary_short": "Mine .aoa session evidence for missed eval triggers only after web and repo owner surfaces are checked, producing...",
-      "description": "Mine .aoa session evidence for missed eval triggers, candidate regression cases, and local eval pressure only after web research and repo owner surfaces are checked, returning raw and segment refs with freshness rather than proof. Use when the user asks to study sessions for eval moments, missed triggers, repeated failures, or session-derived eval cases. Do not use for raw .aoa preservation, hook repair, search-index maintenance, memo writeback, decision records, or treating session history as reviewed proof.",
-      "description_sha256": "04d539551d617733107494195dc8cffead04bf175349a30b872dbe709798c31c",
+      "description": "Explicit activation required: do not invoke or load this skill from an implicit match; wait for explicit user or operator invocation or a source-authorized parent-route selection. Mine .aoa session evidence for missed eval triggers, candidate regression cases, and local eval pressure only after web research and repo owner surfaces are checked, returning raw and segment refs with freshness rather than proof. Use when the user asks to study sessions for eval moments, missed triggers, repeated failures, or session-derived eval cases. Do not use for raw .aoa preservation, hook repair, search-index maintenance, memo writeback, decision records, or treating session history as reviewed proof.",
+      "description_sha256": "36b2e8916c96801e0c6ea0e6c6bb2b558f28a39f00c49b2ccdcc364fb980a0ce",
       "positive_cues": [
         "session eval mining",
         "missed eval trigger",
@@ -2089,8 +2089,8 @@
       "project_overlay": false,
       "summary": "Bring up a bounded local multi-service stack by reviewing rendered runtime truth, checking host readiness, and launching through one explicit lifecycle entrypoint.",
       "summary_short": "Bring up a bounded local multi-service stack by reviewing rendered runtime truth, checking host readiness, and...",
-      "description": "Bring up a bounded local multi-service stack by rendering runtime truth, checking selector-aware host readiness, and launching through one explicit lifecycle entrypoint with a visible stop path. Use when profiles, presets, or overlays can change what starts and host readiness must be reviewed before launch. Do not use for remote deployment, pure diagnostics without launch intent, or generic infra-change work.",
-      "description_sha256": "f878029a986286568d5254e65a58127f9bcfa51c949b0f08ddd9feadfaab6516",
+      "description": "Explicit activation required: do not invoke or load this skill from an implicit match; wait for explicit user or operator invocation or a source-authorized parent-route selection. Bring up a bounded local multi-service stack by rendering runtime truth, checking selector-aware host readiness, and launching through one explicit lifecycle entrypoint with a visible stop path. Use when profiles, presets, or overlays can change what starts and host readiness must be reviewed before launch. Do not use for remote deployment, pure diagnostics without launch intent, or generic infra-change work.",
+      "description_sha256": "9cb4d1adbdfcc1d84b8c93f53a199ce164aaf4e3d803299e2c0a10fc1b90e947",
       "positive_cues": [
         "bring up local stack",
         "readiness check",
@@ -2173,8 +2173,8 @@
       "project_overlay": false,
       "summary": "Turn session evidence, landed-work context, and owner routes into one explicit memo writeback decision, local memo candidate, export packet, or no-writeback stop line without treating session history as reviewed memory.",
       "summary_short": "Turn session evidence, landed-work context, and owner routes into one explicit memo writeback decision, local memo...",
-      "description": "Bridge session evidence into memory writeback decisions without turning raw session history into reviewed memory. Use when a live session, closeout, PR, commit, or review reveals a memory-worthy decision, failure, route change, owner-boundary event, service contract, eval posture, or consumer handoff and the agent needs to decide whether to write a local memo candidate, prepare a reviewed-intake export, or record an explicit no-writeback stop line. Do not use for raw session capture, reviewed memory landing itself, proof verdicts, eval scoring, or generic summaries with no owner route.",
-      "description_sha256": "e6870123d0f2b8cae7facde3b47ce58e9f7f5a229fe4616b6da6e4091a6e3d12",
+      "description": "An implicit match may suggest this skill, but must not load or execute it until explicit invocation or a source-authorized parent-route selection. Bridge session evidence into memory writeback decisions without turning raw session history into reviewed memory. Use when a live session, closeout, PR, commit, or review reveals a memory-worthy decision, failure, route change, owner-boundary event, service contract, eval posture, or consumer handoff and the agent needs to decide whether to write a local memo candidate, prepare a reviewed-intake export, or record an explicit no-writeback stop line. Do not use for raw session capture, reviewed memory landing itself, proof verdicts, eval scoring, or generic summaries with no owner route.",
+      "description_sha256": "cfbd5180f84ff62ec3439a2c0bc549c4eb22be51e45478df501887a2d2265b8b",
       "positive_cues": [
         "memo writeback",
         "memory candidate",
@@ -2234,8 +2234,8 @@
         "session",
         "writeback",
         "memory",
-        "owner",
         "route",
+        "owner",
         "reviewed",
         "aoa",
         "candidate",
@@ -2433,8 +2433,8 @@
       "project_overlay": false,
       "summary": "Triage one isolated repeated reviewed quest unit with explicit repeat evidence posture into the right promotion target without confusing skills, playbooks, orchestrator classes, proof, memory, or downstream acceptance.",
       "summary_short": "Triage one isolated repeated reviewed quest unit with explicit repeat evidence posture into the right promotion...",
-      "description": "Give the final promotion verdict on one repeated reviewed quest-shaped unit without collapsing skills, playbooks, orchestrator classes, proof, or memory into one layer. Use when a bounded quest-shaped work pattern has repeated, reviewed evidence exists, and you need the final honest verdict on whether it should stay a quest or move into the next owner surface. Do not use when the route is still active, only one anecdotal occurrence exists, the task is to invent net-new doctrine, or a broader reviewed session artifact still needs donor harvest, route forks, diagnosis, repair, or progression reflection first.",
-      "description_sha256": "331b01d53c27c36b8b793b7e32ac8a6630766b0bd1c2a47844ef4474f3a79dda",
+      "description": "Explicit activation required: do not invoke or load this skill from an implicit match; wait for explicit user or operator invocation or a source-authorized parent-route selection. Give the final promotion verdict on one repeated reviewed quest-shaped unit without collapsing skills, playbooks, orchestrator classes, proof, or memory into one layer. Use when a bounded quest-shaped work pattern has repeated, reviewed evidence exists, and you need the final honest verdict on whether it should stay a quest or move into the next owner surface. Do not use when the route is still active, only one anecdotal occurrence exists, the task is to invent net-new doctrine, or a broader reviewed session artifact still needs donor harvest, route forks, diagnosis, repair, or progression reflection first.",
+      "description_sha256": "d5bb261907ba1789809f2dd8d70a85634d437177e555ea46274788b997d20d53",
       "positive_cues": [
         "quest harvest",
         "promotion triage",
@@ -2498,8 +2498,8 @@
         "still",
         "harvest",
         "promotion",
-        "exists",
         "route",
+        "exists",
         "unit",
         "active",
         "aoa",
@@ -2531,8 +2531,8 @@
       "project_overlay": false,
       "summary": "Make bounded infrastructure or configuration changes with explicit risk framing, verification, and reversible execution discipline.",
       "summary_short": "Make bounded infrastructure or configuration changes with explicit risk framing, verification, and reversible...",
-      "description": "Make bounded infrastructure, configuration, service, or operational changes with explicit risk framing, proportional verification, and rollback thinking. Use when a change has runtime or deployment implications and needs stronger discipline than a normal code edit. Do not use for purely local code changes, or when the main need is approval classification or preview-first execution.",
-      "description_sha256": "c9f9c2af3a97385a9810e4397887785b6f5602fb8d75fb6b333ae747c3b6f69a",
+      "description": "Explicit activation required: do not invoke or load this skill from an implicit match; wait for explicit user or operator invocation or a source-authorized parent-route selection. Make bounded infrastructure, configuration, service, or operational changes with explicit risk framing, proportional verification, and rollback thinking. Use when a change has runtime or deployment implications and needs stronger discipline than a normal code edit. Do not use for purely local code changes, or when the main need is approval classification or preview-first execution.",
+      "description_sha256": "11bf235999439e6c94fa51fc76c612b08b43eedfe72782a5ab10aac63bc11bb9",
       "positive_cues": [
         "infra change",
         "service config",
@@ -2613,8 +2613,8 @@
       "project_overlay": false,
       "summary": "Separate raw technical material from a shareable public-safe surface, place the sanitized output in the canonical sharing location, and verify that the lesson survives the redaction.",
       "summary_short": "Separate raw technical material from a shareable public-safe surface, place the sanitized output in the canonical...",
-      "description": "Turn raw technical material into a shareable public-safe artifact while keeping the raw source separate, placing the sanitized result in the canonical sharing surface, and preserving the lesson after redaction. Use when logs, configs, diagnostics, or reports may contain secrets, topology, or internal identifiers. Do not use when the material is already clearly public-safe or when the task is to perform the underlying operational change.",
-      "description_sha256": "01a00dd8a32d808ea6fb153f7d95f7e7d98adcecb1f6f70b73bd4954142beeae",
+      "description": "Explicit activation required: do not invoke or load this skill from an implicit match; wait for explicit user or operator invocation or a source-authorized parent-route selection. Turn raw technical material into a shareable public-safe artifact while keeping the raw source separate, placing the sanitized result in the canonical sharing surface, and preserving the lesson after redaction. Use when logs, configs, diagnostics, or reports may contain secrets, topology, or internal identifiers. Do not use when the material is already clearly public-safe or when the task is to perform the underlying operational change.",
+      "description_sha256": "3134392c56f394b3839d0280418a702dec147fec6f81f0b2da76bb66bf8e7373",
       "positive_cues": [
         "sanitize logs",
         "redact secrets",
@@ -2696,8 +2696,8 @@
       "project_overlay": false,
       "summary": "Harvest reusable donor units from a reviewed session into a bounded HARVEST_PACKET, filter checkpoint or handoff hints through reviewed evidence, route each unit to the right AoA owner layer, and hand off to the next honest post-session skill when needed.",
       "summary_short": "Harvest reusable donor units from a reviewed session into a bounded HARVEST_PACKET, filter checkpoint or handoff...",
-      "description": "Turn a reviewed session artifact into a bounded HARVEST_PACKET, route each reusable unit to the right AoA owner layer, and hand off to the next honest post-session skill when needed. Use when the source is a reviewed session transcript, compaction note, or recap and the real question is what should survive this session rather than merely what happened. Do not use for active or unreviewed sessions, raw session capture or indexing work, or when the only remaining object is already one repeated quest unit that just needs `aoa-quest-harvest` for the final promotion verdict.",
-      "description_sha256": "12327a955b20f8d5256b711c4584c87a2cc9db0100d2083697cd4565c49801b2",
+      "description": "Explicit activation required: do not invoke or load this skill from an implicit match; wait for explicit user or operator invocation or a source-authorized parent-route selection. Turn a reviewed session artifact into a bounded HARVEST_PACKET, route each reusable unit to the right AoA owner layer, and hand off to the next honest post-session skill when needed. Use when the source is a reviewed session transcript, compaction note, or recap and the real question is what should survive this session rather than merely what happened. Do not use for active or unreviewed sessions, raw session capture or indexing work, or when the only remaining object is already one repeated quest unit that just needs `aoa-quest-harvest` for the final promotion verdict.",
+      "description_sha256": "3e773a93c8f2076d70bcf5b357b2a4f6cf96c210d69b6c1c322bcbc8b261233f",
       "positive_cues": [
         "session donor",
         "donor harvest",
@@ -2761,12 +2761,12 @@
         "donor",
         "packet",
         "post",
+        "route",
         "unit",
         "each",
         "honest",
         "layer",
-        "next",
-        "owner"
+        "next"
       ],
       "companions": [
         "aoa-quest-harvest",
@@ -2795,8 +2795,8 @@
       "project_overlay": false,
       "summary": "Lift reviewed session evidence into a multi-axis progression delta with baseline posture, per-axis evidence posture, bounded unlock hints, quest reflection cues, and no fake single-score or checkpoint-hint authority.",
       "summary_short": "Lift reviewed session evidence into a multi-axis progression delta with baseline posture, per-axis evidence posture,...",
-      "description": "Lift reviewed session evidence into a bounded multi-axis progression delta with explicit unlock hints, quest reflection cues, and no fake single-score authority. Use when a reviewed session produced meaningful mastery evidence and you need progression legibility without mutating source role profiles or routing authority. Do not use when there is no reviewed evidence, when the request wants one universal power number, or when progression language is being used as hidden policy.",
-      "description_sha256": "2715c77c3d5ed19ab16fe4cde3e8dedcc4963fb2e140a14e8062c7e47cfe0961",
+      "description": "Explicit activation required: do not invoke or load this skill from an implicit match; wait for explicit user or operator invocation or a source-authorized parent-route selection. Lift reviewed session evidence into a bounded multi-axis progression delta with explicit unlock hints, quest reflection cues, and no fake single-score authority. Use when a reviewed session produced meaningful mastery evidence and you need progression legibility without mutating source role profiles or routing authority. Do not use when there is no reviewed evidence, when the request wants one universal power number, or when progression language is being used as hidden policy.",
+      "description_sha256": "50299e60248cdf8a3da212c3d8d3193bfc3b0a40c5d7f952f113b977e14f65f3",
       "positive_cues": [
         "progression delta",
         "multi-axis progression",
@@ -2860,9 +2860,9 @@
         "hints",
         "multi",
         "score",
+        "source",
         "unlock",
-        "aoa",
-        "cues"
+        "aoa"
       ],
       "companions": [
         "aoa-session-donor-harvest",
@@ -2887,8 +2887,8 @@
       "project_overlay": false,
       "summary": "Turn reviewed session evidence into explicit next-route forks with likely gains, costs, risks, owner targets, and stop conditions so continuation stays legible instead of buried in chat memory.",
       "summary_short": "Turn reviewed session evidence into explicit next-route forks with likely gains, costs, risks, owner targets, and...",
-      "description": "Turn reviewed session evidence into explicit next-route forks with likely gains, costs, risks, owner targets, and stop conditions so continuation stays legible instead of buried in chat memory. Use when a reviewed session ended with several plausible next moves and you need visible branch choices rather than a hidden recommendation. Do not use when there is only one obvious next move, when donor harvest still has not happened, or when the real question is final promotion of one repeated quest unit.",
-      "description_sha256": "22824ec5994207065055b7d44afc266c05c0f8458f1d1794441823ae8f191ed9",
+      "description": "Explicit activation required: do not invoke or load this skill from an implicit match; wait for explicit user or operator invocation or a source-authorized parent-route selection. Turn reviewed session evidence into explicit next-route forks with likely gains, costs, risks, owner targets, and stop conditions so continuation stays legible instead of buried in chat memory. Use when a reviewed session ended with several plausible next moves and you need visible branch choices rather than a hidden recommendation. Do not use when there is only one obvious next move, when donor harvest still has not happened, or when the real question is final promotion of one repeated quest unit.",
+      "description_sha256": "dd8a99ecee1bc6fdfb33e5a80b79ebbd956f3b088479df14cabc3edc3cad9e63",
       "positive_cues": [
         "route forks",
         "fork cards",
@@ -2943,9 +2943,9 @@
         "session",
         "next",
         "reviewed",
+        "route",
         "forks",
         "one",
-        "route",
         "branch",
         "buried",
         "conditions",
@@ -2979,8 +2979,8 @@
       "project_overlay": false,
       "summary": "Classify drift, friction, proof gaps, ownership confusion, and repeated failure patterns from a reviewed session into a bounded diagnosis packet with explicit evidence posture and no mutation.",
       "summary_short": "Classify drift, friction, proof gaps, ownership confusion, and repeated failure patterns from a reviewed session...",
-      "description": "Classify drift, friction, proof gaps, ownership confusion, and repeated failure patterns from a reviewed session into a bounded diagnosis packet without mutating anything yet. Use when the next honest move is diagnosis before repair and the reviewed material points to repeated contradictions, blockers, or boundary blur. Do not use for live sessions, for issues that are already fully diagnosed, or when the real task is final quest-promotion triage.",
-      "description_sha256": "918ebdbc962c2c4d7878d90b971136fd3186a023850a71264eb31a743fa3a0ed",
+      "description": "Explicit activation required: do not invoke or load this skill from an implicit match; wait for explicit user or operator invocation or a source-authorized parent-route selection. Classify drift, friction, proof gaps, ownership confusion, and repeated failure patterns from a reviewed session into a bounded diagnosis packet without mutating anything yet. Use when the next honest move is diagnosis before repair and the reviewed material points to repeated contradictions, blockers, or boundary blur. Do not use for live sessions, for issues that are already fully diagnosed, or when the real task is final quest-promotion triage.",
+      "description_sha256": "07f020be6852932f4222cc56e09f16bf887a5166c8982b115a264c85e1c04846",
       "positive_cues": [
         "reviewed drift",
         "diagnosis packet",
@@ -3072,8 +3072,8 @@
       "project_overlay": false,
       "summary": "Turn a reviewed diagnosis packet into the smallest honest repair packet with checkpoint posture, execution posture, rollback markers, health checks, and explicit owner-layer targets instead of silent self-mutation.",
       "summary_short": "Turn a reviewed diagnosis packet into the smallest honest repair packet with checkpoint posture, execution posture,...",
-      "description": "Turn a reviewed diagnosis packet into the smallest honest repair packet with checkpoint posture, rollback markers, health checks, and explicit owner-layer targets instead of silent self-mutation. Use when diagnosis already exists and the next honest move is a bounded repair plan or repair-ready packet. Do not use without a reviewed diagnosis, for playbook-scale rollout work, or for vague self-improvement rhetoric with no bounded target.",
-      "description_sha256": "538dd2a1460463bb3d83ff8b4eb5d07553c98bc1f6f373175a791ed78bd42869",
+      "description": "Explicit activation required: do not invoke or load this skill from an implicit match; wait for explicit user or operator invocation or a source-authorized parent-route selection. Turn a reviewed diagnosis packet into the smallest honest repair packet with checkpoint posture, rollback markers, health checks, and explicit owner-layer targets instead of silent self-mutation. Use when diagnosis already exists and the next honest move is a bounded repair plan or repair-ready packet. Do not use without a reviewed diagnosis, for playbook-scale rollout work, or for vague self-improvement rhetoric with no bounded target.",
+      "description_sha256": "d3fccb37409dbb8078eb184401c955de477afcbd9e06cd7dcdffd5c9ddfca9da",
       "positive_cues": [
         "repair packet",
         "checkpoint posture",
@@ -3241,8 +3241,8 @@
       "project_overlay": false,
       "summary": "Delegate one bounded child route through quest-passport law, local coding-agent execution defaults, progression and self-agent gates, governed return, and checkpoint-aware reviewed closeout planning.",
       "summary_short": "Delegate one bounded child route through quest-passport law, local coding-agent execution defaults, progression and...",
-      "description": "Delegate one bounded child route through quest-passport law, local coding-agent execution defaults, hard gates for progression, self-agent, and stress posture, and governed return into reviewed closeout. Use when a parent route already has a real anchor and named outputs and the honest next move is a narrower child reviewer, evaluator, verifier, or leaf helper rather than a larger orchestration layer. Do not use when the route lacks an anchor, the outputs are unnamed, the work is `d3+` and still needs a split, or remote delegation is being used to bypass proof, approval, or closeout posture.",
-      "description_sha256": "6aa550228eb7918497730de730de520ba45831b6dd4e65736b8ee42fda4e416e",
+      "description": "Explicit activation required: do not invoke or load this skill from an implicit match; wait for explicit user or operator invocation or a source-authorized parent-route selection. Delegate one bounded child route through quest-passport law, local coding-agent execution defaults, hard gates for progression, self-agent, and stress posture, and governed return into reviewed closeout. Use when a parent route already has a real anchor and named outputs and the honest next move is a narrower child reviewer, evaluator, verifier, or leaf helper rather than a larger orchestration layer. Do not use when the route lacks an anchor, the outputs are unnamed, the work is `d3+` and still needs a split, or remote delegation is being used to bypass proof, approval, or closeout posture.",
+      "description_sha256": "794d519f3ae7596b1a9171b9aed1f985f9d51b201314f7f201c2e6097afe688e",
       "positive_cues": [
         "child route summon",
         "quest passport",
@@ -3299,12 +3299,12 @@
       "auto_tokens": [
         "route",
         "child",
+        "parent",
         "agent",
         "anchor",
         "closeout",
         "one",
         "outputs",
-        "parent",
         "return",
         "named",
         "real",
@@ -3419,8 +3419,8 @@
       "project_overlay": true,
       "summary": "Thin ATM10 overlay for bounded change execution with repo-relative route cards, public docs, commands, review checks, recovery anchors, and explicit local approval notes.",
       "summary_short": "Thin ATM10 overlay for bounded change execution with repo-relative route cards, public docs, commands, review...",
-      "description": "Apply the aoa-change-protocol workflow inside an atm10-* repository using repo-relative route cards, public docs, commands, checks, recovery anchors, and explicit local approval notes. Use when the base change protocol is correct but a thin project overlay is needed for ATM10-local command, source-of-truth, validation, or safety posture. Do not use when the base skill is sufficient without local adaptation, when document authority is the only question, or when a broader playbook is needed.",
-      "description_sha256": "45693932852a02321b01983411bbd463ed40e8c008367d38bbb7488f6f8f5263",
+      "description": "Explicit activation required: do not invoke or load this skill from an implicit match; wait for explicit user or operator invocation or a source-authorized parent-route selection. Apply the aoa-change-protocol workflow inside an atm10-* repository using repo-relative route cards, public docs, commands, checks, recovery anchors, and explicit local approval notes. Use when the base change protocol is correct but a thin project overlay is needed for ATM10-local command, source-of-truth, validation, or safety posture. Do not use when the base skill is sufficient without local adaptation, when document authority is the only question, or when a broader playbook is needed.",
+      "description_sha256": "ac1d1e82825dae291945bf9a376da3aee9364916f30cb772fe0839ecb294a4a0",
       "positive_cues": [
         "atm10",
         "atm10 change",
@@ -3473,12 +3473,12 @@
         "relative",
         "approval",
         "overlay",
+        "route",
         "anchors",
         "aoa",
         "apply",
         "but",
-        "cards",
-        "checks"
+        "cards"
       ],
       "companions": [
         "aoa-change-protocol",
@@ -3502,8 +3502,8 @@
       "project_overlay": true,
       "summary": "Thin ATM10 overlay for clarifying repo-local document authority, public-surface roles, canonical files, review checklists, and review posture without changing the base workflow.",
       "summary_short": "Thin ATM10 overlay for clarifying repo-local document authority, public-surface roles, canonical files, review...",
-      "description": "Apply the aoa-source-of-truth-check workflow inside an atm10-* repository using repo-relative public-surface roles, document maps, canonical-file patterns, entrypoint trimming, and local review posture. Use when contributors need a thin project overlay to identify authoritative ATM10 docs or separate active, archived, generated, local-only, and runtime-adjacent surfaces. Do not use when the task is broader policy design, purely code-local, runtime authority, or better handled by the base skill without local adaptation.",
-      "description_sha256": "8cd17be221e3bf3352b948cc0f4e0fcd3afad8d9999de0c5f414d0eb6092a305",
+      "description": "Explicit activation required: do not invoke or load this skill from an implicit match; wait for explicit user or operator invocation or a source-authorized parent-route selection. Apply the aoa-source-of-truth-check workflow inside an atm10-* repository using repo-relative public-surface roles, document maps, canonical-file patterns, entrypoint trimming, and local review posture. Use when contributors need a thin project overlay to identify authoritative ATM10 docs or separate active, archived, generated, local-only, and runtime-adjacent surfaces. Do not use when the task is broader policy design, purely code-local, runtime authority, or better handled by the base skill without local adaptation.",
+      "description_sha256": "ae0a257138c3af09ef8b21c4de190d34d50ccf01477c0ad73681f4b32ab571b2",
       "positive_cues": [
         "atm10",
         "atm10 docs",
@@ -3547,8 +3547,8 @@
       "auto_tokens": [
         "atm10",
         "review",
-        "check",
         "source",
+        "check",
         "truth",
         "authority",
         "base",
@@ -3582,8 +3582,8 @@
       "project_overlay": true,
       "summary": "OS Abyss artifact-trust loop for routing ABI, provenance, signatures, SBOM, C2PA, drift, and consumer gates through abyss-machine read models and owner-local producers.",
       "summary_short": "OS Abyss artifact-trust loop for routing ABI, provenance, signatures, SBOM, C2PA, drift, and consumer gates through...",
-      "description": "Route OS Abyss ABI, provenance, signatures, SBOM, SLSA/in-toto, Sigstore/Cosign, C2PA, TUF, SCITT, durable evidence, drift, producer profiles, and trust-gate work through existing abyss-machine read models and owner-local producer routes. Use when an agent needs to inspect or consume bundles, containers, models, runtimes, reports, media exports, source seeds, portable memory bundles, browser extensions, generated machine surfaces, or release artifacts without creating a second trust MCP or violating owner boundaries. Do not use for ordinary local edits, raw .aoa session search, or direct signing/promotion/registry mutation without an authorized owner route.",
-      "description_sha256": "4e651ff7b53f12a4cfe733dea9959ed56e75a93ff6c1d7df1c8a34bd53da5b27",
+      "description": "Explicit activation required: do not invoke or load this skill from an implicit match; wait for explicit user or operator invocation or a source-authorized parent-route selection. Route OS Abyss ABI, provenance, signatures, SBOM, SLSA/in-toto, Sigstore/Cosign, C2PA, TUF, SCITT, durable evidence, drift, producer profiles, and trust-gate work through existing abyss-machine read models and owner-local producer routes. Use when an agent needs to inspect or consume bundles, containers, models, runtimes, reports, media exports, source seeds, portable memory bundles, browser extensions, generated machine surfaces, or release artifacts without creating a second trust MCP or violating owner boundaries. Do not use for ordinary local edits, raw .aoa session search, or direct signing/promotion/registry mutation without an authorized owner route.",
+      "description_sha256": "f235866307acd118f5fbecbefbae99efc2c7f87c36fa20dc9656dbd39a3d913c",
       "positive_cues": [
         "os abyss artifact trust",
         "abi provenance signs",
@@ -3676,8 +3676,8 @@
       "project_overlay": true,
       "summary": "Record explicit operator approval for Forge mutation or Delta judgment gates without treating approval records as owner truth.",
       "summary_short": "Record explicit operator approval for Forge mutation or Delta judgment gates without treating approval records as...",
-      "description": "Record explicit operator approval for Forge mutation or Delta judgment gates without treating approval records as owner truth. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
-      "description_sha256": "7a1fbafc8a05a66f8988eab275eb9ac58f25c1b6ec72fd9a4461931dfa065479",
+      "description": "Explicit activation required: do not invoke or load this skill from an implicit match; wait for explicit user or operator invocation or a source-authorized parent-route selection. Record explicit operator approval for Forge mutation or Delta judgment gates without treating approval records as owner truth. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "description_sha256": "66c3ce4dc8cdb96a5a475a2e4b7240654a8e4d3ee000ed3e6118c2c4d9133f01",
       "positive_cues": [
         "approval ledger",
         "operator approval",
@@ -3741,8 +3741,8 @@
         "owner",
         "receipt",
         "record",
-        "without",
-        "gates"
+        "route",
+        "without"
       ],
       "companions": [
         "titan-runtime-gate",
@@ -3767,8 +3767,8 @@
       "project_overlay": true,
       "summary": "Maintain the app-server bridge approval queue while preserving Forge and Delta gates, receipts, and visible operator intent.",
       "summary_short": "Maintain the app-server bridge approval queue while preserving Forge and Delta gates, receipts, and visible operator...",
-      "description": "Maintain the app-server bridge approval queue while preserving Forge and Delta gates, receipts, and visible operator intent. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
-      "description_sha256": "65b6846ba3485f41b7664a7cc7433e6f50107396eb433393a4a7dc98f5692aae",
+      "description": "Explicit activation required: do not invoke or load this skill from an implicit match; wait for explicit user or operator invocation or a source-authorized parent-route selection. Maintain the app-server bridge approval queue while preserving Forge and Delta gates, receipts, and visible operator intent. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "description_sha256": "6559ae1d6c3ada8108302bbfee3a44ee11969f69604946acaac5759b9fe05ecb",
       "positive_cues": [
         "approval loom",
         "approval queue",
@@ -3825,10 +3825,10 @@
         "delta",
         "forge",
         "gates",
+        "operator",
         "titan",
         "app",
         "intent",
-        "operator",
         "pending",
         "preserving",
         "queue",
@@ -3858,8 +3858,8 @@
       "project_overlay": true,
       "summary": "Operate the Titan app-server bridge as inspectable thread, turn, event, approval, replay, and metrics state without hidden execution.",
       "summary_short": "Operate the Titan app-server bridge as inspectable thread, turn, event, approval, replay, and metrics state without...",
-      "description": "Operate the Titan app-server bridge as inspectable thread, turn, event, approval, replay, and metrics state without hidden execution. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
-      "description_sha256": "7931cb498844dc36e0c06e72a6953d5be5a9b7727f0e2d07c6edde8c119b6469",
+      "description": "Explicit activation required: do not invoke or load this skill from an implicit match; wait for explicit user or operator invocation or a source-authorized parent-route selection. Operate the Titan app-server bridge as inspectable thread, turn, event, approval, replay, and metrics state without hidden execution. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "description_sha256": "d50fd07798f60c94560528e535a8139319b6483606e88d471bbd1414925285f9",
       "positive_cues": [
         "app server bridge",
         "json rpc bridge",
@@ -3949,8 +3949,8 @@
       "project_overlay": true,
       "summary": "Generate an inspectable Titan app-server launch plan as JSONL or equivalent plan output without starting hidden agent execution.",
       "summary_short": "Generate an inspectable Titan app-server launch plan as JSONL or equivalent plan output without starting hidden...",
-      "description": "Generate an inspectable Titan app-server launch plan as JSONL or equivalent plan output without executing the local coding agent. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
-      "description_sha256": "f5b0c661510d6f255010fec85c145006f4897381396cc5c7ee9684a6385e85fa",
+      "description": "Explicit activation required: do not invoke or load this skill from an implicit match; wait for explicit user or operator invocation or a source-authorized parent-route selection. Generate an inspectable Titan app-server launch plan as JSONL or equivalent plan output without executing the local coding agent. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "description_sha256": "8a73b640caa1d3f53a3764631c57756b29eecc60c5c6b2570f2d57d333bfd7af",
       "positive_cues": [
         "appserver plan",
         "launch plan",
@@ -4013,9 +4013,9 @@
         "generate",
         "hidden",
         "jsonl",
+        "operator",
         "starting",
-        "appserver",
-        "equivalent"
+        "appserver"
       ],
       "companions": [
         "titan-appserver-bridge",
@@ -4040,8 +4040,8 @@
       "project_overlay": true,
       "summary": "Close a Titan service-cohort session with role, risk, provenance, gate, verification, and next-owner summary.",
       "summary_short": "Close a Titan service-cohort session with role, risk, provenance, gate, verification, and next-owner summary.",
-      "description": "Close a Titan service-cohort session with role, risk, provenance, gate, verification, and next-owner summary. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
-      "description_sha256": "8cc9fed46ba8d565e65ae1b6d7391cfcb5cf6f5a922da8c2b1c9d7b63b22ed95",
+      "description": "Explicit activation required: do not invoke or load this skill from an implicit match; wait for explicit user or operator invocation or a source-authorized parent-route selection. Close a Titan service-cohort session with role, risk, provenance, gate, verification, and next-owner summary. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "description_sha256": "29b66a92126aa29c995cef8767fba5171f2e92fae5408143e4493181cf30a122",
       "positive_cues": [
         "titan closeout",
         "close receipt",
@@ -4106,7 +4106,7 @@
         "next",
         "provenance",
         "risk",
-        "service"
+        "route"
       ],
       "companions": [
         "titan-receipt",
@@ -4131,8 +4131,8 @@
       "project_overlay": true,
       "summary": "Open or maintain a visible Titan operator-console state while keeping Forge and Delta locked until approvals exist.",
       "summary_short": "Open or maintain a visible Titan operator-console state while keeping Forge and Delta locked until approvals exist.",
-      "description": "Open or maintain a visible Titan operator-console state while keeping Forge and Delta locked until approvals exist. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
-      "description_sha256": "793db2976fc27abcbde4b8d17732abcc1fed15b64b02e1ae574e59672a9e355f",
+      "description": "Explicit activation required: do not invoke or load this skill from an implicit match; wait for explicit user or operator invocation or a source-authorized parent-route selection. Open or maintain a visible Titan operator-console state while keeping Forge and Delta locked until approvals exist. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "description_sha256": "e4c6c0763888b5ba5d074f3dc982ccdea1367af4265aeaef49f52474cb2d8d11",
       "positive_cues": [
         "operator console",
         "console state",
@@ -4186,9 +4186,9 @@
       "auto_tokens": [
         "console",
         "titan",
+        "operator",
         "delta",
         "forge",
-        "operator",
         "state",
         "visible",
         "locked",
@@ -4222,8 +4222,8 @@
       "project_overlay": true,
       "summary": "Replay Titan bridge or console events into inspectable state without granting runtime authority to the replay result.",
       "summary_short": "Replay Titan bridge or console events into inspectable state without granting runtime authority to the replay result.",
-      "description": "Replay Titan bridge or console events into inspectable state without granting runtime authority to the replay result. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
-      "description_sha256": "a5631b0587ee599ec3a4e92239a8101048b42a137adc8afee35986ed900ea4c1",
+      "description": "Explicit activation required: do not invoke or load this skill from an implicit match; wait for explicit user or operator invocation or a source-authorized parent-route selection. Replay Titan bridge or console events into inspectable state without granting runtime authority to the replay result. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "description_sha256": "141ddb8f963fb5826559740e4437aa4bc48a9b37abeda47577fc258a9eb202c5",
       "positive_cues": [
         "event replay",
         "bridge replay",
@@ -4313,8 +4313,8 @@
       "project_overlay": true,
       "summary": "Initialize or update Titan Memory Loom records as candidate memory with source refs, confidence, and authority warnings.",
       "summary_short": "Initialize or update Titan Memory Loom records as candidate memory with source refs, confidence, and authority...",
-      "description": "Initialize or update Titan Memory Loom records as candidate memory with source refs, confidence, and authority warnings. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
-      "description_sha256": "13bc25dd0844652048efbad8ea76002559e4c21652b41adbdf571c44bafea657",
+      "description": "Explicit activation required: do not invoke or load this skill from an implicit match; wait for explicit user or operator invocation or a source-authorized parent-route selection. Initialize or update Titan Memory Loom records as candidate memory with source refs, confidence, and authority warnings. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "description_sha256": "4b0b152f03e3208615534384a41fa65d15c052a45e1f8f27cdd8cacf7a64ec47",
       "positive_cues": [
         "memory loom",
         "receipt ingest",
@@ -4369,9 +4369,9 @@
         "memory",
         "titan",
         "candidate",
+        "source",
         "loom",
         "refs",
-        "source",
         "authority",
         "confidence",
         "records",
@@ -4404,8 +4404,8 @@
       "project_overlay": true,
       "summary": "Propose redaction, tombstone, or pruning candidates for Titan memory without silent deletion or canon rewrite.",
       "summary_short": "Propose redaction, tombstone, or pruning candidates for Titan memory without silent deletion or canon rewrite.",
-      "description": "Propose redaction, tombstone, or pruning candidates for Titan memory without silent deletion or canon rewrite. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
-      "description_sha256": "346cc2a0654847fcc80970756857e3d2e790cc9bb1178d0e3dfcd90b8df61514",
+      "description": "Explicit activation required: do not invoke or load this skill from an implicit match; wait for explicit user or operator invocation or a source-authorized parent-route selection. Propose redaction, tombstone, or pruning candidates for Titan memory without silent deletion or canon rewrite. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "description_sha256": "d69df675c2e6bddac59a7d639fea96e0450a4702b1a8ab13a7325a08814129e4",
       "positive_cues": [
         "memory prune",
         "redaction",
@@ -4466,11 +4466,11 @@
         "deletion",
         "propose",
         "pruning",
+        "source",
         "tombstone",
         "candidates",
         "canon",
-        "prune",
-        "rewrite"
+        "prune"
       ],
       "companions": [
         "titan-memory-loom",
@@ -4495,8 +4495,8 @@
       "project_overlay": true,
       "summary": "Gate Forge workspace-write work with explicit intent, target paths, prechecks, validation, and rollback or stop posture.",
       "summary_short": "Gate Forge workspace-write work with explicit intent, target paths, prechecks, validation, and rollback or stop...",
-      "description": "Gate Forge workspace-write work with explicit intent, target paths, prechecks, validation, and rollback or stop posture. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
-      "description_sha256": "8367dbe6e147dcf7304e3cec59b362d0896a3b42e9672514a0ee65afd91a3516",
+      "description": "Explicit activation required: do not invoke or load this skill from an implicit match; wait for explicit user or operator invocation or a source-authorized parent-route selection. Gate Forge workspace-write work with explicit intent, target paths, prechecks, validation, and rollback or stop posture. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "description_sha256": "8945c29381b62d130ad9c2ccc3f53fc75fcad4f1e6484c37399d2499f337cbed",
       "positive_cues": [
         "mutation gate",
         "forge gate",
@@ -4586,8 +4586,8 @@
       "project_overlay": true,
       "summary": "Retrieve Titan candidate memory records with source, record id, authority note, confidence, and verification path.",
       "summary_short": "Retrieve Titan candidate memory records with source, record id, authority note, confidence, and verification path.",
-      "description": "Retrieve Titan candidate memory records with source, record id, authority note, confidence, and verification path. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
-      "description_sha256": "4e29f7405a252b190467113d8e2c420c23a6a0cb43981adc0e6405ae84e5dfc5",
+      "description": "Explicit activation required: do not invoke or load this skill from an implicit match; wait for explicit user or operator invocation or a source-authorized parent-route selection. Retrieve Titan candidate memory records with source, record id, authority note, confidence, and verification path. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "description_sha256": "b1d4fa6c4c5db8b54228f782707817701a5155a747017a02fe2fd8a918d9accf",
       "positive_cues": [
         "titan recall",
         "candidate recall",
@@ -4640,8 +4640,8 @@
       ],
       "auto_tokens": [
         "titan",
-        "memory",
         "source",
+        "memory",
         "candidate",
         "records",
         "authority",
@@ -4677,8 +4677,8 @@
       "project_overlay": true,
       "summary": "Create, validate, note, or close Titan session receipts as witnesses rather than final truth.",
       "summary_short": "Create, validate, note, or close Titan session receipts as witnesses rather than final truth.",
-      "description": "Create, validate, note, or close Titan session receipts as witnesses rather than final truth. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
-      "description_sha256": "d86c477424db249d64b6609c33ba6fef09c0ce2e5e4ef632f9dc2465c1d3b9d0",
+      "description": "Explicit activation required: do not invoke or load this skill from an implicit match; wait for explicit user or operator invocation or a source-authorized parent-route selection. Create, validate, note, or close Titan session receipts as witnesses rather than final truth. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "description_sha256": "2ddade96955d140112335ea715876f0b516a520979bfb9b25930428ab0958e71",
       "positive_cues": [
         "titan receipt",
         "receipt create",
@@ -4741,9 +4741,9 @@
         "validate",
         "owner",
         "receipts",
+        "route",
         "witnesses",
-        "agents",
-        "avoid"
+        "activation"
       ],
       "companions": [
         "titan-summon",
@@ -4768,8 +4768,8 @@
       "project_overlay": true,
       "summary": "Activate Forge mutation or Delta judgment lanes only through matching explicit runtime gates on a Titan receipt.",
       "summary_short": "Activate Forge mutation or Delta judgment lanes only through matching explicit runtime gates on a Titan receipt.",
-      "description": "Activate Forge mutation or Delta judgment lanes only through matching explicit runtime gates on a Titan receipt. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
-      "description_sha256": "02adc76acaa054649bf3112b5c01009e20fd1f10357fc66c6c80edbbeeac9644",
+      "description": "Explicit activation required: do not invoke or load this skill from an implicit match; wait for explicit user or operator invocation or a source-authorized parent-route selection. Activate Forge mutation or Delta judgment lanes only through matching explicit runtime gates on a Titan receipt. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "description_sha256": "e72c489e7d78aca253bf229cd914da5a0294a3c9aee311d8d7d002f0d471ef2f",
       "positive_cues": [
         "runtime gate",
         "forge mutation",
@@ -4859,8 +4859,8 @@
       "project_overlay": true,
       "summary": "Begin an explicit Titan service-cohort session with Atlas, Sentinel, and Mneme active and Forge or Delta locked.",
       "summary_short": "Begin an explicit Titan service-cohort session with Atlas, Sentinel, and Mneme active and Forge or Delta locked.",
-      "description": "Begin an explicit Titan service-cohort session with Atlas, Sentinel, and Mneme active and Forge or Delta locked. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
-      "description_sha256": "f75ab351a0b314fcd15f9d4e1fd5168a46ad5d4df722dd817c10e61ed23fb34e",
+      "description": "Explicit activation required: do not invoke or load this skill from an implicit match; wait for explicit user or operator invocation or a source-authorized parent-route selection. Begin an explicit Titan service-cohort session with Atlas, Sentinel, and Mneme active and Forge or Delta locked. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "description_sha256": "89a78079ca3151a3eed2c2bb62a0a83fdcd4cb27c3ec69fbd53c89da36c7a4e3",
       "positive_cues": [
         "titan summon",
         "service cohort",
@@ -4924,8 +4924,8 @@
         "begin",
         "delta",
         "locked",
-        "agents",
-        "background"
+        "route",
+        "agents"
       ],
       "companions": [
         "titan-receipt",
@@ -4950,8 +4950,8 @@
       "project_overlay": true,
       "summary": "Bind Titan bridge events, approvals, and replay state to explicit thread and turn ids for inspectable continuity.",
       "summary_short": "Bind Titan bridge events, approvals, and replay state to explicit thread and turn ids for inspectable continuity.",
-      "description": "Bind Titan bridge events, approvals, and replay state to explicit thread and turn ids for inspectable continuity. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
-      "description_sha256": "695868fd6f199bb5f260fc896e71bb8a00255a723f4dcbbf3e804c7a6c2f538b",
+      "description": "Explicit activation required: do not invoke or load this skill from an implicit match; wait for explicit user or operator invocation or a source-authorized parent-route selection. Bind Titan bridge events, approvals, and replay state to explicit thread and turn ids for inspectable continuity. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "description_sha256": "999fe236f634e85d37108a6923a4d43cde14734f58128ed2c9049ad42e0de971",
       "positive_cues": [
         "thread turn",
         "turn binding",

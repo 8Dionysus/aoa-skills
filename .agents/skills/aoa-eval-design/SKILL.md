@@ -1,6 +1,6 @@
 ---
 name: aoa-eval-design
-description: Design a bounded local eval suite, prompt set, report, or validator plan after selection finds no adequate existing surface, using deterministic checks first and trace or rubric review only when needed. Use when a local eval needs positive, negative, collision, or regression cases around a clear behavior or invariant. Do not use when an existing eval should simply run, when only a local intake packet is needed, or when central aoa-evals proof doctrine is the target.
+description: 'Explicit activation required: do not invoke or load this skill from an implicit match; wait for explicit user or operator invocation or a source-authorized parent-route selection. Design a bounded local eval suite, prompt set, report, or validator plan after selection finds no adequate existing surface, using deterministic checks first and trace or rubric review only when needed. Use when a local eval needs positive, negative, collision, or regression cases around a clear behavior or invariant. Do not use when an existing eval should simply run, when only a local intake packet is needed, or when central aoa-evals proof doctrine is the target.'
 license: Apache-2.0
 compatibility: Designed for Codex or similar coding agents with repository file access and an interactive shell. Network access is optional and only needed when repository validation or referenced workflows require it.
 metadata:

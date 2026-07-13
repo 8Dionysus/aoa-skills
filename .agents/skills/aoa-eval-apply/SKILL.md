@@ -1,6 +1,6 @@
 ---
 name: aoa-eval-apply
-description: Run or route an already selected eval, validator, test, or script, then report command results, artifacts, generated drift, proof limits, and next route. Use when the eval surface is already selected and the task is to apply it rather than choose or design it. Do not use when no existing eval has been selected, when an intake need should be recorded first, or when central proof promotion is being requested.
+description: 'Explicit activation required: do not invoke or load this skill from an implicit match; wait for explicit user or operator invocation or a source-authorized parent-route selection. Run or route an already selected eval, validator, test, or script, then report command results, artifacts, generated drift, proof limits, and next route. Use when the eval surface is already selected and the task is to apply it rather than choose or design it. Do not use when no existing eval has been selected, when an intake need should be recorded first, or when central proof promotion is being requested.'
 license: Apache-2.0
 compatibility: Designed for Codex or similar coding agents with repository file access and an interactive shell. Network access is optional and only needed when repository validation or referenced workflows require it.
 metadata:

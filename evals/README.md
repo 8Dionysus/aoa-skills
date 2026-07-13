@@ -105,6 +105,11 @@ Active first local corpus:
   manual-route report failures and one ambient competing-skill classification
   as `needs-rerun`. Repair the shared runtime-description/report boundary and
   repeat only collisions 21, 22, 25, and 33 before widening.
+  V17 makes activation policy visible in every non-invoke portable description,
+  permits a correctly reported manual target to coexist with an ambient repo
+  skill, and adds an eight-turn paired return for exactly those four cases.
+  The return still requires exact merge, refreshed installed-profile parity,
+  host gates, and both confirmation tokens.
 
 These files are local evidence notes. They do not publish central proof
 acceptance, scoring, verdicts, regression truth, or proof doctrine.

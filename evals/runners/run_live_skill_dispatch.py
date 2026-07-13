@@ -762,7 +762,7 @@ def _expected_codex_version(plan: dict[str, Any]) -> str:
     revision = str(plan.get("protocol_revision") or "")
     match = re.fullmatch(
         r"codex-cli-([0-9]+(?:\.[0-9]+){2})-"
-        r"(?:app-server-skill-input-v3|live-dispatch-evidence-v(?:[4-9]|1[0-6]))",
+        r"(?:app-server-skill-input-v3|live-dispatch-evidence-v(?:[4-9]|1[0-7]))",
         revision,
     )
     if match is None:
@@ -2593,7 +2593,6 @@ def _trial_failure_class(trial: Trial, result: dict[str, Any]) -> str | None:
     output = candidate_output
     selected = output.get("selected_skill")
     claims_loaded = output.get("claims_loaded") is True
-    selection_surface = _reported_selection_surface_evidence(trial, output, result)
     if result.get("prompt_visibility_contract_match") is False:
         return "harness_contamination"
     if trial.arm_type == "app_server_structured" and (
@@ -2602,7 +2601,11 @@ def _trial_failure_class(trial: Trial, result: dict[str, Any]) -> str | None:
         or result.get("external_runtime_isolation_match") is False
     ):
         return "harness_contamination"
-    if selected != trial.expected_target_skill and selected in trial.competing_skills:
+    if (
+        trial.expected_behavior != "manual"
+        and selected != trial.expected_target_skill
+        and selected in trial.competing_skills
+    ):
         return "collision_misroute"
     if trial.arm_type == "implicit_aided" and trial.expected_behavior == "invoke":
         if selected != trial.expected_target_skill:
@@ -2614,15 +2617,10 @@ def _trial_failure_class(trial: Trial, result: dict[str, Any]) -> str | None:
     if trial.expected_behavior == "manual" and trial.arm_type == "implicit_aided":
         if (
             result.get("target_skill_full_read_observed") is True
+            or output.get("route_decision") == "invoke"
             or (
-                (
-                    selection_surface["reported_selected_skill_repo_visible"]
-                    or output.get("selected_skill") == trial.expected_target_skill
-                )
-                and (
-                    claims_loaded
-                    or output.get("route_decision") == "invoke"
-                )
+                output.get("selected_skill") == trial.expected_target_skill
+                and claims_loaded
             )
         ):
             return "manual_activation_leak"
