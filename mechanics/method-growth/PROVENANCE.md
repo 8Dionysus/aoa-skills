@@ -60,6 +60,15 @@ The first owner-status and followthrough route is checked by:
 - `mechanics/method-growth/schemas/skill_adoption_regression_case_v1.json`
 - `mechanics/method-growth/schemas/skill_adoption_retirement_v1.json`
 - `mechanics/method-growth/schemas/skill_pattern_adoption_patch_v1.json`
+- `mechanics/method-growth/schemas/skill_effectiveness_family_review_v1.json`
+
+The family-effectiveness schema has a current authored instance rather than a
+synthetic adoption example:
+
+- `docs/reviews/skill-effectiveness/aoa-family-current.json`
+
+That record is reviewed lifecycle evidence. It is not a generated report,
+proof verdict, status mutation, or downstream owner acceptance.
 
 ## Derived Promotion Pressure
 

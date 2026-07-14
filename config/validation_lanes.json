@@ -87,6 +87,12 @@
         "scripts/validation/validate_skills.py",
         "--skip-generated",
         "--fail-on-review-truth-sync"
+      ],
+      [
+        "python",
+        "scripts/validation/validate_skill_effectiveness_family_review.py",
+        "--repo-root",
+        "."
       ]
     ],
     "export_generated_check": [
@@ -106,6 +112,12 @@
       [
         "python",
         "scripts/validation/validate_skill_evidence_readouts.py",
+        "--repo-root",
+        "."
+      ],
+      [
+        "python",
+        "scripts/validation/validate_skill_effectiveness_family_review.py",
         "--repo-root",
         "."
       ],
@@ -340,6 +352,12 @@
       ],
       [
         "python",
+        "scripts/validation/validate_skill_effectiveness_family_review.py",
+        "--repo-root",
+        "."
+      ],
+      [
+        "python",
         "scripts/validation/validate_agent_skills.py",
         "--repo-root",
         "."
@@ -523,6 +541,12 @@
       [
         "python",
         "scripts/validation/validate_skill_evidence_readouts.py",
+        "--repo-root",
+        "."
+      ],
+      [
+        "python",
+        "scripts/validation/validate_skill_effectiveness_family_review.py",
         "--repo-root",
         "."
       ],

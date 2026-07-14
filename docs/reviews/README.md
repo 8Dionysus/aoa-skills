@@ -6,6 +6,7 @@ This folder stores public review records for repository-level skill review work.
 
 - `canonical-candidates/` stores the current review records for skills being considered as future canonical references
 - `status-promotions/` stores public review records for non-canonical status promotions such as `scaffold -> evaluated`
+- `skill-effectiveness/` stores the current source-exact whole-family disposition record without auto-promoting any skill
 - the review records here are the human decision companion to `mechanics/audit/docs/PUBLIC_SURFACE.md`, `docs/governance/lanes.yaml`, and the derived governance surfaces in `generated/public_surface.md` and `generated/governance_backlog.md`
 
 ## Conventions
@@ -31,3 +32,7 @@ For canonical-candidate work, use:
 For non-canonical promotion work, use:
 
 `docs/reviews/status-promotions/<skill-name>.md`
+
+For the current whole-family lifecycle review, use:
+
+`docs/reviews/skill-effectiveness/aoa-family-current.json`

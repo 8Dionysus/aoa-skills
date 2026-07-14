@@ -11,7 +11,8 @@ Active surfaces include `docs/MATURITY_MODEL.md`, `docs/PROMOTION_PATH.md`,
 `docs/CANDIDATE_LINEAGE_CONTRACT.md`, `docs/CANDIDATE_REF_REFINERY.md`,
 `docs/OWNER_STATUS_SURFACES.md`, `docs/GOVERNED_FOLLOWTHROUGH.md`, adoption
 parts, `mechanics/OWNER_REQUEST_RECEIPTS.md`, and generated project-core
-outer-ring readiness readouts.
+outer-ring readiness readouts. The current contour now also includes the
+source-exact whole-family effectiveness disposition contract and review record.
 
 ## Next Work
 
@@ -26,6 +27,9 @@ outer-ring readiness readouts.
 - Keep lived-use promotion pressure generated and review-oriented so repeated
   installed or dispatched skill use opens the right next review instead of
   becoming manual memory.
+- Keep the whole-family disposition record current as repairs and promotions
+  land, and preserve live selection, load, procedure, verification, and outcome
+  gaps instead of flattening them into one effectiveness claim.
 - Keep `repo-core-only` equal to kernel plus outer ring, and keep
   `repo-project-foundation` equal to kernel plus outer ring plus risk guard
   ring.

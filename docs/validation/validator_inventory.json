@@ -348,6 +348,33 @@
       "status": "active"
     },
     {
+      "path": "scripts/validation/validate_skill_effectiveness_family_review.py",
+      "family": "source/method-growth-review",
+      "owner_surface": "scripts/validation/validators/skill_effectiveness_family_review_surface.py",
+      "layer": "source/review-governance",
+      "lane": "source-fast/generated-export/export/release",
+      "mode": "blocking",
+      "inputs": [
+        "skills/**/SKILL.md",
+        "mechanics/method-growth/schemas/skill_effectiveness_family_review_v1.json",
+        "docs/reviews/skill-effectiveness/aoa-family-current.json",
+        "public reviewed evals/reports episode refs"
+      ],
+      "outputs": [
+        "whole-family source parity, disposition semantics, evidence boundary, and public-ref verdict"
+      ],
+      "callers": [
+        "config/validation_lanes.json",
+        "tests/test_skill_effectiveness_family_review.py",
+        "tests/test_validator_topology.py"
+      ],
+      "overlap": "Validates the authored family review contract; it does not interpret proof, mutate status, or replace quality and promotion builders.",
+      "pain": "Without one source-exact reviewed register, individual green surfaces can leave skills silently undecided or collapse mentions into effectiveness claims.",
+      "decision": "add",
+      "failure_route": "Correct the current family review or Method-Growth schema, preserve live-stage gaps, then route actual promotions through per-skill status reviews.",
+      "status": "active"
+    },
+    {
       "path": "scripts/builders/build_trigger_eval_cases.py",
       "family": "activation/trigger",
       "owner_surface": "mechanics/audit/docs/TRIGGER_EVALS.md",

@@ -21,6 +21,9 @@ before opening them.
   through the maturity ladder.
 - [Promotion Pressure](PROMOTION_PRESSURE.md): derived lived-use signal that
   routes heavily used non-canonical skills to review or blocker repair.
+- [Skill-effectiveness Family Review](SKILL_EFFECTIVENESS_FAMILY_REVIEW.md):
+  source-exact whole-family lifecycle dispositions with explicit episode-stage
+  and authority boundaries.
 
 ## Boundary
 

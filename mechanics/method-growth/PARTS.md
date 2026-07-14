@@ -14,6 +14,7 @@ This file is the active map of functioning Method-growth parts in
 | [Adoption Evidence Receipts](parts/adoption-evidence-receipts/README.md) | record owner decision and adoption receipt posture without manufacturing consent | owner repos own accepted adoption truth; `aoa-evals` owns proof verdicts |
 | [Retention, Regression, Retirement](parts/retention-regression-retirement/README.md) | keep adopted behavior under regression, retention, quarantine, and retirement review | owner repos own cleanup; antifragility owns pruning route pressure |
 | [Pattern Adoption Handoff](parts/pattern-adoption-handoff/README.md) | route shared patterns toward skill proposals without automatic promotion | `aoa-techniques`, `aoa-skills`, and `aoa-playbooks` own their respective canon |
+| [Family Effectiveness Review](parts/family-effectiveness-review/README.md) | require one reviewed lifecycle disposition per current skill with explicit episode-stage and revisit posture | skill bundles own meaning; per-skill review owns promotion; `aoa-evals` and runtime owners keep proof and live authority |
 
 ## Active Part Contract
 

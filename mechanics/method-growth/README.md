@@ -28,7 +28,9 @@ This package owns the skill-layer candidate identity seam, owner-status landing
 contract, governed followthrough contract, adoption lifecycle boundary, owner
 decision and receipt route, retention/regression/retirement posture,
 pattern-to-skill handoff route, local stop-lines, schema/example route, and
-active part map for method-growth movement in `aoa-skills`.
+active part map for method-growth movement in `aoa-skills`. It also owns the
+whole-family disposition grammar that makes one reviewed lifecycle decision
+per current skill explicit without granting proof or promotion authority.
 
 ### Stronger owner split
 
@@ -58,6 +60,7 @@ own final object truth and local adoption.
   reason
 - adoption compatibility report, owner decision, adoption receipt, regression
   case, retirement cue, or pattern adoption patch
+- source-exact whole-family skill-effectiveness disposition review
 - no seed, final object, proof, memory, playbook, or runtime truth by itself
 
 ### Must not claim
@@ -110,6 +113,9 @@ belong to the route.
   regression, retention watch, quarantine, deprecation, and retirement route.
 - [Pattern Adoption Handoff](parts/pattern-adoption-handoff/README.md):
   shared pattern to bounded skill proposal without automatic promotion.
+- [Family Effectiveness Review](parts/family-effectiveness-review/README.md):
+  one reviewed lifecycle disposition for every current skill while keeping
+  episode stages and authority boundaries explicit.
 
 ## Boundary
 

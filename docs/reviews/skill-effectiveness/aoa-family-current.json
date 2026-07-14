@@ -1,0 +1,1722 @@
+{
+  "schema_version": "skill_effectiveness_family_review_v1",
+  "review_id": "aoa-family-2026-07-13",
+  "review_date": "2026-07-13",
+  "reviewed_revision": "3bb621f2106c350ccad5820a11f615fef4c9f722",
+  "review_state": "reviewed",
+  "authority": {
+    "proof_authority": false,
+    "promotion_authority": false,
+    "runtime_authority": false,
+    "raw_session_content_included": false,
+    "private_evidence_included": false,
+    "session_memory_role": "reviewed_candidate_evidence_only",
+    "live_dispatch_role": "reviewed_candidate_evidence_only"
+  },
+  "source_refs": [
+    "mechanics/method-growth/docs/SKILL_EFFECTIVENESS_FAMILY_REVIEW.md",
+    "mechanics/method-growth/docs/MATURITY_MODEL.md",
+    "mechanics/method-growth/docs/PROMOTION_PATH.md",
+    "docs/decisions/AOA-SK-D-0039-reviewed-skill-effectiveness-family-dispositions.md",
+    "docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md",
+    "docs/decisions/AOA-SK-D-0038-committed-evidence-readout-completeness-gate.md",
+    "generated/skill_evaluation_matrix.json",
+    "generated/skill_quality_audit.json",
+    "generated/skill_promotion_pressure.json"
+  ],
+  "decision_counts": {
+    "improve": 4,
+    "split": 0,
+    "merge": 0,
+    "promote": 7,
+    "retain": 46,
+    "retire": 0
+  },
+  "entries": [
+    {
+      "name": "abyss-safe-infra-change",
+      "skill_path": "skills/project/abyss/abyss-safe-infra-change/SKILL.md",
+      "scope": "project",
+      "source_status": "evaluated",
+      "disposition": "retain",
+      "action_state": "monitor",
+      "rationale": "The project overlay remains a distinct owner-bound adaptation; downstream adoption and runtime authority are insufficient for promotion, merge, or retirement.",
+      "nearest_alternative_rejected": "promote",
+      "rejection_reason": "Repository-local fixtures and candidate episodes cannot substitute for downstream owner adoption or runtime acceptance of a project overlay.",
+      "evidence": {
+        "evidence_posture": "reviewed_candidate_only",
+        "episode_refs": [
+          "evals/reports/aoa-skill-live-dispatch-pilot13-20260712-v15-reviewed-clean-routing-observation-qualified-outcomes.json",
+          "evals/reports/aoa-skill-live-dispatch-full-collision-safety-overlays-20260712-v16-reviewed-clean.json"
+        ],
+        "prompt_visibility": "observed",
+        "selection": "mixed",
+        "load_read": "full_read",
+        "procedure": "legitimate_deflection",
+        "verification": "observed",
+        "outcome": "contract_match",
+        "mention_signal": "observed_non_authoritative",
+        "cooccurrence_signal": "not_used_as_effectiveness_proof",
+        "note": "Public receipt measures are reviewed candidate evidence only; clean per-skill measures do not convert a cohort or disposition into proof."
+      },
+      "action_refs": [],
+      "next_review_condition": "Reopen when the downstream owner records adoption, runtime use, or a replacement decision with public reviewable evidence."
+    },
+    {
+      "name": "abyss-sanitized-share",
+      "skill_path": "skills/project/abyss/abyss-sanitized-share/SKILL.md",
+      "scope": "project",
+      "source_status": "evaluated",
+      "disposition": "retain",
+      "action_state": "monitor",
+      "rationale": "The project overlay remains a distinct owner-bound adaptation; downstream adoption and runtime authority are insufficient for promotion, merge, or retirement.",
+      "nearest_alternative_rejected": "promote",
+      "rejection_reason": "Repository-local fixtures and candidate episodes cannot substitute for downstream owner adoption or runtime acceptance of a project overlay.",
+      "evidence": {
+        "evidence_posture": "reviewed_candidate_only",
+        "episode_refs": [
+          "evals/reports/aoa-skill-live-dispatch-coverage-closure-structured-core-20260713-v21-reviewed-structured-report-and-dispatch-gaps-needs-rerun.json",
+          "evals/reports/aoa-skill-live-dispatch-full-collision-safety-overlays-20260712-v16-reviewed-clean.json"
+        ],
+        "prompt_visibility": "observed",
+        "selection": "mixed",
+        "load_read": "full_read",
+        "procedure": "legitimate_deflection",
+        "verification": "observed",
+        "outcome": "contract_match",
+        "mention_signal": "observed_non_authoritative",
+        "cooccurrence_signal": "not_used_as_effectiveness_proof",
+        "note": "Public receipt measures are reviewed candidate evidence only; clean per-skill measures do not convert a cohort or disposition into proof."
+      },
+      "action_refs": [],
+      "next_review_condition": "Reopen when the downstream owner records adoption, runtime use, or a replacement decision with public reviewable evidence."
+    },
+    {
+      "name": "abyss-self-diagnostic-spine",
+      "skill_path": "skills/project/abyss/abyss-self-diagnostic-spine/SKILL.md",
+      "scope": "project",
+      "source_status": "scaffold",
+      "disposition": "retain",
+      "action_state": "monitor",
+      "rationale": "The project overlay remains a distinct owner-bound adaptation; downstream adoption and runtime authority are insufficient for promotion, merge, or retirement.",
+      "nearest_alternative_rejected": "promote",
+      "rejection_reason": "Repository-local fixtures and candidate episodes cannot substitute for downstream owner adoption or runtime acceptance of a project overlay.",
+      "evidence": {
+        "evidence_posture": "reviewed_candidate_only",
+        "episode_refs": [
+          "evals/reports/aoa-skill-live-dispatch-coverage-closure-structured-core-20260713-v21-reviewed-structured-report-and-dispatch-gaps-needs-rerun.json",
+          "evals/reports/aoa-skill-live-dispatch-full-collision-session-growth-20260712-v16-reviewed-routing-gaps-needs-rerun.json"
+        ],
+        "prompt_visibility": "observed",
+        "selection": "mixed",
+        "load_read": "full_read",
+        "procedure": "legitimate_deflection",
+        "verification": "observed",
+        "outcome": "contract_match",
+        "mention_signal": "observed_non_authoritative",
+        "cooccurrence_signal": "not_used_as_effectiveness_proof",
+        "note": "Public receipt measures are reviewed candidate evidence only; clean per-skill measures do not convert a cohort or disposition into proof."
+      },
+      "action_refs": [],
+      "next_review_condition": "Reopen when the downstream owner records adoption, runtime use, or a replacement decision with public reviewable evidence."
+    },
+    {
+      "name": "aoa-adr-write",
+      "skill_path": "skills/core/engineering/aoa-adr-write/SKILL.md",
+      "scope": "core",
+      "source_status": "canonical",
+      "disposition": "retain",
+      "action_state": "monitor",
+      "rationale": "The canonical reference remains distinct and healthy; no regression, replacement, or boundary collision justifies another lifecycle action.",
+      "nearest_alternative_rejected": "retire",
+      "rejection_reason": "No replacement or regression evidence supports retirement, and canonical status already represents the highest reusable reference posture.",
+      "evidence": {
+        "evidence_posture": "reviewed_candidate_only",
+        "episode_refs": [
+          "evals/reports/aoa-skill-live-dispatch-coverage-closure-core-implicit-20260713-v19-reviewed.json"
+        ],
+        "prompt_visibility": "observed",
+        "selection": "mixed",
+        "load_read": "full_read",
+        "procedure": "legitimate_deflection",
+        "verification": "observed",
+        "outcome": "contract_match",
+        "mention_signal": "observed_non_authoritative",
+        "cooccurrence_signal": "not_used_as_effectiveness_proof",
+        "note": "Public receipt measures are reviewed candidate evidence only; clean per-skill measures do not convert a cohort or disposition into proof."
+      },
+      "action_refs": [],
+      "next_review_condition": "Reopen on contract regression, a materially better replacement, or new collision evidence that changes the current reference boundary."
+    },
+    {
+      "name": "aoa-approval-gate-check",
+      "skill_path": "skills/risk/aoa-approval-gate-check/SKILL.md",
+      "scope": "risk",
+      "source_status": "canonical",
+      "disposition": "retain",
+      "action_state": "monitor",
+      "rationale": "The canonical reference remains distinct and healthy; no regression, replacement, or boundary collision justifies another lifecycle action.",
+      "nearest_alternative_rejected": "retire",
+      "rejection_reason": "No replacement or regression evidence supports retirement, and canonical status already represents the highest reusable reference posture.",
+      "evidence": {
+        "evidence_posture": "reviewed_candidate_only",
+        "episode_refs": [
+          "evals/reports/aoa-skill-live-dispatch-pilot13-20260712-v12-reviewed-mixed-returns-needs-rerun.json"
+        ],
+        "prompt_visibility": "observed",
+        "selection": "mixed",
+        "load_read": "full_read",
+        "procedure": "mixed",
+        "verification": "observed",
+        "outcome": "contract_match",
+        "mention_signal": "observed_non_authoritative",
+        "cooccurrence_signal": "not_used_as_effectiveness_proof",
+        "note": "Public receipt measures are reviewed candidate evidence only; clean per-skill measures do not convert a cohort or disposition into proof."
+      },
+      "action_refs": [],
+      "next_review_condition": "Reopen on contract regression, a materially better replacement, or new collision evidence that changes the current reference boundary."
+    },
+    {
+      "name": "aoa-automation-opportunity-scan",
+      "skill_path": "skills/core/session-growth/aoa-automation-opportunity-scan/SKILL.md",
+      "scope": "core",
+      "source_status": "evaluated",
+      "disposition": "retain",
+      "action_state": "monitor",
+      "rationale": "The evaluated bundle remains distinct; current evidence does not justify canonical default-reference promotion without a comparative reference review.",
+      "nearest_alternative_rejected": "promote",
+      "rejection_reason": "Usage pressure and clean candidate episodes are not enough to choose a canonical default over adjacent evaluated workflows.",
+      "evidence": {
+        "evidence_posture": "reviewed_candidate_only",
+        "episode_refs": [
+          "evals/reports/aoa-skill-live-dispatch-coverage-closure-structured-core-20260713-v21-reviewed-structured-report-and-dispatch-gaps-needs-rerun.json",
+          "evals/reports/aoa-skill-live-dispatch-full-collision-session-growth-20260712-v16-reviewed-routing-gaps-needs-rerun.json"
+        ],
+        "prompt_visibility": "observed",
+        "selection": "mixed",
+        "load_read": "full_read",
+        "procedure": "legitimate_deflection",
+        "verification": "observed",
+        "outcome": "contract_match",
+        "mention_signal": "observed_non_authoritative",
+        "cooccurrence_signal": "not_used_as_effectiveness_proof",
+        "note": "Public receipt measures are reviewed candidate evidence only; clean per-skill measures do not convert a cohort or disposition into proof."
+      },
+      "action_refs": [],
+      "next_review_condition": "Reopen when comparative default-reference evidence resolves adjacent workflow boundaries and a canonical-candidate review is ready."
+    },
+    {
+      "name": "aoa-bounded-context-map",
+      "skill_path": "skills/core/engineering/aoa-bounded-context-map/SKILL.md",
+      "scope": "core",
+      "source_status": "canonical",
+      "disposition": "retain",
+      "action_state": "monitor",
+      "rationale": "The canonical reference remains distinct and healthy; no regression, replacement, or boundary collision justifies another lifecycle action.",
+      "nearest_alternative_rejected": "retire",
+      "rejection_reason": "No replacement or regression evidence supports retirement, and canonical status already represents the highest reusable reference posture.",
+      "evidence": {
+        "evidence_posture": "reviewed_candidate_only",
+        "episode_refs": [
+          "evals/reports/aoa-skill-live-dispatch-pilot13-20260712-v15-reviewed-clean-routing-observation-qualified-outcomes.json"
+        ],
+        "prompt_visibility": "observed",
+        "selection": "mixed",
+        "load_read": "full_read",
+        "procedure": "legitimate_deflection",
+        "verification": "observed",
+        "outcome": "contract_match",
+        "mention_signal": "observed_non_authoritative",
+        "cooccurrence_signal": "not_used_as_effectiveness_proof",
+        "note": "Public receipt measures are reviewed candidate evidence only; clean per-skill measures do not convert a cohort or disposition into proof."
+      },
+      "action_refs": [],
+      "next_review_condition": "Reopen on contract regression, a materially better replacement, or new collision evidence that changes the current reference boundary."
+    },
+    {
+      "name": "aoa-change-protocol",
+      "skill_path": "skills/core/engineering/aoa-change-protocol/SKILL.md",
+      "scope": "core",
+      "source_status": "canonical",
+      "disposition": "retain",
+      "action_state": "monitor",
+      "rationale": "The canonical reference remains distinct and healthy; no regression, replacement, or boundary collision justifies another lifecycle action.",
+      "nearest_alternative_rejected": "retire",
+      "rejection_reason": "No replacement or regression evidence supports retirement, and canonical status already represents the highest reusable reference posture.",
+      "evidence": {
+        "evidence_posture": "reviewed_candidate_only",
+        "episode_refs": [
+          "evals/reports/aoa-skill-live-dispatch-pilot13-20260712-v15-reviewed-clean-routing-observation-qualified-outcomes.json"
+        ],
+        "prompt_visibility": "observed",
+        "selection": "mixed",
+        "load_read": "full_read",
+        "procedure": "legitimate_deflection",
+        "verification": "observed",
+        "outcome": "contract_match",
+        "mention_signal": "observed_non_authoritative",
+        "cooccurrence_signal": "not_used_as_effectiveness_proof",
+        "note": "Public receipt measures are reviewed candidate evidence only; clean per-skill measures do not convert a cohort or disposition into proof."
+      },
+      "action_refs": [],
+      "next_review_condition": "Reopen on contract regression, a materially better replacement, or new collision evidence that changes the current reference boundary."
+    },
+    {
+      "name": "aoa-checkpoint-closeout-bridge",
+      "skill_path": "skills/core/session-growth/aoa-checkpoint-closeout-bridge/SKILL.md",
+      "scope": "core",
+      "source_status": "evaluated",
+      "disposition": "retain",
+      "action_state": "monitor",
+      "rationale": "The evaluated bundle remains distinct; current evidence does not justify canonical default-reference promotion without a comparative reference review.",
+      "nearest_alternative_rejected": "promote",
+      "rejection_reason": "Usage pressure and clean candidate episodes are not enough to choose a canonical default over adjacent evaluated workflows.",
+      "evidence": {
+        "evidence_posture": "reviewed_candidate_only",
+        "episode_refs": [
+          "evals/reports/aoa-skill-live-dispatch-coverage-closure-structured-core-20260713-v21-reviewed-structured-report-and-dispatch-gaps-needs-rerun.json",
+          "evals/reports/aoa-skill-live-dispatch-full-collision-session-growth-20260712-v16-reviewed-routing-gaps-needs-rerun.json"
+        ],
+        "prompt_visibility": "observed",
+        "selection": "mixed",
+        "load_read": "full_read",
+        "procedure": "legitimate_deflection",
+        "verification": "observed",
+        "outcome": "contract_match",
+        "mention_signal": "observed_non_authoritative",
+        "cooccurrence_signal": "not_used_as_effectiveness_proof",
+        "note": "Public receipt measures are reviewed candidate evidence only; clean per-skill measures do not convert a cohort or disposition into proof."
+      },
+      "action_refs": [],
+      "next_review_condition": "Reopen when comparative default-reference evidence resolves adjacent workflow boundaries and a canonical-candidate review is ready."
+    },
+    {
+      "name": "aoa-commit-growth-seam",
+      "skill_path": "skills/core/session-growth/aoa-commit-growth-seam/SKILL.md",
+      "scope": "core",
+      "source_status": "evaluated",
+      "disposition": "retain",
+      "action_state": "monitor",
+      "rationale": "The evaluated bundle remains distinct; current evidence does not justify canonical default-reference promotion without a comparative reference review.",
+      "nearest_alternative_rejected": "promote",
+      "rejection_reason": "Usage pressure and clean candidate episodes are not enough to choose a canonical default over adjacent evaluated workflows.",
+      "evidence": {
+        "evidence_posture": "reviewed_candidate_only",
+        "episode_refs": [
+          "evals/reports/aoa-skill-live-dispatch-coverage-closure-structured-core-20260713-v21-reviewed-structured-report-and-dispatch-gaps-needs-rerun.json",
+          "evals/reports/aoa-skill-live-dispatch-full-collision-session-growth-20260712-v16-reviewed-routing-gaps-needs-rerun.json"
+        ],
+        "prompt_visibility": "observed",
+        "selection": "mixed",
+        "load_read": "full_read",
+        "procedure": "legitimate_deflection",
+        "verification": "observed",
+        "outcome": "contract_match",
+        "mention_signal": "observed_non_authoritative",
+        "cooccurrence_signal": "not_used_as_effectiveness_proof",
+        "note": "Public receipt measures are reviewed candidate evidence only; clean per-skill measures do not convert a cohort or disposition into proof."
+      },
+      "action_refs": [],
+      "next_review_condition": "Reopen when comparative default-reference evidence resolves adjacent workflow boundaries and a canonical-candidate review is ready."
+    },
+    {
+      "name": "aoa-contract-test",
+      "skill_path": "skills/core/engineering/aoa-contract-test/SKILL.md",
+      "scope": "core",
+      "source_status": "canonical",
+      "disposition": "retain",
+      "action_state": "monitor",
+      "rationale": "The canonical reference remains distinct and healthy; no regression, replacement, or boundary collision justifies another lifecycle action.",
+      "nearest_alternative_rejected": "retire",
+      "rejection_reason": "No replacement or regression evidence supports retirement, and canonical status already represents the highest reusable reference posture.",
+      "evidence": {
+        "evidence_posture": "reviewed_candidate_only",
+        "episode_refs": [
+          "evals/reports/aoa-skill-live-dispatch-full-collision-core-engineering-20260712-v16-reviewed-fixture-output-observation-gaps-needs-rerun.json"
+        ],
+        "prompt_visibility": "observed",
+        "selection": "mixed",
+        "load_read": "full_read",
+        "procedure": "legitimate_deflection",
+        "verification": "observed",
+        "outcome": "contract_match",
+        "mention_signal": "observed_non_authoritative",
+        "cooccurrence_signal": "not_used_as_effectiveness_proof",
+        "note": "Public receipt measures are reviewed candidate evidence only; clean per-skill measures do not convert a cohort or disposition into proof."
+      },
+      "action_refs": [],
+      "next_review_condition": "Reopen on contract regression, a materially better replacement, or new collision evidence that changes the current reference boundary."
+    },
+    {
+      "name": "aoa-core-logic-boundary",
+      "skill_path": "skills/core/engineering/aoa-core-logic-boundary/SKILL.md",
+      "scope": "core",
+      "source_status": "evaluated",
+      "disposition": "retain",
+      "action_state": "monitor",
+      "rationale": "The evaluated bundle remains distinct; current evidence does not justify canonical default-reference promotion without a comparative reference review.",
+      "nearest_alternative_rejected": "promote",
+      "rejection_reason": "Usage pressure and clean candidate episodes are not enough to choose a canonical default over adjacent evaluated workflows.",
+      "evidence": {
+        "evidence_posture": "reviewed_candidate_only",
+        "episode_refs": [
+          "evals/reports/aoa-skill-live-dispatch-full-collision-core-engineering-20260712-v16-reviewed-fixture-output-observation-gaps-needs-rerun.json"
+        ],
+        "prompt_visibility": "observed",
+        "selection": "mixed",
+        "load_read": "full_read",
+        "procedure": "legitimate_deflection",
+        "verification": "observed",
+        "outcome": "contract_match",
+        "mention_signal": "observed_non_authoritative",
+        "cooccurrence_signal": "not_used_as_effectiveness_proof",
+        "note": "Public receipt measures are reviewed candidate evidence only; clean per-skill measures do not convert a cohort or disposition into proof."
+      },
+      "action_refs": [],
+      "next_review_condition": "Reopen when comparative default-reference evidence resolves adjacent workflow boundaries and a canonical-candidate review is ready."
+    },
+    {
+      "name": "aoa-decision",
+      "skill_path": "skills/core/engineering/aoa-decision/SKILL.md",
+      "scope": "core",
+      "source_status": "evaluated",
+      "disposition": "retain",
+      "action_state": "monitor",
+      "rationale": "The evaluated bundle remains distinct; current evidence does not justify canonical default-reference promotion without a comparative reference review.",
+      "nearest_alternative_rejected": "promote",
+      "rejection_reason": "Usage pressure and clean candidate episodes are not enough to choose a canonical default over adjacent evaluated workflows.",
+      "evidence": {
+        "evidence_posture": "reviewed_candidate_only",
+        "episode_refs": [
+          "evals/reports/aoa-skill-live-dispatch-pilot13-skill-returns-20260712-v14-reviewed-clean-aided-returns-control-observation-gap.json",
+          "evals/reports/aoa-skill-live-dispatch-pilot13-returns-20260712-v13-reviewed-partial-output-contract-needs-rerun.json"
+        ],
+        "prompt_visibility": "observed",
+        "selection": "mixed",
+        "load_read": "full_read",
+        "procedure": "mixed",
+        "verification": "observed",
+        "outcome": "contract_match",
+        "mention_signal": "observed_non_authoritative",
+        "cooccurrence_signal": "not_used_as_effectiveness_proof",
+        "note": "Public receipt measures are reviewed candidate evidence only; clean per-skill measures do not convert a cohort or disposition into proof."
+      },
+      "action_refs": [],
+      "next_review_condition": "Reopen when comparative default-reference evidence resolves adjacent workflow boundaries and a canonical-candidate review is ready."
+    },
+    {
+      "name": "aoa-decision-correct",
+      "skill_path": "skills/core/engineering/aoa-decision-correct/SKILL.md",
+      "scope": "core",
+      "source_status": "evaluated",
+      "disposition": "retain",
+      "action_state": "monitor",
+      "rationale": "The evaluated bundle remains distinct; current evidence does not justify canonical default-reference promotion without a comparative reference review.",
+      "nearest_alternative_rejected": "promote",
+      "rejection_reason": "Usage pressure and clean candidate episodes are not enough to choose a canonical default over adjacent evaluated workflows.",
+      "evidence": {
+        "evidence_posture": "reviewed_candidate_only",
+        "episode_refs": [
+          "evals/reports/aoa-skill-live-dispatch-coverage-closure-structured-core-20260713-v21-reviewed-structured-report-and-dispatch-gaps-needs-rerun.json",
+          "evals/reports/aoa-skill-live-dispatch-full-collision-authority-routing-20260713-v18-reviewed-parent-trajectory-observability-needs-rerun.json"
+        ],
+        "prompt_visibility": "observed",
+        "selection": "legitimate_nonactivation",
+        "load_read": "full_read",
+        "procedure": "legitimate_deflection",
+        "verification": "observed",
+        "outcome": "contract_match",
+        "mention_signal": "observed_non_authoritative",
+        "cooccurrence_signal": "not_used_as_effectiveness_proof",
+        "note": "Public receipt measures are reviewed candidate evidence only; clean per-skill measures do not convert a cohort or disposition into proof."
+      },
+      "action_refs": [],
+      "next_review_condition": "Reopen when comparative default-reference evidence resolves adjacent workflow boundaries and a canonical-candidate review is ready."
+    },
+    {
+      "name": "aoa-decision-create",
+      "skill_path": "skills/core/engineering/aoa-decision-create/SKILL.md",
+      "scope": "core",
+      "source_status": "evaluated",
+      "disposition": "retain",
+      "action_state": "monitor",
+      "rationale": "The evaluated bundle remains distinct; current evidence does not justify canonical default-reference promotion without a comparative reference review.",
+      "nearest_alternative_rejected": "promote",
+      "rejection_reason": "Usage pressure and clean candidate episodes are not enough to choose a canonical default over adjacent evaluated workflows.",
+      "evidence": {
+        "evidence_posture": "reviewed_candidate_only",
+        "episode_refs": [
+          "evals/reports/aoa-skill-live-dispatch-coverage-closure-structured-core-20260713-v21-reviewed-structured-report-and-dispatch-gaps-needs-rerun.json",
+          "evals/reports/aoa-skill-live-dispatch-full-collision-authority-routing-20260713-v18-reviewed-parent-trajectory-observability-needs-rerun.json"
+        ],
+        "prompt_visibility": "observed",
+        "selection": "legitimate_nonactivation",
+        "load_read": "full_read",
+        "procedure": "legitimate_deflection",
+        "verification": "observed",
+        "outcome": "contract_match",
+        "mention_signal": "observed_non_authoritative",
+        "cooccurrence_signal": "not_used_as_effectiveness_proof",
+        "note": "Public receipt measures are reviewed candidate evidence only; clean per-skill measures do not convert a cohort or disposition into proof."
+      },
+      "action_refs": [],
+      "next_review_condition": "Reopen when comparative default-reference evidence resolves adjacent workflow boundaries and a canonical-candidate review is ready."
+    },
+    {
+      "name": "aoa-decision-find",
+      "skill_path": "skills/core/engineering/aoa-decision-find/SKILL.md",
+      "scope": "core",
+      "source_status": "evaluated",
+      "disposition": "retain",
+      "action_state": "monitor",
+      "rationale": "The evaluated bundle remains distinct; current evidence does not justify canonical default-reference promotion without a comparative reference review.",
+      "nearest_alternative_rejected": "promote",
+      "rejection_reason": "Usage pressure and clean candidate episodes are not enough to choose a canonical default over adjacent evaluated workflows.",
+      "evidence": {
+        "evidence_posture": "reviewed_candidate_only",
+        "episode_refs": [
+          "evals/reports/aoa-skill-live-dispatch-coverage-closure-structured-core-returns-20260713-v22-reviewed-direct-target-contract-clean.json",
+          "evals/reports/aoa-skill-live-dispatch-full-collision-authority-routing-20260713-v18-reviewed-parent-trajectory-observability-needs-rerun.json"
+        ],
+        "prompt_visibility": "observed",
+        "selection": "mixed",
+        "load_read": "full_read",
+        "procedure": "legitimate_deflection",
+        "verification": "observed",
+        "outcome": "contract_match",
+        "mention_signal": "observed_non_authoritative",
+        "cooccurrence_signal": "not_used_as_effectiveness_proof",
+        "note": "Public receipt measures are reviewed candidate evidence only; clean per-skill measures do not convert a cohort or disposition into proof."
+      },
+      "action_refs": [],
+      "next_review_condition": "Reopen when comparative default-reference evidence resolves adjacent workflow boundaries and a canonical-candidate review is ready."
+    },
+    {
+      "name": "aoa-dry-run-first",
+      "skill_path": "skills/risk/aoa-dry-run-first/SKILL.md",
+      "scope": "risk",
+      "source_status": "canonical",
+      "disposition": "retain",
+      "action_state": "monitor",
+      "rationale": "The canonical reference remains distinct and healthy; no regression, replacement, or boundary collision justifies another lifecycle action.",
+      "nearest_alternative_rejected": "retire",
+      "rejection_reason": "No replacement or regression evidence supports retirement, and canonical status already represents the highest reusable reference posture.",
+      "evidence": {
+        "evidence_posture": "reviewed_candidate_only",
+        "episode_refs": [
+          "evals/reports/aoa-skill-live-dispatch-coverage-closure-structured-core-20260713-v21-reviewed-structured-report-and-dispatch-gaps-needs-rerun.json",
+          "evals/reports/aoa-skill-live-dispatch-full-collision-safety-overlays-20260712-v16-reviewed-clean.json"
+        ],
+        "prompt_visibility": "observed",
+        "selection": "mixed",
+        "load_read": "full_read",
+        "procedure": "legitimate_deflection",
+        "verification": "observed",
+        "outcome": "contract_match",
+        "mention_signal": "observed_non_authoritative",
+        "cooccurrence_signal": "not_used_as_effectiveness_proof",
+        "note": "Public receipt measures are reviewed candidate evidence only; clean per-skill measures do not convert a cohort or disposition into proof."
+      },
+      "action_refs": [],
+      "next_review_condition": "Reopen on contract regression, a materially better replacement, or new collision evidence that changes the current reference boundary."
+    },
+    {
+      "name": "aoa-eval",
+      "skill_path": "skills/core/engineering/aoa-eval/SKILL.md",
+      "scope": "core",
+      "source_status": "scaffold",
+      "disposition": "promote",
+      "action_state": "pending_owner_gate",
+      "rationale": "The repository evaluated floor has autonomy, use, do-not-use, and snapshot coverage; promotion remains a separate reviewed governance landing.",
+      "nearest_alternative_rejected": "retain",
+      "rejection_reason": "Keeping scaffold status would understate the complete behavior-oriented repository floor, while reviewed live gaps remain explicitly non-authoritative.",
+      "evidence": {
+        "evidence_posture": "reviewed_candidate_only",
+        "episode_refs": [
+          "evals/reports/aoa-skill-live-dispatch-smoke-20260712-v8-outcome-answer-key-needs-rerun.json",
+          "evals/reports/aoa-skill-live-dispatch-smoke-20260712-v12-reviewed-owner-action-no-lift.json"
+        ],
+        "prompt_visibility": "observed",
+        "selection": "mixed",
+        "load_read": "full_read",
+        "procedure": "mixed",
+        "verification": "observed",
+        "outcome": "contract_match",
+        "mention_signal": "observed_non_authoritative",
+        "cooccurrence_signal": "not_used_as_effectiveness_proof",
+        "note": "Public receipt measures are reviewed candidate evidence only; clean per-skill measures do not convert a cohort or disposition into proof."
+      },
+      "action_refs": [
+        "skills/core/engineering/aoa-eval/SKILL.md",
+        "mechanics/method-growth/docs/PROMOTION_PATH.md",
+        "generated/skill_evaluation_matrix.json"
+      ],
+      "next_review_condition": "After the evaluated status gate lands, require comparative canonical review and preserve any live trajectory or outcome gaps as separate follow-through.",
+      "target_status": "evaluated"
+    },
+    {
+      "name": "aoa-eval-apply",
+      "skill_path": "skills/core/engineering/aoa-eval-apply/SKILL.md",
+      "scope": "core",
+      "source_status": "scaffold",
+      "disposition": "promote",
+      "action_state": "pending_owner_gate",
+      "rationale": "The repository evaluated floor has autonomy, use, do-not-use, and snapshot coverage; promotion remains a separate reviewed governance landing.",
+      "nearest_alternative_rejected": "retain",
+      "rejection_reason": "Keeping scaffold status would understate the complete behavior-oriented repository floor, while reviewed live gaps remain explicitly non-authoritative.",
+      "evidence": {
+        "evidence_posture": "reviewed_candidate_only",
+        "episode_refs": [
+          "evals/reports/aoa-skill-live-dispatch-smoke-20260712-v8-outcome-answer-key-needs-rerun.json",
+          "evals/reports/aoa-skill-live-dispatch-coverage-closure-structured-core-20260713-v21-reviewed-structured-report-and-dispatch-gaps-needs-rerun.json"
+        ],
+        "prompt_visibility": "observed",
+        "selection": "exact",
+        "load_read": "full_read",
+        "procedure": "mixed",
+        "verification": "observed",
+        "outcome": "completed",
+        "mention_signal": "observed_non_authoritative",
+        "cooccurrence_signal": "not_used_as_effectiveness_proof",
+        "note": "Public receipt measures are reviewed candidate evidence only; clean per-skill measures do not convert a cohort or disposition into proof."
+      },
+      "action_refs": [
+        "skills/core/engineering/aoa-eval-apply/SKILL.md",
+        "mechanics/method-growth/docs/PROMOTION_PATH.md",
+        "generated/skill_evaluation_matrix.json"
+      ],
+      "next_review_condition": "After the evaluated status gate lands, require comparative canonical review and preserve any live trajectory or outcome gaps as separate follow-through.",
+      "target_status": "evaluated"
+    },
+    {
+      "name": "aoa-eval-design",
+      "skill_path": "skills/core/engineering/aoa-eval-design/SKILL.md",
+      "scope": "core",
+      "source_status": "scaffold",
+      "disposition": "promote",
+      "action_state": "pending_owner_gate",
+      "rationale": "The repository evaluated floor has autonomy, use, do-not-use, and snapshot coverage; promotion remains a separate reviewed governance landing.",
+      "nearest_alternative_rejected": "retain",
+      "rejection_reason": "Keeping scaffold status would understate the complete behavior-oriented repository floor, while reviewed live gaps remain explicitly non-authoritative.",
+      "evidence": {
+        "evidence_posture": "reviewed_candidate_only",
+        "episode_refs": [
+          "evals/reports/aoa-skill-live-dispatch-coverage-closure-structured-core-20260713-v21-reviewed-structured-report-and-dispatch-gaps-needs-rerun.json"
+        ],
+        "prompt_visibility": "observed",
+        "selection": "not_observed",
+        "load_read": "full_read",
+        "procedure": "legitimate_deflection",
+        "verification": "observed",
+        "outcome": "not_observed",
+        "mention_signal": "observed_non_authoritative",
+        "cooccurrence_signal": "not_used_as_effectiveness_proof",
+        "note": "Public reviewed candidate measures keep these live gaps explicit: direct selection, bounded outcome. The row does not treat fixture coverage or mentions as live success."
+      },
+      "action_refs": [
+        "skills/core/engineering/aoa-eval-design/SKILL.md",
+        "mechanics/method-growth/docs/PROMOTION_PATH.md",
+        "generated/skill_evaluation_matrix.json"
+      ],
+      "next_review_condition": "After the evaluated status gate lands, rerun direct live selection and bounded outcome cases before any canonical or default-reference review.",
+      "target_status": "evaluated"
+    },
+    {
+      "name": "aoa-eval-local-need",
+      "skill_path": "skills/core/engineering/aoa-eval-local-need/SKILL.md",
+      "scope": "core",
+      "source_status": "scaffold",
+      "disposition": "promote",
+      "action_state": "pending_owner_gate",
+      "rationale": "The repository evaluated floor has autonomy, use, do-not-use, and snapshot coverage; promotion remains a separate reviewed governance landing.",
+      "nearest_alternative_rejected": "retain",
+      "rejection_reason": "Keeping scaffold status would understate the complete behavior-oriented repository floor, while reviewed live gaps remain explicitly non-authoritative.",
+      "evidence": {
+        "evidence_posture": "reviewed_candidate_only",
+        "episode_refs": [
+          "evals/reports/aoa-skill-live-dispatch-coverage-closure-structured-core-20260713-v21-reviewed-structured-report-and-dispatch-gaps-needs-rerun.json"
+        ],
+        "prompt_visibility": "observed",
+        "selection": "not_observed",
+        "load_read": "full_read",
+        "procedure": "legitimate_deflection",
+        "verification": "observed",
+        "outcome": "not_observed",
+        "mention_signal": "observed_non_authoritative",
+        "cooccurrence_signal": "not_used_as_effectiveness_proof",
+        "note": "Public reviewed candidate measures keep these live gaps explicit: direct selection, bounded outcome. The row does not treat fixture coverage or mentions as live success."
+      },
+      "action_refs": [
+        "skills/core/engineering/aoa-eval-local-need/SKILL.md",
+        "mechanics/method-growth/docs/PROMOTION_PATH.md",
+        "generated/skill_evaluation_matrix.json"
+      ],
+      "next_review_condition": "After the evaluated status gate lands, rerun direct live selection and bounded outcome cases before any canonical or default-reference review.",
+      "target_status": "evaluated"
+    },
+    {
+      "name": "aoa-eval-select",
+      "skill_path": "skills/core/engineering/aoa-eval-select/SKILL.md",
+      "scope": "core",
+      "source_status": "scaffold",
+      "disposition": "promote",
+      "action_state": "pending_owner_gate",
+      "rationale": "The repository evaluated floor has autonomy, use, do-not-use, and snapshot coverage; promotion remains a separate reviewed governance landing.",
+      "nearest_alternative_rejected": "retain",
+      "rejection_reason": "Keeping scaffold status would understate the complete behavior-oriented repository floor, while reviewed live gaps remain explicitly non-authoritative.",
+      "evidence": {
+        "evidence_posture": "reviewed_candidate_only",
+        "episode_refs": [
+          "evals/reports/aoa-skill-live-dispatch-coverage-closure-structured-core-20260713-v21-reviewed-structured-report-and-dispatch-gaps-needs-rerun.json"
+        ],
+        "prompt_visibility": "observed",
+        "selection": "exact",
+        "load_read": "full_read",
+        "procedure": "legitimate_deflection",
+        "verification": "observed",
+        "outcome": "not_observed",
+        "mention_signal": "observed_non_authoritative",
+        "cooccurrence_signal": "not_used_as_effectiveness_proof",
+        "note": "Public reviewed candidate measures keep these live gaps explicit: bounded outcome. The row does not treat fixture coverage or mentions as live success."
+      },
+      "action_refs": [
+        "skills/core/engineering/aoa-eval-select/SKILL.md",
+        "mechanics/method-growth/docs/PROMOTION_PATH.md",
+        "generated/skill_evaluation_matrix.json"
+      ],
+      "next_review_condition": "After the evaluated status gate lands, require comparative canonical review and preserve any live trajectory or outcome gaps as separate follow-through.",
+      "target_status": "evaluated"
+    },
+    {
+      "name": "aoa-eval-session-mining",
+      "skill_path": "skills/core/engineering/aoa-eval-session-mining/SKILL.md",
+      "scope": "core",
+      "source_status": "scaffold",
+      "disposition": "promote",
+      "action_state": "pending_owner_gate",
+      "rationale": "The repository evaluated floor has autonomy, use, do-not-use, and snapshot coverage; promotion remains a separate reviewed governance landing.",
+      "nearest_alternative_rejected": "retain",
+      "rejection_reason": "Keeping scaffold status would understate the complete behavior-oriented repository floor, while reviewed live gaps remain explicitly non-authoritative.",
+      "evidence": {
+        "evidence_posture": "reviewed_candidate_only",
+        "episode_refs": [
+          "evals/reports/aoa-skill-live-dispatch-coverage-closure-structured-core-returns-20260713-v22-reviewed-direct-target-contract-clean.json"
+        ],
+        "prompt_visibility": "observed",
+        "selection": "exact",
+        "load_read": "full_read",
+        "procedure": "legitimate_deflection",
+        "verification": "observed",
+        "outcome": "not_observed",
+        "mention_signal": "observed_non_authoritative",
+        "cooccurrence_signal": "not_used_as_effectiveness_proof",
+        "note": "Public reviewed candidate measures keep these live gaps explicit: bounded outcome. The row does not treat fixture coverage or mentions as live success."
+      },
+      "action_refs": [
+        "skills/core/engineering/aoa-eval-session-mining/SKILL.md",
+        "mechanics/method-growth/docs/PROMOTION_PATH.md",
+        "generated/skill_evaluation_matrix.json"
+      ],
+      "next_review_condition": "After the evaluated status gate lands, require comparative canonical review and preserve any live trajectory or outcome gaps as separate follow-through.",
+      "target_status": "evaluated"
+    },
+    {
+      "name": "aoa-invariant-coverage-audit",
+      "skill_path": "skills/core/engineering/aoa-invariant-coverage-audit/SKILL.md",
+      "scope": "core",
+      "source_status": "canonical",
+      "disposition": "retain",
+      "action_state": "monitor",
+      "rationale": "The canonical reference remains distinct and healthy; no regression, replacement, or boundary collision justifies another lifecycle action.",
+      "nearest_alternative_rejected": "retire",
+      "rejection_reason": "No replacement or regression evidence supports retirement, and canonical status already represents the highest reusable reference posture.",
+      "evidence": {
+        "evidence_posture": "reviewed_candidate_only",
+        "episode_refs": [
+          "evals/reports/aoa-skill-live-dispatch-pilot13-20260712-v15-reviewed-clean-routing-observation-qualified-outcomes.json"
+        ],
+        "prompt_visibility": "observed",
+        "selection": "mixed",
+        "load_read": "full_read",
+        "procedure": "legitimate_deflection",
+        "verification": "observed",
+        "outcome": "contract_match",
+        "mention_signal": "observed_non_authoritative",
+        "cooccurrence_signal": "not_used_as_effectiveness_proof",
+        "note": "Public receipt measures are reviewed candidate evidence only; clean per-skill measures do not convert a cohort or disposition into proof."
+      },
+      "action_refs": [],
+      "next_review_condition": "Reopen on contract regression, a materially better replacement, or new collision evidence that changes the current reference boundary."
+    },
+    {
+      "name": "aoa-local-stack-bringup",
+      "skill_path": "skills/risk/aoa-local-stack-bringup/SKILL.md",
+      "scope": "risk",
+      "source_status": "evaluated",
+      "disposition": "retain",
+      "action_state": "monitor",
+      "rationale": "The evaluated bundle remains distinct; current evidence does not justify canonical default-reference promotion without a comparative reference review.",
+      "nearest_alternative_rejected": "promote",
+      "rejection_reason": "Usage pressure and clean candidate episodes are not enough to choose a canonical default over adjacent evaluated workflows.",
+      "evidence": {
+        "evidence_posture": "reviewed_candidate_only",
+        "episode_refs": [
+          "evals/reports/aoa-skill-live-dispatch-coverage-closure-structured-core-20260713-v21-reviewed-structured-report-and-dispatch-gaps-needs-rerun.json",
+          "evals/reports/aoa-skill-live-dispatch-full-collision-safety-overlays-20260712-v16-reviewed-clean.json"
+        ],
+        "prompt_visibility": "observed",
+        "selection": "mixed",
+        "load_read": "full_read",
+        "procedure": "legitimate_deflection",
+        "verification": "observed",
+        "outcome": "contract_match",
+        "mention_signal": "observed_non_authoritative",
+        "cooccurrence_signal": "not_used_as_effectiveness_proof",
+        "note": "Public receipt measures are reviewed candidate evidence only; clean per-skill measures do not convert a cohort or disposition into proof."
+      },
+      "action_refs": [],
+      "next_review_condition": "Reopen when comparative default-reference evidence resolves adjacent workflow boundaries and a canonical-candidate review is ready."
+    },
+    {
+      "name": "aoa-memo-writeback",
+      "skill_path": "skills/core/session-growth/aoa-memo-writeback/SKILL.md",
+      "scope": "core",
+      "source_status": "scaffold",
+      "disposition": "promote",
+      "action_state": "pending_owner_gate",
+      "rationale": "The repository evaluated floor has autonomy, use, do-not-use, and snapshot coverage; promotion remains a separate reviewed governance landing.",
+      "nearest_alternative_rejected": "retain",
+      "rejection_reason": "Keeping scaffold status would understate the complete behavior-oriented repository floor, while reviewed live gaps remain explicitly non-authoritative.",
+      "evidence": {
+        "evidence_posture": "reviewed_candidate_only",
+        "episode_refs": [
+          "evals/reports/aoa-skill-live-dispatch-coverage-closure-structured-core-20260713-v21-reviewed-structured-report-and-dispatch-gaps-needs-rerun.json",
+          "evals/reports/aoa-skill-live-dispatch-coverage-closure-core-implicit-20260713-v19-reviewed.json"
+        ],
+        "prompt_visibility": "observed",
+        "selection": "mixed",
+        "load_read": "full_read",
+        "procedure": "legitimate_deflection",
+        "verification": "observed",
+        "outcome": "contract_match",
+        "mention_signal": "observed_non_authoritative",
+        "cooccurrence_signal": "not_used_as_effectiveness_proof",
+        "note": "Public receipt measures are reviewed candidate evidence only; clean per-skill measures do not convert a cohort or disposition into proof."
+      },
+      "action_refs": [
+        "skills/core/session-growth/aoa-memo-writeback/SKILL.md",
+        "mechanics/method-growth/docs/PROMOTION_PATH.md",
+        "generated/skill_evaluation_matrix.json"
+      ],
+      "next_review_condition": "After the evaluated status gate lands, require comparative canonical review and preserve any live trajectory or outcome gaps as separate follow-through.",
+      "target_status": "evaluated"
+    },
+    {
+      "name": "aoa-port-adapter-refactor",
+      "skill_path": "skills/core/engineering/aoa-port-adapter-refactor/SKILL.md",
+      "scope": "core",
+      "source_status": "evaluated",
+      "disposition": "retain",
+      "action_state": "monitor",
+      "rationale": "The evaluated bundle remains distinct; current evidence does not justify canonical default-reference promotion without a comparative reference review.",
+      "nearest_alternative_rejected": "promote",
+      "rejection_reason": "Usage pressure and clean candidate episodes are not enough to choose a canonical default over adjacent evaluated workflows.",
+      "evidence": {
+        "evidence_posture": "reviewed_candidate_only",
+        "episode_refs": [
+          "evals/reports/aoa-skill-live-dispatch-full-collision-core-engineering-outcome-returns-20260712-v16-reviewed-clean.json"
+        ],
+        "prompt_visibility": "observed",
+        "selection": "exact",
+        "load_read": "full_read",
+        "procedure": "legitimate_deflection",
+        "verification": "observed",
+        "outcome": "contract_match",
+        "mention_signal": "observed_non_authoritative",
+        "cooccurrence_signal": "not_used_as_effectiveness_proof",
+        "note": "Public receipt measures are reviewed candidate evidence only; clean per-skill measures do not convert a cohort or disposition into proof."
+      },
+      "action_refs": [],
+      "next_review_condition": "Reopen when comparative default-reference evidence resolves adjacent workflow boundaries and a canonical-candidate review is ready."
+    },
+    {
+      "name": "aoa-property-invariants",
+      "skill_path": "skills/core/engineering/aoa-property-invariants/SKILL.md",
+      "scope": "core",
+      "source_status": "canonical",
+      "disposition": "retain",
+      "action_state": "monitor",
+      "rationale": "The canonical reference remains distinct and healthy; no regression, replacement, or boundary collision justifies another lifecycle action.",
+      "nearest_alternative_rejected": "retire",
+      "rejection_reason": "No replacement or regression evidence supports retirement, and canonical status already represents the highest reusable reference posture.",
+      "evidence": {
+        "evidence_posture": "reviewed_candidate_only",
+        "episode_refs": [
+          "evals/reports/aoa-skill-live-dispatch-full-collision-core-engineering-returns-20260712-v16-reviewed-clean.json"
+        ],
+        "prompt_visibility": "observed",
+        "selection": "mixed",
+        "load_read": "full_read",
+        "procedure": "legitimate_deflection",
+        "verification": "observed",
+        "outcome": "contract_match",
+        "mention_signal": "observed_non_authoritative",
+        "cooccurrence_signal": "not_used_as_effectiveness_proof",
+        "note": "Public receipt measures are reviewed candidate evidence only; clean per-skill measures do not convert a cohort or disposition into proof."
+      },
+      "action_refs": [],
+      "next_review_condition": "Reopen on contract regression, a materially better replacement, or new collision evidence that changes the current reference boundary."
+    },
+    {
+      "name": "aoa-quest-harvest",
+      "skill_path": "skills/core/session-growth/aoa-quest-harvest/SKILL.md",
+      "scope": "core",
+      "source_status": "evaluated",
+      "disposition": "retain",
+      "action_state": "monitor",
+      "rationale": "The evaluated bundle remains distinct; current evidence does not justify canonical default-reference promotion without a comparative reference review.",
+      "nearest_alternative_rejected": "promote",
+      "rejection_reason": "Usage pressure and clean candidate episodes are not enough to choose a canonical default over adjacent evaluated workflows.",
+      "evidence": {
+        "evidence_posture": "reviewed_candidate_only",
+        "episode_refs": [
+          "evals/reports/aoa-skill-live-dispatch-coverage-closure-structured-core-20260713-v21-reviewed-structured-report-and-dispatch-gaps-needs-rerun.json",
+          "evals/reports/aoa-skill-live-dispatch-full-collision-session-growth-returns-20260713-v18-reviewed-hidden-manual-non-activation.json"
+        ],
+        "prompt_visibility": "observed",
+        "selection": "mixed",
+        "load_read": "full_read",
+        "procedure": "legitimate_deflection",
+        "verification": "observed",
+        "outcome": "contract_match",
+        "mention_signal": "observed_non_authoritative",
+        "cooccurrence_signal": "not_used_as_effectiveness_proof",
+        "note": "Public receipt measures are reviewed candidate evidence only; clean per-skill measures do not convert a cohort or disposition into proof."
+      },
+      "action_refs": [],
+      "next_review_condition": "Reopen when comparative default-reference evidence resolves adjacent workflow boundaries and a canonical-candidate review is ready."
+    },
+    {
+      "name": "aoa-safe-infra-change",
+      "skill_path": "skills/risk/aoa-safe-infra-change/SKILL.md",
+      "scope": "risk",
+      "source_status": "canonical",
+      "disposition": "retain",
+      "action_state": "monitor",
+      "rationale": "The canonical reference remains distinct and healthy; no regression, replacement, or boundary collision justifies another lifecycle action.",
+      "nearest_alternative_rejected": "retire",
+      "rejection_reason": "No replacement or regression evidence supports retirement, and canonical status already represents the highest reusable reference posture.",
+      "evidence": {
+        "evidence_posture": "reviewed_candidate_only",
+        "episode_refs": [
+          "evals/reports/aoa-skill-live-dispatch-coverage-closure-structured-core-20260713-v21-reviewed-structured-report-and-dispatch-gaps-needs-rerun.json",
+          "evals/reports/aoa-skill-live-dispatch-full-collision-safety-overlays-20260712-v16-reviewed-clean.json"
+        ],
+        "prompt_visibility": "observed",
+        "selection": "mixed",
+        "load_read": "full_read",
+        "procedure": "legitimate_deflection",
+        "verification": "observed",
+        "outcome": "contract_match",
+        "mention_signal": "observed_non_authoritative",
+        "cooccurrence_signal": "not_used_as_effectiveness_proof",
+        "note": "Public receipt measures are reviewed candidate evidence only; clean per-skill measures do not convert a cohort or disposition into proof."
+      },
+      "action_refs": [],
+      "next_review_condition": "Reopen on contract regression, a materially better replacement, or new collision evidence that changes the current reference boundary."
+    },
+    {
+      "name": "aoa-sanitized-share",
+      "skill_path": "skills/risk/aoa-sanitized-share/SKILL.md",
+      "scope": "risk",
+      "source_status": "canonical",
+      "disposition": "retain",
+      "action_state": "monitor",
+      "rationale": "The canonical reference remains distinct and healthy; no regression, replacement, or boundary collision justifies another lifecycle action.",
+      "nearest_alternative_rejected": "retire",
+      "rejection_reason": "No replacement or regression evidence supports retirement, and canonical status already represents the highest reusable reference posture.",
+      "evidence": {
+        "evidence_posture": "reviewed_candidate_only",
+        "episode_refs": [
+          "evals/reports/aoa-skill-live-dispatch-coverage-closure-structured-core-20260713-v21-reviewed-structured-report-and-dispatch-gaps-needs-rerun.json",
+          "evals/reports/aoa-skill-live-dispatch-full-collision-safety-overlays-20260712-v16-reviewed-clean.json"
+        ],
+        "prompt_visibility": "observed",
+        "selection": "mixed",
+        "load_read": "not_observed",
+        "procedure": "legitimate_deflection",
+        "verification": "observed",
+        "outcome": "contract_match",
+        "mention_signal": "observed_non_authoritative",
+        "cooccurrence_signal": "not_used_as_effectiveness_proof",
+        "note": "Public reviewed candidate measures keep these live gaps explicit: full read. The row does not treat fixture coverage or mentions as live success."
+      },
+      "action_refs": [],
+      "next_review_condition": "Reopen on contract regression, a materially better replacement, or new collision evidence that changes the current reference boundary."
+    },
+    {
+      "name": "aoa-session-donor-harvest",
+      "skill_path": "skills/core/session-growth/aoa-session-donor-harvest/SKILL.md",
+      "scope": "core",
+      "source_status": "evaluated",
+      "disposition": "retain",
+      "action_state": "monitor",
+      "rationale": "The evaluated bundle remains distinct; current evidence does not justify canonical default-reference promotion without a comparative reference review.",
+      "nearest_alternative_rejected": "promote",
+      "rejection_reason": "Usage pressure and clean candidate episodes are not enough to choose a canonical default over adjacent evaluated workflows.",
+      "evidence": {
+        "evidence_posture": "reviewed_candidate_only",
+        "episode_refs": [
+          "evals/reports/aoa-skill-live-dispatch-coverage-closure-structured-core-20260713-v21-reviewed-structured-report-and-dispatch-gaps-needs-rerun.json",
+          "evals/reports/aoa-skill-live-dispatch-pilot13-20260712-v15-reviewed-clean-routing-observation-qualified-outcomes.json"
+        ],
+        "prompt_visibility": "observed",
+        "selection": "mixed",
+        "load_read": "full_read",
+        "procedure": "legitimate_deflection",
+        "verification": "observed",
+        "outcome": "contract_match",
+        "mention_signal": "observed_non_authoritative",
+        "cooccurrence_signal": "not_used_as_effectiveness_proof",
+        "note": "Public receipt measures are reviewed candidate evidence only; clean per-skill measures do not convert a cohort or disposition into proof."
+      },
+      "action_refs": [],
+      "next_review_condition": "Reopen when comparative default-reference evidence resolves adjacent workflow boundaries and a canonical-candidate review is ready."
+    },
+    {
+      "name": "aoa-session-progression-lift",
+      "skill_path": "skills/core/session-growth/aoa-session-progression-lift/SKILL.md",
+      "scope": "core",
+      "source_status": "evaluated",
+      "disposition": "retain",
+      "action_state": "monitor",
+      "rationale": "The evaluated bundle remains distinct; current evidence does not justify canonical default-reference promotion without a comparative reference review.",
+      "nearest_alternative_rejected": "promote",
+      "rejection_reason": "Usage pressure and clean candidate episodes are not enough to choose a canonical default over adjacent evaluated workflows.",
+      "evidence": {
+        "evidence_posture": "reviewed_candidate_only",
+        "episode_refs": [
+          "evals/reports/aoa-skill-live-dispatch-coverage-closure-structured-core-20260713-v21-reviewed-structured-report-and-dispatch-gaps-needs-rerun.json",
+          "evals/reports/aoa-skill-live-dispatch-full-collision-session-growth-20260712-v16-reviewed-routing-gaps-needs-rerun.json"
+        ],
+        "prompt_visibility": "observed",
+        "selection": "mixed",
+        "load_read": "full_read",
+        "procedure": "legitimate_deflection",
+        "verification": "observed",
+        "outcome": "contract_match",
+        "mention_signal": "observed_non_authoritative",
+        "cooccurrence_signal": "not_used_as_effectiveness_proof",
+        "note": "Public receipt measures are reviewed candidate evidence only; clean per-skill measures do not convert a cohort or disposition into proof."
+      },
+      "action_refs": [],
+      "next_review_condition": "Reopen when comparative default-reference evidence resolves adjacent workflow boundaries and a canonical-candidate review is ready."
+    },
+    {
+      "name": "aoa-session-route-forks",
+      "skill_path": "skills/core/session-growth/aoa-session-route-forks/SKILL.md",
+      "scope": "core",
+      "source_status": "evaluated",
+      "disposition": "retain",
+      "action_state": "monitor",
+      "rationale": "The evaluated bundle remains distinct; current evidence does not justify canonical default-reference promotion without a comparative reference review.",
+      "nearest_alternative_rejected": "promote",
+      "rejection_reason": "Usage pressure and clean candidate episodes are not enough to choose a canonical default over adjacent evaluated workflows.",
+      "evidence": {
+        "evidence_posture": "reviewed_candidate_only",
+        "episode_refs": [
+          "evals/reports/aoa-skill-live-dispatch-coverage-closure-structured-core-20260713-v21-reviewed-structured-report-and-dispatch-gaps-needs-rerun.json",
+          "evals/reports/aoa-skill-live-dispatch-full-collision-session-growth-returns-20260713-v18-reviewed-hidden-manual-non-activation.json"
+        ],
+        "prompt_visibility": "observed",
+        "selection": "mixed",
+        "load_read": "not_observed",
+        "procedure": "legitimate_deflection",
+        "verification": "observed",
+        "outcome": "contract_match",
+        "mention_signal": "observed_non_authoritative",
+        "cooccurrence_signal": "not_used_as_effectiveness_proof",
+        "note": "Public reviewed candidate measures keep these live gaps explicit: full read. The row does not treat fixture coverage or mentions as live success."
+      },
+      "action_refs": [],
+      "next_review_condition": "Reopen when comparative default-reference evidence resolves adjacent workflow boundaries and a canonical-candidate review is ready."
+    },
+    {
+      "name": "aoa-session-self-diagnose",
+      "skill_path": "skills/core/session-growth/aoa-session-self-diagnose/SKILL.md",
+      "scope": "core",
+      "source_status": "evaluated",
+      "disposition": "retain",
+      "action_state": "monitor",
+      "rationale": "The evaluated bundle remains distinct; current evidence does not justify canonical default-reference promotion without a comparative reference review.",
+      "nearest_alternative_rejected": "promote",
+      "rejection_reason": "Usage pressure and clean candidate episodes are not enough to choose a canonical default over adjacent evaluated workflows.",
+      "evidence": {
+        "evidence_posture": "reviewed_candidate_only",
+        "episode_refs": [
+          "evals/reports/aoa-skill-live-dispatch-coverage-closure-structured-core-20260713-v21-reviewed-structured-report-and-dispatch-gaps-needs-rerun.json",
+          "evals/reports/aoa-skill-live-dispatch-full-collision-session-growth-returns-20260713-v18-reviewed-hidden-manual-non-activation.json"
+        ],
+        "prompt_visibility": "observed",
+        "selection": "mixed",
+        "load_read": "full_read",
+        "procedure": "legitimate_deflection",
+        "verification": "observed",
+        "outcome": "contract_match",
+        "mention_signal": "observed_non_authoritative",
+        "cooccurrence_signal": "not_used_as_effectiveness_proof",
+        "note": "Public receipt measures are reviewed candidate evidence only; clean per-skill measures do not convert a cohort or disposition into proof."
+      },
+      "action_refs": [],
+      "next_review_condition": "Reopen when comparative default-reference evidence resolves adjacent workflow boundaries and a canonical-candidate review is ready."
+    },
+    {
+      "name": "aoa-session-self-repair",
+      "skill_path": "skills/core/session-growth/aoa-session-self-repair/SKILL.md",
+      "scope": "core",
+      "source_status": "evaluated",
+      "disposition": "retain",
+      "action_state": "monitor",
+      "rationale": "The evaluated bundle remains distinct; current evidence does not justify canonical default-reference promotion without a comparative reference review.",
+      "nearest_alternative_rejected": "promote",
+      "rejection_reason": "Usage pressure and clean candidate episodes are not enough to choose a canonical default over adjacent evaluated workflows.",
+      "evidence": {
+        "evidence_posture": "reviewed_candidate_only",
+        "episode_refs": [
+          "evals/reports/aoa-skill-live-dispatch-coverage-closure-structured-core-20260713-v21-reviewed-structured-report-and-dispatch-gaps-needs-rerun.json",
+          "evals/reports/aoa-skill-live-dispatch-full-collision-session-growth-20260712-v16-reviewed-routing-gaps-needs-rerun.json"
+        ],
+        "prompt_visibility": "observed",
+        "selection": "mixed",
+        "load_read": "full_read",
+        "procedure": "legitimate_deflection",
+        "verification": "observed",
+        "outcome": "contract_match",
+        "mention_signal": "observed_non_authoritative",
+        "cooccurrence_signal": "not_used_as_effectiveness_proof",
+        "note": "Public receipt measures are reviewed candidate evidence only; clean per-skill measures do not convert a cohort or disposition into proof."
+      },
+      "action_refs": [],
+      "next_review_condition": "Reopen when comparative default-reference evidence resolves adjacent workflow boundaries and a canonical-candidate review is ready."
+    },
+    {
+      "name": "aoa-source-of-truth-check",
+      "skill_path": "skills/core/engineering/aoa-source-of-truth-check/SKILL.md",
+      "scope": "core",
+      "source_status": "canonical",
+      "disposition": "retain",
+      "action_state": "monitor",
+      "rationale": "The canonical reference remains distinct and healthy; no regression, replacement, or boundary collision justifies another lifecycle action.",
+      "nearest_alternative_rejected": "retire",
+      "rejection_reason": "No replacement or regression evidence supports retirement, and canonical status already represents the highest reusable reference posture.",
+      "evidence": {
+        "evidence_posture": "reviewed_candidate_only",
+        "episode_refs": [
+          "evals/reports/aoa-skill-live-dispatch-full-collision-safety-overlays-20260712-v16-reviewed-clean.json"
+        ],
+        "prompt_visibility": "observed",
+        "selection": "mixed",
+        "load_read": "full_read",
+        "procedure": "legitimate_deflection",
+        "verification": "observed",
+        "outcome": "contract_match",
+        "mention_signal": "observed_non_authoritative",
+        "cooccurrence_signal": "not_used_as_effectiveness_proof",
+        "note": "Public receipt measures are reviewed candidate evidence only; clean per-skill measures do not convert a cohort or disposition into proof."
+      },
+      "action_refs": [],
+      "next_review_condition": "Reopen on contract regression, a materially better replacement, or new collision evidence that changes the current reference boundary."
+    },
+    {
+      "name": "aoa-summon",
+      "skill_path": "skills/core/session-growth/aoa-summon/SKILL.md",
+      "scope": "core",
+      "source_status": "evaluated",
+      "disposition": "retain",
+      "action_state": "monitor",
+      "rationale": "The evaluated bundle remains distinct; current evidence does not justify canonical default-reference promotion without a comparative reference review.",
+      "nearest_alternative_rejected": "promote",
+      "rejection_reason": "Usage pressure and clean candidate episodes are not enough to choose a canonical default over adjacent evaluated workflows.",
+      "evidence": {
+        "evidence_posture": "reviewed_candidate_only",
+        "episode_refs": [
+          "evals/reports/aoa-skill-live-dispatch-coverage-closure-structured-core-20260713-v21-reviewed-structured-report-and-dispatch-gaps-needs-rerun.json",
+          "evals/reports/aoa-skill-live-dispatch-pilot13-20260712-v15-reviewed-clean-routing-observation-qualified-outcomes.json"
+        ],
+        "prompt_visibility": "observed",
+        "selection": "mixed",
+        "load_read": "full_read",
+        "procedure": "legitimate_deflection",
+        "verification": "observed",
+        "outcome": "contract_match",
+        "mention_signal": "observed_non_authoritative",
+        "cooccurrence_signal": "not_used_as_effectiveness_proof",
+        "note": "Public receipt measures are reviewed candidate evidence only; clean per-skill measures do not convert a cohort or disposition into proof."
+      },
+      "action_refs": [],
+      "next_review_condition": "Reopen when comparative default-reference evidence resolves adjacent workflow boundaries and a canonical-candidate review is ready."
+    },
+    {
+      "name": "aoa-tdd-slice",
+      "skill_path": "skills/core/engineering/aoa-tdd-slice/SKILL.md",
+      "scope": "core",
+      "source_status": "canonical",
+      "disposition": "retain",
+      "action_state": "monitor",
+      "rationale": "The canonical reference remains distinct and healthy; no regression, replacement, or boundary collision justifies another lifecycle action.",
+      "nearest_alternative_rejected": "retire",
+      "rejection_reason": "No replacement or regression evidence supports retirement, and canonical status already represents the highest reusable reference posture.",
+      "evidence": {
+        "evidence_posture": "reviewed_candidate_only",
+        "episode_refs": [
+          "evals/reports/aoa-skill-live-dispatch-full-collision-core-engineering-outcome-returns-20260712-v16-reviewed-clean.json"
+        ],
+        "prompt_visibility": "observed",
+        "selection": "mixed",
+        "load_read": "full_read",
+        "procedure": "legitimate_deflection",
+        "verification": "observed",
+        "outcome": "contract_match",
+        "mention_signal": "observed_non_authoritative",
+        "cooccurrence_signal": "not_used_as_effectiveness_proof",
+        "note": "Public receipt measures are reviewed candidate evidence only; clean per-skill measures do not convert a cohort or disposition into proof."
+      },
+      "action_refs": [],
+      "next_review_condition": "Reopen on contract regression, a materially better replacement, or new collision evidence that changes the current reference boundary."
+    },
+    {
+      "name": "atm10-change-protocol",
+      "skill_path": "skills/project/atm10/atm10-change-protocol/SKILL.md",
+      "scope": "project",
+      "source_status": "evaluated",
+      "disposition": "retain",
+      "action_state": "monitor",
+      "rationale": "The project overlay remains a distinct owner-bound adaptation; downstream adoption and runtime authority are insufficient for promotion, merge, or retirement.",
+      "nearest_alternative_rejected": "promote",
+      "rejection_reason": "Repository-local fixtures and candidate episodes cannot substitute for downstream owner adoption or runtime acceptance of a project overlay.",
+      "evidence": {
+        "evidence_posture": "reviewed_candidate_only",
+        "episode_refs": [
+          "evals/reports/aoa-skill-live-dispatch-coverage-closure-structured-core-returns-20260713-v22-reviewed-direct-target-contract-clean.json",
+          "evals/reports/aoa-skill-live-dispatch-pilot13-skill-returns-20260712-v14-reviewed-clean-aided-returns-control-observation-gap.json"
+        ],
+        "prompt_visibility": "observed",
+        "selection": "mixed",
+        "load_read": "full_read",
+        "procedure": "legitimate_deflection",
+        "verification": "observed",
+        "outcome": "contract_match",
+        "mention_signal": "observed_non_authoritative",
+        "cooccurrence_signal": "not_used_as_effectiveness_proof",
+        "note": "Public receipt measures are reviewed candidate evidence only; clean per-skill measures do not convert a cohort or disposition into proof."
+      },
+      "action_refs": [],
+      "next_review_condition": "Reopen when the downstream owner records adoption, runtime use, or a replacement decision with public reviewable evidence."
+    },
+    {
+      "name": "atm10-source-of-truth-check",
+      "skill_path": "skills/project/atm10/atm10-source-of-truth-check/SKILL.md",
+      "scope": "project",
+      "source_status": "evaluated",
+      "disposition": "retain",
+      "action_state": "monitor",
+      "rationale": "The project overlay remains a distinct owner-bound adaptation; downstream adoption and runtime authority are insufficient for promotion, merge, or retirement.",
+      "nearest_alternative_rejected": "promote",
+      "rejection_reason": "Repository-local fixtures and candidate episodes cannot substitute for downstream owner adoption or runtime acceptance of a project overlay.",
+      "evidence": {
+        "evidence_posture": "reviewed_candidate_only",
+        "episode_refs": [
+          "evals/reports/aoa-skill-live-dispatch-coverage-closure-structured-core-20260713-v21-reviewed-structured-report-and-dispatch-gaps-needs-rerun.json",
+          "evals/reports/aoa-skill-live-dispatch-full-collision-safety-overlays-20260712-v16-reviewed-clean.json"
+        ],
+        "prompt_visibility": "observed",
+        "selection": "mixed",
+        "load_read": "full_read",
+        "procedure": "legitimate_deflection",
+        "verification": "observed",
+        "outcome": "contract_match",
+        "mention_signal": "observed_non_authoritative",
+        "cooccurrence_signal": "not_used_as_effectiveness_proof",
+        "note": "Public receipt measures are reviewed candidate evidence only; clean per-skill measures do not convert a cohort or disposition into proof."
+      },
+      "action_refs": [],
+      "next_review_condition": "Reopen when the downstream owner records adoption, runtime use, or a replacement decision with public reviewable evidence."
+    },
+    {
+      "name": "os-abyss-artifact-trust-loop",
+      "skill_path": "skills/project/abyss/os-abyss-artifact-trust-loop/SKILL.md",
+      "scope": "project",
+      "source_status": "scaffold",
+      "disposition": "improve",
+      "action_state": "landed",
+      "rationale": "A concrete quality finding was confirmed and repaired while the bundle boundary remained distinct; preserve the skill and monitor the correction.",
+      "nearest_alternative_rejected": "merge",
+      "rejection_reason": "The repaired concern was local quality or technique drift, not duplicate workflow ownership, so merging would erase a useful boundary.",
+      "evidence": {
+        "evidence_posture": "reviewed_candidate_only",
+        "episode_refs": [
+          "evals/reports/aoa-skill-live-dispatch-pilot13-20260712-v15-reviewed-clean-routing-observation-qualified-outcomes.json",
+          "evals/reports/aoa-skill-live-dispatch-full-collision-authority-routing-20260713-v18-reviewed-parent-trajectory-observability-needs-rerun.json"
+        ],
+        "prompt_visibility": "observed",
+        "selection": "mixed",
+        "load_read": "full_read",
+        "procedure": "legitimate_deflection",
+        "verification": "observed",
+        "outcome": "contract_match",
+        "mention_signal": "observed_non_authoritative",
+        "cooccurrence_signal": "not_used_as_effectiveness_proof",
+        "note": "Public receipt measures are reviewed candidate evidence only; clean per-skill measures do not convert a cohort or disposition into proof."
+      },
+      "action_refs": [
+        "skills/project/abyss/os-abyss-artifact-trust-loop/SKILL.md",
+        "generated/skill_quality_audit.json"
+      ],
+      "next_review_condition": "Reopen when the repaired autonomy or technique snapshot regresses, or downstream owner evidence supports a separate promotion review."
+    },
+    {
+      "name": "titan-approval-ledger",
+      "skill_path": "skills/project/titan/titan-approval-ledger/SKILL.md",
+      "scope": "project",
+      "source_status": "scaffold",
+      "disposition": "retain",
+      "action_state": "monitor",
+      "rationale": "The project overlay remains a distinct owner-bound adaptation; downstream adoption and runtime authority are insufficient for promotion, merge, or retirement.",
+      "nearest_alternative_rejected": "promote",
+      "rejection_reason": "Repository-local fixtures and candidate episodes cannot substitute for downstream owner adoption or runtime acceptance of a project overlay.",
+      "evidence": {
+        "evidence_posture": "reviewed_candidate_only",
+        "episode_refs": [
+          "evals/reports/aoa-skill-live-dispatch-coverage-closure-structured-titan-20260713-v22-reviewed-all-structured-targets-clean.json",
+          "evals/reports/aoa-skill-live-dispatch-coverage-closure-titan-implicit-a-20260713-v20-reviewed.json"
+        ],
+        "prompt_visibility": "observed",
+        "selection": "mixed",
+        "load_read": "full_read",
+        "procedure": "legitimate_deflection",
+        "verification": "observed",
+        "outcome": "contract_match",
+        "mention_signal": "not_observed",
+        "cooccurrence_signal": "not_used_as_effectiveness_proof",
+        "note": "Public receipt measures are reviewed candidate evidence only; clean per-skill measures do not convert a cohort or disposition into proof."
+      },
+      "action_refs": [],
+      "next_review_condition": "Reopen when the downstream owner records adoption, runtime use, or a replacement decision with public reviewable evidence."
+    },
+    {
+      "name": "titan-approval-loom",
+      "skill_path": "skills/project/titan/titan-approval-loom/SKILL.md",
+      "scope": "project",
+      "source_status": "scaffold",
+      "disposition": "retain",
+      "action_state": "monitor",
+      "rationale": "The project overlay remains a distinct owner-bound adaptation; downstream adoption and runtime authority are insufficient for promotion, merge, or retirement.",
+      "nearest_alternative_rejected": "promote",
+      "rejection_reason": "Repository-local fixtures and candidate episodes cannot substitute for downstream owner adoption or runtime acceptance of a project overlay.",
+      "evidence": {
+        "evidence_posture": "reviewed_candidate_only",
+        "episode_refs": [
+          "evals/reports/aoa-skill-live-dispatch-coverage-closure-structured-titan-20260713-v22-reviewed-all-structured-targets-clean.json",
+          "evals/reports/aoa-skill-live-dispatch-coverage-closure-titan-implicit-a-20260713-v20-reviewed.json"
+        ],
+        "prompt_visibility": "observed",
+        "selection": "mixed",
+        "load_read": "full_read",
+        "procedure": "legitimate_deflection",
+        "verification": "observed",
+        "outcome": "contract_match",
+        "mention_signal": "not_observed",
+        "cooccurrence_signal": "not_used_as_effectiveness_proof",
+        "note": "Public receipt measures are reviewed candidate evidence only; clean per-skill measures do not convert a cohort or disposition into proof."
+      },
+      "action_refs": [],
+      "next_review_condition": "Reopen when the downstream owner records adoption, runtime use, or a replacement decision with public reviewable evidence."
+    },
+    {
+      "name": "titan-appserver-bridge",
+      "skill_path": "skills/project/titan/titan-appserver-bridge/SKILL.md",
+      "scope": "project",
+      "source_status": "scaffold",
+      "disposition": "retain",
+      "action_state": "monitor",
+      "rationale": "The project overlay remains a distinct owner-bound adaptation; downstream adoption and runtime authority are insufficient for promotion, merge, or retirement.",
+      "nearest_alternative_rejected": "promote",
+      "rejection_reason": "Repository-local fixtures and candidate episodes cannot substitute for downstream owner adoption or runtime acceptance of a project overlay.",
+      "evidence": {
+        "evidence_posture": "reviewed_candidate_only",
+        "episode_refs": [
+          "evals/reports/aoa-skill-live-dispatch-pilot13-20260712-v12-reviewed-mixed-returns-needs-rerun.json",
+          "evals/reports/aoa-skill-live-dispatch-coverage-closure-titan-implicit-a-20260713-v20-reviewed.json"
+        ],
+        "prompt_visibility": "observed",
+        "selection": "mixed",
+        "load_read": "full_read",
+        "procedure": "legitimate_deflection",
+        "verification": "observed",
+        "outcome": "contract_match",
+        "mention_signal": "not_observed",
+        "cooccurrence_signal": "not_used_as_effectiveness_proof",
+        "note": "Public receipt measures are reviewed candidate evidence only; clean per-skill measures do not convert a cohort or disposition into proof."
+      },
+      "action_refs": [],
+      "next_review_condition": "Reopen when the downstream owner records adoption, runtime use, or a replacement decision with public reviewable evidence."
+    },
+    {
+      "name": "titan-appserver-plan",
+      "skill_path": "skills/project/titan/titan-appserver-plan/SKILL.md",
+      "scope": "project",
+      "source_status": "scaffold",
+      "disposition": "improve",
+      "action_state": "landed",
+      "rationale": "A concrete quality finding was confirmed and repaired while the bundle boundary remained distinct; preserve the skill and monitor the correction.",
+      "nearest_alternative_rejected": "merge",
+      "rejection_reason": "The repaired concern was local quality or technique drift, not duplicate workflow ownership, so merging would erase a useful boundary.",
+      "evidence": {
+        "evidence_posture": "reviewed_candidate_only",
+        "episode_refs": [
+          "evals/reports/aoa-skill-live-dispatch-coverage-closure-structured-titan-20260713-v22-reviewed-all-structured-targets-clean.json",
+          "evals/reports/aoa-skill-live-dispatch-coverage-closure-titan-implicit-a-20260713-v20-reviewed.json"
+        ],
+        "prompt_visibility": "observed",
+        "selection": "mixed",
+        "load_read": "full_read",
+        "procedure": "legitimate_deflection",
+        "verification": "observed",
+        "outcome": "contract_match",
+        "mention_signal": "not_observed",
+        "cooccurrence_signal": "not_used_as_effectiveness_proof",
+        "note": "Public receipt measures are reviewed candidate evidence only; clean per-skill measures do not convert a cohort or disposition into proof."
+      },
+      "action_refs": [
+        "skills/project/titan/titan-appserver-plan/SKILL.md",
+        "generated/skill_quality_audit.json"
+      ],
+      "next_review_condition": "Reopen when the repaired autonomy or technique snapshot regresses, or downstream owner evidence supports a separate promotion review."
+    },
+    {
+      "name": "titan-closeout",
+      "skill_path": "skills/project/titan/titan-closeout/SKILL.md",
+      "scope": "project",
+      "source_status": "scaffold",
+      "disposition": "retain",
+      "action_state": "monitor",
+      "rationale": "The project overlay remains a distinct owner-bound adaptation; downstream adoption and runtime authority are insufficient for promotion, merge, or retirement.",
+      "nearest_alternative_rejected": "promote",
+      "rejection_reason": "Repository-local fixtures and candidate episodes cannot substitute for downstream owner adoption or runtime acceptance of a project overlay.",
+      "evidence": {
+        "evidence_posture": "reviewed_candidate_only",
+        "episode_refs": [
+          "evals/reports/aoa-skill-live-dispatch-coverage-closure-structured-titan-20260713-v22-reviewed-all-structured-targets-clean.json",
+          "evals/reports/aoa-skill-live-dispatch-coverage-closure-titan-implicit-a-20260713-v20-reviewed.json"
+        ],
+        "prompt_visibility": "observed",
+        "selection": "mixed",
+        "load_read": "full_read",
+        "procedure": "legitimate_deflection",
+        "verification": "observed",
+        "outcome": "contract_match",
+        "mention_signal": "not_observed",
+        "cooccurrence_signal": "not_used_as_effectiveness_proof",
+        "note": "Public receipt measures are reviewed candidate evidence only; clean per-skill measures do not convert a cohort or disposition into proof."
+      },
+      "action_refs": [],
+      "next_review_condition": "Reopen when the downstream owner records adoption, runtime use, or a replacement decision with public reviewable evidence."
+    },
+    {
+      "name": "titan-console",
+      "skill_path": "skills/project/titan/titan-console/SKILL.md",
+      "scope": "project",
+      "source_status": "scaffold",
+      "disposition": "retain",
+      "action_state": "monitor",
+      "rationale": "The project overlay remains a distinct owner-bound adaptation; downstream adoption and runtime authority are insufficient for promotion, merge, or retirement.",
+      "nearest_alternative_rejected": "promote",
+      "rejection_reason": "Repository-local fixtures and candidate episodes cannot substitute for downstream owner adoption or runtime acceptance of a project overlay.",
+      "evidence": {
+        "evidence_posture": "reviewed_candidate_only",
+        "episode_refs": [
+          "evals/reports/aoa-skill-live-dispatch-coverage-closure-structured-titan-20260713-v22-reviewed-all-structured-targets-clean.json",
+          "evals/reports/aoa-skill-live-dispatch-coverage-closure-titan-implicit-a-20260713-v20-reviewed.json"
+        ],
+        "prompt_visibility": "observed",
+        "selection": "mixed",
+        "load_read": "full_read",
+        "procedure": "legitimate_deflection",
+        "verification": "observed",
+        "outcome": "contract_match",
+        "mention_signal": "not_observed",
+        "cooccurrence_signal": "not_used_as_effectiveness_proof",
+        "note": "Public receipt measures are reviewed candidate evidence only; clean per-skill measures do not convert a cohort or disposition into proof."
+      },
+      "action_refs": [],
+      "next_review_condition": "Reopen when the downstream owner records adoption, runtime use, or a replacement decision with public reviewable evidence."
+    },
+    {
+      "name": "titan-event-replay",
+      "skill_path": "skills/project/titan/titan-event-replay/SKILL.md",
+      "scope": "project",
+      "source_status": "scaffold",
+      "disposition": "retain",
+      "action_state": "monitor",
+      "rationale": "The project overlay remains a distinct owner-bound adaptation; downstream adoption and runtime authority are insufficient for promotion, merge, or retirement.",
+      "nearest_alternative_rejected": "promote",
+      "rejection_reason": "Repository-local fixtures and candidate episodes cannot substitute for downstream owner adoption or runtime acceptance of a project overlay.",
+      "evidence": {
+        "evidence_posture": "reviewed_candidate_only",
+        "episode_refs": [
+          "evals/reports/aoa-skill-live-dispatch-coverage-closure-structured-titan-20260713-v22-reviewed-all-structured-targets-clean.json",
+          "evals/reports/aoa-skill-live-dispatch-coverage-closure-titan-implicit-a-20260713-v20-reviewed.json"
+        ],
+        "prompt_visibility": "observed",
+        "selection": "mixed",
+        "load_read": "full_read",
+        "procedure": "legitimate_deflection",
+        "verification": "observed",
+        "outcome": "contract_match",
+        "mention_signal": "not_observed",
+        "cooccurrence_signal": "not_used_as_effectiveness_proof",
+        "note": "Public receipt measures are reviewed candidate evidence only; clean per-skill measures do not convert a cohort or disposition into proof."
+      },
+      "action_refs": [],
+      "next_review_condition": "Reopen when the downstream owner records adoption, runtime use, or a replacement decision with public reviewable evidence."
+    },
+    {
+      "name": "titan-memory-loom",
+      "skill_path": "skills/project/titan/titan-memory-loom/SKILL.md",
+      "scope": "project",
+      "source_status": "scaffold",
+      "disposition": "retain",
+      "action_state": "monitor",
+      "rationale": "The project overlay remains a distinct owner-bound adaptation; downstream adoption and runtime authority are insufficient for promotion, merge, or retirement.",
+      "nearest_alternative_rejected": "promote",
+      "rejection_reason": "Repository-local fixtures and candidate episodes cannot substitute for downstream owner adoption or runtime acceptance of a project overlay.",
+      "evidence": {
+        "evidence_posture": "reviewed_candidate_only",
+        "episode_refs": [
+          "evals/reports/aoa-skill-live-dispatch-coverage-closure-structured-titan-20260713-v22-reviewed-all-structured-targets-clean.json",
+          "evals/reports/aoa-skill-live-dispatch-coverage-closure-titan-implicit-a-20260713-v20-reviewed.json"
+        ],
+        "prompt_visibility": "observed",
+        "selection": "mixed",
+        "load_read": "full_read",
+        "procedure": "legitimate_deflection",
+        "verification": "observed",
+        "outcome": "contract_match",
+        "mention_signal": "not_observed",
+        "cooccurrence_signal": "not_used_as_effectiveness_proof",
+        "note": "Public receipt measures are reviewed candidate evidence only; clean per-skill measures do not convert a cohort or disposition into proof."
+      },
+      "action_refs": [],
+      "next_review_condition": "Reopen when the downstream owner records adoption, runtime use, or a replacement decision with public reviewable evidence."
+    },
+    {
+      "name": "titan-memory-prune",
+      "skill_path": "skills/project/titan/titan-memory-prune/SKILL.md",
+      "scope": "project",
+      "source_status": "scaffold",
+      "disposition": "retain",
+      "action_state": "monitor",
+      "rationale": "The project overlay remains a distinct owner-bound adaptation; downstream adoption and runtime authority are insufficient for promotion, merge, or retirement.",
+      "nearest_alternative_rejected": "promote",
+      "rejection_reason": "Repository-local fixtures and candidate episodes cannot substitute for downstream owner adoption or runtime acceptance of a project overlay.",
+      "evidence": {
+        "evidence_posture": "reviewed_candidate_only",
+        "episode_refs": [
+          "evals/reports/aoa-skill-live-dispatch-coverage-closure-structured-titan-20260713-v22-reviewed-all-structured-targets-clean.json",
+          "evals/reports/aoa-skill-live-dispatch-coverage-closure-titan-implicit-b-20260713-v20-reviewed-outcome-observation-gaps-needs-rerun.json"
+        ],
+        "prompt_visibility": "observed",
+        "selection": "mixed",
+        "load_read": "full_read",
+        "procedure": "legitimate_deflection",
+        "verification": "observed",
+        "outcome": "contract_match",
+        "mention_signal": "not_observed",
+        "cooccurrence_signal": "not_used_as_effectiveness_proof",
+        "note": "Public receipt measures are reviewed candidate evidence only; clean per-skill measures do not convert a cohort or disposition into proof."
+      },
+      "action_refs": [],
+      "next_review_condition": "Reopen when the downstream owner records adoption, runtime use, or a replacement decision with public reviewable evidence."
+    },
+    {
+      "name": "titan-mutation-gate",
+      "skill_path": "skills/project/titan/titan-mutation-gate/SKILL.md",
+      "scope": "project",
+      "source_status": "scaffold",
+      "disposition": "improve",
+      "action_state": "landed",
+      "rationale": "A concrete quality finding was confirmed and repaired while the bundle boundary remained distinct; preserve the skill and monitor the correction.",
+      "nearest_alternative_rejected": "merge",
+      "rejection_reason": "The repaired concern was local quality or technique drift, not duplicate workflow ownership, so merging would erase a useful boundary.",
+      "evidence": {
+        "evidence_posture": "reviewed_candidate_only",
+        "episode_refs": [
+          "evals/reports/aoa-skill-live-dispatch-coverage-closure-structured-titan-20260713-v22-reviewed-all-structured-targets-clean.json",
+          "evals/reports/aoa-skill-live-dispatch-coverage-closure-titan-implicit-b-20260713-v20-reviewed-outcome-observation-gaps-needs-rerun.json"
+        ],
+        "prompt_visibility": "observed",
+        "selection": "mixed",
+        "load_read": "not_observed",
+        "procedure": "legitimate_deflection",
+        "verification": "observed",
+        "outcome": "contract_match",
+        "mention_signal": "observed_non_authoritative",
+        "cooccurrence_signal": "not_used_as_effectiveness_proof",
+        "note": "Public reviewed candidate measures keep these live gaps explicit: full read. The row does not treat fixture coverage or mentions as live success."
+      },
+      "action_refs": [
+        "skills/project/titan/titan-mutation-gate/SKILL.md",
+        "generated/skill_quality_audit.json"
+      ],
+      "next_review_condition": "Reopen when the repaired autonomy or technique snapshot regresses, or downstream owner evidence supports a separate promotion review."
+    },
+    {
+      "name": "titan-recall",
+      "skill_path": "skills/project/titan/titan-recall/SKILL.md",
+      "scope": "project",
+      "source_status": "scaffold",
+      "disposition": "retain",
+      "action_state": "monitor",
+      "rationale": "The project overlay remains a distinct owner-bound adaptation; downstream adoption and runtime authority are insufficient for promotion, merge, or retirement.",
+      "nearest_alternative_rejected": "promote",
+      "rejection_reason": "Repository-local fixtures and candidate episodes cannot substitute for downstream owner adoption or runtime acceptance of a project overlay.",
+      "evidence": {
+        "evidence_posture": "reviewed_candidate_only",
+        "episode_refs": [
+          "evals/reports/aoa-skill-live-dispatch-coverage-closure-structured-titan-20260713-v22-reviewed-all-structured-targets-clean.json",
+          "evals/reports/aoa-skill-live-dispatch-coverage-closure-titan-implicit-b-20260713-v20-reviewed-outcome-observation-gaps-needs-rerun.json"
+        ],
+        "prompt_visibility": "observed",
+        "selection": "mixed",
+        "load_read": "full_read",
+        "procedure": "legitimate_deflection",
+        "verification": "observed",
+        "outcome": "contract_match",
+        "mention_signal": "observed_non_authoritative",
+        "cooccurrence_signal": "not_used_as_effectiveness_proof",
+        "note": "Public receipt measures are reviewed candidate evidence only; clean per-skill measures do not convert a cohort or disposition into proof."
+      },
+      "action_refs": [],
+      "next_review_condition": "Reopen when the downstream owner records adoption, runtime use, or a replacement decision with public reviewable evidence."
+    },
+    {
+      "name": "titan-receipt",
+      "skill_path": "skills/project/titan/titan-receipt/SKILL.md",
+      "scope": "project",
+      "source_status": "scaffold",
+      "disposition": "retain",
+      "action_state": "monitor",
+      "rationale": "The project overlay remains a distinct owner-bound adaptation; downstream adoption and runtime authority are insufficient for promotion, merge, or retirement.",
+      "nearest_alternative_rejected": "promote",
+      "rejection_reason": "Repository-local fixtures and candidate episodes cannot substitute for downstream owner adoption or runtime acceptance of a project overlay.",
+      "evidence": {
+        "evidence_posture": "reviewed_candidate_only",
+        "episode_refs": [
+          "evals/reports/aoa-skill-live-dispatch-coverage-closure-structured-titan-20260713-v22-reviewed-all-structured-targets-clean.json",
+          "evals/reports/aoa-skill-live-dispatch-coverage-closure-titan-implicit-b-returns-20260713-v21-reviewed-clean.json"
+        ],
+        "prompt_visibility": "observed",
+        "selection": "mixed",
+        "load_read": "full_read",
+        "procedure": "legitimate_deflection",
+        "verification": "observed",
+        "outcome": "contract_match",
+        "mention_signal": "observed_non_authoritative",
+        "cooccurrence_signal": "not_used_as_effectiveness_proof",
+        "note": "Public receipt measures are reviewed candidate evidence only; clean per-skill measures do not convert a cohort or disposition into proof."
+      },
+      "action_refs": [],
+      "next_review_condition": "Reopen when the downstream owner records adoption, runtime use, or a replacement decision with public reviewable evidence."
+    },
+    {
+      "name": "titan-runtime-gate",
+      "skill_path": "skills/project/titan/titan-runtime-gate/SKILL.md",
+      "scope": "project",
+      "source_status": "scaffold",
+      "disposition": "improve",
+      "action_state": "landed",
+      "rationale": "A concrete quality finding was confirmed and repaired while the bundle boundary remained distinct; preserve the skill and monitor the correction.",
+      "nearest_alternative_rejected": "merge",
+      "rejection_reason": "The repaired concern was local quality or technique drift, not duplicate workflow ownership, so merging would erase a useful boundary.",
+      "evidence": {
+        "evidence_posture": "reviewed_candidate_only",
+        "episode_refs": [
+          "evals/reports/aoa-skill-live-dispatch-coverage-closure-structured-titan-20260713-v22-reviewed-all-structured-targets-clean.json",
+          "evals/reports/aoa-skill-live-dispatch-coverage-closure-titan-implicit-b-returns-20260713-v21-reviewed-clean.json"
+        ],
+        "prompt_visibility": "observed",
+        "selection": "mixed",
+        "load_read": "full_read",
+        "procedure": "legitimate_deflection",
+        "verification": "observed",
+        "outcome": "contract_match",
+        "mention_signal": "observed_non_authoritative",
+        "cooccurrence_signal": "not_used_as_effectiveness_proof",
+        "note": "Public receipt measures are reviewed candidate evidence only; clean per-skill measures do not convert a cohort or disposition into proof."
+      },
+      "action_refs": [
+        "skills/project/titan/titan-runtime-gate/SKILL.md",
+        "generated/skill_quality_audit.json"
+      ],
+      "next_review_condition": "Reopen when the repaired autonomy or technique snapshot regresses, or downstream owner evidence supports a separate promotion review."
+    },
+    {
+      "name": "titan-summon",
+      "skill_path": "skills/project/titan/titan-summon/SKILL.md",
+      "scope": "project",
+      "source_status": "scaffold",
+      "disposition": "retain",
+      "action_state": "monitor",
+      "rationale": "The project overlay remains a distinct owner-bound adaptation; downstream adoption and runtime authority are insufficient for promotion, merge, or retirement.",
+      "nearest_alternative_rejected": "promote",
+      "rejection_reason": "Repository-local fixtures and candidate episodes cannot substitute for downstream owner adoption or runtime acceptance of a project overlay.",
+      "evidence": {
+        "evidence_posture": "reviewed_candidate_only",
+        "episode_refs": [
+          "evals/reports/aoa-skill-live-dispatch-coverage-closure-structured-titan-20260713-v22-reviewed-all-structured-targets-clean.json",
+          "evals/reports/aoa-skill-live-dispatch-coverage-closure-titan-implicit-b-20260713-v20-reviewed-outcome-observation-gaps-needs-rerun.json"
+        ],
+        "prompt_visibility": "observed",
+        "selection": "mixed",
+        "load_read": "full_read",
+        "procedure": "legitimate_deflection",
+        "verification": "observed",
+        "outcome": "contract_match",
+        "mention_signal": "observed_non_authoritative",
+        "cooccurrence_signal": "not_used_as_effectiveness_proof",
+        "note": "Public receipt measures are reviewed candidate evidence only; clean per-skill measures do not convert a cohort or disposition into proof."
+      },
+      "action_refs": [],
+      "next_review_condition": "Reopen when the downstream owner records adoption, runtime use, or a replacement decision with public reviewable evidence."
+    },
+    {
+      "name": "titan-thread-turn-binding",
+      "skill_path": "skills/project/titan/titan-thread-turn-binding/SKILL.md",
+      "scope": "project",
+      "source_status": "scaffold",
+      "disposition": "retain",
+      "action_state": "monitor",
+      "rationale": "The project overlay remains a distinct owner-bound adaptation; downstream adoption and runtime authority are insufficient for promotion, merge, or retirement.",
+      "nearest_alternative_rejected": "promote",
+      "rejection_reason": "Repository-local fixtures and candidate episodes cannot substitute for downstream owner adoption or runtime acceptance of a project overlay.",
+      "evidence": {
+        "evidence_posture": "reviewed_candidate_only",
+        "episode_refs": [
+          "evals/reports/aoa-skill-live-dispatch-coverage-closure-structured-titan-20260713-v22-reviewed-all-structured-targets-clean.json",
+          "evals/reports/aoa-skill-live-dispatch-coverage-closure-titan-implicit-b-20260713-v20-reviewed-outcome-observation-gaps-needs-rerun.json"
+        ],
+        "prompt_visibility": "observed",
+        "selection": "mixed",
+        "load_read": "full_read",
+        "procedure": "legitimate_deflection",
+        "verification": "observed",
+        "outcome": "contract_match",
+        "mention_signal": "observed_non_authoritative",
+        "cooccurrence_signal": "not_used_as_effectiveness_proof",
+        "note": "Public receipt measures are reviewed candidate evidence only; clean per-skill measures do not convert a cohort or disposition into proof."
+      },
+      "action_refs": [],
+      "next_review_condition": "Reopen when the downstream owner records adoption, runtime use, or a replacement decision with public reviewable evidence."
+    }
+  ]
+}

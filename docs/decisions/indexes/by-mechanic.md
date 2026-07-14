@@ -10,6 +10,7 @@
 ## antifragility
 
 - [AOA-SK-D-0004 Mechanics Antifragility Risk Posture](../AOA-SK-D-0004-mechanics-antifragility-risk-posture.md) (`docs/decisions/AOA-SK-D-0004-mechanics-antifragility-risk-posture.md`)
+- [AOA-SK-D-0039 Reviewed Skill-Effectiveness Family Dispositions](../AOA-SK-D-0039-reviewed-skill-effectiveness-family-dispositions.md) (`docs/decisions/AOA-SK-D-0039-reviewed-skill-effectiveness-family-dispositions.md`)
 
 ## audit
 
@@ -19,6 +20,7 @@
 - [AOA-SK-D-0032 Command Authority Family Paths](../AOA-SK-D-0032-command-authority-family-paths.md) (`docs/decisions/AOA-SK-D-0032-command-authority-family-paths.md`)
 - [AOA-SK-D-0033 Root Ingress Closure](../AOA-SK-D-0033-root-ingress-closure.md) (`docs/decisions/AOA-SK-D-0033-root-ingress-closure.md`)
 - [AOA-SK-D-0038 Committed Evidence Readout Completeness Gate](../AOA-SK-D-0038-committed-evidence-readout-completeness-gate.md) (`docs/decisions/AOA-SK-D-0038-committed-evidence-readout-completeness-gate.md`)
+- [AOA-SK-D-0039 Reviewed Skill-Effectiveness Family Dispositions](../AOA-SK-D-0039-reviewed-skill-effectiveness-family-dispositions.md) (`docs/decisions/AOA-SK-D-0039-reviewed-skill-effectiveness-family-dispositions.md`)
 
 ## boundary-bridge
 
@@ -46,6 +48,7 @@
 - [AOA-SK-D-0014 Owner Request Receipts](../AOA-SK-D-0014-owner-request-receipts.md) (`docs/decisions/AOA-SK-D-0014-owner-request-receipts.md`)
 - [AOA-SK-D-0017 Lived-Use Promotion Pressure](../AOA-SK-D-0017-lived-use-promotion-pressure.md) (`docs/decisions/AOA-SK-D-0017-lived-use-promotion-pressure.md`)
 - [AOA-SK-D-0038 Committed Evidence Readout Completeness Gate](../AOA-SK-D-0038-committed-evidence-readout-completeness-gate.md) (`docs/decisions/AOA-SK-D-0038-committed-evidence-readout-completeness-gate.md`)
+- [AOA-SK-D-0039 Reviewed Skill-Effectiveness Family Dispositions](../AOA-SK-D-0039-reviewed-skill-effectiveness-family-dispositions.md) (`docs/decisions/AOA-SK-D-0039-reviewed-skill-effectiveness-family-dispositions.md`)
 
 ## questbook
 

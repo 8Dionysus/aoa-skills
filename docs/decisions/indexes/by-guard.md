@@ -139,9 +139,14 @@
 
 - [AOA-SK-D-0036 Codex User Skill Root And Foundation Profile](../AOA-SK-D-0036-codex-user-skill-root-and-foundation-profile.md) (`docs/decisions/AOA-SK-D-0036-codex-user-skill-root-and-foundation-profile.md`)
 
+## privacy boundary
+
+- [AOA-SK-D-0039 Reviewed Skill-Effectiveness Family Dispositions](../AOA-SK-D-0039-reviewed-skill-effectiveness-family-dispositions.md) (`docs/decisions/AOA-SK-D-0039-reviewed-skill-effectiveness-family-dispositions.md`)
+
 ## promotion evidence
 
 - [AOA-SK-D-0038 Committed Evidence Readout Completeness Gate](../AOA-SK-D-0038-committed-evidence-readout-completeness-gate.md) (`docs/decisions/AOA-SK-D-0038-committed-evidence-readout-completeness-gate.md`)
+- [AOA-SK-D-0039 Reviewed Skill-Effectiveness Family Dispositions](../AOA-SK-D-0039-reviewed-skill-effectiveness-family-dispositions.md) (`docs/decisions/AOA-SK-D-0039-reviewed-skill-effectiveness-family-dispositions.md`)
 
 ## release/CI
 
@@ -165,3 +170,4 @@
 
 - [AOA-SK-D-0029 Validator Topology And Owner Modules](../AOA-SK-D-0029-validator-topology-and-owner-modules.md) (`docs/decisions/AOA-SK-D-0029-validator-topology-and-owner-modules.md`)
 - [AOA-SK-D-0038 Committed Evidence Readout Completeness Gate](../AOA-SK-D-0038-committed-evidence-readout-completeness-gate.md) (`docs/decisions/AOA-SK-D-0038-committed-evidence-readout-completeness-gate.md`)
+- [AOA-SK-D-0039 Reviewed Skill-Effectiveness Family Dispositions](../AOA-SK-D-0039-reviewed-skill-effectiveness-family-dispositions.md) (`docs/decisions/AOA-SK-D-0039-reviewed-skill-effectiveness-family-dispositions.md`)

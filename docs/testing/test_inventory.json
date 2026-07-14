@@ -867,6 +867,17 @@
       "failure_route": "Fix the deterministic readout validator or regenerate owner reports before widening the lane."
     },
     {
+      "path": "tests/test_skill_effectiveness_family_review.py",
+      "family": "source/method-growth-review",
+      "protects": "whole-family skill lifecycle disposition and candidate-evidence boundary",
+      "owner_surface": "scripts/validation/validators/skill_effectiveness_family_review_surface.py",
+      "lane": "source",
+      "mode": "blocking",
+      "runtime_cost": "fast",
+      "focused_target": "tests/test_skill_effectiveness_family_review.py",
+      "failure_route": "Fix the current family review, Method-Growth schema, or source-parity validator before changing lifecycle decisions."
+    },
+    {
       "path": "tests/test_validate_skills_generated_drift.py",
       "family": "generated/drift",
       "protects": "generated drift",

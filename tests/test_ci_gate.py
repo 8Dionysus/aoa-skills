@@ -35,6 +35,12 @@ class CiGateTests(unittest.TestCase):
                     "--skip-generated",
                     "--fail-on-review-truth-sync",
                 ),
+                (
+                    "python",
+                    "scripts/validation/validate_skill_effectiveness_family_review.py",
+                    "--repo-root",
+                    ".",
+                ),
             ],
             calls,
         )
@@ -171,6 +177,12 @@ class CiGateTests(unittest.TestCase):
                     "scripts/validation/validate_skills.py",
                     "--skip-generated",
                     "--fail-on-review-truth-sync",
+                ),
+                (
+                    "python",
+                    "scripts/validation/validate_skill_effectiveness_family_review.py",
+                    "--repo-root",
+                    ".",
                 ),
                 ("python", "scripts/lanes/release_check.py", "--include-packaging-smoke"),
             ],

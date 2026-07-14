@@ -58,6 +58,7 @@ MARKDOWN_COMMAND_OWNER_FILES = {
 }
 THIN_VALIDATION_CLI_ADAPTERS = (
     "scripts/validation/validate_agent_skills.py",
+    "scripts/validation/validate_skill_effectiveness_family_review.py",
     "scripts/validation/validate_skill_evidence_readouts.py",
     "scripts/validation/validate_tiny_router_inputs.py",
     "scripts/validation/validate_support_resources.py",
@@ -72,6 +73,7 @@ OWNER_MODULE_LIMITS = {
     "scripts/validation/validators/support_resource_surface.py": 180,
     "scripts/validation/validators/trigger_eval_surface.py": 180,
     "scripts/validation/validators/pack_profile_surface.py": 120,
+    "scripts/validation/validators/skill_effectiveness_family_review_surface.py": 100,
     "scripts/validation/validators/skill_evidence_readout_surface.py": 100,
 }
 
@@ -191,6 +193,21 @@ class ValidatorTopologyTests(unittest.TestCase):
             ),
             validation_lanes.EXPORT_FULL_COMMAND_SEQUENCE,
         )
+
+    def test_family_effectiveness_review_is_in_all_authored_and_export_lanes(self) -> None:
+        command = (
+            "python",
+            "scripts/validation/validate_skill_effectiveness_family_review.py",
+            "--repo-root",
+            ".",
+        )
+        for sequence in (
+            validation_lanes.SOURCE_FAST_COMMAND_SEQUENCE,
+            validation_lanes.EXPORT_GENERATED_CHECK_COMMAND_SEQUENCE,
+            validation_lanes.EXPORT_FULL_COMMAND_SEQUENCE,
+            validation_lanes.RELEASE_CHECK_COMMAND_SEQUENCE,
+        ):
+            self.assertIn(command, sequence)
 
     def test_stats_port_validator_is_in_owner_lanes_and_pinned_workflows(self) -> None:
         stats_command = ("python", "scripts/validation/validate_local_stats_port.py")
