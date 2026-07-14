@@ -1941,7 +1941,7 @@
     {"anchor_id":"aoa:aoa-skills:anchor:401ad25eaeece24d8c6a653d","artifact_kind":"test","content_hash":"711641823626b44c00113cb3b79cc6a340b5ae6bc3156869a07b015738b5688f","id":"aoa:aoa-skills:artifact:dcf1eeed8fab4c68c0f54aea","lineage_path":"tests/test_tiny_router_inputs.py","mime":"text/x-python","path":"tests/test_tiny_router_inputs.py","provenance_ref":"deterministic","surface_state":"authored_source","temporal_ref":"current","trust_ref":"deterministic","version_id":"aoa:aoa-skills:artifact-version:7895f44a18a0b1ad3d891f3d"},
     {"anchor_id":"aoa:aoa-skills:anchor:e986f53bddd84876cbe59e27","artifact_kind":"test","content_hash":"13c8806928a0ea6d26136dd95eeb3f489e6773b4e2e485d3527294aba72f56b3","id":"aoa:aoa-skills:artifact:ff9e1f527da041c5c79f61ba","lineage_path":"tests/test_validate_agent_skills_entrypoint.py","mime":"text/x-python","path":"tests/test_validate_agent_skills_entrypoint.py","provenance_ref":"deterministic","surface_state":"authored_source","temporal_ref":"current","trust_ref":"deterministic","version_id":"aoa:aoa-skills:artifact-version:ba67cc5150b4c552b6faf128"},
     {"anchor_id":"aoa:aoa-skills:anchor:897483defc86ffc5631ae26d","artifact_kind":"test","content_hash":"66b306e2d57ececfc56008f86092a0e543c217f82ee3746a86244c6a2f5b8d0f","id":"aoa:aoa-skills:artifact:3e563eff8d653312e3e40d9b","lineage_path":"tests/test_validate_agents_design.py","mime":"text/x-python","path":"tests/test_validate_agents_design.py","provenance_ref":"deterministic","surface_state":"authored_source","temporal_ref":"current","trust_ref":"deterministic","version_id":"aoa:aoa-skills:artifact-version:6079c46e6531a7c122cbaeaf"},
-    {"anchor_id":"aoa:aoa-skills:anchor:455b36f87ccea297b657cbf3","artifact_kind":"test","content_hash":"523c56ed1b5eb0783fa15f15d3b81ef77e716c584a2e81805370ba29a5e0fceb","id":"aoa:aoa-skills:artifact:7d94f0e9a91df54e9d77f081","lineage_path":"tests/test_validate_skill_mcp_wiring.py","mime":"text/x-python","path":"tests/test_validate_skill_mcp_wiring.py","provenance_ref":"deterministic","surface_state":"authored_source","temporal_ref":"current","trust_ref":"deterministic","version_id":"aoa:aoa-skills:artifact-version:64cf28498c86396bc1fcd8ee"},
+    {"anchor_id":"aoa:aoa-skills:anchor:455b36f87ccea297b657cbf3","artifact_kind":"test","content_hash":"ea21f5095a215002e3d356cfcc60d82142ca170fb3612eb8b8d44c1e26a5a792","id":"aoa:aoa-skills:artifact:7d94f0e9a91df54e9d77f081","lineage_path":"tests/test_validate_skill_mcp_wiring.py","mime":"text/x-python","path":"tests/test_validate_skill_mcp_wiring.py","provenance_ref":"deterministic","surface_state":"authored_source","temporal_ref":"current","trust_ref":"deterministic","version_id":"aoa:aoa-skills:artifact-version:a0ffe9145a237ce2c84c1a16"},
     {"anchor_id":"aoa:aoa-skills:anchor:c469c380c6591c243cad15f5","artifact_kind":"test","content_hash":"cf8354a107a5c511430829ec0f058c314ea74f9383068a57096891cf331e1f5c","id":"aoa:aoa-skills:artifact:33a29e1b51f6c8b2d223c235","lineage_path":"tests/test_validate_skills_evaluation_contract.py","mime":"text/x-python","path":"tests/test_validate_skills_evaluation_contract.py","provenance_ref":"deterministic","surface_state":"authored_source","temporal_ref":"current","trust_ref":"deterministic","version_id":"aoa:aoa-skills:artifact-version:c7773285474ef96db481b329"},
     {"anchor_id":"aoa:aoa-skills:anchor:f0733567ba5fd85852578e16","artifact_kind":"test","content_hash":"fc866aecaf1fc440f532e897b4119bbf832098dbeeebe9cab591d050017e4fe5","id":"aoa:aoa-skills:artifact:19405d9accb5addafbc28e91","lineage_path":"tests/test_validate_skills_generated_drift.py","mime":"text/x-python","path":"tests/test_validate_skills_generated_drift.py","provenance_ref":"deterministic","surface_state":"authored_source","temporal_ref":"current","trust_ref":"deterministic","version_id":"aoa:aoa-skills:artifact-version:186408258c381a8c869a1f4c"},
     {"anchor_id":"aoa:aoa-skills:anchor:62ff498015eea1fd83b331e6","artifact_kind":"test","content_hash":"18d7a6ddab60f6087bb333ca19ef76bbaaca81f23c4d0cc0b43e14adc790734a","id":"aoa:aoa-skills:artifact:a50305fb037472749d4856f5","lineage_path":"tests/test_validate_skills_questbook_contract.py","mime":"text/x-python","path":"tests/test_validate_skills_questbook_contract.py","provenance_ref":"deterministic","surface_state":"authored_source","temporal_ref":"current","trust_ref":"deterministic","version_id":"aoa:aoa-skills:artifact-version:3a31b977c9e2a4f1480c4585"},
@@ -1953,7 +1953,7 @@
   ],
   "index_identity": {
     "artifact_kind": "repository_artifact_index",
-    "content_digest": "2c07c971f2d3cdd9c7b325aa043b5dbe0779bebd5344cb3fef4800cf1fd261c2",
+    "content_digest": "77c3c1c0cb186915ff4ea5ad7cd4ffb53feeb5c8ac7fea26405c038ee3253622",
     "index_kind": "artifact",
     "local_id": "index:repo-local:artifacts",
     "schema_ref": "aoa-kag:schemas/repo-local-kag-repository-index.schema.json"
@@ -2039,7 +2039,7 @@
   },
   "schema_version": "aoa-repo-local-kag-repository-index-v2",
   "source_index": {
-    "content_digest": "8a7240d012ecef5b39c01fd5dabf99518aebda0ed3e341071a13c83df012e76e",
+    "content_digest": "17d8231efa84f5d31d31ada8fda29d3ab91083ac14d29547df0a0c893f5fada8",
     "local_id": "index:repo-local:source-surfaces",
     "path": "kag/indexes/source_surface_index.json"
   },
