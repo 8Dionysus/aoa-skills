@@ -1256,8 +1256,7 @@
     {
       "candidate_review_path": null,
       "canonical_candidate_blockers": [
-        "status_below_evaluated",
-        "missing_autonomy_check"
+        "status_below_evaluated"
       ],
       "canonical_candidate_ready": false,
       "default_reference_readiness": "not_applicable",

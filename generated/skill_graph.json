@@ -9102,7 +9102,7 @@
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "e2e7f86ae3e84b4c3346384f4bc880d25c6f15e689c4660078398438e42db92a",
+      "content_hash": "7fce8e2f67d1c30f87927905f5a569b96d548ea5a812cc1928b7feed129ff7ef",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -9128,7 +9128,7 @@
       "promotion_review_path": null,
       "scope": "project",
       "skill_path": "skills/project/titan/titan-appserver-plan/SKILL.md",
-      "skill_revision": "e2e7f86ae3e8",
+      "skill_revision": "7fce8e2f67d1",
       "status": "scaffold",
       "support_artifacts": [
         {
@@ -9153,21 +9153,21 @@
           "lineage_state": "published",
           "path": "techniques/execution/intent-chain/intent-plan-dry-run-contract-chain/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
+          "source_ref": "a2be73594193ca1c186161dfe08a88ed19c3f624"
         },
         {
           "id": "AOA-T-0091",
           "lineage_state": "published",
           "path": "techniques/proof/owner-truth-closeout/workspace-root-ingress-and-mutation-gate/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "30a70271359fef7150cc8fa0c01530336f87edd4"
+          "source_ref": "a2be73594193ca1c186161dfe08a88ed19c3f624"
         },
         {
           "id": "AOA-T-0045",
           "lineage_state": "published",
           "path": "techniques/history/history-artifacts/witness-trace-as-reviewable-artifact/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
+          "source_ref": "a2be73594193ca1c186161dfe08a88ed19c3f624"
         }
       ]
     },
@@ -9612,7 +9612,7 @@
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "6caca5d3c25dd065fde56e6e8051a3ef3cc9a692f4103fd4149ae9c11eaba488",
+      "content_hash": "ff85d719b02495e6ea9660e23b4b786bcf1e0939d05401dac4fd07a95192e8b7",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -9638,7 +9638,7 @@
       "promotion_review_path": null,
       "scope": "project",
       "skill_path": "skills/project/titan/titan-mutation-gate/SKILL.md",
-      "skill_revision": "6caca5d3c25d",
+      "skill_revision": "ff85d719b024",
       "status": "scaffold",
       "support_artifacts": [
         {
@@ -9663,21 +9663,21 @@
           "lineage_state": "published",
           "path": "techniques/execution/agent-workflows-core/confirmation-gated-mutating-action/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
+          "source_ref": "a2be73594193ca1c186161dfe08a88ed19c3f624"
         },
         {
           "id": "AOA-T-0004",
           "lineage_state": "published",
           "path": "techniques/execution/intent-chain/intent-plan-dry-run-contract-chain/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
+          "source_ref": "a2be73594193ca1c186161dfe08a88ed19c3f624"
         },
         {
           "id": "AOA-T-0091",
           "lineage_state": "published",
           "path": "techniques/proof/owner-truth-closeout/workspace-root-ingress-and-mutation-gate/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "30a70271359fef7150cc8fa0c01530336f87edd4"
+          "source_ref": "a2be73594193ca1c186161dfe08a88ed19c3f624"
         }
       ]
     },
@@ -9867,7 +9867,7 @@
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "29a46c72fbed1da7ddcca69931e181ba1d14daaabe401b3fd0777de57e72e2ec",
+      "content_hash": "edca53ad087aa2675e671c41368a45845f7350ab040a1bb80804607a2ce5b8a5",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -9893,7 +9893,7 @@
       "promotion_review_path": null,
       "scope": "project",
       "skill_path": "skills/project/titan/titan-runtime-gate/SKILL.md",
-      "skill_revision": "29a46c72fbed",
+      "skill_revision": "edca53ad087a",
       "status": "scaffold",
       "support_artifacts": [
         {
@@ -9918,21 +9918,21 @@
           "lineage_state": "published",
           "path": "techniques/execution/agent-workflows-core/confirmation-gated-mutating-action/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
+          "source_ref": "a2be73594193ca1c186161dfe08a88ed19c3f624"
         },
         {
           "id": "AOA-T-0058",
           "lineage_state": "published",
           "path": "techniques/continuity/handoff-continuation/receipt-confirmed-handoff-packet/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
+          "source_ref": "a2be73594193ca1c186161dfe08a88ed19c3f624"
         },
         {
           "id": "AOA-T-0091",
           "lineage_state": "published",
           "path": "techniques/proof/owner-truth-closeout/workspace-root-ingress-and-mutation-gate/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "30a70271359fef7150cc8fa0c01530336f87edd4"
+          "source_ref": "a2be73594193ca1c186161dfe08a88ed19c3f624"
         }
       ]
     },

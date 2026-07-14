@@ -335,6 +335,12 @@ autonomy_checks:
       - github.com/8Dionysus/aoa-techniques
       - git clone
       - live dependency resolution
+  - skill: os-abyss-artifact-trust-loop
+    forbidden_runtime_terms:
+      - aoa-techniques
+      - github.com/8Dionysus/aoa-techniques
+      - git clone
+      - live dependency resolution
 
 trigger_cases:
   - skill: aoa-adr-write

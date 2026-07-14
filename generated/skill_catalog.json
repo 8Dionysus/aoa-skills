@@ -2322,7 +2322,7 @@
           "id": "AOA-T-0004",
           "path": "techniques/execution/intent-chain/intent-plan-dry-run-contract-chain/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+          "source_ref": "a2be73594193ca1c186161dfe08a88ed19c3f624",
           "use_sections": [
             "Intent",
             "When to use",
@@ -2337,7 +2337,7 @@
           "id": "AOA-T-0091",
           "path": "techniques/proof/owner-truth-closeout/workspace-root-ingress-and-mutation-gate/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "30a70271359fef7150cc8fa0c01530336f87edd4",
+          "source_ref": "a2be73594193ca1c186161dfe08a88ed19c3f624",
           "use_sections": [
             "Intent",
             "Inputs",
@@ -2352,7 +2352,7 @@
           "id": "AOA-T-0045",
           "path": "techniques/history/history-artifacts/witness-trace-as-reviewable-artifact/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+          "source_ref": "a2be73594193ca1c186161dfe08a88ed19c3f624",
           "use_sections": [
             "Intent",
             "Inputs",
@@ -2688,7 +2688,7 @@
           "id": "AOA-T-0028",
           "path": "techniques/execution/agent-workflows-core/confirmation-gated-mutating-action/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+          "source_ref": "a2be73594193ca1c186161dfe08a88ed19c3f624",
           "use_sections": [
             "Intent",
             "When to use",
@@ -2703,7 +2703,7 @@
           "id": "AOA-T-0004",
           "path": "techniques/execution/intent-chain/intent-plan-dry-run-contract-chain/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+          "source_ref": "a2be73594193ca1c186161dfe08a88ed19c3f624",
           "use_sections": [
             "Intent",
             "When to use",
@@ -2718,7 +2718,7 @@
           "id": "AOA-T-0091",
           "path": "techniques/proof/owner-truth-closeout/workspace-root-ingress-and-mutation-gate/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "30a70271359fef7150cc8fa0c01530336f87edd4",
+          "source_ref": "a2be73594193ca1c186161dfe08a88ed19c3f624",
           "use_sections": [
             "Intent",
             "Inputs",
@@ -2871,7 +2871,7 @@
           "id": "AOA-T-0028",
           "path": "techniques/execution/agent-workflows-core/confirmation-gated-mutating-action/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+          "source_ref": "a2be73594193ca1c186161dfe08a88ed19c3f624",
           "use_sections": [
             "Intent",
             "When to use",
@@ -2886,7 +2886,7 @@
           "id": "AOA-T-0058",
           "path": "techniques/continuity/handoff-continuation/receipt-confirmed-handoff-packet/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+          "source_ref": "a2be73594193ca1c186161dfe08a88ed19c3f624",
           "use_sections": [
             "Intent",
             "Inputs",
@@ -2901,7 +2901,7 @@
           "id": "AOA-T-0091",
           "path": "techniques/proof/owner-truth-closeout/workspace-root-ingress-and-mutation-gate/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "30a70271359fef7150cc8fa0c01530336f87edd4",
+          "source_ref": "a2be73594193ca1c186161dfe08a88ed19c3f624",
           "use_sections": [
             "Intent",
             "Inputs",

@@ -10629,7 +10629,7 @@
         "canonical_eval_blockers": [],
         "use_case_count": 1,
         "do_not_use_case_count": 1,
-        "autonomy_check_count": 0,
+        "autonomy_check_count": 1,
         "promotion_review_path": null,
         "candidate_review_path": null
       },
@@ -11547,8 +11547,8 @@
         "skill_path": "skills/project/titan/titan-appserver-plan/SKILL.md",
         "techniques_path": "skills/project/titan/titan-appserver-plan/techniques.yaml",
         "policy_path": "skills/project/titan/titan-appserver-plan/agents/openai.yaml",
-        "content_hash": "e2e7f86ae3e84b4c3346384f4bc880d25c6f15e689c4660078398438e42db92a",
-        "skill_revision": "e2e7f86ae3e8"
+        "content_hash": "7fce8e2f67d1c30f87927905f5a569b96d548ea5a812cc1928b7feed129ff7ef",
+        "skill_revision": "7fce8e2f67d1"
       },
       "policy": {
         "invocation_mode": "explicit-only",
@@ -11616,21 +11616,21 @@
             "lineage_state": "published",
             "path": "techniques/execution/intent-chain/intent-plan-dry-run-contract-chain/TECHNIQUE.md",
             "repo": "aoa-techniques",
-            "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
+            "source_ref": "a2be73594193ca1c186161dfe08a88ed19c3f624"
           },
           {
             "id": "AOA-T-0091",
             "lineage_state": "published",
             "path": "techniques/proof/owner-truth-closeout/workspace-root-ingress-and-mutation-gate/TECHNIQUE.md",
             "repo": "aoa-techniques",
-            "source_ref": "30a70271359fef7150cc8fa0c01530336f87edd4"
+            "source_ref": "a2be73594193ca1c186161dfe08a88ed19c3f624"
           },
           {
             "id": "AOA-T-0045",
             "lineage_state": "published",
             "path": "techniques/history/history-artifacts/witness-trace-as-reviewable-artifact/TECHNIQUE.md",
             "repo": "aoa-techniques",
-            "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
+            "source_ref": "a2be73594193ca1c186161dfe08a88ed19c3f624"
           }
         ],
         "lineage_state": "published"
@@ -11776,8 +11776,8 @@
           "section_role": "lineage",
           "source_path": "skills/project/titan/titan-appserver-plan/SKILL.md",
           "source_anchor": "## Technique traceability",
-          "text": "Manifest-backed techniques: - AOA-T-0004 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/execution/intent-chain/intent-plan-dry-run-contract-chain/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Validation - AOA-T-0091 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/proof/owner-truth-closeout/workspace-root-ingress-and-mutation-gate/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Risks, Validation - AOA-T-0045 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/history/history-artifacts/witness-trace-as-reviewable-artifact/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Risks, Validation",
-          "text_sha256": "fe08d3a4078f9bd5e8c2b2d468bdee9cfc0023ec49003e76b8e227357bb193f5",
+          "text": "Manifest-backed techniques: - AOA-T-0004 from `8Dionysus/aoa-techniques` at `a2be73594193ca1c186161dfe08a88ed19c3f624` using path `techniques/execution/intent-chain/intent-plan-dry-run-contract-chain/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Validation - AOA-T-0091 from `8Dionysus/aoa-techniques` at `a2be73594193ca1c186161dfe08a88ed19c3f624` using path `techniques/proof/owner-truth-closeout/workspace-root-ingress-and-mutation-gate/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Risks, Validation - AOA-T-0045 from `8Dionysus/aoa-techniques` at `a2be73594193ca1c186161dfe08a88ed19c3f624` using path `techniques/history/history-artifacts/witness-trace-as-reviewable-artifact/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Risks, Validation",
+          "text_sha256": "03813165c7f671ff7e9c52c07394661d9af4f1921f6132ba3c6cd16e3585558d",
           "token_count": 61
         },
         {
@@ -13071,8 +13071,8 @@
         "skill_path": "skills/project/titan/titan-mutation-gate/SKILL.md",
         "techniques_path": "skills/project/titan/titan-mutation-gate/techniques.yaml",
         "policy_path": "skills/project/titan/titan-mutation-gate/agents/openai.yaml",
-        "content_hash": "6caca5d3c25dd065fde56e6e8051a3ef3cc9a692f4103fd4149ae9c11eaba488",
-        "skill_revision": "6caca5d3c25d"
+        "content_hash": "ff85d719b02495e6ea9660e23b4b786bcf1e0939d05401dac4fd07a95192e8b7",
+        "skill_revision": "ff85d719b024"
       },
       "policy": {
         "invocation_mode": "explicit-only",
@@ -13140,21 +13140,21 @@
             "lineage_state": "published",
             "path": "techniques/execution/agent-workflows-core/confirmation-gated-mutating-action/TECHNIQUE.md",
             "repo": "aoa-techniques",
-            "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
+            "source_ref": "a2be73594193ca1c186161dfe08a88ed19c3f624"
           },
           {
             "id": "AOA-T-0004",
             "lineage_state": "published",
             "path": "techniques/execution/intent-chain/intent-plan-dry-run-contract-chain/TECHNIQUE.md",
             "repo": "aoa-techniques",
-            "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
+            "source_ref": "a2be73594193ca1c186161dfe08a88ed19c3f624"
           },
           {
             "id": "AOA-T-0091",
             "lineage_state": "published",
             "path": "techniques/proof/owner-truth-closeout/workspace-root-ingress-and-mutation-gate/TECHNIQUE.md",
             "repo": "aoa-techniques",
-            "source_ref": "30a70271359fef7150cc8fa0c01530336f87edd4"
+            "source_ref": "a2be73594193ca1c186161dfe08a88ed19c3f624"
           }
         ],
         "lineage_state": "published"
@@ -13300,8 +13300,8 @@
           "section_role": "lineage",
           "source_path": "skills/project/titan/titan-mutation-gate/SKILL.md",
           "source_anchor": "## Technique traceability",
-          "text": "Manifest-backed techniques: - AOA-T-0028 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/execution/agent-workflows-core/confirmation-gated-mutating-action/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Validation - AOA-T-0004 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/execution/intent-chain/intent-plan-dry-run-contract-chain/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Validation - AOA-T-0091 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/proof/owner-truth-closeout/workspace-root-ingress-and-mutation-gate/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Risks, Validation",
-          "text_sha256": "3a8afd8ed9890e9cccfe0837f893513ff541b5a53c4fa3bfbb80a0f42148b0c9",
+          "text": "Manifest-backed techniques: - AOA-T-0028 from `8Dionysus/aoa-techniques` at `a2be73594193ca1c186161dfe08a88ed19c3f624` using path `techniques/execution/agent-workflows-core/confirmation-gated-mutating-action/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Validation - AOA-T-0004 from `8Dionysus/aoa-techniques` at `a2be73594193ca1c186161dfe08a88ed19c3f624` using path `techniques/execution/intent-chain/intent-plan-dry-run-contract-chain/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Validation - AOA-T-0091 from `8Dionysus/aoa-techniques` at `a2be73594193ca1c186161dfe08a88ed19c3f624` using path `techniques/proof/owner-truth-closeout/workspace-root-ingress-and-mutation-gate/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Risks, Validation",
+          "text_sha256": "21e693d6fb1865f438d77e36961b88dfc6aca616505cdb5aecc48a15b73e847d",
           "token_count": 63
         },
         {
@@ -13833,8 +13833,8 @@
         "skill_path": "skills/project/titan/titan-runtime-gate/SKILL.md",
         "techniques_path": "skills/project/titan/titan-runtime-gate/techniques.yaml",
         "policy_path": "skills/project/titan/titan-runtime-gate/agents/openai.yaml",
-        "content_hash": "29a46c72fbed1da7ddcca69931e181ba1d14daaabe401b3fd0777de57e72e2ec",
-        "skill_revision": "29a46c72fbed"
+        "content_hash": "edca53ad087aa2675e671c41368a45845f7350ab040a1bb80804607a2ce5b8a5",
+        "skill_revision": "edca53ad087a"
       },
       "policy": {
         "invocation_mode": "explicit-only",
@@ -13902,21 +13902,21 @@
             "lineage_state": "published",
             "path": "techniques/execution/agent-workflows-core/confirmation-gated-mutating-action/TECHNIQUE.md",
             "repo": "aoa-techniques",
-            "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
+            "source_ref": "a2be73594193ca1c186161dfe08a88ed19c3f624"
           },
           {
             "id": "AOA-T-0058",
             "lineage_state": "published",
             "path": "techniques/continuity/handoff-continuation/receipt-confirmed-handoff-packet/TECHNIQUE.md",
             "repo": "aoa-techniques",
-            "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
+            "source_ref": "a2be73594193ca1c186161dfe08a88ed19c3f624"
           },
           {
             "id": "AOA-T-0091",
             "lineage_state": "published",
             "path": "techniques/proof/owner-truth-closeout/workspace-root-ingress-and-mutation-gate/TECHNIQUE.md",
             "repo": "aoa-techniques",
-            "source_ref": "30a70271359fef7150cc8fa0c01530336f87edd4"
+            "source_ref": "a2be73594193ca1c186161dfe08a88ed19c3f624"
           }
         ],
         "lineage_state": "published"
@@ -14062,8 +14062,8 @@
           "section_role": "lineage",
           "source_path": "skills/project/titan/titan-runtime-gate/SKILL.md",
           "source_anchor": "## Technique traceability",
-          "text": "Manifest-backed techniques: - AOA-T-0028 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/execution/agent-workflows-core/confirmation-gated-mutating-action/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Validation - AOA-T-0058 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/continuity/handoff-continuation/receipt-confirmed-handoff-packet/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Risks, Validation - AOA-T-0091 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/proof/owner-truth-closeout/workspace-root-ingress-and-mutation-gate/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Risks, Validation",
-          "text_sha256": "8928cc64053a87d4cb417bfbd1f993a7726deab4d2dcb0b1357e7de6fea1a390",
+          "text": "Manifest-backed techniques: - AOA-T-0028 from `8Dionysus/aoa-techniques` at `a2be73594193ca1c186161dfe08a88ed19c3f624` using path `techniques/execution/agent-workflows-core/confirmation-gated-mutating-action/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Validation - AOA-T-0058 from `8Dionysus/aoa-techniques` at `a2be73594193ca1c186161dfe08a88ed19c3f624` using path `techniques/continuity/handoff-continuation/receipt-confirmed-handoff-packet/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Risks, Validation - AOA-T-0091 from `8Dionysus/aoa-techniques` at `a2be73594193ca1c186161dfe08a88ed19c3f624` using path `techniques/proof/owner-truth-closeout/workspace-root-ingress-and-mutation-gate/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Risks, Validation",
+          "text_sha256": "ea26342b70743d7d849eee596211dd7f85240151cf0273ff0a552d40898114a5",
           "token_count": 61
         },
         {
