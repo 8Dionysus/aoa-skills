@@ -4,7 +4,7 @@ techniques:
   - id: AOA-T-0004
     repo: 8Dionysus/aoa-techniques
     path: techniques/execution/intent-chain/intent-plan-dry-run-contract-chain/TECHNIQUE.md
-    source_ref: 3b1d5d623569aa4920b87280d0db0e911d2e29d5
+    source_ref: a2be73594193ca1c186161dfe08a88ed19c3f624
     use_sections:
       - Intent
       - When to use
@@ -16,7 +16,7 @@ techniques:
   - id: AOA-T-0091
     repo: 8Dionysus/aoa-techniques
     path: techniques/proof/owner-truth-closeout/workspace-root-ingress-and-mutation-gate/TECHNIQUE.md
-    source_ref: 30a70271359fef7150cc8fa0c01530336f87edd4
+    source_ref: a2be73594193ca1c186161dfe08a88ed19c3f624
     use_sections:
       - Intent
       - Inputs
@@ -28,7 +28,7 @@ techniques:
   - id: AOA-T-0045
     repo: 8Dionysus/aoa-techniques
     path: techniques/history/history-artifacts/witness-trace-as-reviewable-artifact/TECHNIQUE.md
-    source_ref: 3b1d5d623569aa4920b87280d0db0e911d2e29d5
+    source_ref: a2be73594193ca1c186161dfe08a88ed19c3f624
     use_sections:
       - Intent
       - Inputs

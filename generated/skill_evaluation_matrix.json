@@ -699,7 +699,7 @@
       "use_snapshot_count": 1
     },
     {
-      "autonomy_check_count": 0,
+      "autonomy_check_count": 1,
       "candidate_review_path": null,
       "canonical_eval_blockers": [],
       "canonical_eval_ready": true,

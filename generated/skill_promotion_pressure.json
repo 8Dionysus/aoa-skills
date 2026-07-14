@@ -2,9 +2,9 @@
   "report_kind": "skill_promotion_pressure",
   "scan_summary": {
     "adoption_targets_scanned": 16,
-    "dispatch_files_scanned": 545,
+    "dispatch_files_scanned": 583,
     "hook_files_scanned": 9966,
-    "session_files_scanned": 177
+    "session_files_scanned": 178
   },
   "schema_version": 1,
   "skill_count": 57,
@@ -27,8 +27,8 @@
       "technique_bridge_findings": [],
       "usage_evidence": {
         "dispatch_buckets": {
-          "must_confirm": 123,
-          "suggest_next": 70
+          "must_confirm": 128,
+          "suggest_next": 65
         },
         "dispatch_event_count": 193,
         "hook_prompt_mention_count": 0,
@@ -38,8 +38,8 @@
           "suggest_next": 1
         },
         "reality_trial_event_count": 2,
-        "session_mention_count": 4,
-        "usage_score": 607
+        "session_mention_count": 6,
+        "usage_score": 609
       }
     },
     {
@@ -61,9 +61,9 @@
       "usage_evidence": {
         "dispatch_buckets": {
           "activate_now": 34,
-          "suggest_next": 115
+          "suggest_next": 118
         },
-        "dispatch_event_count": 149,
+        "dispatch_event_count": 152,
         "hook_prompt_mention_count": 1,
         "installed_target_count": 16,
         "reality_trial_buckets": {
@@ -71,8 +71,8 @@
           "suggest_next": 3
         },
         "reality_trial_event_count": 4,
-        "session_mention_count": 1053,
-        "usage_score": 505
+        "session_mention_count": 1070,
+        "usage_score": 514
       }
     },
     {
@@ -93,18 +93,18 @@
       "technique_bridge_findings": [],
       "usage_evidence": {
         "dispatch_buckets": {
-          "must_confirm": 124,
+          "must_confirm": 129,
           "suggest_next": 16
         },
-        "dispatch_event_count": 140,
+        "dispatch_event_count": 145,
         "hook_prompt_mention_count": 0,
         "installed_target_count": 16,
         "reality_trial_buckets": {
           "must_confirm": 1
         },
         "reality_trial_event_count": 1,
-        "session_mention_count": 11,
-        "usage_score": 451
+        "session_mention_count": 13,
+        "usage_score": 468
       }
     },
     {
@@ -125,18 +125,18 @@
       "technique_bridge_findings": [],
       "usage_evidence": {
         "dispatch_buckets": {
-          "activate_now": 50,
-          "suggest_next": 70
+          "activate_now": 51,
+          "suggest_next": 72
         },
-        "dispatch_event_count": 120,
+        "dispatch_event_count": 123,
         "hook_prompt_mention_count": 1,
         "installed_target_count": 16,
         "reality_trial_buckets": {
           "activate_now": 1
         },
         "reality_trial_event_count": 1,
-        "session_mention_count": 75,
-        "usage_score": 406
+        "session_mention_count": 78,
+        "usage_score": 415
       }
     },
     {
@@ -158,47 +158,15 @@
       "usage_evidence": {
         "dispatch_buckets": {
           "activate_now": 15,
-          "suggest_next": 97
+          "suggest_next": 100
         },
-        "dispatch_event_count": 112,
+        "dispatch_event_count": 115,
         "hook_prompt_mention_count": 1,
         "installed_target_count": 16,
         "reality_trial_buckets": {},
         "reality_trial_event_count": 0,
-        "session_mention_count": 81,
-        "usage_score": 378
-      }
-    },
-    {
-      "default_reference_readiness": "ready",
-      "default_reference_readiness_blockers": [],
-      "governance_decision": "default_reference",
-      "lineage_state": "published",
-      "name": "aoa-invariant-coverage-audit",
-      "pressure_reason": "already canonical; keep maintenance and drift visible",
-      "promotion_pressure": "canonical_monitor",
-      "quality_findings": [],
-      "quality_verdict": "healthy",
-      "readiness_reconciliation": "governance_and_eval_ready",
-      "repeated_usage_signal": true,
-      "scope": "core",
-      "skill_path": "skills/core/engineering/aoa-invariant-coverage-audit/SKILL.md",
-      "status": "canonical",
-      "technique_bridge_findings": [],
-      "usage_evidence": {
-        "dispatch_buckets": {
-          "activate_now": 35,
-          "suggest_next": 47
-        },
-        "dispatch_event_count": 82,
-        "hook_prompt_mention_count": 1,
-        "installed_target_count": 16,
-        "reality_trial_buckets": {
-          "activate_now": 1
-        },
-        "reality_trial_event_count": 1,
-        "session_mention_count": 103,
-        "usage_score": 292
+        "session_mention_count": 83,
+        "usage_score": 387
       }
     },
     {
@@ -220,15 +188,15 @@
       "usage_evidence": {
         "dispatch_buckets": {
           "activate_now": 3,
-          "suggest_next": 77
+          "suggest_next": 81
         },
-        "dispatch_event_count": 80,
+        "dispatch_event_count": 84,
         "hook_prompt_mention_count": 18,
         "installed_target_count": 16,
         "reality_trial_buckets": {},
         "reality_trial_event_count": 0,
-        "session_mention_count": 151,
-        "usage_score": 291
+        "session_mention_count": 154,
+        "usage_score": 303
       }
     },
     {
@@ -236,32 +204,31 @@
       "default_reference_readiness_blockers": [],
       "governance_decision": "default_reference",
       "lineage_state": "published",
-      "name": "aoa-safe-infra-change",
+      "name": "aoa-invariant-coverage-audit",
       "pressure_reason": "already canonical; keep maintenance and drift visible",
       "promotion_pressure": "canonical_monitor",
       "quality_findings": [],
       "quality_verdict": "healthy",
       "readiness_reconciliation": "governance_and_eval_ready",
       "repeated_usage_signal": true,
-      "scope": "risk",
-      "skill_path": "skills/risk/aoa-safe-infra-change/SKILL.md",
+      "scope": "core",
+      "skill_path": "skills/core/engineering/aoa-invariant-coverage-audit/SKILL.md",
       "status": "canonical",
       "technique_bridge_findings": [],
       "usage_evidence": {
         "dispatch_buckets": {
-          "must_confirm": 40,
-          "suggest_next": 31
+          "activate_now": 34,
+          "suggest_next": 46
         },
-        "dispatch_event_count": 71,
-        "hook_prompt_mention_count": 0,
+        "dispatch_event_count": 80,
+        "hook_prompt_mention_count": 1,
         "installed_target_count": 16,
         "reality_trial_buckets": {
-          "must_confirm": 1,
-          "suggest_next": 1
+          "activate_now": 1
         },
-        "reality_trial_event_count": 2,
-        "session_mention_count": 3,
-        "usage_score": 240
+        "reality_trial_event_count": 1,
+        "session_mention_count": 103,
+        "usage_score": 286
       }
     },
     {
@@ -282,10 +249,10 @@
       "technique_bridge_findings": [],
       "usage_evidence": {
         "dispatch_buckets": {
-          "must_confirm": 52,
-          "suggest_next": 21
+          "must_confirm": 55,
+          "suggest_next": 24
         },
-        "dispatch_event_count": 73,
+        "dispatch_event_count": 79,
         "hook_prompt_mention_count": 0,
         "installed_target_count": 16,
         "reality_trial_buckets": {
@@ -293,7 +260,40 @@
         },
         "reality_trial_event_count": 1,
         "session_mention_count": 1,
-        "usage_score": 240
+        "usage_score": 258
+      }
+    },
+    {
+      "default_reference_readiness": "ready",
+      "default_reference_readiness_blockers": [],
+      "governance_decision": "default_reference",
+      "lineage_state": "published",
+      "name": "aoa-safe-infra-change",
+      "pressure_reason": "already canonical; keep maintenance and drift visible",
+      "promotion_pressure": "canonical_monitor",
+      "quality_findings": [],
+      "quality_verdict": "healthy",
+      "readiness_reconciliation": "governance_and_eval_ready",
+      "repeated_usage_signal": true,
+      "scope": "risk",
+      "skill_path": "skills/risk/aoa-safe-infra-change/SKILL.md",
+      "status": "canonical",
+      "technique_bridge_findings": [],
+      "usage_evidence": {
+        "dispatch_buckets": {
+          "must_confirm": 43,
+          "suggest_next": 30
+        },
+        "dispatch_event_count": 73,
+        "hook_prompt_mention_count": 0,
+        "installed_target_count": 16,
+        "reality_trial_buckets": {
+          "must_confirm": 1,
+          "suggest_next": 1
+        },
+        "reality_trial_event_count": 2,
+        "session_mention_count": 4,
+        "usage_score": 247
       }
     },
     {
@@ -314,8 +314,8 @@
       "technique_bridge_findings": [],
       "usage_evidence": {
         "dispatch_buckets": {
-          "activate_now": 1,
-          "suggest_next": 59
+          "activate_now": 2,
+          "suggest_next": 58
         },
         "dispatch_event_count": 60,
         "hook_prompt_mention_count": 1,
@@ -324,7 +324,7 @@
           "suggest_next": 1
         },
         "reality_trial_event_count": 1,
-        "session_mention_count": 129,
+        "session_mention_count": 133,
         "usage_score": 226
       }
     },
@@ -347,15 +347,15 @@
       "usage_evidence": {
         "dispatch_buckets": {
           "activate_now": 1,
-          "suggest_next": 20
+          "suggest_next": 22
         },
-        "dispatch_event_count": 21,
+        "dispatch_event_count": 23,
         "hook_prompt_mention_count": 1,
         "installed_target_count": 16,
         "reality_trial_buckets": {},
         "reality_trial_event_count": 0,
-        "session_mention_count": 42,
-        "usage_score": 105
+        "session_mention_count": 50,
+        "usage_score": 111
       }
     },
     {
@@ -376,15 +376,15 @@
       "technique_bridge_findings": [],
       "usage_evidence": {
         "dispatch_buckets": {
-          "suggest_next": 10
+          "suggest_next": 11
         },
-        "dispatch_event_count": 10,
+        "dispatch_event_count": 11,
         "hook_prompt_mention_count": 18,
         "installed_target_count": 16,
         "reality_trial_buckets": {},
         "reality_trial_event_count": 0,
         "session_mention_count": 33,
-        "usage_score": 81
+        "usage_score": 84
       }
     },
     {
@@ -395,9 +395,7 @@
       "name": "os-abyss-artifact-trust-loop",
       "pressure_reason": "project overlay use should route to owner adoption review",
       "promotion_pressure": "overlay_adoption_review",
-      "quality_findings": [
-        "missing_autonomy_check"
-      ],
+      "quality_findings": [],
       "quality_verdict": "working_scaffold_needs_promotion_review",
       "readiness_reconciliation": "project_overlay_federation_ready",
       "repeated_usage_signal": true,
@@ -412,8 +410,35 @@
         "installed_target_count": 1,
         "reality_trial_buckets": {},
         "reality_trial_event_count": 0,
-        "session_mention_count": 34,
+        "session_mention_count": 39,
         "usage_score": 26
+      }
+    },
+    {
+      "default_reference_readiness": "not_applicable",
+      "default_reference_readiness_blockers": [],
+      "governance_decision": null,
+      "lineage_state": "published",
+      "name": "abyss-self-diagnostic-spine",
+      "pressure_reason": "project overlay use should route to owner adoption review",
+      "promotion_pressure": "overlay_adoption_review",
+      "quality_findings": [],
+      "quality_verdict": "working_scaffold_needs_promotion_review",
+      "readiness_reconciliation": "project_overlay_federation_ready",
+      "repeated_usage_signal": true,
+      "scope": "project",
+      "skill_path": "skills/project/abyss/abyss-self-diagnostic-spine/SKILL.md",
+      "status": "scaffold",
+      "technique_bridge_findings": [],
+      "usage_evidence": {
+        "dispatch_buckets": {},
+        "dispatch_event_count": 0,
+        "hook_prompt_mention_count": 0,
+        "installed_target_count": 1,
+        "reality_trial_buckets": {},
+        "reality_trial_event_count": 0,
+        "session_mention_count": 4,
+        "usage_score": 5
       }
     },
     {
@@ -451,9 +476,7 @@
       "name": "titan-mutation-gate",
       "pressure_reason": "project overlay use should route to owner adoption review",
       "promotion_pressure": "overlay_adoption_review",
-      "quality_findings": [
-        "technique_source_drift"
-      ],
+      "quality_findings": [],
       "quality_verdict": "working_scaffold_needs_promotion_review",
       "readiness_reconciliation": "project_overlay_federation_ready",
       "repeated_usage_signal": true,
@@ -561,9 +584,7 @@
       "name": "titan-runtime-gate",
       "pressure_reason": "project overlay use should route to owner adoption review",
       "promotion_pressure": "overlay_adoption_review",
-      "quality_findings": [
-        "technique_source_drift"
-      ],
+      "quality_findings": [],
       "quality_verdict": "working_scaffold_needs_promotion_review",
       "readiness_reconciliation": "project_overlay_federation_ready",
       "repeated_usage_signal": true,
@@ -590,9 +611,7 @@
       "name": "titan-thread-turn-binding",
       "pressure_reason": "project overlay use should route to owner adoption review",
       "promotion_pressure": "overlay_adoption_review",
-      "quality_findings": [
-        "technique_source_drift"
-      ],
+      "quality_findings": [],
       "quality_verdict": "working_scaffold_needs_promotion_review",
       "readiness_reconciliation": "project_overlay_federation_ready",
       "repeated_usage_signal": true,
@@ -643,33 +662,6 @@
       "default_reference_readiness_blockers": [],
       "governance_decision": null,
       "lineage_state": "published",
-      "name": "abyss-self-diagnostic-spine",
-      "pressure_reason": "project overlay use should route to owner adoption review",
-      "promotion_pressure": "overlay_adoption_review",
-      "quality_findings": [],
-      "quality_verdict": "working_scaffold_needs_promotion_review",
-      "readiness_reconciliation": "project_overlay_federation_ready",
-      "repeated_usage_signal": true,
-      "scope": "project",
-      "skill_path": "skills/project/abyss/abyss-self-diagnostic-spine/SKILL.md",
-      "status": "scaffold",
-      "technique_bridge_findings": [],
-      "usage_evidence": {
-        "dispatch_buckets": {},
-        "dispatch_event_count": 0,
-        "hook_prompt_mention_count": 0,
-        "installed_target_count": 1,
-        "reality_trial_buckets": {},
-        "reality_trial_event_count": 0,
-        "session_mention_count": 1,
-        "usage_score": 2
-      }
-    },
-    {
-      "default_reference_readiness": "not_applicable",
-      "default_reference_readiness_blockers": [],
-      "governance_decision": null,
-      "lineage_state": "published",
       "name": "titan-recall",
       "pressure_reason": "project overlay use should route to owner adoption review",
       "promotion_pressure": "overlay_adoption_review",
@@ -700,9 +692,7 @@
       "name": "titan-summon",
       "pressure_reason": "project overlay use should route to owner adoption review",
       "promotion_pressure": "overlay_adoption_review",
-      "quality_findings": [
-        "technique_source_drift"
-      ],
+      "quality_findings": [],
       "quality_verdict": "working_scaffold_needs_promotion_review",
       "readiness_reconciliation": "project_overlay_federation_ready",
       "repeated_usage_signal": true,
@@ -756,9 +746,7 @@
       "name": "titan-approval-loom",
       "pressure_reason": "project overlay is not a core canonical-reference candidate by default",
       "promotion_pressure": "overlay_watch",
-      "quality_findings": [
-        "technique_source_drift"
-      ],
+      "quality_findings": [],
       "quality_verdict": "working_scaffold_needs_promotion_review",
       "readiness_reconciliation": "project_overlay_federation_ready",
       "repeated_usage_signal": false,
@@ -812,9 +800,7 @@
       "name": "titan-appserver-plan",
       "pressure_reason": "project overlay is not a core canonical-reference candidate by default",
       "promotion_pressure": "overlay_watch",
-      "quality_findings": [
-        "technique_source_drift"
-      ],
+      "quality_findings": [],
       "quality_verdict": "working_scaffold_needs_promotion_review",
       "readiness_reconciliation": "project_overlay_federation_ready",
       "repeated_usage_signal": false,
@@ -868,9 +854,7 @@
       "name": "titan-console",
       "pressure_reason": "project overlay is not a core canonical-reference candidate by default",
       "promotion_pressure": "overlay_watch",
-      "quality_findings": [
-        "technique_source_drift"
-      ],
+      "quality_findings": [],
       "quality_verdict": "working_scaffold_needs_promotion_review",
       "readiness_reconciliation": "project_overlay_federation_ready",
       "repeated_usage_signal": false,
@@ -990,16 +974,16 @@
       "technique_bridge_findings": [],
       "usage_evidence": {
         "dispatch_buckets": {
-          "must_confirm": 117,
-          "suggest_next": 29
+          "must_confirm": 129,
+          "suggest_next": 30
         },
-        "dispatch_event_count": 146,
+        "dispatch_event_count": 159,
         "hook_prompt_mention_count": 2,
         "installed_target_count": 3,
         "reality_trial_buckets": {},
         "reality_trial_event_count": 0,
-        "session_mention_count": 17,
-        "usage_score": 460
+        "session_mention_count": 18,
+        "usage_score": 500
       }
     },
     {
@@ -1012,9 +996,7 @@
       "name": "aoa-eval",
       "pressure_reason": "usage pressure should open the next status/promotion review",
       "promotion_pressure": "promotion_review_now",
-      "quality_findings": [
-        "technique_source_drift"
-      ],
+      "quality_findings": [],
       "quality_verdict": "working_scaffold_needs_promotion_review",
       "readiness_reconciliation": "eval_ready_but_governance_blocked",
       "repeated_usage_signal": true,
@@ -1029,7 +1011,7 @@
         "installed_target_count": 1,
         "reality_trial_buckets": {},
         "reality_trial_event_count": 0,
-        "session_mention_count": 600,
+        "session_mention_count": 607,
         "usage_score": 26
       }
     },
@@ -1043,9 +1025,7 @@
       "name": "aoa-eval-apply",
       "pressure_reason": "usage pressure should open the next status/promotion review",
       "promotion_pressure": "promotion_review_now",
-      "quality_findings": [
-        "technique_source_drift"
-      ],
+      "quality_findings": [],
       "quality_verdict": "working_scaffold_needs_promotion_review",
       "readiness_reconciliation": "eval_ready_but_governance_blocked",
       "repeated_usage_signal": true,
@@ -1060,7 +1040,7 @@
         "installed_target_count": 1,
         "reality_trial_buckets": {},
         "reality_trial_event_count": 0,
-        "session_mention_count": 99,
+        "session_mention_count": 101,
         "usage_score": 26
       }
     },
@@ -1089,7 +1069,7 @@
         "installed_target_count": 1,
         "reality_trial_buckets": {},
         "reality_trial_event_count": 0,
-        "session_mention_count": 41,
+        "session_mention_count": 45,
         "usage_score": 26
       }
     },
@@ -1103,9 +1083,7 @@
       "name": "aoa-eval-select",
       "pressure_reason": "usage pressure should open the next status/promotion review",
       "promotion_pressure": "promotion_review_now",
-      "quality_findings": [
-        "technique_source_drift"
-      ],
+      "quality_findings": [],
       "quality_verdict": "working_scaffold_needs_promotion_review",
       "readiness_reconciliation": "eval_ready_but_governance_blocked",
       "repeated_usage_signal": true,
@@ -1120,7 +1098,7 @@
         "installed_target_count": 1,
         "reality_trial_buckets": {},
         "reality_trial_event_count": 0,
-        "session_mention_count": 39,
+        "session_mention_count": 41,
         "usage_score": 26
       }
     },
@@ -1163,9 +1141,7 @@
       "name": "aoa-eval-local-need",
       "pressure_reason": "usage pressure should open the next status/promotion review",
       "promotion_pressure": "promotion_review_now",
-      "quality_findings": [
-        "technique_source_drift"
-      ],
+      "quality_findings": [],
       "quality_verdict": "working_scaffold_needs_promotion_review",
       "readiness_reconciliation": "eval_ready_but_governance_blocked",
       "repeated_usage_signal": true,
@@ -1180,8 +1156,8 @@
         "installed_target_count": 1,
         "reality_trial_buckets": {},
         "reality_trial_event_count": 0,
-        "session_mention_count": 13,
-        "usage_score": 14
+        "session_mention_count": 14,
+        "usage_score": 15
       }
     },
     {
@@ -1203,10 +1179,10 @@
       "usage_evidence": {
         "dispatch_buckets": {
           "activate_now": 19,
-          "must_confirm": 343,
-          "suggest_next": 119
+          "must_confirm": 369,
+          "suggest_next": 137
         },
-        "dispatch_event_count": 481,
+        "dispatch_event_count": 525,
         "hook_prompt_mention_count": 1,
         "installed_target_count": 16,
         "reality_trial_buckets": {
@@ -1214,7 +1190,7 @@
         },
         "reality_trial_event_count": 1,
         "session_mention_count": 3,
-        "usage_score": 1467
+        "usage_score": 1599
       }
     },
     {
@@ -1235,10 +1211,10 @@
       "technique_bridge_findings": [],
       "usage_evidence": {
         "dispatch_buckets": {
-          "must_confirm": 198,
-          "suggest_next": 252
+          "must_confirm": 210,
+          "suggest_next": 275
         },
-        "dispatch_event_count": 450,
+        "dispatch_event_count": 485,
         "hook_prompt_mention_count": 0,
         "installed_target_count": 16,
         "reality_trial_buckets": {
@@ -1246,7 +1222,7 @@
         },
         "reality_trial_event_count": 2,
         "session_mention_count": 4,
-        "usage_score": 1378
+        "usage_score": 1483
       }
     },
     {
@@ -1257,10 +1233,8 @@
       "name": "aoa-session-self-repair",
       "pressure_reason": "usage pressure justifies revisiting the stay_evaluated decision",
       "promotion_pressure": "revisit_stay_evaluated",
-      "quality_findings": [
-        "technique_source_drift"
-      ],
-      "quality_verdict": "working_with_maintenance_findings",
+      "quality_findings": [],
+      "quality_verdict": "healthy",
       "readiness_reconciliation": "governance_and_eval_ready",
       "repeated_usage_signal": true,
       "scope": "core",
@@ -1269,10 +1243,10 @@
       "technique_bridge_findings": [],
       "usage_evidence": {
         "dispatch_buckets": {
-          "must_confirm": 194,
-          "suggest_next": 219
+          "must_confirm": 206,
+          "suggest_next": 242
         },
-        "dispatch_event_count": 413,
+        "dispatch_event_count": 448,
         "hook_prompt_mention_count": 0,
         "installed_target_count": 16,
         "reality_trial_buckets": {
@@ -1280,7 +1254,7 @@
         },
         "reality_trial_event_count": 1,
         "session_mention_count": 5,
-        "usage_score": 1264
+        "usage_score": 1369
       }
     },
     {
@@ -1301,16 +1275,16 @@
       "technique_bridge_findings": [],
       "usage_evidence": {
         "dispatch_buckets": {
-          "must_confirm": 197,
-          "suggest_next": 20
+          "must_confirm": 209,
+          "suggest_next": 22
         },
-        "dispatch_event_count": 217,
+        "dispatch_event_count": 231,
         "hook_prompt_mention_count": 0,
         "installed_target_count": 16,
         "reality_trial_buckets": {},
         "reality_trial_event_count": 0,
         "session_mention_count": 5,
-        "usage_score": 672
+        "usage_score": 714
       }
     },
     {
@@ -1331,10 +1305,10 @@
       "technique_bridge_findings": [],
       "usage_evidence": {
         "dispatch_buckets": {
-          "must_confirm": 161,
-          "suggest_next": 30
+          "must_confirm": 171,
+          "suggest_next": 29
         },
-        "dispatch_event_count": 191,
+        "dispatch_event_count": 200,
         "hook_prompt_mention_count": 0,
         "installed_target_count": 16,
         "reality_trial_buckets": {
@@ -1342,7 +1316,7 @@
         },
         "reality_trial_event_count": 1,
         "session_mention_count": 2,
-        "usage_score": 595
+        "usage_score": 622
       }
     },
     {
@@ -1363,10 +1337,10 @@
       "technique_bridge_findings": [],
       "usage_evidence": {
         "dispatch_buckets": {
-          "must_confirm": 176,
+          "must_confirm": 188,
           "suggest_next": 8
         },
-        "dispatch_event_count": 184,
+        "dispatch_event_count": 196,
         "hook_prompt_mention_count": 0,
         "installed_target_count": 16,
         "reality_trial_buckets": {
@@ -1374,7 +1348,7 @@
         },
         "reality_trial_event_count": 1,
         "session_mention_count": 4,
-        "usage_score": 576
+        "usage_score": 612
       }
     },
     {
@@ -1395,16 +1369,16 @@
       "technique_bridge_findings": [],
       "usage_evidence": {
         "dispatch_buckets": {
-          "must_confirm": 140,
+          "must_confirm": 150,
           "suggest_next": 31
         },
-        "dispatch_event_count": 171,
+        "dispatch_event_count": 181,
         "hook_prompt_mention_count": 0,
         "installed_target_count": 16,
         "reality_trial_buckets": {},
         "reality_trial_event_count": 0,
         "session_mention_count": 2,
-        "usage_score": 531
+        "usage_score": 561
       }
     },
     {
@@ -1425,16 +1399,16 @@
       "technique_bridge_findings": [],
       "usage_evidence": {
         "dispatch_buckets": {
-          "must_confirm": 149,
+          "must_confirm": 159,
           "suggest_next": 6
         },
-        "dispatch_event_count": 155,
+        "dispatch_event_count": 165,
         "hook_prompt_mention_count": 0,
         "installed_target_count": 16,
         "reality_trial_buckets": {},
         "reality_trial_event_count": 0,
         "session_mention_count": 3,
-        "usage_score": 484
+        "usage_score": 514
       }
     },
     {
@@ -1455,16 +1429,16 @@
       "technique_bridge_findings": [],
       "usage_evidence": {
         "dispatch_buckets": {
-          "must_confirm": 72,
-          "suggest_next": 62
+          "must_confirm": 73,
+          "suggest_next": 78
         },
-        "dispatch_event_count": 134,
+        "dispatch_event_count": 151,
         "hook_prompt_mention_count": 0,
         "installed_target_count": 2,
         "reality_trial_buckets": {},
         "reality_trial_event_count": 0,
-        "session_mention_count": 15,
-        "usage_score": 419
+        "session_mention_count": 16,
+        "usage_score": 471
       }
     },
     {
@@ -1486,15 +1460,15 @@
       "usage_evidence": {
         "dispatch_buckets": {
           "must_confirm": 70,
-          "suggest_next": 20
+          "suggest_next": 22
         },
-        "dispatch_event_count": 90,
+        "dispatch_event_count": 92,
         "hook_prompt_mention_count": 0,
         "installed_target_count": 2,
         "reality_trial_buckets": {},
         "reality_trial_event_count": 0,
-        "session_mention_count": 12,
-        "usage_score": 284
+        "session_mention_count": 13,
+        "usage_score": 291
       }
     },
     {
@@ -1516,15 +1490,15 @@
       "usage_evidence": {
         "dispatch_buckets": {
           "must_confirm": 70,
-          "suggest_next": 12
+          "suggest_next": 16
         },
-        "dispatch_event_count": 82,
+        "dispatch_event_count": 86,
         "hook_prompt_mention_count": 0,
         "installed_target_count": 2,
         "reality_trial_buckets": {},
         "reality_trial_event_count": 0,
         "session_mention_count": 20,
-        "usage_score": 268
+        "usage_score": 280
       }
     },
     {
@@ -1545,17 +1519,17 @@
       "technique_bridge_findings": [],
       "usage_evidence": {
         "dispatch_buckets": {
-          "activate_now": 14,
-          "must_confirm": 19,
-          "suggest_next": 43
+          "activate_now": 18,
+          "must_confirm": 14,
+          "suggest_next": 51
         },
-        "dispatch_event_count": 76,
+        "dispatch_event_count": 83,
         "hook_prompt_mention_count": 0,
         "installed_target_count": 2,
         "reality_trial_buckets": {},
         "reality_trial_event_count": 0,
-        "session_mention_count": 368,
-        "usage_score": 255
+        "session_mention_count": 376,
+        "usage_score": 276
       }
     },
     {
@@ -1576,10 +1550,10 @@
       "technique_bridge_findings": [],
       "usage_evidence": {
         "dispatch_buckets": {
-          "must_confirm": 21,
-          "suggest_next": 37
+          "must_confirm": 22,
+          "suggest_next": 39
         },
-        "dispatch_event_count": 58,
+        "dispatch_event_count": 61,
         "hook_prompt_mention_count": 0,
         "installed_target_count": 16,
         "reality_trial_buckets": {
@@ -1588,7 +1562,7 @@
         },
         "reality_trial_event_count": 2,
         "session_mention_count": 2,
-        "usage_score": 200
+        "usage_score": 209
       }
     },
     {
@@ -1610,15 +1584,15 @@
       "usage_evidence": {
         "dispatch_buckets": {
           "activate_now": 1,
-          "suggest_next": 27
+          "suggest_next": 29
         },
-        "dispatch_event_count": 28,
+        "dispatch_event_count": 30,
         "hook_prompt_mention_count": 1,
         "installed_target_count": 16,
         "reality_trial_buckets": {},
         "reality_trial_event_count": 0,
         "session_mention_count": 108,
-        "usage_score": 126
+        "usage_score": 132
       }
     },
     {
@@ -1639,15 +1613,15 @@
       "technique_bridge_findings": [],
       "usage_evidence": {
         "dispatch_buckets": {
-          "suggest_next": 28
+          "suggest_next": 30
         },
-        "dispatch_event_count": 28,
+        "dispatch_event_count": 30,
         "hook_prompt_mention_count": 1,
         "installed_target_count": 16,
         "reality_trial_buckets": {},
         "reality_trial_event_count": 0,
         "session_mention_count": 71,
-        "usage_score": 126
+        "usage_score": 132
       }
     },
     {
@@ -1658,10 +1632,8 @@
       "name": "aoa-summon",
       "pressure_reason": "usage pressure justifies revisiting the stay_evaluated decision",
       "promotion_pressure": "revisit_stay_evaluated",
-      "quality_findings": [
-        "technique_source_drift"
-      ],
-      "quality_verdict": "working_with_maintenance_findings",
+      "quality_findings": [],
+      "quality_verdict": "healthy",
       "readiness_reconciliation": "governance_and_eval_ready",
       "repeated_usage_signal": true,
       "scope": "core",

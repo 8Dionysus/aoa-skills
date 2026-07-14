@@ -198,7 +198,7 @@
   "authoring_input_digests": [
     {
       "path": "generated/skill_sections.full.json",
-      "sha256": "dc9bff44f7c615fc3a022539438d3abddc1f1286519288e0d4c56ebd567ef260",
+      "sha256": "4047ec37941e81917de68a2a10054f7e5db576aaf8e55294d3f6ef9183c31906",
       "bytes": 421542
     },
     {
@@ -320,7 +320,7 @@
     },
     {
       "path": "generated/runtime_disclosure_index.json",
-      "sha256": "eeaeaef93297e3ad4a22f03029b36186ecf4ed5e37be56b4f638c016ab36fd35",
+      "sha256": "afc67d55a91df3f364c3e946dbd20f359359d43d5ad3a9c9345507abe2523cda",
       "bytes": 438646
     },
     {
@@ -365,7 +365,7 @@
     },
     {
       "path": "generated/skill_context_guard_manifest.json",
-      "sha256": "b3ceef1b60cf51a1db2d50a922d62796c778916ad796a8ed6f37706654d2c445",
+      "sha256": "e9f713c13757cd9531ed6a7e7ec6250a90e5129c471894ed35302124401bc88c",
       "bytes": 132306
     },
     {
@@ -470,17 +470,17 @@
     },
     {
       "path": "generated/skill_bundle_index.json",
-      "sha256": "f5b4b2daaecac688da98bb9fca950d93a6d024c66f2095df85e866ea5753dc6e",
+      "sha256": "dbf3b92ca222d1d1b1d87bce1dfdc04dfd72db1906ca591eee0f7818c6229519",
       "bytes": 169769
     },
     {
       "path": "generated/skill_bundle_index.md",
-      "sha256": "3c50844b4caa5b27e52ac0c33be6f2fc45f149412f78c83ff1388dfd2a8bafa8",
+      "sha256": "f9c0bdab2f279c7f1146ec9649fa3b20dee99ffdd09718366dc598932fa7da1c",
       "bytes": 19098
     },
     {
       "path": "generated/skill_graph.json",
-      "sha256": "c9610d6a73ce23648e897c31e773b32418cbe9096ad7ea67c73625018544d26c",
+      "sha256": "0bfaff0dba73f25a98c62476d6e98bb006f2ff2cbefcef2c606ff3cd35e0719a",
       "bytes": 310082
     },
     {
@@ -717,8 +717,8 @@
     },
     {
       "name": "titan-appserver-plan",
-      "skill_revision": "e2e7f86ae3e8",
-      "content_hash": "e2e7f86ae3e84b4c3346384f4bc880d25c6f15e689c4660078398438e42db92a"
+      "skill_revision": "7fce8e2f67d1",
+      "content_hash": "7fce8e2f67d1c30f87927905f5a569b96d548ea5a812cc1928b7feed129ff7ef"
     },
     {
       "name": "titan-closeout",
@@ -747,8 +747,8 @@
     },
     {
       "name": "titan-mutation-gate",
-      "skill_revision": "6caca5d3c25d",
-      "content_hash": "6caca5d3c25dd065fde56e6e8051a3ef3cc9a692f4103fd4149ae9c11eaba488"
+      "skill_revision": "ff85d719b024",
+      "content_hash": "ff85d719b02495e6ea9660e23b4b786bcf1e0939d05401dac4fd07a95192e8b7"
     },
     {
       "name": "titan-recall",
@@ -762,8 +762,8 @@
     },
     {
       "name": "titan-runtime-gate",
-      "skill_revision": "29a46c72fbed",
-      "content_hash": "29a46c72fbed1da7ddcca69931e181ba1d14daaabe401b3fd0777de57e72e2ec"
+      "skill_revision": "edca53ad087a",
+      "content_hash": "edca53ad087aa2675e671c41368a45845f7350ab040a1bb80804607a2ce5b8a5"
     },
     {
       "name": "titan-summon",
@@ -897,7 +897,7 @@
         "titan-summon",
         "titan-thread-turn-binding"
       ],
-      "profile_revision": "2fb71dc0188253bcba5a035c642315d4c4dd2a7c20b8bd654d826a6beb33baec"
+      "profile_revision": "8a798d8e96c04770991b4984f50e86fa1ba93a5651be60d342955804d3c9307d"
     },
     {
       "name": "repo-project-core-kernel",
@@ -1073,7 +1073,7 @@
         "titan-summon",
         "titan-thread-turn-binding"
       ],
-      "profile_revision": "bf1614e57d28c5ba7a4adcb2a3a33f3ccc2b19c13114f9d9ae9daa86a33db107"
+      "profile_revision": "cdf581378e4b76b0abbd1540428143e7bb6c880a04a7b5dda4c18410c53f12b0"
     },
     {
       "name": "user-aoa-foundation",

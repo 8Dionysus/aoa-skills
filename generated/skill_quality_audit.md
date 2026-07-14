@@ -9,51 +9,47 @@ lineage. Generated surfaces are evidence; `skills/**/SKILL.md` and
 
 ## Verdicts
 
-- `healthy`: 31
+- `healthy`: 33
 - `working_scaffold_needs_promotion_review`: 24
-- `working_with_maintenance_findings`: 2
 
 ## Technique Drift
 
 - repo: `/srv/AbyssOS/aoa-techniques`
-- target ref: `3b1d5d623569aa4920b87280d0db0e911d2e29d5`
-- states: clean=131, drifted=13
+- target ref: `a2be73594193ca1c186161dfe08a88ed19c3f624`
+- states: clean=144
 
 ## Findings
 
-- `missing_autonomy_check`: 1
-- `technique_source_drift`: 13
+- no findings
 
 ## Upgrade Targets
 
 | skill | status | scope | verdict | findings |
 |---|---|---|---|---|
 | `abyss-self-diagnostic-spine` | `scaffold` | `project` | `working_scaffold_needs_promotion_review` | - |
-| `aoa-eval` | `scaffold` | `core` | `working_scaffold_needs_promotion_review` | `technique_source_drift` |
-| `aoa-eval-apply` | `scaffold` | `core` | `working_scaffold_needs_promotion_review` | `technique_source_drift` |
+| `aoa-eval` | `scaffold` | `core` | `working_scaffold_needs_promotion_review` | - |
+| `aoa-eval-apply` | `scaffold` | `core` | `working_scaffold_needs_promotion_review` | - |
 | `aoa-eval-design` | `scaffold` | `core` | `working_scaffold_needs_promotion_review` | - |
-| `aoa-eval-local-need` | `scaffold` | `core` | `working_scaffold_needs_promotion_review` | `technique_source_drift` |
-| `aoa-eval-select` | `scaffold` | `core` | `working_scaffold_needs_promotion_review` | `technique_source_drift` |
+| `aoa-eval-local-need` | `scaffold` | `core` | `working_scaffold_needs_promotion_review` | - |
+| `aoa-eval-select` | `scaffold` | `core` | `working_scaffold_needs_promotion_review` | - |
 | `aoa-eval-session-mining` | `scaffold` | `core` | `working_scaffold_needs_promotion_review` | - |
 | `aoa-memo-writeback` | `scaffold` | `core` | `working_scaffold_needs_promotion_review` | - |
-| `aoa-session-self-repair` | `evaluated` | `core` | `working_with_maintenance_findings` | `technique_source_drift` |
-| `aoa-summon` | `evaluated` | `core` | `working_with_maintenance_findings` | `technique_source_drift` |
-| `os-abyss-artifact-trust-loop` | `scaffold` | `project` | `working_scaffold_needs_promotion_review` | `missing_autonomy_check` |
+| `os-abyss-artifact-trust-loop` | `scaffold` | `project` | `working_scaffold_needs_promotion_review` | - |
 | `titan-approval-ledger` | `scaffold` | `project` | `working_scaffold_needs_promotion_review` | - |
-| `titan-approval-loom` | `scaffold` | `project` | `working_scaffold_needs_promotion_review` | `technique_source_drift` |
+| `titan-approval-loom` | `scaffold` | `project` | `working_scaffold_needs_promotion_review` | - |
 | `titan-appserver-bridge` | `scaffold` | `project` | `working_scaffold_needs_promotion_review` | - |
-| `titan-appserver-plan` | `scaffold` | `project` | `working_scaffold_needs_promotion_review` | `technique_source_drift` |
+| `titan-appserver-plan` | `scaffold` | `project` | `working_scaffold_needs_promotion_review` | - |
 | `titan-closeout` | `scaffold` | `project` | `working_scaffold_needs_promotion_review` | - |
-| `titan-console` | `scaffold` | `project` | `working_scaffold_needs_promotion_review` | `technique_source_drift` |
+| `titan-console` | `scaffold` | `project` | `working_scaffold_needs_promotion_review` | - |
 | `titan-event-replay` | `scaffold` | `project` | `working_scaffold_needs_promotion_review` | - |
 | `titan-memory-loom` | `scaffold` | `project` | `working_scaffold_needs_promotion_review` | - |
 | `titan-memory-prune` | `scaffold` | `project` | `working_scaffold_needs_promotion_review` | - |
-| `titan-mutation-gate` | `scaffold` | `project` | `working_scaffold_needs_promotion_review` | `technique_source_drift` |
+| `titan-mutation-gate` | `scaffold` | `project` | `working_scaffold_needs_promotion_review` | - |
 | `titan-recall` | `scaffold` | `project` | `working_scaffold_needs_promotion_review` | - |
 | `titan-receipt` | `scaffold` | `project` | `working_scaffold_needs_promotion_review` | - |
-| `titan-runtime-gate` | `scaffold` | `project` | `working_scaffold_needs_promotion_review` | `technique_source_drift` |
-| `titan-summon` | `scaffold` | `project` | `working_scaffold_needs_promotion_review` | `technique_source_drift` |
-| `titan-thread-turn-binding` | `scaffold` | `project` | `working_scaffold_needs_promotion_review` | `technique_source_drift` |
+| `titan-runtime-gate` | `scaffold` | `project` | `working_scaffold_needs_promotion_review` | - |
+| `titan-summon` | `scaffold` | `project` | `working_scaffold_needs_promotion_review` | - |
+| `titan-thread-turn-binding` | `scaffold` | `project` | `working_scaffold_needs_promotion_review` | - |
 
 ## Skill Matrix
 
@@ -76,11 +72,11 @@ lineage. Generated surfaces are evidence; `skills/**/SKILL.md` and
 | `aoa-decision-create` | `evaluated` | `published` | `clean2` | `a1/u1/d1/su1/sd1` | `out4/c7/r9/v8/p13` | `portable-core, repo, implicit=false` | `healthy` |
 | `aoa-decision-find` | `evaluated` | `published` | `clean1` | `a1/u2/d1/su1/sd1` | `out4/c7/r6/v8/p10` | `portable-core, none, implicit=false` | `healthy` |
 | `aoa-dry-run-first` | `canonical` | `published` | `clean2` | `a1/u1/d2/su1/sd1` | `out5/c6/r6/v7/p7` | `explicit-risk, runtime, implicit=false` | `healthy` |
-| `aoa-eval` | `scaffold` | `published` | `clean2/drifted1` | `a1/u7/d3/su3/sd2` | `out7/c14/r15/v17/p12` | `portable-core, repo, implicit=true` | `working_scaffold_needs_promotion_review` |
-| `aoa-eval-apply` | `scaffold` | `published` | `clean2/drifted1` | `a1/u2/d1/su2/sd1` | `out5/c8/r9/v10/p13` | `portable-core, repo, implicit=false` | `working_scaffold_needs_promotion_review` |
+| `aoa-eval` | `scaffold` | `published` | `clean3` | `a1/u7/d3/su3/sd2` | `out7/c14/r15/v17/p12` | `portable-core, repo, implicit=true` | `working_scaffold_needs_promotion_review` |
+| `aoa-eval-apply` | `scaffold` | `published` | `clean3` | `a1/u2/d1/su2/sd1` | `out5/c8/r9/v10/p13` | `portable-core, repo, implicit=false` | `working_scaffold_needs_promotion_review` |
 | `aoa-eval-design` | `scaffold` | `published` | `clean3` | `a1/u1/d1/su1/sd1` | `out4/c5/r5/v6/p8` | `portable-core, repo, implicit=false` | `working_scaffold_needs_promotion_review` |
-| `aoa-eval-local-need` | `scaffold` | `published` | `clean2/drifted1` | `a1/u1/d1/su1/sd1` | `out4/c5/r5/v6/p7` | `portable-core, repo, implicit=false` | `working_scaffold_needs_promotion_review` |
-| `aoa-eval-select` | `scaffold` | `published` | `clean2/drifted1` | `a1/u1/d1/su1/sd1` | `out4/c5/r5/v6/p8` | `portable-core, none, implicit=false` | `working_scaffold_needs_promotion_review` |
+| `aoa-eval-local-need` | `scaffold` | `published` | `clean3` | `a1/u1/d1/su1/sd1` | `out4/c5/r5/v6/p7` | `portable-core, repo, implicit=false` | `working_scaffold_needs_promotion_review` |
+| `aoa-eval-select` | `scaffold` | `published` | `clean3` | `a1/u1/d1/su1/sd1` | `out4/c5/r5/v6/p8` | `portable-core, none, implicit=false` | `working_scaffold_needs_promotion_review` |
 | `aoa-eval-session-mining` | `scaffold` | `published` | `clean3` | `a1/u1/d1/su1/sd1` | `out4/c5/r5/v6/p8` | `portable-core, none, implicit=false` | `working_scaffold_needs_promotion_review` |
 | `aoa-invariant-coverage-audit` | `canonical` | `published` | `clean1` | `a1/u1/d1/su1/sd1` | `out6/c7/r7/v6/p7` | `portable-core, none, implicit=true` | `healthy` |
 | `aoa-local-stack-bringup` | `evaluated` | `published` | `clean4` | `a1/u1/d1/su1/sd1` | `out5/c6/r6/v6/p7` | `explicit-risk, runtime, implicit=false` | `healthy` |
@@ -94,25 +90,25 @@ lineage. Generated surfaces are evidence; `skills/**/SKILL.md` and
 | `aoa-session-progression-lift` | `evaluated` | `published` | `clean2` | `a1/u2/d1/su1/sd1` | `out9/c11/r10/v9/p15` | `portable-core, none, implicit=false` | `healthy` |
 | `aoa-session-route-forks` | `evaluated` | `published` | `clean2` | `a1/u2/d1/su1/sd1` | `out7/c10/r7/v8/p11` | `portable-core, none, implicit=false` | `healthy` |
 | `aoa-session-self-diagnose` | `evaluated` | `published` | `clean2` | `a1/u2/d1/su1/sd1` | `out8/c10/r9/v8/p10` | `portable-core, none, implicit=false` | `healthy` |
-| `aoa-session-self-repair` | `evaluated` | `published` | `clean1/drifted1` | `a1/u2/d1/su1/sd1` | `out7/c11/r7/v8/p11` | `portable-core, none, implicit=false` | `working_with_maintenance_findings` |
+| `aoa-session-self-repair` | `evaluated` | `published` | `clean2` | `a1/u2/d1/su1/sd1` | `out7/c11/r7/v8/p11` | `portable-core, none, implicit=false` | `healthy` |
 | `aoa-source-of-truth-check` | `canonical` | `published` | `clean3` | `a1/u2/d2/su1/sd1` | `out7/c8/r10/v8/p10` | `portable-core, none, implicit=true` | `healthy` |
-| `aoa-summon` | `evaluated` | `published` | `clean3/drifted1` | `a1/u1/d1/su1/sd1` | `out7/c12/r7/v12/p15` | `portable-core, none, implicit=false` | `working_with_maintenance_findings` |
+| `aoa-summon` | `evaluated` | `published` | `clean4` | `a1/u1/d1/su1/sd1` | `out7/c12/r7/v12/p15` | `portable-core, none, implicit=false` | `healthy` |
 | `aoa-tdd-slice` | `canonical` | `published` | `clean2` | `a1/u2/d2/su1/sd1` | `out5/c7/r6/v5/p7` | `portable-core, repo, implicit=true` | `healthy` |
 | `atm10-change-protocol` | `evaluated` | `published` | `clean2` | `a1/u1/d1/su1/sd1` | `out8/c8/r8/v9/p10` | `project-overlay, repo, implicit=false` | `healthy` |
 | `atm10-source-of-truth-check` | `evaluated` | `published` | `clean3` | `a1/u1/d1/su1/sd1` | `out7/c9/r9/v9/p9` | `project-overlay, none, implicit=false` | `healthy` |
-| `os-abyss-artifact-trust-loop` | `scaffold` | `published` | `clean3` | `a0/u1/d1/su1/sd1` | `out6/c8/r8/v8/p10` | `project-overlay, runtime, implicit=false` | `working_scaffold_needs_promotion_review` |
+| `os-abyss-artifact-trust-loop` | `scaffold` | `published` | `clean3` | `a1/u1/d1/su1/sd1` | `out6/c8/r8/v8/p10` | `project-overlay, runtime, implicit=false` | `working_scaffold_needs_promotion_review` |
 | `titan-approval-ledger` | `scaffold` | `published` | `clean3` | `a1/u1/d1/su1/sd1` | `out4/c5/r5/v5/p5` | `project-overlay, repo, implicit=false` | `working_scaffold_needs_promotion_review` |
-| `titan-approval-loom` | `scaffold` | `published` | `clean2/drifted1` | `a1/u1/d1/su1/sd1` | `out4/c5/r5/v5/p5` | `project-overlay, repo, implicit=false` | `working_scaffold_needs_promotion_review` |
+| `titan-approval-loom` | `scaffold` | `published` | `clean3` | `a1/u1/d1/su1/sd1` | `out4/c5/r5/v5/p5` | `project-overlay, repo, implicit=false` | `working_scaffold_needs_promotion_review` |
 | `titan-appserver-bridge` | `scaffold` | `published` | `clean3` | `a1/u1/d1/su1/sd1` | `out5/c5/r5/v5/p5` | `project-overlay, repo, implicit=false` | `working_scaffold_needs_promotion_review` |
-| `titan-appserver-plan` | `scaffold` | `published` | `clean2/drifted1` | `a1/u1/d1/su1/sd1` | `out5/c5/r5/v5/p5` | `project-overlay, repo, implicit=false` | `working_scaffold_needs_promotion_review` |
+| `titan-appserver-plan` | `scaffold` | `published` | `clean3` | `a1/u1/d1/su1/sd1` | `out5/c5/r5/v5/p5` | `project-overlay, repo, implicit=false` | `working_scaffold_needs_promotion_review` |
 | `titan-closeout` | `scaffold` | `published` | `clean3` | `a1/u1/d1/su1/sd1` | `out5/c5/r5/v5/p5` | `project-overlay, none, implicit=false` | `working_scaffold_needs_promotion_review` |
-| `titan-console` | `scaffold` | `published` | `clean2/drifted1` | `a1/u1/d1/su1/sd1` | `out5/c5/r5/v5/p5` | `project-overlay, repo, implicit=false` | `working_scaffold_needs_promotion_review` |
+| `titan-console` | `scaffold` | `published` | `clean3` | `a1/u1/d1/su1/sd1` | `out5/c5/r5/v5/p5` | `project-overlay, repo, implicit=false` | `working_scaffold_needs_promotion_review` |
 | `titan-event-replay` | `scaffold` | `published` | `clean3` | `a1/u1/d1/su1/sd1` | `out5/c5/r5/v5/p5` | `project-overlay, none, implicit=false` | `working_scaffold_needs_promotion_review` |
 | `titan-memory-loom` | `scaffold` | `published` | `clean3` | `a1/u1/d1/su1/sd1` | `out5/c5/r5/v5/p5` | `project-overlay, repo, implicit=false` | `working_scaffold_needs_promotion_review` |
 | `titan-memory-prune` | `scaffold` | `published` | `clean3` | `a1/u1/d1/su1/sd1` | `out5/c5/r5/v5/p5` | `project-overlay, repo, implicit=false` | `working_scaffold_needs_promotion_review` |
-| `titan-mutation-gate` | `scaffold` | `published` | `clean2/drifted1` | `a1/u1/d1/su1/sd1` | `out5/c5/r5/v5/p5` | `project-overlay, repo, implicit=false` | `working_scaffold_needs_promotion_review` |
+| `titan-mutation-gate` | `scaffold` | `published` | `clean3` | `a1/u1/d1/su1/sd1` | `out5/c5/r5/v5/p5` | `project-overlay, repo, implicit=false` | `working_scaffold_needs_promotion_review` |
 | `titan-recall` | `scaffold` | `published` | `clean3` | `a1/u1/d1/su1/sd1` | `out5/c5/r5/v5/p5` | `project-overlay, none, implicit=false` | `working_scaffold_needs_promotion_review` |
 | `titan-receipt` | `scaffold` | `published` | `clean3` | `a1/u1/d1/su1/sd1` | `out5/c5/r5/v5/p5` | `project-overlay, repo, implicit=false` | `working_scaffold_needs_promotion_review` |
-| `titan-runtime-gate` | `scaffold` | `published` | `clean2/drifted1` | `a1/u1/d1/su1/sd1` | `out5/c5/r5/v5/p5` | `project-overlay, repo, implicit=false` | `working_scaffold_needs_promotion_review` |
-| `titan-summon` | `scaffold` | `published` | `clean2/drifted1` | `a1/u1/d1/su1/sd1` | `out5/c5/r5/v5/p6` | `project-overlay, none, implicit=false` | `working_scaffold_needs_promotion_review` |
-| `titan-thread-turn-binding` | `scaffold` | `published` | `clean2/drifted1` | `a1/u1/d1/su1/sd1` | `out5/c5/r5/v5/p5` | `project-overlay, repo, implicit=false` | `working_scaffold_needs_promotion_review` |
+| `titan-runtime-gate` | `scaffold` | `published` | `clean3` | `a1/u1/d1/su1/sd1` | `out5/c5/r5/v5/p5` | `project-overlay, repo, implicit=false` | `working_scaffold_needs_promotion_review` |
+| `titan-summon` | `scaffold` | `published` | `clean3` | `a1/u1/d1/su1/sd1` | `out5/c5/r5/v5/p6` | `project-overlay, none, implicit=false` | `working_scaffold_needs_promotion_review` |
+| `titan-thread-turn-binding` | `scaffold` | `published` | `clean3` | `a1/u1/d1/su1/sd1` | `out5/c5/r5/v5/p5` | `project-overlay, repo, implicit=false` | `working_scaffold_needs_promotion_review` |
