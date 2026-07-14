@@ -33,7 +33,7 @@ def write_workspace_config(path: Path) -> None:
 
             [mcp_servers.aoa_stats]
             command = "python"
-            args = ["scripts/aoa_stats_mcp_server.py"]
+            args = [".codex/bin/aoa-stats-mcp-server.py"]
 
             [mcp_servers.dionysus]
             command = "python"
