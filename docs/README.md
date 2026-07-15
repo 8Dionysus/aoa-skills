@@ -4,6 +4,7 @@
 | --- | --- |
 | technical architecture | `ARCHITECTURE.md` |
 | repository layout | `REPOSITORY_STRUCTURE.md` |
+| repository-owned skill home port | `HOME_SKILL_PORT.md` |
 | validation owners and commands | `validation/` |
 | durable test surface | `testing/` |
 | architectural decisions | `decisions/` |

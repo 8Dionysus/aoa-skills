@@ -41,6 +41,7 @@
 - [AOA-SK-D-0036 Codex User Skill Root And Foundation Profile](../AOA-SK-D-0036-codex-user-skill-root-and-foundation-profile.md) (`docs/decisions/AOA-SK-D-0036-codex-user-skill-root-and-foundation-profile.md`)
 - [AOA-SK-D-0039 Semantic Capability Ecosystem](../AOA-SK-D-0039-semantic-capability-ecosystem.md) (`docs/decisions/AOA-SK-D-0039-semantic-capability-ecosystem.md`)
 - [AOA-SK-D-0040 Owner Skill Homes And Projection Boundaries](../AOA-SK-D-0040-owner-skill-homes-and-projection-boundaries.md) (`docs/decisions/AOA-SK-D-0040-owner-skill-homes-and-projection-boundaries.md`)
+- [AOA-SK-D-0041 Minimal Owner Home Port Contract](../AOA-SK-D-0041-minimal-owner-home-port-contract.md) (`docs/decisions/AOA-SK-D-0041-minimal-owner-home-port-contract.md`)
 
 ## technique bridge
 
@@ -81,6 +82,7 @@
 - [AOA-SK-D-0037 Source-Locked Live Skill Dispatch Evidence](../AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md) (`docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md`)
 - [AOA-SK-D-0039 Semantic Capability Ecosystem](../AOA-SK-D-0039-semantic-capability-ecosystem.md) (`docs/decisions/AOA-SK-D-0039-semantic-capability-ecosystem.md`)
 - [AOA-SK-D-0040 Owner Skill Homes And Projection Boundaries](../AOA-SK-D-0040-owner-skill-homes-and-projection-boundaries.md) (`docs/decisions/AOA-SK-D-0040-owner-skill-homes-and-projection-boundaries.md`)
+- [AOA-SK-D-0041 Minimal Owner Home Port Contract](../AOA-SK-D-0041-minimal-owner-home-port-contract.md) (`docs/decisions/AOA-SK-D-0041-minimal-owner-home-port-contract.md`)
 
 ## AGENTS/mesh
 
@@ -144,10 +146,12 @@
 ## manual admission
 
 - [AOA-SK-D-0040 Owner Skill Homes And Projection Boundaries](../AOA-SK-D-0040-owner-skill-homes-and-projection-boundaries.md) (`docs/decisions/AOA-SK-D-0040-owner-skill-homes-and-projection-boundaries.md`)
+- [AOA-SK-D-0041 Minimal Owner Home Port Contract](../AOA-SK-D-0041-minimal-owner-home-port-contract.md) (`docs/decisions/AOA-SK-D-0041-minimal-owner-home-port-contract.md`)
 
 ## owner boundary
 
 - [AOA-SK-D-0040 Owner Skill Homes And Projection Boundaries](../AOA-SK-D-0040-owner-skill-homes-and-projection-boundaries.md) (`docs/decisions/AOA-SK-D-0040-owner-skill-homes-and-projection-boundaries.md`)
+- [AOA-SK-D-0041 Minimal Owner Home Port Contract](../AOA-SK-D-0041-minimal-owner-home-port-contract.md) (`docs/decisions/AOA-SK-D-0041-minimal-owner-home-port-contract.md`)
 
 ## owner module
 

@@ -18,7 +18,8 @@
       "scripts/decisions/generate_decision_indexes.py"
     ],
     "export": [
-      "scripts/export/build_agent_skills.py"
+      "scripts/export/build_agent_skills.py",
+      "scripts/export/build_home_skill_projection.py"
     ],
     "lanes": [
       "scripts/lanes/ci_gate.py",
@@ -32,10 +33,12 @@
       "scripts/validation/validate_agent_skills.py",
       "scripts/validation/validate_agents_design.py",
       "scripts/validation/validate_capability_system.py",
+      "scripts/validation/validate_home_skill_port.py",
       "scripts/validation/validate_skills.py"
     ]
   },
   "root_ingress": [
+    "scripts/build_home_skill_projection.py",
     "scripts/ci_gate.py",
     "scripts/import_skill_pack.py",
     "scripts/inspect_skill_pack.py",
@@ -43,6 +46,7 @@
     "scripts/release_check.py",
     "scripts/smoke_skill_pack_handoff.py",
     "scripts/stage_skill_pack.py",
+    "scripts/validate_home_skill_port.py",
     "scripts/validation_lanes.py",
     "scripts/verify_skill_pack.py"
   ]

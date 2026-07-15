@@ -47,3 +47,8 @@ that repository's advertised home bundles. A workspace-root projection
 contains only workspace-owned procedures, or remains empty. Additional host
 projections are created only for an observed consumer and never become source
 truth.
+
+The shared machine grammar for an admitted sibling home is
+`schemas/skill-home-port.schema.json`; the operating contract is
+`docs/HOME_SKILL_PORT.md`. It is not an invitation to add empty `skills/`
+directories or to move sibling procedure truth here.

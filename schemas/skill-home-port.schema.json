@@ -1,0 +1,111 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://8dionysus.github.io/aoa-skills/schemas/skill-home-port-v1.schema.json",
+  "title": "AoA repository skill home port",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "contract_ref",
+    "owner_repo",
+    "owner_ref",
+    "bundles",
+    "projection"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "aoa_skill_home_port_v1"
+    },
+    "contract_ref": {
+      "const": "aoa-skills:schemas/skill-home-port.schema.json"
+    },
+    "owner_repo": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$"
+    },
+    "owner_ref": {
+      "$ref": "#/$defs/relativePath"
+    },
+    "bundles": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "path",
+          "version",
+          "lifecycle",
+          "visibility",
+          "admission_ref"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+          },
+          "path": {
+            "type": "string",
+            "pattern": "^skills/[a-z0-9]+(?:-[a-z0-9]+)*$"
+          },
+          "version": {
+            "type": "string",
+            "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?:-[0-9A-Za-z.-]+)?$"
+          },
+          "lifecycle": {
+            "const": "admitted"
+          },
+          "visibility": {
+            "const": "advertised"
+          },
+          "admission_ref": {
+            "$ref": "#/$defs/relativePath"
+          }
+        }
+      }
+    },
+    "projection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "runtime",
+        "scope",
+        "root",
+        "mode",
+        "skills"
+      ],
+      "properties": {
+        "runtime": {
+          "const": "codex"
+        },
+        "scope": {
+          "const": "repo"
+        },
+        "root": {
+          "const": ".agents/skills"
+        },
+        "mode": {
+          "const": "generated-copy"
+        },
+        "skills": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "relativePath": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))[^\\u0000]+$"
+    }
+  }
+}

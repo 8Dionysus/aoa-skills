@@ -4,12 +4,13 @@
   "posture": "manual-observation-first",
   "files": [
     "tests/test_capability_system.py",
+    "tests/test_home_skill_port.py",
     "tests/test_pack_handoff.py",
     "tests/test_questbook_model.py",
     "tests/test_source_export_contract.py",
     "tests/test_validation_lanes.py"
   ],
-  "test_count": 11,
+  "test_count": 17,
   "claims_not_made": [
     "skill outcome improvement",
     "cross-model parity",

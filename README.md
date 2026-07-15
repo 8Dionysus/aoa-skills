@@ -20,6 +20,7 @@ The current architecture separates:
 | how the capability system works | [DESIGN.md](DESIGN.md) |
 | authored capability contracts | [capabilities/README.md](capabilities/README.md) |
 | callable bundles | [skills/README.md](skills/README.md) |
+| sibling repository skill homes | [docs/HOME_SKILL_PORT.md](docs/HOME_SKILL_PORT.md) |
 | current lifecycle disposition | [docs/reviews/2026-07-15-capability-family-lifecycle.md](docs/reviews/2026-07-15-capability-family-lifecycle.md) |
 | compact agent index | [SKILL_INDEX.md](SKILL_INDEX.md) |
 | generated projections | [generated/README.md](generated/README.md) |
