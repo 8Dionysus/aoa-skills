@@ -79,7 +79,7 @@
     {"anchor_ids":["aoa:aoa-skills:anchor:7348f60e0d1b0fbb7e3bfc20"],"entity_kind":"decision","id":"aoa:aoa-skills:entity:12b3e3fcff387c6b4b398921","label":"docs/decisions/AOA-SK-D-0017-lived-use-promotion-pressure.md","provenance_ref":"deterministic","semantic_key":"docs/decisions/2026-05-07-lived-use-promotion-pressure.md","source_digest":"d75f797bdc72db346feaf12ccea13f2ba32a84261cd7dd5713030672a0c23e4a","source_record_ids":["aoa:aoa-skills:artifact:6c969639ea7c1b97f7bc00f1"],"temporal_ref":"current","trust_ref":"deterministic"},
     {"anchor_ids":["aoa:aoa-skills:anchor:141eaf61ef6a954794ffe619"],"entity_kind":"decision","id":"aoa:aoa-skills:entity:15670162bc682811a5647c48","label":"docs/decisions/AOA-SK-D-0016-technique-traceability-path-refresh.md","provenance_ref":"deterministic","semantic_key":"docs/decisions/2026-05-06-technique-traceability-path-refresh.md","source_digest":"e258d370740ad7095ee5def6254df33acfb1b565bf34617852eda4c2c576d768","source_record_ids":["aoa:aoa-skills:artifact:a8f3fbe165b3fd40629915f4"],"temporal_ref":"current","trust_ref":"deterministic"},
     {"anchor_ids":["aoa:aoa-skills:anchor:26ef6e584409caa931bf4112"],"entity_kind":"decision","id":"aoa:aoa-skills:entity:1a3f979548257908326d181e","label":"docs/decisions/AOA-SK-D-0028-growth-first-validator-ci-lanes.md","provenance_ref":"deterministic","semantic_key":"docs/decisions/AOA-SK-D-0028-growth-first-validator-ci-lanes.md","source_digest":"67c17a2e74733843072d061e2bfd553b3861f69e0a69fb5c802771bb53dcf938","source_record_ids":["aoa:aoa-skills:artifact:9c61f5db822e81f02eb14ff7"],"temporal_ref":"current","trust_ref":"deterministic"},
-    {"anchor_ids":["aoa:aoa-skills:anchor:34ef3452d16617bf4a50549b"],"entity_kind":"decision","id":"aoa:aoa-skills:entity:21da49029b96942246c27601","label":"docs/decisions/AOA-SK-D-0040-owner-skill-homes-and-projection-boundaries.md","provenance_ref":"deterministic","semantic_key":"docs/decisions/AOA-SK-D-0040-owner-skill-homes-and-projection-boundaries.md","source_digest":"55931c0339dfad7a46456190d1c5741bcaf0c06742b68250e442e5b81d20237c","source_record_ids":["aoa:aoa-skills:artifact:f343d8fe4b2c24f62ba93b23"],"temporal_ref":"current","trust_ref":"deterministic"},
+    {"anchor_ids":["aoa:aoa-skills:anchor:34ef3452d16617bf4a50549b"],"entity_kind":"decision","id":"aoa:aoa-skills:entity:21da49029b96942246c27601","label":"docs/decisions/AOA-SK-D-0040-owner-skill-homes-and-projection-boundaries.md","provenance_ref":"deterministic","semantic_key":"docs/decisions/AOA-SK-D-0040-owner-skill-homes-and-projection-boundaries.md","source_digest":"c3f1daf8624a0614b2353dfef77bbc332b6561e7dd594991ee0a827749cb22ab","source_record_ids":["aoa:aoa-skills:artifact:f343d8fe4b2c24f62ba93b23"],"temporal_ref":"current","trust_ref":"deterministic"},
     {"anchor_ids":["aoa:aoa-skills:anchor:caf586e782489a20093de0d1"],"entity_kind":"decision","id":"aoa:aoa-skills:entity:223a33aa6aee7a604dbd0166","label":"docs/decisions/AOA-SK-D-0003-mechanics-agon-start.md","provenance_ref":"deterministic","semantic_key":"docs/decisions/2026-05-06-mechanics-agon-start.md","source_digest":"3d1067d63fa7ddad6bba29642f129874e04178f8d3616d2f7f12bfdf33d2dfce","source_record_ids":["aoa:aoa-skills:artifact:4679f8d24103cba20b47157d"],"temporal_ref":"current","trust_ref":"deterministic"},
     {"anchor_ids":["aoa:aoa-skills:anchor:ae5ff95a9a54f43aa0044a2a"],"entity_kind":"decision","id":"aoa:aoa-skills:entity:321ac37f1bc80293761851bc","label":"docs/decisions/AOA-SK-D-0010-mechanics-questbook-integration.md","provenance_ref":"deterministic","semantic_key":"docs/decisions/2026-05-06-mechanics-questbook-integration.md","source_digest":"63e38fd22b6183d327c96b32c755cf1d8072951f9558911f5baa5f330c0d1a39","source_record_ids":["aoa:aoa-skills:artifact:8ff7f2f4c4d69ac088828610"],"temporal_ref":"current","trust_ref":"deterministic"},
     {"anchor_ids":["aoa:aoa-skills:anchor:eebaa96eb0638b065449724d"],"entity_kind":"decision","id":"aoa:aoa-skills:entity:336a35d06639a4d29024d893","label":"docs/decisions/AOA-SK-D-0025-root-legacy-retirement.md","provenance_ref":"deterministic","semantic_key":"docs/decisions/2026-05-18-root-legacy-retirement.md","source_digest":"75c38014866844b987e52d318d967b82994dae8abb2542666279ab40412f5088","source_record_ids":["aoa:aoa-skills:artifact:d8d8140e472fcf78411f10f9"],"temporal_ref":"current","trust_ref":"deterministic"},
@@ -728,7 +728,7 @@
   ],
   "index_identity": {
     "artifact_kind": "repository_entity_index",
-    "content_digest": "aa225cdeb9bb6b8d788983e74517a442ccfb8959e1d8299c61187b2ba8ba35b6",
+    "content_digest": "53cd3630bd9e3d949ba8acf65575e6ef8ddb0a6639e99c0b18ddcecfce04e922",
     "index_kind": "entity",
     "local_id": "index:repo-local:entities",
     "schema_ref": "aoa-kag:schemas/repo-local-kag-repository-index.schema.json"
@@ -813,7 +813,7 @@
   },
   "schema_version": "aoa-repo-local-kag-repository-index-v2",
   "source_index": {
-    "content_digest": "20ba8d11d430deb6c9fde25694dae60e2d620816f284790c79323f0f54fae175",
+    "content_digest": "e85e707af56421d56ec563af517185802ba6cf24fddbf58f504f288ff72975d6",
     "local_id": "index:repo-local:source-surfaces",
     "path": "kag/indexes/source_surface_index.json"
   },
