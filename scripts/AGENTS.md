@@ -6,43 +6,29 @@ This card applies to `scripts/`.
 
 ## Role
 
-`scripts/` owns deterministic builders, validators, audits, release helpers, and repo-relative automation for the skill canon.
+`scripts/` owns deterministic source models, builders, validators, task-DAG
+planning, portable handoff, decision indexes, Questbook read models, and lane
+orchestration.
 
 ## Read before editing
 
-Read root `AGENTS.md`, `DESIGN.md`, `DESIGN.AGENTS.md` when route-law is
-touched, and the tests for the script being changed. For CI or release command
-ordering, read `config/validation_lanes.json` before editing
-`scripts/lanes/validation_lanes.py`, `scripts/lanes/ci_gate.py`, or
-`scripts/lanes/release_check.py`. Start from callers before changing shared helpers.
+Read root `AGENTS.md`, the owning source/config/schema, all direct callers, and
+focused tests. For command ordering read `config/validation_lanes.json`.
 
 ## Boundaries
 
-Scripts must stay deterministic, repo-relative, public-safe, and explicit about source versus generated authority. Keep builder output stable, avoid network assumptions unless already part of the contract, and keep bounded language in reports.
-Keep validator contract data out of Python when it is route-law data rather than
-execution logic; prefer manifest-backed contracts under `scripts/validation/validators/`
-such as `nested_agents_contract.json`, `agent_skills_export_contract.json`, and
-`questbook_contract.json`.
-Keep bulky validator execution with its owner surface under `scripts/validation/validators/`
-when the checks protect generated/read-model, questbook, or Agent Skills
-export/runtime surfaces; keep root `scripts/validate_*.py` entrypoints as CLI
-and orchestration adapters.
+Scripts remain repository-relative, deterministic where declared, explicit
+about effects, and honest about source versus derived authority. Do not encode
+outcome quality as a structural proxy, preserve retired ontology through
+compatibility code, or read session evidence as repository truth.
 
 ## Validation
 
-Full lane command sequences live in `config/validation_lanes.json`; this local card may name only focused owner checks, lane ids, or the nearest route for the changed surface.
-
-Run the script directly. For CI lane behavior, use `python
-scripts/lanes/ci_gate.py --mode source-fast`, `python scripts/lanes/ci_gate.py
---mode generated --group all`, `python scripts/lanes/ci_gate.py --mode export`,
-or `python scripts/lanes/ci_gate.py --mode release` as appropriate. For common
-organ builders and validators, either use the lane runner or prefix direct
-module commands with `PYTHONPATH=scripts`, such as `PYTHONPATH=scripts python
-scripts/builders/build_catalog.py`, `PYTHONPATH=scripts python
-scripts/validation/validate_skills.py`, and `PYTHONPATH=scripts python
-scripts/validation/validate_agents_design.py`. Use `python
-scripts/lanes/release_check.py` for release-facing changes.
+Run the script directly on a manual positive and negative case, then focused
+tests and the narrowest lane that uses it. Builders must support deterministic
+parity where their output is committed.
 
 ## Closeout
 
-Report changed surfaces, checks run, checks skipped, remaining risk, and the next owner route. If a nearby source document carried agent-facing working law into this card, name that transfer.
+Report callers and outputs changed, manual cases, deterministic parity, tests,
+effects, and obsolete helpers removed.

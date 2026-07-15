@@ -5,101 +5,31 @@
   "source_surfaces": [
     {
       "repo": "aoa-skills",
-      "path": "generated/skill_graph.json",
+      "path": "generated/capability_graph.json",
       "source_class": "skill_source",
       "role": "primary",
       "authority": "derived_readmodel"
     },
     {
       "repo": "aoa-skills",
-      "path": "skills/README.md",
+      "path": "capabilities/README.md",
       "source_class": "skill_source",
       "role": "owner_route",
       "authority": "authored_source"
     },
     {
       "repo": "aoa-skills",
-      "path": "generated/skill_intelligence_registry.min.json",
+      "path": "skills/README.md",
+      "source_class": "skill_source",
+      "role": "supporting",
+      "authority": "authored_source"
+    },
+    {
+      "repo": "aoa-skills",
+      "path": "generated/agent_skill_catalog.min.json",
       "source_class": "skill_source",
       "role": "supporting",
       "authority": "derived_readmodel"
-    },
-    {
-      "repo": "aoa-skills",
-      "path": "generated/skill_bundle_index.json",
-      "source_class": "skill_source",
-      "role": "supporting",
-      "authority": "derived_readmodel"
-    },
-    {
-      "repo": "aoa-skills",
-      "path": "skills/risk/aoa-approval-gate-check/SKILL.md",
-      "source_class": "skill_source",
-      "role": "primary",
-      "authority": "authored_source"
-    },
-    {
-      "repo": "aoa-skills",
-      "path": "skills/risk/aoa-approval-gate-check/techniques.yaml",
-      "source_class": "skill_source",
-      "role": "supporting",
-      "authority": "authored_source"
-    },
-    {
-      "repo": "aoa-skills",
-      "path": "skills/risk/aoa-dry-run-first/SKILL.md",
-      "source_class": "skill_source",
-      "role": "primary",
-      "authority": "authored_source"
-    },
-    {
-      "repo": "aoa-skills",
-      "path": "skills/risk/aoa-dry-run-first/techniques.yaml",
-      "source_class": "skill_source",
-      "role": "supporting",
-      "authority": "authored_source"
-    },
-    {
-      "repo": "aoa-skills",
-      "path": "skills/risk/aoa-local-stack-bringup/SKILL.md",
-      "source_class": "skill_source",
-      "role": "primary",
-      "authority": "authored_source"
-    },
-    {
-      "repo": "aoa-skills",
-      "path": "skills/risk/aoa-local-stack-bringup/techniques.yaml",
-      "source_class": "skill_source",
-      "role": "supporting",
-      "authority": "authored_source"
-    },
-    {
-      "repo": "aoa-skills",
-      "path": "skills/risk/aoa-safe-infra-change/SKILL.md",
-      "source_class": "skill_source",
-      "role": "primary",
-      "authority": "authored_source"
-    },
-    {
-      "repo": "aoa-skills",
-      "path": "skills/risk/aoa-safe-infra-change/techniques.yaml",
-      "source_class": "skill_source",
-      "role": "supporting",
-      "authority": "authored_source"
-    },
-    {
-      "repo": "aoa-skills",
-      "path": "skills/risk/aoa-sanitized-share/SKILL.md",
-      "source_class": "skill_source",
-      "role": "primary",
-      "authority": "authored_source"
-    },
-    {
-      "repo": "aoa-skills",
-      "path": "skills/risk/aoa-sanitized-share/techniques.yaml",
-      "source_class": "skill_source",
-      "role": "supporting",
-      "authority": "authored_source"
     }
   ],
   "record_classes": [
@@ -120,20 +50,25 @@
       "lane": "source-fast"
     },
     {
-      "route": "aoa-kag:scripts/validate_kag.py",
+      "route": "aoa-kag:scripts/validate_repo_local_kag_family.py",
       "lane": "local-kag"
     }
   ],
   "consumer_routes": [
-    "aoa-kag registry",
+    "aoa-kag registry and retrieval",
     "abyss-stack federation mirror",
-    "aoa-kag-mcp resource"
+    "aoa-kag MCP capability resources"
   ],
   "owner_return_routes": [
     {
       "repo": "aoa-skills",
-      "surface": "skills/README.md",
+      "surface": "capabilities/README.md",
       "route_kind": "authored_meaning"
+    },
+    {
+      "repo": "aoa-skills",
+      "surface": "skills/README.md",
+      "route_kind": "source_export"
     }
   ]
 }

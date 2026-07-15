@@ -1,164 +1,55 @@
-# Contributing to aoa-skills
+# Contributing
 
-Thank you for contributing.
+## Orient first
 
-## What belongs here
+Read `AGENTS.md`, the nearest nested card, `CHARTER.md`, and the affected owner
+source. Capability changes begin in `capabilities/`; callable procedure changes
+begin in `skills/`. Do not begin from a generated catalog or exported bundle.
 
-Good contributions:
-- reusable AoA skill bundles
-- bounded agent workflows that stand on their own and reference sibling practice only when useful
-- skill templates and repository conventions
-- validation or review helpers for skill bundles
-- thin project overlay examples that clarify how a core skill adapts to a real repository
-- docs-only truth sync that keeps the current public surface and derived layers readable
+## Change loop
 
-Bad contributions:
-- private operational context
-- secrets, tokens, or sensitive infrastructure details
-- one-off prompts without reusable skill structure
-- project-specific shortcuts with no adaptation notes
-- undocumented scripts
-- techniques that belong in `aoa-techniques` rather than here
-- skills that mirror another repository's practice without adding executable workflow value
+1. State the observed problem and the owner boundary.
+2. Reproduce it manually on real or representative work.
+3. Compare no-skill, current, and candidate behavior where the claim is about
+   usefulness.
+4. Change the smallest authored source that owns the behavior.
+5. Re-run held-out manual cases, including negative and coexistence cases.
+6. Add or change a test only when a stable invariant has emerged and the test
+   cannot conceal the outcome behind a green proxy.
+7. Rebuild derived surfaces and run the relevant structural lane.
+8. Remove temporary traces, fixtures, workspaces, and other construction waste.
 
-## Before opening a PR
+## Capability changes
 
-Start from the public route:
+Preserve one `primary_parent` and express all cross-links as typed relations.
+Executable nodes require applicability, ABI, binding, execution, trust,
+provenance, lifecycle, and failure contracts. External bindings must point to
+current owner sources and may remain explicitly unavailable or unbound.
 
-1. [CHARTER](CHARTER.md) for repository authority
-2. [AGENTS](AGENTS.md) and the nearest nested `AGENTS.md` for editing route
-3. [RELEASING](mechanics/release-support/docs/RELEASING.md) for release-facing
-   or full-packaging checks
-4. the target `SKILL.md`, `techniques.yaml`, mechanic package, config, schema,
-   builder, or review record that owns the change
+## Bundle changes
 
-Please make sure:
-- the skill has a clear purpose and trigger boundary
-- the skill remains bounded and reviewable
-- the skill includes a canonical `SKILL.md`
-- the skill records technique dependencies in `techniques.yaml` when relevant
-- invocation policy is stated clearly when the skill is risky or operationally sensitive
-- risks and anti-patterns are documented
-- verification expectations are explicit
-- runtime examples and review checklists use the repository artifact contract when present
-- examples and references are public-safe
-- project-shaped overlays do not silently change the core meaning of the skill
-- runtime, evaluation, and public-surface layers stay distinct from one another
-- portable export drift is refreshed when canonical skill bodies, invocation modes, portable descriptions, or trigger boundaries change
+Keep `SKILL.md` focused and progressively disclosed. A new bundle needs an
+independent trigger, ABI, composition value, and measured outcome lift. Modes
+that do not meet that bar stay inside an existing bundle or the capability
+graph. Do not add a technique dependency.
 
-Use the validation commands named by the nearest owner surface. Do not copy a
-stale command list from this file into a PR; route to the current `AGENTS.md`,
-builder, validator, or release-support document.
+## Evidence
 
-If you add a new runtime example, start from `templates/RUNTIME_EXAMPLE.template.md`
-and keep the canonical headings exactly:
-- `Scenario`
-- `Why this skill fits`
-- `Expected inputs`
-- `Expected outputs`
-- `Boundary notes`
-- `Verification notes`
+Keep raw session traces and task-local DAGs outside the repository. Durable
+owner truth may include only reviewed contracts, compact held-out cases,
+decisions, or lifecycle findings that belong to this repository. Shared proof
+routes to `aoa-evals`.
 
-If you add `checks/review.md`, keep the canonical checklist headings exactly:
-- `Purpose`
-- `When it applies`
-- `Review checklist`
-- `Not a fit`
+## Commands
 
-## Core distinction
+Use `config/validation_lanes.json` as command authority. Typical focused checks:
 
-`aoa-skills` owns self-contained execution workflows for local coding agents.
-`aoa-techniques` owns public reusable engineering practice.
+```bash
+PYTHONPATH=scripts python scripts/validation/validate_skills.py --repo-root .
+PYTHONPATH=scripts python scripts/validation/validate_capability_system.py --repo-root . --check-generated
+PYTHONPATH=scripts python scripts/validation/validate_agent_skills.py --repo-root .
+PYTHONPATH=scripts python -m pytest -q tests
+```
 
-If the contribution is primarily a reusable engineering pattern, publish or refine it in `aoa-techniques` first.
-If the contribution is primarily an agent-facing workflow bundle, it belongs here.
-
-## Preferred PR scope
-
-Prefer:
-- 1 new skill per PR
-- or 1 focused refresh to an existing skill
-- or 1 clear repository-level docs or template improvement
-
-Promotion or maturity-changing PRs should also align with `mechanics/method-growth/docs/MATURITY_MODEL.md`
-and `mechanics/method-growth/docs/PROMOTION_PATH.md`, and make the supporting evidence explicit.
-
-## Recommended PR title format
-
-- `skill: add <skill-name>`
-- `skill: improve <skill-name>`
-- `skill: refresh <skill-name> from techniques`
-- `skill: add project overlay <skill-name>`
-- `docs: refine repo guidance`
-- `repo: improve templates or validation`
-- `docs: truth-sync roadmap and phase guidance`
-
-## Review criteria
-
-PRs are reviewed for:
-- bounded scope
-- execution usefulness
-- traceability to techniques when relevant
-- public safety
-- reviewability of the final `SKILL.md`
-- clarity of trigger boundary
-- quality of risks and verification guidance
-- coherence with repository philosophy
-
-## Maturity and promotion
-
-Status changes are governance changes, not cosmetic relabeling.
-The repository-level promotion path lives in `mechanics/method-growth/docs/PROMOTION_PATH.md`.
-
-When proposing a promotion step:
-- state the current and target maturity status
-- cite the evidence that supports promotion
-- explain whether the runtime `SKILL.md` meaning changed
-- name any remaining gaps that block the next maturity step
-- add or update the public review record under `docs/reviews/status-promotions/`
-- use `templates/STATUS_PROMOTION_REVIEW.template.md` for non-canonical promotion reviews
-- make the review record explicit about machine-checkable floors and what still blocks the next status step
-- keep governance review records separate from runtime walkthroughs and evaluation evidence
-
-When proposing `canonical` specifically:
-- ensure the skill uses `## Technique traceability`, not `## Future traceability`
-- ensure `technique_dependencies` and `techniques.yaml` contain no pending IDs or `TBD` source refs
-- ensure the skill has evaluation coverage in `tests/fixtures/skill_evaluation_cases.yaml`
-- rely on existing validator checks for `explicit-only` policy correctness rather than bypassing them
-- add or update the public review record under `docs/reviews/canonical-candidates/`
-- use `templates/CANDIDATE_REVIEW.template.md` for new candidate-review records
-- make the review record explicit about machine floors, whether the runtime meaning changed, and what still blocks the next maintenance step
-- keep canonical-candidate records aligned with the current public surface rather than historical scaffold wording
-
-## Drift and refresh
-
-A skill may summarize or compose techniques, but it should not silently drift away from them.
-When a source technique changes materially, dependent skills should be reviewed and refreshed.
-
-A good PR should make it clear:
-- which techniques are referenced
-- whether the skill meaning changed
-- whether only metadata changed
-- whether project overlays also require updates
-- whether the change belongs in `mechanics/boundary-bridge/docs/OVERLAY_SPEC.md`
-  as a repo-local overlay contract clarification or in a live exemplar skill
-  bundle
-- whether generated or portable export surfaces changed
-
-If richer integration belongs in another repository, record the owner route or follow-up surface instead of adding live cross-repo behavior here.
-
-## Public hygiene
-
-Assume everything here is public and portable.
-
-Write for reuse:
-- generalize paths
-- generalize service names when they are not essential
-- keep examples sanitized
-- strip secrets and internal-only assumptions
-- prefer small explicit contracts
-
-## Security
-
-Do not use public issues or PRs for leaks, secrets, credentials, or infrastructure-sensitive details.
-If a contribution reveals sensitive material, sanitize it first or keep it out of the public repository.
+Green checks mean the encoded contracts are internally consistent; they do not
+prove that a skill improves an agent.

@@ -1,0 +1,6 @@
+policy:
+  allow_implicit_invocation: false
+  implicit_activation_policy: suggest
+notes:
+- Select exactly one authority-map, sanitized-share, or memo-route mode.
+- Never collapse candidate routing, artifact creation, publication, and durable memory into one effect.

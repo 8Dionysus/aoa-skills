@@ -6,22 +6,25 @@ This card applies to `skills/core/session-growth/`.
 
 ## Role
 
-This lane owns session growth, closeout, summon, route fork, self-diagnosis, and repeated-use skills.
+This lane owns the session-harvest and session-recovery callable families.
 
 ## Read before editing
 
-Read `skills/AGENTS.md`, `skills/core/AGENTS.md`, the target bundle, and relevant mechanics under checkpoint, growth-cycle, recurrence, or questbook.
+Read `skills/AGENTS.md`, `skills/core/AGENTS.md`, the target bundle, the
+session-growth capability family, and the current session owner boundary.
 
 ## Boundaries
 
-Keep growth language bounded, reviewable, reversible, and useful for real sessions. Do not turn session growth into hidden memory authority or agent destiny.
+Session evidence is candidate input, not repository truth or durable memory.
+Do not copy raw transcripts, hidden context, task-local DAGs, or session state
+into the bundle. Write only reviewed owner-local procedures and contracts.
 
 ## Validation
 
-Full lane command sequences live in `config/validation_lanes.json`; this local card may name only focused owner checks, lane ids, or the nearest route for the changed surface.
-
-Run `PYTHONPATH=scripts python scripts/validation/validate_skills.py`, `PYTHONPATH=scripts python scripts/builders/build_catalog.py --check`, `PYTHONPATH=scripts python scripts/validation/validate_agent_skills.py --repo-root .`, and focused bundle checks when present.
+Manually test missing, stale, partial, unsafe, and successful evidence paths;
+then run the focused structural and export checks.
 
 ## Closeout
 
-Report changed surfaces, checks run, checks skipped, remaining risk, and the next owner route. If a nearby source document carried agent-facing working law into this card, name that transfer.
+Report evidence custody, manual recovery/harvest cases, any candidate handoff,
+checks, and session artifacts removed.

@@ -1,343 +1,47 @@
-# Install roots and skill pack profiles
+# Install and Profiles
 
-Install profiles keep skill-pack membership explicit instead of assuming one giant skill set always belongs everywhere.
+## Profiles
 
-## Authoring file
+| Profile | Membership | Intended use |
+| --- | --- | --- |
+| `repo-default` | `aoa-decision` | normal advertised installation |
+| `repo-capability-sources` | all seven bundles | explicit research, comparison, and KAG/capability work |
 
-`config/skill_pack_profiles.json` is the authoring surface.
+Profile membership comes from `config/skill_pack_profiles.json`; resolved
+membership and revisions are generated.
 
-Each profile declares:
+## Host visibility
 
-- a `scope`
-- an `install_mode`
-- a bounded list of skills
+Use `repo-default` for an ordinary installation on every host. It expresses the
+portable initial catalog directly: only `aoa-decision` is present.
 
-## Generated file
+`repo-capability-sources` deliberately transports all seven bundles. Its six
+deferred members are hidden from implicit Codex discovery by the OpenAI host
+adapter in `agents/openai.yaml`, but that adapter is not portable policy. A host
+that ignores OpenAI metadata may expose or enable every installed member. Treat
+this profile as an explicit laboratory/source profile, never as a portable way
+to enforce deferred visibility.
 
-`generated/skill_pack_profiles.resolved.json` resolves those profiles into concrete target roots and expected target paths.
-`generated/skill_bundle_index.json` mirrors that membership back onto each skill as `install_profiles` so per-skill packaging checks do not need to reverse-read the whole profile set.
+After installation, inspect the actual host catalog and run behavioral trials.
+File parity proves neither host visibility nor selection behavior.
 
-`generated/release_manifest.json` now also records `install_profile_revisions` so the resolved profile set can be pinned as part of the repo-local portable release contract.
+## Handoff
 
-## Helper scripts
+Use the bundle commands in this order:
 
-Dry-run or apply an install profile:
+1. `stage_skill_pack.py` builds a deterministic plan and optionally a staged
+   directory plus ZIP transport.
+2. `inspect_skill_pack.py` validates manifest, layout, file digests, and bundle
+   digest without consulting a live export.
+3. `import_skill_pack.py` performs receiver-side inspect, optional install, and
+   verify.
+4. `verify_skill_pack.py` compares an installed root to the selected handoff or
+   current export.
 
-```bash
-python scripts/install_skill_pack.py --repo-root . --profile user-curated-core
-python scripts/install_skill_pack.py --repo-root . --profile repo-project-foundation --dest-root /tmp/aoa-skills --mode copy --execute
-python scripts/install_skill_pack.py --repo-root . --profile repo-core-only --dest-root /tmp/aoa-skills --mode copy --execute
-python scripts/install_skill_pack.py --repo-root . --profile repo-project-core-outer-ring --dest-root /tmp/aoa-skills --mode copy --execute
-python scripts/install_skill_pack.py --repo-root . --profile repo-quest-harvest-only --dest-root /tmp/aoa-skills --mode copy --execute
-python scripts/install_skill_pack.py --repo-root . --profile repo-core-only --bundle-root /tmp/repo-core-only-bundle --dest-root /tmp/aoa-skills --mode copy --execute
-python scripts/install_skill_pack.py --repo-root . --profile repo-core-only --bundle-archive /tmp/repo-core-only.zip --dest-root /tmp/aoa-skills --mode copy --execute
-```
+The generated bundle `README.md` is a human companion;
+`bundle_manifest.json` is the machine contract. Extra sibling bundles are
+reported and fail only in strict-root posture.
 
-Stage a profile-scoped handoff bundle:
-
-```bash
-python scripts/stage_skill_pack.py --repo-root . --profile repo-core-only --output-root /tmp/repo-core-only-bundle --format json
-python scripts/stage_skill_pack.py --repo-root . --profile repo-core-only --output-root /tmp/repo-core-only-bundle --execute --overwrite --format json
-python scripts/stage_skill_pack.py --repo-root . --profile repo-project-core-outer-ring --output-root /tmp/repo-project-core-outer-ring-bundle --execute --overwrite --format json
-python scripts/stage_skill_pack.py --repo-root . --profile repo-quest-harvest-only --output-root /tmp/repo-quest-harvest-only-bundle --execute --overwrite --format json
-python scripts/stage_skill_pack.py --repo-root . --profile repo-core-only --output-root /tmp/repo-core-only-bundle --archive-path /tmp/repo-core-only.zip --execute --overwrite --format json
-```
-
-Inspect a staged profile-scoped handoff bundle:
-
-```bash
-python scripts/inspect_skill_pack.py --bundle-root /tmp/repo-core-only-bundle --format json
-python scripts/inspect_skill_pack.py --bundle-archive /tmp/repo-core-only.zip --format json
-```
-
-Import a staged profile-scoped handoff bundle with one receiver-side flow:
-
-```bash
-python scripts/import_skill_pack.py --repo-root . --profile repo-core-only --bundle-root /tmp/repo-core-only-bundle --dest-root /tmp/aoa-skills --format json
-python scripts/import_skill_pack.py --repo-root . --profile repo-core-only --bundle-root /tmp/repo-core-only-bundle --dest-root /tmp/aoa-skills --mode copy --execute --format json
-python scripts/import_skill_pack.py --repo-root . --profile repo-project-core-outer-ring --bundle-root /tmp/repo-project-core-outer-ring-bundle --dest-root /tmp/aoa-skills --mode copy --execute --format json
-python scripts/import_skill_pack.py --repo-root . --profile repo-quest-harvest-only --bundle-root /tmp/repo-quest-harvest-only-bundle --dest-root /tmp/aoa-skills --mode copy --execute --format json
-python scripts/import_skill_pack.py --repo-root . --profile repo-core-only --bundle-archive /tmp/repo-core-only.zip --dest-root /tmp/aoa-skills --mode copy --execute --format json
-```
-
-Verify an installed profile/root against the current portable export:
-
-```bash
-python scripts/verify_skill_pack.py --repo-root . --profile repo-default --format json
-python scripts/verify_skill_pack.py --repo-root . --profile repo-project-foundation --install-root /tmp/aoa-skills --format json
-python scripts/verify_skill_pack.py --repo-root . --profile repo-core-only --install-root /tmp/aoa-skills --format json
-python scripts/verify_skill_pack.py --repo-root . --profile repo-project-core-outer-ring --install-root /tmp/aoa-skills --format json
-python scripts/verify_skill_pack.py --repo-root . --profile repo-core-only --install-root /tmp/aoa-skills --strict-root --format markdown
-python scripts/verify_skill_pack.py --repo-root . --profile repo-core-only --bundle-root /tmp/repo-core-only-bundle --install-root /tmp/aoa-skills --format json
-python scripts/verify_skill_pack.py --repo-root . --profile repo-core-only --bundle-archive /tmp/repo-core-only.zip --install-root /tmp/aoa-skills --format json
-```
-
-Audit real workspace and repo install roots without installing anything:
-
-```bash
-PYTHONPATH=scripts python scripts/audit/audit_workspace_skill_adoption.py --repo-root . --workspace-root .. --profile repo-project-foundation --format markdown
-PYTHONPATH=scripts python scripts/audit/audit_workspace_skill_adoption.py --repo-root . --workspace-root .. --profile repo-project-foundation --write-json generated/workspace_skill_adoption_audit.json --write-markdown generated/workspace_skill_adoption_audit.md --format markdown
-```
-
-Render a disable snippet for a profile:
-
-```bash
-PYTHONPATH=scripts python scripts/adapters/render_codex_config.py --repo-root . --profile repo-risk-explicit
-```
-
-Lint the profile authoring:
-
-```bash
-PYTHONPATH=scripts python scripts/validation/lint_pack_profiles.py --repo-root .
-```
-
-## Verification posture
-
-Portable descriptions are runtime activation surfaces when a consumer actually
-surfaces them; they are not decorative labels.
-The exporter derives a leading sentence from each skill's
-`implicit_activation_policy`: `manual` forbids load from an implicit match,
-`suggest` may recommend but not load, and both accept explicit user/operator
-invocation or a source-authorized parent-route selection. `invoke` keeps the
-authored description unchanged. This policy text is generated rather than
-copied into every portable override so SKILL frontmatter, catalogs, runtime
-contracts, context retention, description evals, and installed profile digests
-cannot silently disagree.
-
-Do not confuse installed parity with native prompt visibility. Codex's implicit
-Available-skills inventory includes repo or user skills only when
-`allow_implicit_invocation=true`; a `manual` skill can be installed and verified
-while remaining intentionally absent from that inventory. Its policy-prefixed
-description becomes relevant to explicit structured invocation or another
-router that deliberately surfaces non-invoke candidates. Use
-`codex debug prompt-input` to prove the concrete prompt inventory, and use a
-native structured skill item to prove explicit reachability.
-
-After changing activation-policy export behavior, a repo-local build is not
-runtime proof. Stage, inspect, import, and verify the affected profile, then use
-the live Codex prompt-input inspection surface before claiming any installed
-description is available to a new session. A 36/36 profile verification alone
-is not that claim.
-
-If you need a machine-readable packaging check rather than only a dry-run install plan:
-
-- read `generated/skill_pack_profiles.resolved.json` for the concrete profile membership
-- read `generated/release_manifest.json` for the current `install_profile_revisions`
-- read `generated/skill_bundle_index.json` when you want the inverse view: which install profiles currently include a given skill
-- use `scripts/stage_skill_pack.py` when you want one repo-local, profile-scoped handoff directory with its own `bundle_manifest.json`
-- use `scripts/inspect_skill_pack.py` when you want one self-contained check over a staged bundle or ZIP before any install step
-- use `scripts/import_skill_pack.py` when you want one receiver-side `inspect -> install -> verify` path over a staged bundle or ZIP without stitching those steps together by hand
-- use `scripts/verify_skill_pack.py` when you want to verify one real install root against either the current export, a staged bundle directory, or a staged ZIP handoff
-
-That pair gives an offline verification surface for profile membership drift without introducing a separate package registry.
-
-`verify_skill_pack.py` is profile-scoped by default:
-
-- it requires every expected installed skill for the selected profile to exist
-- it compares the full installed skill directory to either the current `.agents/skills/<skill>` export or the selected staged bundle with normalized text-file bytes
-- it reports extra sibling skill dirs under the install root but does not fail on them unless `--strict-root` is set
-- it treats copy and symlink installs the same way: pass/fail is based on exported content parity, not on symlink-target identity
-
-`stage_skill_pack.py` is profile-scoped and plan-first:
-
-- dry-run output gives one deterministic handoff plan with `profile_revision`, `release_identity`, `file_digests`, and `bundle_digest`
-- `--execute` materializes a bundle directory containing `bundle_manifest.json`, a bundle-local `README.md`, and the staged `.agents/skills/<skill>` subset
-- `--archive-path` adds an optional ZIP transport wrapper over that same staged directory without changing the bundle-local contract
-- the staged bundle does not copy the repo-wide `generated/release_manifest.json` because that file describes the whole export, not one profile subset
-- `README.md` is the human-facing handoff guide; `bundle_manifest.json` remains the canonical machine-readable source of truth
-
-The ZIP handoff remains repo-local and offline:
-
-- the staged directory stays the canonical intermediate
-- the archive is only a transport wrapper with one top-level folder `aoa-skills-<profile>/`
-- `inspect_skill_pack.py` validates the bundle-local manifest, file digests, bundle digest, and archive layout without consulting the live repo export
-- the ZIP carries the same bundle-local `README.md` as a human-facing companion, not as a second contract
-- install and verify can consume the ZIP directly; no separate unpack command is required
-
-## Round-trip handoff
-
-The narrow offline smoke path is:
-
-```bash
-python scripts/stage_skill_pack.py --repo-root . --profile repo-core-only --output-root /tmp/repo-core-only-bundle --execute --overwrite --format json
-python scripts/inspect_skill_pack.py --bundle-root /tmp/repo-core-only-bundle --format json
-python scripts/import_skill_pack.py --repo-root . --profile repo-core-only --bundle-root /tmp/repo-core-only-bundle --dest-root /tmp/aoa-skills --mode copy --execute --format json
-```
-
-That keeps the first handoff object profile-scoped, deterministic, and fully offline.
-
-Use `install_skill_pack.py` plus `verify_skill_pack.py` directly when you want the lower-level advanced path or need to keep install and verification as separate steps.
-
-## Workspace adoption audit
-
-`scripts/audit/audit_workspace_skill_adoption.py` is the read-only first pass before
-workspace-wide rollout. It verifies a selected profile against:
-
-- the workspace root install surface, normally `/srv/AbyssOS/.agents/skills`
-- each discovered sibling repository install surface,
-  `<repo>/.agents/skills`
-- any explicit `--target` path supplied by the operator
-
-The audit uses the same verification contract as `verify_skill_pack.py`.
-It reports `verified`, `verified_with_extra_dirs`, `not_installed`, `partial`,
-or `drift` per target. It does not install skills, approve owner adoption,
-or turn `aoa-skills` into the source of another repository's behavior.
-
-For broad repo-local rollout, audit `repo-project-foundation` first. It is the
-baseline profile for the project-core kernel, engineering outer ring, and risk
-guard ring. Use narrower profiles only when a repo owner wants a smaller first
-adoption slice.
-
-## Narrow rollout lane
-
-`repo-project-core-kernel` is the canonical bounded rollout profile for
-installing the permanent explicit post-session project-core kernel:
-
-- `aoa-session-donor-harvest`
-- `aoa-automation-opportunity-scan`
-- `aoa-session-route-forks`
-- `aoa-session-self-diagnose`
-- `aoa-session-self-repair`
-- `aoa-session-progression-lift`
-- `aoa-quest-harvest`
-
-- It is `repo`-scoped.
-- Its authored install mode stays `symlink-preferred`.
-- Cross-repo rollout should use `copy` mode so the installed surface is
-  reviewable and commit-safe.
-- The intended target path is `<repo>/.agents/skills/`.
-- This profile is for explicit post-session rollout and does not replace
-  `repo-default`.
-
-`repo-session-harvest-family` remains available as a backward-compatible
-operational alias for the same hard-gated kernel when existing rollout or
-automation surfaces still name the older profile.
-
-`repo-session-growth` is the full core session-growth lane profile:
-
-- it includes the hard-gated `repo-project-core-kernel`
-- it also includes the explicit companion skills `aoa-commit-growth-seam` and
-  `aoa-summon`
-- it does not include the engineering outer ring, risk guard ring, or project
-  overlays
-- use it when the task is to audit or refresh the whole
-  `skills/core/session-growth/` branch across repository-local installs
-- cross-repo rollout should still use `copy` mode so each installed surface
-  remains reviewable and commit-safe
-
-The companion skills stay outside the hard-gated kernel until they receive the
-same detail-receipt contract as kernel members. Their absence from
-`repo-project-core-kernel` is therefore not a rollout blocker for the full
-session-growth lane.
-
-This kernel is also repo-wide hard-gated in `aoa-skills`:
-
-- every kernel skill must keep both its detail receipt schema and its generic
-  core receipt schema
-- the portable export must carry both refs for every kernel skill
-- `generated/project_core_kernel_governance.min.json` is the per-skill gate
-  readout
-- the release lane fails if any kernel skill drifts out of that contract
-
-`repo-project-core-outer-ring` is the canonical bounded rollout profile for the
-stable engineering workbench around that kernel:
-
-- `aoa-adr-write`
-- `aoa-source-of-truth-check`
-- `aoa-bounded-context-map`
-- `aoa-core-logic-boundary`
-- `aoa-port-adapter-refactor`
-- `aoa-change-protocol`
-- `aoa-tdd-slice`
-- `aoa-contract-test`
-- `aoa-property-invariants`
-- `aoa-invariant-coverage-audit`
-
-- It is `repo`-scoped.
-- Its authored install mode stays `symlink-preferred`.
-- Cross-repo rollout should use `copy` mode so the installed surface is
-  reviewable and commit-safe.
-- The intended target path is `<repo>/.agents/skills/`.
-- This profile is soft-gated through
-  `generated/project_core_outer_ring_readiness.min.json`.
-- It does not replace `repo-project-core-kernel`, and it does not pull in risk
-  skills or project overlays.
-
-`repo-core-only` is now the umbrella repo surface:
-
-- it must equal `repo-project-core-kernel + repo-project-core-outer-ring` in
-  canonical order
-- it keeps the project-core shape explicit without turning the outer ring into a
-  second kernel
-
-`repo-project-risk-guard-ring` is the canonical bounded rollout profile for the
-explicit project safety perimeter outside project-core:
-
-- `aoa-approval-gate-check`
-- `aoa-dry-run-first`
-- `aoa-local-stack-bringup`
-- `aoa-safe-infra-change`
-- `aoa-sanitized-share`
-
-- It is `repo`-scoped.
-- Its authored install mode stays `symlink-preferred`.
-- Cross-repo rollout should use `copy` mode so the installed surface is
-  reviewable and commit-safe.
-- The intended target path is `<repo>/.agents/skills/`.
-- It is repo-wide hard-gated through
-  `generated/project_risk_guard_ring_governance.min.json`.
-- It does not replace `repo-default`, and it does not pull project overlays
-  into ring membership.
-
-`repo-project-foundation` is the baseline project install layer:
-
-- it equals `repo-project-core-kernel + repo-project-core-outer-ring + repo-project-risk-guard-ring`
-- it is `repo`-scoped and keeps `symlink-preferred`
-- it intentionally excludes project overlays
-- it is the intended default for broad repo-local rollout and `/srv/AbyssOS/.agents/skills`
-- repeated symlink installs over already-matching portable exports must remain idempotent
-
-`repo-risk-explicit` remains as the backward-compatible alias for the same five
-explicit-only risk skills.
-
-`user-aoa-foundation` is the broad personal Codex install layer:
-
-- it is `user`-scoped and targets `$HOME/.codex/skills`
-- it includes `repo-project-foundation`, the `aoa-eval*` routing family,
-  `aoa-commit-growth-seam`, and `aoa-summon`
-- it intentionally excludes project overlays such as `abyss-*`, `atm10-*`, and
-  `titan-*`
-- it is the intended default for this machine's top-level Codex skill root
-
-`repo-quest-harvest-only` remains the narrow leaf rollout profile for
-installing just `aoa-quest-harvest`.
-
-- It is `repo`-scoped.
-- Its authored install mode stays `symlink-preferred`.
-- Cross-repo rollout should use `copy` mode so the installed surface is reviewable and commit-safe.
-- The intended target path is `<repo>/.agents/skills/aoa-quest-harvest`.
-- This profile is for explicit post-session rollout and does not replace `repo-default`.
-
-`repo-session-donor-harvest-only` remains the nucleus-only profile for
-repositories that want just the donor-harvest entry surface without the full
-kernel.
-
-The ZIP transport variant is:
-
-```bash
-python scripts/stage_skill_pack.py --repo-root . --profile repo-core-only --output-root /tmp/repo-core-only-bundle --archive-path /tmp/repo-core-only.zip --execute --overwrite --format json
-python scripts/inspect_skill_pack.py --bundle-archive /tmp/repo-core-only.zip --format json
-python scripts/import_skill_pack.py --repo-root . --profile repo-core-only --bundle-archive /tmp/repo-core-only.zip --dest-root /tmp/aoa-skills --mode copy --execute --format json
-```
-
-## Why profiles matter
-
-Not every install root should carry the same surface:
-
-- repo roots can afford project overlays
-- user roots should prefer reusable portable skills under `$HOME/.codex/skills`
-- explicit-only risk skills deserve a canonical bounded posture
-- some repos need one narrow post-session skill without taking the full repo-default surface
-- project overlays should stay project-local
-
-This is a packaging layer, not a new source of truth.
+Run `smoke_skill_pack_handoff.py --transport both` for the bounded directory
+and ZIP roundtrip. Installation parity is not native prompt visibility or
+behavioral evidence.

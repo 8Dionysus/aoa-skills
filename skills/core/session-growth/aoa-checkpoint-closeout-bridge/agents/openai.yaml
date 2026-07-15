@@ -1,7 +1,0 @@
-policy:
-  allow_implicit_invocation: false
-  implicit_activation_policy: suggest
-notes:
-- This skill is suggestion-eligible but not silently invoked.
-- Checkpoint collection may surface it as a candidate; reviewed-closeout execution stays explicit.
-- Fixed donor -> progression -> quest order permits deterministic planning without hidden final authority.

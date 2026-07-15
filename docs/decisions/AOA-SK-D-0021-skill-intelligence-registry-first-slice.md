@@ -9,11 +9,11 @@
 - Skill lanes: none
 - Mechanic parents: none
 - Guard families: generated/read-model, source topology
-- Posture: accepted registry first slice
+- Posture: superseded registry topology; see AOA-SK-D-0039
 
 Date: 2026-05-17
 
-Status: accepted
+Status: superseded by AOA-SK-D-0039
 
 ## Context
 

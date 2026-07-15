@@ -1,8 +1,0 @@
-policy:
-  allow_implicit_invocation: false
-  implicit_activation_policy: suggest
-notes:
-- This skill is suggestion-eligible when a session, closeout, PR, or review
-  reveals memory-worthy evidence, but candidate writing stays explicit.
-- Session evidence from .aoa remains raw evidence, not reviewed memory truth.
-- Durable reviewed memory landing stays in aoa-memo reviewed intake.

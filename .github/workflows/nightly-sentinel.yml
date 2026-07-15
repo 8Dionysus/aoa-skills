@@ -13,20 +13,11 @@ jobs:
   main_growth:
     name: Main Growth Sentinel
     runs-on: ubuntu-latest
-    env:
-      AOA_STATS_ROOT: ${{ github.workspace }}/.deps/aoa-stats
     steps:
       - name: Checkout main
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
         with:
           fetch-depth: 0
-
-      - name: Checkout aoa-stats protocol validator
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
-        with:
-          repository: 8Dionysus/aoa-stats
-          ref: 25f0044ec46cbed9b7d595e6daa2056ec6d964e3
-          path: .deps/aoa-stats
 
       - name: Set up Python
         uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405
@@ -51,7 +42,7 @@ jobs:
     name: Latest Release Repro
     runs-on: ubuntu-latest
     env:
-      ABYSS_MACHINE_VERIFIER_REF: 4f8993d525991ac1803a11685f70814c7c378e39
+      ABYSS_MACHINE_VERIFIER_REF: 52252e4ef7d98361d99e29056e98fcba403a2d6d
     steps:
       - name: Checkout repository history
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd

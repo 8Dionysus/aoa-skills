@@ -6,7 +6,6 @@ from pathlib import Path
 
 SKILLS_DIR_NAME = "skills"
 SKILL_DOC_NAME = "SKILL.md"
-TECHNIQUES_DOC_NAME = "techniques.yaml"
 
 
 @dataclass(frozen=True)
@@ -14,7 +13,6 @@ class SkillBundlePath:
     name: str
     skill_dir: Path
     skill_md_path: Path
-    techniques_path: Path
     policy_path: Path
 
 
@@ -54,7 +52,6 @@ def discover_skill_bundle_paths(repo_root: Path) -> list[SkillBundlePath]:
                 name=skill_dir.name,
                 skill_dir=skill_dir,
                 skill_md_path=skill_md_path,
-                techniques_path=skill_dir / TECHNIQUES_DOC_NAME,
                 policy_path=skill_dir / "agents" / "openai.yaml",
             )
         )
@@ -90,13 +87,6 @@ def skill_md_path(repo_root: Path, skill_name: str) -> Path:
     if entry is not None:
         return entry.skill_md_path
     return skills_root(repo_root) / skill_name / SKILL_DOC_NAME
-
-
-def techniques_path(repo_root: Path, skill_name: str) -> Path:
-    entry = skill_bundle_path(repo_root, skill_name)
-    if entry is not None:
-        return entry.techniques_path
-    return skills_root(repo_root) / skill_name / TECHNIQUES_DOC_NAME
 
 
 def policy_path(repo_root: Path, skill_name: str) -> Path:

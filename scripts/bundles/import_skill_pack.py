@@ -92,9 +92,7 @@ def main() -> int:
             bundle_root_override=args.bundle_root,
             bundle_archive_override=args.bundle_archive,
         )
-    except KeyError:
-        raise SystemExit(f"unknown profile: {args.profile}")
-    except (KeyError, ValueError) as exc:
+    except ValueError as exc:
         raise SystemExit(str(exc))
 
     try:

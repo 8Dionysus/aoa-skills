@@ -1,0 +1,581 @@
+schema_version: aoa-capability-family-v1
+family_id: engineering-shape-and-verification
+title: Engineering shape and verification
+description: Two focused engineering families for responsibility shaping and manual-first evidence design.
+owner:
+  repo: aoa-skills
+  surface: capabilities/families/engineering.yaml
+  authority: authored
+nodes:
+  - id: engineering.shape
+    title: Shape an engineering boundary
+    description: Choose one context, core, or port-adapter lens for an unclear responsibility boundary.
+    kind: capability
+    contract_level: navigation
+    primary_parent: engineering
+    owner: &engineering_owner
+      repo: aoa-skills
+      surface: capabilities/families/engineering.yaml
+      authority: authored
+    lifecycle: &candidate_family
+      state: candidate
+      version: 0.1.0
+      visibility: deferred
+      evidence_state: manual-baseline
+      health: challenger
+    keywords:
+      - architecture
+      - boundary
+      - responsibility
+      - context
+      - core
+      - adapter
+      - архитектура
+      - граница
+      - ответственность
+      - контекст
+      - ядро
+      - адаптер
+
+  - id: skill.aoa-engineering-shape
+    title: aoa-engineering-shape family bundle
+    description: Shape one software responsibility boundary through bounded-context, core-boundary, or port-adapter mode. Use when responsibilities, reusable rules, orchestration, or concrete dependencies are entangled and a small owner-aware boundary is needed before implementation. Do not use for source-authority lookup, ordinary edits, test design, or a boundary that is already clear.
+    kind: skill
+    contract_level: executable
+    primary_parent: engineering.shape
+    owner: *engineering_owner
+    lifecycle:
+      state: candidate
+      version: 0.1.0
+      visibility: deferred
+      evidence_state: evaluated
+      health: degraded
+    applicability:
+      use_when:
+        - Responsibilities, stable rules, orchestration, or concrete dependencies are entangled across a meaningful seam.
+      do_not_use_when:
+        - The task is source-authority lookup, ordinary editing, verification, or implementation of an already clear boundary.
+      ambiguous_when:
+        - More than one shaping lens seems relevant; finish the upstream responsibility question before composing another mode.
+    abi:
+      inputs:
+        - name: shaping-request
+          type: engineering-shaping-request
+          required: true
+          description: Target slice, owner surfaces, and the concrete ambiguity, repeated rule, or leaking dependency.
+      outputs:
+        - name: shaped-boundary
+          type: engineering-shaped-boundary
+          required: true
+          description: One mode result with owner, interfaces, migration edge, unresolved question, and stop line.
+    binding:
+      kind: skill
+      ref: skills/core/engineering/aoa-engineering-shape/SKILL.md
+      operation: route-one-mode
+      availability: available
+    execution: &shape_execution
+      freedom: bounded-judgment
+      tool_requirements:
+        - Read access to the target slice and its owner declarations.
+      verification:
+        - Confirm the selected lens matches the observed responsibility pressure and cites the motivating local seam.
+        - State compatibility, unresolved ownership, and what the result does not authorize.
+      termination:
+        - Stop after one reviewable boundary and next-owner question.
+        - Stop as blocked when the owner or responsibility pressure cannot be established.
+      effects:
+        - none
+      reversibility: not-applicable
+      failure_modes:
+        - Installing a generic architecture framework without a local pressure.
+        - Treating directories, teams, or technique names as the semantic boundary.
+    trust: &authored_trust
+      public_safe: true
+      requires_human_approval: false
+      posture: authored-procedure
+    provenance:
+      source_refs:
+        - repo: aoa-skills
+          path: skills/core/engineering/aoa-engineering-shape/SKILL.md
+          ref: capability-family-v0.1.0
+          role: portable-family-procedure
+          authority: authored
+      optional_refs: []
+    keywords:
+      - architecture
+      - bounded-context
+      - core-logic
+      - port-adapter
+      - responsibility
+      - архитектура
+      - контекст
+      - ядро
+      - порт
+      - адаптер
+      - ответственность
+
+  - id: mode.engineering-shape.contexts
+    title: Map bounded contexts
+    description: Separate overloaded meanings and responsibilities into owner-aware contexts and explicit interfaces.
+    kind: mode
+    contract_level: executable
+    primary_parent: engineering.shape
+    owner: *engineering_owner
+    lifecycle: &internal_candidate
+      state: candidate
+      version: 0.1.0
+      visibility: internal
+      evidence_state: manual-baseline
+      health: challenger
+    applicability:
+      use_when:
+        - Meanings, responsibilities, or owner domains are overloaded across a system boundary.
+      do_not_use_when:
+        - One stable rule or concrete dependency is the only pressure.
+      ambiguous_when:
+        - A source-authority conflict looks like a context conflict; resolve authority first.
+    abi:
+      inputs:
+        - name: context-pressure
+          type: context-boundary-pressure
+          required: true
+          description: Overloaded meanings, responsibilities, owners, and relevant interfaces.
+      outputs:
+        - name: context-map
+          type: bounded-context-map
+          required: true
+          description: Responsibility centers, owner truth, interfaces, exclusions, and unresolved edge.
+    binding:
+      kind: mode
+      ref: skills/core/engineering/aoa-engineering-shape/SKILL.md
+      operation: contexts
+      availability: available
+    execution: *shape_execution
+    trust: *authored_trust
+    provenance:
+      source_refs:
+        - repo: aoa-skills
+          path: skills/core/engineering/aoa-engineering-shape/SKILL.md
+          ref: capability-family-v0.1.0
+          role: contexts-mode
+          authority: authored
+      optional_refs: []
+    aliases:
+      - name: aoa-bounded-context-map
+        state: migration-only
+        remove_after: engineering-shape-runtime-parity
+    keywords:
+      - bounded-context
+      - overloaded-meaning
+      - ownership
+      - responsibility
+      - контекст
+      - значение
+      - ответственность
+      - владение
+
+  - id: mode.engineering-shape.core
+    title: Separate reusable core logic
+    description: Isolate a stable rule or transformation from orchestration, loading, persistence, rendering, and transport.
+    kind: mode
+    contract_level: executable
+    primary_parent: engineering.shape
+    owner: *engineering_owner
+    lifecycle: *internal_candidate
+    applicability:
+      use_when:
+        - A stable reusable rule is mixed with glue, orchestration, persistence, rendering, or infrastructure.
+      do_not_use_when:
+        - There is no repeated stable rule or the real problem is a concrete dependency seam.
+      ambiguous_when:
+        - The current representation may be incidental rather than the durable domain model.
+    abi:
+      inputs:
+        - name: rule-pressure
+          type: core-rule-pressure
+          required: true
+          description: Stable rule, repetition evidence, surrounding glue, and owner constraints.
+      outputs:
+        - name: core-boundary
+          type: core-logic-boundary
+          required: true
+          description: Reusable rule center, edge responsibilities, compatibility projection, and migration edge.
+    binding:
+      kind: mode
+      ref: skills/core/engineering/aoa-engineering-shape/SKILL.md
+      operation: core
+      availability: available
+    execution: *shape_execution
+    trust: *authored_trust
+    provenance:
+      source_refs:
+        - repo: aoa-skills
+          path: skills/core/engineering/aoa-engineering-shape/SKILL.md
+          ref: capability-family-v0.1.0
+          role: core-mode
+          authority: authored
+      optional_refs: []
+    aliases:
+      - name: aoa-core-logic-boundary
+        state: migration-only
+        remove_after: engineering-shape-runtime-parity
+    keywords:
+      - core-logic
+      - reusable-rule
+      - orchestration
+      - glue
+      - ядро
+      - правило
+      - переиспользование
+      - оркестрация
+      - доменная-логика
+      - загрузка
+      - рендер
+      - отделить
+
+  - id: mode.engineering-shape.port-adapter
+    title: Shape a port and adapter boundary
+    description: Move a concrete infrastructure dependency behind a purpose-shaped consumer port with explicit errors and limits.
+    kind: mode
+    contract_level: executable
+    primary_parent: engineering.shape
+    owner: *engineering_owner
+    lifecycle: *internal_candidate
+    applicability:
+      use_when:
+        - A database, API, filesystem, CLI, provider, or other concrete dependency leaks into stable logic.
+      do_not_use_when:
+        - No consumer needs a stable seam or the change is only implementation cleanup.
+      ambiguous_when:
+        - Policy selection may belong at the composition root rather than in either port or adapter.
+    abi:
+      inputs:
+        - name: dependency-pressure
+          type: dependency-boundary-pressure
+          required: true
+          description: Consumer need, leaking implementation, error posture, limits, and owner constraints.
+      outputs:
+        - name: port-adapter-boundary
+          type: port-adapter-boundary
+          required: true
+          description: Purpose-shaped port, adapter responsibilities, failure behavior, and parity checks.
+    binding:
+      kind: mode
+      ref: skills/core/engineering/aoa-engineering-shape/SKILL.md
+      operation: port-adapter
+      availability: available
+    execution: *shape_execution
+    trust: *authored_trust
+    provenance:
+      source_refs:
+        - repo: aoa-skills
+          path: skills/core/engineering/aoa-engineering-shape/SKILL.md
+          ref: capability-family-v0.1.0
+          role: port-adapter-mode
+          authority: authored
+      optional_refs: []
+    aliases:
+      - name: aoa-port-adapter-refactor
+        state: migration-only
+        remove_after: engineering-shape-runtime-parity
+    keywords:
+      - port-adapter
+      - dependency
+      - database
+      - api
+      - filesystem
+      - provider
+      - порт
+      - адаптер
+      - зависимость
+      - провайдер
+
+  - id: engineering.verification
+    title: Verify a stable technical truth
+    description: Choose contract, coverage-audit, or property evidence only after owner meaning and manual cases are known.
+    kind: capability
+    contract_level: navigation
+    primary_parent: engineering
+    owner: *engineering_owner
+    lifecycle: *candidate_family
+    keywords:
+      - verification
+      - invariant
+      - contract
+      - coverage
+      - property
+      - проверка
+      - инвариант
+      - контракт
+      - покрытие
+      - свойство
+
+  - id: skill.aoa-verification
+    title: aoa-verification family bundle
+    description: Turn one stable technical truth into bounded evidence through contract, coverage-audit, or property mode. Use when a named consumer boundary, an important invariant's real coverage, or a generative system property must be made reviewable. Do not use when behavior is undefined, the task is a general test plan, or green checks are being requested as whole-system proof.
+    kind: skill
+    contract_level: executable
+    primary_parent: engineering.verification
+    owner: *engineering_owner
+    lifecycle:
+      state: candidate
+      version: 0.1.0
+      visibility: deferred
+      evidence_state: evaluated
+      health: degraded
+    applicability:
+      use_when:
+        - A stable consumer boundary, important invariant, or property across many inputs needs bounded evidence.
+      do_not_use_when:
+        - Behavior or ownership is undefined, the change is private, or a green check is being requested as whole-system proof.
+      ambiguous_when:
+        - The check form is unclear; reconstruct manual expected, rejected, and motivating failure cases first.
+    abi:
+      inputs:
+        - name: verification-request
+          type: verification-request
+          required: true
+          description: Owner rule, target seam or invariant, manual evidence, current checks, and available oracle.
+      outputs:
+        - name: verification-result
+          type: bounded-verification-result
+          required: true
+          description: One mode result with evidence, gaps, durable-check decision, claim limit, and stop line.
+    binding:
+      kind: skill
+      ref: skills/core/engineering/aoa-verification/SKILL.md
+      operation: route-one-mode
+      availability: available
+    execution: &verification_execution
+      freedom: bounded-judgment
+      tool_requirements:
+        - Read access to owner meaning, current checks, and relevant manual evidence.
+      verification:
+        - Confirm owner rule, manual cases, oracle, selected mode, and the motivating failure a proposed check catches.
+        - State what green evidence cannot prove and remove session-only probes after learning.
+      termination:
+        - Stop after the smallest bounded evidence package or an explicit no-check decision.
+        - Stop as blocked when the owner rule, consumer, recurrence, or oracle is missing.
+      effects:
+        - none
+      reversibility: not-applicable
+      failure_modes:
+        - Automating an undefined or incidental behavior.
+        - Using self-fulfilling checks or status green to hide unresolved manual failures.
+    trust: *authored_trust
+    provenance:
+      source_refs:
+        - repo: aoa-skills
+          path: skills/core/engineering/aoa-verification/SKILL.md
+          ref: capability-family-v0.1.0
+          role: portable-family-procedure
+          authority: authored
+      optional_refs: []
+    keywords:
+      - contract-test
+      - invariant-coverage
+      - property-test
+      - manual-first
+      - контракт
+      - инвариант
+      - покрытие
+      - свойство
+      - ручная-проверка
+
+  - id: mode.verification.contract
+    title: Specify a boundary contract
+    description: Make one stable producer-consumer ABI, failure posture, compatibility window, and evidence limit explicit.
+    kind: mode
+    contract_level: executable
+    primary_parent: engineering.verification
+    owner: *engineering_owner
+    lifecycle: *internal_candidate
+    applicability:
+      use_when:
+        - A named consumer relies on a stable interface, schema, receipt, tool result, generated projection, or handoff.
+      do_not_use_when:
+        - No consumer-visible seam exists or the ABI meaning is still unknown.
+      ambiguous_when:
+        - Existing examples mention the seam but may not constrain the stable consumer assumption.
+    abi:
+      inputs:
+        - name: boundary-evidence
+          type: contract-boundary-evidence
+          required: true
+          description: Producer, named consumer, owner rule, material ABI, and manual expected/rejected cases.
+        - name: shaped-boundary
+          type: port-adapter-boundary
+          required: false
+          description: Optional upstream port-adapter result adopted by the owner as part of this contract boundary.
+        - name: decision-context
+          type: decision-match-list
+          required: false
+          description: Optional verified prior rationale that constrains the boundary without becoming contract authority.
+      outputs:
+        - name: contract-package
+          type: contract-package
+          required: true
+          description: Inputs, outputs, errors, effects, compatibility, durable-check decision, and claim limit.
+    binding:
+      kind: mode
+      ref: skills/core/engineering/aoa-verification/SKILL.md
+      operation: contract
+      availability: available
+    execution: *verification_execution
+    trust: *authored_trust
+    provenance:
+      source_refs:
+        - repo: aoa-skills
+          path: skills/core/engineering/aoa-verification/SKILL.md
+          ref: capability-family-v0.1.0
+          role: contract-mode
+          authority: authored
+      optional_refs: []
+    aliases:
+      - name: aoa-contract-test
+        state: migration-only
+        remove_after: verification-family-runtime-parity
+    keywords:
+      - producer-consumer
+      - interface
+      - schema
+      - handoff
+      - compatibility
+      - контракт
+      - производитель
+      - потребитель
+      - интерфейс
+      - схема
+
+  - id: mode.verification.coverage-audit
+    title: Audit invariant coverage
+    description: Determine which stable invariants existing checks actually constrain and expose the smallest false-confidence gaps.
+    kind: mode
+    contract_level: executable
+    primary_parent: engineering.verification
+    owner: *engineering_owner
+    lifecycle: *internal_candidate
+    applicability:
+      use_when:
+        - Checks already exist and the question is which important stable truths would actually fail if broken.
+      do_not_use_when:
+        - The invariant is unknown, the request is a generic test plan, or the request is only line or branch coverage.
+      ambiguous_when:
+        - A check may constrain the invariant only indirectly through a brittle example.
+    abi:
+      inputs:
+        - name: coverage-evidence
+          type: invariant-coverage-evidence
+          required: true
+          description: Owner invariants, current checks, execution paths, manual cases, and known gaps.
+      outputs:
+        - name: coverage-audit
+          type: invariant-coverage-audit
+          required: true
+          description: Direct, indirect, example-only, absent, and false-confidence mappings with smallest gaps.
+    binding:
+      kind: mode
+      ref: skills/core/engineering/aoa-verification/SKILL.md
+      operation: coverage-audit
+      availability: available
+    execution: *verification_execution
+    trust: *authored_trust
+    provenance:
+      source_refs:
+        - repo: aoa-skills
+          path: skills/core/engineering/aoa-verification/SKILL.md
+          ref: capability-family-v0.1.0
+          role: coverage-audit-mode
+          authority: authored
+      optional_refs: []
+    aliases:
+      - name: aoa-invariant-coverage-audit
+        state: migration-only
+        remove_after: verification-family-runtime-parity
+    keywords:
+      - invariant-coverage
+      - false-confidence
+      - test-gap
+      - audit
+      - инвариант
+      - покрытие
+      - пробел
+      - аудит
+      - тесты
+      - ложная-уверенность
+      - защищают
+
+  - id: mode.verification.property
+    title: Verify a generative property
+    description: Define a semantic property, input domain, oracle, and shrinking path for truths that must hold across many states.
+    kind: mode
+    contract_level: executable
+    primary_parent: engineering.verification
+    owner: *engineering_owner
+    lifecycle: *internal_candidate
+    applicability:
+      use_when:
+        - Correctness depends on idempotence, monotonicity, conservation, round-trip behavior, or another truth across many inputs or states.
+      do_not_use_when:
+        - A bounded example or consumer contract is sufficient or no independent oracle exists.
+      ambiguous_when:
+        - Random volume may be masking a weak self-fulfilling oracle.
+    abi:
+      inputs:
+        - name: property-evidence
+          type: property-invariant-evidence
+          required: true
+          description: Stable property, domain, preconditions, independent oracle, and known/manual counterexamples.
+        - name: core-boundary
+          type: core-logic-boundary
+          required: false
+          description: Optional upstream core-boundary result whose adopted rule exposes the property.
+      outputs:
+        - name: property-package
+          type: property-verification-package
+          required: true
+          description: Property, generator, oracle, shrink path, durable-check decision, and claim limit.
+    binding:
+      kind: mode
+      ref: skills/core/engineering/aoa-verification/SKILL.md
+      operation: property
+      availability: available
+    execution: *verification_execution
+    trust: *authored_trust
+    provenance:
+      source_refs:
+        - repo: aoa-skills
+          path: skills/core/engineering/aoa-verification/SKILL.md
+          ref: capability-family-v0.1.0
+          role: property-mode
+          authority: authored
+      optional_refs: []
+    aliases:
+      - name: aoa-property-invariants
+        state: migration-only
+        remove_after: verification-family-runtime-parity
+    keywords:
+      - property-based
+      - idempotence
+      - monotonicity
+      - round-trip
+      - oracle
+      - свойство
+      - идемпотентность
+      - монотонность
+      - оракул
+relations:
+  - kind: implemented-by
+    source: engineering.shape
+    target: skill.aoa-engineering-shape
+  - kind: implemented-by
+    source: engineering.verification
+    target: skill.aoa-verification
+  - kind: composes-with
+    source: mode.engineering-shape.port-adapter
+    target: mode.verification.contract
+    condition: The new port is adopted as a stable consumer-visible boundary.
+  - kind: composes-with
+    source: mode.engineering-shape.core
+    target: mode.verification.property
+    condition: The extracted core exposes a stable semantic property across inputs.

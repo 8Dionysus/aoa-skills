@@ -1,33 +1,9 @@
-# Epistemic Candidate Boundary
+# Epistemic Capability Candidates
 
-This part keeps epistemic Agon workflow pressure candidate-only at the
-`aoa-skills` layer.
+This part preserves nine requested-only epistemic workflow/capability
+candidates. Every item has `live_protocol: false`, candidate-only effects, and
+explicit prohibitions against verdict, scar, retention, rank, trust, KAG, ToS,
+hidden scheduling, or doctrine mutation.
 
-## Purpose
-
-Skills may later draft bounded packets, review bundles, or execution checklists
-around epistemic Agon pressure. They do not decide truth, write memory, mutate
-agent standing, activate live sessions, or promote a candidate into protocol.
-
-## Inputs
-
-- `mechanics/agon/parts/epistemic-candidate-boundary/config/agon_epistemic_skill_candidates.seed.json`
-- `mechanics/agon/parts/epistemic-candidate-boundary/schemas/`
-- `mechanics/agon/parts/epistemic-candidate-boundary/examples/`
-- `generated/agon_epistemic_skill_candidates.min.json`
-- reviewed practice evidence from the stronger owner route
-
-## Outputs
-
-- requested-only epistemic skill candidates
-- bounded workflow notes for later review
-- validation route for candidate shape
-
-No output here is a live protocol, proof verdict, memory write, or skill
-promotion.
-
-## Validation
-
-Use [parts/AGENTS](../AGENTS.md#validation) and the package [AGENTS](../../AGENTS.md#validation).
-This part requires the epistemic candidate boundary build check, validator, and
-part-local test before package-level topology checks.
+The registry is input to later capability classification. It is not a skill
+catalog and does not activate or promote an object.

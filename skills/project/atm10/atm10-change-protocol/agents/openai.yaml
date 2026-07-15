@@ -1,5 +1,0 @@
-policy:
-  allow_implicit_invocation: false
-  implicit_activation_policy: manual
-notes:
-- This thin ATM10 overlay stays manual-only; use it only when an explicit ATM10 handle or deliberate manual route decision needs repo-relative paths, route cards, checks, recovery anchors, and approval notes.

@@ -1,0 +1,13 @@
+policy:
+  allow_implicit_invocation: false
+  implicit_activation_policy: suggest
+notes:
+- Select diagnose or propose-repair, never both for the same target in one step.
+- This family proposes no owner mutation and has no session-memory dependency.
+interface:
+  display_name: AoA Session Recovery
+  short_description: Diagnose drift and propose reversible repair
+  default_prompt: Use $aoa-session-recovery to choose diagnose or propose-repair for reviewed recurring evidence, without mutating the target owner.
+  icon_small: ./assets/small-logo.svg
+  icon_large: ./assets/large-logo.svg
+  brand_color: '#2563EB'

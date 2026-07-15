@@ -1,6 +1,5 @@
-# Workflow Candidate Bridge Config
+# Workflow Candidate Source
 
-Seed inputs for requested-only Agon skill binding candidates.
-
-This config feeds `generated/agon_skill_binding_candidates.min.json` through
-`mechanics/agon/parts/workflow-candidate-bridge/scripts/build_agon_skill_binding_candidates.py`.
+`agon_capability_binding_candidates.seed.json` is the authored requested-only
+source. The builder derives `generated/agon_capability_binding_candidates.min.json`.
+Edit the source, never the projection.

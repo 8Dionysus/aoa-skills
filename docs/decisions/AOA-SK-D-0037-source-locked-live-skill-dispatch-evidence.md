@@ -1,7 +1,7 @@
 # Source-Locked Live Skill Dispatch Evidence
 
 - Decision ID: AOA-SK-D-0037
-- Status: Accepted
+- Status: Superseded by AOA-SK-D-0039
 - Date: 2026-07-11
 - Owner surface: `evals/runners/run_live_skill_dispatch.py`,
   `evals/suites/aoa-skill-live-dispatch.plan.json`, and the related schemas
@@ -13,7 +13,7 @@
 - Skill lanes: none
 - Mechanic parents: none
 - Guard families: evaluation/public surface, export/runtime, release/tooling
-- Posture: accepted source-locked live evidence route
+- Posture: superseded 57-skill evidence route; see AOA-SK-D-0039
 
 ## Context
 

@@ -1,0 +1,6 @@
+policy:
+  allow_implicit_invocation: false
+  implicit_activation_policy: suggest
+notes:
+- Select exactly one contexts, core, or port-adapter mode.
+- Do not load the three legacy shaping bundles after mode selection.

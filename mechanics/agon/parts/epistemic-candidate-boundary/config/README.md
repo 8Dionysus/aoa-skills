@@ -1,6 +1,5 @@
-# Epistemic Candidate Boundary Config
+# Epistemic Candidate Source
 
-Seed inputs for requested-only epistemic skill candidates.
-
-This config feeds `generated/agon_epistemic_skill_candidates.min.json` through
-`mechanics/agon/parts/epistemic-candidate-boundary/scripts/build_agon_epistemic_skill_candidates.py`.
+`agon_epistemic_capability_candidates.seed.json` is the authored requested-only
+source. Its builder derives
+`generated/agon_epistemic_capability_candidates.min.json`.

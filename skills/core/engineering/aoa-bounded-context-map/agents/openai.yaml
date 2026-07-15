@@ -1,6 +1,0 @@
-policy:
-  allow_implicit_invocation: true
-  implicit_activation_policy: invoke
-notes:
-- Implicit invocation is currently allowed for bounded context, responsibility, interface-mapping, and multi-layer scoping prompts.
-- Keep tiny local edits, already-clear contract validation, exhaustive lens checklists, and broad architecture-program requests routed away from this skill.

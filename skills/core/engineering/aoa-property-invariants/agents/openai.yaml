@@ -1,6 +1,0 @@
-policy:
-  allow_implicit_invocation: true
-  implicit_activation_policy: invoke
-notes:
-- Implicit invocation is currently allowed for bounded invariant-authoring prompts with a known stable truth and reviewable variation space.
-- Keep coverage audits, boundary contracts, presentation snapshots, and unbounded generator experiments routed away from this skill.

@@ -1,1 +1,0 @@
-"""Receipt publishing script organ."""

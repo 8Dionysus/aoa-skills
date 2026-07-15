@@ -1,5 +1,0 @@
-policy:
-  allow_implicit_invocation: false
-  implicit_activation_policy: manual
-notes:
-- This skill is explicit-only because crossing a local commit boundary requires visible operator intent and `authorized_now` posture before any mutating commit step begins.

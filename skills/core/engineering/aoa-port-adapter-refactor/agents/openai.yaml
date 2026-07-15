@@ -1,6 +1,0 @@
-policy:
-  allow_implicit_invocation: true
-  implicit_activation_policy: invoke
-notes:
-- Implicit invocation is currently allowed for bounded dependency-seam refactors when the broader context boundary is already clear.
-- Keep first-pass context mapping, core-versus-edge analysis, and consumer-visible contract validation routed to their narrower owner skills.

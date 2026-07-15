@@ -9,11 +9,11 @@
 - Skill lanes: core/engineering, core/session-growth, risk, project
 - Mechanic parents: none
 - Guard families: source topology
-- Posture: accepted skill source topology
+- Posture: superseded active topology; see AOA-SK-D-0039
 
 Date: 2026-05-06
 
-Status: accepted
+Status: superseded by AOA-SK-D-0039
 
 ## Context
 

@@ -1,0 +1,6 @@
+policy:
+  allow_implicit_invocation: false
+  implicit_activation_policy: suggest
+notes:
+- Select exactly one contract, coverage-audit, or property mode.
+- Manual evidence is primary; durable automation follows only a stable repeated invariant.

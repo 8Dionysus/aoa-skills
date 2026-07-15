@@ -2,5 +2,5 @@ policy:
   allow_implicit_invocation: true
   implicit_activation_policy: invoke
 notes:
-- This router may be invoked implicitly for clear decision-lane work.
-- After classification, the router must fully read exactly one selected subskill before that child performs graph lookup or a write; root-only execution is incomplete.
+- This family may be invoked implicitly for clear decision-lane work.
+- Select exactly one internal find, record, or correct mode. Legacy child names are migration aliases and must not be loaded after mode selection.

@@ -112,7 +112,7 @@ def load_resolved_profile(repo_root: Path, profile_name: str) -> Mapping[str, An
     resolved_profiles = load_resolved_profiles(repo_root)
     profile = resolved_profiles.get("profiles", {}).get(profile_name)
     if not isinstance(profile, Mapping):
-        raise KeyError(profile_name)
+        raise ValueError(f"unknown profile: {profile_name}")
     return profile
 
 
@@ -685,7 +685,10 @@ def load_skill_pack_source(
                 "relative_dir": f"{BUNDLE_SKILL_ROOT}/{skill_name}",
                 "source_dir": str(resolved_export_root / skill_name),
                 "skill_revision": revision_entry["skill_revision"],
-                "content_hash": revision_entry["content_hash"],
+                # Staged packs contain the portable export, not the richer owner
+                # source bundle.  Bind the handoff to the bytes that are actually
+                # copied and verified.
+                "content_hash": revision_entry["portable_hash"],
                 "expected_files": None,
             }
         )
@@ -1005,8 +1008,6 @@ def build_verification_report(
                 "release_identity": dict(source["release_identity"]),
                 "skills": skills,
             }
-    except KeyError:
-        raise SystemExit(f"unknown profile: {profile_name}")
     except ValueError as exc:
         raise SystemExit(str(exc))
 

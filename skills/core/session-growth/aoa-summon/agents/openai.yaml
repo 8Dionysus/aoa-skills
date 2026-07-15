@@ -1,8 +1,0 @@
-policy:
-  allow_implicit_invocation: false
-  implicit_activation_policy: manual
-notes:
-- Keep this skill explicit-only because child-route delegation must stay visible, anchored, and reviewable.
-- Prefer local coding-agent child execution unless a separate reviewed execution surface is genuinely required.
-- If several next routes still compete, use aoa-session-route-forks before any summon gate.
-- Do not let remote transport bypass passport, checkpoint, return, or closeout law.

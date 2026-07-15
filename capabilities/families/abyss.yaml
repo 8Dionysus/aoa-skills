@@ -1,0 +1,440 @@
+schema_version: aoa-capability-family-v1
+family_id: projects-abyss-diagnostics
+title: Abyss diagnostics adapter
+description: Owner-routed diagnostic tool and review adapter for the Abyss runtime family.
+owner:
+  repo: abyss-stack
+  surface: mechanics/diagnostic-spine/README.md
+  authority: external-authority
+nodes:
+  - id: projects.abyss
+    title: Abyss
+    description: Owner-routed capabilities implemented by the Abyss repository and runtime family.
+    kind: capability
+    contract_level: navigation
+    primary_parent: projects
+    owner:
+      repo: abyss-stack
+      surface: mechanics/diagnostic-spine/README.md
+      authority: external-authority
+    lifecycle:
+      state: candidate
+      version: 0.1.0
+      visibility: deferred
+      evidence_state: manual-baseline
+      health: challenger
+  - id: projects.abyss.diagnose-runtime
+    title: Diagnose Abyss runtime state
+    description: Produce an owner-typed runtime diagnosis packet and review it without claiming repair authority.
+    kind: capability
+    contract_level: navigation
+    primary_parent: projects.abyss
+    owner:
+      repo: abyss-stack
+      surface: mechanics/diagnostic-spine/parts/diagnostic-surfaces/docs/DIAGNOSTIC_SPINE.md
+      authority: external-authority
+    lifecycle:
+      state: candidate
+      version: 0.1.0
+      visibility: deferred
+      evidence_state: manual-baseline
+      health: challenger
+    keywords:
+      - diagnostic-session-v1
+      - runtime-read-model
+      - abyss
+      - диагностика
+      - диагностировать
+      - рантайм
+      - пакет
+      - отчет
+  - id: tool.abyss.aoa-diagnose
+    title: aoa-diagnose
+    description: Invoke the owner CLI in its read-only stdout posture to produce a diagnostic_session_v1 packet.
+    kind: tool
+    contract_level: executable
+    primary_parent: projects.abyss.diagnose-runtime
+    owner:
+      repo: abyss-stack
+      surface: scripts/aoa-diagnose
+      authority: external-authority
+    lifecycle:
+      state: active
+      version: 0.1.0
+      visibility: internal
+      evidence_state: owner-verified
+      health: healthy
+    applicability:
+      use_when:
+        - Current Abyss runtime posture must be emitted through the owner diagnostic interface.
+      do_not_use_when:
+        - The request is to mutate, repair, restart, or approve runtime state.
+      ambiguous_when:
+        - A stale stored packet may be sufficient; verify freshness intent before invoking a new probe.
+    abi:
+      inputs:
+        - name: diagnostic-target
+          type: abyss-diagnostic-target
+          required: true
+          description: Owner-supported preset/profile and truth goal.
+      outputs:
+        - name: diagnostic-session
+          type: diagnostic-session-v1
+          required: true
+          description: Owner-produced typed runtime diagnosis packet.
+    binding:
+      kind: tool
+      ref: abyss-stack:scripts/aoa-diagnose
+      operation: stdout-readonly
+      availability: external
+    execution:
+      freedom: deterministic
+      tool_requirements:
+        - Local abyss-stack checkout or deployed owner CLI.
+      verification:
+        - Validate output against the owner diagnostic_session schema and record the owner source ref.
+      termination:
+        - Stop after one bounded packet or explicit owner-tool failure.
+      effects:
+        - read-only
+      reversibility: not-applicable
+      failure_modes:
+        - Treating the diagnostic packet as repair authority.
+        - Reusing stale output without naming freshness.
+    trust:
+      public_safe: true
+      requires_human_approval: false
+      posture: owner-routed
+    provenance:
+      source_refs:
+        - repo: abyss-stack
+          path: scripts/aoa-diagnose
+          ref: b85b9530e2803d79a3a103898826af915da9dbca
+          role: owner-tool
+          authority: external-authority
+        - repo: abyss-stack
+          path: mechanics/diagnostic-spine/parts/diagnostic-surfaces/schemas/diagnostic_session.schema.json
+          ref: b85b9530e2803d79a3a103898826af915da9dbca
+          role: output-schema
+          authority: external-authority
+      optional_refs: []
+  - id: adapter.abyss.diagnostic-review
+    title: Abyss diagnostic review adapter
+    description: Bind the typed owner packet to a bounded review and owner handoff without duplicating diagnostic production.
+    kind: adapter
+    contract_level: executable
+    primary_parent: projects.abyss.diagnose-runtime
+    owner:
+      repo: abyss-stack
+      surface: mechanics/diagnostic-spine/parts/diagnostic-surfaces/docs/DIAGNOSTIC_SPINE.md
+      authority: external-authority
+    lifecycle:
+      state: candidate
+      version: 0.1.0
+      visibility: deferred
+      evidence_state: manual-baseline
+      health: challenger
+    applicability:
+      use_when:
+        - An owner-produced diagnostic_session_v1 needs boundary, freshness, and next-owner review.
+      do_not_use_when:
+        - The packet has not been produced or the request is to repair runtime state.
+      ambiguous_when:
+        - A consumer admission decision needs a stronger artifact-trust contract rather than diagnostic review.
+    abi:
+      inputs:
+        - name: diagnostic-session
+          type: diagnostic-session-v1
+          required: true
+          description: Owner-produced diagnostic packet.
+      outputs:
+        - name: diagnostic-review
+          type: owner-route-review
+          required: true
+          description: Boundary defects, freshness posture, and bounded next owner route.
+    binding:
+      kind: adapter
+      ref: abyss-stack:mechanics/diagnostic-spine/parts/diagnostic-surfaces/docs/DIAGNOSTIC_SPINE.md
+      operation: review
+      availability: external
+    execution:
+      freedom: bounded-judgment
+      tool_requirements:
+        - Read access to the packet, schema, and current owner route.
+      verification:
+        - Confirm every claim points to a packet field or owner source and no repair effect is implied.
+      termination:
+        - Stop after one review and owner handoff.
+      effects:
+        - read-only
+      reversibility: not-applicable
+      failure_modes:
+        - Reimplementing owner diagnostic production in the adapter.
+        - Treating a derived packet as runtime authority.
+    trust:
+      public_safe: true
+      requires_human_approval: false
+      posture: owner-routed
+    provenance:
+      source_refs:
+        - repo: abyss-stack
+          path: mechanics/diagnostic-spine/parts/diagnostic-surfaces/docs/DIAGNOSTIC_SPINE.md
+          ref: b85b9530e2803d79a3a103898826af915da9dbca
+          role: owner-contract
+          authority: external-authority
+      optional_refs: []
+  - id: adapter.abyss.safe-infra-change
+    title: Abyss infrastructure-change route adapter
+    description: Resolve an Abyss infrastructure request to the exact owner route, authority, preview, rollback, and verification contract without acquiring mutation authority.
+    kind: adapter
+    contract_level: executable
+    primary_parent: projects.abyss
+    owner:
+      repo: abyss-stack
+      surface: docs/routes/START_HERE_ROUTE_CONTRACT.md
+      authority: external-authority
+    lifecycle:
+      state: active
+      version: 0.1.0
+      visibility: deferred
+      evidence_state: owner-verified
+      health: healthy
+    applicability:
+      use_when:
+        - An Abyss runtime, service, configuration, or deployment change needs its real owner route and effect contract before execution.
+      do_not_use_when:
+        - The request is ordinary source editing, the concrete target owner is already bound, or the user asks this adapter to mutate live state.
+      ambiguous_when:
+        - A source configuration edit may project into a stronger host or deployed-runtime owner.
+    abi:
+      inputs:
+        - name: abyss-change-request
+          type: owner-scoped-change-request
+          required: true
+          description: Desired change, candidate surface, effect class, current evidence, and known authorization.
+      outputs:
+        - name: abyss-infrastructure-contract
+          type: owner-infrastructure-change-contract
+          required: true
+          description: Exact owner route, authority, current-state probe, preview, checkpoint, rollback, health check, and stop line, or an explicit unbound result.
+    binding:
+      kind: adapter
+      ref: abyss-stack:docs/routes/START_HERE_ROUTE_CONTRACT.md
+      operation: resolve-runtime-owner-contract
+      availability: external
+    execution:
+      freedom: bounded-judgment
+      tool_requirements:
+        - Read access to the current abyss-stack route contract, nearest owner card, and target state when authorized.
+      verification:
+        - Confirm every proposed effect is owned by the named source, runtime, host, or sibling surface and that rollback evidence exists before handoff.
+        - Leave the result unbound when the owner does not publish a truthful preview, mutation, or recovery route.
+      termination:
+        - Stop after one owner-bound contract or an explicit authority or rollback blocker; do not perform the mutation.
+      effects:
+        - read-only
+      reversibility: not-applicable
+      failure_modes:
+        - Treating the deployed runtime checkout as the source owner.
+        - Turning a generic safety checklist into permission to mutate a host or sibling-owned surface.
+    trust:
+      public_safe: true
+      requires_human_approval: false
+      posture: owner-routed
+    provenance:
+      source_refs:
+        - repo: abyss-stack
+          path: docs/routes/START_HERE_ROUTE_CONTRACT.md
+          ref: b85b9530e2803d79a3a103898826af915da9dbca
+          role: owner-route-contract
+          authority: external-authority
+        - repo: abyss-stack
+          path: CONTRIBUTING.md
+          ref: b85b9530e2803d79a3a103898826af915da9dbca
+          role: reversibility-and-public-safety-boundary
+          authority: external-authority
+      optional_refs: []
+    keywords:
+      - abyss-infrastructure
+      - runtime-change
+      - rollback
+      - owner-route
+      - инфраструктура
+      - конфигурация
+      - откат
+      - владелец
+  - id: adapter.abyss.sanitized-share
+    title: Abyss sanitized-share route adapter
+    description: Apply the current Abyss repository disclosure boundary to a sanitized derivative while leaving publication and raw-evidence custody with their owners.
+    kind: adapter
+    contract_level: executable
+    primary_parent: projects.abyss
+    owner:
+      repo: abyss-stack
+      surface: SECURITY.md
+      authority: external-authority
+    lifecycle:
+      state: active
+      version: 0.1.0
+      visibility: deferred
+      evidence_state: owner-verified
+      health: healthy
+    applicability:
+      use_when:
+        - Raw Abyss logs, configuration, diagnostics, or incident material needs an owner-specific disclosure threshold before wider sharing.
+      do_not_use_when:
+        - The material is already public source, raw owner-local evidence must be preserved privately, or publication authorization is being requested.
+      ambiguous_when:
+        - Removing a host or runtime detail may also erase the mechanism needed for an actionable technical lesson.
+    abi:
+      inputs:
+        - name: sanitized-derivative
+          type: sanitized-technical-derivative
+          required: true
+          description: Proposed derivative, raw custody owner, named audience, destination, and redaction rationale.
+      outputs:
+        - name: abyss-disclosure-review
+          type: owner-route-review
+          required: true
+          description: Owner-specific disclosure defects, remaining sensitive classes, destination route, and publish-or-hold handoff.
+    binding:
+      kind: adapter
+      ref: abyss-stack:SECURITY.md
+      operation: review-public-safety-boundary
+      availability: external
+    execution:
+      freedom: bounded-judgment
+      tool_requirements:
+        - Read access to the raw material, proposed derivative, and current owner security and contribution boundaries.
+      verification:
+        - Manually compare raw and derivative material for secrets, private paths, infrastructure identifiers, rendered configuration, and sensitive logs.
+        - Confirm that a public-safe review is not represented as publication approval.
+      termination:
+        - Stop with a bounded disclosure review and owner handoff; retain raw evidence only in its existing private custody.
+      effects:
+        - read-only
+      reversibility: not-applicable
+      failure_modes:
+        - Publishing because no obvious credential was found.
+        - Moving raw evidence into the sanitized destination or making the derivative canonical for runtime truth.
+    trust:
+      public_safe: true
+      requires_human_approval: false
+      posture: owner-routed
+    provenance:
+      source_refs:
+        - repo: abyss-stack
+          path: SECURITY.md
+          ref: b85b9530e2803d79a3a103898826af915da9dbca
+          role: disclosure-boundary
+          authority: external-authority
+        - repo: abyss-stack
+          path: CONTRIBUTING.md
+          ref: b85b9530e2803d79a3a103898826af915da9dbca
+          role: public-contribution-boundary
+          authority: external-authority
+      optional_refs: []
+    keywords:
+      - sanitized-share
+      - public-safe
+      - private-logs
+      - disclosure
+      - обезличить
+      - приватность
+      - логи
+      - публикация
+  - id: adapter.abyss.artifact-trust
+    title: OS Abyss artifact-admission adapter
+    description: Read the abyss-machine artifact policy and durable registry verdict, then route production or repair to the artifact owner without creating a second trust authority.
+    kind: adapter
+    contract_level: executable
+    primary_parent: projects.abyss
+    owner:
+      repo: abyss-machine
+      surface: manifests/artifact_signature_policy.manifest.json
+      authority: external-authority
+    lifecycle:
+      state: active
+      version: 0.1.0
+      visibility: deferred
+      evidence_state: owner-verified
+      health: healthy
+    applicability:
+      use_when:
+        - Artifact class, provenance, producer profile, drift, durable registry evidence, or consumer trust-gate verdict controls OS Abyss consumption.
+      do_not_use_when:
+        - The task is an ordinary source edit or requests signing, promotion, registry repair, trust-root change, or privileged mutation through this adapter.
+      ambiguous_when:
+        - A present artifact may not have current owner evidence for the requested consumer intent and source ref.
+    abi:
+      inputs:
+        - name: artifact-admission-request
+          type: artifact-consumer-request
+          required: true
+          description: Artifact or class, consumer intent, source owner and ref, digest when known, and requested use.
+      outputs:
+        - name: artifact-admission-review
+          type: artifact-trust-gate-review
+          required: true
+          description: Resolved class, requirements, producer route, freshness and registry posture, exact allow, warn, deny, or manual-review verdict, and next owner.
+    binding:
+      kind: adapter
+      ref: abyss-machine:artifacts
+      operation: requirements-producer-profiles-affected-registry-latest-trust-gate
+      availability: external
+    execution:
+      freedom: bounded-judgment
+      tool_requirements:
+        - Current abyss-machine artifact policy plus its read-only artifact CLI or equivalent typed read model.
+      verification:
+        - Preserve the exact trust-gate verdict and source context; warn is not green and missing class or durable evidence does not become allow.
+        - Confirm all production, signing, promotion, update, and repair commands route back to their published owner contracts.
+      termination:
+        - Stop after one admission review or explicit unavailable or manual-review result; do not mutate evidence or registry state.
+      effects:
+        - read-only
+      reversibility: not-applicable
+      failure_modes:
+        - Treating source policy or disk presence as a current durable registry verdict.
+        - Letting a read adapter build, sign, promote, repair, or override the host trust gate.
+    trust:
+      public_safe: true
+      requires_human_approval: false
+      posture: runtime-enforced
+    provenance:
+      source_refs:
+        - repo: abyss-machine
+          path: manifests/artifact_signature_policy.manifest.json
+          ref: 52252e4ef7d98361d99e29056e98fcba403a2d6d
+          role: artifact-policy-owner
+          authority: external-authority
+        - repo: abyss-machine
+          path: src/abyss_machine/artifact_bundles.py
+          ref: 52252e4ef7d98361d99e29056e98fcba403a2d6d
+          role: read-model-and-trust-gate-implementation
+          authority: external-authority
+      optional_refs: []
+    keywords:
+      - artifact-trust
+      - trust-gate
+      - provenance
+      - registry-latest
+      - sbom
+      - signature
+      - артефакт
+      - доверие
+      - подпись
+      - происхождение
+relations:
+  - kind: implemented-by
+    source: projects.abyss.diagnose-runtime
+    target: adapter.abyss.diagnostic-review
+  - kind: requires
+    source: adapter.abyss.diagnostic-review
+    target: tool.abyss.aoa-diagnose
+  - kind: adapted-by
+    source: workflow.operations.safe-infra-change
+    target: adapter.abyss.safe-infra-change
+  - kind: adapted-by
+    source: mode.knowledge.sanitized-share
+    target: adapter.abyss.sanitized-share

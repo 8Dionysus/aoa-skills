@@ -1,15 +1,12 @@
-# Config District
+# Configuration
 
-`config/` holds repo-wide source inputs for portable export, pack profiles,
-policy posture, project-core rings, runtime guardrails, trigger-eval policy,
-validation lane command sequences, and tiny-router bands.
+| File | Owns |
+| --- | --- |
+| `openai_skill_extensions.json` | optional OpenAI host metadata defaults |
+| `portable_skill_overrides.json` | explicit source-to-portable overrides |
+| `skill_pack_profiles.json` | default advertised pack and all-source research pack |
+| `skill_policy_matrix.json` | bundle visibility and invocation policy |
+| `validation_lanes.json` | executable command authority for repository checks |
 
-Mechanic-local seed configs belong under the owning mechanic package or part.
-For example, Agon candidate seeds live under `mechanics/agon/parts/*/config/`,
-while root `config/` keeps cross-skill export and activation policy inputs.
-
-## Owner Route
-
-Use [AGENTS](AGENTS.md) before editing. Check whether the config is repo-wide
-or mechanic-local, keep secrets and hidden allowlists out, and regenerate
-derived surfaces through the owning builder when source config changes.
+These files adapt authored capability and skill sources. They do not own skill
+meaning or outcome status, and they contain no runtime secrets.

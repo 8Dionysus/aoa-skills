@@ -10,7 +10,7 @@ from typing import Any, Iterable
 import yaml
 from jsonschema import Draft202012Validator
 
-from builders import build_catalog
+from skill_model import questbook_model
 from validation.validators.questbook_contract import QuestbookContract, load_contract
 
 
@@ -23,7 +23,7 @@ QUEST_CATALOG_PATH = CONTRACT.quest_catalog_path
 QUEST_DISPATCH_PATH = CONTRACT.quest_dispatch_path
 QUEST_CATALOG_EXAMPLE_PATH = CONTRACT.quest_catalog_example_path
 QUEST_DISPATCH_EXAMPLE_PATH = CONTRACT.quest_dispatch_example_path
-FOUNDATION_QUEST_IDS = build_catalog.FOUNDATION_QUEST_IDS
+FOUNDATION_QUEST_IDS = questbook_model.FOUNDATION_QUEST_IDS
 QUEST_IDS = FOUNDATION_QUEST_IDS
 QUESTBOOK_REQUIRED_INDEX_TOKENS = CONTRACT.required_index_tokens
 CLOSED_QUEST_STATES = set(CONTRACT.closed_states)
@@ -240,8 +240,8 @@ def discover_quest_paths(
     repo_root: Path,
     issues: list[ValidationIssue],
 ) -> tuple[list[str], dict[str, Path], list[str]]:
-    quest_ids = build_catalog.discover_quest_ids(repo_root)
-    duplicate_quest_paths = build_catalog.duplicate_quest_id_paths(repo_root)
+    quest_ids = questbook_model.discover_quest_ids(repo_root)
+    duplicate_quest_paths = questbook_model.duplicate_quest_id_paths(repo_root)
     for quest_id, paths in sorted(duplicate_quest_paths.items()):
         issues.append(
             ValidationIssue(
@@ -252,11 +252,11 @@ def discover_quest_paths(
         )
     if duplicate_quest_paths:
         quest_paths: dict[str, Path] = {}
-        for quest_path in build_catalog.discover_quest_paths(repo_root):
+        for quest_path in questbook_model.discover_quest_paths(repo_root):
             quest_paths.setdefault(quest_path.stem, quest_path)
     else:
-        quest_paths = build_catalog.discover_quest_path_map(repo_root)
-    missing_foundation_ids = build_catalog.missing_foundation_quest_ids(quest_ids)
+        quest_paths = questbook_model.discover_quest_path_map(repo_root)
+    missing_foundation_ids = questbook_model.missing_foundation_quest_ids(quest_ids)
     return quest_ids, quest_paths, missing_foundation_ids
 
 
@@ -300,23 +300,6 @@ def load_and_validate_quest_payloads(
             issues.append(
                 ValidationIssue(location, f"state must match quest path state '{path_state}'")
             )
-        if quest_id == "AOA-SK-Q-0004":
-            activation = payload.get("activation")
-            anchor_ref = payload.get("anchor_ref")
-            if not isinstance(activation, dict) or activation.get("ref") != "mechanics/boundary-bridge/docs/OVERLAY_SPEC.md":
-                issues.append(
-                    ValidationIssue(
-                        location,
-                        "AOA-SK-Q-0004 must keep activation.ref 'mechanics/boundary-bridge/docs/OVERLAY_SPEC.md'",
-                    )
-                )
-            if not isinstance(anchor_ref, dict) or anchor_ref.get("ref") != "mechanics/boundary-bridge/docs/OVERLAY_SPEC.md":
-                issues.append(
-                    ValidationIssue(
-                        location,
-                        "AOA-SK-Q-0004 must keep anchor_ref.ref 'mechanics/boundary-bridge/docs/OVERLAY_SPEC.md'",
-                    )
-                )
         for token in QUESTBOOK_FORBIDDEN_ANCHORS:
             if token in quest_path.read_text(encoding="utf-8"):
                 issues.append(ValidationIssue(location, f"must not mention '{token}'"))
@@ -369,7 +352,7 @@ def validate_catalog_surfaces(
     issues: list[ValidationIssue],
 ) -> None:
     try:
-        expected_catalog = build_catalog.build_quest_catalog_payload(
+        expected_catalog = questbook_model.build_quest_catalog_payload(
             repo_root,
             payloads=state.quest_payloads,
         )
@@ -456,7 +439,7 @@ def validate_dispatch_surfaces(
     issues: list[ValidationIssue],
 ) -> None:
     try:
-        expected_dispatch = build_catalog.build_quest_dispatch_payload(
+        expected_dispatch = questbook_model.build_quest_dispatch_payload(
             repo_root,
             payloads=state.quest_payloads,
         )

@@ -1,5 +1,0 @@
-policy:
-  allow_implicit_invocation: false
-  implicit_activation_policy: manual
-notes:
-- This scaffold overlay stays manual-only; use it only after an explicit handle or deliberate manual route decision, and do not surface it as a silent semantic-match candidate.

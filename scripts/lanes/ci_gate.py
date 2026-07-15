@@ -19,14 +19,16 @@ from lanes import validation_lanes
 
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
-CATALOG_GENERATED_GROUPS = ("reader", "public", "evaluation", "governance")
-GENERATED_GROUPS = ("all", *CATALOG_GENERATED_GROUPS, "export", "runtime")
+GENERATED_GROUPS = ("all", "capability", "export", "owner-readmodels")
 
 BASE_EXPORT_RELEVANT_PREFIXES = (
     ".agents/",
+    "capabilities/",
     "config/",
     "generated/",
-    "mechanics/release-support/examples/",
+    "mechanics/release-support/",
+    "schemas/",
+    "skills/",
 )
 
 
@@ -72,8 +74,8 @@ EXPORT_RELEVANT_PREFIXES = (
         )
     ),
 )
+CAPABILITY_GENERATED_DRIFT_PATHS = validation_lanes.CAPABILITY_GENERATED_DRIFT_PATHS
 EXPORT_GENERATED_DRIFT_PATHS = validation_lanes.EXPORT_GENERATED_DRIFT_PATHS
-RUNTIME_GENERATED_DRIFT_PATHS = validation_lanes.RUNTIME_GENERATED_DRIFT_PATHS
 EXPORT_DRIFT_PATHS = validation_lanes.EXPORT_DRIFT_PATHS
 
 
@@ -158,23 +160,25 @@ def run_source_fast() -> None:
 
 def run_generated(group: str) -> None:
     if group == "all":
-        run_command(("python", "scripts/builders/build_catalog.py", "--check", "--group", "all"))
+        run_generated("capability")
         run_generated("export")
-        run_generated("runtime")
+        run_generated("owner-readmodels")
         run_command(("python", "scripts/decisions/generate_decision_indexes.py", "--check"))
         return
 
-    if group in CATALOG_GENERATED_GROUPS:
-        run_command(("python", "scripts/builders/build_catalog.py", "--check", "--group", group))
+    if group == "capability":
+        run_capability_generated()
     elif group == "export":
         run_export_generated()
-    elif group == "runtime":
-        run_runtime_generated()
+    elif group == "owner-readmodels":
+        run_owner_readmodels_generated()
     else:
         raise ValueError(group)
 
-    if group == "governance":
-        run_command(("python", "scripts/decisions/generate_decision_indexes.py", "--check"))
+
+def run_capability_generated() -> None:
+    for command in validation_lanes.CAPABILITY_GENERATED_CHECK_COMMAND_SEQUENCE:
+        run_command(command)
 
 
 def run_export_generated() -> None:
@@ -182,8 +186,8 @@ def run_export_generated() -> None:
         run_command(command)
 
 
-def run_runtime_generated() -> None:
-    for command in validation_lanes.RUNTIME_GENERATED_CHECK_COMMAND_SEQUENCE:
+def run_owner_readmodels_generated() -> None:
+    for command in validation_lanes.OWNER_READMODEL_CHECK_COMMAND_SEQUENCE:
         run_command(command)
 
 
@@ -191,7 +195,7 @@ def run_export(*, changed_only: bool, base_ref: str | None) -> None:
     if changed_only:
         paths = changed_files(base_ref)
         if not export_relevant(paths):
-            print("[ci-gate] export lane skipped: no export/runtime generated inputs changed")
+            print("[ci-gate] export lane skipped: no capability/export inputs changed")
             for path in paths:
                 print(f"[ci-gate] changed: {path}")
             return

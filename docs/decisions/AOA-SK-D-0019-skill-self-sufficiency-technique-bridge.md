@@ -9,9 +9,11 @@
 - Skill lanes: none
 - Mechanic parents: none
 - Guard families: technique bridge, skill maturity
-- Posture: accepted skill self-sufficiency bridge
+- Posture: superseded mandatory technique bridge; see AOA-SK-D-0039
 
 Date: 2026-05-07
+
+Status: superseded by AOA-SK-D-0039
 
 ## Context
 

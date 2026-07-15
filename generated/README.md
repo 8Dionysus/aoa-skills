@@ -1,34 +1,12 @@
-# Generated District
+# Generated Projections
 
-`generated/` stores committed derived reader, catalog, governance, and export
-surfaces built from authored sources elsewhere in the repository.
+| Projection | Source and builder |
+| --- | --- |
+| `capability_graph.*` | `capabilities/`; `build_capability_graph.py` |
+| `agent_skill_catalog*.json`, `portable_export_map.json` | `skills/` + config; `build_agent_skills.py` |
+| `skill_pack_profiles.resolved.json`, `mcp_dependency_manifest.json`, `release_manifest.json` | source/export/config; `build_agent_skills.py` |
+| `quest_catalog*`, `quest_dispatch*` | `quests/`; `build_questbook.py` |
+| `agon_*_candidates.min.json` | requested candidate sources owned by Agon mechanics |
 
-These files are useful evidence and public integration surfaces, but they are
-not source truth. Change the owning skill, config, mechanic, schema, or builder,
-then regenerate.
-
-## Placement
-
-| Surface kind | Home |
-|---|---|
-| Repo-wide catalog, matrix, export map, runtime manifest, or public read model | `generated/` |
-| Mechanic-local generated companion that serves only one package or part | owning mechanic package |
-| Skill bundle source or support artifact | `skills/<skill>/` |
-| Example source object | owning `examples/` directory |
-
-## Source Classes
-
-| Class | Examples |
-|---|---|
-| Skill-derived | `skill_catalog*.json`, `skill_*_matrix.*`, `skill_graph.*`, `skill_intelligence_registry*.json` |
-| Export-derived | `agent_skill_catalog*.json`, `portable_export_map.json`, `local_adapter_manifest*.json` |
-| Governance-derived | `public_surface.*`, `governance_backlog.*`, `overlay_readiness.*` |
-| Questbook-derived | `quest_catalog*.json`, `quest_dispatch*.json` |
-| Mechanic-built root-published | Agon candidate indexes and runtime/readiness manifests that summarize repo-level source stores |
-
-## Before Editing
-
-1. Read `AGENTS.md`.
-2. Find the source builder or authored input.
-3. Regenerate with the named script.
-4. Validate with the root release or generated-surface check.
+All files are derived. Edit their owner source and regenerate; never use a
+manual generated patch to hide disagreement.

@@ -1,6 +1,6 @@
 policy:
-  allow_implicit_invocation: true
-  implicit_activation_policy: invoke
+  allow_implicit_invocation: false
+  implicit_activation_policy: suggest
 notes:
-- This router may be invoked implicitly for clear AoA eval-lane work.
-- The router should select one subskill instead of loading the whole family.
+- An implicit match may suggest this deferred family, but execution requires explicit invocation or a source-authorized parent route.
+- Select exactly one internal select, apply, or propose mode; do not load legacy eval children.
