@@ -37,7 +37,16 @@
 - [AOA-SK-D-0035 Decision Graph Impact And Issue-Aware Skills](../AOA-SK-D-0035-decision-graph-impact-and-issue-aware-skills.md) (`docs/decisions/AOA-SK-D-0035-decision-graph-impact-and-issue-aware-skills.md`)
 - [AOA-SK-D-0036 Codex User Skill Root And Foundation Profile](../AOA-SK-D-0036-codex-user-skill-root-and-foundation-profile.md) (`docs/decisions/AOA-SK-D-0036-codex-user-skill-root-and-foundation-profile.md`)
 - [AOA-SK-D-0039 Semantic Capability Ecosystem](../AOA-SK-D-0039-semantic-capability-ecosystem.md) (`docs/decisions/AOA-SK-D-0039-semantic-capability-ecosystem.md`)
+- [AOA-SK-D-0040 Owner Skill Homes And Projection Boundaries](../AOA-SK-D-0040-owner-skill-homes-and-projection-boundaries.md) (`docs/decisions/AOA-SK-D-0040-owner-skill-homes-and-projection-boundaries.md`)
 
 ## core/stewardship
 
 - [AOA-SK-D-0039 Semantic Capability Ecosystem](../AOA-SK-D-0039-semantic-capability-ecosystem.md) (`docs/decisions/AOA-SK-D-0039-semantic-capability-ecosystem.md`)
+
+## repository-home
+
+- [AOA-SK-D-0040 Owner Skill Homes And Projection Boundaries](../AOA-SK-D-0040-owner-skill-homes-and-projection-boundaries.md) (`docs/decisions/AOA-SK-D-0040-owner-skill-homes-and-projection-boundaries.md`)
+
+## shared
+
+- [AOA-SK-D-0040 Owner Skill Homes And Projection Boundaries](../AOA-SK-D-0040-owner-skill-homes-and-projection-boundaries.md) (`docs/decisions/AOA-SK-D-0040-owner-skill-homes-and-projection-boundaries.md`)

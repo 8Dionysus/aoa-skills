@@ -3,17 +3,21 @@
 ## Mission
 
 `aoa-skills` turns demonstrated, reusable agent practice into a navigable
-capability ecosystem and a deliberately small set of portable procedures.
-Its purpose is better selection and execution, not a larger catalog.
+shared capability ecosystem and a deliberately small set of portable shared
+procedures. It also defines how repository-owned skill homes join that
+ecosystem without transferring their procedure truth here. Its purpose is
+better selection and execution, not a larger central catalog.
 
 ## What this repository owns
 
-- authored capability families, contracts, lifecycle, compatibility, and
-  relations under `capabilities/`;
-- the source wording and support resources of independently callable bundles
-  under `skills/`;
+- shared capability families, contracts, lifecycle, compatibility, relations,
+  and owner-qualified external routes under `capabilities/`;
+- the source wording and support resources of independently callable shared
+  bundles under `skills/`;
+- the shared compatibility and projection contract for repository-owned skill
+  homes, while each repository owns admission of its procedures;
 - deterministic projections, portable export, pack handoff, and owner-local
-  validation of those sources;
+  validation of this repository's sources;
 - the local KAG provider packet as a derived return map;
 - repository decisions and durable obligations about this owner surface.
 
@@ -29,15 +33,17 @@ Its purpose is better selection and execution, not a larger catalog.
 | agent roles and progression | `aoa-agents` |
 | runtime tools, services, state, and permissions | the named runtime or project owner |
 | shared routing and SDK contracts | `aoa-routing`, `aoa-sdk` |
+| repository-specific callable procedure truth | the named repository's admitted `skills/` home |
+| cross-repository skill federation and retrieval | `aoa-kag` |
 
 An external object may be referenced by an owner-qualified binding. That route
 does not transfer its authority here.
 
 ## Authority order
 
-1. Authored capability and skill sources.
-2. Owner-qualified external contracts for external bindings.
-3. Deterministic generated projections.
+1. The named owner's authored capability and skill sources.
+2. Shared AoA capability contracts and owner-qualified external routes.
+3. Deterministic generated or host projections.
 4. Runtime/session evidence for the specific run.
 
 Later layers may reveal drift or failure but do not silently rewrite earlier

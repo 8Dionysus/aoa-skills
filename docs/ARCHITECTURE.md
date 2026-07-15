@@ -2,23 +2,31 @@
 
 ## Semantic plane
 
-`capabilities/families/*.yaml` forms a semantic tree with one primary parent
-per node and a typed graph across nodes. It distinguishes capabilities, skills,
-modes, workflows, tools, guards, adapters, and human gates. Executable nodes
-carry applicability, ABI, binding, execution, verification, trust, provenance,
-lifecycle, and failure contracts.
+`capabilities/families/*.yaml` forms the shared semantic tree with one primary
+parent per node and a typed graph across nodes. Repository owners may provide
+home-skill sources that join the federated tree without moving procedure truth
+here. The graph distinguishes capabilities, skills, modes, workflows, tools,
+guards, adapters, and human gates. Executable nodes carry applicability, ABI,
+binding, execution, verification, trust, provenance, lifecycle, and failure
+contracts.
 
 ## Procedural plane
 
-Seven `skills/**/SKILL.md` bundles are the only current host-callable
-procedures. Internal modes stay inside those bundles. External workflows and
-tools remain owner-qualified graph bindings. Only `aoa-decision` is advertised;
-the other six are explicit deferred candidates.
+Seven `aoa-skills/skills/**/SKILL.md` bundles are the current shared callable
+procedures. Internal modes stay inside those bundles. An owner repository may
+add a home bundle only after manual admission; its canonical source remains in
+that repository. External workflows and tools remain owner-qualified graph
+bindings. Only shared `aoa-decision` is advertised; the other six shared
+bundles are explicit deferred candidates.
 
-## Derived plane
+## Target derived plane
 
 - `generated/capability_graph.*` supports deep retrieval and composition.
-- `.agents/skills/*` and agent catalogs are the flat portable host export.
+- after the coordinated migration, the user skill root carries one advertised
+  shared profile; the profile does not exist merely because this contract names
+  it.
+- repository `.agents/skills/*` carries only that repository's derived home
+  export; workspace-root projection is reserved for workspace-owned skills.
 - `kag/` exposes source-linked graph and return handles to `aoa-kag`.
 - release manifests bind source and portable hashes for pack handoff.
 

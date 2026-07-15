@@ -2,7 +2,7 @@
 
 ## Core model
 
-AoA uses three distinct structures:
+AoA uses three distinct structures across shared and repository-owned sources:
 
 1. A semantic tree makes capabilities discoverable. Each node has one
    `primary_parent`.
@@ -12,8 +12,9 @@ AoA uses three distinct structures:
 3. A task-local DAG selects and orders the smallest compatible executable set
    for one request.
 
-The tree and graph are repository source or deterministic projections. The
-task-local DAG is session/runtime state and is not committed as skill truth.
+Each authored node has exactly one owner. The tree and graph may be federated
+deterministic projections of those owner sources. The task-local DAG is
+session/runtime state and is not committed as skill truth.
 
 ## Object kinds
 
@@ -51,6 +52,20 @@ of the following:
 Otherwise it remains an internal mode or graph node. Consolidation follows the
 same rule in reverse and requires held-out equivalence, not aesthetic symmetry.
 
+## Shared and home skill sources
+
+`aoa-skills/skills/` owns reusable shared procedures. A repository may create a
+top-level `skills/` home only when at least one repository-specific procedure
+passes the callable bundle threshold. Empty ports and copied shared catalogs
+are not part of the topology.
+
+The repository owner keeps admission, procedure meaning, local ABI adaptation,
+lifecycle, and evidence posture. `aoa-skills` owns the shared compatibility and
+projection grammar; `aoa-kag` may federate owner metadata and relations without
+copying or overriding the procedure. Tools, guards, playbooks, adapters, and
+repository facts stay in their stronger owner surfaces unless independent
+skill value is demonstrated.
+
 ## Discovery and execution
 
 Host-visible descriptions are a small first-pass index. Deep retrieval may use
@@ -77,10 +92,13 @@ held-out cases. Safety and refusal behavior are tested separately.
 | Layer | Surface |
 | --- | --- |
 | authored semantics | `capabilities/families/*.yaml` |
-| callable procedures | `skills/**/SKILL.md` |
+| shared callable procedures | `aoa-skills/skills/**/SKILL.md` |
+| repository-owned callable procedures | `<owner-repo>/skills/**/SKILL.md` when admitted |
 | migration disposition | `capabilities/legacy-skill-migration.yaml` |
 | deterministic graph | `generated/capability_graph.*` |
-| portable host bundles | `.agents/skills/*` |
+| target user shared host profile | one host-selected user skill root after declared, built, installed, and fresh-session inspected |
+| repository host bundles | `<owner-repo>/.agents/skills/*`, derived only from that owner home |
+| workspace-root host bundles | workspace-owned procedures only, otherwise empty |
 | KAG return map | `kag/` |
 | per-task plan and raw trials | session/runtime only |
 

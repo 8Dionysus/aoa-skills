@@ -70,6 +70,7 @@
 - [AOA-SK-D-0036 Codex User Skill Root And Foundation Profile](../AOA-SK-D-0036-codex-user-skill-root-and-foundation-profile.md) (`docs/decisions/AOA-SK-D-0036-codex-user-skill-root-and-foundation-profile.md`)
 - [AOA-SK-D-0038 Committed Evidence Readout Completeness Gate](../AOA-SK-D-0038-committed-evidence-readout-completeness-gate.md) (`docs/decisions/AOA-SK-D-0038-committed-evidence-readout-completeness-gate.md`)
 - [AOA-SK-D-0039 Semantic Capability Ecosystem](../AOA-SK-D-0039-semantic-capability-ecosystem.md) (`docs/decisions/AOA-SK-D-0039-semantic-capability-ecosystem.md`)
+- [AOA-SK-D-0040 Owner Skill Homes And Projection Boundaries](../AOA-SK-D-0040-owner-skill-homes-and-projection-boundaries.md) (`docs/decisions/AOA-SK-D-0040-owner-skill-homes-and-projection-boundaries.md`)
 
 ## rpg
 
@@ -82,3 +83,4 @@
 - [AOA-SK-D-0006 Mechanics Companion Surface Routing](../AOA-SK-D-0006-mechanics-companion-surface-routing.md) (`docs/decisions/AOA-SK-D-0006-mechanics-companion-surface-routing.md`)
 - [AOA-SK-D-0013 Mechanics Surface Rehome](../AOA-SK-D-0013-mechanics-surface-rehome.md) (`docs/decisions/AOA-SK-D-0013-mechanics-surface-rehome.md`)
 - [AOA-SK-D-0039 Semantic Capability Ecosystem](../AOA-SK-D-0039-semantic-capability-ecosystem.md) (`docs/decisions/AOA-SK-D-0039-semantic-capability-ecosystem.md`)
+- [AOA-SK-D-0040 Owner Skill Homes And Projection Boundaries](../AOA-SK-D-0040-owner-skill-homes-and-projection-boundaries.md) (`docs/decisions/AOA-SK-D-0040-owner-skill-homes-and-projection-boundaries.md`)

@@ -7,9 +7,10 @@ the lane.
 
 ## Role
 
-`aoa-skills` owns the authored AoA capability model and the small set of
-portable skill bundles that are independently callable by an agent host.
-This card routes work to those owners without duplicating their contracts.
+`aoa-skills` owns the shared AoA capability contract, the shared navigation
+root, and the small set of portable shared bundles that are independently
+callable by an agent host. Repository-specific callable procedures remain
+authored by their repository owner and are federated without being copied here.
 
 ## Read before editing
 
@@ -21,10 +22,14 @@ surface's own card and README.
 
 ## Boundaries
 
-- `capabilities/` owns semantic nodes, one-parent navigation, typed relations,
-  ABI, binding, lifecycle, compatibility, and evidence posture.
-- `skills/` owns seven portable callable bundles; a capability or mode is not
-  automatically a separate skill.
+- `capabilities/` owns shared semantic nodes, one-parent navigation, typed
+  relations, ABI, binding, lifecycle, compatibility, and evidence posture;
+  external owner nodes remain owner-qualified references.
+- `skills/` owns seven shared portable callable bundles; a capability, mode,
+  external adapter, or repository-local procedure is not automatically a
+  bundle here.
+- A sibling `skills/` home owns only that repository's admitted callable
+  procedures. Its host projections remain derived from that owner source.
 - `generated/`, `.agents/skills/`, and `kag/` are derived projections and never
   outrank authored sources.
 - Techniques may be optional provenance, never an execution dependency.
