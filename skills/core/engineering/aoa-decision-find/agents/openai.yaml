@@ -1,6 +1,0 @@
-policy:
-  allow_implicit_invocation: false
-  implicit_activation_policy: manual
-notes:
-- Prefer route through aoa-decision unless the user explicitly asks for this find subskill.
-- If the permitted evidence boundary supplies neither graph or fallback lookup nor the required graph and owner inputs, stop with blocked_missing_input rather than owner-boundary deferral.

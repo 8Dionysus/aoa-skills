@@ -1,0 +1,303 @@
+schema_version: aoa-capability-family-v1
+family_id: knowledge-stewardship
+title: Knowledge stewardship
+description: One advertised family for source authority, privacy-preserving derivatives, and guarded memo-candidate routing.
+owner:
+  repo: aoa-skills
+  surface: capabilities/families/stewardship.yaml
+  authority: authored
+nodes:
+  - id: stewardship.knowledge
+    title: Steward a knowledge boundary
+    description: Resolve source roles, create a bounded sanitized derivative, or route reviewed evidence to an existing owner memo port.
+    kind: capability
+    contract_level: navigation
+    primary_parent: stewardship
+    owner: &steward_owner
+      repo: aoa-skills
+      surface: capabilities/families/stewardship.yaml
+      authority: authored
+    lifecycle: &steward_family_lifecycle
+      state: candidate
+      version: 0.1.0
+      visibility: deferred
+      evidence_state: manual-baseline
+      health: challenger
+    keywords:
+      - authority
+      - source-of-truth
+      - sanitization
+      - memo
+      - knowledge
+      - источник-истины
+      - авторитетность
+      - приватность
+      - мемо
+      - знание
+
+  - id: skill.aoa-knowledge-stewardship
+    title: aoa-knowledge-stewardship family bundle
+    description: Steward one knowledge boundary through authority-map, sanitized-share, or memo-route mode. Use when overlapping sources must be ranked, private technical material must become useful for a named audience, or reviewed evidence must be routed to an owner's guarded memo-candidate port. Do not use for raw session mining, direct publication, durable-memory authority, or ordinary prose editing.
+    kind: skill
+    contract_level: executable
+    primary_parent: stewardship.knowledge
+    owner: *steward_owner
+    lifecycle:
+      state: candidate
+      version: 0.1.0
+      visibility: deferred
+      evidence_state: evaluated
+      health: degraded
+    applicability:
+      use_when:
+        - Source roles conflict, a named audience needs a sanitized derivative, or reviewed evidence needs a guarded owner-local memo route.
+      do_not_use_when:
+        - Evidence is raw, no audience or destination owner exists, or the request is direct publication, durable-memory authority, ordinary prose editing, or a private local typo or helper edit.
+      ambiguous_when:
+        - The task may concern decision rationale rather than current source authority; route decision work separately.
+    abi:
+      inputs:
+        - name: stewardship-request
+          type: knowledge-stewardship-request
+          required: true
+          description: One intent plus sources, owner, audience or destination, evidence refs, and effect authority.
+      outputs:
+        - name: stewardship-result
+          type: knowledge-stewardship-result
+          required: true
+          description: One mode result with owner, route or transformation, validation, residual risk, claim limit, and stop line.
+    binding:
+      kind: skill
+      ref: skills/core/stewardship/aoa-knowledge-stewardship/SKILL.md
+      operation: route-one-mode
+      availability: available
+    execution: &steward_execution
+      freedom: bounded-judgment
+      tool_requirements:
+        - Read access to owner route law, source material, audience or destination contract, and relevant evidence refs.
+      verification:
+        - Confirm exactly one mode, the authoritative owner, source/evidence refs, audience or destination, and effect authority.
+        - Inspect the mapping, transformed artifact, or handoff packet manually and state residual risk.
+      termination:
+        - Stop after one bounded result and remaining owner review.
+        - Stop as blocked when authority, audience, destination owner, guarded port, or effect authority is missing.
+      effects:
+        - none
+      reversibility: not-applicable
+      failure_modes:
+        - Moving authority, raw custody, privacy policy, or durable memory into a generic skill.
+        - Treating a generated, newest, or easiest-to-find source as authoritative without owner law.
+    trust: &steward_trust
+      public_safe: true
+      requires_human_approval: false
+      posture: authored-procedure
+    provenance:
+      source_refs:
+        - repo: aoa-skills
+          path: skills/core/stewardship/aoa-knowledge-stewardship/SKILL.md
+          ref: capability-family-v0.1.0
+          role: portable-family-procedure
+          authority: authored
+      optional_refs: []
+    keywords:
+      - authority-map
+      - sanitized-share
+      - memo-route
+      - owner-truth
+      - карта-источников
+      - безопасная-публикация
+      - маршрут-мемо
+
+  - id: mode.knowledge.authority-map
+    title: Map source authority
+    description: Classify authored, generated, cached, runtime, and entrypoint surfaces and resolve conflicts from owner law.
+    kind: mode
+    contract_level: executable
+    primary_parent: stewardship.knowledge
+    owner: *steward_owner
+    lifecycle: &steward_mode_lifecycle
+      state: candidate
+      version: 0.1.0
+      visibility: internal
+      evidence_state: manual-baseline
+      health: challenger
+    applicability:
+      use_when:
+        - Authored, generated, cached, runtime, or entrypoint sources overlap, disagree, or confuse consumers.
+      do_not_use_when:
+        - Existing decision rationale or supersession is the question rather than current source authority.
+      ambiguous_when:
+        - Fresh runtime state and authored policy both matter but answer different questions.
+    abi:
+      inputs:
+        - name: authority-conflict
+          type: source-authority-conflict
+          required: true
+          description: Candidate surfaces, owner declarations, consumers, and the concrete conflict or ambiguity.
+      outputs:
+        - name: authority-map
+          type: source-authority-map
+          required: true
+          description: Canonical homes, source roles, derived consumers, conflicts, and unresolved owner edge.
+    binding:
+      kind: mode
+      ref: skills/core/stewardship/aoa-knowledge-stewardship/SKILL.md
+      operation: authority-map
+      availability: available
+    execution: *steward_execution
+    trust: *steward_trust
+    provenance:
+      source_refs:
+        - repo: aoa-skills
+          path: skills/core/stewardship/aoa-knowledge-stewardship/SKILL.md
+          ref: capability-family-v0.1.0
+          role: authority-map-mode
+          authority: authored
+      optional_refs: []
+    aliases:
+      - name: aoa-source-of-truth-check
+        state: migration-only
+        remove_after: knowledge-stewardship-runtime-parity
+    keywords:
+      - source-of-truth
+      - canonical-home
+      - authored-derived
+      - conflict
+      - источник-истины
+      - канонический
+      - авторский
+      - производный
+      - конфликт
+      - файл
+      - generated-view
+
+  - id: mode.knowledge.sanitized-share
+    title: Prepare a sanitized technical derivative
+    description: Preserve a technical lesson for a named audience while removing unnecessary private identifiers and keeping publication separate.
+    kind: mode
+    contract_level: executable
+    primary_parent: stewardship.knowledge
+    owner: *steward_owner
+    lifecycle: *steward_mode_lifecycle
+    applicability:
+      use_when:
+        - Private technical material must become useful for a named audience and destination threshold.
+      do_not_use_when:
+        - No audience or disclosure threshold exists, direct publication is requested without its owner workflow, or private credentials are requested for a public destination.
+      ambiguous_when:
+        - Removing a private detail may also remove the technical mechanism needed by the audience.
+    abi:
+      inputs:
+        - name: private-material
+          type: private-technical-material
+          required: true
+          description: Raw material, owner, audience, destination threshold, sensitivity rules, and effect authority.
+      outputs:
+        - name: sanitized-derivative
+          type: sanitized-technical-derivative
+          required: true
+          description: Useful reviewed derivative or no-write decision with residual privacy uncertainty.
+    binding:
+      kind: mode
+      ref: skills/core/stewardship/aoa-knowledge-stewardship/SKILL.md
+      operation: sanitized-share
+      availability: available
+    execution:
+      freedom: bounded-judgment
+      tool_requirements:
+        - Read access to raw material and owner sensitivity and destination policies.
+      verification:
+        - Inspect usefulness and registered private patterns manually without changing raw custody.
+        - Distinguish derivative creation, publication, and durable write authorities.
+      termination:
+        - Stop after a reviewed derivative or explicit no-write decision and residual-risk report.
+      effects:
+        - generated-write
+      reversibility: reversible
+      failure_modes:
+        - Removing so much context that the lesson becomes misleading.
+        - Publishing merely because the derivative appears public-safe.
+    trust: *steward_trust
+    provenance:
+      source_refs:
+        - repo: aoa-skills
+          path: skills/core/stewardship/aoa-knowledge-stewardship/SKILL.md
+          ref: capability-family-v0.1.0
+          role: sanitized-share-mode
+          authority: authored
+      optional_refs: []
+    aliases:
+      - name: aoa-sanitized-share
+        state: migration-only
+        remove_after: knowledge-stewardship-runtime-parity
+    keywords:
+      - sanitize
+      - redact
+      - public-safe
+      - private-path
+      - credential
+      - обезличить
+      - очистить
+      - приватность
+      - публикация
+      - обезличенная-выжимка
+      - технический-отчет
+      - публичный
+
+  - id: mode.knowledge.memo-route
+    title: Route a memo candidate
+    description: Hand reviewed bounded claims to an existing guarded owner-local memo port without claiming durable-memory acceptance.
+    kind: mode
+    contract_level: executable
+    primary_parent: stewardship.knowledge
+    owner: *steward_owner
+    lifecycle: *steward_mode_lifecycle
+    applicability:
+      use_when:
+        - Reviewed evidence may belong in a named owner's existing guarded memo-candidate port.
+      do_not_use_when:
+        - Evidence is raw, the port does not exist, or direct durable memory or central note creation is requested.
+      ambiguous_when:
+        - A candidate may belong to a skill, decision, or eval owner rather than durable memo stewardship.
+    abi:
+      inputs:
+        - name: reviewed-memo-candidate
+          type: reviewed-memo-candidate
+          required: true
+          description: Bounded claims, source/evidence refs, target owner, and guarded local port contract.
+      outputs:
+        - name: memo-candidate-handoff
+          type: memo-candidate-handoff
+          required: true
+          description: Candidate packet or route-only debt with no durable-memory authority.
+    binding:
+      kind: mode
+      ref: skills/core/stewardship/aoa-knowledge-stewardship/SKILL.md
+      operation: memo-route
+      availability: available
+    execution: *steward_execution
+    trust: *steward_trust
+    provenance:
+      source_refs:
+        - repo: aoa-skills
+          path: skills/core/stewardship/aoa-knowledge-stewardship/SKILL.md
+          ref: capability-family-v0.1.0
+          role: memo-route-mode
+          authority: authored
+      optional_refs: []
+    aliases:
+      - name: aoa-memo-writeback
+        state: migration-only
+        remove_after: knowledge-stewardship-runtime-parity
+    keywords:
+      - memo-candidate
+      - writeback
+      - durable-memory
+      - guarded-port
+      - кандидат-мемо
+      - долговременная-память
+      - защищенный-порт
+relations:
+  - kind: implemented-by
+    source: stewardship.knowledge
+    target: skill.aoa-knowledge-stewardship

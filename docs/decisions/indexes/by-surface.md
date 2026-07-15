@@ -11,6 +11,7 @@
 - [AOA-SK-D-0020 Root Design And Agent Surface Split](../AOA-SK-D-0020-root-design-agent-surfaces.md) (`docs/decisions/AOA-SK-D-0020-root-design-agent-surfaces.md`)
 - [AOA-SK-D-0024 Root Charter Boundary](../AOA-SK-D-0024-root-charter-boundary.md) (`docs/decisions/AOA-SK-D-0024-root-charter-boundary.md`)
 - [AOA-SK-D-0025 Root Legacy Retirement](../AOA-SK-D-0025-root-legacy-retirement.md) (`docs/decisions/AOA-SK-D-0025-root-legacy-retirement.md`)
+- [AOA-SK-D-0039 Semantic Capability Ecosystem](../AOA-SK-D-0039-semantic-capability-ecosystem.md) (`docs/decisions/AOA-SK-D-0039-semantic-capability-ecosystem.md`)
 
 ## authority/charter
 
@@ -43,6 +44,7 @@
 - [AOA-SK-D-0026 Memo Writeback Skill Owner Boundary](../AOA-SK-D-0026-memo-writeback-skill-owner-boundary.md) (`docs/decisions/AOA-SK-D-0026-memo-writeback-skill-owner-boundary.md`)
 - [AOA-SK-D-0034 Decision Graph Skill Chain](../AOA-SK-D-0034-decision-graph-skill-chain.md) (`docs/decisions/AOA-SK-D-0034-decision-graph-skill-chain.md`)
 - [AOA-SK-D-0035 Decision Graph Impact And Issue-Aware Skills](../AOA-SK-D-0035-decision-graph-impact-and-issue-aware-skills.md) (`docs/decisions/AOA-SK-D-0035-decision-graph-impact-and-issue-aware-skills.md`)
+- [AOA-SK-D-0039 Semantic Capability Ecosystem](../AOA-SK-D-0039-semantic-capability-ecosystem.md) (`docs/decisions/AOA-SK-D-0039-semantic-capability-ecosystem.md`)
 
 ## technique bridge
 
@@ -67,6 +69,7 @@
 - [AOA-SK-D-0013 Mechanics Surface Rehome](../AOA-SK-D-0013-mechanics-surface-rehome.md) (`docs/decisions/AOA-SK-D-0013-mechanics-surface-rehome.md`)
 - [AOA-SK-D-0014 Owner Request Receipts](../AOA-SK-D-0014-owner-request-receipts.md) (`docs/decisions/AOA-SK-D-0014-owner-request-receipts.md`)
 - [AOA-SK-D-0023 Growth-Cycle Session Harvest Ownership](../AOA-SK-D-0023-growth-cycle-session-harvest-ownership.md) (`docs/decisions/AOA-SK-D-0023-growth-cycle-session-harvest-ownership.md`)
+- [AOA-SK-D-0039 Semantic Capability Ecosystem](../AOA-SK-D-0039-semantic-capability-ecosystem.md) (`docs/decisions/AOA-SK-D-0039-semantic-capability-ecosystem.md`)
 
 ## generated/readout
 
@@ -81,6 +84,7 @@
 - [AOA-SK-D-0032 Command Authority Family Paths](../AOA-SK-D-0032-command-authority-family-paths.md) (`docs/decisions/AOA-SK-D-0032-command-authority-family-paths.md`)
 - [AOA-SK-D-0036 Codex User Skill Root And Foundation Profile](../AOA-SK-D-0036-codex-user-skill-root-and-foundation-profile.md) (`docs/decisions/AOA-SK-D-0036-codex-user-skill-root-and-foundation-profile.md`)
 - [AOA-SK-D-0038 Committed Evidence Readout Completeness Gate](../AOA-SK-D-0038-committed-evidence-readout-completeness-gate.md) (`docs/decisions/AOA-SK-D-0038-committed-evidence-readout-completeness-gate.md`)
+- [AOA-SK-D-0039 Semantic Capability Ecosystem](../AOA-SK-D-0039-semantic-capability-ecosystem.md) (`docs/decisions/AOA-SK-D-0039-semantic-capability-ecosystem.md`)
 
 ## export/runtime
 
@@ -93,6 +97,7 @@
 - [AOA-SK-D-0035 Decision Graph Impact And Issue-Aware Skills](../AOA-SK-D-0035-decision-graph-impact-and-issue-aware-skills.md) (`docs/decisions/AOA-SK-D-0035-decision-graph-impact-and-issue-aware-skills.md`)
 - [AOA-SK-D-0036 Codex User Skill Root And Foundation Profile](../AOA-SK-D-0036-codex-user-skill-root-and-foundation-profile.md) (`docs/decisions/AOA-SK-D-0036-codex-user-skill-root-and-foundation-profile.md`)
 - [AOA-SK-D-0037 Source-Locked Live Skill Dispatch Evidence](../AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md) (`docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md`)
+- [AOA-SK-D-0039 Semantic Capability Ecosystem](../AOA-SK-D-0039-semantic-capability-ecosystem.md) (`docs/decisions/AOA-SK-D-0039-semantic-capability-ecosystem.md`)
 
 ## public status
 
@@ -108,6 +113,7 @@
 - [AOA-SK-D-0018 Session Growth Evaluated Governance](../AOA-SK-D-0018-session-growth-evaluated-governance.md) (`docs/decisions/AOA-SK-D-0018-session-growth-evaluated-governance.md`)
 - [AOA-SK-D-0037 Source-Locked Live Skill Dispatch Evidence](../AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md) (`docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md`)
 - [AOA-SK-D-0038 Committed Evidence Readout Completeness Gate](../AOA-SK-D-0038-committed-evidence-readout-completeness-gate.md) (`docs/decisions/AOA-SK-D-0038-committed-evidence-readout-completeness-gate.md`)
+- [AOA-SK-D-0039 Semantic Capability Ecosystem](../AOA-SK-D-0039-semantic-capability-ecosystem.md) (`docs/decisions/AOA-SK-D-0039-semantic-capability-ecosystem.md`)
 
 ## quest/lane
 
@@ -118,6 +124,7 @@
 
 - [AOA-SK-D-0023 Growth-Cycle Session Harvest Ownership](../AOA-SK-D-0023-growth-cycle-session-harvest-ownership.md) (`docs/decisions/AOA-SK-D-0023-growth-cycle-session-harvest-ownership.md`)
 - [AOA-SK-D-0026 Memo Writeback Skill Owner Boundary](../AOA-SK-D-0026-memo-writeback-skill-owner-boundary.md) (`docs/decisions/AOA-SK-D-0026-memo-writeback-skill-owner-boundary.md`)
+- [AOA-SK-D-0039 Semantic Capability Ecosystem](../AOA-SK-D-0039-semantic-capability-ecosystem.md) (`docs/decisions/AOA-SK-D-0039-semantic-capability-ecosystem.md`)
 
 ## validation guard
 
@@ -131,6 +138,7 @@
 - [AOA-SK-D-0033 Root Ingress Closure](../AOA-SK-D-0033-root-ingress-closure.md) (`docs/decisions/AOA-SK-D-0033-root-ingress-closure.md`)
 - [AOA-SK-D-0037 Source-Locked Live Skill Dispatch Evidence](../AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md) (`docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md`)
 - [AOA-SK-D-0038 Committed Evidence Readout Completeness Gate](../AOA-SK-D-0038-committed-evidence-readout-completeness-gate.md) (`docs/decisions/AOA-SK-D-0038-committed-evidence-readout-completeness-gate.md`)
+- [AOA-SK-D-0039 Semantic Capability Ecosystem](../AOA-SK-D-0039-semantic-capability-ecosystem.md) (`docs/decisions/AOA-SK-D-0039-semantic-capability-ecosystem.md`)
 
 ## legacy/provenance
 

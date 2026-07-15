@@ -1,0 +1,6 @@
+policy:
+  allow_implicit_invocation: false
+  implicit_activation_policy: suggest
+notes:
+- Select diagnose or propose-repair, never both for the same target in one step.
+- This family proposes no owner mutation and has no session-memory dependency.

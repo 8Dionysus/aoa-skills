@@ -1,8 +1,0 @@
-policy:
-  allow_implicit_invocation: false
-  implicit_activation_policy: manual
-notes:
-- Keep this skill explicit-only because donor harvest should stay a visible post-session action and the family nucleus should not turn into hidden routing policy.
-- Prefer reviewed session artifacts over live chat state or partial recollection.
-- Treat checkpoint and closeout-handoff hints as focus inputs until reviewed evidence accepts or rejects them.
-- Use this as the nucleus before handing off to automation scan, route-forks, diagnosis, progression, or quest-promotion seams.

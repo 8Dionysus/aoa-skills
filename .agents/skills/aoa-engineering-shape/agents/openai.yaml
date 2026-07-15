@@ -1,0 +1,13 @@
+policy:
+  allow_implicit_invocation: false
+  implicit_activation_policy: suggest
+notes:
+- Select exactly one contexts, core, or port-adapter mode.
+- Do not load the three legacy shaping bundles after mode selection.
+interface:
+  display_name: AoA Engineering Shape
+  short_description: Shape one software responsibility boundary
+  default_prompt: Use $aoa-engineering-shape to choose one boundary-shaping mode and return the smallest owner-aware responsibility boundary.
+  icon_small: ./assets/small-logo.svg
+  icon_large: ./assets/large-logo.svg
+  brand_color: '#2563EB'

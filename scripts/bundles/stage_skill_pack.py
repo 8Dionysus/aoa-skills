@@ -267,8 +267,6 @@ def main() -> int:
             repo_root,
             profile_name=args.profile,
         )
-    except KeyError:
-        raise SystemExit(f"unknown profile: {args.profile}")
     except ValueError as exc:
         raise SystemExit(str(exc))
 

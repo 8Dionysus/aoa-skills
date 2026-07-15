@@ -1,7 +1,0 @@
-policy:
-  allow_implicit_invocation: false
-  implicit_activation_policy: manual
-notes:
-- Keep this skill explicit-only because route forks should stay visible post-session choices rather than hidden routing policy.
-- Use it after donor harvest when several honest next routes remain.
-- If one child route is already anchored and output-named, route to aoa-summon instead of launching from fork cards.

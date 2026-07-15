@@ -1,0 +1,315 @@
+schema_version: aoa-capability-family-v1
+family_id: engineering-evaluation
+title: Evaluation lifecycle
+description: One advertised evaluation family with select, apply, and propose modes under explicit owner and proof limits.
+owner:
+  repo: aoa-skills
+  surface: capabilities/families/evals.yaml
+  authority: authored
+nodes:
+  - id: engineering.evaluation
+    title: Route an evaluation need
+    description: Select existing evidence, apply an exact surface, or propose the smallest owner-local response to a confirmed no-fit.
+    kind: capability
+    contract_level: navigation
+    primary_parent: engineering
+    owner: &eval_owner
+      repo: aoa-skills
+      surface: capabilities/families/evals.yaml
+      authority: authored
+    lifecycle: &eval_family_lifecycle
+      state: candidate
+      version: 0.1.0
+      visibility: deferred
+      evidence_state: manual-baseline
+      health: challenger
+    keywords:
+      - evaluation
+      - eval
+      - evidence
+      - acceptance
+      - proof
+      - оценка
+      - проверка
+      - свидетельство
+      - критерий
+      - доказательство
+
+  - id: skill.aoa-eval
+    title: aoa-eval family bundle
+    description: Route one AoA evaluation need through select, apply, or propose mode while preserving local owner and proof-authority boundaries. Use when an existing eval/check must be found or run, or a confirmed no-fit needs an owner-local intake/design candidate. Do not use for ordinary one-off tests, undefined invariants, green-command reporting, or direct edits to central proof authority.
+    kind: skill
+    contract_level: executable
+    primary_parent: engineering.evaluation
+    owner: *eval_owner
+    lifecycle:
+      state: candidate
+      version: 0.1.0
+      visibility: deferred
+      evidence_state: evaluated
+      health: degraded
+    applicability:
+      use_when:
+        - An eval or check must be selected or applied, or a verified no-fit needs an owner-local intake or design proposal.
+      do_not_use_when:
+        - The task is an ordinary one-off test, the invariant is undefined, or a green command is being treated as central proof.
+      ambiguous_when:
+        - The nearest surface is only partially relevant and its claim limit has not been compared to the acceptance target.
+    abi:
+      inputs:
+        - name: evaluation-request
+          type: evaluation-request
+          required: true
+          description: Invariant, owner, source ref, relevant inventory, and effect posture.
+      outputs:
+        - name: evaluation-result
+          type: bounded-evaluation-result
+          required: true
+          description: One mode result with evidence/proof class, drift, artifact, next route, and stop line.
+    binding:
+      kind: skill
+      ref: skills/core/engineering/aoa-eval/SKILL.md
+      operation: route-one-mode
+      availability: available
+    execution: &eval_execution
+      freedom: bounded-judgment
+      tool_requirements:
+        - Read access to the local eval route, stronger proof-owner boundary, and selected artifact or command when applicable.
+      verification:
+        - Confirm exactly one mode, owner, source ref, environment, evidence class, and proof limit.
+        - Inspect selected or produced artifacts manually against the declared acceptance target.
+      termination:
+        - Stop after one bounded selection, application, or owner-local proposal and its next route.
+        - Stop as blocked when invariant, owner, exact command, accepted result, or required input for the selected mode is absent.
+      effects:
+        - none
+      reversibility: not-applicable
+      failure_modes:
+        - Selecting by keyword or substituting a broader green gate.
+        - Designing before no-fit, invariant, owner, and acceptance criteria are established.
+        - Allowing Eval Forge health or generated dashboards to become result proof.
+    trust: &eval_trust
+      public_safe: true
+      requires_human_approval: false
+      posture: authored-procedure
+    provenance:
+      source_refs:
+        - repo: aoa-skills
+          path: skills/core/engineering/aoa-eval/SKILL.md
+          ref: capability-family-v0.1.0
+          role: portable-family-procedure
+          authority: authored
+      optional_refs: []
+    keywords:
+      - eval-route
+      - eval-apply
+      - eval-proposal
+      - proof-limit
+      - выбор-оценки
+      - запуск-оценки
+      - пробел-оценки
+
+  - id: mode.eval.select
+    title: Select an evaluation surface
+    description: Compare owner-local and central evidence surfaces and return exact, partial, or no-fit without executing or designing.
+    kind: mode
+    contract_level: executable
+    primary_parent: engineering.evaluation
+    owner: *eval_owner
+    lifecycle: &eval_mode_lifecycle
+      state: candidate
+      version: 0.1.0
+      visibility: internal
+      evidence_state: manual-baseline
+      health: challenger
+    applicability:
+      use_when:
+        - No exact evidence surface has been selected for a named invariant and acceptance target.
+      do_not_use_when:
+        - The exact surface, command, prerequisites, artifacts, accepted exits, and pass criteria are already explicit.
+      ambiguous_when:
+        - A partial-fit check is nearby but may not exercise the target invariant or current owner source.
+    abi:
+      inputs:
+        - name: evaluation-need
+          type: evaluation-selection-need
+          required: true
+          description: Invariant, acceptance target, owner, source ref, and relevant local/central inventory.
+      outputs:
+        - name: evaluation-selection
+          type: evaluation-selection
+          required: true
+          description: Exact, partial, or no-fit verdict with rejected alternatives and next route.
+    binding:
+      kind: mode
+      ref: skills/core/engineering/aoa-eval/SKILL.md
+      operation: select
+      availability: available
+    execution: *eval_execution
+    trust: *eval_trust
+    provenance:
+      source_refs:
+        - repo: aoa-skills
+          path: skills/core/engineering/aoa-eval/SKILL.md
+          ref: capability-family-v0.1.0
+          role: select-mode
+          authority: authored
+      optional_refs: []
+    aliases:
+      - name: aoa-eval-select
+        state: migration-only
+        remove_after: eval-family-runtime-parity
+    keywords:
+      - select-eval
+      - exact-fit
+      - partial-fit
+      - no-fit
+      - выбрать-оценку
+      - подходящая-проверка
+      - найти-eval
+      - точный-eval
+      - свежесть
+      - индекс
+      - не-запускать
+
+  - id: mode.eval.apply
+    title: Apply an exact evaluation surface
+    description: Run only the selected owner command and manually inspect its result against an explicit acceptance contract.
+    kind: mode
+    contract_level: executable
+    primary_parent: engineering.evaluation
+    owner: *eval_owner
+    lifecycle: *eval_mode_lifecycle
+    applicability:
+      use_when:
+        - Exact surface, command, source ref, prerequisites, artifacts, accepted exits, and pass criteria are explicit.
+      do_not_use_when:
+        - The surface was not selected or any material input or accepted result remains implicit.
+      ambiguous_when:
+        - A broader gate is easier to run but does not preserve the selected invariant and proof class.
+    abi:
+      inputs:
+        - name: evaluation-selection
+          type: evaluation-selection
+          required: true
+          description: Exact selected surface with command, owner, source, prerequisites, artifact, and acceptance contract.
+      outputs:
+        - name: evaluation-observation
+          type: evaluation-observation
+          required: true
+          description: Command and artifact observation with drift, invariant verdict, skipped checks, and proof limit.
+    binding:
+      kind: mode
+      ref: skills/core/engineering/aoa-eval/SKILL.md
+      operation: apply
+      availability: available
+    execution:
+      freedom: bounded-judgment
+      tool_requirements:
+        - Exact owner command environment and read access to resulting stdout and artifacts.
+      verification:
+        - Run only named JIT owner checks and the exact selected command in its owner root.
+        - Inspect stdout and artifacts manually; separate exit success, invariant satisfaction, and central proof.
+      termination:
+        - Stop after one bounded execution and manual artifact verdict.
+        - Return to select when exact command, source, accepted result, or required input is absent.
+      effects:
+        - generated-write
+      reversibility: conditionally-reversible
+      failure_modes:
+        - Substituting a broader green gate or ignoring partial and stale artifacts.
+        - Reporting command success as proof beyond the selected contract.
+    trust: *eval_trust
+    provenance:
+      source_refs:
+        - repo: aoa-skills
+          path: skills/core/engineering/aoa-eval/SKILL.md
+          ref: capability-family-v0.1.0
+          role: apply-mode
+          authority: authored
+      optional_refs: []
+    aliases:
+      - name: aoa-eval-apply
+        state: migration-only
+        remove_after: eval-family-runtime-parity
+    keywords:
+      - apply-eval
+      - run-eval
+      - exact-command
+      - inspect-artifact
+      - запустить-оценку
+      - выполнить-проверку
+      - проверить-артефакт
+      - выбранный-eval
+      - вручную
+      - артефакт
+
+  - id: mode.eval.propose
+    title: Propose a bounded response to an evaluation no-fit
+    description: Prepare the smallest owner-local intake or suite-design candidate after a recorded no-fit, without creating proof or permanent scaffolding.
+    kind: mode
+    contract_level: executable
+    primary_parent: engineering.evaluation
+    owner: *eval_owner
+    lifecycle: *eval_mode_lifecycle
+    applicability:
+      use_when:
+        - Selection recorded no adequate fit and a stable invariant, owner home, and acceptance criteria are known.
+      do_not_use_when:
+        - An exact surface exists, the invariant is undefined, or the request is to edit central proof authority directly.
+      ambiguous_when:
+        - Reviewed traces suggest a recurring gap but have not established a stable long-lived invariant.
+    abi:
+      inputs:
+        - name: evaluation-no-fit
+          type: evaluation-selection
+          required: true
+          description: Recorded no-fit, invariant, owner, acceptance criteria, rejected alternatives, and evidence refs.
+      outputs:
+        - name: evaluation-proposal
+          type: evaluation-proposal
+          required: true
+          description: Smallest owner-local intake or suite-design candidate plus manual cases and admission review.
+    binding:
+      kind: mode
+      ref: skills/core/engineering/aoa-eval/SKILL.md
+      operation: propose
+      availability: available
+    execution: *eval_execution
+    trust: *eval_trust
+    provenance:
+      source_refs:
+        - repo: aoa-skills
+          path: skills/core/engineering/aoa-eval/SKILL.md
+          ref: capability-family-v0.1.0
+          role: propose-mode
+          authority: authored
+      optional_refs: []
+    aliases:
+      - name: aoa-eval-local-need
+        state: migration-only
+        remove_after: eval-family-runtime-parity
+      - name: aoa-eval-design
+        state: migration-only
+        remove_after: eval-family-runtime-parity
+    keywords:
+      - eval-gap
+      - no-fit
+      - intake
+      - suite-design
+      - manual-cases
+      - пробел-оценки
+      - нет-подходящей-проверки
+      - проектирование-eval
+relations:
+  - kind: implemented-by
+    source: engineering.evaluation
+    target: skill.aoa-eval
+  - kind: hands-off-to
+    source: mode.eval.select
+    target: mode.eval.apply
+    condition: Selection found an exact fit with a complete execution contract.
+  - kind: hands-off-to
+    source: mode.eval.select
+    target: mode.eval.propose
+    condition: Selection recorded partial or no fit with a stable invariant and owner.

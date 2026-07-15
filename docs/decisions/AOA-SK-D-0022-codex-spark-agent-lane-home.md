@@ -9,9 +9,9 @@
 - Skill lanes: portable/export
 - Mechanic parents: release-support
 - Guard families: export/runtime, AGENTS/mesh
-- Posture: accepted Spark lane home
+- Posture: superseded Spark lane; see AOA-SK-D-0039
 
-Status: accepted
+Status: superseded by AOA-SK-D-0039
 Date: 2026-05-18
 
 ## Context

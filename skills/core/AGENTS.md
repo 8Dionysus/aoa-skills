@@ -6,22 +6,25 @@ This card applies to `skills/core/`.
 
 ## Role
 
-This lane owns core skills that should remain broadly useful inside the AoA skill layer.
+This district holds portable AoA procedures whose applicability is broader
+than one project adapter.
 
 ## Read before editing
 
-Read `skills/AGENTS.md`, `skills/core/engineering/AGENTS.md` or `skills/core/session-growth/AGENTS.md`, and the target bundle.
+Read `skills/AGENTS.md`, the nearest lane card, target bundle, and bound
+capability family.
 
 ## Boundaries
 
-Core skills must stay self-contained and broadly applicable; avoid narrow repository-only examples unless they are clearly examples, not the rule.
+Core bundles remain owner-neutral, small, and independently useful. Project
+facts and runtime commands stay in owner adapters or external bindings.
 
 ## Validation
 
-Full lane command sequences live in `config/validation_lanes.json`; this local card may name only focused owner checks, lane ids, or the nearest route for the changed surface.
-
-Run `PYTHONPATH=scripts python scripts/validation/validate_skills.py`, `PYTHONPATH=scripts python scripts/builders/build_catalog.py --check`, `PYTHONPATH=scripts python scripts/validation/validate_agent_skills.py --repo-root .`, and focused bundle checks when present.
+Run manual held-out cases, then the focused source, capability, and export
+checks named by `config/validation_lanes.json`.
 
 ## Closeout
 
-Report changed surfaces, checks run, checks skipped, remaining risk, and the next owner route. If a nearby source document carried agent-facing working law into this card, name that transfer.
+Report the bundle, internal modes, evidence change, checks, and any deferred
+owner binding.

@@ -1,0 +1,1042 @@
+schema_version: aoa-capability-family-v1
+family_id: projects-titan-closeout
+title: Titan closeout ecosystem
+description: Semantic closeout capability bound to an owner playbook, owner tools, runtime guard, and human gate.
+owner:
+  repo: aoa-skills
+  surface: capabilities/families/titan.yaml
+  authority: route-only
+nodes:
+  - id: projects.titan
+    title: Titan
+    description: Semantic capability subtree whose roles, workflows, tools, guards, and runtime remain with their owning repositories.
+    kind: capability
+    contract_level: navigation
+    primary_parent: projects
+    owner:
+      repo: aoa-agents
+      surface: mechanics/titan/README.md
+      authority: external-authority
+    lifecycle:
+      state: candidate
+      version: 0.1.0
+      visibility: deferred
+      evidence_state: manual-baseline
+      health: challenger
+  - id: projects.titan.session
+    title: Titan session
+    description: Session lifecycle capabilities over visible Titan receipts, ledgers, reports, and owner routes.
+    kind: capability
+    contract_level: navigation
+    primary_parent: projects.titan
+    owner:
+      repo: aoa-playbooks
+      surface: playbooks/titan/README.md
+      authority: external-authority
+    lifecycle:
+      state: candidate
+      version: 0.1.0
+      visibility: deferred
+      evidence_state: manual-baseline
+      health: challenger
+  - id: projects.titan.session.control
+    title: Titan session control plane
+    description: Visible helper state for receipts, console, app-server events, approvals, and replay without role, runtime, or operator authority.
+    kind: capability
+    contract_level: navigation
+    primary_parent: projects.titan.session
+    owner:
+      repo: aoa-sdk
+      surface: mechanics/titan/README.md
+      authority: external-authority
+    lifecycle:
+      state: active
+      version: 0.1.0
+      visibility: deferred
+      evidence_state: owner-verified
+      health: healthy
+    keywords: [titan-control, console, appserver, approval, receipt, replay, титан, консоль, разрешение, квитанция]
+  - id: projects.titan.session.memory
+    title: Titan candidate memory
+    description: Candidate-grade ingest, recall, and reviewed retention routes that remain below durable memory and source truth.
+    kind: capability
+    contract_level: navigation
+    primary_parent: projects.titan.session
+    owner:
+      repo: aoa-sdk
+      surface: mechanics/titan/parts/memory-loom-recall-helper-contracts/CONTRACT.md
+      authority: external-authority
+    lifecycle:
+      state: active
+      version: 0.1.0
+      visibility: deferred
+      evidence_state: owner-verified
+      health: healthy
+    keywords: [titan-memory, memory-loom, recall, retention, память, воспоминание, удержание]
+  - id: projects.titan.summon
+    title: Titan summon
+    description: Explicit service-cohort summon routing with bounded roles, visible gates, and no hidden spawning.
+    kind: capability
+    contract_level: navigation
+    primary_parent: projects.titan
+    owner:
+      repo: aoa-agents
+      surface: mechanics/titan/parts/summon-boundary/docs/summon-boundary.md
+      authority: external-authority
+    lifecycle:
+      state: active
+      version: 0.1.0
+      visibility: deferred
+      evidence_state: owner-verified
+      health: healthy
+    keywords: [titan-summon, cohort, Atlas, Sentinel, Mneme, Forge, Delta, призвать, титан, когорта]
+  - id: tool.titan.approval-record
+    title: Record a Titan approval witness
+    description: Record an already explicit operator decision in SDK-visible console or bridge state without turning the record into approval authority.
+    kind: tool
+    contract_level: executable
+    primary_parent: projects.titan.session.control
+    owner:
+      repo: aoa-sdk
+      surface: mechanics/titan/parts/operator-console-helper-contracts/scripts/titan_console.py
+      authority: external-authority
+    lifecycle:
+      state: active
+      version: 0.1.0
+      visibility: internal
+      evidence_state: owner-verified
+      health: healthy
+    applicability:
+      use_when: [An explicit operator decision must be preserved as a receipt-linked witness for one exact Titan gate.]
+      do_not_use_when: [Approval is absent, inferred, reusable across actions, or the record would be treated as permission by itself.]
+      ambiguous_when: [The decision text exists but actor, target, thread, turn, gate, or receipt identity is incomplete.]
+    abi:
+      inputs:
+        - {name: operator-decision, type: explicit-operator-decision, required: true, description: "Actor, exact action, gate, target, thread, turn, receipt, decision, and source reference."}
+      outputs:
+        - {name: approval-witness, type: titan-approval-witness, required: true, description: "SDK-shaped witness record that carries no independent authorization."}
+    binding: {kind: tool, ref: "aoa-sdk:mechanics/titan/parts/operator-console-helper-contracts/scripts/titan_console.py", operation: gate, availability: external}
+    execution:
+      freedom: deterministic
+      tool_requirements: [Python and a current aoa-sdk checkout.]
+      verification: [Match actor, action, gate, target, thread, turn, receipt, and source decision exactly; validate the resulting helper record.]
+      termination: [Stop after one valid witness or fail closed on any missing identity; never activate a lane.]
+      effects: [generated-write]
+      reversibility: reversible
+      failure_modes: [Inferring approval from silence or helper defaults., Reusing a witness for a different action or turn.]
+    trust: {public_safe: true, requires_human_approval: false, posture: owner-routed}
+    provenance:
+      source_refs:
+        - {repo: aoa-sdk, path: mechanics/titan/parts/operator-console-helper-contracts/CONTRACT.md, ref: be46faf0464ba6c56554e87bf72f30dc4fc512e7, role: helper-boundary, authority: external-authority}
+        - {repo: aoa-sdk, path: mechanics/titan/parts/operator-console-helper-contracts/scripts/titan_console.py, ref: be46faf0464ba6c56554e87bf72f30dc4fc512e7, role: helper-tool, authority: external-authority}
+      optional_refs: []
+    keywords: [approval-record, operator-decision, Forge, Delta, разрешение, решение, оператор]
+  - id: tool.titan.approval-queue
+    title: Inspect Titan bridge approval queue
+    description: Normalize and inspect SDK-visible pending and decided approval witnesses without auto-approval or hidden execution.
+    kind: tool
+    contract_level: executable
+    primary_parent: projects.titan.session.control
+    owner:
+      repo: aoa-sdk
+      surface: src/aoa_sdk/titans/appserver_bridge.py
+      authority: external-authority
+    lifecycle:
+      state: active
+      version: 0.1.0
+      visibility: internal
+      evidence_state: owner-verified
+      health: healthy
+    applicability:
+      use_when: [A Titan bridge session contains approval-request events whose visible state must be normalized or inspected.]
+      do_not_use_when: [The queue would decide operator intent, activate a role, or dispatch work.]
+      ambiguous_when: [A decision exists outside the bridge but has not been bound to the exact request and turn.]
+    abi:
+      inputs:
+        - {name: titan-bridge-state, type: titan-appserver-bridge-witness, required: true, description: "Normalized bridge state containing visible request and decision events with thread, turn, and receipt context."}
+      outputs:
+        - {name: approval-queue-state, type: titan-approval-queue-witness, required: true, description: "Pending, allowed, denied, or unresolved helper state with source refs."}
+    binding: {kind: tool, ref: "aoa-sdk:src/aoa_sdk/titans/appserver_bridge.py", operation: ingest-and-decide-approval, availability: external}
+    execution:
+      freedom: deterministic
+      tool_requirements: [Python and visible app-server event input.]
+      verification: [Validate the bridge state and preserve unresolved or mismatched requests as blocked rather than approved.]
+      termination: [Stop after one bounded queue readout; do not start or steer a turn.]
+      effects: [generated-write]
+      reversibility: reversible
+      failure_modes: [Treating queue status as operator authority., Resolving a request without exact thread-turn identity.]
+    trust: {public_safe: true, requires_human_approval: false, posture: owner-routed}
+    provenance:
+      source_refs:
+        - {repo: aoa-sdk, path: src/aoa_sdk/titans/appserver_bridge.py, ref: be46faf0464ba6c56554e87bf72f30dc4fc512e7, role: helper-implementation, authority: external-authority}
+        - {repo: aoa-agents, path: mechanics/titan/parts/runtime-roster/docs/appserver-bridge-boundary.md, ref: 43d196cccbfb57ba803bf3fa0f723eb46ffeb91f, role: role-and-auto-approval-boundary, authority: external-authority}
+      optional_refs: []
+    keywords: [approval-queue, appserver, pending, bridge, очередь, разрешение, запрос]
+  - id: tool.titan.appserver-bridge
+    title: Normalize Titan app-server bridge state
+    description: Normalize visible app-server thread, turn, event, approval-witness, replay, and metrics state without executing hidden agent work.
+    kind: tool
+    contract_level: executable
+    primary_parent: projects.titan.session.control
+    owner:
+      repo: aoa-sdk
+      surface: mechanics/titan/parts/appserver-bridge-helper-contracts/scripts/titan_appserver_bridge.py
+      authority: external-authority
+    lifecycle:
+      state: active
+      version: 0.1.0
+      visibility: internal
+      evidence_state: owner-verified
+      health: healthy
+    applicability:
+      use_when: [Visible Codex app-server messages need a bounded Titan helper session, event stream, replay, metrics, or validation readout.]
+      do_not_use_when: [The request is to spawn, steer, interrupt, approve, or mutate through a hidden bridge path.]
+      ambiguous_when: [A message lacks stable thread, turn, direction, or receipt identity.]
+    abi:
+      inputs:
+        - {name: appserver-events, type: visible-appserver-events, required: true, description: "Visible JSON-RPC messages plus workspace and source identity."}
+      outputs:
+        - {name: titan-bridge-state, type: titan-appserver-bridge-witness, required: true, description: "Normalized helper session, events, approvals, gates, and metrics with validation errors."}
+    binding: {kind: tool, ref: "aoa-sdk:mechanics/titan/parts/appserver-bridge-helper-contracts/scripts/titan_appserver_bridge.py", operation: normalize-replay-validate, availability: external}
+    execution:
+      freedom: deterministic
+      tool_requirements: [Python and visible JSON-RPC event input.]
+      verification: [Run owner validation and confirm Forge or Delta cannot appear active without their matching recorded gate witness.]
+      termination: [Stop after the requested helper readout or validation result; never continue agent execution implicitly.]
+      effects: [generated-write]
+      reversibility: reversible
+      failure_modes: [Using replayed bridge state as role or runtime truth., Calling builder JSON-RPC messages as though a plan had been executed.]
+    trust: {public_safe: true, requires_human_approval: false, posture: owner-routed}
+    provenance:
+      source_refs:
+        - {repo: aoa-sdk, path: mechanics/titan/parts/appserver-bridge-helper-contracts/CONTRACT.md, ref: be46faf0464ba6c56554e87bf72f30dc4fc512e7, role: helper-contract, authority: external-authority}
+        - {repo: aoa-sdk, path: src/aoa_sdk/titans/appserver_bridge.py, ref: be46faf0464ba6c56554e87bf72f30dc4fc512e7, role: helper-implementation, authority: external-authority}
+      optional_refs: []
+    keywords: [appserver-bridge, json-rpc, thread, turn, replay, мост, поток, ход]
+  - id: tool.titan.appserver-plan
+    title: Build a Titan app-server launch plan
+    description: Emit inspectable JSON-RPC launch-plan messages without sending them or claiming Codex runtime projection authority.
+    kind: tool
+    contract_level: executable
+    primary_parent: projects.titan.session.control
+    owner:
+      repo: aoa-sdk
+      surface: mechanics/titan/parts/operator-console-helper-contracts/scripts/titan_console.py
+      authority: external-authority
+    lifecycle:
+      state: active
+      version: 0.1.0
+      visibility: internal
+      evidence_state: owner-verified
+      health: healthy
+    applicability:
+      use_when: [A Titan cohort launch must be previewed as inspectable app-server JSON-RPC messages before any runtime call.]
+      do_not_use_when: [The output would be sent, treated as a completed summon, or used to bypass explicit role gates.]
+      ambiguous_when: [Workspace, model, approval policy, sandbox, or receipt identity is missing.]
+    abi:
+      inputs:
+        - {name: launch-intent, type: titan-launch-intent, required: true, description: "Workspace, cohort, model, sandbox, approval policy, receipt, and bounded task."}
+      outputs:
+        - {name: appserver-launch-plan, type: titan-appserver-launch-plan, required: true, description: "Unsent JSON-RPC message plan with gate and stop conditions."}
+    binding: {kind: tool, ref: "aoa-sdk:mechanics/titan/parts/operator-console-helper-contracts/scripts/titan_console.py", operation: appserver-plan, availability: external}
+    execution:
+      freedom: deterministic
+      tool_requirements: [Python and an aoa-sdk checkout.]
+      verification: [Validate the plan schema and manually confirm it contains no hidden send, spawn, auto-approval, or mutation step.]
+      termination: [Stop after emitting the plan; execution requires a separate explicitly authorized runtime route.]
+      effects: [generated-write]
+      reversibility: reversible
+      failure_modes: [Confusing a launch plan with a launched cohort., Omitting approval or sandbox posture.]
+    trust: {public_safe: true, requires_human_approval: false, posture: owner-routed}
+    provenance:
+      source_refs:
+        - {repo: aoa-sdk, path: mechanics/titan/parts/operator-console-helper-contracts/CONTRACT.md, ref: be46faf0464ba6c56554e87bf72f30dc4fc512e7, role: helper-contract, authority: external-authority}
+        - {repo: aoa-agents, path: mechanics/titan/parts/runtime-roster/docs/appserver-bridge-boundary.md, ref: 43d196cccbfb57ba803bf3fa0f723eb46ffeb91f, role: no-hidden-execution-boundary, authority: external-authority}
+      optional_refs: []
+    keywords: [appserver-plan, launch-plan, jsonl, preview, план-запуска, предпросмотр]
+  - id: tool.titan.console
+    title: Maintain Titan console witness state
+    description: Create, inspect, digest, validate, and close SDK-visible console state while keeping operator approval and runtime activation external.
+    kind: tool
+    contract_level: executable
+    primary_parent: projects.titan.session.control
+    owner:
+      repo: aoa-sdk
+      surface: mechanics/titan/parts/operator-console-helper-contracts/scripts/titan_console.py
+      authority: external-authority
+    lifecycle:
+      state: active
+      version: 0.1.0
+      visibility: internal
+      evidence_state: owner-verified
+      health: healthy
+    applicability:
+      use_when: [A Titan session needs visible helper roster, event, approval-witness, digest, close, or validation state.]
+      do_not_use_when: [Console validity would be treated as live operator approval, role truth, or runtime activation.]
+      ambiguous_when: [The console state and external runtime or receipt disagree.]
+    abi:
+      inputs:
+        - {name: console-operation, type: titan-console-operation, required: true, description: "Exact helper operation plus session, receipt, actor, and source refs."}
+      outputs:
+        - {name: titan-console-state, type: titan-console-witness, required: true, description: "Validated visible helper state or explicit mismatch."}
+    binding: {kind: tool, ref: "aoa-sdk:mechanics/titan/parts/operator-console-helper-contracts/scripts/titan_console.py", operation: roster-new-event-gate-digest-close-validate, availability: external}
+    execution:
+      freedom: deterministic
+      tool_requirements: [Python and a current aoa-sdk checkout.]
+      verification: [Run owner validation and compare any active-gate witness with the exact external approval and runtime identity.]
+      termination: [Stop after one requested console operation; never dispatch work.]
+      effects: [generated-write]
+      reversibility: reversible
+      failure_modes: [Treating console state as operator authority., Updating helper state after close without an owner repair route.]
+    trust: {public_safe: true, requires_human_approval: false, posture: owner-routed}
+    provenance:
+      source_refs:
+        - {repo: aoa-sdk, path: mechanics/titan/parts/operator-console-helper-contracts/CONTRACT.md, ref: be46faf0464ba6c56554e87bf72f30dc4fc512e7, role: helper-contract, authority: external-authority}
+        - {repo: aoa-agents, path: mechanics/titan/parts/incarnation-spine/docs/operator-console-boundary.md, ref: 43d196cccbfb57ba803bf3fa0f723eb46ffeb91f, role: operator-and-role-boundary, authority: external-authority}
+      optional_refs: []
+    keywords: [titan-console, roster, digest, visible-state, консоль, состав, состояние]
+  - id: tool.titan.event-replay
+    title: Replay visible Titan session evidence
+    description: Derive phase, packet, and learning-delta witnesses from a visible export without turning replay into proof, memory, or runtime authority.
+    kind: tool
+    contract_level: executable
+    primary_parent: projects.titan.session.control
+    owner:
+      repo: aoa-sdk
+      surface: mechanics/titan/parts/session-praxis-replay-helper-contracts/scripts/titan_session_replay.py
+      authority: external-authority
+    lifecycle:
+      state: active
+      version: 0.1.0
+      visibility: internal
+      evidence_state: owner-verified
+      health: healthy
+    applicability:
+      use_when: [A bounded visible session export needs phase segmentation, agent packets, or candidate learning deltas.]
+      do_not_use_when: [Raw hidden history is requested or replay output would become proof, canon, or automatic skill evolution.]
+      ambiguous_when: [The visible export is incomplete across compaction or lacks stable source boundaries.]
+    abi:
+      inputs:
+        - {name: visible-session-export, type: bounded-visible-session-evidence, required: true, description: "Explicit visible export and source boundary."}
+      outputs:
+        - {name: titan-replay-witness, type: titan-session-replay-witness, required: true, description: "Derived phase graph, packets, or candidate deltas with completeness limits."}
+    binding: {kind: tool, ref: "aoa-sdk:mechanics/titan/parts/session-praxis-replay-helper-contracts/scripts/titan_session_replay.py", operation: segment-packets-lessons, availability: external}
+    execution:
+      freedom: deterministic
+      tool_requirements: [Python and an explicitly provided visible export.]
+      verification: [Inspect source boundaries and label missing or compacted evidence before any downstream use.]
+      termination: [Stop after the requested replay artifact; route candidates to their owners for review.]
+      effects: [generated-write]
+      reversibility: reversible
+      failure_modes: [Treating replay as a complete transcript., Promoting candidate lessons without independent verification.]
+    trust: {public_safe: true, requires_human_approval: false, posture: owner-routed}
+    provenance:
+      source_refs:
+        - {repo: aoa-sdk, path: mechanics/titan/parts/session-praxis-replay-helper-contracts/CONTRACT.md, ref: be46faf0464ba6c56554e87bf72f30dc4fc512e7, role: helper-contract, authority: external-authority}
+        - {repo: aoa-sdk, path: src/aoa_sdk/titans/session_replay.py, ref: be46faf0464ba6c56554e87bf72f30dc4fc512e7, role: helper-implementation, authority: external-authority}
+      optional_refs: []
+    keywords: [event-replay, session-replay, phase-graph, learning-delta, воспроизведение, события, фазы]
+  - id: tool.titan.memory-ingest
+    title: Ingest Titan candidate memory
+    description: Convert named Titan receipts or events into source-linked candidate memory records without durable-memory acceptance.
+    kind: tool
+    contract_level: executable
+    primary_parent: projects.titan.session.memory
+    owner:
+      repo: aoa-sdk
+      surface: mechanics/titan/parts/memory-loom-recall-helper-contracts/scripts/titan_memory_loom.py
+      authority: external-authority
+    lifecycle:
+      state: active
+      version: 0.1.0
+      visibility: internal
+      evidence_state: owner-verified
+      health: healthy
+    applicability:
+      use_when: [A Titan receipt or event should become a bounded provenance-preserving recall candidate.]
+      do_not_use_when: [The input is untrusted action text, lacks source refs, or ingestion would imply truth or durable memo acceptance.]
+      ambiguous_when: [A record may belong to a non-Titan owner or contain private material requiring quarantine.]
+    abi:
+      inputs:
+        - {name: titan-memory-source, type: reviewed-titan-witness, required: true, description: "Receipt or event, source refs, trust, lineage, confidence, and owner route."}
+      outputs:
+        - {name: titan-memory-candidate, type: titan-candidate-memory-record, required: true, description: "Candidate record with stable id, lineage, authority warning, and recall limits."}
+        - {name: titan-memory-index, type: titan-candidate-memory-index, required: true, description: "Updated validated helper index containing the candidate and its source-linked lifecycle."}
+    binding: {kind: tool, ref: "aoa-sdk:mechanics/titan/parts/memory-loom-recall-helper-contracts/scripts/titan_memory_loom.py", operation: ingest, availability: external}
+    execution:
+      freedom: deterministic
+      tool_requirements: [Python plus a reviewed receipt or event and helper index.]
+      verification: [Validate the helper index and confirm every record remains candidate-grade with source refs and action-safety separation.]
+      termination: [Stop after bounded candidate creation or reject unsafe or ownerless input.]
+      effects: [generated-write]
+      reversibility: reversible
+      failure_modes: [Canonizing helper memory., Ingesting instructions as executable action or dropping provenance.]
+    trust: {public_safe: true, requires_human_approval: false, posture: owner-routed}
+    provenance:
+      source_refs:
+        - {repo: aoa-sdk, path: mechanics/titan/parts/memory-loom-recall-helper-contracts/CONTRACT.md, ref: be46faf0464ba6c56554e87bf72f30dc4fc512e7, role: helper-contract, authority: external-authority}
+        - {repo: aoa-memo, path: docs/boundaries/MEMORY_WRITE_PATH_GUARDRAILS.md, ref: 15c4c46e7880d2901c68782182e7d6a68656f6f3, role: durable-memory-boundary, authority: external-authority}
+      optional_refs: []
+    keywords: [memory-ingest, memory-loom, candidate, provenance, память, кандидат, происхождение]
+  - id: tool.titan.memory-recall
+    title: Recall Titan candidate memory
+    description: Retrieve bounded Titan candidate records with lineage, confidence, state, and verification routes while preserving owner uncertainty.
+    kind: tool
+    contract_level: executable
+    primary_parent: projects.titan.session.memory
+    owner:
+      repo: aoa-sdk
+      surface: mechanics/titan/parts/memory-loom-recall-helper-contracts/scripts/titan_memory_loom.py
+      authority: external-authority
+    lifecycle:
+      state: active
+      version: 0.1.0
+      visibility: internal
+      evidence_state: owner-verified
+      health: healthy
+    applicability:
+      use_when: [A Titan session needs source-linked candidate recall from a named helper index.]
+      do_not_use_when: [Recall would replace current owner files, proof, runtime state, or durable memory.]
+      ambiguous_when: [Several candidates conflict or currentness cannot be established.]
+    abi:
+      inputs:
+        - {name: titan-memory-index, type: titan-candidate-memory-index, required: true, description: "Named validated helper index whose entries remain candidate-grade."}
+        - {name: titan-recall-query, type: titan-candidate-recall-query, required: true, description: "Query, filters, limit, and current owner context."}
+      outputs:
+        - {name: titan-recall-results, type: titan-candidate-recall-results, required: true, description: "Ranked candidates with record ids, source refs, confidence, lifecycle, and verification routes."}
+    binding: {kind: tool, ref: "aoa-sdk:mechanics/titan/parts/memory-loom-recall-helper-contracts/scripts/titan_memory_loom.py", operation: recall, availability: external}
+    execution:
+      freedom: deterministic
+      tool_requirements: [Python and a named validated helper index.]
+      verification: [Preserve conflicts and currentness limits; check consequential claims against current owner sources.]
+      termination: [Stop after the bounded result set or explicit no-match.]
+      effects: [read-only]
+      reversibility: not-applicable
+      failure_modes: [Treating relevance as truth., Hiding conflict, staleness, or candidate status.]
+    trust: {public_safe: true, requires_human_approval: false, posture: owner-routed}
+    provenance:
+      source_refs:
+        - {repo: aoa-sdk, path: mechanics/titan/parts/memory-loom-recall-helper-contracts/CONTRACT.md, ref: be46faf0464ba6c56554e87bf72f30dc4fc512e7, role: helper-contract, authority: external-authority}
+        - {repo: aoa-agents, path: mechanics/titan/parts/service-cohort/docs/recall-authority.md, ref: 43d196cccbfb57ba803bf3fa0f723eb46ffeb91f, role: role-recall-boundary, authority: external-authority}
+      optional_refs: []
+    keywords: [memory-recall, candidate, source-ref, confidence, воспоминание, память, источник]
+  - id: tool.titan.receipt
+    title: Manage Titan receipt witnesses
+    description: Create, note, validate, or close SDK-visible Titan receipt artifacts without turning receipt state into role, runtime, approval, or owner truth.
+    kind: tool
+    contract_level: executable
+    primary_parent: projects.titan.session.control
+    owner:
+      repo: aoa-sdk
+      surface: mechanics/titan/parts/incarnation-identity-runtime-helper-contracts/scripts/titanctl.py
+      authority: external-authority
+    lifecycle:
+      state: active
+      version: 0.1.0
+      visibility: internal
+      evidence_state: owner-verified
+      health: healthy
+    applicability:
+      use_when: [A Titan summon, note, validation, gate witness, or closeout needs explicit local receipt state.]
+      do_not_use_when: [Receipt existence or validity would be treated as execution, approval, proof, or final owner truth.]
+      ambiguous_when: [The receipt identity disagrees with current thread, turn, cohort, or source refs.]
+    abi:
+      inputs:
+        - {name: receipt-operation, type: titan-receipt-operation, required: true, description: "Operation, exact session identity, actor or lane, source refs, and state transition request."}
+      outputs:
+        - {name: titan-receipt, type: titan-session-receipt-witness, required: true, description: "Created or updated helper receipt or explicit invalid-transition result."}
+    binding: {kind: tool, ref: "aoa-sdk:mechanics/titan/parts/incarnation-identity-runtime-helper-contracts/scripts/titanctl.py", operation: summon-note-closeout-validate, availability: external}
+    execution:
+      freedom: deterministic
+      tool_requirements: [Python and a current aoa-sdk checkout.]
+      verification: [Validate schema and lifecycle transition, then compare consequential claims with their external owner evidence.]
+      termination: [Stop after one bounded receipt operation; do not activate a Titan or close a stronger owner lifecycle.]
+      effects: [generated-write]
+      reversibility: reversible
+      failure_modes: [Using a receipt as proof of work or approval., Mutating a closed receipt without an explicit repair route.]
+    trust: {public_safe: true, requires_human_approval: false, posture: owner-routed}
+    provenance:
+      source_refs:
+        - {repo: aoa-sdk, path: mechanics/titan/parts/incarnation-identity-runtime-helper-contracts/CONTRACT.md, ref: be46faf0464ba6c56554e87bf72f30dc4fc512e7, role: helper-contract, authority: external-authority}
+        - {repo: aoa-sdk, path: mechanics/titan/parts/incarnation-identity-runtime-helper-contracts/scripts/titanctl.py, ref: be46faf0464ba6c56554e87bf72f30dc4fc512e7, role: helper-tool, authority: external-authority}
+      optional_refs: []
+    keywords: [titan-receipt, session, note, validate, closeout, квитанция, сессия, закрытие]
+  - id: tool.titan.memory-retention
+    title: Route a Titan memory retention operation
+    description: Route candidate demotion, deduplication, supersession, retraction, archive, freeze, split, or merge review through aoa-memo while keeping live deletion and runtime retention outside the tool.
+    kind: tool
+    contract_level: executable
+    primary_parent: projects.titan.session.memory
+    owner:
+      repo: aoa-memo
+      surface: mechanics/retention/docs/CONSOLIDATION_FORGETTING_OPERATION.md
+      authority: external-authority
+    lifecycle:
+      state: active
+      version: 0.1.0
+      visibility: internal
+      evidence_state: owner-verified
+      health: healthy
+    applicability:
+      use_when: [Reviewed Titan candidate memory needs an explicit memo-side lifecycle operation record and stronger-owner handoff.]
+      do_not_use_when: [The request is to silently delete source truth, private runtime data, provenance, or live storage through aoa-memo.]
+      ambiguous_when: [A memo-side recall change may require stronger source-owner, privacy, proof, or runtime authorization.]
+    abi:
+      inputs:
+        - {name: retention-request, type: reviewed-memory-retention-request, required: true, description: "Target candidate ids, source refs, trigger, current lifecycle, proposed operation, review route, and stronger-owner posture."}
+      outputs:
+        - {name: retention-operation-record, type: memo-retention-operation-record, required: true, description: "Reviewed memo-side operation or blocked handoff with audit refs and no source deletion claim."}
+    binding: {kind: tool, ref: "aoa-memo:mechanics/retention/docs/CONSOLIDATION_FORGETTING_OPERATION.md", operation: record-reviewed-operation, availability: external}
+    execution:
+      freedom: bounded-judgment
+      tool_requirements: [Current aoa-memo retention contract and all target memory and source references.]
+      verification: [Confirm the operation preserves provenance, auditability, and stronger-owner stop lines; regenerate owner read models only through their route.]
+      termination: [Stop after a reviewed operation record or explicit owner blocker; do not execute live retention or delete source truth.]
+      effects: [repo-write]
+      reversibility: conditionally-reversible
+      failure_modes: [Treating memo review as runtime retention execution., Hiding retraction, provenance, or a stronger owner veto.]
+    trust: {public_safe: true, requires_human_approval: true, posture: owner-routed}
+    provenance:
+      source_refs:
+        - {repo: aoa-memo, path: mechanics/retention/docs/CONSOLIDATION_FORGETTING_OPERATION.md, ref: 15c4c46e7880d2901c68782182e7d6a68656f6f3, role: memo-retention-operation-owner, authority: external-authority}
+        - {repo: aoa-memo, path: mechanics/retention/README.md, ref: 15c4c46e7880d2901c68782182e7d6a68656f6f3, role: stronger-owner-split, authority: external-authority}
+      optional_refs: []
+    keywords: [memory-retention, redact, retract, archive, supersede, память, удержание, отозвать, архив]
+  - id: guard.titan.thread-turn-binding
+    title: Titan thread-turn identity guard
+    description: Fail closed unless an event, approval, replay, receipt, and proposed action are bound to the same explicit thread and turn identity.
+    kind: guard
+    contract_level: executable
+    primary_parent: projects.titan.session.control
+    owner:
+      repo: aoa-sdk
+      surface: src/aoa_sdk/titans/appserver_bridge.py
+      authority: external-authority
+    lifecycle:
+      state: blocked
+      version: 0.1.0
+      visibility: internal
+      evidence_state: manual-baseline
+      health: unavailable
+    applicability:
+      use_when: [Titan bridge state or approval evidence may affect a specific turn, role gate, or runtime transition.]
+      do_not_use_when: [The operation is purely aggregate read-only analysis and cannot affect a turn or gate.]
+      ambiguous_when: [Helper state contains thread or turn ids but the live runtime has no enforcement binding.]
+    abi:
+      inputs:
+        - {name: identity-bound-evidence, type: titan-thread-turn-evidence, required: true, description: "Thread, turn, receipt, event, approval, action, and source identities."}
+      outputs:
+        - {name: binding-decision, type: titan-thread-turn-binding-decision, required: true, description: "Exact allow or block result with missing, duplicate, stale, or mismatched identities."}
+    binding: {kind: guard, ref: "titan-runtime-owner:unbound-thread-turn-enforcement", operation: evaluate, availability: unbound}
+    execution:
+      freedom: deterministic
+      tool_requirements: [A live runtime binding plus exact current thread, turn, receipt, event, approval, and action identity.]
+      verification: [Prove mismatched, missing, stale, duplicate, and cross-turn evidence is rejected by the live enforcement point.]
+      termination: [Stop blocked until a live owner binding exists and all identities match exactly.]
+      effects: [none]
+      reversibility: not-applicable
+      failure_modes: [Trusting the latest turn implicitly., Treating SDK normalization as live enforcement.]
+    trust: {public_safe: true, requires_human_approval: false, posture: runtime-enforced}
+    provenance:
+      source_refs:
+        - {repo: aoa-sdk, path: src/aoa_sdk/titans/appserver_bridge.py, ref: be46faf0464ba6c56554e87bf72f30dc4fc512e7, role: helper-identity-normalization, authority: derived-reference}
+        - {repo: aoa-agents, path: mechanics/titan/parts/runtime-roster/docs/appserver-bridge-boundary.md, ref: 43d196cccbfb57ba803bf3fa0f723eb46ffeb91f, role: no-hidden-runtime-boundary, authority: external-authority}
+      optional_refs: []
+    keywords: [thread-turn, identity, stale-approval, mismatch, поток, ход, привязка, идентичность]
+  - id: guard.titan.mutation
+    title: Titan mutation gate
+    description: Fail closed unless a Forge mutation is exact, owner-scoped, explicitly approved, receipt-bound, prechecked, verifiable, and recoverable at a real runtime enforcement point.
+    kind: guard
+    contract_level: executable
+    primary_parent: projects.titan.summon
+    owner:
+      repo: titan-runtime-owner
+      surface: unbound-forge-mutation-policy
+      authority: external-authority
+    lifecycle:
+      state: blocked
+      version: 0.1.0
+      visibility: internal
+      evidence_state: manual-baseline
+      health: unavailable
+    applicability:
+      use_when: [Forge or another Titan path is proposed to write workspace, runtime, external, or generated state.]
+      do_not_use_when: [The task remains read-only and cannot dispatch or mutate.]
+      ambiguous_when: [The mutation appears reversible but owner authority, target paths, validation, rollback, or approval identity is incomplete.]
+    abi:
+      inputs:
+        - {name: forge-mutation-request, type: titan-mutation-contract, required: true, description: "Exact target, owner, paths, effect, current state, prechecks, validation, rollback, receipt, thread, turn, and approval decision."}
+        - {name: thread-turn-decision, type: titan-thread-turn-binding-decision, required: true, description: "Fail-closed identity decision for the exact receipt, action, thread, and turn."}
+      outputs:
+        - {name: mutation-gate-decision, type: titan-mutation-gate-decision, required: true, description: "Runtime-enforced allow or block with every failed condition and owner route."}
+    binding: {kind: guard, ref: "titan-runtime-owner:unbound-forge-mutation-policy", operation: evaluate, availability: unbound}
+    execution:
+      freedom: deterministic
+      tool_requirements: [A runtime-enforced mutation gate and current owner, workspace, receipt, thread, turn, and approval state.]
+      verification: [Prove absent approval, wrong owner or path, stale identity, missing precheck, missing validation, destructive widening, and absent rollback all block.]
+      termination: [Stop blocked until a live owner binding exists and every condition passes.]
+      effects: [none]
+      reversibility: not-applicable
+      failure_modes: [Letting a Markdown contract or helper receipt authorize mutation., Broadening scope after approval or treating rollback prose as a recovery anchor.]
+    trust: {public_safe: true, requires_human_approval: true, posture: runtime-enforced}
+    provenance:
+      source_refs:
+        - {repo: aoa-agents, path: mechanics/titan/parts/summon-boundary/docs/summon-boundary.md, ref: 43d196cccbfb57ba803bf3fa0f723eb46ffeb91f, role: Forge-intent-boundary, authority: external-authority}
+        - {repo: aoa-sdk, path: src/aoa_sdk/titans/incarnation_spine.py, ref: be46faf0464ba6c56554e87bf72f30dc4fc512e7, role: helper-payload-validation, authority: derived-reference}
+      optional_refs: []
+    keywords: [mutation-gate, Forge, workspace-write, rollback, мутация, запись, откат, разрешение]
+  - id: guard.titan.runtime-transition
+    title: Titan runtime transition gate
+    description: Fail closed on any Titan activation or lifecycle transition that lacks the matching role intent, exact approval, receipt, thread-turn identity, and live owner policy.
+    kind: guard
+    contract_level: executable
+    primary_parent: projects.titan.summon
+    owner:
+      repo: titan-runtime-owner
+      surface: unbound-runtime-transition-policy
+      authority: external-authority
+    lifecycle:
+      state: blocked
+      version: 0.1.0
+      visibility: internal
+      evidence_state: manual-baseline
+      health: unavailable
+    applicability:
+      use_when: [A Titan is proposed to become active, change gate state, or advance a receipt lifecycle.]
+      do_not_use_when: [The request only reads role or route definitions and cannot change runtime state.]
+      ambiguous_when: [A helper receipt shows an allowed gate but no live runtime owner confirms the transition.]
+    abi:
+      inputs:
+        - {name: runtime-transition-request, type: titan-runtime-transition-request, required: true, description: "Titan, from and to states, role intent, gate kind, approval, receipt, thread, turn, owner, and source refs."}
+        - {name: thread-turn-decision, type: titan-thread-turn-binding-decision, required: true, description: "Fail-closed identity decision for the exact transition, receipt, thread, and turn."}
+      outputs:
+        - {name: runtime-transition-decision, type: titan-runtime-transition-decision, required: true, description: "Runtime-enforced allow or block with exact state and failed conditions."}
+    binding: {kind: guard, ref: "titan-runtime-owner:unbound-runtime-transition-policy", operation: evaluate, availability: unbound}
+    execution:
+      freedom: deterministic
+      tool_requirements: [A live Titan runtime owner and exact current transition state.]
+      verification: [Prove Forge cannot activate without mutation intent, Delta cannot activate without judgment intent, and helper state cannot override the live policy.]
+      termination: [Stop blocked until the live owner binding and exact transition evidence exist.]
+      effects: [none]
+      reversibility: not-applicable
+      failure_modes: [Treating route selection or receipt state as activation., Reusing a gate across Titans, turns, or transition kinds.]
+    trust: {public_safe: true, requires_human_approval: true, posture: runtime-enforced}
+    provenance:
+      source_refs:
+        - {repo: aoa-routing, path: mechanics/titan/parts/runtime-route/docs/titan-runtime-route.md, ref: 72f91d2a8e21438157a853becd136be30e72234e, role: intent-routing-contract, authority: external-authority}
+        - {repo: aoa-sdk, path: mechanics/titan/parts/incarnation-identity-runtime-helper-contracts/CONTRACT.md, ref: be46faf0464ba6c56554e87bf72f30dc4fc512e7, role: helper-transition-boundary, authority: derived-reference}
+      optional_refs: []
+    keywords: [runtime-gate, transition, Forge, Delta, activation, рантайм, переход, активация]
+  - id: workflow.titan.summon
+    title: Explicit Titan service-cohort summon
+    description: Execute only an explicitly requested bounded Titan summon, keeping default read-only roles separate from Forge mutation and Delta judgment authorization.
+    kind: workflow
+    contract_level: executable
+    primary_parent: projects.titan.summon
+    owner:
+      repo: aoa-agents
+      surface: mechanics/titan/parts/summon-boundary/docs/summon-boundary.md
+      authority: external-authority
+    lifecycle:
+      state: active
+      version: 0.1.0
+      visibility: internal
+      evidence_state: owner-verified
+      health: healthy
+    applicability:
+      use_when: [The user explicitly asks to summon named Titans or the service cohort for bounded independent tasks in a host that supports visible delegation.]
+      do_not_use_when: [The request merely mentions Titan, delegation was not requested, tasks are not bounded, or hidden spawning is proposed.]
+      ambiguous_when: [The user requests a cohort but does not authorize Forge mutation or Delta judgment.]
+    abi:
+      inputs:
+        - {name: explicit-summon-request, type: titan-summon-request, required: true, description: "Operator text, named Titans or cohort, bounded tasks, workspace, effect limits, return contract, and any separate Forge or Delta intent."}
+      outputs:
+        - {name: titan-summon-result, type: titan-summon-result, required: true, description: "Visible delegated tasks and identities plus receipt witness, or an explicit blocked or partially summoned result."}
+    binding: {kind: workflow, ref: "aoa-agents:mechanics/titan/parts/summon-boundary/docs/summon-boundary.md", operation: explicit-bounded-summon, availability: external}
+    execution:
+      freedom: bounded-judgment
+      tool_requirements: [A host-visible delegation mechanism, explicit user summon, and bounded child task and return contracts.]
+      verification: [Confirm every child has one bounded role and task, Atlas, Sentinel, and Mneme remain read-only by default, and Forge or Delta receives no extra authority from cohort membership.]
+      termination: [Stop after visible summon and receipt, explicit block, or bounded child completion according to the host contract.]
+      effects: [external-write]
+      reversibility: conditionally-reversible
+      failure_modes: [Spawning from implicit context or broad enthusiasm., Smuggling mutation or verdict authority into a generic cohort task., Treating child output as owner truth.]
+    trust: {public_safe: true, requires_human_approval: true, posture: human-authorized}
+    provenance:
+      source_refs:
+        - {repo: aoa-agents, path: mechanics/titan/parts/summon-boundary/docs/summon-boundary.md, ref: 43d196cccbfb57ba803bf3fa0f723eb46ffeb91f, role: summon-authority-boundary, authority: external-authority}
+        - {repo: aoa-agents, path: mechanics/titan/parts/service-cohort/docs/service-cohort.md, ref: 43d196cccbfb57ba803bf3fa0f723eb46ffeb91f, role: cohort-and-role-contract, authority: external-authority}
+      optional_refs: []
+    keywords: [titan-summon, service-cohort, Atlas, Sentinel, Mneme, Forge, Delta, призвать, делегировать, когорта]
+  - id: projects.titan.session.closeout-audit
+    title: Audit Titan closeout readiness
+    description: Review a visible Titan ledger and evidence packet, then close honestly or return review-required without promoting owner truth.
+    kind: capability
+    contract_level: navigation
+    primary_parent: projects.titan.session
+    owner:
+      repo: aoa-playbooks
+      surface: playbooks/titan/closeout/titan-closeout-audit/PLAYBOOK.md
+      authority: external-authority
+    lifecycle:
+      state: candidate
+      version: 0.1.0
+      visibility: deferred
+      evidence_state: manual-baseline
+      health: degraded
+    keywords:
+      - titan-closeout
+      - swarm-ledger
+      - unresolved-finding
+      - review-required
+      - титан
+      - закрытие
+      - готовность
+      - аудит
+      - подтверждение
+      - разрешение
+  - id: tool.titan.swarm-validate
+    title: Validate Titan swarm ledger shape
+    description: Run the aoa-sdk ledger validator as a structural preflight; it does not decide semantic closeout readiness.
+    kind: tool
+    contract_level: executable
+    primary_parent: projects.titan.session.closeout-audit
+    owner:
+      repo: aoa-sdk
+      surface: mechanics/titan/parts/swarm-ledger-closeout-helper-contracts/scripts/titan_swarm.py
+      authority: external-authority
+    lifecycle:
+      state: active
+      version: 0.1.0
+      visibility: internal
+      evidence_state: owner-verified
+      health: degraded
+    applicability:
+      use_when:
+        - A named Titan swarm ledger needs structural validation before closeout review.
+      do_not_use_when:
+        - The result would be treated as semantic approval or whole-session proof.
+      ambiguous_when:
+        - The ledger uses a newer owner schema than the bound helper version.
+    abi:
+      inputs:
+        - name: titan-ledger
+          type: titan-swarm-ledger
+          required: true
+          description: Named owner-format ledger path.
+      outputs:
+        - name: structural-validation
+          type: titan-ledger-validation
+          required: true
+          description: Structural validation result with no closeout authority.
+    binding:
+      kind: tool
+      ref: aoa-sdk:mechanics/titan/parts/swarm-ledger-closeout-helper-contracts/scripts/titan_swarm.py
+      operation: validate
+      availability: external
+    execution:
+      freedom: deterministic
+      tool_requirements:
+        - Python and an aoa-sdk checkout at the pinned owner source.
+      verification:
+        - Record exit status and inspect the ledger for unresolved semantic conditions separately.
+      termination:
+        - Stop after one validation result; never call closeout from this binding.
+      effects:
+        - read-only
+      reversibility: not-applicable
+      failure_modes:
+        - Equating structural validity with closeout eligibility.
+        - Running against a different schema version without recording drift.
+    trust:
+      public_safe: true
+      requires_human_approval: false
+      posture: owner-routed
+    provenance:
+      source_refs:
+        - repo: aoa-sdk
+          path: mechanics/titan/parts/swarm-ledger-closeout-helper-contracts/scripts/titan_swarm.py
+          ref: be46faf0464ba6c56554e87bf72f30dc4fc512e7
+          role: owner-tool
+          authority: external-authority
+      optional_refs: []
+  - id: guard.titan.closeout-readiness
+    title: Titan closeout readiness guard
+    description: Fail closed unless unresolved findings, grades, reports, lifecycle, source refs, and required approvals satisfy owner policy.
+    kind: guard
+    contract_level: executable
+    primary_parent: projects.titan.session.closeout-audit
+    owner:
+      repo: titan-runtime-owner
+      surface: unbound-closeout-policy
+      authority: external-authority
+    lifecycle:
+      state: blocked
+      version: 0.1.0
+      visibility: internal
+      evidence_state: manual-baseline
+      health: unavailable
+    applicability:
+      use_when:
+        - Any Titan closeout audit may lead to a closed lifecycle state or accepted judgment.
+      do_not_use_when:
+        - The task is read-only inspection that cannot advance lifecycle or acceptance.
+      ambiguous_when:
+        - Structural validation is green but owner policy has not published semantic eligibility rules.
+    abi:
+      inputs:
+        - name: structural-validation
+          type: titan-ledger-validation
+          required: true
+          description: Structural preflight from the owner tool.
+        - name: closeout-evidence
+          type: titan-closeout-evidence
+          required: true
+          description: Findings, grades, reports, lifecycle, source refs, and approvals.
+        - name: approval-decision
+          type: titan-approval-decision
+          required: true
+          description: Exact actor-bound human decision for the proposed lifecycle action.
+      outputs:
+        - name: gate-decision
+          type: titan-closeout-gate-decision
+          required: true
+          description: Allow or block result with exact failed conditions and owner route.
+    binding:
+      kind: guard
+      ref: titan-runtime-owner:unbound-closeout-policy
+      operation: evaluate
+      availability: unbound
+    execution:
+      freedom: deterministic
+      tool_requirements:
+        - A runtime-enforced owner policy and exact current receipt/ledger identity.
+      verification:
+        - Prove the guard rejects unresolved P1 findings, missing grades, post-close mutation, and absent approval.
+      termination:
+        - Stop blocked until an owner-enforced binding exists and all conditions pass.
+      effects:
+        - none
+      reversibility: not-applicable
+      failure_modes:
+        - Accepting helper defaults as approval.
+        - Allowing structural validation to bypass semantic lifecycle conditions.
+        - Inferring missing approval or identity from the latest turn.
+    trust:
+      public_safe: true
+      requires_human_approval: true
+      posture: runtime-enforced
+    provenance:
+      source_refs:
+        - repo: aoa-sdk
+          path: mechanics/titan/parts/swarm-ledger-closeout-helper-contracts/CONTRACT.md
+          ref: be46faf0464ba6c56554e87bf72f30dc4fc512e7
+          role: current-helper-contract
+          authority: derived-reference
+      optional_refs: []
+  - id: human-gate.titan.closeout
+    title: Titan closeout human gate
+    description: Supply an explicit operator decision bound to the exact ledger, thread, turn, and closeout action.
+    kind: human-gate
+    contract_level: executable
+    primary_parent: projects.titan.session.closeout-audit
+    owner:
+      repo: titan-runtime-owner
+      surface: operator-approval
+      authority: external-authority
+    lifecycle:
+      state: blocked
+      version: 0.1.0
+      visibility: internal
+      evidence_state: manual-baseline
+      health: unavailable
+    applicability:
+      use_when:
+        - A closeout action changes lifecycle state or accepts a bounded judgment.
+      do_not_use_when:
+        - No action is proposed or the review remains read-only and review-required.
+      ambiguous_when:
+        - An approval exists but lacks exact ledger, thread, turn, actor, or action binding.
+    abi:
+      inputs:
+        - name: closeout-request
+          type: titan-closeout-request
+          required: true
+          description: Exact action and identity to approve or reject.
+      outputs:
+        - name: approval-decision
+          type: titan-approval-decision
+          required: true
+          description: Explicit actor-bound decision or fail-closed absence.
+    binding:
+      kind: human-gate
+      ref: titan-runtime-owner:operator-approval
+      operation: decide
+      availability: unbound
+    execution:
+      freedom: bounded-judgment
+      tool_requirements:
+        - Operator-visible approval surface with exact identity binding.
+      verification:
+        - Match request, ledger, thread, turn, actor, action, and decision reference exactly.
+      termination:
+        - Stop on explicit allow, explicit deny, or missing/mismatched identity.
+      effects:
+        - human-decision
+      reversibility: conditionally-reversible
+      failure_modes:
+        - Treating absence or helper defaults as approval.
+        - Reusing approval for a different action or turn.
+    trust:
+      public_safe: true
+      requires_human_approval: true
+      posture: human-authorized
+    provenance:
+      source_refs:
+        - repo: aoa-playbooks
+          path: playbooks/titan/closeout/titan-closeout-audit/PLAYBOOK.md
+          ref: a9ed3f2eaffce1a64edf87fff076a57baf9b0215
+          role: choreography-gate-boundary
+          authority: external-authority
+      optional_refs: []
+  - id: workflow.titan.closeout-audit
+    title: Titan closeout audit playbook
+    description: Coordinate ledger review, fault attribution, memory-candidate triage, and owner-routed follow-through.
+    kind: workflow
+    contract_level: executable
+    primary_parent: projects.titan.session.closeout-audit
+    owner:
+      repo: aoa-playbooks
+      surface: playbooks/titan/closeout/titan-closeout-audit/PLAYBOOK.md
+      authority: external-authority
+    lifecycle:
+      state: candidate
+      version: 0.1.0
+      visibility: internal
+      evidence_state: manual-baseline
+      health: degraded
+    applicability:
+      use_when:
+        - A visible Titan ledger or equivalent receipt set needs structured closeout review.
+      do_not_use_when:
+        - The task is ordinary single-agent work or required gates were bypassed.
+      ambiguous_when:
+        - The workflow can produce review-required but owner policy does not yet permit lifecycle closure.
+    abi:
+      inputs:
+        - name: structural-validation
+          type: titan-ledger-validation
+          required: true
+          description: Structural tool result.
+        - name: gate-decision
+          type: titan-closeout-gate-decision
+          required: true
+          description: Runtime-enforced allow or block decision.
+      outputs:
+        - name: closeout-audit
+          type: titan-closeout-audit
+          required: true
+          description: Review artifact with fault attribution and owner follow-through.
+        - name: lifecycle-result
+          type: titan-lifecycle-result
+          required: true
+          description: Closed only when owner guard and human gate allow; otherwise review-required or blocked.
+    binding:
+      kind: workflow
+      ref: aoa-playbooks:playbooks/titan/closeout/titan-closeout-audit/PLAYBOOK.md
+      operation: execute-checkpoints
+      availability: external
+    execution:
+      freedom: bounded-judgment
+      tool_requirements:
+        - Owner ledger/evidence reads and the bound runtime guard; no hidden dispatch.
+      verification:
+        - Confirm every conclusion cites visible ledger/evidence and each follow-up names its owner.
+        - Confirm a blocked or review-required gate cannot become closed.
+      termination:
+        - Stop at closed, review-required, or blocked with exact owner follow-through.
+      effects:
+        - none
+      reversibility: not-applicable
+      failure_modes:
+        - Treating the playbook as summon, grading, memory, or proof authority.
+        - Calling legacy Markdown skills as required runtime dependencies.
+        - Closing despite a blocked or unavailable guard.
+    trust:
+      public_safe: true
+      requires_human_approval: true
+      posture: owner-routed
+    provenance:
+      source_refs:
+        - repo: aoa-playbooks
+          path: playbooks/titan/closeout/titan-closeout-audit/PLAYBOOK.md
+          ref: a9ed3f2eaffce1a64edf87fff076a57baf9b0215
+          role: owner-workflow
+          authority: external-authority
+      optional_refs: []
+relations:
+  - kind: implemented-by
+    source: projects.titan.session.control
+    target: tool.titan.appserver-bridge
+  - kind: implemented-by
+    source: projects.titan.session.memory
+    target: tool.titan.memory-ingest
+  - kind: implemented-by
+    source: projects.titan.summon
+    target: workflow.titan.summon
+  - kind: derived-from
+    source: tool.titan.approval-queue
+    target: tool.titan.appserver-bridge
+  - kind: composes-with
+    source: tool.titan.approval-record
+    target: tool.titan.console
+  - kind: composes-with
+    source: tool.titan.appserver-plan
+    target: tool.titan.console
+  - kind: composes-with
+    source: tool.titan.console
+    target: tool.titan.appserver-bridge
+  - kind: consumes
+    source: tool.titan.event-replay
+    target: tool.titan.appserver-bridge
+  - kind: extracts-to
+    source: tool.titan.event-replay
+    target: tool.titan.memory-ingest
+  - kind: composes-with
+    source: tool.titan.memory-ingest
+    target: tool.titan.memory-recall
+  - kind: hands-off-to
+    source: tool.titan.memory-recall
+    target: tool.titan.memory-retention
+  - kind: guarded-by
+    source: guard.titan.mutation
+    target: guard.titan.thread-turn-binding
+  - kind: guarded-by
+    source: guard.titan.runtime-transition
+    target: guard.titan.thread-turn-binding
+  - kind: composes-with
+    source: workflow.titan.summon
+    target: tool.titan.appserver-plan
+  - kind: composes-with
+    source: workflow.titan.summon
+    target: tool.titan.receipt
+  - kind: composes-with
+    source: workflow.titan.summon
+    target: guard.titan.mutation
+    condition: Forge is explicitly requested for a bounded mutation.
+  - kind: composes-with
+    source: workflow.titan.summon
+    target: guard.titan.runtime-transition
+    condition: A live Titan activation or role-gated transition is requested.
+  - kind: implemented-by
+    source: projects.titan.session.closeout-audit
+    target: workflow.titan.closeout-audit
+  - kind: requires
+    source: workflow.titan.closeout-audit
+    target: tool.titan.swarm-validate
+  - kind: guarded-by
+    source: workflow.titan.closeout-audit
+    target: guard.titan.closeout-readiness
+  - kind: requires
+    source: guard.titan.closeout-readiness
+    target: human-gate.titan.closeout

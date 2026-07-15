@@ -1,0 +1,274 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://8dionysus.github.io/aoa-skills/schemas/capability-family-v1.schema.json",
+  "title": "AoA capability family source",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "family_id", "title", "description", "owner", "nodes", "relations"],
+  "properties": {
+    "schema_version": {"const": "aoa-capability-family-v1"},
+    "family_id": {"$ref": "#/$defs/id"},
+    "title": {"type": "string", "minLength": 1},
+    "description": {"type": "string", "minLength": 1},
+    "owner": {"$ref": "#/$defs/owner"},
+    "nodes": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/node"}
+    },
+    "relations": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/relation"}
+    }
+  },
+  "$defs": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:[._-][a-z0-9]+)*$"
+    },
+    "owner": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["repo", "surface", "authority"],
+      "properties": {
+        "repo": {"type": "string", "minLength": 1},
+        "surface": {"type": "string", "minLength": 1},
+        "authority": {
+          "type": "string",
+          "enum": ["authored", "external-authority", "derived-reference", "route-only"]
+        }
+      }
+    },
+    "lifecycle": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["state", "version", "visibility", "evidence_state", "health"],
+      "properties": {
+        "state": {
+          "type": "string",
+          "enum": ["candidate", "active", "dormant", "blocked", "deprecated", "retired"]
+        },
+        "version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"},
+        "visibility": {
+          "type": "string",
+          "enum": ["advertised", "deferred", "internal", "hidden"]
+        },
+        "evidence_state": {
+          "type": "string",
+          "enum": ["hypothesis", "manual-baseline", "pilot-verified", "evaluated", "owner-verified", "retired"]
+        },
+        "health": {
+          "type": "string",
+          "enum": ["challenger", "healthy", "degraded", "unavailable", "retired"]
+        }
+      }
+    },
+    "applicability": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["use_when", "do_not_use_when", "ambiguous_when"],
+      "properties": {
+        "use_when": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"type": "string", "minLength": 1}
+        },
+        "do_not_use_when": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"type": "string", "minLength": 1}
+        },
+        "ambiguous_when": {
+          "type": "array",
+          "items": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "port": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "type", "required", "description"],
+      "properties": {
+        "name": {"$ref": "#/$defs/id"},
+        "type": {"$ref": "#/$defs/id"},
+        "required": {"type": "boolean"},
+        "description": {"type": "string", "minLength": 1}
+      }
+    },
+    "abi": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["inputs", "outputs"],
+      "properties": {
+        "inputs": {"type": "array", "items": {"$ref": "#/$defs/port"}},
+        "outputs": {"type": "array", "items": {"$ref": "#/$defs/port"}}
+      }
+    },
+    "binding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "ref", "availability"],
+      "properties": {
+        "kind": {
+          "type": "string",
+          "enum": ["skill", "mode", "workflow", "tool", "guard", "adapter", "human-gate"]
+        },
+        "ref": {"type": "string", "minLength": 1},
+        "operation": {"type": "string", "minLength": 1},
+        "availability": {
+          "type": "string",
+          "enum": ["available", "external", "dormant", "unbound"]
+        }
+      }
+    },
+    "execution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["freedom", "tool_requirements", "verification", "termination", "effects", "reversibility", "failure_modes"],
+      "properties": {
+        "freedom": {
+          "type": "string",
+          "enum": ["deterministic", "bounded-judgment", "open-judgment"]
+        },
+        "tool_requirements": {
+          "type": "array",
+          "items": {"type": "string", "minLength": 1}
+        },
+        "verification": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"type": "string", "minLength": 1}
+        },
+        "termination": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"type": "string", "minLength": 1}
+        },
+        "effects": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "enum": ["none", "read-only", "repo-write", "generated-write", "external-write", "runtime-mutation", "human-decision"]
+          },
+          "uniqueItems": true
+        },
+        "reversibility": {
+          "type": "string",
+          "enum": ["not-applicable", "reversible", "conditionally-reversible", "irreversible"]
+        },
+        "failure_modes": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "trust": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["public_safe", "requires_human_approval", "posture"],
+      "properties": {
+        "public_safe": {"type": "boolean"},
+        "requires_human_approval": {"type": "boolean"},
+        "posture": {
+          "type": "string",
+          "enum": ["authored-procedure", "owner-routed", "derived-reference", "runtime-enforced", "human-authorized"]
+        }
+      }
+    },
+    "source_ref": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["repo", "path", "ref", "role", "authority"],
+      "properties": {
+        "repo": {"type": "string", "minLength": 1},
+        "path": {"type": "string", "minLength": 1},
+        "ref": {"type": "string", "minLength": 1},
+        "role": {"type": "string", "minLength": 1},
+        "authority": {
+          "type": "string",
+          "enum": ["authored", "external-authority", "derived-reference", "evidence-only"]
+        }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source_refs", "optional_refs"],
+      "properties": {
+        "source_refs": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "#/$defs/source_ref"}
+        },
+        "optional_refs": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/source_ref"}
+        }
+      }
+    },
+    "alias": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "state", "remove_after"],
+      "properties": {
+        "name": {"type": "string", "minLength": 1},
+        "state": {"const": "migration-only"},
+        "remove_after": {"type": "string", "minLength": 1}
+      }
+    },
+    "node": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "title", "description", "kind", "contract_level", "primary_parent", "owner", "lifecycle"],
+      "properties": {
+        "id": {"$ref": "#/$defs/id"},
+        "title": {"type": "string", "minLength": 1},
+        "description": {"type": "string", "minLength": 1},
+        "kind": {
+          "type": "string",
+          "enum": ["capability", "skill", "mode", "workflow", "tool", "guard", "adapter", "evidence", "projection", "human-gate"]
+        },
+        "contract_level": {"type": "string", "enum": ["navigation", "executable"]},
+        "primary_parent": {"oneOf": [{"$ref": "#/$defs/id"}, {"type": "null"}]},
+        "owner": {"$ref": "#/$defs/owner"},
+        "lifecycle": {"$ref": "#/$defs/lifecycle"},
+        "applicability": {"$ref": "#/$defs/applicability"},
+        "abi": {"$ref": "#/$defs/abi"},
+        "binding": {"$ref": "#/$defs/binding"},
+        "execution": {"$ref": "#/$defs/execution"},
+        "trust": {"$ref": "#/$defs/trust"},
+        "provenance": {"$ref": "#/$defs/provenance"},
+        "aliases": {"type": "array", "items": {"$ref": "#/$defs/alias"}},
+        "keywords": {
+          "type": "array",
+          "items": {"type": "string", "minLength": 1},
+          "uniqueItems": true
+        }
+      },
+      "allOf": [
+        {
+          "if": {"properties": {"contract_level": {"const": "executable"}}},
+          "then": {
+            "required": ["applicability", "abi", "binding", "execution", "trust", "provenance"]
+          }
+        }
+      ]
+    },
+    "relation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "source", "target"],
+      "properties": {
+        "kind": {
+          "type": "string",
+          "enum": ["requires", "produces", "consumes", "composes-with", "conflicts-with", "alternative-to", "hands-off-to", "supersedes", "implemented-by", "adapted-by", "guarded-by", "verified-by", "derived-from", "informed-by", "extracts-to"]
+        },
+        "source": {"$ref": "#/$defs/id"},
+        "target": {"$ref": "#/$defs/id"},
+        "condition": {"type": "string", "minLength": 1}
+      }
+    }
+  }
+}

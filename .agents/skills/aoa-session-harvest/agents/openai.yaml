@@ -1,0 +1,13 @@
+policy:
+  allow_implicit_invocation: false
+  implicit_activation_policy: suggest
+notes:
+- Select exactly one extract, classify, or branch mode.
+- Reviewed session evidence is required; no session-memory provider is assumed.
+interface:
+  display_name: AoA Session Harvest
+  short_description: Extract and route reviewed session candidates
+  default_prompt: Use $aoa-session-harvest on explicitly reviewed evidence to choose one extract, classify, or branch mode without promoting or executing candidates.
+  icon_small: ./assets/small-logo.svg
+  icon_large: ./assets/large-logo.svg
+  brand_color: '#2563EB'

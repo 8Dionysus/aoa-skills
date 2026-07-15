@@ -1,5 +1,0 @@
-policy:
-  allow_implicit_invocation: true
-  implicit_activation_policy: invoke
-notes:
-- This skill is explicit-preferred, but may later be allowed implicitly for bounded non-trivial changes.

@@ -1,96 +1,58 @@
 ---
 name: skill-name
+description: State the exact positive trigger, useful outcome, important exclusion, and selection boundary in plain language.
 scope: core
 status: scaffold
-summary: One-sentence summary of the skill.
+summary: One-sentence procedural identity.
 invocation_mode: explicit-preferred
-technique_dependencies: []
 ---
 
 # skill-name
 
 ## Intent
 
-What this skill helps a local coding agent do.
+Name the bounded outcome this callable family provides and why it needs a
+host-visible entry rather than only a capability node or internal mode.
 
 ## Trigger boundary
 
 Use this skill when:
-- case 1
-- case 2
+
+- positive case
 
 Do not use this skill when:
-- case 1
-- case 2
+
+- nearby negative or owner-routed case
 
 ## Inputs
 
-- target goal
-- touched surfaces
-- constraints
-- validation expectations
+- required input, owner, and authority
 
 ## Outputs
 
-- expected artifact 1
-- expected artifact 2
-
-## What this produces
-
-- execution-plane outcome
-- closeout signal, if any
-- harvest or promotion signal, if any
-
-## When this is not enough
-
-- case where another closeout or harvest skill should take over
-- case where the result belongs to a different owner layer
-
-## Common misroutes
-
-- nearby skill that looks similar but is not the right fit here
-- common way an agent could over-apply or under-apply this skill
+- typed result, evidence, effect, and stop line
 
 ## Procedure
 
-1. step one
-2. step two
-3. step three
+1. Confirm applicability and select at most one internal mode when modes exist.
+2. Read the current owner sources and verify required tools or inputs.
+3. Perform the bounded procedure.
+4. Verify the result and terminate explicitly.
 
 ## Contracts
 
-- invariant 1
-- invariant 2
+- stable invariant and owner boundary
 
 ## Risks and anti-patterns
 
-- risk 1
-- anti-pattern 1
-
-## Handoff to
-
-- next honest skill when the surviving question is execution-shaped
-- next honest skill when the surviving question is closeout-shaped
-- next honest skill or owner layer when the surviving question is harvest-shaped
-
-## Promotion signals
-
-- what reusable object, if any, this skill may help surface
-- what should never be promoted directly from this skill alone
+- likely false trigger, unsafe effect, or authority error
 
 ## Verification
 
-- validation path 1
-- validation path 2
-
-## Technique traceability
-
-List the upstream techniques that shaped this skill.
+- manual positive, negative, coexistence, and failure cases
+- structural checks that preserve only the stable invariants above
 
 ## Adaptation points
 
-What should change in project overlays:
-- local paths
-- commands
-- source-of-truth files
-- approval rules
+- owner paths, commands, tools, permissions, and output vocabulary supplied by
+  a named adapter rather than copied into the core procedure

@@ -1,40 +1,32 @@
-## PLAN
-<!--
-- restate the task
-- list touched or inspected skills or surfaces
-- name the main risk: boundary, bridge drift, status/evidence, overlay, or public hygiene
--->
-- ...
+## Intent and owner
 
-## DIFF
-<!--
-- say what changed
-- say whether skill meaning changed or only metadata/docs/generated surfaces changed
-- say whether technique dependencies or invocation posture changed
--->
-- ...
+- Problem and owner surface:
+- Why this belongs in `aoa-skills`:
 
-## VERIFY
-<!--
-- release lane status
-- `build_catalog`, `validate_skills`, `report_skill_evaluation`, `inspect_skill`, or drift commands actually run
-- `pytest` modules actually run
-- what was not run
--->
-- ...
+## Authored change
 
-## REPORT
-<!--
-- current skill boundary after the change
-- whether status, invocation mode, technique traceability, or overlay posture changed
-- downstream follow-up likely needed in `aoa-evals`, `aoa-routing`, or a downstream project repo
--->
-- ...
+- Capability, bundle, config, decision, or mechanic source changed:
+- Lifecycle effect (none/improve/split/merge/promote/demote/retire):
+- Owner boundaries and effects preserved:
 
-## RESIDUAL RISK
-<!--
-- upstream technique refs not yet refreshed
-- generated surfaces not re-read
-- overlay assumptions or evidence paths not exercised
--->
-- ...
+## Manual evidence
+
+- Positive and negative cases:
+- No-skill/current/candidate comparison, when usefulness changed:
+- Coexistence, retrieval, or DAG cases exercised:
+- Result and attribution limits:
+
+## Derived surfaces and checks
+
+- Projections rebuilt:
+- Focused and lane checks run:
+- Checks intentionally skipped and why:
+
+## Hygiene and residual risk
+
+- Session-only traces and temporary scaffolding removed:
+- Runtime/model/platform coverage still missing:
+- Deferred owner follow-up:
+
+Green checks establish only their named structural contracts; they are not
+evidence that a skill improves outcomes.

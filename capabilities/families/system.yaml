@@ -1,0 +1,106 @@
+schema_version: aoa-capability-family-v1
+family_id: aoa-system
+title: AoA capability system
+description: Navigation roots shared by capability families.
+owner:
+  repo: aoa-skills
+  surface: capabilities/families/system.yaml
+  authority: authored
+nodes:
+  - id: aoa
+    title: Agents of Abyss capabilities
+    description: Root of the AoA semantic capability tree.
+    kind: capability
+    contract_level: navigation
+    primary_parent: null
+    owner:
+      repo: aoa-skills
+      surface: capabilities/families/system.yaml
+      authority: authored
+    lifecycle:
+      state: candidate
+      version: 0.1.0
+      visibility: deferred
+      evidence_state: hypothesis
+      health: challenger
+  - id: engineering
+    title: Engineering
+    description: Capabilities that shape, change, and verify technical systems.
+    kind: capability
+    contract_level: navigation
+    primary_parent: aoa
+    owner:
+      repo: aoa-skills
+      surface: capabilities/families/system.yaml
+      authority: authored
+    lifecycle:
+      state: candidate
+      version: 0.1.0
+      visibility: deferred
+      evidence_state: hypothesis
+      health: challenger
+  - id: stewardship
+    title: Stewardship
+    description: Capabilities that preserve decisions, evidence, memory boundaries, and owner truth.
+    kind: capability
+    contract_level: navigation
+    primary_parent: aoa
+    owner:
+      repo: aoa-skills
+      surface: capabilities/families/system.yaml
+      authority: authored
+    lifecycle:
+      state: candidate
+      version: 0.1.0
+      visibility: deferred
+      evidence_state: hypothesis
+      health: challenger
+  - id: sessions
+    title: Session learning
+    description: Capabilities that turn reviewed session evidence into bounded candidates, diagnoses, and owner-routed handoffs.
+    kind: capability
+    contract_level: navigation
+    primary_parent: aoa
+    owner:
+      repo: aoa-skills
+      surface: capabilities/families/system.yaml
+      authority: authored
+    lifecycle:
+      state: candidate
+      version: 0.1.0
+      visibility: deferred
+      evidence_state: hypothesis
+      health: challenger
+  - id: operations
+    title: Operations
+    description: Semantic routes realized by owner workflows, tools, guards, adapters, and human gates rather than generic skills.
+    kind: capability
+    contract_level: navigation
+    primary_parent: aoa
+    owner:
+      repo: aoa-skills
+      surface: capabilities/families/system.yaml
+      authority: authored
+    lifecycle:
+      state: candidate
+      version: 0.1.0
+      visibility: deferred
+      evidence_state: hypothesis
+      health: challenger
+  - id: projects
+    title: Project ecosystems
+    description: Owner-routed capability subtrees and project-local adapters.
+    kind: capability
+    contract_level: navigation
+    primary_parent: aoa
+    owner:
+      repo: aoa-skills
+      surface: capabilities/families/system.yaml
+      authority: authored
+    lifecycle:
+      state: candidate
+      version: 0.1.0
+      visibility: deferred
+      evidence_state: hypothesis
+      health: challenger
+relations: []

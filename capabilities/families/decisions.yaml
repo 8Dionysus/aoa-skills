@@ -1,0 +1,378 @@
+schema_version: aoa-capability-family-v1
+family_id: stewardship-decisions
+title: Decision stewardship
+description: One advertised decision family with internal find, record, and correct modes.
+owner:
+  repo: aoa-skills
+  surface: capabilities/families/decisions.yaml
+  authority: authored
+nodes:
+  - id: stewardship.decisions
+    title: Decisions
+    description: Find, record, or correct durable rationale while keeping repository decision files authoritative.
+    kind: capability
+    contract_level: navigation
+    primary_parent: stewardship
+    owner:
+      repo: aoa-skills
+      surface: capabilities/families/decisions.yaml
+      authority: authored
+    lifecycle:
+      state: candidate
+      version: 0.1.0
+      visibility: deferred
+      evidence_state: pilot-verified
+      health: challenger
+    keywords:
+      - adr
+      - rationale
+      - supersession
+      - decision-index
+      - решение
+      - решения
+      - обоснование
+      - договоренность
+  - id: skill.aoa-decision
+    title: aoa-decision family bundle
+    description: Find, record, or correct durable repository decisions through one decision family. Use when prior rationale, a meaningful accepted decision, supersession, or source/index drift is the task. Select exactly one internal mode and keep authored owner records authoritative. Do not use for ordinary docs edits or unresolved source-of-truth mapping.
+    kind: skill
+    contract_level: executable
+    primary_parent: stewardship.decisions
+    owner:
+      repo: aoa-skills
+      surface: skills/core/engineering/aoa-decision/SKILL.md
+      authority: authored
+    lifecycle:
+      state: candidate
+      version: 0.1.0
+      visibility: advertised
+      evidence_state: pilot-verified
+      health: challenger
+    applicability:
+      use_when:
+        - A task asks for existing rationale, a new durable decision record, or correction of decision source/index drift.
+        - Structural, ownership, workflow, tooling, or source/export reasoning must remain discoverable.
+      do_not_use_when:
+        - The task is an ordinary documentation edit with no durable decision implication.
+        - The only unresolved issue is which current source owns a rule.
+      ambiguous_when:
+        - A proposed record may only narrate a diff; first decide whether a lighter change note preserves enough rationale.
+    abi:
+      inputs:
+        - name: decision-intent
+          type: decision-intent
+          required: true
+          description: Find, record, or correct intent plus the target owner repository.
+        - name: owner-sources
+          type: source-ref-list
+          required: false
+          description: Repository decision notes, route law, indexes, or retriever packets available for the selected mode.
+      outputs:
+        - name: decision-result
+          type: decision-result
+          required: true
+          description: One mode result with owner source, confidence, verification, and stop line.
+    binding:
+      kind: skill
+      ref: skills/core/engineering/aoa-decision/SKILL.md
+      operation: route-one-mode
+      availability: available
+    execution:
+      freedom: bounded-judgment
+      tool_requirements:
+        - Repository read access; a decision retriever is optional and never authoritative.
+      verification:
+        - Confirm exactly one mode was selected after family applicability was accepted.
+        - Confirm final rationale claims are grounded in the owning repository's authored decision source.
+      termination:
+        - Stop after the selected mode returns its bounded result and next owner route.
+        - Stop as blocked_missing_input when the selected mode lacks its required owner source.
+      effects:
+        - none
+      reversibility: not-applicable
+      failure_modes:
+        - Loading every mode and creating conflicting advice.
+        - Treating a generated graph or session trace as decision authority.
+        - Writing a record before a decision exists.
+    trust:
+      public_safe: true
+      requires_human_approval: false
+      posture: authored-procedure
+    keywords:
+      - решение
+      - решения
+      - обоснование
+      - rationale
+      - adr
+    provenance:
+      source_refs:
+        - repo: aoa-skills
+          path: skills/core/engineering/aoa-decision/SKILL.md
+          ref: capability-family-v0.1.0
+          role: portable-family-procedure
+          authority: authored
+      optional_refs: []
+  - id: mode.decision.find
+    title: Find decision rationale
+    description: Retrieve likely decision records and verify every rationale claim against owner source notes.
+    kind: mode
+    contract_level: executable
+    primary_parent: stewardship.decisions
+    owner:
+      repo: aoa-skills
+      surface: skills/core/engineering/aoa-decision/SKILL.md#mode-find
+      authority: authored
+    lifecycle:
+      state: candidate
+      version: 0.1.0
+      visibility: internal
+      evidence_state: evaluated
+      health: challenger
+    applicability:
+      use_when:
+        - Prior rationale, status, supersession, changed-path impact, or owner decision context is requested.
+      do_not_use_when:
+        - A new record must be written or an existing source record is known to be wrong.
+      ambiguous_when:
+        - Source authority rather than prior rationale is the actual question.
+    abi:
+      inputs:
+        - name: decision-query
+          type: decision-query
+          required: true
+          description: Decision id, path, owner, subject, or rationale query.
+      outputs:
+        - name: decision-matches
+          type: decision-match-list
+          required: true
+          description: Ranked matches with source verification and confidence.
+    binding:
+      kind: mode
+      ref: skills/core/engineering/aoa-decision/SKILL.md
+      operation: find
+      availability: available
+    execution:
+      freedom: bounded-judgment
+      tool_requirements:
+        - Optional decision retriever plus direct owner source reads.
+      verification:
+        - Verify rationale, status, and supersession against authored decision notes.
+      termination:
+        - Stop after sufficient verified matches or blocked_missing_input.
+      effects:
+        - read-only
+      reversibility: not-applicable
+      failure_modes:
+        - Broad retrieval without source verification.
+        - Inventing a record when no source match exists.
+    trust:
+      public_safe: true
+      requires_human_approval: false
+      posture: authored-procedure
+    keywords:
+      - найти
+      - найди
+      - поиск
+      - прежнее
+      - предыдущее
+      - решение
+      - обоснование
+      - владелец
+      - владеет
+      - граф
+      - графом
+      - способность
+      - способностей
+    provenance:
+      source_refs:
+        - repo: aoa-skills
+          path: skills/core/engineering/aoa-decision-find/SKILL.md
+          ref: 94e5d0e072b71e3c603dda0703231047485e0666
+          role: legacy-mode-source
+          authority: authored
+      optional_refs: []
+    aliases:
+      - name: aoa-decision-find
+        state: migration-only
+        remove_after: decision-family-runtime-parity
+  - id: mode.decision.record
+    title: Record a decision
+    description: Write one accepted durable rationale in the owning repository and refresh its derived indexes.
+    kind: mode
+    contract_level: executable
+    primary_parent: stewardship.decisions
+    owner:
+      repo: aoa-skills
+      surface: skills/core/engineering/aoa-decision/SKILL.md#mode-record
+      authority: authored
+    lifecycle:
+      state: candidate
+      version: 0.1.0
+      visibility: internal
+      evidence_state: pilot-verified
+      health: challenger
+    applicability:
+      use_when:
+        - A meaningful accepted decision needs durable rationale and a canonical owner-local record.
+      do_not_use_when:
+        - No decision exists yet, an adequate record already exists, or the change is self-evident.
+      ambiguous_when:
+        - A lighter change note may preserve sufficient rationale.
+    abi:
+      inputs:
+        - name: accepted-decision
+          type: accepted-decision
+          required: true
+          description: Context, chosen path, alternatives, rationale, consequences, and owner home.
+      outputs:
+        - name: decision-record
+          type: decision-record
+          required: true
+          description: Authored record plus index/placement verification.
+    binding:
+      kind: mode
+      ref: skills/core/engineering/aoa-decision/SKILL.md
+      operation: record
+      availability: available
+    execution:
+      freedom: bounded-judgment
+      tool_requirements:
+        - Owner repository write access and its decision index command when a write is authorized.
+      verification:
+        - Confirm the record explains why, names tradeoffs, and is discoverable from the owner decision surface.
+      termination:
+        - Stop after owner-local source and derived indexes agree, or before writing when acceptance/placement is missing.
+      effects:
+        - repo-write
+        - generated-write
+      reversibility: conditionally-reversible
+      failure_modes:
+        - Recording a hypothesis as an accepted decision.
+        - Copying sibling-owner law into the local record.
+        - Editing only a generated index.
+    trust:
+      public_safe: true
+      requires_human_approval: true
+      posture: authored-procedure
+    keywords:
+      - записать
+      - зафиксировать
+      - создать
+      - принятое
+      - решение
+      - обоснование
+    provenance:
+      source_refs:
+        - repo: aoa-skills
+          path: skills/core/engineering/aoa-decision-create/SKILL.md
+          ref: 94e5d0e072b71e3c603dda0703231047485e0666
+          role: legacy-mode-source
+          authority: authored
+        - repo: aoa-skills
+          path: skills/core/engineering/aoa-adr-write/SKILL.md
+          ref: 94e5d0e072b71e3c603dda0703231047485e0666
+          role: merged-legacy-source
+          authority: authored
+      optional_refs: []
+    aliases:
+      - name: aoa-decision-create
+        state: migration-only
+        remove_after: decision-family-runtime-parity
+      - name: aoa-adr-write
+        state: migration-only
+        remove_after: decision-family-runtime-parity
+  - id: mode.decision.correct
+    title: Correct a decision record
+    description: Correct or supersede owner source first, then rebuild derived decision indexes and retrieval views.
+    kind: mode
+    contract_level: executable
+    primary_parent: stewardship.decisions
+    owner:
+      repo: aoa-skills
+      surface: skills/core/engineering/aoa-decision/SKILL.md#mode-correct
+      authority: authored
+    lifecycle:
+      state: candidate
+      version: 0.1.0
+      visibility: internal
+      evidence_state: pilot-verified
+      health: challenger
+    applicability:
+      use_when:
+        - An existing decision source, status, supersession, source list, or derived index is stale or wrong.
+      do_not_use_when:
+        - Only lookup is requested or a new rationale has not yet been recorded.
+      ambiguous_when:
+        - The observed difference may be cache staleness rather than authored source drift.
+    abi:
+      inputs:
+        - name: correction-target
+          type: decision-correction-target
+          required: true
+          description: Existing owner record, expected correction, and derived consumers.
+      outputs:
+        - name: corrected-decision
+          type: corrected-decision
+          required: true
+          description: Corrected or superseded owner record plus refreshed consumers.
+    binding:
+      kind: mode
+      ref: skills/core/engineering/aoa-decision/SKILL.md
+      operation: correct
+      availability: available
+    execution:
+      freedom: bounded-judgment
+      tool_requirements:
+        - Owner repository write access and its decision validation route when authorized.
+      verification:
+        - Confirm source history remains reviewable and every derived consumer follows the corrected source.
+      termination:
+        - Stop when owner source and declared indexes agree, or blocked_missing_input when the target source is absent.
+      effects:
+        - repo-write
+        - generated-write
+      reversibility: conditionally-reversible
+      failure_modes:
+        - Fixing only a cache or generated index.
+        - Silently rewriting semantic history without supersession.
+    trust:
+      public_safe: true
+      requires_human_approval: true
+      posture: authored-procedure
+    keywords:
+      - исправить
+      - исправь
+      - корректировать
+      - устаревший
+      - индекс
+      - заменить
+      - решение
+    provenance:
+      source_refs:
+        - repo: aoa-skills
+          path: skills/core/engineering/aoa-decision-correct/SKILL.md
+          ref: 94e5d0e072b71e3c603dda0703231047485e0666
+          role: legacy-mode-source
+          authority: authored
+      optional_refs: []
+    aliases:
+      - name: aoa-decision-correct
+        state: migration-only
+        remove_after: decision-family-runtime-parity
+relations:
+  - kind: implemented-by
+    source: stewardship.decisions
+    target: skill.aoa-decision
+  - kind: alternative-to
+    source: mode.decision.find
+    target: mode.decision.record
+  - kind: alternative-to
+    source: mode.decision.find
+    target: mode.decision.correct
+  - kind: alternative-to
+    source: mode.decision.record
+    target: mode.decision.correct
+  - kind: conflicts-with
+    source: mode.decision.record
+    target: mode.decision.correct
+    condition: Both modes target the same decision record in one task-local plan.

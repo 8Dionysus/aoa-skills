@@ -1,160 +1,155 @@
 ---
 name: aoa-decision
-description: Route AoA decision-lane work by classifying the task, then select and fully read exactly one find, create, or correct child before that child performs graph lookup or a write, while keeping repo-local decision files authoritative. Use when the task mentions docs/decisions, decision indexes, decision graph, ADRs, changed paths, source-surface rationale, supersession, or cross-repo decision symmetry. Do not stop at the root after naming a child. Do not use for ordinary docs edits, unresolved source-of-truth mapping, or trivial changes that do not need durable rationale.
+description: Find, record, or correct durable repository decisions through one decision family. Use when prior rationale, a meaningful accepted decision, supersession, or source/index drift is the task. Select exactly one internal mode and keep authored owner records authoritative. Do not use for ordinary docs edits or unresolved source-of-truth mapping.
 license: Apache-2.0
-compatibility: Designed for Codex or similar coding agents with repository file access and an interactive shell. Network access is optional and only needed when repository validation or referenced workflows require it.
+compatibility: Designed for Codex or a compatible coding-agent host with repository file access and an interactive shell. Network access is optional and owner-specific tools are never assumed.
 metadata:
   aoa_scope: core
-  aoa_status: evaluated
-  aoa_invocation_mode: explicit-preferred
+  aoa_status: reviewed
+  aoa_invocation_mode: implicit-friendly
   aoa_source_skill_path: skills/core/engineering/aoa-decision/SKILL.md
   aoa_source_repo: 8Dionysus/aoa-skills
-  aoa_technique_dependencies: AOA-T-0033,AOA-T-0002
-  aoa_portable_profile: codex-facing-wave-3
+  aoa_portable_profile: codex-facing-v2
 ---
 
 # aoa-decision
 
 ## Intent
-Use this skill as the front door for AoA `docs/decisions/` work. It decides
-whether the task is to find, create, or correct a decision record, uses the
-workspace decision graph as the first lookup path when available, and keeps the
-owning repository's decision files and validators as source truth.
+Provide one front door for durable decision work. `find`, `record`, and
+`correct` are internal modes, not separately advertised skills. Owner-authored
+records are authoritative; indexes, KAG packets, caches, and session evidence
+only help locate them.
 
 ## Trigger boundary
 Use this skill when:
-- the task mentions `docs/decisions/`, decision records, ADRs, decision indexes, decision graph, or decision-lane symmetry
-- the user asks which prior decision, source surface, owner boundary, status, supersession, or rationale applies
-- a new durable decision record may be needed after a structural, workflow, tooling, source/export, or authority change
-- an existing decision note, index metadata, supersession, source-surface list, or generated decision index may need correction
-- the work spans more than one AoA repository and graph lookup can reduce context load
-- after classification, the selected find, create, or correct child must be fully read before its work begins
+
+- existing rationale, status, supersession, a meaningful accepted decision, or
+  drift between a decision source and its derived views is the task
 
 Do not use this skill when:
-- the task is a normal docs edit with no durable decision-lane implication
-- the real question is only source-of-truth ambiguity; use `aoa-source-of-truth-check`
-- the real question is only whether a decision should be recorded; use `aoa-adr-write`
-- the request is only to summarize code, tests, or release notes without decision rationale
-- a repo-local route card forbids changing decision surfaces in the current scope
+
+- the task is an ordinary edit, unresolved source-of-truth mapping, an
+  undecided option, or a change whose rationale fits a bounded note
+
+Lack of write authority never becomes implicit approval.
 
 ## Inputs
-- user intent, target repository, touched paths, or decision ID when known
-- available `aoa_decisions` MCP tools or a local graph builder fallback,
-  including status, issues, changed-path, source-surface, owner-surface, and
-  repo-symmetry packets
-- repo-local `docs/decisions/AGENTS.md`, `README.md`, `TEMPLATE.md`, generated indexes, and nearest existing records
-- optional `.aoa` session evidence through `aoa-session-memory-evidence-route`
-  when the question asks how a decision, decision tool, correction, or impact
-  path was used in prior sessions; prefer a usage-chain packet when the
-  question is about usage, outcomes, consequences, recurrence, or nearby errors
-  for a stable decision/tool/path anchor
-- source surfaces that the decision record explains
-- validation commands from the owning repository
+- intent and target owner, subject, ID, or path when known
+- owner decision route, source records, template, and index contract
+- accepted choice plus alternatives for `record`, or mismatch for `correct`
 
 ## Outputs
-- one chosen route: `aoa-decision-find`, `aoa-decision-create`, or `aoa-decision-correct`
-- compact graph or source context used for the route decision
-- explicit owner repository and source-truth surface
-- validation path for any write or correction
-- stop line when the graph is stale, missing, or not authoritative enough
+- exactly one mode result with owner source, confidence, effect, verification,
+  skipped checks, uncertainty, and stop line
 
 ## Procedure
-1. classify the task:
-   - find or understand: use `aoa-decision-find`
-   - create or record a new rationale: use `aoa-decision-create`
-   - correct, supersede, reindex, or repair metadata: use `aoa-decision-correct`
-2. immediately select and fully read exactly one classified child before any
-   graph query, source lookup, or write. The child owns the detailed route from
-   this point. A find or understand task that stops at `aoa-decision`, or runs
-   decision-graph lookup from the root without loading `aoa-decision-find`, is
-   incomplete. Do not load the other two children.
-3. through the selected child, use the `aoa_decisions` MCP first when it is
-   available; request status and
-   the smallest relevant packet before broad file reads:
-   - graph health and blockers: `aoa_decisions_status` and
-     `aoa_decisions_issues`
-   - touched path: `aoa_decisions_changed_path`
-   - source surface: `aoa_decisions_source_surface`
-   - owner surface: `aoa_decisions_owner_surface`
-   - repo comparison: `aoa_decisions_repo_symmetry`
-   - decision ID or known record: `aoa_decisions_decision`
-   - repo slice when the target repo is known: `aoa_decisions_repo`
-4. use `aoa_decisions_search` only after the status/issues and the relevant
-   changed-path, source-surface, owner-surface, repo, or decision packet is
-   missing, stale, or too narrow; split a long natural-language request into
-   smaller anchors before broad search
-5. when the user asks about prior session behavior, correction history, tool
-   usage, impact evidence, or "what happened after", use
-   `aoa-session-memory-evidence-route` or the equivalent read-only
-   `aoa-session-memory-mcp` packet after the decision graph route; for a stable
-   decision/tool/path anchor, ask for `usage-chain` first when the question is
-   how it was used, what happened after, or which failures/consequences
-   followed; use `entity-dossier` when source identity,
-   graph/cooccurrence/timeline context, related entities, or a heavier human
-   packet is needed; expand only if the first packet is stale, truncated,
-   missing refs, or too coarse; treat the packet as evidence refs only, then
-   return to repo-local decision files for truth
-6. if MCP is unavailable, locate `abyss-stack` in the current workspace or a
-   known local checkout, then run its graph builder, such as
-   `python <abyss-stack>/scripts/build_workspace_decision_graph.py --check --json`
-7. if graph lookup is unavailable too, use repo-local `rg` and generated
-   decision indexes, then read the source decision notes directly
-8. before any write, read the target repo's decision route card and template;
-   if `issue_count > 0`, inspect `aoa_decisions_issues` and do not write in a
-   repo whose decision lane has unresolved graph issues
-9. after any write, run the repo-local decision-index generator/check and then
-   refresh or check the workspace graph and decision-graph lane when available
-10. report the source decision file, graph freshness posture, validation run, and
-   any remaining owner-route risk
+### Mode selection
+
+Choose exactly one mode:
+
+| Mode | Select when | Do not select when |
+|---|---|---|
+| `find` | Existing rationale, status, supersession, or impact is requested. | A write or correction is already known to be required. |
+| `record` | A meaningful accepted decision lacks an adequate owner record. | The choice is open, trivial, already recorded, or only needs correction. |
+| `correct` | An existing source record or derived view is stale or wrong. | The task is pure lookup or a genuinely new decision. |
+
+Legacy decision-child names are migration aliases. Do not load them after
+selecting a mode.
+
+### Shared procedure
+
+1. Confirm applicability and select one mode. Separate lifecycle steps when two
+   modes target the same record.
+2. Read the nearest owner decision route, source records, and index contract.
+3. A retriever may narrow candidates, but every used claim must be checked in
+   the authored record.
+4. Execute only the selected mode and report source, effect, verification,
+   skipped checks, and uncertainty.
+
+Stop as `blocked_missing_input` when owner source is unavailable. Missing
+evidence is neither approval nor material to fill from memory.
+
+### Mode: find
+
+#### Applicability
+
+Use for prior rationale, status, supersession, or changed-path impact.
+
+#### Procedure
+
+1. Search by the narrowest anchor: ID, path, source surface, owner, then repo.
+2. Check derived lookup freshness; stale results are hints.
+3. Read every authored record used and classify matches as exact, likely,
+   analogy, stale, superseded, or missing.
+
+#### Verification and termination
+
+Return compact source refs, status, relevance, confidence, and next route.
+Never invent a missing decision.
+
+### Mode: record
+
+#### Applicability
+
+Use only after a meaningful decision is accepted and lacks an adequate record.
+
+#### Procedure
+
+1. Confirm acceptance, owner, value beyond a lighter note, and absence of an
+   adequate existing record.
+2. Read the owner route, template, latest IDs, and related records.
+3. Capture context, material alternatives, choice, rationale, consequences,
+   owner boundary, affected sources, and follow-up.
+4. Do not infer alternatives, rationale, or consequences from the accepted
+   choice. When owner evidence for any material section is missing, return an
+   explicitly incomplete draft with `[owner input required]` and
+   `blocked_missing_input`; an accepted choice does not imply rejected options.
+5. Write only when authorized, then rebuild derived indexes from source and run
+   owner-local validation.
+
+#### Verification and termination
+
+Verify why and tradeoffs rather than diff narration. Stop before writing when
+acceptance, owner evidence, placement, source surface, or authority is missing.
+
+### Mode: correct
+
+#### Applicability
+
+Use when an existing source record or its derived view is stale or wrong.
+
+#### Procedure
+
+1. Read target source and owner law; classify source error, metadata error,
+   semantic supersession, generated drift, or stale cache.
+2. Correct source first when meaning changed, preserving history through status
+   or supersession. For derived-only drift, leave source untouched and use the
+   owner-declared builder; never hand-edit a generated view. If its builder or
+   index contract is unavailable, state the expected target state and stop as
+   `blocked_missing_input` without proposing a manual generated-file patch.
+3. Validate owner source and compare every refreshed consumer to it.
+
+#### Verification and termination
+
+Report mismatch, correction, effect, and residual risk. Do not widen cache or
+typo repair into new rationale, and do not report an unrebuilt view as fixed.
 
 ## Contracts
-- the graph accelerates lookup; it does not own decision truth
-- source files in the owning repository remain stronger than MCP packets,
-  generated graph nodes, and generated indexes
-- `.aoa` session evidence may explain past usage or impact, but it cannot
-  create, accept, supersede, or correct a decision record by itself
-- the router chooses one subskill to control cost and avoid conflicting advice
-- cross-repo symmetry must be appropriate to the target repo, not forced from a
-  sibling template
-- no MCP write tool may create, accept, or correct a decision record silently
-- stale graph findings must be refreshed or downgraded before they shape a write
-- graph issues block writes in the affected repo and downgrade cross-repo
-  confidence elsewhere until reported
+- exactly one mode controls one target at a time
+- owner-authored records outrank every retriever or generated view
+- `record` and `correct` effects require current authority
+- generated indexes follow source; session evidence is not decision authority
 
 ## Risks and anti-patterns
-- treating the workspace graph as an authority instead of a read model
-- loading every subskill for a simple lookup
-- starting with broad graph search when a changed path, owner surface, source
-  surface, repo, or decision ID can produce a smaller packet
-- creating a decision note when a lighter source-of-truth or change summary is enough
-- copying a sibling decision structure without checking the local owner surface
-- updating generated indexes without the source decision note, or vice versa
-- failing to refresh the workspace graph after changing decision files
+- loading legacy children, trusting a title/index, or writing pre-decision
+- recording trivial diffs, cache-only correction, or silent history rewrite
+- copying a sibling owner's rationale or template as local law
 
 ## Verification
-- confirm exactly one route was selected
-- confirm the selected child was fully read before its graph lookup or write
-  procedure began; naming a child without loading it is not a handoff
-- confirm `aoa_decisions` was used first when available, or the fallback was named
-- confirm graph issue posture was checked before create/correct routes
-- confirm broad `aoa_decisions_search` was skipped when a narrower packet was
-  sufficient, or explain why it was needed
-- if `.aoa` session evidence was used, confirm the usage-chain, dossier, or
-  fallback route cited raw/segment/session refs and that decision truth stayed
-  with repo-local files
-- confirm the owning repository and source decision surface are explicit
-- confirm any write uses repo-local route law and validators
-- confirm generated indexes and the workspace graph are not treated as source truth
-- confirm the final report names validation and any skipped check
-
-## Technique traceability
-Manifest-backed techniques:
-- AOA-T-0033 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/instruction/docs-boundary/decision-rationale-recording/TECHNIQUE.md` and sections: Intent, When to use, When not to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation
-- AOA-T-0002 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/instruction/docs-boundary/source-of-truth-layout/TECHNIQUE.md` and sections: Intent, When to use, When not to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation
+- one mode; owner-source claims; authorized effects
+- source-first correction and rebuilt consumers where relevant
+- explicit termination, validation, skipped checks, and uncertainty
 
 ## Adaptation points
-- stable MCP server name for the current environment
-- repo-local decision ID prefix and template
-- repo-local decision-index generator and validation commands
-- workspace graph output path or fallback builder command
-- local stop line for repositories that intentionally do not carry decisions
+Each repository supplies its ID format, template, source home, index builder,
+validation command, and supersession vocabulary.

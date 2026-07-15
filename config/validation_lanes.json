@@ -1,71 +1,32 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "owner": "docs/validation/VALIDATOR_TOPOLOGY.md",
   "command_authority": "config/validation_lanes.json",
   "notes": [
-    "This manifest is the canonical storage location for blocking lane command sequences.",
-    "scripts/lanes/validation_lanes.py is the loader/API; root scripts/validation_lanes.py is compatibility ingress and safe manifest inspection. Do not duplicate full sequences in AGENTS.md or workflow YAML."
+    "Manual trials remain the primary semantic and outcome evidence surface.",
+    "These lanes protect durable source, ABI, projection, and packaging invariants only; green output is not outcome proof."
   ],
   "drift_paths": {
+    "capability_generated": [
+      "generated/capability_graph.json",
+      "generated/capability_graph.md"
+    ],
     "export_generated": [
       ".agents/skills",
       "generated/agent_skill_catalog.json",
       "generated/agent_skill_catalog.min.json",
-      "generated/skill_intelligence_registry.json",
-      "generated/skill_intelligence_registry.min.json",
       "generated/portable_export_map.json",
-      "generated/local_adapter_manifest.json",
-      "generated/local_adapter_manifest.min.json",
-      "generated/context_retention_manifest.json",
-      "generated/trust_policy_matrix.json",
-      "generated/skill_runtime_contracts.json",
       "generated/skill_pack_profiles.resolved.json",
-      "generated/codex_config_snippets.json",
       "generated/mcp_dependency_manifest.json",
-      "generated/skill_trigger_eval_cases.jsonl",
-      "generated/skill_trigger_eval_cases.csv",
-      "generated/skill_trigger_collision_matrix.json",
-      "generated/skill_description_signals.json",
-      "generated/description_trigger_eval_cases.jsonl",
-      "generated/description_trigger_eval_cases.csv",
-      "generated/description_trigger_eval_manifest.json",
-      "generated/skills_ref_validation_manifest.json",
-      "generated/deterministic_resource_manifest.json",
-      "generated/support_resource_index.json",
-      "generated/structured_output_schema_index.json",
-      "generated/support_resource_bridge_map.json",
-      "generated/deterministic_resource_eval_cases.jsonl",
-      "generated/expected_existing_aoa_support_dirs.json",
-      "generated/tiny_router_skill_signals.json",
-      "generated/tiny_router_candidate_bands.json",
-      "generated/tiny_router_capsules.min.json",
-      "generated/tiny_router_eval_cases.jsonl",
-      "generated/tiny_router_overlay_manifest.json",
-      "generated/skill_bundle_index.json",
-      "generated/skill_bundle_index.md",
-      "generated/skill_graph.json",
-      "generated/skill_graph.md",
       "generated/release_manifest.json"
     ],
-    "runtime_generated": [
-      "generated/runtime_discovery_index.json",
-      "generated/runtime_discovery_index.min.json",
-      "generated/runtime_disclosure_index.json",
-      "generated/runtime_activation_aliases.json",
-      "generated/runtime_tool_schemas.json",
-      "generated/runtime_session_contract.json",
-      "generated/runtime_prompt_blocks.json",
-      "generated/runtime_router_hints.json",
-      "generated/runtime_seam_manifest.json",
-      "generated/repo_trust_gate_manifest.json",
-      "generated/permission_allowlist_manifest.json",
-      "generated/skill_context_guard_manifest.json",
-      "generated/runtime_guardrail_tool_schemas.json",
-      "generated/runtime_guardrail_prompt_blocks.json",
-      "generated/runtime_guardrail_manifest.json",
-      "mechanics/release-support/examples/repo-trust-store.json",
-      "mechanics/release-support/examples/permission-allowlist.json",
-      "mechanics/release-support/examples/guardrailed-runtime-config.json"
+    "owner_readmodels": [
+      "generated/quest_catalog.json",
+      "generated/quest_catalog.min.json",
+      "generated/quest_dispatch.json",
+      "generated/quest_dispatch.min.json",
+      "generated/agon_capability_binding_candidates.min.json",
+      "generated/agon_epistemic_capability_candidates.min.json"
     ]
   },
   "command_sequences": {
@@ -76,17 +37,54 @@
       ],
       [
         "python",
-        "scripts/validation/validate_nested_agents.py"
-      ],
-      [
-        "python",
-        "scripts/validation/validate_local_stats_port.py"
-      ],
-      [
-        "python",
         "scripts/validation/validate_skills.py",
-        "--skip-generated",
-        "--fail-on-review-truth-sync"
+        "--repo-root",
+        "."
+      ],
+      [
+        "python",
+        "scripts/validation/validate_capability_system.py",
+        "--repo-root",
+        "."
+      ],
+      [
+        "python",
+        "scripts/builders/build_questbook.py",
+        "--repo-root",
+        ".",
+        "--check"
+      ],
+      [
+        "python",
+        "mechanics/agon/parts/workflow-candidate-bridge/scripts/validate_agon_capability_binding_candidates.py"
+      ],
+      [
+        "python",
+        "mechanics/agon/parts/epistemic-candidate-boundary/scripts/validate_agon_epistemic_capability_candidates.py"
+      ]
+    ],
+    "capability_generated_check": [
+      [
+        "python",
+        "scripts/builders/build_capability_graph.py",
+        "--repo-root",
+        ".",
+        "--check"
+      ],
+      [
+        "python",
+        "scripts/validation/validate_capability_system.py",
+        "--repo-root",
+        ".",
+        "--check-generated"
+      ],
+      [
+        "git",
+        "diff",
+        "--exit-code",
+        "--",
+        "generated/capability_graph.json",
+        "generated/capability_graph.md"
       ]
     ],
     "export_generated_check": [
@@ -98,91 +96,7 @@
       ],
       [
         "python",
-        "scripts/builders/build_catalog.py",
-        "--check",
-        "--group",
-        "all"
-      ],
-      [
-        "python",
-        "scripts/validation/validate_skill_evidence_readouts.py",
-        "--repo-root",
-        "."
-      ],
-      [
-        "python",
-        "scripts/builders/build_trigger_eval_cases.py",
-        "--repo-root",
-        ".",
-        "--check"
-      ],
-      [
-        "python",
-        "scripts/builders/build_description_trigger_evals.py",
-        "--repo-root",
-        ".",
-        "--check"
-      ],
-      [
-        "python",
-        "scripts/builders/build_support_resources.py",
-        "--repo-root",
-        ".",
-        "--check"
-      ],
-      [
-        "python",
-        "scripts/builders/build_tiny_router_inputs.py",
-        "--repo-root",
-        ".",
-        "--check"
-      ],
-      [
-        "python",
         "scripts/validation/validate_agent_skills.py",
-        "--repo-root",
-        "."
-      ],
-      [
-        "python",
-        "scripts/validation/validate_support_resources.py",
-        "--repo-root",
-        ".",
-        "--check-portable"
-      ],
-      [
-        "python",
-        "scripts/validation/validate_tiny_router_inputs.py",
-        "--repo-root",
-        "."
-      ],
-      [
-        "python",
-        "scripts/validation/lint_trigger_evals.py",
-        "--repo-root",
-        "."
-      ],
-      [
-        "python",
-        "scripts/validation/lint_description_trigger_evals.py",
-        "--repo-root",
-        "."
-      ],
-      [
-        "python",
-        "scripts/validation/lint_pack_profiles.py",
-        "--repo-root",
-        "."
-      ],
-      [
-        "python",
-        "scripts/validation/lint_support_resources.py",
-        "--repo-root",
-        "."
-      ],
-      [
-        "python",
-        "scripts/validation/run_skills_ref_validation.py",
         "--repo-root",
         "."
       ],
@@ -194,89 +108,57 @@
         ".agents/skills",
         "generated/agent_skill_catalog.json",
         "generated/agent_skill_catalog.min.json",
-        "generated/skill_intelligence_registry.json",
-        "generated/skill_intelligence_registry.min.json",
         "generated/portable_export_map.json",
-        "generated/local_adapter_manifest.json",
-        "generated/local_adapter_manifest.min.json",
-        "generated/context_retention_manifest.json",
-        "generated/trust_policy_matrix.json",
-        "generated/skill_runtime_contracts.json",
         "generated/skill_pack_profiles.resolved.json",
-        "generated/codex_config_snippets.json",
         "generated/mcp_dependency_manifest.json",
-        "generated/skill_trigger_eval_cases.jsonl",
-        "generated/skill_trigger_eval_cases.csv",
-        "generated/skill_trigger_collision_matrix.json",
-        "generated/skill_description_signals.json",
-        "generated/description_trigger_eval_cases.jsonl",
-        "generated/description_trigger_eval_cases.csv",
-        "generated/description_trigger_eval_manifest.json",
-        "generated/skills_ref_validation_manifest.json",
-        "generated/deterministic_resource_manifest.json",
-        "generated/support_resource_index.json",
-        "generated/structured_output_schema_index.json",
-        "generated/support_resource_bridge_map.json",
-        "generated/deterministic_resource_eval_cases.jsonl",
-        "generated/expected_existing_aoa_support_dirs.json",
-        "generated/tiny_router_skill_signals.json",
-        "generated/tiny_router_candidate_bands.json",
-        "generated/tiny_router_capsules.min.json",
-        "generated/tiny_router_eval_cases.jsonl",
-        "generated/tiny_router_overlay_manifest.json",
-        "generated/skill_bundle_index.json",
-        "generated/skill_bundle_index.md",
-        "generated/skill_graph.json",
-        "generated/skill_graph.md",
         "generated/release_manifest.json"
       ]
     ],
-    "runtime_generated_check": [
+    "owner_readmodels_check": [
       [
         "python",
-        "scripts/runtime/build_runtime_seam.py",
+        "scripts/builders/build_questbook.py",
         "--repo-root",
         ".",
         "--check"
       ],
       [
         "python",
-        "scripts/runtime/build_runtime_guardrails.py",
-        "--repo-root",
-        ".",
+        "mechanics/agon/parts/workflow-candidate-bridge/scripts/build_agon_capability_binding_candidates.py",
         "--check"
+      ],
+      [
+        "python",
+        "mechanics/agon/parts/workflow-candidate-bridge/scripts/validate_agon_capability_binding_candidates.py"
+      ],
+      [
+        "python",
+        "mechanics/agon/parts/epistemic-candidate-boundary/scripts/build_agon_epistemic_capability_candidates.py",
+        "--check"
+      ],
+      [
+        "python",
+        "mechanics/agon/parts/epistemic-candidate-boundary/scripts/validate_agon_epistemic_capability_candidates.py"
       ],
       [
         "git",
         "diff",
         "--exit-code",
         "--",
-        "generated/runtime_discovery_index.json",
-        "generated/runtime_discovery_index.min.json",
-        "generated/runtime_disclosure_index.json",
-        "generated/runtime_activation_aliases.json",
-        "generated/runtime_tool_schemas.json",
-        "generated/runtime_session_contract.json",
-        "generated/runtime_prompt_blocks.json",
-        "generated/runtime_router_hints.json",
-        "generated/runtime_seam_manifest.json",
-        "generated/repo_trust_gate_manifest.json",
-        "generated/permission_allowlist_manifest.json",
-        "generated/skill_context_guard_manifest.json",
-        "generated/runtime_guardrail_tool_schemas.json",
-        "generated/runtime_guardrail_prompt_blocks.json",
-        "generated/runtime_guardrail_manifest.json",
-        "mechanics/release-support/examples/repo-trust-store.json",
-        "mechanics/release-support/examples/permission-allowlist.json",
-        "mechanics/release-support/examples/guardrailed-runtime-config.json"
+        "generated/quest_catalog.json",
+        "generated/quest_catalog.min.json",
+        "generated/quest_dispatch.json",
+        "generated/quest_dispatch.min.json",
+        "generated/agon_capability_binding_candidates.min.json",
+        "generated/agon_epistemic_capability_candidates.min.json"
       ]
     ],
     "export_full": [
       [
         "python",
-        "scripts/builders/build_catalog.py",
-        "--group",
-        "all"
+        "scripts/builders/build_capability_graph.py",
+        "--repo-root",
+        "."
       ],
       [
         "python",
@@ -286,175 +168,58 @@
       ],
       [
         "python",
-        "scripts/builders/build_catalog.py",
-        "--group",
-        "all"
-      ],
-      [
-        "python",
-        "scripts/runtime/build_runtime_seam.py",
+        "scripts/validation/validate_skills.py",
         "--repo-root",
         "."
       ],
       [
         "python",
-        "scripts/runtime/build_runtime_guardrails.py",
+        "scripts/validation/validate_capability_system.py",
         "--repo-root",
-        "."
-      ],
-      [
-        "python",
-        "scripts/builders/build_trigger_eval_cases.py",
-        "--repo-root",
-        "."
-      ],
-      [
-        "python",
-        "scripts/builders/build_description_trigger_evals.py",
-        "--repo-root",
-        "."
-      ],
-      [
-        "python",
-        "scripts/builders/build_support_resources.py",
-        "--repo-root",
-        "."
-      ],
-      [
-        "python",
-        "scripts/builders/build_tiny_router_inputs.py",
-        "--repo-root",
-        "."
-      ],
-      [
-        "python",
-        "scripts/builders/build_catalog.py",
-        "--group",
-        "all"
-      ],
-      [
-        "python",
-        "scripts/validation/validate_skill_evidence_readouts.py",
-        "--repo-root",
-        "."
+        ".",
+        "--check-generated"
       ],
       [
         "python",
         "scripts/validation/validate_agent_skills.py",
         "--repo-root",
         "."
-      ],
-      [
-        "python",
-        "scripts/validation/validate_support_resources.py",
-        "--repo-root",
-        ".",
-        "--check-portable"
-      ],
-      [
-        "python",
-        "scripts/validation/validate_tiny_router_inputs.py",
-        "--repo-root",
-        "."
-      ],
-      [
-        "python",
-        "scripts/validation/lint_trigger_evals.py",
-        "--repo-root",
-        "."
-      ],
-      [
-        "python",
-        "scripts/validation/lint_description_trigger_evals.py",
-        "--repo-root",
-        "."
-      ],
-      [
-        "python",
-        "scripts/validation/lint_pack_profiles.py",
-        "--repo-root",
-        "."
-      ],
-      [
-        "python",
-        "scripts/validation/lint_support_resources.py",
-        "--repo-root",
-        "."
-      ],
-      [
-        "python",
-        "scripts/validation/run_skills_ref_validation.py",
-        "--repo-root",
-        ".",
-        "--require-skills-ref"
-      ],
-      [
-        "git",
-        "diff",
-        "--exit-code",
-        "--",
-        ".agents/skills",
-        "generated/agent_skill_catalog.json",
-        "generated/agent_skill_catalog.min.json",
-        "generated/skill_intelligence_registry.json",
-        "generated/skill_intelligence_registry.min.json",
-        "generated/portable_export_map.json",
-        "generated/local_adapter_manifest.json",
-        "generated/local_adapter_manifest.min.json",
-        "generated/context_retention_manifest.json",
-        "generated/trust_policy_matrix.json",
-        "generated/skill_runtime_contracts.json",
-        "generated/skill_pack_profiles.resolved.json",
-        "generated/codex_config_snippets.json",
-        "generated/mcp_dependency_manifest.json",
-        "generated/skill_trigger_eval_cases.jsonl",
-        "generated/skill_trigger_eval_cases.csv",
-        "generated/skill_trigger_collision_matrix.json",
-        "generated/skill_description_signals.json",
-        "generated/description_trigger_eval_cases.jsonl",
-        "generated/description_trigger_eval_cases.csv",
-        "generated/description_trigger_eval_manifest.json",
-        "generated/skills_ref_validation_manifest.json",
-        "generated/deterministic_resource_manifest.json",
-        "generated/support_resource_index.json",
-        "generated/structured_output_schema_index.json",
-        "generated/support_resource_bridge_map.json",
-        "generated/deterministic_resource_eval_cases.jsonl",
-        "generated/expected_existing_aoa_support_dirs.json",
-        "generated/tiny_router_skill_signals.json",
-        "generated/tiny_router_candidate_bands.json",
-        "generated/tiny_router_capsules.min.json",
-        "generated/tiny_router_eval_cases.jsonl",
-        "generated/tiny_router_overlay_manifest.json",
-        "generated/skill_bundle_index.json",
-        "generated/skill_bundle_index.md",
-        "generated/skill_graph.json",
-        "generated/skill_graph.md",
-        "generated/release_manifest.json",
-        "generated/runtime_discovery_index.json",
-        "generated/runtime_discovery_index.min.json",
-        "generated/runtime_disclosure_index.json",
-        "generated/runtime_activation_aliases.json",
-        "generated/runtime_tool_schemas.json",
-        "generated/runtime_session_contract.json",
-        "generated/runtime_prompt_blocks.json",
-        "generated/runtime_router_hints.json",
-        "generated/runtime_seam_manifest.json",
-        "generated/repo_trust_gate_manifest.json",
-        "generated/permission_allowlist_manifest.json",
-        "generated/skill_context_guard_manifest.json",
-        "generated/runtime_guardrail_tool_schemas.json",
-        "generated/runtime_guardrail_prompt_blocks.json",
-        "generated/runtime_guardrail_manifest.json",
-        "mechanics/release-support/examples/repo-trust-store.json",
-        "mechanics/release-support/examples/permission-allowlist.json",
-        "mechanics/release-support/examples/guardrailed-runtime-config.json"
       ]
     ],
     "release_check": [
       [
         "python",
-        "scripts/builders/build_catalog.py"
+        "scripts/builders/build_capability_graph.py",
+        "--repo-root",
+        "."
+      ],
+      [
+        "python",
+        "scripts/export/build_agent_skills.py",
+        "--repo-root",
+        "."
+      ],
+      [
+        "python",
+        "scripts/builders/build_questbook.py",
+        "--repo-root",
+        "."
+      ],
+      [
+        "python",
+        "mechanics/agon/parts/workflow-candidate-bridge/scripts/build_agon_capability_binding_candidates.py"
+      ],
+      [
+        "python",
+        "mechanics/agon/parts/epistemic-candidate-boundary/scripts/build_agon_epistemic_capability_candidates.py"
+      ],
+      [
+        "python",
+        "mechanics/agon/parts/workflow-candidate-bridge/scripts/validate_agon_capability_binding_candidates.py"
+      ],
+      [
+        "python",
+        "mechanics/agon/parts/epistemic-candidate-boundary/scripts/validate_agon_epistemic_capability_candidates.py"
       ],
       [
         "python",
@@ -463,117 +228,16 @@
       ],
       [
         "python",
-        "scripts/export/build_agent_skills.py",
+        "scripts/validation/validate_skills.py",
         "--repo-root",
         "."
       ],
       [
         "python",
-        "scripts/builders/build_catalog.py"
-      ],
-      [
-        "python",
-        "scripts/builders/build_trigger_eval_cases.py",
+        "scripts/validation/validate_capability_system.py",
         "--repo-root",
-        "."
-      ],
-      [
-        "python",
-        "scripts/adapters/build_openai_yaml_examples.py",
-        "--map",
-        "mechanics/boundary-bridge/examples/skill_mcp_wiring.map.json",
-        "--output-dir",
-        "mechanics/boundary-bridge/examples",
-        "--check"
-      ],
-      [
-        "python",
-        "scripts/runtime/build_runtime_seam.py",
-        "--repo-root",
-        "."
-      ],
-      [
-        "python",
-        "scripts/runtime/build_runtime_guardrails.py",
-        "--repo-root",
-        "."
-      ],
-      [
-        "python",
-        "scripts/builders/build_description_trigger_evals.py",
-        "--repo-root",
-        "."
-      ],
-      [
-        "python",
-        "scripts/builders/build_support_resources.py",
-        "--repo-root",
-        "."
-      ],
-      [
-        "python",
-        "scripts/builders/build_tiny_router_inputs.py",
-        "--repo-root",
-        "."
-      ],
-      [
-        "python",
-        "scripts/builders/build_catalog.py"
-      ],
-      [
-        "python",
-        "scripts/validation/validate_skill_evidence_readouts.py",
-        "--repo-root",
-        "."
-      ],
-      [
-        "python",
-        "mechanics/agon/parts/workflow-candidate-bridge/scripts/build_agon_skill_binding_candidates.py",
-        "--check"
-      ],
-      [
-        "python",
-        "mechanics/agon/parts/workflow-candidate-bridge/scripts/validate_agon_skill_binding_candidates.py"
-      ],
-      [
-        "python",
-        "mechanics/agon/parts/epistemic-candidate-boundary/scripts/build_agon_epistemic_skill_candidates.py",
-        "--check"
-      ],
-      [
-        "python",
-        "mechanics/agon/parts/epistemic-candidate-boundary/scripts/validate_agon_epistemic_skill_candidates.py"
-      ],
-      [
-        "python",
-        "-m",
-        "pytest",
-        "-q",
-        "tests"
-      ],
-      [
-        "python",
-        "-m",
-        "pytest",
-        "-q",
-        "mechanics/agon/parts/workflow-candidate-bridge/tests",
-        "mechanics/agon/parts/epistemic-candidate-boundary/tests"
-      ],
-      [
-        "python",
-        "scripts/validation/validate_agents_design.py"
-      ],
-      [
-        "python",
-        "scripts/validation/validate_nested_agents.py"
-      ],
-      [
-        "python",
-        "scripts/validation/validate_local_stats_port.py"
-      ],
-      [
-        "python",
-        "scripts/validation/validate_skills.py"
+        ".",
+        "--check-generated"
       ],
       [
         "python",
@@ -583,107 +247,10 @@
       ],
       [
         "python",
-        "scripts/validation/validate_support_resources.py",
-        "--repo-root",
-        ".",
-        "--check-portable"
-      ],
-      [
-        "python",
-        "scripts/validation/validate_tiny_router_inputs.py",
-        "--repo-root",
-        "."
-      ],
-      [
-        "python",
-        "scripts/validation/lint_trigger_evals.py",
-        "--repo-root",
-        "."
-      ],
-      [
-        "python",
-        "scripts/validation/lint_description_trigger_evals.py",
-        "--repo-root",
-        "."
-      ],
-      [
-        "python",
-        "scripts/validation/lint_pack_profiles.py",
-        "--repo-root",
-        "."
-      ],
-      [
-        "python",
-        "scripts/validation/lint_support_resources.py",
-        "--repo-root",
-        "."
-      ],
-      [
-        "python",
-        "scripts/validation/run_skills_ref_validation.py",
-        "--repo-root",
-        "."
-      ],
-      [
-        "python",
-        ".agents/spark/scripts/validate_spark_lane.py"
-      ],
-      [
-        "python",
         "-m",
-        "unittest",
-        "discover",
-        "-s",
-        ".agents/spark/tests",
-        "-p",
-        "test*.py"
-      ],
-      [
-        "python",
-        "scripts/builders/build_tiny_router_inputs.py",
-        "--repo-root",
-        ".",
-        "--check"
-      ],
-      [
-        "python",
-        "scripts/builders/build_support_resources.py",
-        "--repo-root",
-        ".",
-        "--check"
-      ],
-      [
-        "python",
-        "scripts/builders/build_description_trigger_evals.py",
-        "--repo-root",
-        ".",
-        "--check"
-      ],
-      [
-        "python",
-        "scripts/builders/build_trigger_eval_cases.py",
-        "--repo-root",
-        ".",
-        "--check"
-      ],
-      [
-        "python",
-        "scripts/runtime/build_runtime_guardrails.py",
-        "--repo-root",
-        ".",
-        "--check"
-      ],
-      [
-        "python",
-        "scripts/runtime/build_runtime_seam.py",
-        "--repo-root",
-        ".",
-        "--check"
-      ],
-      [
-        "python",
-        "scripts/builders/build_catalog.py",
-        "--check"
+        "pytest",
+        "-q",
+        "tests"
       ],
       [
         "python",
@@ -699,6 +266,20 @@
       "scripts/bundles/smoke_skill_pack_handoff.py",
       "--repo-root",
       ".",
+      "--profile",
+      "repo-default",
+      "--transport",
+      "both",
+      "--format",
+      "json"
+    ],
+    "packaging_smoke_capability_sources": [
+      "python",
+      "scripts/bundles/smoke_skill_pack_handoff.py",
+      "--repo-root",
+      ".",
+      "--profile",
+      "repo-capability-sources",
       "--transport",
       "both",
       "--format",

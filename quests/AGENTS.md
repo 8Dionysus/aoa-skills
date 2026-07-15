@@ -6,22 +6,25 @@ This card applies to `quests/`.
 
 ## Role
 
-`quests/` preserves durable obligations and quest-oriented skill-layer follow-through that should survive a single chat turn.
+`quests/` may preserve durable unresolved `aoa-skills` obligations and bounded
+external Agon requests.
 
 ## Read before editing
 
-Read root `AGENTS.md`, `quests/README.md`, and the mechanic package that originated the obligation before editing.
+Read root `AGENTS.md`, `QUESTBOOK.md`, `quests/README.md`, and either the
+Questbook or Agon owner card.
 
 ## Boundaries
 
-Do not turn quests into live runtime state, hidden agent destiny, or proof of completion. A quest records a reviewable obligation; completion still needs evidence in the owning surface.
+Do not copy a live goal, raw session evidence, task-local plan, capability
+contract, or sibling backlog into a quest. Closed items leave the active tree.
 
 ## Validation
 
-Full lane command sequences live in `config/validation_lanes.json`; this local card may name only focused owner checks, lane ids, or the nearest route for the changed surface.
-
-Run the route or roadmap parity check named by the owning mechanic. If no local check exists, run `PYTHONPATH=scripts python scripts/validation/validate_skills.py` and `git diff --check`.
+For repo-local YAML quests, run the Questbook builder and surface validator.
+For Agon notes, run the owning candidate bridge checks.
 
 ## Closeout
 
-Report changed surfaces, checks run, checks skipped, remaining risk, and the next owner route. If a nearby source document carried agent-facing working law into this card, name that transfer.
+Report owner, lifecycle state, why the obligation survives the current diff,
+generated projection, and closure/removal route.

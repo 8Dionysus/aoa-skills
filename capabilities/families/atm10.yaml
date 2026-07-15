@@ -1,0 +1,140 @@
+schema_version: aoa-capability-family-v1
+family_id: projects-atm10-adapters
+title: ATM10 owner adapters
+description: Thin owner-routed adapters that expose ATM10 repository law without duplicating it as central AoA skills.
+owner:
+  repo: ATM10-Agent
+  surface: AGENTS.md
+  authority: external-authority
+nodes:
+  - id: projects.atm10
+    title: ATM10 Agent
+    description: Owner-routed capabilities whose project facts and commands remain in ATM10-Agent.
+    kind: capability
+    contract_level: navigation
+    primary_parent: projects
+    owner: &atm_owner
+      repo: ATM10-Agent
+      surface: AGENTS.md
+      authority: external-authority
+    lifecycle: &atm_lifecycle
+      state: active
+      version: 0.1.0
+      visibility: deferred
+      evidence_state: owner-verified
+      health: healthy
+    keywords: [atm10, agent, project, owner, проект, владелец]
+
+  - id: adapter.atm10.repository-change
+    title: ATM10 repository change adapter
+    description: Bind a normal host repository-change loop to current ATM10 owner routes, commands, and stop lines without copying them centrally.
+    kind: adapter
+    contract_level: executable
+    primary_parent: projects.atm10
+    owner: *atm_owner
+    lifecycle: *atm_lifecycle
+    applicability:
+      use_when:
+        - A change targets ATM10-Agent and its current repository-specific route law materially affects execution.
+      do_not_use_when:
+        - The target is another repository or the task is read-only orientation.
+      ambiguous_when:
+        - A subsystem-local AGENTS card may override the root route for the touched paths.
+    abi:
+      inputs:
+        - name: atm10-change-request
+          type: bounded-change-request
+          required: true
+          description: Requested outcome, touched ATM10 surfaces, authority, and acceptance criteria.
+        - name: atm10-authority-map
+          type: source-authority-map
+          required: false
+          description: Optional owner-local authority map when overlapping ATM10 documents must be resolved before the change route.
+      outputs:
+        - name: atm10-change-context
+          type: owner-adapted-change-context
+          required: true
+          description: Current owner routes, exact commands, stop lines, and handoff to the host change workflow.
+    binding:
+      kind: adapter
+      ref: ATM10-Agent:AGENTS.md
+      operation: adapt-repository-change
+      availability: external
+    execution: &atm_execution
+      freedom: bounded-judgment
+      tool_requirements:
+        - Read access to ATM10 root and nearest nested AGENTS and owner source surfaces.
+      verification:
+        - Confirm every project fact and command comes from the current ATM10 owner source.
+      termination:
+        - Stop after a bounded owner context and host-workflow handoff.
+      effects: [read-only]
+      reversibility: not-applicable
+      failure_modes:
+        - Treating this adapter as project truth or executing a stale copied command.
+    trust: &atm_trust
+      public_safe: true
+      requires_human_approval: false
+      posture: owner-routed
+    provenance:
+      source_refs:
+        - repo: ATM10-Agent
+          path: AGENTS.md
+          ref: 430c622654362eae2ff3ed35855b42bc172dd552
+          role: owner-route
+          authority: external-authority
+      optional_refs: []
+    keywords: [atm10-change, repo-route, local-command, изменение-atm10, локальная-команда]
+
+  - id: adapter.atm10.authority-map
+    title: ATM10 source-authority adapter
+    description: Read ATM10's current document-role contract and return a project-local authority map without centralizing its facts.
+    kind: adapter
+    contract_level: executable
+    primary_parent: projects.atm10
+    owner:
+      repo: ATM10-Agent
+      surface: docs/SOURCE_OF_TRUTH.md
+      authority: external-authority
+    lifecycle: *atm_lifecycle
+    applicability:
+      use_when:
+        - ATM10 guidance, architecture, runbook, status, or generated surfaces overlap or conflict.
+      do_not_use_when:
+        - The question concerns decision rationale or another repository.
+      ambiguous_when:
+        - Runtime state and authored policy answer different parts of the question.
+    abi:
+      inputs:
+        - name: atm10-authority-question
+          type: source-authority-conflict
+          required: true
+          description: Candidate ATM10 surfaces, consumers, and concrete authority ambiguity.
+      outputs:
+        - name: atm10-authority-map
+          type: source-authority-map
+          required: true
+          description: Owner-local source roles, canonical homes, derived consumers, and unresolved edge.
+    binding:
+      kind: adapter
+      ref: ATM10-Agent:docs/SOURCE_OF_TRUTH.md
+      operation: map-authority
+      availability: external
+    execution: *atm_execution
+    trust: *atm_trust
+    provenance:
+      source_refs:
+        - repo: ATM10-Agent
+          path: docs/SOURCE_OF_TRUTH.md
+          ref: 430c622654362eae2ff3ed35855b42bc172dd552
+          role: document-role-owner
+          authority: external-authority
+      optional_refs: []
+    keywords: [atm10-source, source-of-truth, runbook, generated, источник-истины-atm10]
+relations:
+  - kind: adapted-by
+    source: workflow.operations.repository-change
+    target: adapter.atm10.repository-change
+  - kind: adapted-by
+    source: mode.knowledge.authority-map
+    target: adapter.atm10.authority-map

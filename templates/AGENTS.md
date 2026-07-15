@@ -6,34 +6,25 @@ This card applies to `templates/`.
 
 ## Role
 
-`templates/` owns reusable source templates such as `SKILL.template.md` and `PROJECT_OVERLAY.template.md`.
+`templates/` owns the minimal starting shape for a candidate callable bundle.
 
 ## Read before editing
 
-Read root `AGENTS.md`, `templates/README.md` if present, the consuming builder or validator, and at least one current canonical bundle using the template pattern.
+Read root `AGENTS.md`, `DESIGN.md`, `skills/README.md`, the frontmatter schema,
+source validator, and one current bundle.
 
 ## Boundaries
 
-Preserve placeholder intent. Do not make templates silently AoA-only when they need to remain portable, and do not add fields that validators or generated surfaces cannot consume.
+Preserve placeholder intent. The template must not imply promotion, require a
+technique, duplicate full capability metadata, or teach sections unsupported by
+the validator and current bundles.
 
 ## Validation
 
-Full lane command sequences live in `config/validation_lanes.json`; this local card may name only focused owner checks, lane ids, or the nearest route for the changed surface.
-
-Run `PYTHONPATH=scripts python scripts/validation/validate_skills.py`, template-related tests, and any builder affected by the template.
+Instantiate a temporary candidate outside the source tree, inspect it manually,
+then run the source validator against any real bundle changed to match it.
 
 ## Closeout
 
-Report changed surfaces, checks run, checks skipped, remaining risk, and the next owner route. If a nearby source document carried agent-facing working law into this card, name that transfer.
-
-## Template Contract
-
-Templates teach expected source shape; they do not override live repository
-doctrine, schemas, validators, or canonical bundles.
-
-When changing a template, inspect a current canonical example and the validator
-that accepts it. Keep optional sections visibly optional, required fields
-matched to schema expectations, and generated/export consumers in sync.
-
-Do not hide workflow law in a template that active bundles, schemas, and
-validators do not understand.
+Report contract sections changed, current bundle compared, manual
+instantiation, and validator compatibility.

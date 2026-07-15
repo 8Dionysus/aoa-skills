@@ -1,79 +1,17 @@
 # Script Topology
 
-`scripts/` is the command-plane source home for the bounded skill execution
-canon. It must be tree-shaped: root script paths are compatibility ingress
-only, while implementation belongs to named organ directories.
-
-This map is not command authority. Blocking lane sequences live in
-[`../../config/validation_lanes.json`](../../config/validation_lanes.json), and
-`scripts/lanes/validation_lanes.py` is the loader.
-
-The machine-readable organ map lives in
-[`script_inventory.json`](script_inventory.json).
-
-## Root Command Ingress
-
-Root `scripts/*.py` files are limited to the allowlist in
-`script_inventory.json`. Except for `_ingress.py`, they must be thin wrappers
-that call `_ingress.expose(...)` and point to one implementation module under
-an organ directory.
-
-Root wrappers are for command/front-door paths, not for library convenience.
-Contract, source-model, surface, bridge, and helper modules should be imported
-from their organ package.
-
-The current allowed root fronts are only:
-
-- lane front doors: `ci_gate.py`, `release_check.py`, `validation_lanes.py`
-- runtime/activation fronts emitted by generated runtime or adapter surfaces
-- bundle handoff fronts for stage, inspect, import, install, smoke, and verify
-
-Internal builders, validators, reports, refresh flows, receipt publishers,
-adapters, and skill-model tools run from their organ paths. Direct organ
-commands use the explicit lane contract: `PYTHONPATH=scripts python
-scripts/<organ>/<tool>.py ...`.
-
-Generated local-adapter manifests are export-derived surfaces. They are built
-through `scripts/export/build_agent_skills.py`; a standalone
-`scripts/build_local_adapter_manifest.py` ingress is intentionally not retained
-because it duplicates the export builder output without owning a separate lane.
-Project kernel, outer-ring, risk-ring, and foundation-profile export documents
-are generated through the `scripts/export/project_surface.py` phase.
-The Agent Skills export builder `main()` should stay a route over load, portable
-skill export, generated text assembly, and write phases.
-Per-skill portable markdown, OpenAI YAML, resource inventory, context,
-handoff, trust, and runtime contract assembly lives in
-`scripts/export/portable_skill_export.py`.
-
-`scripts/validators/__init__.py` is a compatibility package for older
-`validators.*` imports. Validator implementation and contract JSON live under
-`scripts/validation/validators/`.
-
-## Organ Directories
-
 | Organ | Owns |
 | --- | --- |
-| `activation/` | activation shims and invocation policy |
-| `adapters/` | adapter-specific manifests, config snippets, and examples |
-| `audit/` | read-only audits and reality-trial reports |
-| `bridges/` | sibling bridge helper logic |
-| `builders/` | generated/read-model builders |
-| `bundles/` | staged bundles, pack install/import/verify, and bundle surfaces |
-| `decisions/` | decision index parsing and generation |
-| `export/` | portable Agent Skills export and release-manifest contracts |
-| `lanes/` | CI/release lane execution and command-manifest loading |
-| `receipts/` | receipt publishing helpers |
-| `refresh/` | source refresh flows from manifests or technique bridges |
-| `reports/` | skill boundary, evaluation, promotion, and technique drift reports |
-| `runtime/` | runtime seam, guardrails, activation payloads, and inspection |
-| `skill_model/` | source model, contracts, governance, status, lineage, and review surfaces |
-| `validation/` | validation and lint entrypoints plus owner validator modules |
+| `builders/` | capability graph and Questbook read models |
+| `export/` | portable bundles, catalogs, release manifest |
+| `bundles/` | stage, inspect, import, install, verify, smoke handoff |
+| `runtime/` | typed task-local capability DAG planning |
+| `skill_model/` | current capability, source, section, layout, Questbook models |
+| `validation/` | focused structural validators |
+| `decisions/` | decision index parsing and deterministic generation |
+| `lanes/` | command-manifest loading and lane execution |
 
-## Movement Rule
-
-New script implementation must enter the narrowest organ directory first. Add a
-root ingress only when a historical command path, CI lane, generated payload, or
-downstream integration needs that stable path, and record owner surface, reason,
-downstream evidence, and retirement condition in `script_inventory.json`.
-
-Do not put new implementation or library wrappers in root `scripts/`.
+Root `scripts/*.py` files are stable compatibility front doors implemented via
+`_ingress.py`; new logic belongs in the narrowest organ. Retired activation,
+router, technique refresh, stats proxy, governance, and 57-skill catalog code
+must not return through a wrapper.

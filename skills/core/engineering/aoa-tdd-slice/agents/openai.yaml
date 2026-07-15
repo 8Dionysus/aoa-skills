@@ -1,6 +1,0 @@
-policy:
-  allow_implicit_invocation: true
-  implicit_activation_policy: invoke
-notes:
-- This skill is explicit-preferred, but may be invoked implicitly when a small observable behavior can be specified before implementation.
-- Keep it on behavior slices across code, CLI, builder, validator, generated/export, adapter, router, or workflow surfaces; route authority confusion to aoa-source-of-truth-check.

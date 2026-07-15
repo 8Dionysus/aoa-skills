@@ -1,71 +1,10 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "global": {
     "interface": {},
     "dependencies": {
       "tools": []
     }
   },
-  "skills": {
-    "aoa-decision": {
-      "dependencies": {
-        "tools": [
-          {
-            "type": "mcp",
-            "value": "aoa_decisions",
-            "description": "AoA workspace decision graph MCP server",
-            "transport": "stdio"
-          }
-        ]
-      }
-    },
-    "aoa-decision-find": {
-      "dependencies": {
-        "tools": [
-          {
-            "type": "mcp",
-            "value": "aoa_decisions",
-            "description": "AoA workspace decision graph MCP server",
-            "transport": "stdio"
-          }
-        ]
-      }
-    },
-    "aoa-decision-create": {
-      "dependencies": {
-        "tools": [
-          {
-            "type": "mcp",
-            "value": "aoa_decisions",
-            "description": "AoA workspace decision graph MCP server",
-            "transport": "stdio"
-          }
-        ]
-      }
-    },
-    "aoa-decision-correct": {
-      "dependencies": {
-        "tools": [
-          {
-            "type": "mcp",
-            "value": "aoa_decisions",
-            "description": "AoA workspace decision graph MCP server",
-            "transport": "stdio"
-          }
-        ]
-      }
-    },
-    "os-abyss-artifact-trust-loop": {
-      "dependencies": {
-        "tools": [
-          {
-            "type": "mcp",
-            "value": "abyss_machine",
-            "description": "OS Abyss host machine MCP server for read-only artifact trust surfaces",
-            "transport": "stdio"
-          }
-        ]
-      }
-    }
-  }
+  "skills": {}
 }

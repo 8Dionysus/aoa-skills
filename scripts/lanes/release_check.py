@@ -22,6 +22,9 @@ TRACKED_DIFF_SNAPSHOT_COMMAND = ("git", "diff", "--binary", "--no-ext-diff")
 CACHED_DIFF_SNAPSHOT_COMMAND = ("git", "diff", "--cached", "--binary", "--no-ext-diff")
 CLEAN_REPO_DIFF_COMMAND = ("git", "diff", "--exit-code")
 PACKAGING_SMOKE_COMMAND = validation_lanes.PACKAGING_SMOKE_COMMAND
+PACKAGING_SMOKE_CAPABILITY_SOURCES_COMMAND = (
+    validation_lanes.PACKAGING_SMOKE_CAPABILITY_SOURCES_COMMAND
+)
 
 
 @dataclass(frozen=True)
@@ -93,7 +96,11 @@ def repo_started_without_tracked_diff(snapshot: RepoStateSnapshot) -> bool:
 
 def build_release_check_sequence(*, include_packaging_smoke: bool) -> tuple[tuple[str, ...], ...]:
     if include_packaging_smoke:
-        return (*RELEASE_CHECK_COMMAND_SEQUENCE, PACKAGING_SMOKE_COMMAND)
+        return (
+            *RELEASE_CHECK_COMMAND_SEQUENCE,
+            PACKAGING_SMOKE_COMMAND,
+            PACKAGING_SMOKE_CAPABILITY_SOURCES_COMMAND,
+        )
     return RELEASE_CHECK_COMMAND_SEQUENCE
 
 

@@ -2,34 +2,32 @@
 
 ## Applies to
 
-This card applies to `mechanics/agon/` except where a nearer card applies.
+This card applies to `mechanics/agon/`.
 
 ## Role
 
-`mechanics/agon/` owns requested-only candidate conflict, epistemic pressure, and skill-binding bridge work for the skill layer. Agon package guidance keeps this movement bounded and reviewable.
+This package preserves owner-requested Agon capability/workflow candidates and
+their deterministic requested-only projections.
 
 ## Read before editing
 
-Read root `AGENTS.md`, `mechanics/AGENTS.md`, `mechanics/agon/README.md`, `mechanics/agon/DIRECTION.md`, `mechanics/agon/PARTS.md`, `mechanics/agon/PROVENANCE.md`, `mechanics/agon/ROADMAP.md`, and any nearer card, `parts/AGENTS.md`, `legacy/AGENTS.md`.
+Read root and mechanics cards, `mechanics/agon/README.md`, both candidate part
+sources, their schemas, builders, validators, and the named external owner
+binding.
 
 ## Boundaries
 
-Keep `mechanics/agon/` focused on mechanic movement. Do not make it canonical skill content, sibling-repo technique truth, proof doctrine, or generated authority. Preserve requested-only as a bounded local signal, not a global command.
+Candidates are not skills, lawful-move authority, proof, runtime protocol,
+recurrence activation, or ToS promotion. They require no technique dependency.
+Only later capability classification and held-out callable-skill review may
+create a bundle.
 
 ## Validation
 
-Full lane command sequences live in `config/validation_lanes.json`; this local card may name only focused owner checks, lane ids, or the nearest route for the changed surface.
-
-Run the changed candidate bridge builder and validator before broader topology
-checks:
-
-- workflow candidate bridge: build check, validate, and part-local test
-- epistemic candidate boundary: build check, validate, and part-local test
-- package shape: `tests/test_mechanics_topology.py`
-
-Required workflow-candidate build check:
-`python mechanics/agon/parts/workflow-candidate-bridge/scripts/build_agon_skill_binding_candidates.py --check`
+Manually inspect at least one candidate from each family, then run both builders
+in parity-check posture, both validators, and their focused part-local tests.
 
 ## Closeout
 
-Report changed surfaces, checks run, checks skipped, remaining risk, and the next owner route. If a nearby source document carried agent-facing working law into this card, name that transfer.
+Report candidate family, external owner ref, requested-only stop line, manual
+case, generated projection, checks, and any classification decision.

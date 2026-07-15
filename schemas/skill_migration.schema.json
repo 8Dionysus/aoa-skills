@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://8dionysus.github.io/aoa-skills/schemas/skill-migration-v1.schema.json",
+  "title": "AoA legacy skill migration contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "baseline", "entries"],
+  "properties": {
+    "schema_version": {"const": "aoa-skill-migration-v1"},
+    "baseline": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["repo_ref", "skill_count", "meaning"],
+      "properties": {
+        "repo_ref": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+        "skill_count": {"const": 57},
+        "meaning": {"type": "string", "minLength": 1}
+      }
+    },
+    "entries": {
+      "type": "array",
+      "minItems": 57,
+      "maxItems": 57,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["legacy_name", "legacy_path", "action", "target_id", "target_kind", "target_owner", "compatibility", "evidence_state", "reason"],
+        "properties": {
+          "legacy_name": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)+$"},
+          "legacy_path": {"type": "string", "pattern": "^skills/(?:core|risk|project)/.+/SKILL\\.md$"},
+          "action": {
+            "type": "string",
+            "enum": ["retain-advertised", "defer-family", "merge-mode", "route-owner-object"]
+          },
+          "target_id": {"type": "string", "pattern": "^[a-z0-9]+(?:[._-][a-z0-9]+)*$"},
+          "target_kind": {
+            "type": "string",
+            "enum": ["skill", "mode", "workflow", "tool", "guard", "adapter"]
+          },
+          "target_owner": {"type": "string", "minLength": 1},
+          "compatibility": {
+            "type": "string",
+            "enum": ["same-name", "same-name-deferred", "migration-alias", "none"]
+          },
+          "evidence_state": {"const": "manual-evaluated"},
+          "reason": {
+            "type": "string",
+            "enum": ["demonstrated-added-value", "baseline-equivalent", "consolidated-procedure", "owner-bound-action", "runtime-enforcement-required", "project-truth-belongs-to-owner"]
+          }
+        }
+      }
+    }
+  }
+}

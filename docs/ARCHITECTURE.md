@@ -1,186 +1,39 @@
 # Architecture
 
-## Purpose
+## Semantic plane
 
-`aoa-skills` is a public repository of reusable local coding-agent skills.
-It is one bounded execution layer in the AoA ontology spine; see
-`mechanics/boundary-bridge/docs/LAYER_POSITION.md` for the repo-owned boundary note.
-Root `DESIGN.md` describes the system form of that layer; this architecture
-reference explains the technical model. Root `CHARTER.md` names the repository
-authority boundary.
+`capabilities/families/*.yaml` forms a semantic tree with one primary parent
+per node and a typed graph across nodes. It distinguishes capabilities, skills,
+modes, workflows, tools, guards, adapters, and human gates. Executable nodes
+carry applicability, ABI, binding, execution, verification, trust, provenance,
+lifecycle, and failure contracts.
 
-- `aoa-techniques` answers: what is the reusable practice, when should it be used, what are its invariants, risks, and validation rules?
-- `aoa-skills` answers: what self-contained workflow should a local coding agent execute, and how does that workflow relate to reusable practice?
+## Procedural plane
 
-## Conceptual model
+Seven `skills/**/SKILL.md` bundles are the only current host-callable
+procedures. Internal modes stay inside those bundles. External workflows and
+tools remain owner-qualified graph bindings. Only `aoa-decision` is advertised;
+the other six are explicit deferred candidates.
 
-### Techniques
+## Derived plane
 
-A technique is a minimal reproducible unit of engineering practice.
-It is public-safe, documented, bounded, and validated.
+- `generated/capability_graph.*` supports deep retrieval and composition.
+- `.agents/skills/*` and agent catalogs are the flat portable host export.
+- `kag/` exposes source-linked graph and return handles to `aoa-kag`.
+- release manifests bind source and portable hashes for pack handoff.
 
-### Skills
+Derived planes never own semantics. They are reproducible from authored source.
 
-A skill is an agent-facing executable guidance bundle.
-It packages:
-- scoped instructions
-- output expectations
-- references
-- optional scripts
-- optional assets
-- invocation policy
-- technique composition metadata
+## Execution plane
 
-The committed `SKILL.md` must stand on its own. Technique links can explain
-lineage, composition, decomposition, refresh pressure, or future extraction;
-runtime use should still be understandable from the authored skill bundle.
+For one request, discovery selects the smallest applicable compatible set and
+`scripts/runtime/capability_dag.py` constructs a task-local DAG from ABI and
+control relations. The DAG is session/runtime state. Conflicts, missing inputs,
+or unavailable external bindings block honestly rather than being guessed.
 
-The repository also publishes generated companions. They are operational
-interfaces over authored source, not authored meaning.
+## Evidence plane
 
-Main generated companion families:
-
-- Portable export: `.agents/skills/*` for compatible runtimes, built from
-  canonical bundles plus portable export config.
-- Catalogs and sections: reader maps for discovery, routing, and inspection,
-  built from committed `SKILL.md` and `techniques.yaml`.
-- Runtime seam and guardrails: local activation, disclosure, aliases, session
-  contracts, prompt blocks, and router hints, built from source bundles and
-  repo-owned runtime config.
-- Support resources: deterministic support bundle indexes and bridges back to
-  AoA-native support dirs, built from canonical skill support artifacts.
-- Governance, evaluation, and release surfaces: public status, review pressure,
-  release digests, and packaging checks, built from source bundles, review
-  records, evaluation fixtures, and release config.
-- Skill Intelligence registry: lexical search, explanation, and status over
-  current skills, built from canonical skill sources and generated evidence.
-
-For exact generated file lists, use the release-support docs and generated
-manifest surfaces rather than this architecture overview.
-
-The repository also has an agent-facing Codex Spark lane under
-`.agents/spark/`. That lane is launch, result, handoff, and validation material
-for short-loop work. It is not a generated companion and not authored skill
-meaning.
-
-A skill may relate to one or more techniques and/or several bounded actions, but
-its identity is the bounded workflow it gives an agent.
-A skill is not the home of recurring scenario method; that boundary stays in
-`aoa-playbooks`.
-
-### Owner-local stats port
-
-`stats/` declares statistical questions whose domain meaning belongs to the
-skill canon. Its measurement contracts name a population, unit, derivation,
-evidence refs, reference/live posture, and authority ceiling. The central
-`aoa-stats` organ owns the shared grammar and cross-owner composition.
-
-Current reference packets are derived from public source-backed skill
-projections. They remain weaker than authored skill bundles, activation
-policy, cases, builders, validators, and review evidence. They do not turn
-coverage into runtime success, proof, adoption, promotion, or human
-assessment.
-
-## Layering
-
-### Layer 1: origin project
-A technique is born in a real project such as `atm10-agent` or `abyss-stack`.
-
-### Layer 2: technique canon
-The technique is sanitized, generalized, validated, and promoted into `aoa-techniques`.
-
-### Layer 3: skill canon
-A skill in `aoa-skills` is a workflow usable by a local coding agent. It may be
-assembled from techniques, and it may later be decomposed into techniques when
-live execution reveals reusable practice. The bridge is bidirectional:
-
-- techniques -> skill: compose reusable practices into an executable workflow
-- skill -> techniques: extract stable practice from repeated execution
-
-The expected shape is a workflow package, not a thin mirror of one technique.
-Canonical source bundles live in the recursive `skills/` topology. The source
-tree groups bundles by functional lane; the flat `.agents/skills/*` tree remains
-the generated portable export.
-
-### Layer 4: project overlay
-A project-local overlay adds:
-- repo paths
-- commands
-- source-of-truth files
-- risk policies
-- approval gates
-- runtime assumptions
-
-## Design rules
-
-1. skills are self-contained execution objects
-2. techniques are the source of truth for reusable practice
-3. technique bridge entries document lineage while runtime use stays self-contained
-4. skills may compose techniques into workflows, and mature skill workflows may
-   produce technique extraction requests
-5. skills should not silently rewrite technique canon when they claim a technique bridge
-6. recurring scenario method stays in `aoa-playbooks`, even when a skill is executable
-7. runtime skill execution should not depend on live remote fetches
-8. build-time composition is preferred over runtime remote dependency
-9. project overlays should remain thin
-10. dangerous or operationally sensitive skills should default to explicit invocation
-11. narrow skill wrappers need review evidence that they add executable value
-12. owner-local statistics may summarize declared skill cohorts but may not
-    absorb proof, runtime, routing, adoption, or cross-owner authority
-
-## Skill categories
-
-### Core skills
-Reusable across many repositories.
-Examples:
-- change protocol
-- TDD slice
-- contract-test design
-- bounded-context mapping
-
-### Project skills
-Reusable inside one project family.
-Examples:
-- `atm10-*`
-- `abyss-*`
-
-### Risk skills
-Operational or destructive workflows that should require explicit invocation and strong guardrails.
-
-## Build philosophy
-
-Skills should be reviewable artifacts.
-They can be generated or assembled from technique references, but the committed
-`SKILL.md` should remain understandable to a human reviewer without additional
-hidden state.
-
-Derived surfaces should stay deterministic and disposable:
-
-- if a reader surface drifts, regenerate it from authoritative markdown,
-  manifests, config, and review evidence
-- governance and release signaling should remain derived rather than becoming a
-  second explicit skill-metadata contract
-- `.agents/skills/*` is a generated export, not a second canonical skill tree
-- repo-owned export config lives under `config/`
-- `scripts/skill_runtime_seam.py` is the primary runtime path, while
-  `scripts/activate_skill.py` remains a compatibility shim
-- support-resource builders record deterministic support bundles without
-  becoming a second portable-sync authority
-- the Skill Intelligence registry supports search and explanation; it does not
-  create a semantic backend, auto-promote skill status, or replace authored
-  bundles
-- `.agents/spark/` supports bounded Spark sessions; it does not replace source
-  bundles, generated builders, release support, or review evidence
-
-## Versioning direction
-
-A skill should eventually record:
-- its own version or revision
-- the technique IDs it depends on
-- optionally the source technique commit or release reference used when the skill was generated or updated
-
-That future versioning direction is separate from the current public-surface
-layer. In the current pass, `aoa-skills` can publish repo-level GitHub releases
-and tags for bounded baseline cuts, but it still does not add explicit
-per-skill release metadata; derived public-product signals remain separate from
-release identity.
+Manual trials compare no skill, current, and candidate behavior, including
+negative and coexistence cases. Raw traces remain in the session. Only reviewed
+durable contracts, lifecycle decisions, and stable invariants return to the
+repository. Shared proof remains with `aoa-evals`.

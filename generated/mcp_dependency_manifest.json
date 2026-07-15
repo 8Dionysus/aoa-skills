@@ -1,101 +1,13 @@
 {
-  "schema_version": 1,
-  "profile": "codex-facing-wave-3",
+  "schema_version": 2,
+  "profile": "codex-facing-v2",
   "skills": [
     {
-      "name": "abyss-safe-infra-change",
-      "tools": []
-    },
-    {
-      "name": "abyss-sanitized-share",
-      "tools": []
-    },
-    {
-      "name": "abyss-self-diagnostic-spine",
-      "tools": []
-    },
-    {
-      "name": "aoa-adr-write",
-      "tools": []
-    },
-    {
-      "name": "aoa-approval-gate-check",
-      "tools": []
-    },
-    {
-      "name": "aoa-automation-opportunity-scan",
-      "tools": []
-    },
-    {
-      "name": "aoa-bounded-context-map",
-      "tools": []
-    },
-    {
-      "name": "aoa-change-protocol",
-      "tools": []
-    },
-    {
-      "name": "aoa-checkpoint-closeout-bridge",
-      "tools": []
-    },
-    {
-      "name": "aoa-commit-growth-seam",
-      "tools": []
-    },
-    {
-      "name": "aoa-contract-test",
-      "tools": []
-    },
-    {
-      "name": "aoa-core-logic-boundary",
-      "tools": []
-    },
-    {
       "name": "aoa-decision",
-      "tools": [
-        {
-          "type": "mcp",
-          "value": "aoa_decisions",
-          "description": "AoA workspace decision graph MCP server",
-          "transport": "stdio"
-        }
-      ]
+      "tools": []
     },
     {
-      "name": "aoa-decision-correct",
-      "tools": [
-        {
-          "type": "mcp",
-          "value": "aoa_decisions",
-          "description": "AoA workspace decision graph MCP server",
-          "transport": "stdio"
-        }
-      ]
-    },
-    {
-      "name": "aoa-decision-create",
-      "tools": [
-        {
-          "type": "mcp",
-          "value": "aoa_decisions",
-          "description": "AoA workspace decision graph MCP server",
-          "transport": "stdio"
-        }
-      ]
-    },
-    {
-      "name": "aoa-decision-find",
-      "tools": [
-        {
-          "type": "mcp",
-          "value": "aoa_decisions",
-          "description": "AoA workspace decision graph MCP server",
-          "transport": "stdio"
-        }
-      ]
-    },
-    {
-      "name": "aoa-dry-run-first",
+      "name": "aoa-engineering-shape",
       "tools": []
     },
     {
@@ -103,166 +15,19 @@
       "tools": []
     },
     {
-      "name": "aoa-eval-apply",
+      "name": "aoa-knowledge-stewardship",
       "tools": []
     },
     {
-      "name": "aoa-eval-design",
+      "name": "aoa-session-harvest",
       "tools": []
     },
     {
-      "name": "aoa-eval-local-need",
+      "name": "aoa-session-recovery",
       "tools": []
     },
     {
-      "name": "aoa-eval-select",
-      "tools": []
-    },
-    {
-      "name": "aoa-eval-session-mining",
-      "tools": []
-    },
-    {
-      "name": "aoa-invariant-coverage-audit",
-      "tools": []
-    },
-    {
-      "name": "aoa-local-stack-bringup",
-      "tools": []
-    },
-    {
-      "name": "aoa-memo-writeback",
-      "tools": []
-    },
-    {
-      "name": "aoa-port-adapter-refactor",
-      "tools": []
-    },
-    {
-      "name": "aoa-property-invariants",
-      "tools": []
-    },
-    {
-      "name": "aoa-quest-harvest",
-      "tools": []
-    },
-    {
-      "name": "aoa-safe-infra-change",
-      "tools": []
-    },
-    {
-      "name": "aoa-sanitized-share",
-      "tools": []
-    },
-    {
-      "name": "aoa-session-donor-harvest",
-      "tools": []
-    },
-    {
-      "name": "aoa-session-progression-lift",
-      "tools": []
-    },
-    {
-      "name": "aoa-session-route-forks",
-      "tools": []
-    },
-    {
-      "name": "aoa-session-self-diagnose",
-      "tools": []
-    },
-    {
-      "name": "aoa-session-self-repair",
-      "tools": []
-    },
-    {
-      "name": "aoa-source-of-truth-check",
-      "tools": []
-    },
-    {
-      "name": "aoa-summon",
-      "tools": []
-    },
-    {
-      "name": "aoa-tdd-slice",
-      "tools": []
-    },
-    {
-      "name": "atm10-change-protocol",
-      "tools": []
-    },
-    {
-      "name": "atm10-source-of-truth-check",
-      "tools": []
-    },
-    {
-      "name": "os-abyss-artifact-trust-loop",
-      "tools": [
-        {
-          "type": "mcp",
-          "value": "abyss_machine",
-          "description": "OS Abyss host machine MCP server for read-only artifact trust surfaces",
-          "transport": "stdio"
-        }
-      ]
-    },
-    {
-      "name": "titan-approval-ledger",
-      "tools": []
-    },
-    {
-      "name": "titan-approval-loom",
-      "tools": []
-    },
-    {
-      "name": "titan-appserver-bridge",
-      "tools": []
-    },
-    {
-      "name": "titan-appserver-plan",
-      "tools": []
-    },
-    {
-      "name": "titan-closeout",
-      "tools": []
-    },
-    {
-      "name": "titan-console",
-      "tools": []
-    },
-    {
-      "name": "titan-event-replay",
-      "tools": []
-    },
-    {
-      "name": "titan-memory-loom",
-      "tools": []
-    },
-    {
-      "name": "titan-memory-prune",
-      "tools": []
-    },
-    {
-      "name": "titan-mutation-gate",
-      "tools": []
-    },
-    {
-      "name": "titan-recall",
-      "tools": []
-    },
-    {
-      "name": "titan-receipt",
-      "tools": []
-    },
-    {
-      "name": "titan-runtime-gate",
-      "tools": []
-    },
-    {
-      "name": "titan-summon",
-      "tools": []
-    },
-    {
-      "name": "titan-thread-turn-binding",
+      "name": "aoa-verification",
       "tools": []
     }
   ]

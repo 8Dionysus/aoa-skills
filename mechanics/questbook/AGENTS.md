@@ -2,26 +2,30 @@
 
 ## Applies to
 
-This card applies to `mechanics/questbook/` except where a nearer card applies.
+This card applies to `mechanics/questbook/`.
 
 ## Role
 
-`mechanics/questbook/` owns questbook integration and durable follow-through for skill-layer obligations for the skill layer. Questbook package guidance keeps this movement bounded and reviewable.
+This package owns the repo-local quest schema, admission boundary, deterministic
+catalog/dispatch projection, and active root index.
 
 ## Read before editing
 
-Read root `AGENTS.md`, `mechanics/AGENTS.md`, `mechanics/questbook/README.md`, `mechanics/questbook/DIRECTION.md`, `mechanics/questbook/PARTS.md`, `mechanics/questbook/PROVENANCE.md`, `mechanics/questbook/ROADMAP.md`, and any nearer card, `docs/AGENTS.md`, `parts/AGENTS.md`.
+Read root and mechanics cards, `mechanics/questbook/README.md`, `QUESTBOOK.md`,
+the schemas, builder, validator, and current quest sources.
 
 ## Boundaries
 
-Keep `mechanics/questbook/` focused on mechanic movement. Do not make it canonical skill content, sibling-repo technique truth, proof doctrine, or generated authority. Preserve questbook integration as a bounded local signal, not a global command.
+Questbook is not a second roadmap, hidden queue, session ledger, skill
+promotion engine, or proof system. Empty is a valid and preferred state when no
+durable obligation survives.
 
 ## Validation
 
-Full lane command sequences live in `config/validation_lanes.json`; this local card may name only focused owner checks, lane ids, or the nearest route for the changed surface.
-
-Run `python -m pytest -q tests/test_validate_skills_questbook_contract.py tests/test_session_checkpoint_note.py`.
+Build with `scripts/builders/build_questbook.py`, run its parity check, then the
+Questbook surface validator and focused test.
 
 ## Closeout
 
-Report changed surfaces, checks run, checks skipped, remaining risk, and the next owner route. If a nearby source document carried agent-facing working law into this card, name that transfer.
+Report admitted/closed/removed IDs, owner anchors, generated parity, validation,
+and session material kept out.

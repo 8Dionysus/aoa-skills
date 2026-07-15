@@ -9,11 +9,11 @@
 - Skill lanes: core/session-growth
 - Mechanic parents: growth-cycle
 - Guard families: source topology, memo writeback
-- Posture: accepted session harvest ownership
+- Posture: superseded growth-cycle topology; see AOA-SK-D-0039
 
 Date: 2026-05-18
 
-Status: accepted
+Status: superseded by AOA-SK-D-0039
 
 ## Context
 

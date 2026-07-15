@@ -1,5 +1,0 @@
-policy:
-  allow_implicit_invocation: false
-  implicit_activation_policy: manual
-notes:
-- This scaffold is explicit-only because shareable artifacts may still expose sensitive details unless the operator asks for a visible sanitization pass.

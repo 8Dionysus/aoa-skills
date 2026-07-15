@@ -1,0 +1,128 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://8dionysus.github.io/aoa-skills/schemas/capability-graph-v1.schema.json",
+  "title": "AoA derived capability graph",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "authority", "source", "roots", "nodes", "relations", "retrieval_documents"],
+  "properties": {
+    "schema_version": {"const": "aoa-capability-graph-v1"},
+    "authority": {"const": false},
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "family_files", "referenced_files", "content_hash"],
+      "properties": {
+        "root": {"const": "capabilities/families"},
+        "family_files": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["path", "sha256"],
+            "properties": {
+              "path": {"type": "string", "minLength": 1},
+              "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+            }
+          }
+        },
+        "referenced_files": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["path", "sha256"],
+            "properties": {
+              "path": {"type": "string", "minLength": 1},
+              "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+            }
+          }
+        },
+        "content_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      }
+    },
+    "roots": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"type": "string", "minLength": 1},
+      "uniqueItems": true
+    },
+    "nodes": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "kind", "contract_level", "primary_parent", "source_family", "source_path", "owner", "lifecycle"],
+        "properties": {
+          "id": {"type": "string", "minLength": 1},
+          "kind": {"type": "string", "minLength": 1},
+          "contract_level": {"type": "string", "enum": ["navigation", "executable"]},
+          "primary_parent": {"type": ["string", "null"]},
+          "source_family": {"type": "string", "minLength": 1},
+          "source_path": {"type": "string", "minLength": 1},
+          "owner": {"type": "object"},
+          "lifecycle": {"type": "object"}
+        }
+      }
+    },
+    "relations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["kind", "source", "target", "source_path"],
+        "properties": {
+          "kind": {"type": "string", "minLength": 1},
+          "source": {"type": "string", "minLength": 1},
+          "target": {"type": "string", "minLength": 1},
+          "condition": {"type": "string", "minLength": 1},
+          "source_path": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "retrieval_documents": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "kind", "visibility", "title", "description", "search_text", "positive_text", "negative_text", "negative_phrases", "routing_tokens", "positive_tokens", "negative_tokens", "tokens"],
+        "properties": {
+          "id": {"type": "string", "minLength": 1},
+          "kind": {"type": "string", "minLength": 1},
+          "visibility": {"type": "string", "minLength": 1},
+          "title": {"type": "string", "minLength": 1},
+          "description": {"type": "string", "minLength": 1},
+          "search_text": {"type": "string", "minLength": 1},
+          "positive_text": {"type": "string", "minLength": 1},
+          "negative_text": {"type": "string"},
+          "negative_phrases": {
+            "type": "array",
+            "items": {"type": "string", "minLength": 1}
+          },
+          "routing_tokens": {
+            "type": "array",
+            "items": {"type": "string", "minLength": 1},
+            "uniqueItems": true
+          },
+          "positive_tokens": {
+            "type": "array",
+            "items": {"type": "string", "minLength": 1},
+            "uniqueItems": true
+          },
+          "negative_tokens": {
+            "type": "array",
+            "items": {"type": "string", "minLength": 1},
+            "uniqueItems": true
+          },
+          "tokens": {
+            "type": "array",
+            "items": {"type": "string", "minLength": 1},
+            "uniqueItems": true
+          }
+        }
+      }
+    }
+  }
+}

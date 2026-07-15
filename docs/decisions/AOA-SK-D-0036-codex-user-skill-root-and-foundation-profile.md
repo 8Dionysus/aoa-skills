@@ -1,7 +1,7 @@
 # Codex User Skill Root And Foundation Profile
 
 - Decision ID: AOA-SK-D-0036
-- Status: Accepted
+- Status: Superseded by AOA-SK-D-0039
 - Date: 2026-06-13
 - Owner surface: `config/skill_pack_profiles.json`
 
@@ -12,7 +12,7 @@
 - Skill lanes: core/engineering, core/session-growth, risk, portable/export
 - Mechanic parents: release-support
 - Guard families: export/runtime, permission allowlist, install profile, source topology
-- Posture: accepted Codex user-skill-root repair
+- Posture: superseded foundation profile; see AOA-SK-D-0039
 
 ## Context
 

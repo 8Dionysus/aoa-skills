@@ -1,0 +1,6 @@
+policy:
+  allow_implicit_invocation: false
+  implicit_activation_policy: suggest
+notes:
+- Select exactly one extract, classify, or branch mode.
+- Reviewed session evidence is required; no session-memory provider is assumed.

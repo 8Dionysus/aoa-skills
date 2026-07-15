@@ -1,7 +1,7 @@
 # Committed Evidence Readout Completeness Gate
 
 - Decision ID: AOA-SK-D-0038
-- Status: Accepted
+- Status: Superseded by AOA-SK-D-0039
 - Date: 2026-07-13
 - Owner surface: `config/validation_lanes.json`,
   `scripts/validation/validators/skill_evidence_readout_surface.py`, and the
@@ -14,7 +14,7 @@
 - Skill lanes: none
 - Mechanic parents: audit, method-growth, release-support
 - Guard families: generated/read-model, validator topology, promotion evidence, release/CI
-- Posture: accepted deterministic evidence-readout completeness boundary
+- Posture: superseded evidence-readout gate; see AOA-SK-D-0039
 
 ## Context
 

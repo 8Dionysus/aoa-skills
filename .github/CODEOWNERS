@@ -1,10 +1,15 @@
-# Narrow ownership map for governance-critical skill surfaces.
+# Narrow ownership map for current owner and projection surfaces.
 /.agents/ @8Dionysus
 /.github/ @8Dionysus
+/capabilities/ @8Dionysus
+/config/ @8Dionysus
 /scripts/ @8Dionysus
 /docs/ @8Dionysus
+/evals/ @8Dionysus
 /generated/ @8Dionysus
+/kag/ @8Dionysus
+/mechanics/ @8Dionysus
+/quests/ @8Dionysus
 /schemas/ @8Dionysus
 /skills/ @8Dionysus
-/stats/ @8Dionysus
 /templates/ @8Dionysus

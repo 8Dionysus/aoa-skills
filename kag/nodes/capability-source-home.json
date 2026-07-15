@@ -1,0 +1,60 @@
+{
+  "schema_version": "aoa-local-kag-record-v1",
+  "repo": "aoa-skills",
+  "local_id": "node:skills:capability-source-home",
+  "record_class": "node",
+  "source_refs": [
+    {
+      "repo": "aoa-skills",
+      "path": "capabilities/README.md",
+      "source_class": "skill_source",
+      "role": "owner_route",
+      "authority": "authored_source"
+    },
+    {
+      "repo": "aoa-skills",
+      "path": "skills/README.md",
+      "source_class": "skill_source",
+      "role": "supporting",
+      "authority": "authored_source"
+    },
+    {
+      "repo": "aoa-skills",
+      "path": "capabilities/legacy-skill-migration.yaml",
+      "source_class": "skill_source",
+      "role": "supporting",
+      "authority": "authored_control"
+    }
+  ],
+  "source_owner": "aoa-skills",
+  "provenance_mode": "strict_source_linked",
+  "derived_method": "authored semantic source home with explicit callable-bundle and legacy-migration routes",
+  "generated_or_authored": "authored_control",
+  "status": "active",
+  "owner_return_route": {
+    "repo": "aoa-skills",
+    "surface": "capabilities/README.md",
+    "route_kind": "authored_meaning"
+  },
+  "freshness": {
+    "mode": "source_snapshot",
+    "state": "current",
+    "checked_ref": "capabilities/README.md"
+  },
+  "builder": {
+    "route": "authored capability family sources",
+    "surface": "capabilities/families/system.yaml"
+  },
+  "validator": {
+    "route": "scripts/validation/validate_capability_system.py --repo-root . --check-generated",
+    "lane": "source-fast"
+  },
+  "storage_posture": {
+    "git_surface": "portable_records",
+    "payload_class": "node",
+    "runtime_route": "source-repo"
+  },
+  "consumer_route": "aoa-kag registry and skill host adapters",
+  "node_kind": "route_surface",
+  "label": "canonical capability and callable skill source home"
+}

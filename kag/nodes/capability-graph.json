@@ -1,0 +1,53 @@
+{
+  "schema_version": "aoa-local-kag-record-v1",
+  "repo": "aoa-skills",
+  "local_id": "node:skills:capability-graph",
+  "record_class": "node",
+  "source_refs": [
+    {
+      "repo": "aoa-skills",
+      "path": "generated/capability_graph.json",
+      "source_class": "skill_source",
+      "role": "primary",
+      "authority": "derived_readmodel"
+    },
+    {
+      "repo": "aoa-skills",
+      "path": "capabilities/README.md",
+      "source_class": "skill_source",
+      "role": "owner_route",
+      "authority": "authored_source"
+    }
+  ],
+  "source_owner": "aoa-skills",
+  "provenance_mode": "strict_source_linked",
+  "derived_method": "deterministic projection of authored capability families, typed relations, compatibility, and callable bundle bindings",
+  "generated_or_authored": "generated_from_source",
+  "status": "active",
+  "owner_return_route": {
+    "repo": "aoa-skills",
+    "surface": "capabilities/README.md",
+    "route_kind": "authored_meaning"
+  },
+  "freshness": {
+    "mode": "source_snapshot",
+    "state": "current",
+    "checked_ref": "generated/capability_graph.json"
+  },
+  "builder": {
+    "route": "capability graph builder",
+    "surface": "scripts/builders/build_capability_graph.py"
+  },
+  "validator": {
+    "route": "scripts/validation/validate_capability_system.py --repo-root . --check-generated",
+    "lane": "source-fast"
+  },
+  "storage_posture": {
+    "git_surface": "portable_records",
+    "payload_class": "node",
+    "runtime_route": "source-repo"
+  },
+  "consumer_route": "aoa-kag registry and capability retrieval",
+  "node_kind": "source_surface",
+  "label": "aoa-skills semantic capability graph"
+}

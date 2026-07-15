@@ -6,6 +6,7 @@
 
 - [AOA-SK-D-0003 Mechanics Agon Start](../AOA-SK-D-0003-mechanics-agon-start.md) (`docs/decisions/AOA-SK-D-0003-mechanics-agon-start.md`)
 - [AOA-SK-D-0030 Test Topology And Agentic Contracts](../AOA-SK-D-0030-test-topology-and-agentic-contracts.md) (`docs/decisions/AOA-SK-D-0030-test-topology-and-agentic-contracts.md`)
+- [AOA-SK-D-0039 Semantic Capability Ecosystem](../AOA-SK-D-0039-semantic-capability-ecosystem.md) (`docs/decisions/AOA-SK-D-0039-semantic-capability-ecosystem.md`)
 
 ## antifragility
 
@@ -51,6 +52,7 @@
 
 - [AOA-SK-D-0001 Distributed Mechanics Roadmaps And Root Questbook](../AOA-SK-D-0001-distributed-mechanics-roadmaps-and-root-questbook.md) (`docs/decisions/AOA-SK-D-0001-distributed-mechanics-roadmaps-and-root-questbook.md`)
 - [AOA-SK-D-0010 Mechanics Questbook Integration](../AOA-SK-D-0010-mechanics-questbook-integration.md) (`docs/decisions/AOA-SK-D-0010-mechanics-questbook-integration.md`)
+- [AOA-SK-D-0039 Semantic Capability Ecosystem](../AOA-SK-D-0039-semantic-capability-ecosystem.md) (`docs/decisions/AOA-SK-D-0039-semantic-capability-ecosystem.md`)
 
 ## recurrence
 
@@ -67,6 +69,7 @@
 - [AOA-SK-D-0033 Root Ingress Closure](../AOA-SK-D-0033-root-ingress-closure.md) (`docs/decisions/AOA-SK-D-0033-root-ingress-closure.md`)
 - [AOA-SK-D-0036 Codex User Skill Root And Foundation Profile](../AOA-SK-D-0036-codex-user-skill-root-and-foundation-profile.md) (`docs/decisions/AOA-SK-D-0036-codex-user-skill-root-and-foundation-profile.md`)
 - [AOA-SK-D-0038 Committed Evidence Readout Completeness Gate](../AOA-SK-D-0038-committed-evidence-readout-completeness-gate.md) (`docs/decisions/AOA-SK-D-0038-committed-evidence-readout-completeness-gate.md`)
+- [AOA-SK-D-0039 Semantic Capability Ecosystem](../AOA-SK-D-0039-semantic-capability-ecosystem.md) (`docs/decisions/AOA-SK-D-0039-semantic-capability-ecosystem.md`)
 
 ## rpg
 
@@ -78,3 +81,4 @@
 - [AOA-SK-D-0002 Mechanic Artifact Topology](../AOA-SK-D-0002-mechanic-artifact-topology.md) (`docs/decisions/AOA-SK-D-0002-mechanic-artifact-topology.md`)
 - [AOA-SK-D-0006 Mechanics Companion Surface Routing](../AOA-SK-D-0006-mechanics-companion-surface-routing.md) (`docs/decisions/AOA-SK-D-0006-mechanics-companion-surface-routing.md`)
 - [AOA-SK-D-0013 Mechanics Surface Rehome](../AOA-SK-D-0013-mechanics-surface-rehome.md) (`docs/decisions/AOA-SK-D-0013-mechanics-surface-rehome.md`)
+- [AOA-SK-D-0039 Semantic Capability Ecosystem](../AOA-SK-D-0039-semantic-capability-ecosystem.md) (`docs/decisions/AOA-SK-D-0039-semantic-capability-ecosystem.md`)

@@ -1,5 +1,0 @@
-policy:
-  allow_implicit_invocation: false
-  implicit_activation_policy: manual
-notes:
-- This scaffold is explicit-only because local stack startup mutates runtime state and should preserve a visible render, doctor, confirmation, and launch seam.

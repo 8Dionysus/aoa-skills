@@ -1,0 +1,1226 @@
+from __future__ import annotations
+
+import hashlib
+import json
+import re
+from collections import defaultdict, deque
+from pathlib import Path
+from typing import Any, Iterable, Mapping, Sequence
+
+import yaml
+from jsonschema import Draft202012Validator
+
+
+FAMILY_SCHEMA_PATH = Path("schemas/capability_family.schema.json")
+GRAPH_SCHEMA_PATH = Path("schemas/capability_graph.schema.json")
+DAG_SCHEMA_PATH = Path("schemas/task_local_dag.schema.json")
+MIGRATION_SCHEMA_PATH = Path("schemas/skill_migration.schema.json")
+MIGRATION_PATH = Path("capabilities/legacy-skill-migration.yaml")
+FAMILY_ROOT = Path("capabilities/families")
+GRAPH_JSON_PATH = Path("generated/capability_graph.json")
+GRAPH_MARKDOWN_PATH = Path("generated/capability_graph.md")
+GRAPH_SCHEMA_VERSION = "aoa-capability-graph-v1"
+DAG_SCHEMA_VERSION = "aoa-task-local-dag-v1"
+HARD_DEPENDENCY_RELATIONS = {"requires", "guarded-by"}
+EXECUTABLE_KINDS = {"skill", "mode", "workflow", "tool", "guard", "adapter", "human-gate"}
+STOPWORDS = {
+    "a",
+    "an",
+    "and",
+    "are",
+    "as",
+    "at",
+    "be",
+    "by",
+    "for",
+    "from",
+    "in",
+    "into",
+    "is",
+    "it",
+    "of",
+    "on",
+    "or",
+    "that",
+    "the",
+    "this",
+    "to",
+    "please",
+    "with",
+    "а",
+    "без",
+    "в",
+    "для",
+    "и",
+    "из",
+    "к",
+    "как",
+    "какие",
+    "какой",
+    "кто",
+    "между",
+    "на",
+    "надо",
+    "не",
+    "ничего",
+    "но",
+    "нужно",
+    "о",
+    "об",
+    "от",
+    "по",
+    "при",
+    "с",
+    "то",
+    "только",
+    "том",
+    "уже",
+    "его",
+    "есть",
+    "здесь",
+    "это",
+    "этот",
+    "что",
+}
+
+RUSSIAN_INFLECTIONS = tuple(
+    sorted(
+        {
+            "иями",
+            "ами",
+            "ями",
+            "ого",
+            "его",
+            "ому",
+            "ему",
+            "ими",
+            "ыми",
+            "иях",
+            "ией",
+            "иям",
+            "ием",
+            "ах",
+            "ях",
+            "ую",
+            "юю",
+            "ам",
+            "ям",
+            "ем",
+            "ом",
+            "ою",
+            "ею",
+            "ей",
+            "ой",
+            "ий",
+            "ый",
+            "ая",
+            "яя",
+            "ое",
+            "ее",
+            "ие",
+            "ые",
+            "ия",
+            "ья",
+            "ью",
+            "а",
+            "я",
+            "ы",
+            "и",
+            "ь",
+            "й",
+            "у",
+            "ю",
+            "е",
+            "о",
+        },
+        key=lambda value: (-len(value), value),
+    )
+)
+
+
+class CapabilityContractError(ValueError):
+    """Raised when authored capability sources violate durable contract law."""
+
+
+def canonical_json(payload: Any) -> str:
+    return json.dumps(payload, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
+
+
+def dump_json(payload: Any) -> str:
+    return json.dumps(payload, ensure_ascii=False, sort_keys=True, indent=2) + "\n"
+
+
+def sha256_bytes(payload: bytes) -> str:
+    return hashlib.sha256(payload).hexdigest()
+
+
+def load_json(path: Path) -> dict[str, Any]:
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    if not isinstance(payload, dict):
+        raise CapabilityContractError(f"{path} must contain a JSON object")
+    return payload
+
+
+def load_yaml(path: Path) -> dict[str, Any]:
+    payload = yaml.safe_load(path.read_text(encoding="utf-8"))
+    if not isinstance(payload, dict):
+        raise CapabilityContractError(f"{path} must contain a YAML mapping")
+    return payload
+
+
+def relative_path(path: Path, repo_root: Path) -> str:
+    return path.resolve().relative_to(repo_root.resolve()).as_posix()
+
+
+def schema_issues(payload: Mapping[str, Any], schema: Mapping[str, Any]) -> list[str]:
+    validator = Draft202012Validator(schema)
+    issues: list[str] = []
+    for error in sorted(validator.iter_errors(payload), key=lambda item: list(item.absolute_path)):
+        location = "/".join(str(part) for part in error.absolute_path) or "<root>"
+        issues.append(f"{location}: {error.message}")
+    return issues
+
+
+def family_paths(repo_root: Path) -> list[Path]:
+    root = repo_root / FAMILY_ROOT
+    if not root.is_dir():
+        raise CapabilityContractError(f"missing capability family root: {FAMILY_ROOT.as_posix()}")
+    paths = sorted(root.glob("*.yaml"))
+    if not paths:
+        raise CapabilityContractError("capability family root contains no YAML sources")
+    return paths
+
+
+def load_families(repo_root: Path) -> list[tuple[Path, dict[str, Any]]]:
+    schema = load_json(repo_root / FAMILY_SCHEMA_PATH)
+    loaded: list[tuple[Path, dict[str, Any]]] = []
+    issues: list[str] = []
+    for path in family_paths(repo_root):
+        payload = load_yaml(path)
+        for issue in schema_issues(payload, schema):
+            issues.append(f"{relative_path(path, repo_root)}: {issue}")
+        loaded.append((path, payload))
+    if issues:
+        raise CapabilityContractError("\n".join(issues))
+    return loaded
+
+
+def load_migration_contract(repo_root: Path) -> dict[str, Any]:
+    schema = load_json(repo_root / MIGRATION_SCHEMA_PATH)
+    path = repo_root / MIGRATION_PATH
+    payload = load_yaml(path)
+    issues = schema_issues(payload, schema)
+    if issues:
+        raise CapabilityContractError(
+            "\n".join(f"{MIGRATION_PATH.as_posix()}: {issue}" for issue in issues)
+        )
+    return payload
+
+
+def node_map(families: Sequence[tuple[Path, Mapping[str, Any]]]) -> dict[str, dict[str, Any]]:
+    nodes: dict[str, dict[str, Any]] = {}
+    duplicates: defaultdict[str, list[str]] = defaultdict(list)
+    for path, family in families:
+        for raw_node in family.get("nodes", []):
+            node = dict(raw_node)
+            node_id = str(node["id"])
+            duplicates[node_id].append(path.as_posix())
+            nodes.setdefault(node_id, node)
+    duplicate_rows = {key: value for key, value in duplicates.items() if len(value) > 1}
+    if duplicate_rows:
+        details = "; ".join(f"{key}: {', '.join(value)}" for key, value in sorted(duplicate_rows.items()))
+        raise CapabilityContractError(f"duplicate capability node ids: {details}")
+    return nodes
+
+
+def relation_rows(families: Sequence[tuple[Path, Mapping[str, Any]]]) -> list[dict[str, Any]]:
+    rows: list[dict[str, Any]] = []
+    for path, family in families:
+        for raw_relation in family.get("relations", []):
+            relation = dict(raw_relation)
+            relation["source_path"] = path.as_posix()
+            rows.append(relation)
+    return rows
+
+
+def _check_primary_tree(nodes: Mapping[str, Mapping[str, Any]]) -> list[str]:
+    issues: list[str] = []
+    roots = [node_id for node_id, node in nodes.items() if node.get("primary_parent") is None]
+    if roots != ["aoa"]:
+        issues.append(f"primary tree must have exactly root 'aoa'; found {sorted(roots)}")
+
+    for node_id, node in nodes.items():
+        parent = node.get("primary_parent")
+        if parent is not None and parent not in nodes:
+            issues.append(f"{node_id}: primary_parent '{parent}' does not exist")
+
+    visiting: set[str] = set()
+    visited: set[str] = set()
+
+    def visit(node_id: str) -> None:
+        if node_id in visited:
+            return
+        if node_id in visiting:
+            issues.append(f"primary tree cycle reaches '{node_id}'")
+            return
+        visiting.add(node_id)
+        parent = nodes[node_id].get("primary_parent")
+        if isinstance(parent, str) and parent in nodes:
+            visit(parent)
+        visiting.remove(node_id)
+        visited.add(node_id)
+
+    for node_id in sorted(nodes):
+        visit(node_id)
+    return issues
+
+
+def _check_local_binding(repo_root: Path, node: Mapping[str, Any]) -> list[str]:
+    binding = node.get("binding")
+    if not isinstance(binding, Mapping):
+        return []
+    ref = binding.get("ref")
+    if not isinstance(ref, str) or not ref.startswith("skills/"):
+        return []
+    path_part = ref.split("#", 1)[0]
+    skill_path = repo_root / path_part
+    if not skill_path.is_file():
+        return [f"{node['id']}: local binding ref does not exist: {path_part}"]
+    issues: list[str] = []
+    text = skill_path.read_text(encoding="utf-8")
+    if node.get("kind") == "skill":
+        lines = text.splitlines()
+        if not lines or lines[0].strip() != "---":
+            return [f"{node['id']}: local skill binding lacks YAML frontmatter"]
+        try:
+            closing = next(index for index, line in enumerate(lines[1:], start=1) if line.strip() == "---")
+        except StopIteration:
+            return [f"{node['id']}: local skill binding lacks closing frontmatter delimiter"]
+        metadata = yaml.safe_load("\n".join(lines[1:closing])) or {}
+        expected_name = str(node["id"]).removeprefix("skill.")
+        if metadata.get("name") != expected_name:
+            issues.append(
+                f"{node['id']}: bound SKILL.md name is {metadata.get('name')!r}, expected {expected_name!r}"
+            )
+        if metadata.get("description") != node.get("description"):
+            issues.append(
+                f"{node['id']}: capability description must exactly match bound SKILL.md frontmatter description"
+            )
+    if node.get("kind") == "mode":
+        operation = binding.get("operation")
+        if re.search(rf"^##{{2,4}} Mode: {re.escape(str(operation))}$", text, flags=re.MULTILINE) is None:
+            issues.append(f"{node['id']}: bound mode heading is missing: Mode: {operation}")
+    return issues
+
+
+def semantic_issues(repo_root: Path, families: Sequence[tuple[Path, Mapping[str, Any]]]) -> list[str]:
+    issues: list[str] = []
+    family_ids: defaultdict[str, list[str]] = defaultdict(list)
+    for path, family in families:
+        family_ids[str(family["family_id"])].append(relative_path(path, repo_root))
+    for family_id, paths in sorted(family_ids.items()):
+        if len(paths) > 1:
+            issues.append(f"duplicate family_id '{family_id}': {', '.join(paths)}")
+
+    nodes = node_map(families)
+    issues.extend(_check_primary_tree(nodes))
+    aliases: defaultdict[str, list[str]] = defaultdict(list)
+    for node_id, node in sorted(nodes.items()):
+        contract_level = node.get("contract_level")
+        kind = node.get("kind")
+        visibility = node.get("lifecycle", {}).get("visibility")
+        if contract_level == "executable" and kind not in EXECUTABLE_KINDS:
+            issues.append(f"{node_id}: executable contract cannot use node kind '{kind}'")
+        if visibility == "advertised" and kind != "skill":
+            issues.append(f"{node_id}: only independently callable skill bundles may be advertised")
+        binding = node.get("binding")
+        if isinstance(binding, Mapping) and kind in EXECUTABLE_KINDS and binding.get("kind") != kind:
+            issues.append(
+                f"{node_id}: node kind '{kind}' must match binding kind '{binding.get('kind')}'"
+            )
+        issues.extend(_check_local_binding(repo_root, node))
+        for alias in node.get("aliases", []):
+            aliases[str(alias["name"])].append(node_id)
+        for source_ref in node.get("provenance", {}).get("source_refs", []):
+            if source_ref.get("repo") == "aoa-techniques" and source_ref.get("role") not in {
+                "optional-provenance",
+                "historical-lineage",
+            }:
+                issues.append(
+                    f"{node_id}: aoa-techniques may appear only as optional provenance, not required source"
+                )
+
+    for alias, owner_ids in sorted(aliases.items()):
+        if len(owner_ids) > 1:
+            issues.append(f"migration alias '{alias}' is claimed by multiple nodes: {', '.join(owner_ids)}")
+
+    allowed_implementation_targets = EXECUTABLE_KINDS
+    for relation in relation_rows(families):
+        source = relation["source"]
+        target = relation["target"]
+        kind = relation["kind"]
+        if source not in nodes:
+            issues.append(f"{relation['source_path']}: relation source '{source}' does not exist")
+            continue
+        if target not in nodes:
+            issues.append(f"{relation['source_path']}: relation target '{target}' does not exist")
+            continue
+        if source == target:
+            issues.append(f"{relation['source_path']}: self relation is not allowed for '{source}'")
+        if kind == "implemented-by" and nodes[target].get("kind") not in allowed_implementation_targets:
+            issues.append(f"{source}: implemented-by target '{target}' is not executable")
+        if kind in HARD_DEPENDENCY_RELATIONS and nodes[target].get("lifecycle", {}).get("state") == "retired":
+            issues.append(f"{source}: active dependency points to retired target '{target}'")
+    return issues
+
+
+def migration_issues(
+    migration: Mapping[str, Any],
+    families: Sequence[tuple[Path, Mapping[str, Any]]],
+) -> list[str]:
+    """Validate the manually classified 57-skill migration against live capability truth."""
+    issues: list[str] = []
+    nodes = node_map(families)
+    aliases: dict[str, str] = {}
+    for node_id, node in sorted(nodes.items()):
+        for alias in node.get("aliases", []):
+            alias_name = str(alias["name"])
+            aliases[alias_name] = node_id
+
+    entries = migration.get("entries", [])
+    seen_names: set[str] = set()
+    seen_paths: set[str] = set()
+    migration_aliases: dict[str, str] = {}
+    for index, raw_entry in enumerate(entries):
+        entry = dict(raw_entry)
+        label = f"migration entry {index + 1} ({entry.get('legacy_name', '<unknown>')})"
+        legacy_name = str(entry.get("legacy_name", ""))
+        legacy_path = str(entry.get("legacy_path", ""))
+        target_id = str(entry.get("target_id", ""))
+        compatibility = str(entry.get("compatibility", ""))
+        action = str(entry.get("action", ""))
+
+        if legacy_name in seen_names:
+            issues.append(f"{label}: duplicate legacy_name")
+        seen_names.add(legacy_name)
+        if legacy_path in seen_paths:
+            issues.append(f"{label}: duplicate legacy_path")
+        seen_paths.add(legacy_path)
+        if Path(legacy_path).parent.name != legacy_name:
+            issues.append(f"{label}: legacy_path parent must match legacy_name")
+
+        target = nodes.get(target_id)
+        if target is None:
+            issues.append(f"{label}: target_id '{target_id}' does not exist")
+            continue
+        target_kind = str(target.get("kind", ""))
+        if entry.get("target_kind") != target_kind:
+            issues.append(
+                f"{label}: target_kind {entry.get('target_kind')!r} does not match node kind {target_kind!r}"
+            )
+        target_owner = str(target.get("owner", {}).get("repo", ""))
+        if entry.get("target_owner") != target_owner:
+            issues.append(
+                f"{label}: target_owner {entry.get('target_owner')!r} does not match node owner {target_owner!r}"
+            )
+
+        visibility = str(target.get("lifecycle", {}).get("visibility", ""))
+        if action == "retain-advertised":
+            if target_kind != "skill" or visibility != "advertised":
+                issues.append(f"{label}: retain-advertised must target an advertised skill")
+            if compatibility != "same-name" or target_id != f"skill.{legacy_name}":
+                issues.append(f"{label}: retained skill must use same-name compatibility")
+        elif action == "defer-family":
+            if target_kind != "skill" or visibility == "advertised":
+                issues.append(f"{label}: defer-family must target a non-advertised skill")
+            if compatibility != "same-name-deferred" or target_id != f"skill.{legacy_name}":
+                issues.append(f"{label}: deferred family must use same-name-deferred compatibility")
+        elif action == "merge-mode" and target_kind != "mode":
+            issues.append(f"{label}: merge-mode must target a mode")
+        elif action == "route-owner-object" and target_kind not in {"workflow", "tool", "guard", "adapter"}:
+            issues.append(f"{label}: route-owner-object targets unsupported kind {target_kind!r}")
+
+        alias_owner = aliases.get(legacy_name)
+        if compatibility == "migration-alias":
+            migration_aliases[legacy_name] = target_id
+            if alias_owner != target_id:
+                issues.append(
+                    f"{label}: migration alias must exist exactly on target '{target_id}', found {alias_owner!r}"
+                )
+        elif alias_owner is not None:
+            issues.append(
+                f"{label}: compatibility {compatibility!r} forbids alias on '{alias_owner}'"
+            )
+
+    extra_aliases = sorted(set(aliases) - set(migration_aliases))
+    if extra_aliases:
+        issues.append("capability aliases lack migration entries: " + ", ".join(extra_aliases))
+    return issues
+
+
+def validate_sources(repo_root: Path) -> list[tuple[Path, dict[str, Any]]]:
+    families = load_families(repo_root)
+    issues = semantic_issues(repo_root, families)
+    migration = load_migration_contract(repo_root)
+    issues.extend(migration_issues(migration, families))
+    if issues:
+        raise CapabilityContractError("\n".join(issues))
+    return families
+
+
+def _flatten_strings(value: Any) -> Iterable[str]:
+    if isinstance(value, str):
+        yield value
+    elif isinstance(value, Mapping):
+        for key in sorted(value):
+            if key in {"ref"} and re.fullmatch(r"[0-9a-f]{40,64}", str(value[key])):
+                continue
+            yield from _flatten_strings(value[key])
+    elif isinstance(value, Sequence) and not isinstance(value, (str, bytes, bytearray)):
+        for item in value:
+            yield from _flatten_strings(item)
+
+
+def normalize_token(token: str) -> str:
+    token = token.replace("ё", "е")
+    if len(token) < 5 or re.search(r"[^а-я]", token):
+        return token
+    for suffix in RUSSIAN_INFLECTIONS:
+        if token.endswith(suffix) and len(token) - len(suffix) >= 4:
+            return token[: -len(suffix)]
+    return token
+
+
+def tokenize(text: str) -> list[str]:
+    tokens: set[str] = set()
+    for raw_token in re.findall(r"[^\W_]+(?:[-.][^\W_]+)*", text.lower(), flags=re.UNICODE):
+        if len(raw_token) < 2 or raw_token in STOPWORDS:
+            continue
+        parts = [raw_token]
+        if "-" in raw_token or "." in raw_token:
+            parts.extend(part for part in re.split(r"[-.]", raw_token) if part)
+        for part in parts:
+            if len(part) < 2 or part in STOPWORDS:
+                continue
+            tokens.add(normalize_token(part))
+    return sorted(tokens)
+
+
+def bound_retrieval_text(node: Mapping[str, Any], text: str) -> str:
+    """Keep a mode's retrieval body inside its declared section of a shared bundle."""
+    if node.get("kind") != "mode":
+        return text
+    binding = node.get("binding", {})
+    operation = binding.get("operation") if isinstance(binding, Mapping) else None
+    if not isinstance(operation, str) or not operation:
+        return text
+    heading = re.search(
+        rf"^### Mode: {re.escape(operation)}\s*$",
+        text,
+        flags=re.MULTILINE | re.IGNORECASE,
+    )
+    if heading is None:
+        return text
+    next_heading = re.search(r"^(?:## |### Mode: )", text[heading.end() :], flags=re.MULTILINE)
+    end = heading.end() + next_heading.start() if next_heading is not None else len(text)
+    return text[heading.start() : end]
+
+
+def retrieval_document(
+    node: Mapping[str, Any],
+    *,
+    immediate_executable_children: Sequence[Mapping[str, Any]] = (),
+    supplemental_texts: Sequence[str] = (),
+) -> dict[str, Any]:
+    search_parts = list(_flatten_strings(node))
+    routing_parts = list(_flatten_strings(node.get("keywords", [])))
+    description = str(node.get("description", ""))
+    description_parts = re.split(r"\bDo not use\b", description, maxsplit=1, flags=re.IGNORECASE)
+    positive_parts = [str(node.get("id", "")), str(node.get("title", "")), description_parts[0]]
+    negative_parts = description_parts[1:] + list(
+        _flatten_strings(node.get("applicability", {}).get("do_not_use_when", []))
+    )
+    positive_parts.extend(_flatten_strings(node.get("keywords", [])))
+    positive_parts.extend(_flatten_strings(node.get("applicability", {}).get("use_when", [])))
+    if node.get("kind") in {"capability", "skill"}:
+        for child in immediate_executable_children:
+            search_parts.extend(_flatten_strings(child))
+            routing_parts.extend(_flatten_strings(child.get("keywords", [])))
+            child_description = str(child.get("description", ""))
+            child_description_parts = re.split(
+                r"\bDo not use\b", child_description, maxsplit=1, flags=re.IGNORECASE
+            )
+            positive_parts.extend(
+                [str(child.get("id", "")), str(child.get("title", "")), child_description_parts[0]]
+            )
+            positive_parts.extend(_flatten_strings(child.get("keywords", [])))
+            positive_parts.extend(_flatten_strings(child.get("applicability", {}).get("use_when", [])))
+            negative_parts.extend(child_description_parts[1:])
+            negative_parts.extend(
+                _flatten_strings(child.get("applicability", {}).get("do_not_use_when", []))
+            )
+    search_parts.extend(supplemental_texts)
+    search_text = "\n".join(search_parts)
+    positive_text = "\n".join(positive_parts)
+    negative_text = "\n".join(negative_parts)
+    lifecycle = node.get("lifecycle", {})
+    return {
+        "id": node["id"],
+        "kind": node["kind"],
+        "visibility": lifecycle.get("visibility", "hidden"),
+        "title": node["title"],
+        "description": node["description"],
+        "search_text": search_text,
+        "positive_text": positive_text,
+        "negative_text": negative_text,
+        "negative_phrases": negative_parts,
+        "routing_tokens": tokenize("\n".join(routing_parts)),
+        "positive_tokens": tokenize(positive_text),
+        "negative_tokens": tokenize(negative_text),
+        "tokens": tokenize(search_text),
+    }
+
+
+def build_graph_payload(repo_root: Path) -> dict[str, Any]:
+    families = validate_sources(repo_root)
+    nodes: list[dict[str, Any]] = []
+    source_files: list[dict[str, str]] = []
+    referenced_files: list[dict[str, str]] = []
+    hash_material: list[bytes] = []
+    for path, family in families:
+        rel = relative_path(path, repo_root)
+        raw = path.read_bytes()
+        digest = sha256_bytes(raw)
+        source_files.append({"path": rel, "sha256": digest})
+        hash_material.extend([rel.encode("utf-8"), b"\0", raw, b"\0"])
+        for raw_node in family["nodes"]:
+            node = dict(raw_node)
+            node["source_family"] = family["family_id"]
+            node["source_path"] = rel
+            nodes.append(node)
+
+    local_binding_text: dict[str, str] = {}
+    seen_referenced_paths: set[str] = set()
+    for node in nodes:
+        binding = node.get("binding")
+        if not isinstance(binding, Mapping):
+            continue
+        ref = binding.get("ref")
+        if not isinstance(ref, str) or not ref.startswith("skills/"):
+            continue
+        path_value = ref.split("#", 1)[0]
+        path = repo_root / path_value
+        text = path.read_text(encoding="utf-8")
+        local_binding_text[str(node["id"])] = bound_retrieval_text(node, text)
+        if path_value in seen_referenced_paths:
+            continue
+        seen_referenced_paths.add(path_value)
+        raw = path.read_bytes()
+        referenced_files.append({"path": path_value, "sha256": sha256_bytes(raw)})
+        hash_material.extend([path_value.encode("utf-8"), b"\0", raw, b"\0"])
+
+    relations: list[dict[str, Any]] = []
+    for node in nodes:
+        parent = node.get("primary_parent")
+        if isinstance(parent, str):
+            relations.append(
+                {
+                    "kind": "primary-parent",
+                    "source": node["id"],
+                    "target": parent,
+                    "source_path": node["source_path"],
+                }
+            )
+    for path, family in families:
+        rel_path = relative_path(path, repo_root)
+        for raw_relation in family["relations"]:
+            relation = dict(raw_relation)
+            relation["source_path"] = rel_path
+            relations.append(relation)
+
+    nodes.sort(key=lambda item: item["id"])
+    relations.sort(key=lambda item: (item["kind"], item["source"], item["target"], item.get("condition", "")))
+    payload = {
+        "schema_version": GRAPH_SCHEMA_VERSION,
+        "authority": False,
+        "source": {
+            "root": FAMILY_ROOT.as_posix(),
+            "family_files": source_files,
+            "referenced_files": sorted(referenced_files, key=lambda item: item["path"]),
+            "content_hash": sha256_bytes(b"".join(hash_material)),
+        },
+        "roots": sorted(node["id"] for node in nodes if node.get("primary_parent") is None),
+        "nodes": nodes,
+        "relations": relations,
+        "retrieval_documents": [],
+    }
+    children_by_parent: defaultdict[str, list[dict[str, Any]]] = defaultdict(list)
+    modes_by_binding_ref: defaultdict[str, list[dict[str, Any]]] = defaultdict(list)
+    for node in nodes:
+        parent = node.get("primary_parent")
+        if isinstance(parent, str) and node.get("contract_level") == "executable":
+            children_by_parent[parent].append(node)
+        binding = node.get("binding")
+        if node.get("kind") == "mode" and isinstance(binding, Mapping):
+            ref = binding.get("ref")
+            if isinstance(ref, str):
+                modes_by_binding_ref[ref].append(node)
+
+    def retrieval_children(node: Mapping[str, Any]) -> list[dict[str, Any]]:
+        if node.get("kind") == "skill":
+            binding = node.get("binding")
+            ref = binding.get("ref") if isinstance(binding, Mapping) else None
+            if isinstance(ref, str):
+                return sorted(modes_by_binding_ref.get(ref, []), key=lambda item: str(item["id"]))
+        return children_by_parent.get(str(node["id"]), [])
+
+    payload["retrieval_documents"] = [
+        retrieval_document(
+            node,
+            immediate_executable_children=retrieval_children(node),
+            supplemental_texts=[
+                text
+                for text in [
+                    local_binding_text.get(str(node["id"])),
+                    *[
+                        local_binding_text.get(str(child["id"]))
+                        for child in retrieval_children(node)
+                    ],
+                ]
+                if text is not None
+            ],
+        )
+        for node in nodes
+    ]
+    graph_schema = load_json(repo_root / GRAPH_SCHEMA_PATH)
+    issues = schema_issues(payload, graph_schema)
+    if issues:
+        raise CapabilityContractError("derived capability graph violates schema:\n" + "\n".join(issues))
+    return payload
+
+
+def render_graph_markdown(payload: Mapping[str, Any]) -> str:
+    nodes = {node["id"]: node for node in payload["nodes"]}
+    children: defaultdict[str | None, list[str]] = defaultdict(list)
+    for node_id, node in nodes.items():
+        children[node.get("primary_parent")].append(node_id)
+    for values in children.values():
+        values.sort()
+
+    lines = [
+        "# Capability graph",
+        "",
+        "Derived from `capabilities/families/*.yaml`. This file is a read model, not capability authority.",
+        "",
+        f"Source content hash: `{payload['source']['content_hash']}`",
+        "",
+        "## Semantic tree",
+        "",
+    ]
+
+    def render_subtree(node_id: str, depth: int) -> None:
+        node = nodes[node_id]
+        lifecycle = node["lifecycle"]
+        lines.append(
+            f"{'  ' * depth}- `{node_id}` ({node['kind']}, {lifecycle['visibility']}, {lifecycle['health']})"
+        )
+        for child_id in children.get(node_id, []):
+            render_subtree(child_id, depth + 1)
+
+    for root in payload["roots"]:
+        render_subtree(root, 0)
+
+    lines.extend(
+        [
+            "",
+            "## Typed relations",
+            "",
+            "| kind | source | target | condition |",
+            "|---|---|---|---|",
+        ]
+    )
+    for relation in payload["relations"]:
+        lines.append(
+            f"| {relation['kind']} | `{relation['source']}` | `{relation['target']}` | {relation.get('condition', '-')} |"
+        )
+    return "\n".join(lines) + "\n"
+
+
+def build_graph_outputs(repo_root: Path) -> dict[Path, str]:
+    payload = build_graph_payload(repo_root)
+    return {
+        repo_root / GRAPH_JSON_PATH: dump_json(payload),
+        repo_root / GRAPH_MARKDOWN_PATH: render_graph_markdown(payload),
+    }
+
+
+def load_graph(repo_root: Path) -> dict[str, Any]:
+    path = repo_root / GRAPH_JSON_PATH
+    if not path.is_file():
+        raise CapabilityContractError(
+            f"missing {GRAPH_JSON_PATH.as_posix()}; run the capability graph builder first"
+        )
+    payload = load_json(path)
+    schema = load_json(repo_root / GRAPH_SCHEMA_PATH)
+    issues = schema_issues(payload, schema)
+    if issues:
+        raise CapabilityContractError("\n".join(issues))
+    return payload
+
+
+def graph_node_map(graph: Mapping[str, Any]) -> dict[str, dict[str, Any]]:
+    return {str(node["id"]): dict(node) for node in graph.get("nodes", [])}
+
+
+def graph_relations_from(graph: Mapping[str, Any]) -> dict[str, list[dict[str, Any]]]:
+    rows: defaultdict[str, list[dict[str, Any]]] = defaultdict(list)
+    for raw in graph.get("relations", []):
+        relation = dict(raw)
+        rows[str(relation["source"])].append(relation)
+    for value in rows.values():
+        value.sort(key=lambda item: (item["kind"], item["target"]))
+    return rows
+
+
+def discover(
+    graph: Mapping[str, Any],
+    query: str,
+    *,
+    limit: int = 8,
+    include_internal: bool = True,
+    kinds: set[str] | None = None,
+    visibilities: set[str] | None = None,
+) -> list[dict[str, Any]]:
+    query_tokens = tokenize(query)
+    query_token_set = set(query_tokens)
+    normalized_query = " ".join(query_tokens)
+    project_markers = {
+        str(node["id"]).split(".", 1)[1]
+        for node in graph.get("nodes", [])
+        if str(node.get("primary_parent", "")) == "projects"
+        and str(node.get("id", "")).startswith("projects.")
+        and "." in str(node.get("id", ""))
+    }
+    results: list[dict[str, Any]] = []
+    for document in graph.get("retrieval_documents", []):
+        if kinds is not None and document.get("kind") not in kinds:
+            continue
+        visibility = document.get("visibility")
+        if visibilities is not None and visibility not in visibilities:
+            continue
+        if not include_internal and visibility in {"internal", "hidden"}:
+            continue
+        title_tokens = set(tokenize(str(document.get("title", ""))))
+        id_tokens = set(tokenize(str(document.get("id", ""))))
+        routing_tokens = set(document.get("routing_tokens", []))
+        positive_tokens = set(document.get("positive_tokens", []))
+        negative_tokens = set(document.get("negative_tokens", []))
+        negative_only_tokens = negative_tokens - positive_tokens - routing_tokens - title_tokens - id_tokens
+        all_tokens = set(document.get("tokens", []))
+        score = 0.0
+        matched: list[str] = []
+        negative_matched: list[str] = []
+        strongest_match = 0.0
+        for token in query_tokens:
+            token_score = 0.0
+            if token in id_tokens:
+                token_score = max(token_score, 6.0)
+            if token in title_tokens:
+                token_score = max(token_score, 5.0)
+            if token in routing_tokens:
+                token_score = max(token_score, 4.0)
+            if token in positive_tokens:
+                token_score = max(token_score, 2.5)
+            if token in all_tokens:
+                token_score = max(token_score, 0.5)
+            if token_score:
+                matched.append(token)
+                score += token_score
+                strongest_match = max(strongest_match, token_score)
+            if token in negative_only_tokens:
+                negative_matched.append(token)
+                score -= 3.0
+        for negative_phrase in document.get("negative_phrases", []):
+            phrase_tokens = set(tokenize(str(negative_phrase)))
+            overlap = set(query_tokens) & phrase_tokens
+            if len(overlap) >= 2 and len(overlap) / max(len(query_tokens), 1) >= 0.30:
+                negative_matched.extend(overlap)
+                score -= 2.5 * len(overlap)
+        phrase_match = bool(
+            normalized_query and normalized_query in str(document.get("positive_text", "")).lower()
+        )
+        if phrase_match:
+            score += 3.0
+        id_match = bool(query_token_set & id_tokens)
+        document_project_markers = sorted(id_tokens & project_markers)
+        project_scope_penalty = 0.0
+        if document_project_markers and not query_token_set.intersection(document_project_markers):
+            # Project adapters remain discoverable through strong domain terms,
+            # but generic session/owner/evidence vocabulary must prefer the
+            # reusable family unless the request actually names the project.
+            project_scope_penalty = 2.5
+            score -= project_scope_penalty
+        if score <= 0 or (strongest_match < 4.0 and not id_match and not phrase_match) or (
+            len(query_tokens) > 2
+            and len(set(matched)) < 2
+            and not id_match
+            and not phrase_match
+        ):
+            continue
+        if visibility == "advertised":
+            score += 0.5
+        if document.get("kind") == "capability":
+            score += 2.0
+        elif document.get("kind") == "mode":
+            score += 2.5
+        coverage = len(set(matched)) / max(len(query_tokens), 1)
+        results.append(
+            {
+                "id": document["id"],
+                "kind": document["kind"],
+                "visibility": visibility,
+                "title": document["title"],
+                "description": document["description"],
+                "score": round(score + coverage, 3),
+                "matched_tokens": sorted(set(matched)),
+                "negative_matched_tokens": sorted(set(negative_matched)),
+                "coverage": round(coverage, 3),
+                "strongest_match": strongest_match,
+                "project_scope": document_project_markers,
+                "project_scope_penalty": project_scope_penalty,
+            }
+        )
+    results.sort(key=lambda item: (-item["score"], -item["coverage"], item["id"]))
+    if not results or results[0]["score"] < 5.0:
+        return []
+    confidence_floor = results[0]["score"] * 0.45
+    return [item for item in results if item["score"] >= confidence_floor][:limit]
+
+
+def _resolve_executable(
+    node_id: str,
+    nodes: Mapping[str, Mapping[str, Any]],
+    relations_from: Mapping[str, Sequence[Mapping[str, Any]]],
+) -> tuple[str | None, list[str]]:
+    node = nodes[node_id]
+    if node.get("contract_level") == "executable":
+        return node_id, []
+    candidates = [
+        str(relation["target"])
+        for relation in relations_from.get(node_id, [])
+        if relation.get("kind") == "implemented-by"
+        and relation.get("target") in nodes
+        and nodes[str(relation["target"])].get("lifecycle", {}).get("state") not in {"retired", "deprecated"}
+    ]
+    if not candidates:
+        return None, [f"{node_id}: no active implemented-by binding"]
+    if len(candidates) > 1:
+        return None, [f"{node_id}: ambiguous implementations: {', '.join(sorted(candidates))}"]
+    return candidates[0], []
+
+
+def _topology_cycle(nodes: Iterable[str], edges: Sequence[Mapping[str, Any]]) -> list[str] | None:
+    node_set = set(nodes)
+    indegree = {node_id: 0 for node_id in node_set}
+    outgoing: defaultdict[str, set[str]] = defaultdict(set)
+    for edge in edges:
+        source = str(edge["source"])
+        target = str(edge["target"])
+        if source == target or source not in node_set or target not in node_set:
+            continue
+        if target not in outgoing[source]:
+            outgoing[source].add(target)
+            indegree[target] += 1
+    queue = deque(sorted(node_id for node_id, degree in indegree.items() if degree == 0))
+    visited: list[str] = []
+    while queue:
+        node_id = queue.popleft()
+        visited.append(node_id)
+        for target in sorted(outgoing.get(node_id, set())):
+            indegree[target] -= 1
+            if indegree[target] == 0:
+                queue.append(target)
+    if len(visited) == len(node_set):
+        return None
+    return sorted(node_id for node_id, degree in indegree.items() if degree > 0)
+
+
+def _dedupe_edges(edges: Sequence[Mapping[str, Any]]) -> list[dict[str, Any]]:
+    seen: set[tuple[str, str, str, str]] = set()
+    result: list[dict[str, Any]] = []
+    for raw in edges:
+        edge = dict(raw)
+        key = (
+            str(edge["kind"]),
+            str(edge["source"]),
+            str(edge["target"]),
+            str(edge.get("artifact_type", "")),
+        )
+        if key in seen:
+            continue
+        seen.add(key)
+        result.append(edge)
+    result.sort(key=lambda item: (item["kind"], item["source"], item["target"], item.get("artifact_type", "")))
+    return result
+
+
+def build_task_dag(
+    graph: Mapping[str, Any],
+    *,
+    query: str,
+    selected_capabilities: Sequence[str],
+    external_inputs: Sequence[Mapping[str, str]] = (),
+) -> dict[str, Any]:
+    if not query.strip():
+        raise CapabilityContractError("task-local DAG query must not be empty")
+    selected = list(dict.fromkeys(selected_capabilities))
+    if not selected:
+        raise CapabilityContractError("at least one capability must be explicitly selected")
+    nodes = graph_node_map(graph)
+    relations_from = graph_relations_from(graph)
+    blockers: list[str] = []
+    warnings: list[str] = []
+    execution_ids: set[str] = set()
+    selected_to_binding: dict[str, str] = {}
+    for node_id in selected:
+        if node_id not in nodes:
+            blockers.append(f"unknown selected capability: {node_id}")
+            continue
+        resolved, issues = _resolve_executable(node_id, nodes, relations_from)
+        blockers.extend(issues)
+        if resolved is not None:
+            selected_to_binding[node_id] = resolved
+            execution_ids.add(resolved)
+
+    edges: list[dict[str, Any]] = []
+    queue = deque(sorted(execution_ids))
+    expanded: set[str] = set()
+    while queue:
+        current = queue.popleft()
+        if current in expanded:
+            continue
+        expanded.add(current)
+        for relation in relations_from.get(current, []):
+            kind = str(relation.get("kind"))
+            if kind not in HARD_DEPENDENCY_RELATIONS:
+                continue
+            target_id = str(relation["target"])
+            resolved, issues = _resolve_executable(target_id, nodes, relations_from)
+            blockers.extend(issues)
+            if resolved is None:
+                continue
+            execution_ids.add(resolved)
+            queue.append(resolved)
+            edges.append(
+                {
+                    "kind": "guard" if kind == "guarded-by" else "dependency",
+                    "source": resolved,
+                    "target": current,
+                }
+            )
+
+    closure_ids = set(selected) | execution_ids
+    for relation in graph.get("relations", []):
+        source = str(relation["source"])
+        target = str(relation["target"])
+        if source not in closure_ids or target not in closure_ids:
+            continue
+        if relation["kind"] == "conflicts-with":
+            condition = f" ({relation['condition']})" if relation.get("condition") else ""
+            blockers.append(f"conflict: {source} vs {target}{condition}")
+        elif relation["kind"] == "alternative-to" and source in selected and target in selected:
+            warnings.append(f"alternative modes selected together: {source}, {target}")
+
+    execution_nodes: list[dict[str, Any]] = []
+    for node_id in sorted(execution_ids):
+        node = nodes[node_id]
+        binding = dict(node["binding"])
+        availability = str(binding["availability"])
+        if availability in {"unbound", "dormant"}:
+            blockers.append(f"{node_id}: binding availability is {availability} ({binding['ref']})")
+        execution_nodes.append(
+            {
+                "id": node_id,
+                "kind": node["kind"],
+                "binding": binding,
+                "owner": dict(node["owner"]),
+                "inputs": list(node["abi"]["inputs"]),
+                "outputs": list(node["abi"]["outputs"]),
+                "effects": list(node["execution"]["effects"]),
+                "termination": list(node["execution"]["termination"]),
+                "availability": availability,
+            }
+        )
+
+    normalized_external_inputs: list[dict[str, str]] = []
+    for raw_input in external_inputs:
+        item = dict(raw_input)
+        target = item.get("target")
+        port_name = item.get("port")
+        if target is not None or port_name is not None:
+            if not isinstance(target, str) or not isinstance(port_name, str):
+                raise CapabilityContractError("targeted external input requires both target and port")
+            target_node = nodes.get(target)
+            if target_node is None or target_node.get("contract_level") != "executable":
+                raise CapabilityContractError(f"targeted external input references unknown executable node: {target}")
+            matches = [
+                port
+                for port in target_node.get("abi", {}).get("inputs", [])
+                if port.get("name") == port_name
+            ]
+            if len(matches) != 1:
+                raise CapabilityContractError(f"{target}: unknown or ambiguous input port '{port_name}'")
+            item["type"] = str(matches[0]["type"])
+        if not isinstance(item.get("type"), str) or not isinstance(item.get("ref"), str):
+            raise CapabilityContractError("external input requires TYPE=REF or NODE::PORT=REF")
+        normalized_external_inputs.append(item)
+
+    global_supplied_types = {
+        str(item["type"])
+        for item in normalized_external_inputs
+        if "target" not in item and "port" not in item
+    }
+    targeted_inputs = {
+        (str(item["target"]), str(item["port"]))
+        for item in normalized_external_inputs
+        if "target" in item and "port" in item
+    }
+    providers: defaultdict[str, list[str]] = defaultdict(list)
+    for node in execution_nodes:
+        for output in node["outputs"]:
+            providers[str(output["type"])].append(str(node["id"]))
+
+    for node in execution_nodes:
+        node_id = str(node["id"])
+        required_type_counts: defaultdict[str, int] = defaultdict(int)
+        for port in node["inputs"]:
+            if port.get("required", False):
+                required_type_counts[str(port["type"])] += 1
+        for input_port in node["inputs"]:
+            required = bool(input_port.get("required", False))
+            artifact_type = str(input_port["type"])
+            port_name = str(input_port["name"])
+            if (node_id, port_name) in targeted_inputs:
+                continue
+            if artifact_type in global_supplied_types:
+                if required_type_counts[artifact_type] > 1:
+                    blockers.append(
+                        f"{node_id}: global input type '{artifact_type}' is ambiguous across multiple required ports; target each port"
+                    )
+                continue
+            candidates = sorted(provider for provider in providers.get(artifact_type, []) if provider != node_id)
+            if not candidates:
+                if not required:
+                    continue
+                blockers.append(
+                    f"{node_id}: missing required input type '{artifact_type}' ({input_port['name']})"
+                )
+                continue
+            if len(candidates) > 1:
+                if not required:
+                    warnings.append(
+                        f"{node_id}: optional input '{artifact_type}' has multiple providers and was left unbound: {', '.join(candidates)}"
+                    )
+                    continue
+                blockers.append(
+                    f"{node_id}: ambiguous providers for '{artifact_type}': {', '.join(candidates)}"
+                )
+                continue
+            edges.append(
+                {
+                    "kind": "data",
+                    "source": candidates[0],
+                    "target": node_id,
+                    "artifact_type": artifact_type,
+                }
+            )
+
+    edges = _dedupe_edges(edges)
+    cycle = _topology_cycle(execution_ids, edges)
+    if cycle:
+        blockers.append(f"task-local dependency cycle: {', '.join(cycle)}")
+
+    source_hash = str(graph.get("source", {}).get("content_hash", ""))
+    identity = {
+        "query": query,
+        "selected": selected,
+        "external_inputs": normalized_external_inputs,
+        "source_hash": source_hash,
+    }
+    plan_id = f"dag-{sha256_bytes(canonical_json(identity).encode('utf-8'))[:16]}"
+    payload = {
+        "schema_version": DAG_SCHEMA_VERSION,
+        "authority": False,
+        "plan_id": plan_id,
+        "request": {"query": query},
+        "source_graph": {
+            "path": GRAPH_JSON_PATH.as_posix(),
+            "content_hash": source_hash,
+        },
+        "status": "blocked" if blockers else "ready",
+        "selected_capabilities": selected,
+        "nodes": execution_nodes,
+        "edges": edges,
+        "external_inputs": normalized_external_inputs,
+        "warnings": sorted(set(warnings)),
+        "blockers": sorted(set(blockers)),
+    }
+    return payload
+
+
+def validate_task_dag(repo_root: Path, payload: Mapping[str, Any]) -> list[str]:
+    schema = load_json(repo_root / DAG_SCHEMA_PATH)
+    issues = schema_issues(payload, schema)
+    node_ids = {str(node["id"]) for node in payload.get("nodes", []) if isinstance(node, Mapping)}
+    for edge in payload.get("edges", []):
+        if edge.get("source") not in node_ids:
+            issues.append(f"edge source does not exist: {edge.get('source')}")
+        if edge.get("target") not in node_ids:
+            issues.append(f"edge target does not exist: {edge.get('target')}")
+    cycle = _topology_cycle(node_ids, payload.get("edges", []))
+    if cycle:
+        issues.append(f"task-local DAG contains a cycle: {', '.join(cycle)}")
+    if payload.get("status") == "ready" and payload.get("blockers"):
+        issues.append("ready task-local DAG cannot contain blockers")
+    if payload.get("status") == "blocked" and not payload.get("blockers"):
+        issues.append("blocked task-local DAG must name at least one blocker")
+    graph_path = repo_root / GRAPH_JSON_PATH
+    if graph_path.is_file():
+        current_graph = load_graph(repo_root)
+        current_hash = current_graph.get("source", {}).get("content_hash")
+        plan_hash = payload.get("source_graph", {}).get("content_hash")
+        if plan_hash != current_hash:
+            issues.append(
+                f"task-local DAG source graph is stale: plan={plan_hash}, current={current_hash}"
+            )
+    return issues
+
+
+def render_task_dag_markdown(payload: Mapping[str, Any]) -> str:
+    lines = [
+        f"# Task-local DAG `{payload['plan_id']}`",
+        "",
+        f"Status: **{payload['status']}**",
+        "",
+        f"Request: {payload['request']['query']}",
+        "",
+        "## Bindings",
+        "",
+        "| node | kind | owner | availability | effects |",
+        "|---|---|---|---|---|",
+    ]
+    for node in payload["nodes"]:
+        lines.append(
+            f"| `{node['id']}` | {node['kind']} | {node['owner']['repo']} | {node['availability']} | {', '.join(node['effects'])} |"
+        )
+    lines.extend(["", "## Edges", ""])
+    for edge in payload["edges"]:
+        artifact = f" [{edge['artifact_type']}]" if edge.get("artifact_type") else ""
+        lines.append(f"- `{edge['source']}` -> `{edge['target']}` ({edge['kind']}{artifact})")
+    if payload["blockers"]:
+        lines.extend(["", "## Blockers", ""])
+        lines.extend(f"- {item}" for item in payload["blockers"])
+    if payload["warnings"]:
+        lines.extend(["", "## Warnings", ""])
+        lines.extend(f"- {item}" for item in payload["warnings"])
+    return "\n".join(lines) + "\n"

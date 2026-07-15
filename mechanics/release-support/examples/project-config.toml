@@ -1,5 +1,0 @@
-# Example project-scoped Codex config
-# Merge into .codex/config.toml in the repository root.
-
-# Keep default Git-style repo root detection.
-project_root_markers = [".git", ".hg", ".sl"]

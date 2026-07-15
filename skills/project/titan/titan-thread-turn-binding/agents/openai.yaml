@@ -1,5 +1,0 @@
-policy:
-  allow_implicit_invocation: false
-  implicit_activation_policy: manual
-notes:
-- Keep titan-thread-turn-binding explicit-only because Titan gates, receipts, and bearer-memory posture must stay operator-visible.

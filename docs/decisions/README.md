@@ -31,13 +31,18 @@ They are weaker than the source surface they describe:
 - skill-layer system form stays in `DESIGN.md`;
 - agent-facing shape stays in `DESIGN.AGENTS.md` and nearest `AGENTS.md` cards;
 - technical source/generated/export meaning stays in `docs/ARCHITECTURE.md`;
-- canonical skill bundle meaning stays in `skills/**/SKILL.md` and
-  `techniques.yaml`;
-- mechanic shape stays in `mechanics/`, local route cards, and generated
-  mechanic read models;
+- semantic capability meaning stays in `capabilities/families/*.yaml`;
+- independently callable procedure meaning stays in `skills/**/SKILL.md`;
+- current mechanic shape stays in `mechanics/agon`, `mechanics/questbook`,
+  `mechanics/release-support`, and their local route cards;
 - generated readers stay derived from their builders;
-- portable exports and Spark lane surfaces stay companions, not source truth;
+- portable exports and KAG indexes stay projections, not source truth;
 - sibling repositories keep their own stronger truth.
+
+Older accepted notes may describe a topology that has since been superseded.
+Use their status/current-applicability text and the newest decision for the
+same owner surface; never infer current files or runtime requirements from a
+historical implementation section alone.
 
 Generated decision indexes are weaker than the decision notes. They exist to
 make lookup cheaper for agents, not to carry decision rationale.

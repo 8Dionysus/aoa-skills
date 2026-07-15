@@ -6,22 +6,25 @@ This card applies to `skills/core/engineering/`.
 
 ## Role
 
-This lane owns engineering workflow skills such as contract tests, invariants, ports, ADRs, and source-of-truth checks.
+This lane owns the decision, engineering-shape, evaluation, and verification
+callable families.
 
 ## Read before editing
 
-Read `skills/AGENTS.md`, `skills/core/AGENTS.md`, the target `SKILL.md`, `techniques.yaml`, and any checks/examples/references.
+Read `skills/AGENTS.md`, `skills/core/AGENTS.md`, the target bundle, and the
+matching decision, engineering, or eval capability family.
 
 ## Boundaries
 
-Keep engineering skills neutral, execution-oriented, and not overfit to one repo. AoA examples may guide but must not collapse general utility.
+Internal modes remain inside their family bundle until independent usefulness
+is proven. Do not let validation mechanics masquerade as outcome proof.
 
 ## Validation
 
-Full lane command sequences live in `config/validation_lanes.json`; this local card may name only focused owner checks, lane ids, or the nearest route for the changed surface.
-
-Run `PYTHONPATH=scripts python scripts/validation/validate_skills.py`, `PYTHONPATH=scripts python scripts/builders/build_catalog.py --check`, `PYTHONPATH=scripts python scripts/validation/validate_agent_skills.py --repo-root .`, and focused bundle checks when present.
+Manually exercise routing, output ABI, conflicts, and termination before
+running source, graph, export, and focused invariant checks.
 
 ## Closeout
 
-Report changed surfaces, checks run, checks skipped, remaining risk, and the next owner route. If a nearby source document carried agent-facing working law into this card, name that transfer.
+Report the selected family modes, manual cases, ABI or lifecycle movement,
+derived refresh, and remaining evidence gap.

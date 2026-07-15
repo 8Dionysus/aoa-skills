@@ -1,395 +1,49 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "owner": "docs/validation/SCRIPT_TOPOLOGY.md",
-  "command_authority": "config/validation_lanes.json",
-  "notes": [
-    "Root scripts/*.py files are command/front-door compatibility ingress wrappers only, except scripts/_ingress.py.",
-    "Library, contract, surface, and helper implementation lives under organ directories without root wrappers."
-  ],
-  "compatibility_surfaces": [
-    {
-      "path": "scripts/_ingress.py",
-      "role": "loads an implementation module and aliases legacy root imports to that module"
-    },
-    {
-      "path": "scripts/validators/__init__.py",
-      "role": "aliases legacy validators.* imports to scripts/validation/validators"
-    }
-  ],
-  "root_ingress_allowlist": [
-    {
-      "decision": "keep",
-      "paths": [
-        "scripts/activate_skill.py",
-        "scripts/skill_runtime_guardrails.py",
-        "scripts/skill_runtime_seam.py",
-        "scripts/inspect_skill.py"
-      ],
-      "owner_surface": "mechanics/release-support/docs/LOCAL_ADAPTER_CONTRACT.md",
-      "reason": "public runtime and activation front doors emitted by runtime/local-adapter generated surfaces",
-      "downstream_evidence": [
-        "generated/local_adapter_manifest.json",
-        "generated/runtime_seam_manifest.json",
-        "generated/runtime_guardrail_manifest.json",
-        "mechanics/release-support/docs/LOCAL_ADAPTER_CONTRACT.md",
-        "tests/test_runtime_discovery_contract.py",
-        "tests/test_runtime_guardrails.py",
-        "tests/test_runtime_session_contract.py"
-      ],
-      "retirement_condition": "retire only after generated runtime manifests, release-support docs, and runtime tests publish organ-path commands or another explicit public runtime contract"
-    },
-    {
-      "decision": "keep",
-      "paths": [
-        "scripts/import_skill_pack.py",
-        "scripts/inspect_skill_pack.py",
-        "scripts/install_skill_pack.py",
-        "scripts/smoke_skill_pack_handoff.py",
-        "scripts/stage_skill_pack.py",
-        "scripts/verify_skill_pack.py"
-      ],
-      "owner_surface": "mechanics/release-support/docs/INSTALL_AND_PROFILES.md",
-      "reason": "public bundle handoff front doors for stage, inspect, import, install, smoke, and verify workflows",
-      "downstream_evidence": [
-        "mechanics/release-support/docs/INSTALL_AND_PROFILES.md",
-        "mechanics/release-support/docs/CODEX_PORTABLE_LAYER.md",
-        "scripts/bundles/smoke_skill_pack_handoff.py",
-        "scripts/bundles/skill_pack_install_contract.py",
-        "tests/test_stage_skill_pack.py",
-        "tests/test_import_skill_pack.py",
-        "tests/test_install_profiles.py",
-        "tests/test_verify_skill_pack.py"
-      ],
-      "retirement_condition": "retire only after bundle docs, generated recommendations, packaging smoke, and install-profile tests use organ-path commands"
-    },
-    {
-      "decision": "keep",
-      "paths": [
-        "scripts/ci_gate.py",
-        "scripts/release_check.py",
-        "scripts/validation_lanes.py"
-      ],
-      "owner_surface": "docs/validation/COMMAND_AUTHORITY.md",
-      "reason": "repository command front doors for human and older automation compatibility while active command authority uses scripts/lanes/",
-      "downstream_evidence": [
-        "AGENTS.md",
-        "docs/validation/COMMAND_AUTHORITY.md",
-        "tests/test_validator_topology.py",
-        "tests/test_script_topology.py"
-      ],
-      "retirement_condition": "retire only after route cards, PR templates, release docs, and compatibility tests stop advertising root command-front-door paths"
-    }
-  ],
-  "retired_root_ingress": [
-    {
-      "path": "scripts/audit_skill_quality.py",
-      "target": "scripts/audit/audit_skill_quality.py",
-      "reason": "active docs, tests, generated hints, and validation lanes now name the organ path or lane/PYTHONPATH contract; remaining references are historical records, inventories, or generated readbacks",
-      "retired_by": "AOA-SK-D-0033-root-ingress-closure"
-    },
-    {
-      "path": "scripts/audit_workspace_skill_adoption.py",
-      "target": "scripts/audit/audit_workspace_skill_adoption.py",
-      "reason": "active docs, tests, generated hints, and validation lanes now name the organ path or lane/PYTHONPATH contract; remaining references are historical records, inventories, or generated readbacks",
-      "retired_by": "AOA-SK-D-0033-root-ingress-closure"
-    },
-    {
-      "path": "scripts/build_agent_skills.py",
-      "target": "scripts/export/build_agent_skills.py",
-      "reason": "active docs, tests, generated hints, and validation lanes now name the organ path or lane/PYTHONPATH contract; remaining references are historical records, inventories, or generated readbacks",
-      "retired_by": "AOA-SK-D-0033-root-ingress-closure"
-    },
-    {
-      "path": "scripts/build_catalog.py",
-      "target": "scripts/builders/build_catalog.py",
-      "reason": "active docs, tests, generated hints, and validation lanes now name the organ path or lane/PYTHONPATH contract; remaining references are historical records, inventories, or generated readbacks",
-      "retired_by": "AOA-SK-D-0033-root-ingress-closure"
-    },
-    {
-      "path": "scripts/build_description_trigger_evals.py",
-      "target": "scripts/builders/build_description_trigger_evals.py",
-      "reason": "active docs, tests, generated hints, and validation lanes now name the organ path or lane/PYTHONPATH contract; remaining references are historical records, inventories, or generated readbacks",
-      "retired_by": "AOA-SK-D-0033-root-ingress-closure"
-    },
-    {
-      "path": "scripts/build_openai_yaml_examples.py",
-      "target": "scripts/adapters/build_openai_yaml_examples.py",
-      "reason": "no active in-repo references outside the script inventory and historical records; lane and source surfaces already use the organ path",
-      "retired_by": "AOA-SK-D-0033-root-ingress-closure"
-    },
-    {
-      "path": "scripts/build_runtime_guardrails.py",
-      "target": "scripts/runtime/build_runtime_guardrails.py",
-      "reason": "active docs, tests, generated hints, and validation lanes now name the organ path or lane/PYTHONPATH contract; remaining references are historical records, inventories, or generated readbacks",
-      "retired_by": "AOA-SK-D-0033-root-ingress-closure"
-    },
-    {
-      "path": "scripts/build_runtime_seam.py",
-      "target": "scripts/runtime/build_runtime_seam.py",
-      "reason": "active docs, tests, generated hints, and validation lanes now name the organ path or lane/PYTHONPATH contract; remaining references are historical records, inventories, or generated readbacks",
-      "retired_by": "AOA-SK-D-0033-root-ingress-closure"
-    },
-    {
-      "path": "scripts/build_support_resources.py",
-      "target": "scripts/builders/build_support_resources.py",
-      "reason": "active docs, tests, generated hints, and validation lanes now name the organ path or lane/PYTHONPATH contract; remaining references are historical records, inventories, or generated readbacks",
-      "retired_by": "AOA-SK-D-0033-root-ingress-closure"
-    },
-    {
-      "path": "scripts/build_tiny_router_inputs.py",
-      "target": "scripts/builders/build_tiny_router_inputs.py",
-      "reason": "active docs, tests, generated hints, and validation lanes now name the organ path or lane/PYTHONPATH contract; remaining references are historical records, inventories, or generated readbacks",
-      "retired_by": "AOA-SK-D-0033-root-ingress-closure"
-    },
-    {
-      "path": "scripts/build_trigger_eval_cases.py",
-      "target": "scripts/builders/build_trigger_eval_cases.py",
-      "reason": "no active in-repo references outside the script inventory and historical records; lane and source surfaces already use the organ path",
-      "retired_by": "AOA-SK-D-0033-root-ingress-closure"
-    },
-    {
-      "path": "scripts/export_skill_bundle.py",
-      "target": "scripts/bundles/export_skill_bundle.py",
-      "reason": "no active in-repo references outside the script inventory and historical records; lane and source surfaces already use the organ path",
-      "retired_by": "AOA-SK-D-0033-root-ingress-closure"
-    },
-    {
-      "path": "scripts/generate_decision_indexes.py",
-      "target": "scripts/decisions/generate_decision_indexes.py",
-      "reason": "active docs, tests, generated hints, and validation lanes now name the organ path or lane/PYTHONPATH contract; remaining references are historical records, inventories, or generated readbacks",
-      "retired_by": "AOA-SK-D-0033-root-ingress-closure"
-    },
-    {
-      "path": "scripts/lint_description_trigger_evals.py",
-      "target": "scripts/validation/lint_description_trigger_evals.py",
-      "reason": "active docs, tests, generated hints, and validation lanes now name the organ path or lane/PYTHONPATH contract; remaining references are historical records, inventories, or generated readbacks",
-      "retired_by": "AOA-SK-D-0033-root-ingress-closure"
-    },
-    {
-      "path": "scripts/lint_pack_profiles.py",
-      "target": "scripts/validation/lint_pack_profiles.py",
-      "reason": "active docs, tests, generated hints, and validation lanes now name the organ path or lane/PYTHONPATH contract; remaining references are historical records, inventories, or generated readbacks",
-      "retired_by": "AOA-SK-D-0033-root-ingress-closure"
-    },
-    {
-      "path": "scripts/lint_support_resources.py",
-      "target": "scripts/validation/lint_support_resources.py",
-      "reason": "active docs, tests, generated hints, and validation lanes now name the organ path or lane/PYTHONPATH contract; remaining references are historical records, inventories, or generated readbacks",
-      "retired_by": "AOA-SK-D-0033-root-ingress-closure"
-    },
-    {
-      "path": "scripts/lint_trigger_evals.py",
-      "target": "scripts/validation/lint_trigger_evals.py",
-      "reason": "active docs, tests, generated hints, and validation lanes now name the organ path or lane/PYTHONPATH contract; remaining references are historical records, inventories, or generated readbacks",
-      "retired_by": "AOA-SK-D-0033-root-ingress-closure"
-    },
-    {
-      "path": "scripts/publish_core_skill_receipts.py",
-      "target": "scripts/receipts/publish_core_skill_receipts.py",
-      "reason": "active docs, tests, generated hints, and validation lanes now name the organ path or lane/PYTHONPATH contract; remaining references are historical records, inventories, or generated readbacks",
-      "retired_by": "AOA-SK-D-0033-root-ingress-closure"
-    },
-    {
-      "path": "scripts/publish_live_receipts.py",
-      "target": "scripts/receipts/publish_live_receipts.py",
-      "reason": "no active in-repo references outside the script inventory and historical records; lane and source surfaces already use the organ path",
-      "retired_by": "AOA-SK-D-0033-root-ingress-closure"
-    },
-    {
-      "path": "scripts/refresh_skill_from_manifest.py",
-      "target": "scripts/refresh/refresh_skill_from_manifest.py",
-      "reason": "active docs, tests, generated hints, and validation lanes now name the organ path or lane/PYTHONPATH contract; remaining references are historical records, inventories, or generated readbacks",
-      "retired_by": "AOA-SK-D-0033-root-ingress-closure"
-    },
-    {
-      "path": "scripts/refresh_skill_from_techniques.py",
-      "target": "scripts/refresh/refresh_skill_from_techniques.py",
-      "reason": "active docs, tests, generated hints, and validation lanes now name the organ path or lane/PYTHONPATH contract; remaining references are historical records, inventories, or generated readbacks",
-      "retired_by": "AOA-SK-D-0033-root-ingress-closure"
-    },
-    {
-      "path": "scripts/render_codex_config.py",
-      "target": "scripts/adapters/render_codex_config.py",
-      "reason": "active docs, tests, generated hints, and validation lanes now name the organ path or lane/PYTHONPATH contract; remaining references are historical records, inventories, or generated readbacks",
-      "retired_by": "AOA-SK-D-0033-root-ingress-closure"
-    },
-    {
-      "path": "scripts/report_skill_boundaries.py",
-      "target": "scripts/reports/report_skill_boundaries.py",
-      "reason": "active docs, tests, generated hints, and validation lanes now name the organ path or lane/PYTHONPATH contract; remaining references are historical records, inventories, or generated readbacks",
-      "retired_by": "AOA-SK-D-0033-root-ingress-closure"
-    },
-    {
-      "path": "scripts/report_skill_evaluation.py",
-      "target": "scripts/reports/report_skill_evaluation.py",
-      "reason": "active docs, tests, generated hints, and validation lanes now name the organ path or lane/PYTHONPATH contract; remaining references are historical records, inventories, or generated readbacks",
-      "retired_by": "AOA-SK-D-0033-root-ingress-closure"
-    },
-    {
-      "path": "scripts/report_skill_promotion_pressure.py",
-      "target": "scripts/reports/report_skill_promotion_pressure.py",
-      "reason": "active docs, tests, generated hints, and validation lanes now name the organ path or lane/PYTHONPATH contract; remaining references are historical records, inventories, or generated readbacks",
-      "retired_by": "AOA-SK-D-0033-root-ingress-closure"
-    },
-    {
-      "path": "scripts/report_technique_drift.py",
-      "target": "scripts/reports/report_technique_drift.py",
-      "reason": "active docs, tests, generated hints, and validation lanes now name the organ path or lane/PYTHONPATH contract; remaining references are historical records, inventories, or generated readbacks",
-      "retired_by": "AOA-SK-D-0033-root-ingress-closure"
-    },
-    {
-      "path": "scripts/run_skill_reality_trials.py",
-      "target": "scripts/audit/run_skill_reality_trials.py",
-      "reason": "no active in-repo references outside the script inventory and historical records; lane and source surfaces already use the organ path",
-      "retired_by": "AOA-SK-D-0033-root-ingress-closure"
-    },
-    {
-      "path": "scripts/run_skills_ref_validation.py",
-      "target": "scripts/validation/run_skills_ref_validation.py",
-      "reason": "active docs, tests, generated hints, and validation lanes now name the organ path or lane/PYTHONPATH contract; remaining references are historical records, inventories, or generated readbacks",
-      "retired_by": "AOA-SK-D-0033-root-ingress-closure"
-    },
-    {
-      "path": "scripts/skill_intelligence.py",
-      "target": "scripts/skill_model/skill_intelligence.py",
-      "reason": "active docs, tests, generated hints, and validation lanes now name the organ path or lane/PYTHONPATH contract; remaining references are historical records, inventories, or generated readbacks",
-      "retired_by": "AOA-SK-D-0033-root-ingress-closure"
-    },
-    {
-      "path": "scripts/validate_agent_skills.py",
-      "target": "scripts/validation/validate_agent_skills.py",
-      "reason": "active docs, tests, generated hints, and validation lanes now name the organ path or lane/PYTHONPATH contract; remaining references are historical records, inventories, or generated readbacks",
-      "retired_by": "AOA-SK-D-0033-root-ingress-closure"
-    },
-    {
-      "path": "scripts/validate_agents_design.py",
-      "target": "scripts/validation/validate_agents_design.py",
-      "reason": "active docs, tests, generated hints, and validation lanes now name the organ path or lane/PYTHONPATH contract; remaining references are historical records, inventories, or generated readbacks",
-      "retired_by": "AOA-SK-D-0033-root-ingress-closure"
-    },
-    {
-      "path": "scripts/validate_nested_agents.py",
-      "target": "scripts/validation/validate_nested_agents.py",
-      "reason": "active docs, tests, generated hints, and validation lanes now name the organ path or lane/PYTHONPATH contract; remaining references are historical records, inventories, or generated readbacks",
-      "retired_by": "AOA-SK-D-0033-root-ingress-closure"
-    },
-    {
-      "path": "scripts/validate_skill_mcp_wiring.py",
-      "target": "scripts/validation/validate_skill_mcp_wiring.py",
-      "reason": "active docs, tests, generated hints, and validation lanes now name the organ path or lane/PYTHONPATH contract; remaining references are historical records, inventories, or generated readbacks",
-      "retired_by": "AOA-SK-D-0033-root-ingress-closure"
-    },
-    {
-      "path": "scripts/validate_skills.py",
-      "target": "scripts/validation/validate_skills.py",
-      "reason": "active docs, tests, generated hints, and validation lanes now name the organ path or lane/PYTHONPATH contract; remaining references are historical records, inventories, or generated readbacks",
-      "retired_by": "AOA-SK-D-0033-root-ingress-closure"
-    },
-    {
-      "path": "scripts/validate_support_resources.py",
-      "target": "scripts/validation/validate_support_resources.py",
-      "reason": "active docs, tests, generated hints, and validation lanes now name the organ path or lane/PYTHONPATH contract; remaining references are historical records, inventories, or generated readbacks",
-      "retired_by": "AOA-SK-D-0033-root-ingress-closure"
-    },
-    {
-      "path": "scripts/validate_tiny_router_inputs.py",
-      "target": "scripts/validation/validate_tiny_router_inputs.py",
-      "reason": "active docs, tests, generated hints, and validation lanes now name the organ path or lane/PYTHONPATH contract; remaining references are historical records, inventories, or generated readbacks",
-      "retired_by": "AOA-SK-D-0033-root-ingress-closure"
-    }
-  ],
-  "organ_dirs": [
-    {
-      "path": "scripts/activation",
-      "family": "activation",
-      "root_ingress": [
-        "scripts/activate_skill.py"
-      ]
-    },
-    {
-      "path": "scripts/adapters",
-      "family": "adapters",
-      "root_ingress": []
-    },
-    {
-      "path": "scripts/audit",
-      "family": "audit",
-      "root_ingress": []
-    },
-    {
-      "path": "scripts/bridges",
-      "family": "bridges",
-      "root_ingress": []
-    },
-    {
-      "path": "scripts/builders",
-      "family": "builders",
-      "root_ingress": []
-    },
-    {
-      "path": "scripts/bundles",
-      "family": "bundles",
-      "root_ingress": [
-        "scripts/import_skill_pack.py",
-        "scripts/inspect_skill_pack.py",
-        "scripts/install_skill_pack.py",
-        "scripts/smoke_skill_pack_handoff.py",
-        "scripts/stage_skill_pack.py",
-        "scripts/verify_skill_pack.py"
-      ]
-    },
-    {
-      "path": "scripts/decisions",
-      "family": "decisions",
-      "root_ingress": []
-    },
-    {
-      "path": "scripts/export",
-      "family": "export",
-      "root_ingress": []
-    },
-    {
-      "path": "scripts/lanes",
-      "family": "lanes",
-      "root_ingress": [
-        "scripts/ci_gate.py",
-        "scripts/release_check.py",
-        "scripts/validation_lanes.py"
-      ]
-    },
-    {
-      "path": "scripts/receipts",
-      "family": "receipts",
-      "root_ingress": []
-    },
-    {
-      "path": "scripts/refresh",
-      "family": "refresh",
-      "root_ingress": []
-    },
-    {
-      "path": "scripts/reports",
-      "family": "reports",
-      "root_ingress": []
-    },
-    {
-      "path": "scripts/runtime",
-      "family": "runtime",
-      "root_ingress": [
-        "scripts/inspect_skill.py",
-        "scripts/skill_runtime_guardrails.py",
-        "scripts/skill_runtime_seam.py"
-      ]
-    },
-    {
-      "path": "scripts/skill_model",
-      "family": "skill_model",
-      "root_ingress": []
-    },
-    {
-      "path": "scripts/validation",
-      "family": "validation",
-      "root_ingress": []
-    }
+  "organs": {
+    "builders": [
+      "scripts/builders/build_capability_graph.py",
+      "scripts/builders/build_questbook.py"
+    ],
+    "bundles": [
+      "scripts/bundles/import_skill_pack.py",
+      "scripts/bundles/inspect_skill_pack.py",
+      "scripts/bundles/install_skill_pack.py",
+      "scripts/bundles/smoke_skill_pack_handoff.py",
+      "scripts/bundles/stage_skill_pack.py",
+      "scripts/bundles/verify_skill_pack.py"
+    ],
+    "decisions": [
+      "scripts/decisions/generate_decision_indexes.py"
+    ],
+    "export": [
+      "scripts/export/build_agent_skills.py"
+    ],
+    "lanes": [
+      "scripts/lanes/ci_gate.py",
+      "scripts/lanes/release_check.py"
+    ],
+    "runtime": [
+      "scripts/runtime/capability_dag.py"
+    ],
+    "validation": [
+      "scripts/validation/validate_abyss_machine_artifact_bundle.py",
+      "scripts/validation/validate_agent_skills.py",
+      "scripts/validation/validate_agents_design.py",
+      "scripts/validation/validate_capability_system.py",
+      "scripts/validation/validate_skills.py"
+    ]
+  },
+  "root_ingress": [
+    "scripts/ci_gate.py",
+    "scripts/import_skill_pack.py",
+    "scripts/inspect_skill_pack.py",
+    "scripts/install_skill_pack.py",
+    "scripts/release_check.py",
+    "scripts/smoke_skill_pack_handoff.py",
+    "scripts/stage_skill_pack.py",
+    "scripts/validation_lanes.py",
+    "scripts/verify_skill_pack.py"
   ]
 }

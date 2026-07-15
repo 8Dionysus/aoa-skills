@@ -1,5 +1,0 @@
-policy:
-  allow_implicit_invocation: false
-  implicit_activation_policy: manual
-notes:
-- This thin abyss overlay stays explicit-only because repo-relative operational mutations still require visible local intent and authority checks.

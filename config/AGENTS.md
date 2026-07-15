@@ -6,28 +6,27 @@ This card applies to `config/`.
 
 ## Role
 
-`config/` owns policy matrices, install profiles, release manifests, trust
-gates, validation lane command sequences, and other machine-readable
-configuration that builders use to derive portable export behavior.
+`config/` owns the small machine-readable policy inputs for portable export,
+pack profiles, host adapters, and validation command sequences.
 
 ## Read before editing
 
-Read root `AGENTS.md`, `DESIGN.md`, `config/README.md`, and the schema or
-builder that consumes the file being changed. For validation command ordering,
-start with `validation_lanes.json` and `docs/validation/VALIDATOR_TOPOLOGY.md`.
-For kernel policy, start with `project_core_skill_kernel.json` and the relevant
-validator.
+Read root `AGENTS.md`, `config/README.md`, the consuming builder, and the
+schema or test that protects the changed contract.
 
 ## Boundaries
 
-Config changes are behavior changes. Keep portable export rules explicit, do not smuggle status promotion through config, keep trust gates reviewable, and store no secrets. If a config field changes skill meaning, update the canonical bundle or schema instead of only changing generated output.
+Config is behavior. Do not promote a bundle, widen trust, hide an unavailable
+dependency, or add a secret through config. Semantic meaning belongs in
+capability or skill source; config may only adapt or select it explicitly.
 
 ## Validation
 
-Full lane command sequences live in `config/validation_lanes.json`; this local card may name only focused owner checks, lane ids, or the nearest route for the changed surface.
-
-Run `PYTHONPATH=scripts python scripts/validation/validate_skills.py`, the builder that consumes the changed config, and `PYTHONPATH=scripts python scripts/builders/build_catalog.py --check` when catalog or export behavior can move.
+Run the direct consumer, its focused invariant tests, and the relevant lane in
+`validation_lanes.json`. Manual outcome evidence is still required for any
+lifecycle claim.
 
 ## Closeout
 
-Report changed surfaces, checks run, checks skipped, remaining risk, and the next owner route. If a nearby source document carried agent-facing working law into this card, name that transfer.
+Report policy behavior changed, consumer rebuilt, manual case if applicable,
+checks, and remaining compatibility risk.

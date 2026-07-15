@@ -9,11 +9,11 @@
 - Skill lanes: core/session-growth
 - Mechanic parents: growth-cycle
 - Guard families: memo writeback, source topology
-- Posture: accepted memo writeback skill boundary
+- Posture: superseded precreated memo-port route; see AOA-SK-D-0039
 
 Date: 2026-05-25
 
-Status: accepted
+Status: superseded by AOA-SK-D-0039
 
 ## Context
 

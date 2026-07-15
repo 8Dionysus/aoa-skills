@@ -19,7 +19,7 @@ VALIDATION_LANES_PATH = REPO_ROOT / "config" / "validation_lanes.json"
 
 def _load_manifest() -> dict[str, Any]:
     payload = json.loads(VALIDATION_LANES_PATH.read_text(encoding="utf-8"))
-    if payload.get("schema_version") != 1:
+    if payload.get("schema_version") != 2:
         raise ValueError(
             f"{VALIDATION_LANES_PATH}: unsupported schema_version "
             f"{payload.get('schema_version')!r}"
@@ -66,20 +66,27 @@ def _drift_paths(manifest: dict[str, Any], name: str) -> tuple[str, ...]:
 
 _MANIFEST = _load_manifest()
 
+CAPABILITY_GENERATED_DRIFT_PATHS = _drift_paths(_MANIFEST, "capability_generated")
 EXPORT_GENERATED_DRIFT_PATHS = _drift_paths(_MANIFEST, "export_generated")
-RUNTIME_GENERATED_DRIFT_PATHS = _drift_paths(_MANIFEST, "runtime_generated")
-EXPORT_DRIFT_PATHS = (*EXPORT_GENERATED_DRIFT_PATHS, *RUNTIME_GENERATED_DRIFT_PATHS)
+OWNER_READMODEL_DRIFT_PATHS = _drift_paths(_MANIFEST, "owner_readmodels")
+EXPORT_DRIFT_PATHS = (*CAPABILITY_GENERATED_DRIFT_PATHS, *EXPORT_GENERATED_DRIFT_PATHS)
 
 SOURCE_FAST_COMMAND_SEQUENCE = _command_sequence(_MANIFEST, "source_fast")
+CAPABILITY_GENERATED_CHECK_COMMAND_SEQUENCE = _command_sequence(
+    _MANIFEST, "capability_generated_check"
+)
 EXPORT_GENERATED_CHECK_COMMAND_SEQUENCE = _command_sequence(
     _MANIFEST, "export_generated_check"
 )
-RUNTIME_GENERATED_CHECK_COMMAND_SEQUENCE = _command_sequence(
-    _MANIFEST, "runtime_generated_check"
+OWNER_READMODEL_CHECK_COMMAND_SEQUENCE = _command_sequence(
+    _MANIFEST, "owner_readmodels_check"
 )
 EXPORT_FULL_COMMAND_SEQUENCE = _command_sequence(_MANIFEST, "export_full")
 RELEASE_CHECK_COMMAND_SEQUENCE = _command_sequence(_MANIFEST, "release_check")
 PACKAGING_SMOKE_COMMAND = _single_command(_MANIFEST, "packaging_smoke")
+PACKAGING_SMOKE_CAPABILITY_SOURCES_COMMAND = _single_command(
+    _MANIFEST, "packaging_smoke_capability_sources"
+)
 
 
 def _command_text(command: Command) -> str:
@@ -122,3 +129,7 @@ def main(argv: list[str] | None = None) -> int:
     for name, sequence in sorted(command_sequences.items()):
         print(f"- {name}: {len(sequence)} commands")
     return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
