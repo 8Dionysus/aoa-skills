@@ -82,3 +82,4 @@
 ## 2026-07-15
 
 - [AOA-SK-D-0039 Semantic Capability Ecosystem](../AOA-SK-D-0039-semantic-capability-ecosystem.md) (`docs/decisions/AOA-SK-D-0039-semantic-capability-ecosystem.md`)
+- [AOA-SK-D-0040 Owner Skill Homes And Projection Boundaries](../AOA-SK-D-0040-owner-skill-homes-and-projection-boundaries.md) (`docs/decisions/AOA-SK-D-0040-owner-skill-homes-and-projection-boundaries.md`)

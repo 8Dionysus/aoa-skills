@@ -40,6 +40,7 @@
 - [AOA-SK-D-0035 Decision Graph Impact And Issue-Aware Skills](../AOA-SK-D-0035-decision-graph-impact-and-issue-aware-skills.md) (`docs/decisions/AOA-SK-D-0035-decision-graph-impact-and-issue-aware-skills.md`)
 - [AOA-SK-D-0036 Codex User Skill Root And Foundation Profile](../AOA-SK-D-0036-codex-user-skill-root-and-foundation-profile.md) (`docs/decisions/AOA-SK-D-0036-codex-user-skill-root-and-foundation-profile.md`)
 - [AOA-SK-D-0039 Semantic Capability Ecosystem](../AOA-SK-D-0039-semantic-capability-ecosystem.md) (`docs/decisions/AOA-SK-D-0039-semantic-capability-ecosystem.md`)
+- [AOA-SK-D-0040 Owner Skill Homes And Projection Boundaries](../AOA-SK-D-0040-owner-skill-homes-and-projection-boundaries.md) (`docs/decisions/AOA-SK-D-0040-owner-skill-homes-and-projection-boundaries.md`)
 
 ## technique bridge
 
@@ -66,6 +67,7 @@
 - [AOA-SK-D-0031 Script Source Home Topology](../AOA-SK-D-0031-script-source-home-topology.md) (`docs/decisions/AOA-SK-D-0031-script-source-home-topology.md`)
 - [AOA-SK-D-0038 Committed Evidence Readout Completeness Gate](../AOA-SK-D-0038-committed-evidence-readout-completeness-gate.md) (`docs/decisions/AOA-SK-D-0038-committed-evidence-readout-completeness-gate.md`)
 - [AOA-SK-D-0039 Semantic Capability Ecosystem](../AOA-SK-D-0039-semantic-capability-ecosystem.md) (`docs/decisions/AOA-SK-D-0039-semantic-capability-ecosystem.md`)
+- [AOA-SK-D-0040 Owner Skill Homes And Projection Boundaries](../AOA-SK-D-0040-owner-skill-homes-and-projection-boundaries.md) (`docs/decisions/AOA-SK-D-0040-owner-skill-homes-and-projection-boundaries.md`)
 
 ## export/runtime
 
@@ -78,6 +80,7 @@
 - [AOA-SK-D-0036 Codex User Skill Root And Foundation Profile](../AOA-SK-D-0036-codex-user-skill-root-and-foundation-profile.md) (`docs/decisions/AOA-SK-D-0036-codex-user-skill-root-and-foundation-profile.md`)
 - [AOA-SK-D-0037 Source-Locked Live Skill Dispatch Evidence](../AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md) (`docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md`)
 - [AOA-SK-D-0039 Semantic Capability Ecosystem](../AOA-SK-D-0039-semantic-capability-ecosystem.md) (`docs/decisions/AOA-SK-D-0039-semantic-capability-ecosystem.md`)
+- [AOA-SK-D-0040 Owner Skill Homes And Projection Boundaries](../AOA-SK-D-0040-owner-skill-homes-and-projection-boundaries.md) (`docs/decisions/AOA-SK-D-0040-owner-skill-homes-and-projection-boundaries.md`)
 
 ## AGENTS/mesh
 
@@ -137,6 +140,14 @@
 ## install profile
 
 - [AOA-SK-D-0036 Codex User Skill Root And Foundation Profile](../AOA-SK-D-0036-codex-user-skill-root-and-foundation-profile.md) (`docs/decisions/AOA-SK-D-0036-codex-user-skill-root-and-foundation-profile.md`)
+
+## manual admission
+
+- [AOA-SK-D-0040 Owner Skill Homes And Projection Boundaries](../AOA-SK-D-0040-owner-skill-homes-and-projection-boundaries.md) (`docs/decisions/AOA-SK-D-0040-owner-skill-homes-and-projection-boundaries.md`)
+
+## owner boundary
+
+- [AOA-SK-D-0040 Owner Skill Homes And Projection Boundaries](../AOA-SK-D-0040-owner-skill-homes-and-projection-boundaries.md) (`docs/decisions/AOA-SK-D-0040-owner-skill-homes-and-projection-boundaries.md`)
 
 ## owner module
 

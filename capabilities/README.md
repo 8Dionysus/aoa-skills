@@ -15,9 +15,10 @@ not committed here.
 
 | Surface | Owns |
 |---|---|
-| `capabilities/families/*.yaml` | semantic nodes, one primary parent, ABI, typed relations, binding and lifecycle posture |
-| `skills/**/SKILL.md` | portable instructions for independently callable bundles |
-| sibling owner source | workflow, tool, guard, adapter, runtime, role, proof, memory, routing, or KAG truth |
+| `capabilities/families/*.yaml` | shared semantic nodes and owner-qualified external routes with one primary parent, ABI, typed relations, binding, and lifecycle posture |
+| `skills/**/SKILL.md` | portable instructions for independently callable shared bundles |
+| sibling owner `skills/` | repository-specific independently callable procedure truth, when admitted |
+| other sibling owner source | workflow, tool, guard, adapter, runtime, role, proof, memory, routing, or KAG truth |
 | `generated/capability_graph.json` | deterministic derived graph and deep-retrieval document set |
 | task-local DAG | current request plan; session/runtime artifact only |
 
@@ -25,6 +26,10 @@ An executable node must name exact applicability, ABI, binding, verification,
 termination, effects, failure modes, trust, provenance, visibility, evidence,
 and health. An external binding is only a source-linked route; it does not make
 `aoa-skills` authoritative for the target object.
+
+Federated owner metadata may extend discovery and composition, but must be
+regenerated from the owner source. Do not hand-author a second copy of a home
+skill contract in this repository.
 
 Technique lineage is optional provenance (`derived-from`, `informed-by`, or
 `extracts-to`). No active capability may require a technique repository at
