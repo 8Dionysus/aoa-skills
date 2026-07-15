@@ -19,10 +19,12 @@ that repository. External workflows and tools remain owner-qualified graph
 bindings. Only shared `aoa-decision` is advertised; the other six shared
 bundles are explicit deferred candidates.
 
-## Derived plane
+## Target derived plane
 
 - `generated/capability_graph.*` supports deep retrieval and composition.
-- the user skill root carries one advertised shared profile.
+- after the coordinated migration, the user skill root carries one advertised
+  shared profile; the profile does not exist merely because this contract names
+  it.
 - repository `.agents/skills/*` carries only that repository's derived home
   export; workspace-root projection is reserved for workspace-owned skills.
 - `kag/` exposes source-linked graph and return handles to `aoa-kag`.

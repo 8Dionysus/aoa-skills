@@ -106,7 +106,9 @@ assuming identical prompt priority, validation, or invocation behavior.
 As of 2026-07-15, `aoa-skills` and `.aoa` provide real canonical skill homes.
 The sibling repositories still carry legacy shared host copies, and four
 launcher bundles remain nested inside an `8Dionysus` plugin pending owner and
-admission review. No additional repository home is admitted by this decision.
+admission review. The target shared user profile is not yet declared in the
+profile config or proven installed by this decision. No additional repository
+home is admitted by this decision.
 
 ## Boundaries
 

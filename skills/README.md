@@ -39,8 +39,11 @@ bundle. Until then, keep the behavior as an internal mode or capability node.
 then rebuild with `scripts/export/build_agent_skills.py`; never edit the export
 as authority.
 
-The normal user profile projects only advertised shared bundles once. A
-sibling repository's `.agents/skills/*` may project only that repository's
-advertised home bundles. A workspace-root projection contains only
-workspace-owned procedures, or remains empty. Additional host projections are
-created only for an observed consumer and never become source truth.
+Target projection topology: one host-selected user profile projects only
+advertised shared bundles once. That profile is a migration requirement until
+it is declared in the profile config, built, installed, and inspected in a
+fresh host session. A sibling repository's `.agents/skills/*` may project only
+that repository's advertised home bundles. A workspace-root projection
+contains only workspace-owned procedures, or remains empty. Additional host
+projections are created only for an observed consumer and never become source
+truth.
