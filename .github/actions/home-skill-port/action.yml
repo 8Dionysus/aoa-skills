@@ -1,0 +1,25 @@
+name: Validate repository skill home
+description: Validate one owner-local skills port and its exact repo-scoped Codex projection.
+
+inputs:
+  owner-root:
+    description: Repository root containing skills/port.manifest.json.
+    required: false
+    default: .
+  manifest:
+    description: Manifest path relative to owner-root.
+    required: false
+    default: skills/port.manifest.json
+
+runs:
+  using: composite
+  steps:
+    - name: Validate owner skill source and projection
+      shell: bash
+      env:
+        AOA_OWNER_ROOT: ${{ inputs.owner-root }}
+        AOA_HOME_MANIFEST: ${{ inputs.manifest }}
+      run: >-
+        python3 "$GITHUB_ACTION_PATH/../../../scripts/validate_home_skill_port.py"
+        --owner-root "$AOA_OWNER_ROOT"
+        --manifest "$AOA_HOME_MANIFEST"

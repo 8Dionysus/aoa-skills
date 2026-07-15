@@ -8,6 +8,7 @@ preserving. They do not score semantic quality or prove outcome benefit.
 | `test_capability_system.py` | exact migration accounting, graph integrity, discovery boundaries, ABI composition, conflict blocking |
 | `test_source_export_contract.py` | seven source/export bundles, one advertised plus six deferred, no technique dependency, reproducible hashes |
 | `test_pack_handoff.py` | portable-hash identity, honest profile errors, directory and ZIP roundtrip |
+| `test_home_skill_port.py` | admitted owner source, exact repo projection, explicit legacy prune, and build-residue boundaries |
 | `test_questbook_model.py` | Questbook remains an independent durable-obligation read model |
 | `test_validation_lanes.py` | command lanes point only to live scripts and exclude retired ontology |
 

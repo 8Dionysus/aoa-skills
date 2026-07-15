@@ -47,6 +47,7 @@
 - [AOA-SK-D-0035 Decision Graph Impact And Issue-Aware Skills](../AOA-SK-D-0035-decision-graph-impact-and-issue-aware-skills.md) (`docs/decisions/AOA-SK-D-0035-decision-graph-impact-and-issue-aware-skills.md`)
 - [AOA-SK-D-0039 Semantic Capability Ecosystem](../AOA-SK-D-0039-semantic-capability-ecosystem.md) (`docs/decisions/AOA-SK-D-0039-semantic-capability-ecosystem.md`)
 - [AOA-SK-D-0040 Owner Skill Homes And Projection Boundaries](../AOA-SK-D-0040-owner-skill-homes-and-projection-boundaries.md) (`docs/decisions/AOA-SK-D-0040-owner-skill-homes-and-projection-boundaries.md`)
+- [AOA-SK-D-0041 Minimal Owner Home Port Contract](../AOA-SK-D-0041-minimal-owner-home-port-contract.md) (`docs/decisions/AOA-SK-D-0041-minimal-owner-home-port-contract.md`)
 
 ## technique bridge
 
@@ -102,6 +103,7 @@
 - [AOA-SK-D-0037 Source-Locked Live Skill Dispatch Evidence](../AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md) (`docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md`)
 - [AOA-SK-D-0039 Semantic Capability Ecosystem](../AOA-SK-D-0039-semantic-capability-ecosystem.md) (`docs/decisions/AOA-SK-D-0039-semantic-capability-ecosystem.md`)
 - [AOA-SK-D-0040 Owner Skill Homes And Projection Boundaries](../AOA-SK-D-0040-owner-skill-homes-and-projection-boundaries.md) (`docs/decisions/AOA-SK-D-0040-owner-skill-homes-and-projection-boundaries.md`)
+- [AOA-SK-D-0041 Minimal Owner Home Port Contract](../AOA-SK-D-0041-minimal-owner-home-port-contract.md) (`docs/decisions/AOA-SK-D-0041-minimal-owner-home-port-contract.md`)
 
 ## public status
 
@@ -156,12 +158,17 @@
 ## owner boundary
 
 - [AOA-SK-D-0040 Owner Skill Homes And Projection Boundaries](../AOA-SK-D-0040-owner-skill-homes-and-projection-boundaries.md) (`docs/decisions/AOA-SK-D-0040-owner-skill-homes-and-projection-boundaries.md`)
+- [AOA-SK-D-0041 Minimal Owner Home Port Contract](../AOA-SK-D-0041-minimal-owner-home-port-contract.md) (`docs/decisions/AOA-SK-D-0041-minimal-owner-home-port-contract.md`)
 
 ## source topology
 
 - [AOA-SK-D-0031 Script Source Home Topology](../AOA-SK-D-0031-script-source-home-topology.md) (`docs/decisions/AOA-SK-D-0031-script-source-home-topology.md`)
 - [AOA-SK-D-0032 Command Authority Family Paths](../AOA-SK-D-0032-command-authority-family-paths.md) (`docs/decisions/AOA-SK-D-0032-command-authority-family-paths.md`)
 - [AOA-SK-D-0033 Root Ingress Closure](../AOA-SK-D-0033-root-ingress-closure.md) (`docs/decisions/AOA-SK-D-0033-root-ingress-closure.md`)
+
+## validation
+
+- [AOA-SK-D-0041 Minimal Owner Home Port Contract](../AOA-SK-D-0041-minimal-owner-home-port-contract.md) (`docs/decisions/AOA-SK-D-0041-minimal-owner-home-port-contract.md`)
 
 ## workflow
 

@@ -5,8 +5,8 @@
 | `capabilities/` | authored semantic tree, graph contracts, migration map |
 | `skills/` | seven callable bundle sources |
 | `config/` | export, policy, pack, and lane inputs |
-| `schemas/` | shared machine shape |
-| `scripts/` | builders, validators, planner, handoff, lane entrypoints |
+| `schemas/` | shared machine shape, including the sibling home-port contract |
+| `scripts/` | builders, validators, owner projection, planner, handoff, lane entrypoints |
 | `tests/` | durable invariants derived from manual observations |
 | `generated/` | deterministic read models |
 | `.agents/skills/` | generated portable flat export |
@@ -20,3 +20,7 @@
 Task-local DAGs, raw trials, temporary fixtures, clean-home installations, and
 session ledgers stay outside the repository. Historical retired topology stays
 in Git history or explicitly named `legacy/` areas, never in active routing.
+
+This repository also publishes the common home-port grammar and projection
+builder for admitted sibling-owned bundles. Those repositories retain their
+own procedure truth; see `HOME_SKILL_PORT.md`.

@@ -7,6 +7,7 @@
     "scripts/validation/validate_skills.py",
     "scripts/validation/validate_capability_system.py",
     "scripts/validation/validate_agent_skills.py",
+    "scripts/validation/validate_home_skill_port.py",
     "scripts/validation/validate_abyss_machine_artifact_bundle.py",
     "scripts/validation/validators/questbook_surface.py",
     "mechanics/agon/parts/workflow-candidate-bridge/scripts/validate_agon_capability_binding_candidates.py",
