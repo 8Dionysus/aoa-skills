@@ -44,6 +44,35 @@ Disposition: keep their procedures and semantic modes for explicit research,
 deep retrieval, and DAG composition, but leave all six
 `evaluated/degraded/deferred`. Do not expose them in the normal install profile.
 
+### 2026-07-16 owner-instance currentness challenger
+
+A real post-merge projection failure selected a stale conventional checkout,
+and a separate current `aoa-routing` artifact still described a retired skill
+from stale semantic input. These failures justified challenging the
+`authority-map` mode with an explicit owner-instance currentness revision.
+
+Two manually inspected read-only comparisons covered the retired skill's fate
+across owner checkouts and a branch-current routing artifact whose upstream
+skill meaning had changed. The first comparison included no-skill, current,
+candidate, and coexistence arms; the second compared current and candidate on a
+bounded different owner pair.
+
+The current `0.1.0` procedure and the candidate both reached the required owner,
+instance, claim-limit, and stale-input conclusions. The no-skill arm also
+reached the first conclusion. The candidate produced no unique correct outcome,
+was not cheaper in either comparison, and consumed several times more input in
+the second. Coexistence did not falsely activate the neighboring stats bundle,
+but carried substantial additional context cost.
+
+Disposition: reject the currentness expansion and retain
+`aoa-knowledge-stewardship@0.1.0` as `evaluated/degraded/deferred`. Do not create
+a separate currentness skill, permanent eval suite, or generic validator from
+these cases. Keep mutation refusal and source-currentness guards with the owner
+tools that can enforce them, and repair stale routing ingestion in
+`aoa-routing`. Repeat only after a distinct recurring failure or material
+model/runtime drift. Raw prompts, traces, task-local plans, temporary homes, and
+session identifiers remain outside the repository.
+
 ### Capability graph and DAG
 
 Manual planning established real ABI flow for evaluation, recovery, harvest,

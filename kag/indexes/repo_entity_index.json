@@ -240,7 +240,7 @@
     {"anchor_ids":["aoa:aoa-skills:anchor:ae5d746b412c8fb66f682526"],"entity_kind":"document","id":"aoa:aoa-skills:entity:07ec688de3c7e559a8614047","label":"skills/core/stewardship/aoa-knowledge-stewardship/SKILL.md","provenance_ref":"deterministic","semantic_key":"skills/core/stewardship/aoa-knowledge-stewardship/SKILL.md","source_digest":"a33457d7f0ff903e91a16c8e1c22bea7ba4e2285b876049bae25caba725e21ce","source_record_ids":["aoa:aoa-skills:artifact:c7cbef6bd692fb2d3e562e10"],"temporal_ref":"current","trust_ref":"deterministic"},
     {"anchor_ids":["aoa:aoa-skills:anchor:d584a2c7700facb8f40e4ad2"],"entity_kind":"document","id":"aoa:aoa-skills:entity:09647c512610506b14f93722","label":".agents/skills/aoa-decision/SKILL.md","provenance_ref":"deterministic","semantic_key":".agents/skills/aoa-decision/SKILL.md","source_digest":"ebe1f0326f5ea74109b60ece4dc5c4e6a21d2d38398d14b12ab49c9b74dff97b","source_record_ids":["aoa:aoa-skills:artifact:0f857bda3ab045593633dc34"],"temporal_ref":"current","trust_ref":"deterministic"},
     {"anchor_ids":["aoa:aoa-skills:anchor:0083266556199ac27defc790"],"entity_kind":"document","id":"aoa:aoa-skills:entity:09fb785448909ed04d5d906d","label":"mechanics/release-support/docs/CODEX_PORTABLE_LAYER.md","provenance_ref":"deterministic","semantic_key":"docs/CODEX_PORTABLE_LAYER.md","source_digest":"76c1a104f6ca86b518e494c6a420aaf34a9fda664e07d0db63acee409b89d777","source_record_ids":["aoa:aoa-skills:artifact:312a26a6b88309137a03c130"],"temporal_ref":"current","trust_ref":"deterministic"},
-    {"anchor_ids":["aoa:aoa-skills:anchor:243696bf9473307534d59d61"],"entity_kind":"document","id":"aoa:aoa-skills:entity:0a261bfb74958161bbb42315","label":"docs/reviews/2026-07-15-capability-family-lifecycle.md","provenance_ref":"deterministic","semantic_key":"docs/reviews/2026-07-15-capability-family-lifecycle.md","source_digest":"19a43e69cdf0972acc425ee2cec0307540b0d5e6dc5aabbeb822ddd62ab797b3","source_record_ids":["aoa:aoa-skills:artifact:cc340c19a98abc73d71aa192"],"temporal_ref":"current","trust_ref":"deterministic"},
+    {"anchor_ids":["aoa:aoa-skills:anchor:243696bf9473307534d59d61"],"entity_kind":"document","id":"aoa:aoa-skills:entity:0a261bfb74958161bbb42315","label":"docs/reviews/2026-07-15-capability-family-lifecycle.md","provenance_ref":"deterministic","semantic_key":"docs/reviews/2026-07-15-capability-family-lifecycle.md","source_digest":"3cbbf7e8e13e5bf62c2846ee10acdab28ab62d76893341500c834a7d2faf63a2","source_record_ids":["aoa:aoa-skills:artifact:cc340c19a98abc73d71aa192"],"temporal_ref":"current","trust_ref":"deterministic"},
     {"anchor_ids":["aoa:aoa-skills:anchor:b216d77abd78cc44e35156bd"],"entity_kind":"document","id":"aoa:aoa-skills:entity:1c20f1eb7d4b94a78684ace7","label":"docs/validation/VALIDATOR_TOPOLOGY.md","provenance_ref":"deterministic","semantic_key":"docs/validation/VALIDATOR_TOPOLOGY.md","source_digest":"66ccd8d0a7a3f6223eaabd6412485a2579c7fe44cbf7662c5c1f44cfb57c6923","source_record_ids":["aoa:aoa-skills:artifact:e6559058d59fa5041a93ea06"],"temporal_ref":"current","trust_ref":"deterministic"},
     {"anchor_ids":["aoa:aoa-skills:anchor:7cd69e2fcae332531d8e5e85"],"entity_kind":"document","id":"aoa:aoa-skills:entity:1cc6b35e5bf155ce5f7c77a1","label":"skills/core/engineering/aoa-engineering-shape/SKILL.md","provenance_ref":"deterministic","semantic_key":"skills/core/engineering/aoa-engineering-shape/SKILL.md","source_digest":"6de094761b93754b2cdf1c10419a12c0d0ed062d11a61d30eb3831b0a4bfce1c","source_record_ids":["aoa:aoa-skills:artifact:82384603ae9834a4093d1670"],"temporal_ref":"current","trust_ref":"deterministic"},
     {"anchor_ids":["aoa:aoa-skills:anchor:ad57c80cf5b571f4db4a72c6"],"entity_kind":"document","id":"aoa:aoa-skills:entity:2248e8946a0bcf4672cf6b22","label":"evals/README.md","provenance_ref":"deterministic","semantic_key":"evals/README.md","source_digest":"4b376215e253f4ccc50acb1d62b49c31b879567cf5b52f86be48089781aff768","source_record_ids":["aoa:aoa-skills:artifact:a1a9eeb43d4de7693b860e12"],"temporal_ref":"current","trust_ref":"deterministic"},
@@ -766,7 +766,7 @@
   ],
   "index_identity": {
     "artifact_kind": "repository_entity_index",
-    "content_digest": "ad060bcda2f752b0ee5495851f9207e2b177749acad97083225efc9fffe2cd22",
+    "content_digest": "29fcca1daa2128c5276e7d4bc6ae7980b7044e7bcd33bf15f5de74a04183516d",
     "index_kind": "entity",
     "local_id": "index:repo-local:entities",
     "schema_ref": "aoa-kag:schemas/repo-local-kag-repository-index.schema.json"
@@ -851,7 +851,7 @@
   },
   "schema_version": "aoa-repo-local-kag-repository-index-v2",
   "source_index": {
-    "content_digest": "c4e9261ab458154029f5db2af692ca317634f941e9fd4d1d1e29b567195453d6",
+    "content_digest": "12fc242f5023c68de883c8894d74b432cf3a0b3b5be38bd1880f1b24dc5505e0",
     "local_id": "index:repo-local:source-surfaces",
     "path": "kag/indexes/source_surface_index.json"
   },

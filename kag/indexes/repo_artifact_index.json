@@ -129,7 +129,7 @@
     {"anchor_id":"aoa:aoa-skills:anchor:6801f8d8fa1df9303ab4dc39","artifact_kind":"generated_readmodel","content_hash":"f2ba9ca8f96ea79fcc5d29ed7d270dfcf8483404d0a4fa23c89ff3173bb0e9f0","id":"aoa:aoa-skills:artifact:22ecd56127b68b7a32c18478","lineage_path":"docs/decisions/indexes/by-skill-lane.md","mime":"text/markdown","path":"docs/decisions/indexes/by-skill-lane.md","provenance_ref":"deterministic","surface_state":"generated_readmodel","temporal_ref":"current","trust_ref":"deterministic","version_id":"aoa:aoa-skills:artifact-version:85cf4440b538a827267c7737"},
     {"anchor_id":"aoa:aoa-skills:anchor:b17fae1ce2a72bab8c2cb495","artifact_kind":"generated_readmodel","content_hash":"59715d8520623f796607c282b725a395b7be76797b891759dda2befa31b48753","id":"aoa:aoa-skills:artifact:acd156903f044a996b858398","lineage_path":"docs/decisions/indexes/by-surface.md","mime":"text/markdown","path":"docs/decisions/indexes/by-surface.md","provenance_ref":"deterministic","surface_state":"generated_readmodel","temporal_ref":"current","trust_ref":"deterministic","version_id":"aoa:aoa-skills:artifact-version:b4603b42213bb626350adcaa"},
     {"anchor_id":"aoa:aoa-skills:anchor:e74963225f9311f798cae18c","artifact_kind":"generated_readmodel","content_hash":"dd1aabfe4b83e5a02974dd63c1f43df2ab38d93a19614f6e053f605c2cc84225","id":"aoa:aoa-skills:artifact:e85d1fe120dec821c2f1546d","lineage_path":"docs/decisions/indexes/index_contract.yaml","mime":"application/yaml","path":"docs/decisions/indexes/index_contract.yaml","provenance_ref":"deterministic","surface_state":"generated_readmodel","temporal_ref":"current","trust_ref":"deterministic","version_id":"aoa:aoa-skills:artifact-version:2e26413ccaf95d1409622a94"},
-    {"anchor_id":"aoa:aoa-skills:anchor:243696bf9473307534d59d61","artifact_kind":"document","content_hash":"19a43e69cdf0972acc425ee2cec0307540b0d5e6dc5aabbeb822ddd62ab797b3","id":"aoa:aoa-skills:artifact:cc340c19a98abc73d71aa192","lineage_path":"docs/reviews/2026-07-15-capability-family-lifecycle.md","mime":"text/markdown","path":"docs/reviews/2026-07-15-capability-family-lifecycle.md","provenance_ref":"deterministic","surface_state":"authored_source","temporal_ref":"current","trust_ref":"deterministic","version_id":"aoa:aoa-skills:artifact-version:281e47e02fed35c5275c0fda"},
+    {"anchor_id":"aoa:aoa-skills:anchor:243696bf9473307534d59d61","artifact_kind":"document","content_hash":"3cbbf7e8e13e5bf62c2846ee10acdab28ab62d76893341500c834a7d2faf63a2","id":"aoa:aoa-skills:artifact:cc340c19a98abc73d71aa192","lineage_path":"docs/reviews/2026-07-15-capability-family-lifecycle.md","mime":"text/markdown","path":"docs/reviews/2026-07-15-capability-family-lifecycle.md","provenance_ref":"deterministic","surface_state":"authored_source","temporal_ref":"current","trust_ref":"deterministic","version_id":"aoa:aoa-skills:artifact-version:22c407b981c94567f0d3585c"},
     {"anchor_id":"aoa:aoa-skills:anchor:f9a0512b2e0d275c6f7616ea","artifact_kind":"document","content_hash":"43baf1a6077ae10180d1a5603dd27a6353fb1c9c4d286fecea2e8796dc1a2820","id":"aoa:aoa-skills:artifact:c6db1c1f1e9ca389767f58d3","lineage_path":"docs/reviews/AGENTS.md","mime":"text/markdown","path":"docs/reviews/AGENTS.md","provenance_ref":"deterministic","surface_state":"authored_source","temporal_ref":"current","trust_ref":"deterministic","version_id":"aoa:aoa-skills:artifact-version:5ad69675fdb90ac2014c115f"},
     {"anchor_id":"aoa:aoa-skills:anchor:3f4555ae22136a8fdbb0a6da","artifact_kind":"document","content_hash":"4df72e7e6ce0340e4a071916684a8f3fb2657ba6108489c6e1f55ac6e3a03046","id":"aoa:aoa-skills:artifact:e2ed81eb9912e61f22b91071","lineage_path":"docs/reviews/README.md","mime":"text/markdown","path":"docs/reviews/README.md","provenance_ref":"deterministic","surface_state":"authored_source","temporal_ref":"current","trust_ref":"deterministic","version_id":"aoa:aoa-skills:artifact-version:8212089224de0a503194cb15"},
     {"anchor_id":"aoa:aoa-skills:anchor:7095aa3301cb30ba8d76df42","artifact_kind":"document","content_hash":"3e74d03ddb452e6ec249329d46cc611c4acb7b2e812b022ea1df38d4e114186c","id":"aoa:aoa-skills:artifact:aecbbf32b8d43d6cf8d19a2b","lineage_path":"docs/testing/TEST_TOPOLOGY.md","mime":"text/markdown","path":"docs/testing/TEST_TOPOLOGY.md","provenance_ref":"deterministic","surface_state":"authored_source","temporal_ref":"current","trust_ref":"deterministic","version_id":"aoa:aoa-skills:artifact-version:fabead1fcf300b2e14bc593d"},
@@ -313,7 +313,7 @@
   ],
   "index_identity": {
     "artifact_kind": "repository_artifact_index",
-    "content_digest": "2876833787fc2402cd4bc9ef0daa4a22812b0a59eca79ede0742f00188f32aa9",
+    "content_digest": "b9fafbdd39bd62c06d5b528b925d721c8c413ea494725f4b3edae53b436cc679",
     "index_kind": "artifact",
     "local_id": "index:repo-local:artifacts",
     "schema_ref": "aoa-kag:schemas/repo-local-kag-repository-index.schema.json"
@@ -399,7 +399,7 @@
   },
   "schema_version": "aoa-repo-local-kag-repository-index-v2",
   "source_index": {
-    "content_digest": "c4e9261ab458154029f5db2af692ca317634f941e9fd4d1d1e29b567195453d6",
+    "content_digest": "12fc242f5023c68de883c8894d74b432cf3a0b3b5be38bd1880f1b24dc5505e0",
     "local_id": "index:repo-local:source-surfaces",
     "path": "kag/indexes/source_surface_index.json"
   },
