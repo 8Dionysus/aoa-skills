@@ -15,6 +15,7 @@ Command = tuple[str, ...]
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 VALIDATION_LANES_PATH = REPO_ROOT / "config" / "validation_lanes.json"
+SKILL_PACK_PROFILES_PATH = REPO_ROOT / "config" / "skill_pack_profiles.json"
 
 
 def _load_manifest() -> dict[str, Any]:
@@ -52,6 +53,46 @@ def _single_command(manifest: dict[str, Any], name: str) -> Command:
     return _command(commands.get(name), f"single_commands.{name}")
 
 
+def _packaging_smoke_commands(
+    manifest: dict[str, Any],
+    profiles_doc: dict[str, Any],
+) -> tuple[Command, ...]:
+    single_commands = manifest.get("single_commands")
+    if not isinstance(single_commands, dict):
+        raise ValueError(f"{VALIDATION_LANES_PATH}: single_commands must be a mapping")
+    profiles = profiles_doc.get("profiles")
+    if not isinstance(profiles, dict) or not profiles:
+        raise ValueError(f"{SKILL_PACK_PROFILES_PATH}: profiles must be a non-empty mapping")
+
+    commands_by_profile: dict[str, Command] = {}
+    for name, raw_command in single_commands.items():
+        if name != "packaging_smoke" and not name.startswith("packaging_smoke_"):
+            continue
+        command = _command(raw_command, f"single_commands.{name}")
+        try:
+            profile_index = command.index("--profile") + 1
+            profile_name = command[profile_index]
+        except (ValueError, IndexError) as exc:
+            raise ValueError(
+                f"{VALIDATION_LANES_PATH}: single_commands.{name} must name one --profile"
+            ) from exc
+        if profile_name in commands_by_profile:
+            raise ValueError(
+                f"{VALIDATION_LANES_PATH}: duplicate packaging smoke for profile {profile_name!r}"
+            )
+        commands_by_profile[profile_name] = command
+
+    declared_profiles = tuple(profiles)
+    missing = set(declared_profiles) - set(commands_by_profile)
+    extra = set(commands_by_profile) - set(declared_profiles)
+    if missing or extra:
+        raise ValueError(
+            f"{VALIDATION_LANES_PATH}: packaging smoke/profile drift; "
+            f"missing={sorted(missing)!r}, extra={sorted(extra)!r}"
+        )
+    return tuple(commands_by_profile[name] for name in declared_profiles)
+
+
 def _drift_paths(manifest: dict[str, Any], name: str) -> tuple[str, ...]:
     drift_paths = manifest.get("drift_paths")
     if not isinstance(drift_paths, dict):
@@ -65,6 +106,7 @@ def _drift_paths(manifest: dict[str, Any], name: str) -> tuple[str, ...]:
 
 
 _MANIFEST = _load_manifest()
+_SKILL_PACK_PROFILES = json.loads(SKILL_PACK_PROFILES_PATH.read_text(encoding="utf-8"))
 
 CAPABILITY_GENERATED_DRIFT_PATHS = _drift_paths(_MANIFEST, "capability_generated")
 EXPORT_GENERATED_DRIFT_PATHS = _drift_paths(_MANIFEST, "export_generated")
@@ -83,9 +125,15 @@ OWNER_READMODEL_CHECK_COMMAND_SEQUENCE = _command_sequence(
 )
 EXPORT_FULL_COMMAND_SEQUENCE = _command_sequence(_MANIFEST, "export_full")
 RELEASE_CHECK_COMMAND_SEQUENCE = _command_sequence(_MANIFEST, "release_check")
+PACKAGING_SMOKE_USER_DEFAULT_COMMAND = _single_command(
+    _MANIFEST, "packaging_smoke_user_default"
+)
 PACKAGING_SMOKE_COMMAND = _single_command(_MANIFEST, "packaging_smoke")
 PACKAGING_SMOKE_CAPABILITY_SOURCES_COMMAND = _single_command(
     _MANIFEST, "packaging_smoke_capability_sources"
+)
+PACKAGING_SMOKE_COMMAND_SEQUENCE = _packaging_smoke_commands(
+    _MANIFEST, _SKILL_PACK_PROFILES
 )
 
 

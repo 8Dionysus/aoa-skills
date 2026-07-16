@@ -138,6 +138,16 @@ technique bridge, old eval/stat proxies, Spark lane, obsolete mechanics,
 inherited review records, and repo-local memo candidate port have left the
 active tree.
 
+## Review Log
+
+### 2026-07-15 - User projection declared without widening the catalog
+
+- AOA-SK-D-0040 now owns the user/repository projection split.
+- `user-default` adds a user-scoped transport for the already advertised
+  `aoa-decision` bundle; it does not promote any of the six deferred bundles.
+- Packaging checks now cover every declared profile, while prompt visibility
+  and selection remain manual host evidence.
+
 ## Boundaries
 
 This decision does not prove that any deferred bundle improves outcomes, make
@@ -150,7 +160,7 @@ capability node to become a skill.
 
 - Manually inspect the exact 57-entry migration and the seven source procedures.
 - Build and validate the capability graph, portable export, Questbook, Agon
-  candidate projections, decision indexes, and both install profiles.
+  candidate projections, decision indexes, and every declared install profile.
 - Exercise positive, negative, coexistence, direct/retrieved, and composed cases
   in clean prompt-visible sessions before any lifecycle promotion.
 - Validate the repo-local KAG family through the `aoa-kag` owner generator and

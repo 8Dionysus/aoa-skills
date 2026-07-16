@@ -22,9 +22,9 @@ bundles are explicit deferred candidates.
 ## Target derived plane
 
 - `generated/capability_graph.*` supports deep retrieval and composition.
-- after the coordinated migration, the user skill root carries one advertised
-  shared profile; the profile does not exist merely because this contract names
-  it.
+- `user-default` carries one advertised shared bundle at the standard Codex
+  user root; installation and fresh-session visibility remain host evidence,
+  not consequences of declaring the profile.
 - repository `.agents/skills/*` carries only that repository's derived home
   export; workspace-root projection is reserved for workspace-owned skills.
 - `kag/` exposes source-linked graph and return handles to `aoa-kag`.

@@ -19,4 +19,4 @@ green result never upgrades lifecycle status by itself.
 `source_fast` checks authored structure plus current owner read models.
 `generated --group all` checks capability, portable-export, Questbook, Agon,
 and decision-index parity. Release additionally rebuilds those projections and
-smoke-tests both supported install profiles.
+smoke-tests every declared install profile.

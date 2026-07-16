@@ -3,6 +3,23 @@
   "profile": "codex-facing-v2",
   "source_config": "config/skill_pack_profiles.json",
   "profiles": {
+    "user-default": {
+      "description": "Install only the currently advertised and outcome-supported AoA decision family once into the host-selected user skill root.",
+      "scope": "user",
+      "install_mode": "copy",
+      "install_root": "$HOME/.codex/skills",
+      "skills": [
+        {
+          "name": "aoa-decision",
+          "source_path": ".agents/skills/aoa-decision/SKILL.md",
+          "target_path": "$HOME/.codex/skills/aoa-decision/SKILL.md",
+          "openai_config_path": "$HOME/.codex/skills/aoa-decision/agents/openai.yaml",
+          "allow_implicit_invocation": true,
+          "implicit_activation_policy": "invoke",
+          "trust_posture": "portable-core"
+        }
+      ]
+    },
     "repo-default": {
       "description": "Install only the currently advertised and outcome-supported AoA decision family.",
       "scope": "repo",

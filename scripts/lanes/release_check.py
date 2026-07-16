@@ -21,10 +21,7 @@ WORKTREE_SNAPSHOT_COMMAND = ("git", "status", "--porcelain=v1", "--untracked-fil
 TRACKED_DIFF_SNAPSHOT_COMMAND = ("git", "diff", "--binary", "--no-ext-diff")
 CACHED_DIFF_SNAPSHOT_COMMAND = ("git", "diff", "--cached", "--binary", "--no-ext-diff")
 CLEAN_REPO_DIFF_COMMAND = ("git", "diff", "--exit-code")
-PACKAGING_SMOKE_COMMAND = validation_lanes.PACKAGING_SMOKE_COMMAND
-PACKAGING_SMOKE_CAPABILITY_SOURCES_COMMAND = (
-    validation_lanes.PACKAGING_SMOKE_CAPABILITY_SOURCES_COMMAND
-)
+PACKAGING_SMOKE_COMMAND_SEQUENCE = validation_lanes.PACKAGING_SMOKE_COMMAND_SEQUENCE
 
 
 @dataclass(frozen=True)
@@ -98,8 +95,7 @@ def build_release_check_sequence(*, include_packaging_smoke: bool) -> tuple[tupl
     if include_packaging_smoke:
         return (
             *RELEASE_CHECK_COMMAND_SEQUENCE,
-            PACKAGING_SMOKE_COMMAND,
-            PACKAGING_SMOKE_CAPABILITY_SOURCES_COMMAND,
+            *PACKAGING_SMOKE_COMMAND_SEQUENCE,
         )
     return RELEASE_CHECK_COMMAND_SEQUENCE
 
