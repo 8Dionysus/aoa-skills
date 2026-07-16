@@ -261,6 +261,18 @@
     ]
   },
   "single_commands": {
+    "packaging_smoke_user_default": [
+      "python",
+      "scripts/bundles/smoke_skill_pack_handoff.py",
+      "--repo-root",
+      ".",
+      "--profile",
+      "user-default",
+      "--transport",
+      "both",
+      "--format",
+      "json"
+    ],
     "packaging_smoke": [
       "python",
       "scripts/bundles/smoke_skill_pack_handoff.py",

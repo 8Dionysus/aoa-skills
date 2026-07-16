@@ -106,11 +106,33 @@ assuming identical prompt priority, validation, or invocation behavior.
 As of 2026-07-15, `aoa-skills` and the portable `aoa-session-memory`
 repository provide real canonical skill homes. Workspace-local `.aoa/skills`
 is an installed materialization of the latter and does not become a second
-owner. The sibling repositories still carry legacy shared host copies, and
-four launcher bundles remain nested inside an `8Dionysus` plugin pending owner
-and admission review. The target shared user profile is not yet declared in
-the profile config or proven installed by this decision. No additional
-repository home is admitted by this decision.
+owner. `user-default` now declares the single advertised shared bundle for the
+standard Codex user root; installation and a restarted-session prompt inventory
+from a neutral host directory show one central user-level `aoa-decision` bundle
+and no legacy shared catalog. The sibling repositories still carry migration
+debt, and four launcher bundles remain nested inside an `8Dionysus` plugin
+pending owner and admission review. No additional repository home is admitted
+by this decision.
+
+## Review Log
+
+### 2026-07-15 - Declare the minimal user profile after a restarted-session trial
+
+- Manual host evidence: the current export was installed into the verified
+  Codex user root with an explicit destination override, then a fresh session's
+  prompt inventory exposed exactly one user-level `aoa-decision` bundle while
+  the former shared catalog stayed absent.
+- Correction: add `user-default` with user scope and the same single advertised
+  member as `repo-default`; this removes the destination-override gap without
+  promoting any deferred bundle.
+- Boundary: profile resolution and byte parity do not prove future host
+  visibility or behavioral benefit. Other hosts still require an actual root
+  check and fresh-session inspection.
+- Coexistence finding: when Codex starts inside `aoa-skills`, it also discovers
+  the repository's exact portable `.agents/skills/aoa-decision` export. The
+  current host lists both same-name paths instead of merging them. Their bytes
+  match, but source-authoring routing interference remains a measured follow-up;
+  do not conceal it as profile success or reproduce this overlap in siblings.
 
 ## Boundaries
 

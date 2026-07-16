@@ -9,7 +9,8 @@ skills + capabilities + config
   -> inspect -> install -> verify
 ```
 
-`repo-default` contains only the advertised `aoa-decision` bundle.
+`user-default` and `repo-default` contain only the advertised `aoa-decision`
+bundle at distinct host scopes.
 `repo-capability-sources` contains all seven bundles for explicit research and
 manual trials; six remain deferred.
 

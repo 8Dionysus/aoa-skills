@@ -242,6 +242,16 @@ def validate_export(repo_root: Path) -> list[str]:
             errors.append(f"profile {profile_name!r} contains unknown skills: {sorted(unknown)!r}")
     if profile_skill_sets.get("repo-default") != ["aoa-decision"]:
         errors.append("repo-default must expose only the advertised aoa-decision family")
+    if profile_skill_sets.get("user-default") != ["aoa-decision"]:
+        errors.append("user-default must expose only the advertised aoa-decision family")
+    source_profiles = profiles.get("profiles") or {}
+    if (source_profiles.get("user-default") or {}).get("scope") != "user":
+        errors.append("user-default must resolve through the user install scope")
+    if (
+        (resolved_profiles.get("profiles") or {}).get("user-default", {}).get("install_root")
+        != "$HOME/.codex/skills"
+    ):
+        errors.append("user-default must resolve to the standard Codex user skill root")
     if set(profile_skill_sets.get("repo-capability-sources", [])) != source_names:
         errors.append("repo-capability-sources must contain all seven source bundles")
     resolved_names = set((resolved_profiles.get("profiles") or {}).keys())

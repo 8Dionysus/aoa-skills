@@ -28,7 +28,7 @@
   "skill_count": 7,
   "advertised_skill_count": 1,
   "deferred_skill_count": 6,
-  "profile_count": 2,
+  "profile_count": 3,
   "source_files": [
     "capabilities/families/abyss.yaml",
     "capabilities/families/atm10.yaml",
@@ -228,8 +228,8 @@
     },
     {
       "path": "config/skill_pack_profiles.json",
-      "sha256": "e69d663cc2ba0b5a53b6fc0aa931fe8f99098eddcb1352544108172d712e90e0",
-      "bytes": 793
+      "sha256": "77a8d674b3b509b227ec67b7cc6b7be069081112db8526973bf7c4f0a11d21c2",
+      "bytes": 1073
     },
     {
       "path": "config/skill_policy_matrix.json",
@@ -512,8 +512,8 @@
     },
     {
       "path": "generated/skill_pack_profiles.resolved.json",
-      "sha256": "74c4538e3d9eab1bd63b293f40f1fd7edaaaa1d58841d5fa31d098f34def3cf7",
-      "bytes": 4130
+      "sha256": "fbbbc9f292782b84a192c922ee48bf134f841e3cd82dbbe7d1f5906a437a1069",
+      "bytes": 4846
     },
     {
       "path": "generated/mcp_dependency_manifest.json",
@@ -597,6 +597,14 @@
         "aoa-decision"
       ],
       "profile_revision": "9d78f64d866ac798092bc06ef79097e42113916704c330207ecb33fb1ed69216"
+    },
+    {
+      "name": "user-default",
+      "skill_count": 1,
+      "skill_names": [
+        "aoa-decision"
+      ],
+      "profile_revision": "5c28d99613001c0472416611be6cabde87bb8a18cbb2fd2e4c6b24ce94517edd"
     }
   ],
   "release_identity": {

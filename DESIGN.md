@@ -96,7 +96,7 @@ held-out cases. Safety and refusal behavior are tested separately.
 | repository-owned callable procedures | `<owner-repo>/skills/**/SKILL.md` when admitted |
 | migration disposition | `capabilities/legacy-skill-migration.yaml` |
 | deterministic graph | `generated/capability_graph.*` |
-| target user shared host profile | one host-selected user skill root after declared, built, installed, and fresh-session inspected |
+| user shared host profile | `user-default` at the host-verified user skill root; fresh-session inspection remains required |
 | repository host bundles | `<owner-repo>/.agents/skills/*`, derived only from that owner home |
 | workspace-root host bundles | workspace-owned procedures only, otherwise empty |
 | KAG return map | `kag/` |

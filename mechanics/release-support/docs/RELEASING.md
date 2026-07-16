@@ -4,7 +4,7 @@
 2. Rebuild capability, portable export, Questbook, and decision indexes whose
    owner sources changed.
 3. Run the release sequence from `config/validation_lanes.json` and packaging
-   smoke for both current profiles.
+   smoke for every declared profile.
 4. Inspect `generated/release_manifest.json`, source/portable hashes, profile
    revisions, and public-safety boundary.
 5. Run the external `abyss-machine` artifact bundle validator when its owner

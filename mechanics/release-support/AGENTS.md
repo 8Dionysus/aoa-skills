@@ -26,7 +26,8 @@ admission remain with their named owners.
 ## Validation
 
 Manually inspect a staged directory and ZIP roundtrip, then run export parity,
-pack smoke for both profiles, and the release lane when release identity moved.
+pack smoke for every declared profile, and the release lane when release
+identity moved.
 
 ## Closeout
 
