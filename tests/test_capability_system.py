@@ -104,9 +104,118 @@ def test_task_local_dag_connects_abi_and_blocks_conflicting_modes() -> None:
             "kind": "data",
             "source": "mode.eval.select",
             "target": "mode.eval.apply",
-        }
+        },
+        {
+            "kind": "handoff",
+            "source": "mode.eval.select",
+            "target": "mode.eval.apply",
+        },
     ]
+    assert ready["execution_stages"] == [
+        ["mode.eval.select"],
+        ["mode.eval.apply"],
+    ]
+    assert {
+        checkpoint["node"] for checkpoint in ready["checkpoints"]
+    } == {"mode.eval.select", "mode.eval.apply"}
+    assert ready["terminal"] == {
+        "lifetime": "task-local",
+        "success_condition": "all selected nodes reached verified terminal conditions",
+    }
     assert capability_system.validate_task_dag(REPO_ROOT, ready) == []
     assert blocked["status"] == "blocked"
     assert any("conflict:" in blocker for blocker in blocked["blockers"])
     assert capability_system.validate_task_dag(REPO_ROOT, blocked) == []
+
+
+def test_two_stage_retrieval_keeps_package_text_behind_owner_admission() -> None:
+    graph = {
+        "nodes": [],
+        "retrieval_documents": [
+            {
+                "id": "skill.owner-router",
+                "kind": "skill",
+                "visibility": "advertised",
+                "title": "Archive owner router",
+                "description": "Route archive inspection requests.",
+                "search_text": "archive inspection",
+                "positive_text": "archive inspection",
+                "negative_text": "",
+                "negative_phrases": [],
+                "routing_tokens": ["archive", "inspect"],
+                "positive_tokens": ["archive", "inspect"],
+                "negative_tokens": [],
+                "contract_tokens": ["archive", "inspect"],
+                "package_tokens": [],
+                "tokens": ["archive", "inspect"],
+            },
+            {
+                "id": "skill.generic-reader",
+                "kind": "skill",
+                "visibility": "deferred",
+                "title": "Generic archive reader",
+                "description": "Inspect archived evidence.",
+                "search_text": "archive inspect evidence",
+                "positive_text": "archive inspect evidence",
+                "negative_text": "",
+                "negative_phrases": [],
+                "routing_tokens": ["archive", "inspect"],
+                "positive_tokens": ["archive", "evidence", "inspect"],
+                "negative_tokens": [],
+                "contract_tokens": ["archive", "evidence", "inspect"],
+                "package_tokens": [],
+                "tokens": ["archive", "evidence", "inspect"],
+            },
+            {
+                "id": "skill.z-correlated-reader",
+                "kind": "skill",
+                "visibility": "deferred",
+                "title": "Correlated archive reader",
+                "description": "Inspect archived evidence.",
+                "search_text": (
+                    "archive inspect evidence correlation checkpoint verifier"
+                ),
+                "positive_text": "archive inspect evidence",
+                "negative_text": "",
+                "negative_phrases": [],
+                "routing_tokens": ["archive", "inspect"],
+                "positive_tokens": ["archive", "evidence", "inspect"],
+                "negative_tokens": [],
+                "contract_tokens": ["archive", "evidence", "inspect"],
+                "package_tokens": ["checkpoint", "correlation", "verifier"],
+                "tokens": [
+                    "archive",
+                    "checkpoint",
+                    "correlation",
+                    "evidence",
+                    "inspect",
+                    "verifier",
+                ],
+            },
+        ],
+    }
+    query = "inspect archive evidence correlation checkpoint verifier"
+
+    compact = capability_system.discover(
+        graph,
+        query,
+        retrieval_depth="compact",
+    )
+    routed = capability_system.discover_two_stage(graph, query)
+
+    assert compact[0]["id"] == "skill.generic-reader"
+    assert [
+        item["id"]
+        for item in routed["candidate_selection"]["candidates"]
+    ] == ["skill.owner-router"]
+    assert routed["deep_rerank"]["candidates"][0]["id"] == (
+        "skill.z-correlated-reader"
+    )
+    assert routed["owner_admitted"] is True
+
+    no_owner_match = capability_system.discover_two_stage(
+        graph,
+        "unrelated payroll invoice",
+    )
+    assert no_owner_match["owner_admitted"] is False
+    assert no_owner_match["deep_rerank"]["candidates"] == []

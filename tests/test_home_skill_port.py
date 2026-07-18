@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import hashlib
 import json
 from pathlib import Path
 
@@ -279,6 +280,31 @@ def test_os_profile_install_is_idempotent_and_receipt_bound(tmp_path: Path) -> N
     assert receipt_path.read_bytes() == receipt_before
 
     receipt = json.loads(receipt_before)
+    assert receipt["schema_version"] == "aoa_os_skill_install_v2"
+    installed_skill = receipt["skills"][0]
+    assert installed_skill["source_fingerprint"] == installed_skill["digest"]
+    assert (
+        installed_skill["source_fingerprint_scope"]
+        == "complete-installable-package-v1"
+    )
+    assert installed_skill["capability_graph_hash"] is None
+    assert installed_skill["prompt_description_sha256"] == hashlib.sha256(
+        b"Answer one bounded owner-local stats question."
+    ).hexdigest()
+    source_receipt = json.loads(
+        (
+            destination
+            / "aoa-stats"
+            / install_os_skill_profile.SOURCE_RECEIPT
+        ).read_text(encoding="utf-8")
+    )
+    assert source_receipt["schema_version"] == "aoa_skill_source_receipt_v2"
+    assert source_receipt["source_fingerprint"] == installed_skill[
+        "source_fingerprint"
+    ]
+    assert source_receipt["prompt_description_sha256"] == installed_skill[
+        "prompt_description_sha256"
+    ]
     receipt["skills"][0]["owner_ref"] = "stale-ref"
     receipt_path.write_text(json.dumps(receipt, indent=2) + "\n", encoding="utf-8")
     drift = install_os_skill_profile.build_plan(

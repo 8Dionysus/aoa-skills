@@ -13,7 +13,8 @@ from jsonschema import Draft202012Validator
 
 FAMILY_SCHEMA_PATH = Path("schemas/capability_family.schema.json")
 GRAPH_SCHEMA_PATH = Path("schemas/capability_graph.schema.json")
-DAG_SCHEMA_PATH = Path("schemas/task_local_dag.schema.json")
+LEGACY_DAG_SCHEMA_PATH = Path("schemas/task_local_dag.schema.json")
+DAG_SCHEMA_PATH = Path("schemas/task_local_dag_v2.schema.json")
 MIGRATION_SCHEMA_PATH = Path("schemas/skill_migration.schema.json")
 MIGRATION_PATH = Path("capabilities/legacy-skill-migration.yaml")
 FAMILY_ROOT = Path("capabilities/families")
@@ -26,8 +27,8 @@ KAG_PROVIDER_INDEX_PATH = Path("kag/indexes/provider_readiness_index.json")
 KAG_MCP_RETURN_PATH = Path("kag/projections/mcp_capability_return.json")
 KAG_VALIDATION_ROUTE_RECEIPT_PATH = Path("kag/receipts/validation_receipt.json")
 GRAPH_SCHEMA_VERSION = "aoa-capability-graph-v1"
-DAG_SCHEMA_VERSION = "aoa-task-local-dag-v1"
-HARD_DEPENDENCY_RELATIONS = {"requires", "guarded-by"}
+DAG_SCHEMA_VERSION = "aoa-task-local-dag-v2"
+HARD_DEPENDENCY_RELATIONS = {"requires", "guarded-by", "verified-by"}
 EXECUTABLE_KINDS = {"skill", "mode", "workflow", "tool", "guard", "adapter", "human-gate"}
 STOPWORDS = {
     "a",
@@ -249,11 +250,17 @@ def relation_rows(families: Sequence[tuple[Path, Mapping[str, Any]]]) -> list[di
     return rows
 
 
-def _check_primary_tree(nodes: Mapping[str, Mapping[str, Any]]) -> list[str]:
+def _check_primary_tree(
+    nodes: Mapping[str, Mapping[str, Any]],
+    *,
+    expected_root: str = "aoa",
+) -> list[str]:
     issues: list[str] = []
     roots = [node_id for node_id, node in nodes.items() if node.get("primary_parent") is None]
-    if roots != ["aoa"]:
-        issues.append(f"primary tree must have exactly root 'aoa'; found {sorted(roots)}")
+    if roots != [expected_root]:
+        issues.append(
+            f"primary tree must have exactly root {expected_root!r}; found {sorted(roots)}"
+        )
 
     for node_id, node in nodes.items():
         parent = node.get("primary_parent")
@@ -427,7 +434,12 @@ def _check_local_skill_contracts(
     return issues
 
 
-def semantic_issues(repo_root: Path, families: Sequence[tuple[Path, Mapping[str, Any]]]) -> list[str]:
+def semantic_issues(
+    repo_root: Path,
+    families: Sequence[tuple[Path, Mapping[str, Any]]],
+    *,
+    expected_root: str = "aoa",
+) -> list[str]:
     issues: list[str] = []
     family_ids: defaultdict[str, list[str]] = defaultdict(list)
     for path, family in families:
@@ -437,7 +449,7 @@ def semantic_issues(repo_root: Path, families: Sequence[tuple[Path, Mapping[str,
             issues.append(f"duplicate family_id '{family_id}': {', '.join(paths)}")
 
     nodes = node_map(families)
-    issues.extend(_check_primary_tree(nodes))
+    issues.extend(_check_primary_tree(nodes, expected_root=expected_root))
     issues.extend(_check_local_skill_contracts(repo_root, nodes))
     aliases: defaultdict[str, list[str]] = defaultdict(list)
     for node_id, node in sorted(nodes.items()):
@@ -651,7 +663,7 @@ def retrieval_document(
     immediate_executable_children: Sequence[Mapping[str, Any]] = (),
     supplemental_texts: Sequence[str] = (),
 ) -> dict[str, Any]:
-    search_parts = list(_flatten_strings(node))
+    contract_parts = list(_flatten_strings(node))
     routing_parts = list(_flatten_strings(node.get("keywords", [])))
     description = str(node.get("description", ""))
     description_parts = re.split(r"\bDo not use\b", description, maxsplit=1, flags=re.IGNORECASE)
@@ -663,7 +675,7 @@ def retrieval_document(
     positive_parts.extend(_flatten_strings(node.get("applicability", {}).get("use_when", [])))
     if node.get("kind") in {"capability", "skill"}:
         for child in immediate_executable_children:
-            search_parts.extend(_flatten_strings(child))
+            contract_parts.extend(_flatten_strings(child))
             routing_parts.extend(_flatten_strings(child.get("keywords", [])))
             child_description = str(child.get("description", ""))
             child_description_parts = re.split(
@@ -678,8 +690,10 @@ def retrieval_document(
             negative_parts.extend(
                 _flatten_strings(child.get("applicability", {}).get("do_not_use_when", []))
             )
-    search_parts.extend(supplemental_texts)
+    search_parts = [*contract_parts, *supplemental_texts]
     search_text = "\n".join(search_parts)
+    contract_text = "\n".join(contract_parts)
+    package_text = "\n".join(supplemental_texts)
     positive_text = "\n".join(positive_parts)
     negative_text = "\n".join(negative_parts)
     lifecycle = node.get("lifecycle", {})
@@ -696,12 +710,22 @@ def retrieval_document(
         "routing_tokens": tokenize("\n".join(routing_parts)),
         "positive_tokens": tokenize(positive_text),
         "negative_tokens": tokenize(negative_text),
+        "contract_tokens": tokenize(contract_text),
+        "package_tokens": tokenize(package_text),
         "tokens": tokenize(search_text),
     }
 
 
-def build_graph_payload(repo_root: Path) -> dict[str, Any]:
-    families = validate_sources(repo_root)
+def build_graph_payload(
+    repo_root: Path,
+    *,
+    families: Sequence[tuple[Path, Mapping[str, Any]]] | None = None,
+    family_root: Path = FAMILY_ROOT,
+    graph_schema_path: Path | None = None,
+    source_metadata: Mapping[str, Any] | None = None,
+) -> dict[str, Any]:
+    if families is None:
+        families = validate_sources(repo_root)
     nodes: list[dict[str, Any]] = []
     source_files: list[dict[str, str]] = []
     referenced_files: list[dict[str, str]] = []
@@ -798,15 +822,26 @@ def build_graph_payload(repo_root: Path) -> dict[str, Any]:
 
     nodes.sort(key=lambda item: item["id"])
     relations.sort(key=lambda item: (item["kind"], item["source"], item["target"], item.get("condition", "")))
+    source_payload: dict[str, Any] = {
+        "root": family_root.as_posix(),
+        "family_files": source_files,
+        "referenced_files": sorted(referenced_files, key=lambda item: item["path"]),
+        "content_hash": "",
+    }
+    if source_metadata:
+        source_payload.update(dict(source_metadata))
+        hash_material.extend(
+            [
+                b"source-metadata\0",
+                canonical_json(source_metadata).encode("utf-8"),
+                b"\0",
+            ]
+        )
+    source_payload["content_hash"] = sha256_bytes(b"".join(hash_material))
     payload = {
         "schema_version": GRAPH_SCHEMA_VERSION,
         "authority": False,
-        "source": {
-            "root": FAMILY_ROOT.as_posix(),
-            "family_files": source_files,
-            "referenced_files": sorted(referenced_files, key=lambda item: item["path"]),
-            "content_hash": sha256_bytes(b"".join(hash_material)),
-        },
+        "source": source_payload,
         "roots": sorted(node["id"] for node in nodes if node.get("primary_parent") is None),
         "nodes": nodes,
         "relations": relations,
@@ -864,7 +899,7 @@ def build_graph_payload(repo_root: Path) -> dict[str, Any]:
         )
         for node in nodes
     ]
-    graph_schema = load_json(repo_root / GRAPH_SCHEMA_PATH)
+    graph_schema = load_json(graph_schema_path or (repo_root / GRAPH_SCHEMA_PATH))
     issues = schema_issues(payload, graph_schema)
     if issues:
         raise CapabilityContractError("derived capability graph violates schema:\n" + "\n".join(issues))
@@ -1248,7 +1283,12 @@ def discover(
     include_internal: bool = True,
     kinds: set[str] | None = None,
     visibilities: set[str] | None = None,
+    retrieval_depth: str = "full",
 ) -> list[dict[str, Any]]:
+    if retrieval_depth not in {"compact", "contract", "full"}:
+        raise CapabilityContractError(
+            "retrieval_depth must be one of: compact, contract, full"
+        )
     query_tokens = tokenize(query)
     query_token_set = set(query_tokens)
     normalized_query = " ".join(query_tokens)
@@ -1274,6 +1314,10 @@ def discover(
         positive_tokens = set(document.get("positive_tokens", []))
         negative_tokens = set(document.get("negative_tokens", []))
         negative_only_tokens = negative_tokens - positive_tokens - routing_tokens - title_tokens - id_tokens
+        contract_tokens = set(
+            document.get("contract_tokens", document.get("tokens", []))
+        )
+        package_tokens = set(document.get("package_tokens", []))
         all_tokens = set(document.get("tokens", []))
         score = 0.0
         matched: list[str] = []
@@ -1289,7 +1333,11 @@ def discover(
                 token_score = max(token_score, 4.0)
             if token in positive_tokens:
                 token_score = max(token_score, 2.5)
-            if token in all_tokens:
+            if retrieval_depth in {"contract", "full"} and token in contract_tokens:
+                token_score = max(token_score, 1.0)
+            if retrieval_depth == "full" and token in package_tokens:
+                token_score = max(token_score, 0.75)
+            if retrieval_depth == "full" and token in all_tokens:
                 token_score = max(token_score, 0.5)
             if token_score:
                 matched.append(token)
@@ -1309,7 +1357,11 @@ def discover(
         )
         if phrase_match:
             score += 3.0
-        id_match = bool(query_token_set & id_tokens)
+        id_overlap = query_token_set & id_tokens
+        id_match = bool(
+            normalized_query
+            and normalized_query == " ".join(tokenize(str(document.get("id", ""))))
+        ) or len(id_overlap) >= 2
         document_project_markers = sorted(id_tokens & project_markers)
         project_scope_penalty = 0.0
         if document_project_markers and not query_token_set.intersection(document_project_markers):
@@ -1353,6 +1405,88 @@ def discover(
         return []
     confidence_floor = results[0]["score"] * 0.45
     return [item for item in results if item["score"] >= confidence_floor][:limit]
+
+
+def discover_two_stage(
+    graph: Mapping[str, Any],
+    query: str,
+    *,
+    candidate_limit: int = 8,
+    rerank_limit: int = 8,
+    prompt_visibilities: set[str] | None = None,
+) -> dict[str, Any]:
+    """Route through the prompt-visible catalogue, then rerank the owner graph.
+
+    The first stage deliberately ignores package bodies and defaults to the
+    advertised catalogue.  Loading one of those routers admits the bounded
+    owner graph for the second stage, where full contracts and package
+    resources may rerank leaves.  This preserves progressive disclosure:
+    package-only vocabulary cannot make an unadvertised owner visible from the
+    initial prompt, but it can disambiguate leaves after the owner router has
+    matched.
+    """
+
+    visible = prompt_visibilities or {"advertised"}
+    candidate_selection = discover(
+        graph,
+        query,
+        limit=candidate_limit,
+        include_internal=False,
+        visibilities=visible,
+        retrieval_depth="compact",
+    )
+    deep_results = (
+        discover(
+            graph,
+            query,
+            limit=max(rerank_limit * 4, rerank_limit),
+            include_internal=True,
+            retrieval_depth="full",
+        )
+        if candidate_selection
+        else []
+    )
+    nodes = graph_node_map(graph)
+
+    def executable_result(item: Mapping[str, Any]) -> bool:
+        node = nodes.get(str(item.get("id")))
+        if node is not None:
+            return node.get("contract_level") == "executable"
+        return item.get("kind") in {
+            "skill",
+            "mode",
+            "workflow",
+            "tool",
+            "guard",
+            "adapter",
+            "human-gate",
+        }
+
+    deep_rerank = [
+        item for item in deep_results if executable_result(item)
+    ][:rerank_limit]
+    deep_branches = [
+        item for item in deep_results if not executable_result(item)
+    ][:rerank_limit]
+    return {
+        "schema_version": "aoa-capability-retrieval-v1",
+        "query": query,
+        "candidate_selection": {
+            "scope": "prompt-visible-compact-contracts",
+            "retrieval_depth": "compact",
+            "visibilities": sorted(visible),
+            "candidates": candidate_selection,
+        },
+        "deep_rerank": {
+            "scope": "selected-owner-full-contracts",
+            "retrieval_depth": "full",
+            "candidates": deep_rerank,
+            "branches": deep_branches,
+            "all_results": deep_results,
+        },
+        "owner_admitted": bool(candidate_selection),
+        "candidates": deep_rerank,
+    }
 
 
 def _resolve_executable(
@@ -1422,6 +1556,40 @@ def _dedupe_edges(edges: Sequence[Mapping[str, Any]]) -> list[dict[str, Any]]:
     return result
 
 
+def _execution_stages(
+    node_ids: Iterable[str],
+    edges: Sequence[Mapping[str, Any]],
+) -> list[list[str]]:
+    node_set = set(node_ids)
+    indegree = {node_id: 0 for node_id in node_set}
+    outgoing: defaultdict[str, set[str]] = defaultdict(set)
+    for edge in edges:
+        source = str(edge["source"])
+        target = str(edge["target"])
+        if source == target or source not in node_set or target not in node_set:
+            continue
+        if target not in outgoing[source]:
+            outgoing[source].add(target)
+            indegree[target] += 1
+    stages: list[list[str]] = []
+    ready = sorted(node_id for node_id, degree in indegree.items() if degree == 0)
+    visited: set[str] = set()
+    while ready:
+        stage = [node_id for node_id in ready if node_id not in visited]
+        if not stage:
+            break
+        stages.append(stage)
+        next_ready: set[str] = set()
+        for source in stage:
+            visited.add(source)
+            for target in outgoing.get(source, set()):
+                indegree[target] -= 1
+                if indegree[target] == 0:
+                    next_ready.add(target)
+        ready = sorted(next_ready)
+    return stages if len(visited) == len(node_set) else []
+
+
 def build_task_dag(
     graph: Mapping[str, Any],
     *,
@@ -1471,23 +1639,60 @@ def build_task_dag(
             queue.append(resolved)
             edges.append(
                 {
-                    "kind": "guard" if kind == "guarded-by" else "dependency",
-                    "source": resolved,
-                    "target": current,
+                    "kind": (
+                        "guard"
+                        if kind == "guarded-by"
+                        else "verification"
+                        if kind == "verified-by"
+                        else "dependency"
+                    ),
+                    "source": current if kind == "verified-by" else resolved,
+                    "target": resolved if kind == "verified-by" else current,
                 }
             )
 
     closure_ids = set(selected) | execution_ids
+    verification_by_node: dict[str, str] = {}
     for relation in graph.get("relations", []):
         source = str(relation["source"])
         target = str(relation["target"])
         if source not in closure_ids or target not in closure_ids:
             continue
+        resolved_source = (
+            source if source in execution_ids else selected_to_binding.get(source)
+        )
+        resolved_target = (
+            target if target in execution_ids else selected_to_binding.get(target)
+        )
         if relation["kind"] == "conflicts-with":
             condition = f" ({relation['condition']})" if relation.get("condition") else ""
             blockers.append(f"conflict: {source} vs {target}{condition}")
+        elif relation["kind"] == "incompatible-with-version":
+            condition = f" ({relation['condition']})" if relation.get("condition") else ""
+            blockers.append(f"version incompatibility: {source} vs {target}{condition}")
         elif relation["kind"] == "alternative-to" and source in selected and target in selected:
             warnings.append(f"alternative modes selected together: {source}, {target}")
+        elif (
+            relation["kind"] == "hands-off-to"
+            and resolved_source in execution_ids
+            and resolved_target in execution_ids
+        ):
+            edges.append(
+                {
+                    "kind": "handoff",
+                    "source": resolved_source,
+                    "target": resolved_target,
+                }
+            )
+        elif (
+            relation["kind"] in {"verified-by", "verifies"}
+            and resolved_source in execution_ids
+            and resolved_target in execution_ids
+        ):
+            if relation["kind"] == "verified-by":
+                verification_by_node[resolved_source] = resolved_target
+            else:
+                verification_by_node[resolved_target] = resolved_source
 
     execution_nodes: list[dict[str, Any]] = []
     for node_id in sorted(execution_ids):
@@ -1505,6 +1710,7 @@ def build_task_dag(
                 "inputs": list(node["abi"]["inputs"]),
                 "outputs": list(node["abi"]["outputs"]),
                 "effects": list(node["execution"]["effects"]),
+                "verification": list(node["execution"]["verification"]),
                 "termination": list(node["execution"]["termination"]),
                 "availability": availability,
             }
@@ -1597,6 +1803,19 @@ def build_task_dag(
     cycle = _topology_cycle(execution_ids, edges)
     if cycle:
         blockers.append(f"task-local dependency cycle: {', '.join(cycle)}")
+    execution_stages = _execution_stages(execution_ids, edges)
+    checkpoints = [
+        {
+            "node": str(node["id"]),
+            **(
+                {"verifier": verification_by_node[str(node["id"])]}
+                if str(node["id"]) in verification_by_node
+                else {}
+            ),
+            "criteria": list(node["verification"]),
+        }
+        for node in execution_nodes
+    ]
 
     source_hash = str(graph.get("source", {}).get("content_hash", ""))
     identity = {
@@ -1620,6 +1839,12 @@ def build_task_dag(
         "nodes": execution_nodes,
         "edges": edges,
         "external_inputs": normalized_external_inputs,
+        "execution_stages": execution_stages,
+        "checkpoints": checkpoints,
+        "terminal": {
+            "lifetime": "task-local",
+            "success_condition": "all selected nodes reached verified terminal conditions",
+        },
         "warnings": sorted(set(warnings)),
         "blockers": sorted(set(blockers)),
     }
@@ -1627,7 +1852,12 @@ def build_task_dag(
 
 
 def validate_task_dag(repo_root: Path, payload: Mapping[str, Any]) -> list[str]:
-    schema = load_json(repo_root / DAG_SCHEMA_PATH)
+    schema_path = (
+        LEGACY_DAG_SCHEMA_PATH
+        if payload.get("schema_version") == "aoa-task-local-dag-v1"
+        else DAG_SCHEMA_PATH
+    )
+    schema = load_json(repo_root / schema_path)
     issues = schema_issues(payload, schema)
     node_ids = {str(node["id"]) for node in payload.get("nodes", []) if isinstance(node, Mapping)}
     for edge in payload.get("edges", []):
@@ -1642,6 +1872,21 @@ def validate_task_dag(repo_root: Path, payload: Mapping[str, Any]) -> list[str]:
         issues.append("ready task-local DAG cannot contain blockers")
     if payload.get("status") == "blocked" and not payload.get("blockers"):
         issues.append("blocked task-local DAG must name at least one blocker")
+    if payload.get("schema_version") == DAG_SCHEMA_VERSION:
+        staged_ids = [
+            str(node_id)
+            for stage in payload.get("execution_stages", [])
+            for node_id in stage
+        ]
+        if sorted(staged_ids) != sorted(node_ids):
+            issues.append("execution stages must contain every execution node exactly once")
+        checkpoint_ids = [
+            str(checkpoint.get("node"))
+            for checkpoint in payload.get("checkpoints", [])
+            if isinstance(checkpoint, Mapping)
+        ]
+        if sorted(checkpoint_ids) != sorted(node_ids):
+            issues.append("checkpoints must cover every execution node exactly once")
     graph_path = repo_root / GRAPH_JSON_PATH
     if graph_path.is_file():
         current_graph = load_graph(repo_root)
@@ -1675,6 +1920,22 @@ def render_task_dag_markdown(payload: Mapping[str, Any]) -> str:
     for edge in payload["edges"]:
         artifact = f" [{edge['artifact_type']}]" if edge.get("artifact_type") else ""
         lines.append(f"- `{edge['source']}` -> `{edge['target']}` ({edge['kind']}{artifact})")
+    if payload.get("execution_stages"):
+        lines.extend(["", "## Execution stages", ""])
+        for index, stage in enumerate(payload["execution_stages"], start=1):
+            lines.append(f"{index}. " + ", ".join(f"`{node_id}`" for node_id in stage))
+    if payload.get("checkpoints"):
+        lines.extend(["", "## Verification checkpoints", ""])
+        for checkpoint in payload["checkpoints"]:
+            verifier = (
+                f" via `{checkpoint['verifier']}`"
+                if checkpoint.get("verifier")
+                else ""
+            )
+            lines.append(
+                f"- `{checkpoint['node']}`{verifier}: "
+                + "; ".join(checkpoint["criteria"])
+            )
     if payload["blockers"]:
         lines.extend(["", "## Blockers", ""])
         lines.extend(f"- {item}" for item in payload["blockers"])

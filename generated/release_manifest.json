@@ -360,13 +360,13 @@
     },
     {
       "path": "schemas/capability_family.schema.json",
-      "sha256": "c16de3d4e9329139bd28386bdabd8a3f081ec706efb866062fc10b3646f0b8ed",
-      "bytes": 9369
+      "sha256": "9f99d964b50217d1031247aa90bec20025178b9deaef61b566bb9c01059d6258",
+      "bytes": 13023
     },
     {
       "path": "schemas/capability_graph.schema.json",
-      "sha256": "8a4da14605943e1cb6841a06d1db51fc23baeaafc0f5f8ad2718bf6261218734",
-      "bytes": 4629
+      "sha256": "6b205e63d5472c638c223b930fc3b1a6e163da510a3515e99af33738c3a16c01",
+      "bytes": 5862
     },
     {
       "path": "schemas/release_manifest.schema.json",
@@ -1044,8 +1044,8 @@
     },
     {
       "path": "generated/capability_graph.json",
-      "sha256": "41efec1d42dcda475741f8a7979d81d0eef3d79c8c5148a45b670ddbfa493a97",
-      "bytes": 2244821
+      "sha256": "6d1d6decbf8f3851c4711b068fe2cc4b5339df568a671babfb9ac3bf97b790d9",
+      "bytes": 2996173
     },
     {
       "path": "generated/capability_graph.md",
