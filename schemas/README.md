@@ -7,7 +7,7 @@
 | `task_local_dag.schema.json` | session-local composition result |
 | `skill_migration.schema.json` | exact legacy-to-v2 disposition map |
 | `skill-frontmatter.schema.json` | portable `SKILL.md` frontmatter |
-| `skill-home-port.schema.json` | admitted repository home and its derived repo-scoped projection |
+| `skill-home-port.schema.json` | admitted repository home and its v2 OS-user exposure; v1 repo projection remains migration compatibility |
 | `release_manifest.schema.json` | portable release identity and hashes |
 
 Schemas protect durable shape. They do not establish semantic usefulness or

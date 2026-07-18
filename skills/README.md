@@ -39,14 +39,15 @@ bundle. Until then, keep the behavior as an internal mode or capability node.
 then rebuild with `scripts/export/build_agent_skills.py`; never edit the export
 as authority.
 
-Target projection topology: the `user-default` profile projects only advertised
-shared bundles once into the active host's verified user skill root. The
-standard Codex resolution is `$HOME/.codex/skills`; a different host location
-must be selected explicitly and verified rather than inferred. A sibling
-repository's `.agents/skills/*` may project only that repository's advertised
-home bundles. A workspace-root projection contains only workspace-owned
-procedures, or remains empty. Additional host projections are created only for
-an observed consumer and never become source truth.
+Target projection topology: the OS user profile projects advertised shared and
+admitted owner-home bundles once into the active host's verified user skill
+root. The standard Codex resolution is `$HOME/.codex/skills`; a different host
+location must be selected explicitly and verified rather than inferred. A
+sibling repository's `.agents/skills/*` is reserved for repository-only
+procedures and must not duplicate a globally selected owner bundle. A
+workspace-root projection contains only workspace-owned procedures, or remains
+empty. Additional host projections are created only for an observed consumer
+and never become source truth.
 
 The shared machine grammar for an admitted sibling home is
 `schemas/skill-home-port.schema.json`; the operating contract is

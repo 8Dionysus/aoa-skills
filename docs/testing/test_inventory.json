@@ -10,7 +10,7 @@
     "tests/test_source_export_contract.py",
     "tests/test_validation_lanes.py"
   ],
-  "test_count": 17,
+  "test_count": 18,
   "claims_not_made": [
     "skill outcome improvement",
     "cross-model parity",

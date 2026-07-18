@@ -1,5 +1,5 @@
 name: Validate repository skill home
-description: Validate one owner-local skills port and its exact repo-scoped Codex projection.
+description: Validate one owner-local skills port and its declared host-exposure boundary.
 
 inputs:
   owner-root:
@@ -14,7 +14,7 @@ inputs:
 runs:
   using: composite
   steps:
-    - name: Validate owner skill source and projection
+    - name: Validate owner skill source and exposure
       shell: bash
       env:
         AOA_OWNER_ROOT: ${{ inputs.owner-root }}

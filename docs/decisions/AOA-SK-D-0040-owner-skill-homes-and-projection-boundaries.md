@@ -1,7 +1,7 @@
 # Owner Skill Homes And Projection Boundaries
 
 - Decision ID: AOA-SK-D-0040
-- Status: Accepted
+- Status: Partially superseded by AOA-SK-D-0042
 - Date: 2026-07-15
 - Owner surface: `CHARTER.md`, `DESIGN.md`, `capabilities/`, `skills/`, and host projection contracts
 
@@ -113,6 +113,12 @@ and no legacy shared catalog. The sibling repositories still carry migration
 debt, and four launcher bundles remain nested inside an `8Dionysus` plugin
 pending owner and admission review. No additional repository home is admitted
 by this decision.
+
+The owner-local source law remains active. The standard repository projection
+in Decision item 5 and the same-name coexistence assumption are superseded by
+AOA-SK-D-0042: globally admitted v2 owner bundles use one OS user-profile copy,
+while repository `.agents/skills` remains available only for non-duplicated
+repository-only procedures.
 
 ## Review Log
 

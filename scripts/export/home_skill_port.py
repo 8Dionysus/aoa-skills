@@ -1,4 +1,4 @@
-"""Owner-local skill home port and derived repository projection contract."""
+"""Owner-local skill home contracts for repository and OS-profile exposure."""
 
 from __future__ import annotations
 
@@ -13,10 +13,13 @@ import tempfile
 from typing import Any, Iterable
 
 
-SCHEMA_VERSION = "aoa_skill_home_port_v1"
+SCHEMA_VERSION_V1 = "aoa_skill_home_port_v1"
+SCHEMA_VERSION_V2 = "aoa_skill_home_port_v2"
+SUPPORTED_SCHEMA_VERSIONS = {SCHEMA_VERSION_V1, SCHEMA_VERSION_V2}
 CONTRACT_REF = "aoa-skills:schemas/skill-home-port.schema.json"
 DEFAULT_MANIFEST = Path("skills/port.manifest.json")
 PROJECTION_ROOT = Path(".agents/skills")
+EXPOSURE_PROFILE = "os-user-default"
 NAME_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 OWNER_RE = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._-]*$")
 VERSION_RE = re.compile(
@@ -46,10 +49,12 @@ class BundleSpec:
 class PortDefinition:
     owner_root: Path
     manifest_path: Path
+    schema_version: str
     owner_repo: str
     owner_ref: Path
     bundles: tuple[BundleSpec, ...]
-    projection_root: Path
+    projection_root: Path | None
+    exposure_profile: str | None
 
 
 def _inside(root: Path, relative: Path, *, label: str) -> Path:
@@ -177,13 +182,42 @@ def load_port_definition(
     if not isinstance(document, dict):
         raise PortContractError(["skill home port manifest must be a JSON object"])
 
-    errors = _unknown_keys(
-        document,
-        {"schema_version", "contract_ref", "owner_repo", "owner_ref", "bundles", "projection"},
-        label="manifest",
-    )
-    if document.get("schema_version") != SCHEMA_VERSION:
-        errors.append(f"schema_version must equal {SCHEMA_VERSION!r}")
+    schema_version = document.get("schema_version")
+    if schema_version == SCHEMA_VERSION_V1:
+        allowed_manifest_keys = {
+            "schema_version",
+            "contract_ref",
+            "owner_repo",
+            "owner_ref",
+            "bundles",
+            "projection",
+        }
+    elif schema_version == SCHEMA_VERSION_V2:
+        allowed_manifest_keys = {
+            "schema_version",
+            "contract_ref",
+            "owner_repo",
+            "owner_ref",
+            "bundles",
+            "exposure",
+        }
+    else:
+        allowed_manifest_keys = {
+            "schema_version",
+            "contract_ref",
+            "owner_repo",
+            "owner_ref",
+            "bundles",
+            "projection",
+            "exposure",
+        }
+    errors = _unknown_keys(document, allowed_manifest_keys, label="manifest")
+    if schema_version not in SUPPORTED_SCHEMA_VERSIONS:
+        errors.append(
+            "schema_version must equal one of "
+            f"{sorted(SUPPORTED_SCHEMA_VERSIONS)!r}"
+        )
+        schema_version = "invalid"
     if document.get("contract_ref") != CONTRACT_REF:
         errors.append(f"contract_ref must equal {CONTRACT_REF!r}")
 
@@ -238,7 +272,7 @@ def load_port_definition(
         if visibility != "advertised":
             errors.append(
                 f"{label}.visibility must equal 'advertised'; "
-                "non-projected candidates do not belong in the port"
+                "non-advertised candidates do not belong in the port"
             )
             visibility = "advertised"
         admission_ref = _relative_path(
@@ -255,41 +289,80 @@ def load_port_definition(
                 )
             )
 
-    projection = document.get("projection")
-    projection_root = PROJECTION_ROOT
-    projection_skills: list[str] = []
-    if not isinstance(projection, dict):
-        errors.append("projection must be an object")
-    else:
-        projection_keys = {"runtime", "scope", "root", "mode", "skills"}
-        errors.extend(_unknown_keys(projection, projection_keys, label="projection"))
-        for key, expected in {
-            "runtime": "codex",
-            "scope": "repo",
-            "root": PROJECTION_ROOT.as_posix(),
-            "mode": "generated-copy",
-        }.items():
-            if projection.get(key) != expected:
-                errors.append(f"projection.{key} must equal {expected!r}")
-        raw_projection_skills = projection.get("skills")
-        if not isinstance(raw_projection_skills, list) or not raw_projection_skills:
-            errors.append("projection.skills must be a non-empty array")
-        elif not all(
-            isinstance(item, str) and NAME_RE.fullmatch(item)
-            for item in raw_projection_skills
-        ):
-            errors.append("projection.skills entries must use lowercase kebab-case")
-        else:
-            projection_skills = list(raw_projection_skills)
-            if len(set(projection_skills)) != len(projection_skills):
-                errors.append("projection.skills contains duplicates")
-
     bundle_names = [bundle.name for bundle in bundles]
-    if projection_skills and projection_skills != bundle_names:
-        errors.append(
-            "projection.skills must exactly match bundles order; "
-            "partial home projection is forbidden"
-        )
+    projection_root: Path | None = None
+    exposure_profile: str | None = None
+    if schema_version == SCHEMA_VERSION_V1:
+        projection = document.get("projection")
+        projection_skills: list[str] = []
+        if not isinstance(projection, dict):
+            errors.append("projection must be an object")
+        else:
+            projection_keys = {"runtime", "scope", "root", "mode", "skills"}
+            errors.extend(_unknown_keys(projection, projection_keys, label="projection"))
+            for key, expected in {
+                "runtime": "codex",
+                "scope": "repo",
+                "root": PROJECTION_ROOT.as_posix(),
+                "mode": "generated-copy",
+            }.items():
+                if projection.get(key) != expected:
+                    errors.append(f"projection.{key} must equal {expected!r}")
+            raw_projection_skills = projection.get("skills")
+            if not isinstance(raw_projection_skills, list) or not raw_projection_skills:
+                errors.append("projection.skills must be a non-empty array")
+            elif not all(
+                isinstance(item, str) and NAME_RE.fullmatch(item)
+                for item in raw_projection_skills
+            ):
+                errors.append("projection.skills entries must use lowercase kebab-case")
+            else:
+                projection_skills = list(raw_projection_skills)
+                if len(set(projection_skills)) != len(projection_skills):
+                    errors.append("projection.skills contains duplicates")
+        if projection_skills and projection_skills != bundle_names:
+            errors.append(
+                "projection.skills must exactly match bundles order; "
+                "partial home projection is forbidden"
+            )
+        projection_root = PROJECTION_ROOT
+    elif schema_version == SCHEMA_VERSION_V2:
+        exposure = document.get("exposure")
+        exposure_skills: list[str] = []
+        if not isinstance(exposure, dict):
+            errors.append("exposure must be an object")
+        else:
+            expected_exposure = {
+                "runtime": "codex",
+                "scope": "user",
+                "profile": EXPOSURE_PROFILE,
+                "mode": "profile-selected",
+            }
+            errors.extend(
+                _unknown_keys(
+                    exposure,
+                    {*expected_exposure, "skills"},
+                    label="exposure",
+                )
+            )
+            for key, expected in expected_exposure.items():
+                if exposure.get(key) != expected:
+                    errors.append(f"exposure.{key} must equal {expected!r}")
+            raw_exposure_skills = exposure.get("skills")
+            if not isinstance(raw_exposure_skills, list) or not raw_exposure_skills:
+                errors.append("exposure.skills must be a non-empty array")
+            elif not all(
+                isinstance(item, str) and NAME_RE.fullmatch(item)
+                for item in raw_exposure_skills
+            ):
+                errors.append("exposure.skills entries must use lowercase kebab-case")
+            else:
+                exposure_skills = list(raw_exposure_skills)
+                if len(set(exposure_skills)) != len(exposure_skills):
+                    errors.append("exposure.skills contains duplicates")
+        if exposure_skills and exposure_skills != bundle_names:
+            errors.append("exposure.skills must exactly match bundles order")
+        exposure_profile = EXPOSURE_PROFILE
 
     if errors:
         raise PortContractError(errors)
@@ -322,18 +395,31 @@ def load_port_definition(
     if errors:
         raise PortContractError(errors)
 
-    projection_root_path = _inside(owner_root_path, projection_root, label="projection.root")
+    projection_root_path = (
+        _inside(owner_root_path, projection_root, label="projection.root")
+        if projection_root is not None
+        else None
+    )
     return PortDefinition(
         owner_root=owner_root_path,
         manifest_path=manifest,
+        schema_version=str(schema_version),
         owner_repo=str(owner_repo),
         owner_ref=owner_ref,
         bundles=tuple(bundles),
         projection_root=projection_root_path,
+        exposure_profile=exposure_profile,
     )
 
 
 def projection_plan(port: PortDefinition) -> dict[str, Any]:
+    if port.schema_version != SCHEMA_VERSION_V1 or port.projection_root is None:
+        raise PortContractError(
+            [
+                "repository projection planning applies only to deprecated v1 ports; "
+                "v2 owner homes are installed through the OS user profile"
+            ]
+        )
     projection_root = port.projection_root
     if projection_root.exists() and (projection_root.is_symlink() or not projection_root.is_dir()):
         raise PortContractError([f"projection root must be a real directory: {projection_root}"])
@@ -377,6 +463,60 @@ def projection_plan(port: PortDefinition) -> dict[str, Any]:
         "clean": clean,
         "claim_limit": "structural owner and byte parity only; no skill quality or outcome claim",
     }
+
+
+def source_plan(port: PortDefinition) -> dict[str, Any]:
+    if port.schema_version != SCHEMA_VERSION_V2 or port.exposure_profile is None:
+        raise PortContractError(
+            ["OS-profile source planning applies only to v2 owner-home ports"]
+        )
+
+    duplicate_repo_projections: list[str] = []
+    bundle_records: list[dict[str, Any]] = []
+    for bundle in port.bundles:
+        source_dir = _inside(
+            port.owner_root,
+            bundle.path,
+            label=f"bundle {bundle.name} path",
+        )
+        source_snapshot = _tree_snapshot(
+            source_dir,
+            label=f"bundle {bundle.name} source",
+        )
+        repo_projection = port.owner_root / PROJECTION_ROOT / bundle.name
+        if repo_projection.exists() or repo_projection.is_symlink():
+            duplicate_repo_projections.append(
+                repo_projection.relative_to(port.owner_root).as_posix()
+            )
+        bundle_records.append(
+            {
+                "name": bundle.name,
+                "version": bundle.version,
+                "source": bundle.path.as_posix(),
+                "source_digest": _tree_digest(source_snapshot),
+                "file_count": len(source_snapshot),
+                "exposure_profile": port.exposure_profile,
+            }
+        )
+
+    return {
+        "schema_version": "aoa_skill_home_source_plan_v2",
+        "owner_repo": port.owner_repo,
+        "manifest": port.manifest_path.relative_to(port.owner_root).as_posix(),
+        "bundles": bundle_records,
+        "duplicate_repo_projections": duplicate_repo_projections,
+        "clean": not duplicate_repo_projections,
+        "claim_limit": (
+            "owner source identity, package shape, and same-name repo-projection "
+            "absence only; no live user install, routing, or outcome claim"
+        ),
+    }
+
+
+def validation_plan(port: PortDefinition) -> dict[str, Any]:
+    if port.schema_version == SCHEMA_VERSION_V1:
+        return projection_plan(port)
+    return source_plan(port)
 
 
 def apply_projection(port: PortDefinition, *, prune: bool = False) -> dict[str, Any]:
@@ -448,18 +588,30 @@ def apply_projection(port: PortDefinition, *, prune: bool = False) -> dict[str, 
 
 
 def format_plan(plan: dict[str, Any]) -> str:
-    lines = [
-        f"owner: {plan['owner_repo']}",
-        f"manifest: {plan['manifest']}",
-        f"projection: {plan['projection_root']}",
-    ]
-    for bundle in plan["bundles"]:
-        lines.append(
-            f"- {bundle['name']}: {bundle['status']} "
-            f"files={bundle['file_count']} source={bundle['source']} target={bundle['target']}"
-        )
-    if plan["unexpected_entries"]:
-        lines.append("unexpected: " + ", ".join(plan["unexpected_entries"]))
+    lines = [f"owner: {plan['owner_repo']}", f"manifest: {plan['manifest']}"]
+    if plan["schema_version"] == "aoa_skill_home_projection_plan_v1":
+        lines.append(f"projection: {plan['projection_root']}")
+        for bundle in plan["bundles"]:
+            lines.append(
+                f"- {bundle['name']}: {bundle['status']} "
+                f"files={bundle['file_count']} source={bundle['source']} "
+                f"target={bundle['target']}"
+            )
+        if plan["unexpected_entries"]:
+            lines.append("unexpected: " + ", ".join(plan["unexpected_entries"]))
+    else:
+        for bundle in plan["bundles"]:
+            lines.append(
+                f"- {bundle['name']}: source={bundle['source']} "
+                f"version={bundle['version']} files={bundle['file_count']} "
+                f"digest={bundle['source_digest']} "
+                f"profile={bundle['exposure_profile']}"
+            )
+        if plan["duplicate_repo_projections"]:
+            lines.append(
+                "duplicate repo projections: "
+                + ", ".join(plan["duplicate_repo_projections"])
+            )
     lines.append(f"clean: {'yes' if plan['clean'] else 'no'}")
     lines.append(f"claim limit: {plan['claim_limit']}")
     return "\n".join(lines)

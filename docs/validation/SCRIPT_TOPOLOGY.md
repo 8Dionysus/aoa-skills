@@ -3,7 +3,7 @@
 | Organ | Owns |
 | --- | --- |
 | `builders/` | capability graph and Questbook read models |
-| `export/` | shared portable bundles plus owner-home repo projections |
+| `export/` | shared portable bundles, owner-home exposure parsing, and transitional v1 repo projections |
 | `bundles/` | stage, inspect, import, install, verify, smoke handoff |
 | `runtime/` | typed task-local capability DAG planning |
 | `skill_model/` | current capability, source, section, layout, Questbook models |
@@ -16,7 +16,8 @@ Root `scripts/*.py` files are stable compatibility front doors implemented via
 router, technique refresh, stats proxy, governance, and 57-skill catalog code
 must not return through a wrapper.
 
-`export/build_home_skill_projection.py` is a cross-repository builder, not a
-skill author or admission judge. It previews by default, requires explicit
-`--execute` to write, and requires an additional `--prune` before removing
-undeclared legacy projection entries.
+`export/build_home_skill_projection.py` is a transitional v1 cross-repository
+builder, not a skill author or admission judge. It previews by default,
+requires explicit `--execute` to write, and requires an additional `--prune`
+before removing undeclared legacy projection entries. V2 owner homes route to
+the OS user-profile installer and cannot use this builder.

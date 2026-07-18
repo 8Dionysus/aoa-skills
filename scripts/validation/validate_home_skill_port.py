@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate one owner-local skill home and exact repository projection."""
+"""Validate one canonical owner skill home and its declared exposure boundary."""
 
 from __future__ import annotations
 
@@ -12,7 +12,10 @@ from export import home_skill_port
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="Validate structural ownership and byte parity for a repository skill home."
+        description=(
+            "Validate owner source shape and either deprecated v1 repository "
+            "projection parity or v2 OS-profile exposure."
+        )
     )
     parser.add_argument("--owner-root", default=".")
     parser.add_argument("--manifest", default=home_skill_port.DEFAULT_MANIFEST.as_posix())
@@ -24,7 +27,7 @@ def main() -> int:
     args = parse_args()
     try:
         port = home_skill_port.load_port_definition(args.owner_root, args.manifest)
-        plan = home_skill_port.projection_plan(port)
+        plan = home_skill_port.validation_plan(port)
     except home_skill_port.PortContractError as exc:
         if args.format == "json":
             print(
@@ -40,9 +43,14 @@ def main() -> int:
         return 1
 
     if args.format == "json":
+        result_key = (
+            "projection"
+            if plan["schema_version"] == "aoa_skill_home_projection_plan_v1"
+            else "source"
+        )
         print(
             json.dumps(
-                {"ok": bool(plan["clean"]), "projection": plan},
+                {"ok": bool(plan["clean"]), result_key: plan},
                 ensure_ascii=False,
                 indent=2,
             )

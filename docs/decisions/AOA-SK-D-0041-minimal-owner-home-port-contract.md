@@ -1,7 +1,7 @@
 # Minimal Owner Home Port Contract
 
 - Decision ID: AOA-SK-D-0041
-- Status: Accepted
+- Status: Partially superseded by AOA-SK-D-0042
 - Date: 2026-07-15
 - Owner surface: `schemas/skill-home-port.schema.json`,
   `docs/HOME_SKILL_PORT.md`, and owner projection scripts
@@ -91,6 +91,11 @@ As of 2026-07-15, the common contract is ready for its first owner consumer.
 It does not itself admit `aoa-stats` or any other sibling bundle. The existing
 legacy sibling projections remain migration debt until their owners are
 handled through clean branches and reviewed landings.
+
+The admission, source-shape, containment, and package-residue rules remain
+active. AOA-SK-D-0042 supersedes the v1 repository projection as the target:
+v1 is now migration compatibility, and new admitted owner homes declare v2
+OS-user exposure without a same-name repository copy.
 
 ## Boundaries
 

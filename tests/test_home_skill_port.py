@@ -57,10 +57,31 @@ def make_owner(root: Path) -> Path:
     return root
 
 
-def test_schema_is_valid() -> None:
+def upgrade_owner_to_v2(root: Path) -> dict[str, object]:
+    manifest_path = root / "skills" / "port.manifest.json"
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    projection = manifest.pop("projection")
+    manifest["schema_version"] = "aoa_skill_home_port_v2"
+    manifest["exposure"] = {
+        "runtime": projection["runtime"],
+        "scope": "user",
+        "profile": "os-user-default",
+        "mode": "profile-selected",
+        "skills": projection["skills"],
+    }
+    manifest_path.write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
+    return manifest
+
+
+def test_schema_is_valid(tmp_path: Path) -> None:
     repo_root = Path(__file__).resolve().parents[1]
     schema = json.loads((repo_root / "schemas" / "skill-home-port.schema.json").read_text())
     Draft202012Validator.check_schema(schema)
+    validator = Draft202012Validator(schema)
+    owner = make_owner(tmp_path / "aoa-stats")
+    manifest_path = owner / "skills" / "port.manifest.json"
+    validator.validate(json.loads(manifest_path.read_text(encoding="utf-8")))
+    validator.validate(upgrade_owner_to_v2(owner))
 
 
 def test_projection_roundtrip_and_source_drift(tmp_path: Path) -> None:
@@ -119,8 +140,42 @@ def test_manifest_frontmatter_and_visibility_must_agree(tmp_path: Path) -> None:
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
     manifest["bundles"][0]["visibility"] = "explicit-only"
     manifest_path.write_text(json.dumps(manifest), encoding="utf-8")
-    with pytest.raises(home_skill_port.PortContractError, match="non-projected candidates"):
+    with pytest.raises(home_skill_port.PortContractError, match="non-advertised candidates"):
         home_skill_port.load_port_definition(owner)
+
+
+def test_v2_user_exposure_rejects_same_name_repo_projection(tmp_path: Path) -> None:
+    owner = make_owner(tmp_path / "aoa-stats")
+    manifest = upgrade_owner_to_v2(owner)
+    schema = json.loads(
+        (
+            Path(__file__).resolve().parents[1]
+            / "schemas"
+            / "skill-home-port.schema.json"
+        ).read_text(encoding="utf-8")
+    )
+    Draft202012Validator(schema).validate(manifest)
+
+    port = home_skill_port.load_port_definition(owner)
+    clean = home_skill_port.validation_plan(port)
+    assert clean["clean"] is True
+    assert clean["duplicate_repo_projections"] == []
+    with pytest.raises(home_skill_port.PortContractError, match="OS user profile"):
+        home_skill_port.projection_plan(port)
+
+    repo_only = owner / ".agents" / "skills" / "repo-only"
+    repo_only.mkdir(parents=True)
+    (repo_only / "SKILL.md").write_text("repo-only\n", encoding="utf-8")
+    assert home_skill_port.validation_plan(port)["clean"] is True
+
+    duplicate = owner / ".agents" / "skills" / "aoa-stats"
+    duplicate.mkdir()
+    (duplicate / "SKILL.md").write_text("duplicate\n", encoding="utf-8")
+    blocked = home_skill_port.validation_plan(port)
+    assert blocked["clean"] is False
+    assert blocked["duplicate_repo_projections"] == [
+        ".agents/skills/aoa-stats"
+    ]
 
 
 def test_transient_or_symlinked_bundle_payload_is_rejected(tmp_path: Path) -> None:
