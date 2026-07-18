@@ -80,6 +80,7 @@ def main(argv: Sequence[str] | None = None) -> int:
                 query=args.query,
                 selected_capabilities=args.select,
                 external_inputs=parse_inputs(args.input),
+                source_graph_path=port.graph_json,
             )
             issues = capability_home_port.validate_task_dag(port, graph, payload)
             if issues:

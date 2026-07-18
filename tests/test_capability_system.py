@@ -288,6 +288,35 @@ def test_shared_task_dag_structure_rejects_dangling_edge_endpoints() -> None:
     assert "edge target does not exist: mode.missing-target" in issues
 
 
+def test_owner_task_dag_preserves_and_validates_configured_graph_path() -> None:
+    graph = capability_system.load_graph(REPO_ROOT)
+    graph_path = "derived/owner-capability-graph.json"
+    payload = capability_system.build_task_dag(
+        graph,
+        query="select then apply one evaluation",
+        selected_capabilities=["mode.eval.select", "mode.eval.apply"],
+        external_inputs=[
+            {"type": "evaluation-selection-need", "ref": "manual://need"}
+        ],
+        source_graph_path=graph_path,
+    )
+    port = capability_home_port.CapabilityHomePort(
+        contract_root=REPO_ROOT,
+        owner_root=REPO_ROOT,
+        manifest_path=REPO_ROOT / "capabilities" / "port.manifest.json",
+        manifest={"projection": {"graph_json": graph_path}},
+    )
+
+    assert payload["source_graph"]["path"] == graph_path
+    assert capability_home_port.validate_task_dag(port, graph, payload) == []
+
+    wrong_path = copy.deepcopy(payload)
+    wrong_path["source_graph"]["path"] = "generated/capability_graph.json"
+    assert "task-local DAG source path does not match owner graph" in (
+        capability_home_port.validate_task_dag(port, graph, wrong_path)
+    )
+
+
 def test_owner_contract_metadata_fingerprints_full_shared_closure() -> None:
     port = capability_home_port.CapabilityHomePort(
         contract_root=REPO_ROOT,
@@ -306,6 +335,32 @@ def test_owner_contract_metadata_fingerprints_full_shared_closure() -> None:
         assert row["sha256"] == capability_home_port._sha256(
             (REPO_ROOT / row["path"]).read_bytes()
         )
+
+
+def test_owner_router_heading_uses_owner_identity() -> None:
+    port = capability_home_port.CapabilityHomePort(
+        contract_root=REPO_ROOT,
+        owner_root=REPO_ROOT,
+        manifest_path=REPO_ROOT / "capabilities" / "port.manifest.json",
+        manifest={
+            "owner_repo": "owner-example",
+            "source": {"root_id": "owner-example-root"},
+            "federation": {
+                "relation": "specializes",
+                "parent_owner": "aoa-skills",
+                "parent_node": "sessions",
+            },
+        },
+    )
+    graph = {
+        "source": {"content_hash": "a" * 64},
+        "nodes": [],
+    }
+
+    rendered = capability_home_port.render_router_markdown(port, graph)
+
+    assert rendered.startswith("# owner-example capability router\n")
+    assert "Session-memory capability router" not in rendered
 
 
 def test_owner_graph_hash_includes_skill_package_mode_bits(tmp_path: Path) -> None:

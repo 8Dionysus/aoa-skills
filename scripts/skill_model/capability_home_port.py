@@ -650,7 +650,7 @@ def render_router_markdown(
         )
     )
     lines = [
-        "# Session-memory capability router",
+        f"# {port.owner_repo} capability router",
         "",
         "Generated from owner capability contracts. This card is a retrieval read model, not procedure or proof authority.",
         "",
@@ -738,4 +738,6 @@ def validate_task_dag(
         "content_hash"
     ):
         issues.append("task-local DAG source hash does not match owner graph")
+    if payload.get("source_graph", {}).get("path") != port.graph_json.as_posix():
+        issues.append("task-local DAG source path does not match owner graph")
     return issues

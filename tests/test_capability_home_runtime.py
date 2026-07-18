@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import sys
 from pathlib import Path
+from types import SimpleNamespace
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
@@ -35,6 +36,7 @@ def test_plan_returns_nonzero_for_valid_blocked_dag(
     monkeypatch,
     capsys,
 ) -> None:
+    captured: dict[str, object] = {}
     blocked = {
         "schema_version": "aoa-task-local-dag-v2",
         "status": "blocked",
@@ -43,7 +45,9 @@ def test_plan_returns_nonzero_for_valid_blocked_dag(
     monkeypatch.setattr(
         capability_home.capability_home_port,
         "load_port",
-        lambda *args: object(),
+        lambda *args: SimpleNamespace(
+            graph_json=Path("derived/custom-capability-graph.json")
+        ),
     )
     monkeypatch.setattr(
         capability_home.capability_home_port,
@@ -53,7 +57,10 @@ def test_plan_returns_nonzero_for_valid_blocked_dag(
     monkeypatch.setattr(
         capability_home.capability_system,
         "build_task_dag",
-        lambda *args, **kwargs: blocked,
+        lambda *args, **kwargs: (
+            captured.update(kwargs)
+            or blocked
+        ),
     )
     monkeypatch.setattr(
         capability_home.capability_home_port,
@@ -73,4 +80,7 @@ def test_plan_returns_nonzero_for_valid_blocked_dag(
     )
 
     assert exit_code == 2
+    assert captured["source_graph_path"] == Path(
+        "derived/custom-capability-graph.json"
+    )
     assert '"status": "blocked"' in capsys.readouterr().out

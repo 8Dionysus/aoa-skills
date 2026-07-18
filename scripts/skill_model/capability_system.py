@@ -1611,6 +1611,7 @@ def build_task_dag(
     query: str,
     selected_capabilities: Sequence[str],
     external_inputs: Sequence[Mapping[str, str]] = (),
+    source_graph_path: str | Path = GRAPH_JSON_PATH,
 ) -> dict[str, Any]:
     if not query.strip():
         raise CapabilityContractError("task-local DAG query must not be empty")
@@ -1858,10 +1859,12 @@ def build_task_dag(
     ]
 
     source_hash = str(graph.get("source", {}).get("content_hash", ""))
+    normalized_source_graph_path = Path(source_graph_path).as_posix()
     identity = {
         "query": query,
         "selected": selected,
         "external_inputs": normalized_external_inputs,
+        "source_graph_path": normalized_source_graph_path,
         "source_hash": source_hash,
     }
     plan_id = f"dag-{sha256_bytes(canonical_json(identity).encode('utf-8'))[:16]}"
@@ -1871,7 +1874,7 @@ def build_task_dag(
         "plan_id": plan_id,
         "request": {"query": query},
         "source_graph": {
-            "path": GRAPH_JSON_PATH.as_posix(),
+            "path": normalized_source_graph_path,
             "content_hash": source_hash,
         },
         "status": "blocked" if blockers else "ready",
