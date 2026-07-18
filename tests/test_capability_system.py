@@ -673,3 +673,85 @@ def test_two_stage_retrieval_keeps_package_text_behind_owner_admission() -> None
     )
     assert no_owner_match["owner_admitted"] is False
     assert no_owner_match["deep_rerank"]["candidates"] == []
+
+
+def test_negative_phrase_penalty_uses_only_negative_specific_tokens() -> None:
+    graph = {
+        "nodes": [],
+        "retrieval_documents": [
+            {
+                "id": "skill.session-router",
+                "kind": "skill",
+                "visibility": "advertised",
+                "title": "Session memory router",
+                "description": "Route session memory archive queries.",
+                "search_text": "session memory archive route query",
+                "positive_text": "session memory archive route query",
+                "negative_text": (
+                    "A narrower session memory owner is already known and "
+                    "no query is required."
+                ),
+                "negative_phrases": [
+                    "A narrower session memory owner is already known and "
+                    "no query is required."
+                ],
+                "routing_tokens": [
+                    "archive",
+                    "memory",
+                    "query",
+                    "route",
+                    "session",
+                ],
+                "positive_tokens": [
+                    "archive",
+                    "memory",
+                    "query",
+                    "route",
+                    "session",
+                ],
+                "negative_tokens": [
+                    "already",
+                    "known",
+                    "memory",
+                    "narrower",
+                    "no",
+                    "owner",
+                    "required",
+                    "session",
+                ],
+                "contract_tokens": [
+                    "archive",
+                    "memory",
+                    "query",
+                    "route",
+                    "session",
+                ],
+                "package_tokens": [],
+                "tokens": [
+                    "archive",
+                    "memory",
+                    "query",
+                    "route",
+                    "session",
+                ],
+            }
+        ],
+    }
+
+    positive = capability_system.discover(
+        graph,
+        "session memory archive route query with no mutation",
+        retrieval_depth="compact",
+    )
+    negative = capability_system.discover(
+        graph,
+        "session memory archive route query narrower owner known",
+        retrieval_depth="compact",
+    )
+
+    assert positive[0]["negative_matched_tokens"] == []
+    assert negative[0]["negative_matched_tokens"] == [
+        "known",
+        "narrower",
+        "owner",
+    ]

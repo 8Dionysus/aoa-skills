@@ -89,6 +89,14 @@ STOPWORDS = {
     "этот",
     "что",
 }
+NEGATIVE_CONTEXT_TOKENS = {
+    "except",
+    "no",
+    "not",
+    "only",
+    "unless",
+    "without",
+}
 
 RUSSIAN_INFLECTIONS = tuple(
     sorted(
@@ -1358,13 +1366,21 @@ def discover(
                 matched.append(token)
                 score += token_score
                 strongest_match = max(strongest_match, token_score)
-            if token in negative_only_tokens:
+            if (
+                token in negative_only_tokens
+                and token not in NEGATIVE_CONTEXT_TOKENS
+            ):
                 negative_matched.append(token)
                 score -= 3.0
         for negative_phrase in document.get("negative_phrases", []):
-            phrase_tokens = set(tokenize(str(negative_phrase)))
-            overlap = set(query_tokens) & phrase_tokens
-            if len(overlap) >= 2 and len(overlap) / max(len(query_tokens), 1) >= 0.30:
+            phrase_tokens = (
+                set(tokenize(str(negative_phrase))) & negative_only_tokens
+            )
+            overlap = query_token_set & phrase_tokens
+            if (
+                len(overlap) >= 2
+                and len(overlap) / max(len(phrase_tokens), 1) >= 0.30
+            ):
                 negative_matched.extend(overlap)
                 score -= 2.5 * len(overlap)
         phrase_match = bool(
