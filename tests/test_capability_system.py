@@ -755,3 +755,95 @@ def test_negative_phrase_penalty_uses_only_negative_specific_tokens() -> None:
         "narrower",
         "owner",
     ]
+
+
+def test_negative_phrase_preserves_explicit_scope_over_positive_terms() -> None:
+    graph = {
+        "nodes": [],
+        "retrieval_documents": [
+            {
+                "id": "workflow.titan.summon",
+                "kind": "workflow",
+                "visibility": "internal",
+                "title": "Explicit Titan summon",
+                "description": "Summon Titans for bounded delegated tasks.",
+                "search_text": "explicit titan summon bounded delegation tasks",
+                "positive_text": (
+                    "explicit titan summon bounded delegation requested tasks"
+                ),
+                "negative_text": (
+                    "delegation was not requested tasks are not bounded"
+                ),
+                "negative_phrases": [
+                    "delegation was not requested",
+                    "tasks are not bounded",
+                ],
+                "routing_tokens": ["explicit", "summon", "titan"],
+                "positive_tokens": [
+                    "bounded",
+                    "delegation",
+                    "explicit",
+                    "requested",
+                    "summon",
+                    "tasks",
+                    "titan",
+                ],
+                "negative_tokens": [
+                    "bounded",
+                    "delegation",
+                    "not",
+                    "requested",
+                    "tasks",
+                    "was",
+                ],
+                "contract_tokens": [
+                    "bounded",
+                    "delegation",
+                    "explicit",
+                    "requested",
+                    "summon",
+                    "tasks",
+                    "titan",
+                ],
+                "package_tokens": [],
+                "tokens": [
+                    "bounded",
+                    "delegation",
+                    "explicit",
+                    "requested",
+                    "summon",
+                    "tasks",
+                    "titan",
+                ],
+            }
+        ],
+    }
+
+    positive = capability_system.discover(
+        graph,
+        "explicit titan summon with bounded tasks and requested delegation",
+        retrieval_depth="compact",
+    )
+    unbounded = capability_system.discover(
+        graph,
+        "explicit titan summon tasks are not bounded",
+        retrieval_depth="compact",
+    )
+    unrequested = capability_system.discover(
+        graph,
+        "explicit titan summon but delegation was not requested",
+        retrieval_depth="compact",
+    )
+
+    assert positive[0]["negative_matched_tokens"] == []
+    assert unbounded[0]["negative_matched_tokens"] == [
+        "bounded",
+        "not",
+        "tasks",
+    ]
+    assert unrequested[0]["negative_matched_tokens"] == [
+        "delegation",
+        "not",
+        "requested",
+        "was",
+    ]
