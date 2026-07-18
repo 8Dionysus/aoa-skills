@@ -1,0 +1,17 @@
+{
+  "allowed_bytes": 7124823,
+  "allowed_tracked_bytes": 9637555,
+  "approved_by": "repository-owner",
+  "base_ref": "42c6afa8c817ac3732e9a6710fd0ddf251cd4a97",
+  "changed_generated_bytes": 7124823,
+  "changed_generated_files": 260,
+  "decision_ref": "aoa-kag:docs/decisions/AOA-KAG-D-0017-portable-content-addressed-repository-family.md",
+  "default_limit_bytes": 1048576,
+  "head_family_digest": "d93c37efc12a0a8494d8d4a20aff83106015aa1b8421e3218c57250a58d278c8",
+  "reason": "Owner-reviewed federation fix derives router identity from each owner and binds task DAG source_graph.path to the manifest-declared projection with validator enforcement; this receipt authorizes only the measured KAG delta and preserves the standing budget.",
+  "repo": "aoa-skills",
+  "schema_version": "aoa-repo-local-kag-budget-receipt-v1",
+  "scope": "generated_delta_and_tracked_size",
+  "tracked_bytes": 9637555,
+  "tracked_bytes_max": 9437184
+}
