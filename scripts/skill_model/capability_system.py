@@ -734,6 +734,7 @@ def exact_negative_clause_matches(
     phrase_tokens: Sequence[str],
     *,
     minimum_run: int = 4,
+    scope_width: int = 3,
 ) -> set[str]:
     """Return a bounded exact-clause match even when all terms are shared.
 
@@ -741,9 +742,9 @@ def exact_negative_clause_matches(
     that also occurs in the positive contract.  Token-level negative evidence
     cannot distinguish that case.  Admit it only when the query contains a
     run of at least four clause terms, allowing narrow inflectional variants
-    such as ``existing``/``exists``.  An explicit negative scope immediately
-    before the run suppresses the match because ``no existing candidate`` is
-    the opposite condition.
+    such as ``existing``/``exists``.  An explicit negative scope within the
+    bounded modifier window before the run suppresses the match because
+    ``no suitable existing candidate`` is the opposite condition.
     """
 
     if any(token in NEGATIVE_SCOPE_TOKENS for token in phrase_tokens):
@@ -771,10 +772,10 @@ def exact_negative_clause_matches(
     def exact_run(run: Sequence[str], run_start: int) -> set[str]:
         if len(run) < minimum_run or len(set(run)) < minimum_run:
             return set()
-        if (
-            run_start > 0
-            and query_tokens[run_start - 1] in NEGATIVE_SCOPE_TOKENS
-        ):
+        preceding_scope = query_tokens[
+            max(0, run_start - scope_width) : run_start
+        ]
+        if any(token in NEGATIVE_SCOPE_TOKENS for token in preceding_scope):
             return set()
         if is_subsequence(run, phrase_forms):
             return set(run)

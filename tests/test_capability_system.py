@@ -858,12 +858,20 @@ def test_negative_phrase_preserves_exact_clause_with_shared_vocabulary() -> None
         retrieval_depth="compact",
         limit=30,
     )
-    absent = capability_system.discover(
-        graph,
+    absent_queries = [
         "no existing concrete memo candidate",
-        retrieval_depth="compact",
-        limit=30,
-    )
+        "no suitable existing concrete memo candidate",
+        "not a suitable existing concrete memo candidate",
+    ]
+    absent_results = [
+        capability_system.discover(
+            graph,
+            query,
+            retrieval_depth="compact",
+            limit=30,
+        )
+        for query in absent_queries
+    ]
     existing = capability_system.discover(
         graph,
         "existing concrete memo candidate",
@@ -871,7 +879,7 @@ def test_negative_phrase_preserves_exact_clause_with_shared_vocabulary() -> None
         limit=30,
     )
 
-    for results in (positive, absent):
+    for results in (positive, *absent_results):
         memo = next(
             row for row in results if row["id"] == "sessions.memo-writeback"
         )
