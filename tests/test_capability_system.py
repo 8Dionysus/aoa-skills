@@ -1,8 +1,11 @@
 from __future__ import annotations
 
 import copy
+import json
 import sys
 from pathlib import Path
+
+import pytest
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
@@ -286,6 +289,165 @@ def test_shared_task_dag_structure_rejects_dangling_edge_endpoints() -> None:
 
     assert "edge source does not exist: mode.missing-source" in issues
     assert "edge target does not exist: mode.missing-target" in issues
+
+
+def test_shared_task_dag_structure_rejects_reversed_execution_stages() -> None:
+    graph = capability_system.load_graph(REPO_ROOT)
+    payload = capability_system.build_task_dag(
+        graph,
+        query="select then apply one evaluation",
+        selected_capabilities=["mode.eval.select", "mode.eval.apply"],
+        external_inputs=[
+            {"type": "evaluation-selection-need", "ref": "manual://need"}
+        ],
+    )
+    reversed_stages = copy.deepcopy(payload)
+    reversed_stages["execution_stages"] = list(
+        reversed(reversed_stages["execution_stages"])
+    )
+    schema = capability_system.load_json(
+        REPO_ROOT / capability_system.DAG_SCHEMA_PATH
+    )
+
+    issues = capability_system.task_dag_structural_issues(
+        reversed_stages,
+        schema,
+    )
+
+    assert (
+        "execution stage order violates edge "
+        "mode.eval.select -> mode.eval.apply: source must precede target"
+    ) in issues
+
+
+def _write_owner_port(
+    root: Path,
+    projection: dict[str, object],
+) -> Path:
+    (root / "capabilities").mkdir(parents=True)
+    (root / "skills").mkdir()
+    (root / "capabilities" / "AGENTS.md").write_text(
+        "# Owner\n",
+        encoding="utf-8",
+    )
+    (root / "capabilities" / "admission.md").write_text(
+        "# Admission\n",
+        encoding="utf-8",
+    )
+    (root / "skills" / "port.manifest.json").write_text(
+        "{}\n",
+        encoding="utf-8",
+    )
+    manifest = {
+        "schema_version": "aoa_capability_home_port_v1",
+        "contract_ref": "aoa-skills:schemas/capability-home-port.schema.json",
+        "owner_repo": "owner-example",
+        "owner_ref": "capabilities/AGENTS.md",
+        "admission_ref": "capabilities/admission.md",
+        "source": {
+            "family_root": "capabilities/families",
+            "root_id": "owner-example",
+        },
+        "federation": {
+            "parent_owner": "aoa-skills",
+            "parent_node": "sessions",
+            "relation": "specializes",
+        },
+        "skill_home_ref": "skills/port.manifest.json",
+        "projection": {
+            "authority": False,
+            **projection,
+            "generated_by": (
+                "aoa-skills:scripts/build_capability_home_projection.py"
+            ),
+        },
+    }
+    path = root / "capabilities" / "port.manifest.json"
+    path.write_text(
+        json.dumps(manifest, indent=2) + "\n",
+        encoding="utf-8",
+    )
+    return path
+
+
+def test_owner_projection_outputs_reject_authored_paths_and_collisions(
+    tmp_path: Path,
+) -> None:
+    unsafe_root = tmp_path / "unsafe"
+    _write_owner_port(
+        unsafe_root,
+        {
+            "graph_json": "generated/capability-graph.json",
+            "graph_markdown": "capabilities/families/owner-example.yaml",
+            "router_markdown": "skills/owner-router/SKILL.md",
+        },
+    )
+
+    with pytest.raises(
+        capability_home_port.CapabilityHomePortError,
+        match="projection",
+    ):
+        capability_home_port.load_port(REPO_ROOT, unsafe_root)
+
+    collision_root = tmp_path / "collision"
+    _write_owner_port(
+        collision_root,
+        {
+            "graph_json": "generated/capability-graph.json",
+            "graph_markdown": "generated/capability-router.md",
+            "router_markdown": "generated/capability-router.md",
+        },
+    )
+
+    with pytest.raises(
+        capability_home_port.CapabilityHomePortError,
+        match="projection outputs must be distinct read models",
+    ):
+        capability_home_port.load_port(REPO_ROOT, collision_root)
+
+
+def test_owner_projection_outputs_allow_package_local_generated_router(
+    tmp_path: Path,
+) -> None:
+    _write_owner_port(
+        tmp_path,
+        {
+            "graph_json": "generated/capability-graph.json",
+            "graph_markdown": "generated/capability-graph.md",
+            "router_markdown": (
+                "skills/owner-router/references/capability-router.md"
+            ),
+        },
+    )
+
+    port = capability_home_port.load_port(REPO_ROOT, tmp_path)
+
+    assert port.router_markdown == Path(
+        "skills/owner-router/references/capability-router.md"
+    )
+
+
+def test_owner_builder_rechecks_projection_paths_before_source_loading(
+    tmp_path: Path,
+) -> None:
+    port = capability_home_port.CapabilityHomePort(
+        contract_root=REPO_ROOT,
+        owner_root=tmp_path,
+        manifest_path=tmp_path / "capabilities" / "port.manifest.json",
+        manifest={
+            "projection": {
+                "graph_json": "generated/capability-graph.json",
+                "graph_markdown": "generated/capability-graph.md",
+                "router_markdown": "skills/owner-router/SKILL.md",
+            }
+        },
+    )
+
+    with pytest.raises(
+        capability_home_port.CapabilityHomePortError,
+        match="projection.router_markdown",
+    ):
+        capability_home_port.build_outputs(port)
 
 
 def test_owner_task_dag_preserves_and_validates_configured_graph_path() -> None:

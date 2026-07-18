@@ -113,6 +113,13 @@ its own generated router from the authored package fingerprint to avoid a
 self-referential digest. Installed runtime package digests therefore remain a
 separate identity dimension.
 
+Projection outputs are confined read models. Graph JSON and Markdown must live
+under `generated/`, `derived/`, or `read-models/`; a prompt-loadable router may
+also use the exact package-local path
+`skills/<bundle>/references/capability-router.md`. All three paths must be
+distinct. The loader and builder reject authored paths and collisions before
+creating directories or writing bytes.
+
 A green result proves contract and projection invariants only. It does not
 prove discovery lift, procedure use, cross-runtime parity, safe behavior, or
 benefit over no skill.

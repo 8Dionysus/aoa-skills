@@ -67,9 +67,9 @@
       ],
       "properties": {
         "authority": {"const": false},
-        "graph_json": {"$ref": "#/$defs/relativePath"},
-        "graph_markdown": {"$ref": "#/$defs/relativePath"},
-        "router_markdown": {"$ref": "#/$defs/relativePath"},
+        "graph_json": {"$ref": "#/$defs/projectionJsonPath"},
+        "graph_markdown": {"$ref": "#/$defs/projectionMarkdownPath"},
+        "router_markdown": {"$ref": "#/$defs/routerProjectionPath"},
         "generated_by": {
           "const": "aoa-skills:scripts/build_capability_home_projection.py"
         }
@@ -85,6 +85,30 @@
       "type": "string",
       "minLength": 1,
       "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))[^\\u0000]+$"
+    },
+    "projectionJsonPath": {
+      "allOf": [
+        {"$ref": "#/$defs/relativePath"},
+        {
+          "pattern": "^(?:generated|derived|read-models)/[^\\u0000]+\\.json$"
+        }
+      ]
+    },
+    "projectionMarkdownPath": {
+      "allOf": [
+        {"$ref": "#/$defs/relativePath"},
+        {
+          "pattern": "^(?:generated|derived|read-models)/[^\\u0000]+\\.md$"
+        }
+      ]
+    },
+    "routerProjectionPath": {
+      "allOf": [
+        {"$ref": "#/$defs/relativePath"},
+        {
+          "pattern": "^(?:(?:generated|derived|read-models)/[^\\u0000]+\\.md|skills/[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/references/capability-router\\.md)$"
+        }
+      ]
     }
   }
 }

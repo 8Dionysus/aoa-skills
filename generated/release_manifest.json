@@ -367,8 +367,8 @@
     },
     {
       "path": "schemas/capability-home-port.schema.json",
-      "sha256": "1c57b7060eeb0c07224b4298c9701f224cda1e73b3c554e18e7b5c1547e940c5",
-      "bytes": 2568
+      "sha256": "35b8ab0fef1ddc09dddc461988f04ac6ac1eea97fc78b207aa5ffe1907040bd5",
+      "bytes": 3271
     },
     {
       "path": "schemas/capability_family.schema.json",
@@ -412,13 +412,13 @@
     },
     {
       "path": "scripts/skill_model/capability_home_port.py",
-      "sha256": "1046999c7ff67c8221ad7029563d0b8fb904c8d533746a9505080a32944fe449",
-      "bytes": 28755
+      "sha256": "c45009d228935bc35619499fe551c5f5ba8187a332b92a5f497b9d9ba5611ff1",
+      "bytes": 30422
     },
     {
       "path": "scripts/skill_model/capability_system.py",
-      "sha256": "52ddf3b693cf6d835b736b76d8776f9f33e4f9b6bddba44bbba546cb8987fbba",
-      "bytes": 79278
+      "sha256": "b11529b1e6df6d311679daf22b0b24d9dea312532179329c4808ad8ab6bfa2d5",
+      "bytes": 80165
     },
     {
       "path": "scripts/validation/validate_capability_home_port.py",

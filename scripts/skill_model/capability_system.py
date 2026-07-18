@@ -1924,6 +1924,27 @@ def task_dag_structural_issues(
         ]
         if sorted(staged_ids) != sorted(node_ids):
             issues.append("execution stages must contain every execution node exactly once")
+        stage_by_node = {
+            str(node_id): stage_index
+            for stage_index, stage in enumerate(payload.get("execution_stages", []))
+            for node_id in stage
+        }
+        invalid_stage_edges = sorted(
+            {
+                (str(edge.get("source")), str(edge.get("target")))
+                for edge in payload.get("edges", [])
+                if isinstance(edge, Mapping)
+                and str(edge.get("source")) in stage_by_node
+                and str(edge.get("target")) in stage_by_node
+                and stage_by_node[str(edge.get("source"))]
+                >= stage_by_node[str(edge.get("target"))]
+            }
+        )
+        for source, target in invalid_stage_edges:
+            issues.append(
+                "execution stage order violates edge "
+                f"{source} -> {target}: source must precede target"
+            )
         checkpoint_ids = [
             str(checkpoint.get("node"))
             for checkpoint in payload.get("checkpoints", [])

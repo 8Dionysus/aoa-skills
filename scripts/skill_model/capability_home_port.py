@@ -70,6 +70,12 @@ NETWORK_OR_INSTALL_COMMAND_RE = re.compile(
 EXPLICIT_WRITE_MARKER_RE = re.compile(
     r"(?<![A-Za-z0-9_-])--(?:apply|write(?:-report)?|install|prune|repair)\b"
 )
+PROJECTION_FIELDS = ("graph_json", "graph_markdown", "router_markdown")
+PROJECTION_SCHEMA_DEFS = {
+    "graph_json": "projectionJsonPath",
+    "graph_markdown": "projectionMarkdownPath",
+    "router_markdown": "routerProjectionPath",
+}
 
 
 class CapabilityHomePortError(ValueError):
@@ -169,6 +175,50 @@ def _schema_errors(payload: Mapping[str, Any], schema: Mapping[str, Any]) -> lis
     return errors
 
 
+def _projection_output_paths(port: CapabilityHomePort) -> dict[str, Path]:
+    """Resolve distinct confined read-model outputs before any builder work."""
+
+    schema = capability_system.load_json(port.contract_root / PORT_SCHEMA_PATH)
+    paths = {
+        field: _inside(
+            port.owner_root,
+            Path(str(port.manifest["projection"][field])),
+            label=f"projection.{field}",
+        )
+        for field in PROJECTION_FIELDS
+    }
+    relative_paths = {
+        field: path.relative_to(port.owner_root.resolve()).as_posix()
+        for field, path in paths.items()
+    }
+    for field, relative in relative_paths.items():
+        pattern = schema["$defs"][PROJECTION_SCHEMA_DEFS[field]]["allOf"][1][
+            "pattern"
+        ]
+        if re.fullmatch(str(pattern), relative) is None:
+            raise CapabilityHomePortError(
+                f"projection.{field} must be a generated/read-model path: "
+                f"{relative}"
+            )
+    collisions: dict[str, list[str]] = {}
+    for field, relative in relative_paths.items():
+        collisions.setdefault(relative, []).append(field)
+    duplicated = {
+        relative: fields
+        for relative, fields in collisions.items()
+        if len(fields) > 1
+    }
+    if duplicated:
+        details = "; ".join(
+            f"{relative}: {', '.join(sorted(fields))}"
+            for relative, fields in sorted(duplicated.items())
+        )
+        raise CapabilityHomePortError(
+            f"projection outputs must be distinct read models: {details}"
+        )
+    return paths
+
+
 def load_port(
     contract_root: str | Path,
     owner_root: str | Path,
@@ -196,11 +246,11 @@ def load_port(
         path = _inside(owner, Path(eval_ref), label="eval_port_ref")
         if not path.is_file():
             issues.append(f"eval_port_ref does not exist: {eval_ref}")
-    for field in ("graph_json", "graph_markdown", "router_markdown"):
-        _inside(owner, Path(str(payload["projection"][field])), label=f"projection.{field}")
     if issues:
         raise CapabilityHomePortError("\n".join(issues))
-    return CapabilityHomePort(contract, owner, manifest_file, payload)
+    port = CapabilityHomePort(contract, owner, manifest_file, payload)
+    _projection_output_paths(port)
+    return port
 
 
 def load_families(port: CapabilityHomePort) -> list[tuple[Path, dict[str, Any]]]:
@@ -231,7 +281,7 @@ def _package_snapshot(
     rows: list[dict[str, Any]] = []
     generated_projection_paths = {
         str(port.manifest["projection"][field])
-        for field in ("graph_json", "graph_markdown", "router_markdown")
+        for field in PROJECTION_FIELDS
     }
     if package_root.is_symlink() or not package_root.is_dir():
         return [], "", [f"skill package is missing or symlinked: {package_root}"]
@@ -685,11 +735,12 @@ def render_router_markdown(
 
 
 def build_outputs(port: CapabilityHomePort) -> dict[Path, str]:
+    paths = _projection_output_paths(port)
     graph = build_graph(port)
     return {
-        port.owner_root / port.graph_json: capability_system.dump_json(graph),
-        port.owner_root / port.graph_markdown: capability_system.render_graph_markdown(graph),
-        port.owner_root / port.router_markdown: render_router_markdown(port, graph),
+        paths["graph_json"]: capability_system.dump_json(graph),
+        paths["graph_markdown"]: capability_system.render_graph_markdown(graph),
+        paths["router_markdown"]: render_router_markdown(port, graph),
     }
 
 
