@@ -1,0 +1,17 @@
+{
+  "allowed_bytes": 5420661,
+  "allowed_tracked_bytes": 8520646,
+  "approved_by": "repository-owner",
+  "base_ref": "cc8e7a23cd9dd34d93af1e81d7f6fc7d061d53ad",
+  "changed_generated_bytes": 5420661,
+  "changed_generated_files": 228,
+  "decision_ref": "aoa-kag:docs/decisions/AOA-KAG-D-0017-portable-content-addressed-repository-family.md",
+  "default_limit_bytes": 1048576,
+  "head_family_digest": "4e1f339d8d0e8a0066a30278ca19fcfdc1d3b4cc0131c615f056bfe8a9b94607",
+  "reason": "Publish the manually reproduced v2 owner-home exposure contract, retain exact v1 migration compatibility including its JSON projection key, reject same-name repository projections for globally selected owner bundles, and refresh the portable source-linked KAG family after the reviewed compatibility correction.",
+  "repo": "aoa-skills",
+  "schema_version": "aoa-repo-local-kag-budget-receipt-v1",
+  "scope": "generated_delta",
+  "tracked_bytes": 8520646,
+  "tracked_bytes_max": 9437184
+}
