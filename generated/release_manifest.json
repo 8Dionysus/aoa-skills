@@ -1044,8 +1044,8 @@
     },
     {
       "path": "generated/capability_graph.json",
-      "sha256": "6d1d6decbf8f3851c4711b068fe2cc4b5339df568a671babfb9ac3bf97b790d9",
-      "bytes": 2996173
+      "sha256": "41efec1d42dcda475741f8a7979d81d0eef3d79c8c5148a45b670ddbfa493a97",
+      "bytes": 2244821
     },
     {
       "path": "generated/capability_graph.md",

@@ -529,6 +529,7 @@ def build_graph(port: CapabilityHomePort) -> dict[str, Any]:
         family_root=port.family_root,
         graph_schema_path=port.contract_root / GRAPH_SCHEMA_PATH,
         source_metadata=_contract_source_metadata(port),
+        include_retrieval_depth_tokens=True,
     )
     referenced = {
         str(row["path"]): dict(row)

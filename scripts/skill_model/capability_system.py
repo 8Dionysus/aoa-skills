@@ -662,6 +662,7 @@ def retrieval_document(
     *,
     immediate_executable_children: Sequence[Mapping[str, Any]] = (),
     supplemental_texts: Sequence[str] = (),
+    include_depth_tokens: bool = False,
 ) -> dict[str, Any]:
     contract_parts = list(_flatten_strings(node))
     routing_parts = list(_flatten_strings(node.get("keywords", [])))
@@ -697,7 +698,7 @@ def retrieval_document(
     positive_text = "\n".join(positive_parts)
     negative_text = "\n".join(negative_parts)
     lifecycle = node.get("lifecycle", {})
-    return {
+    document = {
         "id": node["id"],
         "kind": node["kind"],
         "visibility": lifecycle.get("visibility", "hidden"),
@@ -710,10 +711,12 @@ def retrieval_document(
         "routing_tokens": tokenize("\n".join(routing_parts)),
         "positive_tokens": tokenize(positive_text),
         "negative_tokens": tokenize(negative_text),
-        "contract_tokens": tokenize(contract_text),
-        "package_tokens": tokenize(package_text),
         "tokens": tokenize(search_text),
     }
+    if include_depth_tokens:
+        document["contract_tokens"] = tokenize(contract_text)
+        document["package_tokens"] = tokenize(package_text)
+    return document
 
 
 def build_graph_payload(
@@ -723,6 +726,7 @@ def build_graph_payload(
     family_root: Path = FAMILY_ROOT,
     graph_schema_path: Path | None = None,
     source_metadata: Mapping[str, Any] | None = None,
+    include_retrieval_depth_tokens: bool = False,
 ) -> dict[str, Any]:
     if families is None:
         families = validate_sources(repo_root)
@@ -896,6 +900,7 @@ def build_graph_payload(
                 ]
                 if text is not None
             ],
+            include_depth_tokens=include_retrieval_depth_tokens,
         )
         for node in nodes
     ]
