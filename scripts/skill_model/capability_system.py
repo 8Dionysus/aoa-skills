@@ -716,6 +716,93 @@ def negative_scope_phrase_matches(
     return set()
 
 
+def _negative_clause_token_forms(token: str) -> set[str]:
+    """Return narrow local forms for exact-clause paraphrase matching."""
+
+    forms = {token}
+    if len(token) > 5 and token.endswith("s") and not token.endswith(("ss", "us")):
+        forms.add(token[:-1])
+    if len(token) > 6 and token.endswith("ed"):
+        forms.add(token[:-2])
+    if len(token) > 7 and token.endswith("ing"):
+        forms.add(token[:-3])
+    return forms
+
+
+def exact_negative_clause_matches(
+    query_tokens: Sequence[str],
+    phrase_tokens: Sequence[str],
+    *,
+    minimum_run: int = 4,
+) -> set[str]:
+    """Return a bounded exact-clause match even when all terms are shared.
+
+    A negative applicability clause can be composed entirely from vocabulary
+    that also occurs in the positive contract.  Token-level negative evidence
+    cannot distinguish that case.  Admit it only when the query contains a
+    run of at least four clause terms, allowing narrow inflectional variants
+    such as ``existing``/``exists``.  An explicit negative scope immediately
+    before the run suppresses the match because ``no existing candidate`` is
+    the opposite condition.
+    """
+
+    if any(token in NEGATIVE_SCOPE_TOKENS for token in phrase_tokens):
+        return set()
+    phrase_forms = [_negative_clause_token_forms(token) for token in phrase_tokens]
+    all_phrase_forms = set().union(*phrase_forms) if phrase_forms else set()
+
+    def is_subsequence(
+        candidate: Sequence[str],
+        target_forms: Sequence[set[str]],
+    ) -> bool:
+        target_index = 0
+        for token in candidate:
+            token_forms = _negative_clause_token_forms(token)
+            while (
+                target_index < len(target_forms)
+                and not token_forms.intersection(target_forms[target_index])
+            ):
+                target_index += 1
+            if target_index >= len(target_forms):
+                return False
+            target_index += 1
+        return True
+
+    def exact_run(run: Sequence[str], run_start: int) -> set[str]:
+        if len(run) < minimum_run or len(set(run)) < minimum_run:
+            return set()
+        if (
+            run_start > 0
+            and query_tokens[run_start - 1] in NEGATIVE_SCOPE_TOKENS
+        ):
+            return set()
+        if is_subsequence(run, phrase_forms):
+            return set(run)
+        # English conditions often move a terminal predicate before its
+        # subject: "a candidate ... exists" -> "existing candidate".
+        if (
+            phrase_forms
+            and _negative_clause_token_forms(run[0]).intersection(phrase_forms[-1])
+            and is_subsequence(run[1:], phrase_forms[:-1])
+        ):
+            return set(run)
+        return set()
+
+    run: list[str] = []
+    run_start = 0
+    for index, token in enumerate(query_tokens):
+        if _negative_clause_token_forms(token).intersection(all_phrase_forms):
+            if not run:
+                run_start = index
+            run.append(token)
+            continue
+        matched = exact_run(run, run_start)
+        if matched:
+            return matched
+        run = []
+    return exact_run(run, run_start)
+
+
 def bound_retrieval_text(node: Mapping[str, Any], text: str) -> str:
     """Keep a mode's retrieval body inside its declared section of a shared bundle."""
     if node.get("kind") != "mode":
@@ -1461,6 +1548,12 @@ def discover(
                 phrase_matches.update(overlap)
             phrase_matches.update(
                 negative_scope_phrase_matches(
+                    ordered_query_tokens,
+                    ordered_phrase_tokens,
+                )
+            )
+            phrase_matches.update(
+                exact_negative_clause_matches(
                     ordered_query_tokens,
                     ordered_phrase_tokens,
                 )

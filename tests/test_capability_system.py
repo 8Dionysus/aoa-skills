@@ -847,3 +847,42 @@ def test_negative_phrase_preserves_explicit_scope_over_positive_terms() -> None:
         "requested",
         "was",
     ]
+
+
+def test_negative_phrase_preserves_exact_clause_with_shared_vocabulary() -> None:
+    graph = capability_system.load_graph(REPO_ROOT)
+
+    positive = capability_system.discover(
+        graph,
+        "create a concrete memo candidate",
+        retrieval_depth="compact",
+        limit=30,
+    )
+    absent = capability_system.discover(
+        graph,
+        "no existing concrete memo candidate",
+        retrieval_depth="compact",
+        limit=30,
+    )
+    existing = capability_system.discover(
+        graph,
+        "existing concrete memo candidate",
+        retrieval_depth="compact",
+        limit=30,
+    )
+
+    for results in (positive, absent):
+        memo = next(
+            row for row in results if row["id"] == "sessions.memo-writeback"
+        )
+        assert memo["negative_matched_tokens"] == []
+
+    memo = next(
+        row for row in existing if row["id"] == "sessions.memo-writeback"
+    )
+    assert memo["negative_matched_tokens"] == [
+        "candidate",
+        "concrete",
+        "existing",
+        "memo",
+    ]
