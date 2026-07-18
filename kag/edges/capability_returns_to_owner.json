@@ -1,55 +1,62 @@
 {
-  "schema_version": "aoa-local-kag-record-v1",
-  "repo": "aoa-skills",
-  "local_id": "edge:skills:capability-returns-to-owner",
-  "record_class": "edge",
-  "source_refs": [
-    {
-      "repo": "aoa-skills",
-      "path": "generated/capability_graph.json",
-      "source_class": "skill_source",
-      "role": "primary",
-      "authority": "derived_readmodel"
-    },
-    {
-      "repo": "aoa-skills",
-      "path": "capabilities/README.md",
-      "source_class": "skill_source",
-      "role": "owner_route",
-      "authority": "authored_source"
-    }
-  ],
-  "source_owner": "aoa-skills",
-  "provenance_mode": "strict_source_linked",
-  "derived_method": "source-linked return edge from the generated capability projection to authored capability semantics",
-  "generated_or_authored": "generated_from_source",
-  "status": "active",
-  "owner_return_route": {
-    "repo": "aoa-skills",
-    "surface": "capabilities/README.md",
-    "route_kind": "authored_meaning"
-  },
-  "freshness": {
-    "mode": "source_snapshot",
-    "state": "current",
-    "checked_ref": "generated/capability_graph.json"
-  },
   "builder": {
-    "route": "capability graph builder",
+    "route": "capability graph and provider-record builder",
     "surface": "scripts/builders/build_capability_graph.py"
   },
-  "validator": {
-    "route": "scripts/validation/validate_capability_system.py --repo-root . --check-generated",
-    "lane": "source-fast"
+  "consumer_route": "aoa-kag registry",
+  "derived_method": "source-linked return edge from the generated capability projection to authored capability semantics and owner skill packages",
+  "edge_kind": "returns_to",
+  "edge_trace": "generated/capability_graph.json returns to capabilities/README.md and authored family sources; callable procedures return to their owner packages under skills/ rather than to the derived graph",
+  "freshness": {
+    "checked_ref": "generated/capability_graph.json",
+    "mode": "source_snapshot",
+    "state": "current"
   },
+  "from_id": "node:skills:capability-graph",
+  "generated_or_authored": "generated_from_source",
+  "local_id": "edge:skills:capability-returns-to-owner",
+  "owner_return_route": {
+    "repo": "aoa-skills",
+    "route_kind": "authored_meaning",
+    "surface": "capabilities/README.md"
+  },
+  "provenance_mode": "strict_source_linked",
+  "record_class": "edge",
+  "repo": "aoa-skills",
+  "schema_version": "aoa-local-kag-record-v1",
+  "source_owner": "aoa-skills",
+  "source_refs": [
+    {
+      "authority": "derived_readmodel",
+      "path": "generated/capability_graph.json",
+      "repo": "aoa-skills",
+      "role": "primary",
+      "source_class": "skill_source"
+    },
+    {
+      "authority": "authored_source",
+      "path": "capabilities/README.md",
+      "repo": "aoa-skills",
+      "role": "owner_route",
+      "source_class": "skill_source"
+    },
+    {
+      "authority": "authored_source",
+      "path": "skills/README.md",
+      "repo": "aoa-skills",
+      "role": "owner_route",
+      "source_class": "skill_source"
+    }
+  ],
+  "status": "active",
   "storage_posture": {
     "git_surface": "portable_records",
     "payload_class": "edge",
     "runtime_route": "source-repo"
   },
-  "consumer_route": "aoa-kag registry",
-  "from_id": "node:skills:capability-graph",
   "to_id": "node:skills:capability-source-home",
-  "edge_kind": "returns_to",
-  "edge_trace": "generated/capability_graph.json returns to capabilities/README.md and its authored family sources; callable procedures return separately to skills/README.md"
+  "validator": {
+    "lane": "local-kag",
+    "route": "aoa-kag:scripts/validate_repo_local_kag_family.py"
+  }
 }

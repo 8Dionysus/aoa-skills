@@ -1,0 +1,63 @@
+schema_version: aoa-skill-contract-v1
+identity:
+  name: aoa-session-harvest
+  owner: aoa-skills
+  version: 0.2.2
+  health: challenger
+purpose: Preserve five reviewed-session capabilities behind one discoverable front door.
+freedom_level: bounded-judgment
+tool_requirements:
+  - Read access to one explicitly reviewed bounded evidence packet.
+  - Optional read access to destination-owner intake contracts.
+effects: [none]
+trust:
+  posture: authored-procedure
+  owner_acceptance_authority: false
+provenance:
+  source: skills/core/session-growth/aoa-session-harvest
+  techniques_runtime_dependency: false
+modes:
+  extract:
+    input_abi: reviewed-session-evidence
+    output_abi: harvest-packet
+    reference: extract.md
+  classify:
+    input_abi: isolated-session-candidate
+    output_abi: candidate-object-classification
+    reference: classify.md
+  promote:
+    input_abi: isolated-repeated-quest-unit
+    output_abi: quest-promotion-verdict
+    reference: promote.md
+  branch:
+    input_abi: reviewed-continuation-pressure
+    output_abi: continuation-branch-cards
+    reference: branch.md
+  automation-opportunity:
+    input_abi: reviewed-repeated-manual-route
+    output_abi: automation-opportunity-packet
+    reference: automation-opportunity.md
+    required_output_fields:
+      - reviewed_evidence
+      - manual_route
+      - readiness
+      - automation_mode_posture
+      - readiness_verdict
+      - checkpoint_required
+      - next_artifact
+      - rejected_nearest_target
+      - actual_effects
+      - stop_line
+relations:
+  - {kind: produces, from: extract, to: classify}
+  - {kind: hands-off-to, from: classify, to: promote, condition: exactly one isolated repeated quest-shaped unit remains}
+  - {kind: hands-off-to, from: classify, to: automation-opportunity, condition: automation readiness is the unresolved question}
+  - {kind: hands-off-to, from: branch, to: aoa-summon, condition: one child route is selected and anchored}
+termination:
+  success: one typed session-local packet and explicit owner handoff or no-artifact verdict
+  blocked: evidence is live, unreviewed, unbounded, or lacks required mode inputs
+failure_modes:
+  - owner acceptance inferred from a candidate
+  - multiple lifecycle stages hidden in one invocation
+  - telemetry or route hints treated as authority
+  - natural work closeout or first memo-writeback judgment intercepted as classify

@@ -8,9 +8,9 @@ The current architecture separates:
 - a semantic capability tree for discovery;
 - typed graph relations for compatibility and composition;
 - a task-local DAG for one request;
-- seven host-callable bundles, of which only `aoa-decision` is currently
-  advertised; initial manual comparisons found no incremental outcome value
-  from the other six, so they remain deferred capability sources.
+- nine shared host-callable source bundles with evidence-gated visibility;
+  repository-owned bundles remain with their owners and join the OS user
+  profile without transferring procedure truth here.
 
 ## Start here
 

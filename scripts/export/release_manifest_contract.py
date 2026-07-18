@@ -155,13 +155,12 @@ def source_paths(repo_root: Path) -> list[str]:
     return sorted(set(paths))
 
 
-def portable_paths(repo_root: Path) -> list[str]:
-    root = repo_root / SKILL_ROOT
-    if not root.is_dir():
+def portable_paths(portable_root: Path) -> list[str]:
+    if not portable_root.is_dir():
         return []
     return [
-        path.relative_to(repo_root).as_posix()
-        for path in sorted(root.rglob("*"))
+        f"{SKILL_ROOT}/{path.relative_to(portable_root).as_posix()}"
+        for path in sorted(portable_root.rglob("*"))
         if path.is_file()
     ]
 
@@ -176,9 +175,35 @@ def _hash_path_set(repo_root: Path, paths: Sequence[str]) -> str:
     return digest.hexdigest()
 
 
+def _hash_portable_tree(portable_root: Path, bundle_name: str) -> str:
+    bundle_root = portable_root / bundle_name
+    digest = hashlib.sha256()
+    for path in sorted(bundle_root.rglob("*")):
+        if not path.is_file():
+            continue
+        logical_path = (
+            Path(SKILL_ROOT) / bundle_name / path.relative_to(bundle_root)
+        ).as_posix()
+        digest.update(logical_path.encode("utf-8"))
+        digest.update(b"\0")
+        digest.update(normalized_file_bytes(path))
+        digest.update(b"\0")
+    return digest.hexdigest()
+
+
+def portable_file_digest_record(
+    portable_root: Path,
+    logical_path: str,
+) -> dict[str, Any]:
+    relative = Path(logical_path).relative_to(SKILL_ROOT)
+    data = normalized_file_bytes(portable_root / relative)
+    return {"path": logical_path, "sha256": sha256_bytes(data), "bytes": len(data)}
+
+
 def build_skill_bundle_revisions(
     repo_root: Path,
     agent_catalog: Mapping[str, Any],
+    portable_root: Path,
 ) -> list[dict[str, Any]]:
     skills = agent_catalog.get("skills", [])
     if not isinstance(skills, list):
@@ -195,14 +220,8 @@ def build_skill_bundle_revisions(
             for path in sorted(source_dir.rglob("*"))
             if path.is_file()
         ]
-        portable_dir = repo_root / SKILL_ROOT / name
-        exported_files = [
-            path.relative_to(repo_root).as_posix()
-            for path in sorted(portable_dir.rglob("*"))
-            if path.is_file()
-        ]
         source_hash = _hash_path_set(repo_root, source_files)
-        portable_hash = _hash_path_set(repo_root, exported_files)
+        portable_hash = _hash_portable_tree(portable_root, name)
         revisions.append(
             {
                 "name": name,
@@ -286,6 +305,7 @@ def release_manifest_artifact_identity() -> dict[str, Any]:
 def build_release_manifest(
     repo_root: Path,
     *,
+    portable_root: Path,
     file_overrides: Mapping[str | Path, str] | None = None,
 ) -> dict[str, Any]:
     overrides = _normalize_override_map(repo_root, file_overrides)
@@ -299,10 +319,11 @@ def build_release_manifest(
     skill_entries = agent_catalog.get("skills", [])
     if not isinstance(skill_entries, list):
         raise ValueError("generated/agent_skill_catalog.json field 'skills' must be a list")
-    revisions = build_skill_bundle_revisions(repo_root, agent_catalog)
+    portable_root = portable_root.resolve()
+    revisions = build_skill_bundle_revisions(repo_root, agent_catalog, portable_root)
     profiles = build_install_profile_revisions(resolved_profiles, revisions)
     authored = source_paths(repo_root)
-    portable = portable_paths(repo_root)
+    portable = portable_paths(portable_root)
     generated = list(GENERATED_FILES)
     artifact_groups = [
         {
@@ -350,7 +371,7 @@ def build_release_manifest(
             file_digest_record(repo_root, path, overrides) for path in authored
         ],
         "portable_file_digests": [
-            file_digest_record(repo_root, path, overrides) for path in portable
+            portable_file_digest_record(portable_root, path) for path in portable
         ],
         "generated_file_digests": [
             file_digest_record(repo_root, path, overrides)

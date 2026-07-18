@@ -1,0 +1,11 @@
+interface:
+  display_name: "AoA Checkpoint Closeout Bridge"
+  short_description: "Run reviewed checkpoint closeout safely"
+  default_prompt: "Use $aoa-checkpoint-closeout-bridge to collect provisional checkpoint focus or execute a closed reviewed closeout without writing owner truth."
+policy:
+  allow_implicit_invocation: true
+  implicit_activation_policy: invoke
+notes:
+  - "Collect mode is provisional only; execute mode requires closed reviewed evidence."
+  - "Load aoa-session-harvest and aoa-session-progression-lift as explicit typed DAG nodes; never substitute retired skill names."
+  - "Stop before owner writes, playbook execution, delegation, memo, stats, or quest mutation."

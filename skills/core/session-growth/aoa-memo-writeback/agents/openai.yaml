@@ -1,0 +1,9 @@
+policy:
+  allow_implicit_invocation: true
+  implicit_activation_policy: invoke
+notes:
+- Use for the first writeback decision from live or closing work, before a concrete memo artifact exists.
+- If the request already names or supplies a memo candidate, export, object, corpus identity, lifecycle target, or read-model target, select aoa-memo directly without loading this skill.
+- Local candidates and exports are guarded handoffs. Durable memory remains owned by aoa-memo reviewed intake.
+- Hand existing candidates, exports, memory objects, corpus recall, and lifecycle work to aoa-memo.
+- Never intercept evaluation-trigger or regression-case mining merely because its evidence comes from prior sessions; route that work to aoa-eval.

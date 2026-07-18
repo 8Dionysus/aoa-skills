@@ -1,61 +1,61 @@
 {
-  "schema_version": "aoa-local-kag-record-v1",
-  "repo": "aoa-skills",
+  "builder": {
+    "route": "capability graph and provider-record builder",
+    "surface": "scripts/builders/build_capability_graph.py"
+  },
+  "consumer_route": "aoa-kag registry",
+  "derived_method": "deterministic source-linked route record emitted with capability graph parity; it carries no KAG acceptance or outcome verdict",
+  "fallback_route": "scripts/lanes/ci_gate.py --mode source-fast",
+  "freshness": {
+    "checked_ref": "generated/capability_graph.json",
+    "mode": "builder_receipt",
+    "state": "current"
+  },
+  "generated_or_authored": "generated_from_source",
   "local_id": "receipt:validation:skills-capability-provider",
-  "record_class": "receipt",
-  "source_refs": [
-    {
-      "repo": "aoa-skills",
-      "path": "generated/capability_graph.json",
-      "source_class": "skill_source",
-      "role": "primary",
-      "authority": "derived_readmodel"
-    },
-    {
-      "repo": "aoa-skills",
-      "path": "capabilities/README.md",
-      "source_class": "skill_source",
-      "role": "owner_route",
-      "authority": "authored_source"
-    },
-    {
-      "repo": "aoa-skills",
-      "path": "config/validation_lanes.json",
-      "source_class": "validation_source",
-      "role": "validation_receipt",
-      "authority": "authored_control"
-    }
-  ],
-  "source_owner": "aoa-skills",
-  "provenance_mode": "strict_source_linked",
-  "derived_method": "owner validation of capability sources and graph parity followed by aoa-kag repository-index-family validation",
-  "generated_or_authored": "authored_control",
-  "status": "active",
   "owner_return_route": {
     "repo": "aoa-skills",
-    "surface": "capabilities/README.md",
-    "route_kind": "authored_meaning"
+    "route_kind": "authored_meaning",
+    "surface": "capabilities/README.md"
   },
-  "freshness": {
-    "mode": "validator_receipt",
-    "state": "current",
-    "checked_ref": "kag/manifest.json"
-  },
-  "builder": {
-    "route": "local KAG capability provider records",
-    "surface": "kag/manifest.json"
-  },
-  "validator": {
-    "route": "aoa-kag:scripts/validate_repo_local_kag_family.py",
-    "lane": "local-kag"
-  },
+  "provenance_mode": "strict_source_linked",
+  "receipt_kind": "validation",
+  "record_class": "receipt",
+  "repo": "aoa-skills",
+  "result": "routed",
+  "schema_version": "aoa-local-kag-record-v1",
+  "source_owner": "aoa-skills",
+  "source_refs": [
+    {
+      "authority": "derived_readmodel",
+      "path": "generated/capability_graph.json",
+      "repo": "aoa-skills",
+      "role": "primary",
+      "source_class": "skill_source"
+    },
+    {
+      "authority": "authored_source",
+      "path": "capabilities/README.md",
+      "repo": "aoa-skills",
+      "role": "owner_route",
+      "source_class": "skill_source"
+    },
+    {
+      "authority": "authored_control",
+      "path": "config/validation_lanes.json",
+      "repo": "aoa-skills",
+      "role": "validation_receipt",
+      "source_class": "validation_source"
+    }
+  ],
+  "status": "active",
   "storage_posture": {
     "git_surface": "receipt",
     "payload_class": "receipt",
     "runtime_route": "source-repo"
   },
-  "consumer_route": "aoa-kag registry",
-  "receipt_kind": "validation",
-  "result": "current",
-  "fallback_route": "scripts/lanes/ci_gate.py --mode source-fast"
+  "validator": {
+    "lane": "local-kag",
+    "route": "aoa-kag:scripts/validate_repo_local_kag_family.py"
+  }
 }

@@ -1,6 +1,7 @@
 policy:
-  allow_implicit_invocation: false
-  implicit_activation_policy: suggest
+  allow_implicit_invocation: true
+  implicit_activation_policy: invoke
 notes:
-- Select exactly one authority-map, sanitized-share, or memo-route mode.
+- Select exactly one authority-map or sanitized-share mode.
+- Route live or closing memory-worthy material to aoa-memo-writeback instead of treating it as reviewed knowledge input.
 - Never collapse candidate routing, artifact creation, publication, and durable memory into one effect.

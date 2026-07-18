@@ -3,9 +3,9 @@
 | Validator | Protects | Does not prove |
 | --- | --- | --- |
 | `validate_agents_design.py` | canonical shape of current route cards and presence of active owner entries | correctness of prose or historical topology |
-| `validate_skills.py` | seven source bundles, frontmatter, section order, no technique dependency, capability binding parity | trigger or outcome quality |
+| `validate_skills.py` | discovered source bundles, standard frontmatter, no technique dependency, capability binding parity | trigger or outcome quality |
 | `validate_capability_system.py` | family schema, tree/graph integrity, migration accounting, generated parity | real-world applicability or compatibility |
-| `validate_agent_skills.py` | flat portable export, host policy, source/export parity | live host discovery behavior |
+| `validate_agent_skills.py` | temporary external portable assembly, host adapter policy, source/export parity, and source-repo projection absence | live host discovery behavior |
 | `validate_home_skill_port.py` | one admitted sibling owner manifest, canonical bundle shape, v2 global-exposure declaration and duplicate absence, or transitional v1 repo-projection parity | profile installation, admission merit, routing quality, or outcome benefit |
 | `questbook_surface.py` | durable quest source and read-model contract | completion of a quest |
 | Agon candidate validators | requested-only candidate schemas, forbidden effects, and generated parity | promotion into a callable capability or skill |

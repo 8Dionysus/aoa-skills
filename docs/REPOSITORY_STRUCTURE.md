@@ -3,13 +3,13 @@
 | Path | Authority |
 | --- | --- |
 | `capabilities/` | authored semantic tree, graph contracts, migration map |
-| `skills/` | seven callable bundle sources |
+| `skills/` | admitted shared callable bundle sources |
 | `config/` | export, policy, pack, and lane inputs |
 | `schemas/` | shared machine shape, including the sibling home-port contract |
 | `scripts/` | builders, validators, owner projection, planner, handoff, lane entrypoints |
 | `tests/` | durable invariants derived from manual observations |
 | `generated/` | deterministic read models |
-| `.agents/skills/` | generated portable flat export |
+| `.agents/skills/` | intentionally absent here; logical layout only inside an explicit external portable consumer |
 | `kag/` | derived source-linked KAG provider packet and indexes |
 | `mechanics/release-support/` | portable release and installation contract |
 | `mechanics/questbook/`, `quests/`, `QUESTBOOK.md` | durable obligation source and read model |

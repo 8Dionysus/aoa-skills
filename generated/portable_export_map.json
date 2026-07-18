@@ -13,6 +13,31 @@
   },
   "exports": [
     {
+      "name": "aoa-checkpoint-closeout-bridge",
+      "source_skill_path": "skills/core/session-growth/aoa-checkpoint-closeout-bridge/SKILL.md",
+      "target_dir": ".agents/skills/aoa-checkpoint-closeout-bridge",
+      "target_skill_path": ".agents/skills/aoa-checkpoint-closeout-bridge/SKILL.md",
+      "target_openai_config_path": ".agents/skills/aoa-checkpoint-closeout-bridge/agents/openai.yaml",
+      "invocation_mode": "implicit-friendly",
+      "implicit_activation_policy": "invoke",
+      "allow_implicit_invocation": true,
+      "candidate_only": false,
+      "resource_inventory": {
+        "scripts": [],
+        "references": [
+          "references/collect.md",
+          "references/contract.yaml",
+          "references/execute.md"
+        ],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ],
+        "checks": [],
+        "examples": []
+      }
+    },
+    {
       "name": "aoa-decision",
       "source_skill_path": "skills/core/engineering/aoa-decision/SKILL.md",
       "target_dir": ".agents/skills/aoa-decision",
@@ -24,14 +49,17 @@
       "candidate_only": false,
       "resource_inventory": {
         "scripts": [],
-        "references": [],
+        "references": [
+          "references/contract.yaml",
+          "references/correct.md",
+          "references/find.md",
+          "references/record.md"
+        ],
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
         ],
-        "checks": [
-          "checks/review.md"
-        ],
+        "checks": [],
         "examples": []
       }
     },
@@ -47,7 +75,12 @@
       "candidate_only": true,
       "resource_inventory": {
         "scripts": [],
-        "references": [],
+        "references": [
+          "references/contexts.md",
+          "references/contract.yaml",
+          "references/core.md",
+          "references/port-adapter.md"
+        ],
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
@@ -62,13 +95,20 @@
       "target_dir": ".agents/skills/aoa-eval",
       "target_skill_path": ".agents/skills/aoa-eval/SKILL.md",
       "target_openai_config_path": ".agents/skills/aoa-eval/agents/openai.yaml",
-      "invocation_mode": "explicit-preferred",
-      "implicit_activation_policy": "suggest",
-      "allow_implicit_invocation": false,
-      "candidate_only": true,
+      "invocation_mode": "implicit-friendly",
+      "implicit_activation_policy": "invoke",
+      "allow_implicit_invocation": true,
+      "candidate_only": false,
       "resource_inventory": {
         "scripts": [],
-        "references": [],
+        "references": [
+          "references/apply.md",
+          "references/contract.yaml",
+          "references/design.md",
+          "references/local-need.md",
+          "references/select.md",
+          "references/session-mining.md"
+        ],
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
@@ -85,13 +125,41 @@
       "target_dir": ".agents/skills/aoa-knowledge-stewardship",
       "target_skill_path": ".agents/skills/aoa-knowledge-stewardship/SKILL.md",
       "target_openai_config_path": ".agents/skills/aoa-knowledge-stewardship/agents/openai.yaml",
-      "invocation_mode": "explicit-preferred",
-      "implicit_activation_policy": "suggest",
-      "allow_implicit_invocation": false,
-      "candidate_only": true,
+      "invocation_mode": "implicit-friendly",
+      "implicit_activation_policy": "invoke",
+      "allow_implicit_invocation": true,
+      "candidate_only": false,
       "resource_inventory": {
         "scripts": [],
-        "references": [],
+        "references": [
+          "references/authority-map.md",
+          "references/contract.yaml",
+          "references/sanitized-share.md"
+        ],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ],
+        "checks": [],
+        "examples": []
+      }
+    },
+    {
+      "name": "aoa-memo-writeback",
+      "source_skill_path": "skills/core/session-growth/aoa-memo-writeback/SKILL.md",
+      "target_dir": ".agents/skills/aoa-memo-writeback",
+      "target_skill_path": ".agents/skills/aoa-memo-writeback/SKILL.md",
+      "target_openai_config_path": ".agents/skills/aoa-memo-writeback/agents/openai.yaml",
+      "invocation_mode": "implicit-friendly",
+      "implicit_activation_policy": "invoke",
+      "allow_implicit_invocation": true,
+      "candidate_only": false,
+      "resource_inventory": {
+        "scripts": [],
+        "references": [
+          "references/contract.yaml",
+          "references/writeback.md"
+        ],
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
@@ -106,13 +174,20 @@
       "target_dir": ".agents/skills/aoa-session-harvest",
       "target_skill_path": ".agents/skills/aoa-session-harvest/SKILL.md",
       "target_openai_config_path": ".agents/skills/aoa-session-harvest/agents/openai.yaml",
-      "invocation_mode": "explicit-preferred",
-      "implicit_activation_policy": "suggest",
-      "allow_implicit_invocation": false,
-      "candidate_only": true,
+      "invocation_mode": "implicit-friendly",
+      "implicit_activation_policy": "invoke",
+      "allow_implicit_invocation": true,
+      "candidate_only": false,
       "resource_inventory": {
         "scripts": [],
-        "references": [],
+        "references": [
+          "references/automation-opportunity.md",
+          "references/branch.md",
+          "references/classify.md",
+          "references/contract.yaml",
+          "references/extract.md",
+          "references/promote.md"
+        ],
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
@@ -127,13 +202,17 @@
       "target_dir": ".agents/skills/aoa-session-recovery",
       "target_skill_path": ".agents/skills/aoa-session-recovery/SKILL.md",
       "target_openai_config_path": ".agents/skills/aoa-session-recovery/agents/openai.yaml",
-      "invocation_mode": "explicit-preferred",
-      "implicit_activation_policy": "suggest",
-      "allow_implicit_invocation": false,
-      "candidate_only": true,
+      "invocation_mode": "implicit-friendly",
+      "implicit_activation_policy": "invoke",
+      "allow_implicit_invocation": true,
+      "candidate_only": false,
       "resource_inventory": {
         "scripts": [],
-        "references": [],
+        "references": [
+          "references/contract.yaml",
+          "references/diagnose.md",
+          "references/repair.md"
+        ],
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
@@ -154,7 +233,12 @@
       "candidate_only": true,
       "resource_inventory": {
         "scripts": [],
-        "references": [],
+        "references": [
+          "references/contract.md",
+          "references/contract.yaml",
+          "references/coverage-audit.md",
+          "references/property.md"
+        ],
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"

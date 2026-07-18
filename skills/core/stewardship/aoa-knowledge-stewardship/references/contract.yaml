@@ -1,0 +1,51 @@
+schema_version: aoa-skill-contract-v1
+identity:
+  name: aoa-knowledge-stewardship
+  owner: aoa-skills
+  version: 0.2.7
+  health: challenger
+purpose: Preserve authority mapping and sanitized sharing behind one discoverable front door.
+freedom_level: bounded-judgment
+tool_requirements:
+  - Read access to target material and target-specific owner declarations.
+  - Destination write access only for an authorized sanitized artifact.
+trust:
+  posture: authored-procedure
+  source_authority: false
+  publication_authority: false
+provenance:
+  source: skills/core/stewardship/aoa-knowledge-stewardship
+  techniques_runtime_dependency: false
+modes:
+  authority-map:
+    input_abi: source-authority-conflict
+    output_abi: source-authority-map
+    effects: [none]
+    reference: authority-map.md
+  sanitized-share:
+    input_abi: private-technical-material
+    output_abi: sanitized-technical-derivative
+    effects: [none, owner-local-write]
+    reference: sanitized-share.md
+relations:
+  - kind: hands-off-to
+    target: owner-rebuild-or-drift-repair
+    condition: Authority is resolved and a derived consumer is stale.
+  - kind: hands-off-to
+    target: owner-publication-workflow
+    condition: A reviewed sanitized artifact exists and publication is separately authorized.
+  - kind: conflicts-with
+    target: aoa-memo-writeback
+    condition: The task is deciding whether a live or closing lesson belongs in memory rather than sharing existing material.
+failure_modes:
+  - direct publication without its owner workflow causes private target material to be opened or a derivative to be prepared
+  - authority chosen from freshness or file prominence
+  - owner or destination borrowed from an unrelated authoritative surface
+  - private raw inspected before the audience or disclosure class, threshold, exact destination, raw-preservation rule, and permitted effect are established
+  - destination contract inferred from a path or pointer instead of being supplied and read
+  - response transport, skill owner, nearby owner, or raw custody owner substituted for a missing destination identifier or destination owner
+  - individually generalized facts combined into reconstructive private topology
+  - raw custody, derivative creation, publication, and durable memory collapsed
+termination:
+  success: one typed mode result, explicit effects, residual risk, and stop line
+  blocked: a safety-critical transformation input, exact effect authority, or the separately supplied publication workflow is missing

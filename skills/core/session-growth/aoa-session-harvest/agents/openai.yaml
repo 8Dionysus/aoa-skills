@@ -1,6 +1,8 @@
 policy:
-  allow_implicit_invocation: false
-  implicit_activation_policy: suggest
+  allow_implicit_invocation: true
+  implicit_activation_policy: invoke
 notes:
-- Select exactly one extract, classify, or branch mode.
-- Reviewed session evidence is required; no session-memory provider is assumed.
+- Invoke on an explicitly named reviewed session packet, or solely to reject an explicit attempt to harvest live or unreviewed session material.
+- Route natural work closeout and future-owner knowledge-retention questions to aoa-memo-writeback.
+- Verify the review boundary before loading a mode reference; then select extract, classify, promote, branch, or automation-opportunity.
+- Never promote, schedule, or execute the resulting candidate.

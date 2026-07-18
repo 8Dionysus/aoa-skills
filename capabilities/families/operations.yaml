@@ -9,7 +9,7 @@ owner:
 nodes:
   - id: operations.change
     title: Change delivery
-    description: Built-in and owner-local workflows for bounded repository changes, test-first slices, and honest Git closeout.
+    description: Host-native and owner-local workflows for bounded repository changes, test-first slices, one local commit, and separately bound remote closeout.
     kind: capability
     contract_level: navigation
     primary_parent: operations
@@ -26,16 +26,21 @@ nodes:
     keywords: [change, implementation, tdd, commit, repository, изменение, реализация, коммит]
 
   - id: workflow.operations.repository-change
-    title: Built-in bounded repository change
+    title: Host-native bounded repository change
     description: Use the host agent's normal inspect, change, verify, and report loop when no narrower owner workflow controls the task.
     kind: workflow
     contract_level: executable
     primary_parent: operations.change
-    owner: &host_owner
+    owner:
       repo: host-agent
-      surface: built-in/repository-change-loop
+      surface: runtime/repository-change-contract
       authority: external-authority
-    lifecycle: *route_lifecycle
+    lifecycle: &evaluated_host_workflow_lifecycle
+      state: active
+      version: 0.2.0
+      visibility: deferred
+      evidence_state: evaluated
+      health: healthy
     applicability:
       use_when:
         - A bounded non-trivial repository change is requested and no narrower owner workflow controls it.
@@ -56,7 +61,7 @@ nodes:
           description: Scoped diff, manual and durable verification, skipped checks, residual risk, and closeout.
     binding:
       kind: workflow
-      ref: host-agent:built-in/repository-change-loop
+      ref: host-agent:runtime/repository-change
       operation: inspect-change-verify-report
       availability: external
     execution: &host_change_execution
@@ -80,21 +85,29 @@ nodes:
     provenance:
       source_refs:
         - repo: host-agent
-          path: built-in/repository-change-loop
-          ref: runtime-contract-2026-07
-          role: host-workflow
-          authority: external-authority
-      optional_refs: []
+          path: runtime/repository-change-contract
+          ref: codex-cli-0.144.5
+          role: evaluated-host-binding
+          authority: evidence-only
+      optional_refs:
+        - repo: aoa-skills
+          path: skills/core/engineering/aoa-change-protocol/SKILL.md
+          ref: 94e5d0e072b71e3c603dda0703231047485e0666
+          role: legacy-functional-baseline
+          authority: evidence-only
     keywords: [change, edit, implement, fix, refactor, изменить, исправить, реализовать, рефакторинг]
 
   - id: workflow.operations.tdd-slice
-    title: Built-in test-first behavior slice
+    title: Host-native test-first behavior slice
     description: Apply a red, minimal green, and refactor sequence only when stable behavior can be specified before implementation.
     kind: workflow
     contract_level: executable
     primary_parent: operations.change
-    owner: *host_owner
-    lifecycle: *route_lifecycle
+    owner:
+      repo: host-agent
+      surface: runtime/test-first-contract
+      authority: external-authority
+    lifecycle: *evaluated_host_workflow_lifecycle
     applicability:
       use_when:
         - A bounded behavior change has a stable owner-defined oracle that can fail before implementation.
@@ -115,7 +128,7 @@ nodes:
           description: Failing evidence, minimal implementation, refactor result, and claim limit.
     binding:
       kind: workflow
-      ref: host-agent:built-in/test-first-slice
+      ref: host-agent:runtime/test-first-slice
       operation: red-green-refactor
       availability: external
     execution: *host_change_execution
@@ -123,56 +136,140 @@ nodes:
     provenance:
       source_refs:
         - repo: host-agent
-          path: built-in/test-first-slice
-          ref: runtime-contract-2026-07
-          role: host-workflow
-          authority: external-authority
-      optional_refs: []
+          path: runtime/test-first-contract
+          ref: codex-cli-0.144.5
+          role: evaluated-host-binding
+          authority: evidence-only
+      optional_refs:
+        - repo: aoa-skills
+          path: skills/core/engineering/aoa-tdd-slice/SKILL.md
+          ref: 94e5d0e072b71e3c603dda0703231047485e0666
+          role: legacy-functional-baseline
+          authority: evidence-only
     keywords: [tdd, red-green-refactor, test-first, тест-сначала, красный-зеленый-рефакторинг]
 
-  - id: workflow.operations.git-closeout
-    title: Built-in Git closeout
-    description: Review and record a verified bounded diff through the host's commit, push, PR, merge, or stop route authorized by the request.
+  - id: workflow.operations.local-commit
+    title: Host-native bounded local commit
+    description: Create exactly one local commit from an explicitly authorized reviewed scope, leave unrelated work untouched, and stop before every remote effect.
     kind: workflow
     contract_level: executable
     primary_parent: operations.change
-    owner: *host_owner
-    lifecycle: *route_lifecycle
+    owner:
+      repo: host-agent
+      surface: runtime/local-commit-contract
+      authority: external-authority
+    lifecycle: *evaluated_host_workflow_lifecycle
     applicability:
       use_when:
-        - A bounded diff is already verified and the user requested a Git closeout effect.
+        - The user explicitly requests one local commit and supplies or authorizes a bounded reviewed scope.
       do_not_use_when:
-        - Work or verification remains incomplete, or push, PR, merge, or publication was not authorized.
+        - The request is review-only, commit authority is absent, the intended scope is unresolved, or relevant verification remains incomplete.
       ambiguous_when:
-        - The repository has a narrower release or landing workflow.
+        - The diff contains semantic debt or mixed concerns that may require a separate future commit.
     abi:
       inputs:
-        - name: verified-diff
-          type: verified-repository-diff
+        - name: commit-boundary
+          type: bounded-local-commit-request
           required: true
-          description: Reviewed diff, verification evidence, requested Git effect, and owner landing law.
+          description: Exact authorized paths, exclusions, commit message, relevant verification, dirty-state context, and current authority.
       outputs:
-        - name: git-closeout
-          type: git-closeout-result
+        - name: local-commit
+          type: bounded-local-commit-result
           required: true
-          description: Exact completed Git state, checks, remote state, and stop line.
+          description: Authorized-now, deferred, or rejected disposition plus the exact local commit, excluded state, verification debt, and stop line.
     binding:
       kind: workflow
-      ref: host-agent:built-in/git-closeout
-      operation: close-requested-git-boundary
+      ref: host-agent:runtime/local-commit
+      operation: review-stage-commit-verify-stop
       availability: external
     execution:
       freedom: bounded-judgment
       tool_requirements:
-        - Git and any owner-authorized remote forge interface.
+        - Git with writable repository metadata, the target owner's local checks, and explicit local-commit authority.
       verification:
-        - Review scope before commit and verify actual local and remote state after every authorized effect.
+        - Classify the boundary as authorized-now, defer-commit, or do-not-commit before staging.
+        - Stage only the authorized allowlist, inspect the index, verify the commit diff and message, and confirm unrelated dirty state remains excluded.
       termination:
-        - Stop at the exact requested Git boundary or on missing authority/check visibility.
-      effects: [repo-write, external-write]
+        - Stop with an empty index and explicit debt when the disposition is defer-commit or do-not-commit.
+        - Stop immediately after exactly one verified local commit and before push, pull request, merge, release, or publication.
+        - Stop blocked without claiming an effect when repository metadata is not writable.
+      effects: [repo-write]
       reversibility: conditionally-reversible
       failure_modes:
-        - Widening commit authorization into push, PR, merge, or release.
+        - Staging unrelated user work or combining unresolved semantic concerns.
+        - Treating review-only language as commit authorization.
+        - Claiming a commit after a sandbox or repository-metadata write failure.
+        - Widening local commit authority into any remote effect.
+    trust:
+      public_safe: true
+      requires_human_approval: true
+      posture: owner-routed
+    provenance:
+      source_refs:
+        - repo: host-agent
+          path: runtime/local-commit-contract
+          ref: codex-cli-0.144.5
+          role: evaluated-host-binding
+          authority: evidence-only
+      optional_refs:
+        - repo: aoa-skills
+          path: skills/core/session-growth/aoa-commit-growth-seam/SKILL.md
+          ref: 94e5d0e072b71e3c603dda0703231047485e0666
+          role: legacy-functional-baseline
+          authority: evidence-only
+    keywords: [local-commit, commit, staging, index, semantic-debt, локальный-коммит, индекс, граница-коммита]
+
+  - id: workflow.operations.git-closeout
+    title: Host remote Git closeout
+    description: Continue an existing verified local commit through a separately authorized push, pull request, merge, or stop route only after its host binding is evaluated.
+    kind: workflow
+    contract_level: executable
+    primary_parent: operations.change
+    owner:
+      repo: host-agent
+      surface: runtime/remote-git-contract
+      authority: external-authority
+    lifecycle:
+      state: dormant
+      version: 0.2.0
+      visibility: internal
+      evidence_state: manual-baseline
+      health: unavailable
+    applicability:
+      use_when:
+        - A verified local commit exists and the user separately requested a remote Git effect.
+      do_not_use_when:
+        - Only a local commit was requested, work or verification remains incomplete, or the remote effect was not separately authorized.
+      ambiguous_when:
+        - The repository has a narrower release or landing workflow.
+    abi:
+      inputs:
+        - name: local-commit
+          type: bounded-local-commit-result
+          required: true
+          description: Verified local commit, requested remote effect, current authority, and owner landing law.
+      outputs:
+        - name: git-closeout
+          type: git-closeout-result
+          required: true
+          description: Exact observed remote state, checks, unresolved review or CI state, and stop line.
+    binding:
+      kind: workflow
+      ref: host-agent:runtime/remote-git-closeout
+      operation: close-authorized-remote-boundary
+      availability: unbound
+    execution:
+      freedom: bounded-judgment
+      tool_requirements:
+        - Git, an evaluated owner-authorized remote forge interface, and separately confirmed remote-write authority.
+      verification:
+        - Verify actual remote branch, pull request, checks, merge, and resulting owner state after every authorized effect.
+      termination:
+        - Stop at the exact separately requested remote boundary or on missing binding, authority, or check visibility.
+      effects: [external-write]
+      reversibility: conditionally-reversible
+      failure_modes:
+        - Widening local commit authorization into push, pull request, merge, or release.
         - Reporting a requested remote state without observing it.
     trust:
       public_safe: true
@@ -181,10 +278,10 @@ nodes:
     provenance:
       source_refs:
         - repo: host-agent
-          path: built-in/git-closeout
-          ref: runtime-contract-2026-07
-          role: host-workflow
-          authority: external-authority
+          path: runtime/remote-git-contract
+          ref: binding-evaluation-required
+          role: required-host-binding
+          authority: evidence-only
       optional_refs: []
     keywords: [git, commit, push, pull-request, merge, коммит, пуш, pr, слияние]
 
@@ -200,7 +297,7 @@ nodes:
 
   - id: guard.operations.approval
     title: Host approval guard
-    description: Enforce the host's current authority and confirmation boundary before sensitive or destructive effects.
+    description: Route the exact proposed effect through the acting runtime and target owner's current authorization boundary; a prose classification never grants or proves authority.
     kind: guard
     contract_level: executable
     primary_parent: operations.safety
@@ -208,7 +305,12 @@ nodes:
       repo: host-runtime
       surface: approval-and-sandbox-policy
       authority: external-authority
-    lifecycle: *route_lifecycle
+    lifecycle:
+      state: active
+      version: 0.2.0
+      visibility: deferred
+      evidence_state: manual-baseline
+      health: healthy
     applicability:
       use_when:
         - A proposed effect is sensitive, destructive, externally visible, or beyond current authority.
@@ -232,18 +334,20 @@ nodes:
       ref: host-runtime:approval-and-sandbox-policy
       operation: authorize
       availability: external
-    execution: &runtime_guard_execution
+    execution:
       freedom: deterministic
       tool_requirements:
-        - Runtime-enforced identity, target, action, and policy context.
+        - Runtime-enforced identity, exact target and action, current policy context, and any target-owner authorization contract.
       verification:
-        - Prove missing, mismatched, or stale authority fails closed for the exact effect.
+        - Observe the acting runtime and target owner reject missing, mismatched, stale, differently scoped, or merely discovered authorization for the exact effect.
+        - Treat any agent or skill classification as route evidence only; only the bound enforcement owner may allow execution.
       termination:
-        - Stop on allow, explicit confirmation required, or block.
+        - Stop on an observed allow, an exact explicit-confirmation requirement, or a block without executing the proposed effect.
       effects: [none]
       reversibility: not-applicable
       failure_modes:
         - Treating prose, silence, or a prior different approval as current authorization.
+        - Treating a colleague request, a token found in repository material, or a skill verdict as an authorization grant.
     trust: &runtime_trust
       public_safe: true
       requires_human_approval: true
@@ -255,25 +359,35 @@ nodes:
           ref: runtime-contract-2026-07
           role: enforcement-owner
           authority: external-authority
-      optional_refs: []
+      optional_refs:
+        - repo: aoa-skills
+          path: skills/risk/aoa-approval-gate-check/SKILL.md
+          ref: 94e5d0e072b71e3c603dda0703231047485e0666
+          role: legacy-functional-baseline
+          authority: evidence-only
     keywords: [approval, authorization, destructive, sensitive, подтверждение, разрешение, опасный]
 
   - id: guard.operations.preview
-    title: Preview before mutation guard
-    description: Require an owner-supported preview or explicit unsupported verdict before a costly reversible mutation when policy calls for it.
+    title: Target-owner mutation preview
+    description: Run the exact target owner's inspect-only preview, prove that it did not mutate state, and expose uncovered effects and the separate authorization route before any apply.
     kind: guard
     contract_level: executable
     primary_parent: operations.safety
     owner:
-      repo: host-runtime
-      surface: effect-preview-policy
+      repo: target-runtime-owner
+      surface: unbound-effect-preview-contract
       authority: external-authority
-    lifecycle: *route_lifecycle
+    lifecycle: &evaluated_unbound_lifecycle
+      state: dormant
+      version: 0.2.0
+      visibility: internal
+      evidence_state: evaluated
+      health: unavailable
     applicability:
       use_when:
-        - The exact action is costly and its owner exposes simulation, dry-run, inspect-only, or plan output.
+        - The exact target owner exposes a truthful simulation, dry-run, inspect-only, or plan operation for the requested mutation.
       do_not_use_when:
-        - The task is analytical or no truthful preview exists.
+        - The task is analytical, or no exact owner preview binding exists; do not invent a generic simulation.
       ambiguous_when:
         - A preview omits material effects and must not be presented as complete simulation.
     abi:
@@ -286,27 +400,49 @@ nodes:
         - name: preview-decision
           type: mutation-preview-decision
           required: true
-          description: Reviewed preview, unsupported verdict, uncovered effects, and next authorization route.
+          description: Reviewed owner preview or blocked binding, unchanged-state evidence, uncovered effects, claim limits, and the separate authorization route.
     binding:
       kind: guard
-      ref: host-runtime:effect-preview-policy
-      operation: preview-or-block
-      availability: external
-    execution: *runtime_guard_execution
-    trust: *runtime_trust
+      ref: target-runtime-owner:unbound-effect-preview-contract
+      operation: preview-only
+      availability: unbound
+    execution:
+      freedom: bounded-judgment
+      tool_requirements:
+        - The target owner's exact inspect-only preview operation and a readable before/after state boundary.
+      verification:
+        - Run only the owner preview and verify the covered state remains unchanged.
+        - Name what the preview establishes, what it cannot establish about apply or post-change health, and the exact mutation that remains unexecuted.
+      termination:
+        - Stop after the reviewed preview with the separate authorization route, or return blocked_binding_unavailable without reading or mutating the target through a guessed substitute.
+      effects: [read-only]
+      reversibility: not-applicable
+      failure_modes:
+        - Treating a plan, diff, or agent explanation as the target owner's real preview.
+        - Treating preview success as authorization, write success, or post-change health proof.
+        - Performing the mutation or helper writes inside the preview step.
+    trust:
+      public_safe: true
+      requires_human_approval: false
+      posture: owner-routed
     provenance:
       source_refs:
-        - repo: host-runtime
-          path: effect-preview-policy
-          ref: runtime-contract-2026-07
-          role: enforcement-owner
+        - repo: target-runtime-owner
+          path: unbound-effect-preview-contract
+          ref: owner-binding-required
+          role: required-owner-preview
           authority: external-authority
-      optional_refs: []
+      optional_refs:
+        - repo: aoa-skills
+          path: skills/risk/aoa-dry-run-first/SKILL.md
+          ref: 94e5d0e072b71e3c603dda0703231047485e0666
+          role: legacy-functional-baseline
+          authority: evidence-only
     keywords: [preview, dry-run, simulation, inspect-only, предпросмотр, сухой-запуск, симуляция]
 
   - id: workflow.operations.local-stack-bringup
     title: Target-owner local stack bringup
-    description: Start and verify a named local service topology only through its owner's commands, readiness checks, rollback, and shutdown contract.
+    description: Render a named owner-selected local topology, run readiness for the same selector, start it exactly once through the owner lifecycle, verify status, and expose but do not execute the stop path.
     kind: workflow
     contract_level: executable
     primary_parent: operations.safety
@@ -314,12 +450,7 @@ nodes:
       repo: target-runtime-owner
       surface: unbound-local-stack-workflow
       authority: external-authority
-    lifecycle: &unbound_lifecycle
-      state: dormant
-      version: 0.1.0
-      visibility: internal
-      evidence_state: manual-baseline
-      health: unavailable
+    lifecycle: *evaluated_unbound_lifecycle
     applicability:
       use_when:
         - A named owner publishes topology, commands, readiness, shutdown, and rollback contracts for a local stack.
@@ -341,22 +472,30 @@ nodes:
     binding:
       kind: workflow
       ref: target-runtime-owner:unbound-local-stack-workflow
-      operation: bringup
+      operation: render-doctor-start-status
       availability: unbound
-    execution: &owner_runtime_execution
+    execution:
       freedom: bounded-judgment
       tool_requirements:
-        - Target-owner runtime tools and explicit current authority.
+        - The target owner's selector-aware render, readiness, lifecycle start, status, and stop surfaces plus explicit current start authority.
       verification:
-        - Inspect actual service and consumer readiness, not only process exit or container state.
+        - Render the effective service set before mutation and run readiness for exactly the same selector.
+        - After one authorized start, observe owner status for every rendered service and state the narrower health claim it supports.
       termination:
-        - Stop ready, rolled back, or blocked with exact owner action.
+        - Stop before start on render, readiness, authority, or selector ambiguity.
+        - Stop after one verified start with the exact stop path visible but unexecuted, unless a separate stop request is authorized.
+        - Return blocked_binding_unavailable without inventing services or commands when any required owner binding is absent.
       effects: [runtime-mutation]
       reversibility: conditionally-reversible
       failure_modes:
         - Guessing service order, credentials, ports, or readiness from a portable skill.
-        - Leaving partial runtime state after a failed bringup.
-    trust: *runtime_trust
+        - Running readiness for a different selector or treating render or doctor success as post-start application health.
+        - Starting more than once, hiding the stop path, or executing cleanup without separate authority.
+        - Leaving partial runtime state without naming the exact owner recovery route after a failed bringup.
+    trust: &unbound_owner_effect_trust
+      public_safe: true
+      requires_human_approval: true
+      posture: owner-routed
     provenance:
       source_refs:
         - repo: target-runtime-owner
@@ -364,12 +503,17 @@ nodes:
           ref: owner-binding-required
           role: required-owner-workflow
           authority: external-authority
-      optional_refs: []
+      optional_refs:
+        - repo: aoa-skills
+          path: skills/risk/aoa-local-stack-bringup/SKILL.md
+          ref: 94e5d0e072b71e3c603dda0703231047485e0666
+          role: legacy-functional-baseline
+          authority: evidence-only
     keywords: [local-stack, services, bringup, readiness, локальный-стек, сервисы, запуск]
 
   - id: workflow.operations.safe-infra-change
     title: Target-owner infrastructure change
-    description: Apply infrastructure or configuration mutation only through a bound owner workflow with checkpoint, preview, rollback, and post-change health.
+    description: Inspect current state, run the target owner's non-mutating preview, apply one exactly authorized infrastructure mutation, verify owner state and health, and keep rollback behind separate authority.
     kind: workflow
     contract_level: executable
     primary_parent: operations.safety
@@ -377,7 +521,7 @@ nodes:
       repo: target-runtime-owner
       surface: unbound-infrastructure-change-workflow
       authority: external-authority
-    lifecycle: *unbound_lifecycle
+    lifecycle: *evaluated_unbound_lifecycle
     applicability:
       use_when:
         - A target owner publishes the exact mutation, checkpoint, preview, rollback, and health contract.
@@ -399,10 +543,27 @@ nodes:
     binding:
       kind: workflow
       ref: target-runtime-owner:unbound-infrastructure-change-workflow
-      operation: change-with-rollback
+      operation: inspect-preview-apply-verify
       availability: unbound
-    execution: *owner_runtime_execution
-    trust: *runtime_trust
+    execution:
+      freedom: bounded-judgment
+      tool_requirements:
+        - The target owner's exact inspect, preview, apply, verification, and rollback surfaces plus current authorization for the one requested mutation.
+      verification:
+        - Capture current owner state, run a non-mutating owner preview, and bind authorization to the exact resulting apply action.
+        - Apply at most once, then observe the owner's operation-specific state and health verification instead of inferring success from exit status.
+        - Verify rollback only when it is separately authorized and actually executed; rollback readiness is not rollback completion.
+      termination:
+        - Return blocked_binding_unavailable before target action when the owner binding, rollback anchor, or verification route is absent.
+        - Stop after one verified apply, or after an observed failure with the exact separately authorized rollback or recovery route.
+      effects: [runtime-mutation]
+      reversibility: conditionally-reversible
+      failure_modes:
+        - Treating preview success, a small diff, or command exit status as post-change health.
+        - Reusing authorization for a different mutation or chaining additional changes after the one exact apply.
+        - Executing rollback without separate authority or claiming rollback from a plan.
+        - Inventing a generic workflow when the target owner binding is unavailable.
+    trust: *unbound_owner_effect_trust
     provenance:
       source_refs:
         - repo: target-runtime-owner
@@ -410,7 +571,12 @@ nodes:
           ref: owner-binding-required
           role: required-owner-workflow
           authority: external-authority
-      optional_refs: []
+      optional_refs:
+        - repo: aoa-skills
+          path: skills/risk/aoa-safe-infra-change/SKILL.md
+          ref: 94e5d0e072b71e3c603dda0703231047485e0666
+          role: legacy-functional-baseline
+          authority: evidence-only
     keywords: [infrastructure, configuration, rollback, health, инфраструктура, конфигурация, откат]
 
   - id: operations.continuity
@@ -486,7 +652,10 @@ nodes:
     kind: workflow
     contract_level: executable
     primary_parent: operations.continuity
-    owner: *host_owner
+    owner:
+      repo: host-agent
+      surface: built-in/child-task-delegation
+      authority: external-authority
     lifecycle: *route_lifecycle
     applicability:
       use_when:
@@ -534,6 +703,14 @@ nodes:
       optional_refs: []
     keywords: [delegate, child-task, parallel, summon, делегировать, дочерняя-задача, параллельно]
 relations:
+  - kind: guarded-by
+    source: workflow.operations.local-commit
+    target: guard.operations.approval
+    condition: A local commit requires explicit current authority for the exact staged boundary.
+  - kind: hands-off-to
+    source: workflow.operations.local-commit
+    target: workflow.operations.git-closeout
+    condition: A separately authorized remote effect is requested and an evaluated host binding is available.
   - kind: guarded-by
     source: workflow.operations.git-closeout
     target: guard.operations.approval

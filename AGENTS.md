@@ -25,13 +25,14 @@ surface's own card and README.
 - `capabilities/` owns shared semantic nodes, one-parent navigation, typed
   relations, ABI, binding, lifecycle, compatibility, and evidence posture;
   external owner nodes remain owner-qualified references.
-- `skills/` owns seven shared portable callable bundles; a capability, mode,
+- `skills/` owns the admitted shared portable callable bundles; a capability, mode,
   external adapter, or repository-local procedure is not automatically a
   bundle here.
 - A sibling `skills/` home owns only that repository's admitted callable
   procedures. Its host projections remain derived from that owner source.
-- `generated/`, `.agents/skills/`, and `kag/` are derived projections and never
-  outrank authored sources.
+- `generated/`, explicit external portable assemblies, and `kag/` are derived
+  projections and never outrank authored sources. This repository's own
+  `.agents/skills/` remains absent.
 - Techniques may be optional provenance, never an execution dependency.
 - Workflow, tool, guard, role, runtime, proof, memory, routing, KAG, and
   project truth remain with their named owners.

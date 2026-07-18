@@ -1,10 +1,6 @@
 ---
 name: aoa-verification
-description: Turn one stable technical truth into bounded evidence through contract, coverage-audit, or property mode. Use when a named consumer boundary, an important invariant's real coverage, or a generative system property must be made reviewable. Do not use when behavior is undefined, the task is a general test plan, or green checks are being requested as whole-system proof.
-scope: core
-status: reviewed
-summary: One manual-first verification family for contracts, coverage audits, and properties.
-invocation_mode: explicit-preferred
+description: Turn one stable technical truth into bounded evidence through contract, coverage-audit, or property mode. Use to define a named consumer seam, audit what existing checks really constrain, or express a broad invariant after manual cases establish meaning. Compose with aoa-eval when an evaluation surface must first be found or applied. Do not use for undefined behavior, generic test plans, or green checks as whole-system proof.
 ---
 
 # aoa-verification
@@ -33,52 +29,41 @@ Do not use this skill when:
 
 ## Outputs
 
-- exactly one mode result: evidence package, gaps, smallest durable check or
-  no-check decision, claim limit, and termination
+- exactly one typed mode result: evidence package, gaps, smallest authorized
+  durable check or no-check decision, claim limit, and termination
 
 ## Procedure
 
-### Mode selection
+1. Read `references/contract.yaml` and choose exactly one mode:
 
-| Mode | Select when | Do not select when |
-|---|---|---|
-| `contract` | A named consumer relies on a stable ABI, receipt, schema, tool result, or handoff. | No consumer-visible seam exists. |
-| `coverage-audit` | Checks exist and the question is what stable invariant they truly constrain. | The invariant itself is still unknown. |
-| `property` | Correctness must hold across many inputs or states. | A bounded example or contract is sufficient. |
+   | Mode | Select when | Required procedure |
+   |---|---|---|
+   | `contract` | A named consumer relies on a stable ABI, receipt, schema, tool result, or handoff. | `references/contract.md` |
+   | `coverage-audit` | Checks exist and the question is what stable invariant they truly constrain. | `references/coverage-audit.md` |
+   | `property` | Correctness must hold across many inputs or states. | `references/property.md` |
 
-### Shared procedure
-
-1. Read owner meaning before generated views or checks.
-2. Exercise or reconstruct reality manually: expected, rejected, and motivating
-   failure cases where available. Name missing cases.
-3. Distinguish stable invariant from implementation detail and state the oracle.
-4. Create durable automation only for a repeated or owner-declared long-lived
-   rule. Temporary probes stay session-local and are removed after learning.
-5. Review the evidence manually and state what green does not prove.
-
-### Mode: contract
-
-Name producer, consumer, inputs, outputs, errors/effects, compatibility, and
-failure behavior. A durable seam check must reject the observed break before it
-accepts owner-approved behavior. Stop `blocked_missing_input` when the consumer
-or material ABI is unknown.
-
-### Mode: coverage-audit
-
-Map every important invariant to the check path that would fail if it broke.
-Classify direct, indirect, example-only, absent, or false-confidence coverage.
-Return only the smallest uncovered risks; do not turn line count into proof.
-
-### Mode: property
-
-State the property, domain/generator, preconditions, oracle, shrink/reproduction
-path, and known counterexamples. Prefer algebraic or semantic truth such as
-idempotence, monotonicity, conservation, or round-trip behavior over random
-input volume.
+2. Read the selected reference completely. Do not load unrelated mode
+   procedures.
+3. Read the authoritative owner rule before the subject implementation,
+   checks, examples, or generated views. Use exact supplied paths directly;
+   search only for a missing required input, not for ritual workspace
+   orientation. Exercise expected, rejected, and motivating failure cases
+   manually and state the oracle. Do not collect repository-wide inventories,
+   hashes, or status unless the claim or effect boundary needs them.
+4. When the exact evaluation surface is unknown or must be selected/applied,
+   use a task-local DAG: `aoa-eval.select -> aoa-eval.apply ->` the chosen
+   verification mode. A named check may be run directly as evidence inside a
+   verification task; cross-surface discovery and application remain
+   `aoa-eval` responsibilities.
+5. Create durable automation only after manual evidence establishes a repeated
+   or owner-declared long-lived rule and the active task authorizes the write.
+   Remove session-only probes after learning.
 
 ## Contracts
 
 - manual observation and owner meaning precede durable automation
+- evaluation selection/application and interpretation of what evidence proves
+  remain distinct, composable effects
 - a check protects one claim and cannot certify the whole system
 - generated/exported views remain subordinate to owner sources
 - no-check is valid when recurrence, oracle, or stability is missing
@@ -88,10 +73,14 @@ input volume.
 - restating a fixture, snapshot, formatting, or field order as semantic law
 - property tests with a self-fulfilling oracle
 - adding validators after the fact to hide an unresolved manual failure
+- silently using verification as a replacement for eval inventory selection or
+  treating a selected eval as proof of invariant coverage
 
 ## Verification
 
 - confirm selected mode, owner rule, manual cases, and oracle
+- when an eval surface was discovered or applied, name the `aoa-eval` handoff
+  and preserve its observation/proof limit
 - if automation is proposed, show the motivating failure it catches
 - make claim limit, evidence gap, consumer impact, and stop line explicit
 

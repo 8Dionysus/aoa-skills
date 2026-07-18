@@ -8,11 +8,12 @@ import copy
 import json
 import pathlib
 import shutil
+import tempfile
 from dataclasses import dataclass
 from typing import Any
 
 from export import portable_skill_export, release_manifest_contract
-from skill_model import skill_source_model
+from skill_model import capability_system, skill_source_model
 
 
 STANDARD_INSTALL_ROOTS = {
@@ -21,7 +22,7 @@ STANDARD_INSTALL_ROOTS = {
     "admin": "/etc/codex/skills",
 }
 EXPORT_PROFILE = portable_skill_export.EXPORT_PROFILE
-DEFAULT_EXPORT_ROOT = pathlib.Path(".agents") / "skills"
+LEGACY_ACTIVE_EXPORT_ROOT = pathlib.Path(".agents") / "skills"
 
 
 @dataclass(frozen=True)
@@ -52,12 +53,11 @@ def load_json(path: pathlib.Path, default: Any | None = None) -> Any:
 
 
 def prepare_skills_root(repo_root: pathlib.Path, skills_root: pathlib.Path) -> None:
-    default_skills_root = (repo_root / DEFAULT_EXPORT_ROOT).resolve()
-    if skills_root == default_skills_root:
-        if skills_root.exists():
-            shutil.rmtree(skills_root)
-        skills_root.mkdir(parents=True, exist_ok=True)
-        return
+    if skills_root == (repo_root / LEGACY_ACTIVE_EXPORT_ROOT).resolve():
+        raise ValueError(
+            "refusing to materialize globally selected shared skills inside "
+            "aoa-skills/.agents/skills; use an explicit external consumer root"
+        )
     if skills_root.exists():
         if not skills_root.is_dir():
             raise ValueError(f"--output-root must point to a directory: {skills_root}")
@@ -70,15 +70,27 @@ def prepare_skills_root(repo_root: pathlib.Path, skills_root: pathlib.Path) -> N
 
 
 def build_source_documents(repo_root: pathlib.Path) -> tuple[dict[str, Any], dict[str, Any]]:
+    families = capability_system.validate_sources(repo_root)
+    nodes = capability_system.node_map(families)
+    policies = load_json(repo_root / "config" / "skill_policy_matrix.json")["skills"]
+    overrides = load_json(repo_root / "config" / "portable_skill_overrides.json")["skills"]
+    invocation_modes = {
+        "invoke": "implicit-friendly",
+        "suggest": "explicit-preferred",
+        "manual": "explicit-only",
+    }
     sections: list[dict[str, Any]] = []
     catalog: list[dict[str, Any]] = []
     for source in skill_source_model.load_skill_sources(repo_root):
+        node = nodes[f"skill.{source.name}"]
+        lifecycle = node["lifecycle"]
+        activation = policies[source.name]["implicit_activation_policy"]
         skill_path = source.skill_md_path.relative_to(repo_root).as_posix()
         sections.append(
             {
                 "name": source.name,
-                "scope": source.metadata["scope"],
-                "status": source.metadata["status"],
+                "scope": "core",
+                "status": lifecycle["state"],
                 "skill_path": skill_path,
                 "sections": [
                     {"heading": heading, "content_markdown": content}
@@ -89,10 +101,10 @@ def build_source_documents(repo_root: pathlib.Path) -> tuple[dict[str, Any], dic
         catalog.append(
             {
                 "name": source.name,
-                "scope": source.metadata["scope"],
-                "status": source.metadata["status"],
-                "summary": source.metadata["summary"],
-                "invocation_mode": source.metadata["invocation_mode"],
+                "scope": "core",
+                "status": lifecycle["state"],
+                "summary": overrides[source.name]["short_description"],
+                "invocation_mode": invocation_modes[activation],
                 "skill_path": skill_path,
             }
         )
@@ -207,6 +219,7 @@ def build_portable_skill_exports(
 def build_generated_file_texts(
     inputs: ExportBuildInputs,
     documents: ExportBuildDocuments,
+    portable_root: pathlib.Path,
 ) -> dict[pathlib.Path, str]:
     resolved_profiles = resolve_pack_profiles(inputs.profiles_doc, documents.catalog_full)
     mcp_manifest = build_mcp_dependency_manifest(documents.catalog_full, documents.openai_docs)
@@ -235,6 +248,7 @@ def build_generated_file_texts(
     }
     release_manifest = release_manifest_contract.build_release_manifest(
         inputs.repo_root,
+        portable_root=portable_root,
         file_overrides=file_texts,
     )
     file_texts[generated_dir / "release_manifest.json"] = json.dumps(
@@ -254,7 +268,10 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--output-root",
         default=None,
-        help="Optional empty directory for a portable-copy trial; defaults to <repo-root>/.agents/skills",
+        help=(
+            "Optional new or empty external consumer skill root. Without it, "
+            "portable bytes are staged temporarily only to build deterministic metadata."
+        ),
     )
     return parser.parse_args()
 
@@ -263,16 +280,31 @@ def main() -> int:
     args = parse_args()
     repo_root = pathlib.Path(args.repo_root).resolve()
     inputs = load_export_build_inputs(repo_root)
-    skills_root = (
-        pathlib.Path(args.output_root).resolve()
-        if args.output_root
-        else (repo_root / DEFAULT_EXPORT_ROOT).resolve()
+    if args.output_root:
+        skills_root = pathlib.Path(args.output_root).resolve()
+        prepare_skills_root(repo_root, skills_root)
+        documents = build_portable_skill_exports(inputs, skills_root)
+        inputs.generated_dir.mkdir(exist_ok=True)
+        write_generated_file_texts(
+            build_generated_file_texts(inputs, documents, skills_root)
+        )
+        print(
+            f"built {len(documents.catalog_full['skills'])} portable skills "
+            f"into explicit consumer root {skills_root}"
+        )
+        return 0
+
+    with tempfile.TemporaryDirectory(prefix="aoa-skills-portable-") as temp_dir:
+        skills_root = pathlib.Path(temp_dir)
+        documents = build_portable_skill_exports(inputs, skills_root)
+        inputs.generated_dir.mkdir(exist_ok=True)
+        write_generated_file_texts(
+            build_generated_file_texts(inputs, documents, skills_root)
+        )
+    print(
+        f"built metadata for {len(documents.catalog_full['skills'])} skills "
+        "from a temporary portable assembly"
     )
-    prepare_skills_root(repo_root, skills_root)
-    documents = build_portable_skill_exports(inputs, skills_root)
-    inputs.generated_dir.mkdir(exist_ok=True)
-    write_generated_file_texts(build_generated_file_texts(inputs, documents))
-    print(f"built {len(documents.catalog_full['skills'])} skills into {skills_root}")
     return 0
 
 

@@ -1,106 +1,127 @@
 ---
 name: aoa-eval
-description: Route one AoA evaluation need through select, apply, or propose mode while preserving local owner and proof-authority boundaries. Use when an existing eval/check must be found or run, or a confirmed no-fit needs an owner-local intake/design candidate. Do not use for ordinary one-off tests, undefined invariants, green-command reporting, or direct edits to central proof authority.
-scope: core
-status: reviewed
-summary: One eval family for selecting evidence, applying an exact surface, or proposing a bounded no-fit response.
-invocation_mode: explicit-preferred
+description: Select or apply an eval, route a confirmed no-fit into owner-local intake or design, or classify supplied or retrieved session hits into provenance-bound eval candidates. Use for one cross-repository or owner-local evaluation need; compose with session-memory for retrieval and with aoa-verification after apply. Do not use for named central proof bundles, results, reports, verdicts, or lifecycle work (`aoa-evals`), ordinary already-named tests, undefined invariants, or generic session harvesting.
 ---
 
 # aoa-eval
 
 ## Intent
 
-Choose one evaluation lifecycle mode without treating local evidence, a healthy
-Forge, or a green command as proof beyond its declared owner and invariant.
+Route one evaluation need to the narrowest procedure that preserves its real
+owner, input contract, output, and proof limit. Consolidation here is a shared
+front door, not a collapse of five different capabilities into generic prose.
 
 ## Trigger boundary
 
 Use this skill when:
 
-- an eval/check must be selected or applied, or a verified no-fit needs a local
-  intake/design proposal with explicit proof limits
+- an eval surface must be selected or applied
+- an established no-fit needs a local intake packet or a bounded suite design
+- researched eval-trigger classes and supplied or retrieved session hits need
+  eval-owned candidate classification
 
 Do not use this skill when:
 
-- the task is an ordinary unit test, the invariant/acceptance target is unknown,
-  or the request would make this skill a central proof-authority writer
+- the task is an ordinary test run, the invariant is still unknown, the real
+  need is generic session harvesting, or the requested effect is central proof
+  promotion
 
 ## Inputs
 
-- invariant/acceptance target, owner repo and source ref, local/central inventory
-- for apply: exact selected surface, command, prerequisites, expected artifacts,
-  accepted exits, pass criteria, and effect posture
+- one mode intent plus its owner, source ref, acceptance target, relevant
+  evidence or inventory, effect authority, and required environment details
 
 ## Outputs
 
-- exactly one mode result with owner, source/environment, evidence/proof class,
-  drift, artifact, next route, and stop line
+- one mode-specific result defined by `references/contract.yaml`, including
+  owner, evidence class, proof limit, next route, and stop line
 
 ## Procedure
 
-### Mode selection
+### Choose exactly one mode
 
-| Mode | Select when | Output |
+| Mode | Use when | Required procedure |
 |---|---|---|
-| `select` | No exact evidence surface has been selected. | Exact/partial/no-fit choice and next route. |
-| `apply` | Surface, command, and acceptance contract are already explicit. | Bounded execution result and proof limit. |
-| `propose` | Selection established no adequate fit. | Owner-local intake or suite-design candidate, not proof. |
-
-### Shared procedure
-
-1. Read the local eval route and stronger proof-owner boundary before acting.
-2. Preserve repo, source ref, model/host/tools, environment, and effect posture.
-3. Run or design only the selected mode. Do not load legacy eval children.
+| `select` | No exact evidence surface has been selected. | `references/select.md` |
+| `apply` | The exact surface and acceptance contract are explicit. | `references/apply.md` |
+| `local-need` | Selection proved no fit and an existing local eval port should receive pressure. | `references/local-need.md` |
+| `design` | Selection proved no fit and a stable invariant needs a bounded local suite or report design. | `references/design.md` |
+| `session-mining` | Prior research defined eval-trigger classes that need real session examples. | `references/session-mining.md` |
 
 ### Mode: select
 
-1. Inventory the narrowest owner-local and central surfaces relevant to the
-   invariant.
-2. Compare fit, command, prerequisites, artifact, freshness, owner, and proof
-   class; reject nearest alternatives explicitly.
-3. Return exact fit to `apply`, or a bounded partial/no-fit to `propose`. Do not
-   execute or design during selection.
+Read and follow `references/select.md`.
 
 ### Mode: apply
 
-1. Refuse when exact command, source ref, accepted result, or required input is
-   missing; return to `select` rather than guessing.
-2. Run only named JIT owner checks and the exact selected command in its owner
-   root. Do not substitute a broader green gate.
-3. Inspect stdout/artifacts manually, classify drift and partial results, and
-   distinguish command success from invariant satisfaction and central proof.
+Read and follow `references/apply.md`.
 
-### Mode: propose
+### Mode: local-need
 
-1. Require a recorded no-fit, stable invariant, owner home, and acceptance
-   criteria. Reviewed traces may support a candidate but are never required or
-   authoritative.
-2. Choose the smallest owner-local intake or design packet; do not edit central
-   catalogs, mint proof, or create a permanent validator merely to fill a gap.
-3. State manual cases that must precede any durable suite and the owner review
-   that would admit it.
+Read and follow `references/local-need.md`.
+
+### Mode: design
+
+Read and follow `references/design.md`.
+
+### Mode: session-mining
+
+Read and follow `references/session-mining.md`.
+
+1. Read `references/contract.yaml` and the selected mode reference completely
+   before acting. Do not load unrelated mode references.
+2. Read the target owner's route law and preserve source, environment,
+   freshness, evidence class, effect posture, and proof authority.
+3. If a required mode input cannot be obtained from permitted sources, stop as
+   `blocked_missing_input`; do not guess, substitute a broader action, or
+   relabel absence as an owner-boundary deferral.
+   In `apply`, the mode reference's complete dotted-field preflight must be
+   observed before reading or executing the selected target; a summary claim
+   that the contract is complete is not a preflight.
+4. Execute each chosen procedure as one task-local node and return its typed
+   output. A request that explicitly asks to find and run may form
+   `select -> apply` only after an exact fit provides the complete apply ABI.
+   Other later modes remain explicit handoffs, never automatic continuation.
+5. When the task asks what an applied observation actually constrains, hand the
+   `evaluation-observation` to `aoa-verification`; do not reinterpret command
+   success as proof inside this bundle.
+6. When prior-session evidence still must be found, let the session-memory
+   evidence route retrieve and ground it, then consume the bounded packet here.
+   The evidence route owns retrieval; `session-mining` owns eval-trigger
+   classification and its local eval handoff.
 
 ## Contracts
 
-- local evidence remains local unless a stronger owner accepts it
-- Eval Forge readiness is infrastructure health, not result proof
-- selection, execution, proposal, promotion, and central proof are separate
-- a session-memory provider is optional candidate evidence and may be absent
+- selection, execution, intake, design, session evidence, and proof promotion
+  are different effects
+- eval discovery/application and interpretation of invariant coverage are
+  distinct but composable nodes
+- local evidence stays local until a stronger proof owner accepts it
+- Eval Forge health, command success, and generated dashboards are not result
+  proof
+- `.aoa` evidence is optional candidate evidence and never overrides owner
+  source truth
+- technique records may explain provenance but are not runtime dependencies
 
 ## Risks and anti-patterns
 
-- selecting by keyword, running a broad gate, or reporting exit zero as proof
-- designing before no-fit/invariant/owner are known
-- allowing eval machinery or generated dashboards to outrank owner sources
+- choosing by keyword or replacing the selected action with a broader green
+  gate
+- collapsing local pressure and executable design into one vague proposal
+- mining sessions before trigger classes and owner routes are known
+- creating a permanent validator before manual cases establish a durable
+  invariant
 
 ## Verification
 
-- confirm one mode and exact owner/source/environment posture
-- inspect artifacts/results manually against declared acceptance criteria
-- state proof limit, skipped checks, drift, and next owner route
+- confirm one mode, exact owner/source/environment posture, required inputs,
+  output type, effect, and termination condition
+- inspect commands and artifacts manually against the declared acceptance
+  target
+- state what the result proves, what it does not prove, skipped checks, drift,
+  and the next owner route
 
 ## Adaptation points
 
-Repositories supply local eval ports, commands, artifacts, and acceptance
-criteria; `aoa-evals` and Eval Forge supply only their own owner contracts.
+Owners supply local eval ports, schemas, command runners, artifacts, acceptance
+criteria, privacy rules, session providers, and proof-promotion workflows.

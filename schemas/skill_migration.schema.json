@@ -40,12 +40,15 @@
           "target_owner": {"type": "string", "minLength": 1},
           "compatibility": {
             "type": "string",
-            "enum": ["same-name", "same-name-deferred", "migration-alias", "none"]
+            "enum": ["same-name", "same-name-deferred", "same-name-transitional", "migration-alias", "none"]
           },
-          "evidence_state": {"const": "manual-evaluated"},
+          "evidence_state": {
+            "type": "string",
+            "enum": ["unassessed", "manual-baseline", "trial-in-progress", "manual-evaluated", "owner-verified", "blocked"]
+          },
           "reason": {
             "type": "string",
-            "enum": ["demonstrated-added-value", "baseline-equivalent", "consolidated-procedure", "owner-bound-action", "runtime-enforcement-required", "project-truth-belongs-to-owner"]
+            "enum": ["demonstrated-added-value", "baseline-equivalent", "consolidated-procedure", "owner-bound-action", "runtime-enforcement-required", "project-truth-belongs-to-owner", "preserve-execution-until-owner-mcp", "preserve-functional-baseline"]
           }
         }
       }

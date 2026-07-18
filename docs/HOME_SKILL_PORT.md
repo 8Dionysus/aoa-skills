@@ -51,6 +51,30 @@ provenance, managed-entry cleanup, and installed byte/mode parity. This owner
 validator does not claim that the profile is installed or visible in a live
 session.
 
+The managed install receipt at
+`$HOME/.codex/skills/.aoa-os-skill-profile.json` is the machine-local
+source-return handle. Each installed entry records the owner repository,
+absolute owner root, repository-relative source path, owner ref, dirty posture,
+version, and package digest. A bundle must resolve back to the same admitted
+owner package before owner-relative procedure or contract reads. The receipt is
+a locator and provenance record, not procedure truth, current parity, runtime
+health, or evidence of successful use. A missing, ambiguous, dirty, or stale
+handle blocks source-dependent claims; it never authorizes searching sibling
+repositories or temporary fixtures for a plausible copy.
+
+Normal installation is fail-closed for every dirty Git owner source. The
+installer permits `--allow-dirty-source` only with a separate explicit
+non-production `--dest-root`, so a candidate worktree cannot be installed into
+the normal user catalog under that exception. The dirty posture remains in
+both the per-bundle source handle and aggregate receipt.
+
+`--check` verifies installed package bytes and executable modes, the exact
+per-bundle source handle, the aggregate managed receipt, and absence of stale
+managed entries. Repeating `--execute` on a current profile is a no-op and
+preserves the original installation timestamp. Replacing an unrelated
+same-name entry and pruning a formerly managed entry each require their own
+explicit reviewed flag; unrelated names are preserved.
+
 ## Transitional v1 compatibility
 
 `aoa_skill_home_port_v1` remains readable only while existing owners migrate.

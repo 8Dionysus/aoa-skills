@@ -98,6 +98,12 @@ As of 2026-07-17:
 - v1 remains accepted only as migration compatibility;
 - this change publishes the common action support needed by the staged
   `aoa-stats` v2 consumer;
+- the OS assembler now fails closed on dirty Git owners for the normal user
+  destination, verifies per-bundle and aggregate source-return receipts,
+  preserves unrelated entries, requires explicit collision and prune choices,
+  and is idempotent when the installed profile is current;
+- dirty candidate installation is restricted to a separate explicit
+  non-production destination;
 - global installation and full-catalog fresh-session proof remain incomplete.
 
 ## Boundaries

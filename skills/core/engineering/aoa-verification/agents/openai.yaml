@@ -3,4 +3,5 @@ policy:
   implicit_activation_policy: suggest
 notes:
 - Select exactly one contract, coverage-audit, or property mode.
+- Compose with aoa-eval when the evaluation surface must first be discovered or applied; verification owns the claim interpretation, not the retrieval.
 - Manual evidence is primary; durable automation follows only a stable repeated invariant.

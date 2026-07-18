@@ -1,0 +1,99 @@
+schema_version: aoa-skill-contract-v1
+identity:
+  name: aoa-eval
+  owner: aoa-skills
+  version: 0.2.5
+  health: challenger
+purpose: Preserve five distinct evaluation capabilities behind one discoverable front door.
+freedom_level: bounded-judgment
+tool_requirements:
+  - Read access to target-owner routes and relevant evidence surfaces.
+  - Execution access only when apply or an explicitly authorized owner-local write requires it.
+trust:
+  posture: authored-procedure
+  proof_authority: false
+provenance:
+  source: skills/core/engineering/aoa-eval
+  techniques_runtime_dependency: false
+modes:
+  select:
+    input_abi: evaluation-selection-need
+    output_abi: evaluation-selection
+    effects: [none]
+    reference: select.md
+  apply:
+    input_abi: evaluation-selection
+    output_abi: evaluation-observation
+    effects: [none, owner-local-write, generated-write]
+    reference: apply.md
+    required_input_fields:
+      - verdict
+      - owner
+      - source_ref
+      - source_digest
+      - environment
+      - command.argv
+      - command.cwd
+      - command.timeout_seconds
+      - command.accepted_exit_codes
+      - prerequisites
+      - artifacts
+      - pass_criteria
+      - effect_authority
+      - expected_effect
+      - proof_authority
+      - proof_limit
+  local-need:
+    input_abi: evaluation-no-fit-with-local-port
+    output_abi: local-eval-need-packet
+    effects: [none, owner-local-write]
+    reference: local-need.md
+  design:
+    input_abi: evaluation-no-fit-with-stable-invariant
+    output_abi: local-eval-design
+    effects: [none, owner-local-write]
+    reference: design.md
+  session-mining:
+    input_abi: researched-eval-trigger-classes
+    output_abi: eval-session-evidence-candidates
+    effects: [none]
+    reference: session-mining.md
+relations:
+  - kind: hands-off-to
+    from: select
+    to: apply
+    condition: exact fit and complete execution contract
+  - kind: hands-off-to
+    from: select
+    to: local-need
+    condition: no fit and an admitted local eval port exists
+  - kind: hands-off-to
+    from: select
+    to: design
+    condition: no fit, stable invariant, and owner-local design route
+  - kind: produces
+    from: session-mining
+    to: local-need
+    condition: reviewed evidence establishes bounded local pressure
+  - kind: produces
+    from: session-mining
+    to: design
+    condition: reviewed evidence supports reproducible cases and a stable invariant
+  - kind: consumes
+    from: session-mining
+    to: aoa-session-memory-evidence-route
+    condition: the evidence route retrieved a bounded provenance-bearing packet and eval classification remains pending
+  - kind: composes-with
+    from: apply
+    to: aoa-verification
+    condition: the task asks what the evaluation observation proves about a stable contract, coverage claim, or property
+failure_modes:
+  - mode inputs silently substituted
+  - apply preflight declared complete without checking every required dotted field
+  - select widens inventory after a bounded verdict is already decisive
+  - design hands an absent surface directly to apply for creation or execution
+  - local evidence promoted as central proof
+  - permanent checks created from temporary scaffolding
+termination:
+  success: one typed mode result and explicit next route
+  blocked: required input, owner route, freshness, or authority remains unavailable

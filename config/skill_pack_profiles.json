@@ -1,24 +1,22 @@
 {
   "schema_version": 2,
   "profiles": {
-    "user-default": {
-      "description": "Install only the currently advertised and outcome-supported AoA decision family once into the host-selected user skill root.",
-      "scope": "user",
-      "install_mode": "copy",
-      "skills": [
-        "aoa-decision"
-      ]
-    },
-    "repo-default": {
-      "description": "Install only the currently advertised and outcome-supported AoA decision family.",
+    "portable-consumer-advertised": {
+      "description": "Assemble the currently advertised shared bundles only for an explicit external repository consumer.",
       "scope": "repo",
       "install_mode": "copy",
       "skills": [
-        "aoa-decision"
+        "aoa-checkpoint-closeout-bridge",
+        "aoa-decision",
+        "aoa-eval",
+        "aoa-knowledge-stewardship",
+        "aoa-memo-writeback",
+        "aoa-session-harvest",
+        "aoa-session-recovery"
       ]
     },
-    "repo-capability-sources": {
-      "description": "Install all seven source bundles for explicit research, manual comparison, or capability/KAG projection; six remain deferred and must not become implicitly active.",
+    "portable-consumer-all-sources": {
+      "description": "Assemble every shared source bundle in an explicit external research or compatibility consumer; advertising remains evidence-gated per bundle.",
       "scope": "repo",
       "install_mode": "copy",
       "skills": [
@@ -27,6 +25,8 @@
         "aoa-eval",
         "aoa-verification",
         "aoa-knowledge-stewardship",
+        "aoa-checkpoint-closeout-bridge",
+        "aoa-memo-writeback",
         "aoa-session-harvest",
         "aoa-session-recovery"
       ]

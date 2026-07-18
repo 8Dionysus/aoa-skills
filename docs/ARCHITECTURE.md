@@ -12,19 +12,20 @@ contracts.
 
 ## Procedural plane
 
-Seven `aoa-skills/skills/**/SKILL.md` bundles are the current shared callable
+Nine `aoa-skills/skills/**/SKILL.md` bundles are the current shared callable
 procedures. Internal modes stay inside those bundles. An owner repository may
 add a home bundle only after manual admission; its canonical source remains in
 that repository. External workflows and tools remain owner-qualified graph
-bindings. Only shared `aoa-decision` is advertised; the other six shared
-bundles are explicit deferred candidates.
+bindings. Seven shared bundles are advertised challengers or transitional
+front doors; engineering-shape and verification remain explicit deferred
+candidates.
 
 ## Target derived plane
 
 - `generated/capability_graph.*` supports deep retrieval and composition.
-- `user-default` carries one advertised shared bundle at the standard Codex
-  user root; installation and fresh-session visibility remain host evidence,
-  not consequences of declaring the profile.
+- `portable-consumer-advertised` and
+  `portable-consumer-all-sources` assemble external handoff packages without
+  creating a prompt-visible export in this source repository.
 - `os-user-default` may select admitted owner-home bundles into the same
   globally discoverable user catalog while truth stays under each owner's
   `skills/` home.
@@ -32,16 +33,20 @@ bundles are explicit deferred candidates.
   must not duplicate a bundle selected by the OS user profile. The old
   owner-home repository projection remains v1 migration compatibility only.
 - `kag/` exposes source-linked graph and return handles to `aoa-kag`.
-- release manifests bind source and portable hashes for pack handoff.
+- release manifests bind source and temporary/external portable hashes for
+  pack handoff.
 
 Derived planes never own semantics. They are reproducible from authored source.
 
 ## Execution plane
 
 For one request, discovery selects the smallest applicable compatible set and
-`scripts/runtime/capability_dag.py` constructs a task-local DAG from ABI and
-control relations. The DAG is session/runtime state. Conflicts, missing inputs,
-or unavailable external bindings block honestly rather than being guessed.
+`scripts/runtime/capability_dag.py` currently constructs and validates a
+task-local plan from ABI and control relations. Actual execution remains the
+agent/runtime responsibility: it must load each selected procedure, invoke the
+owner binding, observe typed output, verify it, and record terminal state. The
+DAG is session/runtime state. Conflicts, missing inputs, or unavailable
+external bindings block honestly rather than being guessed.
 
 ## Evidence plane
 

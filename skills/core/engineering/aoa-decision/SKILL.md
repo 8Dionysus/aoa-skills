@@ -1,49 +1,36 @@
 ---
 name: aoa-decision
-description: Find, record, or correct durable repository decisions through one decision family. Use when prior rationale, a meaningful accepted decision, supersession, or source/index drift is the task. Select exactly one internal mode and keep authored owner records authoritative. Do not use for ordinary docs edits or unresolved source-of-truth mapping.
-scope: core
-status: reviewed
-summary: One self-contained decision family with find, record, and correct modes over owner-authored decision records.
-invocation_mode: implicit-friendly
+description: Find, record, or correct durable repository decisions through one decision family. Use when prior rationale, a meaningful accepted choice, supersession, or drift between an authored decision record and its derived decision indexes is the task. Select exactly one internal mode and keep authored owner records authoritative. Do not use for ordinary docs edits, current source-of-truth conflicts, or generated/runtime authority mapping.
 ---
 
 # aoa-decision
 
 ## Intent
 
-Provide one front door for durable decision work. `find`, `record`, and
-`correct` are internal modes, not separately advertised skills. Owner-authored
-records are authoritative; indexes, KAG packets, caches, and session evidence
-only help locate them.
+Provide one front door for durable decision work without loading three
+procedures into every request. Keep owner-authored decision records
+authoritative; indexes, retrievers, KAG packets, caches, and session evidence
+may locate or contextualize a record but never supply its rationale.
 
 ## Trigger boundary
 
-Use this skill when:
-
-- existing rationale, status, supersession, a meaningful accepted decision, or
-  drift between a decision source and its derived views is the task
-
-Do not use this skill when:
-
-- the task is an ordinary edit, unresolved source-of-truth mapping, an
-  undecided option, or a change whose rationale fits a bounded note
-
-Lack of write authority never becomes implicit approval.
+Select this family only after the request fits its frontmatter description.
+Treat an undecided option, ordinary documentation edit, current authority map,
+or non-decision generated/runtime drift as a different task. Lack of evidence
+or write authority never becomes implicit approval.
 
 ## Inputs
 
-- intent and target owner, subject, ID, or path when known
-- owner decision route, source records, template, and index contract
-- accepted choice plus alternatives for `record`, or mismatch for `correct`
+- one decision intent and the target owner, subject, ID, path, or mismatch
+- exact owner routes, records, template, index contract, and effect authority
+  required by the selected mode
 
 ## Outputs
 
-- exactly one mode result with owner source, confidence, effect, verification,
-  skipped checks, uncertainty, and stop line
+- one typed result from `references/contract.yaml` with owner source, actual
+  effects, verification, skipped checks, uncertainty, and stop line
 
 ## Procedure
-
-### Mode selection
 
 Choose exactly one mode:
 
@@ -51,109 +38,66 @@ Choose exactly one mode:
 |---|---|---|
 | `find` | Existing rationale, status, supersession, or impact is requested. | A write or correction is already known to be required. |
 | `record` | A meaningful accepted decision lacks an adequate owner record. | The choice is open, trivial, already recorded, or only needs correction. |
-| `correct` | An existing source record or derived view is stale or wrong. | The task is pure lookup or a genuinely new decision. |
+| `correct` | An existing decision record or its derived decision view is stale or wrong. | The task is pure lookup, a current non-decision source-authority conflict, or a genuinely new decision. |
 
-Legacy decision-child names are migration aliases. Do not load them after
-selecting a mode.
-
-### Shared procedure
-
-1. Confirm applicability and select one mode. Separate lifecycle steps when two
-   modes target the same record.
-2. Read the nearest owner decision route, source records, and index contract.
-3. A retriever may narrow candidates, but every used claim must be checked in
-   the authored record.
-4. Execute only the selected mode and report source, effect, verification,
-   skipped checks, and uncertainty.
-
-Stop as `blocked_missing_input` when owner source is unavailable. Missing
-evidence is neither approval nor material to fill from memory.
+1. Read `references/contract.yaml`, then read the selected mode reference to
+   EOF. Do not load another mode or a retired child bundle.
+2. Use an exact supplied owner root, decision ID, path, or source surface
+   before discovery. Read the owner's route law before any source or generated
+   write. If that law defines a disposable or non-VCS owner root, do not probe
+   Git; use its named files, builder checks, and direct hashes or comparisons.
+3. Use a decision retriever only as an optional narrowing aid. Verify every
+   rationale, status, supersession, and owner claim in the authored decision
+   record.
+4. Execute one mode against one target. A handoff to another mode is a later
+   selection, not an implicit continuation.
+5. Stop as `blocked_missing_input` before target reads or effects when a
+   required owner source, accepted decision field, index contract, builder,
+   or effect authority is unavailable.
+6. Return the selected mode, exact source refs, result state, actual effects,
+   verification, skipped checks, residual uncertainty, and stop line.
 
 ### Mode: find
 
-#### Applicability
-
-Use for prior rationale, status, supersession, or changed-path impact.
-
-#### Procedure
-
-1. Search by the narrowest anchor: ID, path, source surface, owner, then repo.
-2. Check derived lookup freshness; stale results are hints.
-3. Read every authored record used and classify matches as exact, likely,
-   analogy, stale, superseded, or missing.
-
-#### Verification and termination
-
-Return compact source refs, status, relevance, confidence, and next route.
-Never invent a missing decision.
+Read and follow `references/find.md`.
 
 ### Mode: record
 
-#### Applicability
-
-Use only after a meaningful decision is accepted and lacks an adequate record.
-
-#### Procedure
-
-1. Confirm acceptance, owner, value beyond a lighter note, and absence of an
-   adequate existing record.
-2. Read the owner route, template, latest IDs, and related records.
-3. Capture context, material alternatives, choice, rationale, consequences,
-   owner boundary, affected sources, and follow-up.
-4. Do not infer alternatives, rationale, or consequences from the accepted
-   choice. When owner evidence for any material section is missing, return an
-   explicitly incomplete draft with `[owner input required]` and
-   `blocked_missing_input`; an accepted choice does not imply rejected options.
-5. Write only when authorized, then rebuild derived indexes from source and run
-   owner-local validation.
-
-#### Verification and termination
-
-Verify why and tradeoffs rather than diff narration. Stop before writing when
-acceptance, owner evidence, placement, source surface, or authority is missing.
+Read and follow `references/record.md`.
 
 ### Mode: correct
 
-#### Applicability
-
-Use when an existing source record or its derived view is stale or wrong.
-
-#### Procedure
-
-1. Read target source and owner law; classify source error, metadata error,
-   semantic supersession, generated drift, or stale cache.
-2. Correct source first when meaning changed, preserving history through status
-   or supersession. For derived-only drift, leave source untouched and use the
-   owner-declared builder; never hand-edit a generated view. If its builder or
-   index contract is unavailable, state the expected target state and stop as
-   `blocked_missing_input` without proposing a manual generated-file patch.
-3. Validate owner source and compare every refreshed consumer to it.
-
-#### Verification and termination
-
-Report mismatch, correction, effect, and residual risk. Do not widen cache or
-typo repair into new rationale, and do not report an unrebuilt view as fixed.
+Read and follow `references/correct.md`.
 
 ## Contracts
 
-- exactly one mode controls one target at a time
-- owner-authored records outrank every retriever or generated view
-- `record` and `correct` effects require current authority
-- generated indexes follow source; session evidence is not decision authority
+- Keep one mode and one target active at a time.
+- Keep decision acceptance, rationale, and record authority with the named
+  owner; this skill structures work but does not make the decision.
+- Require explicit current authority for `record` and `correct` effects.
+- Rebuild generated decision indexes from owner source; never patch them to
+  hide source or builder debt.
+- Keep session evidence as optional historical context, never decision truth.
+- Keep techniques as optional provenance, never runtime dependencies.
 
 ## Risks and anti-patterns
 
-- loading legacy children, trusting a title/index, or writing pre-decision
-- recording trivial diffs, cache-only correction, or silent history rewrite
-- copying a sibling owner's rationale or template as local law
+- Loading retired child skills or several mode references.
+- Trusting an index title, KAG packet, cache, or session narrative as rationale.
+- Recording a trivial diff, inferring rejected options, correcting only a
+  generated view, or silently rewriting semantic history.
+- Copying a sibling owner's rationale, ID scheme, or template as local law.
 
 ## Verification
 
-- one mode; owner-source claims; authorized effects
-- source-first correction and rebuilt consumers where relevant
-- explicit termination, validation, skipped checks, and uncertainty
+- Confirm one mode, one target, owner-source grounding, and actual effects.
+- Confirm source-first correction and owner-builder use where applicable.
+- Distinguish source validity, generated parity, external retrieval freshness,
+  and broader architectural correctness.
+- Report skipped checks and unresolved owner or federation debt explicitly.
 
 ## Adaptation points
 
-Each repository supplies its ID format, template, source home, index builder,
-validation command, and supersession vocabulary.
+Let each repository supply its decision home, ID and status vocabulary,
+template, index contract and builder, validation commands, supersession law,
+and optional retriever binding.

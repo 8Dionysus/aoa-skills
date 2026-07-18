@@ -12,7 +12,11 @@ from bundles import skill_pack_install_contract
 
 def main() -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--repo-root", default=".", help="Repository root containing .agents/skills")
+    parser.add_argument(
+        "--repo-root",
+        default=".",
+        help="Repository root containing packaging metadata or receiving a staged bundle",
+    )
     parser.add_argument("--profile", required=True, help="Profile name from generated/skill_pack_profiles.resolved.json")
     source_group = parser.add_mutually_exclusive_group()
     source_group.add_argument(
@@ -26,7 +30,12 @@ def main() -> int:
         help="Optional ZIP handoff archive containing one staged profile bundle",
     )
     parser.add_argument("--dest-root", default=None, help="Override destination root for installed skills")
-    parser.add_argument("--mode", choices=("symlink", "copy"), default="symlink", help="Install mode")
+    parser.add_argument(
+        "--mode",
+        choices=("symlink", "copy"),
+        default="copy",
+        help="Install mode; symlink requires a persistent staged bundle root",
+    )
     parser.add_argument("--execute", action="store_true", help="Apply the install plan")
     parser.add_argument("--overwrite", action="store_true", help="Remove existing skill dirs before install")
     parser.add_argument("--format", choices=("json", "markdown"), default="markdown", help="Output format")
@@ -50,6 +59,15 @@ def main() -> int:
                 install_root_override=args.dest_root,
                 default_install_root=source["install_root"],
             )
+            if (
+                source["source_kind"] == "temporary_portable_assembly"
+                and dest_root
+                == skill_pack_install_contract.repo_install_root(repo_root).resolve()
+            ):
+                raise ValueError(
+                    "direct source installation requires an explicit external "
+                    "--dest-root; aoa-skills/.agents/skills must remain absent"
+                )
             plan = skill_pack_install_contract.build_install_plan(
                 profile_name=args.profile,
                 source=source,

@@ -3,29 +3,21 @@
   "profile": "codex-facing-v2",
   "source_config": "config/skill_pack_profiles.json",
   "profiles": {
-    "user-default": {
-      "description": "Install only the currently advertised and outcome-supported AoA decision family once into the host-selected user skill root.",
-      "scope": "user",
-      "install_mode": "copy",
-      "install_root": "$HOME/.codex/skills",
-      "skills": [
-        {
-          "name": "aoa-decision",
-          "source_path": ".agents/skills/aoa-decision/SKILL.md",
-          "target_path": "$HOME/.codex/skills/aoa-decision/SKILL.md",
-          "openai_config_path": "$HOME/.codex/skills/aoa-decision/agents/openai.yaml",
-          "allow_implicit_invocation": true,
-          "implicit_activation_policy": "invoke",
-          "trust_posture": "portable-core"
-        }
-      ]
-    },
-    "repo-default": {
-      "description": "Install only the currently advertised and outcome-supported AoA decision family.",
+    "portable-consumer-advertised": {
+      "description": "Assemble the currently advertised shared bundles only for an explicit external repository consumer.",
       "scope": "repo",
       "install_mode": "copy",
       "install_root": ".agents/skills",
       "skills": [
+        {
+          "name": "aoa-checkpoint-closeout-bridge",
+          "source_path": ".agents/skills/aoa-checkpoint-closeout-bridge/SKILL.md",
+          "target_path": ".agents/skills/aoa-checkpoint-closeout-bridge/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-checkpoint-closeout-bridge/agents/openai.yaml",
+          "allow_implicit_invocation": true,
+          "implicit_activation_policy": "invoke",
+          "trust_posture": "portable-core"
+        },
         {
           "name": "aoa-decision",
           "source_path": ".agents/skills/aoa-decision/SKILL.md",
@@ -34,11 +26,56 @@
           "allow_implicit_invocation": true,
           "implicit_activation_policy": "invoke",
           "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-eval",
+          "source_path": ".agents/skills/aoa-eval/SKILL.md",
+          "target_path": ".agents/skills/aoa-eval/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-eval/agents/openai.yaml",
+          "allow_implicit_invocation": true,
+          "implicit_activation_policy": "invoke",
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-knowledge-stewardship",
+          "source_path": ".agents/skills/aoa-knowledge-stewardship/SKILL.md",
+          "target_path": ".agents/skills/aoa-knowledge-stewardship/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-knowledge-stewardship/agents/openai.yaml",
+          "allow_implicit_invocation": true,
+          "implicit_activation_policy": "invoke",
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-memo-writeback",
+          "source_path": ".agents/skills/aoa-memo-writeback/SKILL.md",
+          "target_path": ".agents/skills/aoa-memo-writeback/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-memo-writeback/agents/openai.yaml",
+          "allow_implicit_invocation": true,
+          "implicit_activation_policy": "invoke",
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-session-harvest",
+          "source_path": ".agents/skills/aoa-session-harvest/SKILL.md",
+          "target_path": ".agents/skills/aoa-session-harvest/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-session-harvest/agents/openai.yaml",
+          "allow_implicit_invocation": true,
+          "implicit_activation_policy": "invoke",
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-session-recovery",
+          "source_path": ".agents/skills/aoa-session-recovery/SKILL.md",
+          "target_path": ".agents/skills/aoa-session-recovery/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-session-recovery/agents/openai.yaml",
+          "allow_implicit_invocation": true,
+          "implicit_activation_policy": "invoke",
+          "trust_posture": "portable-core"
         }
       ]
     },
-    "repo-capability-sources": {
-      "description": "Install all seven source bundles for explicit research, manual comparison, or capability/KAG projection; six remain deferred and must not become implicitly active.",
+    "portable-consumer-all-sources": {
+      "description": "Assemble every shared source bundle in an explicit external research or compatibility consumer; advertising remains evidence-gated per bundle.",
       "scope": "repo",
       "install_mode": "copy",
       "install_root": ".agents/skills",
@@ -66,8 +103,8 @@
           "source_path": ".agents/skills/aoa-eval/SKILL.md",
           "target_path": ".agents/skills/aoa-eval/SKILL.md",
           "openai_config_path": ".agents/skills/aoa-eval/agents/openai.yaml",
-          "allow_implicit_invocation": false,
-          "implicit_activation_policy": "suggest",
+          "allow_implicit_invocation": true,
+          "implicit_activation_policy": "invoke",
           "trust_posture": "portable-core"
         },
         {
@@ -84,8 +121,26 @@
           "source_path": ".agents/skills/aoa-knowledge-stewardship/SKILL.md",
           "target_path": ".agents/skills/aoa-knowledge-stewardship/SKILL.md",
           "openai_config_path": ".agents/skills/aoa-knowledge-stewardship/agents/openai.yaml",
-          "allow_implicit_invocation": false,
-          "implicit_activation_policy": "suggest",
+          "allow_implicit_invocation": true,
+          "implicit_activation_policy": "invoke",
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-checkpoint-closeout-bridge",
+          "source_path": ".agents/skills/aoa-checkpoint-closeout-bridge/SKILL.md",
+          "target_path": ".agents/skills/aoa-checkpoint-closeout-bridge/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-checkpoint-closeout-bridge/agents/openai.yaml",
+          "allow_implicit_invocation": true,
+          "implicit_activation_policy": "invoke",
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-memo-writeback",
+          "source_path": ".agents/skills/aoa-memo-writeback/SKILL.md",
+          "target_path": ".agents/skills/aoa-memo-writeback/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-memo-writeback/agents/openai.yaml",
+          "allow_implicit_invocation": true,
+          "implicit_activation_policy": "invoke",
           "trust_posture": "portable-core"
         },
         {
@@ -93,8 +148,8 @@
           "source_path": ".agents/skills/aoa-session-harvest/SKILL.md",
           "target_path": ".agents/skills/aoa-session-harvest/SKILL.md",
           "openai_config_path": ".agents/skills/aoa-session-harvest/agents/openai.yaml",
-          "allow_implicit_invocation": false,
-          "implicit_activation_policy": "suggest",
+          "allow_implicit_invocation": true,
+          "implicit_activation_policy": "invoke",
           "trust_posture": "portable-core"
         },
         {
@@ -102,8 +157,8 @@
           "source_path": ".agents/skills/aoa-session-recovery/SKILL.md",
           "target_path": ".agents/skills/aoa-session-recovery/SKILL.md",
           "openai_config_path": ".agents/skills/aoa-session-recovery/agents/openai.yaml",
-          "allow_implicit_invocation": false,
-          "implicit_activation_policy": "suggest",
+          "allow_implicit_invocation": true,
+          "implicit_activation_policy": "invoke",
           "trust_posture": "portable-core"
         }
       ]

@@ -6,6 +6,7 @@ from pathlib import Path
 from jsonschema import Draft202012Validator
 import pytest
 
+from bundles import install_os_skill_profile
 from export import home_skill_port
 
 
@@ -202,3 +203,92 @@ def test_transient_or_symlinked_bundle_payload_is_rejected(tmp_path: Path) -> No
         match="path component must not be a symlink",
     ):
         home_skill_port.load_port_definition(owner)
+
+
+def test_os_profile_install_is_idempotent_and_receipt_bound(tmp_path: Path) -> None:
+    owner = make_owner(tmp_path / "aoa-stats")
+    upgrade_owner_to_v2(owner)
+    config_path = tmp_path / "os-skill-profiles.json"
+    config_path.write_text(
+        json.dumps(
+            {
+                "schema_version": "aoa_os_skill_profiles_v1",
+                "profiles": {
+                    "os-user-default": {
+                        "runtime": "codex",
+                        "scope": "user",
+                        "install_root": "$HOME/.codex/skills",
+                        "install_mode": "managed-copy",
+                        "sources": [
+                            {
+                                "kind": "owner-port",
+                                "repo": "aoa-stats",
+                                "root": "aoa-stats",
+                                "skills": ["aoa-stats"],
+                            }
+                        ],
+                    }
+                },
+            },
+            indent=2,
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+    profile, skills = install_os_skill_profile.resolve_profile(
+        repo_root=Path(__file__).resolve().parents[1],
+        config_path=config_path,
+        profile_name="os-user-default",
+        os_root=tmp_path,
+        overrides={"aoa-stats": owner},
+    )
+    destination = tmp_path / "installed"
+    plan = install_os_skill_profile.build_plan(
+        profile_name="os-user-default",
+        profile=profile,
+        skills=skills,
+        dest_root=destination,
+    )
+    install_os_skill_profile.execute_plan(
+        plan,
+        skills,
+        replace_unmanaged=False,
+        prune_managed=False,
+        allow_dirty_source=False,
+    )
+    current = install_os_skill_profile.build_plan(
+        profile_name="os-user-default",
+        profile=profile,
+        skills=skills,
+        dest_root=destination,
+    )
+    assert install_os_skill_profile.plan_is_current(
+        current,
+        allow_dirty_source=False,
+    )
+
+    receipt_path = destination / install_os_skill_profile.INSTALL_RECEIPT
+    receipt_before = receipt_path.read_bytes()
+    install_os_skill_profile.execute_plan(
+        current,
+        skills,
+        replace_unmanaged=False,
+        prune_managed=False,
+        allow_dirty_source=False,
+    )
+    assert receipt_path.read_bytes() == receipt_before
+
+    receipt = json.loads(receipt_before)
+    receipt["skills"][0]["owner_ref"] = "stale-ref"
+    receipt_path.write_text(json.dumps(receipt, indent=2) + "\n", encoding="utf-8")
+    drift = install_os_skill_profile.build_plan(
+        profile_name="os-user-default",
+        profile=profile,
+        skills=skills,
+        dest_root=destination,
+    )
+    assert drift["install_receipt_status"] == "drift"
+    assert not install_os_skill_profile.plan_is_current(
+        drift,
+        allow_dirty_source=False,
+    )

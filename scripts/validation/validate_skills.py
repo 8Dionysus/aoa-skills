@@ -14,19 +14,6 @@ from jsonschema import Draft202012Validator
 from skill_model import capability_system, skill_source_model
 
 
-REQUIRED_SECTION_ORDER = (
-    "Intent",
-    "Trigger boundary",
-    "Inputs",
-    "Outputs",
-    "Procedure",
-    "Contracts",
-    "Risks and anti-patterns",
-    "Verification",
-    "Adaptation points",
-)
-
-
 def load_json(path: Path) -> dict[str, Any]:
     payload = json.loads(path.read_text(encoding="utf-8"))
     if not isinstance(payload, dict):
@@ -60,11 +47,8 @@ def validate_source_skills(repo_root: Path) -> list[str]:
             errors.append(
                 f"{techniques_path.relative_to(repo_root)}: techniques.yaml is no longer a runtime skill contract"
             )
-        headings = tuple(source.sections)
-        if headings != REQUIRED_SECTION_ORDER:
-            errors.append(
-                f"{rel_path}: section order must be {list(REQUIRED_SECTION_ORDER)!r}, got {list(headings)!r}"
-            )
+        if not source.body.strip():
+            errors.append(f"{rel_path}: skill body must not be empty")
         for heading, content in source.sections.items():
             if not content.strip():
                 errors.append(f"{rel_path}: section {heading!r} must not be empty")

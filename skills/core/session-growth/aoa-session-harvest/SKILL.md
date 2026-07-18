@@ -1,99 +1,115 @@
 ---
 name: aoa-session-harvest
-description: Convert explicitly reviewed session evidence into bounded reusable candidates through extract, classify, or branch mode. Use when a reviewed task trace contains repeatable units, an isolated unit needs its next owner/artifact route, or several continuations must remain visible. Do not use on live or unreviewed notes, for automatic promotion, or to write owner truth, quests, skills, playbooks, telemetry, or memory directly.
-scope: core
-status: reviewed
-summary: One reviewed-evidence family for candidate extraction, lifecycle classification, and visible route branches.
-invocation_mode: explicit-preferred
+description: "EXPLICIT REVIEWED-SESSION INPUT ONLY: turn a named closed/reviewed session packet into extract, classify, promote, branch, or automation-opportunity output. A natural work closeout asking whether anything reusable should be preserved for the owner's future work belongs to aoa-memo-writeback, not this skill. Use on live/unreviewed session material only when extraction or promotion is explicitly requested and the required result is blocked_unreviewed_evidence. Do not use for generic summarization, progression, memo/writeback judgment, direct promotion, scheduling, mutation, owner writes, or telemetry authority."
 ---
 
 # aoa-session-harvest
 
 ## Intent
 
-Turn reviewed experience into session-local candidates and typed handoffs while
-keeping all destination owners responsible for acceptance.
+Metabolize reviewed experience without collapsing extraction, object
+classification, promotion, route choice, and automation readiness into one
+generic candidate label. Destination owners retain all acceptance authority.
 
 ## Trigger boundary
 
 Use this skill when:
 
-- a bounded reviewed session/evidence packet contains repeatable units, a
-  candidate needs classification, or materially different next routes must be
-  compared without hidden execution
+- an explicitly reviewed, bounded session/evidence packet contains reusable
+  units, an isolated unit needs owner or promotion judgment, several next routes
+  must remain visible, or a repeated manual route needs automation triage
+- the same extraction or promotion is explicitly requested from live,
+  unreviewed, or unbounded material and the only valid result is
+  `blocked_unreviewed_evidence` before a mode loads
 
 Do not use this skill when:
 
-- evidence is active, raw, unreviewed, missing its boundary, or the request asks
-  for direct owner writes, automatic promotion, scheduling, or execution
+- the request is generic summarization, progression scoring, memo writeback,
+  runtime repair, or direct owner writing, promotion, scheduling, delegation,
+  or mutation
+- the request starts from ordinary work/closeout evidence and asks whether a
+  bounded lesson should be preserved for future owner work; that first
+  writeback judgment belongs to `aoa-memo-writeback`, even if the answer might
+  later resemble a candidate classification
 
 ## Inputs
 
-- reviewed evidence boundary and refs; optional explicit baseline/checkpoint
-- one intent: extract, classify, or branch
+- reviewed evidence boundary and refs, closure/review posture, one mode intent,
+  relevant owner constraints, risks, effects, and optional checkpoint/handoff
+  hints that have not yet been trusted; or an attempted live/unreviewed input
+  used only to return the pre-mode block
 
 ## Outputs
 
-- session-local candidate/route packet with evidence posture, owner hint,
-  rejected nearest target, effect `none`, and stop line
+- one typed session-local result from `references/contract.yaml`, with evidence
+  refs, owner hints, rejected nearest route, effect `none`, stop line, and
+  destination-owner review requirement; or `blocked_unreviewed_evidence`
 
 ## Procedure
 
-### Mode selection
-
-| Mode | Select when | Output |
+| Mode | Use when | Reference |
 |---|---|---|
-| `extract` | Reusable units have not yet been isolated. | Candidate units plus unresolved residue. |
-| `classify` | One reviewed unit is isolated and needs a next artifact/owner verdict. | Defer/reject/propose skill, playbook, eval, memo, tool, adapter, or no artifact. |
-| `branch` | Several continuations must expose gains, costs, risks, owners, and stops. | Branch cards and a non-executing default/hold option. |
+| `extract` | Reusable units and unresolved residue have not been isolated. | `references/extract.md` |
+| `classify` | One unit needs its object kind, owner, and next artifact classified. | `references/classify.md` |
+| `promote` | Exactly one isolated repeated quest-shaped unit needs a final promotion verdict. | `references/promote.md` |
+| `branch` | Several materially different continuations must stay visible. | `references/branch.md` |
+| `automation-opportunity` | A repeated manual route needs readiness and highest-honest-mode classification. | `references/automation-opportunity.md` |
 
 ### Mode: extract
 
-1. Disposition every supplied hint before it influences a candidate.
-2. Extract only reusable reviewed units; keep design pressure and unknowns as
-   residue without candidate IDs.
-3. Assign one primary reuse kind and owner shape, preserving cluster and evidence
-   refs. Candidate refs are session-local and non-authoritative.
+Read and follow `references/extract.md`.
 
 ### Mode: classify
 
-1. Require recurrence, stable inputs/outputs, proof posture, reversibility,
-   risk, approval sensitivity, and independent composition value.
-2. Compare destinations by object kind: procedure, workflow, tool, guard,
-   adapter, eval, memo candidate, or no durable artifact.
-3. Return only a proposal to the destination owner. A repeated unit is not
-   automatically a skill, and a green result is not promotion evidence.
+Read and follow `references/classify.md`.
+
+### Mode: promote
+
+Read and follow `references/promote.md`.
 
 ### Mode: branch
 
-1. Preserve materially different routes rather than collapsing them into a
-   hidden recommendation.
-2. For each route state gain, cost, risk, owner, prerequisite, effect, stop, and
-   handoff ABI.
-3. A default is advisory. Launch, delegation, scheduling, and mutation require
-   their own owner/runtime gate.
+Read and follow `references/branch.md`.
+
+### Mode: automation-opportunity
+
+Read and follow `references/automation-opportunity.md`.
+
+1. Read `references/contract.yaml`, then inspect only enough of the evidence
+   boundary to verify explicit review/closure and bounded refs.
+2. If review/closure or a bounded evidence source is missing, return
+   `blocked_unreviewed_evidence` without loading any mode reference.
+3. Choose exactly one mode and read only its reference to EOF.
+4. Execute exactly one mode. Later modes are typed handoffs and require a new
+   selection; they are not an automatic pipeline.
 
 ## Contracts
 
-- reviewed evidence only; no dependency on a session-memory provider
-- candidates remain session-local until an owner accepts a bounded handoff
-- one primary object kind/owner hint; typed alternatives may remain visible
-- extraction, classification, promotion, execution, and telemetry are separate
+- candidates and refs remain session-local until an owner accepts a handoff
+- extraction, classification, promotion, automation, execution, progression,
+  telemetry, and durable owner writes are separate effects
+- hints, receipts, counts, and route cards never become evidence or authority
+  merely by appearing in a reviewed packet
+- technique records may explain lineage but are not runtime dependencies
 
 ## Risks and anti-patterns
 
-- mining live transcripts, universalizing one success, or minting authoritative
-  IDs from a session
-- treating quests, receipts, progression scores, or telemetry as procedure output
-- hard-coding the next named skill instead of returning a typed handoff
+- mining a live transcript, universalizing one success, or turning themes and
+  frustration into reusable units
+- forcing every repeated unit into a skill or every automation candidate into
+  a scheduler/playbook
+- treating quest, receipt, progression, stats, routing, KAG, or owner state as
+  procedure output
 
 ## Verification
 
-- trace every candidate claim to reviewed refs and disposition stale hints
-- confirm no owner file, memory, routing, KAG, telemetry, or runtime state changed
-- state rejected destinations, unresolved residue, and required owner review
+- trace every result to reviewed refs and disposition stale/cross-session hints
+- confirm one mode, typed output, owner, rejected nearest target, effects, and
+  stop line
+- confirm no owner file, quest, memory, route, KAG, telemetry, schedule, or
+  runtime state changed
 
 ## Adaptation points
 
-Sessions supply their evidence packet and boundaries; destination owners supply
-their intake contracts. Neither is copied into this skill.
+Sessions supply reviewed packets and evidence boundaries. Destination owners
+supply intake, promotion, automation, progression, and artifact contracts.

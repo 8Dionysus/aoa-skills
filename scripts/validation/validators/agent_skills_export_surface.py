@@ -5,12 +5,13 @@ from __future__ import annotations
 import argparse
 import json
 from pathlib import Path
+import tempfile
 from typing import Any, Mapping
 
 import yaml
 from jsonschema import Draft202012Validator
 
-from export import portable_skill_export, release_manifest_contract
+from export import build_agent_skills, portable_skill_export, release_manifest_contract
 from skill_model import capability_system, skill_source_model
 
 
@@ -84,7 +85,12 @@ def validate_release_schema(repo_root: Path, payload: Mapping[str, Any]) -> list
     ]
 
 
-def validate_export(repo_root: Path) -> list[str]:
+def _validate_export_against_portable(
+    repo_root: Path,
+    *,
+    portable_root: Path,
+    expected_generated: Mapping[Path, str],
+) -> list[str]:
     errors: list[str] = []
     for rel_path in (*REQUIRED_CONFIG_FILES, *REQUIRED_GENERATED_FILES):
         if not (repo_root / rel_path).is_file():
@@ -112,10 +118,15 @@ def validate_export(repo_root: Path) -> list[str]:
 
     sources = {source.name: source for source in skill_source_model.load_skill_sources(repo_root)}
     source_names = set(sources)
-    portable_root = repo_root / ".agents" / "skills"
     portable_names = {
         path.name for path in portable_root.iterdir() if path.is_dir()
     } if portable_root.is_dir() else set()
+    active_repo_projection = repo_root / ".agents" / "skills"
+    if active_repo_projection.exists() or active_repo_projection.is_symlink():
+        errors.append(
+            "aoa-skills/.agents/skills must remain absent; globally selected shared "
+            "skills are staged only for an explicit external portable consumer"
+        )
 
     try:
         catalog_by_name = by_name(catalog.get("skills"), label="agent catalog skills")
@@ -132,7 +143,7 @@ def validate_export(repo_root: Path) -> list[str]:
         "min agent catalog": set(min_by_name),
         "portable export map": set(export_by_name),
         "MCP dependency manifest": set(mcp_by_name),
-        ".agents/skills": portable_names,
+        "staged portable consumer": portable_names,
     }
     for label, actual in memberships.items():
         mismatch = set_difference(label, source_names, actual)
@@ -171,15 +182,6 @@ def validate_export(repo_root: Path) -> list[str]:
         node = graph_skill_nodes.get(name, {})
         visibility = (node.get("lifecycle") or {}).get("visibility")
         expected_activation = "invoke" if visibility == "advertised" else "suggest"
-        invocation_mode = source.metadata.get("invocation_mode")
-        if expected_activation == "invoke" and invocation_mode != "implicit-friendly":
-            errors.append(
-                f"{name}: advertised invocation policy requires implicit-friendly source metadata"
-            )
-        if expected_activation == "suggest" and invocation_mode == "implicit-friendly":
-            errors.append(
-                f"{name}: deferred invocation policy cannot use implicit-friendly source metadata"
-            )
         if policy.get("implicit_activation_policy") != expected_activation:
             errors.append(
                 f"{name}: capability visibility {visibility!r} requires activation policy {expected_activation!r}"
@@ -213,11 +215,10 @@ def validate_export(repo_root: Path) -> list[str]:
             errors.append(f"{portable_skill_path.relative_to(repo_root)} name mismatch")
         if portable_metadata.get("description") != prompt_visible_override.get("description"):
             errors.append(f"{portable_skill_path.relative_to(repo_root)} description mismatch")
-        metadata = portable_metadata.get("metadata") or {}
-        if "aoa_technique_dependencies" in metadata:
-            errors.append(f"{portable_skill_path.relative_to(repo_root)} carries retired technique dependency metadata")
-        if metadata.get("aoa_source_skill_path") != source.skill_md_path.relative_to(repo_root).as_posix():
-            errors.append(f"{portable_skill_path.relative_to(repo_root)} source path mismatch")
+        if set(portable_metadata) != {"name", "description"}:
+            errors.append(
+                f"{portable_skill_path.relative_to(repo_root)} frontmatter must contain only name and description"
+            )
         if portable_sections != source.sections:
             errors.append(f"{portable_skill_path.relative_to(repo_root)} procedure sections differ from source")
 
@@ -240,34 +241,73 @@ def validate_export(repo_root: Path) -> list[str]:
         unknown = set(skill_names) - source_names
         if unknown:
             errors.append(f"profile {profile_name!r} contains unknown skills: {sorted(unknown)!r}")
-    if profile_skill_sets.get("repo-default") != ["aoa-decision"]:
-        errors.append("repo-default must expose only the advertised aoa-decision family")
-    if profile_skill_sets.get("user-default") != ["aoa-decision"]:
-        errors.append("user-default must expose only the advertised aoa-decision family")
+    advertised_names = [
+        name
+        for name in sources
+        if (graph_skill_nodes.get(name, {}).get("lifecycle") or {}).get("visibility")
+        == "advertised"
+    ]
+    if profile_skill_sets.get("portable-consumer-advertised") != advertised_names:
+        errors.append(
+            "portable-consumer-advertised must match the currently advertised shared bundles"
+        )
     source_profiles = profiles.get("profiles") or {}
-    if (source_profiles.get("user-default") or {}).get("scope") != "user":
-        errors.append("user-default must resolve through the user install scope")
-    if (
-        (resolved_profiles.get("profiles") or {}).get("user-default", {}).get("install_root")
-        != "$HOME/.codex/skills"
+    if any(
+        profile.get("scope") == "user"
+        for profile in source_profiles.values()
+        if isinstance(profile, dict)
     ):
-        errors.append("user-default must resolve to the standard Codex user skill root")
-    if set(profile_skill_sets.get("repo-capability-sources", [])) != source_names:
-        errors.append("repo-capability-sources must contain all seven source bundles")
+        errors.append(
+            "portable consumer profiles must not duplicate the OS user profile"
+        )
+    if set(profile_skill_sets.get("portable-consumer-all-sources", [])) != source_names:
+        errors.append(
+            "portable-consumer-all-sources must contain every shared source bundle"
+        )
     resolved_names = set((resolved_profiles.get("profiles") or {}).keys())
     if resolved_names != set(profile_skill_sets):
         errors.append("resolved profile names differ from source profiles")
 
     errors.extend(validate_release_schema(repo_root, release_manifest))
     try:
-        expected_release = release_manifest_contract.build_release_manifest(repo_root)
+        expected_release = release_manifest_contract.build_release_manifest(
+            repo_root,
+            portable_root=portable_root,
+        )
     except (OSError, ValueError) as exc:
         errors.append(f"could not rebuild release manifest: {exc}")
     else:
         if release_manifest != expected_release:
             errors.append("generated/release_manifest.json is stale")
 
+    for path, expected in expected_generated.items():
+        if not path.is_file():
+            errors.append(f"missing generated file: {path.relative_to(repo_root)}")
+            continue
+        if path.read_text(encoding="utf-8") != expected:
+            errors.append(f"{path.relative_to(repo_root)} is stale")
+
     return errors
+
+
+def validate_export(repo_root: Path) -> list[str]:
+    with tempfile.TemporaryDirectory(prefix="aoa-skills-validate-portable-") as temp_dir:
+        portable_root = Path(temp_dir)
+        inputs = build_agent_skills.load_export_build_inputs(repo_root)
+        documents = build_agent_skills.build_portable_skill_exports(
+            inputs,
+            portable_root,
+        )
+        expected_generated = build_agent_skills.build_generated_file_texts(
+            inputs,
+            documents,
+            portable_root,
+        )
+        return _validate_export_against_portable(
+            repo_root,
+            portable_root=portable_root,
+            expected_generated=expected_generated,
+        )
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -289,7 +329,7 @@ def main() -> int:
         for error in errors:
             print(f"- {error}")
         return 1
-    print("Agent Skills export valid: 7 source bundles, 1 advertised, 6 deferred")
+    print("Agent Skills export valid: structural and projection invariants only")
     return 0
 
 

@@ -16,11 +16,13 @@ bundles into sibling source trees and do not create an empty home in advance.
 | --- | --- | --- |
 | decisions | `core/engineering/aoa-decision` | advertised |
 | engineering | `core/engineering/aoa-engineering-shape` | deferred |
-| evaluation | `core/engineering/aoa-eval` | deferred |
+| evaluation | `core/engineering/aoa-eval` | advertised |
 | verification | `core/engineering/aoa-verification` | deferred |
-| stewardship | `core/stewardship/aoa-knowledge-stewardship` | deferred |
-| session learning | `core/session-growth/aoa-session-harvest` | deferred |
-| session recovery | `core/session-growth/aoa-session-recovery` | deferred |
+| stewardship | `core/stewardship/aoa-knowledge-stewardship` | advertised |
+| closeout transition | `core/session-growth/aoa-checkpoint-closeout-bridge` | advertised transitional |
+| first memo writeback | `core/session-growth/aoa-memo-writeback` | advertised |
+| session learning | `core/session-growth/aoa-session-harvest` | advertised |
+| session recovery | `core/session-growth/aoa-session-recovery` | advertised |
 
 Each bundle contains `SKILL.md`, optional `agents/openai.yaml`, and only the
 resources required by that procedure. There is no runtime `techniques.yaml`
@@ -35,9 +37,11 @@ bundle. Until then, keep the behavior as an internal mode or capability node.
 
 ## Projection
 
-`.agents/skills/*` is the generated flat portable export. Edit source here,
-then rebuild with `scripts/export/build_agent_skills.py`; never edit the export
-as authority.
+This source repository intentionally has no `.agents/skills/*` tree. Edit the
+owner source here, then use `scripts/export/build_agent_skills.py` to rebuild
+metadata through a temporary portable assembly or to populate an explicit new
+external consumer root. Inside a staged consumer bundle, `.agents/skills/*`
+remains the logical portable layout and never becomes authority.
 
 Target projection topology: the OS user profile projects advertised shared and
 admitted owner-home bundles once into the active host's verified user skill

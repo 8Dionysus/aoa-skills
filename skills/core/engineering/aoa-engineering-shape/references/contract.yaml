@@ -1,0 +1,51 @@
+schema_version: aoa-skill-contract-v1
+identity:
+  name: aoa-engineering-shape
+  owner: aoa-skills
+  version: 0.2.1
+  health: degraded
+purpose: Preserve three engineering-shaping capabilities behind one discoverable front door.
+freedom_level: bounded-judgment
+tool_requirements:
+  - Read access to the target slice and target-specific owner declarations.
+trust:
+  posture: authored-procedure
+  adoption_authority: false
+provenance:
+  source: skills/core/engineering/aoa-engineering-shape
+  techniques_runtime_dependency: false
+owner_binding:
+  rule: Only an owner declaration governing the target slice may bind owner.
+  unresolved_posture: A proposed boundary may proceed with owner unresolved but cannot claim adoption or placement authority.
+modes:
+  contexts:
+    input_abi: context-boundary-pressure
+    output_abi: bounded-context-map
+    effects: [none]
+    reference: contexts.md
+  core:
+    input_abi: core-rule-pressure
+    output_abi: core-logic-boundary
+    effects: [none]
+    reference: core.md
+  port-adapter:
+    input_abi: dependency-boundary-pressure
+    output_abi: port-adapter-boundary
+    effects: [none]
+    reference: port-adapter.md
+relations:
+  - kind: hands-off-to
+    from: contexts
+    to: core
+    condition: Context ownership is resolved and one stable rule remains entangled.
+  - kind: hands-off-to
+    from: core
+    to: port-adapter
+    condition: Core placement is clear and one concrete dependency still leaks inward.
+failure_modes:
+  - target owner borrowed from an unrelated authoritative surface
+  - multiple shaping modes blended without typed handoff
+  - generic architecture imposed without local pressure
+termination:
+  success: one typed mode result, explicit owner binding posture, and stop line
+  blocked: target pressure or required inputs cannot be established

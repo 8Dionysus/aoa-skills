@@ -1,0 +1,59 @@
+schema_version: aoa-skill-contract-v1
+identity:
+  name: aoa-session-recovery
+  owner: aoa-skills
+  version: 0.2.1
+  health: challenger
+purpose: Preserve diagnosis and real checkpointed repair behind one discoverable front door.
+freedom_level: bounded-judgment
+tool_requirements:
+  - Read access to reviewed evidence, target-owner contracts, and health surfaces.
+  - Mutation access only for an explicitly authorized repair through an available owner binding.
+effects:
+  diagnose: [none]
+  repair: [none, owner-bounded-write, runtime-bounded-change]
+trust:
+  posture: authored-procedure
+  owner_policy_authority: false
+  approval_enforcement_authority: false
+provenance:
+  source: skills/core/session-growth/aoa-session-recovery
+  techniques_runtime_dependency: false
+modes:
+  diagnose:
+    input_abi: reviewed-failure-evidence
+    output_abi: session-diagnosis
+    reference: diagnose.md
+  repair:
+    input_abi: reviewed-session-diagnosis
+    output_abi: repair-cycle-result
+    reference: repair.md
+relations:
+  - {kind: hands-off-to, from: diagnose, to: repair, condition: diagnosis is reviewed and one bounded owner target is established}
+  - {kind: requires, from: repair, to: guard.operations.approval, condition: the selected repair will change owner or runtime state}
+  - {kind: produces, from: diagnose, to: aoa-stats, condition: an owner-compatible bounded observation is explicitly requested}
+  - {kind: produces, from: repair, to: aoa-stats, condition: an owner-compatible bounded observation is explicitly requested}
+execution_postures:
+  - proposed
+  - prepared
+  - executing
+  - executed
+  - verified
+  - rolled_back
+  - blocked
+  - handoff_required
+claim_order:
+  proposed: 1
+  prepared: 2
+  executing: 3
+  executed: 4
+  verified: 5
+termination:
+  success: one diagnosis or one bounded repair cycle with truthful posture and owner handoff
+  blocked: evidence, diagnosis, authorization, binding, checkpoint, rollback, or health proof is missing
+failure_modes:
+  - symptom treated as cause
+  - repair packet treated as applied change
+  - executed change treated as verified without post-change evidence
+  - owner mutation attempted without approval, checkpoint, or rollback
+  - failed health check hidden instead of rolling back or blocking

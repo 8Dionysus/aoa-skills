@@ -120,24 +120,11 @@ def ensure_scope_assets(skill_dir: pathlib.Path, scope: str) -> dict[str, str]:
 
 def build_markdown(
     skill: dict[str, Any],
-    catalog_entry: dict[str, Any],
     override: dict[str, Any],
-    compatibility_default: str,
-    source_repo: str,
 ) -> str:
     frontmatter = {
         "name": skill["name"],
         "description": override["description"],
-        "license": "Apache-2.0",
-        "compatibility": compatibility_default,
-        "metadata": {
-            "aoa_scope": skill["scope"],
-            "aoa_status": skill["status"],
-            "aoa_invocation_mode": catalog_entry["invocation_mode"],
-            "aoa_source_skill_path": skill["skill_path"],
-            "aoa_source_repo": source_repo,
-            "aoa_portable_profile": EXPORT_PROFILE,
-        },
     }
     frontmatter_text = yaml.safe_dump(
         frontmatter, sort_keys=False, allow_unicode=True, width=1000
@@ -261,8 +248,6 @@ def build_portable_skill_exports(
     catalog_by_name = {entry["name"]: entry for entry in skill_catalog["skills"]}
     overrides = overrides_doc["skills"]
     policies = policy_doc["skills"]
-    compatibility_default = overrides_doc["compatibility_default"]
-
     for skill in skill_sections["skills"]:
         name = skill["name"]
         catalog_entry = catalog_by_name[name]
@@ -280,10 +265,7 @@ def build_portable_skill_exports(
             target_skill_dir / "SKILL.md",
             build_markdown(
                 skill,
-                catalog_entry,
                 override,
-                compatibility_default,
-                source_repo,
             ),
         )
         source_agent_path = source_skill_dir / "agents" / "openai.yaml"

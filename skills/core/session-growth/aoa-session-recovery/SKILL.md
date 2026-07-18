@@ -1,89 +1,90 @@
 ---
 name: aoa-session-recovery
-description: Diagnose recurring session or workflow failure and prepare the smallest owner-routed repair through diagnose or propose-repair mode. Use when reviewed evidence shows contamination, drift, repeated tool/route failure, or a known diagnosis needs a reversible repair packet. Do not use on one live mood note, to mutate an owner directly, or to create durable validators before repeated manual evidence establishes an invariant.
-scope: core
-status: reviewed
-summary: One evidence-typed family for session diagnosis and reversible repair proposals.
-invocation_mode: explicit-preferred
+description: Diagnose reviewed recurring session or workflow failure, or carry one bounded owner repair from diagnosis through checkpoint, execution posture, rollback, and real health verification. Use when evidence shows contamination, drift, repeated route/tool failure, or a reviewed diagnosis is ready for repair. Do not use on live/unreviewed material, for vague self-improvement, or to claim a proposed or merely executed change is verified.
 ---
 
 # aoa-session-recovery
 
 ## Intent
 
-Separate symptoms, causes, and owner effects so a session can learn without
-turning self-diagnosis into hidden mutation authority.
+Recover from recurring session or workflow failure without collapsing symptom,
+diagnosis, proposed change, executed change, and verified health into one claim.
 
 ## Trigger boundary
 
 Use this skill when:
 
-- reviewed evidence shows repeated contamination, routing drift, tool failure,
-  false confidence, or a reviewed diagnosis needs a bounded repair proposal
+- a closed, explicitly reviewed evidence packet needs diagnosis; or
+- a reviewed diagnosis is ready for one bounded repair cycle at its real owner
 
 Do not use this skill when:
 
-- evidence is live/unreviewed, a diagnosis already exists but only execution is
-  requested, or the skill would need to mutate the target owner directly
+- evidence is live, raw, unreviewed, or only a frustration note
+- there is no diagnosis for repair, the target owner is unknown, or the route is
+  a broad playbook-scale rollout
+- the requested action would bypass approval, checkpoint, rollback, or owner law
 
 ## Inputs
 
-- reviewed evidence packet or diagnosis with refs, target owner, constraints,
-  and any current checkpoint/rollback posture
+- one reviewed evidence packet or reviewed diagnosis, with refs, target and
+  durable owners, constraints, execution request, approval posture, available
+  bindings, checkpoint/rollback anchors, and known health surfaces
 
 ## Outputs
 
-- exactly one diagnosis or repair-proposal packet with evidence posture, owner,
-  reversibility, manual checks, uncertainty, effect `none`, and stop line
+- exactly one typed result from `references/contract.yaml`: either a
+  `session-diagnosis` or `repair-cycle-result`, with evidence refs, claim and
+  execution posture, actual effects, health evidence, uncertainty, and stop line
 
 ## Procedure
 
-### Mode selection
-
-| Mode | Select when | Output |
+| Mode | Use when | Reference |
 |---|---|---|
-| `diagnose` | Symptoms are reviewed but causes/owner are not yet established. | Symptoms, causes, inference, unknowns, drift class, owner hints. |
-| `propose-repair` | A reviewed diagnosis exists. | Smallest diff shape, checkpoint, rollback, checks, cleanup, handoff. |
+| `diagnose` | Reviewed symptoms exist but causes, drift class, or owner are unresolved. | `references/diagnose.md` |
+| `repair` | A reviewed diagnosis exists and one bounded repair can be prepared, executed, verified, blocked, or handed off honestly. | `references/repair.md` |
 
 ### Mode: diagnose
 
-1. Separate observed symptoms from confirmed causes, inference, and unknowns.
-2. Seek disconfirming evidence and classify contamination, evidence-boundary,
-   routing, lifecycle, ownership, or tool/runtime drift.
-3. Name immediate session owner and possible durable owner separately. Propose a
-   repair shape but perform no mutation and assign no blame as settled truth.
+Read and follow `references/diagnose.md`.
 
-### Mode: propose-repair
+### Mode: repair
 
-1. Require a reviewed diagnosis; do not manufacture one from the repair request.
-2. Define the smallest owner/target diff, execution posture, checkpoint,
-   rollback, bounded retries, manual health checks, stop/escalation, and cleanup.
-3. Route the proposal to the target owner. Examples or dry runs show viability,
-   not execution or verification of this repair.
-4. Add a durable validator only after the same stable failure invariant recurs
-   and manual checks prove what it must catch.
+Read and follow `references/repair.md`.
+
+1. Read `references/contract.yaml` and only the selected mode reference to EOF.
+2. Execute exactly one mode. A diagnosis may hand off to a later repair, but an
+   invocation must not manufacture a diagnosis and immediately mutate from it.
+3. Preserve the strongest posture actually proved. `prepared`, `executing`,
+   `executed`, and `verified` are different states.
 
 ## Contracts
 
-- reviewed session evidence is input, not owner truth or durable memory
-- diagnosis is read-only; proposal is not authorization or execution
-- target owners own mutations, checks, rollback, and durable policy
-- unknowns remain unknown and successful examples retain bounded claim limits
+- reviewed session evidence is input, not durable memory or owner truth
+- diagnosis is read-only; repair acts only through the target owner's available
+  tool or repository binding and within the user's authorization
+- a repair that changes state requires approval posture, pre-change checkpoint,
+  executable rollback, bounded retries, post-change health checks, and cleanup
+- execution success is not health verification; only observed checks support
+  `verified`, and failed checks trigger rollback or an explicit blocked state
+- technique records may explain lineage but are not runtime dependencies
 
 ## Risks and anti-patterns
 
-- self-confirming diagnosis, broad terrain search after missing evidence, or
-  assigning owner fault from one symptom
-- repairing without rollback/cleanup or using a new validator as scaffolding
-- reporting a proposed or previewed repair as applied and verified
+- self-confirming diagnosis or assigning settled blame from one symptom
+- a packet-only response when authorized bounded repair was requested and the
+  owner binding is available
+- changing multiple owners, retrying without a limit, or inventing a validator
+  as temporary scaffolding
+- reporting a preview, diff, command exit, or green unrelated check as health
 
 ## Verification
 
-- trace symptoms/causes or repair fields to reviewed evidence/diagnosis refs
-- confirm no target owner, runtime, session archive, or provider was mutated
-- state manual checks, skipped execution, remaining uncertainty, and handoff
+- trace diagnosis claims and repair decisions to reviewed evidence or diagnosis
+- compare pre/post health on the affected surface and record commands or refs
+- confirm actual effects, rollback status, cleanup, remaining uncertainty, and
+  whether the target owner accepted or still owns the next handoff
 
 ## Adaptation points
 
-The session supplies reviewed evidence; each target owner supplies its mutation,
-checkpoint, validation, and rollback contracts.
+Sessions provide reviewed evidence. Target owners provide mutation, checkpoint,
+validation, rollback, approval, and durable-policy contracts.

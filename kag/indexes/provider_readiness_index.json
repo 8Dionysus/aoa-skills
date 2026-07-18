@@ -1,68 +1,68 @@
 {
-  "schema_version": "aoa-local-kag-record-v1",
-  "repo": "aoa-skills",
-  "local_id": "index:skills:capability-provider",
-  "record_class": "index",
-  "source_refs": [
-    {
-      "repo": "aoa-skills",
-      "path": "generated/capability_graph.json",
-      "source_class": "skill_source",
-      "role": "primary",
-      "authority": "derived_readmodel"
-    },
-    {
-      "repo": "aoa-skills",
-      "path": "capabilities/README.md",
-      "source_class": "skill_source",
-      "role": "owner_route",
-      "authority": "authored_source"
-    },
-    {
-      "repo": "aoa-skills",
-      "path": "skills/README.md",
-      "source_class": "skill_source",
-      "role": "supporting",
-      "authority": "authored_source"
-    }
-  ],
-  "source_owner": "aoa-skills",
-  "provenance_mode": "strict_source_linked",
-  "derived_method": "compact inventory of the semantic capability projection and its authored return routes",
-  "generated_or_authored": "generated_from_source",
-  "status": "active",
-  "owner_return_route": {
-    "repo": "aoa-skills",
-    "surface": "capabilities/README.md",
-    "route_kind": "authored_meaning"
-  },
-  "freshness": {
-    "mode": "source_snapshot",
-    "state": "current",
-    "checked_ref": "generated/capability_graph.json"
-  },
   "builder": {
-    "route": "capability graph builder",
+    "route": "capability graph and provider-record builder",
     "surface": "scripts/builders/build_capability_graph.py"
   },
-  "validator": {
-    "route": "aoa-kag:scripts/validate_repo_local_kag_family.py",
-    "lane": "local-kag"
-  },
-  "storage_posture": {
-    "git_surface": "portable_records",
-    "payload_class": "index",
-    "runtime_route": "source-repo"
-  },
   "consumer_route": "aoa-kag registry",
+  "derived_method": "compact inventory of the semantic capability projection, 9 shared callable source bundles (7 advertised, 2 deferred), and their authored return routes",
+  "freshness": {
+    "checked_ref": "generated/capability_graph.json",
+    "mode": "source_snapshot",
+    "state": "current"
+  },
+  "generated_or_authored": "generated_from_source",
   "index_kind": "inventory",
   "indexed_record_classes": [
     "node",
     "edge"
   ],
+  "local_id": "index:skills:capability-provider",
+  "owner_return_route": {
+    "repo": "aoa-skills",
+    "route_kind": "authored_meaning",
+    "surface": "capabilities/README.md"
+  },
+  "provenance_mode": "strict_source_linked",
+  "record_class": "index",
+  "repo": "aoa-skills",
+  "schema_version": "aoa-local-kag-record-v1",
+  "source_owner": "aoa-skills",
   "source_record_ids": [
     "node:skills:capability-graph",
     "node:skills:capability-source-home",
     "edge:skills:capability-returns-to-owner"
-  ]
+  ],
+  "source_refs": [
+    {
+      "authority": "derived_readmodel",
+      "path": "generated/capability_graph.json",
+      "repo": "aoa-skills",
+      "role": "primary",
+      "source_class": "skill_source"
+    },
+    {
+      "authority": "authored_source",
+      "path": "capabilities/README.md",
+      "repo": "aoa-skills",
+      "role": "owner_route",
+      "source_class": "skill_source"
+    },
+    {
+      "authority": "authored_source",
+      "path": "skills/README.md",
+      "repo": "aoa-skills",
+      "role": "owner_route",
+      "source_class": "skill_source"
+    }
+  ],
+  "status": "active",
+  "storage_posture": {
+    "git_surface": "portable_records",
+    "payload_class": "index",
+    "runtime_route": "source-repo"
+  },
+  "validator": {
+    "lane": "local-kag",
+    "route": "aoa-kag:scripts/validate_repo_local_kag_family.py"
+  }
 }

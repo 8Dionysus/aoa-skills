@@ -20,7 +20,8 @@ Read the root `AGENTS.md`, this card, `kag/README.md`, `kag/manifest.json`,
 ## Boundaries
 
 - `capabilities/` owns capability semantics, relations, compatibility, and bundle bindings.
-- `skills/` owns the seven callable procedural bundles.
+- `skills/` owns nine shared callable source bundles; seven are advertised and
+  two remain deferred for explicit research or compatibility use.
 - `aoa-kag` owns the shared local-KAG schemas, index generator, registry, retrieval, and composition.
 - Runtime graph, vector, cache, and MCP serving state stay with their runtime owners.
 - Never reconstruct a retired skill or technique ontology inside this derived packet.
