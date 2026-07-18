@@ -45,11 +45,13 @@
     "config/portable_skill_overrides.json",
     "config/skill_pack_profiles.json",
     "config/skill_policy_matrix.json",
+    "schemas/capability-home-port.schema.json",
     "schemas/capability_family.schema.json",
     "schemas/capability_graph.schema.json",
     "schemas/release_manifest.schema.json",
     "schemas/skill_migration.schema.json",
     "schemas/task_local_dag.schema.json",
+    "schemas/task_local_dag_v2.schema.json",
     "skills/core/engineering/aoa-decision/SKILL.md",
     "skills/core/engineering/aoa-decision/agents/openai.yaml",
     "skills/core/engineering/aoa-decision/references/contract.yaml",
@@ -359,6 +361,11 @@
       "bytes": 4165
     },
     {
+      "path": "schemas/capability-home-port.schema.json",
+      "sha256": "1c57b7060eeb0c07224b4298c9701f224cda1e73b3c554e18e7b5c1547e940c5",
+      "bytes": 2568
+    },
+    {
       "path": "schemas/capability_family.schema.json",
       "sha256": "9f99d964b50217d1031247aa90bec20025178b9deaef61b566bb9c01059d6258",
       "bytes": 13023
@@ -382,6 +389,11 @@
       "path": "schemas/task_local_dag.schema.json",
       "sha256": "cc90790ca6a4f4512744e0b075ae3826a2446c91ee81b22ca608df2f4306f8f9",
       "bytes": 3093
+    },
+    {
+      "path": "schemas/task_local_dag_v2.schema.json",
+      "sha256": "50dbbf4917a49729893045eb9765b091c4370b819ee6534d08d868a4723ec664",
+      "bytes": 4548
     },
     {
       "path": "skills/core/engineering/aoa-decision/SKILL.md",

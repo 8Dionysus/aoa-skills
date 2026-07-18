@@ -78,6 +78,10 @@ def test_release_manifest_is_reproducible_and_binds_portable_bytes() -> None:
     source_count = len(skill_source_model.load_skill_sources(REPO_ROOT))
     assert live["skill_count"] == source_count
     assert live["advertised_skill_count"] + live["deferred_skill_count"] == source_count
+    assert {
+        "schemas/capability-home-port.schema.json",
+        "schemas/task_local_dag_v2.schema.json",
+    } <= set(live["source_files"])
     for revision in live["skill_bundle_revisions"]:
         assert revision["source_hash"] != ""
         assert revision["portable_hash"] != ""

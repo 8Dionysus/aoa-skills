@@ -25,10 +25,12 @@ STATIC_SOURCE_PATHS = (
     "config/skill_pack_profiles.json",
     "config/skill_policy_matrix.json",
     "capabilities/legacy-skill-migration.yaml",
+    "schemas/capability-home-port.schema.json",
     "schemas/capability_family.schema.json",
     "schemas/capability_graph.schema.json",
     "schemas/skill_migration.schema.json",
     "schemas/task_local_dag.schema.json",
+    "schemas/task_local_dag_v2.schema.json",
     "schemas/release_manifest.schema.json",
 )
 GENERATED_FILES = (

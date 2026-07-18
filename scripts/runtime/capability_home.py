@@ -37,11 +37,23 @@ def parse_inputs(values: Sequence[str]) -> list[dict[str, str]]:
     result: list[dict[str, str]] = []
     for value in values:
         if "=" not in value:
-            raise ValueError("--input must use TYPE=REF")
-        artifact_type, ref = value.split("=", 1)
-        if not artifact_type or not ref:
-            raise ValueError("--input must use non-empty TYPE=REF")
-        result.append({"type": artifact_type, "ref": ref})
+            raise ValueError("--input must use TYPE=REF or NODE::PORT=REF")
+        selector, ref = value.split("=", 1)
+        selector = selector.strip()
+        ref = ref.strip()
+        if not selector or not ref:
+            raise ValueError(
+                "--input must use non-empty TYPE=REF or NODE::PORT=REF"
+            )
+        if "::" in selector:
+            target, port = selector.split("::", 1)
+            if not target or not port:
+                raise ValueError(
+                    "targeted --input must use NODE::PORT=REF"
+                )
+            result.append({"target": target, "port": port, "ref": ref})
+        else:
+            result.append({"type": selector, "ref": ref})
     return result
 
 
@@ -76,6 +88,8 @@ def main(argv: Sequence[str] | None = None) -> int:
         print(f"capability home runtime failed: {exc}")
         return 1
     print(json.dumps(payload, ensure_ascii=False, sort_keys=True, indent=2))
+    if args.command == "plan":
+        return 0 if payload["status"] == "ready" else 2
     return 0
 
 
