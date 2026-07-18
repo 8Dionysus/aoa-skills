@@ -1,6 +1,8 @@
 policy:
-  allow_implicit_invocation: false
-  implicit_activation_policy: suggest
+  allow_implicit_invocation: true
+  implicit_activation_policy: invoke
 notes:
-- An implicit match may suggest this deferred family, but execution requires explicit invocation or a source-authorized parent route.
-- Select exactly one internal select, apply, or propose mode; do not load legacy eval children.
+- Invoke this front door for clear evaluation selection, application, local pressure/design, or eval classification of supplied or retrieved session evidence.
+- Select exactly one internal select, apply, local-need, design, or session-mining mode and load only that mode reference.
+- A request that explicitly asks to find and run may compose select then apply; hand the resulting observation to aoa-verification when proof interpretation is also requested.
+- A session-memory route may retrieve and ground hits, but hand eval-trigger classification and local eval routing to session-mining.

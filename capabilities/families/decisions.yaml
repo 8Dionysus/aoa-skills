@@ -19,7 +19,7 @@ nodes:
       authority: authored
     lifecycle:
       state: candidate
-      version: 0.1.0
+      version: 0.2.2
       visibility: deferred
       evidence_state: pilot-verified
       health: challenger
@@ -34,7 +34,7 @@ nodes:
       - договоренность
   - id: skill.aoa-decision
     title: aoa-decision family bundle
-    description: Find, record, or correct durable repository decisions through one decision family. Use when prior rationale, a meaningful accepted decision, supersession, or source/index drift is the task. Select exactly one internal mode and keep authored owner records authoritative. Do not use for ordinary docs edits or unresolved source-of-truth mapping.
+    description: Find, record, or correct durable repository decisions through one decision family. Use when prior rationale, a meaningful accepted choice, supersession, or drift between an authored decision record and its derived decision indexes is the task. Select exactly one internal mode and keep authored owner records authoritative. Do not use for ordinary docs edits, current source-of-truth conflicts, or generated/runtime authority mapping.
     kind: skill
     contract_level: executable
     primary_parent: stewardship.decisions
@@ -44,17 +44,17 @@ nodes:
       authority: authored
     lifecycle:
       state: candidate
-      version: 0.1.0
+      version: 0.2.2
       visibility: advertised
       evidence_state: pilot-verified
       health: challenger
     applicability:
       use_when:
         - A task asks for existing rationale, a new durable decision record, or correction of decision source/index drift.
-        - Structural, ownership, workflow, tooling, or source/export reasoning must remain discoverable.
+        - Accepted structural, ownership, workflow, tooling, or source/export rationale must remain discoverable as a durable decision.
       do_not_use_when:
         - The task is an ordinary documentation edit with no durable decision implication.
-        - The only unresolved issue is which current source owns a rule.
+        - The unresolved issue is which current source owns a rule or whether an authored, generated, installed, or runtime surface is authoritative.
       ambiguous_when:
         - A proposed record may only narrate a diff; first decide whether a lighter change note preserves enough rationale.
     abi:
@@ -108,7 +108,7 @@ nodes:
       source_refs:
         - repo: aoa-skills
           path: skills/core/engineering/aoa-decision/SKILL.md
-          ref: capability-family-v0.1.0
+          ref: capability-family-v0.2.0
           role: portable-family-procedure
           authority: authored
       optional_refs: []
@@ -120,13 +120,13 @@ nodes:
     primary_parent: stewardship.decisions
     owner:
       repo: aoa-skills
-      surface: skills/core/engineering/aoa-decision/SKILL.md#mode-find
+      surface: skills/core/engineering/aoa-decision/references/find.md
       authority: authored
     lifecycle:
       state: candidate
-      version: 0.1.0
+      version: 0.2.2
       visibility: internal
-      evidence_state: evaluated
+      evidence_state: pilot-verified
       health: challenger
     applicability:
       use_when:
@@ -148,7 +148,7 @@ nodes:
           description: Ranked matches with source verification and confidence.
     binding:
       kind: mode
-      ref: skills/core/engineering/aoa-decision/SKILL.md
+      ref: skills/core/engineering/aoa-decision/references/find.md
       operation: find
       availability: available
     execution:
@@ -186,11 +186,16 @@ nodes:
     provenance:
       source_refs:
         - repo: aoa-skills
+          path: skills/core/engineering/aoa-decision/references/find.md
+          ref: capability-family-v0.2.0
+          role: find-mode
+          authority: authored
+      optional_refs:
+        - repo: aoa-skills
           path: skills/core/engineering/aoa-decision-find/SKILL.md
           ref: 94e5d0e072b71e3c603dda0703231047485e0666
           role: legacy-mode-source
-          authority: authored
-      optional_refs: []
+          authority: evidence-only
     aliases:
       - name: aoa-decision-find
         state: migration-only
@@ -203,11 +208,11 @@ nodes:
     primary_parent: stewardship.decisions
     owner:
       repo: aoa-skills
-      surface: skills/core/engineering/aoa-decision/SKILL.md#mode-record
+      surface: skills/core/engineering/aoa-decision/references/record.md
       authority: authored
     lifecycle:
       state: candidate
-      version: 0.1.0
+      version: 0.2.2
       visibility: internal
       evidence_state: pilot-verified
       health: challenger
@@ -231,7 +236,7 @@ nodes:
           description: Authored record plus index/placement verification.
     binding:
       kind: mode
-      ref: skills/core/engineering/aoa-decision/SKILL.md
+      ref: skills/core/engineering/aoa-decision/references/record.md
       operation: record
       availability: available
     execution:
@@ -243,6 +248,7 @@ nodes:
       termination:
         - Stop after owner-local source and derived indexes agree, or before writing when acceptance/placement is missing.
       effects:
+        - none
         - repo-write
         - generated-write
       reversibility: conditionally-reversible
@@ -264,16 +270,21 @@ nodes:
     provenance:
       source_refs:
         - repo: aoa-skills
+          path: skills/core/engineering/aoa-decision/references/record.md
+          ref: capability-family-v0.2.0
+          role: record-mode
+          authority: authored
+      optional_refs:
+        - repo: aoa-skills
           path: skills/core/engineering/aoa-decision-create/SKILL.md
           ref: 94e5d0e072b71e3c603dda0703231047485e0666
           role: legacy-mode-source
-          authority: authored
+          authority: evidence-only
         - repo: aoa-skills
           path: skills/core/engineering/aoa-adr-write/SKILL.md
           ref: 94e5d0e072b71e3c603dda0703231047485e0666
           role: merged-legacy-source
-          authority: authored
-      optional_refs: []
+          authority: evidence-only
     aliases:
       - name: aoa-decision-create
         state: migration-only
@@ -289,11 +300,11 @@ nodes:
     primary_parent: stewardship.decisions
     owner:
       repo: aoa-skills
-      surface: skills/core/engineering/aoa-decision/SKILL.md#mode-correct
+      surface: skills/core/engineering/aoa-decision/references/correct.md
       authority: authored
     lifecycle:
       state: candidate
-      version: 0.1.0
+      version: 0.2.2
       visibility: internal
       evidence_state: pilot-verified
       health: challenger
@@ -317,7 +328,7 @@ nodes:
           description: Corrected or superseded owner record plus refreshed consumers.
     binding:
       kind: mode
-      ref: skills/core/engineering/aoa-decision/SKILL.md
+      ref: skills/core/engineering/aoa-decision/references/correct.md
       operation: correct
       availability: available
     execution:
@@ -329,6 +340,7 @@ nodes:
       termination:
         - Stop when owner source and declared indexes agree, or blocked_missing_input when the target source is absent.
       effects:
+        - none
         - repo-write
         - generated-write
       reversibility: conditionally-reversible
@@ -350,11 +362,16 @@ nodes:
     provenance:
       source_refs:
         - repo: aoa-skills
+          path: skills/core/engineering/aoa-decision/references/correct.md
+          ref: capability-family-v0.2.0
+          role: correct-mode
+          authority: authored
+      optional_refs:
+        - repo: aoa-skills
           path: skills/core/engineering/aoa-decision-correct/SKILL.md
           ref: 94e5d0e072b71e3c603dda0703231047485e0666
           role: legacy-mode-source
-          authority: authored
-      optional_refs: []
+          authority: evidence-only
     aliases:
       - name: aoa-decision-correct
         state: migration-only

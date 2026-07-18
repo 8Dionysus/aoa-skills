@@ -10,8 +10,9 @@ derived read model when multiple repository consumers need it.
   items stay in `quests/`; root `QUESTBOOK.md` and `generated/quest_*` are read
   models.
 - Release contracts, examples, and manifests stay under
-  `mechanics/release-support/`; portable bytes stay in `.agents/skills/` and
-  release identity in `generated/release_manifest.json`.
+  `mechanics/release-support/`; portable bytes exist only in a temporary or
+  explicit external consumer assembly, while release identity stays in
+  `generated/release_manifest.json`.
 
 Do not create a root alias, generic mechanic archive, or package solely to hold
 one session's artifacts. Retired source stays in Git history.

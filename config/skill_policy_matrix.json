@@ -10,7 +10,7 @@
       ],
       "requires_confirmation_seam": false,
       "implicit_activation_policy": "invoke",
-      "notes": "The only currently advertised AoA family; record and correct effects still require owner authority."
+      "notes": "Advertised decision family; record and correct effects still require owner authority."
     },
     "aoa-engineering-shape": {
       "trust_posture": "portable-core",
@@ -20,17 +20,18 @@
       ],
       "requires_confirmation_seam": false,
       "implicit_activation_policy": "suggest",
-      "notes": "Deferred candidate family; produces a proposed boundary and never claims owner adoption."
+      "notes": "Deferred source package for explicit research or repository consumers; produces a proposed boundary and never claims owner adoption. Current manual evidence does not justify OS user discovery."
     },
     "aoa-eval": {
       "trust_posture": "portable-core",
       "mutation_surface": "repo",
       "recommended_install_scopes": [
-        "repo"
+        "repo",
+        "user"
       ],
       "requires_confirmation_seam": false,
-      "implicit_activation_policy": "suggest",
-      "notes": "Deferred candidate family; local application or proposal cannot grant central proof authority."
+      "implicit_activation_policy": "invoke",
+      "notes": "Advertised challenger; manual trials established necessary apply-contract discipline while all five procedures retain bounded proof and effect limits."
     },
     "aoa-verification": {
       "trust_posture": "portable-core",
@@ -40,37 +41,60 @@
       ],
       "requires_confirmation_seam": false,
       "implicit_activation_policy": "suggest",
-      "notes": "Deferred candidate family; manual evidence and owner meaning precede durable automation."
+      "notes": "Deferred source package for explicit research or repository consumers; manual evidence and owner meaning precede durable automation. Current manual evidence and coexistence do not justify OS user discovery."
     },
     "aoa-knowledge-stewardship": {
       "trust_posture": "portable-core",
       "mutation_surface": "repo",
       "recommended_install_scopes": [
-        "repo"
+        "repo",
+        "user"
       ],
       "requires_confirmation_seam": false,
-      "implicit_activation_policy": "suggest",
-      "notes": "Deferred candidate family; creation, publication, and durable memory remain separate owner effects."
+      "implicit_activation_policy": "invoke",
+      "notes": "Advertised challenger; sanitized-share adds fail-closed pre-raw and publication boundaries, while authority-map preserves the old functional baseline and routes current source conflicts away from aoa-decision."
+    },
+    "aoa-checkpoint-closeout-bridge": {
+      "trust_posture": "portable-core",
+      "mutation_surface": "session-local",
+      "recommended_install_scopes": [
+        "user"
+      ],
+      "requires_confirmation_seam": false,
+      "implicit_activation_policy": "invoke",
+      "notes": "Advertised transitional front door; execute requires closed reviewed current-session evidence and stops before owner or playbook effects."
+    },
+    "aoa-memo-writeback": {
+      "trust_posture": "portable-core",
+      "mutation_surface": "repo",
+      "recommended_install_scopes": [
+        "repo",
+        "user"
+      ],
+      "requires_confirmation_seam": false,
+      "implicit_activation_policy": "invoke",
+      "notes": "Advertised first-writeback front door; creates at most one guarded local candidate and hands existing memo artifacts to aoa-memo."
     },
     "aoa-session-harvest": {
       "trust_posture": "portable-core",
       "mutation_surface": "none",
       "recommended_install_scopes": [
-        "repo"
+        "repo",
+        "user"
       ],
       "requires_confirmation_seam": false,
-      "implicit_activation_policy": "suggest",
-      "notes": "Deferred candidate family; produces session-local candidates only from reviewed evidence."
+      "implicit_activation_policy": "invoke",
+      "notes": "Advertised challenger; natural automation-readiness work otherwise bypassed its typed posture, checkpoint, and owner-handoff contract."
     },
     "aoa-session-recovery": {
       "trust_posture": "portable-core",
-      "mutation_surface": "none",
+      "mutation_surface": "conditional-owner-or-runtime",
       "recommended_install_scopes": [
-        "repo"
+        "user"
       ],
-      "requires_confirmation_seam": false,
-      "implicit_activation_policy": "suggest",
-      "notes": "Deferred candidate family; diagnosis and repair proposal grant no mutation authority."
+      "requires_confirmation_seam": true,
+      "implicit_activation_policy": "invoke",
+      "notes": "Advertised challenger after natural reviewed-failure retrieval and one-off negative trials; diagnosis is read-only, while repair may act only through an authorized owner binding with checkpoint, rollback, bounded attempts, and observed health verification."
     }
   }
 }

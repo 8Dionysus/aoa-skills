@@ -108,16 +108,12 @@ def build_bundle_manifest(source: dict[str, Any], *, readme_text: str) -> dict[s
 
 def build_stage_plan(
     *,
-    repo_root: pathlib.Path,
+    source: dict[str, Any],
     profile_name: str,
     output_root: pathlib.Path,
     archive_path: pathlib.Path | None,
     execute: bool,
 ) -> dict[str, Any]:
-    source = skill_pack_install_contract.load_skill_pack_source(
-        repo_root,
-        profile_name=profile_name,
-    )
     readme_text = build_bundle_readme(source=source)
     bundle_manifest = build_bundle_manifest(source, readme_text=readme_text)
     use_archive_transport = archive_path is not None
@@ -242,7 +238,11 @@ def render_markdown(plan: dict[str, Any]) -> str:
 
 def main() -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--repo-root", default=".", help="Repository root containing .agents/skills")
+    parser.add_argument(
+        "--repo-root",
+        default=".",
+        help="aoa-skills repository root containing authored skills and generated release metadata",
+    )
     parser.add_argument("--profile", required=True, help="Profile name from generated/skill_pack_profiles.resolved.json")
     parser.add_argument("--output-root", required=True, help="Directory where the staged bundle should live")
     parser.add_argument(
@@ -263,54 +263,51 @@ def main() -> int:
         else None
     )
     try:
-        source = skill_pack_install_contract.load_skill_pack_source(
+        source_context = skill_pack_install_contract.skill_pack_source_context(
             repo_root,
             profile_name=args.profile,
         )
+        with source_context as source:
+            plan = build_stage_plan(
+                source=source,
+                profile_name=args.profile,
+                output_root=bundle_root,
+                archive_path=archive_path,
+                execute=args.execute,
+            )
+
+            if args.execute:
+                archive_info = execute_stage(
+                    source=source,
+                    bundle_root=bundle_root,
+                    bundle_manifest={
+                        key: value
+                        for key, value in plan.items()
+                        if key
+                        not in {
+                            "source_kind",
+                            "source_root",
+                            "bundle_root",
+                            "bundle_readme_path",
+                            "archive_path",
+                            "archive_format",
+                            "archive_sha256",
+                            "archive_bytes",
+                            "execute",
+                            "recommended_inspect_command",
+                            "recommended_import_command",
+                            "recommended_install_command",
+                            "recommended_verify_command",
+                        }
+                    },
+                    readme_text=build_bundle_readme(source=source),
+                    archive_path=archive_path,
+                    overwrite=args.overwrite,
+                )
+                if archive_info is not None:
+                    plan.update(archive_info)
     except ValueError as exc:
         raise SystemExit(str(exc))
-
-    plan = build_stage_plan(
-        repo_root=repo_root,
-        profile_name=args.profile,
-        output_root=bundle_root,
-        archive_path=archive_path,
-        execute=args.execute,
-    )
-
-    if args.execute:
-        try:
-            archive_info = execute_stage(
-                source=source,
-                bundle_root=bundle_root,
-                bundle_manifest={
-                    key: value
-                    for key, value in plan.items()
-                    if key
-                    not in {
-                        "source_kind",
-                        "source_root",
-                        "bundle_root",
-                        "bundle_readme_path",
-                        "archive_path",
-                        "archive_format",
-                        "archive_sha256",
-                        "archive_bytes",
-                        "execute",
-                        "recommended_inspect_command",
-                        "recommended_import_command",
-                        "recommended_install_command",
-                        "recommended_verify_command",
-                    }
-                },
-                readme_text=build_bundle_readme(source=source),
-                archive_path=archive_path,
-                overwrite=args.overwrite,
-            )
-        except ValueError as exc:
-            raise SystemExit(str(exc))
-        if archive_info is not None:
-            plan.update(archive_info)
 
     if args.format == "json":
         print(json.dumps(plan, indent=2))

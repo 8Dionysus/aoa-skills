@@ -6,7 +6,8 @@ This card applies to `skills/core/session-growth/`.
 
 ## Role
 
-This lane owns the session-harvest and session-recovery callable families.
+This lane owns session harvest, memo writeback, recovery, and the transitional
+checkpoint-closeout callable front door.
 
 ## Read before editing
 

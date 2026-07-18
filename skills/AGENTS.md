@@ -6,7 +6,7 @@ This card applies to `skills/` and all callable bundle sources below it.
 
 ## Role
 
-`skills/` owns the seven portable callable procedures and their required
+`skills/` owns the admitted portable callable procedures and their required
 bundle-local resources.
 
 ## Read before editing

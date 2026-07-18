@@ -1,58 +1,97 @@
 # Install and Profiles
 
-## Profiles
+## Portable consumer profiles
 
 | Profile | Membership | Intended use |
 | --- | --- | --- |
-| `user-default` | `aoa-decision` | one normal advertised install at the verified host user root |
-| `repo-default` | `aoa-decision` | normal advertised installation |
-| `repo-capability-sources` | all seven bundles | explicit research, comparison, and KAG/capability work |
+| `portable-consumer-advertised` | seven advertised shared bundles | explicit external repository consumer or ordinary handoff |
+| `portable-consumer-all-sources` | all nine shared source bundles | explicit research, comparison, and capability/KAG work |
 
 Profile membership comes from `config/skill_pack_profiles.json`; resolved
 membership and revisions are generated.
 
+Neither portable profile is the OS user catalog. `os-user-default` is a
+separate managed-copy profile assembled from shared source bundles and
+admitted owner homes by `scripts/install_os_skill_profile.py`.
+
+## Source and consumer boundary
+
+The `aoa-skills` source repository keeps `.agents/skills` absent. A direct
+source stage or verification builds all portable bytes under a temporary
+directory and removes it when the operation ends. An explicit
+`build_agent_skills.py --output-root <empty-external-skill-root>` may create a
+consumer assembly outside this source repository.
+
+Inside a staged handoff, `.agents/skills/<name>` is the logical portable
+layout. A receiving repository may install that layout only when it is the
+intended explicit consumer and the same canonical bundle is not already
+prompt-visible from the OS user root. Direct installation from the source
+repository therefore requires an explicit external `--dest-root`.
+
+`portable-consumer-all-sources` includes the two deferred packages. Their
+OpenAI adapters request non-implicit posture, but another Agent Skills host may
+ignore that adapter and expose every installed package. Treat this profile as
+an explicit research/source transport, never as a portable visibility
+enforcement mechanism.
+
 ## Host visibility
-
-Use `user-default` for the ordinary Codex user installation. It expresses the
-portable initial catalog directly: only `aoa-decision` is present. Its standard
-root resolves to `$HOME/.codex/skills`, but the active host root must still be
-inspected; use an explicit destination override when the host differs.
-
-`repo-default` carries the same advertised bundle for a real repo-scoped
-consumer or portable handoff. Do not install profiles into overlapping
-prompt-visible scopes merely because they exist.
-
-The `aoa-skills` source repository itself keeps `.agents/skills` as its
-portable export. Current Codex builds do not merge same-name user and repo
-skills, so an authoring session inside this repository can list both exact
-copies of `aoa-decision`. This is a known source-authoring coexistence edge, not
-permission to duplicate shared skills in sibling repositories. Check byte
-parity and behavioral selection until the host or distribution topology can
-remove the overlap without breaking portable handoff.
-
-`repo-capability-sources` deliberately transports all seven bundles. Its six
-deferred members are hidden from implicit Codex discovery by the OpenAI host
-adapter in `agents/openai.yaml`, but that adapter is not portable policy. A host
-that ignores OpenAI metadata may expose or enable every installed member. Treat
-this profile as an explicit laboratory/source profile, never as a portable way
-to enforce deferred visibility.
 
 After installation, inspect the actual host catalog in a fresh session and run
 behavioral trials.
 File parity proves neither host visibility nor selection behavior.
+
+For the normal OS catalog, install `os-user-default` into the verified Codex
+user root and ensure no selected canonical ID is also present in a
+repository-visible projection.
+
+Preview the complete owner resolution and destination plan before installation:
+
+```bash
+PYTHONPATH=scripts python scripts/install_os_skill_profile.py \
+  --profile os-user-default
+```
+
+The normal execute and parity routes require clean Git owner sources:
+
+```bash
+PYTHONPATH=scripts python scripts/install_os_skill_profile.py \
+  --profile os-user-default --execute
+PYTHONPATH=scripts python scripts/install_os_skill_profile.py \
+  --profile os-user-default --check
+```
+
+For a reviewed candidate trial, override the candidate owner roots and install
+only into a separate disposable destination:
+
+```bash
+PYTHONPATH=scripts python scripts/install_os_skill_profile.py \
+  --profile os-user-default \
+  --source-root owner-repo=/path/to/candidate-worktree \
+  --dest-root /path/to/disposable/skill-root \
+  --allow-dirty-source \
+  --execute
+```
+
+`--allow-dirty-source` is rejected for the normal user destination. An
+unmanaged same-name collision requires `--replace-unmanaged`; a stale entry
+named in the prior managed receipt requires `--prune-managed`. Both are
+reviewed execute-time choices. The installer preserves unrelated user skills,
+refuses unsafe receipt names and destination roots, verifies the aggregate
+receipt as well as each source-return handle, and leaves a current repeated
+execute byte- and timestamp-stable.
 
 ## Handoff
 
 Use the bundle commands in this order:
 
 1. `stage_skill_pack.py` builds a deterministic plan and optionally a staged
-   directory plus ZIP transport.
+   directory plus ZIP transport from a temporary portable source assembly.
 2. `inspect_skill_pack.py` validates manifest, layout, file digests, and bundle
    digest without consulting a live export.
 3. `import_skill_pack.py` performs receiver-side inspect, optional install, and
    verify.
 4. `verify_skill_pack.py` compares an installed root to the selected handoff or
-   current export.
+   a freshly assembled source projection.
 
 The generated bundle `README.md` is a human companion;
 `bundle_manifest.json` is the machine contract. Extra sibling bundles are

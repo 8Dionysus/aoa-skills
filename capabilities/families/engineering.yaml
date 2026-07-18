@@ -46,7 +46,7 @@ nodes:
     owner: *engineering_owner
     lifecycle:
       state: candidate
-      version: 0.1.0
+      version: 0.2.1
       visibility: deferred
       evidence_state: evaluated
       health: degraded
@@ -147,7 +147,7 @@ nodes:
           description: Responsibility centers, owner truth, interfaces, exclusions, and unresolved edge.
     binding:
       kind: mode
-      ref: skills/core/engineering/aoa-engineering-shape/SKILL.md
+      ref: skills/core/engineering/aoa-engineering-shape/references/contexts.md
       operation: contexts
       availability: available
     execution: *shape_execution
@@ -155,7 +155,7 @@ nodes:
     provenance:
       source_refs:
         - repo: aoa-skills
-          path: skills/core/engineering/aoa-engineering-shape/SKILL.md
+          path: skills/core/engineering/aoa-engineering-shape/references/contexts.md
           ref: capability-family-v0.1.0
           role: contexts-mode
           authority: authored
@@ -202,7 +202,7 @@ nodes:
           description: Reusable rule center, edge responsibilities, compatibility projection, and migration edge.
     binding:
       kind: mode
-      ref: skills/core/engineering/aoa-engineering-shape/SKILL.md
+      ref: skills/core/engineering/aoa-engineering-shape/references/core.md
       operation: core
       availability: available
     execution: *shape_execution
@@ -210,7 +210,7 @@ nodes:
     provenance:
       source_refs:
         - repo: aoa-skills
-          path: skills/core/engineering/aoa-engineering-shape/SKILL.md
+          path: skills/core/engineering/aoa-engineering-shape/references/core.md
           ref: capability-family-v0.1.0
           role: core-mode
           authority: authored
@@ -261,7 +261,7 @@ nodes:
           description: Purpose-shaped port, adapter responsibilities, failure behavior, and parity checks.
     binding:
       kind: mode
-      ref: skills/core/engineering/aoa-engineering-shape/SKILL.md
+      ref: skills/core/engineering/aoa-engineering-shape/references/port-adapter.md
       operation: port-adapter
       availability: available
     execution: *shape_execution
@@ -269,7 +269,7 @@ nodes:
     provenance:
       source_refs:
         - repo: aoa-skills
-          path: skills/core/engineering/aoa-engineering-shape/SKILL.md
+          path: skills/core/engineering/aoa-engineering-shape/references/port-adapter.md
           ref: capability-family-v0.1.0
           role: port-adapter-mode
           authority: authored
@@ -312,14 +312,14 @@ nodes:
 
   - id: skill.aoa-verification
     title: aoa-verification family bundle
-    description: Turn one stable technical truth into bounded evidence through contract, coverage-audit, or property mode. Use when a named consumer boundary, an important invariant's real coverage, or a generative system property must be made reviewable. Do not use when behavior is undefined, the task is a general test plan, or green checks are being requested as whole-system proof.
+    description: Turn one stable technical truth into bounded evidence through contract, coverage-audit, or property mode. Use to define a named consumer seam, audit what existing checks really constrain, or express a broad invariant after manual cases establish meaning. Compose with aoa-eval when an evaluation surface must first be found or applied. Do not use for undefined behavior, generic test plans, or green checks as whole-system proof.
     kind: skill
     contract_level: executable
     primary_parent: engineering.verification
     owner: *engineering_owner
     lifecycle:
       state: candidate
-      version: 0.1.0
+      version: 0.2.3
       visibility: deferred
       evidence_state: evaluated
       health: degraded
@@ -418,7 +418,7 @@ nodes:
           description: Inputs, outputs, errors, effects, compatibility, durable-check decision, and claim limit.
     binding:
       kind: mode
-      ref: skills/core/engineering/aoa-verification/SKILL.md
+      ref: skills/core/engineering/aoa-verification/references/contract.md
       operation: contract
       availability: available
     execution: *verification_execution
@@ -426,7 +426,7 @@ nodes:
     provenance:
       source_refs:
         - repo: aoa-skills
-          path: skills/core/engineering/aoa-verification/SKILL.md
+          path: skills/core/engineering/aoa-verification/references/contract.md
           ref: capability-family-v0.1.0
           role: contract-mode
           authority: authored
@@ -475,7 +475,7 @@ nodes:
           description: Direct, indirect, example-only, absent, and false-confidence mappings with smallest gaps.
     binding:
       kind: mode
-      ref: skills/core/engineering/aoa-verification/SKILL.md
+      ref: skills/core/engineering/aoa-verification/references/coverage-audit.md
       operation: coverage-audit
       availability: available
     execution: *verification_execution
@@ -483,7 +483,7 @@ nodes:
     provenance:
       source_refs:
         - repo: aoa-skills
-          path: skills/core/engineering/aoa-verification/SKILL.md
+          path: skills/core/engineering/aoa-verification/references/coverage-audit.md
           ref: capability-family-v0.1.0
           role: coverage-audit-mode
           authority: authored
@@ -537,7 +537,7 @@ nodes:
           description: Property, generator, oracle, shrink path, durable-check decision, and claim limit.
     binding:
       kind: mode
-      ref: skills/core/engineering/aoa-verification/SKILL.md
+      ref: skills/core/engineering/aoa-verification/references/property.md
       operation: property
       availability: available
     execution: *verification_execution
@@ -545,7 +545,7 @@ nodes:
     provenance:
       source_refs:
         - repo: aoa-skills
-          path: skills/core/engineering/aoa-verification/SKILL.md
+          path: skills/core/engineering/aoa-verification/references/property.md
           ref: capability-family-v0.1.0
           role: property-mode
           authority: authored

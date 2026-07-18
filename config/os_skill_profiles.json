@@ -1,0 +1,65 @@
+{
+  "schema_version": "aoa_os_skill_profiles_v1",
+  "profiles": {
+    "os-user-default": {
+      "runtime": "codex",
+      "scope": "user",
+      "install_root": "$HOME/.codex/skills",
+      "install_mode": "managed-copy",
+      "sources": [
+        {
+          "kind": "shared-home",
+          "repo": "aoa-skills",
+          "root": "self",
+          "skills": [
+            "aoa-decision",
+            "aoa-eval",
+            "aoa-knowledge-stewardship",
+            "aoa-checkpoint-closeout-bridge",
+            "aoa-memo-writeback",
+            "aoa-session-harvest",
+            "aoa-session-recovery"
+          ]
+        },
+        {
+          "kind": "owner-port",
+          "repo": "aoa-evals",
+          "root": "aoa-evals",
+          "skills": ["aoa-evals"]
+        },
+        {
+          "kind": "owner-port",
+          "repo": "aoa-memo",
+          "root": "aoa-memo",
+          "skills": ["aoa-memo"]
+        },
+        {
+          "kind": "owner-port",
+          "repo": "aoa-stats",
+          "root": "aoa-stats",
+          "skills": ["aoa-stats"]
+        },
+        {
+          "kind": "owner-port",
+          "repo": "aoa-agents",
+          "root": "aoa-agents",
+          "skills": ["aoa-session-progression-lift", "aoa-summon"]
+        },
+        {
+          "kind": "owner-port",
+          "repo": "abyss-stack",
+          "root": "abyss-stack",
+          "skills": ["abyss-self-diagnostic-spine"]
+        },
+        {
+          "kind": "direct-home",
+          "repo": ".aoa",
+          "root": ".aoa",
+          "skills": [
+            {"name": "aoa-session-memory-global-route", "path": "skills/aoa-session-memory-global-route", "version": "owner-current"}
+          ]
+        }
+      ]
+    }
+  }
+}

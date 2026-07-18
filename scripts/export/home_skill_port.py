@@ -163,6 +163,18 @@ def _tree_digest(snapshot: dict[str, dict[str, Any]]) -> str:
     return digest.hexdigest()
 
 
+def tree_snapshot(root: str | Path, *, label: str) -> dict[str, dict[str, Any]]:
+    """Return the canonical regular-file snapshot used by skill-home consumers."""
+
+    return _tree_snapshot(Path(root), label=label)
+
+
+def tree_digest(snapshot: dict[str, dict[str, Any]]) -> str:
+    """Return the canonical digest for a skill-home tree snapshot."""
+
+    return _tree_digest(snapshot)
+
+
 def load_port_definition(
     owner_root: str | Path,
     manifest_path: str | Path = DEFAULT_MANIFEST,

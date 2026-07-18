@@ -13,14 +13,54 @@
   },
   "skills": [
     {
+      "name": "aoa-checkpoint-closeout-bridge",
+      "display_name": "AoA Checkpoint Closeout Bridge",
+      "description": "Carry provisional checkpoint hints into an explicit reviewed closeout sequence without treating notes or mechanical reports as verdict authority. Use to collect bounded checkpoint hints or to execute the reviewed harvest, progression, quest-promotion, and branch stages after a session artifact is closed and reviewed. Do not use mid-session for final judgments, without reviewed evidence, as a hidden playbook runner, or to write owner truth.",
+      "short_description": "Run reviewed checkpoint closeout safely",
+      "path": ".agents/skills/aoa-checkpoint-closeout-bridge/SKILL.md",
+      "openai_config_path": ".agents/skills/aoa-checkpoint-closeout-bridge/agents/openai.yaml",
+      "scope": "core",
+      "status": "candidate",
+      "invocation_mode": "implicit-friendly",
+      "implicit_activation_policy": "invoke",
+      "allow_implicit_invocation": true,
+      "manual_invocation_required": false,
+      "candidate_only": false,
+      "source_skill_path": "skills/core/session-growth/aoa-checkpoint-closeout-bridge/SKILL.md",
+      "trust_posture": "portable-core",
+      "mutation_surface": "session-local",
+      "recommended_install_scopes": [
+        "user"
+      ],
+      "resource_inventory": {
+        "scripts": [],
+        "references": [
+          "references/collect.md",
+          "references/contract.yaml",
+          "references/execute.md"
+        ],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ],
+        "checks": [],
+        "examples": []
+      },
+      "ui": {
+        "brand_color": "#2563EB",
+        "icon_small": "./assets/small-logo.svg",
+        "icon_large": "./assets/large-logo.svg"
+      }
+    },
+    {
       "name": "aoa-decision",
       "display_name": "AoA Decision",
-      "description": "Find, record, or correct durable repository decisions through one decision family. Use when prior rationale, a meaningful accepted decision, supersession, or source/index drift is the task. Select exactly one internal mode and keep authored owner records authoritative. Do not use for ordinary docs edits or unresolved source-of-truth mapping.",
+      "description": "Find, record, or correct durable repository decisions through one decision family. Use when prior rationale, a meaningful accepted choice, supersession, or drift between an authored decision record and its derived decision indexes is the task. Select exactly one internal mode and keep authored owner records authoritative. Do not use for ordinary docs edits, current source-of-truth conflicts, or generated/runtime authority mapping.",
       "short_description": "Find, record, or correct durable decisions",
       "path": ".agents/skills/aoa-decision/SKILL.md",
       "openai_config_path": ".agents/skills/aoa-decision/agents/openai.yaml",
       "scope": "core",
-      "status": "reviewed",
+      "status": "candidate",
       "invocation_mode": "implicit-friendly",
       "implicit_activation_policy": "invoke",
       "allow_implicit_invocation": true,
@@ -35,14 +75,17 @@
       ],
       "resource_inventory": {
         "scripts": [],
-        "references": [],
+        "references": [
+          "references/contract.yaml",
+          "references/correct.md",
+          "references/find.md",
+          "references/record.md"
+        ],
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
         ],
-        "checks": [
-          "checks/review.md"
-        ],
+        "checks": [],
         "examples": []
       },
       "ui": {
@@ -59,7 +102,7 @@
       "path": ".agents/skills/aoa-engineering-shape/SKILL.md",
       "openai_config_path": ".agents/skills/aoa-engineering-shape/agents/openai.yaml",
       "scope": "core",
-      "status": "reviewed",
+      "status": "candidate",
       "invocation_mode": "explicit-preferred",
       "implicit_activation_policy": "suggest",
       "allow_implicit_invocation": false,
@@ -73,7 +116,12 @@
       ],
       "resource_inventory": {
         "scripts": [],
-        "references": [],
+        "references": [
+          "references/contexts.md",
+          "references/contract.yaml",
+          "references/core.md",
+          "references/port-adapter.md"
+        ],
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
@@ -90,26 +138,34 @@
     {
       "name": "aoa-eval",
       "display_name": "AoA Eval",
-      "description": "An implicit match may suggest this skill, but must not load or execute it until explicit invocation or a source-authorized parent-route selection. Route one AoA evaluation need through select, apply, or propose mode while preserving local owner and proof-authority boundaries. Use when an existing eval/check must be found or run, or a confirmed no-fit needs an owner-local intake/design candidate. Do not use for ordinary one-off tests, undefined invariants, green-command reporting, or direct edits to central proof authority.",
-      "short_description": "Select, apply, or propose bounded evaluation",
+      "description": "Select or apply an eval, route a confirmed no-fit into owner-local intake or design, or classify supplied or retrieved session hits into provenance-bound eval candidates. Use for one cross-repository or owner-local evaluation need; compose with session-memory for retrieval and with aoa-verification after apply. Do not use for named central proof bundles, results, reports, verdicts, or lifecycle work (`aoa-evals`), ordinary already-named tests, undefined invariants, or generic session harvesting.",
+      "short_description": "Route one evaluation need without losing its contract",
       "path": ".agents/skills/aoa-eval/SKILL.md",
       "openai_config_path": ".agents/skills/aoa-eval/agents/openai.yaml",
       "scope": "core",
-      "status": "reviewed",
-      "invocation_mode": "explicit-preferred",
-      "implicit_activation_policy": "suggest",
-      "allow_implicit_invocation": false,
-      "manual_invocation_required": true,
-      "candidate_only": true,
+      "status": "candidate",
+      "invocation_mode": "implicit-friendly",
+      "implicit_activation_policy": "invoke",
+      "allow_implicit_invocation": true,
+      "manual_invocation_required": false,
+      "candidate_only": false,
       "source_skill_path": "skills/core/engineering/aoa-eval/SKILL.md",
       "trust_posture": "portable-core",
       "mutation_surface": "repo",
       "recommended_install_scopes": [
-        "repo"
+        "repo",
+        "user"
       ],
       "resource_inventory": {
         "scripts": [],
-        "references": [],
+        "references": [
+          "references/apply.md",
+          "references/contract.yaml",
+          "references/design.md",
+          "references/local-need.md",
+          "references/select.md",
+          "references/session-mining.md"
+        ],
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
@@ -128,26 +184,71 @@
     {
       "name": "aoa-knowledge-stewardship",
       "display_name": "AoA Knowledge Stewardship",
-      "description": "An implicit match may suggest this skill, but must not load or execute it until explicit invocation or a source-authorized parent-route selection. Steward one knowledge boundary through authority-map, sanitized-share, or memo-route mode. Use when overlapping sources must be ranked, private technical material must become useful for a named audience, or reviewed evidence must be routed to an owner's guarded memo-candidate port. Do not use for raw session mining, direct publication, durable-memory authority, or ordinary prose editing.",
-      "short_description": "Steward authority, sanitization, or memo routing",
+      "description": "Sanitize private technical material into a public-safe owner-bounded derivative, or resolve authority among authored, generated, runtime, and installed sources. Use when incidents, logs, configs, diagnostics, credentials, private paths, host/network topology, or conflicting sources require a named-audience review draft or authority map. Preserve raw custody and separate artifact creation from publication. Do not use for memo writeback, session mining, direct publication execution, durable-memory authority, or ordinary prose editing.",
+      "short_description": "Steward source authority or safe derivatives",
       "path": ".agents/skills/aoa-knowledge-stewardship/SKILL.md",
       "openai_config_path": ".agents/skills/aoa-knowledge-stewardship/agents/openai.yaml",
       "scope": "core",
-      "status": "reviewed",
-      "invocation_mode": "explicit-preferred",
-      "implicit_activation_policy": "suggest",
-      "allow_implicit_invocation": false,
-      "manual_invocation_required": true,
-      "candidate_only": true,
+      "status": "candidate",
+      "invocation_mode": "implicit-friendly",
+      "implicit_activation_policy": "invoke",
+      "allow_implicit_invocation": true,
+      "manual_invocation_required": false,
+      "candidate_only": false,
       "source_skill_path": "skills/core/stewardship/aoa-knowledge-stewardship/SKILL.md",
       "trust_posture": "portable-core",
       "mutation_surface": "repo",
       "recommended_install_scopes": [
-        "repo"
+        "repo",
+        "user"
       ],
       "resource_inventory": {
         "scripts": [],
-        "references": [],
+        "references": [
+          "references/authority-map.md",
+          "references/contract.yaml",
+          "references/sanitized-share.md"
+        ],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ],
+        "checks": [],
+        "examples": []
+      },
+      "ui": {
+        "brand_color": "#2563EB",
+        "icon_small": "./assets/small-logo.svg",
+        "icon_large": "./assets/large-logo.svg"
+      }
+    },
+    {
+      "name": "aoa-memo-writeback",
+      "display_name": "AoA Memo Writeback",
+      "description": "PATH GATE: copy the host-appended `(file: .../SKILL.md)` locator verbatim for the first read; never construct `.system` or `$CODEX_HOME` paths. If one constructed path has already failed with not-found before any other action, recover exactly once by reading the host locator and report `package_path_recovered`; never search or probe again. FIRST-WRITEBACK ONLY: use before any memo artifact exists to turn live-session, closeout, landed-work, PR, diff, or review evidence into one guarded candidate/export/no-write decision. If an existing candidate, export, quarantine packet, memory object, corpus identity, lifecycle target, or read-model target is named or supplied, select aoa-memo directly. Do not use for eval mining, raw session maintenance, generic harvest, durable memory, owner intake/review, recall, or proof.",
+      "short_description": "Create or decline the first memo writeback",
+      "path": ".agents/skills/aoa-memo-writeback/SKILL.md",
+      "openai_config_path": ".agents/skills/aoa-memo-writeback/agents/openai.yaml",
+      "scope": "core",
+      "status": "candidate",
+      "invocation_mode": "implicit-friendly",
+      "implicit_activation_policy": "invoke",
+      "allow_implicit_invocation": true,
+      "manual_invocation_required": false,
+      "candidate_only": false,
+      "source_skill_path": "skills/core/session-growth/aoa-memo-writeback/SKILL.md",
+      "trust_posture": "portable-core",
+      "mutation_surface": "repo",
+      "recommended_install_scopes": [
+        "repo",
+        "user"
+      ],
+      "resource_inventory": {
+        "scripts": [],
+        "references": [
+          "references/contract.yaml",
+          "references/writeback.md"
+        ],
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
@@ -164,26 +265,34 @@
     {
       "name": "aoa-session-harvest",
       "display_name": "AoA Session Harvest",
-      "description": "An implicit match may suggest this skill, but must not load or execute it until explicit invocation or a source-authorized parent-route selection. Convert explicitly reviewed session evidence into bounded reusable candidates through extract, classify, or branch mode. Use when a reviewed task trace contains repeatable units, an isolated unit needs its next owner/artifact route, or several continuations must remain visible. Do not use on live or unreviewed notes, for automatic promotion, or to write owner truth, quests, skills, playbooks, telemetry, or memory directly.",
-      "short_description": "Extract and route reviewed session candidates",
+      "description": "EXPLICIT REVIEWED-SESSION INPUT ONLY: turn a named closed/reviewed session packet into extract, classify, promote, branch, or automation-opportunity output. A natural work closeout asking whether anything reusable should be preserved for the owner's future work belongs to aoa-memo-writeback, not this skill. Use on live/unreviewed session material only when extraction or promotion is explicitly requested and the required result is blocked_unreviewed_evidence. Do not use for generic summarization, progression, memo/writeback judgment, direct promotion, scheduling, mutation, owner writes, or telemetry authority.",
+      "short_description": "Harvest and route reviewed session evidence",
       "path": ".agents/skills/aoa-session-harvest/SKILL.md",
       "openai_config_path": ".agents/skills/aoa-session-harvest/agents/openai.yaml",
       "scope": "core",
-      "status": "reviewed",
-      "invocation_mode": "explicit-preferred",
-      "implicit_activation_policy": "suggest",
-      "allow_implicit_invocation": false,
-      "manual_invocation_required": true,
-      "candidate_only": true,
+      "status": "candidate",
+      "invocation_mode": "implicit-friendly",
+      "implicit_activation_policy": "invoke",
+      "allow_implicit_invocation": true,
+      "manual_invocation_required": false,
+      "candidate_only": false,
       "source_skill_path": "skills/core/session-growth/aoa-session-harvest/SKILL.md",
       "trust_posture": "portable-core",
       "mutation_surface": "none",
       "recommended_install_scopes": [
-        "repo"
+        "repo",
+        "user"
       ],
       "resource_inventory": {
         "scripts": [],
-        "references": [],
+        "references": [
+          "references/automation-opportunity.md",
+          "references/branch.md",
+          "references/classify.md",
+          "references/contract.yaml",
+          "references/extract.md",
+          "references/promote.md"
+        ],
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
@@ -200,26 +309,30 @@
     {
       "name": "aoa-session-recovery",
       "display_name": "AoA Session Recovery",
-      "description": "An implicit match may suggest this skill, but must not load or execute it until explicit invocation or a source-authorized parent-route selection. Diagnose recurring session or workflow failure and prepare the smallest owner-routed repair through diagnose or propose-repair mode. Use when reviewed evidence shows contamination, drift, repeated tool/route failure, or a known diagnosis needs a reversible repair packet. Do not use on one live mood note, to mutate an owner directly, or to create durable validators before repeated manual evidence establishes an invariant.",
-      "short_description": "Diagnose drift and propose reversible repair",
+      "description": "Diagnose reviewed recurring session or workflow failure, or carry one bounded owner repair from diagnosis through checkpoint, execution posture, rollback, and real health verification. Use when evidence shows contamination, drift, repeated route/tool failure, or a reviewed diagnosis is ready for repair. Do not use on live/unreviewed material, for vague self-improvement, or to claim a proposed or merely executed change is verified.",
+      "short_description": "Diagnose failure and run bounded recovery",
       "path": ".agents/skills/aoa-session-recovery/SKILL.md",
       "openai_config_path": ".agents/skills/aoa-session-recovery/agents/openai.yaml",
       "scope": "core",
-      "status": "reviewed",
-      "invocation_mode": "explicit-preferred",
-      "implicit_activation_policy": "suggest",
-      "allow_implicit_invocation": false,
-      "manual_invocation_required": true,
-      "candidate_only": true,
+      "status": "candidate",
+      "invocation_mode": "implicit-friendly",
+      "implicit_activation_policy": "invoke",
+      "allow_implicit_invocation": true,
+      "manual_invocation_required": false,
+      "candidate_only": false,
       "source_skill_path": "skills/core/session-growth/aoa-session-recovery/SKILL.md",
       "trust_posture": "portable-core",
-      "mutation_surface": "none",
+      "mutation_surface": "conditional-owner-or-runtime",
       "recommended_install_scopes": [
-        "repo"
+        "user"
       ],
       "resource_inventory": {
         "scripts": [],
-        "references": [],
+        "references": [
+          "references/contract.yaml",
+          "references/diagnose.md",
+          "references/repair.md"
+        ],
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
@@ -236,12 +349,12 @@
     {
       "name": "aoa-verification",
       "display_name": "AoA Verification",
-      "description": "An implicit match may suggest this skill, but must not load or execute it until explicit invocation or a source-authorized parent-route selection. Turn one stable technical truth into bounded evidence through contract, coverage-audit, or property mode. Use when a named consumer boundary, an important invariant's real coverage, or a generative system property must be made reviewable. Do not use when behavior is undefined, the task is a general test plan, or green checks are being requested as whole-system proof.",
+      "description": "An implicit match may suggest this skill, but must not load or execute it until explicit invocation or a source-authorized parent-route selection. Turn one stable technical truth into bounded evidence through contract, coverage-audit, or property mode. Use to define a named consumer seam, audit what existing checks really constrain, or express a broad invariant after manual cases establish meaning. Compose with aoa-eval when an evaluation surface must first be found or applied. Do not use for undefined behavior, generic test plans, or green checks as whole-system proof.",
       "short_description": "Turn one stable truth into bounded evidence",
       "path": ".agents/skills/aoa-verification/SKILL.md",
       "openai_config_path": ".agents/skills/aoa-verification/agents/openai.yaml",
       "scope": "core",
-      "status": "reviewed",
+      "status": "candidate",
       "invocation_mode": "explicit-preferred",
       "implicit_activation_policy": "suggest",
       "allow_implicit_invocation": false,
@@ -255,7 +368,12 @@
       ],
       "resource_inventory": {
         "scripts": [],
-        "references": [],
+        "references": [
+          "references/contract.md",
+          "references/contract.yaml",
+          "references/coverage-audit.md",
+          "references/property.md"
+        ],
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"

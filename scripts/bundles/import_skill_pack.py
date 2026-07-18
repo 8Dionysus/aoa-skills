@@ -59,7 +59,11 @@ def render_markdown(report: Mapping[str, Any]) -> str:
 
 def main() -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--repo-root", default=".", help="Repository root containing .agents/skills")
+    parser.add_argument(
+        "--repo-root",
+        default=".",
+        help="Receiving repository root used to resolve the staged profile destination",
+    )
     parser.add_argument("--profile", required=True, help="Profile name from bundle_manifest.json")
     source_group = parser.add_mutually_exclusive_group(required=True)
     source_group.add_argument(

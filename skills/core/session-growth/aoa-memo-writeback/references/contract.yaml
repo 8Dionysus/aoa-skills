@@ -1,0 +1,71 @@
+schema_version: aoa-skill-contract-v1
+identity:
+  name: aoa-memo-writeback
+  owner: aoa-skills
+  version: 0.2.8
+  health: challenger
+purpose: Detect a memory-worthy work outcome and route its first guarded writeback decision.
+applicability:
+  use_when:
+    - live or closing work may contain a durable bounded owner lesson not yet represented by a concrete memo artifact
+    - the caller asks to assess or create the first guarded local candidate from inspectable evidence
+  do_not_use_when:
+    - only session infrastructure maintenance or generic harvesting is needed
+    - a concrete candidate, export, quarantine packet, memory object, corpus identity, or lifecycle target already exists
+    - recall, owner intake review, or durable memory landing is already the active aoa-memo task
+input_abi: memo-writeback-pressure
+output_abi: memo-writeback-decision
+freedom_level: bounded-judgment
+tool_requirements:
+  - Read access to inspectable session and owner-source evidence.
+  - Owner-local write access only when candidate creation is authorized.
+effects_by_decision:
+  write_candidate: owner-local-write
+  prepare_export: generated-write
+  no_writeback_needed: none
+  route_only_debt: none
+  needs_owner_review: none
+  blocked: none
+  owner_handoff: none
+verification:
+  - Manual comparison of the bounded claim against source and session evidence.
+  - Exact local memo-port read before choosing a local review/candidate route or route-only debt.
+  - Existing owner-port validation when a candidate or export is written.
+  - One exact candidate read after write; no post-write repository or filesystem orientation when port validation is manual.
+  - Report a single pre-package not-found recovery as package_path_recovered and retain its cost.
+  - Distinguish origin owner, aoa-memo intake owner, and aoa-skills procedure provenance.
+termination:
+  success: one first-writeback decision or owner handoff, effect report, proof limit, and next owner route
+  blocked: no inspectable evidence, owner, privacy posture, or required port contract
+trust:
+  posture: authored-procedure
+  durable_memory_authority: false
+provenance:
+  source: skills/core/session-growth/aoa-memo-writeback
+  techniques_runtime_dependency: false
+relations:
+  - kind: consumes
+    target: session-evidence
+    authority: candidate-only
+  - kind: hands-off-to
+    target: owner-local-memo-port
+    condition: admitted port and authorized candidate write
+  - kind: hands-off-to
+    target: aoa-memo-reviewed-intake
+    condition: explicit owner review supports export
+  - kind: hands-off-to
+    target: aoa-memo
+    condition: a concrete memo artifact, corpus question, or lifecycle target already exists
+failure_modes:
+  - repeated package-path construction, any search, or any workspace action instead of the host locator
+  - hiding a recovered not-found package-path miss as clean package entry
+  - enumerating the workspace to discover an owner source or memo port when the exact evidence and conventional port path suffice
+  - guessing a filesystem source path from a semantic authority mention
+  - trusting a closeout assertion about local port admission without reading memo/PORT.yaml
+  - reporting aoa-skills as the material's stronger owner because it owns the procedure
+  - post-write git, cwd, size, or directory probes after the exact candidate already proves the effect
+  - an existing memo artifact causes this first-writeback bundle to load before aoa-memo
+  - raw history promoted to memory truth
+  - wrong owner material absorbed into memo
+  - fake local port or unreviewed durable write
+  - an existing memo artifact intercepted and duplicated before owner review

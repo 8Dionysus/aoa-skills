@@ -9,10 +9,15 @@
   "drift_paths": {
     "capability_generated": [
       "generated/capability_graph.json",
-      "generated/capability_graph.md"
+      "generated/capability_graph.md",
+      "kag/nodes/capability-graph.json",
+      "kag/nodes/capability-source-home.json",
+      "kag/edges/capability_returns_to_owner.json",
+      "kag/indexes/provider_readiness_index.json",
+      "kag/projections/mcp_capability_return.json",
+      "kag/receipts/validation_receipt.json"
     ],
     "export_generated": [
-      ".agents/skills",
       "generated/agent_skill_catalog.json",
       "generated/agent_skill_catalog.min.json",
       "generated/portable_export_map.json",
@@ -84,7 +89,13 @@
         "--exit-code",
         "--",
         "generated/capability_graph.json",
-        "generated/capability_graph.md"
+        "generated/capability_graph.md",
+        "kag/nodes/capability-graph.json",
+        "kag/nodes/capability-source-home.json",
+        "kag/edges/capability_returns_to_owner.json",
+        "kag/indexes/provider_readiness_index.json",
+        "kag/projections/mcp_capability_return.json",
+        "kag/receipts/validation_receipt.json"
       ]
     ],
     "export_generated_check": [
@@ -105,7 +116,6 @@
         "diff",
         "--exit-code",
         "--",
-        ".agents/skills",
         "generated/agent_skill_catalog.json",
         "generated/agent_skill_catalog.min.json",
         "generated/portable_export_map.json",
@@ -261,37 +271,25 @@
     ]
   },
   "single_commands": {
-    "packaging_smoke_user_default": [
+    "packaging_smoke_advertised": [
       "python",
       "scripts/bundles/smoke_skill_pack_handoff.py",
       "--repo-root",
       ".",
       "--profile",
-      "user-default",
+      "portable-consumer-advertised",
       "--transport",
       "both",
       "--format",
       "json"
     ],
-    "packaging_smoke": [
+    "packaging_smoke_all_sources": [
       "python",
       "scripts/bundles/smoke_skill_pack_handoff.py",
       "--repo-root",
       ".",
       "--profile",
-      "repo-default",
-      "--transport",
-      "both",
-      "--format",
-      "json"
-    ],
-    "packaging_smoke_capability_sources": [
-      "python",
-      "scripts/bundles/smoke_skill_pack_handoff.py",
-      "--repo-root",
-      ".",
-      "--profile",
-      "repo-capability-sources",
+      "portable-consumer-all-sources",
       "--transport",
       "both",
       "--format",

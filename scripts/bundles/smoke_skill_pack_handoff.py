@@ -258,7 +258,11 @@ def execute_smoke(
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--repo-root", default=".", help="Repository root containing the packaging scripts")
-    parser.add_argument("--profile", default="repo-default", help="Resolved install profile to smoke test")
+    parser.add_argument(
+        "--profile",
+        default="portable-consumer-advertised",
+        help="Resolved external-consumer profile to smoke test",
+    )
     parser.add_argument(
         "--transport",
         choices=("dir", "zip", "both"),

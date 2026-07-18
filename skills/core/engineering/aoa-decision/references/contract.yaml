@@ -1,0 +1,98 @@
+schema_version: aoa-skill-contract-v1
+identity:
+  name: aoa-decision
+  owner: aoa-skills
+  version: 0.2.2
+  health: challenger
+purpose: Preserve decision lookup, durable recording, and source-first correction behind one discoverable front door.
+applicability:
+  positive:
+    - existing decision rationale, status, supersession, or impact is requested
+    - one meaningful accepted decision lacks an adequate owner record
+    - an authored decision or its declared derived decision views are stale or wrong
+  negative:
+    - ordinary documentation editing or undecided option framing
+    - current source-authority mapping outside decision records
+    - generated or runtime drift unrelated to a decision source
+freedom_level: bounded-judgment
+tool_requirements:
+  - Read access to the exact target-owner decision source and route law.
+  - Owner repository write access only for explicitly authorized record or correct effects.
+  - An owner decision retriever, index builder, graph, or KAG route is optional and never authority.
+trust:
+  posture: authored-procedure
+  decision_authority: false
+  requires_human_approval_for_writes: true
+provenance:
+  source: skills/core/engineering/aoa-decision
+  techniques_runtime_dependency: false
+owner_binding:
+  decision_truth: target owner authored decision record
+  derived_posture: indexes, graph, KAG, caches, and session evidence are locators or context only
+  unresolved_posture: missing owner law or source blocks effects and rationale claims
+modes:
+  find:
+    input_abi: decision-query
+    output_abi: decision-match-list
+    effects: [read-only]
+    reference: find.md
+  record:
+    input_abi: accepted-decision
+    output_abi: decision-record
+    effects: [none, repo-write, generated-write]
+    reference: record.md
+    required_input_fields:
+      - accepted_choice
+      - target_owner
+      - context
+      - material_alternatives
+      - rationale
+      - consequences
+      - decision_home_or_owner_route
+      - affected_source_surfaces
+      - effect_authority
+  correct:
+    input_abi: decision-correction-target
+    output_abi: corrected-decision
+    effects: [none, repo-write, generated-write]
+    reference: correct.md
+    required_input_fields:
+      - target_owner
+      - existing_decision_source_or_id
+      - observed_mismatch
+      - expected_state
+      - affected_consumers
+      - owner_decision_index_law
+      - effect_authority
+relations:
+  - kind: hands-off-to
+    from: find
+    to: record
+    condition: no adequate record exists and a meaningful accepted decision is supplied
+  - kind: hands-off-to
+    from: find
+    to: correct
+    condition: an authored decision or declared decision view is stale or wrong
+  - kind: hands-off-to
+    from: correct
+    to: record
+    condition: explicit supersession reveals a separately accepted new decision requiring its own record
+  - kind: composes-with
+    from: find
+    to: aoa-session-memory-evidence-route
+    condition: the user explicitly asks how a source-identified decision was used or what happened after it
+verification:
+  - exactly one mode and one target are active
+  - every rationale, status, supersession, and owner claim is verified in authored source
+  - record and correct effects match explicit authority and owner law
+  - generated consumers are rebuilt from source and have bounded claim limits
+failure_modes:
+  - several mode procedures or retired child skills loaded for one request
+  - decision rationale inferred from an index, graph, KAG packet, or session trace
+  - rejected alternatives or consequences invented from the accepted choice
+  - generated index hand-edited or refreshed to hide missing source or builder law
+  - semantic history silently rewritten instead of superseded
+  - external retrieval freshness reported as owner-source validity
+termination:
+  success: one typed mode result with exact owner source, actual effects, verification, uncertainty, and stop line
+  blocked: required source, accepted-decision field, correction class, builder contract, or effect authority remains unavailable

@@ -1,0 +1,17 @@
+{
+  "allowed_bytes": 7873593,
+  "allowed_tracked_bytes": 9427032,
+  "approved_by": "repository-owner",
+  "base_ref": "5ea0e38a2c405274dce870fb3750ec76fd01ba23",
+  "changed_generated_bytes": 7873593,
+  "changed_generated_files": 292,
+  "decision_ref": "aoa-kag:docs/decisions/AOA-KAG-D-0017-portable-content-addressed-repository-family.md",
+  "default_limit_bytes": 1048576,
+  "head_family_digest": "9ea9e8843d799c75f29a014d9794d9dbe25f1baee6db45d38492a90bd7ae083a",
+  "reason": "One-time functional capability recovery: replace retired repository-local projections with nine canonical shared procedure packages, preserve 38 manually reviewed legacy dispositions through conditional contracts and owner-qualified bindings, harden the managed OS user-profile installer from real collision, dirty-source, receipt-drift, idempotence, and unsafe-path trials, retain one owner-port regression for the reproduced install invariant, and refresh the 98-node typed capability graph plus source-linked KAG family without session traces or temporary trial scaffolding.",
+  "repo": "aoa-skills",
+  "schema_version": "aoa-repo-local-kag-budget-receipt-v1",
+  "scope": "generated_delta",
+  "tracked_bytes": 9427032,
+  "tracked_bytes_max": 9437184
+}

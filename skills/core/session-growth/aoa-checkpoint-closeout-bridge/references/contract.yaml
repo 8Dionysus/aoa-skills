@@ -1,0 +1,68 @@
+schema_version: aoa-skill-contract-v1
+identity:
+  name: aoa-checkpoint-closeout-bridge
+  owner: aoa-skills
+  version: 0.2.3
+  health: challenger
+purpose: Preserve provisional checkpoint collection and explicit reviewed closeout execution until the owner playbook has an executable MCP route.
+applicability:
+  positive: bounded checkpoint focus collection or closed reviewed evidence requiring ordered closeout execution
+  negative: live evidence used for verdicts, generic recap, hidden playbook execution, or direct owner writes
+freedom_level: bounded-orchestration
+tool_requirements:
+  - Read access to the current skill package and primary evidence boundary.
+  - Exact callable aoa-session-harvest and aoa-session-progression-lift bundles for execute mode.
+  - Optional read access to the aoa-playbooks checkpoint-closeout owner route; no playbooks MCP is assumed.
+effects:
+  collect: [none, optional-session-local-note-write]
+  execute: [none, optional-session-local-report-write]
+modes:
+  collect:
+    input_abi: checkpoint-focus-input
+    output_abi: provisional-checkpoint-focus
+    reference: collect.md
+  execute:
+    input_abi: reviewed-checkpoint-closeout-input
+    output_abi: checkpoint-closeout-execution-report
+    reference: execute.md
+verification:
+  - review and current-session boundary precede downstream selection
+  - every executed node records exact skill or mode, typed ABI, state transitions, and an observable post-selection pre-start primary-evidence read action ref
+  - dependency gates and DAG nodes complete serially; cross-node batched reads terminate as unverified_nonserial_node_execution
+  - progression resolves only its same-bundle source handle or direct-source git root before a completed manifest-only tool turn and later owner-model reads
+  - an executed node without that read action ref terminates unverified_missing_evidence_reread and cannot be reported verified or completed
+  - closeout claims are compared against observable node actions rather than accepted from narrative assertion
+  - no checkpoint hint or generated packet becomes verdict authority
+  - no owner, memory, quest, progression, proof, playbook, KAG, route, or stats surface changes
+termination:
+  collect_success: one provisional focus packet and no downstream skill load
+  execute_success: one verified session-local execution report and explicit handoffs
+  unverified: any executed node lacks an observable post-selection pre-start primary-evidence read action ref or shares a load/reread batch with another node
+  blocked: reviewed evidence, current-session boundary, required callable skill, owner source, or typed prerequisite is missing
+relations:
+  - {kind: requires, target: aoa-session-harvest, condition: execute mode}
+  - {kind: requires, target: aoa-session-progression-lift, condition: execute mode progression node}
+  - {kind: implements, target: workflow.operations.checkpoint-closeout, posture: transitional-until-aoa-playbooks-mcp}
+  - {kind: hands-off-to, target: aoa-memo-writeback, condition: a bounded reusable closeout lesson survives}
+  - {kind: hands-off-to, target: aoa-summon, condition: one anchored child route is selected}
+trust:
+  posture: authored-transitional-procedure
+  checkpoint_authority: false
+  progression_authority: false
+  quest_authority: false
+  playbook_authority: false
+provenance:
+  source: skills/core/session-growth/aoa-checkpoint-closeout-bridge
+  owner_playbook: aoa-playbooks:playbooks/continuity/checkpoint/checkpoint-closeout-owner-route/PLAYBOOK.md
+  techniques_runtime_dependency: false
+failure_modes:
+  - provisional hints treated as evidence or verdicts
+  - retired skill names treated as available dependencies
+  - multiple downstream modes hidden inside one selection
+  - valid plan or report treated as executed and verified nodes
+  - cached evidence or a narrative reread claim substituted for an observable per-node read action
+  - progression manifest and owner-model documents read in one tool batch
+  - a profile-root, .system, sibling, or guessed path substituted for the progression bundle's same-bundle source handle
+  - several node procedures or primary-evidence rereads preloaded in parallel
+  - closeout report claims a load, read, effect, or verification absent from the node action record
+  - positive verdict forced to satisfy DAG shape

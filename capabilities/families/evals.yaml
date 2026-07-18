@@ -1,7 +1,7 @@
 schema_version: aoa-capability-family-v1
 family_id: engineering-evaluation
 title: Evaluation lifecycle
-description: One advertised evaluation family with select, apply, and propose modes under explicit owner and proof limits.
+description: One evaluation family with distinct select, apply, local-need, design, and session-mining modes under explicit owner and proof limits.
 owner:
   repo: aoa-skills
   surface: capabilities/families/evals.yaml
@@ -9,7 +9,7 @@ owner:
 nodes:
   - id: engineering.evaluation
     title: Route an evaluation need
-    description: Select existing evidence, apply an exact surface, or propose the smallest owner-local response to a confirmed no-fit.
+    description: Select or apply evidence, record local pressure, design bounded coverage, or mine researched session triggers without collapsing their contracts.
     kind: capability
     contract_level: navigation
     primary_parent: engineering
@@ -19,9 +19,9 @@ nodes:
       authority: authored
     lifecycle: &eval_family_lifecycle
       state: candidate
-      version: 0.1.0
+      version: 0.2.5
       visibility: deferred
-      evidence_state: manual-baseline
+      evidence_state: evaluated
       health: challenger
     keywords:
       - evaluation
@@ -37,22 +37,22 @@ nodes:
 
   - id: skill.aoa-eval
     title: aoa-eval family bundle
-    description: Route one AoA evaluation need through select, apply, or propose mode while preserving local owner and proof-authority boundaries. Use when an existing eval/check must be found or run, or a confirmed no-fit needs an owner-local intake/design candidate. Do not use for ordinary one-off tests, undefined invariants, green-command reporting, or direct edits to central proof authority.
+    description: Select or apply an eval, route a confirmed no-fit into owner-local intake or design, or classify supplied or retrieved session hits into provenance-bound eval candidates. Use for one cross-repository or owner-local evaluation need; compose with session-memory for retrieval and with aoa-verification after apply. Do not use for named central proof bundles, results, reports, verdicts, or lifecycle work (`aoa-evals`), ordinary already-named tests, undefined invariants, or generic session harvesting.
     kind: skill
     contract_level: executable
     primary_parent: engineering.evaluation
     owner: *eval_owner
     lifecycle:
       state: candidate
-      version: 0.1.0
-      visibility: deferred
+      version: 0.2.5
+      visibility: advertised
       evidence_state: evaluated
-      health: degraded
+      health: challenger
     applicability:
       use_when:
-        - An eval or check must be selected or applied, or a verified no-fit needs an owner-local intake or design proposal.
+        - An eval must be selected or applied, a verified no-fit needs owner-local intake or design, or supplied/retrieved session evidence needs eval-trigger classification.
       do_not_use_when:
-        - The task is an ordinary one-off test, the invariant is undefined, or a green command is being treated as central proof.
+        - The task is an ordinary one-off test, the invariant is undefined, generic session harvesting is needed, or a green command is being treated as central proof.
       ambiguous_when:
         - The nearest surface is only partially relevant and its claim limit has not been compared to the acceptance target.
     abi:
@@ -60,12 +60,12 @@ nodes:
         - name: evaluation-request
           type: evaluation-request
           required: true
-          description: Invariant, owner, source ref, relevant inventory, and effect posture.
+          description: One mode intent plus invariant or trigger classes, owner, source ref, relevant evidence or inventory, and effect posture.
       outputs:
         - name: evaluation-result
-          type: bounded-evaluation-result
+          type: evaluation-mode-result
           required: true
-          description: One mode result with evidence/proof class, drift, artifact, next route, and stop line.
+          description: One mode-specific typed result with evidence/proof class, effect, next route, and stop line.
     binding:
       kind: skill
       ref: skills/core/engineering/aoa-eval/SKILL.md
@@ -79,14 +79,16 @@ nodes:
         - Confirm exactly one mode, owner, source ref, environment, evidence class, and proof limit.
         - Inspect selected or produced artifacts manually against the declared acceptance target.
       termination:
-        - Stop after one bounded selection, application, or owner-local proposal and its next route.
+        - Stop after one typed mode result and its explicit next route.
         - Stop as blocked when invariant, owner, exact command, accepted result, or required input for the selected mode is absent.
       effects:
         - none
       reversibility: not-applicable
       failure_modes:
         - Selecting by keyword or substituting a broader green gate.
-        - Designing before no-fit, invariant, owner, and acceptance criteria are established.
+        - Widening discovery after a bounded selection verdict is already decisive.
+        - Collapsing intake, design, and session evidence into one generic proposal.
+        - Sending a design for an absent surface directly to apply for creation or execution.
         - Allowing Eval Forge health or generated dashboards to become result proof.
     trust: &eval_trust
       public_safe: true
@@ -96,14 +98,16 @@ nodes:
       source_refs:
         - repo: aoa-skills
           path: skills/core/engineering/aoa-eval/SKILL.md
-          ref: capability-family-v0.1.0
+          ref: capability-family-v0.2.5
           role: portable-family-procedure
           authority: authored
       optional_refs: []
     keywords:
       - eval-route
       - eval-apply
-      - eval-proposal
+      - eval-intake
+      - eval-design
+      - eval-session-mining
       - proof-limit
       - выбор-оценки
       - запуск-оценки
@@ -118,9 +122,9 @@ nodes:
     owner: *eval_owner
     lifecycle: &eval_mode_lifecycle
       state: candidate
-      version: 0.1.0
+      version: 0.2.5
       visibility: internal
-      evidence_state: manual-baseline
+      evidence_state: evaluated
       health: challenger
     applicability:
       use_when:
@@ -142,7 +146,7 @@ nodes:
           description: Exact, partial, or no-fit verdict with rejected alternatives and next route.
     binding:
       kind: mode
-      ref: skills/core/engineering/aoa-eval/SKILL.md
+      ref: skills/core/engineering/aoa-eval/references/select.md
       operation: select
       availability: available
     execution: *eval_execution
@@ -150,8 +154,8 @@ nodes:
     provenance:
       source_refs:
         - repo: aoa-skills
-          path: skills/core/engineering/aoa-eval/SKILL.md
-          ref: capability-family-v0.1.0
+          path: skills/core/engineering/aoa-eval/references/select.md
+          ref: capability-family-v0.2.5
           role: select-mode
           authority: authored
       optional_refs: []
@@ -192,7 +196,7 @@ nodes:
         - name: evaluation-selection
           type: evaluation-selection
           required: true
-          description: Exact selected surface with command, owner, source, prerequisites, artifact, and acceptance contract.
+          description: Exact-fit selection with explicit owner, source ref and digest, environment, argv, cwd, timeout, accepted exits, prerequisites, artifacts, pass criteria, effect authority and expected effect, proof authority, and proof limit.
       outputs:
         - name: evaluation-observation
           type: evaluation-observation
@@ -200,7 +204,7 @@ nodes:
           description: Command and artifact observation with drift, invariant verdict, skipped checks, and proof limit.
     binding:
       kind: mode
-      ref: skills/core/engineering/aoa-eval/SKILL.md
+      ref: skills/core/engineering/aoa-eval/references/apply.md
       operation: apply
       availability: available
     execution:
@@ -208,23 +212,27 @@ nodes:
       tool_requirements:
         - Exact owner command environment and read access to resulting stdout and artifacts.
       verification:
+        - Before any target read or execution, report every required dotted input field as present-valid or missing-invalid.
         - Run only named JIT owner checks and the exact selected command in its owner root.
-        - Inspect stdout and artifacts manually; separate exit success, invariant satisfaction, and central proof.
+        - Inspect stdout and artifacts manually; separate exit success, invariant satisfaction, actual effects, and central proof.
       termination:
         - Stop after one bounded execution and manual artifact verdict.
-        - Return to select when exact command, source, accepted result, or required input is absent.
+        - Stop as blocked_missing_input before target reads or execution when any required dotted field is absent or invalid.
       effects:
+        - none
+        - repo-write
         - generated-write
       reversibility: conditionally-reversible
       failure_modes:
+        - Declaring preflight complete without checking every required dotted field.
         - Substituting a broader green gate or ignoring partial and stale artifacts.
         - Reporting command success as proof beyond the selected contract.
     trust: *eval_trust
     provenance:
       source_refs:
         - repo: aoa-skills
-          path: skills/core/engineering/aoa-eval/SKILL.md
-          ref: capability-family-v0.1.0
+          path: skills/core/engineering/aoa-eval/references/apply.md
+          ref: capability-family-v0.2.5
           role: apply-mode
           authority: authored
       optional_refs: []
@@ -244,9 +252,9 @@ nodes:
       - вручную
       - артефакт
 
-  - id: mode.eval.propose
-    title: Propose a bounded response to an evaluation no-fit
-    description: Prepare the smallest owner-local intake or suite-design candidate after a recorded no-fit, without creating proof or permanent scaffolding.
+  - id: mode.eval.local-need
+    title: Record an owner-local evaluation need
+    description: Write or prepare one bounded pressure packet after a recorded no-fit when an admitted owner-local eval port exists.
     kind: mode
     contract_level: executable
     primary_parent: engineering.evaluation
@@ -254,53 +262,202 @@ nodes:
     lifecycle: *eval_mode_lifecycle
     applicability:
       use_when:
-        - Selection recorded no adequate fit and a stable invariant, owner home, and acceptance criteria are known.
+        - Selection recorded no adequate fit and the target owner has an admitted local eval intake port.
       do_not_use_when:
-        - An exact surface exists, the invariant is undefined, or the request is to edit central proof authority directly.
+        - An exact surface exists, no local port exists, or a runnable suite design rather than pressure intake is the needed artifact.
       ambiguous_when:
-        - Reviewed traces suggest a recurring gap but have not established a stable long-lived invariant.
+        - The pressure may belong to another owner or may still be only a one-off failure.
     abi:
       inputs:
-        - name: evaluation-no-fit
-          type: evaluation-selection
+        - name: evaluation-no-fit-with-local-port
+          type: evaluation-no-fit-with-local-port
           required: true
-          description: Recorded no-fit, invariant, owner, acceptance criteria, rejected alternatives, and evidence refs.
+          description: Recorded no-fit, target owner, admitted port, bounded behavior, rejected alternatives, evidence refs, and effect authority.
       outputs:
-        - name: evaluation-proposal
-          type: evaluation-proposal
+        - name: local-eval-need-packet
+          type: local-eval-need-packet
           required: true
-          description: Smallest owner-local intake or suite-design candidate plus manual cases and admission review.
+          description: Owner-local pressure packet or non-mutating candidate with proof limit and next review route.
     binding:
       kind: mode
-      ref: skills/core/engineering/aoa-eval/SKILL.md
-      operation: propose
+      ref: skills/core/engineering/aoa-eval/references/local-need.md
+      operation: local-need
       availability: available
-    execution: *eval_execution
+    execution:
+      freedom: bounded-judgment
+      tool_requirements:
+        - Read access to the admitted local eval-port contract and write access only when owner-local mutation is authorized.
+      verification:
+        - Confirm explicit no-fit, rejected alternatives, local-port ownership, bounded pressure, and proof limit.
+        - Inspect the packet manually and run only an already-existing owner-port validator.
+      termination:
+        - Stop after one packet/candidate and owner-review route.
+        - Stop as blocked when no-fit, owner, admitted port, or packet schema is unavailable; absent write authority limits the result to a non-mutating candidate.
+      effects:
+        - none
+        - repo-write
+      reversibility: conditionally-reversible
+      failure_modes:
+        - Inventing a port or central proof packet.
+        - Treating intake pressure as an executable suite or accepted proof.
     trust: *eval_trust
     provenance:
       source_refs:
         - repo: aoa-skills
-          path: skills/core/engineering/aoa-eval/SKILL.md
-          ref: capability-family-v0.1.0
-          role: propose-mode
+          path: skills/core/engineering/aoa-eval/references/local-need.md
+          ref: capability-family-v0.2.5
+          role: local-need-mode
           authority: authored
       optional_refs: []
     aliases:
       - name: aoa-eval-local-need
         state: migration-only
         remove_after: eval-family-runtime-parity
-      - name: aoa-eval-design
-        state: migration-only
-        remove_after: eval-family-runtime-parity
     keywords:
       - eval-gap
       - no-fit
       - intake
-      - suite-design
-      - manual-cases
       - пробел-оценки
       - нет-подходящей-проверки
+      - локальная-потребность
+
+  - id: mode.eval.design
+    title: Design bounded owner-local evaluation
+    description: Shape manual cases and the smallest deterministic suite or report contract after a recorded no-fit and stable invariant.
+    kind: mode
+    contract_level: executable
+    primary_parent: engineering.evaluation
+    owner: *eval_owner
+    lifecycle: *eval_mode_lifecycle
+    applicability:
+      use_when:
+        - Selection recorded no adequate fit and a stable invariant, owner-local design path, and acceptance target are known.
+      do_not_use_when:
+        - An exact surface exists, only intake pressure is mature, or the invariant is still undefined.
+      ambiguous_when:
+        - Recurrence exists but manual interpretation has not stabilized enough to justify durable automation.
+    abi:
+      inputs:
+        - name: evaluation-no-fit-with-stable-invariant
+          type: evaluation-no-fit-with-stable-invariant
+          required: true
+          description: No-fit, invariant, owner path, acceptance target, rejected surfaces, manual evidence, and effect authority.
+      outputs:
+        - name: local-eval-design
+          type: local-eval-design
+          required: true
+          description: Manual cases, deterministic-first suite/report contract, runner/artifacts, false-green risks, cleanup, and proof limit.
+    binding:
+      kind: mode
+      ref: skills/core/engineering/aoa-eval/references/design.md
+      operation: design
+      availability: available
+    execution:
+      freedom: bounded-judgment
+      tool_requirements:
+        - Read access to owner behavior and manual evidence; owner-local write access only when authorized.
+      verification:
+        - Trace positive, negative, collision, and regression cases to manual evidence.
+        - Confirm deterministic checks precede rubric layers and temporary scaffolding remains temporary.
+      termination:
+        - Stop after one bounded design and owner-review route; an absent surface requires separately authorized owner implementation and a new select step before apply.
+        - Stop as blocked when invariant, owner path, acceptance target, or rejected alternatives are absent; absent write authority limits the result to a proposed design with no effect.
+      effects:
+        - none
+        - repo-write
+      reversibility: conditionally-reversible
+      failure_modes:
+        - Generic suite design before selection or stable invariant.
+        - Treating apply as the creator or implementer of an absent evidence surface.
+        - Permanent validators derived from changing manual interpretation.
+    trust: *eval_trust
+    provenance:
+      source_refs:
+        - repo: aoa-skills
+          path: skills/core/engineering/aoa-eval/references/design.md
+          ref: capability-family-v0.2.5
+          role: design-mode
+          authority: authored
+      optional_refs: []
+    aliases:
+      - name: aoa-eval-design
+        state: migration-only
+        remove_after: eval-family-runtime-parity
+    keywords:
+      - suite-design
+      - manual-cases
+      - deterministic-first
+      - collision-cases
       - проектирование-eval
+      - ручные-испытания
+
+  - id: mode.eval.session-mining
+    title: Mine prior sessions for evaluation evidence
+    description: Search fresh prior-session evidence by researched eval-trigger classes and return candidate cases with raw provenance and owner routes.
+    kind: mode
+    contract_level: executable
+    primary_parent: engineering.evaluation
+    owner: *eval_owner
+    lifecycle: *eval_mode_lifecycle
+    applicability:
+      use_when:
+        - Repository and external research already defined narrow eval-trigger classes, owner routes, and review criteria.
+      do_not_use_when:
+        - Generic session harvesting, provider repair, memory writeback, or source archaeology is the real task.
+      ambiguous_when:
+        - A repeated phrase may be frustration or environmental coincidence rather than a reproducible eval case.
+    abi:
+      inputs:
+        - name: researched-eval-trigger-classes
+          type: researched-eval-trigger-classes
+          required: true
+          description: Trigger classes, owner map, provider/status, freshness, and candidate-review criteria.
+      outputs:
+        - name: eval-session-evidence-candidates
+          type: eval-session-evidence-candidates
+          required: true
+          description: Classified examples with session, segment, event/raw refs, freshness, rejected cases, and next routes.
+    binding:
+      kind: mode
+      ref: skills/core/engineering/aoa-eval/references/session-mining.md
+      operation: session-mining
+      availability: available
+    execution:
+      freedom: bounded-judgment
+      tool_requirements:
+        - Read-only access to a healthy session-evidence provider and already-mapped owner sources.
+      verification:
+        - Preserve provider, session, segment, event/raw refs, and freshness for every example.
+        - Review surrounding context and rejected nearest-owner examples manually.
+      termination:
+        - Stop after one bounded candidate set and explicit local-need, design, apply, or no-action route.
+        - Stop as blocked when trigger classes, owner map, provider status, freshness, or review criteria are unavailable.
+      effects:
+        - none
+      reversibility: not-applicable
+      failure_modes:
+        - Broad session search before trigger classes and owner routes are known.
+        - Promoting raw recurrence or a snippet to proof.
+    trust: *eval_trust
+    provenance:
+      source_refs:
+        - repo: aoa-skills
+          path: skills/core/engineering/aoa-eval/references/session-mining.md
+          ref: capability-family-v0.2.5
+          role: session-mining-mode
+          authority: authored
+      optional_refs: []
+    aliases:
+      - name: aoa-eval-session-mining
+        state: migration-only
+        remove_after: eval-family-runtime-parity
+    keywords:
+      - eval-session-mining
+      - missed-trigger
+      - regression-candidate
+      - raw-ref
+      - поиск-по-сессиям
+      - пропущенный-триггер
 relations:
   - kind: implemented-by
     source: engineering.evaluation
@@ -311,5 +468,17 @@ relations:
     condition: Selection found an exact fit with a complete execution contract.
   - kind: hands-off-to
     source: mode.eval.select
-    target: mode.eval.propose
-    condition: Selection recorded partial or no fit with a stable invariant and owner.
+    target: mode.eval.local-need
+    condition: Selection recorded no fit and an admitted owner-local intake port exists.
+  - kind: hands-off-to
+    source: mode.eval.select
+    target: mode.eval.design
+    condition: Selection recorded no fit and a stable invariant, owner path, and acceptance target exist.
+  - kind: produces
+    source: mode.eval.session-mining
+    target: mode.eval.local-need
+    condition: Reviewed evidence establishes bounded owner-local eval pressure.
+  - kind: produces
+    source: mode.eval.session-mining
+    target: mode.eval.design
+    condition: Reviewed evidence supports reproducible manual cases and a stable invariant.

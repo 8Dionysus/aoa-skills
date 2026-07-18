@@ -1,6 +1,7 @@
 policy:
-  allow_implicit_invocation: false
-  implicit_activation_policy: suggest
+  allow_implicit_invocation: true
+  implicit_activation_policy: invoke
 notes:
-- Select diagnose or propose-repair, never both for the same target in one step.
-- This family proposes no owner mutation and has no session-memory dependency.
+  - Select exactly one of diagnose or repair.
+  - Repair may act only through an authorized owner binding; never infer verified from prepared or executed.
+  - Evaluation-trigger mining belongs to aoa-eval; memory-worthiness belongs to aoa-memo-writeback.

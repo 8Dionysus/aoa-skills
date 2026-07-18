@@ -19,6 +19,12 @@ MIGRATION_PATH = Path("capabilities/legacy-skill-migration.yaml")
 FAMILY_ROOT = Path("capabilities/families")
 GRAPH_JSON_PATH = Path("generated/capability_graph.json")
 GRAPH_MARKDOWN_PATH = Path("generated/capability_graph.md")
+KAG_CAPABILITY_GRAPH_NODE_PATH = Path("kag/nodes/capability-graph.json")
+KAG_CAPABILITY_SOURCE_NODE_PATH = Path("kag/nodes/capability-source-home.json")
+KAG_CAPABILITY_RETURN_EDGE_PATH = Path("kag/edges/capability_returns_to_owner.json")
+KAG_PROVIDER_INDEX_PATH = Path("kag/indexes/provider_readiness_index.json")
+KAG_MCP_RETURN_PATH = Path("kag/projections/mcp_capability_return.json")
+KAG_VALIDATION_ROUTE_RECEIPT_PATH = Path("kag/receipts/validation_receipt.json")
 GRAPH_SCHEMA_VERSION = "aoa-capability-graph-v1"
 DAG_SCHEMA_VERSION = "aoa-task-local-dag-v1"
 HARD_DEPENDENCY_RELATIONS = {"requires", "guarded-by"}
@@ -313,6 +319,114 @@ def _check_local_binding(repo_root: Path, node: Mapping[str, Any]) -> list[str]:
     return issues
 
 
+def _local_skill_contract(
+    repo_root: Path, node: Mapping[str, Any]
+) -> tuple[Path, dict[str, Any]] | None:
+    if node.get("kind") != "skill":
+        return None
+    binding = node.get("binding")
+    if not isinstance(binding, Mapping):
+        return None
+    ref = binding.get("ref")
+    if not isinstance(ref, str) or not ref.startswith("skills/"):
+        return None
+    skill_path = repo_root / ref.split("#", 1)[0]
+    if skill_path.name != "SKILL.md":
+        return None
+    contract_path = skill_path.parent / "references" / "contract.yaml"
+    if not contract_path.is_file():
+        return None
+    return contract_path, load_yaml(contract_path)
+
+
+def _required_abi_type(node: Mapping[str, Any], direction: str) -> str | None:
+    rows = node.get("abi", {}).get(direction, [])
+    if not isinstance(rows, Sequence):
+        return None
+    for row in rows:
+        if isinstance(row, Mapping) and row.get("required") is True and isinstance(row.get("type"), str):
+            return str(row["type"])
+    return None
+
+
+def _check_local_skill_contracts(
+    repo_root: Path, nodes: Mapping[str, Mapping[str, Any]]
+) -> list[str]:
+    issues: list[str] = []
+    for skill_id, skill_node in sorted(nodes.items()):
+        contract_result = _local_skill_contract(repo_root, skill_node)
+        if contract_result is None:
+            continue
+        contract_path, contract = contract_result
+        contract_ref = relative_path(contract_path, repo_root)
+        identity = contract.get("identity")
+        expected_name = skill_id.removeprefix("skill.")
+        if not isinstance(identity, Mapping):
+            issues.append(f"{skill_id}: {contract_ref} lacks identity mapping")
+            continue
+        if identity.get("name") != expected_name:
+            issues.append(
+                f"{skill_id}: {contract_ref} identity.name is {identity.get('name')!r}, expected {expected_name!r}"
+            )
+        owner_repo = skill_node.get("owner", {}).get("repo")
+        if isinstance(owner_repo, str) and identity.get("owner") != owner_repo:
+            issues.append(
+                f"{skill_id}: {contract_ref} identity.owner is {identity.get('owner')!r}, expected {owner_repo!r}"
+            )
+        lifecycle = skill_node.get("lifecycle")
+        if isinstance(lifecycle, Mapping):
+            for field in ("version", "health"):
+                if identity.get(field) != lifecycle.get(field):
+                    issues.append(
+                        f"{skill_id}: {contract_ref} identity.{field} is "
+                        f"{identity.get(field)!r}, expected lifecycle {lifecycle.get(field)!r}"
+                    )
+
+        contract_modes = contract.get("modes")
+        if not isinstance(contract_modes, Mapping):
+            continue
+        parent = skill_node.get("primary_parent")
+        sibling_modes = {
+            str(node.get("binding", {}).get("operation")): node
+            for node in nodes.values()
+            if node.get("kind") == "mode" and node.get("primary_parent") == parent
+        }
+        missing_modes = sorted(set(map(str, contract_modes)) - set(sibling_modes))
+        extra_modes = sorted(set(sibling_modes) - set(map(str, contract_modes)))
+        if missing_modes:
+            issues.append(f"{skill_id}: contract modes lack graph nodes: {', '.join(missing_modes)}")
+        if extra_modes:
+            issues.append(f"{skill_id}: graph modes lack owner contract entries: {', '.join(extra_modes)}")
+        for raw_operation, raw_mode_contract in contract_modes.items():
+            operation = str(raw_operation)
+            mode_node = sibling_modes.get(operation)
+            if mode_node is None or not isinstance(raw_mode_contract, Mapping):
+                continue
+            reference = raw_mode_contract.get("reference")
+            if not isinstance(reference, str) or not reference:
+                issues.append(f"{skill_id}: contract mode {operation!r} lacks reference")
+                continue
+            expected_ref = relative_path(contract_path.parent / reference, repo_root)
+            actual_ref = mode_node.get("binding", {}).get("ref")
+            if actual_ref != expected_ref:
+                issues.append(
+                    f"{mode_node['id']}: binding ref is {actual_ref!r}, owner contract requires {expected_ref!r}"
+                )
+            input_abi = raw_mode_contract.get("input_abi")
+            output_abi = raw_mode_contract.get("output_abi")
+            graph_input_abi = _required_abi_type(mode_node, "inputs")
+            graph_output_abi = _required_abi_type(mode_node, "outputs")
+            if isinstance(input_abi, str) and graph_input_abi != input_abi:
+                issues.append(
+                    f"{mode_node['id']}: required input ABI is {graph_input_abi!r}, owner contract requires {input_abi!r}"
+                )
+            if isinstance(output_abi, str) and graph_output_abi != output_abi:
+                issues.append(
+                    f"{mode_node['id']}: required output ABI is {graph_output_abi!r}, owner contract requires {output_abi!r}"
+                )
+    return issues
+
+
 def semantic_issues(repo_root: Path, families: Sequence[tuple[Path, Mapping[str, Any]]]) -> list[str]:
     issues: list[str] = []
     family_ids: defaultdict[str, list[str]] = defaultdict(list)
@@ -324,6 +438,7 @@ def semantic_issues(repo_root: Path, families: Sequence[tuple[Path, Mapping[str,
 
     nodes = node_map(families)
     issues.extend(_check_primary_tree(nodes))
+    issues.extend(_check_local_skill_contracts(repo_root, nodes))
     aliases: defaultdict[str, list[str]] = defaultdict(list)
     for node_id, node in sorted(nodes.items()):
         contract_level = node.get("contract_level")
@@ -428,8 +543,12 @@ def migration_issues(
         if action == "retain-advertised":
             if target_kind != "skill" or visibility != "advertised":
                 issues.append(f"{label}: retain-advertised must target an advertised skill")
-            if compatibility != "same-name" or target_id != f"skill.{legacy_name}":
+            if compatibility not in {"same-name", "same-name-transitional"} or target_id != f"skill.{legacy_name}":
                 issues.append(f"{label}: retained skill must use same-name compatibility")
+            if compatibility == "same-name-transitional" and entry.get("reason") != "preserve-execution-until-owner-mcp":
+                issues.append(
+                    f"{label}: transitional same-name retention must name the missing executable owner"
+                )
         elif action == "defer-family":
             if target_kind != "skill" or visibility == "advertised":
                 issues.append(f"{label}: defer-family must target a non-advertised skill")
@@ -599,6 +718,36 @@ def build_graph_payload(repo_root: Path) -> dict[str, Any]:
             node["source_path"] = rel
             nodes.append(node)
 
+    local_contract_text: dict[str, str] = {}
+    contract_by_skill_id: dict[str, tuple[Path, dict[str, Any]]] = {}
+    for node in nodes:
+        contract_result = _local_skill_contract(repo_root, node)
+        if contract_result is None:
+            continue
+        contract_path, contract = contract_result
+        skill_id = str(node["id"])
+        contract_by_skill_id[skill_id] = contract_result
+        raw = contract_path.read_bytes()
+        contract_ref = relative_path(contract_path, repo_root)
+        contract_digest = sha256_bytes(raw)
+        node["owner_contract"] = contract
+        node["owner_contract_ref"] = {"path": contract_ref, "sha256": contract_digest}
+        local_contract_text[skill_id] = raw.decode("utf-8")
+
+        parent = node.get("primary_parent")
+        contract_modes = contract.get("modes")
+        if not isinstance(contract_modes, Mapping):
+            continue
+        for mode_node in nodes:
+            if mode_node.get("kind") != "mode" or mode_node.get("primary_parent") != parent:
+                continue
+            operation = mode_node.get("binding", {}).get("operation")
+            mode_contract = contract_modes.get(operation)
+            if not isinstance(mode_contract, Mapping):
+                continue
+            mode_node["mode_contract"] = dict(mode_contract)
+            mode_node["owner_contract_ref"] = {"path": contract_ref, "sha256": contract_digest}
+
     local_binding_text: dict[str, str] = {}
     seen_referenced_paths: set[str] = set()
     for node in nodes:
@@ -616,6 +765,15 @@ def build_graph_payload(repo_root: Path) -> dict[str, Any]:
             continue
         seen_referenced_paths.add(path_value)
         raw = path.read_bytes()
+        referenced_files.append({"path": path_value, "sha256": sha256_bytes(raw)})
+        hash_material.extend([path_value.encode("utf-8"), b"\0", raw, b"\0"])
+
+    for contract_path, _ in contract_by_skill_id.values():
+        path_value = relative_path(contract_path, repo_root)
+        if path_value in seen_referenced_paths:
+            continue
+        seen_referenced_paths.add(path_value)
+        raw = contract_path.read_bytes()
         referenced_files.append({"path": path_value, "sha256": sha256_bytes(raw)})
         hash_material.extend([path_value.encode("utf-8"), b"\0", raw, b"\0"])
 
@@ -656,20 +814,33 @@ def build_graph_payload(repo_root: Path) -> dict[str, Any]:
     }
     children_by_parent: defaultdict[str, list[dict[str, Any]]] = defaultdict(list)
     modes_by_binding_ref: defaultdict[str, list[dict[str, Any]]] = defaultdict(list)
+    modes_by_primary_parent: defaultdict[str, list[dict[str, Any]]] = defaultdict(list)
+    skills_by_primary_parent: defaultdict[str, list[dict[str, Any]]] = defaultdict(list)
     for node in nodes:
         parent = node.get("primary_parent")
         if isinstance(parent, str) and node.get("contract_level") == "executable":
             children_by_parent[parent].append(node)
         binding = node.get("binding")
         if node.get("kind") == "mode" and isinstance(binding, Mapping):
+            if isinstance(parent, str):
+                modes_by_primary_parent[parent].append(node)
             ref = binding.get("ref")
             if isinstance(ref, str):
                 modes_by_binding_ref[ref].append(node)
+        elif node.get("kind") == "skill" and isinstance(parent, str):
+            skills_by_primary_parent[parent].append(node)
 
     def retrieval_children(node: Mapping[str, Any]) -> list[dict[str, Any]]:
         if node.get("kind") == "skill":
             binding = node.get("binding")
             ref = binding.get("ref") if isinstance(binding, Mapping) else None
+            parent = node.get("primary_parent")
+            if (
+                isinstance(parent, str)
+                and len(skills_by_primary_parent.get(parent, [])) == 1
+                and modes_by_primary_parent.get(parent)
+            ):
+                return sorted(modes_by_primary_parent[parent], key=lambda item: str(item["id"]))
             if isinstance(ref, str):
                 return sorted(modes_by_binding_ref.get(ref, []), key=lambda item: str(item["id"]))
         return children_by_parent.get(str(node["id"]), [])
@@ -682,6 +853,7 @@ def build_graph_payload(repo_root: Path) -> dict[str, Any]:
                 text
                 for text in [
                     local_binding_text.get(str(node["id"])),
+                    local_contract_text.get(str(node["id"])),
                     *[
                         local_binding_text.get(str(child["id"]))
                         for child in retrieval_children(node)
@@ -746,12 +918,298 @@ def render_graph_markdown(payload: Mapping[str, Any]) -> str:
     return "\n".join(lines) + "\n"
 
 
+def build_kag_provider_outputs(
+    repo_root: Path,
+    payload: Mapping[str, Any],
+) -> dict[Path, str]:
+    shared_bundles = [
+        node
+        for node in payload.get("nodes", [])
+        if node.get("kind") == "skill"
+        and node.get("owner", {}).get("repo") == "aoa-skills"
+        and str(node.get("binding", {}).get("ref", "")).startswith("skills/")
+    ]
+    advertised_count = sum(
+        1
+        for node in shared_bundles
+        if node.get("lifecycle", {}).get("visibility") == "advertised"
+    )
+    deferred_count = sum(
+        1
+        for node in shared_bundles
+        if node.get("lifecycle", {}).get("visibility") == "deferred"
+    )
+    bundle_summary = (
+        f"{len(shared_bundles)} shared callable source bundles "
+        f"({advertised_count} advertised, {deferred_count} deferred)"
+    )
+
+    graph_source = {
+        "repo": "aoa-skills",
+        "path": GRAPH_JSON_PATH.as_posix(),
+        "source_class": "skill_source",
+        "role": "primary",
+        "authority": "derived_readmodel",
+    }
+    capability_owner = {
+        "repo": "aoa-skills",
+        "path": "capabilities/README.md",
+        "source_class": "skill_source",
+        "role": "owner_route",
+        "authority": "authored_source",
+    }
+    skill_owner = {
+        "repo": "aoa-skills",
+        "path": "skills/README.md",
+        "source_class": "skill_source",
+        "role": "owner_route",
+        "authority": "authored_source",
+    }
+
+    def base_record(
+        *,
+        local_id: str,
+        record_class: str,
+        source_refs: Sequence[Mapping[str, str]],
+        derived_method: str,
+        checked_ref: str,
+        payload_class: str,
+        consumer_route: str,
+        freshness_mode: str = "source_snapshot",
+    ) -> dict[str, Any]:
+        return {
+            "schema_version": "aoa-local-kag-record-v1",
+            "repo": "aoa-skills",
+            "local_id": local_id,
+            "record_class": record_class,
+            "source_refs": [dict(item) for item in source_refs],
+            "source_owner": "aoa-skills",
+            "provenance_mode": "strict_source_linked",
+            "derived_method": derived_method,
+            "generated_or_authored": "generated_from_source",
+            "status": "active",
+            "owner_return_route": {
+                "repo": "aoa-skills",
+                "surface": "capabilities/README.md",
+                "route_kind": "authored_meaning",
+            },
+            "freshness": {
+                "mode": freshness_mode,
+                "state": "current",
+                "checked_ref": checked_ref,
+            },
+            "builder": {
+                "route": "capability graph and provider-record builder",
+                "surface": "scripts/builders/build_capability_graph.py",
+            },
+            "validator": {
+                "route": "aoa-kag:scripts/validate_repo_local_kag_family.py",
+                "lane": "local-kag",
+            },
+            "storage_posture": {
+                "git_surface": (
+                    "compact_readmodel"
+                    if payload_class == "projection"
+                    else "receipt"
+                    if payload_class == "receipt"
+                    else "portable_records"
+                ),
+                "payload_class": payload_class,
+                "runtime_route": "source-repo",
+            },
+            "consumer_route": consumer_route,
+        }
+
+    graph_node = base_record(
+        local_id="node:skills:capability-graph",
+        record_class="node",
+        source_refs=[graph_source, capability_owner],
+        derived_method=(
+            "deterministic projection of authored capability families, typed "
+            f"relations, compatibility, and {bundle_summary}"
+        ),
+        checked_ref=GRAPH_JSON_PATH.as_posix(),
+        payload_class="node",
+        consumer_route="aoa-kag registry and capability retrieval",
+    )
+    graph_node.update(
+        {
+            "node_kind": "source_surface",
+            "label": "aoa-skills semantic capability graph",
+        }
+    )
+
+    source_node = base_record(
+        local_id="node:skills:capability-source-home",
+        record_class="node",
+        source_refs=[
+            capability_owner,
+            skill_owner,
+            {
+                "repo": "aoa-skills",
+                "path": MIGRATION_PATH.as_posix(),
+                "source_class": "skill_source",
+                "role": "supporting",
+                "authority": "authored_control",
+            },
+        ],
+        derived_method=(
+            "source-linked route to authored capability families, the exact "
+            f"{bundle_summary}, and the legacy functional-disposition map"
+        ),
+        checked_ref="capabilities/README.md",
+        payload_class="node",
+        consumer_route="aoa-kag registry and skill host adapters",
+    )
+    source_node.update(
+        {
+            "node_kind": "route_surface",
+            "label": "canonical capability and callable skill source home",
+        }
+    )
+
+    return_edge = base_record(
+        local_id="edge:skills:capability-returns-to-owner",
+        record_class="edge",
+        source_refs=[graph_source, capability_owner, skill_owner],
+        derived_method=(
+            "source-linked return edge from the generated capability projection "
+            "to authored capability semantics and owner skill packages"
+        ),
+        checked_ref=GRAPH_JSON_PATH.as_posix(),
+        payload_class="edge",
+        consumer_route="aoa-kag registry",
+    )
+    return_edge.update(
+        {
+            "from_id": "node:skills:capability-graph",
+            "to_id": "node:skills:capability-source-home",
+            "edge_kind": "returns_to",
+            "edge_trace": (
+                "generated/capability_graph.json returns to capabilities/README.md "
+                "and authored family sources; callable procedures return to their "
+                "owner packages under skills/ rather than to the derived graph"
+            ),
+        }
+    )
+
+    provider_index = base_record(
+        local_id="index:skills:capability-provider",
+        record_class="index",
+        source_refs=[graph_source, capability_owner, skill_owner],
+        derived_method=(
+            "compact inventory of the semantic capability projection, "
+            f"{bundle_summary}, and their authored return routes"
+        ),
+        checked_ref=GRAPH_JSON_PATH.as_posix(),
+        payload_class="index",
+        consumer_route="aoa-kag registry",
+    )
+    provider_index.update(
+        {
+            "index_kind": "inventory",
+            "indexed_record_classes": ["node", "edge"],
+            "source_record_ids": [
+                "node:skills:capability-graph",
+                "node:skills:capability-source-home",
+                "edge:skills:capability-returns-to-owner",
+            ],
+        }
+    )
+
+    mcp_projection = base_record(
+        local_id="projection:mcp:skills-capability-return",
+        record_class="projection",
+        source_refs=[
+            graph_source,
+            capability_owner,
+            skill_owner,
+            {
+                "repo": "aoa-skills",
+                "path": "generated/agent_skill_catalog.min.json",
+                "source_class": "skill_source",
+                "role": "supporting",
+                "authority": "derived_readmodel",
+            },
+        ],
+        derived_method=(
+            "compact full-contract source-return projection over semantic "
+            f"capabilities and {bundle_summary}"
+        ),
+        checked_ref=GRAPH_JSON_PATH.as_posix(),
+        payload_class="projection",
+        consumer_route="aoa-kag MCP capability discovery",
+    )
+    mcp_projection.update(
+        {
+            "projection_kind": "source_return_view",
+            "source_record_ids": [
+                "node:skills:capability-graph",
+                "node:skills:capability-source-home",
+                "edge:skills:capability-returns-to-owner",
+                "index:skills:capability-provider",
+            ],
+            "consumer_shape": (
+                "return canonical capability ID; owner repo, ref, path, and "
+                "digest; applicability; input and output ABI; tool requirements "
+                "and effects; lifecycle and health; compatibility and conflicts; "
+                "source-return handle; binding availability; and the required "
+                "conditional owner reference, then return to authored sources or "
+                f"one of the {bundle_summary} without treating KAG as authority"
+            ),
+        }
+    )
+
+    validation_route = base_record(
+        local_id="receipt:validation:skills-capability-provider",
+        record_class="receipt",
+        source_refs=[
+            graph_source,
+            capability_owner,
+            {
+                "repo": "aoa-skills",
+                "path": "config/validation_lanes.json",
+                "source_class": "validation_source",
+                "role": "validation_receipt",
+                "authority": "authored_control",
+            },
+        ],
+        derived_method=(
+            "deterministic source-linked route record emitted with capability "
+            "graph parity; it carries no KAG acceptance or outcome verdict"
+        ),
+        checked_ref=GRAPH_JSON_PATH.as_posix(),
+        payload_class="receipt",
+        consumer_route="aoa-kag registry",
+        freshness_mode="builder_receipt",
+    )
+    validation_route.update(
+        {
+            "receipt_kind": "validation",
+            "result": "routed",
+            "fallback_route": "scripts/lanes/ci_gate.py --mode source-fast",
+        }
+    )
+
+    records = {
+        KAG_CAPABILITY_GRAPH_NODE_PATH: graph_node,
+        KAG_CAPABILITY_SOURCE_NODE_PATH: source_node,
+        KAG_CAPABILITY_RETURN_EDGE_PATH: return_edge,
+        KAG_PROVIDER_INDEX_PATH: provider_index,
+        KAG_MCP_RETURN_PATH: mcp_projection,
+        KAG_VALIDATION_ROUTE_RECEIPT_PATH: validation_route,
+    }
+    return {repo_root / path: dump_json(record) for path, record in records.items()}
+
+
 def build_graph_outputs(repo_root: Path) -> dict[Path, str]:
     payload = build_graph_payload(repo_root)
-    return {
+    outputs = {
         repo_root / GRAPH_JSON_PATH: dump_json(payload),
         repo_root / GRAPH_MARKDOWN_PATH: render_graph_markdown(payload),
     }
+    outputs.update(build_kag_provider_outputs(repo_root, payload))
+    return outputs
 
 
 def load_graph(repo_root: Path) -> dict[str, Any]:

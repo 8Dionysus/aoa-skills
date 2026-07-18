@@ -125,12 +125,11 @@ OWNER_READMODEL_CHECK_COMMAND_SEQUENCE = _command_sequence(
 )
 EXPORT_FULL_COMMAND_SEQUENCE = _command_sequence(_MANIFEST, "export_full")
 RELEASE_CHECK_COMMAND_SEQUENCE = _command_sequence(_MANIFEST, "release_check")
-PACKAGING_SMOKE_USER_DEFAULT_COMMAND = _single_command(
-    _MANIFEST, "packaging_smoke_user_default"
+PACKAGING_SMOKE_ADVERTISED_COMMAND = _single_command(
+    _MANIFEST, "packaging_smoke_advertised"
 )
-PACKAGING_SMOKE_COMMAND = _single_command(_MANIFEST, "packaging_smoke")
-PACKAGING_SMOKE_CAPABILITY_SOURCES_COMMAND = _single_command(
-    _MANIFEST, "packaging_smoke_capability_sources"
+PACKAGING_SMOKE_ALL_SOURCES_COMMAND = _single_command(
+    _MANIFEST, "packaging_smoke_all_sources"
 )
 PACKAGING_SMOKE_COMMAND_SEQUENCE = _packaging_smoke_commands(
     _MANIFEST, _SKILL_PACK_PROFILES

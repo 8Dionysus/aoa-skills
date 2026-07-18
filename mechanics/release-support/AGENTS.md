@@ -7,8 +7,8 @@ This card applies to `mechanics/release-support/`.
 ## Role
 
 This package owns portable export identity, profile-scoped staging, directory
-and ZIP handoff, install verification, and release guidance for the seven
-callable bundles.
+and ZIP handoff, install verification, and release guidance for the nine
+shared source bundles and their evidence-gated consumer profiles.
 
 ## Read before editing
 

@@ -1,7 +1,9 @@
 # Portable Agent Skills Layer
 
 `skills/**/SKILL.md` is authored procedure source. The export builder creates a
-flat `.agents/skills/<name>/` package plus compact catalogs and release hashes.
+temporary or explicit external flat portable assembly plus compact catalogs
+and release hashes. A staged consumer bundle places those bytes under the
+logical `.agents/skills/<name>/` layout.
 
 Portable frontmatter follows the open Agent Skills shape. AoA-specific scope,
 status, invocation posture, and source path are namespaced metadata. The source
@@ -12,12 +14,15 @@ and expose every installed bundle.
 
 Current derived outputs are:
 
-- `.agents/skills/*`;
+- temporary or explicit external portable skill bytes;
 - `generated/agent_skill_catalog*.json`;
 - `generated/portable_export_map.json`;
 - `generated/skill_pack_profiles.resolved.json`;
 - `generated/mcp_dependency_manifest.json`;
 - `generated/release_manifest.json`.
+
+`aoa-skills/.agents/skills` intentionally remains absent so a source session
+cannot see a second same-name prompt catalog beside the OS user projection.
 
 There is no runtime technique dependency, legacy ring, tiny-router, generated
 guardrail, or local-adapter ontology in this layer. Runtime hosts may build

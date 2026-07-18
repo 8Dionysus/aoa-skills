@@ -3,6 +3,10 @@
   "profile": "codex-facing-v2",
   "skills": [
     {
+      "name": "aoa-checkpoint-closeout-bridge",
+      "tools": []
+    },
+    {
       "name": "aoa-decision",
       "tools": []
     },
@@ -16,6 +20,10 @@
     },
     {
       "name": "aoa-knowledge-stewardship",
+      "tools": []
+    },
+    {
+      "name": "aoa-memo-writeback",
       "tools": []
     },
     {

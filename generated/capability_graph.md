@@ -2,7 +2,7 @@
 
 Derived from `capabilities/families/*.yaml`. This file is a read model, not capability authority.
 
-Source content hash: `cc24f45231b0c1316416b50bd0e9b336889a40c6ea23ccc0cb94c3567cf88ba1`
+Source content hash: `9f467010bf46c9a0cd6589f7dd683e0aa14a82a5b2cbd0d878b0209579388333`
 
 ## Semantic tree
 
@@ -10,9 +10,11 @@ Source content hash: `cc24f45231b0c1316416b50bd0e9b336889a40c6ea23ccc0cb94c3567c
   - `engineering` (capability, deferred, challenger)
     - `engineering.evaluation` (capability, deferred, challenger)
       - `mode.eval.apply` (mode, internal, challenger)
-      - `mode.eval.propose` (mode, internal, challenger)
+      - `mode.eval.design` (mode, internal, challenger)
+      - `mode.eval.local-need` (mode, internal, challenger)
       - `mode.eval.select` (mode, internal, challenger)
-      - `skill.aoa-eval` (skill, deferred, degraded)
+      - `mode.eval.session-mining` (mode, internal, challenger)
+      - `skill.aoa-eval` (skill, advertised, challenger)
     - `engineering.shape` (capability, deferred, challenger)
       - `mode.engineering-shape.contexts` (mode, internal, challenger)
       - `mode.engineering-shape.core` (mode, internal, challenger)
@@ -25,7 +27,8 @@ Source content hash: `cc24f45231b0c1316416b50bd0e9b336889a40c6ea23ccc0cb94c3567c
       - `skill.aoa-verification` (skill, deferred, degraded)
   - `operations` (capability, deferred, challenger)
     - `operations.change` (capability, deferred, healthy)
-      - `workflow.operations.git-closeout` (workflow, deferred, healthy)
+      - `workflow.operations.git-closeout` (workflow, internal, unavailable)
+      - `workflow.operations.local-commit` (workflow, deferred, healthy)
       - `workflow.operations.repository-change` (workflow, deferred, healthy)
       - `workflow.operations.tdd-slice` (workflow, deferred, healthy)
     - `operations.continuity` (capability, deferred, healthy)
@@ -33,7 +36,7 @@ Source content hash: `cc24f45231b0c1316416b50bd0e9b336889a40c6ea23ccc0cb94c3567c
       - `workflow.operations.delegation` (workflow, deferred, healthy)
     - `operations.safety` (capability, deferred, healthy)
       - `guard.operations.approval` (guard, deferred, healthy)
-      - `guard.operations.preview` (guard, deferred, healthy)
+      - `guard.operations.preview` (guard, internal, unavailable)
       - `workflow.operations.local-stack-bringup` (workflow, internal, unavailable)
       - `workflow.operations.safe-infra-change` (workflow, internal, unavailable)
   - `projects` (capability, deferred, challenger)
@@ -72,16 +75,25 @@ Source content hash: `cc24f45231b0c1316416b50bd0e9b336889a40c6ea23ccc0cb94c3567c
         - `guard.titan.runtime-transition` (guard, internal, unavailable)
         - `workflow.titan.summon` (workflow, internal, healthy)
   - `sessions` (capability, deferred, challenger)
-    - `adapter.sessions.progression-review` (adapter, internal, healthy)
+    - `sessions.checkpoint-closeout` (capability, deferred, challenger)
+      - `mode.checkpoint-closeout.collect` (mode, internal, challenger)
+      - `mode.checkpoint-closeout.execute` (mode, internal, challenger)
+      - `skill.aoa-checkpoint-closeout-bridge` (skill, advertised, challenger)
     - `sessions.harvest` (capability, deferred, challenger)
+      - `mode.session-harvest.automation-opportunity` (mode, internal, challenger)
       - `mode.session-harvest.branch` (mode, internal, challenger)
       - `mode.session-harvest.classify` (mode, internal, challenger)
       - `mode.session-harvest.extract` (mode, internal, challenger)
-      - `skill.aoa-session-harvest` (skill, deferred, degraded)
+      - `mode.session-harvest.promote` (mode, internal, challenger)
+      - `skill.aoa-session-harvest` (skill, advertised, challenger)
+    - `sessions.memo-writeback` (capability, deferred, challenger)
+      - `skill.aoa-memo-writeback` (skill, advertised, challenger)
     - `sessions.recovery` (capability, deferred, challenger)
       - `mode.session-recovery.diagnose` (mode, internal, challenger)
-      - `mode.session-recovery.propose-repair` (mode, internal, challenger)
-      - `skill.aoa-session-recovery` (skill, deferred, degraded)
+      - `mode.session-recovery.repair` (mode, internal, challenger)
+      - `skill.aoa-session-recovery` (skill, advertised, challenger)
+    - `skill.aoa-session-progression-lift` (skill, advertised, challenger)
+    - `skill.aoa-summon` (skill, advertised, challenger)
   - `stewardship` (capability, deferred, challenger)
     - `stewardship.decisions` (capability, deferred, challenger)
       - `mode.decision.correct` (mode, internal, challenger)
@@ -90,9 +102,8 @@ Source content hash: `cc24f45231b0c1316416b50bd0e9b336889a40c6ea23ccc0cb94c3567c
       - `skill.aoa-decision` (skill, advertised, challenger)
     - `stewardship.knowledge` (capability, deferred, challenger)
       - `mode.knowledge.authority-map` (mode, internal, challenger)
-      - `mode.knowledge.memo-route` (mode, internal, challenger)
       - `mode.knowledge.sanitized-share` (mode, internal, challenger)
-      - `skill.aoa-knowledge-stewardship` (skill, deferred, degraded)
+      - `skill.aoa-knowledge-stewardship` (skill, advertised, challenger)
 
 ## Typed relations
 
@@ -100,6 +111,7 @@ Source content hash: `cc24f45231b0c1316416b50bd0e9b336889a40c6ea23ccc0cb94c3567c
 |---|---|---|---|
 | adapted-by | `mode.knowledge.authority-map` | `adapter.atm10.authority-map` | - |
 | adapted-by | `mode.knowledge.sanitized-share` | `adapter.abyss.sanitized-share` | - |
+| adapted-by | `workflow.operations.checkpoint-closeout` | `skill.aoa-checkpoint-closeout-bridge` | The owner playbook remains scenario authority but lacks an executable aoa-playbooks MCP route. |
 | adapted-by | `workflow.operations.repository-change` | `adapter.atm10.repository-change` | - |
 | adapted-by | `workflow.operations.safe-infra-change` | `adapter.abyss.safe-infra-change` | - |
 | alternative-to | `mode.decision.find` | `mode.decision.correct` | - |
@@ -107,6 +119,7 @@ Source content hash: `cc24f45231b0c1316416b50bd0e9b336889a40c6ea23ccc0cb94c3567c
 | alternative-to | `mode.decision.record` | `mode.decision.correct` | - |
 | composes-with | `mode.engineering-shape.core` | `mode.verification.property` | The extracted core exposes a stable semantic property across inputs. |
 | composes-with | `mode.engineering-shape.port-adapter` | `mode.verification.contract` | The new port is adopted as a stable consumer-visible boundary. |
+| composes-with | `skill.aoa-session-progression-lift` | `skill.aoa-summon` | An owner-reviewed progression or unlock posture is required by the anchored summon. |
 | composes-with | `tool.titan.approval-record` | `tool.titan.console` | - |
 | composes-with | `tool.titan.appserver-plan` | `tool.titan.console` | - |
 | composes-with | `tool.titan.console` | `tool.titan.appserver-bridge` | - |
@@ -122,15 +135,24 @@ Source content hash: `cc24f45231b0c1316416b50bd0e9b336889a40c6ea23ccc0cb94c3567c
 | extracts-to | `tool.titan.event-replay` | `tool.titan.memory-ingest` | - |
 | guarded-by | `guard.titan.mutation` | `guard.titan.thread-turn-binding` | - |
 | guarded-by | `guard.titan.runtime-transition` | `guard.titan.thread-turn-binding` | - |
+| guarded-by | `skill.aoa-summon` | `guard.operations.approval` | The child route requests effects that require explicit approval. |
 | guarded-by | `workflow.operations.git-closeout` | `guard.operations.approval` | The requested Git boundary creates an external write or irreversible publication effect. |
+| guarded-by | `workflow.operations.local-commit` | `guard.operations.approval` | A local commit requires explicit current authority for the exact staged boundary. |
 | guarded-by | `workflow.operations.local-stack-bringup` | `guard.operations.approval` | - |
 | guarded-by | `workflow.operations.safe-infra-change` | `guard.operations.approval` | - |
 | guarded-by | `workflow.titan.closeout-audit` | `guard.titan.closeout-readiness` | - |
+| hands-off-to | `mode.checkpoint-closeout.execute` | `skill.aoa-memo-writeback` | A bounded reusable closeout lesson survives after the report. |
 | hands-off-to | `mode.eval.select` | `mode.eval.apply` | Selection found an exact fit with a complete execution contract. |
-| hands-off-to | `mode.eval.select` | `mode.eval.propose` | Selection recorded partial or no fit with a stable invariant and owner. |
+| hands-off-to | `mode.eval.select` | `mode.eval.design` | Selection recorded no fit and a stable invariant, owner path, and acceptance target exist. |
+| hands-off-to | `mode.eval.select` | `mode.eval.local-need` | Selection recorded no fit and an admitted owner-local intake port exists. |
+| hands-off-to | `mode.session-harvest.classify` | `mode.session-harvest.automation-opportunity` | The unit is a repeated manual route and automation readiness is the unresolved question. |
+| hands-off-to | `mode.session-harvest.classify` | `mode.session-harvest.promote` | Exactly one isolated repeated quest-shaped unit remains and only its promotion verdict is unresolved. |
 | hands-off-to | `mode.session-harvest.extract` | `mode.session-harvest.classify` | One extracted unit has sufficient evidence for destination classification. |
-| hands-off-to | `mode.session-recovery.diagnose` | `mode.session-recovery.propose-repair` | The diagnosis is reviewed and the target owner is known. |
+| hands-off-to | `mode.session-recovery.diagnose` | `mode.session-recovery.repair` | The diagnosis is reviewed and the target owner is known. |
+| hands-off-to | `skill.aoa-summon` | `skill.aoa-checkpoint-closeout-bridge` | A returned child changes the parent checkpoint or closeout posture. |
+| hands-off-to | `skill.aoa-summon` | `skill.aoa-memo-writeback` | A reviewed child return contains one bounded memory-worthy lesson. |
 | hands-off-to | `tool.titan.memory-recall` | `tool.titan.memory-retention` | - |
+| hands-off-to | `workflow.operations.local-commit` | `workflow.operations.git-closeout` | A separately authorized remote effect is requested and an evaluated host binding is available. |
 | implemented-by | `engineering.evaluation` | `skill.aoa-eval` | - |
 | implemented-by | `engineering.shape` | `skill.aoa-engineering-shape` | - |
 | implemented-by | `engineering.verification` | `skill.aoa-verification` | - |
@@ -139,6 +161,7 @@ Source content hash: `cc24f45231b0c1316416b50bd0e9b336889a40c6ea23ccc0cb94c3567c
 | implemented-by | `projects.titan.session.control` | `tool.titan.appserver-bridge` | - |
 | implemented-by | `projects.titan.session.memory` | `tool.titan.memory-ingest` | - |
 | implemented-by | `projects.titan.summon` | `workflow.titan.summon` | - |
+| implemented-by | `sessions.checkpoint-closeout` | `skill.aoa-checkpoint-closeout-bridge` | - |
 | implemented-by | `sessions.harvest` | `skill.aoa-session-harvest` | - |
 | implemented-by | `sessions.recovery` | `skill.aoa-session-recovery` | - |
 | implemented-by | `stewardship.decisions` | `skill.aoa-decision` | - |
@@ -149,7 +172,6 @@ Source content hash: `cc24f45231b0c1316416b50bd0e9b336889a40c6ea23ccc0cb94c3567c
 | primary-parent | `adapter.abyss.sanitized-share` | `projects.abyss` | - |
 | primary-parent | `adapter.atm10.authority-map` | `projects.atm10` | - |
 | primary-parent | `adapter.atm10.repository-change` | `projects.atm10` | - |
-| primary-parent | `adapter.sessions.progression-review` | `sessions` | - |
 | primary-parent | `engineering` | `aoa` | - |
 | primary-parent | `engineering.evaluation` | `engineering` | - |
 | primary-parent | `engineering.shape` | `engineering` | - |
@@ -161,6 +183,8 @@ Source content hash: `cc24f45231b0c1316416b50bd0e9b336889a40c6ea23ccc0cb94c3567c
 | primary-parent | `guard.titan.runtime-transition` | `projects.titan.summon` | - |
 | primary-parent | `guard.titan.thread-turn-binding` | `projects.titan.session.control` | - |
 | primary-parent | `human-gate.titan.closeout` | `projects.titan.session.closeout-audit` | - |
+| primary-parent | `mode.checkpoint-closeout.collect` | `sessions.checkpoint-closeout` | - |
+| primary-parent | `mode.checkpoint-closeout.execute` | `sessions.checkpoint-closeout` | - |
 | primary-parent | `mode.decision.correct` | `stewardship.decisions` | - |
 | primary-parent | `mode.decision.find` | `stewardship.decisions` | - |
 | primary-parent | `mode.decision.record` | `stewardship.decisions` | - |
@@ -168,16 +192,19 @@ Source content hash: `cc24f45231b0c1316416b50bd0e9b336889a40c6ea23ccc0cb94c3567c
 | primary-parent | `mode.engineering-shape.core` | `engineering.shape` | - |
 | primary-parent | `mode.engineering-shape.port-adapter` | `engineering.shape` | - |
 | primary-parent | `mode.eval.apply` | `engineering.evaluation` | - |
-| primary-parent | `mode.eval.propose` | `engineering.evaluation` | - |
+| primary-parent | `mode.eval.design` | `engineering.evaluation` | - |
+| primary-parent | `mode.eval.local-need` | `engineering.evaluation` | - |
 | primary-parent | `mode.eval.select` | `engineering.evaluation` | - |
+| primary-parent | `mode.eval.session-mining` | `engineering.evaluation` | - |
 | primary-parent | `mode.knowledge.authority-map` | `stewardship.knowledge` | - |
-| primary-parent | `mode.knowledge.memo-route` | `stewardship.knowledge` | - |
 | primary-parent | `mode.knowledge.sanitized-share` | `stewardship.knowledge` | - |
+| primary-parent | `mode.session-harvest.automation-opportunity` | `sessions.harvest` | - |
 | primary-parent | `mode.session-harvest.branch` | `sessions.harvest` | - |
 | primary-parent | `mode.session-harvest.classify` | `sessions.harvest` | - |
 | primary-parent | `mode.session-harvest.extract` | `sessions.harvest` | - |
+| primary-parent | `mode.session-harvest.promote` | `sessions.harvest` | - |
 | primary-parent | `mode.session-recovery.diagnose` | `sessions.recovery` | - |
-| primary-parent | `mode.session-recovery.propose-repair` | `sessions.recovery` | - |
+| primary-parent | `mode.session-recovery.repair` | `sessions.recovery` | - |
 | primary-parent | `mode.verification.contract` | `engineering.verification` | - |
 | primary-parent | `mode.verification.coverage-audit` | `engineering.verification` | - |
 | primary-parent | `mode.verification.property` | `engineering.verification` | - |
@@ -196,14 +223,20 @@ Source content hash: `cc24f45231b0c1316416b50bd0e9b336889a40c6ea23ccc0cb94c3567c
 | primary-parent | `projects.titan.session.memory` | `projects.titan.session` | - |
 | primary-parent | `projects.titan.summon` | `projects.titan` | - |
 | primary-parent | `sessions` | `aoa` | - |
+| primary-parent | `sessions.checkpoint-closeout` | `sessions` | - |
 | primary-parent | `sessions.harvest` | `sessions` | - |
+| primary-parent | `sessions.memo-writeback` | `sessions` | - |
 | primary-parent | `sessions.recovery` | `sessions` | - |
+| primary-parent | `skill.aoa-checkpoint-closeout-bridge` | `sessions.checkpoint-closeout` | - |
 | primary-parent | `skill.aoa-decision` | `stewardship.decisions` | - |
 | primary-parent | `skill.aoa-engineering-shape` | `engineering.shape` | - |
 | primary-parent | `skill.aoa-eval` | `engineering.evaluation` | - |
 | primary-parent | `skill.aoa-knowledge-stewardship` | `stewardship.knowledge` | - |
+| primary-parent | `skill.aoa-memo-writeback` | `sessions.memo-writeback` | - |
 | primary-parent | `skill.aoa-session-harvest` | `sessions.harvest` | - |
+| primary-parent | `skill.aoa-session-progression-lift` | `sessions` | - |
 | primary-parent | `skill.aoa-session-recovery` | `sessions.recovery` | - |
+| primary-parent | `skill.aoa-summon` | `sessions` | - |
 | primary-parent | `skill.aoa-verification` | `engineering.verification` | - |
 | primary-parent | `stewardship` | `aoa` | - |
 | primary-parent | `stewardship.decisions` | `stewardship` | - |
@@ -223,12 +256,18 @@ Source content hash: `cc24f45231b0c1316416b50bd0e9b336889a40c6ea23ccc0cb94c3567c
 | primary-parent | `workflow.operations.checkpoint-closeout` | `operations.continuity` | - |
 | primary-parent | `workflow.operations.delegation` | `operations.continuity` | - |
 | primary-parent | `workflow.operations.git-closeout` | `operations.change` | - |
+| primary-parent | `workflow.operations.local-commit` | `operations.change` | - |
 | primary-parent | `workflow.operations.local-stack-bringup` | `operations.safety` | - |
 | primary-parent | `workflow.operations.repository-change` | `operations.change` | - |
 | primary-parent | `workflow.operations.safe-infra-change` | `operations.safety` | - |
 | primary-parent | `workflow.operations.tdd-slice` | `operations.change` | - |
 | primary-parent | `workflow.titan.closeout-audit` | `projects.titan.session.closeout-audit` | - |
 | primary-parent | `workflow.titan.summon` | `projects.titan.summon` | - |
+| produces | `mode.eval.session-mining` | `mode.eval.design` | Reviewed evidence supports reproducible manual cases and a stable invariant. |
+| produces | `mode.eval.session-mining` | `mode.eval.local-need` | Reviewed evidence establishes bounded owner-local eval pressure. |
 | requires | `adapter.abyss.diagnostic-review` | `tool.abyss.aoa-diagnose` | - |
 | requires | `guard.titan.closeout-readiness` | `human-gate.titan.closeout` | - |
+| requires | `mode.checkpoint-closeout.execute` | `skill.aoa-session-harvest` | - |
+| requires | `mode.checkpoint-closeout.execute` | `skill.aoa-session-progression-lift` | Reviewed evidence supports a progression node. |
+| requires | `skill.aoa-summon` | `workflow.operations.delegation` | Execute mode requires a callable host child-agent binding and a real returned runtime handle. |
 | requires | `workflow.titan.closeout-audit` | `tool.titan.swarm-validate` | - |

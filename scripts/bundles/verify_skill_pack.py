@@ -71,7 +71,11 @@ def render_markdown(report: Mapping[str, Any]) -> str:
 
 def main() -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--repo-root", default=".", help="Repository root containing .agents/skills")
+    parser.add_argument(
+        "--repo-root",
+        default=".",
+        help="Repository root containing packaging metadata or receiving a staged bundle",
+    )
     parser.add_argument(
         "--profile",
         required=True,

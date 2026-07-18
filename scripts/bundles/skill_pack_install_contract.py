@@ -57,7 +57,7 @@ def sha256_bytes(data: bytes) -> str:
     return hashlib.sha256(data).hexdigest()
 
 
-def export_root(repo_root: Path) -> Path:
+def repo_install_root(repo_root: Path) -> Path:
     return repo_root / ".agents" / "skills"
 
 
@@ -87,7 +87,7 @@ def bundle_archive_root_name(profile_name: str) -> str:
 
 def expand_root(root: str, repo_root: Path) -> Path:
     if root == STANDARD_INSTALL_ROOTS["repo"]:
-        return export_root(repo_root)
+        return repo_install_root(repo_root)
     if root.startswith("$HOME/"):
         return Path.home() / root.replace("$HOME/", "", 1)
     return Path(root)
@@ -625,7 +625,12 @@ def load_skill_pack_source(
     *,
     profile_name: str,
     bundle_root_override: str | None = None,
+    portable_root_override: str | Path | None = None,
 ) -> dict[str, Any]:
+    if bundle_root_override and portable_root_override is not None:
+        raise ValueError(
+            "use only one of bundle_root_override or portable_root_override"
+        )
     if bundle_root_override:
         resolved_bundle_root = bundle_root(bundle_root_override)
         manifest = load_bundle_manifest(resolved_bundle_root)
@@ -667,6 +672,23 @@ def load_skill_pack_source(
             "source_root": str(bundle_skill_root(resolved_bundle_root)),
         }
 
+    if portable_root_override is None:
+        raise ValueError(
+            "an explicit portable assembly is required; "
+            "use skill_pack_source_context() for a temporary source assembly"
+        )
+
+    resolved_portable_root = Path(portable_root_override).expanduser().resolve()
+    if resolved_portable_root == repo_install_root(repo_root).resolve():
+        raise ValueError(
+            "aoa-skills/.agents/skills is not a portable source root; "
+            "use a temporary or explicit external consumer assembly"
+        )
+    if not resolved_portable_root.is_dir():
+        raise ValueError(
+            f"portable source root is missing: {resolved_portable_root}"
+        )
+
     profile = load_resolved_profile(repo_root, profile_name)
     release_manifest = load_release_manifest(repo_root)
     profile_revision = load_install_profile_revision(
@@ -674,26 +696,31 @@ def load_skill_pack_source(
         profile_name,
     )["profile_revision"]
     revision_map = skill_bundle_revision_map(release_manifest)
-    resolved_export_root = export_root(repo_root)
     skills = []
     for skill_entry in profile["skills"]:
         skill_name = skill_entry["name"]
         revision_entry = revision_map[skill_name]
+        source_dir = resolved_portable_root / skill_name
+        if not source_dir.is_dir():
+            raise ValueError(
+                f"portable assembly is missing profile skill {skill_name!r}: "
+                f"{source_dir}"
+            )
         skills.append(
             {
                 "name": skill_name,
                 "relative_dir": f"{BUNDLE_SKILL_ROOT}/{skill_name}",
-                "source_dir": str(resolved_export_root / skill_name),
+                "source_dir": str(source_dir),
                 "skill_revision": revision_entry["skill_revision"],
                 # Staged packs contain the portable export, not the richer owner
                 # source bundle.  Bind the handoff to the bytes that are actually
                 # copied and verified.
                 "content_hash": revision_entry["portable_hash"],
-                "expected_files": None,
+                "expected_files": build_directory_snapshot(source_dir)["files"],
             }
         )
     return {
-        "source_kind": "repo_export",
+        "source_kind": "portable_assembly",
         "bundle_root": None,
         "profile": profile_name,
         "profile_revision": profile_revision,
@@ -703,7 +730,7 @@ def load_skill_pack_source(
         "skill_root": BUNDLE_SKILL_ROOT,
         "release_identity": dict(release_identity(release_manifest)),
         "skills": skills,
-        "source_root": str(resolved_export_root),
+        "source_root": str(resolved_portable_root),
     }
 
 
@@ -718,34 +745,79 @@ def skill_pack_source_context(
     if bundle_root_override and bundle_archive_override:
         raise ValueError("use only one of --bundle-root or --bundle-archive")
 
-    if bundle_archive_override is None:
+    if bundle_root_override is not None:
         source = load_skill_pack_source(
             repo_root,
             profile_name=profile_name,
             bundle_root_override=bundle_root_override,
         )
         source["bundle_archive"] = None
-        source["inspection_root"] = (
-            bundle_root(bundle_root_override) if bundle_root_override else None
-        )
+        source["inspection_root"] = bundle_root(bundle_root_override)
         yield source
         return
 
-    with tempfile.TemporaryDirectory(prefix="aoa-skills-bundle-archive-") as temp_dir:
-        extracted_root = Path(temp_dir) / "extracted"
-        discovered_bundle_root = extract_bundle_archive(
-            bundle_archive_override,
-            extracted_root,
+    if bundle_archive_override is not None:
+        with tempfile.TemporaryDirectory(prefix="aoa-skills-bundle-archive-") as temp_dir:
+            extracted_root = Path(temp_dir) / "extracted"
+            discovered_bundle_root = extract_bundle_archive(
+                bundle_archive_override,
+                extracted_root,
+            )
+            source = load_skill_pack_source(
+                repo_root,
+                profile_name=profile_name,
+                bundle_root_override=str(discovered_bundle_root),
+            )
+            source["source_kind"] = "staged_archive"
+            source["bundle_root"] = None
+            source["bundle_archive"] = str(
+                bundle_archive_path(bundle_archive_override)
+            )
+            source["inspection_root"] = discovered_bundle_root
+            yield source
+        return
+
+    # The authoring repository intentionally has no prompt-visible
+    # .agents/skills tree. Build the portable bytes only for the lifetime of
+    # this operation so stage/install/verify consume the same external shape
+    # without creating a second active catalog in the source repository.
+    from export import build_agent_skills
+
+    with tempfile.TemporaryDirectory(
+        prefix="aoa-skills-portable-source-"
+    ) as temp_dir:
+        portable_root = Path(temp_dir) / "skills"
+        inputs = build_agent_skills.load_export_build_inputs(repo_root)
+        documents = build_agent_skills.build_portable_skill_exports(
+            inputs,
+            portable_root,
         )
+        expected_generated = build_agent_skills.build_generated_file_texts(
+            inputs,
+            documents,
+            portable_root,
+        )
+        stale_generated = sorted(
+            path.relative_to(repo_root).as_posix()
+            for path, expected_text in expected_generated.items()
+            if not path.is_file()
+            or path.read_text(encoding="utf-8") != expected_text
+        )
+        if stale_generated:
+            raise ValueError(
+                "portable metadata is stale: "
+                + ", ".join(stale_generated)
+                + "; run scripts/export/build_agent_skills.py first"
+            )
+
         source = load_skill_pack_source(
             repo_root,
             profile_name=profile_name,
-            bundle_root_override=str(discovered_bundle_root),
+            portable_root_override=portable_root,
         )
-        source["source_kind"] = "staged_archive"
-        source["bundle_root"] = None
-        source["bundle_archive"] = str(bundle_archive_path(bundle_archive_override))
-        source["inspection_root"] = discovered_bundle_root
+        source["source_kind"] = "temporary_portable_assembly"
+        source["bundle_archive"] = None
+        source["inspection_root"] = None
         yield source
 
 
@@ -756,10 +828,12 @@ def validate_install_mode(
     bundle_archive_override: str | None = None,
 ) -> None:
     if mode == "symlink" and (
-        source_kind == "staged_archive" or bundle_archive_override is not None
+        source_kind in {"staged_archive", "temporary_portable_assembly"}
+        or bundle_archive_override is not None
     ):
         raise ValueError(
-            "symlink mode is not supported with --bundle-archive; use --mode copy or --bundle-root"
+            "symlink mode requires a persistent staged bundle root; "
+            "use --mode copy for an archive or temporary portable assembly"
         )
 
 

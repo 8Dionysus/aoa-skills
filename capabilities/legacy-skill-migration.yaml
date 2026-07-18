@@ -12,7 +12,7 @@ entries:
     target_owner: aoa-skills
     compatibility: migration-alias
     evidence_state: manual-evaluated
-    reason: consolidated-procedure
+    reason: demonstrated-added-value
   - legacy_name: aoa-bounded-context-map
     legacy_path: skills/core/engineering/aoa-bounded-context-map/SKILL.md
     action: merge-mode
@@ -66,7 +66,7 @@ entries:
     target_owner: aoa-skills
     compatibility: migration-alias
     evidence_state: manual-evaluated
-    reason: consolidated-procedure
+    reason: baseline-equivalent
   - legacy_name: aoa-decision-create
     legacy_path: skills/core/engineering/aoa-decision-create/SKILL.md
     action: merge-mode
@@ -75,7 +75,7 @@ entries:
     target_owner: aoa-skills
     compatibility: migration-alias
     evidence_state: manual-evaluated
-    reason: consolidated-procedure
+    reason: demonstrated-added-value
   - legacy_name: aoa-decision-find
     legacy_path: skills/core/engineering/aoa-decision-find/SKILL.md
     action: merge-mode
@@ -84,16 +84,16 @@ entries:
     target_owner: aoa-skills
     compatibility: migration-alias
     evidence_state: manual-evaluated
-    reason: consolidated-procedure
+    reason: demonstrated-added-value
   - legacy_name: aoa-eval
     legacy_path: skills/core/engineering/aoa-eval/SKILL.md
-    action: defer-family
+    action: retain-advertised
     target_id: skill.aoa-eval
     target_kind: skill
     target_owner: aoa-skills
-    compatibility: same-name-deferred
+    compatibility: same-name
     evidence_state: manual-evaluated
-    reason: baseline-equivalent
+    reason: demonstrated-added-value
   - legacy_name: aoa-eval-apply
     legacy_path: skills/core/engineering/aoa-eval-apply/SKILL.md
     action: merge-mode
@@ -102,25 +102,25 @@ entries:
     target_owner: aoa-skills
     compatibility: migration-alias
     evidence_state: manual-evaluated
-    reason: consolidated-procedure
+    reason: demonstrated-added-value
   - legacy_name: aoa-eval-design
     legacy_path: skills/core/engineering/aoa-eval-design/SKILL.md
     action: merge-mode
-    target_id: mode.eval.propose
+    target_id: mode.eval.design
     target_kind: mode
     target_owner: aoa-skills
     compatibility: migration-alias
     evidence_state: manual-evaluated
-    reason: consolidated-procedure
+    reason: baseline-equivalent
   - legacy_name: aoa-eval-local-need
     legacy_path: skills/core/engineering/aoa-eval-local-need/SKILL.md
     action: merge-mode
-    target_id: mode.eval.propose
+    target_id: mode.eval.local-need
     target_kind: mode
     target_owner: aoa-skills
     compatibility: migration-alias
     evidence_state: manual-evaluated
-    reason: consolidated-procedure
+    reason: demonstrated-added-value
   - legacy_name: aoa-eval-select
     legacy_path: skills/core/engineering/aoa-eval-select/SKILL.md
     action: merge-mode
@@ -129,16 +129,16 @@ entries:
     target_owner: aoa-skills
     compatibility: migration-alias
     evidence_state: manual-evaluated
-    reason: consolidated-procedure
+    reason: demonstrated-added-value
   - legacy_name: aoa-eval-session-mining
     legacy_path: skills/core/engineering/aoa-eval-session-mining/SKILL.md
     action: merge-mode
-    target_id: mode.session-harvest.extract
+    target_id: mode.eval.session-mining
     target_kind: mode
     target_owner: aoa-skills
     compatibility: migration-alias
     evidence_state: manual-evaluated
-    reason: consolidated-procedure
+    reason: baseline-equivalent
   - legacy_name: aoa-invariant-coverage-audit
     legacy_path: skills/core/engineering/aoa-invariant-coverage-audit/SKILL.md
     action: merge-mode
@@ -187,25 +187,25 @@ entries:
   - legacy_name: aoa-automation-opportunity-scan
     legacy_path: skills/core/session-growth/aoa-automation-opportunity-scan/SKILL.md
     action: merge-mode
-    target_id: mode.session-harvest.classify
+    target_id: mode.session-harvest.automation-opportunity
     target_kind: mode
     target_owner: aoa-skills
     compatibility: migration-alias
     evidence_state: manual-evaluated
-    reason: consolidated-procedure
+    reason: demonstrated-added-value
   - legacy_name: aoa-checkpoint-closeout-bridge
     legacy_path: skills/core/session-growth/aoa-checkpoint-closeout-bridge/SKILL.md
-    action: route-owner-object
-    target_id: workflow.operations.checkpoint-closeout
-    target_kind: workflow
-    target_owner: aoa-playbooks
-    compatibility: none
+    action: retain-advertised
+    target_id: skill.aoa-checkpoint-closeout-bridge
+    target_kind: skill
+    target_owner: aoa-skills
+    compatibility: same-name-transitional
     evidence_state: manual-evaluated
-    reason: owner-bound-action
+    reason: preserve-execution-until-owner-mcp
   - legacy_name: aoa-commit-growth-seam
     legacy_path: skills/core/session-growth/aoa-commit-growth-seam/SKILL.md
     action: route-owner-object
-    target_id: workflow.operations.git-closeout
+    target_id: workflow.operations.local-commit
     target_kind: workflow
     target_owner: host-agent
     compatibility: none
@@ -213,22 +213,22 @@ entries:
     reason: baseline-equivalent
   - legacy_name: aoa-memo-writeback
     legacy_path: skills/core/session-growth/aoa-memo-writeback/SKILL.md
-    action: merge-mode
-    target_id: mode.knowledge.memo-route
-    target_kind: mode
+    action: retain-advertised
+    target_id: skill.aoa-memo-writeback
+    target_kind: skill
     target_owner: aoa-skills
-    compatibility: migration-alias
+    compatibility: same-name
     evidence_state: manual-evaluated
-    reason: consolidated-procedure
+    reason: demonstrated-added-value
   - legacy_name: aoa-quest-harvest
     legacy_path: skills/core/session-growth/aoa-quest-harvest/SKILL.md
     action: merge-mode
-    target_id: mode.session-harvest.classify
+    target_id: mode.session-harvest.promote
     target_kind: mode
     target_owner: aoa-skills
     compatibility: migration-alias
     evidence_state: manual-evaluated
-    reason: consolidated-procedure
+    reason: baseline-equivalent
   - legacy_name: aoa-session-donor-harvest
     legacy_path: skills/core/session-growth/aoa-session-donor-harvest/SKILL.md
     action: merge-mode
@@ -237,16 +237,16 @@ entries:
     target_owner: aoa-skills
     compatibility: migration-alias
     evidence_state: manual-evaluated
-    reason: consolidated-procedure
+    reason: baseline-equivalent
   - legacy_name: aoa-session-progression-lift
     legacy_path: skills/core/session-growth/aoa-session-progression-lift/SKILL.md
-    action: route-owner-object
-    target_id: adapter.sessions.progression-review
-    target_kind: adapter
+    action: retain-advertised
+    target_id: skill.aoa-session-progression-lift
+    target_kind: skill
     target_owner: aoa-agents
-    compatibility: none
+    compatibility: same-name
     evidence_state: manual-evaluated
-    reason: project-truth-belongs-to-owner
+    reason: demonstrated-added-value
   - legacy_name: aoa-session-route-forks
     legacy_path: skills/core/session-growth/aoa-session-route-forks/SKILL.md
     action: merge-mode
@@ -255,7 +255,7 @@ entries:
     target_owner: aoa-skills
     compatibility: migration-alias
     evidence_state: manual-evaluated
-    reason: consolidated-procedure
+    reason: baseline-equivalent
   - legacy_name: aoa-session-self-diagnose
     legacy_path: skills/core/session-growth/aoa-session-self-diagnose/SKILL.md
     action: merge-mode
@@ -264,25 +264,25 @@ entries:
     target_owner: aoa-skills
     compatibility: migration-alias
     evidence_state: manual-evaluated
-    reason: consolidated-procedure
+    reason: baseline-equivalent
   - legacy_name: aoa-session-self-repair
     legacy_path: skills/core/session-growth/aoa-session-self-repair/SKILL.md
     action: merge-mode
-    target_id: mode.session-recovery.propose-repair
+    target_id: mode.session-recovery.repair
     target_kind: mode
     target_owner: aoa-skills
     compatibility: migration-alias
     evidence_state: manual-evaluated
-    reason: consolidated-procedure
+    reason: demonstrated-added-value
   - legacy_name: aoa-summon
     legacy_path: skills/core/session-growth/aoa-summon/SKILL.md
-    action: route-owner-object
-    target_id: workflow.operations.delegation
-    target_kind: workflow
-    target_owner: host-agent
-    compatibility: none
+    action: retain-advertised
+    target_id: skill.aoa-summon
+    target_kind: skill
+    target_owner: aoa-agents
+    compatibility: same-name
     evidence_state: manual-evaluated
-    reason: owner-bound-action
+    reason: demonstrated-added-value
   - legacy_name: aoa-approval-gate-check
     legacy_path: skills/risk/aoa-approval-gate-check/SKILL.md
     action: route-owner-object
@@ -297,10 +297,10 @@ entries:
     action: route-owner-object
     target_id: guard.operations.preview
     target_kind: guard
-    target_owner: host-runtime
+    target_owner: target-runtime-owner
     compatibility: none
     evidence_state: manual-evaluated
-    reason: runtime-enforcement-required
+    reason: baseline-equivalent
   - legacy_name: aoa-local-stack-bringup
     legacy_path: skills/risk/aoa-local-stack-bringup/SKILL.md
     action: route-owner-object
@@ -327,7 +327,7 @@ entries:
     target_owner: aoa-skills
     compatibility: migration-alias
     evidence_state: manual-evaluated
-    reason: baseline-equivalent
+    reason: demonstrated-added-value
   - legacy_name: abyss-safe-infra-change
     legacy_path: skills/project/abyss/abyss-safe-infra-change/SKILL.md
     action: route-owner-object
@@ -353,7 +353,7 @@ entries:
     target_kind: adapter
     target_owner: abyss-stack
     compatibility: none
-    evidence_state: manual-evaluated
+    evidence_state: trial-in-progress
     reason: project-truth-belongs-to-owner
   - legacy_name: os-abyss-artifact-trust-loop
     legacy_path: skills/project/abyss/os-abyss-artifact-trust-loop/SKILL.md
@@ -362,7 +362,7 @@ entries:
     target_kind: adapter
     target_owner: abyss-machine
     compatibility: none
-    evidence_state: manual-evaluated
+    evidence_state: trial-in-progress
     reason: owner-bound-action
   - legacy_name: atm10-change-protocol
     legacy_path: skills/project/atm10/atm10-change-protocol/SKILL.md
@@ -371,7 +371,7 @@ entries:
     target_kind: adapter
     target_owner: ATM10-Agent
     compatibility: none
-    evidence_state: manual-evaluated
+    evidence_state: trial-in-progress
     reason: project-truth-belongs-to-owner
   - legacy_name: atm10-source-of-truth-check
     legacy_path: skills/project/atm10/atm10-source-of-truth-check/SKILL.md
@@ -380,7 +380,7 @@ entries:
     target_kind: adapter
     target_owner: ATM10-Agent
     compatibility: none
-    evidence_state: manual-evaluated
+    evidence_state: trial-in-progress
     reason: project-truth-belongs-to-owner
   - legacy_name: titan-approval-ledger
     legacy_path: skills/project/titan/titan-approval-ledger/SKILL.md
@@ -389,7 +389,7 @@ entries:
     target_kind: tool
     target_owner: aoa-sdk
     compatibility: none
-    evidence_state: manual-evaluated
+    evidence_state: trial-in-progress
     reason: owner-bound-action
   - legacy_name: titan-approval-loom
     legacy_path: skills/project/titan/titan-approval-loom/SKILL.md
@@ -398,7 +398,7 @@ entries:
     target_kind: tool
     target_owner: aoa-sdk
     compatibility: none
-    evidence_state: manual-evaluated
+    evidence_state: trial-in-progress
     reason: owner-bound-action
   - legacy_name: titan-appserver-bridge
     legacy_path: skills/project/titan/titan-appserver-bridge/SKILL.md
@@ -407,7 +407,7 @@ entries:
     target_kind: tool
     target_owner: aoa-sdk
     compatibility: none
-    evidence_state: manual-evaluated
+    evidence_state: trial-in-progress
     reason: owner-bound-action
   - legacy_name: titan-appserver-plan
     legacy_path: skills/project/titan/titan-appserver-plan/SKILL.md
@@ -416,7 +416,7 @@ entries:
     target_kind: tool
     target_owner: aoa-sdk
     compatibility: none
-    evidence_state: manual-evaluated
+    evidence_state: trial-in-progress
     reason: owner-bound-action
   - legacy_name: titan-closeout
     legacy_path: skills/project/titan/titan-closeout/SKILL.md
@@ -425,7 +425,7 @@ entries:
     target_kind: workflow
     target_owner: aoa-playbooks
     compatibility: none
-    evidence_state: manual-evaluated
+    evidence_state: trial-in-progress
     reason: owner-bound-action
   - legacy_name: titan-console
     legacy_path: skills/project/titan/titan-console/SKILL.md
@@ -434,7 +434,7 @@ entries:
     target_kind: tool
     target_owner: aoa-sdk
     compatibility: none
-    evidence_state: manual-evaluated
+    evidence_state: trial-in-progress
     reason: owner-bound-action
   - legacy_name: titan-event-replay
     legacy_path: skills/project/titan/titan-event-replay/SKILL.md
@@ -443,7 +443,7 @@ entries:
     target_kind: tool
     target_owner: aoa-sdk
     compatibility: none
-    evidence_state: manual-evaluated
+    evidence_state: trial-in-progress
     reason: owner-bound-action
   - legacy_name: titan-memory-loom
     legacy_path: skills/project/titan/titan-memory-loom/SKILL.md
@@ -452,7 +452,7 @@ entries:
     target_kind: tool
     target_owner: aoa-sdk
     compatibility: none
-    evidence_state: manual-evaluated
+    evidence_state: trial-in-progress
     reason: owner-bound-action
   - legacy_name: titan-memory-prune
     legacy_path: skills/project/titan/titan-memory-prune/SKILL.md
@@ -461,7 +461,7 @@ entries:
     target_kind: tool
     target_owner: aoa-memo
     compatibility: none
-    evidence_state: manual-evaluated
+    evidence_state: trial-in-progress
     reason: runtime-enforcement-required
   - legacy_name: titan-mutation-gate
     legacy_path: skills/project/titan/titan-mutation-gate/SKILL.md
@@ -470,7 +470,7 @@ entries:
     target_kind: guard
     target_owner: titan-runtime-owner
     compatibility: none
-    evidence_state: manual-evaluated
+    evidence_state: trial-in-progress
     reason: runtime-enforcement-required
   - legacy_name: titan-recall
     legacy_path: skills/project/titan/titan-recall/SKILL.md
@@ -479,7 +479,7 @@ entries:
     target_kind: tool
     target_owner: aoa-sdk
     compatibility: none
-    evidence_state: manual-evaluated
+    evidence_state: trial-in-progress
     reason: owner-bound-action
   - legacy_name: titan-receipt
     legacy_path: skills/project/titan/titan-receipt/SKILL.md
@@ -488,7 +488,7 @@ entries:
     target_kind: tool
     target_owner: aoa-sdk
     compatibility: none
-    evidence_state: manual-evaluated
+    evidence_state: trial-in-progress
     reason: owner-bound-action
   - legacy_name: titan-runtime-gate
     legacy_path: skills/project/titan/titan-runtime-gate/SKILL.md
@@ -497,7 +497,7 @@ entries:
     target_kind: guard
     target_owner: titan-runtime-owner
     compatibility: none
-    evidence_state: manual-evaluated
+    evidence_state: trial-in-progress
     reason: runtime-enforcement-required
   - legacy_name: titan-summon
     legacy_path: skills/project/titan/titan-summon/SKILL.md
@@ -506,7 +506,7 @@ entries:
     target_kind: workflow
     target_owner: aoa-agents
     compatibility: none
-    evidence_state: manual-evaluated
+    evidence_state: trial-in-progress
     reason: owner-bound-action
   - legacy_name: titan-thread-turn-binding
     legacy_path: skills/project/titan/titan-thread-turn-binding/SKILL.md
@@ -515,5 +515,5 @@ entries:
     target_kind: guard
     target_owner: aoa-sdk
     compatibility: none
-    evidence_state: manual-evaluated
+    evidence_state: trial-in-progress
     reason: runtime-enforcement-required

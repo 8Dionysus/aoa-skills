@@ -1,0 +1,49 @@
+schema_version: aoa-skill-contract-v1
+identity:
+  name: aoa-verification
+  owner: aoa-skills
+  version: 0.2.3
+  health: degraded
+purpose: Preserve contract, coverage-audit, and property verification behind one discoverable front door.
+freedom_level: bounded-judgment
+tool_requirements:
+  - Read access to owner meaning, manual cases, current checks, and an independent oracle.
+  - Owner-local write access only when durable automation is explicitly authorized.
+trust:
+  posture: authored-procedure
+  proof_authority: bounded-only
+provenance:
+  source: skills/core/engineering/aoa-verification
+  techniques_runtime_dependency: false
+modes:
+  contract:
+    input_abi: contract-boundary-evidence
+    output_abi: contract-package
+    effects: [none, owner-local-write]
+    reference: contract.md
+  coverage-audit:
+    input_abi: invariant-coverage-evidence
+    output_abi: invariant-coverage-audit
+    effects: [none]
+    reference: coverage-audit.md
+  property:
+    input_abi: property-invariant-evidence
+    output_abi: property-verification-package
+    effects: [none, owner-local-write]
+    reference: property.md
+relations:
+  - kind: requires
+    target: owner-meaning-and-independent-oracle
+  - kind: composes-with
+    target: aoa-eval
+    condition: An evaluation surface must be discovered, selected, or applied before its evidence is interpreted.
+  - kind: consumes
+    target: evaluation-observation
+    condition: aoa-eval.apply produced a bounded observation with source and environment posture.
+failure_modes:
+  - automation created before manual meaning and recurrence are established
+  - selected evaluation treated as proof of invariant coverage
+  - self-fulfilling oracle or incidental implementation detail frozen as law
+termination:
+  success: one typed mode result, explicit claim limit, and stop line
+  blocked: owner meaning, consumer, recurrence, domain, or oracle is missing

@@ -1,7 +1,7 @@
 schema_version: aoa-capability-family-v1
 family_id: session-learning
 title: Session evidence learning
-description: Separate reviewed-evidence harvesting from failure diagnosis and repair proposals without moving owner truth into sessions.
+description: Preserve reviewed-session harvesting, promotion, branching, automation triage, memo writeback, and recovery without moving owner truth into sessions.
 owner:
   repo: aoa-skills
   surface: capabilities/families/session-growth.yaml
@@ -9,7 +9,7 @@ owner:
 nodes:
   - id: sessions.harvest
     title: Harvest reviewed session evidence
-    description: Extract reusable candidates, classify their destination, or preserve materially different continuation branches.
+    description: Extract and classify reusable units, triage one promotion, preserve branches, or assess automation readiness from reviewed evidence.
     kind: capability
     contract_level: navigation
     primary_parent: sessions
@@ -28,31 +28,36 @@ nodes:
       - harvest
       - candidate
       - classify
+      - promote
       - branch
+      - automation
       - сессия
       - свидетельство
       - кандидат
       - классификация
+      - продвижение
       - ветка
+      - автоматизация
 
   - id: skill.aoa-session-harvest
     title: aoa-session-harvest family bundle
-    description: Convert explicitly reviewed session evidence into bounded reusable candidates through extract, classify, or branch mode. Use when a reviewed task trace contains repeatable units, an isolated unit needs its next owner/artifact route, or several continuations must remain visible. Do not use on live or unreviewed notes, for automatic promotion, or to write owner truth, quests, skills, playbooks, telemetry, or memory directly.
+    description: "EXPLICIT REVIEWED-SESSION INPUT ONLY: turn a named closed/reviewed session packet into extract, classify, promote, branch, or automation-opportunity output. A natural work closeout asking whether anything reusable should be preserved for the owner's future work belongs to aoa-memo-writeback, not this skill. Use on live/unreviewed session material only when extraction or promotion is explicitly requested and the required result is blocked_unreviewed_evidence. Do not use for generic summarization, progression, memo/writeback judgment, direct promotion, scheduling, mutation, owner writes, or telemetry authority."
     kind: skill
     contract_level: executable
     primary_parent: sessions.harvest
     owner: *session_owner
     lifecycle:
       state: candidate
-      version: 0.1.0
-      visibility: deferred
+      version: 0.2.2
+      visibility: advertised
       evidence_state: evaluated
-      health: degraded
+      health: challenger
     applicability:
       use_when:
-        - Reviewed bounded session evidence contains reusable units, one candidate needs destination classification, or several continuations must remain visible.
+        - Reviewed bounded evidence contains reusable units, an object or promotion decision, continuation branches, or a repeated manual route needing automation triage.
+        - A request explicitly attempts to harvest or promote live or unreviewed session material and needs a bounded rejection before any mode procedure loads.
       do_not_use_when:
-        - Evidence is live, raw, unreviewed, or the request is automatic promotion, owner mutation, scheduling, or execution.
+        - The request is generic summarization, progression scoring, memo writeback, repair, promotion execution, owner mutation, scheduling, or delegation.
       ambiguous_when:
         - Recurrence may be apparent only because several traces share the same temporary environment failure.
     abi:
@@ -60,12 +65,12 @@ nodes:
         - name: reviewed-session-evidence
           type: reviewed-session-evidence
           required: true
-          description: Reviewed evidence boundary and refs plus one extract, classify, or branch intent.
+          description: Reviewed evidence boundary and refs plus one extract, classify, promote, branch, or automation-opportunity intent.
       outputs:
-        - name: session-candidate-result
-          type: session-candidate-result
+        - name: reviewed-session-result
+          type: reviewed-session-mode-result
           required: true
-          description: Session-local candidate or route packet with owner hint, rejected alternative, effect none, and stop line.
+          description: One typed session-local packet with owner hint, rejected alternative, effect none, and stop line.
     binding:
       kind: skill
       ref: skills/core/session-growth/aoa-session-harvest/SKILL.md
@@ -87,7 +92,7 @@ nodes:
       failure_modes:
         - Mining live transcripts or universalizing one success.
         - Minting authoritative IDs or writing owner artifacts directly from session evidence.
-        - Treating progression scores, receipts, or telemetry as procedural truth.
+        - Treating promotion verdicts, progression scores, receipts, or telemetry as owner truth.
     trust: &session_trust
       public_safe: true
       requires_human_approval: false
@@ -96,7 +101,7 @@ nodes:
       source_refs:
         - repo: aoa-skills
           path: skills/core/session-growth/aoa-session-harvest/SKILL.md
-          ref: capability-family-v0.1.0
+          ref: capability-family-v0.2.2
           role: portable-family-procedure
           authority: authored
       optional_refs: []
@@ -104,7 +109,9 @@ nodes:
       - reviewed-trace
       - extract-candidate
       - classify-artifact
+      - promotion-verdict
       - route-branches
+      - automation-opportunity
       - разобранная-трасса
       - извлечь-кандидата
       - классифицировать
@@ -137,13 +144,13 @@ nodes:
           required: true
           description: Reviewed boundary, trace refs, hints, and optional baseline or checkpoint.
       outputs:
-        - name: extracted-candidates
-          type: extracted-session-candidates
+        - name: harvest-packet
+          type: harvest-packet
           required: true
-          description: Session-local reusable units, evidence refs, primary reuse kind, owner shape, and unresolved residue.
+          description: Reusable units, hint dispositions, evidence refs, owner shapes, rejected targets, unresolved residue, and typed handoffs.
     binding:
       kind: mode
-      ref: skills/core/session-growth/aoa-session-harvest/SKILL.md
+      ref: skills/core/session-growth/aoa-session-harvest/references/extract.md
       operation: extract
       availability: available
     execution: *harvest_execution
@@ -151,16 +158,13 @@ nodes:
     provenance:
       source_refs:
         - repo: aoa-skills
-          path: skills/core/session-growth/aoa-session-harvest/SKILL.md
-          ref: capability-family-v0.1.0
+          path: skills/core/session-growth/aoa-session-harvest/references/extract.md
+          ref: capability-family-v0.2.0
           role: extract-mode
           authority: authored
       optional_refs: []
     aliases:
       - name: aoa-session-donor-harvest
-        state: migration-only
-        remove_after: session-harvest-runtime-parity
-      - name: aoa-eval-session-mining
         state: migration-only
         remove_after: session-harvest-runtime-parity
     keywords:
@@ -196,8 +200,8 @@ nodes:
           type: isolated-session-candidate
           required: true
           description: One unit with evidence refs, recurrence, inputs/outputs, risk, reversibility, and proof posture.
-        - name: extracted-candidate-set
-          type: extracted-session-candidates
+        - name: harvest-packet
+          type: harvest-packet
           required: false
           description: Optional upstream extraction set from which the isolated candidate was explicitly selected.
       outputs:
@@ -207,7 +211,7 @@ nodes:
           description: Defer, reject, or propose destination with owner, rejected nearest kinds, and admission needs.
     binding:
       kind: mode
-      ref: skills/core/session-growth/aoa-session-harvest/SKILL.md
+      ref: skills/core/session-growth/aoa-session-harvest/references/classify.md
       operation: classify
       availability: available
     execution: *harvest_execution
@@ -215,18 +219,11 @@ nodes:
     provenance:
       source_refs:
         - repo: aoa-skills
-          path: skills/core/session-growth/aoa-session-harvest/SKILL.md
+          path: skills/core/session-growth/aoa-session-harvest/references/classify.md
           ref: capability-family-v0.1.0
           role: classify-mode
           authority: authored
       optional_refs: []
-    aliases:
-      - name: aoa-automation-opportunity-scan
-        state: migration-only
-        remove_after: session-harvest-runtime-parity
-      - name: aoa-quest-harvest
-        state: migration-only
-        remove_after: session-harvest-runtime-parity
     keywords:
       - classify
       - skill-or-workflow
@@ -237,6 +234,117 @@ nodes:
       - скилл-или-workflow
       - инструмент
       - без-артефакта
+
+  - id: mode.session-harvest.promote
+    title: Triage one repeated quest-shaped unit
+    description: Return a bounded promotion verdict for exactly one isolated reviewed repeated unit without authoring or accepting the destination artifact.
+    kind: mode
+    contract_level: executable
+    primary_parent: sessions.harvest
+    owner: *session_owner
+    lifecycle: *session_mode_lifecycle
+    applicability:
+      use_when:
+        - Exactly one reviewed repeated unit is isolated and only its quest, skill, playbook, agent, eval, memo, or hold verdict remains.
+      do_not_use_when:
+        - Evidence is live, recurrence is anecdotal, several donor units remain mixed, or the destination artifact is already clear and only authoring remains.
+      ambiguous_when:
+        - Repetition may be topic or conversation recurrence rather than repeated work or law.
+    abi:
+      inputs:
+        - name: isolated-repeated-quest-unit
+          type: isolated-repeated-quest-unit
+          required: true
+          description: One unit, reviewed repeat evidence posture, owner/risk boundaries, and residual promotion ambiguity.
+      outputs:
+        - name: quest-promotion-verdict
+          type: quest-promotion-verdict
+          required: true
+          description: Promotion/hold verdict, owner, reason, nearest wrong target, boundary, and proposed next artifact.
+    binding:
+      kind: mode
+      ref: skills/core/session-growth/aoa-session-harvest/references/promote.md
+      operation: promote
+      availability: available
+    execution: *harvest_execution
+    trust: *session_trust
+    provenance:
+      source_refs:
+        - repo: aoa-skills
+          path: skills/core/session-growth/aoa-session-harvest/references/promote.md
+          ref: capability-family-v0.2.0
+          role: promote-mode
+          authority: authored
+      optional_refs: []
+    aliases:
+      - name: aoa-quest-harvest
+        state: migration-only
+        remove_after: session-harvest-runtime-parity
+    keywords:
+      - quest-promotion
+      - repeat-evidence
+      - skill-or-playbook
+      - owner-pending
+      - продвижение-квеста
+      - повторяемая-работа
+
+  - id: mode.session-harvest.automation-opportunity
+    title: Classify an automation opportunity
+    description: Assess a reviewed repeated manual route, name the highest honest automation mode, and return seed-ready or not-now without execution authority.
+    kind: mode
+    contract_level: executable
+    primary_parent: sessions.harvest
+    owner: *session_owner
+    lifecycle:
+      state: candidate
+      version: 0.2.1
+      visibility: internal
+      evidence_state: evaluated
+      health: challenger
+    applicability:
+      use_when:
+        - Reviewed evidence shows a recurring manual route whose automation readiness and first owner artifact are unresolved.
+      do_not_use_when:
+        - The work occurred once, remains exploratory or creative, needs source clarification first, or the request is live scheduling or mutation.
+      ambiguous_when:
+        - Repetition exists but stable triggers, inputs, outputs, rollback, or approval posture are not yet known.
+    abi:
+      inputs:
+        - name: reviewed-repeated-manual-route
+          type: reviewed-repeated-manual-route
+          required: true
+          description: Actual manual route, repeat evidence, triggers, inputs/outputs, risks, reversibility, secrets, approval, rollback, and proof posture.
+      outputs:
+        - name: automation-opportunity-packet
+          type: automation-opportunity-packet
+          required: true
+          description: Reviewed evidence, manual route, readiness dimensions, seed-ready/not-now, highest honest mode, explicit checkpoint posture, owner, next artifact, rejected nearest target, effects, and stop line.
+    binding:
+      kind: mode
+      ref: skills/core/session-growth/aoa-session-harvest/references/automation-opportunity.md
+      operation: automation-opportunity
+      availability: available
+    execution: *harvest_execution
+    trust: *session_trust
+    provenance:
+      source_refs:
+        - repo: aoa-skills
+          path: skills/core/session-growth/aoa-session-harvest/references/automation-opportunity.md
+          ref: capability-family-v0.2.1
+          role: automation-opportunity-mode
+          authority: authored
+      optional_refs: []
+    aliases:
+      - name: aoa-automation-opportunity-scan
+        state: migration-only
+        remove_after: session-harvest-runtime-parity
+    keywords:
+      - automation-opportunity
+      - seed-ready
+      - manual-only
+      - checkpoint-required
+      - возможность-автоматизации
+      - готовность-к-автоматизации
 
   - id: mode.session-harvest.branch
     title: Preserve continuation branches
@@ -256,7 +364,7 @@ nodes:
     abi:
       inputs:
         - name: continuation-pressure
-          type: continuation-branch-pressure
+          type: reviewed-continuation-pressure
           required: true
           description: Reviewed context, candidate routes, owner constraints, gains, risks, effects, and prerequisites.
       outputs:
@@ -266,7 +374,7 @@ nodes:
           description: Typed route cards and an advisory default or hold option with no execution authority.
     binding:
       kind: mode
-      ref: skills/core/session-growth/aoa-session-harvest/SKILL.md
+      ref: skills/core/session-growth/aoa-session-harvest/references/branch.md
       operation: branch
       availability: available
     execution: *harvest_execution
@@ -274,7 +382,7 @@ nodes:
     provenance:
       source_refs:
         - repo: aoa-skills
-          path: skills/core/session-growth/aoa-session-harvest/SKILL.md
+          path: skills/core/session-growth/aoa-session-harvest/references/branch.md
           ref: capability-family-v0.1.0
           role: branch-mode
           authority: authored
@@ -295,9 +403,298 @@ nodes:
       - продолжение
       - сохранить-развилки
 
+  - id: sessions.checkpoint-closeout
+    title: Preserve checkpoint focus and execute reviewed closeout
+    description: Keep live checkpoint hints provisional, then carry a closed reviewed artifact through an explicit session-local closeout DAG while the owner playbook lacks an executable MCP route.
+    kind: capability
+    contract_level: navigation
+    primary_parent: sessions
+    owner: *session_owner
+    lifecycle:
+      state: candidate
+      version: 0.2.3
+      visibility: deferred
+      evidence_state: evaluated
+      health: challenger
+    keywords:
+      - checkpoint-closeout
+      - reviewed-closeout
+      - task-local-dag
+      - provisional-hints
+      - закрытие-чекпоинта
+      - проверенная-сессия
+
+  - id: skill.aoa-checkpoint-closeout-bridge
+    title: aoa-checkpoint-closeout-bridge transitional bundle
+    description: Carry provisional checkpoint hints into an explicit reviewed closeout sequence without treating notes or mechanical reports as verdict authority. Use to collect bounded checkpoint hints or to execute the reviewed harvest, progression, quest-promotion, and branch stages after a session artifact is closed and reviewed. Do not use mid-session for final judgments, without reviewed evidence, as a hidden playbook runner, or to write owner truth.
+    kind: skill
+    contract_level: executable
+    primary_parent: sessions.checkpoint-closeout
+    owner: *session_owner
+    lifecycle:
+      state: candidate
+      version: 0.2.3
+      visibility: advertised
+      evidence_state: evaluated
+      health: challenger
+    applicability:
+      use_when:
+        - A live session needs a bounded provisional checkpoint focus packet without downstream verdicts.
+        - One closed explicitly reviewed current-session artifact needs ordered harvest, progression, promotion, branch, and closeout reporting while aoa-playbooks has no executable MCP route.
+      do_not_use_when:
+        - The request is a generic recap, the evidence boundary is missing, or a live/unreviewed artifact is being used for final judgments.
+        - The caller expects hidden playbook execution, owner acceptance, durable memory, quest mutation, progression mutation, routing, KAG, or stats writes.
+      ambiguous_when:
+        - A checkpoint packet appears complete but its judgments have not been corroborated by the primary reviewed artifact.
+    abi:
+      inputs:
+        - name: checkpoint-closeout-request
+          type: checkpoint-closeout-request
+          required: true
+          description: One collect or execute intent, current-session boundary, primary artifact, and optional provisional hints.
+      outputs:
+        - name: checkpoint-closeout-result
+          type: checkpoint-closeout-result
+          required: true
+          description: One provisional focus packet, verified session-local execution report, or explicit blocked/unverified result.
+    binding:
+      kind: skill
+      ref: skills/core/session-growth/aoa-checkpoint-closeout-bridge/SKILL.md
+      operation: route-one-mode
+      availability: available
+    execution: &checkpoint_execution
+      freedom: bounded-judgment
+      tool_requirements:
+        - Read access to the exact bundle procedures and current primary session artifact.
+        - Exact available aoa-session-harvest and aoa-session-progression-lift bundles for execute nodes.
+      verification:
+        - Require closure, explicit review, and current-session identity before downstream execute loads.
+        - Require serial owner-source gates and one observable procedure load plus primary-evidence reread per executed node.
+        - Compare every report claim with observed actions and typed outputs; reject valid-plan-only execution claims.
+      termination:
+        - Stop after one provisional focus packet, one verified session-local closeout report, or the first explicit blocked/unverified state.
+        - Stop before owner acceptance, playbook execution, delegation, durable memory, quest, progression, proof, routing, KAG, or stats mutation.
+      effects: [none, generated-write]
+      reversibility: reversible
+      failure_modes:
+        - Treating hints, a valid DAG, or final prose as execution evidence.
+        - Loading downstream skills from live or unreviewed evidence.
+        - Parallelizing dependency gates or DAG nodes and later citing their output IDs as serial execution.
+        - Claiming the aoa-playbooks scenario was executed without its unavailable MCP owner.
+    trust: *session_trust
+    provenance:
+      source_refs:
+        - repo: aoa-skills
+          path: skills/core/session-growth/aoa-checkpoint-closeout-bridge/SKILL.md
+          ref: capability-family-v0.2.3
+          role: transitional-portable-procedure
+          authority: authored
+        - repo: aoa-playbooks
+          path: playbooks/continuity/checkpoint/checkpoint-closeout-owner-route/PLAYBOOK.md
+          ref: owner-route-current
+          role: scenario-authority
+          authority: external-authority
+      optional_refs: []
+    keywords:
+      - checkpoint-closeout-bridge
+      - collect-checkpoint-focus
+      - execute-reviewed-closeout
+      - serial-dag
+      - переходный-bridge
+      - закрытие-сессии
+
+  - id: mode.checkpoint-closeout.collect
+    title: Collect provisional checkpoint focus
+    description: Preserve bounded current-session hints for later review without loading downstream skills or emitting harvest, progression, quest, or owner verdicts.
+    kind: mode
+    contract_level: executable
+    primary_parent: sessions.checkpoint-closeout
+    owner: *session_owner
+    lifecycle:
+      state: candidate
+      version: 0.2.3
+      visibility: internal
+      evidence_state: evaluated
+      health: challenger
+    applicability:
+      use_when:
+        - A live session or explicit checkpoint request needs provisional focus preserved for later reviewed closeout.
+      do_not_use_when:
+        - The caller expects final candidates, promotion, progression, owner acceptance, or automatic downstream execution.
+      ambiguous_when:
+        - A hint looks settled but review and closure are still absent.
+    abi:
+      inputs:
+        - name: checkpoint-focus
+          type: checkpoint-focus-input
+          required: true
+          description: One session/checkpoint identity, source refs, provisional hints, and requested optional local-note effect.
+      outputs:
+        - name: provisional-focus
+          type: provisional-checkpoint-focus
+          required: true
+          description: Provisional hint dispositions, future stage order, effects, and stop line.
+    binding:
+      kind: mode
+      ref: skills/core/session-growth/aoa-checkpoint-closeout-bridge/references/collect.md
+      operation: collect
+      availability: available
+    execution: *checkpoint_execution
+    trust: *session_trust
+    provenance:
+      source_refs:
+        - repo: aoa-skills
+          path: skills/core/session-growth/aoa-checkpoint-closeout-bridge/references/collect.md
+          ref: capability-family-v0.2.3
+          role: collect-mode
+          authority: authored
+      optional_refs: []
+    keywords: [checkpoint-focus, provisional-hints, collect, чекпоинт, подсказки]
+
+  - id: mode.checkpoint-closeout.execute
+    title: Execute reviewed checkpoint closeout
+    description: Load and execute the smallest compatible closeout DAG against one closed reviewed current-session artifact, recording real node actions and typed outputs without owner writes.
+    kind: mode
+    contract_level: executable
+    primary_parent: sessions.checkpoint-closeout
+    owner: *session_owner
+    lifecycle:
+      state: candidate
+      version: 0.2.3
+      visibility: internal
+      evidence_state: evaluated
+      health: challenger
+    applicability:
+      use_when:
+        - One closed explicitly reviewed artifact and its current-session boundary require harvest, progression, promotion, branch, and closeout stages.
+      do_not_use_when:
+        - The artifact is live, unreviewed, cross-session-contaminated, or lacks required callable dependencies.
+      ambiguous_when:
+        - Generated closeout or checkpoint material claims review that the primary artifact does not corroborate.
+    abi:
+      inputs:
+        - name: reviewed-checkpoint-closeout
+          type: reviewed-checkpoint-closeout-input
+          required: true
+          description: Closed reviewed artifact, current-session identity, agent baseline when applicable, and provisional hints.
+      outputs:
+        - name: closeout-report
+          type: checkpoint-closeout-execution-report
+          required: true
+          description: Typed node states, procedure/read action refs, outputs, effects, handoffs, uncertainty, and stop line.
+    binding:
+      kind: mode
+      ref: skills/core/session-growth/aoa-checkpoint-closeout-bridge/references/execute.md
+      operation: execute
+      availability: available
+    execution: *checkpoint_execution
+    trust: *session_trust
+    provenance:
+      source_refs:
+        - repo: aoa-skills
+          path: skills/core/session-growth/aoa-checkpoint-closeout-bridge/references/execute.md
+          ref: capability-family-v0.2.3
+          role: execute-mode
+          authority: authored
+      optional_refs: []
+    keywords: [reviewed-closeout, task-local-dag, observable-action, reviewed-session, проверенное-закрытие]
+
+  - id: sessions.memo-writeback
+    title: Decide and route memo writeback
+    description: Detect whether live or closing work produced a bounded owner lesson not yet represented by a memo artifact, then route its first guarded writeback decision.
+    kind: capability
+    contract_level: navigation
+    primary_parent: sessions
+    owner: *session_owner
+    lifecycle: *session_family_lifecycle
+    keywords:
+      - memo-writeback
+      - memory-worthy
+      - closeout-memory
+      - local-candidate
+      - запись-в-память
+      - достойно-памяти
+      - закрытие-сессии
+
+  - id: skill.aoa-memo-writeback
+    title: aoa-memo-writeback capability
+    description: "PATH GATE: copy the host-appended `(file: .../SKILL.md)` locator verbatim for the first read; never construct `.system` or `$CODEX_HOME` paths. If one constructed path has already failed with not-found before any other action, recover exactly once by reading the host locator and report `package_path_recovered`; never search or probe again. FIRST-WRITEBACK ONLY: use before any memo artifact exists to turn live-session, closeout, landed-work, PR, diff, or review evidence into one guarded candidate/export/no-write decision. If an existing candidate, export, quarantine packet, memory object, corpus identity, lifecycle target, or read-model target is named or supplied, select aoa-memo directly. Do not use for eval mining, raw session maintenance, generic harvest, durable memory, owner intake/review, recall, or proof."
+    kind: skill
+    contract_level: executable
+    primary_parent: sessions.memo-writeback
+    owner: *session_owner
+    lifecycle:
+      state: candidate
+      version: 0.2.8
+      visibility: advertised
+      evidence_state: evaluated
+      health: challenger
+    applicability:
+      use_when:
+        - Live or closing work may contain a bounded durable owner lesson not yet represented by a concrete memo artifact.
+        - The caller asks to assess or create the first guarded local candidate from inspectable evidence.
+      do_not_use_when:
+        - A concrete memo candidate, export, quarantine packet, memory object, corpus identity, or lifecycle target already exists.
+        - Evaluation-trigger mining, session infrastructure maintenance, generic harvesting, proof/scoring, recall, owner intake review, or durable memo landing is needed.
+      ambiguous_when:
+        - The material may be progress or another owner's truth rather than a reusable memory lesson.
+    abi:
+      inputs:
+        - name: memo-writeback-pressure
+          type: memo-writeback-pressure
+          required: true
+          description: Likely owner, task/closeout context, inspectable session and source refs, port status, privacy, freshness, review, and effect posture.
+      outputs:
+        - name: memo-writeback-decision
+          type: memo-writeback-decision
+          required: true
+          description: One decision plus bounded claim, owner route, packet or stop line, refs, proof limit, and next review.
+    binding:
+      kind: skill
+      ref: skills/core/session-growth/aoa-memo-writeback/SKILL.md
+      operation: decide-and-route
+      availability: available
+    execution:
+      freedom: bounded-judgment
+      tool_requirements:
+        - Read access to inspectable session and owner-source evidence.
+        - Owner-local write access only when an admitted memo port exists and candidate creation is authorized.
+      verification:
+        - Compare the bounded claim manually against source and session evidence, privacy posture, and the real owner boundary.
+        - Inspect any candidate/export and run only existing owner-port validation.
+      termination:
+        - Stop after one write_candidate, prepare_export, no_writeback_needed, route_only_debt, needs_owner_review, blocked, or owner_handoff decision.
+        - Stop before durable memory unless the explicit active route is aoa-memo reviewed corpus landing.
+      effects:
+        - repo-write
+      reversibility: reversible
+      failure_modes:
+        - Promoting raw session history to memory truth or recapping an entire session.
+        - Inventing a memo port, absorbing another owner's truth, or writing durable memory without review.
+    trust: *session_trust
+    provenance:
+      source_refs:
+        - repo: aoa-skills
+          path: skills/core/session-growth/aoa-memo-writeback/SKILL.md
+          ref: capability-family-v0.2.8
+          role: portable-procedure
+          authority: authored
+      optional_refs: []
+    keywords:
+      - memo-writeback-decision
+      - write-candidate
+      - prepare-export
+      - no-writeback
+      - route-only-debt
+      - owner-handoff
+      - memory-worthy
+      - кандидат-мемо
+      - не-записывать
+      - маршрут-долга
+
   - id: sessions.recovery
-    title: Diagnose and route session repair
-    description: Separate reviewed symptoms, causes, unknowns, and owner effects before proposing the smallest reversible repair.
+    title: Diagnose and recover session failure
+    description: Separate reviewed symptoms, causes, and unknowns, then carry one bounded owner repair through checkpoint, truthful execution posture, rollback, and health verification.
     kind: capability
     contract_level: navigation
     primary_parent: sessions
@@ -317,22 +714,22 @@ nodes:
 
   - id: skill.aoa-session-recovery
     title: aoa-session-recovery family bundle
-    description: Diagnose recurring session or workflow failure and prepare the smallest owner-routed repair through diagnose or propose-repair mode. Use when reviewed evidence shows contamination, drift, repeated tool/route failure, or a known diagnosis needs a reversible repair packet. Do not use on one live mood note, to mutate an owner directly, or to create durable validators before repeated manual evidence establishes an invariant.
+    description: Diagnose reviewed recurring session or workflow failure, or carry one bounded owner repair from diagnosis through checkpoint, execution posture, rollback, and real health verification. Use when evidence shows contamination, drift, repeated route/tool failure, or a reviewed diagnosis is ready for repair. Do not use on live/unreviewed material, for vague self-improvement, or to claim a proposed or merely executed change is verified.
     kind: skill
     contract_level: executable
     primary_parent: sessions.recovery
     owner: *session_owner
     lifecycle:
       state: candidate
-      version: 0.1.0
-      visibility: deferred
+      version: 0.2.1
+      visibility: advertised
       evidence_state: evaluated
-      health: degraded
+      health: challenger
     applicability:
       use_when:
-        - Reviewed evidence shows repeated contamination, routing drift, tool failure, false confidence, or an established diagnosis needs a repair proposal.
+        - Reviewed evidence shows repeated contamination, routing drift, tool failure, false confidence, or an established diagnosis is ready for one bounded repair cycle.
       do_not_use_when:
-        - Evidence is live or unreviewed, only repair execution is requested, or the skill would mutate the target owner directly.
+        - Evidence is live or unreviewed, repair lacks a diagnosis or owner, or the route would bypass authorization, checkpoint, rollback, or health verification.
       ambiguous_when:
         - A single symptom may be environmental rather than a recurring session or workflow failure.
     abi:
@@ -340,46 +737,51 @@ nodes:
         - name: recovery-request
           type: session-recovery-request
           required: true
-          description: Reviewed evidence or diagnosis, target owner, constraints, checkpoint, and rollback posture.
+          description: Reviewed evidence or diagnosis, target and durable owners, constraints, execution request, authorization, bindings, checkpoint, rollback, and health surfaces.
       outputs:
         - name: recovery-result
           type: session-recovery-result
           required: true
-          description: Diagnosis or repair-proposal packet with evidence posture, owner, reversibility, manual checks, uncertainty, and stop line.
+          description: Session diagnosis or repair-cycle result with evidence refs, execution posture, actual effects, health proof, uncertainty, and stop line.
     binding:
       kind: skill
       ref: skills/core/session-growth/aoa-session-recovery/SKILL.md
       operation: route-one-mode
       availability: available
-    execution: &recovery_execution
+    execution:
       freedom: bounded-judgment
       tool_requirements:
-        - Read access only to reviewed evidence or diagnosis and the target owner's mutation and rollback contracts.
+        - Read access to reviewed evidence, owner contracts, and health surfaces.
+        - Mutation access only for an explicitly authorized repair through an available owner binding.
       verification:
-        - Trace symptoms, causes, or repair fields to reviewed refs and seek disconfirming evidence.
-        - Confirm no target owner, runtime, session archive, or provider was mutated.
+        - Trace diagnosis and repair decisions to reviewed refs and keep symptoms, causes, intended actions, actual effects, and health proof distinct.
+        - Compare pre/post health on the affected surface and confirm rollback and cleanup posture.
       termination:
-        - Stop after one diagnosis or repair proposal, manual checks, remaining uncertainty, and owner handoff.
-        - Stop as blocked when evidence is unreviewed or the selected repair mode lacks a reviewed diagnosis.
+        - Stop after one diagnosis or one bounded repair cycle at the strongest actually evidenced posture.
+        - Stop as blocked when evidence, diagnosis, authorization, binding, checkpoint, rollback, or health proof required for the requested posture is unavailable.
       effects:
         - none
-      reversibility: not-applicable
+        - repo-write
+        - runtime-mutation
+      reversibility: conditionally-reversible
       failure_modes:
         - Self-confirming diagnosis or assigning settled blame from one symptom.
-        - Repair design without checkpoint, rollback, cleanup, or stop conditions.
-        - Creating a durable validator as temporary scaffolding.
+        - Treating a repair packet or executed action as verified repair.
+        - Mutating without authorization, checkpoint, rollback, health checks, or bounded attempts.
+        - Hiding a failed health check instead of rolling back or blocking.
     trust: *session_trust
     provenance:
       source_refs:
         - repo: aoa-skills
           path: skills/core/session-growth/aoa-session-recovery/SKILL.md
-          ref: capability-family-v0.1.0
+          ref: capability-family-v0.2.1
           role: portable-family-procedure
           authority: authored
       optional_refs: []
     keywords:
       - session-diagnose
       - repair-proposal
+      - repair-execution-posture
       - rollback
       - manual-health-check
       - диагноз-сессии
@@ -410,21 +812,34 @@ nodes:
           description: Bounded reviewed symptoms, refs, constraints, and any disconfirming observations.
       outputs:
         - name: session-diagnosis
-          type: reviewed-session-diagnosis
+          type: session-diagnosis
           required: true
           description: Symptoms, causes, inference, unknowns, drift class, owner hints, and non-mutating repair shape.
     binding:
       kind: mode
-      ref: skills/core/session-growth/aoa-session-recovery/SKILL.md
+      ref: skills/core/session-growth/aoa-session-recovery/references/diagnose.md
       operation: diagnose
       availability: available
-    execution: *recovery_execution
+    execution:
+      freedom: bounded-judgment
+      tool_requirements:
+        - Read access only to reviewed evidence and relevant owner contracts.
+      verification:
+        - Trace every symptom and cause posture to reviewed refs and seek disconfirming evidence.
+        - Confirm no owner, runtime, session archive, or provider was mutated.
+      termination:
+        - Stop after one diagnosis and explicit repair handoff or blocked state.
+      effects: [none]
+      reversibility: not-applicable
+      failure_modes:
+        - Treating one symptom, stale hint, or generated summary as settled cause.
+        - Hiding unknowns or collapsing the immediate surface into the durable owner.
     trust: *session_trust
     provenance:
       source_refs:
         - repo: aoa-skills
-          path: skills/core/session-growth/aoa-session-recovery/SKILL.md
-          ref: capability-family-v0.1.0
+          path: skills/core/session-growth/aoa-session-recovery/references/diagnose.md
+          ref: capability-family-v0.2.1
           role: diagnose-mode
           authority: authored
       optional_refs: []
@@ -445,9 +860,9 @@ nodes:
       - повторный-сбой
       - маршрутизация
 
-  - id: mode.session-recovery.propose-repair
-    title: Propose a reversible owner repair
-    description: Prepare the smallest owner-targeted diff shape, checkpoint, rollback, manual checks, cleanup, and escalation from a reviewed diagnosis.
+  - id: mode.session-recovery.repair
+    title: Carry one bounded owner repair cycle
+    description: Prepare or execute the smallest authorized owner repair with checkpoint, truthful execution posture, rollback, real health verification, cleanup, and escalation.
     kind: mode
     contract_level: executable
     primary_parent: sessions.recovery
@@ -455,9 +870,9 @@ nodes:
     lifecycle: *session_mode_lifecycle
     applicability:
       use_when:
-        - A reviewed diagnosis exists and the target owner needs a bounded reversible repair packet.
+        - A reviewed diagnosis exists and one owner target needs a bounded repair prepared, executed, verified, rolled back, blocked, or handed off.
       do_not_use_when:
-        - Diagnosis is absent, only execution is requested, or the target owner mutation contract is unknown.
+        - Diagnosis or target owner is absent, or mutation would bypass authorization, checkpoint, rollback, binding, or health contract.
       ambiguous_when:
         - A temporary session workaround may be enough and should not become durable owner policy.
     abi:
@@ -467,23 +882,38 @@ nodes:
           required: true
           description: Reviewed diagnosis plus target owner, constraints, and current checkpoint or rollback posture.
       outputs:
-        - name: repair-proposal
-          type: owner-repair-proposal
+        - name: repair-cycle-result
+          type: repair-cycle-result
           required: true
-          description: Smallest diff shape, checkpoint, rollback, bounded retries, manual checks, cleanup, stop, and handoff.
+          description: Smallest diff, authorization, checkpoint, rollback, execution posture, actions versus actual effects, health evidence, cleanup, stop, and handoff.
     binding:
       kind: mode
-      ref: skills/core/session-growth/aoa-session-recovery/SKILL.md
-      operation: propose-repair
+      ref: skills/core/session-growth/aoa-session-recovery/references/repair.md
+      operation: repair
       availability: available
-    execution: *recovery_execution
+    execution:
+      freedom: bounded-judgment
+      tool_requirements:
+        - Read access to the reviewed diagnosis, owner contracts, rollback anchors, and health surfaces.
+        - An explicitly authorized and available owner binding for any state change.
+      verification:
+        - Capture pre-state and compare affected post-state behavior against the declared health contract.
+        - Record actual effects and verify rollback restoration when rollback is triggered.
+      termination:
+        - Stop after one bounded repair cycle at proposed, prepared, executed, verified, rolled_back, blocked, or handoff_required.
+      effects: [none, repo-write, runtime-mutation]
+      reversibility: conditionally-reversible
+      failure_modes:
+        - Manufacturing a diagnosis or widening across owners.
+        - Calling a prepared or executed change verified without health evidence.
+        - Retrying without a limit or failing to rollback after a failed health check.
     trust: *session_trust
     provenance:
       source_refs:
         - repo: aoa-skills
-          path: skills/core/session-growth/aoa-session-recovery/SKILL.md
-          ref: capability-family-v0.1.0
-          role: propose-repair-mode
+          path: skills/core/session-growth/aoa-session-recovery/references/repair.md
+          ref: capability-family-v0.2.1
+          role: repair-mode
           authority: authored
       optional_refs: []
     aliases:
@@ -492,6 +922,7 @@ nodes:
         remove_after: session-recovery-runtime-parity
     keywords:
       - repair-packet
+      - execution-posture
       - checkpoint
       - rollback
       - cleanup
@@ -504,82 +935,133 @@ nodes:
       - подтвержденный-диагноз
       - не-применять
 
-  - id: adapter.sessions.progression-review
-    title: Session progression owner adapter
-    description: Route reviewed mastery evidence to the aoa-agents progression model without turning a session reflection into role or progression truth.
-    kind: adapter
-    contract_level: executable
+  - id: skill.aoa-session-progression-lift
+    title: aoa-session-progression-lift owner bundle
+    description: Lift closed, reviewed session evidence into a bounded multi-axis progression delta candidate for an AoA agent, with explicit baseline posture, attribution limits, holds or regressions, and small unlock hints. Use when meaningful mastery evidence needs owner review. Do not use on live impressions, to invent growth without a baseline, assign one universal score, mutate a role profile, grant authority, or turn progression into routing policy.
+    kind: skill
+    contract_level: navigation
     primary_parent: sessions
     owner:
       repo: aoa-agents
-      surface: mechanics/rpg/parts/progression-model/README.md
+      surface: skills/aoa-session-progression-lift/SKILL.md
       authority: external-authority
     lifecycle:
-      state: active
-      version: 0.1.0
-      visibility: internal
-      evidence_state: owner-verified
-      health: healthy
-    applicability:
-      use_when:
-        - Reviewed evidence may indicate a bounded mastery delta and the aoa-agents owner model is available.
-      do_not_use_when:
-        - Evidence is live or unreviewed, or the request would assign role identity, rank, or progression directly.
-      ambiguous_when:
-        - Observed task success may reflect tools, environment, or prior context rather than agent capability.
-    abi:
-      inputs:
-        - name: reviewed-progression-evidence
-          type: reviewed-session-evidence
-          required: true
-          description: Reviewed observations, baseline, attribution limits, and source refs.
-      outputs:
-        - name: progression-candidate
-          type: owner-progression-candidate
-          required: true
-          description: Bounded candidate delta and attribution limits for aoa-agents owner review.
+      state: candidate
+      version: 0.2.2
+      visibility: advertised
+      evidence_state: evaluated
+      health: challenger
     binding:
-      kind: adapter
-      ref: aoa-agents:mechanics/rpg/parts/progression-model/README.md
-      operation: prepare-owner-candidate
+      kind: skill
+      ref: aoa-agents:skills/aoa-session-progression-lift/SKILL.md
+      operation: lift-reviewed-progression
       availability: external
-    execution:
-      freedom: bounded-judgment
-      tool_requirements:
-        - Read access to reviewed evidence and the current aoa-agents progression contract.
-      verification:
-        - Confirm the packet remains a candidate and attributes tool, environment, and evidence limits explicitly.
-      termination:
-        - Stop at owner handoff; never assign progression or role posture here.
-      effects: [none]
-      reversibility: not-applicable
-      failure_modes:
-        - Converting one success into progression truth or hiding attribution uncertainty.
     trust:
       public_safe: true
       requires_human_approval: false
-      posture: owner-routed
+      posture: derived-reference
     provenance:
       source_refs:
         - repo: aoa-agents
-          path: mechanics/rpg/parts/progression-model/README.md
-          ref: 43d196cccbfb57ba803bf3fa0f723eb46ffeb91f
-          role: owner-contract
+          path: skills/aoa-session-progression-lift/SKILL.md
+          ref: owner-candidate-0.2.2
+          role: owner-skill-contract
           authority: external-authority
       optional_refs: []
-    keywords: [progression, mastery, attribution, рост, мастерство, прогресс]
+    keywords: [progression-lift, mastery, baseline, attribution, owner-review, рост, мастерство, прогресс]
+
+  - id: skill.aoa-summon
+    title: aoa-summon owner bundle
+    description: Decide, launch, and close one bounded child-agent route from an anchored parent task through quest-passport gates, host delegation, named outputs, return validation, and reviewed closeout. Use when the user asks to delegate or summon one narrower reviewer, evaluator, verifier, or leaf helper and a real parent anchor exists. Do not use without explicit delegation intent, with unresolved branch choice, unnamed outputs, d3+ unsplit work, or to bypass approval, proof, progression, stress, or owner boundaries.
+    kind: skill
+    contract_level: navigation
+    primary_parent: sessions
+    owner:
+      repo: aoa-agents
+      surface: skills/aoa-summon/SKILL.md
+      authority: external-authority
+    lifecycle:
+      state: candidate
+      version: 0.2.2
+      visibility: advertised
+      evidence_state: evaluated
+      health: challenger
+    binding:
+      kind: skill
+      ref: aoa-agents:skills/aoa-summon/SKILL.md
+      operation: decide-or-execute
+      availability: external
+    trust:
+      public_safe: true
+      requires_human_approval: false
+      posture: derived-reference
+    provenance:
+      source_refs:
+        - repo: aoa-agents
+          path: skills/aoa-summon/SKILL.md
+          ref: owner-candidate-0.2.2
+          role: owner-skill-contract
+          authority: external-authority
+      optional_refs: []
+    keywords: [summon, delegate, child-agent, passport, return-validation, призвать, делегировать, дочерний-агент]
 relations:
   - kind: implemented-by
     source: sessions.harvest
     target: skill.aoa-session-harvest
   - kind: implemented-by
+    source: sessions.checkpoint-closeout
+    target: skill.aoa-checkpoint-closeout-bridge
+  - kind: adapted-by
+    source: workflow.operations.checkpoint-closeout
+    target: skill.aoa-checkpoint-closeout-bridge
+    condition: The owner playbook remains scenario authority but lacks an executable aoa-playbooks MCP route.
+  - kind: implemented-by
     source: sessions.recovery
     target: skill.aoa-session-recovery
+  - kind: requires
+    source: mode.checkpoint-closeout.execute
+    target: skill.aoa-session-harvest
+  - kind: requires
+    source: mode.checkpoint-closeout.execute
+    target: skill.aoa-session-progression-lift
+    condition: Reviewed evidence supports a progression node.
+  - kind: requires
+    source: skill.aoa-summon
+    target: workflow.operations.delegation
+    condition: Execute mode requires a callable host child-agent binding and a real returned runtime handle.
+  - kind: guarded-by
+    source: skill.aoa-summon
+    target: guard.operations.approval
+    condition: The child route requests effects that require explicit approval.
+  - kind: composes-with
+    source: skill.aoa-session-progression-lift
+    target: skill.aoa-summon
+    condition: An owner-reviewed progression or unlock posture is required by the anchored summon.
+  - kind: hands-off-to
+    source: skill.aoa-summon
+    target: skill.aoa-checkpoint-closeout-bridge
+    condition: A returned child changes the parent checkpoint or closeout posture.
+  - kind: hands-off-to
+    source: skill.aoa-summon
+    target: skill.aoa-memo-writeback
+    condition: A reviewed child return contains one bounded memory-worthy lesson.
+  - kind: hands-off-to
+    source: mode.checkpoint-closeout.execute
+    target: skill.aoa-memo-writeback
+    condition: A bounded reusable closeout lesson survives after the report.
   - kind: hands-off-to
     source: mode.session-harvest.extract
     target: mode.session-harvest.classify
     condition: One extracted unit has sufficient evidence for destination classification.
   - kind: hands-off-to
+    source: mode.session-harvest.classify
+    target: mode.session-harvest.promote
+    condition: Exactly one isolated repeated quest-shaped unit remains and only its promotion verdict is unresolved.
+  - kind: hands-off-to
+    source: mode.session-harvest.classify
+    target: mode.session-harvest.automation-opportunity
+    condition: The unit is a repeated manual route and automation readiness is the unresolved question.
+  - kind: hands-off-to
     source: mode.session-recovery.diagnose
-    target: mode.session-recovery.propose-repair
+    target: mode.session-recovery.repair
     condition: The diagnosis is reviewed and the target owner is known.

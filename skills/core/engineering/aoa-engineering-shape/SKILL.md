@@ -1,18 +1,14 @@
 ---
 name: aoa-engineering-shape
 description: Shape one software responsibility boundary through bounded-context, core-boundary, or port-adapter mode. Use when responsibilities, reusable rules, orchestration, or concrete dependencies are entangled and a small owner-aware boundary is needed before implementation. Do not use for source-authority lookup, ordinary edits, test design, or a boundary that is already clear.
-scope: core
-status: reviewed
-summary: One focused family for context, core, and port-adapter boundary shaping.
-invocation_mode: explicit-preferred
 ---
 
 # aoa-engineering-shape
 
 ## Intent
 
-Choose one shaping lens and return the smallest boundary that improves ownership
-and changeability without installing an architecture framework by default.
+Choose one shaping lens and return the smallest target-bound responsibility
+boundary without installing an architecture framework by default.
 
 ## Trigger boundary
 
@@ -28,55 +24,40 @@ Do not use this skill when:
 
 ## Inputs
 
-- target system or code slice, owner surfaces, current responsibilities
+- target system or code slice, target-specific owner surfaces, current responsibilities
 - concrete ambiguity, repeated rule, or leaking dependency
 
 ## Outputs
 
-- exactly one mode result with boundary, interfaces, owner, migration edge,
+- exactly one typed mode result with boundary, interfaces, owner or unresolved
+  owner edge, migration edge,
   verification need, unresolved question, and stop line
 
 ## Procedure
 
-### Mode selection
+1. Read `references/contract.yaml` and choose exactly one mode:
 
-| Mode | Select when | Output center |
-|---|---|---|
-| `contexts` | Meanings, responsibilities, or owner domains are overloaded. | Context map and interfaces. |
-| `core` | Stable rules are mixed with loading, rendering, orchestration, or infrastructure. | Reusable rule center and edge responsibilities. |
-| `port-adapter` | A concrete database, API, filesystem, CLI, or provider leaks inward. | Purpose-shaped port and adapter contracts. |
+   | Mode | Select when | Required procedure |
+   |---|---|---|
+   | `contexts` | Meanings, responsibilities, owners, or dual postures are overloaded. | `references/contexts.md` |
+   | `core` | A stable rule is mixed with loading, rendering, orchestration, or infrastructure. | `references/core.md` |
+   | `port-adapter` | A concrete database, API, filesystem, CLI, provider, or runtime detail leaks inward. | `references/port-adapter.md` |
 
-Select one mode. If two are necessary, finish the upstream boundary first and
-hand its output to a later task-local node.
-
-### Mode: contexts
-
-1. Name contexts by responsibility rather than directory or team label.
-2. For each, state owner truth, inputs, outputs, and what it must not own.
-3. Trace interfaces and identify one real responsibility leak or unresolved
-   ownership edge. Do not invent hierarchy where a typed relation is enough.
-
-### Mode: core
-
-1. Identify the stable rule or data transformation that survives delivery
-   mechanisms.
-2. Keep source loading, policy selection, orchestration, persistence, rendering,
-   and transport at explicit edges.
-3. Propose the smallest extraction and compatibility projection; do not freeze
-   an incidental current representation as the domain model.
-
-### Mode: port-adapter
-
-1. Define a purpose-shaped port from the consumer need, including inputs,
-   outputs, errors, fallback, limits, and observability.
-2. Place concrete implementations behind adapters and keep policy choices at
-   the composition root.
-3. Name parity and failure checks, including how degraded or truncated behavior
-   remains visible instead of silently changing semantics.
+2. Read the selected reference completely. Do not load the other mode
+   procedures merely because their vocabulary appears nearby.
+3. Bind owner only from a declaration that governs the target slice. An
+   unrelated authored surface, sibling route, recent file, or generated index
+   cannot supply the target owner. Keep `owner: unresolved` when that binding is
+   missing; never borrow a plausible owner.
+4. Execute only the selected procedure. If another shaping mode is materially
+   necessary, finish the upstream result and hand its typed output to a later
+   task-local DAG node instead of blending modes.
 
 ## Contracts
 
 - owner facts remain with their owner; this bundle supplies procedure only
+- proposed boundaries may continue with an unresolved owner, but cannot claim
+  adoption, placement authority, or an owner-specific destination
 - one primary responsibility center; cross-relations stay explicit
 - errors, fallback, and limits are part of a port contract, not hidden adapter
   behavior
@@ -85,13 +66,15 @@ hand its output to a later task-local node.
 ## Risks and anti-patterns
 
 - generic clean-architecture diagrams without exact local responsibilities
+- assigning a target owner from a nearby but unrelated authoritative file
 - making directories, frameworks, or current technique names the semantic core
 - creating a port with no consumer or a context map for a spelling fix
 
 ## Verification
 
 - confirm the selected mode matches the actual pressure
-- cite the local responsibility/rule/dependency that motivated the boundary
+- cite the target-specific responsibility/rule/dependency and the exact owner
+  binding, or state that the owner remains unresolved
 - state migration compatibility, what remains unresolved, and what this result
   does not authorize
 
