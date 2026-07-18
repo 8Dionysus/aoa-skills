@@ -673,3 +673,302 @@ def test_two_stage_retrieval_keeps_package_text_behind_owner_admission() -> None
     )
     assert no_owner_match["owner_admitted"] is False
     assert no_owner_match["deep_rerank"]["candidates"] == []
+
+
+def test_negative_phrase_penalty_uses_only_negative_specific_tokens() -> None:
+    graph = {
+        "nodes": [],
+        "retrieval_documents": [
+            {
+                "id": "skill.session-router",
+                "kind": "skill",
+                "visibility": "advertised",
+                "title": "Session memory router",
+                "description": "Route session memory archive queries.",
+                "search_text": "session memory archive route query",
+                "positive_text": "session memory archive route query",
+                "negative_text": (
+                    "A narrower session memory owner is already known and "
+                    "no query is required."
+                ),
+                "negative_phrases": [
+                    "A narrower session memory owner is already known and "
+                    "no query is required."
+                ],
+                "routing_tokens": [
+                    "archive",
+                    "memory",
+                    "query",
+                    "route",
+                    "session",
+                ],
+                "positive_tokens": [
+                    "archive",
+                    "memory",
+                    "query",
+                    "route",
+                    "session",
+                ],
+                "negative_tokens": [
+                    "already",
+                    "known",
+                    "memory",
+                    "narrower",
+                    "no",
+                    "owner",
+                    "required",
+                    "session",
+                ],
+                "contract_tokens": [
+                    "archive",
+                    "memory",
+                    "query",
+                    "route",
+                    "session",
+                ],
+                "package_tokens": [],
+                "tokens": [
+                    "archive",
+                    "memory",
+                    "query",
+                    "route",
+                    "session",
+                ],
+            }
+        ],
+    }
+
+    positive = capability_system.discover(
+        graph,
+        "session memory archive route query with no mutation",
+        retrieval_depth="compact",
+    )
+    negative = capability_system.discover(
+        graph,
+        "session memory archive route query narrower owner known",
+        retrieval_depth="compact",
+    )
+
+    assert positive[0]["negative_matched_tokens"] == []
+    assert negative[0]["negative_matched_tokens"] == [
+        "known",
+        "narrower",
+        "owner",
+    ]
+
+
+def test_negative_phrase_preserves_explicit_scope_over_positive_terms() -> None:
+    graph = {
+        "nodes": [],
+        "retrieval_documents": [
+            {
+                "id": "workflow.titan.summon",
+                "kind": "workflow",
+                "visibility": "internal",
+                "title": "Explicit Titan summon",
+                "description": "Summon Titans for bounded delegated tasks.",
+                "search_text": "explicit titan summon bounded delegation tasks",
+                "positive_text": (
+                    "explicit titan summon bounded delegation requested tasks"
+                ),
+                "negative_text": (
+                    "delegation was not requested tasks are not bounded"
+                ),
+                "negative_phrases": [
+                    "delegation was not requested",
+                    "tasks are not bounded",
+                ],
+                "routing_tokens": ["explicit", "summon", "titan"],
+                "positive_tokens": [
+                    "bounded",
+                    "delegation",
+                    "explicit",
+                    "requested",
+                    "summon",
+                    "tasks",
+                    "titan",
+                ],
+                "negative_tokens": [
+                    "bounded",
+                    "delegation",
+                    "not",
+                    "requested",
+                    "tasks",
+                    "was",
+                ],
+                "contract_tokens": [
+                    "bounded",
+                    "delegation",
+                    "explicit",
+                    "requested",
+                    "summon",
+                    "tasks",
+                    "titan",
+                ],
+                "package_tokens": [],
+                "tokens": [
+                    "bounded",
+                    "delegation",
+                    "explicit",
+                    "requested",
+                    "summon",
+                    "tasks",
+                    "titan",
+                ],
+            }
+        ],
+    }
+
+    positive = capability_system.discover(
+        graph,
+        "explicit titan summon with bounded tasks and requested delegation",
+        retrieval_depth="compact",
+    )
+    unbounded = capability_system.discover(
+        graph,
+        "explicit titan summon tasks are not bounded",
+        retrieval_depth="compact",
+    )
+    unrequested = capability_system.discover(
+        graph,
+        "explicit titan summon but delegation was not requested",
+        retrieval_depth="compact",
+    )
+    no_delegation = capability_system.discover(
+        graph,
+        "explicit titan summon no delegation requested",
+        retrieval_depth="compact",
+    )
+    without_delegation = capability_system.discover(
+        graph,
+        "explicit titan summon without requested delegation",
+        retrieval_depth="compact",
+    )
+    no_bounded_tasks = capability_system.discover(
+        graph,
+        "explicit titan summon with no bounded tasks",
+        retrieval_depth="compact",
+    )
+
+    assert positive[0]["negative_matched_tokens"] == []
+    assert unbounded[0]["negative_matched_tokens"] == [
+        "bounded",
+        "not",
+        "tasks",
+    ]
+    assert unrequested[0]["negative_matched_tokens"] == [
+        "delegation",
+        "not",
+        "requested",
+        "was",
+    ]
+    assert no_delegation[0]["negative_matched_tokens"] == [
+        "no",
+        "requested",
+    ]
+    assert without_delegation[0]["negative_matched_tokens"] == [
+        "requested",
+        "without",
+    ]
+    assert no_bounded_tasks[0]["negative_matched_tokens"] == [
+        "bounded",
+        "no",
+    ]
+
+
+def test_negative_phrase_preserves_exact_clause_with_shared_vocabulary() -> None:
+    graph = capability_system.load_graph(REPO_ROOT)
+
+    positive = capability_system.discover(
+        graph,
+        "create a concrete memo candidate",
+        retrieval_depth="compact",
+        limit=30,
+    )
+    absent_queries = [
+        "no existing concrete memo candidate",
+        "no suitable existing concrete memo candidate",
+        "not a suitable existing concrete memo candidate",
+    ]
+    absent_results = [
+        capability_system.discover(
+            graph,
+            query,
+            retrieval_depth="compact",
+            limit=30,
+        )
+        for query in absent_queries
+    ]
+    existing = capability_system.discover(
+        graph,
+        "existing concrete memo candidate",
+        retrieval_depth="compact",
+        limit=30,
+    )
+
+    for results in (positive, *absent_results):
+        memo = next(
+            row for row in results if row["id"] == "sessions.memo-writeback"
+        )
+        assert memo["negative_matched_tokens"] == []
+
+    memo = next(
+        row for row in existing if row["id"] == "sessions.memo-writeback"
+    )
+    assert memo["negative_matched_tokens"] == [
+        "candidate",
+        "concrete",
+        "existing",
+        "memo",
+    ]
+
+
+def test_negative_phrase_preserves_short_exact_shared_clause() -> None:
+    graph = capability_system.load_graph(REPO_ROOT)
+
+    runtime_activation = capability_system.discover(
+        graph,
+        "titan console runtime activation",
+        retrieval_depth="compact",
+        limit=200,
+    )
+    role_truth = capability_system.discover(
+        graph,
+        "titan console role truth",
+        retrieval_depth="compact",
+        limit=200,
+    )
+    explicit_absence = capability_system.discover(
+        graph,
+        "titan console with no runtime activation",
+        retrieval_depth="compact",
+        limit=200,
+    )
+    positive = capability_system.discover(
+        graph,
+        "titan console inspect visible helper state",
+        retrieval_depth="compact",
+        limit=200,
+    )
+
+    for node_id in ("projects.titan.session.control", "tool.titan.console"):
+        row = next(
+            item for item in runtime_activation if item["id"] == node_id
+        )
+        assert row["negative_matched_tokens"] == [
+            "activation",
+            "runtime",
+        ]
+        row = next(
+            item for item in explicit_absence if item["id"] == node_id
+        )
+        assert row["negative_matched_tokens"] == []
+        row = next(item for item in positive if item["id"] == node_id)
+        assert row["negative_matched_tokens"] == []
+
+    parent = next(
+        item
+        for item in role_truth
+        if item["id"] == "projects.titan.session.control"
+    )
+    assert parent["negative_matched_tokens"] == ["role", "truth"]

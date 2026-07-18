@@ -89,6 +89,26 @@ STOPWORDS = {
     "этот",
     "что",
 }
+NEGATIVE_CONTEXT_TOKENS = {
+    "без",
+    "except",
+    "кроме",
+    "не",
+    "no",
+    "not",
+    "only",
+    "только",
+    "unless",
+    "without",
+}
+NEGATIVE_SCOPE_TOKENS = NEGATIVE_CONTEXT_TOKENS - {"only", "только"}
+NEGATIVE_SCOPE_EQUIVALENCE = {
+    "без": "plain-negation",
+    "не": "plain-negation",
+    "no": "plain-negation",
+    "not": "plain-negation",
+    "without": "plain-negation",
+}
 
 RUSSIAN_INFLECTIONS = tuple(
     sorted(
@@ -622,19 +642,205 @@ def normalize_token(token: str) -> str:
     return token
 
 
-def tokenize(text: str) -> list[str]:
-    tokens: set[str] = set()
+def tokenize_ordered(
+    text: str,
+    *,
+    keep_negative_scope: bool = False,
+) -> list[str]:
+    tokens: list[str] = []
     for raw_token in re.findall(r"[^\W_]+(?:[-.][^\W_]+)*", text.lower(), flags=re.UNICODE):
-        if len(raw_token) < 2 or raw_token in STOPWORDS:
+        if len(raw_token) < 2 or (
+            raw_token in STOPWORDS
+            and not (keep_negative_scope and raw_token in NEGATIVE_SCOPE_TOKENS)
+        ):
             continue
         parts = [raw_token]
         if "-" in raw_token or "." in raw_token:
             parts.extend(part for part in re.split(r"[-.]", raw_token) if part)
         for part in parts:
-            if len(part) < 2 or part in STOPWORDS:
+            if len(part) < 2 or (
+                part in STOPWORDS
+                and not (keep_negative_scope and part in NEGATIVE_SCOPE_TOKENS)
+            ):
                 continue
-            tokens.add(normalize_token(part))
-    return sorted(tokens)
+            tokens.append(normalize_token(part))
+    return tokens
+
+
+def tokenize(text: str) -> list[str]:
+    return sorted(set(tokenize_ordered(text)))
+
+
+def negative_scope_class(token: str) -> str:
+    """Return the narrow semantic class used for negative-scope comparison."""
+
+    return NEGATIVE_SCOPE_EQUIVALENCE.get(token, token)
+
+
+def negative_scope_phrase_matches(
+    query_tokens: Sequence[str],
+    phrase_tokens: Sequence[str],
+    *,
+    scope_width: int = 3,
+) -> set[str]:
+    """Return phrase evidence only when an explicit negative scope also matches.
+
+    Shared positive vocabulary is not negative evidence by itself.  A scope
+    marker such as ``not`` or ``without`` admits those shared terms only when
+    the query places a matching phrase term after an equivalent marker, which
+    is where these English and Russian negative forms take their object.
+    Plain negators share one narrow class; conditional or exception scopes
+    such as ``unless`` and ``except`` still require an exact marker match.
+    """
+
+    for phrase_index, scope_token in enumerate(phrase_tokens):
+        if scope_token not in NEGATIVE_SCOPE_TOKENS:
+            continue
+        scope_class = negative_scope_class(scope_token)
+        phrase_subject = {
+            token
+            for token in phrase_tokens[max(0, phrase_index - scope_width) : phrase_index]
+            if token not in NEGATIVE_CONTEXT_TOKENS
+        }
+        phrase_scope = [
+            token
+            for token in phrase_tokens[phrase_index + 1 : phrase_index + 1 + scope_width]
+            if token not in NEGATIVE_CONTEXT_TOKENS
+        ]
+        if not phrase_scope:
+            continue
+        for query_index, query_token in enumerate(query_tokens):
+            if negative_scope_class(query_token) != scope_class:
+                continue
+            query_subject = {
+                token
+                for token in query_tokens[max(0, query_index - scope_width) : query_index]
+                if token not in NEGATIVE_CONTEXT_TOKENS
+            }
+            query_scope = {
+                token
+                for token in query_tokens[query_index + 1 : query_index + 1 + scope_width]
+                if token not in NEGATIVE_CONTEXT_TOKENS
+            }
+            scope_matches = query_scope.intersection(phrase_scope)
+            if scope_matches:
+                return {
+                    query_token,
+                    *scope_matches,
+                    *(query_subject & phrase_subject),
+                }
+    return set()
+
+
+def _negative_clause_token_forms(token: str) -> set[str]:
+    """Return narrow local forms for exact-clause paraphrase matching."""
+
+    forms = {token}
+    if len(token) > 5 and token.endswith("s") and not token.endswith(("ss", "us")):
+        forms.add(token[:-1])
+    if len(token) > 6 and token.endswith("ed"):
+        forms.add(token[:-2])
+    if len(token) > 7 and token.endswith("ing"):
+        forms.add(token[:-3])
+    return forms
+
+
+def exact_negative_clause_matches(
+    query_tokens: Sequence[str],
+    phrase_tokens: Sequence[str],
+    *,
+    minimum_run: int = 4,
+    scope_width: int = 3,
+) -> set[str]:
+    """Return a bounded exact-clause match even when all terms are shared.
+
+    A negative applicability clause can be composed entirely from vocabulary
+    that also occurs in the positive contract.  Token-level negative evidence
+    cannot distinguish that case.  Admit it only when the query contains a
+    run of at least four clause terms, allowing narrow inflectional variants
+    such as ``existing``/``exists``.  An explicit negative scope within the
+    bounded modifier window before the run suppresses the match because
+    ``no suitable existing candidate`` is the opposite condition.
+    """
+
+    if any(token in NEGATIVE_SCOPE_TOKENS for token in phrase_tokens):
+        return set()
+    phrase_forms = [_negative_clause_token_forms(token) for token in phrase_tokens]
+    all_phrase_forms = set().union(*phrase_forms) if phrase_forms else set()
+
+    def preceding_scope_suppresses(run_start: int) -> bool:
+        preceding_scope = query_tokens[
+            max(0, run_start - scope_width) : run_start
+        ]
+        return any(
+            token in NEGATIVE_SCOPE_TOKENS for token in preceding_scope
+        )
+
+    # A complete two- or three-token authored clause is precise enough to
+    # preserve as negative evidence when every term appears contiguously and
+    # in order.  Keep the wider four-token floor below for partial runs from
+    # longer clauses, where a short overlap would be ambiguous.
+    if 2 <= len(phrase_forms) < minimum_run:
+        for run_start in range(len(query_tokens) - len(phrase_forms) + 1):
+            run = query_tokens[
+                run_start : run_start + len(phrase_forms)
+            ]
+            if preceding_scope_suppresses(run_start):
+                continue
+            if all(
+                _negative_clause_token_forms(token).intersection(forms)
+                for token, forms in zip(run, phrase_forms, strict=True)
+            ):
+                return set(run)
+        return set()
+
+    def is_subsequence(
+        candidate: Sequence[str],
+        target_forms: Sequence[set[str]],
+    ) -> bool:
+        target_index = 0
+        for token in candidate:
+            token_forms = _negative_clause_token_forms(token)
+            while (
+                target_index < len(target_forms)
+                and not token_forms.intersection(target_forms[target_index])
+            ):
+                target_index += 1
+            if target_index >= len(target_forms):
+                return False
+            target_index += 1
+        return True
+
+    def exact_run(run: Sequence[str], run_start: int) -> set[str]:
+        if len(run) < minimum_run or len(set(run)) < minimum_run:
+            return set()
+        if preceding_scope_suppresses(run_start):
+            return set()
+        if is_subsequence(run, phrase_forms):
+            return set(run)
+        # English conditions often move a terminal predicate before its
+        # subject: "a candidate ... exists" -> "existing candidate".
+        if (
+            phrase_forms
+            and _negative_clause_token_forms(run[0]).intersection(phrase_forms[-1])
+            and is_subsequence(run[1:], phrase_forms[:-1])
+        ):
+            return set(run)
+        return set()
+
+    run: list[str] = []
+    run_start = 0
+    for index, token in enumerate(query_tokens):
+        if _negative_clause_token_forms(token).intersection(all_phrase_forms):
+            if not run:
+                run_start = index
+            run.append(token)
+            continue
+        matched = exact_run(run, run_start)
+        if matched:
+            return matched
+        run = []
+    return exact_run(run, run_start)
 
 
 def bound_retrieval_text(node: Mapping[str, Any], text: str) -> str:
@@ -1305,6 +1511,7 @@ def discover(
             "retrieval_depth must be one of: compact, contract, full"
         )
     query_tokens = tokenize(query)
+    ordered_query_tokens = tokenize_ordered(query, keep_negative_scope=True)
     query_token_set = set(query_tokens)
     normalized_query = " ".join(query_tokens)
     project_markers = {
@@ -1358,15 +1565,42 @@ def discover(
                 matched.append(token)
                 score += token_score
                 strongest_match = max(strongest_match, token_score)
-            if token in negative_only_tokens:
+            if (
+                token in negative_only_tokens
+                and token not in NEGATIVE_CONTEXT_TOKENS
+            ):
                 negative_matched.append(token)
                 score -= 3.0
         for negative_phrase in document.get("negative_phrases", []):
-            phrase_tokens = set(tokenize(str(negative_phrase)))
-            overlap = set(query_tokens) & phrase_tokens
-            if len(overlap) >= 2 and len(overlap) / max(len(query_tokens), 1) >= 0.30:
-                negative_matched.extend(overlap)
-                score -= 2.5 * len(overlap)
+            ordered_phrase_tokens = tokenize_ordered(
+                str(negative_phrase),
+                keep_negative_scope=True,
+            )
+            phrase_specific_tokens = (
+                set(ordered_phrase_tokens) & negative_only_tokens
+            )
+            overlap = query_token_set & phrase_specific_tokens
+            phrase_matches: set[str] = set()
+            if (
+                len(overlap) >= 2
+                and len(overlap) / max(len(phrase_specific_tokens), 1) >= 0.30
+            ):
+                phrase_matches.update(overlap)
+            phrase_matches.update(
+                negative_scope_phrase_matches(
+                    ordered_query_tokens,
+                    ordered_phrase_tokens,
+                )
+            )
+            phrase_matches.update(
+                exact_negative_clause_matches(
+                    ordered_query_tokens,
+                    ordered_phrase_tokens,
+                )
+            )
+            if phrase_matches:
+                negative_matched.extend(phrase_matches)
+                score -= 2.5 * len(phrase_matches)
         phrase_match = bool(
             normalized_query and normalized_query in str(document.get("positive_text", "")).lower()
         )
