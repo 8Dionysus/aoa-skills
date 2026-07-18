@@ -25,8 +25,12 @@ bundles are explicit deferred candidates.
 - `user-default` carries one advertised shared bundle at the standard Codex
   user root; installation and fresh-session visibility remain host evidence,
   not consequences of declaring the profile.
-- repository `.agents/skills/*` carries only that repository's derived home
-  export; workspace-root projection is reserved for workspace-owned skills.
+- `os-user-default` may select admitted owner-home bundles into the same
+  globally discoverable user catalog while truth stays under each owner's
+  `skills/` home.
+- repository `.agents/skills/*` is reserved for repository-only procedures and
+  must not duplicate a bundle selected by the OS user profile. The old
+  owner-home repository projection remains v1 migration compatibility only.
 - `kag/` exposes source-linked graph and return handles to `aoa-kag`.
 - release manifests bind source and portable hashes for pack handoff.
 
