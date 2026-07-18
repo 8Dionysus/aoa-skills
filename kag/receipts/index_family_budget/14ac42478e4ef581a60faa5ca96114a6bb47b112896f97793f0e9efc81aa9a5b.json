@@ -1,0 +1,17 @@
+{
+  "allowed_bytes": 7116621,
+  "allowed_tracked_bytes": 9629353,
+  "approved_by": "repository-owner",
+  "base_ref": "42c6afa8c817ac3732e9a6710fd0ddf251cd4a97",
+  "changed_generated_bytes": 7116621,
+  "changed_generated_files": 260,
+  "decision_ref": "aoa-kag:docs/decisions/AOA-KAG-D-0017-portable-content-addressed-repository-family.md",
+  "default_limit_bytes": 1048576,
+  "head_family_digest": "14ac42478e4ef581a60faa5ca96114a6bb47b112896f97793f0e9efc81aa9a5b",
+  "reason": "Owner-reviewed task-DAG structural validation now rejects forward verifier cycles and dangling endpoints, and generated owner graphs fingerprint the complete shared contract closure; this receipt authorizes only the measured family delta and preserves the standing budget.",
+  "repo": "aoa-skills",
+  "schema_version": "aoa-repo-local-kag-budget-receipt-v1",
+  "scope": "generated_delta_and_tracked_size",
+  "tracked_bytes": 9629353,
+  "tracked_bytes_max": 9437184
+}
