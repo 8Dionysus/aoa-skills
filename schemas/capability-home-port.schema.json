@@ -1,0 +1,114 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://8dionysus.github.io/aoa-skills/schemas/capability-home-port-v1.schema.json",
+  "title": "AoA repository capability home port",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "contract_ref",
+    "owner_repo",
+    "owner_ref",
+    "admission_ref",
+    "source",
+    "federation",
+    "skill_home_ref",
+    "projection"
+  ],
+  "properties": {
+    "schema_version": {"const": "aoa_capability_home_port_v1"},
+    "contract_ref": {
+      "const": "aoa-skills:schemas/capability-home-port.schema.json"
+    },
+    "owner_repo": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$"
+    },
+    "owner_ref": {"$ref": "#/$defs/relativePath"},
+    "admission_ref": {"$ref": "#/$defs/relativePath"},
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["family_root", "root_id"],
+      "properties": {
+        "family_root": {"const": "capabilities/families"},
+        "root_id": {"$ref": "#/$defs/id"}
+      }
+    },
+    "federation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["parent_owner", "parent_node", "relation"],
+      "properties": {
+        "parent_owner": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$"
+        },
+        "parent_node": {"$ref": "#/$defs/id"},
+        "relation": {
+          "type": "string",
+          "enum": ["specializes", "generalizes", "adapts"]
+        }
+      }
+    },
+    "skill_home_ref": {"$ref": "#/$defs/relativePath"},
+    "eval_port_ref": {"$ref": "#/$defs/relativePath"},
+    "projection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "authority",
+        "graph_json",
+        "graph_markdown",
+        "router_markdown",
+        "generated_by"
+      ],
+      "properties": {
+        "authority": {"const": false},
+        "graph_json": {"$ref": "#/$defs/projectionJsonPath"},
+        "graph_markdown": {"$ref": "#/$defs/projectionMarkdownPath"},
+        "router_markdown": {"$ref": "#/$defs/routerProjectionPath"},
+        "generated_by": {
+          "const": "aoa-skills:scripts/build_capability_home_projection.py"
+        }
+      }
+    }
+  },
+  "$defs": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:[._-][a-z0-9]+)*$"
+    },
+    "relativePath": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))[^\\u0000]+$"
+    },
+    "projectionJsonPath": {
+      "allOf": [
+        {"$ref": "#/$defs/relativePath"},
+        {
+          "pattern": "^(?:generated|derived|read-models)/[^\\u0000]+\\.json$"
+        }
+      ]
+    },
+    "projectionMarkdownPath": {
+      "allOf": [
+        {"$ref": "#/$defs/relativePath"},
+        {
+          "pattern": "^(?:generated|derived|read-models)/[^\\u0000]+\\.md$"
+        }
+      ]
+    },
+    "routerProjectionPath": {
+      "allOf": [
+        {"$ref": "#/$defs/relativePath"},
+        {
+          "pattern": "^(?:(?:generated|derived|read-models)/[^\\u0000]+\\.md|skills/[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/references/capability-router\\.md)$"
+        }
+      ]
+    }
+  }
+}

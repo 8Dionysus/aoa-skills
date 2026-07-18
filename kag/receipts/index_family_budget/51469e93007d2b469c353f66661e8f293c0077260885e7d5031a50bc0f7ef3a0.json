@@ -1,0 +1,17 @@
+{
+  "allowed_bytes": 7109728,
+  "allowed_tracked_bytes": 9624177,
+  "approved_by": "repository-owner",
+  "base_ref": "42c6afa8c817ac3732e9a6710fd0ddf251cd4a97",
+  "changed_generated_bytes": 7109728,
+  "changed_generated_files": 260,
+  "decision_ref": "aoa-kag:docs/decisions/AOA-KAG-D-0017-portable-content-addressed-repository-family.md",
+  "default_limit_bytes": 1048576,
+  "head_family_digest": "51469e93007d2b469c353f66661e8f293c0077260885e7d5031a50bc0f7ef3a0",
+  "reason": "Owner-reviewed DAG closure fix includes forward verifier relations in execution, stages, and checkpoints, with a focused regression proving verifier selection and ordering; this receipt authorizes only the measured portable-family delta.",
+  "repo": "aoa-skills",
+  "schema_version": "aoa-repo-local-kag-budget-receipt-v1",
+  "scope": "generated_delta_and_tracked_size",
+  "tracked_bytes": 9624177,
+  "tracked_bytes_max": 9437184
+}

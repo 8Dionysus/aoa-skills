@@ -13,6 +13,7 @@
 - [AOA-SK-D-0025 Root Legacy Retirement](../AOA-SK-D-0025-root-legacy-retirement.md) (`docs/decisions/AOA-SK-D-0025-root-legacy-retirement.md`)
 - [AOA-SK-D-0039 Semantic Capability Ecosystem](../AOA-SK-D-0039-semantic-capability-ecosystem.md) (`docs/decisions/AOA-SK-D-0039-semantic-capability-ecosystem.md`)
 - [AOA-SK-D-0040 Owner Skill Homes And Projection Boundaries](../AOA-SK-D-0040-owner-skill-homes-and-projection-boundaries.md) (`docs/decisions/AOA-SK-D-0040-owner-skill-homes-and-projection-boundaries.md`)
+- [AOA-SK-D-0043 Federated Owner Capability Home](../AOA-SK-D-0043-federated-owner-capability-home.md) (`docs/decisions/AOA-SK-D-0043-federated-owner-capability-home.md`)
 
 ## authority/charter
 
@@ -49,6 +50,7 @@
 - [AOA-SK-D-0040 Owner Skill Homes And Projection Boundaries](../AOA-SK-D-0040-owner-skill-homes-and-projection-boundaries.md) (`docs/decisions/AOA-SK-D-0040-owner-skill-homes-and-projection-boundaries.md`)
 - [AOA-SK-D-0041 Minimal Owner Home Port Contract](../AOA-SK-D-0041-minimal-owner-home-port-contract.md) (`docs/decisions/AOA-SK-D-0041-minimal-owner-home-port-contract.md`)
 - [AOA-SK-D-0042 Global Owner Skill Exposure](../AOA-SK-D-0042-global-owner-skill-exposure.md) (`docs/decisions/AOA-SK-D-0042-global-owner-skill-exposure.md`)
+- [AOA-SK-D-0043 Federated Owner Capability Home](../AOA-SK-D-0043-federated-owner-capability-home.md) (`docs/decisions/AOA-SK-D-0043-federated-owner-capability-home.md`)
 
 ## technique bridge
 
@@ -90,6 +92,7 @@
 - [AOA-SK-D-0038 Committed Evidence Readout Completeness Gate](../AOA-SK-D-0038-committed-evidence-readout-completeness-gate.md) (`docs/decisions/AOA-SK-D-0038-committed-evidence-readout-completeness-gate.md`)
 - [AOA-SK-D-0039 Semantic Capability Ecosystem](../AOA-SK-D-0039-semantic-capability-ecosystem.md) (`docs/decisions/AOA-SK-D-0039-semantic-capability-ecosystem.md`)
 - [AOA-SK-D-0040 Owner Skill Homes And Projection Boundaries](../AOA-SK-D-0040-owner-skill-homes-and-projection-boundaries.md) (`docs/decisions/AOA-SK-D-0040-owner-skill-homes-and-projection-boundaries.md`)
+- [AOA-SK-D-0043 Federated Owner Capability Home](../AOA-SK-D-0043-federated-owner-capability-home.md) (`docs/decisions/AOA-SK-D-0043-federated-owner-capability-home.md`)
 
 ## export/runtime
 
@@ -106,6 +109,7 @@
 - [AOA-SK-D-0040 Owner Skill Homes And Projection Boundaries](../AOA-SK-D-0040-owner-skill-homes-and-projection-boundaries.md) (`docs/decisions/AOA-SK-D-0040-owner-skill-homes-and-projection-boundaries.md`)
 - [AOA-SK-D-0041 Minimal Owner Home Port Contract](../AOA-SK-D-0041-minimal-owner-home-port-contract.md) (`docs/decisions/AOA-SK-D-0041-minimal-owner-home-port-contract.md`)
 - [AOA-SK-D-0042 Global Owner Skill Exposure](../AOA-SK-D-0042-global-owner-skill-exposure.md) (`docs/decisions/AOA-SK-D-0042-global-owner-skill-exposure.md`)
+- [AOA-SK-D-0043 Federated Owner Capability Home](../AOA-SK-D-0043-federated-owner-capability-home.md) (`docs/decisions/AOA-SK-D-0043-federated-owner-capability-home.md`)
 
 ## public status
 
@@ -147,6 +151,7 @@
 - [AOA-SK-D-0037 Source-Locked Live Skill Dispatch Evidence](../AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md) (`docs/decisions/AOA-SK-D-0037-source-locked-live-skill-dispatch-evidence.md`)
 - [AOA-SK-D-0038 Committed Evidence Readout Completeness Gate](../AOA-SK-D-0038-committed-evidence-readout-completeness-gate.md) (`docs/decisions/AOA-SK-D-0038-committed-evidence-readout-completeness-gate.md`)
 - [AOA-SK-D-0039 Semantic Capability Ecosystem](../AOA-SK-D-0039-semantic-capability-ecosystem.md) (`docs/decisions/AOA-SK-D-0039-semantic-capability-ecosystem.md`)
+- [AOA-SK-D-0043 Federated Owner Capability Home](../AOA-SK-D-0043-federated-owner-capability-home.md) (`docs/decisions/AOA-SK-D-0043-federated-owner-capability-home.md`)
 
 ## legacy/provenance
 
@@ -162,6 +167,7 @@
 - [AOA-SK-D-0040 Owner Skill Homes And Projection Boundaries](../AOA-SK-D-0040-owner-skill-homes-and-projection-boundaries.md) (`docs/decisions/AOA-SK-D-0040-owner-skill-homes-and-projection-boundaries.md`)
 - [AOA-SK-D-0041 Minimal Owner Home Port Contract](../AOA-SK-D-0041-minimal-owner-home-port-contract.md) (`docs/decisions/AOA-SK-D-0041-minimal-owner-home-port-contract.md`)
 - [AOA-SK-D-0042 Global Owner Skill Exposure](../AOA-SK-D-0042-global-owner-skill-exposure.md) (`docs/decisions/AOA-SK-D-0042-global-owner-skill-exposure.md`)
+- [AOA-SK-D-0043 Federated Owner Capability Home](../AOA-SK-D-0043-federated-owner-capability-home.md) (`docs/decisions/AOA-SK-D-0043-federated-owner-capability-home.md`)
 
 ## source topology
 

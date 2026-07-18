@@ -45,11 +45,18 @@
     "config/portable_skill_overrides.json",
     "config/skill_pack_profiles.json",
     "config/skill_policy_matrix.json",
+    "schemas/capability-home-port.schema.json",
     "schemas/capability_family.schema.json",
     "schemas/capability_graph.schema.json",
     "schemas/release_manifest.schema.json",
     "schemas/skill_migration.schema.json",
     "schemas/task_local_dag.schema.json",
+    "schemas/task_local_dag_v2.schema.json",
+    "scripts/builders/build_capability_home_projection.py",
+    "scripts/runtime/capability_home.py",
+    "scripts/skill_model/capability_home_port.py",
+    "scripts/skill_model/capability_system.py",
+    "scripts/validation/validate_capability_home_port.py",
     "skills/core/engineering/aoa-decision/SKILL.md",
     "skills/core/engineering/aoa-decision/agents/openai.yaml",
     "skills/core/engineering/aoa-decision/references/contract.yaml",
@@ -359,14 +366,19 @@
       "bytes": 4165
     },
     {
+      "path": "schemas/capability-home-port.schema.json",
+      "sha256": "35b8ab0fef1ddc09dddc461988f04ac6ac1eea97fc78b207aa5ffe1907040bd5",
+      "bytes": 3271
+    },
+    {
       "path": "schemas/capability_family.schema.json",
-      "sha256": "c16de3d4e9329139bd28386bdabd8a3f081ec706efb866062fc10b3646f0b8ed",
-      "bytes": 9369
+      "sha256": "9f99d964b50217d1031247aa90bec20025178b9deaef61b566bb9c01059d6258",
+      "bytes": 13023
     },
     {
       "path": "schemas/capability_graph.schema.json",
-      "sha256": "8a4da14605943e1cb6841a06d1db51fc23baeaafc0f5f8ad2718bf6261218734",
-      "bytes": 4629
+      "sha256": "343f57772410ce27f964a9e3cf242efa8a39625faf838c6255658b249c8a34c6",
+      "bytes": 6345
     },
     {
       "path": "schemas/release_manifest.schema.json",
@@ -382,6 +394,36 @@
       "path": "schemas/task_local_dag.schema.json",
       "sha256": "cc90790ca6a4f4512744e0b075ae3826a2446c91ee81b22ca608df2f4306f8f9",
       "bytes": 3093
+    },
+    {
+      "path": "schemas/task_local_dag_v2.schema.json",
+      "sha256": "50dbbf4917a49729893045eb9765b091c4370b819ee6534d08d868a4723ec664",
+      "bytes": 4548
+    },
+    {
+      "path": "scripts/builders/build_capability_home_projection.py",
+      "sha256": "ba749c07db5e759dc765c1abf05d3a2da3fad7d0311853d7eab49291bc0057f7",
+      "bytes": 1622
+    },
+    {
+      "path": "scripts/runtime/capability_home.py",
+      "sha256": "f0e085856d2e8c317aa18480086a678eb74c0235ba021b2b3d80f363ea33c265",
+      "bytes": 3443
+    },
+    {
+      "path": "scripts/skill_model/capability_home_port.py",
+      "sha256": "c45009d228935bc35619499fe551c5f5ba8187a332b92a5f497b9d9ba5611ff1",
+      "bytes": 30422
+    },
+    {
+      "path": "scripts/skill_model/capability_system.py",
+      "sha256": "b11529b1e6df6d311679daf22b0b24d9dea312532179329c4808ad8ab6bfa2d5",
+      "bytes": 80165
+    },
+    {
+      "path": "scripts/validation/validate_capability_home_port.py",
+      "sha256": "1e33868171e309d04d566e1b7762514b21cbf487410cf5d770a92c7b34831678",
+      "bytes": 1758
     },
     {
       "path": "skills/core/engineering/aoa-decision/SKILL.md",

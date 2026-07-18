@@ -88,3 +88,7 @@
 ## 2026-07-17
 
 - [AOA-SK-D-0042 Global Owner Skill Exposure](../AOA-SK-D-0042-global-owner-skill-exposure.md) (`docs/decisions/AOA-SK-D-0042-global-owner-skill-exposure.md`)
+
+## 2026-07-18
+
+- [AOA-SK-D-0043 Federated Owner Capability Home](../AOA-SK-D-0043-federated-owner-capability-home.md) (`docs/decisions/AOA-SK-D-0043-federated-owner-capability-home.md`)

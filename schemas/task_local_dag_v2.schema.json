@@ -1,0 +1,154 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://8dionysus.github.io/aoa-skills/schemas/task-local-dag-v2.schema.json",
+  "title": "AoA task-local capability DAG v2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "authority",
+    "plan_id",
+    "request",
+    "source_graph",
+    "status",
+    "selected_capabilities",
+    "nodes",
+    "edges",
+    "external_inputs",
+    "execution_stages",
+    "checkpoints",
+    "terminal",
+    "warnings",
+    "blockers"
+  ],
+  "properties": {
+    "schema_version": {"const": "aoa-task-local-dag-v2"},
+    "authority": {"const": false},
+    "plan_id": {"type": "string", "pattern": "^dag-[0-9a-f]{16}$"},
+    "request": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["query"],
+      "properties": {"query": {"type": "string", "minLength": 1}}
+    },
+    "source_graph": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "content_hash"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1},
+        "content_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      }
+    },
+    "status": {"type": "string", "enum": ["ready", "blocked"]},
+    "selected_capabilities": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"type": "string", "minLength": 1},
+      "uniqueItems": true
+    },
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "kind",
+          "binding",
+          "owner",
+          "inputs",
+          "outputs",
+          "effects",
+          "verification",
+          "termination",
+          "availability"
+        ],
+        "properties": {
+          "id": {"type": "string", "minLength": 1},
+          "kind": {"type": "string", "minLength": 1},
+          "binding": {"type": "object"},
+          "owner": {"type": "object"},
+          "inputs": {"type": "array"},
+          "outputs": {"type": "array"},
+          "effects": {"type": "array", "items": {"type": "string"}},
+          "verification": {
+            "type": "array",
+            "minItems": 1,
+            "items": {"type": "string", "minLength": 1}
+          },
+          "termination": {"type": "array", "items": {"type": "string"}},
+          "availability": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["kind", "source", "target"],
+        "properties": {
+          "kind": {
+            "type": "string",
+            "enum": ["dependency", "guard", "data", "handoff", "verification"]
+          },
+          "source": {"type": "string", "minLength": 1},
+          "target": {"type": "string", "minLength": 1},
+          "artifact_type": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "external_inputs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["type", "ref"],
+        "properties": {
+          "type": {"type": "string", "minLength": 1},
+          "ref": {"type": "string", "minLength": 1},
+          "target": {"type": "string", "minLength": 1},
+          "port": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "execution_stages": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "minItems": 1,
+        "items": {"type": "string", "minLength": 1},
+        "uniqueItems": true
+      }
+    },
+    "checkpoints": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["node", "criteria"],
+        "properties": {
+          "node": {"type": "string", "minLength": 1},
+          "verifier": {"type": "string", "minLength": 1},
+          "criteria": {
+            "type": "array",
+            "minItems": 1,
+            "items": {"type": "string", "minLength": 1}
+          }
+        }
+      }
+    },
+    "terminal": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["lifetime", "success_condition"],
+      "properties": {
+        "lifetime": {"const": "task-local"},
+        "success_condition": {"const": "all selected nodes reached verified terminal conditions"}
+      }
+    },
+    "warnings": {"type": "array", "items": {"type": "string"}},
+    "blockers": {"type": "array", "items": {"type": "string"}}
+  }
+}

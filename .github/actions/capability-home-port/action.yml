@@ -1,0 +1,27 @@
+name: Validate repository capability home
+description: Validate one owner-local capability source and its deterministic routing projections.
+
+inputs:
+  owner-root:
+    description: Repository root containing capabilities/port.manifest.json.
+    required: false
+    default: .
+  manifest:
+    description: Manifest path relative to owner-root.
+    required: false
+    default: capabilities/port.manifest.json
+
+runs:
+  using: composite
+  steps:
+    - name: Validate owner capability source and projection
+      shell: bash
+      env:
+        AOA_OWNER_ROOT: ${{ inputs.owner-root }}
+        AOA_CAPABILITY_MANIFEST: ${{ inputs.manifest }}
+      run: >-
+        PYTHONPATH="$GITHUB_ACTION_PATH/../../../scripts"
+        python3 "$GITHUB_ACTION_PATH/../../../scripts/validate_capability_home_port.py"
+        --owner-root "$AOA_OWNER_ROOT"
+        --manifest "$AOA_CAPABILITY_MANIFEST"
+        --check-generated

@@ -55,12 +55,19 @@ The managed install receipt at
 `$HOME/.codex/skills/.aoa-os-skill-profile.json` is the machine-local
 source-return handle. Each installed entry records the owner repository,
 absolute owner root, repository-relative source path, owner ref, dirty posture,
-version, and package digest. A bundle must resolve back to the same admitted
-owner package before owner-relative procedure or contract reads. The receipt is
-a locator and provenance record, not procedure truth, current parity, runtime
-health, or evidence of successful use. A missing, ambiguous, dirty, or stale
-handle blocks source-dependent claims; it never authorizes searching sibling
-repositories or temporary fixtures for a plausible copy.
+version, complete installable-package digest, prompt-description hash, and
+source fingerprint. When the owner also exposes a capability home, the receipt
+records that graph's source hash and its authored package fingerprint; the
+latter excludes generated projections to avoid a self-referential digest.
+Owners without a capability home use the complete package digest as their
+source fingerprint and label that scope explicitly. A bundle must resolve back
+to the same admitted owner package before owner-relative procedure or contract
+reads. These identity dimensions let later reviewed evidence distinguish
+source, installed, and prompt-visible state. They do not prove selection,
+execution, runtime health, routing quality, or successful use. A missing,
+ambiguous, dirty, or stale handle blocks source-dependent claims; it never
+authorizes searching sibling repositories or temporary fixtures for a
+plausible copy.
 
 Normal installation is fail-closed for every dirty Git owner source. The
 installer permits `--allow-dirty-source` only with a separate explicit

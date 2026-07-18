@@ -1,0 +1,17 @@
+{
+  "allowed_bytes": 7120757,
+  "allowed_tracked_bytes": 9633489,
+  "approved_by": "repository-owner",
+  "base_ref": "42c6afa8c817ac3732e9a6710fd0ddf251cd4a97",
+  "changed_generated_bytes": 7120757,
+  "changed_generated_files": 260,
+  "decision_ref": "aoa-kag:docs/decisions/AOA-KAG-D-0017-portable-content-addressed-repository-family.md",
+  "default_limit_bytes": 1048576,
+  "head_family_digest": "d4a1446ebb359a3dd05c8b43161470414d2a563f13a4dfe7111c41ec5c8c53c0",
+  "reason": "Owner-reviewed graph identity fix binds skill package executable mode bits into capability_graph_hash; this receipt authorizes only the measured content-addressed family delta and preserves the standing budget.",
+  "repo": "aoa-skills",
+  "schema_version": "aoa-repo-local-kag-budget-receipt-v1",
+  "scope": "generated_delta_and_tracked_size",
+  "tracked_bytes": 9633489,
+  "tracked_bytes_max": 9437184
+}

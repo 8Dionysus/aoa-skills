@@ -1,8 +1,11 @@
 from __future__ import annotations
 
 import copy
+import json
 import sys
 from pathlib import Path
+
+import pytest
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
@@ -10,7 +13,7 @@ SCRIPTS = REPO_ROOT / "scripts"
 if str(SCRIPTS) not in sys.path:
     sys.path.insert(0, str(SCRIPTS))
 
-from skill_model import capability_system
+from skill_model import capability_home_port, capability_system
 
 
 def test_manual_migration_contract_remains_exact_and_live() -> None:
@@ -104,9 +107,569 @@ def test_task_local_dag_connects_abi_and_blocks_conflicting_modes() -> None:
             "kind": "data",
             "source": "mode.eval.select",
             "target": "mode.eval.apply",
-        }
+        },
+        {
+            "kind": "handoff",
+            "source": "mode.eval.select",
+            "target": "mode.eval.apply",
+        },
     ]
+    assert ready["execution_stages"] == [
+        ["mode.eval.select"],
+        ["mode.eval.apply"],
+    ]
+    assert {
+        checkpoint["node"] for checkpoint in ready["checkpoints"]
+    } == {"mode.eval.select", "mode.eval.apply"}
+    assert ready["terminal"] == {
+        "lifetime": "task-local",
+        "success_condition": "all selected nodes reached verified terminal conditions",
+    }
     assert capability_system.validate_task_dag(REPO_ROOT, ready) == []
     assert blocked["status"] == "blocked"
     assert any("conflict:" in blocker for blocker in blocked["blockers"])
     assert capability_system.validate_task_dag(REPO_ROOT, blocked) == []
+
+
+def test_task_local_dag_closure_includes_forward_verifier() -> None:
+    def executable_node(
+        node_id: str,
+        *,
+        inputs: list[dict[str, object]],
+        outputs: list[dict[str, object]],
+    ) -> dict[str, object]:
+        return {
+            "id": node_id,
+            "kind": "skill",
+            "contract_level": "executable",
+            "binding": {
+                "availability": "available",
+                "ref": f"skills/{node_id}",
+            },
+            "owner": {
+                "repo": "owner",
+                "ref": "AGENTS.md",
+            },
+            "abi": {
+                "inputs": inputs,
+                "outputs": outputs,
+            },
+            "execution": {
+                "effects": ["none"],
+                "verification": [f"verify {node_id}"],
+                "termination": [f"stop after {node_id}"],
+            },
+        }
+
+    graph = {
+        "source": {"content_hash": "sha256:test"},
+        "nodes": [
+            executable_node(
+                "skill.work",
+                inputs=[],
+                outputs=[{"name": "result", "type": "work-result"}],
+            ),
+            executable_node(
+                "skill.verifier",
+                inputs=[
+                    {
+                        "name": "result",
+                        "type": "work-result",
+                        "required": True,
+                    }
+                ],
+                outputs=[],
+            ),
+        ],
+        "relations": [
+            {
+                "kind": "verifies",
+                "source": "skill.verifier",
+                "target": "skill.work",
+            }
+        ],
+    }
+
+    plan = capability_system.build_task_dag(
+        graph,
+        query="run work and its declared verifier",
+        selected_capabilities=["skill.work"],
+    )
+
+    assert plan["status"] == "ready"
+    assert [node["id"] for node in plan["nodes"]] == [
+        "skill.verifier",
+        "skill.work",
+    ]
+    assert plan["execution_stages"] == [
+        ["skill.work"],
+        ["skill.verifier"],
+    ]
+    assert {
+        checkpoint["node"]: checkpoint.get("verifier")
+        for checkpoint in plan["checkpoints"]
+    } == {
+        "skill.verifier": None,
+        "skill.work": "skill.verifier",
+    }
+    assert {
+        (edge["kind"], edge["source"], edge["target"])
+        for edge in plan["edges"]
+    } == {
+        ("data", "skill.work", "skill.verifier"),
+        ("verification", "skill.work", "skill.verifier"),
+    }
+
+
+def test_owner_port_dependency_cycle_includes_guard_relations() -> None:
+    acyclic = [
+        {
+            "kind": "guarded-by",
+            "source": "skill.work",
+            "target": "guard.approval",
+        }
+    ]
+    cyclic = [
+        *acyclic,
+        {
+            "kind": "guarded-by",
+            "source": "guard.approval",
+            "target": "skill.work",
+        },
+    ]
+
+    assert (
+        capability_home_port._dependency_cycle(
+            {"skill.work", "guard.approval"},
+            acyclic,
+        )
+        is None
+    )
+    assert capability_home_port._dependency_cycle(
+        {"skill.work", "guard.approval"},
+        cyclic,
+    ) == ["guard.approval", "skill.work"]
+
+    verifies_cycle = [
+        {
+            "kind": "verifies",
+            "source": "skill.verifier",
+            "target": "skill.work",
+        },
+        {
+            "kind": "verifies",
+            "source": "skill.work",
+            "target": "skill.verifier",
+        },
+    ]
+    assert capability_home_port._dependency_cycle(
+        {"skill.work", "skill.verifier"},
+        verifies_cycle,
+    ) == ["skill.verifier", "skill.work"]
+
+
+def test_shared_task_dag_structure_rejects_dangling_edge_endpoints() -> None:
+    graph = capability_system.load_graph(REPO_ROOT)
+    payload = capability_system.build_task_dag(
+        graph,
+        query="select then apply one evaluation",
+        selected_capabilities=["mode.eval.select", "mode.eval.apply"],
+        external_inputs=[
+            {"type": "evaluation-selection-need", "ref": "manual://need"}
+        ],
+    )
+    dangling = copy.deepcopy(payload)
+    dangling["edges"][0]["source"] = "mode.missing-source"
+    dangling["edges"][0]["target"] = "mode.missing-target"
+    schema = capability_system.load_json(
+        REPO_ROOT / capability_system.DAG_SCHEMA_PATH
+    )
+
+    issues = capability_system.task_dag_structural_issues(dangling, schema)
+
+    assert "edge source does not exist: mode.missing-source" in issues
+    assert "edge target does not exist: mode.missing-target" in issues
+
+
+def test_shared_task_dag_structure_rejects_reversed_execution_stages() -> None:
+    graph = capability_system.load_graph(REPO_ROOT)
+    payload = capability_system.build_task_dag(
+        graph,
+        query="select then apply one evaluation",
+        selected_capabilities=["mode.eval.select", "mode.eval.apply"],
+        external_inputs=[
+            {"type": "evaluation-selection-need", "ref": "manual://need"}
+        ],
+    )
+    reversed_stages = copy.deepcopy(payload)
+    reversed_stages["execution_stages"] = list(
+        reversed(reversed_stages["execution_stages"])
+    )
+    schema = capability_system.load_json(
+        REPO_ROOT / capability_system.DAG_SCHEMA_PATH
+    )
+
+    issues = capability_system.task_dag_structural_issues(
+        reversed_stages,
+        schema,
+    )
+
+    assert (
+        "execution stage order violates edge "
+        "mode.eval.select -> mode.eval.apply: source must precede target"
+    ) in issues
+
+
+def _write_owner_port(
+    root: Path,
+    projection: dict[str, object],
+) -> Path:
+    (root / "capabilities").mkdir(parents=True)
+    (root / "skills").mkdir()
+    (root / "capabilities" / "AGENTS.md").write_text(
+        "# Owner\n",
+        encoding="utf-8",
+    )
+    (root / "capabilities" / "admission.md").write_text(
+        "# Admission\n",
+        encoding="utf-8",
+    )
+    (root / "skills" / "port.manifest.json").write_text(
+        "{}\n",
+        encoding="utf-8",
+    )
+    manifest = {
+        "schema_version": "aoa_capability_home_port_v1",
+        "contract_ref": "aoa-skills:schemas/capability-home-port.schema.json",
+        "owner_repo": "owner-example",
+        "owner_ref": "capabilities/AGENTS.md",
+        "admission_ref": "capabilities/admission.md",
+        "source": {
+            "family_root": "capabilities/families",
+            "root_id": "owner-example",
+        },
+        "federation": {
+            "parent_owner": "aoa-skills",
+            "parent_node": "sessions",
+            "relation": "specializes",
+        },
+        "skill_home_ref": "skills/port.manifest.json",
+        "projection": {
+            "authority": False,
+            **projection,
+            "generated_by": (
+                "aoa-skills:scripts/build_capability_home_projection.py"
+            ),
+        },
+    }
+    path = root / "capabilities" / "port.manifest.json"
+    path.write_text(
+        json.dumps(manifest, indent=2) + "\n",
+        encoding="utf-8",
+    )
+    return path
+
+
+def test_owner_projection_outputs_reject_authored_paths_and_collisions(
+    tmp_path: Path,
+) -> None:
+    unsafe_root = tmp_path / "unsafe"
+    _write_owner_port(
+        unsafe_root,
+        {
+            "graph_json": "generated/capability-graph.json",
+            "graph_markdown": "capabilities/families/owner-example.yaml",
+            "router_markdown": "skills/owner-router/SKILL.md",
+        },
+    )
+
+    with pytest.raises(
+        capability_home_port.CapabilityHomePortError,
+        match="projection",
+    ):
+        capability_home_port.load_port(REPO_ROOT, unsafe_root)
+
+    collision_root = tmp_path / "collision"
+    _write_owner_port(
+        collision_root,
+        {
+            "graph_json": "generated/capability-graph.json",
+            "graph_markdown": "generated/capability-router.md",
+            "router_markdown": "generated/capability-router.md",
+        },
+    )
+
+    with pytest.raises(
+        capability_home_port.CapabilityHomePortError,
+        match="projection outputs must be distinct read models",
+    ):
+        capability_home_port.load_port(REPO_ROOT, collision_root)
+
+
+def test_owner_projection_outputs_allow_package_local_generated_router(
+    tmp_path: Path,
+) -> None:
+    _write_owner_port(
+        tmp_path,
+        {
+            "graph_json": "generated/capability-graph.json",
+            "graph_markdown": "generated/capability-graph.md",
+            "router_markdown": (
+                "skills/owner-router/references/capability-router.md"
+            ),
+        },
+    )
+
+    port = capability_home_port.load_port(REPO_ROOT, tmp_path)
+
+    assert port.router_markdown == Path(
+        "skills/owner-router/references/capability-router.md"
+    )
+
+
+def test_owner_builder_rechecks_projection_paths_before_source_loading(
+    tmp_path: Path,
+) -> None:
+    port = capability_home_port.CapabilityHomePort(
+        contract_root=REPO_ROOT,
+        owner_root=tmp_path,
+        manifest_path=tmp_path / "capabilities" / "port.manifest.json",
+        manifest={
+            "projection": {
+                "graph_json": "generated/capability-graph.json",
+                "graph_markdown": "generated/capability-graph.md",
+                "router_markdown": "skills/owner-router/SKILL.md",
+            }
+        },
+    )
+
+    with pytest.raises(
+        capability_home_port.CapabilityHomePortError,
+        match="projection.router_markdown",
+    ):
+        capability_home_port.build_outputs(port)
+
+
+def test_owner_task_dag_preserves_and_validates_configured_graph_path() -> None:
+    graph = capability_system.load_graph(REPO_ROOT)
+    graph_path = "derived/owner-capability-graph.json"
+    payload = capability_system.build_task_dag(
+        graph,
+        query="select then apply one evaluation",
+        selected_capabilities=["mode.eval.select", "mode.eval.apply"],
+        external_inputs=[
+            {"type": "evaluation-selection-need", "ref": "manual://need"}
+        ],
+        source_graph_path=graph_path,
+    )
+    port = capability_home_port.CapabilityHomePort(
+        contract_root=REPO_ROOT,
+        owner_root=REPO_ROOT,
+        manifest_path=REPO_ROOT / "capabilities" / "port.manifest.json",
+        manifest={"projection": {"graph_json": graph_path}},
+    )
+
+    assert payload["source_graph"]["path"] == graph_path
+    assert capability_home_port.validate_task_dag(port, graph, payload) == []
+
+    wrong_path = copy.deepcopy(payload)
+    wrong_path["source_graph"]["path"] = "generated/capability_graph.json"
+    assert "task-local DAG source path does not match owner graph" in (
+        capability_home_port.validate_task_dag(port, graph, wrong_path)
+    )
+
+
+def test_owner_contract_metadata_fingerprints_full_shared_closure() -> None:
+    port = capability_home_port.CapabilityHomePort(
+        contract_root=REPO_ROOT,
+        owner_root=REPO_ROOT,
+        manifest_path=REPO_ROOT / "capabilities" / "legacy-skill-migration.yaml",
+        manifest={},
+    )
+
+    metadata = capability_home_port._contract_source_metadata(port)
+    rows = metadata["contract"]["contract_files"]
+
+    assert [row["path"] for row in rows] == [
+        path.as_posix() for path in capability_home_port.CONTRACT_SOURCE_PATHS
+    ]
+    for row in rows:
+        assert row["sha256"] == capability_home_port._sha256(
+            (REPO_ROOT / row["path"]).read_bytes()
+        )
+
+
+def test_owner_router_heading_uses_owner_identity() -> None:
+    port = capability_home_port.CapabilityHomePort(
+        contract_root=REPO_ROOT,
+        owner_root=REPO_ROOT,
+        manifest_path=REPO_ROOT / "capabilities" / "port.manifest.json",
+        manifest={
+            "owner_repo": "owner-example",
+            "source": {"root_id": "owner-example-root"},
+            "federation": {
+                "relation": "specializes",
+                "parent_owner": "aoa-skills",
+                "parent_node": "sessions",
+            },
+        },
+    )
+    graph = {
+        "source": {"content_hash": "a" * 64},
+        "nodes": [],
+    }
+
+    rendered = capability_home_port.render_router_markdown(port, graph)
+
+    assert rendered.startswith("# owner-example capability router\n")
+    assert "Session-memory capability router" not in rendered
+
+
+def test_owner_graph_hash_includes_skill_package_mode_bits(tmp_path: Path) -> None:
+    package_root = tmp_path / "skills" / "example"
+    package_root.mkdir(parents=True)
+    skill_path = package_root / "SKILL.md"
+    skill_path.write_text("# Example\n", encoding="utf-8")
+    skill_path.chmod(0o644)
+    port = capability_home_port.CapabilityHomePort(
+        contract_root=REPO_ROOT,
+        owner_root=tmp_path,
+        manifest_path=tmp_path / "capabilities" / "port.manifest.json",
+        manifest={
+            "projection": {
+                "graph_json": "generated/capability_graph.json",
+                "graph_markdown": "generated/CAPABILITY_GRAPH.md",
+                "router_markdown": "generated/CAPABILITY_ROUTER.md",
+            }
+        },
+    )
+
+    _, baseline_fingerprint, baseline_issues = (
+        capability_home_port._package_snapshot(port, package_root)
+    )
+    skill_path.chmod(0o755)
+    _, executable_fingerprint, executable_issues = (
+        capability_home_port._package_snapshot(port, package_root)
+    )
+    assert baseline_issues == executable_issues == []
+    assert baseline_fingerprint != executable_fingerprint
+
+    payload = {
+        "source": {
+            "root": "capabilities/families",
+            "family_files": [],
+            "referenced_files": [
+                {
+                    "path": "skills/example/SKILL.md",
+                    "sha256": capability_home_port._sha256(skill_path.read_bytes()),
+                }
+            ],
+            "content_hash": "",
+        },
+        "nodes": [
+            {
+                "id": "skill.example",
+                "package": {"fingerprint": baseline_fingerprint},
+            }
+        ],
+    }
+    baseline_hash = capability_home_port._graph_source_content_hash(payload)
+    payload["nodes"][0]["package"]["fingerprint"] = executable_fingerprint
+
+    assert (
+        baseline_hash
+        != capability_home_port._graph_source_content_hash(payload)
+    )
+
+
+def test_two_stage_retrieval_keeps_package_text_behind_owner_admission() -> None:
+    graph = {
+        "nodes": [],
+        "retrieval_documents": [
+            {
+                "id": "skill.owner-router",
+                "kind": "skill",
+                "visibility": "advertised",
+                "title": "Archive owner router",
+                "description": "Route archive inspection requests.",
+                "search_text": "archive inspection",
+                "positive_text": "archive inspection",
+                "negative_text": "",
+                "negative_phrases": [],
+                "routing_tokens": ["archive", "inspect"],
+                "positive_tokens": ["archive", "inspect"],
+                "negative_tokens": [],
+                "contract_tokens": ["archive", "inspect"],
+                "package_tokens": [],
+                "tokens": ["archive", "inspect"],
+            },
+            {
+                "id": "skill.generic-reader",
+                "kind": "skill",
+                "visibility": "deferred",
+                "title": "Generic archive reader",
+                "description": "Inspect archived evidence.",
+                "search_text": "archive inspect evidence",
+                "positive_text": "archive inspect evidence",
+                "negative_text": "",
+                "negative_phrases": [],
+                "routing_tokens": ["archive", "inspect"],
+                "positive_tokens": ["archive", "evidence", "inspect"],
+                "negative_tokens": [],
+                "contract_tokens": ["archive", "evidence", "inspect"],
+                "package_tokens": [],
+                "tokens": ["archive", "evidence", "inspect"],
+            },
+            {
+                "id": "skill.z-correlated-reader",
+                "kind": "skill",
+                "visibility": "deferred",
+                "title": "Correlated archive reader",
+                "description": "Inspect archived evidence.",
+                "search_text": (
+                    "archive inspect evidence correlation checkpoint verifier"
+                ),
+                "positive_text": "archive inspect evidence",
+                "negative_text": "",
+                "negative_phrases": [],
+                "routing_tokens": ["archive", "inspect"],
+                "positive_tokens": ["archive", "evidence", "inspect"],
+                "negative_tokens": [],
+                "contract_tokens": ["archive", "evidence", "inspect"],
+                "package_tokens": ["checkpoint", "correlation", "verifier"],
+                "tokens": [
+                    "archive",
+                    "checkpoint",
+                    "correlation",
+                    "evidence",
+                    "inspect",
+                    "verifier",
+                ],
+            },
+        ],
+    }
+    query = "inspect archive evidence correlation checkpoint verifier"
+
+    compact = capability_system.discover(
+        graph,
+        query,
+        retrieval_depth="compact",
+    )
+    routed = capability_system.discover_two_stage(graph, query)
+
+    assert compact[0]["id"] == "skill.generic-reader"
+    assert [
+        item["id"]
+        for item in routed["candidate_selection"]["candidates"]
+    ] == ["skill.owner-router"]
+    assert routed["deep_rerank"]["candidates"][0]["id"] == (
+        "skill.z-correlated-reader"
+    )
+    assert routed["owner_admitted"] is True
+
+    no_owner_match = capability_system.discover_two_stage(
+        graph,
+        "unrelated payroll invoice",
+    )
+    assert no_owner_match["owner_admitted"] is False
+    assert no_owner_match["deep_rerank"]["candidates"] == []

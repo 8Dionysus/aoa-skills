@@ -1,0 +1,17 @@
+{
+  "allowed_bytes": 7110825,
+  "allowed_tracked_bytes": 9625274,
+  "approved_by": "repository-owner",
+  "base_ref": "42c6afa8c817ac3732e9a6710fd0ddf251cd4a97",
+  "changed_generated_bytes": 7110825,
+  "changed_generated_files": 260,
+  "decision_ref": "aoa-kag:docs/decisions/AOA-KAG-D-0017-portable-content-addressed-repository-family.md",
+  "default_limit_bytes": 1048576,
+  "head_family_digest": "c77afd47449a9e41e33165d5dee73a017bdf4f8d166efccba537d600d5758cd0",
+  "reason": "Owner-reviewed guard-cycle validation and corrected plan CLI documentation complete the capability-home contract; this receipt authorizes only the measured content-addressed family delta and preserves the standing budget.",
+  "repo": "aoa-skills",
+  "schema_version": "aoa-repo-local-kag-budget-receipt-v1",
+  "scope": "generated_delta_and_tracked_size",
+  "tracked_bytes": 9625274,
+  "tracked_bytes_max": 9437184
+}

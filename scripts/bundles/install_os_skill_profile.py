@@ -6,6 +6,7 @@ from __future__ import annotations
 import argparse
 from dataclasses import dataclass
 from datetime import datetime, timezone
+import hashlib
 import json
 import os
 from pathlib import Path
@@ -16,13 +17,19 @@ from typing import Any
 import uuid
 
 from export import home_skill_port
+from skill_model import capability_home_port as capability_home_contract
 from skill_model import skill_source_model
 
 
 PROFILE_CONFIG = Path("config/os_skill_profiles.json")
 INSTALL_RECEIPT = ".aoa-os-skill-profile.json"
 SOURCE_RECEIPT = ".aoa-skill-source.json"
-SOURCE_RECEIPT_SCHEMA = "aoa_skill_source_receipt_v1"
+SOURCE_RECEIPT_SCHEMA = "aoa_skill_source_receipt_v2"
+INSTALL_RECEIPT_SCHEMA = "aoa_os_skill_install_v2"
+SUPPORTED_INSTALL_RECEIPT_SCHEMAS = {
+    "aoa_os_skill_install_v1",
+    INSTALL_RECEIPT_SCHEMA,
+}
 
 
 class ProfileError(ValueError):
@@ -38,6 +45,10 @@ class ResolvedSkill:
     source_relative: str
     version: str
     digest: str
+    source_fingerprint: str
+    source_fingerprint_scope: str
+    capability_graph_hash: str | None
+    prompt_description_sha256: str
     file_count: int
     owner_ref: str
     dirty: bool | None
@@ -118,6 +129,7 @@ def _resolved_skill(
     source_path: Path,
     source_relative: str,
     version: str,
+    capability_identity: dict[str, str] | None = None,
 ) -> ResolvedSkill:
     source_receipt_path = source_path / SOURCE_RECEIPT
     if source_receipt_path.exists() or source_receipt_path.is_symlink():
@@ -125,6 +137,34 @@ def _resolved_skill(
             f"canonical skill source must not contain install-local {SOURCE_RECEIPT}: {repo}:{name}"
         )
     snapshot = home_skill_port.tree_snapshot(source_path, label=f"{repo}:{name} source")
+    digest = home_skill_port.tree_digest(snapshot)
+    try:
+        metadata, _body = skill_source_model.parse_skill_document(
+            source_path / "SKILL.md"
+        )
+    except ValueError as exc:
+        raise ProfileError(str(exc)) from exc
+    description = metadata.get("description")
+    if not isinstance(description, str) or not description.strip():
+        raise ProfileError(f"{repo}:{name} requires a non-empty description")
+    prompt_description_sha256 = hashlib.sha256(
+        description.encode("utf-8")
+    ).hexdigest()
+    source_fingerprint = digest
+    source_fingerprint_scope = "complete-installable-package-v1"
+    capability_graph_hash = None
+    if capability_identity is not None:
+        identity_version = capability_identity.get("version")
+        if identity_version != version:
+            raise ProfileError(
+                f"{repo}:{name} capability version {identity_version!r} "
+                f"differs from skill-home version {version!r}"
+            )
+        source_fingerprint = capability_identity["fingerprint"]
+        source_fingerprint_scope = (
+            "authored-capability-package-v1-excludes-generated-projections"
+        )
+        capability_graph_hash = capability_identity["graph_hash"]
     ref, dirty = repo_identity(owner_root)
     return ResolvedSkill(
         name=name,
@@ -133,11 +173,58 @@ def _resolved_skill(
         source_path=source_path,
         source_relative=source_relative,
         version=version,
-        digest=home_skill_port.tree_digest(snapshot),
+        digest=digest,
+        source_fingerprint=source_fingerprint,
+        source_fingerprint_scope=source_fingerprint_scope,
+        capability_graph_hash=capability_graph_hash,
+        prompt_description_sha256=prompt_description_sha256,
         file_count=len(snapshot),
         owner_ref=ref,
         dirty=dirty,
     )
+
+
+def owner_capability_identities(
+    *,
+    contract_root: Path,
+    owner_root: Path,
+) -> dict[str, dict[str, str]]:
+    manifest = owner_root / capability_home_contract.DEFAULT_MANIFEST
+    if not manifest.is_file():
+        return {}
+    port = capability_home_contract.load_port(contract_root, owner_root)
+    graph = capability_home_contract.build_graph(port)
+    graph_hash = str(graph.get("source", {}).get("content_hash") or "")
+    if not graph_hash:
+        raise ProfileError(
+            f"owner capability graph has no source hash: {owner_root}"
+        )
+    identities: dict[str, dict[str, str]] = {}
+    for node in graph.get("nodes", []):
+        if not isinstance(node, dict) or node.get("kind") != "skill":
+            continue
+        node_id = str(node.get("id") or "")
+        name = node_id.removeprefix("skill.")
+        package = node.get("package")
+        lifecycle = node.get("lifecycle")
+        if (
+            node_id == name
+            or not isinstance(package, dict)
+            or not isinstance(lifecycle, dict)
+        ):
+            continue
+        fingerprint = str(package.get("fingerprint") or "")
+        version = str(lifecycle.get("version") or "")
+        if not fingerprint or not version:
+            raise ProfileError(
+                f"owner capability identity is incomplete: {owner_root}:{node_id}"
+            )
+        identities[name] = {
+            "fingerprint": fingerprint,
+            "version": version,
+            "graph_hash": graph_hash,
+        }
+    return identities
 
 
 def resolve_profile(
@@ -208,6 +295,10 @@ def resolve_profile(
             port = home_skill_port.load_port_definition(owner_root)
             if port.owner_repo != repo:
                 raise ProfileError(f"owner port repo mismatch: profile={repo} manifest={port.owner_repo}")
+            capability_identities = owner_capability_identities(
+                contract_root=repo_root,
+                owner_root=owner_root,
+            )
             by_name = {bundle.name: bundle for bundle in port.bundles}
             for name in requested:
                 if not isinstance(name, str) or name not in by_name:
@@ -221,6 +312,7 @@ def resolve_profile(
                         source_path=owner_root / bundle.path,
                         source_relative=bundle.path.as_posix(),
                         version=bundle.version,
+                        capability_identity=capability_identities.get(name),
                     )
                 )
         elif kind == "direct-home":
@@ -271,7 +363,10 @@ def installed_receipt(dest_root: Path) -> dict[str, Any] | None:
     if not path.is_file():
         raise ProfileError(f"managed install receipt must be a regular file: {path}")
     value = load_json(path)
-    if not isinstance(value, dict) or value.get("schema_version") != "aoa_os_skill_install_v1":
+    if (
+        not isinstance(value, dict)
+        or value.get("schema_version") not in SUPPORTED_INSTALL_RECEIPT_SCHEMAS
+    ):
         raise ProfileError(f"managed install receipt has unsupported shape: {path}")
     installed_at = value.get("installed_at")
     if not isinstance(installed_at, str) or not installed_at:
@@ -318,9 +413,14 @@ def _source_receipt(
         "source_path": skill.source_relative,
         "version": skill.version,
         "digest": skill.digest,
+        "source_fingerprint": skill.source_fingerprint,
+        "source_fingerprint_scope": skill.source_fingerprint_scope,
+        "capability_graph_hash": skill.capability_graph_hash,
+        "prompt_description_sha256": skill.prompt_description_sha256,
         "claim_limit": (
-            "machine-local canonical source locator only; owner authority, current parity, "
-            "routing, and outcomes require separate verification"
+            "machine-local canonical source locator plus source/install/prompt "
+            "identity dimensions only; selection, execution, routing quality, "
+            "and outcomes require separate evidence"
         ),
     }
 
@@ -388,6 +488,12 @@ def build_plan(
                 "source_path": skill.source_relative,
                 "version": skill.version,
                 "source_digest": skill.digest,
+                "source_fingerprint": skill.source_fingerprint,
+                "source_fingerprint_scope": skill.source_fingerprint_scope,
+                "capability_graph_hash": skill.capability_graph_hash,
+                "prompt_description_sha256": (
+                    skill.prompt_description_sha256
+                ),
                 "target": str(target),
                 "target_digest": target_digest,
                 "status": status,
@@ -398,7 +504,7 @@ def build_plan(
     selected = {skill.name for skill in skills}
     stale_managed = sorted(name for name in managed_before - selected if isinstance(name, str))
     plan = {
-        "schema_version": "aoa_os_skill_install_plan_v1",
+        "schema_version": "aoa_os_skill_install_plan_v2",
         "profile": profile_name,
         "runtime": profile["runtime"],
         "scope": profile["scope"],
@@ -422,7 +528,7 @@ def _receipt_from_plan(
     installed_at: str | None = None,
 ) -> dict[str, Any]:
     return {
-        "schema_version": "aoa_os_skill_install_v1",
+        "schema_version": INSTALL_RECEIPT_SCHEMA,
         "profile": plan["profile"],
         "runtime": plan["runtime"],
         "scope": plan["scope"],
@@ -442,6 +548,14 @@ def _receipt_from_plan(
                 "source_path": item["source_path"],
                 "version": item["version"],
                 "digest": item["source_digest"],
+                "source_fingerprint": item["source_fingerprint"],
+                "source_fingerprint_scope": (
+                    item["source_fingerprint_scope"]
+                ),
+                "capability_graph_hash": item["capability_graph_hash"],
+                "prompt_description_sha256": (
+                    item["prompt_description_sha256"]
+                ),
             }
             for item in plan["skills"]
         ],
@@ -700,7 +814,13 @@ def main() -> int:
             plan = build_plan(profile_name=args.profile, profile=profile, skills=skills, dest_root=dest_root)
             if not plan_is_current(plan, allow_dirty_source=args.allow_dirty_source):
                 raise ProfileError("OS skill profile remained non-current after execution")
-    except (OSError, json.JSONDecodeError, ProfileError, home_skill_port.PortContractError) as exc:
+    except (
+        OSError,
+        json.JSONDecodeError,
+        ProfileError,
+        home_skill_port.PortContractError,
+        capability_home_contract.CapabilityHomePortError,
+    ) as exc:
         raise SystemExit(str(exc))
     print(json.dumps(plan, ensure_ascii=False, indent=2) if args.format == "json" else format_plan(plan))
     if args.check:
