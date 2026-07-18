@@ -32,6 +32,11 @@ STATIC_SOURCE_PATHS = (
     "schemas/task_local_dag.schema.json",
     "schemas/task_local_dag_v2.schema.json",
     "schemas/release_manifest.schema.json",
+    "scripts/skill_model/capability_system.py",
+    "scripts/skill_model/capability_home_port.py",
+    "scripts/builders/build_capability_home_projection.py",
+    "scripts/runtime/capability_home.py",
+    "scripts/validation/validate_capability_home_port.py",
 )
 GENERATED_FILES = (
     "generated/agent_skill_catalog.json",

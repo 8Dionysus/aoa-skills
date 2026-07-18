@@ -52,6 +52,11 @@
     "schemas/skill_migration.schema.json",
     "schemas/task_local_dag.schema.json",
     "schemas/task_local_dag_v2.schema.json",
+    "scripts/builders/build_capability_home_projection.py",
+    "scripts/runtime/capability_home.py",
+    "scripts/skill_model/capability_home_port.py",
+    "scripts/skill_model/capability_system.py",
+    "scripts/validation/validate_capability_home_port.py",
     "skills/core/engineering/aoa-decision/SKILL.md",
     "skills/core/engineering/aoa-decision/agents/openai.yaml",
     "skills/core/engineering/aoa-decision/references/contract.yaml",
@@ -372,8 +377,8 @@
     },
     {
       "path": "schemas/capability_graph.schema.json",
-      "sha256": "6b205e63d5472c638c223b930fc3b1a6e163da510a3515e99af33738c3a16c01",
-      "bytes": 5862
+      "sha256": "343f57772410ce27f964a9e3cf242efa8a39625faf838c6255658b249c8a34c6",
+      "bytes": 6345
     },
     {
       "path": "schemas/release_manifest.schema.json",
@@ -394,6 +399,31 @@
       "path": "schemas/task_local_dag_v2.schema.json",
       "sha256": "50dbbf4917a49729893045eb9765b091c4370b819ee6534d08d868a4723ec664",
       "bytes": 4548
+    },
+    {
+      "path": "scripts/builders/build_capability_home_projection.py",
+      "sha256": "ba749c07db5e759dc765c1abf05d3a2da3fad7d0311853d7eab49291bc0057f7",
+      "bytes": 1622
+    },
+    {
+      "path": "scripts/runtime/capability_home.py",
+      "sha256": "91e1c27fcb9114ae4975e4d27a32555c2720d26ea3d750edbf27588b6fb54009",
+      "bytes": 3392
+    },
+    {
+      "path": "scripts/skill_model/capability_home_port.py",
+      "sha256": "d50e4bbab0574c9fce984ca98c9cd426b910dbe2ed63677b728e64bb67da6093",
+      "bytes": 28118
+    },
+    {
+      "path": "scripts/skill_model/capability_system.py",
+      "sha256": "4c79ecf9ad75bd3927fe45a8ea427dc92bfc599bcf73fd0f65cd63b15a25f184",
+      "bytes": 79094
+    },
+    {
+      "path": "scripts/validation/validate_capability_home_port.py",
+      "sha256": "1e33868171e309d04d566e1b7762514b21cbf487410cf5d770a92c7b34831678",
+      "bytes": 1758
     },
     {
       "path": "skills/core/engineering/aoa-decision/SKILL.md",

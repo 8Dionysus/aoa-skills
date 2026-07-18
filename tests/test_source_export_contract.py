@@ -81,6 +81,11 @@ def test_release_manifest_is_reproducible_and_binds_portable_bytes() -> None:
     assert {
         "schemas/capability-home-port.schema.json",
         "schemas/task_local_dag_v2.schema.json",
+        "scripts/skill_model/capability_system.py",
+        "scripts/skill_model/capability_home_port.py",
+        "scripts/builders/build_capability_home_projection.py",
+        "scripts/runtime/capability_home.py",
+        "scripts/validation/validate_capability_home_port.py",
     } <= set(live["source_files"])
     for revision in live["skill_bundle_revisions"]:
         assert revision["source_hash"] != ""

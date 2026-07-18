@@ -22,6 +22,18 @@ PORT_SCHEMA_PATH = Path("schemas/capability-home-port.schema.json")
 FAMILY_SCHEMA_PATH = Path("schemas/capability_family.schema.json")
 GRAPH_SCHEMA_PATH = Path("schemas/capability_graph.schema.json")
 VALIDATOR_PATH = Path("scripts/validation/validate_capability_home_port.py")
+CONTRACT_SOURCE_PATHS = (
+    PORT_SCHEMA_PATH,
+    FAMILY_SCHEMA_PATH,
+    GRAPH_SCHEMA_PATH,
+    capability_system.LEGACY_DAG_SCHEMA_PATH,
+    capability_system.DAG_SCHEMA_PATH,
+    Path("scripts/skill_model/capability_system.py"),
+    Path("scripts/skill_model/capability_home_port.py"),
+    Path("scripts/builders/build_capability_home_projection.py"),
+    Path("scripts/runtime/capability_home.py"),
+    VALIDATOR_PATH,
+)
 FORBIDDEN_PORTABLE_LITERALS = ("/srv/AbyssOS", "/home/", "~/.codex")
 TRANSIENT_NAMES = {".DS_Store", "__pycache__", ".pytest_cache"}
 COMPOSITION_RELATIONS = {
@@ -298,10 +310,16 @@ def _dependency_cycle(
     edges: list[dict[str, str]] = []
     for relation in relations:
         kind = str(relation.get("kind"))
-        if kind in {"requires", "guarded-by", "hands-off-to", "verified-by"}:
+        if kind in {
+            "requires",
+            "guarded-by",
+            "hands-off-to",
+            "verified-by",
+            "verifies",
+        }:
             source = str(relation["source"])
             target = str(relation["target"])
-            if kind in {"requires", "guarded-by"}:
+            if kind in {"requires", "guarded-by", "verifies"}:
                 source, target = target, source
             edges.append({"source": source, "target": target})
     return capability_system._topology_cycle(node_ids, edges)
@@ -506,6 +524,13 @@ def validate_sources(
 def _contract_source_metadata(port: CapabilityHomePort) -> dict[str, Any]:
     schema_path = port.contract_root / FAMILY_SCHEMA_PATH
     validator_path = port.contract_root / VALIDATOR_PATH
+    contract_files = [
+        {
+            "path": path.as_posix(),
+            "sha256": _sha256((port.contract_root / path).read_bytes()),
+        }
+        for path in CONTRACT_SOURCE_PATHS
+    ]
     return {
         "port_manifest": {
             "path": port.manifest_path.relative_to(port.owner_root).as_posix(),
@@ -517,6 +542,7 @@ def _contract_source_metadata(port: CapabilityHomePort) -> dict[str, Any]:
             "schema_sha256": _sha256(schema_path.read_bytes()),
             "validator_path": VALIDATOR_PATH.as_posix(),
             "validator_sha256": _sha256(validator_path.read_bytes()),
+            "contract_files": contract_files,
         },
     }
 
@@ -690,15 +716,7 @@ def validate_task_dag(
         else capability_system.DAG_SCHEMA_PATH
     )
     schema = capability_system.load_json(port.contract_root / schema_path)
-    issues = capability_system.schema_issues(payload, schema)
-    node_ids = {
-        str(node["id"])
-        for node in payload.get("nodes", [])
-        if isinstance(node, Mapping)
-    }
-    cycle = capability_system._topology_cycle(node_ids, payload.get("edges", []))
-    if cycle:
-        issues.append("task-local DAG contains cycle: " + ", ".join(cycle))
+    issues = capability_system.task_dag_structural_issues(payload, schema)
     if payload.get("source_graph", {}).get("content_hash") != graph.get("source", {}).get(
         "content_hash"
     ):

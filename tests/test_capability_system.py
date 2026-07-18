@@ -247,6 +247,66 @@ def test_owner_port_dependency_cycle_includes_guard_relations() -> None:
         cyclic,
     ) == ["guard.approval", "skill.work"]
 
+    verifies_cycle = [
+        {
+            "kind": "verifies",
+            "source": "skill.verifier",
+            "target": "skill.work",
+        },
+        {
+            "kind": "verifies",
+            "source": "skill.work",
+            "target": "skill.verifier",
+        },
+    ]
+    assert capability_home_port._dependency_cycle(
+        {"skill.work", "skill.verifier"},
+        verifies_cycle,
+    ) == ["skill.verifier", "skill.work"]
+
+
+def test_shared_task_dag_structure_rejects_dangling_edge_endpoints() -> None:
+    graph = capability_system.load_graph(REPO_ROOT)
+    payload = capability_system.build_task_dag(
+        graph,
+        query="select then apply one evaluation",
+        selected_capabilities=["mode.eval.select", "mode.eval.apply"],
+        external_inputs=[
+            {"type": "evaluation-selection-need", "ref": "manual://need"}
+        ],
+    )
+    dangling = copy.deepcopy(payload)
+    dangling["edges"][0]["source"] = "mode.missing-source"
+    dangling["edges"][0]["target"] = "mode.missing-target"
+    schema = capability_system.load_json(
+        REPO_ROOT / capability_system.DAG_SCHEMA_PATH
+    )
+
+    issues = capability_system.task_dag_structural_issues(dangling, schema)
+
+    assert "edge source does not exist: mode.missing-source" in issues
+    assert "edge target does not exist: mode.missing-target" in issues
+
+
+def test_owner_contract_metadata_fingerprints_full_shared_closure() -> None:
+    port = capability_home_port.CapabilityHomePort(
+        contract_root=REPO_ROOT,
+        owner_root=REPO_ROOT,
+        manifest_path=REPO_ROOT / "capabilities" / "legacy-skill-migration.yaml",
+        manifest={},
+    )
+
+    metadata = capability_home_port._contract_source_metadata(port)
+    rows = metadata["contract"]["contract_files"]
+
+    assert [row["path"] for row in rows] == [
+        path.as_posix() for path in capability_home_port.CONTRACT_SOURCE_PATHS
+    ]
+    for row in rows:
+        assert row["sha256"] == capability_home_port._sha256(
+            (REPO_ROOT / row["path"]).read_bytes()
+        )
+
 
 def test_two_stage_retrieval_keeps_package_text_behind_owner_admission() -> None:
     graph = {

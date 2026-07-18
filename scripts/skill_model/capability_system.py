@@ -1891,16 +1891,17 @@ def build_task_dag(
     return payload
 
 
-def validate_task_dag(repo_root: Path, payload: Mapping[str, Any]) -> list[str]:
-    schema_path = (
-        LEGACY_DAG_SCHEMA_PATH
-        if payload.get("schema_version") == "aoa-task-local-dag-v1"
-        else DAG_SCHEMA_PATH
-    )
-    schema = load_json(repo_root / schema_path)
+def task_dag_structural_issues(
+    payload: Mapping[str, Any],
+    schema: Mapping[str, Any],
+) -> list[str]:
+    """Validate runtime-independent task-DAG structure for every owner."""
+
     issues = schema_issues(payload, schema)
     node_ids = {str(node["id"]) for node in payload.get("nodes", []) if isinstance(node, Mapping)}
     for edge in payload.get("edges", []):
+        if not isinstance(edge, Mapping):
+            continue
         if edge.get("source") not in node_ids:
             issues.append(f"edge source does not exist: {edge.get('source')}")
         if edge.get("target") not in node_ids:
@@ -1927,6 +1928,17 @@ def validate_task_dag(repo_root: Path, payload: Mapping[str, Any]) -> list[str]:
         ]
         if sorted(checkpoint_ids) != sorted(node_ids):
             issues.append("checkpoints must cover every execution node exactly once")
+    return issues
+
+
+def validate_task_dag(repo_root: Path, payload: Mapping[str, Any]) -> list[str]:
+    schema_path = (
+        LEGACY_DAG_SCHEMA_PATH
+        if payload.get("schema_version") == "aoa-task-local-dag-v1"
+        else DAG_SCHEMA_PATH
+    )
+    schema = load_json(repo_root / schema_path)
+    issues = task_dag_structural_issues(payload, schema)
     graph_path = repo_root / GRAPH_JSON_PATH
     if graph_path.is_file():
         current_graph = load_graph(repo_root)
