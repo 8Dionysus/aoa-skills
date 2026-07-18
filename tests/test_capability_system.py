@@ -308,6 +308,63 @@ def test_owner_contract_metadata_fingerprints_full_shared_closure() -> None:
         )
 
 
+def test_owner_graph_hash_includes_skill_package_mode_bits(tmp_path: Path) -> None:
+    package_root = tmp_path / "skills" / "example"
+    package_root.mkdir(parents=True)
+    skill_path = package_root / "SKILL.md"
+    skill_path.write_text("# Example\n", encoding="utf-8")
+    skill_path.chmod(0o644)
+    port = capability_home_port.CapabilityHomePort(
+        contract_root=REPO_ROOT,
+        owner_root=tmp_path,
+        manifest_path=tmp_path / "capabilities" / "port.manifest.json",
+        manifest={
+            "projection": {
+                "graph_json": "generated/capability_graph.json",
+                "graph_markdown": "generated/CAPABILITY_GRAPH.md",
+                "router_markdown": "generated/CAPABILITY_ROUTER.md",
+            }
+        },
+    )
+
+    _, baseline_fingerprint, baseline_issues = (
+        capability_home_port._package_snapshot(port, package_root)
+    )
+    skill_path.chmod(0o755)
+    _, executable_fingerprint, executable_issues = (
+        capability_home_port._package_snapshot(port, package_root)
+    )
+    assert baseline_issues == executable_issues == []
+    assert baseline_fingerprint != executable_fingerprint
+
+    payload = {
+        "source": {
+            "root": "capabilities/families",
+            "family_files": [],
+            "referenced_files": [
+                {
+                    "path": "skills/example/SKILL.md",
+                    "sha256": capability_home_port._sha256(skill_path.read_bytes()),
+                }
+            ],
+            "content_hash": "",
+        },
+        "nodes": [
+            {
+                "id": "skill.example",
+                "package": {"fingerprint": baseline_fingerprint},
+            }
+        ],
+    }
+    baseline_hash = capability_home_port._graph_source_content_hash(payload)
+    payload["nodes"][0]["package"]["fingerprint"] = executable_fingerprint
+
+    assert (
+        baseline_hash
+        != capability_home_port._graph_source_content_hash(payload)
+    )
+
+
 def test_two_stage_retrieval_keeps_package_text_behind_owner_admission() -> None:
     graph = {
         "nodes": [],

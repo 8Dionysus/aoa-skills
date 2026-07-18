@@ -116,6 +116,30 @@ def _sha256(payload: bytes) -> str:
     return hashlib.sha256(payload).hexdigest()
 
 
+def _graph_source_content_hash(payload: Mapping[str, Any]) -> str:
+    source_identity = {
+        key: value
+        for key, value in payload["source"].items()
+        if key != "content_hash"
+    }
+    package_identity = [
+        {
+            "id": str(node["id"]),
+            "fingerprint": str(node["package"]["fingerprint"]),
+        }
+        for node in payload["nodes"]
+        if isinstance(node.get("package"), Mapping)
+    ]
+    return _sha256(
+        _canonical_json(
+            {
+                "source": source_identity,
+                "skill_packages": package_identity,
+            }
+        ).encode("utf-8")
+    )
+
+
 def _inside(root: Path, relative: Path, *, label: str) -> Path:
     if relative.is_absolute() or not relative.parts or ".." in relative.parts:
         raise CapabilityHomePortError(f"{label} must be a confined relative path: {relative}")
@@ -600,14 +624,7 @@ def build_graph(port: CapabilityHomePort) -> dict[str, Any]:
         referenced.values(),
         key=lambda item: str(item["path"]),
     )
-    source_identity = {
-        key: value
-        for key, value in payload["source"].items()
-        if key != "content_hash"
-    }
-    payload["source"]["content_hash"] = _sha256(
-        _canonical_json(source_identity).encode("utf-8")
-    )
+    payload["source"]["content_hash"] = _graph_source_content_hash(payload)
     graph_schema = capability_system.load_json(port.contract_root / GRAPH_SCHEMA_PATH)
     issues = capability_system.schema_issues(payload, graph_schema)
     if issues:
