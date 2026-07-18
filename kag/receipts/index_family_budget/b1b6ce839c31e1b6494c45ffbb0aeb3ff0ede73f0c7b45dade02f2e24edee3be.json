@@ -1,0 +1,17 @@
+{
+  "allowed_bytes": 7157609,
+  "allowed_tracked_bytes": 9652794,
+  "approved_by": "repository-owner",
+  "base_ref": "42c6afa8c817ac3732e9a6710fd0ddf251cd4a97",
+  "changed_generated_bytes": 7157609,
+  "changed_generated_files": 261,
+  "decision_ref": "aoa-kag:docs/decisions/AOA-KAG-D-0017-portable-content-addressed-repository-family.md",
+  "default_limit_bytes": 1048576,
+  "head_family_digest": "b1b6ce839c31e1b6494c45ffbb0aeb3ff0ede73f0c7b45dade02f2e24edee3be",
+  "reason": "Owner-reviewed projection write confinement rejects authored-path collisions before builder effects, and task-DAG validation now enforces execution-stage topology for every edge; this receipt authorizes only the measured portable-family delta.",
+  "repo": "aoa-skills",
+  "schema_version": "aoa-repo-local-kag-budget-receipt-v1",
+  "scope": "generated_delta_and_tracked_size",
+  "tracked_bytes": 9652794,
+  "tracked_bytes_max": 9437184
+}
