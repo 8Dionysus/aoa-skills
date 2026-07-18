@@ -87,8 +87,9 @@ Use:
 ```bash
 PYTHONPATH=scripts python scripts/capability_home.py \
   --owner-root /path/to/owner plan \
-  --capability skill.first --capability skill.second \
-  --input artifact-type --permission read-owner-state
+  "compose the first and second capabilities" \
+  --select skill.first --select skill.second \
+  --input artifact-type=manual://artifact
 ```
 
 ## Build and validation

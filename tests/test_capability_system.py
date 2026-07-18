@@ -10,7 +10,7 @@ SCRIPTS = REPO_ROOT / "scripts"
 if str(SCRIPTS) not in sys.path:
     sys.path.insert(0, str(SCRIPTS))
 
-from skill_model import capability_system
+from skill_model import capability_home_port, capability_system
 
 
 def test_manual_migration_contract_remains_exact_and_live() -> None:
@@ -216,6 +216,36 @@ def test_task_local_dag_closure_includes_forward_verifier() -> None:
         ("data", "skill.work", "skill.verifier"),
         ("verification", "skill.work", "skill.verifier"),
     }
+
+
+def test_owner_port_dependency_cycle_includes_guard_relations() -> None:
+    acyclic = [
+        {
+            "kind": "guarded-by",
+            "source": "skill.work",
+            "target": "guard.approval",
+        }
+    ]
+    cyclic = [
+        *acyclic,
+        {
+            "kind": "guarded-by",
+            "source": "guard.approval",
+            "target": "skill.work",
+        },
+    ]
+
+    assert (
+        capability_home_port._dependency_cycle(
+            {"skill.work", "guard.approval"},
+            acyclic,
+        )
+        is None
+    )
+    assert capability_home_port._dependency_cycle(
+        {"skill.work", "guard.approval"},
+        cyclic,
+    ) == ["guard.approval", "skill.work"]
 
 
 def test_two_stage_retrieval_keeps_package_text_behind_owner_admission() -> None:

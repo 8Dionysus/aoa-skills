@@ -298,10 +298,10 @@ def _dependency_cycle(
     edges: list[dict[str, str]] = []
     for relation in relations:
         kind = str(relation.get("kind"))
-        if kind in {"requires", "hands-off-to", "verified-by"}:
+        if kind in {"requires", "guarded-by", "hands-off-to", "verified-by"}:
             source = str(relation["source"])
             target = str(relation["target"])
-            if kind == "requires":
+            if kind in {"requires", "guarded-by"}:
                 source, target = target, source
             edges.append({"source": source, "target": target})
     return capability_system._topology_cycle(node_ids, edges)
