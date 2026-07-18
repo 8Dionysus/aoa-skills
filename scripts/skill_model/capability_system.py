@@ -768,6 +768,32 @@ def exact_negative_clause_matches(
     phrase_forms = [_negative_clause_token_forms(token) for token in phrase_tokens]
     all_phrase_forms = set().union(*phrase_forms) if phrase_forms else set()
 
+    def preceding_scope_suppresses(run_start: int) -> bool:
+        preceding_scope = query_tokens[
+            max(0, run_start - scope_width) : run_start
+        ]
+        return any(
+            token in NEGATIVE_SCOPE_TOKENS for token in preceding_scope
+        )
+
+    # A complete two- or three-token authored clause is precise enough to
+    # preserve as negative evidence when every term appears contiguously and
+    # in order.  Keep the wider four-token floor below for partial runs from
+    # longer clauses, where a short overlap would be ambiguous.
+    if 2 <= len(phrase_forms) < minimum_run:
+        for run_start in range(len(query_tokens) - len(phrase_forms) + 1):
+            run = query_tokens[
+                run_start : run_start + len(phrase_forms)
+            ]
+            if preceding_scope_suppresses(run_start):
+                continue
+            if all(
+                _negative_clause_token_forms(token).intersection(forms)
+                for token, forms in zip(run, phrase_forms, strict=True)
+            ):
+                return set(run)
+        return set()
+
     def is_subsequence(
         candidate: Sequence[str],
         target_forms: Sequence[set[str]],
@@ -788,10 +814,7 @@ def exact_negative_clause_matches(
     def exact_run(run: Sequence[str], run_start: int) -> set[str]:
         if len(run) < minimum_run or len(set(run)) < minimum_run:
             return set()
-        preceding_scope = query_tokens[
-            max(0, run_start - scope_width) : run_start
-        ]
-        if any(token in NEGATIVE_SCOPE_TOKENS for token in preceding_scope):
+        if preceding_scope_suppresses(run_start):
             return set()
         if is_subsequence(run, phrase_forms):
             return set(run)

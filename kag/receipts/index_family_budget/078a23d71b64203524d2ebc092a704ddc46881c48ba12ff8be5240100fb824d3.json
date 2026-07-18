@@ -1,0 +1,17 @@
+{
+  "allowed_bytes": 1897828,
+  "allowed_tracked_bytes": 9676181,
+  "approved_by": "repository-owner",
+  "base_ref": "323f77866ca50817c80ada2619bc71da82a406a4",
+  "changed_generated_bytes": 1897828,
+  "changed_generated_files": 62,
+  "decision_ref": "aoa-kag:docs/decisions/AOA-KAG-D-0017-portable-content-addressed-repository-family.md",
+  "default_limit_bytes": 1048576,
+  "head_family_digest": "078a23d71b64203524d2ebc092a704ddc46881c48ba12ff8be5240100fb824d3",
+  "reason": "Owner-reviewed short-clause correction preserves complete two- and three-token shared-vocabulary exclusions without lowering the partial-match floor for longer clauses, while explicit absence and all positive use_when routes remain unpenalized; this receipt authorizes only the regenerated content-addressed family digest for PR #374 and preserves the standing delta and tracked-size budgets.",
+  "repo": "aoa-skills",
+  "schema_version": "aoa-repo-local-kag-budget-receipt-v1",
+  "scope": "generated_delta_and_tracked_size",
+  "tracked_bytes": 9676181,
+  "tracked_bytes_max": 9437184
+}

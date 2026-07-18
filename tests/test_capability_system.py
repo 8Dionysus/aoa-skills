@@ -921,3 +921,54 @@ def test_negative_phrase_preserves_exact_clause_with_shared_vocabulary() -> None
         "existing",
         "memo",
     ]
+
+
+def test_negative_phrase_preserves_short_exact_shared_clause() -> None:
+    graph = capability_system.load_graph(REPO_ROOT)
+
+    runtime_activation = capability_system.discover(
+        graph,
+        "titan console runtime activation",
+        retrieval_depth="compact",
+        limit=200,
+    )
+    role_truth = capability_system.discover(
+        graph,
+        "titan console role truth",
+        retrieval_depth="compact",
+        limit=200,
+    )
+    explicit_absence = capability_system.discover(
+        graph,
+        "titan console with no runtime activation",
+        retrieval_depth="compact",
+        limit=200,
+    )
+    positive = capability_system.discover(
+        graph,
+        "titan console inspect visible helper state",
+        retrieval_depth="compact",
+        limit=200,
+    )
+
+    for node_id in ("projects.titan.session.control", "tool.titan.console"):
+        row = next(
+            item for item in runtime_activation if item["id"] == node_id
+        )
+        assert row["negative_matched_tokens"] == [
+            "activation",
+            "runtime",
+        ]
+        row = next(
+            item for item in explicit_absence if item["id"] == node_id
+        )
+        assert row["negative_matched_tokens"] == []
+        row = next(item for item in positive if item["id"] == node_id)
+        assert row["negative_matched_tokens"] == []
+
+    parent = next(
+        item
+        for item in role_truth
+        if item["id"] == "projects.titan.session.control"
+    )
+    assert parent["negative_matched_tokens"] == ["role", "truth"]
