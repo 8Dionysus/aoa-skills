@@ -102,6 +102,13 @@ NEGATIVE_CONTEXT_TOKENS = {
     "without",
 }
 NEGATIVE_SCOPE_TOKENS = NEGATIVE_CONTEXT_TOKENS - {"only", "только"}
+NEGATIVE_SCOPE_EQUIVALENCE = {
+    "без": "plain-negation",
+    "не": "plain-negation",
+    "no": "plain-negation",
+    "not": "plain-negation",
+    "without": "plain-negation",
+}
 
 RUSSIAN_INFLECTIONS = tuple(
     sorted(
@@ -664,6 +671,12 @@ def tokenize(text: str) -> list[str]:
     return sorted(set(tokenize_ordered(text)))
 
 
+def negative_scope_class(token: str) -> str:
+    """Return the narrow semantic class used for negative-scope comparison."""
+
+    return NEGATIVE_SCOPE_EQUIVALENCE.get(token, token)
+
+
 def negative_scope_phrase_matches(
     query_tokens: Sequence[str],
     phrase_tokens: Sequence[str],
@@ -674,13 +687,16 @@ def negative_scope_phrase_matches(
 
     Shared positive vocabulary is not negative evidence by itself.  A scope
     marker such as ``not`` or ``without`` admits those shared terms only when
-    the query places a matching phrase term after the same marker, which is
-    where these English and Russian negative forms take their object.
+    the query places a matching phrase term after an equivalent marker, which
+    is where these English and Russian negative forms take their object.
+    Plain negators share one narrow class; conditional or exception scopes
+    such as ``unless`` and ``except`` still require an exact marker match.
     """
 
     for phrase_index, scope_token in enumerate(phrase_tokens):
         if scope_token not in NEGATIVE_SCOPE_TOKENS:
             continue
+        scope_class = negative_scope_class(scope_token)
         phrase_subject = {
             token
             for token in phrase_tokens[max(0, phrase_index - scope_width) : phrase_index]
@@ -694,7 +710,7 @@ def negative_scope_phrase_matches(
         if not phrase_scope:
             continue
         for query_index, query_token in enumerate(query_tokens):
-            if query_token != scope_token:
+            if negative_scope_class(query_token) != scope_class:
                 continue
             query_subject = {
                 token
@@ -709,7 +725,7 @@ def negative_scope_phrase_matches(
             scope_matches = query_scope.intersection(phrase_scope)
             if scope_matches:
                 return {
-                    scope_token,
+                    query_token,
                     *scope_matches,
                     *(query_subject & phrase_subject),
                 }

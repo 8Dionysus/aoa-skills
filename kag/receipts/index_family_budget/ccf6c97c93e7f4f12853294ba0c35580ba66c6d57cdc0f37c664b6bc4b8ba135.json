@@ -1,0 +1,17 @@
+{
+  "allowed_bytes": 1876334,
+  "allowed_tracked_bytes": 9671401,
+  "approved_by": "repository-owner",
+  "base_ref": "323f77866ca50817c80ada2619bc71da82a406a4",
+  "changed_generated_bytes": 1876334,
+  "changed_generated_files": 61,
+  "decision_ref": "aoa-kag:docs/decisions/AOA-KAG-D-0017-portable-content-addressed-repository-family.md",
+  "default_limit_bytes": 1048576,
+  "head_family_digest": "ccf6c97c93e7f4f12853294ba0c35580ba66c6d57cdc0f37c664b6bc4b8ba135",
+  "reason": "Owner-reviewed negator-equivalence correction recognizes no and without for authored not-scoped negative applicability while keeping conditional and exception scopes distinct; this receipt authorizes only the regenerated content-addressed family digest for PR #374 and preserves the standing delta and tracked-size budgets.",
+  "repo": "aoa-skills",
+  "schema_version": "aoa-repo-local-kag-budget-receipt-v1",
+  "scope": "generated_delta_and_tracked_size",
+  "tracked_bytes": 9671401,
+  "tracked_bytes_max": 9437184
+}

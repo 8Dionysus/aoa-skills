@@ -834,6 +834,21 @@ def test_negative_phrase_preserves_explicit_scope_over_positive_terms() -> None:
         "explicit titan summon but delegation was not requested",
         retrieval_depth="compact",
     )
+    no_delegation = capability_system.discover(
+        graph,
+        "explicit titan summon no delegation requested",
+        retrieval_depth="compact",
+    )
+    without_delegation = capability_system.discover(
+        graph,
+        "explicit titan summon without requested delegation",
+        retrieval_depth="compact",
+    )
+    no_bounded_tasks = capability_system.discover(
+        graph,
+        "explicit titan summon with no bounded tasks",
+        retrieval_depth="compact",
+    )
 
     assert positive[0]["negative_matched_tokens"] == []
     assert unbounded[0]["negative_matched_tokens"] == [
@@ -846,6 +861,18 @@ def test_negative_phrase_preserves_explicit_scope_over_positive_terms() -> None:
         "not",
         "requested",
         "was",
+    ]
+    assert no_delegation[0]["negative_matched_tokens"] == [
+        "no",
+        "requested",
+    ]
+    assert without_delegation[0]["negative_matched_tokens"] == [
+        "requested",
+        "without",
+    ]
+    assert no_bounded_tasks[0]["negative_matched_tokens"] == [
+        "bounded",
+        "no",
     ]
 
 
