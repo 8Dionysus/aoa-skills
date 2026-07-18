@@ -1280,6 +1280,16 @@ def graph_relations_from(graph: Mapping[str, Any]) -> dict[str, list[dict[str, A
     return rows
 
 
+def graph_relations_to(graph: Mapping[str, Any]) -> dict[str, list[dict[str, Any]]]:
+    rows: defaultdict[str, list[dict[str, Any]]] = defaultdict(list)
+    for raw in graph.get("relations", []):
+        relation = dict(raw)
+        rows[str(relation["target"])].append(relation)
+    for value in rows.values():
+        value.sort(key=lambda item: (item["kind"], item["source"]))
+    return rows
+
+
 def discover(
     graph: Mapping[str, Any],
     query: str,
@@ -1609,6 +1619,7 @@ def build_task_dag(
         raise CapabilityContractError("at least one capability must be explicitly selected")
     nodes = graph_node_map(graph)
     relations_from = graph_relations_from(graph)
+    relations_to = graph_relations_to(graph)
     blockers: list[str] = []
     warnings: list[str] = []
     execution_ids: set[str] = set()
@@ -1624,6 +1635,7 @@ def build_task_dag(
             execution_ids.add(resolved)
 
     edges: list[dict[str, Any]] = []
+    verification_by_node: dict[str, str] = {}
     queue = deque(sorted(execution_ids))
     expanded: set[str] = set()
     while queue:
@@ -1642,6 +1654,8 @@ def build_task_dag(
                 continue
             execution_ids.add(resolved)
             queue.append(resolved)
+            if kind == "verified-by":
+                verification_by_node[current] = resolved
             edges.append(
                 {
                     "kind": (
@@ -1655,9 +1669,30 @@ def build_task_dag(
                     "target": resolved if kind == "verified-by" else current,
                 }
             )
+        for relation in relations_to.get(current, []):
+            if relation.get("kind") != "verifies":
+                continue
+            verifier_id = str(relation["source"])
+            resolved, issues = _resolve_executable(
+                verifier_id,
+                nodes,
+                relations_from,
+            )
+            blockers.extend(issues)
+            if resolved is None:
+                continue
+            execution_ids.add(resolved)
+            queue.append(resolved)
+            verification_by_node[current] = resolved
+            edges.append(
+                {
+                    "kind": "verification",
+                    "source": current,
+                    "target": resolved,
+                }
+            )
 
     closure_ids = set(selected) | execution_ids
-    verification_by_node: dict[str, str] = {}
     for relation in graph.get("relations", []):
         source = str(relation["source"])
         target = str(relation["target"])

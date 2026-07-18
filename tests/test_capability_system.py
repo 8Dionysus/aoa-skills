@@ -128,6 +128,96 @@ def test_task_local_dag_connects_abi_and_blocks_conflicting_modes() -> None:
     assert capability_system.validate_task_dag(REPO_ROOT, blocked) == []
 
 
+def test_task_local_dag_closure_includes_forward_verifier() -> None:
+    def executable_node(
+        node_id: str,
+        *,
+        inputs: list[dict[str, object]],
+        outputs: list[dict[str, object]],
+    ) -> dict[str, object]:
+        return {
+            "id": node_id,
+            "kind": "skill",
+            "contract_level": "executable",
+            "binding": {
+                "availability": "available",
+                "ref": f"skills/{node_id}",
+            },
+            "owner": {
+                "repo": "owner",
+                "ref": "AGENTS.md",
+            },
+            "abi": {
+                "inputs": inputs,
+                "outputs": outputs,
+            },
+            "execution": {
+                "effects": ["none"],
+                "verification": [f"verify {node_id}"],
+                "termination": [f"stop after {node_id}"],
+            },
+        }
+
+    graph = {
+        "source": {"content_hash": "sha256:test"},
+        "nodes": [
+            executable_node(
+                "skill.work",
+                inputs=[],
+                outputs=[{"name": "result", "type": "work-result"}],
+            ),
+            executable_node(
+                "skill.verifier",
+                inputs=[
+                    {
+                        "name": "result",
+                        "type": "work-result",
+                        "required": True,
+                    }
+                ],
+                outputs=[],
+            ),
+        ],
+        "relations": [
+            {
+                "kind": "verifies",
+                "source": "skill.verifier",
+                "target": "skill.work",
+            }
+        ],
+    }
+
+    plan = capability_system.build_task_dag(
+        graph,
+        query="run work and its declared verifier",
+        selected_capabilities=["skill.work"],
+    )
+
+    assert plan["status"] == "ready"
+    assert [node["id"] for node in plan["nodes"]] == [
+        "skill.verifier",
+        "skill.work",
+    ]
+    assert plan["execution_stages"] == [
+        ["skill.work"],
+        ["skill.verifier"],
+    ]
+    assert {
+        checkpoint["node"]: checkpoint.get("verifier")
+        for checkpoint in plan["checkpoints"]
+    } == {
+        "skill.verifier": None,
+        "skill.work": "skill.verifier",
+    }
+    assert {
+        (edge["kind"], edge["source"], edge["target"])
+        for edge in plan["edges"]
+    } == {
+        ("data", "skill.work", "skill.verifier"),
+        ("verification", "skill.work", "skill.verifier"),
+    }
+
+
 def test_two_stage_retrieval_keeps_package_text_behind_owner_admission() -> None:
     graph = {
         "nodes": [],
