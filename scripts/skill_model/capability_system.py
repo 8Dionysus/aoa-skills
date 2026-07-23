@@ -588,7 +588,7 @@ def migration_issues(
                 issues.append(f"{label}: deferred family must use same-name-deferred compatibility")
         elif action == "merge-mode" and target_kind != "mode":
             issues.append(f"{label}: merge-mode must target a mode")
-        elif action == "route-owner-object" and target_kind not in {"workflow", "tool", "guard", "adapter"}:
+        elif action == "route-owner-object" and target_kind not in {"skill", "workflow", "tool", "guard", "adapter"}:
             issues.append(f"{label}: route-owner-object targets unsupported kind {target_kind!r}")
 
         alias_owner = aliases.get(legacy_name)

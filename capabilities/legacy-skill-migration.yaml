@@ -348,22 +348,22 @@ entries:
     reason: project-truth-belongs-to-owner
   - legacy_name: abyss-self-diagnostic-spine
     legacy_path: skills/project/abyss/abyss-self-diagnostic-spine/SKILL.md
-    action: route-owner-object
-    target_id: adapter.abyss.diagnostic-review
-    target_kind: adapter
+    action: retain-advertised
+    target_id: skill.abyss-self-diagnostic-spine
+    target_kind: skill
     target_owner: abyss-stack
-    compatibility: none
+    compatibility: same-name
     evidence_state: trial-in-progress
-    reason: project-truth-belongs-to-owner
+    reason: consolidated-procedure
   - legacy_name: os-abyss-artifact-trust-loop
     legacy_path: skills/project/abyss/os-abyss-artifact-trust-loop/SKILL.md
-    action: route-owner-object
-    target_id: adapter.abyss.artifact-trust
-    target_kind: adapter
+    action: retain-advertised
+    target_id: skill.os-abyss-artifact-trust-loop
+    target_kind: skill
     target_owner: abyss-machine
-    compatibility: none
-    evidence_state: trial-in-progress
-    reason: owner-bound-action
+    compatibility: same-name
+    evidence_state: manual-evaluated
+    reason: consolidated-procedure
   - legacy_name: atm10-change-protocol
     legacy_path: skills/project/atm10/atm10-change-protocol/SKILL.md
     action: route-owner-object
@@ -371,7 +371,7 @@ entries:
     target_kind: adapter
     target_owner: ATM10-Agent
     compatibility: none
-    evidence_state: trial-in-progress
+    evidence_state: manual-evaluated
     reason: project-truth-belongs-to-owner
   - legacy_name: atm10-source-of-truth-check
     legacy_path: skills/project/atm10/atm10-source-of-truth-check/SKILL.md
@@ -380,44 +380,44 @@ entries:
     target_kind: adapter
     target_owner: ATM10-Agent
     compatibility: none
-    evidence_state: trial-in-progress
+    evidence_state: manual-evaluated
     reason: project-truth-belongs-to-owner
   - legacy_name: titan-approval-ledger
     legacy_path: skills/project/titan/titan-approval-ledger/SKILL.md
     action: route-owner-object
-    target_id: tool.titan.approval-record
-    target_kind: tool
+    target_id: skill.titan-console
+    target_kind: skill
     target_owner: aoa-sdk
     compatibility: none
-    evidence_state: trial-in-progress
-    reason: owner-bound-action
+    evidence_state: manual-evaluated
+    reason: consolidated-procedure
   - legacy_name: titan-approval-loom
     legacy_path: skills/project/titan/titan-approval-loom/SKILL.md
     action: route-owner-object
-    target_id: tool.titan.approval-queue
-    target_kind: tool
+    target_id: skill.titan-console
+    target_kind: skill
     target_owner: aoa-sdk
     compatibility: none
-    evidence_state: trial-in-progress
-    reason: owner-bound-action
+    evidence_state: manual-evaluated
+    reason: consolidated-procedure
   - legacy_name: titan-appserver-bridge
     legacy_path: skills/project/titan/titan-appserver-bridge/SKILL.md
-    action: route-owner-object
-    target_id: tool.titan.appserver-bridge
-    target_kind: tool
+    action: retain-advertised
+    target_id: skill.titan-appserver-bridge
+    target_kind: skill
     target_owner: aoa-sdk
-    compatibility: none
-    evidence_state: trial-in-progress
-    reason: owner-bound-action
+    compatibility: same-name
+    evidence_state: manual-evaluated
+    reason: consolidated-procedure
   - legacy_name: titan-appserver-plan
     legacy_path: skills/project/titan/titan-appserver-plan/SKILL.md
     action: route-owner-object
-    target_id: tool.titan.appserver-plan
-    target_kind: tool
+    target_id: skill.titan-console
+    target_kind: skill
     target_owner: aoa-sdk
     compatibility: none
-    evidence_state: trial-in-progress
-    reason: owner-bound-action
+    evidence_state: manual-evaluated
+    reason: consolidated-procedure
   - legacy_name: titan-closeout
     legacy_path: skills/project/titan/titan-closeout/SKILL.md
     action: route-owner-object
@@ -425,35 +425,35 @@ entries:
     target_kind: workflow
     target_owner: aoa-playbooks
     compatibility: none
-    evidence_state: trial-in-progress
-    reason: owner-bound-action
+    evidence_state: manual-evaluated
+    reason: preserve-execution-until-owner-mcp
   - legacy_name: titan-console
     legacy_path: skills/project/titan/titan-console/SKILL.md
-    action: route-owner-object
-    target_id: tool.titan.console
-    target_kind: tool
+    action: retain-advertised
+    target_id: skill.titan-console
+    target_kind: skill
     target_owner: aoa-sdk
-    compatibility: none
-    evidence_state: trial-in-progress
-    reason: owner-bound-action
+    compatibility: same-name
+    evidence_state: manual-evaluated
+    reason: consolidated-procedure
   - legacy_name: titan-event-replay
     legacy_path: skills/project/titan/titan-event-replay/SKILL.md
     action: route-owner-object
-    target_id: tool.titan.event-replay
-    target_kind: tool
+    target_id: skill.titan-appserver-bridge
+    target_kind: skill
     target_owner: aoa-sdk
     compatibility: none
-    evidence_state: trial-in-progress
-    reason: owner-bound-action
+    evidence_state: manual-evaluated
+    reason: consolidated-procedure
   - legacy_name: titan-memory-loom
     legacy_path: skills/project/titan/titan-memory-loom/SKILL.md
-    action: route-owner-object
-    target_id: tool.titan.memory-ingest
-    target_kind: tool
+    action: retain-advertised
+    target_id: skill.titan-memory-loom
+    target_kind: skill
     target_owner: aoa-sdk
-    compatibility: none
-    evidence_state: trial-in-progress
-    reason: owner-bound-action
+    compatibility: same-name
+    evidence_state: manual-evaluated
+    reason: consolidated-procedure
   - legacy_name: titan-memory-prune
     legacy_path: skills/project/titan/titan-memory-prune/SKILL.md
     action: route-owner-object
@@ -461,8 +461,8 @@ entries:
     target_kind: tool
     target_owner: aoa-memo
     compatibility: none
-    evidence_state: trial-in-progress
-    reason: runtime-enforcement-required
+    evidence_state: manual-evaluated
+    reason: owner-bound-action
   - legacy_name: titan-mutation-gate
     legacy_path: skills/project/titan/titan-mutation-gate/SKILL.md
     action: route-owner-object
@@ -470,26 +470,26 @@ entries:
     target_kind: guard
     target_owner: titan-runtime-owner
     compatibility: none
-    evidence_state: trial-in-progress
+    evidence_state: manual-evaluated
     reason: runtime-enforcement-required
   - legacy_name: titan-recall
     legacy_path: skills/project/titan/titan-recall/SKILL.md
     action: route-owner-object
-    target_id: tool.titan.memory-recall
-    target_kind: tool
+    target_id: skill.titan-memory-loom
+    target_kind: skill
     target_owner: aoa-sdk
     compatibility: none
-    evidence_state: trial-in-progress
-    reason: owner-bound-action
+    evidence_state: manual-evaluated
+    reason: consolidated-procedure
   - legacy_name: titan-receipt
     legacy_path: skills/project/titan/titan-receipt/SKILL.md
     action: route-owner-object
-    target_id: tool.titan.receipt
-    target_kind: tool
+    target_id: skill.titan-console
+    target_kind: skill
     target_owner: aoa-sdk
     compatibility: none
-    evidence_state: trial-in-progress
-    reason: owner-bound-action
+    evidence_state: manual-evaluated
+    reason: consolidated-procedure
   - legacy_name: titan-runtime-gate
     legacy_path: skills/project/titan/titan-runtime-gate/SKILL.md
     action: route-owner-object
@@ -497,23 +497,23 @@ entries:
     target_kind: guard
     target_owner: titan-runtime-owner
     compatibility: none
-    evidence_state: trial-in-progress
+    evidence_state: manual-evaluated
     reason: runtime-enforcement-required
   - legacy_name: titan-summon
     legacy_path: skills/project/titan/titan-summon/SKILL.md
     action: route-owner-object
-    target_id: workflow.titan.summon
-    target_kind: workflow
+    target_id: skill.aoa-summon
+    target_kind: skill
     target_owner: aoa-agents
     compatibility: none
-    evidence_state: trial-in-progress
-    reason: owner-bound-action
+    evidence_state: manual-evaluated
+    reason: consolidated-procedure
   - legacy_name: titan-thread-turn-binding
     legacy_path: skills/project/titan/titan-thread-turn-binding/SKILL.md
     action: route-owner-object
     target_id: guard.titan.thread-turn-binding
     target_kind: guard
-    target_owner: aoa-sdk
+    target_owner: titan-runtime-owner
     compatibility: none
-    evidence_state: trial-in-progress
+    evidence_state: manual-evaluated
     reason: runtime-enforcement-required

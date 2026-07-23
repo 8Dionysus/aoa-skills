@@ -947,7 +947,7 @@ nodes:
       authority: external-authority
     lifecycle:
       state: candidate
-      version: 0.2.2
+      version: 0.2.3
       visibility: advertised
       evidence_state: evaluated
       health: challenger
@@ -964,7 +964,7 @@ nodes:
       source_refs:
         - repo: aoa-agents
           path: skills/aoa-session-progression-lift/SKILL.md
-          ref: owner-candidate-0.2.2
+          ref: cb9aaf03b445b2346bc12a41306e690949bcb352
           role: owner-skill-contract
           authority: external-authority
       optional_refs: []
@@ -982,7 +982,7 @@ nodes:
       authority: external-authority
     lifecycle:
       state: candidate
-      version: 0.2.2
+      version: 0.2.3
       visibility: advertised
       evidence_state: evaluated
       health: challenger
@@ -999,7 +999,7 @@ nodes:
       source_refs:
         - repo: aoa-agents
           path: skills/aoa-summon/SKILL.md
-          ref: owner-candidate-0.2.2
+          ref: cb9aaf03b445b2346bc12a41306e690949bcb352
           role: owner-skill-contract
           authority: external-authority
       optional_refs: []

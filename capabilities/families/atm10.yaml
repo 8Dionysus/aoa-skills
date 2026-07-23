@@ -17,7 +17,7 @@ nodes:
       repo: ATM10-Agent
       surface: AGENTS.md
       authority: external-authority
-    lifecycle: &atm_lifecycle
+    lifecycle:
       state: active
       version: 0.1.0
       visibility: deferred
@@ -32,12 +32,17 @@ nodes:
     contract_level: executable
     primary_parent: projects.atm10
     owner: *atm_owner
-    lifecycle: *atm_lifecycle
+    lifecycle: &atm_adapter_lifecycle
+      state: active
+      version: 0.1.0
+      visibility: deferred
+      evidence_state: evaluated
+      health: healthy
     applicability:
       use_when:
         - A change targets ATM10-Agent and its current repository-specific route law materially affects execution.
       do_not_use_when:
-        - The target is another repository or the task is read-only orientation.
+        - The target is another repository, or no requested or prospective ATM10 change is in scope.
       ambiguous_when:
         - A subsystem-local AGENTS card may override the root route for the touched paths.
     abi:
@@ -80,7 +85,7 @@ nodes:
       source_refs:
         - repo: ATM10-Agent
           path: AGENTS.md
-          ref: 430c622654362eae2ff3ed35855b42bc172dd552
+          ref: 1d3c0f9a6deef75de2e3c820b2106a7b1691a2e3
           role: owner-route
           authority: external-authority
       optional_refs: []
@@ -96,12 +101,12 @@ nodes:
       repo: ATM10-Agent
       surface: docs/SOURCE_OF_TRUTH.md
       authority: external-authority
-    lifecycle: *atm_lifecycle
+    lifecycle: *atm_adapter_lifecycle
     applicability:
       use_when:
         - ATM10 guidance, architecture, runbook, status, or generated surfaces overlap or conflict.
       do_not_use_when:
-        - The question concerns decision rationale or another repository.
+        - The sole question is decision rationale, or the question concerns another repository.
       ambiguous_when:
         - Runtime state and authored policy answer different parts of the question.
     abi:
@@ -120,13 +125,26 @@ nodes:
       ref: ATM10-Agent:docs/SOURCE_OF_TRUTH.md
       operation: map-authority
       availability: external
-    execution: *atm_execution
+    execution:
+      freedom: bounded-judgment
+      tool_requirements:
+        - Read access to ATM10 docs/SOURCE_OF_TRUTH.md and the exact supplied or returned owner surfaces whose roles must be resolved.
+      verification:
+        - Classify every inspected surface by the owner document-role contract and preserve unresolved runtime-versus-authored edges.
+        - Avoid repository-wide scans when the authority question already supplies exact candidate paths or owner return handles.
+      termination:
+        - Stop after one bounded project-local authority map, unresolved edge, or decision-owner handoff.
+      effects: [read-only]
+      reversibility: not-applicable
+      failure_modes:
+        - Treating newest, generated, or easiest-to-find material as source truth without the owner role contract.
+        - Broadly scanning ATM10 after the exact competing surfaces are already known.
     trust: *atm_trust
     provenance:
       source_refs:
         - repo: ATM10-Agent
           path: docs/SOURCE_OF_TRUTH.md
-          ref: 430c622654362eae2ff3ed35855b42bc172dd552
+          ref: 1d3c0f9a6deef75de2e3c820b2106a7b1691a2e3
           role: document-role-owner
           authority: external-authority
       optional_refs: []
