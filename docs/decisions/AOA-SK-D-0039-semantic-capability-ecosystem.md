@@ -144,15 +144,42 @@ Spark lane, obsolete mechanics, inherited review records, and repo-local memo
 candidate port have left the active tree.
 
 The 57-entry migration map is a functional-disposition ledger, not a list of
-renames. Fifty-six entries are now `manual-evaluated`. The newly closed slice
+renames. All fifty-seven entries are now `manual-evaluated`. The final closed slice
 adds the fifteen Titan functions, the Artifact Trust function, and both ATM10
-overlays to the earlier thirty-eight dispositions. Only
-`abyss-self-diagnostic-spine` remains `trial-in-progress` until the final
-installed-profile fresh-session trial exercises its owner procedure and
-source return. A graph target, installed filename, plausible final answer, or
-green structural check cannot advance that last state.
+overlays to the earlier thirty-eight dispositions, then closes
+`abyss-self-diagnostic-spine` through its installed-profile fresh-session
+trial. No entry advanced from a graph target, installed filename, plausible
+final answer, or green structural check alone.
 
 ## Review Log
+
+### 2026-07-23 - Close the final diagnostic disposition through real execution
+
+- Discovery result: a fresh neutral Codex session received only a natural
+  request for current read-only `agent-full` state with truth goal
+  `live_available`. It selected only `abyss-self-diagnostic-spine` from the
+  complete installed profile without being given the skill name.
+- Source-return result: the session read the installed bundle and its
+  `aoa_skill_source_receipt_v2`, verified all package identity dimensions,
+  followed the exact clean `abyss-stack` owner root, read the canonical
+  contract and only the selected `observe` procedure, and searched no sibling
+  checkout.
+- Execution result: it invoked `scripts/aoa-diagnose --preset agent-full
+  --truth-goal live_available` exactly once with no pipe, redirect, wrapper, or
+  write flag. The owner command returned a current
+  `diagnostic_session_v1` and exit code `1`; the agent correctly preserved that
+  as typed `repairable_under_governance` evidence rather than a tool failure.
+- Effect and claim result: source-authored, deployed, trial-proven, and
+  live-available truth stayed separate; mixed warn, fail, and pass axes and
+  drift classes remained explicit. No capture, latest refresh, repair,
+  restart, promotion, quest mutation, or recovery execution occurred.
+- Verdict and limit: mark `abyss-self-diagnostic-spine`
+  `manual-evaluated`, completing all 57 functional dispositions. This proves
+  natural discovery, owner source return, one current read-only owner
+  execution, typed result handling, and bounded handoff on the exercised host.
+  It does not prove global Abyss health, repair correctness, all selectors,
+  cross-host behavior, or future routing after material catalog or runtime
+  drift.
 
 ### 2026-07-23 - Restore Titan as three owner bundles plus real owner routes
 

@@ -91,20 +91,43 @@ turning the old topology back into the target architecture.
 
 ## Current Applicability
 
-As of 2026-07-17:
+As of 2026-07-23:
 
-- v2 source/exposure validation and same-name duplicate rejection are ready
-  for owner adoption;
+- one clean candidate `os-user-default` profile installs nineteen unique
+  front doors from shared and owner homes into `~/.codex/skills`;
+- every installed package and the aggregate profile receipt is current against
+  its selected clean source, and unrelated user entries remain preserved;
+- `aoa-evals`, `aoa-memo`, `aoa-stats`, `aoa-kag`, progression, summon, the
+  three Titan bundles, Artifact Trust, diagnostic, and the local `.aoa` global
+  route are now included alongside the seven shared bundles;
+- a fresh neutral session selected the late-listed diagnostic bundle naturally,
+  returned through its v2 source handle, loaded the canonical procedure, and
+  executed its read-only owner tool;
 - v1 remains accepted only as migration compatibility;
-- this change publishes the common action support needed by the staged
-  `aoa-stats` v2 consumer;
-- the OS assembler now fails closed on dirty Git owners for the normal user
-  destination, verifies per-bundle and aggregate source-return receipts,
-  preserves unrelated entries, requires explicit collision and prune choices,
-  and is idempotent when the installed profile is current;
-- dirty candidate installation is restricted to a separate explicit
-  non-production destination;
-- global installation and full-catalog fresh-session proof remain incomplete.
+- owner PR landing, final merge-ref installation, and the complete
+  cross-family coexistence rerun remain required before v1 retirement.
+
+## Review Log
+
+### 2026-07-23 - Repair installed-copy return before claiming global exposure
+
+- A real non-production installation exposed an integration defect that owner
+  validators had not found: the assembler emitted
+  `aoa_skill_source_receipt_v2`, while nearly every admitted owner skill
+  required exactly v1. Installation looked green, but returning to canonical
+  owner source failed.
+- The affected owner packages now accept v1 or v2. V2 requires non-empty
+  package digest, source fingerprint and scope, prompt-description hash, and
+  preserves the capability-graph hash when present. Missing v2 identity fails
+  closed; v1 remains a bounded compatibility path.
+- Manual proof used a real installed v2 `aoa-evals` package, a synthetic valid
+  v1 shape, and a malformed v2 shape. The first two returned canonical source;
+  the malformed v2 stopped before owner use. A separate fresh diagnostic
+  session demonstrated the same v2 return in natural execution.
+- The final user-root preview found three unmanaged collisions. The stale
+  `aoa-decision` and `aoa-kag` projections were replaced after inspection; the
+  `.aoa` route was materialized byte-identically from its local owner home.
+  No `.aoa` source skill was edited.
 
 ## Boundaries
 

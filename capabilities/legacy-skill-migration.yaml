@@ -353,7 +353,7 @@ entries:
     target_kind: skill
     target_owner: abyss-stack
     compatibility: same-name
-    evidence_state: trial-in-progress
+    evidence_state: manual-evaluated
     reason: consolidated-procedure
   - legacy_name: os-abyss-artifact-trust-loop
     legacy_path: skills/project/abyss/os-abyss-artifact-trust-loop/SKILL.md

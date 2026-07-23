@@ -5456,9 +5456,9 @@
       ],
       "kind": "skill",
       "lifecycle": {
-        "evidence_state": "manual-baseline",
+        "evidence_state": "evaluated",
         "health": "challenger",
-        "state": "candidate",
+        "state": "active",
         "version": "0.2.2",
         "visibility": "advertised"
       },
@@ -37759,7 +37759,7 @@
         "рантайм",
         "свежест"
       ],
-      "search_text": "external\nskill\nobserve-capture-or-review\nabyss-stack:skills/abyss-self-diagnostic-spine/SKILL.md\nnavigation\nProduce, capture, or review one owner-typed Abyss runtime diagnosis with explicit freshness, effect, and repair boundaries.\nskill.abyss-self-diagnostic-spine\nabyss-diagnostic\ndiagnostic-session-v1\nobserve\ncapture\nreview\nдиагностика\nрантайм\nсвежесть\nskill\nmanual-baseline\nchallenger\ncandidate\n0.2.2\nadvertised\nexternal-authority\nabyss-stack\nskills/abyss-self-diagnostic-spine/SKILL.md\nprojects.abyss.diagnose-runtime\nexternal-authority\nskills/abyss-self-diagnostic-spine/SKILL.md\nabyss-stack\nowner-skill-contract\nexternal-authority\nskills/abyss-self-diagnostic-spine/references/contract.yaml\nabyss-stack\nowner-typed-contract\nprojects-abyss-diagnostics\ncapabilities/families/abyss.yaml\nabyss-self-diagnostic-spine owner bundle\nderived-reference",
+      "search_text": "external\nskill\nobserve-capture-or-review\nabyss-stack:skills/abyss-self-diagnostic-spine/SKILL.md\nnavigation\nProduce, capture, or review one owner-typed Abyss runtime diagnosis with explicit freshness, effect, and repair boundaries.\nskill.abyss-self-diagnostic-spine\nabyss-diagnostic\ndiagnostic-session-v1\nobserve\ncapture\nreview\nдиагностика\nрантайм\nсвежесть\nskill\nevaluated\nchallenger\nactive\n0.2.2\nadvertised\nexternal-authority\nabyss-stack\nskills/abyss-self-diagnostic-spine/SKILL.md\nprojects.abyss.diagnose-runtime\nexternal-authority\nskills/abyss-self-diagnostic-spine/SKILL.md\nabyss-stack\nowner-skill-contract\nexternal-authority\nskills/abyss-self-diagnostic-spine/references/contract.yaml\nabyss-stack\nowner-typed-contract\nprojects-abyss-diagnostics\ncapabilities/families/abyss.yaml\nabyss-self-diagnostic-spine owner bundle\nderived-reference",
       "title": "abyss-self-diagnostic-spine owner bundle",
       "tokens": [
         "0.2.2",
@@ -37768,12 +37768,11 @@
         "abyss-self-diagnostic-spine",
         "abyss-stack",
         "abyss.yaml",
+        "active",
         "advertised",
         "authority",
-        "baseline",
         "boundaries",
         "bundle",
-        "candidate",
         "capabilities",
         "capture",
         "challenger",
@@ -37787,13 +37786,12 @@
         "diagnostic-session-v1",
         "diagnostics",
         "effect",
+        "evaluated",
         "explicit",
         "external",
         "external-authority",
         "families",
         "freshness",
-        "manual",
-        "manual-baseline",
         "md",
         "navigation",
         "observe",
@@ -55121,11 +55119,11 @@
   ],
   "schema_version": "aoa-capability-graph-v1",
   "source": {
-    "content_hash": "5d1c4238e59dbdf6afb5580a1c59eb6d9b633c44524bbd3a863c1f4a4d518f5c",
+    "content_hash": "7ec348fe9b7b75df35ad4a5f368448352b0a0e50c83cb66c25c893b9cc72b417",
     "family_files": [
       {
         "path": "capabilities/families/abyss.yaml",
-        "sha256": "72f6d7711a4d57be60b53149f23f189078a9c0f6cd06338d149ca72e9af61551"
+        "sha256": "dae1e16407e1e1b539eb446ee46370962326294de1848b536c0e0f9090c28b7a"
       },
       {
         "path": "capabilities/families/atm10.yaml",

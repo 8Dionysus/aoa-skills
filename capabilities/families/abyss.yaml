@@ -76,10 +76,10 @@ nodes:
       surface: skills/abyss-self-diagnostic-spine/SKILL.md
       authority: external-authority
     lifecycle:
-      state: candidate
+      state: active
       version: 0.2.2
       visibility: advertised
-      evidence_state: manual-baseline
+      evidence_state: evaluated
       health: challenger
     binding:
       kind: skill
