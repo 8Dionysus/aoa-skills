@@ -601,7 +601,7 @@ nodes:
       authority: external-authority
     lifecycle:
       state: candidate
-      version: 0.2.3
+      version: 0.2.4
       visibility: advertised
       evidence_state: evaluated
       health: challenger
@@ -618,12 +618,12 @@ nodes:
       source_refs:
         - repo: aoa-stats
           path: skills/aoa-stats/SKILL.md
-          ref: 3660d8aaa573320715d264ddf6ab1bbde0d95758
+          ref: 504571995cc36905cc886259c0a19be6e8e35045
           role: owner-skill-procedure
           authority: external-authority
         - repo: aoa-stats
           path: skills/aoa-stats/references/contract.yaml
-          ref: 3660d8aaa573320715d264ddf6ab1bbde0d95758
+          ref: 504571995cc36905cc886259c0a19be6e8e35045
           role: owner-typed-contract
           authority: external-authority
       optional_refs: []
