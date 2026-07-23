@@ -399,7 +399,7 @@ def _source_receipt(
     profile: dict[str, Any],
     skill: ResolvedSkill,
 ) -> dict[str, Any]:
-    return {
+    receipt = {
         "schema_version": SOURCE_RECEIPT_SCHEMA,
         "profile": profile_name,
         "runtime": profile["runtime"],
@@ -415,7 +415,6 @@ def _source_receipt(
         "digest": skill.digest,
         "source_fingerprint": skill.source_fingerprint,
         "source_fingerprint_scope": skill.source_fingerprint_scope,
-        "capability_graph_hash": skill.capability_graph_hash,
         "prompt_description_sha256": skill.prompt_description_sha256,
         "claim_limit": (
             "machine-local canonical source locator plus source/install/prompt "
@@ -423,6 +422,9 @@ def _source_receipt(
             "and outcomes require separate evidence"
         ),
     }
+    if skill.capability_graph_hash is not None:
+        receipt["capability_graph_hash"] = skill.capability_graph_hash
+    return receipt
 
 
 def _source_receipt_status(target: Path, expected: dict[str, Any]) -> str:
