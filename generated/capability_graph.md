@@ -2,7 +2,7 @@
 
 Derived from `capabilities/families/*.yaml`. This file is a read model, not capability authority.
 
-Source content hash: `7ec348fe9b7b75df35ad4a5f368448352b0a0e50c83cb66c25c893b9cc72b417`
+Source content hash: `c413c4bce7cc686c2c389fadd7933a1294cc5ec1f96f81b7d7786a1e99f46410`
 
 ## Semantic tree
 
@@ -15,6 +15,9 @@ Source content hash: `7ec348fe9b7b75df35ad4a5f368448352b0a0e50c83cb66c25c893b9cc
       - `mode.eval.select` (mode, internal, challenger)
       - `mode.eval.session-mining` (mode, internal, challenger)
       - `skill.aoa-eval` (skill, advertised, challenger)
+      - `skill.aoa-evals` (skill, advertised, challenger)
+    - `engineering.measurement` (capability, deferred, challenger)
+      - `skill.aoa-stats` (skill, advertised, challenger)
     - `engineering.shape` (capability, deferred, challenger)
       - `mode.engineering-shape.contexts` (mode, internal, challenger)
       - `mode.engineering-shape.core` (mode, internal, challenger)
@@ -110,6 +113,10 @@ Source content hash: `7ec348fe9b7b75df35ad4a5f368448352b0a0e50c83cb66c25c893b9cc
       - `mode.knowledge.authority-map` (mode, internal, challenger)
       - `mode.knowledge.sanitized-share` (mode, internal, challenger)
       - `skill.aoa-knowledge-stewardship` (skill, advertised, challenger)
+      - `stewardship.knowledge.memory` (capability, deferred, challenger)
+        - `skill.aoa-memo` (skill, advertised, challenger)
+      - `stewardship.knowledge.retrieve` (capability, deferred, challenger)
+        - `skill.aoa-kag` (skill, advertised, challenger)
 
 ## Typed relations
 
@@ -159,12 +166,22 @@ Source content hash: `7ec348fe9b7b75df35ad4a5f368448352b0a0e50c83cb66c25c893b9cc
 | hands-off-to | `mode.session-harvest.classify` | `mode.session-harvest.promote` | Exactly one isolated repeated quest-shaped unit remains and only its promotion verdict is unresolved. |
 | hands-off-to | `mode.session-harvest.extract` | `mode.session-harvest.classify` | One extracted unit has sufficient evidence for destination classification. |
 | hands-off-to | `mode.session-recovery.diagnose` | `mode.session-recovery.repair` | The diagnosis is reviewed and the target owner is known. |
+| hands-off-to | `skill.aoa-eval` | `skill.aoa-evals` | The selected object is a central source bundle, named eval verdict, source-linked report, or proof-lifecycle question. |
+| hands-off-to | `skill.aoa-evals` | `skill.aoa-eval` | The unresolved need is repository-local selection, application, intake, design, or session-hit classification. |
+| hands-off-to | `skill.aoa-kag` | `skill.aoa-evals` | Retrieval resolves a central proof bundle, result, verdict, or proof-lifecycle question. |
+| hands-off-to | `skill.aoa-kag` | `skill.aoa-memo` | Retrieval resolves an explicit memory object, candidate, lifecycle target, or memory read-model question. |
+| hands-off-to | `skill.aoa-memo` | `skill.aoa-evals` | The unresolved claim is proof meaning rather than memory meaning. |
+| hands-off-to | `skill.aoa-memo` | `skill.aoa-kag` | The responsible owner or exact source remains unknown and bounded cross-repository navigation is required. |
+| hands-off-to | `skill.aoa-memo-writeback` | `skill.aoa-memo` | A concrete candidate, export, quarantine packet, memory object, lifecycle target, or read-model target now exists and needs owner recall, review, or evolution. |
+| hands-off-to | `skill.aoa-stats` | `skill.aoa-evals` | The unresolved question is proof or verdict interpretation rather than a bounded measurement result. |
 | hands-off-to | `skill.aoa-summon` | `skill.aoa-checkpoint-closeout-bridge` | A returned child changes the parent checkpoint or closeout posture. |
 | hands-off-to | `skill.aoa-summon` | `skill.aoa-memo-writeback` | A reviewed child return contains one bounded memory-worthy lesson. |
 | hands-off-to | `skill.titan-memory-loom` | `tool.titan.memory-retention` | - |
 | hands-off-to | `tool.titan.memory-recall` | `tool.titan.memory-retention` | - |
 | hands-off-to | `workflow.operations.local-commit` | `workflow.operations.git-closeout` | A separately authorized remote effect is requested and an evaluated host binding is available. |
 | implemented-by | `engineering.evaluation` | `skill.aoa-eval` | - |
+| implemented-by | `engineering.evaluation` | `skill.aoa-evals` | - |
+| implemented-by | `engineering.measurement` | `skill.aoa-stats` | - |
 | implemented-by | `engineering.shape` | `skill.aoa-engineering-shape` | - |
 | implemented-by | `engineering.verification` | `skill.aoa-verification` | - |
 | implemented-by | `projects.abyss.artifact-trust` | `skill.os-abyss-artifact-trust-loop` | - |
@@ -182,6 +199,8 @@ Source content hash: `7ec348fe9b7b75df35ad4a5f368448352b0a0e50c83cb66c25c893b9cc
 | implemented-by | `sessions.recovery` | `skill.aoa-session-recovery` | - |
 | implemented-by | `stewardship.decisions` | `skill.aoa-decision` | - |
 | implemented-by | `stewardship.knowledge` | `skill.aoa-knowledge-stewardship` | - |
+| implemented-by | `stewardship.knowledge.memory` | `skill.aoa-memo` | - |
+| implemented-by | `stewardship.knowledge.retrieve` | `skill.aoa-kag` | - |
 | primary-parent | `adapter.abyss.artifact-trust` | `projects.abyss.artifact-trust` | - |
 | primary-parent | `adapter.abyss.diagnostic-review` | `projects.abyss.diagnose-runtime` | - |
 | primary-parent | `adapter.abyss.safe-infra-change` | `projects.abyss` | - |
@@ -190,6 +209,7 @@ Source content hash: `7ec348fe9b7b75df35ad4a5f368448352b0a0e50c83cb66c25c893b9cc
 | primary-parent | `adapter.atm10.repository-change` | `projects.atm10` | - |
 | primary-parent | `engineering` | `aoa` | - |
 | primary-parent | `engineering.evaluation` | `engineering` | - |
+| primary-parent | `engineering.measurement` | `engineering` | - |
 | primary-parent | `engineering.shape` | `engineering` | - |
 | primary-parent | `engineering.verification` | `engineering` | - |
 | primary-parent | `guard.operations.approval` | `operations.safety` | - |
@@ -249,11 +269,15 @@ Source content hash: `7ec348fe9b7b75df35ad4a5f368448352b0a0e50c83cb66c25c893b9cc
 | primary-parent | `skill.aoa-decision` | `stewardship.decisions` | - |
 | primary-parent | `skill.aoa-engineering-shape` | `engineering.shape` | - |
 | primary-parent | `skill.aoa-eval` | `engineering.evaluation` | - |
+| primary-parent | `skill.aoa-evals` | `engineering.evaluation` | - |
+| primary-parent | `skill.aoa-kag` | `stewardship.knowledge.retrieve` | - |
 | primary-parent | `skill.aoa-knowledge-stewardship` | `stewardship.knowledge` | - |
+| primary-parent | `skill.aoa-memo` | `stewardship.knowledge.memory` | - |
 | primary-parent | `skill.aoa-memo-writeback` | `sessions.memo-writeback` | - |
 | primary-parent | `skill.aoa-session-harvest` | `sessions.harvest` | - |
 | primary-parent | `skill.aoa-session-progression-lift` | `sessions` | - |
 | primary-parent | `skill.aoa-session-recovery` | `sessions.recovery` | - |
+| primary-parent | `skill.aoa-stats` | `engineering.measurement` | - |
 | primary-parent | `skill.aoa-summon` | `sessions` | - |
 | primary-parent | `skill.aoa-verification` | `engineering.verification` | - |
 | primary-parent | `skill.os-abyss-artifact-trust-loop` | `projects.abyss.artifact-trust` | - |
@@ -263,6 +287,8 @@ Source content hash: `7ec348fe9b7b75df35ad4a5f368448352b0a0e50c83cb66c25c893b9cc
 | primary-parent | `stewardship` | `aoa` | - |
 | primary-parent | `stewardship.decisions` | `stewardship` | - |
 | primary-parent | `stewardship.knowledge` | `stewardship` | - |
+| primary-parent | `stewardship.knowledge.memory` | `stewardship.knowledge` | - |
+| primary-parent | `stewardship.knowledge.retrieve` | `stewardship.knowledge` | - |
 | primary-parent | `tool.abyss.aoa-diagnose` | `projects.abyss.diagnose-runtime` | - |
 | primary-parent | `tool.titan.approval-queue` | `projects.titan.session.control` | - |
 | primary-parent | `tool.titan.approval-record` | `projects.titan.session.control` | - |
