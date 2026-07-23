@@ -93,19 +93,30 @@ turning the old topology back into the target architecture.
 
 As of 2026-07-23:
 
+- the owner homes in scope have landed in `aoa-evals`, `aoa-memo`,
+  `aoa-stats`, `aoa-kag`, `aoa-sdk`, `aoa-agents`, `abyss-stack`,
+  `abyss-machine`, and `ATM10-Agent`;
 - one clean candidate `os-user-default` profile installs nineteen unique
-  front doors from shared and owner homes into `~/.codex/skills`;
+  managed front doors from shared and owner homes into `~/.codex/skills`; the
+  separately owned session-memory evidence route remains preserved;
 - every installed package and the aggregate profile receipt is current against
-  its selected clean source, and unrelated user entries remain preserved;
+  its selected clean candidate source, and unrelated user entries remain
+  preserved;
 - `aoa-evals`, `aoa-memo`, `aoa-stats`, `aoa-kag`, progression, summon, the
   three Titan bundles, Artifact Trust, diagnostic, and the local `.aoa` global
   route are now included alongside the seven shared bundles;
-- a fresh neutral session selected the late-listed diagnostic bundle naturally,
-  returned through its v2 source handle, loaded the canonical procedure, and
-  executed its read-only owner tool;
+- fresh-session manual cases selected the Titan planning bundle, bounded
+  `aoa-stats` answer mode, and the `aoa-eval` `select -> apply` composition;
+  exact-source and generic-arithmetic negative cases did not invoke KAG or
+  stats respectively;
+- those trials exposed and then retested three material defects: an optional
+  graph hash serialized as JSON null, eval discovery widening after an exact
+  owner-port fit, and a bounded stats answer running the repository release
+  gate;
 - v1 remains accepted only as migration compatibility;
-- owner PR landing, final merge-ref installation, and the complete
-  cross-family coexistence rerun remain required before v1 retirement.
+- the final central merge-ref installation, live KAG federation refresh,
+  retrieved Artifact Trust owner handoff, and wider host/model coexistence
+  evidence remain required before v1 retirement.
 
 ## Review Log
 
@@ -128,6 +139,26 @@ As of 2026-07-23:
   `aoa-decision` and `aoa-kag` projections were replaced after inspection; the
   `.aoa` route was materialized byte-identically from its local owner home.
   No `.aoa` source skill was edited.
+
+### 2026-07-23 - Close owner landing and retest behavior, not only packaging
+
+- All owner-home changes in this migration slice landed before their final
+  references were admitted into the central capability graph.
+- Natural fresh-session trials were treated as the primary behavioral
+  evidence. Existing validators remained structural guards and were not
+  expanded to encode the trial narratives.
+- The Titan retry returned through a valid v2 source handle and stopped at a
+  no-effect plan. The stats retry stayed on one bounded owner observation. The
+  eval retry formed a two-node task-local DAG and ran exactly one selected
+  owner validator.
+- Negative cases kept exact-source reading out of KAG retrieval and ordinary
+  arithmetic out of `aoa-stats`. A live, unreviewed-session promotion request
+  stopped before promotion, but its session-memory router performed an
+  unnecessarily broad read-only lookup; that separate owner surface was not
+  changed here.
+- These results establish behavior only for the exercised model, host,
+  sources, and prompts. They do not establish universal routing accuracy,
+  cross-model parity, or benefit for every owner bundle.
 
 ## Boundaries
 
