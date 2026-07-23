@@ -143,24 +143,112 @@ The old source bundles, mandatory technique bridge, old eval/stat proxies,
 Spark lane, obsolete mechanics, inherited review records, and repo-local memo
 candidate port have left the active tree.
 
-The 57-entry migration map now represents an active functional-disposition
-queue, not completed equivalence. Thirty-eight entries are `manual-evaluated`:
-the five former decision bundles, three former engineering-shape bundles,
-three former verification bundles, six former eval bundles, four former
-harvest bundles, the transitional checkpoint closeout,
-`aoa-memo-writeback`, progression lift, summon, both recovery bundles,
-`aoa-sanitized-share`, `aoa-source-of-truth-check`, `aoa-change-protocol`,
-`aoa-tdd-slice`, `aoa-commit-growth-seam`, `aoa-approval-gate-check`,
-`aoa-dry-run-first`, `aoa-local-stack-bringup`, and
-`aoa-safe-infra-change`, plus the thin owner adapters
-`abyss-safe-infra-change` and `abyss-sanitized-share`. The other 19 entries
-remain `trial-in-progress`
-until their triggers, ABI, procedure, binding, effects,
-verification, termination, composition, discovery, and real-task behavior
-have been reviewed against the retained baseline. A graph target or plausible
-final answer cannot advance that state.
+The 57-entry migration map is a functional-disposition ledger, not a list of
+renames. All fifty-seven entries are now `manual-evaluated`. The final closed slice
+adds the fifteen Titan functions, the Artifact Trust function, and both ATM10
+overlays to the earlier thirty-eight dispositions, then closes
+`abyss-self-diagnostic-spine` through its installed-profile fresh-session
+trial. No entry advanced from a graph target, installed filename, plausible
+final answer, or green structural check alone.
 
 ## Review Log
+
+### 2026-07-23 - Close the final diagnostic disposition through real execution
+
+- Discovery result: a fresh neutral Codex session received only a natural
+  request for current read-only `agent-full` state with truth goal
+  `live_available`. It selected only `abyss-self-diagnostic-spine` from the
+  complete installed profile without being given the skill name.
+- Source-return result: the session read the installed bundle and its
+  `aoa_skill_source_receipt_v2`, verified all package identity dimensions,
+  followed the exact clean `abyss-stack` owner root, read the canonical
+  contract and only the selected `observe` procedure, and searched no sibling
+  checkout.
+- Execution result: it invoked `scripts/aoa-diagnose --preset agent-full
+  --truth-goal live_available` exactly once with no pipe, redirect, wrapper, or
+  write flag. The owner command returned a current
+  `diagnostic_session_v1` and exit code `1`; the agent correctly preserved that
+  as typed `repairable_under_governance` evidence rather than a tool failure.
+- Effect and claim result: source-authored, deployed, trial-proven, and
+  live-available truth stayed separate; mixed warn, fail, and pass axes and
+  drift classes remained explicit. No capture, latest refresh, repair,
+  restart, promotion, quest mutation, or recovery execution occurred.
+- Verdict and limit: mark `abyss-self-diagnostic-spine`
+  `manual-evaluated`, completing all 57 functional dispositions. This proves
+  natural discovery, owner source return, one current read-only owner
+  execution, typed result handling, and bounded handoff on the exercised host.
+  It does not prove global Abyss health, repair correctness, all selectors,
+  cross-host behavior, or future routing after material catalog or runtime
+  drift.
+
+### 2026-07-23 - Restore Titan as three owner bundles plus real owner routes
+
+- Packaging result: fifteen former Titan names no longer compete as fifteen
+  global Markdown entries. `aoa-sdk` owns three callable packages:
+  `titan-console` for console, approval witness and queue, unsent plan, and
+  receipt modes; `titan-appserver-bridge` for visible bridge and replay modes;
+  and `titan-memory-loom` for candidate ingest, recall, and effect-free
+  retention handoff. Their conditional procedures, typed ABI, effects,
+  verification, failure modes, and manual-case health remain in the owner
+  packages rather than in this graph.
+- Owner split: `aoa-summon` remains the executable summon procedure in
+  `aoa-agents`; reviewed retention and pruning meaning remains with
+  `aoa-memo`. The graph records those handoffs without pretending the SDK owns
+  role, durable-memory, or operator authority.
+- Guard result: mutation, runtime-transition, and thread-turn enforcement stay
+  blocked and unavailable. SDK normalization and witness helpers are
+  provenance for those requirements, not live guard owners and not a reason
+  to advertise fictitious guard skills.
+- Workflow result: Titan closeout remains a degraded `aoa-playbooks` route.
+  No new closeout skill is created before an executable `aoa-playbooks` MCP
+  owner exists.
+- Verdict and limit: all fifteen legacy dispositions are
+  `manual-evaluated`. This proves the owner-package consolidation, exercised
+  helper behavior, negative routing, owner handoffs, and unavailable-guard
+  honesty. It does not prove live Titan runtime enforcement, hidden execution,
+  operator authentication, or executable playbook closeout.
+
+### 2026-07-23 - Promote Artifact Trust from adapter label to owner procedure
+
+- Representation correction: the former migration target named only the
+  read-only central adapter. The functional successor is now the
+  `abyss-machine` owner package `os-abyss-artifact-trust-loop`; the adapter
+  remains a derived read route and cannot replace the procedure.
+- Manual result: natural pre-consumption selection, authorized producer work,
+  positive local-agent admission, empty-registry unknown, source-ref mismatch
+  denial, production-consumer manual review, degraded MCP fallback, ordinary
+  source-edit exclusion, and neighboring release/eval coexistence all
+  preserved the distinct inspect, prepare, admit, and audit phases.
+- Verdict discipline: `allow`, `warn`, `deny`, `manual_review_required`,
+  `unknown`, and `not_applicable` stayed distinct. Build success did not become
+  promotion or consumption authority, and stale or incomplete MCP evidence
+  returned to the owner CLI.
+- Verdict and limit: mark `os-abyss-artifact-trust-loop`
+  `manual-evaluated` and advertise its owner package. This proves the exercised
+  artifact classes and owner surfaces, not universal producer coverage,
+  runtime trust-root enforcement, release authorization, or cross-host parity.
+
+### 2026-07-23 - Keep ATM10 as evaluated owner adapters, not copied skills
+
+- Authority comparison: no skill found the correct owner roles but performed a
+  broad scan; the retained overlay bounded the route; the current
+  `aoa-knowledge-stewardship` authority mode plus the ATM10 adapter preserved
+  the same result through exact owner records and return handles. Observed raw
+  input was 111,410, 59,084, and 66,572 tokens respectively on those exercised
+  arms.
+- Change comparison: the host-native repository-change loop and old overlay
+  both produced a correct change, but the overlay imposed intent-chain,
+  test-first, and rollback ceremony even where the owner task did not require
+  it. Observed raw input was 54,466 without the overlay, 60,046 with it, and
+  65,749 for the current host loop plus owner adapter.
+- Disposition: neither overlay earns a callable global bundle. Their remaining
+  value is an owner-qualified semantic adapter: one binds a requested or
+  prospective change to current ATM10 route law; the other resolves an actual
+  source-role conflict from exact supplied surfaces. Decision rationale stays
+  with the decision owner.
+- Verdict and limit: mark both ATM10 entries `manual-evaluated`. Removing the
+  repository's stale shared skill copies remains gated on a fresh OS profile
+  that exposes every shared front door removed from that repository.
 
 ### 2026-07-17 - Close four generic risk packages into enforcement and owner bindings
 
@@ -349,6 +437,30 @@ final answer cannot advance that state.
   degraded and deferred: its three procedures are preserved, but no-skill and
   compressed-current arms often reached equivalent conclusions and the
   full-profile collision remains unresolved.
+
+### 2026-07-23 - Bound current home-skill-port selection
+
+- Manual pressure: a fresh-session request supplied an exact owner root and
+  named the current AoA home-skill-port acceptance target. `aoa-eval` correctly
+  formed `select -> apply`, selected the exact owner validator, ran only that
+  command, and returned the strict proof limit. Selection nevertheless read
+  session memory, enumerated the target tree, inspected its workflow pin, and
+  compared validator history after the exact contract route was already
+  sufficient.
+- Correction: version `0.2.6` adds a current home-skill-port fast path. It
+  reads the supplied target manifest, returns through the installed bundle's
+  `aoa-skills` source handle, reads the exact owner contract and validator, and
+  then stops discovery. Target-wide inventory, workflow-pin archaeology, and
+  Git-generation comparison are excluded unless historical parity is the
+  actual request.
+- Evidence route: reinstall the candidate and repeat the same held-out
+  `select -> apply` task. Require the same exact validator, full apply
+  preflight, one command, no write, and strict proof limit with the widened
+  discovery absent.
+- Claim limit: this is a bounded selection optimization for one current shared
+  contract. It does not establish generic latency or token superiority, and
+  it does not remove the existing historical-evidence route when history is
+  explicitly material.
 
 ### 2026-07-17 - Restore, compose, and evaluate the eval family
 

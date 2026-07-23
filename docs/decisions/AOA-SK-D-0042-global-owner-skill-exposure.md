@@ -91,20 +91,74 @@ turning the old topology back into the target architecture.
 
 ## Current Applicability
 
-As of 2026-07-17:
+As of 2026-07-23:
 
-- v2 source/exposure validation and same-name duplicate rejection are ready
-  for owner adoption;
+- the owner homes in scope have landed in `aoa-evals`, `aoa-memo`,
+  `aoa-stats`, `aoa-kag`, `aoa-sdk`, `aoa-agents`, `abyss-stack`,
+  `abyss-machine`, and `ATM10-Agent`;
+- one clean candidate `os-user-default` profile installs nineteen unique
+  managed front doors from shared and owner homes into `~/.codex/skills`; the
+  separately owned session-memory evidence route remains preserved;
+- every installed package and the aggregate profile receipt is current against
+  its selected clean candidate source, and unrelated user entries remain
+  preserved;
+- `aoa-evals`, `aoa-memo`, `aoa-stats`, `aoa-kag`, progression, summon, the
+  three Titan bundles, Artifact Trust, diagnostic, and the local `.aoa` global
+  route are now included alongside the seven shared bundles;
+- fresh-session manual cases selected the Titan planning bundle, bounded
+  `aoa-stats` answer mode, and the `aoa-eval` `select -> apply` composition;
+  exact-source and generic-arithmetic negative cases did not invoke KAG or
+  stats respectively;
+- those trials exposed and then retested three material defects: an optional
+  graph hash serialized as JSON null, eval discovery widening after an exact
+  owner-port fit, and a bounded stats answer running the repository release
+  gate;
 - v1 remains accepted only as migration compatibility;
-- this change publishes the common action support needed by the staged
-  `aoa-stats` v2 consumer;
-- the OS assembler now fails closed on dirty Git owners for the normal user
-  destination, verifies per-bundle and aggregate source-return receipts,
-  preserves unrelated entries, requires explicit collision and prune choices,
-  and is idempotent when the installed profile is current;
-- dirty candidate installation is restricted to a separate explicit
-  non-production destination;
-- global installation and full-catalog fresh-session proof remain incomplete.
+- the final central merge-ref installation, live KAG federation refresh,
+  retrieved Artifact Trust owner handoff, and wider host/model coexistence
+  evidence remain required before v1 retirement.
+
+## Review Log
+
+### 2026-07-23 - Repair installed-copy return before claiming global exposure
+
+- A real non-production installation exposed an integration defect that owner
+  validators had not found: the assembler emitted
+  `aoa_skill_source_receipt_v2`, while nearly every admitted owner skill
+  required exactly v1. Installation looked green, but returning to canonical
+  owner source failed.
+- The affected owner packages now accept v1 or v2. V2 requires non-empty
+  package digest, source fingerprint and scope, prompt-description hash, and
+  preserves the capability-graph hash when present. Missing v2 identity fails
+  closed; v1 remains a bounded compatibility path.
+- Manual proof used a real installed v2 `aoa-evals` package, a synthetic valid
+  v1 shape, and a malformed v2 shape. The first two returned canonical source;
+  the malformed v2 stopped before owner use. A separate fresh diagnostic
+  session demonstrated the same v2 return in natural execution.
+- The final user-root preview found three unmanaged collisions. The stale
+  `aoa-decision` and `aoa-kag` projections were replaced after inspection; the
+  `.aoa` route was materialized byte-identically from its local owner home.
+  No `.aoa` source skill was edited.
+
+### 2026-07-23 - Close owner landing and retest behavior, not only packaging
+
+- All owner-home changes in this migration slice landed before their final
+  references were admitted into the central capability graph.
+- Natural fresh-session trials were treated as the primary behavioral
+  evidence. Existing validators remained structural guards and were not
+  expanded to encode the trial narratives.
+- The Titan retry returned through a valid v2 source handle and stopped at a
+  no-effect plan. The stats retry stayed on one bounded owner observation. The
+  eval retry formed a two-node task-local DAG and ran exactly one selected
+  owner validator.
+- Negative cases kept exact-source reading out of KAG retrieval and ordinary
+  arithmetic out of `aoa-stats`. A live, unreviewed-session promotion request
+  stopped before promotion, but its session-memory router performed an
+  unnecessarily broad read-only lookup; that separate owner surface was not
+  changed here.
+- These results establish behavior only for the exercised model, host,
+  sources, and prompts. They do not establish universal routing accuracy,
+  cross-model parity, or benefit for every owner bundle.
 
 ## Boundaries
 

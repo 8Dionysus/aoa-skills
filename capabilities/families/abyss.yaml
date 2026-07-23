@@ -1,7 +1,7 @@
 schema_version: aoa-capability-family-v1
 family_id: projects-abyss-diagnostics
-title: Abyss diagnostics adapter
-description: Owner-routed diagnostic tool and review adapter for the Abyss runtime family.
+title: Abyss owner capabilities
+description: Owner-routed diagnostic and artifact-trust skills, tools, and adapters for the Abyss runtime family.
 owner:
   repo: abyss-stack
   surface: mechanics/diagnostic-spine/README.md
@@ -48,6 +48,101 @@ nodes:
       - рантайм
       - пакет
       - отчет
+  - id: projects.abyss.artifact-trust
+    title: Establish Abyss artifact trust
+    description: Classify one Abyss artifact, resolve its owner evidence, and reach an exact fail-closed consumer admission verdict.
+    kind: capability
+    contract_level: navigation
+    primary_parent: projects.abyss
+    owner:
+      repo: abyss-machine
+      surface: manifests/artifact_signature_policy.manifest.json
+      authority: external-authority
+    lifecycle:
+      state: active
+      version: 0.1.0
+      visibility: deferred
+      evidence_state: owner-verified
+      health: healthy
+    keywords: [artifact-trust, consumer-admission, provenance, registry, trust-gate, артефакт, доверие, происхождение]
+  - id: skill.abyss-self-diagnostic-spine
+    title: abyss-self-diagnostic-spine owner bundle
+    description: Produce, capture, or review one owner-typed Abyss runtime diagnosis with explicit freshness, effect, and repair boundaries.
+    kind: skill
+    contract_level: navigation
+    primary_parent: projects.abyss.diagnose-runtime
+    owner:
+      repo: abyss-stack
+      surface: skills/abyss-self-diagnostic-spine/SKILL.md
+      authority: external-authority
+    lifecycle:
+      state: active
+      version: 0.2.3
+      visibility: advertised
+      evidence_state: evaluated
+      health: challenger
+    binding:
+      kind: skill
+      ref: abyss-stack:skills/abyss-self-diagnostic-spine/SKILL.md
+      operation: observe-capture-or-review
+      availability: external
+    trust:
+      public_safe: true
+      requires_human_approval: false
+      posture: derived-reference
+    provenance:
+      source_refs:
+        - repo: abyss-stack
+          path: skills/abyss-self-diagnostic-spine/SKILL.md
+          ref: 38856c1e4da1e6e0e40d2b76d8aaf828a7ef4b10
+          role: owner-skill-contract
+          authority: external-authority
+        - repo: abyss-stack
+          path: skills/abyss-self-diagnostic-spine/references/contract.yaml
+          ref: 38856c1e4da1e6e0e40d2b76d8aaf828a7ef4b10
+          role: owner-typed-contract
+          authority: external-authority
+      optional_refs: []
+    keywords: [abyss-diagnostic, diagnostic-session-v1, observe, capture, review, диагностика, рантайм, свежесть]
+  - id: skill.os-abyss-artifact-trust-loop
+    title: os-abyss-artifact-trust-loop owner bundle
+    description: Route one OS Abyss artifact through owner classification, required controls, producer evidence, drift, durable registry selection, and fail-closed consumer admission.
+    kind: skill
+    contract_level: navigation
+    primary_parent: projects.abyss.artifact-trust
+    owner:
+      repo: abyss-machine
+      surface: skills/os-abyss-artifact-trust-loop/SKILL.md
+      authority: external-authority
+    lifecycle:
+      state: active
+      version: 0.1.1
+      visibility: advertised
+      evidence_state: evaluated
+      health: challenger
+    binding:
+      kind: skill
+      ref: abyss-machine:skills/os-abyss-artifact-trust-loop/SKILL.md
+      operation: inspect-prepare-admit-or-audit
+      availability: external
+    trust:
+      public_safe: true
+      requires_human_approval: false
+      posture: derived-reference
+    provenance:
+      source_refs:
+        - repo: abyss-machine
+          path: skills/os-abyss-artifact-trust-loop/SKILL.md
+          ref: 2faa6c6ccfc1309f6c3b6a36ddf04c3334c4547b
+          role: owner-skill-contract
+          authority: external-authority
+        - repo: abyss-machine
+          path: skills/os-abyss-artifact-trust-loop/references/contract.yaml
+          ref: 2faa6c6ccfc1309f6c3b6a36ddf04c3334c4547b
+          role: owner-typed-contract
+          authority: external-authority
+      optional_refs: []
+    keywords: [artifact-trust, trust-gate, provenance, registry-latest, sbom, signature, артефакт, доверие, подпись]
   - id: tool.abyss.aoa-diagnose
     title: aoa-diagnose
     description: Invoke the owner CLI in its read-only stdout posture to produce a diagnostic_session_v1 packet.
@@ -109,12 +204,12 @@ nodes:
       source_refs:
         - repo: abyss-stack
           path: scripts/aoa-diagnose
-          ref: b85b9530e2803d79a3a103898826af915da9dbca
+          ref: 38856c1e4da1e6e0e40d2b76d8aaf828a7ef4b10
           role: owner-tool
           authority: external-authority
         - repo: abyss-stack
           path: mechanics/diagnostic-spine/parts/diagnostic-surfaces/schemas/diagnostic_session.schema.json
-          ref: b85b9530e2803d79a3a103898826af915da9dbca
+          ref: 38856c1e4da1e6e0e40d2b76d8aaf828a7ef4b10
           role: output-schema
           authority: external-authority
       optional_refs: []
@@ -179,7 +274,7 @@ nodes:
       source_refs:
         - repo: abyss-stack
           path: mechanics/diagnostic-spine/parts/diagnostic-surfaces/docs/DIAGNOSTIC_SPINE.md
-          ref: b85b9530e2803d79a3a103898826af915da9dbca
+          ref: 38856c1e4da1e6e0e40d2b76d8aaf828a7ef4b10
           role: owner-contract
           authority: external-authority
       optional_refs: []
@@ -245,12 +340,12 @@ nodes:
       source_refs:
         - repo: abyss-stack
           path: docs/routes/START_HERE_ROUTE_CONTRACT.md
-          ref: b85b9530e2803d79a3a103898826af915da9dbca
+          ref: 38856c1e4da1e6e0e40d2b76d8aaf828a7ef4b10
           role: owner-route-contract
           authority: external-authority
         - repo: abyss-stack
           path: CONTRIBUTING.md
-          ref: b85b9530e2803d79a3a103898826af915da9dbca
+          ref: 38856c1e4da1e6e0e40d2b76d8aaf828a7ef4b10
           role: reversibility-and-public-safety-boundary
           authority: external-authority
       optional_refs: []
@@ -325,12 +420,12 @@ nodes:
       source_refs:
         - repo: abyss-stack
           path: SECURITY.md
-          ref: b85b9530e2803d79a3a103898826af915da9dbca
+          ref: 38856c1e4da1e6e0e40d2b76d8aaf828a7ef4b10
           role: disclosure-boundary
           authority: external-authority
         - repo: abyss-stack
           path: CONTRIBUTING.md
-          ref: b85b9530e2803d79a3a103898826af915da9dbca
+          ref: 38856c1e4da1e6e0e40d2b76d8aaf828a7ef4b10
           role: public-contribution-boundary
           authority: external-authority
       optional_refs: []
@@ -348,7 +443,7 @@ nodes:
     description: Read the abyss-machine artifact policy and durable registry verdict, then route production or repair to the artifact owner without creating a second trust authority.
     kind: adapter
     contract_level: executable
-    primary_parent: projects.abyss
+    primary_parent: projects.abyss.artifact-trust
     owner:
       repo: abyss-machine
       surface: manifests/artifact_signature_policy.manifest.json
@@ -405,12 +500,12 @@ nodes:
       source_refs:
         - repo: abyss-machine
           path: manifests/artifact_signature_policy.manifest.json
-          ref: 52252e4ef7d98361d99e29056e98fcba403a2d6d
+          ref: 2faa6c6ccfc1309f6c3b6a36ddf04c3334c4547b
           role: artifact-policy-owner
           authority: external-authority
         - repo: abyss-machine
           path: src/abyss_machine/artifact_bundles.py
-          ref: 52252e4ef7d98361d99e29056e98fcba403a2d6d
+          ref: 2faa6c6ccfc1309f6c3b6a36ddf04c3334c4547b
           role: read-model-and-trust-gate-implementation
           authority: external-authority
       optional_refs: []
@@ -426,6 +521,21 @@ nodes:
       - подпись
       - происхождение
 relations:
+  - kind: implemented-by
+    source: projects.abyss.diagnose-runtime
+    target: skill.abyss-self-diagnostic-spine
+  - kind: requires
+    source: skill.abyss-self-diagnostic-spine
+    target: tool.abyss.aoa-diagnose
+  - kind: derived-from
+    source: adapter.abyss.diagnostic-review
+    target: skill.abyss-self-diagnostic-spine
+  - kind: implemented-by
+    source: projects.abyss.artifact-trust
+    target: skill.os-abyss-artifact-trust-loop
+  - kind: derived-from
+    source: adapter.abyss.artifact-trust
+    target: skill.os-abyss-artifact-trust-loop
   - kind: implemented-by
     source: projects.abyss.diagnose-runtime
     target: adapter.abyss.diagnostic-review

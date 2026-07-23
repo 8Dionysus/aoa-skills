@@ -19,7 +19,7 @@ nodes:
       authority: authored
     lifecycle: &eval_family_lifecycle
       state: candidate
-      version: 0.2.5
+      version: 0.2.6
       visibility: deferred
       evidence_state: evaluated
       health: challenger
@@ -44,7 +44,7 @@ nodes:
     owner: *eval_owner
     lifecycle:
       state: candidate
-      version: 0.2.5
+      version: 0.2.6
       visibility: advertised
       evidence_state: evaluated
       health: challenger
@@ -98,7 +98,7 @@ nodes:
       source_refs:
         - repo: aoa-skills
           path: skills/core/engineering/aoa-eval/SKILL.md
-          ref: capability-family-v0.2.5
+          ref: capability-family-v0.2.6
           role: portable-family-procedure
           authority: authored
       optional_refs: []
@@ -113,6 +113,54 @@ nodes:
       - запуск-оценки
       - пробел-оценки
 
+  - id: skill.aoa-evals
+    title: aoa-evals owner bundle
+    description: Select, review, or evolve central bounded proof through the aoa-evals owner boundary. Use for central source-bundle choice, named eval results or verdicts, source-linked reports, Eval Forge owner review, proof lifecycle, and source or reader drift. Use aoa-eval for local selection, apply, intake, design, or session-hit classification. Never treat a candidate, readiness check, receipt, MCP result, generated output, or green command as proof.
+    kind: skill
+    contract_level: navigation
+    primary_parent: engineering.evaluation
+    owner:
+      repo: aoa-evals
+      surface: skills/aoa-evals/SKILL.md
+      authority: external-authority
+    lifecycle:
+      state: candidate
+      version: 0.1.19
+      visibility: advertised
+      evidence_state: evaluated
+      health: challenger
+    binding:
+      kind: skill
+      ref: aoa-evals:skills/aoa-evals/SKILL.md
+      operation: select-review-or-evolve
+      availability: external
+    trust:
+      public_safe: true
+      requires_human_approval: false
+      posture: derived-reference
+    provenance:
+      source_refs:
+        - repo: aoa-evals
+          path: skills/aoa-evals/SKILL.md
+          ref: 3412b47f9ee7bec9567f92e1c2d59596c4428a2c
+          role: owner-skill-procedure
+          authority: external-authority
+        - repo: aoa-evals
+          path: skills/aoa-evals/references/contract.yaml
+          ref: 3412b47f9ee7bec9567f92e1c2d59596c4428a2c
+          role: owner-typed-contract
+          authority: external-authority
+      optional_refs: []
+    keywords:
+      - central-proof
+      - eval-verdict
+      - proof-lifecycle
+      - source-bundle
+      - eval-forge
+      - центральное-доказательство
+      - вердикт
+      - жизненный-цикл
+
   - id: mode.eval.select
     title: Select an evaluation surface
     description: Compare owner-local and central evidence surfaces and return exact, partial, or no-fit without executing or designing.
@@ -122,7 +170,7 @@ nodes:
     owner: *eval_owner
     lifecycle: &eval_mode_lifecycle
       state: candidate
-      version: 0.2.5
+      version: 0.2.6
       visibility: internal
       evidence_state: evaluated
       health: challenger
@@ -155,7 +203,7 @@ nodes:
       source_refs:
         - repo: aoa-skills
           path: skills/core/engineering/aoa-eval/references/select.md
-          ref: capability-family-v0.2.5
+          ref: capability-family-v0.2.6
           role: select-mode
           authority: authored
       optional_refs: []
@@ -232,7 +280,7 @@ nodes:
       source_refs:
         - repo: aoa-skills
           path: skills/core/engineering/aoa-eval/references/apply.md
-          ref: capability-family-v0.2.5
+          ref: capability-family-v0.2.6
           role: apply-mode
           authority: authored
       optional_refs: []
@@ -305,7 +353,7 @@ nodes:
       source_refs:
         - repo: aoa-skills
           path: skills/core/engineering/aoa-eval/references/local-need.md
-          ref: capability-family-v0.2.5
+          ref: capability-family-v0.2.6
           role: local-need-mode
           authority: authored
       optional_refs: []
@@ -375,7 +423,7 @@ nodes:
       source_refs:
         - repo: aoa-skills
           path: skills/core/engineering/aoa-eval/references/design.md
-          ref: capability-family-v0.2.5
+          ref: capability-family-v0.2.6
           role: design-mode
           authority: authored
       optional_refs: []
@@ -443,7 +491,7 @@ nodes:
       source_refs:
         - repo: aoa-skills
           path: skills/core/engineering/aoa-eval/references/session-mining.md
-          ref: capability-family-v0.2.5
+          ref: capability-family-v0.2.6
           role: session-mining-mode
           authority: authored
       optional_refs: []
@@ -462,6 +510,17 @@ relations:
   - kind: implemented-by
     source: engineering.evaluation
     target: skill.aoa-eval
+  - kind: implemented-by
+    source: engineering.evaluation
+    target: skill.aoa-evals
+  - kind: hands-off-to
+    source: skill.aoa-eval
+    target: skill.aoa-evals
+    condition: The selected object is a central source bundle, named eval verdict, source-linked report, or proof-lifecycle question.
+  - kind: hands-off-to
+    source: skill.aoa-evals
+    target: skill.aoa-eval
+    condition: The unresolved need is repository-local selection, application, intake, design, or session-hit classification.
   - kind: hands-off-to
     source: mode.eval.select
     target: mode.eval.apply

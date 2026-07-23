@@ -2,7 +2,7 @@
 
 Derived from `capabilities/families/*.yaml`. This file is a read model, not capability authority.
 
-Source content hash: `9f467010bf46c9a0cd6589f7dd683e0aa14a82a5b2cbd0d878b0209579388333`
+Source content hash: `05e9bbe0a13c126d5e3ca10c9e6caaa8cff893c5530f938880bb85264c2ac1a4`
 
 ## Semantic tree
 
@@ -15,6 +15,9 @@ Source content hash: `9f467010bf46c9a0cd6589f7dd683e0aa14a82a5b2cbd0d878b0209579
       - `mode.eval.select` (mode, internal, challenger)
       - `mode.eval.session-mining` (mode, internal, challenger)
       - `skill.aoa-eval` (skill, advertised, challenger)
+      - `skill.aoa-evals` (skill, advertised, challenger)
+    - `engineering.measurement` (capability, deferred, challenger)
+      - `skill.aoa-stats` (skill, advertised, challenger)
     - `engineering.shape` (capability, deferred, challenger)
       - `mode.engineering-shape.contexts` (mode, internal, challenger)
       - `mode.engineering-shape.core` (mode, internal, challenger)
@@ -41,11 +44,14 @@ Source content hash: `9f467010bf46c9a0cd6589f7dd683e0aa14a82a5b2cbd0d878b0209579
       - `workflow.operations.safe-infra-change` (workflow, internal, unavailable)
   - `projects` (capability, deferred, challenger)
     - `projects.abyss` (capability, deferred, challenger)
-      - `adapter.abyss.artifact-trust` (adapter, deferred, healthy)
       - `adapter.abyss.safe-infra-change` (adapter, deferred, healthy)
       - `adapter.abyss.sanitized-share` (adapter, deferred, healthy)
+      - `projects.abyss.artifact-trust` (capability, deferred, healthy)
+        - `adapter.abyss.artifact-trust` (adapter, deferred, healthy)
+        - `skill.os-abyss-artifact-trust-loop` (skill, advertised, challenger)
       - `projects.abyss.diagnose-runtime` (capability, deferred, challenger)
         - `adapter.abyss.diagnostic-review` (adapter, deferred, challenger)
+        - `skill.abyss-self-diagnostic-spine` (skill, advertised, challenger)
         - `tool.abyss.aoa-diagnose` (tool, internal, healthy)
     - `projects.atm10` (capability, deferred, healthy)
       - `adapter.atm10.authority-map` (adapter, deferred, healthy)
@@ -59,6 +65,8 @@ Source content hash: `9f467010bf46c9a0cd6589f7dd683e0aa14a82a5b2cbd0d878b0209579
           - `workflow.titan.closeout-audit` (workflow, internal, degraded)
         - `projects.titan.session.control` (capability, deferred, healthy)
           - `guard.titan.thread-turn-binding` (guard, internal, unavailable)
+          - `skill.titan-appserver-bridge` (skill, advertised, challenger)
+          - `skill.titan-console` (skill, advertised, challenger)
           - `tool.titan.approval-queue` (tool, internal, healthy)
           - `tool.titan.approval-record` (tool, internal, healthy)
           - `tool.titan.appserver-bridge` (tool, internal, healthy)
@@ -67,6 +75,7 @@ Source content hash: `9f467010bf46c9a0cd6589f7dd683e0aa14a82a5b2cbd0d878b0209579
           - `tool.titan.event-replay` (tool, internal, healthy)
           - `tool.titan.receipt` (tool, internal, healthy)
         - `projects.titan.session.memory` (capability, deferred, healthy)
+          - `skill.titan-memory-loom` (skill, advertised, challenger)
           - `tool.titan.memory-ingest` (tool, internal, healthy)
           - `tool.titan.memory-recall` (tool, internal, healthy)
           - `tool.titan.memory-retention` (tool, internal, healthy)
@@ -104,6 +113,10 @@ Source content hash: `9f467010bf46c9a0cd6589f7dd683e0aa14a82a5b2cbd0d878b0209579
       - `mode.knowledge.authority-map` (mode, internal, challenger)
       - `mode.knowledge.sanitized-share` (mode, internal, challenger)
       - `skill.aoa-knowledge-stewardship` (skill, advertised, challenger)
+      - `stewardship.knowledge.memory` (capability, deferred, challenger)
+        - `skill.aoa-memo` (skill, advertised, challenger)
+      - `stewardship.knowledge.retrieve` (capability, deferred, challenger)
+        - `skill.aoa-kag` (skill, advertised, challenger)
 
 ## Typed relations
 
@@ -120,6 +133,8 @@ Source content hash: `9f467010bf46c9a0cd6589f7dd683e0aa14a82a5b2cbd0d878b0209579
 | composes-with | `mode.engineering-shape.core` | `mode.verification.property` | The extracted core exposes a stable semantic property across inputs. |
 | composes-with | `mode.engineering-shape.port-adapter` | `mode.verification.contract` | The new port is adopted as a stable consumer-visible boundary. |
 | composes-with | `skill.aoa-session-progression-lift` | `skill.aoa-summon` | An owner-reviewed progression or unlock posture is required by the anchored summon. |
+| composes-with | `skill.titan-console` | `skill.titan-appserver-bridge` | - |
+| composes-with | `skill.titan-console` | `skill.titan-memory-loom` | - |
 | composes-with | `tool.titan.approval-record` | `tool.titan.console` | - |
 | composes-with | `tool.titan.appserver-plan` | `tool.titan.console` | - |
 | composes-with | `tool.titan.console` | `tool.titan.appserver-bridge` | - |
@@ -131,6 +146,8 @@ Source content hash: `9f467010bf46c9a0cd6589f7dd683e0aa14a82a5b2cbd0d878b0209579
 | composes-with | `workflow.titan.summon` | `tool.titan.receipt` | - |
 | conflicts-with | `mode.decision.record` | `mode.decision.correct` | Both modes target the same decision record in one task-local plan. |
 | consumes | `tool.titan.event-replay` | `tool.titan.appserver-bridge` | - |
+| derived-from | `adapter.abyss.artifact-trust` | `skill.os-abyss-artifact-trust-loop` | - |
+| derived-from | `adapter.abyss.diagnostic-review` | `skill.abyss-self-diagnostic-spine` | - |
 | derived-from | `tool.titan.approval-queue` | `tool.titan.appserver-bridge` | - |
 | extracts-to | `tool.titan.event-replay` | `tool.titan.memory-ingest` | - |
 | guarded-by | `guard.titan.mutation` | `guard.titan.thread-turn-binding` | - |
@@ -149,16 +166,32 @@ Source content hash: `9f467010bf46c9a0cd6589f7dd683e0aa14a82a5b2cbd0d878b0209579
 | hands-off-to | `mode.session-harvest.classify` | `mode.session-harvest.promote` | Exactly one isolated repeated quest-shaped unit remains and only its promotion verdict is unresolved. |
 | hands-off-to | `mode.session-harvest.extract` | `mode.session-harvest.classify` | One extracted unit has sufficient evidence for destination classification. |
 | hands-off-to | `mode.session-recovery.diagnose` | `mode.session-recovery.repair` | The diagnosis is reviewed and the target owner is known. |
+| hands-off-to | `skill.aoa-eval` | `skill.aoa-evals` | The selected object is a central source bundle, named eval verdict, source-linked report, or proof-lifecycle question. |
+| hands-off-to | `skill.aoa-evals` | `skill.aoa-eval` | The unresolved need is repository-local selection, application, intake, design, or session-hit classification. |
+| hands-off-to | `skill.aoa-kag` | `skill.aoa-evals` | Retrieval resolves a central proof bundle, result, verdict, or proof-lifecycle question. |
+| hands-off-to | `skill.aoa-kag` | `skill.aoa-memo` | Retrieval resolves an explicit memory object, candidate, lifecycle target, or memory read-model question. |
+| hands-off-to | `skill.aoa-memo` | `skill.aoa-evals` | The unresolved claim is proof meaning rather than memory meaning. |
+| hands-off-to | `skill.aoa-memo` | `skill.aoa-kag` | The responsible owner or exact source remains unknown and bounded cross-repository navigation is required. |
+| hands-off-to | `skill.aoa-memo-writeback` | `skill.aoa-memo` | A concrete candidate, export, quarantine packet, memory object, lifecycle target, or read-model target now exists and needs owner recall, review, or evolution. |
+| hands-off-to | `skill.aoa-stats` | `skill.aoa-evals` | The unresolved question is proof or verdict interpretation rather than a bounded measurement result. |
 | hands-off-to | `skill.aoa-summon` | `skill.aoa-checkpoint-closeout-bridge` | A returned child changes the parent checkpoint or closeout posture. |
 | hands-off-to | `skill.aoa-summon` | `skill.aoa-memo-writeback` | A reviewed child return contains one bounded memory-worthy lesson. |
+| hands-off-to | `skill.titan-memory-loom` | `tool.titan.memory-retention` | - |
 | hands-off-to | `tool.titan.memory-recall` | `tool.titan.memory-retention` | - |
 | hands-off-to | `workflow.operations.local-commit` | `workflow.operations.git-closeout` | A separately authorized remote effect is requested and an evaluated host binding is available. |
 | implemented-by | `engineering.evaluation` | `skill.aoa-eval` | - |
+| implemented-by | `engineering.evaluation` | `skill.aoa-evals` | - |
+| implemented-by | `engineering.measurement` | `skill.aoa-stats` | - |
 | implemented-by | `engineering.shape` | `skill.aoa-engineering-shape` | - |
 | implemented-by | `engineering.verification` | `skill.aoa-verification` | - |
+| implemented-by | `projects.abyss.artifact-trust` | `skill.os-abyss-artifact-trust-loop` | - |
 | implemented-by | `projects.abyss.diagnose-runtime` | `adapter.abyss.diagnostic-review` | - |
+| implemented-by | `projects.abyss.diagnose-runtime` | `skill.abyss-self-diagnostic-spine` | - |
 | implemented-by | `projects.titan.session.closeout-audit` | `workflow.titan.closeout-audit` | - |
+| implemented-by | `projects.titan.session.control` | `skill.titan-appserver-bridge` | - |
+| implemented-by | `projects.titan.session.control` | `skill.titan-console` | - |
 | implemented-by | `projects.titan.session.control` | `tool.titan.appserver-bridge` | - |
+| implemented-by | `projects.titan.session.memory` | `skill.titan-memory-loom` | - |
 | implemented-by | `projects.titan.session.memory` | `tool.titan.memory-ingest` | - |
 | implemented-by | `projects.titan.summon` | `workflow.titan.summon` | - |
 | implemented-by | `sessions.checkpoint-closeout` | `skill.aoa-checkpoint-closeout-bridge` | - |
@@ -166,7 +199,9 @@ Source content hash: `9f467010bf46c9a0cd6589f7dd683e0aa14a82a5b2cbd0d878b0209579
 | implemented-by | `sessions.recovery` | `skill.aoa-session-recovery` | - |
 | implemented-by | `stewardship.decisions` | `skill.aoa-decision` | - |
 | implemented-by | `stewardship.knowledge` | `skill.aoa-knowledge-stewardship` | - |
-| primary-parent | `adapter.abyss.artifact-trust` | `projects.abyss` | - |
+| implemented-by | `stewardship.knowledge.memory` | `skill.aoa-memo` | - |
+| implemented-by | `stewardship.knowledge.retrieve` | `skill.aoa-kag` | - |
+| primary-parent | `adapter.abyss.artifact-trust` | `projects.abyss.artifact-trust` | - |
 | primary-parent | `adapter.abyss.diagnostic-review` | `projects.abyss.diagnose-runtime` | - |
 | primary-parent | `adapter.abyss.safe-infra-change` | `projects.abyss` | - |
 | primary-parent | `adapter.abyss.sanitized-share` | `projects.abyss` | - |
@@ -174,6 +209,7 @@ Source content hash: `9f467010bf46c9a0cd6589f7dd683e0aa14a82a5b2cbd0d878b0209579
 | primary-parent | `adapter.atm10.repository-change` | `projects.atm10` | - |
 | primary-parent | `engineering` | `aoa` | - |
 | primary-parent | `engineering.evaluation` | `engineering` | - |
+| primary-parent | `engineering.measurement` | `engineering` | - |
 | primary-parent | `engineering.shape` | `engineering` | - |
 | primary-parent | `engineering.verification` | `engineering` | - |
 | primary-parent | `guard.operations.approval` | `operations.safety` | - |
@@ -214,6 +250,7 @@ Source content hash: `9f467010bf46c9a0cd6589f7dd683e0aa14a82a5b2cbd0d878b0209579
 | primary-parent | `operations.safety` | `operations` | - |
 | primary-parent | `projects` | `aoa` | - |
 | primary-parent | `projects.abyss` | `projects` | - |
+| primary-parent | `projects.abyss.artifact-trust` | `projects.abyss` | - |
 | primary-parent | `projects.abyss.diagnose-runtime` | `projects.abyss` | - |
 | primary-parent | `projects.atm10` | `projects` | - |
 | primary-parent | `projects.titan` | `projects` | - |
@@ -227,20 +264,31 @@ Source content hash: `9f467010bf46c9a0cd6589f7dd683e0aa14a82a5b2cbd0d878b0209579
 | primary-parent | `sessions.harvest` | `sessions` | - |
 | primary-parent | `sessions.memo-writeback` | `sessions` | - |
 | primary-parent | `sessions.recovery` | `sessions` | - |
+| primary-parent | `skill.abyss-self-diagnostic-spine` | `projects.abyss.diagnose-runtime` | - |
 | primary-parent | `skill.aoa-checkpoint-closeout-bridge` | `sessions.checkpoint-closeout` | - |
 | primary-parent | `skill.aoa-decision` | `stewardship.decisions` | - |
 | primary-parent | `skill.aoa-engineering-shape` | `engineering.shape` | - |
 | primary-parent | `skill.aoa-eval` | `engineering.evaluation` | - |
+| primary-parent | `skill.aoa-evals` | `engineering.evaluation` | - |
+| primary-parent | `skill.aoa-kag` | `stewardship.knowledge.retrieve` | - |
 | primary-parent | `skill.aoa-knowledge-stewardship` | `stewardship.knowledge` | - |
+| primary-parent | `skill.aoa-memo` | `stewardship.knowledge.memory` | - |
 | primary-parent | `skill.aoa-memo-writeback` | `sessions.memo-writeback` | - |
 | primary-parent | `skill.aoa-session-harvest` | `sessions.harvest` | - |
 | primary-parent | `skill.aoa-session-progression-lift` | `sessions` | - |
 | primary-parent | `skill.aoa-session-recovery` | `sessions.recovery` | - |
+| primary-parent | `skill.aoa-stats` | `engineering.measurement` | - |
 | primary-parent | `skill.aoa-summon` | `sessions` | - |
 | primary-parent | `skill.aoa-verification` | `engineering.verification` | - |
+| primary-parent | `skill.os-abyss-artifact-trust-loop` | `projects.abyss.artifact-trust` | - |
+| primary-parent | `skill.titan-appserver-bridge` | `projects.titan.session.control` | - |
+| primary-parent | `skill.titan-console` | `projects.titan.session.control` | - |
+| primary-parent | `skill.titan-memory-loom` | `projects.titan.session.memory` | - |
 | primary-parent | `stewardship` | `aoa` | - |
 | primary-parent | `stewardship.decisions` | `stewardship` | - |
 | primary-parent | `stewardship.knowledge` | `stewardship` | - |
+| primary-parent | `stewardship.knowledge.memory` | `stewardship.knowledge` | - |
+| primary-parent | `stewardship.knowledge.retrieve` | `stewardship.knowledge` | - |
 | primary-parent | `tool.abyss.aoa-diagnose` | `projects.abyss.diagnose-runtime` | - |
 | primary-parent | `tool.titan.approval-queue` | `projects.titan.session.control` | - |
 | primary-parent | `tool.titan.approval-record` | `projects.titan.session.control` | - |
@@ -269,5 +317,15 @@ Source content hash: `9f467010bf46c9a0cd6589f7dd683e0aa14a82a5b2cbd0d878b0209579
 | requires | `guard.titan.closeout-readiness` | `human-gate.titan.closeout` | - |
 | requires | `mode.checkpoint-closeout.execute` | `skill.aoa-session-harvest` | - |
 | requires | `mode.checkpoint-closeout.execute` | `skill.aoa-session-progression-lift` | Reviewed evidence supports a progression node. |
+| requires | `skill.abyss-self-diagnostic-spine` | `tool.abyss.aoa-diagnose` | - |
 | requires | `skill.aoa-summon` | `workflow.operations.delegation` | Execute mode requires a callable host child-agent binding and a real returned runtime handle. |
+| requires | `skill.titan-appserver-bridge` | `tool.titan.appserver-bridge` | - |
+| requires | `skill.titan-appserver-bridge` | `tool.titan.event-replay` | - |
+| requires | `skill.titan-console` | `tool.titan.approval-queue` | - |
+| requires | `skill.titan-console` | `tool.titan.approval-record` | - |
+| requires | `skill.titan-console` | `tool.titan.appserver-plan` | - |
+| requires | `skill.titan-console` | `tool.titan.console` | - |
+| requires | `skill.titan-console` | `tool.titan.receipt` | - |
+| requires | `skill.titan-memory-loom` | `tool.titan.memory-ingest` | - |
+| requires | `skill.titan-memory-loom` | `tool.titan.memory-recall` | - |
 | requires | `workflow.titan.closeout-audit` | `tool.titan.swarm-validate` | - |

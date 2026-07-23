@@ -9,7 +9,7 @@ owner:
 nodes:
   - id: stewardship.knowledge
     title: Steward a knowledge boundary
-    description: Resolve source roles or create a bounded sanitized derivative without moving authority or raw custody.
+    description: Route owner-qualified knowledge retrieval, reviewed memory, source authority, or a bounded sanitized derivative without moving authority or raw custody.
     kind: capability
     contract_level: navigation
     primary_parent: stewardship
@@ -32,6 +32,153 @@ nodes:
       - авторитетность
       - приватность
       - знание
+
+  - id: stewardship.knowledge.retrieve
+    title: Retrieve owner-qualified knowledge
+    description: Locate, relate, or research AoA owner sources and capability contracts without turning an index, graph, or retrieval layer into authored truth.
+    kind: capability
+    contract_level: navigation
+    primary_parent: stewardship.knowledge
+    owner: *steward_owner
+    lifecycle:
+      state: candidate
+      version: 0.1.0
+      visibility: deferred
+      evidence_state: evaluated
+      health: challenger
+    keywords:
+      - retrieval
+      - relation
+      - owner-source
+      - capability-contract
+      - federation
+      - поиск
+      - источник
+      - связь
+      - федерация
+
+  - id: skill.aoa-kag
+    title: aoa-kag owner bundle
+    description: Retrieve, relate, or research owner-qualified AoA knowledge through the read-only aoa_kag MCP, returning canonical source handles and an honest execution disposition. Use when the responsible AoA owner or exact source is unknown, cross-repository comparison or impact analysis is needed, or a capability must be checked for its full owner contract and live binding. Do not use for raw session retrieval, web research, proof, memory, routing, role, playbook, live runtime, mutation, or an already supplied authoritative source.
+    kind: skill
+    contract_level: navigation
+    primary_parent: stewardship.knowledge.retrieve
+    owner:
+      repo: aoa-kag
+      surface: skills/aoa-kag/SKILL.md
+      authority: external-authority
+    lifecycle:
+      state: candidate
+      version: 0.2.0
+      visibility: advertised
+      evidence_state: evaluated
+      health: challenger
+    binding:
+      kind: skill
+      ref: aoa-kag:skills/aoa-kag/SKILL.md
+      operation: retrieve-relate-or-research
+      availability: external
+    trust:
+      public_safe: true
+      requires_human_approval: false
+      posture: derived-reference
+    provenance:
+      source_refs:
+        - repo: aoa-kag
+          path: skills/aoa-kag/SKILL.md
+          ref: 9a5f817f8247b2dfb005e4e0c289d34f27b56314
+          role: owner-skill-procedure
+          authority: external-authority
+        - repo: aoa-kag
+          path: skills/aoa-kag/references/contract.yaml
+          ref: 9a5f817f8247b2dfb005e4e0c289d34f27b56314
+          role: owner-typed-contract
+          authority: external-authority
+      optional_refs: []
+    keywords:
+      - kag
+      - retrieval
+      - relation
+      - impact-analysis
+      - owner-contract
+      - source-return
+      - поиск
+      - граф
+      - влияние
+
+  - id: stewardship.knowledge.memory
+    title: Steward reviewed memory
+    description: Recall, review, or evolve explicit owner memory while preserving origin authority, provenance, temporal posture, lifecycle, and the boundary between memory and proof.
+    kind: capability
+    contract_level: navigation
+    primary_parent: stewardship.knowledge
+    owner: *steward_owner
+    lifecycle:
+      state: candidate
+      version: 0.1.0
+      visibility: deferred
+      evidence_state: evaluated
+      health: challenger
+    keywords:
+      - reviewed-memory
+      - recall
+      - provenance
+      - lifecycle
+      - temporal-posture
+      - память
+      - воспоминание
+      - происхождение
+      - актуальность
+
+  - id: skill.aoa-memo
+    title: aoa-memo owner bundle
+    description: Recall, review, or evolve explicit memory or a concrete candidate, export, quarantine packet, object, lifecycle target, or read model through the aoa-memo owner. Use aoa-memo-writeback only before any memo artifact exists. Do not use for raw session retrieval, proof, routing, roles, workflows, KAG substrate, runtime storage, or generic notes.
+    kind: skill
+    contract_level: navigation
+    primary_parent: stewardship.knowledge.memory
+    owner:
+      repo: aoa-memo
+      surface: skills/aoa-memo/SKILL.md
+      authority: external-authority
+    lifecycle:
+      state: candidate
+      version: 0.1.18
+      visibility: advertised
+      evidence_state: evaluated
+      health: challenger
+    binding:
+      kind: skill
+      ref: aoa-memo:skills/aoa-memo/SKILL.md
+      operation: recall-review-or-evolve
+      availability: external
+    trust:
+      public_safe: true
+      requires_human_approval: false
+      posture: derived-reference
+    provenance:
+      source_refs:
+        - repo: aoa-memo
+          path: skills/aoa-memo/SKILL.md
+          ref: 7672add5e2bb4ff21c2581ca656998f0ca7c8a3e
+          role: owner-skill-procedure
+          authority: external-authority
+        - repo: aoa-memo
+          path: skills/aoa-memo/references/contract.yaml
+          ref: 7672add5e2bb4ff21c2581ca656998f0ca7c8a3e
+          role: owner-typed-contract
+          authority: external-authority
+      optional_refs: []
+    keywords:
+      - memo
+      - reviewed-memory
+      - recall
+      - candidate-review
+      - lifecycle
+      - read-model
+      - память
+      - кандидат
+      - отзыв
+      - жизненный-цикл
 
   - id: skill.aoa-knowledge-stewardship
     title: aoa-knowledge-stewardship family bundle
@@ -274,3 +421,25 @@ relations:
   - kind: implemented-by
     source: stewardship.knowledge
     target: skill.aoa-knowledge-stewardship
+  - kind: implemented-by
+    source: stewardship.knowledge.retrieve
+    target: skill.aoa-kag
+  - kind: implemented-by
+    source: stewardship.knowledge.memory
+    target: skill.aoa-memo
+  - kind: hands-off-to
+    source: skill.aoa-kag
+    target: skill.aoa-memo
+    condition: Retrieval resolves an explicit memory object, candidate, lifecycle target, or memory read-model question.
+  - kind: hands-off-to
+    source: skill.aoa-kag
+    target: skill.aoa-evals
+    condition: Retrieval resolves a central proof bundle, result, verdict, or proof-lifecycle question.
+  - kind: hands-off-to
+    source: skill.aoa-memo
+    target: skill.aoa-kag
+    condition: The responsible owner or exact source remains unknown and bounded cross-repository navigation is required.
+  - kind: hands-off-to
+    source: skill.aoa-memo
+    target: skill.aoa-evals
+    condition: The unresolved claim is proof meaning rather than memory meaning.

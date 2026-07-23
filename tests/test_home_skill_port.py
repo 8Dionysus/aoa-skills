@@ -305,6 +305,7 @@ def test_os_profile_install_is_idempotent_and_receipt_bound(tmp_path: Path) -> N
     assert source_receipt["prompt_description_sha256"] == installed_skill[
         "prompt_description_sha256"
     ]
+    assert "capability_graph_hash" not in source_receipt
     receipt["skills"][0]["owner_ref"] = "stale-ref"
     receipt_path.write_text(json.dumps(receipt, indent=2) + "\n", encoding="utf-8")
     drift = install_os_skill_profile.build_plan(

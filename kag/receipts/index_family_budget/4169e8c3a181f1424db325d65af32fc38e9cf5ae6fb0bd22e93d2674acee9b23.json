@@ -1,0 +1,17 @@
+{
+  "allowed_bytes": 7509418,
+  "allowed_tracked_bytes": 10023151,
+  "approved_by": "repository-owner",
+  "base_ref": "6f53e97cecb74877cf1d91432d685a72cf6771b8",
+  "changed_generated_bytes": 7509418,
+  "changed_generated_files": 272,
+  "decision_ref": "aoa-kag:docs/decisions/AOA-KAG-D-0017-portable-content-addressed-repository-family.md",
+  "default_limit_bytes": 1048576,
+  "head_family_digest": "4169e8c3a181f1424db325d65af32fc38e9cf5ae6fb0bd22e93d2674acee9b23",
+  "reason": "Reviewed complete skill-ecosystem refactor against the exact pull-request base: owner migrations, behavioral corrections, capability graph, decision, release manifest, and deterministic KAG projection; no hand-authored KAG records or expanded source scope.",
+  "repo": "aoa-skills",
+  "schema_version": "aoa-repo-local-kag-budget-receipt-v1",
+  "scope": "generated_delta_and_tracked_size",
+  "tracked_bytes": 10023151,
+  "tracked_bytes_max": 9437184
+}

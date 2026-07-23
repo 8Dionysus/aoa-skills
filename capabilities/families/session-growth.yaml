@@ -947,7 +947,7 @@ nodes:
       authority: external-authority
     lifecycle:
       state: candidate
-      version: 0.2.2
+      version: 0.2.4
       visibility: advertised
       evidence_state: evaluated
       health: challenger
@@ -964,7 +964,7 @@ nodes:
       source_refs:
         - repo: aoa-agents
           path: skills/aoa-session-progression-lift/SKILL.md
-          ref: owner-candidate-0.2.2
+          ref: 66f8bf22d03518b1e2367fd4f51dab80650f6d37
           role: owner-skill-contract
           authority: external-authority
       optional_refs: []
@@ -982,7 +982,7 @@ nodes:
       authority: external-authority
     lifecycle:
       state: candidate
-      version: 0.2.2
+      version: 0.2.4
       visibility: advertised
       evidence_state: evaluated
       health: challenger
@@ -999,7 +999,7 @@ nodes:
       source_refs:
         - repo: aoa-agents
           path: skills/aoa-summon/SKILL.md
-          ref: owner-candidate-0.2.2
+          ref: 66f8bf22d03518b1e2367fd4f51dab80650f6d37
           role: owner-skill-contract
           authority: external-authority
       optional_refs: []
@@ -1045,6 +1045,10 @@ relations:
     source: skill.aoa-summon
     target: skill.aoa-memo-writeback
     condition: A reviewed child return contains one bounded memory-worthy lesson.
+  - kind: hands-off-to
+    source: skill.aoa-memo-writeback
+    target: skill.aoa-memo
+    condition: A concrete candidate, export, quarantine packet, memory object, lifecycle target, or read-model target now exists and needs owner recall, review, or evolution.
   - kind: hands-off-to
     source: mode.checkpoint-closeout.execute
     target: skill.aoa-memo-writeback

@@ -41,9 +41,31 @@
         },
         {
           "kind": "owner-port",
+          "repo": "aoa-kag",
+          "root": "aoa-kag",
+          "skills": ["aoa-kag"]
+        },
+        {
+          "kind": "owner-port",
           "repo": "aoa-agents",
           "root": "aoa-agents",
           "skills": ["aoa-session-progression-lift", "aoa-summon"]
+        },
+        {
+          "kind": "owner-port",
+          "repo": "aoa-sdk",
+          "root": "aoa-sdk",
+          "skills": [
+            "titan-console",
+            "titan-appserver-bridge",
+            "titan-memory-loom"
+          ]
+        },
+        {
+          "kind": "owner-port",
+          "repo": "abyss-machine",
+          "root": "abyss-machine",
+          "skills": ["os-abyss-artifact-trust-loop"]
         },
         {
           "kind": "owner-port",
