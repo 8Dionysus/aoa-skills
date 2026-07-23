@@ -564,6 +564,79 @@ nodes:
       - идемпотентность
       - монотонность
       - оракул
+
+  - id: engineering.measurement
+    title: Route bounded measurement
+    description: Answer, diagnose, or evolve an owner-qualified statistical surface without promoting derived observations into proof, health, causality, workflow, or source truth.
+    kind: capability
+    contract_level: navigation
+    primary_parent: engineering
+    owner: *engineering_owner
+    lifecycle:
+      state: candidate
+      version: 0.1.0
+      visibility: deferred
+      evidence_state: evaluated
+      health: challenger
+    keywords:
+      - measurement
+      - statistics
+      - federation
+      - source-coverage
+      - freshness
+      - измерение
+      - статистика
+      - покрытие
+      - свежесть
+
+  - id: skill.aoa-stats
+    title: aoa-stats owner bundle
+    description: Answer, diagnose, or evolve a bounded aoa-stats surface. Use for measurement compatibility, owner stats-port federation, receipt admission, derived or live read-model drift, source coverage, or stats access. Do not use for generic analytics, owner metric invention, eval verdicts, workflow or routing, or runtime repair.
+    kind: skill
+    contract_level: navigation
+    primary_parent: engineering.measurement
+    owner:
+      repo: aoa-stats
+      surface: skills/aoa-stats/SKILL.md
+      authority: external-authority
+    lifecycle:
+      state: candidate
+      version: 0.2.3
+      visibility: advertised
+      evidence_state: evaluated
+      health: challenger
+    binding:
+      kind: skill
+      ref: aoa-stats:skills/aoa-stats/SKILL.md
+      operation: answer-diagnose-or-evolve
+      availability: external
+    trust:
+      public_safe: true
+      requires_human_approval: false
+      posture: derived-reference
+    provenance:
+      source_refs:
+        - repo: aoa-stats
+          path: skills/aoa-stats/SKILL.md
+          ref: 3660d8aaa573320715d264ddf6ab1bbde0d95758
+          role: owner-skill-procedure
+          authority: external-authority
+        - repo: aoa-stats
+          path: skills/aoa-stats/references/contract.yaml
+          ref: 3660d8aaa573320715d264ddf6ab1bbde0d95758
+          role: owner-typed-contract
+          authority: external-authority
+      optional_refs: []
+    keywords:
+      - stats
+      - measurement
+      - federation
+      - receipt-admission
+      - read-model
+      - source-coverage
+      - статистика
+      - измерение
+      - источник
 relations:
   - kind: implemented-by
     source: engineering.shape
@@ -571,6 +644,13 @@ relations:
   - kind: implemented-by
     source: engineering.verification
     target: skill.aoa-verification
+  - kind: implemented-by
+    source: engineering.measurement
+    target: skill.aoa-stats
+  - kind: hands-off-to
+    source: skill.aoa-stats
+    target: skill.aoa-evals
+    condition: The unresolved question is proof or verdict interpretation rather than a bounded measurement result.
   - kind: composes-with
     source: mode.engineering-shape.port-adapter
     target: mode.verification.contract

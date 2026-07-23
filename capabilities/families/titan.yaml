@@ -102,7 +102,7 @@ nodes:
       authority: external-authority
     lifecycle:
       state: active
-      version: 0.1.1
+      version: 0.1.2
       visibility: advertised
       evidence_state: evaluated
       health: challenger
@@ -119,12 +119,12 @@ nodes:
       source_refs:
         - repo: aoa-sdk
           path: skills/titan-console/SKILL.md
-          ref: 48c22e79bc295ee0a896575eb8342b146aac2ed4
+          ref: cdd3af4e1a7d0f0ffc514b65d6dee3b5b838a530
           role: owner-skill-contract
           authority: external-authority
         - repo: aoa-sdk
           path: skills/titan-console/references/contract.yaml
-          ref: 48c22e79bc295ee0a896575eb8342b146aac2ed4
+          ref: cdd3af4e1a7d0f0ffc514b65d6dee3b5b838a530
           role: owner-typed-contract
           authority: external-authority
       optional_refs: []
@@ -141,7 +141,7 @@ nodes:
       authority: external-authority
     lifecycle:
       state: active
-      version: 0.1.1
+      version: 0.1.2
       visibility: advertised
       evidence_state: evaluated
       health: challenger
@@ -158,12 +158,12 @@ nodes:
       source_refs:
         - repo: aoa-sdk
           path: skills/titan-appserver-bridge/SKILL.md
-          ref: 48c22e79bc295ee0a896575eb8342b146aac2ed4
+          ref: cdd3af4e1a7d0f0ffc514b65d6dee3b5b838a530
           role: owner-skill-contract
           authority: external-authority
         - repo: aoa-sdk
           path: skills/titan-appserver-bridge/references/contract.yaml
-          ref: 48c22e79bc295ee0a896575eb8342b146aac2ed4
+          ref: cdd3af4e1a7d0f0ffc514b65d6dee3b5b838a530
           role: owner-typed-contract
           authority: external-authority
       optional_refs: []
@@ -180,7 +180,7 @@ nodes:
       authority: external-authority
     lifecycle:
       state: active
-      version: 0.1.1
+      version: 0.1.2
       visibility: advertised
       evidence_state: evaluated
       health: challenger
@@ -197,12 +197,12 @@ nodes:
       source_refs:
         - repo: aoa-sdk
           path: skills/titan-memory-loom/SKILL.md
-          ref: 48c22e79bc295ee0a896575eb8342b146aac2ed4
+          ref: cdd3af4e1a7d0f0ffc514b65d6dee3b5b838a530
           role: owner-skill-contract
           authority: external-authority
         - repo: aoa-sdk
           path: skills/titan-memory-loom/references/contract.yaml
-          ref: 48c22e79bc295ee0a896575eb8342b146aac2ed4
+          ref: cdd3af4e1a7d0f0ffc514b65d6dee3b5b838a530
           role: owner-typed-contract
           authority: external-authority
       optional_refs: []
@@ -244,8 +244,8 @@ nodes:
     trust: {public_safe: true, requires_human_approval: false, posture: owner-routed}
     provenance:
       source_refs:
-        - {repo: aoa-sdk, path: mechanics/titan/parts/operator-console-helper-contracts/CONTRACT.md, ref: 48c22e79bc295ee0a896575eb8342b146aac2ed4, role: helper-boundary, authority: external-authority}
-        - {repo: aoa-sdk, path: mechanics/titan/parts/operator-console-helper-contracts/scripts/titan_console.py, ref: 48c22e79bc295ee0a896575eb8342b146aac2ed4, role: helper-tool, authority: external-authority}
+        - {repo: aoa-sdk, path: mechanics/titan/parts/operator-console-helper-contracts/CONTRACT.md, ref: cdd3af4e1a7d0f0ffc514b65d6dee3b5b838a530, role: helper-boundary, authority: external-authority}
+        - {repo: aoa-sdk, path: mechanics/titan/parts/operator-console-helper-contracts/scripts/titan_console.py, ref: cdd3af4e1a7d0f0ffc514b65d6dee3b5b838a530, role: helper-tool, authority: external-authority}
       optional_refs: []
     keywords: [approval-record, operator-decision, Forge, Delta, разрешение, решение, оператор]
   - id: tool.titan.approval-queue
@@ -285,8 +285,8 @@ nodes:
     trust: {public_safe: true, requires_human_approval: false, posture: owner-routed}
     provenance:
       source_refs:
-        - {repo: aoa-sdk, path: src/aoa_sdk/titans/appserver_bridge.py, ref: 48c22e79bc295ee0a896575eb8342b146aac2ed4, role: helper-implementation, authority: external-authority}
-        - {repo: aoa-agents, path: mechanics/titan/parts/runtime-roster/docs/appserver-bridge-boundary.md, ref: cb9aaf03b445b2346bc12a41306e690949bcb352, role: role-and-auto-approval-boundary, authority: external-authority}
+        - {repo: aoa-sdk, path: src/aoa_sdk/titans/appserver_bridge.py, ref: cdd3af4e1a7d0f0ffc514b65d6dee3b5b838a530, role: helper-implementation, authority: external-authority}
+        - {repo: aoa-agents, path: mechanics/titan/parts/runtime-roster/docs/appserver-bridge-boundary.md, ref: 66f8bf22d03518b1e2367fd4f51dab80650f6d37, role: role-and-auto-approval-boundary, authority: external-authority}
       optional_refs: []
     keywords: [approval-queue, appserver, pending, bridge, очередь, разрешение, запрос]
   - id: tool.titan.appserver-bridge
@@ -326,8 +326,8 @@ nodes:
     trust: {public_safe: true, requires_human_approval: false, posture: owner-routed}
     provenance:
       source_refs:
-        - {repo: aoa-sdk, path: mechanics/titan/parts/appserver-bridge-helper-contracts/CONTRACT.md, ref: 48c22e79bc295ee0a896575eb8342b146aac2ed4, role: helper-contract, authority: external-authority}
-        - {repo: aoa-sdk, path: src/aoa_sdk/titans/appserver_bridge.py, ref: 48c22e79bc295ee0a896575eb8342b146aac2ed4, role: helper-implementation, authority: external-authority}
+        - {repo: aoa-sdk, path: mechanics/titan/parts/appserver-bridge-helper-contracts/CONTRACT.md, ref: cdd3af4e1a7d0f0ffc514b65d6dee3b5b838a530, role: helper-contract, authority: external-authority}
+        - {repo: aoa-sdk, path: src/aoa_sdk/titans/appserver_bridge.py, ref: cdd3af4e1a7d0f0ffc514b65d6dee3b5b838a530, role: helper-implementation, authority: external-authority}
       optional_refs: []
     keywords: [appserver-bridge, json-rpc, thread, turn, replay, мост, поток, ход]
   - id: tool.titan.appserver-plan
@@ -367,8 +367,8 @@ nodes:
     trust: {public_safe: true, requires_human_approval: false, posture: owner-routed}
     provenance:
       source_refs:
-        - {repo: aoa-sdk, path: mechanics/titan/parts/operator-console-helper-contracts/CONTRACT.md, ref: 48c22e79bc295ee0a896575eb8342b146aac2ed4, role: helper-contract, authority: external-authority}
-        - {repo: aoa-agents, path: mechanics/titan/parts/runtime-roster/docs/appserver-bridge-boundary.md, ref: cb9aaf03b445b2346bc12a41306e690949bcb352, role: no-hidden-execution-boundary, authority: external-authority}
+        - {repo: aoa-sdk, path: mechanics/titan/parts/operator-console-helper-contracts/CONTRACT.md, ref: cdd3af4e1a7d0f0ffc514b65d6dee3b5b838a530, role: helper-contract, authority: external-authority}
+        - {repo: aoa-agents, path: mechanics/titan/parts/runtime-roster/docs/appserver-bridge-boundary.md, ref: 66f8bf22d03518b1e2367fd4f51dab80650f6d37, role: no-hidden-execution-boundary, authority: external-authority}
       optional_refs: []
     keywords: [appserver-plan, launch-plan, jsonl, preview, план-запуска, предпросмотр]
   - id: tool.titan.console
@@ -408,8 +408,8 @@ nodes:
     trust: {public_safe: true, requires_human_approval: false, posture: owner-routed}
     provenance:
       source_refs:
-        - {repo: aoa-sdk, path: mechanics/titan/parts/operator-console-helper-contracts/CONTRACT.md, ref: 48c22e79bc295ee0a896575eb8342b146aac2ed4, role: helper-contract, authority: external-authority}
-        - {repo: aoa-agents, path: mechanics/titan/parts/incarnation-spine/docs/operator-console-boundary.md, ref: cb9aaf03b445b2346bc12a41306e690949bcb352, role: operator-and-role-boundary, authority: external-authority}
+        - {repo: aoa-sdk, path: mechanics/titan/parts/operator-console-helper-contracts/CONTRACT.md, ref: cdd3af4e1a7d0f0ffc514b65d6dee3b5b838a530, role: helper-contract, authority: external-authority}
+        - {repo: aoa-agents, path: mechanics/titan/parts/incarnation-spine/docs/operator-console-boundary.md, ref: 66f8bf22d03518b1e2367fd4f51dab80650f6d37, role: operator-and-role-boundary, authority: external-authority}
       optional_refs: []
     keywords: [titan-console, roster, digest, visible-state, консоль, состав, состояние]
   - id: tool.titan.event-replay
@@ -449,8 +449,8 @@ nodes:
     trust: {public_safe: true, requires_human_approval: false, posture: owner-routed}
     provenance:
       source_refs:
-        - {repo: aoa-sdk, path: mechanics/titan/parts/session-praxis-replay-helper-contracts/CONTRACT.md, ref: 48c22e79bc295ee0a896575eb8342b146aac2ed4, role: helper-contract, authority: external-authority}
-        - {repo: aoa-sdk, path: src/aoa_sdk/titans/session_replay.py, ref: 48c22e79bc295ee0a896575eb8342b146aac2ed4, role: helper-implementation, authority: external-authority}
+        - {repo: aoa-sdk, path: mechanics/titan/parts/session-praxis-replay-helper-contracts/CONTRACT.md, ref: cdd3af4e1a7d0f0ffc514b65d6dee3b5b838a530, role: helper-contract, authority: external-authority}
+        - {repo: aoa-sdk, path: src/aoa_sdk/titans/session_replay.py, ref: cdd3af4e1a7d0f0ffc514b65d6dee3b5b838a530, role: helper-implementation, authority: external-authority}
       optional_refs: []
     keywords: [event-replay, session-replay, phase-graph, learning-delta, воспроизведение, события, фазы]
   - id: tool.titan.memory-ingest
@@ -491,8 +491,8 @@ nodes:
     trust: {public_safe: true, requires_human_approval: false, posture: owner-routed}
     provenance:
       source_refs:
-        - {repo: aoa-sdk, path: mechanics/titan/parts/memory-loom-recall-helper-contracts/CONTRACT.md, ref: 48c22e79bc295ee0a896575eb8342b146aac2ed4, role: helper-contract, authority: external-authority}
-        - {repo: aoa-memo, path: docs/boundaries/MEMORY_WRITE_PATH_GUARDRAILS.md, ref: 951d5dfd47fda3e10efeb4a789e5c89c970e1f50, role: durable-memory-boundary, authority: external-authority}
+        - {repo: aoa-sdk, path: mechanics/titan/parts/memory-loom-recall-helper-contracts/CONTRACT.md, ref: cdd3af4e1a7d0f0ffc514b65d6dee3b5b838a530, role: helper-contract, authority: external-authority}
+        - {repo: aoa-memo, path: docs/boundaries/MEMORY_WRITE_PATH_GUARDRAILS.md, ref: 7672add5e2bb4ff21c2581ca656998f0ca7c8a3e, role: durable-memory-boundary, authority: external-authority}
       optional_refs: []
     keywords: [memory-ingest, memory-loom, candidate, provenance, память, кандидат, происхождение]
   - id: tool.titan.memory-recall
@@ -533,8 +533,8 @@ nodes:
     trust: {public_safe: true, requires_human_approval: false, posture: owner-routed}
     provenance:
       source_refs:
-        - {repo: aoa-sdk, path: mechanics/titan/parts/memory-loom-recall-helper-contracts/CONTRACT.md, ref: 48c22e79bc295ee0a896575eb8342b146aac2ed4, role: helper-contract, authority: external-authority}
-        - {repo: aoa-agents, path: mechanics/titan/parts/service-cohort/docs/recall-authority.md, ref: cb9aaf03b445b2346bc12a41306e690949bcb352, role: role-recall-boundary, authority: external-authority}
+        - {repo: aoa-sdk, path: mechanics/titan/parts/memory-loom-recall-helper-contracts/CONTRACT.md, ref: cdd3af4e1a7d0f0ffc514b65d6dee3b5b838a530, role: helper-contract, authority: external-authority}
+        - {repo: aoa-agents, path: mechanics/titan/parts/service-cohort/docs/recall-authority.md, ref: 66f8bf22d03518b1e2367fd4f51dab80650f6d37, role: role-recall-boundary, authority: external-authority}
       optional_refs: []
     keywords: [memory-recall, candidate, source-ref, confidence, воспоминание, память, источник]
   - id: tool.titan.receipt
@@ -574,8 +574,8 @@ nodes:
     trust: {public_safe: true, requires_human_approval: false, posture: owner-routed}
     provenance:
       source_refs:
-        - {repo: aoa-sdk, path: mechanics/titan/parts/incarnation-identity-runtime-helper-contracts/CONTRACT.md, ref: 48c22e79bc295ee0a896575eb8342b146aac2ed4, role: helper-contract, authority: external-authority}
-        - {repo: aoa-sdk, path: mechanics/titan/parts/incarnation-identity-runtime-helper-contracts/scripts/titanctl.py, ref: 48c22e79bc295ee0a896575eb8342b146aac2ed4, role: helper-tool, authority: external-authority}
+        - {repo: aoa-sdk, path: mechanics/titan/parts/incarnation-identity-runtime-helper-contracts/CONTRACT.md, ref: cdd3af4e1a7d0f0ffc514b65d6dee3b5b838a530, role: helper-contract, authority: external-authority}
+        - {repo: aoa-sdk, path: mechanics/titan/parts/incarnation-identity-runtime-helper-contracts/scripts/titanctl.py, ref: cdd3af4e1a7d0f0ffc514b65d6dee3b5b838a530, role: helper-tool, authority: external-authority}
       optional_refs: []
     keywords: [titan-receipt, session, note, validate, closeout, квитанция, сессия, закрытие]
   - id: tool.titan.memory-retention
@@ -615,8 +615,8 @@ nodes:
     trust: {public_safe: true, requires_human_approval: true, posture: owner-routed}
     provenance:
       source_refs:
-        - {repo: aoa-memo, path: mechanics/retention/docs/CONSOLIDATION_FORGETTING_OPERATION.md, ref: 951d5dfd47fda3e10efeb4a789e5c89c970e1f50, role: memo-retention-operation-owner, authority: external-authority}
-        - {repo: aoa-memo, path: mechanics/retention/README.md, ref: 951d5dfd47fda3e10efeb4a789e5c89c970e1f50, role: stronger-owner-split, authority: external-authority}
+        - {repo: aoa-memo, path: mechanics/retention/docs/CONSOLIDATION_FORGETTING_OPERATION.md, ref: 7672add5e2bb4ff21c2581ca656998f0ca7c8a3e, role: memo-retention-operation-owner, authority: external-authority}
+        - {repo: aoa-memo, path: mechanics/retention/README.md, ref: 7672add5e2bb4ff21c2581ca656998f0ca7c8a3e, role: stronger-owner-split, authority: external-authority}
       optional_refs: []
     keywords: [memory-retention, redact, retract, archive, supersede, память, удержание, отозвать, архив]
   - id: guard.titan.thread-turn-binding
@@ -656,8 +656,8 @@ nodes:
     trust: {public_safe: true, requires_human_approval: false, posture: runtime-enforced}
     provenance:
       source_refs:
-        - {repo: aoa-sdk, path: src/aoa_sdk/titans/appserver_bridge.py, ref: 48c22e79bc295ee0a896575eb8342b146aac2ed4, role: helper-identity-normalization, authority: derived-reference}
-        - {repo: aoa-agents, path: mechanics/titan/parts/runtime-roster/docs/appserver-bridge-boundary.md, ref: cb9aaf03b445b2346bc12a41306e690949bcb352, role: no-hidden-runtime-boundary, authority: external-authority}
+        - {repo: aoa-sdk, path: src/aoa_sdk/titans/appserver_bridge.py, ref: cdd3af4e1a7d0f0ffc514b65d6dee3b5b838a530, role: helper-identity-normalization, authority: derived-reference}
+        - {repo: aoa-agents, path: mechanics/titan/parts/runtime-roster/docs/appserver-bridge-boundary.md, ref: 66f8bf22d03518b1e2367fd4f51dab80650f6d37, role: no-hidden-runtime-boundary, authority: external-authority}
       optional_refs: []
     keywords: [thread-turn, identity, stale-approval, mismatch, поток, ход, привязка, идентичность]
   - id: guard.titan.mutation
@@ -698,8 +698,8 @@ nodes:
     trust: {public_safe: true, requires_human_approval: true, posture: runtime-enforced}
     provenance:
       source_refs:
-        - {repo: aoa-agents, path: mechanics/titan/parts/summon-boundary/docs/summon-boundary.md, ref: cb9aaf03b445b2346bc12a41306e690949bcb352, role: Forge-intent-boundary, authority: external-authority}
-        - {repo: aoa-sdk, path: src/aoa_sdk/titans/incarnation_spine.py, ref: 48c22e79bc295ee0a896575eb8342b146aac2ed4, role: helper-payload-validation, authority: derived-reference}
+        - {repo: aoa-agents, path: mechanics/titan/parts/summon-boundary/docs/summon-boundary.md, ref: 66f8bf22d03518b1e2367fd4f51dab80650f6d37, role: Forge-intent-boundary, authority: external-authority}
+        - {repo: aoa-sdk, path: src/aoa_sdk/titans/incarnation_spine.py, ref: cdd3af4e1a7d0f0ffc514b65d6dee3b5b838a530, role: helper-payload-validation, authority: derived-reference}
       optional_refs: []
     keywords: [mutation-gate, Forge, workspace-write, rollback, мутация, запись, откат, разрешение]
   - id: guard.titan.runtime-transition
@@ -741,7 +741,7 @@ nodes:
     provenance:
       source_refs:
         - {repo: aoa-routing, path: mechanics/titan/parts/runtime-route/docs/titan-runtime-route.md, ref: 72f91d2a8e21438157a853becd136be30e72234e, role: intent-routing-contract, authority: external-authority}
-        - {repo: aoa-sdk, path: mechanics/titan/parts/incarnation-identity-runtime-helper-contracts/CONTRACT.md, ref: 48c22e79bc295ee0a896575eb8342b146aac2ed4, role: helper-transition-boundary, authority: derived-reference}
+        - {repo: aoa-sdk, path: mechanics/titan/parts/incarnation-identity-runtime-helper-contracts/CONTRACT.md, ref: cdd3af4e1a7d0f0ffc514b65d6dee3b5b838a530, role: helper-transition-boundary, authority: derived-reference}
       optional_refs: []
     keywords: [runtime-gate, transition, Forge, Delta, activation, рантайм, переход, активация]
   - id: workflow.titan.summon
@@ -781,8 +781,8 @@ nodes:
     trust: {public_safe: true, requires_human_approval: true, posture: human-authorized}
     provenance:
       source_refs:
-        - {repo: aoa-agents, path: mechanics/titan/parts/summon-boundary/docs/summon-boundary.md, ref: cb9aaf03b445b2346bc12a41306e690949bcb352, role: summon-authority-boundary, authority: external-authority}
-        - {repo: aoa-agents, path: mechanics/titan/parts/service-cohort/docs/service-cohort.md, ref: cb9aaf03b445b2346bc12a41306e690949bcb352, role: cohort-and-role-contract, authority: external-authority}
+        - {repo: aoa-agents, path: mechanics/titan/parts/summon-boundary/docs/summon-boundary.md, ref: 66f8bf22d03518b1e2367fd4f51dab80650f6d37, role: summon-authority-boundary, authority: external-authority}
+        - {repo: aoa-agents, path: mechanics/titan/parts/service-cohort/docs/service-cohort.md, ref: 66f8bf22d03518b1e2367fd4f51dab80650f6d37, role: cohort-and-role-contract, authority: external-authority}
       optional_refs: []
     keywords: [titan-summon, service-cohort, Atlas, Sentinel, Mneme, Forge, Delta, призвать, делегировать, когорта]
   - id: projects.titan.session.closeout-audit
@@ -873,7 +873,7 @@ nodes:
       source_refs:
         - repo: aoa-sdk
           path: mechanics/titan/parts/swarm-ledger-closeout-helper-contracts/scripts/titan_swarm.py
-          ref: 48c22e79bc295ee0a896575eb8342b146aac2ed4
+          ref: cdd3af4e1a7d0f0ffc514b65d6dee3b5b838a530
           role: owner-tool
           authority: external-authority
       optional_refs: []
@@ -947,7 +947,7 @@ nodes:
       source_refs:
         - repo: aoa-sdk
           path: mechanics/titan/parts/swarm-ledger-closeout-helper-contracts/CONTRACT.md
-          ref: 48c22e79bc295ee0a896575eb8342b146aac2ed4
+          ref: cdd3af4e1a7d0f0ffc514b65d6dee3b5b838a530
           role: current-helper-contract
           authority: derived-reference
       optional_refs: []

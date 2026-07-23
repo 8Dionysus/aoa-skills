@@ -77,7 +77,7 @@ nodes:
       authority: external-authority
     lifecycle:
       state: active
-      version: 0.2.2
+      version: 0.2.3
       visibility: advertised
       evidence_state: evaluated
       health: challenger
@@ -94,12 +94,12 @@ nodes:
       source_refs:
         - repo: abyss-stack
           path: skills/abyss-self-diagnostic-spine/SKILL.md
-          ref: 98926ad549c7bdd91aaad57f3735c541a53fa107
+          ref: 38856c1e4da1e6e0e40d2b76d8aaf828a7ef4b10
           role: owner-skill-contract
           authority: external-authority
         - repo: abyss-stack
           path: skills/abyss-self-diagnostic-spine/references/contract.yaml
-          ref: 98926ad549c7bdd91aaad57f3735c541a53fa107
+          ref: 38856c1e4da1e6e0e40d2b76d8aaf828a7ef4b10
           role: owner-typed-contract
           authority: external-authority
       optional_refs: []
@@ -133,12 +133,12 @@ nodes:
       source_refs:
         - repo: abyss-machine
           path: skills/os-abyss-artifact-trust-loop/SKILL.md
-          ref: edf9166ac8631c7101fa34801d1a3ef97d9d0457
+          ref: 2faa6c6ccfc1309f6c3b6a36ddf04c3334c4547b
           role: owner-skill-contract
           authority: external-authority
         - repo: abyss-machine
           path: skills/os-abyss-artifact-trust-loop/references/contract.yaml
-          ref: edf9166ac8631c7101fa34801d1a3ef97d9d0457
+          ref: 2faa6c6ccfc1309f6c3b6a36ddf04c3334c4547b
           role: owner-typed-contract
           authority: external-authority
       optional_refs: []
@@ -204,12 +204,12 @@ nodes:
       source_refs:
         - repo: abyss-stack
           path: scripts/aoa-diagnose
-          ref: 98926ad549c7bdd91aaad57f3735c541a53fa107
+          ref: 38856c1e4da1e6e0e40d2b76d8aaf828a7ef4b10
           role: owner-tool
           authority: external-authority
         - repo: abyss-stack
           path: mechanics/diagnostic-spine/parts/diagnostic-surfaces/schemas/diagnostic_session.schema.json
-          ref: 98926ad549c7bdd91aaad57f3735c541a53fa107
+          ref: 38856c1e4da1e6e0e40d2b76d8aaf828a7ef4b10
           role: output-schema
           authority: external-authority
       optional_refs: []
@@ -274,7 +274,7 @@ nodes:
       source_refs:
         - repo: abyss-stack
           path: mechanics/diagnostic-spine/parts/diagnostic-surfaces/docs/DIAGNOSTIC_SPINE.md
-          ref: 98926ad549c7bdd91aaad57f3735c541a53fa107
+          ref: 38856c1e4da1e6e0e40d2b76d8aaf828a7ef4b10
           role: owner-contract
           authority: external-authority
       optional_refs: []
@@ -340,12 +340,12 @@ nodes:
       source_refs:
         - repo: abyss-stack
           path: docs/routes/START_HERE_ROUTE_CONTRACT.md
-          ref: 98926ad549c7bdd91aaad57f3735c541a53fa107
+          ref: 38856c1e4da1e6e0e40d2b76d8aaf828a7ef4b10
           role: owner-route-contract
           authority: external-authority
         - repo: abyss-stack
           path: CONTRIBUTING.md
-          ref: 98926ad549c7bdd91aaad57f3735c541a53fa107
+          ref: 38856c1e4da1e6e0e40d2b76d8aaf828a7ef4b10
           role: reversibility-and-public-safety-boundary
           authority: external-authority
       optional_refs: []
@@ -420,12 +420,12 @@ nodes:
       source_refs:
         - repo: abyss-stack
           path: SECURITY.md
-          ref: 98926ad549c7bdd91aaad57f3735c541a53fa107
+          ref: 38856c1e4da1e6e0e40d2b76d8aaf828a7ef4b10
           role: disclosure-boundary
           authority: external-authority
         - repo: abyss-stack
           path: CONTRIBUTING.md
-          ref: 98926ad549c7bdd91aaad57f3735c541a53fa107
+          ref: 38856c1e4da1e6e0e40d2b76d8aaf828a7ef4b10
           role: public-contribution-boundary
           authority: external-authority
       optional_refs: []
@@ -500,12 +500,12 @@ nodes:
       source_refs:
         - repo: abyss-machine
           path: manifests/artifact_signature_policy.manifest.json
-          ref: edf9166ac8631c7101fa34801d1a3ef97d9d0457
+          ref: 2faa6c6ccfc1309f6c3b6a36ddf04c3334c4547b
           role: artifact-policy-owner
           authority: external-authority
         - repo: abyss-machine
           path: src/abyss_machine/artifact_bundles.py
-          ref: edf9166ac8631c7101fa34801d1a3ef97d9d0457
+          ref: 2faa6c6ccfc1309f6c3b6a36ddf04c3334c4547b
           role: read-model-and-trust-gate-implementation
           authority: external-authority
       optional_refs: []
