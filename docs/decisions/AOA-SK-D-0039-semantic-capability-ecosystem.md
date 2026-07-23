@@ -438,6 +438,30 @@ final answer, or green structural check alone.
   compressed-current arms often reached equivalent conclusions and the
   full-profile collision remains unresolved.
 
+### 2026-07-23 - Bound current home-skill-port selection
+
+- Manual pressure: a fresh-session request supplied an exact owner root and
+  named the current AoA home-skill-port acceptance target. `aoa-eval` correctly
+  formed `select -> apply`, selected the exact owner validator, ran only that
+  command, and returned the strict proof limit. Selection nevertheless read
+  session memory, enumerated the target tree, inspected its workflow pin, and
+  compared validator history after the exact contract route was already
+  sufficient.
+- Correction: version `0.2.6` adds a current home-skill-port fast path. It
+  reads the supplied target manifest, returns through the installed bundle's
+  `aoa-skills` source handle, reads the exact owner contract and validator, and
+  then stops discovery. Target-wide inventory, workflow-pin archaeology, and
+  Git-generation comparison are excluded unless historical parity is the
+  actual request.
+- Evidence route: reinstall the candidate and repeat the same held-out
+  `select -> apply` task. Require the same exact validator, full apply
+  preflight, one command, no write, and strict proof limit with the widened
+  discovery absent.
+- Claim limit: this is a bounded selection optimization for one current shared
+  contract. It does not establish generic latency or token superiority, and
+  it does not remove the existing historical-evidence route when history is
+  explicitly material.
+
 ### 2026-07-17 - Restore, compose, and evaluate the eval family
 
 - Observed loss: the first consolidated `aoa-eval` retained five mode names but

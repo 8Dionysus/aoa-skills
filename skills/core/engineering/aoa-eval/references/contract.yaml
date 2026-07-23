@@ -2,7 +2,7 @@ schema_version: aoa-skill-contract-v1
 identity:
   name: aoa-eval
   owner: aoa-skills
-  version: 0.2.5
+  version: 0.2.6
   health: challenger
 purpose: Preserve five distinct evaluation capabilities behind one discoverable front door.
 freedom_level: bounded-judgment
@@ -91,6 +91,7 @@ failure_modes:
   - mode inputs silently substituted
   - apply preflight declared complete without checking every required dotted field
   - select widens inventory after a bounded verdict is already decisive
+  - current home-skill-port selection expands into target inventory, workflow-pin archaeology, or validator-history comparison
   - design hands an absent surface directly to apply for creation or execution
   - local evidence promoted as central proof
   - permanent checks created from temporary scaffolding

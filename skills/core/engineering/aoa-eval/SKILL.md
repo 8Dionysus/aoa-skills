@@ -38,6 +38,8 @@ Do not use this skill when:
 
 ## Procedure
 
+Record `<bundle_dir>` as the directory containing this loaded `SKILL.md`.
+
 ### Choose exactly one mode
 
 | Mode | Use when | Required procedure |

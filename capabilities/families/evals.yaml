@@ -19,7 +19,7 @@ nodes:
       authority: authored
     lifecycle: &eval_family_lifecycle
       state: candidate
-      version: 0.2.5
+      version: 0.2.6
       visibility: deferred
       evidence_state: evaluated
       health: challenger
@@ -44,7 +44,7 @@ nodes:
     owner: *eval_owner
     lifecycle:
       state: candidate
-      version: 0.2.5
+      version: 0.2.6
       visibility: advertised
       evidence_state: evaluated
       health: challenger
@@ -98,7 +98,7 @@ nodes:
       source_refs:
         - repo: aoa-skills
           path: skills/core/engineering/aoa-eval/SKILL.md
-          ref: capability-family-v0.2.5
+          ref: capability-family-v0.2.6
           role: portable-family-procedure
           authority: authored
       optional_refs: []
@@ -170,7 +170,7 @@ nodes:
     owner: *eval_owner
     lifecycle: &eval_mode_lifecycle
       state: candidate
-      version: 0.2.5
+      version: 0.2.6
       visibility: internal
       evidence_state: evaluated
       health: challenger
@@ -203,7 +203,7 @@ nodes:
       source_refs:
         - repo: aoa-skills
           path: skills/core/engineering/aoa-eval/references/select.md
-          ref: capability-family-v0.2.5
+          ref: capability-family-v0.2.6
           role: select-mode
           authority: authored
       optional_refs: []
@@ -280,7 +280,7 @@ nodes:
       source_refs:
         - repo: aoa-skills
           path: skills/core/engineering/aoa-eval/references/apply.md
-          ref: capability-family-v0.2.5
+          ref: capability-family-v0.2.6
           role: apply-mode
           authority: authored
       optional_refs: []
@@ -353,7 +353,7 @@ nodes:
       source_refs:
         - repo: aoa-skills
           path: skills/core/engineering/aoa-eval/references/local-need.md
-          ref: capability-family-v0.2.5
+          ref: capability-family-v0.2.6
           role: local-need-mode
           authority: authored
       optional_refs: []
@@ -423,7 +423,7 @@ nodes:
       source_refs:
         - repo: aoa-skills
           path: skills/core/engineering/aoa-eval/references/design.md
-          ref: capability-family-v0.2.5
+          ref: capability-family-v0.2.6
           role: design-mode
           authority: authored
       optional_refs: []
@@ -491,7 +491,7 @@ nodes:
       source_refs:
         - repo: aoa-skills
           path: skills/core/engineering/aoa-eval/references/session-mining.md
-          ref: capability-family-v0.2.5
+          ref: capability-family-v0.2.6
           role: session-mining-mode
           authority: authored
       optional_refs: []
