@@ -7,6 +7,13 @@ Tracking starts with the community-docs baseline for this repository.
 
 ## [Unreleased]
 
+### Changed
+
+- External `abyss-machine` artifact admission now fails closed on every
+  required consumer-gate claim and reports control or dependency mismatches
+  through compact public-safe diagnostics instead of a traceback or an empty
+  failure shell.
+
 ### Added
 
 - Added the owner-local `stats/` port for description-trigger contract

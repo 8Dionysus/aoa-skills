@@ -1,0 +1,17 @@
+{
+  "allowed_bytes": 2687183,
+  "allowed_tracked_bytes": 10042767,
+  "approved_by": "repository-owner",
+  "base_ref": "7881ddfc6d533f2cf9a43abeba070e99a810e4d3",
+  "changed_generated_bytes": 2687183,
+  "changed_generated_files": 79,
+  "decision_ref": "aoa-kag:docs/decisions/AOA-KAG-D-0017-portable-content-addressed-repository-family.md",
+  "default_limit_bytes": 1048576,
+  "head_family_digest": "b0dca6c33f376a65fb03b2f507e0444f8af2dc96f9ce1fe0b02ca8da5c079da3",
+  "reason": "Active artifact-admission hardening, malformed dependency-claim handling, and the workflow pin to the matching current owner generator refresh the portable source and anchor shards.",
+  "repo": "aoa-skills",
+  "schema_version": "aoa-repo-local-kag-budget-receipt-v1",
+  "scope": "generated_delta_and_tracked_size",
+  "tracked_bytes": 10042767,
+  "tracked_bytes_max": 9437184
+}

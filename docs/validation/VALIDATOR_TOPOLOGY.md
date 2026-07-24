@@ -9,7 +9,7 @@
 | `validate_home_skill_port.py` | one admitted sibling owner manifest, canonical bundle shape, v2 global-exposure declaration and duplicate absence, or transitional v1 repo-projection parity | profile installation, admission merit, routing quality, or outcome benefit |
 | `questbook_surface.py` | durable quest source and read-model contract | completion of a quest |
 | Agon candidate validators | requested-only candidate schemas, forbidden effects, and generated parity | promotion into a callable capability or skill |
-| `validate_abyss_machine_artifact_bundle.py` | external artifact bundle admission when the owner verifier is present | universal release safety |
+| `validate_abyss_machine_artifact_bundle.py` | fail-closed external artifact bundle admission with public-safe mismatch diagnostics when the owner verifier is present | universal release safety |
 | pack `verify_skill_pack.py` | staged/installed bytes and release identity | semantic usefulness of installed bundles |
 
 Validators are retained only for long-lived contracts. Manual trials precede

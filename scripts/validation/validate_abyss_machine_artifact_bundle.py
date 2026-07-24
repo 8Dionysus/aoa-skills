@@ -192,15 +192,6 @@ def public_payload_leaks(*roots: Path) -> list[str]:
     return leaks
 
 
-def assert_expected_controls(verify: dict[str, Any]) -> None:
-    required = verify.get("required_controls")
-    verified = verify.get("verified_controls")
-    if required != EXPECTED_REQUIRED_CONTROLS:
-        raise ValueError(f"unexpected required controls: {required!r}")
-    if verified != EXPECTED_REQUIRED_CONTROLS:
-        raise ValueError(f"unexpected verified controls: {verified!r}")
-
-
 def registry_roundtrip(
     artifact_bundles: Any,
     bundle_dir: Path,
@@ -302,15 +293,13 @@ def trust_gate_allow_latest(
         and inspected_claims.get("artifact_subject_store", {}).get("required") is True
         and inspected_claims.get("artifact_subject_store", {}).get("ok") is False
     )
-    allowed_after_materialization = bool(
-        trust_gate.get("ok")
-        and trust_gate.get("verdict") in {"allow", "warn"}
-        and decision.get("model") == "fail_closed_consumer_admission"
-        and decision.get("allow") is True
+    admission = consumer_admission_status(
+        trust_gate,
+        require_subject_store=require_subject_store,
     )
     return {
         "ok": bool(
-            (allowed_after_materialization or expected_pre_materialization_blocker)
+            (admission["ok"] or expected_pre_materialization_blocker)
             and decision.get("model") == "fail_closed_consumer_admission"
             and inspected_claims.get("registry_latest", {}).get("selected_record_is_latest") is True
             and inspected_claims.get("controls", {}).get("required_controls_missing") == []
@@ -322,6 +311,7 @@ def trust_gate_allow_latest(
             )
         ),
         "expected_pre_materialization_blocker": expected_pre_materialization_blocker,
+        "consumer_admission": admission,
         "trust_gate": trust_gate,
     }
 
@@ -479,6 +469,7 @@ def verify_materialized_subject_store(
         expected_source_repo=OWNER_REPO,
         expected_trust_root_mode=TRUST_ROOT_MODE,
     )
+    admission = consumer_admission_status(gate)
     return {
         "ok": bool(
             pre_registry.get("ok")
@@ -486,12 +477,12 @@ def verify_materialized_subject_store(
             and refreshed_registry.get("ok")
             and isinstance(store_status, dict)
             and store_status.get("ok") is True
-            and gate.get("verdict") in {"allow", "warn"}
-            and gate.get("inspected_claims", {}).get("artifact_subject_store", {}).get("ok") is True
+            and admission["ok"]
         ),
         "pre_registry": pre_registry,
         "materialized": materialized,
         "refreshed_registry": refreshed_registry,
+        "consumer_admission": admission,
         "trust_gate": gate,
     }
 
@@ -565,7 +556,30 @@ def run_bundle(
     sign = artifact_bundles.sign_bundle(target, repo_root=abyss_root)
     verify = artifact_bundles.verify_bundle(target, repo_root=abyss_root)
     release = artifact_bundles.release_check(target, enforcement="blocking", repo_root=abyss_root)
-    assert_expected_controls(verify)
+    expected_controls = expected_controls_status(verify)
+    if not expected_controls["ok"]:
+        return {
+            "ok": False,
+            "schema": "aoa_skills_abyss_machine_artifact_bundle_validation_v1",
+            "error": "unexpected_artifact_controls",
+            "detail": "; ".join(expected_controls["errors"]),
+            "manifest": path_ref(manifest),
+            "bundle_dir": path_ref(target),
+            "registry_dir": path_ref(registry_path),
+            "subject_store_root": path_ref(store_root),
+            "artifact_class": ARTIFACT_CLASS,
+            "required_controls": verify.get("required_controls"),
+            "verified_controls": verify.get("verified_controls"),
+            "abyss_machine_repo_root": str(abyss_root),
+            "abyss_machine_package_root": package_root,
+            "expected_controls": expected_controls,
+            "steps": {
+                "build_sidecars": build,
+                "sign": sign,
+                "verify": verify,
+                "release_check": release,
+            },
+        }
     registry = registry_roundtrip(
         artifact_bundles,
         target,
@@ -610,6 +624,7 @@ def run_bundle(
         expected_source_repo=OWNER_REPO,
         expected_trust_root_mode=TRUST_ROOT_MODE,
     )
+    subject_store_admission = consumer_admission_status(subject_store_gate)
     sanitize_public_json_tree(target)
     sanitize_public_json_tree(registry_path)
     sanitize_public_json_tree(store_root)
@@ -627,10 +642,7 @@ def run_bundle(
             and materialized.get("ok")
             and registry_with_subject_store.get("ok")
             and trust_gate.get("ok")
-            and subject_store_gate.get("ok")
-            and subject_store_gate.get("verdict") in {"allow", "warn"}
-            and subject_store_gate.get("decision", {}).get("allow") is True
-            and subject_store_gate.get("inspected_claims", {}).get("artifact_subject_store", {}).get("ok") is True
+            and subject_store_admission.get("ok")
             and adversarial.get("ok")
             and not public_safe_leaks
         ),
@@ -645,12 +657,14 @@ def run_bundle(
         "abyss_machine_repo_root": str(abyss_root),
         "abyss_machine_package_root": package_root,
         "public_safe": {"ok": not public_safe_leaks, "leaks": public_safe_leaks},
+        "expected_controls": expected_controls,
         "registry": latest_registry,
         "pre_materialization_gate": pre_materialization_gate,
         "materialized_subject_store": materialized,
         "registry_with_subject_store": registry_with_subject_store,
         "trust_gate": trust_gate,
         "subject_store_gate": subject_store_gate,
+        "subject_store_admission": subject_store_admission,
         "adversarial_checks": adversarial,
         "steps": {
             "build_sidecars": build,
@@ -670,9 +684,19 @@ def compact_payload(payload: dict[str, Any]) -> dict[str, Any]:
     trust_gate = payload.get("trust_gate") if isinstance(payload.get("trust_gate"), dict) else {}
     gate_payload = trust_gate.get("trust_gate") if isinstance(trust_gate.get("trust_gate"), dict) else {}
     subject_store_gate = payload.get("subject_store_gate") if isinstance(payload.get("subject_store_gate"), dict) else {}
+    expected_controls = payload.get("expected_controls") if isinstance(payload.get("expected_controls"), dict) else {}
+    subject_store_admission = (
+        payload.get("subject_store_admission")
+        if isinstance(payload.get("subject_store_admission"), dict)
+        else {}
+    )
+    checked_roots = payload.get("checked_roots") if isinstance(payload.get("checked_roots"), list) else []
     return {
         "ok": payload.get("ok"),
         "schema": payload.get("schema"),
+        "error": payload.get("error"),
+        "detail": payload.get("detail"),
+        "checked_roots": [public_location_ref(value) for value in checked_roots],
         "manifest": payload.get("manifest"),
         "artifact_class": payload.get("artifact_class"),
         "required_controls": payload.get("required_controls"),
@@ -683,6 +707,15 @@ def compact_payload(payload: dict[str, Any]) -> dict[str, Any]:
         "abyss_machine_repo_root": public_location_ref(payload.get("abyss_machine_repo_root")),
         "abyss_machine_package_root": public_location_ref(payload.get("abyss_machine_package_root")),
         "public_safe": payload.get("public_safe"),
+        "expected_controls": {
+            "ok": expected_controls.get("ok"),
+            "expected_required_controls": expected_controls.get(
+                "expected_required_controls"
+            ),
+            "required_controls": expected_controls.get("required_controls"),
+            "verified_controls": expected_controls.get("verified_controls"),
+            "errors": expected_controls.get("errors"),
+        },
         "registry": {
             "ok": registry.get("ok"),
             "lifecycle_state": latest_record.get("lifecycle_state") if isinstance(latest_record, dict) else None,
@@ -698,10 +731,90 @@ def compact_payload(payload: dict[str, Any]) -> dict[str, Any]:
             "ok": subject_store_gate.get("ok"),
             "verdict": subject_store_gate.get("verdict"),
         },
+        "subject_store_admission": {
+            "ok": subject_store_admission.get("ok"),
+            "failed_checks": subject_store_admission.get("failed_checks"),
+        },
         "adversarial_checks": {
             "ok": adversarial.get("ok"),
             "checks": {name: item.get("ok") for name, item in checks.items() if isinstance(item, dict)},
         },
+    }
+
+
+def expected_controls_status(verify: dict[str, Any]) -> dict[str, Any]:
+    required = verify.get("required_controls")
+    verified = verify.get("verified_controls")
+    errors: list[str] = []
+    if required != EXPECTED_REQUIRED_CONTROLS:
+        errors.append(f"unexpected required controls: {required!r}")
+    if verified != EXPECTED_REQUIRED_CONTROLS:
+        errors.append(f"unexpected verified controls: {verified!r}")
+    return {
+        "ok": not errors,
+        "expected_required_controls": EXPECTED_REQUIRED_CONTROLS,
+        "required_controls": required,
+        "verified_controls": verified,
+        "errors": errors,
+    }
+
+
+def consumer_admission_status(
+    trust_gate: dict[str, Any],
+    *,
+    require_subject_store: bool = True,
+) -> dict[str, Any]:
+    inspected_claims = (
+        trust_gate.get("inspected_claims")
+        if isinstance(trust_gate.get("inspected_claims"), dict)
+        else {}
+    )
+    decision = (
+        trust_gate.get("decision")
+        if isinstance(trust_gate.get("decision"), dict)
+        else {}
+    )
+    registry_latest = inspected_claims.get("registry_latest")
+    controls = inspected_claims.get("controls")
+    source = inspected_claims.get("source")
+    trust_root = inspected_claims.get("trust_root")
+    artifact_subject_store = inspected_claims.get("artifact_subject_store")
+    registry_latest = registry_latest if isinstance(registry_latest, dict) else {}
+    controls = controls if isinstance(controls, dict) else {}
+    source = source if isinstance(source, dict) else {}
+    trust_root = trust_root if isinstance(trust_root, dict) else {}
+    artifact_subject_store = (
+        artifact_subject_store
+        if isinstance(artifact_subject_store, dict)
+        else {}
+    )
+    checks = {
+        "gate_ok": trust_gate.get("ok") is True,
+        "admission_verdict": trust_gate.get("verdict") in {"allow", "warn"},
+        "decision_model": decision.get("model")
+        == "fail_closed_consumer_admission",
+        "decision_allow": decision.get("allow") is True,
+        "selected_record_is_latest": registry_latest.get(
+            "selected_record_is_latest"
+        ) is True,
+        "required_controls_present": controls.get("required_controls_missing")
+        == [],
+        "source_repo_matched": source.get("source_repo_matched") is True,
+        "trust_root_mode_matched": trust_root.get(
+            "trust_root_mode_matched"
+        ) is True,
+    }
+    if require_subject_store:
+        checks["artifact_subject_store_verified"] = (
+            artifact_subject_store.get("ok") is True
+        )
+    return {
+        "ok": all(checks.values()),
+        "checks": checks,
+        "failed_checks": [name for name, ok in checks.items() if not ok],
+        "verdict": trust_gate.get("verdict"),
+        "decision_model": decision.get("model"),
+        "decision_allow": decision.get("allow"),
     }
 
 
