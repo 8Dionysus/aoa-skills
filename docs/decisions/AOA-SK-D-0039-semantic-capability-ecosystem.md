@@ -153,6 +153,20 @@ final answer, or green structural check alone.
 
 ## Review Log
 
+### 2026-07-25 - Preserve memo-writeback purpose under host truncation
+
+- Observed defect: the active Codex host shortened the initial skill catalog
+  while 85 skills were prompt-visible. `aoa-memo-writeback` then exposed only
+  its package-path gate, not the first-writeback capability that should cause
+  selection.
+- Correction: version `0.2.9` puts the no-existing-artifact condition,
+  first-writeback purpose, and host-path gate in the shortened prefix. The full
+  description keeps the recovery, existing-artifact handoff, negative
+  applicability, and owner boundary.
+- Claim limit: this repairs the observed catalog representation. It does not
+  prove implicit selection, outcome improvement, or a general solution to
+  unrelated plugin-family catalog pressure.
+
 ### 2026-07-23 - Close the final diagnostic disposition through real execution
 
 - Discovery result: a fresh neutral Codex session received only a natural
