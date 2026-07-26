@@ -1,0 +1,17 @@
+{
+  "allowed_bytes": 7150767,
+  "allowed_tracked_bytes": 10059354,
+  "approved_by": "repository-owner",
+  "base_ref": "1a16ff61fb13d56efe1a1a586d9bbba4df47a665",
+  "changed_generated_bytes": 7150767,
+  "changed_generated_files": 267,
+  "decision_ref": "aoa-kag:docs/decisions/AOA-KAG-D-0017-portable-content-addressed-repository-family.md",
+  "default_limit_bytes": 1048576,
+  "head_family_digest": "35b38f6d6c573bb6bf91411cbebf21a5c30343e46e39c358731ff1b808c7d569",
+  "reason": "Reviewed skill-contract correction and regenerated owner projection after manual missing-ref counterexample.",
+  "repo": "aoa-skills",
+  "schema_version": "aoa-repo-local-kag-budget-receipt-v1",
+  "scope": "generated_delta_and_tracked_size",
+  "tracked_bytes": 10059354,
+  "tracked_bytes_max": 9437184
+}
