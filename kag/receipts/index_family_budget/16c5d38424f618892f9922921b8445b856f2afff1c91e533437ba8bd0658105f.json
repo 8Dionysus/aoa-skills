@@ -1,0 +1,17 @@
+{
+  "allowed_bytes": 1462218,
+  "allowed_tracked_bytes": 10074570,
+  "approved_by": "repository-owner",
+  "base_ref": "1de4043cb88332d1eb218d6a47b60b129cbc7c9e",
+  "changed_generated_bytes": 1462218,
+  "changed_generated_files": 38,
+  "decision_ref": "aoa-kag:docs/decisions/AOA-KAG-D-0017-portable-content-addressed-repository-family.md",
+  "default_limit_bytes": 1048576,
+  "head_family_digest": "16c5d38424f618892f9922921b8445b856f2afff1c91e533437ba8bd0658105f",
+  "reason": "Owner-reviewed clean-install handoff binds verify-only owner links to the explicit install-user-skill operation and documents the owner-first sequence; this receipt authorizes only the content-addressed family digest and measured tracked size for PR #379.",
+  "repo": "aoa-skills",
+  "schema_version": "aoa-repo-local-kag-budget-receipt-v1",
+  "scope": "generated_delta_and_tracked_size",
+  "tracked_bytes": 10074570,
+  "tracked_bytes_max": 9437184
+}

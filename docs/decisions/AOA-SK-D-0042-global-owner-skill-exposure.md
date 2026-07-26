@@ -91,14 +91,15 @@ turning the old topology back into the target architecture.
 
 ## Current Applicability
 
-As of 2026-07-23:
+As of 2026-07-26:
 
 - the owner homes in scope have landed in `aoa-evals`, `aoa-memo`,
   `aoa-stats`, `aoa-kag`, `aoa-sdk`, `aoa-agents`, `abyss-stack`,
   `abyss-machine`, and `ATM10-Agent`;
-- one clean candidate `os-user-default` profile installs nineteen unique
-  managed front doors from shared and owner homes into `~/.codex/skills`; the
-  separately owned session-memory evidence route remains preserved;
+- one clean candidate `os-user-default` profile installs eighteen unique
+  managed-copy front doors from shared and owner homes into
+  `~/.codex/skills`, and verifies two owner-managed session-memory links
+  without assuming authority to mutate them;
 - every installed package and the aggregate profile receipt is current against
   its selected clean candidate source, and unrelated user entries remain
   preserved;
@@ -119,6 +120,23 @@ As of 2026-07-23:
   evidence remain required before v1 retirement.
 
 ## Review Log
+
+### 2026-07-26 - Preserve owner-installed user links in the aggregate profile
+
+- A real post-landing check exposed an ownership collision: the aggregate
+  `managed-copy` installer treated the two `aoa-session-memory` user links as
+  unmanaged objects even though their owner provides the canonical
+  `install-user-skill` operation.
+- The OS profile now distinguishes copied packages from verify-only
+  `owner-link` entries. An owner link is current only when the prompt-visible
+  target is a symlink resolving exactly to the declared owner skill source.
+- The aggregate installer records that observed identity but never creates,
+  replaces, repairs, or prunes the owner link. Missing, conflicting, broken, or
+  misdirected links stop with an owner-installer handoff before managed-copy
+  mutation.
+- Both advertised session-memory routers are listed so the profile verifies the
+  actual global surface instead of silently preserving an untracked second
+  route.
 
 ### 2026-07-23 - Repair installed-copy return before claiming global exposure
 
