@@ -357,6 +357,7 @@ def test_os_profile_observes_owner_links_without_managing_them(
                                 "kind": "owner-link",
                                 "repo": ".aoa",
                                 "root": ".aoa",
+                                "owner_operation": "install-user-skill",
                                 "skills": [
                                     {
                                         "name": global_source.name,
@@ -404,11 +405,23 @@ def test_os_profile_observes_owner_links_without_managing_them(
         dest_root=destination,
     )
     assert {
-        item["name"]: (item["management"], item["status"])
+        item["name"]: (
+            item["management"],
+            item["owner_operation"],
+            item["status"],
+        )
         for item in plan["skills"]
     } == {
-        global_source.name: ("owner-link", "owner-current"),
-        evidence_source.name: ("owner-link", "owner-current"),
+        global_source.name: (
+            "owner-link",
+            "install-user-skill",
+            "owner-current",
+        ),
+        evidence_source.name: (
+            "owner-link",
+            "install-user-skill",
+            "owner-current",
+        ),
     }
     install_os_skill_profile.execute_plan(
         plan,
@@ -433,6 +446,7 @@ def test_os_profile_observes_owner_links_without_managing_them(
     receipt["schema_version"] = "aoa_os_skill_install_v2"
     for item in receipt["skills"]:
         item.pop("management")
+        item.pop("owner_operation")
     (destination / install_os_skill_profile.INSTALL_RECEIPT).write_text(
         json.dumps(receipt, indent=2) + "\n",
         encoding="utf-8",
@@ -478,7 +492,7 @@ def test_os_profile_observes_owner_links_without_managing_them(
     ).read_bytes()
     with pytest.raises(
         install_os_skill_profile.ProfileError,
-        match="owner installer and exact source target",
+        match=r"\.aoa:install-user-skill\(aoa-session-memory-global-route\)",
     ):
         install_os_skill_profile.execute_plan(
             blocked,

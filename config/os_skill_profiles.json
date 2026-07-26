@@ -77,6 +77,7 @@
           "kind": "owner-link",
           "repo": ".aoa",
           "root": ".aoa",
+          "owner_operation": "install-user-skill",
           "skills": [
             {"name": "aoa-session-memory-global-route", "path": "skills/aoa-session-memory-global-route", "version": "owner-current"},
             {"name": "aoa-session-memory-evidence-route", "path": "skills/aoa-session-memory-evidence-route", "version": "owner-current"}

@@ -56,6 +56,7 @@ class ResolvedSkill:
     owner_ref: str
     dirty: bool | None
     management: str
+    owner_operation: str | None
 
 
 def load_json(path: Path) -> Any:
@@ -135,6 +136,7 @@ def _resolved_skill(
     version: str,
     capability_identity: dict[str, str] | None = None,
     management: str = MANAGED_COPY,
+    owner_operation: str | None = None,
 ) -> ResolvedSkill:
     source_receipt_path = source_path / SOURCE_RECEIPT
     if source_receipt_path.exists() or source_receipt_path.is_symlink():
@@ -187,6 +189,7 @@ def _resolved_skill(
         owner_ref=ref,
         dirty=dirty,
         management=management,
+        owner_operation=owner_operation,
     )
 
 
@@ -322,6 +325,14 @@ def resolve_profile(
                     )
                 )
         elif kind in {"direct-home", OWNER_LINK}:
+            owner_operation = source.get("owner_operation")
+            if kind == OWNER_LINK and (
+                not isinstance(owner_operation, str)
+                or not home_skill_port.NAME_RE.fullmatch(owner_operation)
+            ):
+                raise ProfileError(
+                    f"owner-link source {repo} requires a safe owner_operation"
+                )
             for entry in requested:
                 if not isinstance(entry, dict):
                     raise ProfileError(f"direct source {repo} entries must be objects")
@@ -346,6 +357,7 @@ def resolve_profile(
                         source_relative=path,
                         version=str(version or "owner-current"),
                         management=OWNER_LINK if kind == OWNER_LINK else MANAGED_COPY,
+                        owner_operation=owner_operation if kind == OWNER_LINK else None,
                     )
                 )
         else:
@@ -531,6 +543,7 @@ def build_plan(
                 "target_digest": target_digest,
                 "status": status,
                 "management": skill.management,
+                "owner_operation": skill.owner_operation,
                 "file_count": skill.file_count,
                 "source_receipt_status": source_receipt_status,
             }
@@ -593,6 +606,7 @@ def _receipt_from_plan(
                     item["prompt_description_sha256"]
                 ),
                 "management": item["management"],
+                "owner_operation": item["owner_operation"],
             }
             for item in plan["skills"]
         ],
@@ -663,9 +677,14 @@ def execute_plan(
         if item["management"] == OWNER_LINK and item["status"] != "owner-current"
     ]
     if owner_link_failures:
+        handoffs = [
+            f"{item['owner_repo']}:{item['owner_operation']}({item['name']})"
+            for item in plan["skills"]
+            if item["name"] in owner_link_failures
+        ]
         raise ProfileError(
             "owner-managed links require the owner installer and exact source target: "
-            + ", ".join(owner_link_failures)
+            + ", ".join(handoffs)
         )
     if plan_is_current(plan, allow_dirty_source=allow_dirty_source):
         return

@@ -44,6 +44,25 @@ For the normal OS catalog, install `os-user-default` into the verified Codex
 user root and ensure no selected canonical ID is also present in a
 repository-visible projection.
 
+The aggregate profile verifies owner-managed links but never creates or
+repairs them. On a clean user root, first invoke the `.aoa` owner operation for
+both advertised session-memory routes:
+
+```bash
+python /srv/AbyssOS/.aoa/scripts/aoa_session_memory.py install-user-skill \
+  --aoa-root /srv/AbyssOS/.aoa \
+  --skill aoa-session-memory-global-route
+python /srv/AbyssOS/.aoa/scripts/aoa_session_memory.py install-user-skill \
+  --aoa-root /srv/AbyssOS/.aoa \
+  --skill aoa-session-memory-evidence-route
+```
+
+Each command is owner-idempotent: an exact current link is preserved; a
+conflicting target requires that owner command's explicit `--force` review.
+Only after both owner links are current should the aggregate profile execute.
+If an owner link is missing or misdirected, the profile stops before changing
+its managed-copy entries and reports the required owner operation.
+
 Preview the complete owner resolution and destination plan before installation:
 
 ```bash
