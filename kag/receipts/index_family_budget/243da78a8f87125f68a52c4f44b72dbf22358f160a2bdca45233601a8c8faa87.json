@@ -1,0 +1,17 @@
+{
+  "allowed_bytes": 7563162,
+  "allowed_tracked_bytes": 10060963,
+  "approved_by": "repository-owner",
+  "base_ref": "ea30ee4117722023991a7ee356125fb1b518cb92",
+  "changed_generated_bytes": 7563162,
+  "changed_generated_files": 272,
+  "decision_ref": "aoa-kag:docs/decisions/AOA-KAG-D-0017-portable-content-addressed-repository-family.md",
+  "default_limit_bytes": 1048576,
+  "head_family_digest": "243da78a8f87125f68a52c4f44b72dbf22358f160a2bdca45233601a8c8faa87",
+  "reason": "Refresh the landed owner-federated capability ecosystem and preserve the existing-memo negative retrieval boundary.",
+  "repo": "aoa-skills",
+  "schema_version": "aoa-repo-local-kag-budget-receipt-v1",
+  "scope": "generated_delta_and_tracked_size",
+  "tracked_bytes": 10060963,
+  "tracked_bytes_max": 9437184
+}

@@ -1,6 +1,6 @@
 ---
 name: aoa-checkpoint-closeout-bridge
-description: Carry provisional checkpoint hints into an explicit reviewed closeout sequence without treating notes or mechanical reports as verdict authority. Use to collect bounded checkpoint hints or to execute the reviewed harvest, progression, quest-promotion, and branch stages after a session artifact is closed and reviewed. Do not use mid-session for final judgments, without reviewed evidence, as a hidden playbook runner, or to write owner truth.
+description: "Carry provisional checkpoint hints into a reviewed session closeout: harvest, progression, quest-promotion, and branch handoff. Use to collect bounded hints or execute after the current session artifact is closed and reviewed. Do not use mid-session for final judgment, without reviewed evidence, as a hidden playbook runner, or to write owner truth."
 ---
 
 # aoa-checkpoint-closeout-bridge

@@ -9,6 +9,20 @@ Tracking starts with the community-docs baseline for this repository.
 
 ### Changed
 
+- Compact the advertised skill descriptions into routing indexes that retain
+  each capability, primary trigger, and nearest conflict while leaving
+  procedures and verification in the activated package.
+- Make `aoa-session-harvest` fail closed when no literal reviewed-packet
+  evidence ref is supplied, instead of permitting an inferred or minted ref.
+- Track the landed `aoa-summon` owner version `0.2.17`: incomplete request
+  input blocks before admission; decision, binding, runtime identity, immutable
+  request identity, named outputs, return acceptance, and parent closeout stay
+  mutually consistent.
+- Refresh the federated owner-skill descriptions, versions, and immutable
+  source refs for `aoa-kag`, `aoa-memo`, `aoa-evals`, `aoa-agents`,
+  `abyss-machine`, and `abyss-stack` after their owner landings.
+- Keep the existing-memo-artifact boundary discoverable in deep retrieval even
+  when the direct `aoa-memo` owner route becomes the strongest candidate.
 - External `abyss-machine` artifact admission now fails closed on every
   required consumer-gate claim and reports control or dependency mismatches
   through compact public-safe diagnostics instead of a traceback or an empty

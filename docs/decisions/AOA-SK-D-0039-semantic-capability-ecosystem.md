@@ -839,6 +839,41 @@ final answer, or green structural check alone.
   remains a candidate until its worktree is landed and the final OS profile
   installs the verified projection.
 
+### 2026-07-25 - Fail closed on an absent harvest evidence ref
+
+- Manual finding: a fresh full-profile request described a closed reviewed
+  packet as "given by name" but supplied no literal packet or evidence ref.
+  The correct harvest family was selected, yet the agent minted a session-like
+  identifier and treated the pre-mode gate as passed.
+- Correction: version `0.2.4` requires at least one literal supplied evidence
+  ref before any mode loads. A missing ref, review posture, or bounded source
+  returns `blocked_unreviewed_evidence`; the procedure explicitly forbids
+  inferring, normalizing, or minting the absent identifier.
+- Proof posture: this observed counterexample justifies the fail-closed
+  contract correction. It does not prove broader retrieval lift; the same
+  negative request must block in a fresh installed-profile rerun.
+
+### 2026-07-26 - Bind the final ecosystem projection to landed owner truth
+
+- The federated owner nodes now point to the merged owner commits for
+  `aoa-kag`, `aoa-memo`, `aoa-evals`, `aoa-agents`, `abyss-machine`, and
+  `abyss-stack`; descriptions and versions match those owner packages rather
+  than earlier candidate worktrees.
+- `aoa-summon` is represented at owner version `0.2.17`. Its result contract
+  preserves request identity and intent, runtime identity and effects, one
+  keyed output-validation set, exact request/result comparison, and parent
+  closeout without treating schema validity as execution proof.
+- This closes source/projection drift only. Fresh installed-profile trials
+  still own prompt visibility, natural selection, coexistence, and live
+  binding evidence; unavailable MCP authentication remains a binding block,
+  not a reason to bypass the owner interface.
+- Owner-description synchronization made direct `aoa-memo` correctly rank
+  first for an existing candidate but pushed the conflicting
+  `sessions.memo-writeback` boundary below the compact retrieval floor. The
+  navigation node now indexes that existing-artifact boundary explicitly so
+  deep retrieval can return both the positive owner route and the negative
+  competitor without lengthening the host-visible skill description.
+
 ### 2026-07-15 - User projection declared without widening the catalog
 
 - AOA-SK-D-0040 now owns the user/repository projection split.

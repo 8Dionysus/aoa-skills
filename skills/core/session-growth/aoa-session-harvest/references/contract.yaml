@@ -2,12 +2,13 @@ schema_version: aoa-skill-contract-v1
 identity:
   name: aoa-session-harvest
   owner: aoa-skills
-  version: 0.2.2
+  version: 0.2.4
   health: challenger
 purpose: Preserve five reviewed-session capabilities behind one discoverable front door.
 freedom_level: bounded-judgment
 tool_requirements:
-  - Read access to one explicitly reviewed bounded evidence packet.
+  - A literal supplied ref to one explicitly reviewed bounded evidence packet.
+  - Read access to that exact packet; a missing ref must never be inferred or minted.
   - Optional read access to destination-owner intake contracts.
 effects: [none]
 trust:
@@ -57,6 +58,7 @@ termination:
   success: one typed session-local packet and explicit owner handoff or no-artifact verdict
   blocked: evidence is live, unreviewed, unbounded, or lacks required mode inputs
 failure_modes:
+  - missing packet or evidence ref replaced by an inferred or invented identifier
   - owner acceptance inferred from a candidate
   - multiple lifecycle stages hidden in one invocation
   - telemetry or route hints treated as authority

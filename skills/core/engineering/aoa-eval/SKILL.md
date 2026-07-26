@@ -1,6 +1,6 @@
 ---
 name: aoa-eval
-description: Select or apply an eval, route a confirmed no-fit into owner-local intake or design, or classify supplied or retrieved session hits into provenance-bound eval candidates. Use for one cross-repository or owner-local evaluation need; compose with session-memory for retrieval and with aoa-verification after apply. Do not use for named central proof bundles, results, reports, verdicts, or lifecycle work (`aoa-evals`), ordinary already-named tests, undefined invariants, or generic session harvesting.
+description: Select or apply an owner-local or cross-repository eval, route a confirmed no-fit to intake/design, or classify supplied session hits as eval candidates. Use aoa-evals for central proof bundles, named results or verdicts, reports, and lifecycle. Do not use for ordinary tests, undefined invariants, or generic session harvesting.
 ---
 
 # aoa-eval

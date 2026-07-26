@@ -2,7 +2,7 @@ schema_version: aoa-skill-contract-v1
 identity:
   name: aoa-session-recovery
   owner: aoa-skills
-  version: 0.2.1
+  version: 0.2.2
   health: challenger
 purpose: Preserve diagnosis and real checkpointed repair behind one discoverable front door.
 freedom_level: bounded-judgment

@@ -1,6 +1,6 @@
 ---
 name: aoa-memo-writeback
-description: "First memo writeback before any memo artifact exists; read this SKILL.md from its host-listed path only. Decide whether live-session, closeout, landed-work, PR, diff, or review evidence yields one guarded candidate, export, or no-write result. If a constructed path already failed before any other action, recover exactly once from the host locator and report `package_path_recovered`; never search or probe. If an existing concrete memo candidate, export, quarantine packet, memory object, corpus identity, lifecycle target, or read-model target is named or supplied, select aoa-memo directly. Do not use for eval mining, raw session maintenance, generic harvest, durable memory, owner intake/review, recall, or proof."
+description: "Use only before any memo artifact exists to decide whether live-session, closeout, landed-work, PR, diff, or review evidence yields one guarded memo candidate, export, or no-write result. If a concrete memo candidate, export, object, corpus, lifecycle, or read-model target already exists, use aoa-memo. Do not use for eval mining, raw-session maintenance, generic harvest, recall, durable memory, or proof."
 ---
 
 # aoa-memo-writeback

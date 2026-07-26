@@ -2,7 +2,7 @@ schema_version: aoa-skill-contract-v1
 identity:
   name: aoa-decision
   owner: aoa-skills
-  version: 0.2.2
+  version: 0.2.3
   health: challenger
 purpose: Preserve decision lookup, durable recording, and source-first correction behind one discoverable front door.
 applicability:
