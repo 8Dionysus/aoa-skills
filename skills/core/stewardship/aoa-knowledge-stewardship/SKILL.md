@@ -1,6 +1,6 @@
 ---
 name: aoa-knowledge-stewardship
-description: Sanitize private technical material into a public-safe owner-bounded derivative, or resolve authority among authored, generated, runtime, and installed sources. Use when incidents, logs, configs, diagnostics, credentials, private paths, host/network topology, or conflicting sources require a named-audience review draft or authority map. Preserve raw custody and separate artifact creation from publication. Do not use for memo writeback, session mining, direct publication execution, durable-memory authority, or ordinary prose editing.
+description: Sanitize private technical material into a public-safe owner-bounded derivative, or resolve authority among authored, generated, runtime, and installed sources. Use for governed incidents, logs, configs, diagnostics, or conflicting source roles. Do not use for ordinary editing, memo/session work, direct publication, or durable-memory authority.
 ---
 
 # aoa-knowledge-stewardship

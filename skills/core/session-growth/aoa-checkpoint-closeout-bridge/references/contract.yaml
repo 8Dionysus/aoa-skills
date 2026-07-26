@@ -2,7 +2,7 @@ schema_version: aoa-skill-contract-v1
 identity:
   name: aoa-checkpoint-closeout-bridge
   owner: aoa-skills
-  version: 0.2.3
+  version: 0.2.4
   health: challenger
 purpose: Preserve provisional checkpoint collection and explicit reviewed closeout execution until the owner playbook has an executable MCP route.
 applicability:

@@ -1,0 +1,17 @@
+{
+  "allowed_bytes": 2628083,
+  "allowed_tracked_bytes": 10056382,
+  "approved_by": "repository-owner",
+  "base_ref": "ea30ee4117722023991a7ee356125fb1b518cb92",
+  "changed_generated_bytes": 2628083,
+  "changed_generated_files": 80,
+  "decision_ref": "aoa-kag:docs/decisions/AOA-KAG-D-0017-portable-content-addressed-repository-family.md",
+  "default_limit_bytes": 1048576,
+  "head_family_digest": "526bdc4e08c017ded339906a032a498989d32fb37101527529161e691ce6f97e",
+  "reason": "Refresh the repo-local KAG family after compacting admitted shared and external owner skill routing descriptions, updating owner commit provenance, and rebuilding capability and portable read models.",
+  "repo": "aoa-skills",
+  "schema_version": "aoa-repo-local-kag-budget-receipt-v1",
+  "scope": "generated_delta_and_tracked_size",
+  "tracked_bytes": 10056382,
+  "tracked_bytes_max": 9437184
+}

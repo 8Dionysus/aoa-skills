@@ -67,7 +67,7 @@ nodes:
     keywords: [artifact-trust, consumer-admission, provenance, registry, trust-gate, артефакт, доверие, происхождение]
   - id: skill.abyss-self-diagnostic-spine
     title: abyss-self-diagnostic-spine owner bundle
-    description: Produce, capture, or review one owner-typed Abyss runtime diagnosis with explicit freshness, effect, and repair boundaries.
+    description: Diagnose or review one concrete Abyss runtime target through the owner diagnostic spine with explicit freshness, effect, and repair boundaries.
     kind: skill
     contract_level: navigation
     primary_parent: projects.abyss.diagnose-runtime
@@ -77,7 +77,7 @@ nodes:
       authority: external-authority
     lifecycle:
       state: active
-      version: 0.2.3
+      version: 0.2.4
       visibility: advertised
       evidence_state: evaluated
       health: challenger
@@ -94,19 +94,19 @@ nodes:
       source_refs:
         - repo: abyss-stack
           path: skills/abyss-self-diagnostic-spine/SKILL.md
-          ref: 38856c1e4da1e6e0e40d2b76d8aaf828a7ef4b10
+          ref: a1e787831c48f3aa356af330b3331afca00f28cf
           role: owner-skill-contract
           authority: external-authority
         - repo: abyss-stack
           path: skills/abyss-self-diagnostic-spine/references/contract.yaml
-          ref: 38856c1e4da1e6e0e40d2b76d8aaf828a7ef4b10
+          ref: a1e787831c48f3aa356af330b3331afca00f28cf
           role: owner-typed-contract
           authority: external-authority
       optional_refs: []
     keywords: [abyss-diagnostic, diagnostic-session-v1, observe, capture, review, диагностика, рантайм, свежесть]
   - id: skill.os-abyss-artifact-trust-loop
     title: os-abyss-artifact-trust-loop owner bundle
-    description: Route one OS Abyss artifact through owner classification, required controls, producer evidence, drift, durable registry selection, and fail-closed consumer admission.
+    description: Route one OS Abyss artifact through owner controls, evidence/drift review, registry selection, and fail-closed consumer admission.
     kind: skill
     contract_level: navigation
     primary_parent: projects.abyss.artifact-trust
@@ -116,7 +116,7 @@ nodes:
       authority: external-authority
     lifecycle:
       state: active
-      version: 0.1.1
+      version: 0.1.2
       visibility: advertised
       evidence_state: evaluated
       health: challenger
@@ -133,12 +133,12 @@ nodes:
       source_refs:
         - repo: abyss-machine
           path: skills/os-abyss-artifact-trust-loop/SKILL.md
-          ref: 2faa6c6ccfc1309f6c3b6a36ddf04c3334c4547b
+          ref: cb34f4d27b69661bfc3db455f6eae2cc85324057
           role: owner-skill-contract
           authority: external-authority
         - repo: abyss-machine
           path: skills/os-abyss-artifact-trust-loop/references/contract.yaml
-          ref: 2faa6c6ccfc1309f6c3b6a36ddf04c3334c4547b
+          ref: cb34f4d27b69661bfc3db455f6eae2cc85324057
           role: owner-typed-contract
           authority: external-authority
       optional_refs: []

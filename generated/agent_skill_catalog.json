@@ -15,7 +15,7 @@
     {
       "name": "aoa-checkpoint-closeout-bridge",
       "display_name": "AoA Checkpoint Closeout Bridge",
-      "description": "Carry provisional checkpoint hints into an explicit reviewed closeout sequence without treating notes or mechanical reports as verdict authority. Use to collect bounded checkpoint hints or to execute the reviewed harvest, progression, quest-promotion, and branch stages after a session artifact is closed and reviewed. Do not use mid-session for final judgments, without reviewed evidence, as a hidden playbook runner, or to write owner truth.",
+      "description": "Carry provisional checkpoint hints into a reviewed session closeout: harvest, progression, quest-promotion, and branch handoff. Use to collect bounded hints or execute after the current session artifact is closed and reviewed. Do not use mid-session for final judgment, without reviewed evidence, as a hidden playbook runner, or to write owner truth.",
       "short_description": "Run reviewed checkpoint closeout safely",
       "path": ".agents/skills/aoa-checkpoint-closeout-bridge/SKILL.md",
       "openai_config_path": ".agents/skills/aoa-checkpoint-closeout-bridge/agents/openai.yaml",
@@ -55,7 +55,7 @@
     {
       "name": "aoa-decision",
       "display_name": "AoA Decision",
-      "description": "Find, record, or correct durable repository decisions through one decision family. Use when prior rationale, a meaningful accepted choice, supersession, or drift between an authored decision record and its derived decision indexes is the task. Select exactly one internal mode and keep authored owner records authoritative. Do not use for ordinary docs edits, current source-of-truth conflicts, or generated/runtime authority mapping.",
+      "description": "Find, record, correct, or supersede a durable repository decision and its derived indexes. Use for prior rationale, a meaningful accepted choice, or decision-source/index drift. Do not use for ordinary documentation, an open choice, current source-authority conflicts, or runtime/generated authority mapping.",
       "short_description": "Find, record, or correct durable decisions",
       "path": ".agents/skills/aoa-decision/SKILL.md",
       "openai_config_path": ".agents/skills/aoa-decision/agents/openai.yaml",
@@ -138,7 +138,7 @@
     {
       "name": "aoa-eval",
       "display_name": "AoA Eval",
-      "description": "Select or apply an eval, route a confirmed no-fit into owner-local intake or design, or classify supplied or retrieved session hits into provenance-bound eval candidates. Use for one cross-repository or owner-local evaluation need; compose with session-memory for retrieval and with aoa-verification after apply. Do not use for named central proof bundles, results, reports, verdicts, or lifecycle work (`aoa-evals`), ordinary already-named tests, undefined invariants, or generic session harvesting.",
+      "description": "Select or apply an owner-local or cross-repository eval, route a confirmed no-fit to intake/design, or classify supplied session hits as eval candidates. Use aoa-evals for central proof bundles, named results or verdicts, reports, and lifecycle. Do not use for ordinary tests, undefined invariants, or generic session harvesting.",
       "short_description": "Route one evaluation need without losing its contract",
       "path": ".agents/skills/aoa-eval/SKILL.md",
       "openai_config_path": ".agents/skills/aoa-eval/agents/openai.yaml",
@@ -184,7 +184,7 @@
     {
       "name": "aoa-knowledge-stewardship",
       "display_name": "AoA Knowledge Stewardship",
-      "description": "Sanitize private technical material into a public-safe owner-bounded derivative, or resolve authority among authored, generated, runtime, and installed sources. Use when incidents, logs, configs, diagnostics, credentials, private paths, host/network topology, or conflicting sources require a named-audience review draft or authority map. Preserve raw custody and separate artifact creation from publication. Do not use for memo writeback, session mining, direct publication execution, durable-memory authority, or ordinary prose editing.",
+      "description": "Sanitize private technical material into a public-safe owner-bounded derivative, or resolve authority among authored, generated, runtime, and installed sources. Use for governed incidents, logs, configs, diagnostics, or conflicting source roles. Do not use for ordinary editing, memo/session work, direct publication, or durable-memory authority.",
       "short_description": "Steward source authority or safe derivatives",
       "path": ".agents/skills/aoa-knowledge-stewardship/SKILL.md",
       "openai_config_path": ".agents/skills/aoa-knowledge-stewardship/agents/openai.yaml",
@@ -225,7 +225,7 @@
     {
       "name": "aoa-memo-writeback",
       "display_name": "AoA Memo Writeback",
-      "description": "First memo writeback before any memo artifact exists; read this SKILL.md from its host-listed path only. Decide whether live-session, closeout, landed-work, PR, diff, or review evidence yields one guarded candidate, export, or no-write result. If a constructed path already failed before any other action, recover exactly once from the host locator and report `package_path_recovered`; never search or probe. If an existing concrete memo candidate, export, quarantine packet, memory object, corpus identity, lifecycle target, or read-model target is named or supplied, select aoa-memo directly. Do not use for eval mining, raw session maintenance, generic harvest, durable memory, owner intake/review, recall, or proof.",
+      "description": "Use only before any memo artifact exists to decide whether live-session, closeout, landed-work, PR, diff, or review evidence yields one guarded memo candidate, export, or no-write result. If a concrete memo candidate, export, object, corpus, lifecycle, or read-model target already exists, use aoa-memo. Do not use for eval mining, raw-session maintenance, generic harvest, recall, durable memory, or proof.",
       "short_description": "Create or decline the first memo writeback",
       "path": ".agents/skills/aoa-memo-writeback/SKILL.md",
       "openai_config_path": ".agents/skills/aoa-memo-writeback/agents/openai.yaml",
@@ -265,7 +265,7 @@
     {
       "name": "aoa-session-harvest",
       "display_name": "AoA Session Harvest",
-      "description": "EXPLICIT REVIEWED-SESSION INPUT ONLY: turn a named closed/reviewed session packet into extract, classify, promote, branch, or automation-opportunity output. A natural work closeout asking whether anything reusable should be preserved for the owner's future work belongs to aoa-memo-writeback, not this skill. Use on live/unreviewed session material only when extraction or promotion is explicitly requested and the required result is blocked_unreviewed_evidence. Do not use for generic summarization, progression, memo/writeback judgment, direct promotion, scheduling, mutation, owner writes, or telemetry authority.",
+      "description": "Use only with an explicitly named closed/reviewed session packet to extract, classify, propose promotion or branching, or identify an automation opportunity. Natural closeout preservation belongs to aoa-memo-writeback; live/unreviewed input can only produce blocked_unreviewed_evidence. Do not use for generic summaries, progression, direct owner writes, scheduling, mutation, or telemetry authority.",
       "short_description": "Harvest and route reviewed session evidence",
       "path": ".agents/skills/aoa-session-harvest/SKILL.md",
       "openai_config_path": ".agents/skills/aoa-session-harvest/agents/openai.yaml",
@@ -309,7 +309,7 @@
     {
       "name": "aoa-session-recovery",
       "display_name": "AoA Session Recovery",
-      "description": "Diagnose reviewed recurring session or workflow failure, or carry one bounded owner repair from diagnosis through checkpoint, execution posture, rollback, and real health verification. Use when evidence shows contamination, drift, repeated route/tool failure, or a reviewed diagnosis is ready for repair. Do not use on live/unreviewed material, for vague self-improvement, or to claim a proposed or merely executed change is verified.",
+      "description": "Diagnose a reviewed recurring session/workflow failure, or carry one bounded owner repair through checkpoint, rollback, and real health verification. Use for reviewed contamination, drift, repeated route/tool failure, or an established diagnosis ready for repair. Do not use on live evidence, for vague self-improvement, or to call a proposed or merely executed change verified.",
       "short_description": "Diagnose failure and run bounded recovery",
       "path": ".agents/skills/aoa-session-recovery/SKILL.md",
       "openai_config_path": ".agents/skills/aoa-session-recovery/agents/openai.yaml",

@@ -1,6 +1,6 @@
 ---
 name: aoa-session-harvest
-description: "EXPLICIT REVIEWED-SESSION INPUT ONLY: turn a named closed/reviewed session packet into extract, classify, promote, branch, or automation-opportunity output. A natural work closeout asking whether anything reusable should be preserved for the owner's future work belongs to aoa-memo-writeback, not this skill. Use on live/unreviewed session material only when extraction or promotion is explicitly requested and the required result is blocked_unreviewed_evidence. Do not use for generic summarization, progression, memo/writeback judgment, direct promotion, scheduling, mutation, owner writes, or telemetry authority."
+description: "Use only with an explicitly named closed/reviewed session packet to extract, classify, propose promotion or branching, or identify an automation opportunity. Natural closeout preservation belongs to aoa-memo-writeback; live/unreviewed input can only produce blocked_unreviewed_evidence. Do not use for generic summaries, progression, direct owner writes, scheduling, mutation, or telemetry authority."
 ---
 
 # aoa-session-harvest

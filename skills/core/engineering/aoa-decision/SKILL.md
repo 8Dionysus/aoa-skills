@@ -1,6 +1,6 @@
 ---
 name: aoa-decision
-description: Find, record, or correct durable repository decisions through one decision family. Use when prior rationale, a meaningful accepted choice, supersession, or drift between an authored decision record and its derived decision indexes is the task. Select exactly one internal mode and keep authored owner records authoritative. Do not use for ordinary docs edits, current source-of-truth conflicts, or generated/runtime authority mapping.
+description: Find, record, correct, or supersede a durable repository decision and its derived indexes. Use for prior rationale, a meaningful accepted choice, or decision-source/index drift. Do not use for ordinary documentation, an open choice, current source-authority conflicts, or runtime/generated authority mapping.
 ---
 
 # aoa-decision

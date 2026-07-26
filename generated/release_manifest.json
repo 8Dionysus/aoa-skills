@@ -292,8 +292,8 @@
   "source_file_digests": [
     {
       "path": "capabilities/families/abyss.yaml",
-      "sha256": "47bd4f56c41ec49961df97eff1d816d0e49069e2b9f4cdc1e485d4d5c6f4610f",
-      "bytes": 22062
+      "sha256": "71af8bb20f4fc083268c2f9e37f8321e3bf7802db9e3e3193328afe0fc15ce2a",
+      "bytes": 22046
     },
     {
       "path": "capabilities/families/atm10.yaml",
@@ -302,8 +302,8 @@
     },
     {
       "path": "capabilities/families/decisions.yaml",
-      "sha256": "dac73f5cdb8aabfbfa62217aa6a40b7414edcc6a90d0a153080b88874736600a",
-      "bytes": 14744
+      "sha256": "8f411207e3c7a289a16c5c56edd50707ad40d6a21c948235799293bcf1fa6866",
+      "bytes": 14618
     },
     {
       "path": "capabilities/families/engineering.yaml",
@@ -312,8 +312,8 @@
     },
     {
       "path": "capabilities/families/evals.yaml",
-      "sha256": "ef9b01d0dd6a3e3d335b7f61e02c528b145537827638a37b1cc488eb3f868969",
-      "bytes": 22983
+      "sha256": "2366774f937b6dd726ef5649e943d60f78c6c39f477db13bd8bda2b9120cdf25",
+      "bytes": 22743
     },
     {
       "path": "capabilities/families/operations.yaml",
@@ -322,13 +322,13 @@
     },
     {
       "path": "capabilities/families/session-growth.yaml",
-      "sha256": "120ca364d4a637a8e07b4ab50f2e04074f2004371ee6b13bf6dced1c08aeba16",
-      "bytes": 47899
+      "sha256": "8617284b2e8cd2412b3fe8ad6fffc4baa3a542e7c2eee59d083a8a996671bd92",
+      "bytes": 46939
     },
     {
       "path": "capabilities/families/stewardship.yaml",
-      "sha256": "a361787ff2dc96ff5224fb6ef5c8de96e5f7c8e4071d535ddaf0bbf7b5e2c856",
-      "bytes": 18207
+      "sha256": "4b79085cd453a32bb8324e65b68d5e6f3607ef57f8621994bef61856acf6f212",
+      "bytes": 17823
     },
     {
       "path": "capabilities/families/system.yaml",
@@ -352,8 +352,8 @@
     },
     {
       "path": "config/portable_skill_overrides.json",
-      "sha256": "a100c9842b983ded3651364e0d4a7d5f031e52bdb0997c641e962825e328fed3",
-      "bytes": 7534
+      "sha256": "d542d7bc7cc65c8423a4badbcffd4c68989cdaa7f446ba86885f8339066702b9",
+      "bytes": 6368
     },
     {
       "path": "config/skill_pack_profiles.json",
@@ -427,8 +427,8 @@
     },
     {
       "path": "skills/core/engineering/aoa-decision/SKILL.md",
-      "sha256": "ac10eadb2723b6fe4384f09ebfe0a5a0578c8c13ff69d285936d1f3e06256558",
-      "bytes": 4762
+      "sha256": "f347426516a3aeb40fd2090f8a9bddff2f178267debb51f3d0ccb95dee992bf5",
+      "bytes": 4636
     },
     {
       "path": "skills/core/engineering/aoa-decision/agents/openai.yaml",
@@ -437,7 +437,7 @@
     },
     {
       "path": "skills/core/engineering/aoa-decision/references/contract.yaml",
-      "sha256": "c4851e3e1c86b63c5bb826c616363c58d4a4a00162cd737265de8cbf798bf57e",
+      "sha256": "730a47ae13ff141c2d3cea16e6077fa7ee71d81878f77ea96a6d05c8669f0082",
       "bytes": 4057
     },
     {
@@ -487,8 +487,8 @@
     },
     {
       "path": "skills/core/engineering/aoa-eval/SKILL.md",
-      "sha256": "26e0fb7416097632fa3bf28587c6b4c340c1459fdf2fab2a1bf1ab8ed43ea45f",
-      "bytes": 5505
+      "sha256": "9aed23f1886b120a08a508590e3098da15c4cfc3081822e8eb6e272182757d08",
+      "bytes": 5334
     },
     {
       "path": "skills/core/engineering/aoa-eval/agents/openai.yaml",
@@ -507,7 +507,7 @@
     },
     {
       "path": "skills/core/engineering/aoa-eval/references/contract.yaml",
-      "sha256": "a722a4d685b2b7d85e8ec3332d42c8c8dd27458a6d4bdd7b64b62553bb43aaef",
+      "sha256": "2e2ad4913d2dde3e65ac67f53d7c751f409b28fbcc50659d5cffbcc0551328cc",
       "bytes": 3476
     },
     {
@@ -562,8 +562,8 @@
     },
     {
       "path": "skills/core/session-growth/aoa-checkpoint-closeout-bridge/SKILL.md",
-      "sha256": "9eafbd8784cb5ea76e1e3cd4bc4a754f55dbe10e18b43fa9797bdf2fed959a3b",
-      "bytes": 6056
+      "sha256": "d40cfcc5888a5213667a7f66ca217a864fec756e511a8bf8d6c569c110ebd108",
+      "bytes": 5965
     },
     {
       "path": "skills/core/session-growth/aoa-checkpoint-closeout-bridge/agents/openai.yaml",
@@ -577,7 +577,7 @@
     },
     {
       "path": "skills/core/session-growth/aoa-checkpoint-closeout-bridge/references/contract.yaml",
-      "sha256": "0c856f09b7a2d9d18ef1b71b3897c3e04fb2a0f1fe85e85952f4136dfcf494d7",
+      "sha256": "8050241e125cb0513803787a8889416ef9bc1ef48c0c7f44c2181efb99ccface",
       "bytes": 4327
     },
     {
@@ -587,8 +587,8 @@
     },
     {
       "path": "skills/core/session-growth/aoa-memo-writeback/SKILL.md",
-      "sha256": "aa529289173db5ab5058e39b1970e5369913772ed3f24c1a2944afb42fc02627",
-      "bytes": 7512
+      "sha256": "5f53494e1e2b0bfad871ef8f07a17d9d15a56557ea19255174d8f1fc5cae2ef0",
+      "bytes": 7200
     },
     {
       "path": "skills/core/session-growth/aoa-memo-writeback/agents/openai.yaml",
@@ -597,8 +597,8 @@
     },
     {
       "path": "skills/core/session-growth/aoa-memo-writeback/references/contract.yaml",
-      "sha256": "e17b41396b8c0cb108a0d2dbae9549823e69451fa354d2cff59e4b72665529be",
-      "bytes": 3655
+      "sha256": "6675224dbd6c4be5a4dc07bcc8b5690eb796ec329dbdbef6911e6f743a7b6783",
+      "bytes": 3656
     },
     {
       "path": "skills/core/session-growth/aoa-memo-writeback/references/writeback.md",
@@ -607,8 +607,8 @@
     },
     {
       "path": "skills/core/session-growth/aoa-session-harvest/SKILL.md",
-      "sha256": "e21acb24bd0b2c0529ef371a2db447c4c5b73e23c75051b2b16b9c8393469763",
-      "bytes": 5070
+      "sha256": "6993950302536ea0641b5808521fe477100211ddbd6c34d0b0bac59e41a859ff",
+      "bytes": 4854
     },
     {
       "path": "skills/core/session-growth/aoa-session-harvest/agents/openai.yaml",
@@ -632,7 +632,7 @@
     },
     {
       "path": "skills/core/session-growth/aoa-session-harvest/references/contract.yaml",
-      "sha256": "3d1c37117f8dbb842603f134338e9291e869d761f5e9f0c8b8ad94e4e8365d64",
+      "sha256": "f1345f81b4153d3ce79574a970fb9c458e182e7ce730e9d691d23ab49e830ccd",
       "bytes": 2382
     },
     {
@@ -647,8 +647,8 @@
     },
     {
       "path": "skills/core/session-growth/aoa-session-recovery/SKILL.md",
-      "sha256": "387980860b27e951def41a14b085689e337a4b64743d609b16cdf903d1e99503",
-      "bytes": 3961
+      "sha256": "55b3aedefb4e11212191592f1710d7ba0ad7b72425ca8431a46fc7b2e6f5ef6e",
+      "bytes": 3905
     },
     {
       "path": "skills/core/session-growth/aoa-session-recovery/agents/openai.yaml",
@@ -657,7 +657,7 @@
     },
     {
       "path": "skills/core/session-growth/aoa-session-recovery/references/contract.yaml",
-      "sha256": "65cb758d17b1e8f6a2ea40d1c58fe5115f50fb66ef70c9fbfc61e748f9dd33ee",
+      "sha256": "8fb214aa88dfd98e26cbbd98f806b759153225a225c2aafe43b8d3b2200f6e23",
       "bytes": 2255
     },
     {
@@ -672,8 +672,8 @@
     },
     {
       "path": "skills/core/stewardship/aoa-knowledge-stewardship/SKILL.md",
-      "sha256": "d39001ac284f8fcfde1de25c9cb07ddc1167d7db29eed6709bab9a43858b22c3",
-      "bytes": 5483
+      "sha256": "57c2445e08d2724c40a0cf9f23ed3a31be9291340578a3169d21f436abb285af",
+      "bytes": 5291
     },
     {
       "path": "skills/core/stewardship/aoa-knowledge-stewardship/agents/openai.yaml",
@@ -687,7 +687,7 @@
     },
     {
       "path": "skills/core/stewardship/aoa-knowledge-stewardship/references/contract.yaml",
-      "sha256": "8c7eae0eb489814e0eda321b5326c83eb1d3aaaf901b81bbefe675a7e8f70621",
+      "sha256": "da1516051e7ae7492373857fb1184605c4dc69832b8929ccb45a4e62e397c6cb",
       "bytes": 2505
     },
     {
@@ -699,8 +699,8 @@
   "portable_file_digests": [
     {
       "path": ".agents/skills/aoa-checkpoint-closeout-bridge/SKILL.md",
-      "sha256": "15da9937a822d68e420fdbd7498536e476ad095236b54c7877dee5d61e5514f3",
-      "bytes": 6050
+      "sha256": "8720c3ce5f86ffe45b628a3cbc03ef4f582945752bcea4bf2791ca1fbc88109d",
+      "bytes": 5959
     },
     {
       "path": ".agents/skills/aoa-checkpoint-closeout-bridge/agents/openai.yaml",
@@ -724,7 +724,7 @@
     },
     {
       "path": ".agents/skills/aoa-checkpoint-closeout-bridge/references/contract.yaml",
-      "sha256": "0c856f09b7a2d9d18ef1b71b3897c3e04fb2a0f1fe85e85952f4136dfcf494d7",
+      "sha256": "8050241e125cb0513803787a8889416ef9bc1ef48c0c7f44c2181efb99ccface",
       "bytes": 4327
     },
     {
@@ -734,8 +734,8 @@
     },
     {
       "path": ".agents/skills/aoa-decision/SKILL.md",
-      "sha256": "45e352bde33bb27d7f69ddddf7d9308c78d05d87d8e2c963b13dd7ff1109964a",
-      "bytes": 4753
+      "sha256": "fe1d7f7ea9d3f9c51387d0ec50710a249b47ac81dd32716600e49ae4fd8a881b",
+      "bytes": 4627
     },
     {
       "path": ".agents/skills/aoa-decision/agents/openai.yaml",
@@ -754,7 +754,7 @@
     },
     {
       "path": ".agents/skills/aoa-decision/references/contract.yaml",
-      "sha256": "c4851e3e1c86b63c5bb826c616363c58d4a4a00162cd737265de8cbf798bf57e",
+      "sha256": "730a47ae13ff141c2d3cea16e6077fa7ee71d81878f77ea96a6d05c8669f0082",
       "bytes": 4057
     },
     {
@@ -814,8 +814,8 @@
     },
     {
       "path": ".agents/skills/aoa-eval/SKILL.md",
-      "sha256": "b2e6f1a2837d7295809a50ffffaf1d80e679b277996ca0a8dbfeba5060011009",
-      "bytes": 5496
+      "sha256": "38249bb1073a6860feb0a6989a05cc64ebe75bf58e97751706c4ee4cabccef56",
+      "bytes": 5325
     },
     {
       "path": ".agents/skills/aoa-eval/agents/openai.yaml",
@@ -844,7 +844,7 @@
     },
     {
       "path": ".agents/skills/aoa-eval/references/contract.yaml",
-      "sha256": "a722a4d685b2b7d85e8ec3332d42c8c8dd27458a6d4bdd7b64b62553bb43aaef",
+      "sha256": "2e2ad4913d2dde3e65ac67f53d7c751f409b28fbcc50659d5cffbcc0551328cc",
       "bytes": 3476
     },
     {
@@ -869,8 +869,8 @@
     },
     {
       "path": ".agents/skills/aoa-knowledge-stewardship/SKILL.md",
-      "sha256": "d7bf7b57bc74ade46fff40ccab611a2e4c3c21ea049db50dfd3ed030630ed806",
-      "bytes": 5474
+      "sha256": "7e430c140e92cee96ca6a3ccb3b952c3edde8431e966033a1ad7e5ff162b12dc",
+      "bytes": 5282
     },
     {
       "path": ".agents/skills/aoa-knowledge-stewardship/agents/openai.yaml",
@@ -894,7 +894,7 @@
     },
     {
       "path": ".agents/skills/aoa-knowledge-stewardship/references/contract.yaml",
-      "sha256": "8c7eae0eb489814e0eda321b5326c83eb1d3aaaf901b81bbefe675a7e8f70621",
+      "sha256": "da1516051e7ae7492373857fb1184605c4dc69832b8929ccb45a4e62e397c6cb",
       "bytes": 2505
     },
     {
@@ -904,8 +904,8 @@
     },
     {
       "path": ".agents/skills/aoa-memo-writeback/SKILL.md",
-      "sha256": "cbbb05f23af35bff2856169e26e9ef55d5c9e9f0a866169c215e8a2879667724",
-      "bytes": 7501
+      "sha256": "5cd994255cf537fc2dbff17ffaccd7d2723da36bbc2a9d0177f2625b8f61fce8",
+      "bytes": 7189
     },
     {
       "path": ".agents/skills/aoa-memo-writeback/agents/openai.yaml",
@@ -924,8 +924,8 @@
     },
     {
       "path": ".agents/skills/aoa-memo-writeback/references/contract.yaml",
-      "sha256": "e17b41396b8c0cb108a0d2dbae9549823e69451fa354d2cff59e4b72665529be",
-      "bytes": 3655
+      "sha256": "6675224dbd6c4be5a4dc07bcc8b5690eb796ec329dbdbef6911e6f743a7b6783",
+      "bytes": 3656
     },
     {
       "path": ".agents/skills/aoa-memo-writeback/references/writeback.md",
@@ -934,8 +934,8 @@
     },
     {
       "path": ".agents/skills/aoa-session-harvest/SKILL.md",
-      "sha256": "a05ca82364ddf5fb7ebbb2690d9493c3e2d703217da8e447efa538edd66ec658",
-      "bytes": 5062
+      "sha256": "2f6223ae4343d4f8930476ec07e378770895754c9ea7d9fdf41f130cbdcf3fd7",
+      "bytes": 4843
     },
     {
       "path": ".agents/skills/aoa-session-harvest/agents/openai.yaml",
@@ -969,7 +969,7 @@
     },
     {
       "path": ".agents/skills/aoa-session-harvest/references/contract.yaml",
-      "sha256": "3d1c37117f8dbb842603f134338e9291e869d761f5e9f0c8b8ad94e4e8365d64",
+      "sha256": "f1345f81b4153d3ce79574a970fb9c458e182e7ce730e9d691d23ab49e830ccd",
       "bytes": 2382
     },
     {
@@ -984,8 +984,8 @@
     },
     {
       "path": ".agents/skills/aoa-session-recovery/SKILL.md",
-      "sha256": "f8be7ddb218362f7bf27b399de789c335762f0f244b95a3e7ef51a38d6465694",
-      "bytes": 3952
+      "sha256": "473783d564d398057b06f48f4e33e5b0d8e5673ba960043135366b7fc3b05cd2",
+      "bytes": 3896
     },
     {
       "path": ".agents/skills/aoa-session-recovery/agents/openai.yaml",
@@ -1004,7 +1004,7 @@
     },
     {
       "path": ".agents/skills/aoa-session-recovery/references/contract.yaml",
-      "sha256": "65cb758d17b1e8f6a2ea40d1c58fe5115f50fb66ef70c9fbfc61e748f9dd33ee",
+      "sha256": "8fb214aa88dfd98e26cbbd98f806b759153225a225c2aafe43b8d3b2200f6e23",
       "bytes": 2255
     },
     {
@@ -1061,13 +1061,13 @@
   "generated_file_digests": [
     {
       "path": "generated/agent_skill_catalog.json",
-      "sha256": "0be5cfebe899a23297b1b06e1713845816bda000ad977ad7a02702e94ccb52bd",
-      "bytes": 17663
+      "sha256": "fcecf1850b15d57327638b272f473c4d57984cf5b30f3d60290b4e7aefc77153",
+      "bytes": 16497
     },
     {
       "path": "generated/agent_skill_catalog.min.json",
-      "sha256": "eb58aa268c15693a677c29a465417de1f40a8194c35fd7bed016a0c0cd95b6d0",
-      "bytes": 6906
+      "sha256": "51c37d3e0c1471b9dbd7724f72154538d86222fe713e0d8149ebe04a07a9e022",
+      "bytes": 5740
     },
     {
       "path": "generated/portable_export_map.json",
@@ -1086,27 +1086,27 @@
     },
     {
       "path": "generated/capability_graph.json",
-      "sha256": "1a2e51ea68f9c18b2adccf4813da7c01af3ca5c5526f717d6b44702bc7512fd5",
-      "bytes": 2301090
+      "sha256": "851db8a09e99b85b078d544c3bd2dcb3fda55810a41c75cca75f1f9b17d6f1fa",
+      "bytes": 2283808
     },
     {
       "path": "generated/capability_graph.md",
-      "sha256": "2d7337fe5fff8d6aec657abe9c8cd82199138cb38d9cb62650077aa8ff972e8b",
+      "sha256": "26a527ef4dcb499c0dc0dbd37016de02a46fb9273f74787f90141ba9b60e5416",
       "bytes": 26653
     }
   ],
   "skill_bundle_revisions": [
     {
       "name": "aoa-checkpoint-closeout-bridge",
-      "skill_revision": "4292bb7ab725",
-      "source_hash": "4292bb7ab7255348124b530779c06ed68a2047cf77e40f9578b2f483a8088e57",
-      "portable_hash": "b146e4c0de961bed027f4e842bfd2aaa6102191405b4026e38b8edf2e656412b"
+      "skill_revision": "850c126f7eac",
+      "source_hash": "850c126f7eac0b9854190e5943fc15c40dbb0a0362ad1c22e2752270fe7c6691",
+      "portable_hash": "032398e532ac749313bc5c5ea8eea023dd2c974c1155e0f715e018c712715777"
     },
     {
       "name": "aoa-decision",
-      "skill_revision": "57cefb104ed1",
-      "source_hash": "57cefb104ed1f41a1846d67e023989b7b21911671a00650222d2226fb75d4b47",
-      "portable_hash": "bc5e8b48265cf3001b38981614bd72445ea96233b516070381febed85e19cce6"
+      "skill_revision": "ced40aa7bad5",
+      "source_hash": "ced40aa7bad538d7bcabb582ddfe339f0326b29b9e7a4ea9e7264001c93adfbe",
+      "portable_hash": "6631940d1386b55a1dc05316a63609b569e7a4379bcac1a7f396c5c79c53e025"
     },
     {
       "name": "aoa-engineering-shape",
@@ -1116,33 +1116,33 @@
     },
     {
       "name": "aoa-eval",
-      "skill_revision": "196147f60bfb",
-      "source_hash": "196147f60bfb57f6b1255355e5b4e9c65233b1891c144f3b81b9f48272483926",
-      "portable_hash": "366198729339210ac29581d96c47abe91bcc28b7f2d3e8d49e6e114c09ff5f0d"
+      "skill_revision": "0bbf1d89be67",
+      "source_hash": "0bbf1d89be67834bf519d0997d6e732bc3d10a3189a034b306b7df1363cb1cdd",
+      "portable_hash": "95bb222fc8cddd88ac8664f2fda30c6abbb808f095c20846a5fdf2dfeba1b28e"
     },
     {
       "name": "aoa-knowledge-stewardship",
-      "skill_revision": "69737a2664b1",
-      "source_hash": "69737a2664b1469f469b2b1d04d1d281c3c6114106cd862d5e67a132d41182ab",
-      "portable_hash": "ad87f2f2030e79aec99d787e63650f380f0203b5944fa08ef9a37c83c2ae05eb"
+      "skill_revision": "ec166295578c",
+      "source_hash": "ec166295578c581ed2984c7bff6706134a80d9dafa463a068afdcabd12f454fa",
+      "portable_hash": "0f408126a21256298f4a3bba4c969b702dc51fe15c106db2d50834fedf0ce970"
     },
     {
       "name": "aoa-memo-writeback",
-      "skill_revision": "d67c9965955e",
-      "source_hash": "d67c9965955e99381504e0877706ceb0711622166e13470f9f3c9a46164d1a66",
-      "portable_hash": "2b5ee7ef5991e0ed6fb5e44846a72ce150ec1311364f5b41873f142721f51695"
+      "skill_revision": "51ad544f1965",
+      "source_hash": "51ad544f1965eb5cb4e70ee8550ffab739c7288c8577c3eb76760debb54d5cb2",
+      "portable_hash": "d291d14f043fc9d5db8ae97b7f658fcbc618d4368769525e6439fdbeccbf810e"
     },
     {
       "name": "aoa-session-harvest",
-      "skill_revision": "3cf4147af892",
-      "source_hash": "3cf4147af89208a5c076e8e61b6e93a36e9effb431b90439f5386c2095be445e",
-      "portable_hash": "4b29bf70b79d7f6f484b4a9534ab9ed7fab4f566cf672233edaeb036b1432b83"
+      "skill_revision": "896978b3e4af",
+      "source_hash": "896978b3e4af26ffb9ca9afc5ea052ffaca3f568153164497ad87eadae86980d",
+      "portable_hash": "195cb13644fc43edebf9dd3cd6489eb74da91f3d7ed5e89b1c6869d0f5c553cf"
     },
     {
       "name": "aoa-session-recovery",
-      "skill_revision": "b6e5713ee004",
-      "source_hash": "b6e5713ee004f3e65e118aad74be5e3dd222ec4f3adf9dc5f03986284d09cbf5",
-      "portable_hash": "d841b0b353e0deb4f9fb0114bc82527d145312b26371e18af780076e192a7cda"
+      "skill_revision": "1d4c7c1791b7",
+      "source_hash": "1d4c7c1791b71119ab07e79428f7d703a153fd59429d3d20a5699df579b5e6a1",
+      "portable_hash": "3b4ed4bfc6e6522b538ba95df20842e3eed592eda4447747630cf5ad85f8f555"
     },
     {
       "name": "aoa-verification",
@@ -1164,7 +1164,7 @@
         "aoa-session-harvest",
         "aoa-session-recovery"
       ],
-      "profile_revision": "fd9acd62eec5260fcaf2684db7dfcd66b653cbe5323521b98e4019d37b887f4e"
+      "profile_revision": "67faa9367569034c218cb7f7397c8b09d804f998f001a1b05b32d9fdac4febee"
     },
     {
       "name": "portable-consumer-all-sources",
@@ -1180,7 +1180,7 @@
         "aoa-session-recovery",
         "aoa-verification"
       ],
-      "profile_revision": "e116b9f8ad6fedfc2086212edd7e09009482463ab67484ca1a1d67a818f1048d"
+      "profile_revision": "14e91f70e7b26828332a7f9dd9f3a7baab9bcf5636c59e6b1bb8c4cd9e4c8426"
     }
   ],
   "release_identity": {

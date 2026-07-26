@@ -59,7 +59,7 @@ nodes:
 
   - id: skill.aoa-kag
     title: aoa-kag owner bundle
-    description: Retrieve, relate, or research owner-qualified AoA knowledge through the read-only aoa_kag MCP, returning canonical source handles and an honest execution disposition. Use when the responsible AoA owner or exact source is unknown, cross-repository comparison or impact analysis is needed, or a capability must be checked for its full owner contract and live binding. Do not use for raw session retrieval, web research, proof, memory, routing, role, playbook, live runtime, mutation, or an already supplied authoritative source.
+    description: Use the read-only aoa_kag MCP when the responsible AoA owner/source is unknown or cross-repository relation or impact research is needed; return canonical owner handles. Do not use for raw sessions, web research, proof, memory, routing/playbooks, mutations, live runtime diagnosis, or when an authoritative source is already supplied.
     kind: skill
     contract_level: navigation
     primary_parent: stewardship.knowledge.retrieve
@@ -69,7 +69,7 @@ nodes:
       authority: external-authority
     lifecycle:
       state: candidate
-      version: 0.2.0
+      version: 0.2.1
       visibility: advertised
       evidence_state: evaluated
       health: challenger
@@ -86,12 +86,12 @@ nodes:
       source_refs:
         - repo: aoa-kag
           path: skills/aoa-kag/SKILL.md
-          ref: 9a5f817f8247b2dfb005e4e0c289d34f27b56314
+          ref: f8622717862c020bd135bf52e02b630c69855b79
           role: owner-skill-procedure
           authority: external-authority
         - repo: aoa-kag
           path: skills/aoa-kag/references/contract.yaml
-          ref: 9a5f817f8247b2dfb005e4e0c289d34f27b56314
+          ref: f8622717862c020bd135bf52e02b630c69855b79
           role: owner-typed-contract
           authority: external-authority
       optional_refs: []
@@ -132,7 +132,7 @@ nodes:
 
   - id: skill.aoa-memo
     title: aoa-memo owner bundle
-    description: Recall, review, or evolve explicit memory or a concrete candidate, export, quarantine packet, object, lifecycle target, or read model through the aoa-memo owner. Use aoa-memo-writeback only before any memo artifact exists. Do not use for raw session retrieval, proof, routing, roles, workflows, KAG substrate, runtime storage, or generic notes.
+    description: Use aoa-memo to recall, review, or evolve an existing memo candidate, export, quarantine packet, memory object, corpus identity, lifecycle target, or read model. Use aoa-memo-writeback only before any memo artifact exists. Do not use for raw-session retrieval, proof, routing, roles, workflows, KAG substrate, runtime storage, or generic notes.
     kind: skill
     contract_level: navigation
     primary_parent: stewardship.knowledge.memory
@@ -142,7 +142,7 @@ nodes:
       authority: external-authority
     lifecycle:
       state: candidate
-      version: 0.1.18
+      version: 0.1.20
       visibility: advertised
       evidence_state: evaluated
       health: challenger
@@ -159,12 +159,12 @@ nodes:
       source_refs:
         - repo: aoa-memo
           path: skills/aoa-memo/SKILL.md
-          ref: 7672add5e2bb4ff21c2581ca656998f0ca7c8a3e
+          ref: 3a528acb375219e77d7264fe2e2585d882694157
           role: owner-skill-procedure
           authority: external-authority
         - repo: aoa-memo
           path: skills/aoa-memo/references/contract.yaml
-          ref: 7672add5e2bb4ff21c2581ca656998f0ca7c8a3e
+          ref: 3a528acb375219e77d7264fe2e2585d882694157
           role: owner-typed-contract
           authority: external-authority
       optional_refs: []
@@ -182,14 +182,14 @@ nodes:
 
   - id: skill.aoa-knowledge-stewardship
     title: aoa-knowledge-stewardship family bundle
-    description: Sanitize private technical material into a public-safe owner-bounded derivative, or resolve authority among authored, generated, runtime, and installed sources. Use when incidents, logs, configs, diagnostics, credentials, private paths, host/network topology, or conflicting sources require a named-audience review draft or authority map. Preserve raw custody and separate artifact creation from publication. Do not use for memo writeback, session mining, direct publication execution, durable-memory authority, or ordinary prose editing.
+    description: Sanitize private technical material into a public-safe owner-bounded derivative, or resolve authority among authored, generated, runtime, and installed sources. Use for governed incidents, logs, configs, diagnostics, or conflicting source roles. Do not use for ordinary editing, memo/session work, direct publication, or durable-memory authority.
     kind: skill
     contract_level: executable
     primary_parent: stewardship.knowledge
     owner: *steward_owner
     lifecycle:
       state: candidate
-      version: 0.2.7
+      version: 0.2.8
       visibility: advertised
       evidence_state: evaluated
       health: challenger
@@ -244,7 +244,7 @@ nodes:
       source_refs:
         - repo: aoa-skills
           path: skills/core/stewardship/aoa-knowledge-stewardship/SKILL.md
-          ref: capability-family-v0.2.7
+          ref: capability-family-v0.2.8
           role: portable-family-procedure
           authority: authored
       optional_refs: []

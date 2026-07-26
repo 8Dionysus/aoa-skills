@@ -2,7 +2,7 @@ schema_version: aoa-skill-contract-v1
 identity:
   name: aoa-session-harvest
   owner: aoa-skills
-  version: 0.2.2
+  version: 0.2.3
   health: challenger
 purpose: Preserve five reviewed-session capabilities behind one discoverable front door.
 freedom_level: bounded-judgment

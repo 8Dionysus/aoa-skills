@@ -1,6 +1,6 @@
 ---
 name: aoa-session-recovery
-description: Diagnose reviewed recurring session or workflow failure, or carry one bounded owner repair from diagnosis through checkpoint, execution posture, rollback, and real health verification. Use when evidence shows contamination, drift, repeated route/tool failure, or a reviewed diagnosis is ready for repair. Do not use on live/unreviewed material, for vague self-improvement, or to claim a proposed or merely executed change is verified.
+description: Diagnose a reviewed recurring session/workflow failure, or carry one bounded owner repair through checkpoint, rollback, and real health verification. Use for reviewed contamination, drift, repeated route/tool failure, or an established diagnosis ready for repair. Do not use on live evidence, for vague self-improvement, or to call a proposed or merely executed change verified.
 ---
 
 # aoa-session-recovery
