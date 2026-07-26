@@ -839,6 +839,20 @@ final answer, or green structural check alone.
   remains a candidate until its worktree is landed and the final OS profile
   installs the verified projection.
 
+### 2026-07-25 - Fail closed on an absent harvest evidence ref
+
+- Manual finding: a fresh full-profile request described a closed reviewed
+  packet as "given by name" but supplied no literal packet or evidence ref.
+  The correct harvest family was selected, yet the agent minted a session-like
+  identifier and treated the pre-mode gate as passed.
+- Correction: version `0.2.4` requires at least one literal supplied evidence
+  ref before any mode loads. A missing ref, review posture, or bounded source
+  returns `blocked_unreviewed_evidence`; the procedure explicitly forbids
+  inferring, normalizing, or minting the absent identifier.
+- Proof posture: this observed counterexample justifies the fail-closed
+  contract correction. It does not prove broader retrieval lift; the same
+  negative request must block in a fresh installed-profile rerun.
+
 ### 2026-07-15 - User projection declared without widening the catalog
 
 - AOA-SK-D-0040 now owns the user/repository projection split.

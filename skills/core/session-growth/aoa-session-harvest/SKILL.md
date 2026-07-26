@@ -1,6 +1,6 @@
 ---
 name: aoa-session-harvest
-description: "Use only with an explicitly named closed/reviewed session packet to extract, classify, propose promotion or branching, or identify an automation opportunity. Natural closeout preservation belongs to aoa-memo-writeback; live/unreviewed input can only produce blocked_unreviewed_evidence. Do not use for generic summaries, progression, direct owner writes, scheduling, mutation, or telemetry authority."
+description: "Use only when a literal ref to a closed/reviewed session packet is supplied, to extract, classify, propose promotion or branching, or identify an automation opportunity. Missing, live, or unreviewed evidence must fail closed without inventing a ref. Natural closeout preservation belongs to aoa-memo-writeback. Do not use for generic summaries, progression, direct owner writes, scheduling, mutation, or telemetry authority."
 ---
 
 # aoa-session-harvest
@@ -34,7 +34,8 @@ Do not use this skill when:
 
 ## Inputs
 
-- reviewed evidence boundary and refs, closure/review posture, one mode intent,
+- reviewed evidence boundary and at least one literal supplied ref,
+  closure/review posture, one mode intent,
   relevant owner constraints, risks, effects, and optional checkpoint/handoff
   hints that have not yet been trusted; or an attempted live/unreviewed input
   used only to return the pre-mode block
@@ -75,9 +76,12 @@ Read and follow `references/branch.md`.
 
 Read and follow `references/automation-opportunity.md`.
 
-1. Read `references/contract.yaml`, then inspect only enough of the evidence
-   boundary to verify explicit review/closure and bounded refs.
-2. If review/closure or a bounded evidence source is missing, return
+1. Read `references/contract.yaml`. Confirm that the request or supplied packet
+   contains at least one literal evidence ref; never infer, normalize, or mint
+   a missing packet/session identifier. Then inspect only enough of that exact
+   evidence boundary to verify explicit review/closure.
+2. If a literal ref, review/closure, or a bounded evidence source is missing,
+   return
    `blocked_unreviewed_evidence` without loading any mode reference.
 3. Choose exactly one mode and read only its reference to EOF.
 4. Execute exactly one mode. Later modes are typed handoffs and require a new
@@ -96,6 +100,7 @@ Read and follow `references/automation-opportunity.md`.
 
 - mining a live transcript, universalizing one success, or turning themes and
   frustration into reusable units
+- inventing or normalizing a packet/session ref that was not literally supplied
 - forcing every repeated unit into a skill or every automation candidate into
   a scheduler/playbook
 - treating quest, receipt, progression, stats, routing, KAG, or owner state as

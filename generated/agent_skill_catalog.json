@@ -265,7 +265,7 @@
     {
       "name": "aoa-session-harvest",
       "display_name": "AoA Session Harvest",
-      "description": "Use only with an explicitly named closed/reviewed session packet to extract, classify, propose promotion or branching, or identify an automation opportunity. Natural closeout preservation belongs to aoa-memo-writeback; live/unreviewed input can only produce blocked_unreviewed_evidence. Do not use for generic summaries, progression, direct owner writes, scheduling, mutation, or telemetry authority.",
+      "description": "Use only when a literal ref to a closed/reviewed session packet is supplied, to extract, classify, propose promotion or branching, or identify an automation opportunity. Missing, live, or unreviewed evidence must fail closed without inventing a ref. Natural closeout preservation belongs to aoa-memo-writeback. Do not use for generic summaries, progression, direct owner writes, scheduling, mutation, or telemetry authority.",
       "short_description": "Harvest and route reviewed session evidence",
       "path": ".agents/skills/aoa-session-harvest/SKILL.md",
       "openai_config_path": ".agents/skills/aoa-session-harvest/agents/openai.yaml",

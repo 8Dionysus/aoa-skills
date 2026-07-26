@@ -41,20 +41,20 @@ nodes:
 
   - id: skill.aoa-session-harvest
     title: aoa-session-harvest family bundle
-    description: "Use only with an explicitly named closed/reviewed session packet to extract, classify, propose promotion or branching, or identify an automation opportunity. Natural closeout preservation belongs to aoa-memo-writeback; live/unreviewed input can only produce blocked_unreviewed_evidence. Do not use for generic summaries, progression, direct owner writes, scheduling, mutation, or telemetry authority."
+    description: "Use only when a literal ref to a closed/reviewed session packet is supplied, to extract, classify, propose promotion or branching, or identify an automation opportunity. Missing, live, or unreviewed evidence must fail closed without inventing a ref. Natural closeout preservation belongs to aoa-memo-writeback. Do not use for generic summaries, progression, direct owner writes, scheduling, mutation, or telemetry authority."
     kind: skill
     contract_level: executable
     primary_parent: sessions.harvest
     owner: *session_owner
     lifecycle:
       state: candidate
-      version: 0.2.3
+      version: 0.2.4
       visibility: advertised
       evidence_state: evaluated
       health: challenger
     applicability:
       use_when:
-        - Reviewed bounded evidence contains reusable units, an object or promotion decision, continuation branches, or a repeated manual route needing automation triage.
+        - A literal supplied ref resolves to reviewed bounded evidence containing reusable units, an object or promotion decision, continuation branches, or a repeated manual route needing automation triage.
         - A request explicitly attempts to harvest or promote live or unreviewed session material and needs a bounded rejection before any mode procedure loads.
       do_not_use_when:
         - The request is generic summarization, progression scoring, memo writeback, repair, promotion execution, owner mutation, scheduling, or delegation.
@@ -65,7 +65,7 @@ nodes:
         - name: reviewed-session-evidence
           type: reviewed-session-evidence
           required: true
-          description: Reviewed evidence boundary and refs plus one extract, classify, promote, branch, or automation-opportunity intent.
+          description: Reviewed evidence boundary, at least one literal supplied ref, and one extract, classify, promote, branch, or automation-opportunity intent.
       outputs:
         - name: reviewed-session-result
           type: reviewed-session-mode-result
@@ -79,7 +79,7 @@ nodes:
     execution: &harvest_execution
       freedom: bounded-judgment
       tool_requirements:
-        - Read access only to the explicitly reviewed evidence packet and destination-owner intake contracts when supplied.
+        - A literal supplied evidence ref and read access only to that exact reviewed packet and destination-owner intake contracts when supplied.
       verification:
         - Trace every candidate claim to reviewed refs and disposition stale or rejected hints.
         - Confirm no owner source, memory, routing, KAG, telemetry, or runtime state changed.
@@ -90,6 +90,7 @@ nodes:
         - none
       reversibility: not-applicable
       failure_modes:
+        - Inferring or minting a packet or evidence ref that was not literally supplied.
         - Mining live transcripts or universalizing one success.
         - Minting authoritative IDs or writing owner artifacts directly from session evidence.
         - Treating promotion verdicts, progression scores, receipts, or telemetry as owner truth.
@@ -101,7 +102,7 @@ nodes:
       source_refs:
         - repo: aoa-skills
           path: skills/core/session-growth/aoa-session-harvest/SKILL.md
-          ref: capability-family-v0.2.3
+          ref: capability-family-v0.2.4
           role: portable-family-procedure
           authority: authored
       optional_refs: []

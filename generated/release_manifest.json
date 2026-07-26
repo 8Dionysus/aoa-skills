@@ -322,8 +322,8 @@
     },
     {
       "path": "capabilities/families/session-growth.yaml",
-      "sha256": "8617284b2e8cd2412b3fe8ad6fffc4baa3a542e7c2eee59d083a8a996671bd92",
-      "bytes": 46939
+      "sha256": "f4355c6d3be51463759baaffdb130c83be864de2b8aa26243b8f24da4a9cf490",
+      "bytes": 47138
     },
     {
       "path": "capabilities/families/stewardship.yaml",
@@ -352,8 +352,8 @@
     },
     {
       "path": "config/portable_skill_overrides.json",
-      "sha256": "d542d7bc7cc65c8423a4badbcffd4c68989cdaa7f446ba86885f8339066702b9",
-      "bytes": 6368
+      "sha256": "bb298bb7ad7a89a7ee8582b896353273b58723d543182b724c73cbd5b508470e",
+      "bytes": 6439
     },
     {
       "path": "config/skill_pack_profiles.json",
@@ -607,8 +607,8 @@
     },
     {
       "path": "skills/core/session-growth/aoa-session-harvest/SKILL.md",
-      "sha256": "6993950302536ea0641b5808521fe477100211ddbd6c34d0b0bac59e41a859ff",
-      "bytes": 4854
+      "sha256": "b8ad34ecf6b0dfe505ae7ec49aafa152c1e468b088b8bec3159fba36adf9ddc4",
+      "bytes": 5161
     },
     {
       "path": "skills/core/session-growth/aoa-session-harvest/agents/openai.yaml",
@@ -632,8 +632,8 @@
     },
     {
       "path": "skills/core/session-growth/aoa-session-harvest/references/contract.yaml",
-      "sha256": "f1345f81b4153d3ce79574a970fb9c458e182e7ce730e9d691d23ab49e830ccd",
-      "bytes": 2382
+      "sha256": "1abbe94065a46f281645e6d4da008324bdc2d34ba3cd42eafda26795a03bb1d0",
+      "bytes": 2561
     },
     {
       "path": "skills/core/session-growth/aoa-session-harvest/references/extract.md",
@@ -934,13 +934,13 @@
     },
     {
       "path": ".agents/skills/aoa-session-harvest/SKILL.md",
-      "sha256": "2f6223ae4343d4f8930476ec07e378770895754c9ea7d9fdf41f130cbdcf3fd7",
-      "bytes": 4843
+      "sha256": "95cfe73c36dfbac7af1a77b2cc497c8b97c1a510039cdb4f05feaf583605dd44",
+      "bytes": 5150
     },
     {
       "path": ".agents/skills/aoa-session-harvest/agents/openai.yaml",
-      "sha256": "2c4eb9bcc8a61e9b87e84bf4f190c827001a009b4c25cb7f1924aa5e6b6a3894",
-      "bytes": 915
+      "sha256": "60894c1f9679047180a51bd1abdd54d387a8d0f0bf4f85d0d44f25f182c22e7c",
+      "bytes": 962
     },
     {
       "path": ".agents/skills/aoa-session-harvest/assets/large-logo.svg",
@@ -969,8 +969,8 @@
     },
     {
       "path": ".agents/skills/aoa-session-harvest/references/contract.yaml",
-      "sha256": "f1345f81b4153d3ce79574a970fb9c458e182e7ce730e9d691d23ab49e830ccd",
-      "bytes": 2382
+      "sha256": "1abbe94065a46f281645e6d4da008324bdc2d34ba3cd42eafda26795a03bb1d0",
+      "bytes": 2561
     },
     {
       "path": ".agents/skills/aoa-session-harvest/references/extract.md",
@@ -1061,13 +1061,13 @@
   "generated_file_digests": [
     {
       "path": "generated/agent_skill_catalog.json",
-      "sha256": "fcecf1850b15d57327638b272f473c4d57984cf5b30f3d60290b4e7aefc77153",
-      "bytes": 16497
+      "sha256": "92920517bf194b535605e2e137df511a80cb937f0b86c622fbc53616e3110d25",
+      "bytes": 16521
     },
     {
       "path": "generated/agent_skill_catalog.min.json",
-      "sha256": "51c37d3e0c1471b9dbd7724f72154538d86222fe713e0d8149ebe04a07a9e022",
-      "bytes": 5740
+      "sha256": "6c493bc8e9f58d97ed1a7baef9be689488f71fad941c3745bb8160181d45c923",
+      "bytes": 5764
     },
     {
       "path": "generated/portable_export_map.json",
@@ -1086,12 +1086,12 @@
     },
     {
       "path": "generated/capability_graph.json",
-      "sha256": "851db8a09e99b85b078d544c3bd2dcb3fda55810a41c75cca75f1f9b17d6f1fa",
-      "bytes": 2283808
+      "sha256": "2cd211a235db54653cad7ad5dfaec365fe394343a3f70fb0baeaf9172843773d",
+      "bytes": 2289037
     },
     {
       "path": "generated/capability_graph.md",
-      "sha256": "26a527ef4dcb499c0dc0dbd37016de02a46fb9273f74787f90141ba9b60e5416",
+      "sha256": "744d935da72d2da89e8489edd744536f37468cfd0d22e6c4cba8c88f1774eb23",
       "bytes": 26653
     }
   ],
@@ -1134,9 +1134,9 @@
     },
     {
       "name": "aoa-session-harvest",
-      "skill_revision": "896978b3e4af",
-      "source_hash": "896978b3e4af26ffb9ca9afc5ea052ffaca3f568153164497ad87eadae86980d",
-      "portable_hash": "195cb13644fc43edebf9dd3cd6489eb74da91f3d7ed5e89b1c6869d0f5c553cf"
+      "skill_revision": "7be770ebf64a",
+      "source_hash": "7be770ebf64ae2ae5d695703fee742e89af5da0e145dcae5390580ebbceb5961",
+      "portable_hash": "58be1276e1e8345ac9652f54a3f36e0dc66e80aea746f9752cfb4be30dbe22de"
     },
     {
       "name": "aoa-session-recovery",
@@ -1164,7 +1164,7 @@
         "aoa-session-harvest",
         "aoa-session-recovery"
       ],
-      "profile_revision": "67faa9367569034c218cb7f7397c8b09d804f998f001a1b05b32d9fdac4febee"
+      "profile_revision": "dcfc9570b30b96e209fcb12bcd8aea37a0c1f6ef45ff82724ac6c52308209295"
     },
     {
       "name": "portable-consumer-all-sources",
@@ -1180,7 +1180,7 @@
         "aoa-session-recovery",
         "aoa-verification"
       ],
-      "profile_revision": "14e91f70e7b26828332a7f9dd9f3a7baab9bcf5636c59e6b1bb8c4cd9e4c8426"
+      "profile_revision": "3593bc033bd6bec9d855eac36e931c603f65de63f0b330ae5e1312b9e0d9a4b0"
     }
   ],
   "release_identity": {
