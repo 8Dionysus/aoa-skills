@@ -322,8 +322,8 @@
     },
     {
       "path": "capabilities/families/session-growth.yaml",
-      "sha256": "3bfd60b61327137121ff4c731b2c367c02795a959790b2b73978ed65c447d26f",
-      "bytes": 48003
+      "sha256": "120ca364d4a637a8e07b4ab50f2e04074f2004371ee6b13bf6dced1c08aeba16",
+      "bytes": 47899
     },
     {
       "path": "capabilities/families/stewardship.yaml",
@@ -352,8 +352,8 @@
     },
     {
       "path": "config/portable_skill_overrides.json",
-      "sha256": "d80f698e75089f8d4c73ddb3326cb5947fcda3c38d0e8eee3682592030835893",
-      "bytes": 7638
+      "sha256": "a100c9842b983ded3651364e0d4a7d5f031e52bdb0997c641e962825e328fed3",
+      "bytes": 7534
     },
     {
       "path": "config/skill_pack_profiles.json",
@@ -587,8 +587,8 @@
     },
     {
       "path": "skills/core/session-growth/aoa-memo-writeback/SKILL.md",
-      "sha256": "e0959f90c591c8f184a52b3280af6c33272ea954ad10b69c537a50e969b807a4",
-      "bytes": 7616
+      "sha256": "aa529289173db5ab5058e39b1970e5369913772ed3f24c1a2944afb42fc02627",
+      "bytes": 7512
     },
     {
       "path": "skills/core/session-growth/aoa-memo-writeback/agents/openai.yaml",
@@ -597,7 +597,7 @@
     },
     {
       "path": "skills/core/session-growth/aoa-memo-writeback/references/contract.yaml",
-      "sha256": "fbfc1368f8d19733e50bc24dd0e28ee3d4da9b103d766bc03093651d40a61ab0",
+      "sha256": "e17b41396b8c0cb108a0d2dbae9549823e69451fa354d2cff59e4b72665529be",
       "bytes": 3655
     },
     {
@@ -904,8 +904,8 @@
     },
     {
       "path": ".agents/skills/aoa-memo-writeback/SKILL.md",
-      "sha256": "a1ab441b0c6f09627c467eb7b22b2fb3e992cafff5679bd6f267fd605bda8886",
-      "bytes": 7607
+      "sha256": "cbbb05f23af35bff2856169e26e9ef55d5c9e9f0a866169c215e8a2879667724",
+      "bytes": 7501
     },
     {
       "path": ".agents/skills/aoa-memo-writeback/agents/openai.yaml",
@@ -924,7 +924,7 @@
     },
     {
       "path": ".agents/skills/aoa-memo-writeback/references/contract.yaml",
-      "sha256": "fbfc1368f8d19733e50bc24dd0e28ee3d4da9b103d766bc03093651d40a61ab0",
+      "sha256": "e17b41396b8c0cb108a0d2dbae9549823e69451fa354d2cff59e4b72665529be",
       "bytes": 3655
     },
     {
@@ -1061,13 +1061,13 @@
   "generated_file_digests": [
     {
       "path": "generated/agent_skill_catalog.json",
-      "sha256": "39a9aff2ef6b7c6300cde7179753ee6c55ac958e32ce23d1a1121fc56095950f",
-      "bytes": 17767
+      "sha256": "0be5cfebe899a23297b1b06e1713845816bda000ad977ad7a02702e94ccb52bd",
+      "bytes": 17663
     },
     {
       "path": "generated/agent_skill_catalog.min.json",
-      "sha256": "96ef27d97aca9cd0367c25acccc6639076c43db1fe5c6eb1483d07fe9f8b95d4",
-      "bytes": 7010
+      "sha256": "eb58aa268c15693a677c29a465417de1f40a8194c35fd7bed016a0c0cd95b6d0",
+      "bytes": 6906
     },
     {
       "path": "generated/portable_export_map.json",
@@ -1086,12 +1086,12 @@
     },
     {
       "path": "generated/capability_graph.json",
-      "sha256": "0b5e73b2efcede17b60c28f39230a9af539e86775311c2c52e38b619a229affb",
-      "bytes": 2302590
+      "sha256": "1a2e51ea68f9c18b2adccf4813da7c01af3ca5c5526f717d6b44702bc7512fd5",
+      "bytes": 2301090
     },
     {
       "path": "generated/capability_graph.md",
-      "sha256": "a147f5e202ed21a59f95f0417bab1f68709ceaa0095e95244699d3e111e0b128",
+      "sha256": "2d7337fe5fff8d6aec657abe9c8cd82199138cb38d9cb62650077aa8ff972e8b",
       "bytes": 26653
     }
   ],
@@ -1128,9 +1128,9 @@
     },
     {
       "name": "aoa-memo-writeback",
-      "skill_revision": "ec004190186c",
-      "source_hash": "ec004190186cc8964d11952c5acd6642963dd3bc68f7ccac060afedb5d415b54",
-      "portable_hash": "222d7745cf101edbadcc806b8c35353329af25863a162d0df31bccaf5eb500de"
+      "skill_revision": "d67c9965955e",
+      "source_hash": "d67c9965955e99381504e0877706ceb0711622166e13470f9f3c9a46164d1a66",
+      "portable_hash": "2b5ee7ef5991e0ed6fb5e44846a72ce150ec1311364f5b41873f142721f51695"
     },
     {
       "name": "aoa-session-harvest",
@@ -1164,7 +1164,7 @@
         "aoa-session-harvest",
         "aoa-session-recovery"
       ],
-      "profile_revision": "d2a0a3c585d51421fe60268dac0936e76d353bfe046b3baa2d34a8ff236fe0d3"
+      "profile_revision": "fd9acd62eec5260fcaf2684db7dfcd66b653cbe5323521b98e4019d37b887f4e"
     },
     {
       "name": "portable-consumer-all-sources",
@@ -1180,7 +1180,7 @@
         "aoa-session-recovery",
         "aoa-verification"
       ],
-      "profile_revision": "af5341edf7c2fa819ce07554a39e51581af735680a37865c2540e324560a535e"
+      "profile_revision": "e116b9f8ad6fedfc2086212edd7e09009482463ab67484ca1a1d67a818f1048d"
     }
   ],
   "release_identity": {
