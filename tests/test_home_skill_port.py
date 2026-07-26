@@ -280,8 +280,9 @@ def test_os_profile_install_is_idempotent_and_receipt_bound(tmp_path: Path) -> N
     assert receipt_path.read_bytes() == receipt_before
 
     receipt = json.loads(receipt_before)
-    assert receipt["schema_version"] == "aoa_os_skill_install_v2"
+    assert receipt["schema_version"] == "aoa_os_skill_install_v3"
     installed_skill = receipt["skills"][0]
+    assert installed_skill["management"] == "managed-copy"
     assert installed_skill["source_fingerprint"] == installed_skill["digest"]
     assert (
         installed_skill["source_fingerprint_scope"]
@@ -319,3 +320,176 @@ def test_os_profile_install_is_idempotent_and_receipt_bound(tmp_path: Path) -> N
         drift,
         allow_dirty_source=False,
     )
+
+
+def test_os_profile_observes_owner_links_without_managing_them(
+    tmp_path: Path,
+) -> None:
+    owner = tmp_path / ".aoa"
+    global_source = owner / "skills" / "aoa-session-memory-global-route"
+    evidence_source = owner / "skills" / "aoa-session-memory-evidence-route"
+    for name, source in (
+        ("aoa-session-memory-global-route", global_source),
+        ("aoa-session-memory-evidence-route", evidence_source),
+    ):
+        source.mkdir(parents=True)
+        (source / "SKILL.md").write_text(
+            "---\n"
+            f"name: {name}\n"
+            f"description: Route one bounded {name} request.\n"
+            "---\n\n"
+            f"# {name}\n",
+            encoding="utf-8",
+        )
+    config_path = tmp_path / "os-skill-profiles.json"
+    config_path.write_text(
+        json.dumps(
+            {
+                "schema_version": "aoa_os_skill_profiles_v1",
+                "profiles": {
+                    "os-user-default": {
+                        "runtime": "codex",
+                        "scope": "user",
+                        "install_root": "$HOME/.codex/skills",
+                        "install_mode": "managed-copy",
+                        "sources": [
+                            {
+                                "kind": "owner-link",
+                                "repo": ".aoa",
+                                "root": ".aoa",
+                                "skills": [
+                                    {
+                                        "name": global_source.name,
+                                        "path": (
+                                            f"skills/{global_source.name}"
+                                        ),
+                                        "version": "owner-current",
+                                    },
+                                    {
+                                        "name": evidence_source.name,
+                                        "path": (
+                                            f"skills/{evidence_source.name}"
+                                        ),
+                                        "version": "owner-current",
+                                    },
+                                ],
+                            }
+                        ],
+                    }
+                },
+            },
+            indent=2,
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+    profile, skills = install_os_skill_profile.resolve_profile(
+        repo_root=Path(__file__).resolve().parents[1],
+        config_path=config_path,
+        profile_name="os-user-default",
+        os_root=tmp_path,
+        overrides={".aoa": owner},
+    )
+    destination = tmp_path / "installed"
+    destination.mkdir()
+    global_target = destination / global_source.name
+    evidence_target = destination / evidence_source.name
+    global_target.symlink_to(global_source, target_is_directory=True)
+    evidence_target.symlink_to(evidence_source, target_is_directory=True)
+
+    plan = install_os_skill_profile.build_plan(
+        profile_name="os-user-default",
+        profile=profile,
+        skills=skills,
+        dest_root=destination,
+    )
+    assert {
+        item["name"]: (item["management"], item["status"])
+        for item in plan["skills"]
+    } == {
+        global_source.name: ("owner-link", "owner-current"),
+        evidence_source.name: ("owner-link", "owner-current"),
+    }
+    install_os_skill_profile.execute_plan(
+        plan,
+        skills,
+        replace_unmanaged=False,
+        prune_managed=False,
+        allow_dirty_source=False,
+    )
+    assert global_target.is_symlink()
+    assert global_target.resolve() == global_source.resolve()
+    assert evidence_target.is_symlink()
+    assert evidence_target.resolve() == evidence_source.resolve()
+    assert not (global_source / install_os_skill_profile.SOURCE_RECEIPT).exists()
+    receipt = json.loads(
+        (destination / install_os_skill_profile.INSTALL_RECEIPT).read_text(
+            encoding="utf-8"
+        )
+    )
+    assert receipt["schema_version"] == "aoa_os_skill_install_v3"
+    assert {item["management"] for item in receipt["skills"]} == {"owner-link"}
+
+    receipt["schema_version"] = "aoa_os_skill_install_v2"
+    for item in receipt["skills"]:
+        item.pop("management")
+    (destination / install_os_skill_profile.INSTALL_RECEIPT).write_text(
+        json.dumps(receipt, indent=2) + "\n",
+        encoding="utf-8",
+    )
+    migration = install_os_skill_profile.build_plan(
+        profile_name="os-user-default",
+        profile=profile,
+        skills=skills,
+        dest_root=destination,
+    )
+    assert migration["stale_managed"] == []
+    assert migration["install_receipt_status"] == "drift"
+    install_os_skill_profile.execute_plan(
+        migration,
+        skills,
+        replace_unmanaged=False,
+        prune_managed=False,
+        allow_dirty_source=False,
+    )
+    assert global_target.is_symlink()
+    assert global_target.resolve() == global_source.resolve()
+    assert evidence_target.is_symlink()
+    assert evidence_target.resolve() == evidence_source.resolve()
+
+    global_target.unlink()
+    global_target.symlink_to(evidence_source, target_is_directory=True)
+    evidence_target.unlink()
+    evidence_target.mkdir()
+    blocked = install_os_skill_profile.build_plan(
+        profile_name="os-user-default",
+        profile=profile,
+        skills=skills,
+        dest_root=destination,
+    )
+    assert {
+        item["name"]: item["status"] for item in blocked["skills"]
+    } == {
+        global_source.name: "owner-drift",
+        evidence_source.name: "owner-collision",
+    }
+    receipt_before = (
+        destination / install_os_skill_profile.INSTALL_RECEIPT
+    ).read_bytes()
+    with pytest.raises(
+        install_os_skill_profile.ProfileError,
+        match="owner installer and exact source target",
+    ):
+        install_os_skill_profile.execute_plan(
+            blocked,
+            skills,
+            replace_unmanaged=True,
+            prune_managed=True,
+            allow_dirty_source=False,
+        )
+    assert global_target.is_symlink()
+    assert global_target.resolve() == evidence_source.resolve()
+    assert evidence_target.is_dir() and not evidence_target.is_symlink()
+    assert (
+        destination / install_os_skill_profile.INSTALL_RECEIPT
+    ).read_bytes() == receipt_before

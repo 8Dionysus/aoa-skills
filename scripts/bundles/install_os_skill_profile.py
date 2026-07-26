@@ -25,11 +25,14 @@ PROFILE_CONFIG = Path("config/os_skill_profiles.json")
 INSTALL_RECEIPT = ".aoa-os-skill-profile.json"
 SOURCE_RECEIPT = ".aoa-skill-source.json"
 SOURCE_RECEIPT_SCHEMA = "aoa_skill_source_receipt_v2"
-INSTALL_RECEIPT_SCHEMA = "aoa_os_skill_install_v2"
+INSTALL_RECEIPT_SCHEMA = "aoa_os_skill_install_v3"
 SUPPORTED_INSTALL_RECEIPT_SCHEMAS = {
     "aoa_os_skill_install_v1",
-    INSTALL_RECEIPT_SCHEMA,
+    "aoa_os_skill_install_v2",
+    "aoa_os_skill_install_v3",
 }
+MANAGED_COPY = "managed-copy"
+OWNER_LINK = "owner-link"
 
 
 class ProfileError(ValueError):
@@ -52,6 +55,7 @@ class ResolvedSkill:
     file_count: int
     owner_ref: str
     dirty: bool | None
+    management: str
 
 
 def load_json(path: Path) -> Any:
@@ -130,6 +134,7 @@ def _resolved_skill(
     source_relative: str,
     version: str,
     capability_identity: dict[str, str] | None = None,
+    management: str = MANAGED_COPY,
 ) -> ResolvedSkill:
     source_receipt_path = source_path / SOURCE_RECEIPT
     if source_receipt_path.exists() or source_receipt_path.is_symlink():
@@ -181,6 +186,7 @@ def _resolved_skill(
         file_count=len(snapshot),
         owner_ref=ref,
         dirty=dirty,
+        management=management,
     )
 
 
@@ -315,7 +321,7 @@ def resolve_profile(
                         capability_identity=capability_identities.get(name),
                     )
                 )
-        elif kind == "direct-home":
+        elif kind in {"direct-home", OWNER_LINK}:
             for entry in requested:
                 if not isinstance(entry, dict):
                     raise ProfileError(f"direct source {repo} entries must be objects")
@@ -339,6 +345,7 @@ def resolve_profile(
                         source_path=source_path,
                         source_relative=path,
                         version=str(version or "owner-current"),
+                        management=OWNER_LINK if kind == OWNER_LINK else MANAGED_COPY,
                     )
                 )
         else:
@@ -449,37 +456,60 @@ def build_plan(
     managed_before = {
         item.get("name")
         for item in (previous or {}).get("skills", [])
-        if isinstance(item, dict) and isinstance(item.get("name"), str)
+        if (
+            isinstance(item, dict)
+            and isinstance(item.get("name"), str)
+            and item.get("management", MANAGED_COPY) == MANAGED_COPY
+        )
     }
     entries = []
     for skill in skills:
         target = dest_root / skill.name
-        expected_source_receipt = _source_receipt(
-            profile_name=profile_name,
-            profile=profile,
-            skill=skill,
-        )
-        source_receipt_status = "missing"
-        if not target.exists() and not target.is_symlink():
-            status = "missing"
+        target_resolved = None
+        if skill.management == OWNER_LINK:
+            source_receipt_status = "not-applicable"
             target_digest = None
-        elif target.is_symlink():
-            status = "managed-drift" if skill.name in managed_before else "unmanaged-collision"
-            target_digest = None
-        elif not target.is_dir():
-            status = "managed-drift" if skill.name in managed_before else "unmanaged-collision"
-            target_digest = None
-        else:
-            target_snapshot = _installed_tree_snapshot(target, label=f"installed {skill.name}")
-            target_digest = home_skill_port.tree_digest(target_snapshot)
-            source_receipt_status = _source_receipt_status(target, expected_source_receipt)
-            if target_digest == skill.digest:
-                if skill.name in managed_before:
-                    status = "current" if source_receipt_status == "current" else "managed-drift"
-                else:
-                    status = "adoptable-identical"
+            if not target.exists() and not target.is_symlink():
+                status = "owner-missing"
+            elif not target.is_symlink():
+                status = "owner-collision"
+            elif not target.exists():
+                status = "owner-drift"
+                target_resolved = str(target.resolve(strict=False))
             else:
+                target_resolved = str(target.resolve())
+                status = (
+                    "owner-current"
+                    if target.resolve() == skill.source_path.resolve()
+                    else "owner-drift"
+                )
+        else:
+            expected_source_receipt = _source_receipt(
+                profile_name=profile_name,
+                profile=profile,
+                skill=skill,
+            )
+            source_receipt_status = "missing"
+            if not target.exists() and not target.is_symlink():
+                status = "missing"
+                target_digest = None
+            elif target.is_symlink():
                 status = "managed-drift" if skill.name in managed_before else "unmanaged-collision"
+                target_digest = None
+            elif not target.is_dir():
+                status = "managed-drift" if skill.name in managed_before else "unmanaged-collision"
+                target_digest = None
+            else:
+                target_snapshot = _installed_tree_snapshot(target, label=f"installed {skill.name}")
+                target_digest = home_skill_port.tree_digest(target_snapshot)
+                source_receipt_status = _source_receipt_status(target, expected_source_receipt)
+                if target_digest == skill.digest:
+                    if skill.name in managed_before:
+                        status = "current" if source_receipt_status == "current" else "managed-drift"
+                    else:
+                        status = "adoptable-identical"
+                else:
+                    status = "managed-drift" if skill.name in managed_before else "unmanaged-collision"
         entries.append(
             {
                 "name": skill.name,
@@ -497,16 +527,20 @@ def build_plan(
                     skill.prompt_description_sha256
                 ),
                 "target": str(target),
+                "target_resolved": target_resolved,
                 "target_digest": target_digest,
                 "status": status,
+                "management": skill.management,
                 "file_count": skill.file_count,
                 "source_receipt_status": source_receipt_status,
             }
         )
     selected = {skill.name for skill in skills}
-    stale_managed = sorted(name for name in managed_before - selected if isinstance(name, str))
+    stale_managed = sorted(
+        name for name in managed_before - selected if isinstance(name, str)
+    )
     plan = {
-        "schema_version": "aoa_os_skill_install_plan_v2",
+        "schema_version": "aoa_os_skill_install_plan_v3",
         "profile": profile_name,
         "runtime": profile["runtime"],
         "scope": profile["scope"],
@@ -516,8 +550,8 @@ def build_plan(
         "stale_managed": stale_managed,
         "unrelated_entries_preserved": True,
         "claim_limit": (
-            "canonical source and installed byte/mode parity plus machine-local source-handle "
-            "parity only; no routing or outcome claim"
+            "managed-copy byte/mode/source-handle parity plus exact owner-link target "
+            "identity only; no routing or outcome claim"
         ),
     }
     plan["install_receipt_status"] = _install_receipt_status(previous, plan)
@@ -537,8 +571,8 @@ def _receipt_from_plan(
         "mode": plan["mode"],
         "installed_at": installed_at or datetime.now(timezone.utc).isoformat(),
         "claim_limit": (
-            "install-time provenance and machine-local owner-source locator only; "
-            "current parity, routing, and outcomes require separate verification"
+            "install-time managed-copy provenance and observed owner-link target identity "
+            "only; current parity, routing, and outcomes require separate verification"
         ),
         "skills": [
             {
@@ -558,6 +592,7 @@ def _receipt_from_plan(
                 "prompt_description_sha256": (
                     item["prompt_description_sha256"]
                 ),
+                "management": item["management"],
             }
             for item in plan["skills"]
         ],
@@ -581,7 +616,11 @@ def plan_is_current(
 ) -> bool:
     dirty_sources = [item["name"] for item in plan["skills"] if item["owner_dirty"] is True]
     return (
-        all(item["status"] == "current" for item in plan["skills"])
+        all(
+            item["status"]
+            == ("owner-current" if item["management"] == OWNER_LINK else "current")
+            for item in plan["skills"]
+        )
         and not plan["stale_managed"]
         and plan["install_receipt_status"] == "current"
         and (allow_dirty_source or not dirty_sources)
@@ -618,6 +657,16 @@ def execute_plan(
         raise ProfileError(
             "stale managed entries require explicit --prune-managed after review: " + ", ".join(plan["stale_managed"])
         )
+    owner_link_failures = [
+        item["name"]
+        for item in plan["skills"]
+        if item["management"] == OWNER_LINK and item["status"] != "owner-current"
+    ]
+    if owner_link_failures:
+        raise ProfileError(
+            "owner-managed links require the owner installer and exact source target: "
+            + ", ".join(owner_link_failures)
+        )
     if plan_is_current(plan, allow_dirty_source=allow_dirty_source):
         return
     dest_root = Path(plan["destination"])
@@ -630,7 +679,7 @@ def execute_plan(
     committed = False
     try:
         for item in plan["skills"]:
-            if item["status"] == "current":
+            if item["management"] == OWNER_LINK or item["status"] == "current":
                 continue
             skill = by_name[item["name"]]
             stage = Path(tempfile.mkdtemp(prefix=f".{skill.name}.stage-", dir=dest_root))
@@ -650,7 +699,7 @@ def execute_plan(
             staged.remove(stage)
             installed.append(target)
         for item in plan["skills"]:
-            if item["status"] == "current":
+            if item["management"] == OWNER_LINK or item["status"] == "current":
                 continue
             skill = by_name[item["name"]]
             target = dest_root / skill.name
@@ -731,7 +780,7 @@ def format_plan(plan: dict[str, Any]) -> str:
         lines.append(
             f"- {item['name']}: {item['status']} owner={item['owner_repo']} "
             f"ref={item['owner_ref']} source={item['source_path']} digest={item['source_digest']} "
-            f"source_handle={item['source_receipt_status']}"
+            f"management={item['management']} source_handle={item['source_receipt_status']}"
         )
     if plan["stale_managed"]:
         lines.append("stale managed: " + ", ".join(plan["stale_managed"]))
