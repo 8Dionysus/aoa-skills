@@ -322,8 +322,8 @@
     },
     {
       "path": "capabilities/families/session-growth.yaml",
-      "sha256": "1b6c35c26f68ce5d105cb6826f6f7a9f21ff45e4789ae77ae17f9e4a2d975e80",
-      "bytes": 47894
+      "sha256": "120ca364d4a637a8e07b4ab50f2e04074f2004371ee6b13bf6dced1c08aeba16",
+      "bytes": 47899
     },
     {
       "path": "capabilities/families/stewardship.yaml",
@@ -352,8 +352,8 @@
     },
     {
       "path": "config/portable_skill_overrides.json",
-      "sha256": "5c54cbf56f2d09b4248421836255dc8f092c55525da9a2fdab8c4affe98289d4",
-      "bytes": 7529
+      "sha256": "a100c9842b983ded3651364e0d4a7d5f031e52bdb0997c641e962825e328fed3",
+      "bytes": 7534
     },
     {
       "path": "config/skill_pack_profiles.json",
@@ -587,8 +587,8 @@
     },
     {
       "path": "skills/core/session-growth/aoa-memo-writeback/SKILL.md",
-      "sha256": "aa0f53f8f0241cebb42a825e5b4fb0ad1b158afa448b4774614ce548c7ac9136",
-      "bytes": 7507
+      "sha256": "aa529289173db5ab5058e39b1970e5369913772ed3f24c1a2944afb42fc02627",
+      "bytes": 7512
     },
     {
       "path": "skills/core/session-growth/aoa-memo-writeback/agents/openai.yaml",
@@ -904,8 +904,8 @@
     },
     {
       "path": ".agents/skills/aoa-memo-writeback/SKILL.md",
-      "sha256": "61d52c8e6323188182a55ed990d3b28148275721af430c62efbd3988f6cc67b5",
-      "bytes": 7496
+      "sha256": "cbbb05f23af35bff2856169e26e9ef55d5c9e9f0a866169c215e8a2879667724",
+      "bytes": 7501
     },
     {
       "path": ".agents/skills/aoa-memo-writeback/agents/openai.yaml",
@@ -1061,13 +1061,13 @@
   "generated_file_digests": [
     {
       "path": "generated/agent_skill_catalog.json",
-      "sha256": "71fb693fd5ea3d69e8b474fb6cf2c6dc8b98b3c23de69e9d6ca6371d281109ba",
-      "bytes": 17658
+      "sha256": "0be5cfebe899a23297b1b06e1713845816bda000ad977ad7a02702e94ccb52bd",
+      "bytes": 17663
     },
     {
       "path": "generated/agent_skill_catalog.min.json",
-      "sha256": "6d8cc1ae647a4beca83be17996cec3081ce5356e4532d0a19a637beaa2ef8386",
-      "bytes": 6901
+      "sha256": "eb58aa268c15693a677c29a465417de1f40a8194c35fd7bed016a0c0cd95b6d0",
+      "bytes": 6906
     },
     {
       "path": "generated/portable_export_map.json",
@@ -1086,12 +1086,12 @@
     },
     {
       "path": "generated/capability_graph.json",
-      "sha256": "a84e14c01f2ca50699995d8b35ffc4304b74ff75ca197b072ec63d3567b481b0",
-      "bytes": 2301050
+      "sha256": "1a2e51ea68f9c18b2adccf4813da7c01af3ca5c5526f717d6b44702bc7512fd5",
+      "bytes": 2301090
     },
     {
       "path": "generated/capability_graph.md",
-      "sha256": "c7c3d3492ae315432eb1ba68702744ff6fb9198100c0ddf6f8881b2c598cdcd8",
+      "sha256": "2d7337fe5fff8d6aec657abe9c8cd82199138cb38d9cb62650077aa8ff972e8b",
       "bytes": 26653
     }
   ],
@@ -1128,9 +1128,9 @@
     },
     {
       "name": "aoa-memo-writeback",
-      "skill_revision": "4a795604c50e",
-      "source_hash": "4a795604c50e84b8228eeae4b5b171023c73c610b8f1c96a3d904aa0bf165497",
-      "portable_hash": "dac8f52196f6cea4ef06e4da69248a25c4c85e9019f6fdbc3cb8a21e9321aa03"
+      "skill_revision": "d67c9965955e",
+      "source_hash": "d67c9965955e99381504e0877706ceb0711622166e13470f9f3c9a46164d1a66",
+      "portable_hash": "2b5ee7ef5991e0ed6fb5e44846a72ce150ec1311364f5b41873f142721f51695"
     },
     {
       "name": "aoa-session-harvest",
@@ -1164,7 +1164,7 @@
         "aoa-session-harvest",
         "aoa-session-recovery"
       ],
-      "profile_revision": "b2a2f6335eca7c2a5f92ce8a87b494b1f735cd5fcd29531f5ce6d78a0ced760f"
+      "profile_revision": "fd9acd62eec5260fcaf2684db7dfcd66b653cbe5323521b98e4019d37b887f4e"
     },
     {
       "name": "portable-consumer-all-sources",
@@ -1180,7 +1180,7 @@
         "aoa-session-recovery",
         "aoa-verification"
       ],
-      "profile_revision": "09af1d8007b4f956a0b115fec10b91832bd42b2720f4e95a33b65d1c8890468a"
+      "profile_revision": "e116b9f8ad6fedfc2086212edd7e09009482463ab67484ca1a1d67a818f1048d"
     }
   ],
   "release_identity": {
