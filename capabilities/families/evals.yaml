@@ -115,7 +115,7 @@ nodes:
 
   - id: skill.aoa-evals
     title: aoa-evals owner bundle
-    description: "Use for central AoA proof meaning or lifecycle: select, review, or evolve source bundles, named eval results or verdicts, source-linked reports, Eval Forge owner review, or source/reader drift. Use aoa-eval for local selection, application, intake/design, or session-hit classification. Candidates, readiness checks, receipts, MCP outputs, and green commands are not proof."
+    description: "Central AoA proof or lifecycle: first tool turn reads only this SKILL.md. Use to select, review, or evolve source bundles, named eval results or verdicts, source-linked reports, Eval Forge owner review, or source/reader drift. Use aoa-eval for local selection, application, intake/design, or session-hit classification. Candidates, readiness checks, receipts, generated readers or outputs, MCP outputs, and green commands are not proof."
     kind: skill
     contract_level: navigation
     primary_parent: engineering.evaluation
@@ -142,12 +142,12 @@ nodes:
       source_refs:
         - repo: aoa-evals
           path: skills/aoa-evals/SKILL.md
-          ref: f77ea4c1de3eae167a4253f4e440759703897100
+          ref: 4d03125d0961dbc0b15332f1a146cd0f7f08eb23
           role: owner-skill-procedure
           authority: external-authority
         - repo: aoa-evals
           path: skills/aoa-evals/references/contract.yaml
-          ref: f77ea4c1de3eae167a4253f4e440759703897100
+          ref: 4d03125d0961dbc0b15332f1a146cd0f7f08eb23
           role: owner-typed-contract
           authority: external-authority
       optional_refs: []

@@ -292,8 +292,8 @@
   "source_file_digests": [
     {
       "path": "capabilities/families/abyss.yaml",
-      "sha256": "71af8bb20f4fc083268c2f9e37f8321e3bf7802db9e3e3193328afe0fc15ce2a",
-      "bytes": 22046
+      "sha256": "8a5cbad0003a7a491a4d51e701a3638fae8dd52f9eb1d01b0700e3538d5ddd1d",
+      "bytes": 22740
     },
     {
       "path": "capabilities/families/atm10.yaml",
@@ -312,8 +312,8 @@
     },
     {
       "path": "capabilities/families/evals.yaml",
-      "sha256": "2366774f937b6dd726ef5649e943d60f78c6c39f477db13bd8bda2b9120cdf25",
-      "bytes": 22743
+      "sha256": "a03df2518a7edab7fc1e865e5f0628f9014eb268373363841fd2f1d05c1edd1d",
+      "bytes": 22806
     },
     {
       "path": "capabilities/families/operations.yaml",
@@ -322,13 +322,13 @@
     },
     {
       "path": "capabilities/families/session-growth.yaml",
-      "sha256": "902e36e0ce1ff9a779330a733432baee597c93021800ea6ff87813e193227bb9",
-      "bytes": 47212
+      "sha256": "41e1f0724cbe245537bc0217fc8d2068e2927360965ab47cd3ca3450dd440482",
+      "bytes": 47253
     },
     {
       "path": "capabilities/families/stewardship.yaml",
-      "sha256": "4b79085cd453a32bb8324e65b68d5e6f3607ef57f8621994bef61856acf6f212",
-      "bytes": 17823
+      "sha256": "e063522d4b7a6161860611ae30376c1166f1d8b24d3cbaecd05c9c8814786d94",
+      "bytes": 18031
     },
     {
       "path": "capabilities/families/system.yaml",
@@ -1086,12 +1086,12 @@
     },
     {
       "path": "generated/capability_graph.json",
-      "sha256": "03b7960063de55f024c160fb47828ab38b35f4ffe4b20e29f70c27eb2d340a59",
-      "bytes": 2289612
+      "sha256": "b684c4894ab52869c55a1942cf78b08596d002655a9e9fc09bffaff16e19f758",
+      "bytes": 2297651
     },
     {
       "path": "generated/capability_graph.md",
-      "sha256": "6ef813bcd1a7bab3f23f4453b8cc3f055186ae792ff18b6995b563dd82f7f24d",
+      "sha256": "bb15d653a41cdb6e0c5c5e8789b9b113649cb1ef124fbec0d9783115b9477fa8",
       "bytes": 26653
     }
   ],

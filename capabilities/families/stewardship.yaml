@@ -59,7 +59,7 @@ nodes:
 
   - id: skill.aoa-kag
     title: aoa-kag owner bundle
-    description: Use the read-only aoa_kag MCP when the responsible AoA owner/source is unknown or cross-repository relation or impact research is needed; return canonical owner handles. Do not use for raw sessions, web research, proof, memory, routing/playbooks, mutations, live runtime diagnosis, or when an authoritative source is already supplied.
+    description: Use read-only aoa_kag MCP to locate canonical AoA owner sources/full capability contracts; check known-capability applicability/live binding; ground evidence-bearing relations, compatibility, or cross-repo impact; or investigate/compare a bounded multi-owner question needing navigation. Return owner handles. Not for raw sessions, web research, proof/memory, role/routing/playbook decisions, mutations, standalone runtime diagnosis, or an exact authoritative source needing no navigation.
     kind: skill
     contract_level: navigation
     primary_parent: stewardship.knowledge.retrieve
@@ -69,7 +69,7 @@ nodes:
       authority: external-authority
     lifecycle:
       state: candidate
-      version: 0.2.1
+      version: 0.2.4
       visibility: advertised
       evidence_state: evaluated
       health: challenger
@@ -86,12 +86,12 @@ nodes:
       source_refs:
         - repo: aoa-kag
           path: skills/aoa-kag/SKILL.md
-          ref: f8622717862c020bd135bf52e02b630c69855b79
+          ref: 58ab52ffc06bab5cc28842a0b4336c6efa16b6ff
           role: owner-skill-procedure
           authority: external-authority
         - repo: aoa-kag
           path: skills/aoa-kag/references/contract.yaml
-          ref: f8622717862c020bd135bf52e02b630c69855b79
+          ref: 58ab52ffc06bab5cc28842a0b4336c6efa16b6ff
           role: owner-typed-contract
           authority: external-authority
       optional_refs: []
@@ -132,7 +132,7 @@ nodes:
 
   - id: skill.aoa-memo
     title: aoa-memo owner bundle
-    description: Use aoa-memo to recall, review, or evolve an existing memo candidate, export, quarantine packet, memory object, corpus identity, lifecycle target, or read model. Use aoa-memo-writeback only before any memo artifact exists. Do not use for raw-session retrieval, proof, routing, roles, workflows, KAG substrate, runtime storage, or generic notes.
+    description: "Existing memo artifact: use aoa-memo to recall, review, or evolve a candidate, export, quarantine packet, memory object, corpus identity, lifecycle target, or read model. First tool turn reads only this SKILL.md. Use aoa-memo-writeback only before any memo artifact exists. Do not use for raw-session retrieval, proof, routing, roles, workflows, KAG substrate, runtime storage, or generic notes."
     kind: skill
     contract_level: navigation
     primary_parent: stewardship.knowledge.memory
@@ -142,7 +142,7 @@ nodes:
       authority: external-authority
     lifecycle:
       state: candidate
-      version: 0.1.20
+      version: 0.1.21
       visibility: advertised
       evidence_state: evaluated
       health: challenger
@@ -159,12 +159,12 @@ nodes:
       source_refs:
         - repo: aoa-memo
           path: skills/aoa-memo/SKILL.md
-          ref: 3a528acb375219e77d7264fe2e2585d882694157
+          ref: e0d3653c11d948f962bcb033749c86c52388ec5f
           role: owner-skill-procedure
           authority: external-authority
         - repo: aoa-memo
           path: skills/aoa-memo/references/contract.yaml
-          ref: 3a528acb375219e77d7264fe2e2585d882694157
+          ref: e0d3653c11d948f962bcb033749c86c52388ec5f
           role: owner-typed-contract
           authority: external-authority
       optional_refs: []
