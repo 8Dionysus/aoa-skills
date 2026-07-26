@@ -973,7 +973,7 @@ nodes:
 
   - id: skill.aoa-summon
     title: aoa-summon owner bundle
-    description: Delegate one bounded child-agent route from an anchored parent task, including host launch, named outputs, return validation, and parent closeout. Use only when the user explicitly asks to delegate or summon a narrower helper. Do not use without a parent anchor, with unresolved branching or unnamed outputs, for unsplit deep work, or to bypass approval, owner, or proof boundaries.
+    description: Delegate one bounded child-agent route from an anchored parent task, including host launch, named outputs, return validation, and parent closeout. Use only when the user explicitly asks to delegate or summon a narrower helper. An incomplete summon request must block, not receive an allowed decision. Do not use without a parent anchor, with unresolved branching or unnamed outputs, for unsplit deep work, or to bypass approval, owner, or proof boundaries.
     kind: skill
     contract_level: navigation
     primary_parent: sessions
@@ -983,7 +983,7 @@ nodes:
       authority: external-authority
     lifecycle:
       state: candidate
-      version: 0.2.5
+      version: 0.2.6
       visibility: advertised
       evidence_state: evaluated
       health: challenger
@@ -1000,7 +1000,7 @@ nodes:
       source_refs:
         - repo: aoa-agents
           path: skills/aoa-summon/SKILL.md
-          ref: 28f476699cd49bdf4e92f04e175dabd845b116b8
+          ref: 66e7a90603d230385458fd473acc34dd37b0b043
           role: owner-skill-contract
           authority: external-authority
       optional_refs: []

@@ -322,8 +322,8 @@
     },
     {
       "path": "capabilities/families/session-growth.yaml",
-      "sha256": "f4355c6d3be51463759baaffdb130c83be864de2b8aa26243b8f24da4a9cf490",
-      "bytes": 47138
+      "sha256": "902e36e0ce1ff9a779330a733432baee597c93021800ea6ff87813e193227bb9",
+      "bytes": 47212
     },
     {
       "path": "capabilities/families/stewardship.yaml",
@@ -1086,12 +1086,12 @@
     },
     {
       "path": "generated/capability_graph.json",
-      "sha256": "2cd211a235db54653cad7ad5dfaec365fe394343a3f70fb0baeaf9172843773d",
-      "bytes": 2289037
+      "sha256": "03b7960063de55f024c160fb47828ab38b35f4ffe4b20e29f70c27eb2d340a59",
+      "bytes": 2289612
     },
     {
       "path": "generated/capability_graph.md",
-      "sha256": "744d935da72d2da89e8489edd744536f37468cfd0d22e6c4cba8c88f1774eb23",
+      "sha256": "6ef813bcd1a7bab3f23f4453b8cc3f055186ae792ff18b6995b563dd82f7f24d",
       "bytes": 26653
     }
   ],

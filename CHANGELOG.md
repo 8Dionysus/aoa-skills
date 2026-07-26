@@ -14,6 +14,8 @@ Tracking starts with the community-docs baseline for this repository.
   procedures and verification in the activated package.
 - Make `aoa-session-harvest` fail closed when no literal reviewed-packet
   evidence ref is supplied, instead of permitting an inferred or minted ref.
+- Track `aoa-summon` owner version `0.2.6`, which blocks incomplete
+  `summon-request-v3` input before returning an allowed delegation decision.
 - External `abyss-machine` artifact admission now fails closed on every
   required consumer-gate claim and reports control or dependency mismatches
   through compact public-safe diagnostics instead of a traceback or an empty

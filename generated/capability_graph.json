@@ -7604,7 +7604,7 @@
         "ref": "aoa-agents:skills/aoa-summon/SKILL.md"
       },
       "contract_level": "navigation",
-      "description": "Delegate one bounded child-agent route from an anchored parent task, including host launch, named outputs, return validation, and parent closeout. Use only when the user explicitly asks to delegate or summon a narrower helper. Do not use without a parent anchor, with unresolved branching or unnamed outputs, for unsplit deep work, or to bypass approval, owner, or proof boundaries.",
+      "description": "Delegate one bounded child-agent route from an anchored parent task, including host launch, named outputs, return validation, and parent closeout. Use only when the user explicitly asks to delegate or summon a narrower helper. An incomplete summon request must block, not receive an allowed decision. Do not use without a parent anchor, with unresolved branching or unnamed outputs, for unsplit deep work, or to bypass approval, owner, or proof boundaries.",
       "id": "skill.aoa-summon",
       "keywords": [
         "summon",
@@ -7621,7 +7621,7 @@
         "evidence_state": "evaluated",
         "health": "challenger",
         "state": "candidate",
-        "version": "0.2.5",
+        "version": "0.2.6",
         "visibility": "advertised"
       },
       "owner": {
@@ -7636,7 +7636,7 @@
           {
             "authority": "external-authority",
             "path": "skills/aoa-summon/SKILL.md",
-            "ref": "28f476699cd49bdf4e92f04e175dabd845b116b8",
+            "ref": "66e7a90603d230385458fd473acc34dd37b0b043",
             "repo": "aoa-agents",
             "role": "owner-skill-contract"
           }
@@ -46651,7 +46651,7 @@
       "visibility": "advertised"
     },
     {
-      "description": "Delegate one bounded child-agent route from an anchored parent task, including host launch, named outputs, return validation, and parent closeout. Use only when the user explicitly asks to delegate or summon a narrower helper. Do not use without a parent anchor, with unresolved branching or unnamed outputs, for unsplit deep work, or to bypass approval, owner, or proof boundaries.",
+      "description": "Delegate one bounded child-agent route from an anchored parent task, including host launch, named outputs, return validation, and parent closeout. Use only when the user explicitly asks to delegate or summon a narrower helper. An incomplete summon request must block, not receive an allowed decision. Do not use without a parent anchor, with unresolved branching or unnamed outputs, for unsplit deep work, or to bypass approval, owner, or proof boundaries.",
       "id": "skill.aoa-summon",
       "kind": "skill",
       "negative_phrases": [
@@ -46675,32 +46675,40 @@
         "without",
         "work"
       ],
-      "positive_text": "skill.aoa-summon\naoa-summon owner bundle\nDelegate one bounded child-agent route from an anchored parent task, including host launch, named outputs, return validation, and parent closeout. Use only when the user explicitly asks to delegate or summon a narrower helper. \nsummon\ndelegate\nchild-agent\npassport\nreturn-validation\nпризвать\nделегировать\nдочерний-агент",
+      "positive_text": "skill.aoa-summon\naoa-summon owner bundle\nDelegate one bounded child-agent route from an anchored parent task, including host launch, named outputs, return validation, and parent closeout. Use only when the user explicitly asks to delegate or summon a narrower helper. An incomplete summon request must block, not receive an allowed decision. \nsummon\ndelegate\nchild-agent\npassport\nreturn-validation\nпризвать\nделегировать\nдочерний-агент",
       "positive_tokens": [
         "agent",
+        "allowed",
         "anchored",
         "aoa",
         "aoa-summon",
         "asks",
+        "block",
         "bounded",
         "bundle",
         "child",
         "child-agent",
         "closeout",
+        "decision",
         "delegate",
         "explicitly",
         "helper",
         "host",
         "including",
+        "incomplete",
         "launch",
+        "must",
         "named",
         "narrower",
+        "not",
         "one",
         "only",
         "outputs",
         "owner",
         "parent",
         "passport",
+        "receive",
+        "request",
         "return",
         "return-validation",
         "route",
@@ -46734,13 +46742,14 @@
         "дочерний-агент",
         "призват"
       ],
-      "search_text": "external\nskill\ndecide-or-execute\naoa-agents:skills/aoa-summon/SKILL.md\nnavigation\nDelegate one bounded child-agent route from an anchored parent task, including host launch, named outputs, return validation, and parent closeout. Use only when the user explicitly asks to delegate or summon a narrower helper. Do not use without a parent anchor, with unresolved branching or unnamed outputs, for unsplit deep work, or to bypass approval, owner, or proof boundaries.\nskill.aoa-summon\nsummon\ndelegate\nchild-agent\npassport\nreturn-validation\nпризвать\nделегировать\nдочерний-агент\nskill\nevaluated\nchallenger\ncandidate\n0.2.5\nadvertised\nexternal-authority\naoa-agents\nskills/aoa-summon/SKILL.md\nsessions\nexternal-authority\nskills/aoa-summon/SKILL.md\naoa-agents\nowner-skill-contract\nsession-learning\ncapabilities/families/session-growth.yaml\naoa-summon owner bundle\nderived-reference",
+      "search_text": "external\nskill\ndecide-or-execute\naoa-agents:skills/aoa-summon/SKILL.md\nnavigation\nDelegate one bounded child-agent route from an anchored parent task, including host launch, named outputs, return validation, and parent closeout. Use only when the user explicitly asks to delegate or summon a narrower helper. An incomplete summon request must block, not receive an allowed decision. Do not use without a parent anchor, with unresolved branching or unnamed outputs, for unsplit deep work, or to bypass approval, owner, or proof boundaries.\nskill.aoa-summon\nsummon\ndelegate\nchild-agent\npassport\nreturn-validation\nпризвать\nделегировать\nдочерний-агент\nskill\nevaluated\nchallenger\ncandidate\n0.2.6\nadvertised\nexternal-authority\naoa-agents\nskills/aoa-summon/SKILL.md\nsessions\nexternal-authority\nskills/aoa-summon/SKILL.md\naoa-agents\nowner-skill-contract\nsession-learning\ncapabilities/families/session-growth.yaml\naoa-summon owner bundle\nderived-reference",
       "title": "aoa-summon owner bundle",
       "tokens": [
-        "0.2.5",
+        "0.2.6",
         "advertised",
         "agent",
         "agents",
+        "allowed",
         "anchor",
         "anchored",
         "aoa",
@@ -46749,6 +46758,7 @@
         "approval",
         "asks",
         "authority",
+        "block",
         "boundaries",
         "bounded",
         "branching",
@@ -46763,6 +46773,7 @@
         "contract",
         "decide",
         "decide-or-execute",
+        "decision",
         "deep",
         "delegate",
         "derived",
@@ -46778,9 +46789,11 @@
         "helper",
         "host",
         "including",
+        "incomplete",
         "launch",
         "learning",
         "md",
+        "must",
         "named",
         "narrower",
         "navigation",
@@ -46793,7 +46806,9 @@
         "parent",
         "passport",
         "proof",
+        "receive",
         "reference",
+        "request",
         "return",
         "return-validation",
         "route",
@@ -55840,7 +55855,7 @@
   ],
   "schema_version": "aoa-capability-graph-v1",
   "source": {
-    "content_hash": "0111877f9333c62e66f1fac240572b1388fef0868ee7ab25f67c8fb3025773d3",
+    "content_hash": "62ba14acf288feae49063aea09e2da57b59582c8e58f80888caea763bdc2d770",
     "family_files": [
       {
         "path": "capabilities/families/abyss.yaml",
@@ -55868,7 +55883,7 @@
       },
       {
         "path": "capabilities/families/session-growth.yaml",
-        "sha256": "f4355c6d3be51463759baaffdb130c83be864de2b8aa26243b8f24da4a9cf490"
+        "sha256": "902e36e0ce1ff9a779330a733432baee597c93021800ea6ff87813e193227bb9"
       },
       {
         "path": "capabilities/families/stewardship.yaml",
