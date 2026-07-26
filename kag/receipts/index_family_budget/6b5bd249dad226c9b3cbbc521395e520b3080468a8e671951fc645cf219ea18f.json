@@ -1,0 +1,17 @@
+{
+  "allowed_bytes": 1612797,
+  "allowed_tracked_bytes": 10047437,
+  "approved_by": "repository-owner",
+  "base_ref": "48598a9564c4621b15428831642b802dbc8d2a47",
+  "changed_generated_bytes": 1612797,
+  "changed_generated_files": 36,
+  "decision_ref": "aoa-kag:docs/decisions/AOA-KAG-D-0017-portable-content-addressed-repository-family.md",
+  "default_limit_bytes": 1048576,
+  "head_family_digest": "6b5bd249dad226c9b3cbbc521395e520b3080468a8e671951fc645cf219ea18f",
+  "reason": "Refresh the portable family after the reviewed skill routing contract update.",
+  "repo": "aoa-skills",
+  "schema_version": "aoa-repo-local-kag-budget-receipt-v1",
+  "scope": "generated_delta_and_tracked_size",
+  "tracked_bytes": 10047437,
+  "tracked_bytes_max": 9437184
+}
