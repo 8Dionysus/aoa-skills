@@ -32,7 +32,7 @@ better selection and execution, not a larger central catalog.
 | workflows and playbooks | `aoa-playbooks` |
 | agent roles and progression | `aoa-agents` |
 | runtime tools, services, state, and permissions | the named runtime or project owner |
-| shared routing and SDK contracts | `aoa-routing`, `aoa-sdk` |
+| canonical routing and shared SDK contracts | `aoa-sdk` |
 | repository-specific callable procedure truth | the named repository's admitted `skills/` home |
 | cross-repository skill federation and retrieval | `aoa-kag` |
 
