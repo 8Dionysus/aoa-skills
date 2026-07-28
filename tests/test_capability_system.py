@@ -26,6 +26,41 @@ def test_manual_migration_contract_remains_exact_and_live() -> None:
     assert capability_system.migration_issues(migration, families) == []
 
 
+def test_titan_runtime_transition_provenance_uses_canonical_routing_owner() -> None:
+    families = capability_system.validate_sources(REPO_ROOT)
+    node = capability_system.node_map(families)["guard.titan.runtime-transition"]
+    source_refs = node["provenance"]["source_refs"]
+
+    assert {
+        (
+            source["repo"],
+            source["path"],
+            source["ref"],
+            source["role"],
+            source["authority"],
+        )
+        for source in source_refs
+    } == {
+        (
+            "aoa-agents",
+            "mechanics/titan/parts/summon-boundary/docs/summon-boundary.md",
+            "66f8bf22d03518b1e2367fd4f51dab80650f6d37",
+            "role-intent-boundary",
+            "external-authority",
+        ),
+        (
+            "aoa-sdk",
+            (
+                "mechanics/boundary-bridge/parts/consumed-surface-posture-gate/"
+                "docs/routing-consumer-contract.md"
+            ),
+            "7fba39d38cf5902c41dfbb7ae91f405b849880b7",
+            "canonical-routing-consumer-contract",
+            "external-authority",
+        ),
+    }
+
+
 def test_migration_rejects_duplicate_and_missing_target() -> None:
     families = capability_system.validate_sources(REPO_ROOT)
     migration = capability_system.load_migration_contract(REPO_ROOT)

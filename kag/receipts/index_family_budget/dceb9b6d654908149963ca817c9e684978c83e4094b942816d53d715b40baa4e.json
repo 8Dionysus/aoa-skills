@@ -1,0 +1,17 @@
+{
+  "allowed_bytes": 1337312,
+  "allowed_tracked_bytes": 10078355,
+  "approved_by": "repository-owner",
+  "base_ref": "9b009123e88cd864ef11147a6d9cba31a3bf81a5",
+  "changed_generated_bytes": 1337312,
+  "changed_generated_files": 34,
+  "decision_ref": "aoa-kag:docs/decisions/AOA-KAG-D-0017-portable-content-addressed-repository-family.md",
+  "default_limit_bytes": 1048576,
+  "head_family_digest": "dceb9b6d654908149963ca817c9e684978c83e4094b942816d53d715b40baa4e",
+  "reason": "Refresh repo-local KAG after regenerating the release manifest to bind final Titan and capability-graph digests; no capability, runtime, routing, or owner-cutover claim.",
+  "repo": "aoa-skills",
+  "schema_version": "aoa-repo-local-kag-budget-receipt-v1",
+  "scope": "generated_delta_and_tracked_size",
+  "tracked_bytes": 10078355,
+  "tracked_bytes_max": 9437184
+}

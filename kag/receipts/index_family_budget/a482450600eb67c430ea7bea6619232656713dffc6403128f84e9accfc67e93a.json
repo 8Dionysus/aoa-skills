@@ -1,0 +1,17 @@
+{
+  "allowed_bytes": 1337312,
+  "allowed_tracked_bytes": 10078355,
+  "approved_by": "repository-owner",
+  "base_ref": "9b009123e88cd864ef11147a6d9cba31a3bf81a5",
+  "changed_generated_bytes": 1337312,
+  "changed_generated_files": 34,
+  "decision_ref": "aoa-kag:docs/decisions/AOA-KAG-D-0017-portable-content-addressed-repository-family.md",
+  "default_limit_bytes": 1048576,
+  "head_family_digest": "a482450600eb67c430ea7bea6619232656713dffc6403128f84e9accfc67e93a",
+  "reason": "Refresh repo-local KAG after committing the federation-pinned aoa-kag action in the GitHub parity gate; no capability, runtime, routing, or owner-cutover claim.",
+  "repo": "aoa-skills",
+  "schema_version": "aoa-repo-local-kag-budget-receipt-v1",
+  "scope": "generated_delta_and_tracked_size",
+  "tracked_bytes": 10078355,
+  "tracked_bytes_max": 9437184
+}

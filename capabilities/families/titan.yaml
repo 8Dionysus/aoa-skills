@@ -740,8 +740,8 @@ nodes:
     trust: {public_safe: true, requires_human_approval: true, posture: runtime-enforced}
     provenance:
       source_refs:
-        - {repo: aoa-routing, path: mechanics/titan/parts/runtime-route/docs/titan-runtime-route.md, ref: 72f91d2a8e21438157a853becd136be30e72234e, role: intent-routing-contract, authority: external-authority}
-        - {repo: aoa-sdk, path: mechanics/titan/parts/incarnation-identity-runtime-helper-contracts/CONTRACT.md, ref: cdd3af4e1a7d0f0ffc514b65d6dee3b5b838a530, role: helper-transition-boundary, authority: derived-reference}
+        - {repo: aoa-agents, path: mechanics/titan/parts/summon-boundary/docs/summon-boundary.md, ref: 66f8bf22d03518b1e2367fd4f51dab80650f6d37, role: role-intent-boundary, authority: external-authority}
+        - {repo: aoa-sdk, path: mechanics/boundary-bridge/parts/consumed-surface-posture-gate/docs/routing-consumer-contract.md, ref: 7fba39d38cf5902c41dfbb7ae91f405b849880b7, role: canonical-routing-consumer-contract, authority: external-authority}
       optional_refs: []
     keywords: [runtime-gate, transition, Forge, Delta, activation, рантайм, переход, активация]
   - id: workflow.titan.summon
