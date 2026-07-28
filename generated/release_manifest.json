@@ -337,8 +337,8 @@
     },
     {
       "path": "capabilities/families/titan.yaml",
-      "sha256": "fbbd0139ce9906fd307b29ef4e156e9f84961952e36ccc3ac39d0571eda567f2",
-      "bytes": 63923
+      "sha256": "0657b5b665e7ffc388745f09789b05c616ae3ce8990422c3823e45c1a783c8f8",
+      "bytes": 63949
     },
     {
       "path": "capabilities/legacy-skill-migration.yaml",
@@ -1086,12 +1086,12 @@
     },
     {
       "path": "generated/capability_graph.json",
-      "sha256": "1d0caa332c5364db6ad0e8dc450b1237f801bb5a82cabcbbb3334a17f9189717",
-      "bytes": 2297541
+      "sha256": "b73c0d3cd6c584a23117489fa9f76cc6cd0f3b236fb3783032e9e3af13de670d",
+      "bytes": 2297833
     },
     {
       "path": "generated/capability_graph.md",
-      "sha256": "b06bc2a5650e91683ee243c503bc41ba6362632ace69a58bd1cc3b8a3402b3f4",
+      "sha256": "702100e3d9b1410309c7f150b8def51aeb5ba1fce845e397cdc94ceb8911f7c3",
       "bytes": 26653
     }
   ],
