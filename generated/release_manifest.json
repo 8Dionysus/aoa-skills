@@ -407,8 +407,8 @@
     },
     {
       "path": "scripts/runtime/capability_home.py",
-      "sha256": "f0e085856d2e8c317aa18480086a678eb74c0235ba021b2b3d80f363ea33c265",
-      "bytes": 3443
+      "sha256": "e537ab8c46f330291665126ca8d9d90ff8092437352d304c016851b83229b11b",
+      "bytes": 3711
     },
     {
       "path": "scripts/skill_model/capability_home_port.py",

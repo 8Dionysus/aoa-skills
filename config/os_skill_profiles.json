@@ -49,7 +49,11 @@
           "kind": "owner-port",
           "repo": "aoa-agents",
           "root": "aoa-agents",
-          "skills": ["aoa-session-progression-lift", "aoa-summon"]
+          "skills": [
+            "aoa-agents-skills",
+            "aoa-session-progression-lift",
+            "aoa-summon"
+          ]
         },
         {
           "kind": "owner-port",

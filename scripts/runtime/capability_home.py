@@ -30,6 +30,7 @@ def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
     plan.add_argument("query")
     plan.add_argument("--select", action="append", required=True)
     plan.add_argument("--input", action="append", default=[])
+    plan.add_argument("--out", type=Path)
     return parser.parse_args(argv)
 
 
@@ -88,7 +89,12 @@ def main(argv: Sequence[str] | None = None) -> int:
     except (OSError, ValueError) as exc:
         print(f"capability home runtime failed: {exc}")
         return 1
-    print(json.dumps(payload, ensure_ascii=False, sort_keys=True, indent=2))
+    rendered = json.dumps(payload, ensure_ascii=False, sort_keys=True, indent=2) + "\n"
+    if args.command == "plan" and args.out:
+        args.out.parent.mkdir(parents=True, exist_ok=True)
+        args.out.write_text(rendered, encoding="utf-8", newline="\n")
+    else:
+        print(rendered, end="")
     if args.command == "plan":
         return 0 if payload["status"] == "ready" else 2
     return 0
