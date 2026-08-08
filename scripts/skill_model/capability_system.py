@@ -408,7 +408,9 @@ def _contract_mode_nodes(
         if candidate_path.name == "SKILL.md":
             package_owners.append((candidate_path.parent, candidate_id))
 
-    contract_operations = {str(operation) for operation in contract_modes}
+    # Return every mode owned by the package. Contract parity validation must
+    # see undeclared operations; graph enrichment filters them afterwards.
+    _ = contract_modes
     resolved: dict[str, Mapping[str, Any]] = {}
     for node in nodes.values():
         if node.get("kind") != "mode":
@@ -416,8 +418,6 @@ def _contract_mode_nodes(
         binding = node.get("binding", {})
         operation = binding.get("operation")
         if not isinstance(operation, str):
-            continue
-        if operation not in contract_operations:
             continue
         mode_ref = binding.get("ref")
         if not isinstance(mode_ref, str):

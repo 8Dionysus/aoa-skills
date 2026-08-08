@@ -417,8 +417,8 @@
     },
     {
       "path": "scripts/skill_model/capability_system.py",
-      "sha256": "00c515d4820f3a0256a7c481397b674bf38c4a79ea8db7ca3996d37d85a3c08f",
-      "bytes": 90793
+      "sha256": "a6fcad55a49da845d9f227cb327997a6dab6cccda7737f261fc140644bddc5fc",
+      "bytes": 90824
     },
     {
       "path": "scripts/validation/validate_capability_home_port.py",

@@ -623,6 +623,41 @@ def test_owner_contract_modes_may_live_below_navigation_categories() -> None:
     assert nested_modes["execute"]["id"] == "mode.nested.execute"
 
 
+def test_owner_contract_mode_resolution_preserves_undeclared_package_modes() -> None:
+    nodes = {
+        "skill.owner": {
+            "id": "skill.owner",
+            "kind": "skill",
+            "binding": {"ref": "skills/owner/SKILL.md"},
+        },
+        "mode.owner.declared": {
+            "id": "mode.owner.declared",
+            "kind": "mode",
+            "binding": {
+                "operation": "declared",
+                "ref": "skills/owner/references/declared.md",
+            },
+        },
+        "mode.owner.extra": {
+            "id": "mode.owner.extra",
+            "kind": "mode",
+            "binding": {
+                "operation": "extra",
+                "ref": "skills/owner/references/extra.md",
+            },
+        },
+    }
+
+    resolved = capability_system._contract_mode_nodes(
+        nodes,
+        skill_id="skill.owner",
+        skill_node=nodes["skill.owner"],
+        contract_modes={"declared": {}},
+    )
+
+    assert set(resolved) == {"declared", "extra"}
+
+
 def test_owner_graph_hash_includes_skill_package_mode_bits(tmp_path: Path) -> None:
     package_root = tmp_path / "skills" / "example"
     package_root.mkdir(parents=True)
