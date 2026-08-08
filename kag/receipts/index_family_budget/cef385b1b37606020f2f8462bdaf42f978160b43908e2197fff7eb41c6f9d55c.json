@@ -1,0 +1,17 @@
+{
+  "allowed_bytes": 1935366,
+  "allowed_tracked_bytes": 10091593,
+  "approved_by": "repository-owner",
+  "base_ref": "5929ad000ff06750ced1c806766138dc11e54e5a",
+  "changed_generated_bytes": 1935366,
+  "changed_generated_files": 58,
+  "decision_ref": "aoa-kag:docs/decisions/AOA-KAG-D-0017-portable-content-addressed-repository-family.md",
+  "default_limit_bytes": 1048576,
+  "head_family_digest": "cef385b1b37606020f2f8462bdaf42f978160b43908e2197fff7eb41c6f9d55c",
+  "reason": "Regenerate the portable family after preserving undeclared package modes for owner-contract parity validation; tracked size remains within the standing cap.",
+  "repo": "aoa-skills",
+  "schema_version": "aoa-repo-local-kag-budget-receipt-v1",
+  "scope": "generated_delta_and_tracked_size",
+  "tracked_bytes": 10091593,
+  "tracked_bytes_max": 9437184
+}
