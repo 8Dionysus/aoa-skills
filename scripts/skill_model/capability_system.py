@@ -376,6 +376,49 @@ def _required_abi_type(node: Mapping[str, Any], direction: str) -> str | None:
     return None
 
 
+def _contract_mode_nodes(
+    nodes: Mapping[str, Mapping[str, Any]],
+    *,
+    skill_id: str,
+    skill_node: Mapping[str, Any],
+    contract_modes: Mapping[str, Any],
+) -> dict[str, Mapping[str, Any]]:
+    """Resolve legacy sibling modes plus categorized descendants of one skill.
+
+    Repository capability homes may insert navigation-only categories below a
+    callable skill. Descendant modes are attached only when their operation is
+    named by that skill's owner contract, so modes owned by a nested callable
+    skill are not absorbed by an ancestor contract.
+    """
+
+    contract_operations = {str(operation) for operation in contract_modes}
+    skill_parent = skill_node.get("primary_parent")
+    resolved: dict[str, Mapping[str, Any]] = {}
+    for node in nodes.values():
+        if node.get("kind") != "mode":
+            continue
+        operation = node.get("binding", {}).get("operation")
+        if not isinstance(operation, str):
+            continue
+        parent = node.get("primary_parent")
+        if parent == skill_parent:
+            resolved[operation] = node
+            continue
+        if operation not in contract_operations:
+            continue
+        seen: set[str] = set()
+        while isinstance(parent, str) and parent and parent not in seen:
+            if parent == skill_id:
+                resolved[operation] = node
+                break
+            seen.add(parent)
+            parent_node = nodes.get(parent)
+            if not isinstance(parent_node, Mapping):
+                break
+            parent = parent_node.get("primary_parent")
+    return resolved
+
+
 def _check_local_skill_contracts(
     repo_root: Path, nodes: Mapping[str, Mapping[str, Any]]
 ) -> list[str]:
@@ -412,21 +455,21 @@ def _check_local_skill_contracts(
         contract_modes = contract.get("modes")
         if not isinstance(contract_modes, Mapping):
             continue
-        parent = skill_node.get("primary_parent")
-        sibling_modes = {
-            str(node.get("binding", {}).get("operation")): node
-            for node in nodes.values()
-            if node.get("kind") == "mode" and node.get("primary_parent") == parent
-        }
-        missing_modes = sorted(set(map(str, contract_modes)) - set(sibling_modes))
-        extra_modes = sorted(set(sibling_modes) - set(map(str, contract_modes)))
+        resolved_modes = _contract_mode_nodes(
+            nodes,
+            skill_id=skill_id,
+            skill_node=skill_node,
+            contract_modes=contract_modes,
+        )
+        missing_modes = sorted(set(map(str, contract_modes)) - set(resolved_modes))
+        extra_modes = sorted(set(resolved_modes) - set(map(str, contract_modes)))
         if missing_modes:
             issues.append(f"{skill_id}: contract modes lack graph nodes: {', '.join(missing_modes)}")
         if extra_modes:
             issues.append(f"{skill_id}: graph modes lack owner contract entries: {', '.join(extra_modes)}")
         for raw_operation, raw_mode_contract in contract_modes.items():
             operation = str(raw_operation)
-            mode_node = sibling_modes.get(operation)
+            mode_node = resolved_modes.get(operation)
             if mode_node is None or not isinstance(raw_mode_contract, Mapping):
                 continue
             reference = raw_mode_contract.get("reference")
@@ -952,6 +995,8 @@ def build_graph_payload(
             node["source_path"] = rel
             nodes.append(node)
 
+    node_index = {str(node["id"]): node for node in nodes}
+
     local_contract_text: dict[str, str] = {}
     contract_by_skill_id: dict[str, tuple[Path, dict[str, Any]]] = {}
     for node in nodes:
@@ -968,14 +1013,15 @@ def build_graph_payload(
         node["owner_contract_ref"] = {"path": contract_ref, "sha256": contract_digest}
         local_contract_text[skill_id] = raw.decode("utf-8")
 
-        parent = node.get("primary_parent")
         contract_modes = contract.get("modes")
         if not isinstance(contract_modes, Mapping):
             continue
-        for mode_node in nodes:
-            if mode_node.get("kind") != "mode" or mode_node.get("primary_parent") != parent:
-                continue
-            operation = mode_node.get("binding", {}).get("operation")
+        for operation, mode_node in _contract_mode_nodes(
+            node_index,
+            skill_id=skill_id,
+            skill_node=node,
+            contract_modes=contract_modes,
+        ).items():
             mode_contract = contract_modes.get(operation)
             if not isinstance(mode_contract, Mapping):
                 continue
