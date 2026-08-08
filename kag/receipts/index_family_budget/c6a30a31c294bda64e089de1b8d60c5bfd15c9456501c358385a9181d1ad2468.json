@@ -1,0 +1,17 @@
+{
+  "allowed_bytes": 1877803,
+  "allowed_tracked_bytes": 10086430,
+  "approved_by": "repository-owner",
+  "base_ref": "5929ad000ff06750ced1c806766138dc11e54e5a",
+  "changed_generated_bytes": 1877803,
+  "changed_generated_files": 56,
+  "decision_ref": "aoa-kag:docs/decisions/AOA-KAG-D-0017-portable-content-addressed-repository-family.md",
+  "default_limit_bytes": 1048576,
+  "head_family_digest": "c6a30a31c294bda64e089de1b8d60c5bfd15c9456501c358385a9181d1ad2468",
+  "reason": "Regenerate the portable family on current main for the admitted aoa-agents profile and categorized owner-skill mode grammar; tracked size remains within the standing cap.",
+  "repo": "aoa-skills",
+  "schema_version": "aoa-repo-local-kag-budget-receipt-v1",
+  "scope": "generated_delta_and_tracked_size",
+  "tracked_bytes": 10086430,
+  "tracked_bytes_max": 9437184
+}

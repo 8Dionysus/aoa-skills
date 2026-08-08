@@ -376,6 +376,69 @@ def _required_abi_type(node: Mapping[str, Any], direction: str) -> str | None:
     return None
 
 
+def _contract_mode_nodes(
+    nodes: Mapping[str, Mapping[str, Any]],
+    *,
+    skill_id: str,
+    skill_node: Mapping[str, Any],
+    contract_modes: Mapping[str, Any],
+) -> dict[str, Mapping[str, Any]]:
+    """Resolve contract modes from the exact owning skill package.
+
+    Navigation categories do not determine mode ownership. A mode belongs to
+    the most-specific skill package containing its binding ref, which prevents
+    an ancestor contract from absorbing a nested skill's same-named operation.
+    """
+
+    skill_ref = skill_node.get("binding", {}).get("ref")
+    if not isinstance(skill_ref, str):
+        return {}
+    skill_path = Path(skill_ref.split("#", 1)[0])
+    if skill_path.name != "SKILL.md":
+        return {}
+    skill_package = skill_path.parent
+    package_owners: list[tuple[Path, str]] = []
+    for candidate_id, candidate in nodes.items():
+        if candidate.get("kind") != "skill":
+            continue
+        candidate_ref = candidate.get("binding", {}).get("ref")
+        if not isinstance(candidate_ref, str):
+            continue
+        candidate_path = Path(candidate_ref.split("#", 1)[0])
+        if candidate_path.name == "SKILL.md":
+            package_owners.append((candidate_path.parent, candidate_id))
+
+    # Return every mode owned by the package. Contract parity validation must
+    # see undeclared operations; graph enrichment filters them afterwards.
+    _ = contract_modes
+    resolved: dict[str, Mapping[str, Any]] = {}
+    for node in nodes.values():
+        if node.get("kind") != "mode":
+            continue
+        binding = node.get("binding", {})
+        operation = binding.get("operation")
+        if not isinstance(operation, str):
+            continue
+        mode_ref = binding.get("ref")
+        if not isinstance(mode_ref, str):
+            continue
+        mode_path = Path(mode_ref.split("#", 1)[0])
+        owning_packages = [
+            (package, owner_id)
+            for package, owner_id in package_owners
+            if mode_path.is_relative_to(package)
+        ]
+        if not owning_packages:
+            continue
+        _, owner_id = max(
+            owning_packages,
+            key=lambda item: len(item[0].parts),
+        )
+        if owner_id == skill_id and mode_path.is_relative_to(skill_package):
+            resolved[operation] = node
+    return resolved
+
+
 def _check_local_skill_contracts(
     repo_root: Path, nodes: Mapping[str, Mapping[str, Any]]
 ) -> list[str]:
@@ -412,21 +475,21 @@ def _check_local_skill_contracts(
         contract_modes = contract.get("modes")
         if not isinstance(contract_modes, Mapping):
             continue
-        parent = skill_node.get("primary_parent")
-        sibling_modes = {
-            str(node.get("binding", {}).get("operation")): node
-            for node in nodes.values()
-            if node.get("kind") == "mode" and node.get("primary_parent") == parent
-        }
-        missing_modes = sorted(set(map(str, contract_modes)) - set(sibling_modes))
-        extra_modes = sorted(set(sibling_modes) - set(map(str, contract_modes)))
+        resolved_modes = _contract_mode_nodes(
+            nodes,
+            skill_id=skill_id,
+            skill_node=skill_node,
+            contract_modes=contract_modes,
+        )
+        missing_modes = sorted(set(map(str, contract_modes)) - set(resolved_modes))
+        extra_modes = sorted(set(resolved_modes) - set(map(str, contract_modes)))
         if missing_modes:
             issues.append(f"{skill_id}: contract modes lack graph nodes: {', '.join(missing_modes)}")
         if extra_modes:
             issues.append(f"{skill_id}: graph modes lack owner contract entries: {', '.join(extra_modes)}")
         for raw_operation, raw_mode_contract in contract_modes.items():
             operation = str(raw_operation)
-            mode_node = sibling_modes.get(operation)
+            mode_node = resolved_modes.get(operation)
             if mode_node is None or not isinstance(raw_mode_contract, Mapping):
                 continue
             reference = raw_mode_contract.get("reference")
@@ -952,6 +1015,8 @@ def build_graph_payload(
             node["source_path"] = rel
             nodes.append(node)
 
+    node_index = {str(node["id"]): node for node in nodes}
+
     local_contract_text: dict[str, str] = {}
     contract_by_skill_id: dict[str, tuple[Path, dict[str, Any]]] = {}
     for node in nodes:
@@ -968,14 +1033,15 @@ def build_graph_payload(
         node["owner_contract_ref"] = {"path": contract_ref, "sha256": contract_digest}
         local_contract_text[skill_id] = raw.decode("utf-8")
 
-        parent = node.get("primary_parent")
         contract_modes = contract.get("modes")
         if not isinstance(contract_modes, Mapping):
             continue
-        for mode_node in nodes:
-            if mode_node.get("kind") != "mode" or mode_node.get("primary_parent") != parent:
-                continue
-            operation = mode_node.get("binding", {}).get("operation")
+        for operation, mode_node in _contract_mode_nodes(
+            node_index,
+            skill_id=skill_id,
+            skill_node=node,
+            contract_modes=contract_modes,
+        ).items():
             mode_contract = contract_modes.get(operation)
             if not isinstance(mode_contract, Mapping):
                 continue
