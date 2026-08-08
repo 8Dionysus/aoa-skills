@@ -566,22 +566,27 @@ def test_owner_contract_modes_may_live_below_navigation_categories() -> None:
             "id": "skill.owner",
             "kind": "skill",
             "primary_parent": "owner-tree",
+            "binding": {"ref": "skills/owner/SKILL.md"},
         },
         "owner.category": {
             "id": "owner.category",
             "kind": "capability",
             "primary_parent": "skill.owner",
         },
-        "mode.owner.detect": {
-            "id": "mode.owner.detect",
+        "mode.owner.execute": {
+            "id": "mode.owner.execute",
             "kind": "mode",
             "primary_parent": "owner.category",
-            "binding": {"operation": "detect"},
+            "binding": {
+                "operation": "execute",
+                "ref": "skills/owner/references/execute.md",
+            },
         },
         "skill.nested": {
             "id": "skill.nested",
             "kind": "skill",
             "primary_parent": "nested.category",
+            "binding": {"ref": "skills/nested/SKILL.md"},
         },
         "nested.category": {
             "id": "nested.category",
@@ -592,7 +597,10 @@ def test_owner_contract_modes_may_live_below_navigation_categories() -> None:
             "id": "mode.nested.execute",
             "kind": "mode",
             "primary_parent": "nested.category",
-            "binding": {"operation": "execute"},
+            "binding": {
+                "operation": "execute",
+                "ref": "skills/nested/references/execute.md",
+            },
         },
     }
 
@@ -600,7 +608,7 @@ def test_owner_contract_modes_may_live_below_navigation_categories() -> None:
         nodes,
         skill_id="skill.owner",
         skill_node=nodes["skill.owner"],
-        contract_modes={"detect": {}},
+        contract_modes={"execute": {}},
     )
     nested_modes = capability_system._contract_mode_nodes(
         nodes,
@@ -609,8 +617,10 @@ def test_owner_contract_modes_may_live_below_navigation_categories() -> None:
         contract_modes={"execute": {}},
     )
 
-    assert set(owner_modes) == {"detect"}
+    assert set(owner_modes) == {"execute"}
     assert set(nested_modes) == {"execute"}
+    assert owner_modes["execute"]["id"] == "mode.owner.execute"
+    assert nested_modes["execute"]["id"] == "mode.nested.execute"
 
 
 def test_owner_graph_hash_includes_skill_package_mode_bits(tmp_path: Path) -> None:

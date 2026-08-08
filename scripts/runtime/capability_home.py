@@ -86,15 +86,18 @@ def main(argv: Sequence[str] | None = None) -> int:
             issues = capability_home_port.validate_task_dag(port, graph, payload)
             if issues:
                 raise capability_home_port.CapabilityHomePortError("\n".join(issues))
+        rendered = (
+            json.dumps(payload, ensure_ascii=False, sort_keys=True, indent=2)
+            + "\n"
+        )
+        if args.command == "plan" and args.out:
+            args.out.parent.mkdir(parents=True, exist_ok=True)
+            args.out.write_text(rendered, encoding="utf-8", newline="\n")
+        else:
+            print(rendered, end="")
     except (OSError, ValueError) as exc:
         print(f"capability home runtime failed: {exc}")
         return 1
-    rendered = json.dumps(payload, ensure_ascii=False, sort_keys=True, indent=2) + "\n"
-    if args.command == "plan" and args.out:
-        args.out.parent.mkdir(parents=True, exist_ok=True)
-        args.out.write_text(rendered, encoding="utf-8", newline="\n")
-    else:
-        print(rendered, end="")
     if args.command == "plan":
         return 0 if payload["status"] == "ready" else 2
     return 0

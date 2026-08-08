@@ -383,39 +383,59 @@ def _contract_mode_nodes(
     skill_node: Mapping[str, Any],
     contract_modes: Mapping[str, Any],
 ) -> dict[str, Mapping[str, Any]]:
-    """Resolve legacy sibling modes plus categorized descendants of one skill.
+    """Resolve contract modes from the exact owning skill package.
 
-    Repository capability homes may insert navigation-only categories below a
-    callable skill. Descendant modes are attached only when their operation is
-    named by that skill's owner contract, so modes owned by a nested callable
-    skill are not absorbed by an ancestor contract.
+    Navigation categories do not determine mode ownership. A mode belongs to
+    the most-specific skill package containing its binding ref, which prevents
+    an ancestor contract from absorbing a nested skill's same-named operation.
     """
 
+    skill_ref = skill_node.get("binding", {}).get("ref")
+    if not isinstance(skill_ref, str):
+        return {}
+    skill_path = Path(skill_ref.split("#", 1)[0])
+    if skill_path.name != "SKILL.md":
+        return {}
+    skill_package = skill_path.parent
+    package_owners: list[tuple[Path, str]] = []
+    for candidate_id, candidate in nodes.items():
+        if candidate.get("kind") != "skill":
+            continue
+        candidate_ref = candidate.get("binding", {}).get("ref")
+        if not isinstance(candidate_ref, str):
+            continue
+        candidate_path = Path(candidate_ref.split("#", 1)[0])
+        if candidate_path.name == "SKILL.md":
+            package_owners.append((candidate_path.parent, candidate_id))
+
     contract_operations = {str(operation) for operation in contract_modes}
-    skill_parent = skill_node.get("primary_parent")
     resolved: dict[str, Mapping[str, Any]] = {}
     for node in nodes.values():
         if node.get("kind") != "mode":
             continue
-        operation = node.get("binding", {}).get("operation")
+        binding = node.get("binding", {})
+        operation = binding.get("operation")
         if not isinstance(operation, str):
-            continue
-        parent = node.get("primary_parent")
-        if parent == skill_parent:
-            resolved[operation] = node
             continue
         if operation not in contract_operations:
             continue
-        seen: set[str] = set()
-        while isinstance(parent, str) and parent and parent not in seen:
-            if parent == skill_id:
-                resolved[operation] = node
-                break
-            seen.add(parent)
-            parent_node = nodes.get(parent)
-            if not isinstance(parent_node, Mapping):
-                break
-            parent = parent_node.get("primary_parent")
+        mode_ref = binding.get("ref")
+        if not isinstance(mode_ref, str):
+            continue
+        mode_path = Path(mode_ref.split("#", 1)[0])
+        owning_packages = [
+            (package, owner_id)
+            for package, owner_id in package_owners
+            if mode_path.is_relative_to(package)
+        ]
+        if not owning_packages:
+            continue
+        _, owner_id = max(
+            owning_packages,
+            key=lambda item: len(item[0].parts),
+        )
+        if owner_id == skill_id and mode_path.is_relative_to(skill_package):
+            resolved[operation] = node
     return resolved
 
 

@@ -137,3 +137,53 @@ def test_plan_writes_valid_owner_dag_to_out(
         ready, ensure_ascii=False, sort_keys=True, indent=2
     ) + "\n"
     assert capsys.readouterr().out == ""
+
+
+def test_plan_reports_unwritable_output_without_traceback(
+    monkeypatch,
+    tmp_path,
+    capsys,
+) -> None:
+    ready = {
+        "schema_version": "aoa-task-local-dag-v2",
+        "status": "ready",
+        "plan_id": "dag-0123456789abcdef",
+    }
+    monkeypatch.setattr(
+        capability_home.capability_home_port,
+        "load_port",
+        lambda *args: SimpleNamespace(graph_json=Path("derived/graph.json")),
+    )
+    monkeypatch.setattr(
+        capability_home.capability_home_port,
+        "load_owner_graph",
+        lambda port: {"source": {"content_hash": "sha256:test"}},
+    )
+    monkeypatch.setattr(
+        capability_home.capability_system,
+        "build_task_dag",
+        lambda *args, **kwargs: ready,
+    )
+    monkeypatch.setattr(
+        capability_home.capability_home_port,
+        "validate_task_dag",
+        lambda *args: [],
+    )
+    blocked_parent = tmp_path / "not-a-directory"
+    blocked_parent.write_text("occupied\n", encoding="utf-8")
+
+    exit_code = capability_home.main(
+        [
+            "--owner-root",
+            "/owner",
+            "plan",
+            "compose a ready plan",
+            "--select",
+            "mode.eval.apply",
+            "--out",
+            str(blocked_parent / "dag.json"),
+        ]
+    )
+
+    assert exit_code == 1
+    assert "capability home runtime failed:" in capsys.readouterr().out
