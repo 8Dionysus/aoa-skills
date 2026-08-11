@@ -966,7 +966,7 @@ nodes:
       source_refs:
         - repo: aoa-agents
           path: skills/aoa-session-progression-lift/SKILL.md
-          ref: 8e5a989428a11108b8fc427cb351c313df2a14c2
+          ref: 1458393baa90178aae63f1841e3bd58139c13232
           role: owner-skill-contract
           authority: external-authority
       optional_refs: []
@@ -974,7 +974,7 @@ nodes:
 
   - id: skill.aoa-summon
     title: aoa-summon owner bundle
-    description: Delegate one bounded child-agent route from an anchored parent task, including host launch, named outputs, return validation, and parent closeout. Use only when the user explicitly asks to delegate or summon a narrower helper. An incomplete summon request must block, not receive an allowed decision. Do not use without a parent anchor, with unresolved branching or unnamed outputs, for unsplit deep work, or to bypass approval, owner, or proof boundaries.
+    description: Execute one bounded actor route from an anchored goal, including compatibility child lanes or an independently bound external CLI incarnation, named outputs, return validation, and responsibility closeout. Use when the user explicitly delegates or when aoa-agents-skills selects this leaf from a complete task-local actor DAG. An incomplete request must block. Do not use for generic implicit spawning, unresolved branching, unnamed outputs, unsplit deep work, or to bypass obligation, mandate, incarnation, approval, owner, or proof boundaries.
     kind: skill
     contract_level: navigation
     primary_parent: sessions
@@ -984,7 +984,7 @@ nodes:
       authority: external-authority
     lifecycle:
       state: candidate
-      version: 0.2.17
+      version: 0.4.0
       visibility: advertised
       evidence_state: evaluated
       health: challenger
@@ -1001,11 +1001,11 @@ nodes:
       source_refs:
         - repo: aoa-agents
           path: skills/aoa-summon/SKILL.md
-          ref: 8e5a989428a11108b8fc427cb351c313df2a14c2
+          ref: 1458393baa90178aae63f1841e3bd58139c13232
           role: owner-skill-contract
           authority: external-authority
       optional_refs: []
-    keywords: [summon, delegate, child-agent, passport, return-validation, призвать, делегировать, дочерний-агент]
+    keywords: [summon, actor, obligation, delegate, external-cli, incarnation, return-validation, призвать, актор, обязанность, делегировать]
 relations:
   - kind: implemented-by
     source: sessions.harvest
@@ -1027,14 +1027,10 @@ relations:
     source: mode.checkpoint-closeout.execute
     target: skill.aoa-session-progression-lift
     condition: Reviewed evidence supports a progression node.
-  - kind: requires
-    source: skill.aoa-summon
-    target: workflow.operations.delegation
-    condition: Execute mode requires a callable host child-agent binding and a real returned runtime handle.
   - kind: guarded-by
     source: skill.aoa-summon
     target: guard.operations.approval
-    condition: The child route requests effects that require explicit approval.
+    condition: The actor route requests effects that require explicit approval.
   - kind: composes-with
     source: skill.aoa-session-progression-lift
     target: skill.aoa-summon
@@ -1042,11 +1038,11 @@ relations:
   - kind: hands-off-to
     source: skill.aoa-summon
     target: skill.aoa-checkpoint-closeout-bridge
-    condition: A returned child changes the parent checkpoint or closeout posture.
+    condition: A returned actor changes the parent checkpoint or closeout posture.
   - kind: hands-off-to
     source: skill.aoa-summon
     target: skill.aoa-memo-writeback
-    condition: A reviewed child return contains one bounded memory-worthy lesson.
+    condition: A reviewed actor return contains one bounded memory-worthy lesson.
   - kind: hands-off-to
     source: skill.aoa-memo-writeback
     target: skill.aoa-memo

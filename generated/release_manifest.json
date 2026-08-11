@@ -322,8 +322,8 @@
     },
     {
       "path": "capabilities/families/session-growth.yaml",
-      "sha256": "41e1f0724cbe245537bc0217fc8d2068e2927360965ab47cd3ca3450dd440482",
-      "bytes": 47253
+      "sha256": "84cf4cef34fef044331e8109d0509f00d3ac8bee920145f7a7ee36510aeaef96",
+      "bytes": 47171
     },
     {
       "path": "capabilities/families/stewardship.yaml",
@@ -1086,13 +1086,13 @@
     },
     {
       "path": "generated/capability_graph.json",
-      "sha256": "b73c0d3cd6c584a23117489fa9f76cc6cd0f3b236fb3783032e9e3af13de670d",
-      "bytes": 2297833
+      "sha256": "0a8615fe4c9525b79a28b8acdd2d80fbe8ba3075f72505054157a535dbda710e",
+      "bytes": 2298427
     },
     {
       "path": "generated/capability_graph.md",
-      "sha256": "702100e3d9b1410309c7f150b8def51aeb5ba1fce845e397cdc94ceb8911f7c3",
-      "bytes": 26653
+      "sha256": "13dc6b919538f72303022942dde6978116af5fcb65dbe91ea01b6393872ba10c",
+      "bytes": 26488
     }
   ],
   "skill_bundle_revisions": [
