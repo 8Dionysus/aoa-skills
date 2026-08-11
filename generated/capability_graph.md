@@ -2,7 +2,7 @@
 
 Derived from `capabilities/families/*.yaml`. This file is a read model, not capability authority.
 
-Source content hash: `6f71f8b4128613b85bc98e8cf8e9eb3659f8a49f325e56a73bc707cdc3600f69`
+Source content hash: `a8a39ca1632459f6ea8734e1836c878b1c882dd4d796b2f0219f953c534029f9`
 
 ## Semantic tree
 
@@ -152,7 +152,7 @@ Source content hash: `6f71f8b4128613b85bc98e8cf8e9eb3659f8a49f325e56a73bc707cdc3
 | extracts-to | `tool.titan.event-replay` | `tool.titan.memory-ingest` | - |
 | guarded-by | `guard.titan.mutation` | `guard.titan.thread-turn-binding` | - |
 | guarded-by | `guard.titan.runtime-transition` | `guard.titan.thread-turn-binding` | - |
-| guarded-by | `skill.aoa-summon` | `guard.operations.approval` | The child route requests effects that require explicit approval. |
+| guarded-by | `skill.aoa-summon` | `guard.operations.approval` | The actor route requests effects that require explicit approval. |
 | guarded-by | `workflow.operations.git-closeout` | `guard.operations.approval` | The requested Git boundary creates an external write or irreversible publication effect. |
 | guarded-by | `workflow.operations.local-commit` | `guard.operations.approval` | A local commit requires explicit current authority for the exact staged boundary. |
 | guarded-by | `workflow.operations.local-stack-bringup` | `guard.operations.approval` | - |
@@ -174,8 +174,8 @@ Source content hash: `6f71f8b4128613b85bc98e8cf8e9eb3659f8a49f325e56a73bc707cdc3
 | hands-off-to | `skill.aoa-memo` | `skill.aoa-kag` | The responsible owner or exact source remains unknown and bounded cross-repository navigation is required. |
 | hands-off-to | `skill.aoa-memo-writeback` | `skill.aoa-memo` | A concrete candidate, export, quarantine packet, memory object, lifecycle target, or read-model target now exists and needs owner recall, review, or evolution. |
 | hands-off-to | `skill.aoa-stats` | `skill.aoa-evals` | The unresolved question is proof or verdict interpretation rather than a bounded measurement result. |
-| hands-off-to | `skill.aoa-summon` | `skill.aoa-checkpoint-closeout-bridge` | A returned child changes the parent checkpoint or closeout posture. |
-| hands-off-to | `skill.aoa-summon` | `skill.aoa-memo-writeback` | A reviewed child return contains one bounded memory-worthy lesson. |
+| hands-off-to | `skill.aoa-summon` | `skill.aoa-checkpoint-closeout-bridge` | A returned actor changes the parent checkpoint or closeout posture. |
+| hands-off-to | `skill.aoa-summon` | `skill.aoa-memo-writeback` | A reviewed actor return contains one bounded memory-worthy lesson. |
 | hands-off-to | `skill.titan-memory-loom` | `tool.titan.memory-retention` | - |
 | hands-off-to | `tool.titan.memory-recall` | `tool.titan.memory-retention` | - |
 | hands-off-to | `workflow.operations.local-commit` | `workflow.operations.git-closeout` | A separately authorized remote effect is requested and an evaluated host binding is available. |
@@ -318,7 +318,6 @@ Source content hash: `6f71f8b4128613b85bc98e8cf8e9eb3659f8a49f325e56a73bc707cdc3
 | requires | `mode.checkpoint-closeout.execute` | `skill.aoa-session-harvest` | - |
 | requires | `mode.checkpoint-closeout.execute` | `skill.aoa-session-progression-lift` | Reviewed evidence supports a progression node. |
 | requires | `skill.abyss-self-diagnostic-spine` | `tool.abyss.aoa-diagnose` | - |
-| requires | `skill.aoa-summon` | `workflow.operations.delegation` | Execute mode requires a callable host child-agent binding and a real returned runtime handle. |
 | requires | `skill.titan-appserver-bridge` | `tool.titan.appserver-bridge` | - |
 | requires | `skill.titan-appserver-bridge` | `tool.titan.event-replay` | - |
 | requires | `skill.titan-console` | `tool.titan.approval-queue` | - |

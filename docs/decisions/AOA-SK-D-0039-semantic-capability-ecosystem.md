@@ -153,6 +153,27 @@ final answer, or green structural check alone.
 
 ## Review Log
 
+### 2026-08-10 - Return actor lifecycle truth to the federated aoa-agents home
+
+- The shared navigation pointer for `aoa-summon` now follows the landed
+  `aoa-agents` owner package at version `0.4.0` and commit
+  `1458393baa90178aae63f1841e3bd58139c13232`. It describes summon as one
+  execution leaf for either a compatibility child lane or an independently
+  bound external CLI incarnation, not as the source of actor meaning.
+- The stale unconditional dependency on the host's built-in child-delegation
+  workflow is removed. Exact obligation, mandate, incarnation, transfer,
+  runtime, and return relations remain in the federated `aoa-agents`
+  capability home, where they can distinguish the external CLI lane from the
+  compatibility child lane.
+- `aoa-agents-skills` is exposed by the OS user profile from its canonical
+  owner package and owner capability router. It is intentionally not copied
+  into the shared family: doing so would create a second authored actor
+  lifecycle graph in `aoa-skills`.
+- This repairs source and routing drift only. It does not prove that the OS
+  profile is currently installed, that an external runtime binding is
+  available, or that a fresh Codex session naturally forms and executes an
+  actor route.
+
 ### 2026-07-25 - Preserve memo-writeback purpose under host truncation
 
 - Observed defect: the active Codex host shortened the initial skill catalog
