@@ -67,6 +67,12 @@ Return an `evaluation-observation` with exact command/environment/source,
 artifacts, actual effects, drift, skipped checks, verdict, proof limit, and next
 route.
 
+Only when the request explicitly includes central proof interpretation, also
+return a `central-proof-review-request` that preserves the observation ref,
+source ref, bounded claim class, acceptance target, environment, admitted
+evidence posture, and proof limit for `aoa-evals`. The envelope is a typed
+handoff, not proof promotion.
+
 For a blocked preflight, return the preflight state, exact missing or invalid
 field paths, actual effect `none`, proof limit, and the stop line instead of an
 `evaluation-observation`.

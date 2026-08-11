@@ -1,0 +1,17 @@
+{
+  "allowed_bytes": 6249138,
+  "allowed_tracked_bytes": 10116932,
+  "approved_by": "repository-owner",
+  "base_ref": "d9949a4a4e525bceb04210fc4619d5cb57cf7cb7",
+  "changed_generated_bytes": 6249138,
+  "changed_generated_files": 226,
+  "decision_ref": "aoa-kag:docs/decisions/AOA-KAG-D-0017-portable-content-addressed-repository-family.md",
+  "default_limit_bytes": 1048576,
+  "head_family_digest": "b551605d965baf1f4ad43345405119df79363f595cbd4caa4e0c0f20d3ab360d",
+  "reason": "Bind the shared evaluation family to the landed aoa-evals owner capability home and preserve typed cross-owner handoffs in the portable capability and skill projections.",
+  "repo": "aoa-skills",
+  "schema_version": "aoa-repo-local-kag-budget-receipt-v1",
+  "scope": "generated_delta_and_tracked_size",
+  "tracked_bytes": 10116932,
+  "tracked_bytes_max": 9437184
+}

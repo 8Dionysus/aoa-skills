@@ -2,7 +2,7 @@
 
 Derived from `capabilities/families/*.yaml`. This file is a read model, not capability authority.
 
-Source content hash: `a8a39ca1632459f6ea8734e1836c878b1c882dd4d796b2f0219f953c534029f9`
+Source content hash: `3677fd36f010f3b7f82781208e57f2bc1a5a801fe3ef1e5ab86fd3f805e7af3e`
 
 ## Semantic tree
 
@@ -159,9 +159,11 @@ Source content hash: `a8a39ca1632459f6ea8734e1836c878b1c882dd4d796b2f0219f953c53
 | guarded-by | `workflow.operations.safe-infra-change` | `guard.operations.approval` | - |
 | guarded-by | `workflow.titan.closeout-audit` | `guard.titan.closeout-readiness` | - |
 | hands-off-to | `mode.checkpoint-closeout.execute` | `skill.aoa-memo-writeback` | A bounded reusable closeout lesson survives after the report. |
+| hands-off-to | `mode.eval.apply` | `skill.aoa-evals` | The request explicitly asks for central proof interpretation and apply returns a central-proof-review-request alongside its evaluation-observation. |
 | hands-off-to | `mode.eval.select` | `mode.eval.apply` | Selection found an exact fit with a complete execution contract. |
 | hands-off-to | `mode.eval.select` | `mode.eval.design` | Selection recorded no fit and a stable invariant, owner path, and acceptance target exist. |
 | hands-off-to | `mode.eval.select` | `mode.eval.local-need` | Selection recorded no fit and an admitted owner-local intake port exists. |
+| hands-off-to | `mode.eval.select` | `skill.aoa-evals` | Selection identifies a central source bundle or owner-routed proof object whose proof meaning must be selected or reviewed by aoa-evals. |
 | hands-off-to | `mode.session-harvest.classify` | `mode.session-harvest.automation-opportunity` | The unit is a repeated manual route and automation readiness is the unresolved question. |
 | hands-off-to | `mode.session-harvest.classify` | `mode.session-harvest.promote` | Exactly one isolated repeated quest-shaped unit remains and only its promotion verdict is unresolved. |
 | hands-off-to | `mode.session-harvest.extract` | `mode.session-harvest.classify` | One extracted unit has sufficient evidence for destination classification. |
