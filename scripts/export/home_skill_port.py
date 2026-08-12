@@ -519,8 +519,9 @@ def source_plan(port: PortDefinition) -> dict[str, Any]:
         "duplicate_repo_projections": duplicate_repo_projections,
         "clean": not duplicate_repo_projections,
         "claim_limit": (
-            "owner source identity, package shape, and same-name repo-projection "
-            "absence only; no live user install, routing, or outcome claim"
+            "owner source identity, package shape, profile eligibility, and "
+            "same-name repo-projection absence only; no current profile membership, "
+            "live user install, routing, or outcome claim"
         ),
     }
 
@@ -617,7 +618,7 @@ def format_plan(plan: dict[str, Any]) -> str:
                 f"- {bundle['name']}: source={bundle['source']} "
                 f"version={bundle['version']} files={bundle['file_count']} "
                 f"digest={bundle['source_digest']} "
-                f"profile={bundle['exposure_profile']}"
+                f"eligible-profile={bundle['exposure_profile']}"
             )
         if plan["duplicate_repo_projections"]:
             lines.append(

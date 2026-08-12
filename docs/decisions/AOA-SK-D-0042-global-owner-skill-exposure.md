@@ -137,6 +137,9 @@ As of 2026-08-12:
 - The accepted wording incorrectly made every advertised v2 owner bundle look
   permanently selected into `os-user-default`; the actual profile is a curated
   lifecycle and coexistence surface owned by `aoa-skills`.
+- The active owner-port contract and schema now state that the v2 exposure
+  declaration is eligibility for the named route; current membership comes
+  only from `config/os_skill_profiles.json`.
 - The three Titan bundles remain valid in their owner home and semantic graph,
   but their global visibility is deferred and their managed copies are absent
   from the default profile.

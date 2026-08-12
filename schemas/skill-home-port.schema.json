@@ -154,6 +154,7 @@
           }
         },
         "exposure": {
+          "description": "Declares bundles eligible for the named OS profile route; current membership remains selected by config/os_skill_profiles.json.",
           "type": "object",
           "additionalProperties": false,
           "required": [
@@ -171,12 +172,15 @@
               "const": "user"
             },
             "profile": {
+              "description": "Target profile for which these admitted bundles are eligible, not proof of current membership.",
               "const": "os-user-default"
             },
             "mode": {
+              "description": "Legacy route label retained for v2 compatibility; it does not assert current profile selection.",
               "const": "profile-selected"
             },
             "skills": {
+              "description": "Admitted owner bundles eligible for the declared profile route.",
               "type": "array",
               "minItems": 1,
               "uniqueItems": true,
