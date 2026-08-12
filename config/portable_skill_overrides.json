@@ -13,7 +13,7 @@
       "default_prompt": "Use $aoa-engineering-shape to choose one boundary-shaping mode and return the smallest owner-aware responsibility boundary."
     },
     "aoa-eval": {
-      "description": "Select or apply an owner-local or cross-repository eval, route a confirmed no-fit to intake/design, or classify supplied session hits as eval candidates. Use aoa-evals for central proof bundles, named results or verdicts, reports, and lifecycle. Do not use for ordinary tests, undefined invariants, or generic session harvesting.",
+      "description": "Select or apply an owner-local or cross-repository eval, route a confirmed no-fit to intake/design, or classify supplied session hits as eval candidates. Do not use for central proof bundles, named results or verdicts, source-linked reports, proof lifecycle, ordinary tests, undefined invariants, or generic session harvesting.",
       "short_description": "Route one evaluation need without losing its contract",
       "default_prompt": "Use $aoa-eval to choose exactly one select, apply, local-need, design, or session-mining mode, load only its reference, and state the proof limit."
     },

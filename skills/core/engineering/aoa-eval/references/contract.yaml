@@ -2,7 +2,7 @@ schema_version: aoa-skill-contract-v1
 identity:
   name: aoa-eval
   owner: aoa-skills
-  version: 0.2.8
+  version: 0.2.9
   health: challenger
 purpose: Preserve five distinct evaluation capabilities behind one discoverable front door.
 freedom_level: bounded-judgment

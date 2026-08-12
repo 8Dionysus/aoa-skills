@@ -2,20 +2,22 @@
 
 Derived from `capabilities/families/*.yaml`. This file is a read model, not capability authority.
 
-Source content hash: `86d5e026f7de62077863b3eb670076936f17c4f04eaba3b8ca81084c4e4186f6`
+Source content hash: `ca88f62e0bad80ff5ae93e959765de20d17e0d0b4599576b48ebb50960e70053`
 
 ## Semantic tree
 
 - `aoa` (capability, deferred, challenger)
   - `engineering` (capability, deferred, challenger)
     - `engineering.evaluation` (capability, deferred, challenger)
-      - `mode.eval.apply` (mode, internal, challenger)
-      - `mode.eval.design` (mode, internal, challenger)
-      - `mode.eval.local-need` (mode, internal, challenger)
-      - `mode.eval.select` (mode, internal, challenger)
-      - `mode.eval.session-mining` (mode, internal, challenger)
-      - `skill.aoa-eval` (skill, advertised, challenger)
-      - `skill.aoa-evals` (skill, advertised, challenger)
+      - `engineering.evaluation.central-proof` (capability, internal, challenger)
+        - `skill.aoa-evals` (skill, advertised, challenger)
+      - `engineering.evaluation.use` (capability, internal, challenger)
+        - `mode.eval.apply` (mode, internal, challenger)
+        - `mode.eval.design` (mode, internal, challenger)
+        - `mode.eval.local-need` (mode, internal, challenger)
+        - `mode.eval.select` (mode, internal, challenger)
+        - `mode.eval.session-mining` (mode, internal, challenger)
+        - `skill.aoa-eval` (skill, advertised, challenger)
     - `engineering.measurement` (capability, deferred, challenger)
       - `skill.aoa-stats` (skill, advertised, challenger)
     - `engineering.shape` (capability, deferred, challenger)
@@ -181,8 +183,8 @@ Source content hash: `86d5e026f7de62077863b3eb670076936f17c4f04eaba3b8ca81084c4e
 | hands-off-to | `skill.titan-memory-loom` | `tool.titan.memory-retention` | - |
 | hands-off-to | `tool.titan.memory-recall` | `tool.titan.memory-retention` | - |
 | hands-off-to | `workflow.operations.local-commit` | `workflow.operations.git-closeout` | A separately authorized remote effect is requested and an evaluated host binding is available. |
-| implemented-by | `engineering.evaluation` | `skill.aoa-eval` | - |
-| implemented-by | `engineering.evaluation` | `skill.aoa-evals` | - |
+| implemented-by | `engineering.evaluation.central-proof` | `skill.aoa-evals` | - |
+| implemented-by | `engineering.evaluation.use` | `skill.aoa-eval` | - |
 | implemented-by | `engineering.measurement` | `skill.aoa-stats` | - |
 | implemented-by | `engineering.shape` | `skill.aoa-engineering-shape` | - |
 | implemented-by | `engineering.verification` | `skill.aoa-verification` | - |
@@ -211,6 +213,8 @@ Source content hash: `86d5e026f7de62077863b3eb670076936f17c4f04eaba3b8ca81084c4e
 | primary-parent | `adapter.atm10.repository-change` | `projects.atm10` | - |
 | primary-parent | `engineering` | `aoa` | - |
 | primary-parent | `engineering.evaluation` | `engineering` | - |
+| primary-parent | `engineering.evaluation.central-proof` | `engineering.evaluation` | - |
+| primary-parent | `engineering.evaluation.use` | `engineering.evaluation` | - |
 | primary-parent | `engineering.measurement` | `engineering` | - |
 | primary-parent | `engineering.shape` | `engineering` | - |
 | primary-parent | `engineering.verification` | `engineering` | - |
@@ -229,11 +233,11 @@ Source content hash: `86d5e026f7de62077863b3eb670076936f17c4f04eaba3b8ca81084c4e
 | primary-parent | `mode.engineering-shape.contexts` | `engineering.shape` | - |
 | primary-parent | `mode.engineering-shape.core` | `engineering.shape` | - |
 | primary-parent | `mode.engineering-shape.port-adapter` | `engineering.shape` | - |
-| primary-parent | `mode.eval.apply` | `engineering.evaluation` | - |
-| primary-parent | `mode.eval.design` | `engineering.evaluation` | - |
-| primary-parent | `mode.eval.local-need` | `engineering.evaluation` | - |
-| primary-parent | `mode.eval.select` | `engineering.evaluation` | - |
-| primary-parent | `mode.eval.session-mining` | `engineering.evaluation` | - |
+| primary-parent | `mode.eval.apply` | `engineering.evaluation.use` | - |
+| primary-parent | `mode.eval.design` | `engineering.evaluation.use` | - |
+| primary-parent | `mode.eval.local-need` | `engineering.evaluation.use` | - |
+| primary-parent | `mode.eval.select` | `engineering.evaluation.use` | - |
+| primary-parent | `mode.eval.session-mining` | `engineering.evaluation.use` | - |
 | primary-parent | `mode.knowledge.authority-map` | `stewardship.knowledge` | - |
 | primary-parent | `mode.knowledge.sanitized-share` | `stewardship.knowledge` | - |
 | primary-parent | `mode.session-harvest.automation-opportunity` | `sessions.harvest` | - |
@@ -270,8 +274,8 @@ Source content hash: `86d5e026f7de62077863b3eb670076936f17c4f04eaba3b8ca81084c4e
 | primary-parent | `skill.aoa-checkpoint-closeout-bridge` | `sessions.checkpoint-closeout` | - |
 | primary-parent | `skill.aoa-decision` | `stewardship.decisions` | - |
 | primary-parent | `skill.aoa-engineering-shape` | `engineering.shape` | - |
-| primary-parent | `skill.aoa-eval` | `engineering.evaluation` | - |
-| primary-parent | `skill.aoa-evals` | `engineering.evaluation` | - |
+| primary-parent | `skill.aoa-eval` | `engineering.evaluation.use` | - |
+| primary-parent | `skill.aoa-evals` | `engineering.evaluation.central-proof` | - |
 | primary-parent | `skill.aoa-kag` | `stewardship.knowledge.retrieve` | - |
 | primary-parent | `skill.aoa-knowledge-stewardship` | `stewardship.knowledge` | - |
 | primary-parent | `skill.aoa-memo` | `stewardship.knowledge.memory` | - |
