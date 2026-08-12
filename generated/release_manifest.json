@@ -337,13 +337,13 @@
     },
     {
       "path": "capabilities/families/titan.yaml",
-      "sha256": "0657b5b665e7ffc388745f09789b05c616ae3ce8990422c3823e45c1a783c8f8",
-      "bytes": 63949
+      "sha256": "eebfb28803e2f66e3a3278ef7cc2b2229ee4b193ef718129ea329b41d5e41c3d",
+      "bytes": 63895
     },
     {
       "path": "capabilities/legacy-skill-migration.yaml",
-      "sha256": "b629665bb4d2b2c81517d6f9be282efec91944f63effcb06bf536d96691ba8ae",
-      "bytes": 19148
+      "sha256": "be1a3db896ae982afa22f37c580713badb90b821daa8871f2e5e813b6c9a31fc",
+      "bytes": 19160
     },
     {
       "path": "config/openai_skill_extensions.json",
@@ -1086,13 +1086,13 @@
     },
     {
       "path": "generated/capability_graph.json",
-      "sha256": "483f3e54f2da082f933a900238a6ae8762f2dddffc16a28dcbad062a54a04272",
-      "bytes": 2304997
+      "sha256": "044fdbf8ceb911da2a69b28157067a0583f1eac4aca9843b88fccc9054a8eeac",
+      "bytes": 2304799
     },
     {
       "path": "generated/capability_graph.md",
-      "sha256": "2a0de9c1ae609272b1d872ec1cc0d1f57878eab795dc6c194a20190d73c9670b",
-      "bytes": 26892
+      "sha256": "dcd943917c685d7a1f6950911c202a11d56fbfcafe589e82e23b1ae36573cb1e",
+      "bytes": 26886
     }
   ],
   "skill_bundle_revisions": [
