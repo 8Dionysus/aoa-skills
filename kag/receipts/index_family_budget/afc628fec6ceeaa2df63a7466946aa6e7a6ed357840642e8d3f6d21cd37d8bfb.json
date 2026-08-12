@@ -1,0 +1,17 @@
+{
+  "allowed_bytes": 590637,
+  "allowed_tracked_bytes": 10156774,
+  "approved_by": "repository-owner",
+  "base_ref": "7e392eea6086e42bf160190f51b8cce947753917",
+  "changed_generated_bytes": 590637,
+  "changed_generated_files": 7,
+  "decision_ref": "aoa-kag:docs/decisions/AOA-KAG-D-0017-portable-content-addressed-repository-family.md",
+  "default_limit_bytes": 1048576,
+  "head_family_digest": "afc628fec6ceeaa2df63a7466946aa6e7a6ed357840642e8d3f6d21cd37d8bfb",
+  "reason": "The shared evaluation tree now pins the landed aoa-evals owner commit and version; content-addressed records refresh provenance without adding a skill, mode, or capability node, while the existing family remains above its tracked-size budget.",
+  "repo": "aoa-skills",
+  "schema_version": "aoa-repo-local-kag-budget-receipt-v1",
+  "scope": "tracked_size",
+  "tracked_bytes": 10156774,
+  "tracked_bytes_max": 9437184
+}

@@ -172,7 +172,7 @@ nodes:
       authority: external-authority
     lifecycle:
       state: candidate
-      version: 0.1.22
+      version: 0.1.23
       visibility: advertised
       evidence_state: evaluated
       health: challenger
@@ -189,22 +189,22 @@ nodes:
       source_refs:
         - repo: aoa-evals
           path: capabilities/port.manifest.json
-          ref: fb91232476ccd35246ed8f720e461a3166d02ab1
+          ref: de3baa1af2549e1d02ca4a2ccd4bd1dddae36ac8
           role: owner-capability-home
           authority: external-authority
         - repo: aoa-evals
           path: capabilities/families/central-proof.yaml
-          ref: fb91232476ccd35246ed8f720e461a3166d02ab1
+          ref: de3baa1af2549e1d02ca4a2ccd4bd1dddae36ac8
           role: owner-capability-family
           authority: external-authority
         - repo: aoa-evals
           path: skills/aoa-evals/SKILL.md
-          ref: fb91232476ccd35246ed8f720e461a3166d02ab1
+          ref: de3baa1af2549e1d02ca4a2ccd4bd1dddae36ac8
           role: owner-skill-procedure
           authority: external-authority
         - repo: aoa-evals
           path: skills/aoa-evals/references/contract.yaml
-          ref: fb91232476ccd35246ed8f720e461a3166d02ab1
+          ref: de3baa1af2549e1d02ca4a2ccd4bd1dddae36ac8
           role: owner-typed-contract
           authority: external-authority
       optional_refs: []

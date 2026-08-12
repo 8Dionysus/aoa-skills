@@ -6584,7 +6584,7 @@
         "evidence_state": "evaluated",
         "health": "challenger",
         "state": "candidate",
-        "version": "0.1.22",
+        "version": "0.1.23",
         "visibility": "advertised"
       },
       "owner": {
@@ -6599,28 +6599,28 @@
           {
             "authority": "external-authority",
             "path": "capabilities/port.manifest.json",
-            "ref": "fb91232476ccd35246ed8f720e461a3166d02ab1",
+            "ref": "de3baa1af2549e1d02ca4a2ccd4bd1dddae36ac8",
             "repo": "aoa-evals",
             "role": "owner-capability-home"
           },
           {
             "authority": "external-authority",
             "path": "capabilities/families/central-proof.yaml",
-            "ref": "fb91232476ccd35246ed8f720e461a3166d02ab1",
+            "ref": "de3baa1af2549e1d02ca4a2ccd4bd1dddae36ac8",
             "repo": "aoa-evals",
             "role": "owner-capability-family"
           },
           {
             "authority": "external-authority",
             "path": "skills/aoa-evals/SKILL.md",
-            "ref": "fb91232476ccd35246ed8f720e461a3166d02ab1",
+            "ref": "de3baa1af2549e1d02ca4a2ccd4bd1dddae36ac8",
             "repo": "aoa-evals",
             "role": "owner-skill-procedure"
           },
           {
             "authority": "external-authority",
             "path": "skills/aoa-evals/references/contract.yaml",
-            "ref": "fb91232476ccd35246ed8f720e461a3166d02ab1",
+            "ref": "de3baa1af2549e1d02ca4a2ccd4bd1dddae36ac8",
             "repo": "aoa-evals",
             "role": "owner-typed-contract"
           }
@@ -43377,11 +43377,11 @@
         "центральное-доказательство",
         "цикл"
       ],
-      "search_text": "external\nskill\nselect-review-or-evolve\naoa-evals:skills/aoa-evals/SKILL.md\nnavigation\nCentral AoA proof or lifecycle: first tool turn reads only this SKILL.md. Use to select, review, or evolve source bundles, named eval results or verdicts, source-linked reports, Eval Forge owner review, or source/reader drift. Use aoa-eval for local selection, application, intake/design, or session-hit classification. Candidates, readiness checks, receipts, generated readers or outputs, MCP outputs, and green commands are not proof.\nskill.aoa-evals\ncentral-proof\neval-verdict\nreview-verdict\nnamed-eval-result\nadmitted-evidence\nclaim-limit\nsource-linked-report\nproof-lifecycle\nsource-bundle\neval-forge\nцентральное-доказательство\nвердикт\nжизненный-цикл\nskill\nevaluated\nchallenger\ncandidate\n0.1.22\nadvertised\nexternal-authority\naoa-evals\nskills/aoa-evals/SKILL.md\nengineering.evaluation.central-proof\nexternal-authority\ncapabilities/port.manifest.json\naoa-evals\nowner-capability-home\nexternal-authority\ncapabilities/families/central-proof.yaml\naoa-evals\nowner-capability-family\nexternal-authority\nskills/aoa-evals/SKILL.md\naoa-evals\nowner-skill-procedure\nexternal-authority\nskills/aoa-evals/references/contract.yaml\naoa-evals\nowner-typed-contract\nengineering-evaluation\ncapabilities/families/evals.yaml\naoa-evals owner bundle\nderived-reference",
+      "search_text": "external\nskill\nselect-review-or-evolve\naoa-evals:skills/aoa-evals/SKILL.md\nnavigation\nCentral AoA proof or lifecycle: first tool turn reads only this SKILL.md. Use to select, review, or evolve source bundles, named eval results or verdicts, source-linked reports, Eval Forge owner review, or source/reader drift. Use aoa-eval for local selection, application, intake/design, or session-hit classification. Candidates, readiness checks, receipts, generated readers or outputs, MCP outputs, and green commands are not proof.\nskill.aoa-evals\ncentral-proof\neval-verdict\nreview-verdict\nnamed-eval-result\nadmitted-evidence\nclaim-limit\nsource-linked-report\nproof-lifecycle\nsource-bundle\neval-forge\nцентральное-доказательство\nвердикт\nжизненный-цикл\nskill\nevaluated\nchallenger\ncandidate\n0.1.23\nadvertised\nexternal-authority\naoa-evals\nskills/aoa-evals/SKILL.md\nengineering.evaluation.central-proof\nexternal-authority\ncapabilities/port.manifest.json\naoa-evals\nowner-capability-home\nexternal-authority\ncapabilities/families/central-proof.yaml\naoa-evals\nowner-capability-family\nexternal-authority\nskills/aoa-evals/SKILL.md\naoa-evals\nowner-skill-procedure\nexternal-authority\nskills/aoa-evals/references/contract.yaml\naoa-evals\nowner-typed-contract\nengineering-evaluation\ncapabilities/families/evals.yaml\naoa-evals owner bundle\nderived-reference",
       "title": "aoa-evals owner bundle",
       "tokens": [
-        "0.1.22",
-        "22",
+        "0.1.23",
+        "23",
         "admitted",
         "admitted-evidence",
         "advertised",
@@ -57275,7 +57275,7 @@
   ],
   "schema_version": "aoa-capability-graph-v1",
   "source": {
-    "content_hash": "ca88f62e0bad80ff5ae93e959765de20d17e0d0b4599576b48ebb50960e70053",
+    "content_hash": "02a7e1da9dda401af07282ff951e34397e3e5efa15005360982781ab38675bb9",
     "family_files": [
       {
         "path": "capabilities/families/abyss.yaml",
@@ -57295,7 +57295,7 @@
       },
       {
         "path": "capabilities/families/evals.yaml",
-        "sha256": "485c9d3bf06e314f836e0c6045701b03e3e354b037d3bf3db60630cf02df4764"
+        "sha256": "016cf1a1b8cae40784fee2ca248a6d9a796d161ffd5c40ee52938caa517f781b"
       },
       {
         "path": "capabilities/families/operations.yaml",
