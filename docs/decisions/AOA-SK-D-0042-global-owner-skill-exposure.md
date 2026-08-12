@@ -51,9 +51,12 @@ Choose the third option.
 ### OS user profile and same-name repository boundary
 
 1. Canonical procedure truth remains `<owner-repo>/skills/<bundle-name>/`.
-2. An admitted v2 owner manifest selects its advertised bundles for the
-   `os-user-default` profile. Assembly and installation remain an
-   `aoa-skills` responsibility; procedure meaning remains with the owner.
+2. An admitted v2 owner manifest declares which bundles are eligible for OS
+   user exposure. Selection into `os-user-default` is a separate curated
+   `aoa-skills` profile decision and may change with lifecycle, coexistence,
+   routing, or context-budget evidence without revoking owner admission.
+   Assembly and installation remain an `aoa-skills` responsibility; procedure
+   meaning remains with the owner.
 3. A v2 owner must not also expose the same canonical bundle name under its
    repository `.agents/skills`.
 4. Repository-only procedures may still use their repository scope when they
@@ -73,8 +76,10 @@ Global exposure preserves the functional reason for skills: a new agent can
 notice `memo`, `evals`, `stats`, KAG, and other owner capabilities before it
 already knows their repository. One canonical owner source prevents semantic
 drift. One user-level materialization avoids same-name prompt competition.
-Temporary v1 compatibility protects already admitted consumers without
-turning the old topology back into the target architecture.
+Admission makes a bundle eligible for that materialization; it does not make
+global exposure permanent or bypass profile curation. Temporary v1
+compatibility protects already admitted consumers without turning the old
+topology back into the target architecture.
 
 ## Consequences
 
@@ -82,6 +87,9 @@ turning the old topology back into the target architecture.
   transferring its truth to `aoa-skills`.
 - Positive: entering an owner repository no longer needs to duplicate the
   globally advertised skill.
+- Tradeoff: owner admission and current global selection are separate states;
+  operators must inspect the current profile rather than infer installation
+  from an owner manifest alone.
 - Tradeoff: the system must carry two manifest shapes during migration.
 - Tradeoff: v2 owner validation cannot prove the user profile is actually
   installed; profile assembly, install parity, and fresh-session inspection
@@ -91,35 +99,54 @@ turning the old topology back into the target architecture.
 
 ## Current Applicability
 
-As of 2026-07-26:
+As of 2026-08-12:
 
 - the owner homes in scope have landed in `aoa-evals`, `aoa-memo`,
   `aoa-stats`, `aoa-kag`, `aoa-sdk`, `aoa-agents`, `abyss-stack`,
   `abyss-machine`, and `ATM10-Agent`;
-- one clean candidate `os-user-default` profile installs eighteen unique
-  managed-copy front doors from shared and owner homes into
-  `~/.codex/skills`, and verifies two owner-managed session-memory links
-  without assuming authority to mutate them;
+- the current `os-user-default` profile selects sixteen unique managed-copy
+  front doors from shared and owner homes for `~/.codex/skills`, and verifies
+  two owner-managed session-memory links without assuming authority to mutate
+  them;
 - every installed package and the aggregate profile receipt is current against
   its selected clean candidate source, and unrelated user entries remain
   preserved;
-- `aoa-evals`, `aoa-memo`, `aoa-stats`, `aoa-kag`, progression, summon, the
-  three Titan bundles, Artifact Trust, diagnostic, and the local `.aoa` global
-  route are now included alongside the seven shared bundles;
-- fresh-session manual cases selected the Titan planning bundle, bounded
-  `aoa-stats` answer mode, and the `aoa-eval` `select -> apply` composition;
-  exact-source and generic-arithmetic negative cases did not invoke KAG or
-  stats respectively;
+- `aoa-evals`, `aoa-memo`, `aoa-stats`, `aoa-kag`, progression, summon,
+  Artifact Trust, diagnostic, and both local `.aoa` session-memory routes are
+  included alongside the seven shared bundles;
+- the three Titan owner bundles remain admitted owner-local procedures and
+  represented in the semantic capability graph, but are deferred from the
+  default global profile after current lifecycle and context-budget review;
+- prior fresh-session Titan trials remain historical evidence for the earlier
+  exposed state, not evidence that Titan is currently selected; current
+  fresh-session cases continue to cover bounded `aoa-stats`, evaluation-family
+  composition, and their nearest negatives;
 - those trials exposed and then retested three material defects: an optional
   graph hash serialized as JSON null, eval discovery widening after an exact
   owner-port fit, and a bounded stats answer running the repository release
   gate;
-- v1 remains accepted only as migration compatibility;
-- the final central merge-ref installation, live KAG federation refresh,
-  retrieved Artifact Trust owner handoff, and wider host/model coexistence
-  evidence remain required before v1 retirement.
+- v1 remains accepted only as migration compatibility; retirement still
+  requires every admitted owner to migrate and the current profile to retain
+  clean installation and fresh-session coexistence evidence across supported
+  hosts and models.
 
 ## Review Log
+
+### 2026-08-12 - Separate owner admission from current profile selection
+
+- The accepted wording incorrectly made every advertised v2 owner bundle look
+  permanently selected into `os-user-default`; the actual profile is a curated
+  lifecycle and coexistence surface owned by `aoa-skills`.
+- The active owner-port contract and schema now state that the v2 exposure
+  declaration is eligibility for the named route; current membership comes
+  only from `config/os_skill_profiles.json`.
+- The three Titan bundles remain valid in their owner home and semantic graph,
+  but their global visibility is deferred and their managed copies are absent
+  from the default profile.
+- The current profile contains sixteen managed copies plus two verify-only
+  owner links. This amendment preserves the original global-discovery route
+  while preventing future agents from reconstructing the obsolete Titan
+  exposure from an admitted owner manifest.
 
 ### 2026-07-26 - Preserve owner-installed user links in the aggregate profile
 

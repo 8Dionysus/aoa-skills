@@ -1,0 +1,17 @@
+{
+  "allowed_bytes": 1011247,
+  "allowed_tracked_bytes": 10122688,
+  "approved_by": "repository-owner",
+  "base_ref": "a27dfa31d8598499383c3180fed736d814f21701",
+  "changed_generated_bytes": 1011247,
+  "changed_generated_files": 24,
+  "decision_ref": "aoa-kag:docs/decisions/AOA-KAG-D-0017-portable-content-addressed-repository-family.md",
+  "default_limit_bytes": 1048576,
+  "head_family_digest": "32cfb22d421eb8f7339c09dfe04aa0a33769e6ab765da53a81b1cf7fe29938f6",
+  "reason": "Refresh the existing aoa-skills owner-port and decision projections after clarifying profile eligibility versus current selection; no capability or skill expansion.",
+  "repo": "aoa-skills",
+  "schema_version": "aoa-repo-local-kag-budget-receipt-v1",
+  "scope": "tracked_size",
+  "tracked_bytes": 10122688,
+  "tracked_bytes_max": 9437184
+}

@@ -35,16 +35,19 @@ $HOME/.codex/skills/<bundle-name>/   # one OS-profile managed copy
 ```
 
 `skills/<bundle-name>/` is canonical. The owner retains procedure meaning,
-version, lifecycle, admission, and resources. The v2 manifest declares
-selection by `os-user-default`; it does not declare or create a repository
-copy.
+version, lifecycle, admission, and resources. The v2 manifest declares that
+its admitted bundles are eligible for consideration by `os-user-default`; it
+does not select them into the current profile or create a repository copy. The
+legacy exposure-mode value `profile-selected` names this target route, not
+current profile membership.
 
-The OS profile combines selected shared and owner bundles into one user
-catalog. A v2 repository must not expose the same canonical bundle again at
-`.agents/skills/<bundle-name>`. This prevents the duplicate prompt-visible
-definitions observed when Codex entered an owner repository. Unrelated
-repository-only bundles may still use `.agents/skills` when their own owner and
-consumer contract requires that scope.
+`config/os_skill_profiles.json` is the source that selects eligible shared and
+owner bundles into the current user catalog. A v2 repository must not expose
+the same canonical bundle again at `.agents/skills/<bundle-name>`. This
+prevents the duplicate prompt-visible definitions observed when Codex entered
+an owner repository. Unrelated repository-only bundles may still use
+`.agents/skills` when their own owner and consumer contract requires that
+scope.
 
 The profile assembler and installer own destination collision checks,
 provenance, managed-entry cleanup, and installed byte/mode parity. This owner
@@ -108,9 +111,9 @@ python scripts/validate_home_skill_port.py --owner-root /path/to/owner
 ```
 
 For v2 this checks source identity, admission reference, package shape, digest,
-the exact exposure declaration, and absence of a same-name repository
-projection. For v1 it preserves source/projection byte and executable-bit
-parity during migration.
+the exact exposure-eligibility declaration, and absence of a same-name
+repository projection. It does not check current profile membership. For v1 it
+preserves source/projection byte and executable-bit parity during migration.
 
 A green check does not prove trigger quality, agent benefit, safety,
 fresh-session discovery, user-profile installation, or cross-model behavior.
