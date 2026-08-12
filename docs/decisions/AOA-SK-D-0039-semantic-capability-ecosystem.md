@@ -153,6 +153,27 @@ final answer, or green structural check alone.
 
 ## Review Log
 
+### 2026-08-12 - Replace the flat evaluation family with explicit branches
+
+- Observed defect: `aoa-eval`, `aoa-evals`, and every shared eval mode had the
+  same `engineering.evaluation` parent. Typed handoffs existed, but navigation
+  still presented two owner procedures as flat siblings instead of one
+  capability tree.
+- Correction: `engineering.evaluation` now has
+  `engineering.evaluation.use` and
+  `engineering.evaluation.central-proof` branches. Shared select/apply/intake/
+  design/session classification stays under `use`; the owner-qualified
+  `aoa-evals` subtree federates beneath `central-proof`. Cross-branch work
+  remains a task-local DAG through the existing typed handoffs.
+- Manual discovery also exposed central-proof vocabulary as positive routing
+  text in the `aoa-eval` description. Version `0.2.9` moves that boundary
+  behind an explicit `Do not use` clause so central verdict and lifecycle
+  requests route toward the sibling branch instead of inflating the use
+  branch.
+- Boundary: this is a semantic-tree correction, not a package merge. The two
+  advertised bundles keep distinct triggers, ABI, effects, and owners, and no
+  task-local DAG becomes repository source.
+
 ### 2026-08-10 - Return actor lifecycle truth to the federated aoa-agents home
 
 - The shared navigation pointer for `aoa-summon` now follows the landed

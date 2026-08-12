@@ -1,15 +1,15 @@
 schema_version: aoa-capability-family-v1
 family_id: engineering-evaluation
-title: Evaluation lifecycle
-description: One evaluation family with distinct select, apply, local-need, design, and session-mining modes under explicit owner and proof limits.
+title: Evaluation capability tree
+description: One evaluation tree with a shared-use branch and an owner-qualified central-proof branch connected by typed task-local handoffs.
 owner:
   repo: aoa-skills
   surface: capabilities/families/evals.yaml
   authority: authored
 nodes:
   - id: engineering.evaluation
-    title: Route an evaluation need
-    description: Select or apply evidence, record local pressure, design bounded coverage, or mine researched session triggers without collapsing their contracts.
+    title: Evaluation
+    description: Navigate evaluation use and central-proof stewardship as two branches of one capability family without merging their owners or callable packages.
     kind: capability
     contract_level: navigation
     primary_parent: engineering
@@ -19,7 +19,7 @@ nodes:
       authority: authored
     lifecycle: &eval_family_lifecycle
       state: candidate
-      version: 0.2.6
+      version: 0.3.0
       visibility: deferred
       evidence_state: evaluated
       health: challenger
@@ -35,16 +35,63 @@ nodes:
       - критерий
       - доказательство
 
-  - id: skill.aoa-eval
-    title: aoa-eval family bundle
-    description: Select or apply an owner-local or cross-repository eval, route a confirmed no-fit to intake/design, or classify supplied session hits as eval candidates. Use aoa-evals for central proof bundles, named results or verdicts, reports, and lifecycle. Do not use for ordinary tests, undefined invariants, or generic session harvesting.
-    kind: skill
-    contract_level: executable
+  - id: engineering.evaluation.use
+    title: Use evaluation
+    description: Select, apply, intake, design, or classify evaluation evidence through the shared aoa-eval procedure and its internal modes.
+    kind: capability
+    contract_level: navigation
     primary_parent: engineering.evaluation
     owner: *eval_owner
     lifecycle:
       state: candidate
-      version: 0.2.8
+      version: 1.0.0
+      visibility: internal
+      evidence_state: evaluated
+      health: challenger
+    keywords:
+      - evaluation-use
+      - select-eval
+      - apply-eval
+      - eval-intake
+      - eval-design
+      - использовать-оценку
+
+  - id: engineering.evaluation.central-proof
+    title: Steward central proof
+    description: Select, review, or evolve bounded central AoA proof through the federated aoa-evals owner subtree and its proof limits.
+    kind: capability
+    contract_level: navigation
+    primary_parent: engineering.evaluation
+    owner: *eval_owner
+    lifecycle:
+      state: candidate
+      version: 1.0.0
+      visibility: internal
+      evidence_state: evaluated
+      health: challenger
+    keywords:
+      - central-proof
+      - eval-verdict
+      - review-verdict
+      - named-eval-result
+      - admitted-evidence
+      - claim-limit
+      - source-linked-report
+      - proof-lifecycle
+      - source-bundle
+      - центральное-доказательство
+      - жизненный-цикл
+
+  - id: skill.aoa-eval
+    title: aoa-eval family bundle
+    description: Select or apply an owner-local or cross-repository eval, route a confirmed no-fit to intake/design, or classify supplied session hits as eval candidates. Do not use for central proof bundles, named results or verdicts, source-linked reports, proof lifecycle, ordinary tests, undefined invariants, or generic session harvesting.
+    kind: skill
+    contract_level: executable
+    primary_parent: engineering.evaluation.use
+    owner: *eval_owner
+    lifecycle:
+      state: candidate
+      version: 0.2.9
       visibility: advertised
       evidence_state: evaluated
       health: challenger
@@ -52,7 +99,7 @@ nodes:
       use_when:
         - An eval must be selected or applied, a verified no-fit needs owner-local intake or design, or supplied/retrieved session evidence needs eval-trigger classification.
       do_not_use_when:
-        - The task is an ordinary one-off test, the invariant is undefined, generic session harvesting is needed, or a green command is being treated as central proof.
+        - The task concerns a central proof bundle, named result or verdict, source-linked report, proof lifecycle, an ordinary one-off test, an undefined invariant, generic session harvesting, or a green command being treated as central proof.
       ambiguous_when:
         - The nearest surface is only partially relevant and its claim limit has not been compared to the acceptance target.
     abi:
@@ -98,7 +145,7 @@ nodes:
       source_refs:
         - repo: aoa-skills
           path: skills/core/engineering/aoa-eval/SKILL.md
-          ref: capability-family-v0.2.8
+          ref: capability-family-v0.2.9
           role: portable-family-procedure
           authority: authored
       optional_refs: []
@@ -118,7 +165,7 @@ nodes:
     description: "Central AoA proof or lifecycle: first tool turn reads only this SKILL.md. Use to select, review, or evolve source bundles, named eval results or verdicts, source-linked reports, Eval Forge owner review, or source/reader drift. Use aoa-eval for local selection, application, intake/design, or session-hit classification. Candidates, readiness checks, receipts, generated readers or outputs, MCP outputs, and green commands are not proof."
     kind: skill
     contract_level: navigation
-    primary_parent: engineering.evaluation
+    primary_parent: engineering.evaluation.central-proof
     owner:
       repo: aoa-evals
       surface: skills/aoa-evals/SKILL.md
@@ -164,6 +211,11 @@ nodes:
     keywords:
       - central-proof
       - eval-verdict
+      - review-verdict
+      - named-eval-result
+      - admitted-evidence
+      - claim-limit
+      - source-linked-report
       - proof-lifecycle
       - source-bundle
       - eval-forge
@@ -176,7 +228,7 @@ nodes:
     description: Compare owner-local and central evidence surfaces and return exact, partial, or no-fit without executing or designing.
     kind: mode
     contract_level: executable
-    primary_parent: engineering.evaluation
+    primary_parent: engineering.evaluation.use
     owner: *eval_owner
     lifecycle: &eval_mode_lifecycle
       state: candidate
@@ -239,7 +291,7 @@ nodes:
     description: Run only the selected owner command and manually inspect its result against an explicit acceptance contract.
     kind: mode
     contract_level: executable
-    primary_parent: engineering.evaluation
+    primary_parent: engineering.evaluation.use
     owner: *eval_owner
     lifecycle:
       state: candidate
@@ -324,7 +376,7 @@ nodes:
     description: Write or prepare one bounded pressure packet after a recorded no-fit when an admitted owner-local eval port exists.
     kind: mode
     contract_level: executable
-    primary_parent: engineering.evaluation
+    primary_parent: engineering.evaluation.use
     owner: *eval_owner
     lifecycle: *eval_mode_lifecycle
     applicability:
@@ -393,7 +445,7 @@ nodes:
     description: Shape manual cases and the smallest deterministic suite or report contract after a recorded no-fit and stable invariant.
     kind: mode
     contract_level: executable
-    primary_parent: engineering.evaluation
+    primary_parent: engineering.evaluation.use
     owner: *eval_owner
     lifecycle: *eval_mode_lifecycle
     applicability:
@@ -463,7 +515,7 @@ nodes:
     description: Search fresh prior-session evidence by researched eval-trigger classes and return candidate cases with raw provenance and owner routes.
     kind: mode
     contract_level: executable
-    primary_parent: engineering.evaluation
+    primary_parent: engineering.evaluation.use
     owner: *eval_owner
     lifecycle: *eval_mode_lifecycle
     applicability:
@@ -527,10 +579,10 @@ nodes:
       - пропущенный-триггер
 relations:
   - kind: implemented-by
-    source: engineering.evaluation
+    source: engineering.evaluation.use
     target: skill.aoa-eval
   - kind: implemented-by
-    source: engineering.evaluation
+    source: engineering.evaluation.central-proof
     target: skill.aoa-evals
   - kind: hands-off-to
     source: skill.aoa-eval

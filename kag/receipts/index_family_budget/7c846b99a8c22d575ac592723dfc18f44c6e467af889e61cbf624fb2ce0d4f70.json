@@ -1,0 +1,17 @@
+{
+  "allowed_bytes": 6866748,
+  "allowed_tracked_bytes": 10154998,
+  "approved_by": "repository-owner",
+  "base_ref": "68808f3bb8b8885c679d3d6475415c0c54d11984",
+  "changed_generated_bytes": 6866748,
+  "changed_generated_files": 253,
+  "decision_ref": "aoa-kag:docs/decisions/AOA-KAG-D-0017-portable-content-addressed-repository-family.md",
+  "default_limit_bytes": 1048576,
+  "head_family_digest": "7c846b99a8c22d575ac592723dfc18f44c6e467af889e61cbf624fb2ce0d4f70",
+  "reason": "Evaluation tree adds explicit use and central-proof branches and refreshes their owner-qualified capability records; content-addressed shard redistribution follows the authored topology and routing-description change.",
+  "repo": "aoa-skills",
+  "schema_version": "aoa-repo-local-kag-budget-receipt-v1",
+  "scope": "generated_delta_and_tracked_size",
+  "tracked_bytes": 10154998,
+  "tracked_bytes_max": 9437184
+}
