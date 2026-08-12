@@ -1,0 +1,17 @@
+{
+  "allowed_bytes": 729261,
+  "allowed_tracked_bytes": 10121808,
+  "approved_by": "repository-owner",
+  "base_ref": "a27dfa31d8598499383c3180fed736d814f21701",
+  "changed_generated_bytes": 729261,
+  "changed_generated_files": 14,
+  "decision_ref": "aoa-kag:docs/decisions/AOA-KAG-D-0017-portable-content-addressed-repository-family.md",
+  "default_limit_bytes": 1048576,
+  "head_family_digest": "31eb5e29a3dafe9bcedc48a66258c66fa42cb7cc20b8b79b5306661e2ee0eb29",
+  "reason": "Refresh the existing aoa-skills decision projection after correcting current Titan exposure and profile-selection semantics; no capability or skill expansion.",
+  "repo": "aoa-skills",
+  "schema_version": "aoa-repo-local-kag-budget-receipt-v1",
+  "scope": "tracked_size",
+  "tracked_bytes": 10121808,
+  "tracked_bytes_max": 9437184
+}
