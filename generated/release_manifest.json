@@ -312,7 +312,7 @@
     },
     {
       "path": "capabilities/families/evals.yaml",
-      "sha256": "485c9d3bf06e314f836e0c6045701b03e3e354b037d3bf3db60630cf02df4764",
+      "sha256": "016cf1a1b8cae40784fee2ca248a6d9a796d161ffd5c40ee52938caa517f781b",
       "bytes": 25769
     },
     {
@@ -1086,12 +1086,12 @@
     },
     {
       "path": "generated/capability_graph.json",
-      "sha256": "9b30f224ced93369b90fdd6b1a9440c5dfc664a79cd74d00c2c790885cdf346b",
+      "sha256": "8d3aa9af6118892c97d7a92ef3fc72d5a69f97ab8d446ab9f805a345667253b0",
       "bytes": 2362698
     },
     {
       "path": "generated/capability_graph.md",
-      "sha256": "98c464654ae32087167e60dccc806b447928c6183da93008eb9ab378e1ec4843",
+      "sha256": "f545d4b661daf83a0430859901f85404a8b41b67b57cd7876aaadec48c6710cd",
       "bytes": 27282
     }
   ],
