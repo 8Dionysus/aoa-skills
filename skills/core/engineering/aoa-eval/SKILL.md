@@ -87,7 +87,12 @@ Read and follow `references/session-mining.md`.
 5. When the task asks what an applied observation actually constrains, hand the
    `evaluation-observation` to `aoa-verification`; do not reinterpret command
    success as proof inside this bundle.
-6. When prior-session evidence still must be found, let the session-memory
+6. When the task explicitly asks for central proof meaning, a central verdict,
+   admission, or lifecycle interpretation, preserve the observation and its
+   source, claim class, environment, and proof limit in a
+   `central-proof-review-request`, then hand it to `aoa-evals`. Do not invoke
+   that owner merely because an eval ran successfully.
+7. When prior-session evidence still must be found, let the session-memory
    evidence route retrieve and ground it, then consume the bounded packet here.
    The evidence route owns retrieval; `session-mining` owns eval-trigger
    classification and its local eval handoff.

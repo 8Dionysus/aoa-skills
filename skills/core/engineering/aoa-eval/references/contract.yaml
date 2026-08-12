@@ -2,7 +2,7 @@ schema_version: aoa-skill-contract-v1
 identity:
   name: aoa-eval
   owner: aoa-skills
-  version: 0.2.7
+  version: 0.2.8
   health: challenger
 purpose: Preserve five distinct evaluation capabilities behind one discoverable front door.
 freedom_level: bounded-judgment
@@ -24,6 +24,7 @@ modes:
   apply:
     input_abi: evaluation-selection
     output_abi: evaluation-observation
+    optional_output_abis: [central-proof-review-request]
     effects: [none, owner-local-write, generated-write]
     reference: apply.md
     required_input_fields:
@@ -87,6 +88,15 @@ relations:
     from: apply
     to: aoa-verification
     condition: the task asks what the evaluation observation proves about a stable contract, coverage claim, or property
+  - kind: hands-off-to
+    from: select
+    to: aoa-evals
+    condition: selection resolves to a central source bundle or owner-routed proof object
+  - kind: hands-off-to
+    from: apply
+    to: aoa-evals
+    abi: central-proof-review-request
+    condition: the task explicitly asks for central proof meaning, verdict, admission, or lifecycle interpretation of the observation
 failure_modes:
   - mode inputs silently substituted
   - apply preflight declared complete without checking every required dotted field
