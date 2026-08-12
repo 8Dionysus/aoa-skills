@@ -2,7 +2,7 @@
 
 Derived from `capabilities/families/*.yaml`. This file is a read model, not capability authority.
 
-Source content hash: `3677fd36f010f3b7f82781208e57f2bc1a5a801fe3ef1e5ab86fd3f805e7af3e`
+Source content hash: `86d5e026f7de62077863b3eb670076936f17c4f04eaba3b8ca81084c4e4186f6`
 
 ## Semantic tree
 
@@ -65,8 +65,8 @@ Source content hash: `3677fd36f010f3b7f82781208e57f2bc1a5a801fe3ef1e5ab86fd3f805
           - `workflow.titan.closeout-audit` (workflow, internal, degraded)
         - `projects.titan.session.control` (capability, deferred, healthy)
           - `guard.titan.thread-turn-binding` (guard, internal, unavailable)
-          - `skill.titan-appserver-bridge` (skill, advertised, challenger)
-          - `skill.titan-console` (skill, advertised, challenger)
+          - `skill.titan-appserver-bridge` (skill, deferred, challenger)
+          - `skill.titan-console` (skill, deferred, challenger)
           - `tool.titan.approval-queue` (tool, internal, healthy)
           - `tool.titan.approval-record` (tool, internal, healthy)
           - `tool.titan.appserver-bridge` (tool, internal, healthy)
@@ -75,7 +75,7 @@ Source content hash: `3677fd36f010f3b7f82781208e57f2bc1a5a801fe3ef1e5ab86fd3f805
           - `tool.titan.event-replay` (tool, internal, healthy)
           - `tool.titan.receipt` (tool, internal, healthy)
         - `projects.titan.session.memory` (capability, deferred, healthy)
-          - `skill.titan-memory-loom` (skill, advertised, challenger)
+          - `skill.titan-memory-loom` (skill, deferred, challenger)
           - `tool.titan.memory-ingest` (tool, internal, healthy)
           - `tool.titan.memory-recall` (tool, internal, healthy)
           - `tool.titan.memory-retention` (tool, internal, healthy)

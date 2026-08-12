@@ -402,11 +402,11 @@ entries:
     reason: consolidated-procedure
   - legacy_name: titan-appserver-bridge
     legacy_path: skills/project/titan/titan-appserver-bridge/SKILL.md
-    action: retain-advertised
+    action: defer-family
     target_id: skill.titan-appserver-bridge
     target_kind: skill
     target_owner: aoa-sdk
-    compatibility: same-name
+    compatibility: same-name-deferred
     evidence_state: manual-evaluated
     reason: consolidated-procedure
   - legacy_name: titan-appserver-plan
@@ -429,11 +429,11 @@ entries:
     reason: preserve-execution-until-owner-mcp
   - legacy_name: titan-console
     legacy_path: skills/project/titan/titan-console/SKILL.md
-    action: retain-advertised
+    action: defer-family
     target_id: skill.titan-console
     target_kind: skill
     target_owner: aoa-sdk
-    compatibility: same-name
+    compatibility: same-name-deferred
     evidence_state: manual-evaluated
     reason: consolidated-procedure
   - legacy_name: titan-event-replay
@@ -447,11 +447,11 @@ entries:
     reason: consolidated-procedure
   - legacy_name: titan-memory-loom
     legacy_path: skills/project/titan/titan-memory-loom/SKILL.md
-    action: retain-advertised
+    action: defer-family
     target_id: skill.titan-memory-loom
     target_kind: skill
     target_owner: aoa-sdk
-    compatibility: same-name
+    compatibility: same-name-deferred
     evidence_state: manual-evaluated
     reason: consolidated-procedure
   - legacy_name: titan-memory-prune

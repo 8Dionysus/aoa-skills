@@ -57,16 +57,6 @@
         },
         {
           "kind": "owner-port",
-          "repo": "aoa-sdk",
-          "root": "aoa-sdk",
-          "skills": [
-            "titan-console",
-            "titan-appserver-bridge",
-            "titan-memory-loom"
-          ]
-        },
-        {
-          "kind": "owner-port",
           "repo": "abyss-machine",
           "root": "abyss-machine",
           "skills": ["os-abyss-artifact-trust-loop"]

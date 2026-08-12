@@ -92,7 +92,7 @@ nodes:
     keywords: [titan-summon, cohort, Atlas, Sentinel, Mneme, Forge, Delta, призвать, титан, когорта]
   - id: skill.titan-console
     title: titan-console owner bundle
-    description: Operate visible Titan console, approval, plan, and receipt helper witnesses without claiming operator, runtime, proof, role, or durable-memory authority.
+    description: Owner-local route for visible Titan console, approval, plan, and receipt helper witnesses; not advertised by the default OS user profile.
     kind: skill
     contract_level: navigation
     primary_parent: projects.titan.session.control
@@ -103,7 +103,7 @@ nodes:
     lifecycle:
       state: active
       version: 0.1.2
-      visibility: advertised
+      visibility: deferred
       evidence_state: evaluated
       health: challenger
     binding:
@@ -131,7 +131,7 @@ nodes:
     keywords: [titan-console, approval-witness, approval-queue, appserver-plan, receipt, консоль, разрешение, квитанция]
   - id: skill.titan-appserver-bridge
     title: titan-appserver-bridge owner bundle
-    description: Shape, inspect, validate, or replay visible Titan app-server and session events without sending, steering, inferring hidden state, or authenticating approval.
+    description: Owner-local route for visible Titan app-server and session-event helpers; not advertised by the default OS user profile or authorized for live steering.
     kind: skill
     contract_level: navigation
     primary_parent: projects.titan.session.control
@@ -142,7 +142,7 @@ nodes:
     lifecycle:
       state: active
       version: 0.1.2
-      visibility: advertised
+      visibility: deferred
       evidence_state: evaluated
       health: challenger
     binding:
@@ -170,7 +170,7 @@ nodes:
     keywords: [titan-appserver-bridge, json-rpc, visible-replay, thread, turn, мост, поток, ход]
   - id: skill.titan-memory-loom
     title: titan-memory-loom owner bundle
-    description: Ingest and recall local Titan memory candidates or prepare an effect-free aoa-memo retention handoff without promoting helper state to durable memory or truth.
+    description: Owner-local route for Titan candidate-memory helpers and effect-free aoa-memo handoff; not advertised by the default OS user profile.
     kind: skill
     contract_level: navigation
     primary_parent: projects.titan.session.memory
@@ -181,7 +181,7 @@ nodes:
     lifecycle:
       state: active
       version: 0.1.2
-      visibility: advertised
+      visibility: deferred
       evidence_state: evaluated
       health: challenger
     binding:
