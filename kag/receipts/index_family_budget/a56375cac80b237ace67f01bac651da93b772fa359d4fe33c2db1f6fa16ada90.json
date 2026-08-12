@@ -1,17 +1,17 @@
 {
-  "allowed_bytes": 1071936,
+  "allowed_bytes": 0,
   "allowed_tracked_bytes": 10119847,
   "approved_by": "repository-owner",
-  "base_ref": "9f8516f7ed6da2535264849003abc219ffceb81a",
-  "changed_generated_bytes": 1071936,
-  "changed_generated_files": 23,
+  "base_ref": "a27dfa31d8598499383c3180fed736d814f21701",
+  "changed_generated_bytes": 0,
+  "changed_generated_files": 0,
   "decision_ref": "aoa-kag:docs/decisions/AOA-KAG-D-0017-portable-content-addressed-repository-family.md",
   "default_limit_bytes": 1048576,
   "head_family_digest": "a56375cac80b237ace67f01bac651da93b772fa359d4fe33c2db1f6fa16ada90",
-  "reason": "Remove disabled Titan bundles from the canonical OS user profile, demote their global capability visibility while preserving owner-local source truth, and pin the landed capability-provenance KAG action.",
+  "reason": "Refresh the existing aoa-skills decision projection after correcting current Titan exposure and profile-selection semantics; no capability or skill expansion.",
   "repo": "aoa-skills",
   "schema_version": "aoa-repo-local-kag-budget-receipt-v1",
-  "scope": "generated_delta_and_tracked_size",
+  "scope": "tracked_size",
   "tracked_bytes": 10119847,
   "tracked_bytes_max": 9437184
 }
