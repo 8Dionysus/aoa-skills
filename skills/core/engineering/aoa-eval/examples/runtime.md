@@ -25,7 +25,7 @@ named invariant or artifact is absent.
 
 Only a recorded no-fit may enter `propose`. Produce the smallest owner-local
 intake or suite-design candidate, list the manual cases that must precede a
-durable validator, and route central proof decisions to `aoa-evals`.
+durable validator, and route central proof decisions to `aoa-evals-skills`.
 
 Session-memory evidence may support the proposal when explicitly reviewed, but
 it is optional and never becomes repository truth.

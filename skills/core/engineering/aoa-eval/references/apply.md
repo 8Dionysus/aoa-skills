@@ -70,7 +70,7 @@ route.
 Only when the request explicitly includes central proof interpretation, also
 return a `central-proof-review-request` that preserves the observation ref,
 source ref, bounded claim class, acceptance target, environment, admitted
-evidence posture, and proof limit for `aoa-evals`. The envelope is a typed
+evidence posture, and proof limit for `aoa-evals-skills`. The envelope is a typed
 handoff, not proof promotion.
 
 For a blocked preflight, return the preflight state, exact missing or invalid

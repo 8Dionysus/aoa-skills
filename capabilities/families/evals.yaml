@@ -19,7 +19,7 @@ nodes:
       authority: authored
     lifecycle: &eval_family_lifecycle
       state: candidate
-      version: 0.3.0
+      version: 0.3.1
       visibility: deferred
       evidence_state: evaluated
       health: challenger
@@ -58,14 +58,14 @@ nodes:
 
   - id: engineering.evaluation.central-proof
     title: Steward central proof
-    description: Select, review, or evolve bounded central AoA proof through the federated aoa-evals owner subtree and its proof limits.
+    description: Select, review, or evolve bounded central AoA proof through the federated aoa-evals-skills owner router and its proof limits.
     kind: capability
     contract_level: navigation
     primary_parent: engineering.evaluation
     owner: *eval_owner
     lifecycle:
       state: candidate
-      version: 1.0.0
+      version: 1.0.1
       visibility: internal
       evidence_state: evaluated
       health: challenger
@@ -91,7 +91,7 @@ nodes:
     owner: *eval_owner
     lifecycle:
       state: candidate
-      version: 0.2.9
+      version: 0.2.10
       visibility: advertised
       evidence_state: evaluated
       health: challenger
@@ -145,7 +145,7 @@ nodes:
       source_refs:
         - repo: aoa-skills
           path: skills/core/engineering/aoa-eval/SKILL.md
-          ref: capability-family-v0.2.9
+          ref: capability-family-v0.2.10
           role: portable-family-procedure
           authority: authored
       optional_refs: []
@@ -160,25 +160,25 @@ nodes:
       - запуск-оценки
       - пробел-оценки
 
-  - id: skill.aoa-evals
-    title: aoa-evals owner bundle
-    description: "Central AoA proof or lifecycle: first tool turn reads only this SKILL.md. Use to select, review, or evolve source bundles, named eval results or verdicts, source-linked reports, Eval Forge owner review, or source/reader drift. Use aoa-eval for local selection, application, intake/design, or session-hit classification. Candidates, readiness checks, receipts, generated readers or outputs, MCP outputs, and green commands are not proof."
+  - id: skill.aoa-evals-skills
+    title: aoa-evals-skills owner router
+    description: "Route the aoa-evals skill family for central proof selection, review, evolution, named results or verdicts, source-linked reports, Eval Forge owner review, and proof lifecycle. Hand repository-local eval selection, application, intake/design, or session-hit classification to aoa-eval. Candidates, readiness checks, receipts, generated readers, MCP outputs, and green commands are not proof."
     kind: skill
     contract_level: navigation
     primary_parent: engineering.evaluation.central-proof
     owner:
       repo: aoa-evals
-      surface: skills/aoa-evals/SKILL.md
+      surface: skills/aoa-evals-skills/SKILL.md
       authority: external-authority
     lifecycle:
       state: candidate
-      version: 0.1.23
+      version: 0.2.0
       visibility: advertised
       evidence_state: evaluated
       health: challenger
     binding:
       kind: skill
-      ref: aoa-evals:skills/aoa-evals/SKILL.md
+      ref: aoa-evals:skills/aoa-evals-skills/SKILL.md
       operation: select-review-or-evolve
       availability: external
     trust:
@@ -189,22 +189,22 @@ nodes:
       source_refs:
         - repo: aoa-evals
           path: capabilities/port.manifest.json
-          ref: de3baa1af2549e1d02ca4a2ccd4bd1dddae36ac8
+          ref: 3b0b3d41f7a555662af0e324955d482370945e63
           role: owner-capability-home
           authority: external-authority
         - repo: aoa-evals
           path: capabilities/families/central-proof.yaml
-          ref: de3baa1af2549e1d02ca4a2ccd4bd1dddae36ac8
+          ref: 3b0b3d41f7a555662af0e324955d482370945e63
           role: owner-capability-family
           authority: external-authority
         - repo: aoa-evals
-          path: skills/aoa-evals/SKILL.md
-          ref: de3baa1af2549e1d02ca4a2ccd4bd1dddae36ac8
+          path: skills/aoa-evals-skills/SKILL.md
+          ref: 3b0b3d41f7a555662af0e324955d482370945e63
           role: owner-skill-procedure
           authority: external-authority
         - repo: aoa-evals
-          path: skills/aoa-evals/references/contract.yaml
-          ref: de3baa1af2549e1d02ca4a2ccd4bd1dddae36ac8
+          path: skills/aoa-evals-skills/references/contract.yaml
+          ref: 3b0b3d41f7a555662af0e324955d482370945e63
           role: owner-typed-contract
           authority: external-authority
       optional_refs: []
@@ -583,21 +583,21 @@ relations:
     target: skill.aoa-eval
   - kind: implemented-by
     source: engineering.evaluation.central-proof
-    target: skill.aoa-evals
+    target: skill.aoa-evals-skills
   - kind: hands-off-to
     source: skill.aoa-eval
-    target: skill.aoa-evals
+    target: skill.aoa-evals-skills
     condition: The selected object is a central source bundle, named eval verdict, source-linked report, or proof-lifecycle question.
   - kind: hands-off-to
     source: mode.eval.select
-    target: skill.aoa-evals
+    target: skill.aoa-evals-skills
     condition: Selection identifies a central source bundle or owner-routed proof object whose proof meaning must be selected or reviewed by aoa-evals.
   - kind: hands-off-to
     source: mode.eval.apply
-    target: skill.aoa-evals
+    target: skill.aoa-evals-skills
     condition: The request explicitly asks for central proof interpretation and apply returns a central-proof-review-request alongside its evaluation-observation.
   - kind: hands-off-to
-    source: skill.aoa-evals
+    source: skill.aoa-evals-skills
     target: skill.aoa-eval
     condition: The unresolved need is repository-local selection, application, intake, design, or session-hit classification.
   - kind: hands-off-to

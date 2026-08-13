@@ -649,7 +649,7 @@ relations:
     target: skill.aoa-stats
   - kind: hands-off-to
     source: skill.aoa-stats
-    target: skill.aoa-evals
+    target: skill.aoa-evals-skills
     condition: The unresolved question is proof or verdict interpretation rather than a bounded measurement result.
   - kind: composes-with
     source: mode.engineering-shape.port-adapter

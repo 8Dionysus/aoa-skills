@@ -90,7 +90,7 @@ Read and follow `references/session-mining.md`.
 6. When the task explicitly asks for central proof meaning, a central verdict,
    admission, or lifecycle interpretation, preserve the observation and its
    source, claim class, environment, and proof limit in a
-   `central-proof-review-request`, then hand it to `aoa-evals`. Do not invoke
+   `central-proof-review-request`, then hand it to `aoa-evals-skills`. Do not invoke
    that owner merely because an eval ran successfully.
 7. When prior-session evidence still must be found, let the session-memory
    evidence route retrieve and ground it, then consume the bounded packet here.

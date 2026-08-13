@@ -2,7 +2,7 @@
 
 Derived from `capabilities/families/*.yaml`. This file is a read model, not capability authority.
 
-Source content hash: `02a7e1da9dda401af07282ff951e34397e3e5efa15005360982781ab38675bb9`
+Source content hash: `e86b345cea81f638b54420c0d027dfa9c0b7a2bedaa5567e889dbd29d10c524e`
 
 ## Semantic tree
 
@@ -10,7 +10,7 @@ Source content hash: `02a7e1da9dda401af07282ff951e34397e3e5efa15005360982781ab38
   - `engineering` (capability, deferred, challenger)
     - `engineering.evaluation` (capability, deferred, challenger)
       - `engineering.evaluation.central-proof` (capability, internal, challenger)
-        - `skill.aoa-evals` (skill, advertised, challenger)
+        - `skill.aoa-evals-skills` (skill, advertised, challenger)
       - `engineering.evaluation.use` (capability, internal, challenger)
         - `mode.eval.apply` (mode, internal, challenger)
         - `mode.eval.design` (mode, internal, challenger)
@@ -161,29 +161,29 @@ Source content hash: `02a7e1da9dda401af07282ff951e34397e3e5efa15005360982781ab38
 | guarded-by | `workflow.operations.safe-infra-change` | `guard.operations.approval` | - |
 | guarded-by | `workflow.titan.closeout-audit` | `guard.titan.closeout-readiness` | - |
 | hands-off-to | `mode.checkpoint-closeout.execute` | `skill.aoa-memo-writeback` | A bounded reusable closeout lesson survives after the report. |
-| hands-off-to | `mode.eval.apply` | `skill.aoa-evals` | The request explicitly asks for central proof interpretation and apply returns a central-proof-review-request alongside its evaluation-observation. |
+| hands-off-to | `mode.eval.apply` | `skill.aoa-evals-skills` | The request explicitly asks for central proof interpretation and apply returns a central-proof-review-request alongside its evaluation-observation. |
 | hands-off-to | `mode.eval.select` | `mode.eval.apply` | Selection found an exact fit with a complete execution contract. |
 | hands-off-to | `mode.eval.select` | `mode.eval.design` | Selection recorded no fit and a stable invariant, owner path, and acceptance target exist. |
 | hands-off-to | `mode.eval.select` | `mode.eval.local-need` | Selection recorded no fit and an admitted owner-local intake port exists. |
-| hands-off-to | `mode.eval.select` | `skill.aoa-evals` | Selection identifies a central source bundle or owner-routed proof object whose proof meaning must be selected or reviewed by aoa-evals. |
+| hands-off-to | `mode.eval.select` | `skill.aoa-evals-skills` | Selection identifies a central source bundle or owner-routed proof object whose proof meaning must be selected or reviewed by aoa-evals. |
 | hands-off-to | `mode.session-harvest.classify` | `mode.session-harvest.automation-opportunity` | The unit is a repeated manual route and automation readiness is the unresolved question. |
 | hands-off-to | `mode.session-harvest.classify` | `mode.session-harvest.promote` | Exactly one isolated repeated quest-shaped unit remains and only its promotion verdict is unresolved. |
 | hands-off-to | `mode.session-harvest.extract` | `mode.session-harvest.classify` | One extracted unit has sufficient evidence for destination classification. |
 | hands-off-to | `mode.session-recovery.diagnose` | `mode.session-recovery.repair` | The diagnosis is reviewed and the target owner is known. |
-| hands-off-to | `skill.aoa-eval` | `skill.aoa-evals` | The selected object is a central source bundle, named eval verdict, source-linked report, or proof-lifecycle question. |
-| hands-off-to | `skill.aoa-evals` | `skill.aoa-eval` | The unresolved need is repository-local selection, application, intake, design, or session-hit classification. |
-| hands-off-to | `skill.aoa-kag` | `skill.aoa-evals` | Retrieval resolves a central proof bundle, result, verdict, or proof-lifecycle question. |
+| hands-off-to | `skill.aoa-eval` | `skill.aoa-evals-skills` | The selected object is a central source bundle, named eval verdict, source-linked report, or proof-lifecycle question. |
+| hands-off-to | `skill.aoa-evals-skills` | `skill.aoa-eval` | The unresolved need is repository-local selection, application, intake, design, or session-hit classification. |
+| hands-off-to | `skill.aoa-kag` | `skill.aoa-evals-skills` | Retrieval resolves a central proof bundle, result, verdict, or proof-lifecycle question. |
 | hands-off-to | `skill.aoa-kag` | `skill.aoa-memo` | Retrieval resolves an explicit memory object, candidate, lifecycle target, or memory read-model question. |
-| hands-off-to | `skill.aoa-memo` | `skill.aoa-evals` | The unresolved claim is proof meaning rather than memory meaning. |
+| hands-off-to | `skill.aoa-memo` | `skill.aoa-evals-skills` | The unresolved claim is proof meaning rather than memory meaning. |
 | hands-off-to | `skill.aoa-memo` | `skill.aoa-kag` | The responsible owner or exact source remains unknown and bounded cross-repository navigation is required. |
 | hands-off-to | `skill.aoa-memo-writeback` | `skill.aoa-memo` | A concrete candidate, export, quarantine packet, memory object, lifecycle target, or read-model target now exists and needs owner recall, review, or evolution. |
-| hands-off-to | `skill.aoa-stats` | `skill.aoa-evals` | The unresolved question is proof or verdict interpretation rather than a bounded measurement result. |
+| hands-off-to | `skill.aoa-stats` | `skill.aoa-evals-skills` | The unresolved question is proof or verdict interpretation rather than a bounded measurement result. |
 | hands-off-to | `skill.aoa-summon` | `skill.aoa-checkpoint-closeout-bridge` | A returned actor changes the parent checkpoint or closeout posture. |
 | hands-off-to | `skill.aoa-summon` | `skill.aoa-memo-writeback` | A reviewed actor return contains one bounded memory-worthy lesson. |
 | hands-off-to | `skill.titan-memory-loom` | `tool.titan.memory-retention` | - |
 | hands-off-to | `tool.titan.memory-recall` | `tool.titan.memory-retention` | - |
 | hands-off-to | `workflow.operations.local-commit` | `workflow.operations.git-closeout` | A separately authorized remote effect is requested and an evaluated host binding is available. |
-| implemented-by | `engineering.evaluation.central-proof` | `skill.aoa-evals` | - |
+| implemented-by | `engineering.evaluation.central-proof` | `skill.aoa-evals-skills` | - |
 | implemented-by | `engineering.evaluation.use` | `skill.aoa-eval` | - |
 | implemented-by | `engineering.measurement` | `skill.aoa-stats` | - |
 | implemented-by | `engineering.shape` | `skill.aoa-engineering-shape` | - |
@@ -275,7 +275,7 @@ Source content hash: `02a7e1da9dda401af07282ff951e34397e3e5efa15005360982781ab38
 | primary-parent | `skill.aoa-decision` | `stewardship.decisions` | - |
 | primary-parent | `skill.aoa-engineering-shape` | `engineering.shape` | - |
 | primary-parent | `skill.aoa-eval` | `engineering.evaluation.use` | - |
-| primary-parent | `skill.aoa-evals` | `engineering.evaluation.central-proof` | - |
+| primary-parent | `skill.aoa-evals-skills` | `engineering.evaluation.central-proof` | - |
 | primary-parent | `skill.aoa-kag` | `stewardship.knowledge.retrieve` | - |
 | primary-parent | `skill.aoa-knowledge-stewardship` | `stewardship.knowledge` | - |
 | primary-parent | `skill.aoa-memo` | `stewardship.knowledge.memory` | - |

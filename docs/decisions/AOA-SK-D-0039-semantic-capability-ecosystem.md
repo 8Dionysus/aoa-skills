@@ -153,6 +153,23 @@ final answer, or green structural check alone.
 
 ## Review Log
 
+### 2026-08-13 - Give the central proof router a distinct family identity
+
+- Observed defect: the previous tree separated evaluation use from central
+  proof structurally, but its two prompt-visible packages were still named
+  `aoa-eval` and `aoa-evals`. The plural suffix was not a meaningful semantic
+  boundary for model retrieval or later agent reasoning.
+- Owner correction: `aoa-evals` version `0.2.0` now follows the sibling owner
+  pattern `aoa-evals -> aoa-evals-skills -> skill.aoa-evals-skills`, matching
+  the established `aoa-agents -> aoa-agents-skills` shape. The old advertised
+  package name is superseded without an alias.
+- Shared correction: the central-proof branch, typed handoffs, external owner
+  refs, and OS profile now use `skill.aoa-evals-skills`. `aoa-evals` remains
+  the proof-owner repository; `aoa-eval` remains the shared operations bundle.
+- Claim limit: this removes the known identity collision and aligns authored
+  routing with the landed owner source. It does not merge procedure truth or
+  prove universal routing behavior.
+
 ### 2026-08-12 - Replace the flat evaluation family with explicit branches
 
 - Observed defect: `aoa-eval`, `aoa-evals`, and every shared eval mode had the
