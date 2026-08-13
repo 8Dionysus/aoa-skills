@@ -111,7 +111,7 @@ As of 2026-08-12:
 - every installed package and the aggregate profile receipt is current against
   its selected clean candidate source, and unrelated user entries remain
   preserved;
-- `aoa-evals`, `aoa-memo`, `aoa-stats`, `aoa-kag`, progression, summon,
+- `aoa-evals-skills`, `aoa-memo`, `aoa-stats`, `aoa-kag`, progression, summon,
   Artifact Trust, diagnostic, and both local `.aoa` session-memory routes are
   included alongside the seven shared bundles;
 - the three Titan owner bundles remain admitted owner-local procedures and
@@ -131,6 +131,18 @@ As of 2026-08-12:
   hosts and models.
 
 ## Review Log
+
+### 2026-08-13 - Follow the landed evals skill-family identity
+
+- The `aoa-evals` owner superseded its advertised `aoa-evals` package with
+  `aoa-evals-skills` at version `0.2.0`; keeping the old name in the global
+  profile would leave a stale prompt-visible capability beside `aoa-eval`.
+- `os-user-default` now selects only `aoa-evals-skills` from the `aoa-evals`
+  owner port. The installer must remove the previously managed `aoa-evals`
+  copy rather than preserve it as an alias or unmanaged tail.
+- This changes one managed-copy identity, not the profile cardinality or proof
+  authority. Installation parity and fresh-session visibility remain separate
+  consumer evidence.
 
 ### 2026-08-12 - Separate owner admission from current profile selection
 

@@ -433,7 +433,7 @@ relations:
     condition: Retrieval resolves an explicit memory object, candidate, lifecycle target, or memory read-model question.
   - kind: hands-off-to
     source: skill.aoa-kag
-    target: skill.aoa-evals
+    target: skill.aoa-evals-skills
     condition: Retrieval resolves a central proof bundle, result, verdict, or proof-lifecycle question.
   - kind: hands-off-to
     source: skill.aoa-memo
@@ -441,5 +441,5 @@ relations:
     condition: The responsible owner or exact source remains unknown and bounded cross-repository navigation is required.
   - kind: hands-off-to
     source: skill.aoa-memo
-    target: skill.aoa-evals
+    target: skill.aoa-evals-skills
     condition: The unresolved claim is proof meaning rather than memory meaning.

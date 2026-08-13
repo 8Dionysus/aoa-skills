@@ -25,7 +25,7 @@
           "kind": "owner-port",
           "repo": "aoa-evals",
           "root": "aoa-evals",
-          "skills": ["aoa-evals"]
+          "skills": ["aoa-evals-skills"]
         },
         {
           "kind": "owner-port",

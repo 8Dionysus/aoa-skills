@@ -14,7 +14,7 @@ reviewed repeated unit and the remaining question is its promotion target.
    - leaf composable procedure -> skill proposal;
    - recurring multi-step scenario -> playbook/workflow proposal;
    - actor/orchestrator law -> `aoa-agents` owner surface;
-   - bounded proof meaning -> `aoa-evals`;
+   - bounded proof meaning -> `aoa-evals-skills`;
    - reviewed memory meaning -> `aoa-memo`;
    - weak/mixed/owner-pending evidence -> keep/open quest or defer.
 4. Reject theme recurrence, conversation recurrence, urgency, and one strong run

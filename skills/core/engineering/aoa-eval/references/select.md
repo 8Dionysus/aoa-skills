@@ -46,7 +46,7 @@ Procedure:
    `exact_fit`, `partial_fit`, `nearest_wrong_target`, or `no_fit` for the named
    invariant and acceptance target. Do not read unrelated memo, closeout,
    session, decision, or other-domain evidence after the verdict is decisive.
-6. Consult central `aoa-evals` only when the bounded local inventory points to
+6. Consult central `aoa-evals-skills` only when the bounded local inventory points to
    reusable doctrine, a local-port standard, or a plausible matching bundle;
    do not consult it for completeness or let centrality outweigh owner fit.
 7. Compare candidate surfaces by exercised invariant, command, prerequisites,
