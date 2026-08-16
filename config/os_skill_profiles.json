@@ -47,6 +47,12 @@
         },
         {
           "kind": "owner-port",
+          "repo": "aoa-sdk",
+          "root": "aoa-sdk",
+          "skills": ["aoa-agent-tool-routing"]
+        },
+        {
+          "kind": "owner-port",
           "repo": "aoa-agents",
           "root": "aoa-agents",
           "skills": [
