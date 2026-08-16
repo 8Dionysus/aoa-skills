@@ -1,0 +1,17 @@
+{
+  "allowed_bytes": 397372,
+  "allowed_tracked_bytes": 10166149,
+  "approved_by": "repository-owner",
+  "base_ref": "909e59f9d168077d9dc3656bb5afbeb66bfa9c6b",
+  "changed_generated_bytes": 397372,
+  "changed_generated_files": 14,
+  "decision_ref": "aoa-kag:docs/decisions/AOA-KAG-D-0017-portable-content-addressed-repository-family.md",
+  "default_limit_bytes": 1048576,
+  "head_family_digest": "d0941b31630a9ffe7e52df1f8c2c7a334e7c4a1d6168056a665e96f245001741",
+  "reason": "Record the SDK pre-tool routing selection rationale and current seventeen-front-door profile topology.",
+  "repo": "aoa-skills",
+  "schema_version": "aoa-repo-local-kag-budget-receipt-v1",
+  "scope": "tracked_size",
+  "tracked_bytes": 10166149,
+  "tracked_bytes_max": 9437184
+}
