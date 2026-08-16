@@ -151,6 +151,27 @@ As of 2026-08-15:
   recorded trial requirement and must stay bounded to the exact installed
   profile, host, runtime, model, and prompts exercised.
 
+### 2026-08-15 - Exercise the SDK pre-tool routing bundle
+
+- The candidate `os-user-default` profile passed the installer check with the
+  clean landed owner snapshots `aoa-sdk@81bd03a94eaa9b576a4f2da91c57041fcc945f58`
+  and `aoa-agents@4be21e25258128d36db80ce08b9f648495f22d0e`.
+- The direct resolver trial produced `owner_route` for an independent
+  responsibility result, with `next_owner=aoa-agents-skills`,
+  `dispatch_posture=invoke_role_first_entry`, and the built-in Codex agent
+  blocked.
+- The negative trial produced `not_applicable` for a non-agent request, with
+  `next_owner=none`, `dispatch_posture=no_agent_tool`, and no built-in agent
+  requested. The coexistence trial produced `compatibility_local`, with
+  `next_owner=aoa-summon`, `dispatch_posture=allow_codex_local_after_classification`,
+  and the built-in agent deferred until classification.
+- A `compaction_resume` input carrying a prior classification was rejected by
+  the typed contract; the route requires a fresh unresolved classification.
+  These cases prove the resolver contract for this candidate source, not a
+  hidden hook, universal routing, model choice, runtime launch, or external
+  actor outcome. The complete bounded output is retained in the task-local
+  live-proof packet.
+
 ### 2026-08-13 - Follow the landed evals skill-family identity
 
 - The `aoa-evals` owner superseded its advertised `aoa-evals` package with
