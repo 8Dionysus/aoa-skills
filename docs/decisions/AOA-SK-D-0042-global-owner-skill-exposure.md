@@ -99,12 +99,12 @@ topology back into the target architecture.
 
 ## Current Applicability
 
-As of 2026-08-12:
+As of 2026-08-15:
 
 - the owner homes in scope have landed in `aoa-evals`, `aoa-memo`,
   `aoa-stats`, `aoa-kag`, `aoa-sdk`, `aoa-agents`, `abyss-stack`,
   `abyss-machine`, and `ATM10-Agent`;
-- the current `os-user-default` profile selects sixteen unique managed-copy
+- the current `os-user-default` profile selects seventeen unique managed-copy
   front doors from shared and owner homes for `~/.codex/skills`, and verifies
   two owner-managed session-memory links without assuming authority to mutate
   them;
@@ -112,8 +112,14 @@ As of 2026-08-12:
   its selected clean candidate source, and unrelated user entries remain
   preserved;
 - `aoa-evals-skills`, `aoa-memo`, `aoa-stats`, `aoa-kag`, progression, summon,
-  Artifact Trust, diagnostic, and both local `.aoa` session-memory routes are
-  included alongside the seven shared bundles;
+  Artifact Trust, diagnostic, the SDK-owned `aoa-agent-tool-routing` front
+  door, and both local `.aoa` session-memory routes are included alongside the
+  seven shared bundles;
+- `aoa-agent-tool-routing` is selected from the `aoa-sdk` owner port as a typed,
+  advisory pre-tool route. It presents the responsibility boundary to
+  `aoa-agents-skills` and preserves the classified `aoa-summon` compatibility
+  leaf; it does not claim a hidden hook, model choice, runtime launch, or
+  universal routing outcome.
 - the three Titan owner bundles remain admitted owner-local procedures and
   represented in the semantic capability graph, but are deferred from the
   default global profile after current lifecycle and context-budget review;
@@ -131,6 +137,40 @@ As of 2026-08-12:
   hosts and models.
 
 ## Review Log
+
+### 2026-08-15 - Select the SDK pre-tool routing front door
+
+- `aoa-sdk` now owns the typed `aoa-agent-tool-routing` control-plane contract
+  and exposes it through the curated `os-user-default` owner-port selection.
+- The selection rationale is coexistence with, not replacement of,
+  `aoa-agents-skills` and `aoa-summon`: the SDK route resolves the next owner,
+  while semantic responsibility classification and the local compatibility
+  leaf remain with their existing owners.
+- Admission and profile checks establish source identity and installability
+  only. Direct, negative, and coexistence behavior remains a separately
+  recorded trial requirement and must stay bounded to the exact installed
+  profile, host, runtime, model, and prompts exercised.
+
+### 2026-08-15 - Exercise the SDK pre-tool routing bundle
+
+- The candidate `os-user-default` profile passed the installer check with the
+  clean landed owner snapshots `aoa-sdk@81bd03a94eaa9b576a4f2da91c57041fcc945f58`
+  and `aoa-agents@4be21e25258128d36db80ce08b9f648495f22d0e`.
+- The direct resolver trial produced `owner_route` for an independent
+  responsibility result, with `next_owner=aoa-agents-skills`,
+  `dispatch_posture=invoke_role_first_entry`, and the built-in Codex agent
+  blocked.
+- The negative trial produced `not_applicable` for a non-agent request, with
+  `next_owner=none`, `dispatch_posture=no_agent_tool`, and no built-in agent
+  requested. The coexistence trial produced `compatibility_local`, with
+  `next_owner=aoa-summon`, `dispatch_posture=allow_codex_local_after_classification`,
+  and the built-in agent deferred until classification.
+- A `compaction_resume` input carrying a prior classification was rejected by
+  the typed contract; the route requires a fresh unresolved classification.
+  These cases prove the resolver contract for this candidate source, not a
+  hidden hook, universal routing, model choice, runtime launch, or external
+  actor outcome. The complete bounded output is retained in the task-local
+  live-proof packet.
 
 ### 2026-08-13 - Follow the landed evals skill-family identity
 
