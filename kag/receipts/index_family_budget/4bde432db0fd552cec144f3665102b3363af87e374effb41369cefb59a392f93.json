@@ -1,0 +1,17 @@
+{
+  "allowed_bytes": 430924,
+  "allowed_tracked_bytes": 10167082,
+  "approved_by": "repository-owner",
+  "base_ref": "909e59f9d168077d9dc3656bb5afbeb66bfa9c6b",
+  "changed_generated_bytes": 430924,
+  "changed_generated_files": 15,
+  "decision_ref": "aoa-kag:docs/decisions/AOA-KAG-D-0017-portable-content-addressed-repository-family.md",
+  "default_limit_bytes": 1048576,
+  "head_family_digest": "4bde432db0fd552cec144f3665102b3363af87e374effb41369cefb59a392f93",
+  "reason": "Record the direct SDK pre-tool routing trial and its bounded profile decision evidence.",
+  "repo": "aoa-skills",
+  "schema_version": "aoa-repo-local-kag-budget-receipt-v1",
+  "scope": "tracked_size",
+  "tracked_bytes": 10167082,
+  "tracked_bytes_max": 9437184
+}
