@@ -1,0 +1,17 @@
+{
+  "allowed_bytes": 261092,
+  "allowed_tracked_bytes": 10164882,
+  "approved_by": "repository-owner",
+  "base_ref": "909e59f9d168077d9dc3656bb5afbeb66bfa9c6b",
+  "changed_generated_bytes": 261092,
+  "changed_generated_files": 5,
+  "decision_ref": "aoa-kag:docs/decisions/AOA-KAG-D-0017-portable-content-addressed-repository-family.md",
+  "default_limit_bytes": 1048576,
+  "head_family_digest": "b5a25f8624ec51bd6af9028b7984898f514348bff65a4e48d6ece3c50558448d",
+  "reason": "Expose the aoa-sdk pre-tool routing owner port in the os-user-default skill profile.",
+  "repo": "aoa-skills",
+  "schema_version": "aoa-repo-local-kag-budget-receipt-v1",
+  "scope": "tracked_size",
+  "tracked_bytes": 10164882,
+  "tracked_bytes_max": 9437184
+}
