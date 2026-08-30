@@ -11,8 +11,9 @@ and durable repository decisions.
 
 ## Read before editing
 
-Read root `AGENTS.md`, `docs/README.md`, and the nearest owner card. For system
-claims read `CHARTER.md`, `DESIGN.md`, and authored capability sources.
+Inspect the target document and nearest card. Use `docs/README.md` only to
+choose a surface or change the human map; ground system claims in their
+charter, design, and authored capability sources.
 
 ## Boundaries
 

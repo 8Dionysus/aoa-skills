@@ -11,8 +11,8 @@ callable families.
 
 ## Read before editing
 
-Read `skills/AGENTS.md`, `skills/core/AGENTS.md`, the target bundle, and the
-matching decision, engineering, or eval capability family.
+Inspect the target bundle and matching family. Inspect siblings only for a
+lane-wide ABI, composition, or lifecycle change.
 
 ## Boundaries
 

@@ -11,9 +11,8 @@ their deterministic requested-only projections.
 
 ## Read before editing
 
-Read root and mechanics cards, `mechanics/agon/README.md`, both candidate part
-sources, their schemas, builders, validators, and the named external owner
-binding.
+Inspect the affected candidate source, schema, builder, validator, and external
+owner binding. Use the README or other family only for cross-family work.
 
 ## Boundaries
 

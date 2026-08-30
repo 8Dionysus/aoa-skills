@@ -44,3 +44,22 @@ def test_source_lane_is_structural_and_decision_indexes_remain_current() -> None
     assert all("generated" not in " ".join(command) for command in commands)
     assert all("pytest" not in command for command in commands)
     assert decision_indexes.validate_decision_index_surfaces(REPO_ROOT) == []
+
+
+def test_agents_mesh_keeps_inherited_ancestor_cards_implicit() -> None:
+    from validation import validate_agents_design
+
+    assert validate_agents_design._ancestor_agent_cards(
+        Path("skills/core/engineering/AGENTS.md")
+    ) == (
+        Path("AGENTS.md"),
+        Path("skills/AGENTS.md"),
+        Path("skills/core/AGENTS.md"),
+    )
+    assert validate_agents_design._mentions_path(
+        "Read `skills/AGENTS.md` first.", Path("skills/AGENTS.md")
+    )
+    assert not validate_agents_design._mentions_path(
+        "Use `DESIGN.AGENTS.md` for card shape.", Path("AGENTS.md")
+    )
+    assert validate_agents_design.validate(REPO_ROOT) == []

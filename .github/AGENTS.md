@@ -10,7 +10,8 @@ Keep GitHub landing support aligned with root `AGENTS.md` without making GitHub 
 
 ## Read before editing
 
-Read root `AGENTS.md`, `DESIGN.AGENTS.md`, and the specific workflow or template being changed. For release or merge behavior, also read `scripts/lanes/release_check.py` and any workflow file that invokes it.
+Inspect the changed workflow or template. Use `DESIGN.AGENTS.md` for card-shape
+changes; for release behavior inspect `release_check.py` and its callers.
 
 ## Boundaries
 

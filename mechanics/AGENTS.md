@@ -12,8 +12,8 @@ portable release/pack handoff.
 
 ## Read before editing
 
-Read root `AGENTS.md`, `mechanics/README.md`, `ARTIFACT_TOPOLOGY.md`, and the
-target package card and README.
+Inspect the target package card and source. Use the README to choose a package;
+use `ARTIFACT_TOPOLOGY.md` only when inventory, ownership, or flow moves.
 
 ## Boundaries
 

@@ -12,9 +12,8 @@ shared source bundles and their evidence-gated consumer profiles.
 
 ## Read before editing
 
-Read root and mechanics cards, `README.md`, the affected release doc,
-`config/skill_pack_profiles.json`, the export/pack implementation, release
-schema, and generated manifest.
+Inspect the affected source, profile, export/pack implementation, schema, and
+generated manifest. Use the README only for human handoff topology.
 
 ## Boundaries
 

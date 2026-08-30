@@ -12,8 +12,8 @@ Questbook independence, and live validation-lane references.
 
 ## Read before editing
 
-Read root `AGENTS.md`, `docs/testing/TEST_TOPOLOGY.md`, the manual observation
-that justifies the invariant, and the producer/consumer under test.
+Inspect the manual observation and producer/consumer under test. Use
+`TEST_TOPOLOGY.md` only to add, remove, or reclassify a durable test surface.
 
 ## Boundaries
 

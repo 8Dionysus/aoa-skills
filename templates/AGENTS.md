@@ -10,8 +10,8 @@ This card applies to `templates/`.
 
 ## Read before editing
 
-Read root `AGENTS.md`, `DESIGN.md`, `skills/README.md`, the frontmatter schema,
-source validator, and one current bundle.
+Inspect the template, frontmatter schema, validator, and one current bundle.
+Use design or the skills README only for shared shape or admission changes.
 
 ## Boundaries
 

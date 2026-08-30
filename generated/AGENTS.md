@@ -11,8 +11,8 @@ portable export, release handoff, Questbook, and requested Agon candidates.
 
 ## Read before editing
 
-Read root `AGENTS.md`, `generated/README.md`, and the owning source plus builder
-for the affected file.
+Inspect the affected output, owner source, and builder. Use the README only to
+select a projection or change the human map.
 
 ## Boundaries
 

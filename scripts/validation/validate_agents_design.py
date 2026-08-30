@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 from pathlib import Path
+import re
 import subprocess
 import sys
 
@@ -42,6 +43,19 @@ REQUIRED_OWNER_CARDS: tuple[Path, ...] = tuple(
 )
 
 IGNORED_PARTS = {".git", ".pytest_cache", ".ruff_cache", "__pycache__"}
+
+
+def _ancestor_agent_cards(relative: Path) -> tuple[Path, ...]:
+    cards = [Path("AGENTS.md")]
+    parts = relative.parent.parts
+    for depth in range(1, len(parts)):
+        cards.append(Path(*parts[:depth], "AGENTS.md"))
+    return tuple(cards)
+
+
+def _mentions_path(text: str, path: Path) -> bool:
+    token = re.escape(path.as_posix())
+    return re.search(rf"(?<![A-Za-z0-9_./-]){token}(?![A-Za-z0-9_./-])", text) is not None
 
 
 def _display(path: Path, repo_root: Path) -> str:
@@ -129,6 +143,20 @@ def validate(repo_root: Path = REPO_ROOT) -> list[str]:
             )
             if not _section_body(lines, heading, next_heading):
                 issues.append(f"{rel}: section {heading!r} must not be empty")
+
+        relative = path.relative_to(repo_root)
+        if relative != Path("AGENTS.md"):
+            reading = _section_body(
+                lines,
+                "## Read before editing",
+                "## Boundaries",
+            )
+            for ancestor in _ancestor_agent_cards(relative):
+                if _mentions_path(reading, ancestor):
+                    issues.append(
+                        f"{rel}: Read before editing must not require rereading "
+                        f"inherited {ancestor.as_posix()}"
+                    )
 
     return issues
 

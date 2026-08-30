@@ -16,14 +16,9 @@ sibling-owner authority stays with the owning source surface.
 
 ## Read before editing
 
-Read:
-
-1. repository root `AGENTS.md`
-2. `docs/AGENTS.md`
-3. `docs/decisions/README.md`
-4. `docs/decisions/TEMPLATE.md`
-5. the nearest existing decision for the same surface
-6. the source surface whose route or authority the decision records
+Inspect the template, nearest decision for the same surface, and affected owner
+source. Use the decision README or generated indexes only to choose the lane or
+locate precedent.
 
 ## Boundaries
 

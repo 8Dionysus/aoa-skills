@@ -11,8 +11,8 @@ capability families or callable bundles.
 
 ## Read before editing
 
-Read root `AGENTS.md`, the affected capability and bundle sources, the manual
-trial protocol, and any stronger proof-owner result being referenced.
+Inspect affected capability and bundle sources, the manual trial protocol, and
+any cited proof-owner result. Use the README only for review-index changes.
 
 ## Boundaries
 
