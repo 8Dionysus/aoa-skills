@@ -11,8 +11,8 @@ than one project adapter.
 
 ## Read before editing
 
-Read `skills/AGENTS.md`, the nearest lane card, target bundle, and bound
-capability family.
+Inspect the target bundle and bound family; use the lane card only for a
+lane-wide contract.
 
 ## Boundaries
 

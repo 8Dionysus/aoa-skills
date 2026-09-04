@@ -11,8 +11,8 @@ external Agon requests.
 
 ## Read before editing
 
-Read root `AGENTS.md`, `QUESTBOOK.md`, `quests/README.md`, and either the
-Questbook or Agon owner card.
+Inspect the affected quest source and its Questbook or Agon card. Use the
+README for topology or admission and `QUESTBOOK.md` for active-index changes.
 
 ## Boundaries
 

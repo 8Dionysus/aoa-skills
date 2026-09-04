@@ -11,9 +11,9 @@ bundle-local resources.
 
 ## Read before editing
 
-Read root `AGENTS.md`, `DESIGN.md`, `capabilities/README.md`, this card,
-`skills/README.md`, the nearest lane card, the target `SKILL.md`, and its bound
-capability family.
+Inspect the target `SKILL.md`, nearest lane card, and bound family. Use design
+or capability docs for system semantics; use the skills README only for
+admission, catalog, or projection topology.
 
 ## Boundaries
 

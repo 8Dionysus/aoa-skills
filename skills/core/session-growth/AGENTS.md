@@ -11,8 +11,8 @@ checkpoint-closeout callable front door.
 
 ## Read before editing
 
-Read `skills/AGENTS.md`, `skills/core/AGENTS.md`, the target bundle, the
-session-growth capability family, and the current session owner boundary.
+Inspect the target bundle, session-growth family, and current session boundary.
+Inspect siblings only for shared custody or handoff changes.
 
 ## Boundaries
 

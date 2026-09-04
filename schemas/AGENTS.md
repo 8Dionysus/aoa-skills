@@ -11,8 +11,8 @@ projections, skill frontmatter, migration, and release manifests.
 
 ## Read before editing
 
-Read root `AGENTS.md`, `schemas/README.md`, the schema, its semantic owner, and
-all current producers and consumers.
+Inspect the schema, semantic owner, producers, and consumers. Use the README
+only to select a contract or change the human catalog.
 
 ## Boundaries
 

@@ -13,9 +13,9 @@ modes, workflows, tools, guards, adapters, evidence, and projections.
 
 ## Read before editing
 
-Read root `AGENTS.md`, `CHARTER.md`, `DESIGN.md`, `docs/ARCHITECTURE.md`, this
-card, `capabilities/README.md`, the affected family YAML, and every referenced
-owner source before changing a contract or binding.
+Inspect the affected family YAML and referenced owner sources. Use
+`capabilities/README.md` only for topology; open charter, design, or
+architecture only when its contract changes.
 
 ## Boundaries
 

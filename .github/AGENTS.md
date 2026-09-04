@@ -10,7 +10,8 @@ Keep GitHub landing support aligned with root `AGENTS.md` without making GitHub 
 
 ## Read before editing
 
-Read root `AGENTS.md`, `DESIGN.AGENTS.md`, and the specific workflow or template being changed. For release or merge behavior, also read `scripts/lanes/release_check.py` and any workflow file that invokes it.
+Inspect the changed workflow or template. Use `DESIGN.AGENTS.md` for card-shape
+changes; for release behavior inspect `release_check.py` and its callers.
 
 ## Boundaries
 
@@ -18,12 +19,11 @@ Do not encode skill meaning, status promotion, or generated-surface authority in
 
 ## Validation
 
-Full lane command sequences live in `config/validation_lanes.json`; this local card may name only focused owner checks, lane ids, or the nearest route for the changed surface.
-
-For workflow changes, run the narrowest local `scripts/lanes/ci_gate.py` mode that
-mirrors the job when possible, then `python scripts/lanes/ci_gate.py --mode release`
-or `python scripts/lanes/release_check.py --include-packaging-smoke` when the change
-is release-facing. For wording-only templates, run `git diff --check`.
+Full lane command sequences live in `config/validation_lanes.json`; this local
+card may name only focused owner checks, lane ids, or the nearest route for the
+changed surface. Select the narrowest matching lane, then use the explicit
+[`GitHub`](../VALIDATION.md#github) route for release-facing workflow changes
+or wording-only templates.
 
 ## Closeout
 

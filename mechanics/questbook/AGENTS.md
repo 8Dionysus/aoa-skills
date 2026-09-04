@@ -11,8 +11,8 @@ catalog/dispatch projection, and active root index.
 
 ## Read before editing
 
-Read root and mechanics cards, `mechanics/questbook/README.md`, `QUESTBOOK.md`,
-the schemas, builder, validator, and current quest sources.
+Inspect the affected quest source, schema, builder, and validator. Use the
+README for admission work and `QUESTBOOK.md` for active-index changes.
 
 ## Boundaries
 

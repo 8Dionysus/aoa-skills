@@ -13,9 +13,8 @@ second prompt-visible source.
 
 ## Read before editing
 
-Read root `AGENTS.md`, `skills/AGENTS.md`, `generated/AGENTS.md`, the portable
-layer release doc, and the export builder/validator before changing portable
-consumer behavior.
+Inspect the affected profile or assembly and its export builder/validator.
+Consult a skill or generated owner card only when that source also changes.
 
 ## Boundaries
 

@@ -12,8 +12,8 @@ Questbook independence, and live validation-lane references.
 
 ## Read before editing
 
-Read root `AGENTS.md`, `docs/testing/TEST_TOPOLOGY.md`, the manual observation
-that justifies the invariant, and the producer/consumer under test.
+Inspect the manual observation and producer/consumer under test. Use
+`TEST_TOPOLOGY.md` only to add, remove, or reclassify a durable test surface.
 
 ## Boundaries
 
@@ -23,9 +23,9 @@ retired compatibility surfaces. Fixtures remain minimal and public-safe.
 
 ## Validation
 
-Reproduce behavior manually, run the focused test, then
-`PYTHONPATH=scripts python -m pytest -q tests`. Delete a test when its durable
-contract disappears.
+Reproduce behavior manually, run the focused test, then use the repository
+[`Tests`](../VALIDATION.md#tests) route. Delete a test when its durable contract
+disappears.
 
 ## Closeout
 

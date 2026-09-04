@@ -1,0 +1,17 @@
+{
+  "allowed_bytes": 3913518,
+  "allowed_tracked_bytes": 10184505,
+  "approved_by": "repository-owner",
+  "base_ref": "aa8351a4de12b4a224c90799d1b29217ecfaaba2",
+  "changed_generated_bytes": 3913518,
+  "changed_generated_files": 114,
+  "decision_ref": "aoa-kag:docs/decisions/AOA-KAG-D-0017-portable-content-addressed-repository-family.md",
+  "default_limit_bytes": 1048576,
+  "head_family_digest": "29eb1ab8c16859b41285d6896c0238a8ecc3bf4ee76e65193f200499bde3f222",
+  "reason": "Regenerate the owner family after completing on-demand README and AGENTS validation routing; this receipt authorizes only the measured documentation projection delta and tracked-size exceedance without changing capability meaning or raising standing budgets.",
+  "repo": "aoa-skills",
+  "schema_version": "aoa-repo-local-kag-budget-receipt-v1",
+  "scope": "generated_delta_and_tracked_size",
+  "tracked_bytes": 10184505,
+  "tracked_bytes_max": 9437184
+}

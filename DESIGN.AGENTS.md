@@ -29,6 +29,12 @@ narrows it.
 
 ## Content rules
 
+- Codex concatenates applicable cards from repository root to the working
+  directory. A nested card must not require rereading the root or another
+  already inherited ancestor.
+- Start required reading from the affected owner source. Route human overview,
+  topology, and status README files on demand instead of making them universal
+  prerequisites.
 - Link to owner surfaces instead of copying them.
 - Name the narrowest durable validator, not every command ever run.
 - Keep manual outcome evidence distinct from structural checks.

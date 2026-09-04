@@ -10,8 +10,8 @@ This lane owns the knowledge-stewardship callable family.
 
 ## Read before editing
 
-Read `skills/AGENTS.md`, `skills/core/AGENTS.md`, the target bundle, and the
-stewardship capability family plus every named external owner route.
+Inspect the target bundle, stewardship family, and affected external owner
+routes.
 
 ## Boundaries
 

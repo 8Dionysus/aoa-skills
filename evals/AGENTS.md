@@ -14,9 +14,9 @@ aoa-evals owns central proof doctrine, scoring, regression, and adoption.
 
 ## Read before editing
 
-Read the root route, evals/README.md, and evals/PORT.yaml. Start with a manual
-comparison in session-local storage. Add a repository suite only when repeated
-manual evidence exposes a stable owner invariant and a long-lived consumer.
+Start from `evals/PORT.yaml` and a session-local manual comparison. Use the
+README for port topology and a target README for its empty-state contract. Add
+a suite only after repeated evidence exposes a stable invariant and consumer.
 
 ## Boundaries
 

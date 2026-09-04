@@ -14,11 +14,9 @@ authored by their repository owner and are federated without being copied here.
 
 ## Read before editing
 
-Read this card, then the nearest nested card. For semantic or structural work
-read `CHARTER.md`, `DESIGN.md`, `capabilities/README.md`, and the affected
-family source. For bundle work also read `skills/README.md` and the target
-`SKILL.md`. For generated, release, KAG, quest, or decision work, read that
-surface's own card and README.
+This card is inherited. For nested work, inspect the nearest card and affected
+source. Open route-map documents only when their named contract changes;
+overview README files are on demand.
 
 ## Boundaries
 
@@ -43,8 +41,9 @@ surface's own card and README.
 
 Manual trials are primary evidence for usefulness and behavior. Repository
 checks protect only durable structural, ABI, export, and packaging invariants.
-Use the command sequences in `config/validation_lanes.json`; the normal bounded
-check is `PYTHONPATH=scripts python scripts/lanes/ci_gate.py --mode source-fast`.
+Use the command sequences in `config/validation_lanes.json`; enter the normal
+bounded route through [`VALIDATION.md`](VALIDATION.md#source-fast) after the
+touched owner surface is known.
 
 ## Closeout
 

@@ -11,8 +11,9 @@ and durable repository decisions.
 
 ## Read before editing
 
-Read root `AGENTS.md`, `docs/README.md`, and the nearest owner card. For system
-claims read `CHARTER.md`, `DESIGN.md`, and authored capability sources.
+Inspect the target document and nearest card. Use `docs/README.md` only to
+choose a surface or change the human map; ground system claims in their
+charter, design, and authored capability sources.
 
 ## Boundaries
 
@@ -23,8 +24,9 @@ second active contract.
 
 ## Validation
 
-Review links and claims against current owner surfaces, run `git diff --check`,
-and run an owner validator only when the documented contract actually moved.
+Review links and claims against current owner surfaces, then use the focused
+[`Docs`](../VALIDATION.md#docs) route. Run an owner validator only when the
+documented contract actually moved.
 
 ## Closeout
 

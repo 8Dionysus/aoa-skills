@@ -13,9 +13,9 @@ to `aoa-kag`; it does not own skill meaning, retrieval policy, or runtime state.
 
 ## Read before editing
 
-Read the root `AGENTS.md`, this card, `kag/README.md`, `kag/manifest.json`,
-`capabilities/README.md`, `generated/capability_graph.json`, and
-`skills/README.md`.
+Inspect `kag/manifest.json`, affected records, and owner sources. Use the KAG
+README only for provider topology; capability or skill READMEs only when their
+source claims change.
 
 ## Boundaries
 

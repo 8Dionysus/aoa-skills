@@ -12,8 +12,8 @@ orchestration.
 
 ## Read before editing
 
-Read root `AGENTS.md`, the owning source/config/schema, all direct callers, and
-focused tests. For command ordering read `config/validation_lanes.json`.
+Inspect the owner source, config or schema, direct callers, and focused tests.
+Use `validation_lanes.json` only when command ordering or membership changes.
 
 ## Boundaries
 

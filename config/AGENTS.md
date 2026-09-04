@@ -11,8 +11,8 @@ pack profiles, host adapters, and validation command sequences.
 
 ## Read before editing
 
-Read root `AGENTS.md`, `config/README.md`, the consuming builder, and the
-schema or test that protects the changed contract.
+Inspect the changed config, its consumer, and protecting schema or test. Use
+`config/README.md` only to choose an owner or change the human catalog.
 
 ## Boundaries
 

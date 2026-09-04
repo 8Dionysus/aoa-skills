@@ -9,6 +9,9 @@ Tracking starts with the community-docs baseline for this repository.
 
 ### Changed
 
+- Move runnable validation entrypoints out of inherited `AGENTS.md` cards into
+  an on-demand root route, while keeping reusable command composition in the
+  validation-lane manifest and guarding against command drift back into cards.
 - Compact the advertised skill descriptions into routing indexes that retain
   each capability, primary trigger, and nearest conflict while leaving
   procedures and verification in the activated package.
