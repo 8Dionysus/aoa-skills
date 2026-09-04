@@ -24,8 +24,9 @@ second active contract.
 
 ## Validation
 
-Review links and claims against current owner surfaces, run `git diff --check`,
-and run an owner validator only when the documented contract actually moved.
+Review links and claims against current owner surfaces, then use the focused
+[`Docs`](../VALIDATION.md#docs) route. Run an owner validator only when the
+documented contract actually moved.
 
 ## Closeout
 

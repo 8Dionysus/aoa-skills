@@ -41,8 +41,9 @@ overview README files are on demand.
 
 Manual trials are primary evidence for usefulness and behavior. Repository
 checks protect only durable structural, ABI, export, and packaging invariants.
-Use the command sequences in `config/validation_lanes.json`; the normal bounded
-check is `PYTHONPATH=scripts python scripts/lanes/ci_gate.py --mode source-fast`.
+Use the command sequences in `config/validation_lanes.json`; enter the normal
+bounded route through [`VALIDATION.md`](VALIDATION.md#source-fast) after the
+touched owner surface is known.
 
 ## Closeout
 

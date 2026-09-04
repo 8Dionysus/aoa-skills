@@ -62,4 +62,13 @@ def test_agents_mesh_keeps_inherited_ancestor_cards_implicit() -> None:
     assert not validate_agents_design._mentions_path(
         "Use `DESIGN.AGENTS.md` for card shape.", Path("AGENTS.md")
     )
+    assert validate_agents_design._runnable_agent_fragments(
+        "Run `PYTHONPATH=scripts python scripts/check.py --fast`."
+    ) == ("PYTHONPATH=scripts python scripts/check.py --fast",)
+    assert validate_agents_design._runnable_agent_fragments(
+        "```bash\ngit diff --check\n```"
+    ) == ("git diff --check",)
+    assert validate_agents_design._runnable_agent_fragments(
+        "Python source and `config/validation_lanes.json` are not commands."
+    ) == ()
     assert validate_agents_design.validate(REPO_ROOT) == []

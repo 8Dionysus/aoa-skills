@@ -23,9 +23,9 @@ retired compatibility surfaces. Fixtures remain minimal and public-safe.
 
 ## Validation
 
-Reproduce behavior manually, run the focused test, then
-`PYTHONPATH=scripts python -m pytest -q tests`. Delete a test when its durable
-contract disappears.
+Reproduce behavior manually, run the focused test, then use the repository
+[`Tests`](../VALIDATION.md#tests) route. Delete a test when its durable contract
+disappears.
 
 ## Closeout
 

@@ -40,17 +40,11 @@ date-named stubs or compatibility maps for retired paths.
 
 ## Validation
 
-Full lane command sequences live in `config/validation_lanes.json`; this local card may name only focused owner checks, lane ids, or the nearest route for the changed surface.
-
-Run:
-
-```bash
-PYTHONPATH=scripts python scripts/decisions/generate_decision_indexes.py --check
-git diff --check
-```
-
-When decision metadata changes, run `PYTHONPATH=scripts python scripts/decisions/generate_decision_indexes.py`
-before the `--check` form.
+Full lane command sequences live in `config/validation_lanes.json`; this local
+card may name only focused owner checks, lane ids, or the nearest route for the
+changed surface. Use the explicit
+[`Decisions`](../../VALIDATION.md#decisions) route on demand; it owns both
+index regeneration and currentness checks.
 
 If the decision changes a validated surface, run that surface's validator too.
 

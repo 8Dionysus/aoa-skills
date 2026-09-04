@@ -43,6 +43,11 @@ REQUIRED_OWNER_CARDS: tuple[Path, ...] = tuple(
 )
 
 IGNORED_PARTS = {".git", ".pytest_cache", ".ruff_cache", "__pycache__"}
+RUNNABLE_COMMAND_RE = re.compile(
+    r"^(?:(?:[A-Z_][A-Z0-9_]*=[^\s`]+)\s+)*"
+    r"(?:python(?:3(?:\.\d+)?)?|pytest|git|bash|sh|make|tox|nox|ruff|mypy|"
+    r"npm|pnpm|yarn|cargo|go)\s+\S+"
+)
 
 
 def _ancestor_agent_cards(relative: Path) -> tuple[Path, ...]:
@@ -63,6 +68,24 @@ def _display(path: Path, repo_root: Path) -> str:
         return path.relative_to(repo_root).as_posix()
     except ValueError:
         return path.as_posix()
+
+
+def _runnable_agent_fragments(text: str) -> tuple[str, ...]:
+    """Return executable-looking fenced lines or inline code spans."""
+
+    fragments: list[str] = []
+    in_fence = False
+    for line in text.splitlines():
+        stripped = line.strip()
+        if stripped.startswith("```"):
+            in_fence = not in_fence
+            continue
+        if in_fence and RUNNABLE_COMMAND_RE.match(stripped):
+            fragments.append(stripped)
+        for inline in re.findall(r"`([^`\n]+)`", line):
+            if RUNNABLE_COMMAND_RE.match(inline.strip()):
+                fragments.append(inline.strip())
+    return tuple(dict.fromkeys(fragments))
 
 
 def iter_agent_cards(repo_root: Path) -> list[Path]:
@@ -126,6 +149,13 @@ def validate(repo_root: Path = REPO_ROOT) -> list[str]:
         if not lines or lines[0] != "# AGENTS.md":
             issues.append(f"{rel}: must start with '# AGENTS.md'")
             continue
+
+        runnable = _runnable_agent_fragments(text)
+        if runnable:
+            issues.append(
+                f"{rel}: runnable procedure must move to an explicit "
+                f"VALIDATION.md route: {', '.join(runnable)}"
+            )
 
         headings = [line for line in lines if line.startswith("## ")][: len(CANONICAL_HEADINGS)]
         if tuple(headings) != CANONICAL_HEADINGS:
