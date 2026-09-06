@@ -69,8 +69,13 @@ def prepare_skills_root(repo_root: pathlib.Path, skills_root: pathlib.Path) -> N
         skills_root.mkdir(parents=True, exist_ok=True)
 
 
-def build_source_documents(repo_root: pathlib.Path) -> tuple[dict[str, Any], dict[str, Any]]:
-    families = capability_system.validate_sources(repo_root)
+def build_source_documents(
+    repo_root: pathlib.Path,
+    *,
+    families: list[tuple[pathlib.Path, dict[str, Any]]] | None = None,
+) -> tuple[dict[str, Any], dict[str, Any]]:
+    if families is None:
+        families = capability_system.validate_sources(repo_root)
     nodes = capability_system.node_map(families)
     policies = load_json(repo_root / "config" / "skill_policy_matrix.json")["skills"]
     overrides = load_json(repo_root / "config" / "portable_skill_overrides.json")["skills"]
@@ -201,8 +206,13 @@ def load_export_build_inputs(repo_root: pathlib.Path) -> ExportBuildInputs:
 def build_portable_skill_exports(
     inputs: ExportBuildInputs,
     skills_root: pathlib.Path,
+    *,
+    families: list[tuple[pathlib.Path, dict[str, Any]]] | None = None,
 ) -> ExportBuildDocuments:
-    skill_sections, skill_catalog = build_source_documents(inputs.repo_root)
+    skill_sections, skill_catalog = build_source_documents(
+        inputs.repo_root,
+        families=families,
+    )
     return portable_skill_export.build_portable_skill_exports(
         repo_root=inputs.repo_root,
         skills_root=skills_root,

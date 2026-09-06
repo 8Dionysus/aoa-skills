@@ -23,7 +23,7 @@ def main(argv: Sequence[str] | None = None) -> int:
     try:
         families = capability_system.validate_sources(repo_root)
         if args.check_generated:
-            expected = capability_system.build_graph_outputs(repo_root)
+            expected = capability_system.build_graph_outputs(repo_root, families=families)
             stale = [
                 capability_system.relative_path(path, repo_root)
                 for path, text in expected.items()

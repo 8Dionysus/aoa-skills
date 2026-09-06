@@ -11,7 +11,7 @@ from typing import Any
 
 import yaml
 
-from skill_model import skill_layout
+from skill_model import skill_layout, yaml_loader
 
 
 RESOURCE_DIR_NAMES = ("scripts", "references", "assets", "checks", "examples")
@@ -269,7 +269,7 @@ def build_portable_skill_exports(
             ),
         )
         source_agent_path = source_skill_dir / "agents" / "openai.yaml"
-        source_doc = yaml.safe_load(source_agent_path.read_text(encoding="utf-8")) or {}
+        source_doc = yaml_loader.safe_load(source_agent_path.read_text(encoding="utf-8")) or {}
         if not isinstance(source_doc, dict):
             raise ValueError(f"{source_agent_path} must contain a YAML mapping")
         openai_doc = build_openai_yaml(

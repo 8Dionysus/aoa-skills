@@ -7,7 +7,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Iterable, Sequence
 
-import yaml
+from skill_model import yaml_loader
 
 
 DECISIONS_DIR = Path("docs/decisions")
@@ -389,7 +389,7 @@ def load_index_contract(repo_root: Path) -> tuple[dict[str, object] | None, list
     path = repo_root / INDEX_CONTRACT_PATH
     if not path.is_file():
         return None, [(INDEX_CONTRACT_PATH.as_posix(), "decision index contract is missing")]
-    payload = yaml.safe_load(path.read_text(encoding="utf-8"))
+    payload = yaml_loader.safe_load(path.read_text(encoding="utf-8"))
     if not isinstance(payload, dict):
         return None, [(INDEX_CONTRACT_PATH.as_posix(), "decision index contract must be a mapping")]
     return payload, []

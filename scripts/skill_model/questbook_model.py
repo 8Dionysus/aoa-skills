@@ -7,7 +7,7 @@ import sys
 from pathlib import Path
 from typing import Any, Mapping
 
-import yaml
+from skill_model import yaml_loader
 
 
 FOUNDATION_QUEST_IDS: tuple[str, ...] = ()
@@ -99,7 +99,7 @@ def load_quest_payloads(repo_root: Path) -> dict[str, dict[str, Any]]:
     payloads: dict[str, dict[str, Any]] = {}
     for quest_id in quest_ids:
         path = paths[quest_id]
-        payload = yaml.safe_load(path.read_text(encoding="utf-8"))
+        payload = yaml_loader.safe_load(path.read_text(encoding="utf-8"))
         if not isinstance(payload, dict):
             raise ValueError(f"{relative_path(path, repo_root)} must be a YAML mapping")
         payloads[quest_id] = payload

@@ -10,7 +10,7 @@ from typing import Any, Iterable
 import yaml
 from jsonschema import Draft202012Validator
 
-from skill_model import questbook_model
+from skill_model import questbook_model, yaml_loader
 from validation.validators.questbook_contract import QuestbookContract, load_contract
 
 
@@ -70,7 +70,7 @@ def format_schema_path(path_parts: Iterable[Any]) -> str:
 
 def load_yaml_file(repo_root: Path, path: Path, issues: list[ValidationIssue]) -> Any | None:
     try:
-        data = yaml.safe_load(path.read_text(encoding="utf-8"))
+        data = yaml_loader.safe_load(path.read_text(encoding="utf-8"))
     except FileNotFoundError:
         issues.append(ValidationIssue(relative_location(repo_root, path), "file is missing"))
         return None

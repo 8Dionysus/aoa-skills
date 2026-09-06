@@ -6,13 +6,13 @@ import argparse
 import json
 from pathlib import Path
 import tempfile
-from typing import Any, Mapping
+from typing import Any, Mapping, Sequence
 
 import yaml
 from jsonschema import Draft202012Validator
 
 from export import build_agent_skills, portable_skill_export, release_manifest_contract
-from skill_model import capability_system, skill_source_model
+from skill_model import capability_system, skill_source_model, yaml_loader
 
 
 REQUIRED_GENERATED_FILES = (
@@ -41,7 +41,7 @@ def load_json(path: Path) -> dict[str, Any]:
 
 
 def load_yaml(path: Path) -> dict[str, Any]:
-    payload = yaml.safe_load(path.read_text(encoding="utf-8"))
+    payload = yaml_loader.safe_load(path.read_text(encoding="utf-8"))
     if not isinstance(payload, dict):
         raise ValueError(f"{path} must contain a YAML mapping")
     return payload
@@ -90,6 +90,7 @@ def _validate_export_against_portable(
     *,
     portable_root: Path,
     expected_generated: Mapping[Path, str],
+    validated_families: Sequence[tuple[Path, Mapping[str, Any]]] | None = None,
 ) -> list[str]:
     errors: list[str] = []
     for rel_path in (*REQUIRED_CONFIG_FILES, *REQUIRED_GENERATED_FILES):
@@ -99,7 +100,10 @@ def _validate_export_against_portable(
         return errors
 
     try:
-        capability_system.validate_sources(repo_root)
+        if validated_families is None:
+            validated_families = capability_system.validate_sources(repo_root)
+        if not validated_families:
+            raise ValueError("capability source families must not be empty")
         graph = load_json(repo_root / "generated" / "capability_graph.json")
         overrides = load_json(repo_root / "config" / "portable_skill_overrides.json")
         policies = load_json(repo_root / "config" / "skill_policy_matrix.json")
@@ -294,9 +298,11 @@ def validate_export(repo_root: Path) -> list[str]:
     with tempfile.TemporaryDirectory(prefix="aoa-skills-validate-portable-") as temp_dir:
         portable_root = Path(temp_dir)
         inputs = build_agent_skills.load_export_build_inputs(repo_root)
+        validated_families = capability_system.validate_sources(repo_root)
         documents = build_agent_skills.build_portable_skill_exports(
             inputs,
             portable_root,
+            families=validated_families,
         )
         expected_generated = build_agent_skills.build_generated_file_texts(
             inputs,
@@ -307,6 +313,7 @@ def validate_export(repo_root: Path) -> list[str]:
             repo_root,
             portable_root=portable_root,
             expected_generated=expected_generated,
+            validated_families=validated_families,
         )
 
 
