@@ -1,0 +1,17 @@
+{
+  "allowed_bytes": 3006373,
+  "allowed_tracked_bytes": 10192510,
+  "approved_by": "repository-owner",
+  "base_ref": "24d964d69ced57fdc1e80e0b5a0af51cdd65395c",
+  "changed_generated_bytes": 3006373,
+  "changed_generated_files": 91,
+  "decision_ref": "aoa-kag:docs/decisions/AOA-KAG-D-0017-portable-content-addressed-repository-family.md",
+  "default_limit_bytes": 1048576,
+  "head_family_digest": "3f590ff6ffc8312a8ebc68355762a7cfd0bb4f50f8ecab18a4f4b401803f1a11",
+  "reason": "Regenerate the owner portable family after the reviewed validation parser reuse and libyaml loader optimization; generated source records reflect touched scripts, with no authored capability meaning change, and the existing tracked-size exceedance remains explicitly receipted.",
+  "repo": "aoa-skills",
+  "schema_version": "aoa-repo-local-kag-budget-receipt-v1",
+  "scope": "generated_delta_and_tracked_size",
+  "tracked_bytes": 10192510,
+  "tracked_bytes_max": 9437184
+}

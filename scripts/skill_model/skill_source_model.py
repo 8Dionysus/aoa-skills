@@ -4,9 +4,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Sequence
 
-import yaml
-
-from skill_model import skill_layout, skill_section_contract
+from skill_model import skill_layout, skill_section_contract, yaml_loader
 
 
 SKILLS_DIR_NAME = skill_layout.SKILLS_DIR_NAME
@@ -33,7 +31,7 @@ def discover_skill_names(repo_root: Path) -> list[str]:
 
 def load_yaml(path: Path) -> Any:
     with path.open(encoding="utf-8") as handle:
-        return yaml.safe_load(handle)
+        return yaml_loader.safe_load(handle)
 
 
 def parse_skill_document(path: Path) -> tuple[dict[str, Any], str]:
@@ -47,7 +45,7 @@ def parse_skill_document(path: Path) -> tuple[dict[str, Any], str]:
     )
     if closing_index is None:
         raise ValueError(f"{path} is missing a closing frontmatter delimiter")
-    metadata = yaml.safe_load("\n".join(lines[1:closing_index])) or {}
+    metadata = yaml_loader.safe_load("\n".join(lines[1:closing_index])) or {}
     if not isinstance(metadata, dict):
         raise ValueError(f"{path} frontmatter must parse to a mapping")
     return metadata, "\n".join(lines[closing_index + 1 :])

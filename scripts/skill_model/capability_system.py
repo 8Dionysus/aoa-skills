@@ -7,8 +7,9 @@ from collections import defaultdict, deque
 from pathlib import Path
 from typing import Any, Iterable, Mapping, Sequence
 
-import yaml
 from jsonschema import Draft202012Validator
+
+from skill_model import yaml_loader
 
 
 FAMILY_SCHEMA_PATH = Path("schemas/capability_family.schema.json")
@@ -189,7 +190,7 @@ def load_json(path: Path) -> dict[str, Any]:
 
 
 def load_yaml(path: Path) -> dict[str, Any]:
-    payload = yaml.safe_load(path.read_text(encoding="utf-8"))
+    payload = yaml_loader.safe_load(path.read_text(encoding="utf-8"))
     if not isinstance(payload, dict):
         raise CapabilityContractError(f"{path} must contain a YAML mapping")
     return payload
@@ -329,7 +330,7 @@ def _check_local_binding(repo_root: Path, node: Mapping[str, Any]) -> list[str]:
             closing = next(index for index, line in enumerate(lines[1:], start=1) if line.strip() == "---")
         except StopIteration:
             return [f"{node['id']}: local skill binding lacks closing frontmatter delimiter"]
-        metadata = yaml.safe_load("\n".join(lines[1:closing])) or {}
+        metadata = yaml_loader.safe_load("\n".join(lines[1:closing])) or {}
         expected_name = str(node["id"]).removeprefix("skill.")
         if metadata.get("name") != expected_name:
             issues.append(
@@ -1514,8 +1515,12 @@ def build_kag_provider_outputs(
     return {repo_root / path: dump_json(record) for path, record in records.items()}
 
 
-def build_graph_outputs(repo_root: Path) -> dict[Path, str]:
-    payload = build_graph_payload(repo_root)
+def build_graph_outputs(
+    repo_root: Path,
+    *,
+    families: Sequence[tuple[Path, Mapping[str, Any]]] | None = None,
+) -> dict[Path, str]:
+    payload = build_graph_payload(repo_root, families=families)
     outputs = {
         repo_root / GRAPH_JSON_PATH: dump_json(payload),
         repo_root / GRAPH_MARKDOWN_PATH: render_graph_markdown(payload),

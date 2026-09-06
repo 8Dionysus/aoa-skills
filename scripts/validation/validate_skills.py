@@ -11,7 +11,7 @@ from typing import Any, Sequence
 import yaml
 from jsonschema import Draft202012Validator
 
-from skill_model import capability_system, skill_source_model
+from skill_model import capability_system, skill_source_model, yaml_loader
 
 
 def load_json(path: Path) -> dict[str, Any]:
@@ -59,7 +59,7 @@ def validate_source_skills(repo_root: Path) -> list[str]:
         if not openai_path.is_file():
             errors.append(f"{rel_path}: missing agents/openai.yaml activation adapter")
             continue
-        openai_doc = yaml.safe_load(openai_path.read_text(encoding="utf-8")) or {}
+        openai_doc = yaml_loader.safe_load(openai_path.read_text(encoding="utf-8")) or {}
         if not isinstance(openai_doc, dict) or not isinstance(openai_doc.get("policy"), dict):
             errors.append(f"{openai_path.relative_to(repo_root)}: policy mapping is required")
 
