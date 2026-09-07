@@ -3,12 +3,30 @@ from __future__ import annotations
 import hashlib
 import json
 from pathlib import Path
+import subprocess
+import sys
 
 from jsonschema import Draft202012Validator
 import pytest
 
 from bundles import install_os_skill_profile
 from export import home_skill_port
+
+
+def run_projection_cli(repo_root: Path, owner: Path, *args: str) -> subprocess.CompletedProcess[str]:
+    return subprocess.run(
+        [
+            sys.executable,
+            str(repo_root / "scripts" / "build_home_skill_projection.py"),
+            "--owner-root",
+            str(owner),
+            *args,
+        ],
+        cwd=repo_root,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
 
 
 def make_owner(root: Path) -> Path:
@@ -106,6 +124,53 @@ def test_projection_roundtrip_and_source_drift(tmp_path: Path) -> None:
     drift = home_skill_port.projection_plan(port)
     assert drift["bundles"][0]["status"] == "drift"
     assert home_skill_port.apply_projection(port)["clean"] is True
+
+
+def test_v1_projection_cli_ingress_preserves_preview_and_requires_explicit_prune(
+    tmp_path: Path,
+) -> None:
+    repo_root = Path(__file__).resolve().parents[1]
+    owner = make_owner(tmp_path / "aoa-stats")
+    entrypoint = repo_root / "scripts" / "build_home_skill_projection.py"
+    assert entrypoint.is_file()
+
+    preview = run_projection_cli(repo_root, owner, "--format", "json")
+    assert preview.returncode == 0
+    assert json.loads(preview.stdout)["bundles"][0]["status"] == "missing"
+    assert not (owner / ".agents" / "skills").exists()
+
+    execute = run_projection_cli(repo_root, owner, "--execute", "--format", "json")
+    assert execute.returncode == 0
+    assert json.loads(execute.stdout)["clean"] is True
+    projected_helper = owner / ".agents" / "skills" / "aoa-stats" / "scripts" / "inspect.sh"
+    assert projected_helper.stat().st_mode & 0o111
+
+    unrelated = owner / ".agents" / "skills" / "unrelated"
+    unrelated.mkdir()
+    (unrelated / "SKILL.md").write_text("unrelated\n", encoding="utf-8")
+    blocked = run_projection_cli(repo_root, owner, "--execute", "--format", "json")
+    assert blocked.returncode == 1
+    assert unrelated.exists()
+    assert "explicit --prune" in json.loads(blocked.stdout)["errors"][0]
+
+    pruned = run_projection_cli(
+        repo_root, owner, "--execute", "--prune", "--format", "json"
+    )
+    assert pruned.returncode == 0
+    assert not unrelated.exists()
+
+
+def test_v1_projection_cli_rejects_v2_owner_home(tmp_path: Path) -> None:
+    repo_root = Path(__file__).resolve().parents[1]
+    owner = make_owner(tmp_path / "aoa-stats")
+    upgrade_owner_to_v2(owner)
+
+    result = run_projection_cli(repo_root, owner, "--format", "json")
+
+    assert result.returncode == 1
+    payload = json.loads(result.stdout)
+    assert payload["ok"] is False
+    assert "OS user profile" in payload["errors"][0]
 
 
 def test_unexpected_projection_requires_explicit_prune(tmp_path: Path) -> None:
