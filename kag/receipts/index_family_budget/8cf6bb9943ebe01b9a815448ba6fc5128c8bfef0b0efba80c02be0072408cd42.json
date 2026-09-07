@@ -1,0 +1,17 @@
+{
+  "allowed_bytes": 991041,
+  "allowed_tracked_bytes": 10210910,
+  "approved_by": "repository-owner",
+  "base_ref": "6eaeca11820adbbbe54f79a75c0ca5a54e0c4a15",
+  "changed_generated_bytes": 991041,
+  "changed_generated_files": 27,
+  "decision_ref": "aoa-kag:docs/decisions/AOA-KAG-D-0017-portable-content-addressed-repository-family.md",
+  "default_limit_bytes": 1048576,
+  "head_family_digest": "8cf6bb9943ebe01b9a815448ba6fc5128c8bfef0b0efba80c02be0072408cd42",
+  "reason": "Regenerate aoa-skills owner portable family for the adopted source commit using the exact workflow-pinned KAG producer cc0ba190c932921f1e23dff4536229f359275f8a. The source-owned change requires a content-addressed family refresh; the standing owner cap and semantics remain unchanged, and this receipt binds the exact producer, candidate, and measured delta.",
+  "repo": "aoa-skills",
+  "schema_version": "aoa-repo-local-kag-budget-receipt-v1",
+  "scope": "tracked_size",
+  "tracked_bytes": 10210910,
+  "tracked_bytes_max": 9437184
+}
