@@ -1,0 +1,17 @@
+{
+  "allowed_bytes": 1847209,
+  "allowed_tracked_bytes": 10229324,
+  "approved_by": "repository-owner",
+  "base_ref": "6eaeca11820adbbbe54f79a75c0ca5a54e0c4a15",
+  "changed_generated_bytes": 1847209,
+  "changed_generated_files": 48,
+  "decision_ref": "aoa-kag:docs/decisions/AOA-KAG-D-0017-portable-content-addressed-repository-family.md",
+  "default_limit_bytes": 1048576,
+  "head_family_digest": "bb0e6547fa3e82871d22431702d665e8ad523201e0f3b33601cb6b90c3d3824d",
+  "reason": "Regenerate aoa-skills owner portable family for committed v1 home projection CLI restoration at source commit 3880c40d871f30dae40451fe79b3d6f1a1a1e834. The exact workflow-pinned KAG producer is cc0ba190c932921f1e23dff4536229f359275f8a; this content-addressed refresh records the measured generated delta while preserving the existing owner cap and source semantics.",
+  "repo": "aoa-skills",
+  "schema_version": "aoa-repo-local-kag-budget-receipt-v1",
+  "scope": "generated_delta_and_tracked_size",
+  "tracked_bytes": 10229324,
+  "tracked_bytes_max": 9437184
+}
