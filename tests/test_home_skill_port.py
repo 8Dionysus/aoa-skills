@@ -3,12 +3,30 @@ from __future__ import annotations
 import hashlib
 import json
 from pathlib import Path
+import subprocess
+import sys
 
 from jsonschema import Draft202012Validator
 import pytest
 
 from bundles import install_os_skill_profile
 from export import home_skill_port
+
+
+def run_projection_cli(repo_root: Path, owner: Path, *args: str) -> subprocess.CompletedProcess[str]:
+    return subprocess.run(
+        [
+            sys.executable,
+            str(repo_root / "scripts" / "build_home_skill_projection.py"),
+            "--owner-root",
+            str(owner),
+            *args,
+        ],
+        cwd=repo_root,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
 
 
 def make_owner(root: Path) -> Path:
@@ -106,6 +124,53 @@ def test_projection_roundtrip_and_source_drift(tmp_path: Path) -> None:
     drift = home_skill_port.projection_plan(port)
     assert drift["bundles"][0]["status"] == "drift"
     assert home_skill_port.apply_projection(port)["clean"] is True
+
+
+def test_v1_projection_cli_ingress_preserves_preview_and_requires_explicit_prune(
+    tmp_path: Path,
+) -> None:
+    repo_root = Path(__file__).resolve().parents[1]
+    owner = make_owner(tmp_path / "aoa-stats")
+    entrypoint = repo_root / "scripts" / "build_home_skill_projection.py"
+    assert entrypoint.is_file()
+
+    preview = run_projection_cli(repo_root, owner, "--format", "json")
+    assert preview.returncode == 0
+    assert json.loads(preview.stdout)["bundles"][0]["status"] == "missing"
+    assert not (owner / ".agents" / "skills").exists()
+
+    execute = run_projection_cli(repo_root, owner, "--execute", "--format", "json")
+    assert execute.returncode == 0
+    assert json.loads(execute.stdout)["clean"] is True
+    projected_helper = owner / ".agents" / "skills" / "aoa-stats" / "scripts" / "inspect.sh"
+    assert projected_helper.stat().st_mode & 0o111
+
+    unrelated = owner / ".agents" / "skills" / "unrelated"
+    unrelated.mkdir()
+    (unrelated / "SKILL.md").write_text("unrelated\n", encoding="utf-8")
+    blocked = run_projection_cli(repo_root, owner, "--execute", "--format", "json")
+    assert blocked.returncode == 1
+    assert unrelated.exists()
+    assert "explicit --prune" in json.loads(blocked.stdout)["errors"][0]
+
+    pruned = run_projection_cli(
+        repo_root, owner, "--execute", "--prune", "--format", "json"
+    )
+    assert pruned.returncode == 0
+    assert not unrelated.exists()
+
+
+def test_v1_projection_cli_rejects_v2_owner_home(tmp_path: Path) -> None:
+    repo_root = Path(__file__).resolve().parents[1]
+    owner = make_owner(tmp_path / "aoa-stats")
+    upgrade_owner_to_v2(owner)
+
+    result = run_projection_cli(repo_root, owner, "--format", "json")
+
+    assert result.returncode == 1
+    payload = json.loads(result.stdout)
+    assert payload["ok"] is False
+    assert "OS user profile" in payload["errors"][0]
 
 
 def test_unexpected_projection_requires_explicit_prune(tmp_path: Path) -> None:
@@ -320,6 +385,116 @@ def test_os_profile_install_is_idempotent_and_receipt_bound(tmp_path: Path) -> N
         drift,
         allow_dirty_source=False,
     )
+
+
+@pytest.mark.parametrize("retire", [False, True])
+def test_owner_scoped_install_preserves_unavailable_neighbor(
+    tmp_path: Path, retire: bool,
+) -> None:
+    owner = make_owner(tmp_path / "aoa-stats")
+    upgrade_owner_to_v2(owner)
+    neighbor = tmp_path / "neighbor"
+    neighbor_skill = neighbor / "skills" / "neighbor-skill"
+    neighbor_skill.mkdir(parents=True)
+    (neighbor_skill / "SKILL.md").write_text(
+        "---\nname: neighbor-skill\ndescription: Inspect a neighbor.\n---\n\n# Neighbor\n",
+        encoding="utf-8",
+    )
+    profile = {
+        "runtime": "codex", "scope": "user",
+        "install_root": "$HOME/.codex/skills", "install_mode": "managed-copy",
+        "sources": [
+            {"kind": "owner-port", "repo": "aoa-stats", "root": "aoa-stats", "skills": ["aoa-stats"]},
+            {"kind": "direct-home", "repo": "neighbor", "root": "neighbor", "skills": [
+                {"name": "neighbor-skill", "path": "skills/neighbor-skill", "version": "1"},
+            ]},
+        ],
+    }
+    config_path = tmp_path / "profiles.json"
+
+    def resolve(owners: frozenset[str] | None = None):
+        config_path.write_text(json.dumps({
+            "schema_version": "aoa_os_skill_profiles_v1",
+            "profiles": {"os-user-default": profile},
+        }), encoding="utf-8")
+        return install_os_skill_profile.resolve_profile(
+            repo_root=Path(__file__).resolve().parents[1], config_path=config_path,
+            profile_name="os-user-default", os_root=tmp_path, overrides={},
+            owner_repos=owners,
+        )
+
+    destination = tmp_path / "installed"
+    resolved_profile, skills = resolve()
+    initial = install_os_skill_profile.build_plan(
+        profile_name="os-user-default", profile=resolved_profile,
+        skills=skills, dest_root=destination,
+    )
+    install_os_skill_profile.execute_plan(
+        initial, skills, replace_unmanaged=False, prune_managed=False,
+        allow_dirty_source=False,
+    )
+    before = install_os_skill_profile.installed_receipt(destination)
+    assert before is not None
+    neighbor_receipt = next(item for item in before["skills"] if item["owner_repo"] == "neighbor")
+    neighbor_target = destination / "neighbor-skill"
+    neighbor_snapshot = home_skill_port.tree_snapshot(neighbor_target, label="neighbor before")
+    neighbor.rename(tmp_path / "unavailable-neighbor")
+    if retire:
+        profile["sources"] = profile["sources"][1:]
+    else:
+        source = owner / "skills" / "aoa-stats" / "SKILL.md"
+        source.write_text(source.read_text(encoding="utf-8") + "\nUpdated owner guidance.\n", encoding="utf-8")
+
+    owners = frozenset({"aoa-stats"})
+    resolved_profile, skills = resolve(owners)
+    plan = install_os_skill_profile.build_plan(
+        profile_name="os-user-default", profile=resolved_profile,
+        skills=skills, dest_root=destination, owner_repos=owners,
+    )
+    assert plan["stale_managed"] == (["aoa-stats"] if retire else [])
+    assert plan["verification_scope"]["unselected_owners_verified"] is False
+    with pytest.raises(install_os_skill_profile.ProfileError, match="unknown profile owners"):
+        install_os_skill_profile.build_plan(
+            profile_name="os-user-default", profile=resolved_profile,
+            skills=[], dest_root=destination, owner_repos=frozenset({"typo-owner"}),
+        )
+    with pytest.raises(install_os_skill_profile.ProfileError, match="existing matching profile receipt"):
+        install_os_skill_profile.build_plan(
+            profile_name="os-user-default", profile=resolved_profile,
+            skills=skills, dest_root=tmp_path / "fresh", owner_repos=owners,
+        )
+    install_os_skill_profile.execute_plan(
+        plan, skills, replace_unmanaged=False, prune_managed=retire,
+        allow_dirty_source=False,
+    )
+    assert (destination / "aoa-stats").exists() == (not retire)
+    assert home_skill_port.tree_snapshot(neighbor_target, label="neighbor after") == neighbor_snapshot
+    after = install_os_skill_profile.installed_receipt(destination)
+    assert after is not None
+    assert next(item for item in after["skills"] if item["owner_repo"] == "neighbor") == neighbor_receipt
+    current = install_os_skill_profile.build_plan(
+        profile_name="os-user-default", profile=resolved_profile,
+        skills=skills, dest_root=destination, owner_repos=owners,
+    )
+    assert install_os_skill_profile.plan_is_current(current, allow_dirty_source=False)
+    install_os_skill_profile.execute_plan(
+        current, skills, replace_unmanaged=False, prune_managed=retire,
+        allow_dirty_source=False,
+    )
+    assert install_os_skill_profile.installed_receipt(destination) == after
+    with pytest.raises(install_os_skill_profile.ProfileError, match="source root is missing"):
+        resolve()
+
+    receipt_path = destination / install_os_skill_profile.INSTALL_RECEIPT
+    changed = dict(after, installed_at="2026-09-07T00:00:00Z")
+    receipt_path.write_text(json.dumps(changed), encoding="utf-8")
+    with pytest.raises(install_os_skill_profile.ProfileError, match="receipt changed"):
+        install_os_skill_profile.execute_plan(
+            current, skills, replace_unmanaged=False, prune_managed=retire,
+            allow_dirty_source=False,
+        )
+    assert install_os_skill_profile.installed_receipt(destination) == changed
+    assert home_skill_port.tree_snapshot(neighbor_target, label="neighbor preserved") == neighbor_snapshot
 
 
 def test_os_profile_observes_owner_links_without_managing_them(

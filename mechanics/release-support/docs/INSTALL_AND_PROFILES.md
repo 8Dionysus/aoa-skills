@@ -99,6 +99,32 @@ refuses unsafe receipt names and destination roots, verifies the aggregate
 receipt as well as each source-return handle, and leaves a current repeated
 execute byte- and timestamp-stable.
 
+### Updating selected owners
+
+An existing managed profile can update one or more owners without resolving
+or modifying other owners' source roots or installed entries:
+
+```bash
+PYTHONPATH=scripts python scripts/install_os_skill_profile.py \
+  --profile os-user-default --owner-repo aoa-agents \
+  --source-root aoa-agents=/path/to/reviewed-clean-worktree
+```
+
+Review that plan, then use the same arguments with `--execute` or `--check`.
+Repeat `--owner-repo` for additional owners. `--prune-managed` removes only
+stale entries belonging to the selected owners, including an owner retired
+from the profile. The existing receipt must identify those owners; this mode
+cannot bootstrap a new profile or retire its final installed entry.
+
+The installer preserves unselected receipt entries and their installed files.
+It does not verify them. The aggregate receipt records `owner-subset` scope
+and `unselected_owners_verified: false`; a successful scoped check is not
+whole-profile parity. Detected receipt drift at the pre-execution and commit
+checks aborts the operation; those checks do not serialize concurrent installers.
+Unknown owners and cross-owner name collisions also fail closed.
+Use a complete profile check when claiming global parity. Source cleanliness,
+collision checks, and artifact admission remain separate requirements.
+
 ## Handoff
 
 Use the bundle commands in this order:

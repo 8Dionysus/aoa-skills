@@ -243,6 +243,7 @@ def resolve_profile(
     profile_name: str,
     os_root: Path,
     overrides: dict[str, Path],
+    owner_repos: frozenset[str] | None = None,
 ) -> tuple[dict[str, Any], list[ResolvedSkill]]:
     document = load_json(config_path)
     if document.get("schema_version") != "aoa_os_skill_profiles_v1":
@@ -277,10 +278,21 @@ def resolve_profile(
         repo = source.get("repo")
         if not isinstance(repo, str):
             raise ProfileError("OS skill profile source repo must be a string")
-        owner_root = resolve_owner_root(source, repo_root=repo_root, os_root=os_root, overrides=overrides)
         requested = source.get("skills")
         if not isinstance(requested, list) or not requested:
             raise ProfileError(f"source {repo} skills must be non-empty")
+        for entry in requested:
+            name = entry.get("name") if isinstance(entry, dict) else entry
+            if not isinstance(name, str) or not home_skill_port.NAME_RE.fullmatch(name):
+                raise ProfileError(f"source {repo} has an invalid skill name: {name!r}")
+            if name in names:
+                raise ProfileError(
+                    f"global skill name collision: {name} from {names[name]} and {repo}"
+                )
+            names[name] = repo
+        if owner_repos is not None and repo not in owner_repos:
+            continue
+        owner_root = resolve_owner_root(source, repo_root=repo_root, os_root=os_root, overrides=overrides)
 
         additions: list[ResolvedSkill] = []
         if kind == "shared-home":
@@ -364,11 +376,6 @@ def resolve_profile(
             raise ProfileError(f"unsupported source kind for {repo}: {kind!r}")
 
         for item in additions:
-            if item.name in names:
-                raise ProfileError(
-                    f"global skill name collision: {item.name} from {names[item.name]} and {item.owner_repo}"
-                )
-            names[item.name] = item.owner_repo
             resolved.append(item)
     return profile, resolved
 
@@ -403,6 +410,16 @@ def installed_receipt(dest_root: Path) -> dict[str, Any] | None:
         if name in seen:
             raise ProfileError(f"managed install receipt contains duplicate skill: {name}")
         seen.add(name)
+    verification_scope = value.get("verification_scope")
+    if verification_scope is not None and (
+        not isinstance(verification_scope, dict)
+        or verification_scope.get("kind") != "owner-subset"
+        or verification_scope.get("unselected_owners_verified") is not False
+        or not isinstance(verification_scope.get("owner_repos"), list)
+        or not verification_scope["owner_repos"]
+        or any(not isinstance(owner, str) or not owner for owner in verification_scope["owner_repos"])
+    ):
+        raise ProfileError(f"managed install receipt has an invalid verification scope: {path}")
     return value
 
 
@@ -463,8 +480,45 @@ def build_plan(
     profile: dict[str, Any],
     skills: list[ResolvedSkill],
     dest_root: Path,
+    owner_repos: frozenset[str] | None = None,
 ) -> dict[str, Any]:
     previous = installed_receipt(dest_root) if dest_root.exists() else None
+    preserved_skills: list[dict[str, Any]] = []
+    if owner_repos is not None:
+        if not owner_repos:
+            raise ProfileError("owner-scoped installation requires at least one owner")
+        if previous is None or any(
+            previous.get(key) != expected
+            for key, expected in {
+                "profile": profile_name,
+                "runtime": profile["runtime"],
+                "scope": profile["scope"],
+                "mode": profile["install_mode"],
+            }.items()
+        ):
+            raise ProfileError("owner-scoped installation requires an existing matching profile receipt")
+        if any(
+            not isinstance(item.get("owner_repo"), str) or not item["owner_repo"]
+            for item in previous["skills"]
+        ):
+            raise ProfileError("owner-scoped installation requires exact installed owners")
+        known_owners = {
+            source["repo"] for source in profile["sources"]
+        } | {item["owner_repo"] for item in previous["skills"]} | set(
+            previous.get("verification_scope", {}).get("owner_repos", [])
+        )
+        unknown_owners = owner_repos - known_owners
+        if unknown_owners:
+            raise ProfileError("unknown profile owners: " + ", ".join(sorted(unknown_owners)))
+        if any(skill.owner_repo not in owner_repos for skill in skills):
+            raise ProfileError("resolved skill is outside the selected owners")
+        preserved_skills = [
+            item for item in previous["skills"] if item["owner_repo"] not in owner_repos
+        ]
+        if {item["name"] for item in preserved_skills} & {skill.name for skill in skills}:
+            raise ProfileError("selected skill collides with an unselected installed owner")
+        if not skills and not preserved_skills:
+            raise ProfileError("scoped installation cannot retire the last profile entry")
     managed_before = {
         item.get("name")
         for item in (previous or {}).get("skills", [])
@@ -472,6 +526,7 @@ def build_plan(
             isinstance(item, dict)
             and isinstance(item.get("name"), str)
             and item.get("management", MANAGED_COPY) == MANAGED_COPY
+            and (owner_repos is None or item.get("owner_repo") in owner_repos)
         )
     }
     entries = []
@@ -567,8 +622,23 @@ def build_plan(
             "identity only; no routing or outcome claim"
         ),
     }
+    if owner_repos is not None:
+        plan["verification_scope"] = {
+            "kind": "owner-subset",
+            "owner_repos": sorted(owner_repos),
+            "unselected_owners_verified": False,
+        }
+        plan["preserved_skills"] = preserved_skills
+        plan["previous_receipt_digest"] = _receipt_digest(previous)
+        plan["claim_limit"] += "; selected owners only; other receipts retained without verification"
     plan["install_receipt_status"] = _install_receipt_status(previous, plan)
     return plan
+
+
+def _receipt_digest(receipt: dict[str, Any] | None) -> str:
+    return hashlib.sha256(
+        json.dumps(receipt, sort_keys=True, separators=(",", ":")).encode("utf-8")
+    ).hexdigest()
 
 
 def _receipt_from_plan(
@@ -576,7 +646,7 @@ def _receipt_from_plan(
     *,
     installed_at: str | None = None,
 ) -> dict[str, Any]:
-    return {
+    receipt = {
         "schema_version": INSTALL_RECEIPT_SCHEMA,
         "profile": plan["profile"],
         "runtime": plan["runtime"],
@@ -611,6 +681,11 @@ def _receipt_from_plan(
             for item in plan["skills"]
         ],
     }
+    if "verification_scope" in plan:
+        receipt["verification_scope"] = plan["verification_scope"]
+        receipt["skills"].extend(plan["preserved_skills"])
+        receipt["claim_limit"] += "; unselected owners retain their previous provenance without re-verification"
+    return receipt
 
 
 def _install_receipt_status(
@@ -686,9 +761,13 @@ def execute_plan(
             "owner-managed links require the owner installer and exact source target: "
             + ", ".join(handoffs)
         )
+    dest_root = Path(plan["destination"])
+    if "previous_receipt_digest" in plan and (
+        _receipt_digest(installed_receipt(dest_root)) != plan["previous_receipt_digest"]
+    ):
+        raise ProfileError("profile receipt changed after the scoped preview; rebuild the plan")
     if plan_is_current(plan, allow_dirty_source=allow_dirty_source):
         return
-    dest_root = Path(plan["destination"])
     dest_root.mkdir(parents=True, exist_ok=True)
     by_name = {skill.name: skill for skill in skills}
     backups: list[tuple[Path, Path]] = []
@@ -749,6 +828,10 @@ def execute_plan(
                     os.replace(target, backup)
                     backups.append((target, backup))
         receipt_path = dest_root / INSTALL_RECEIPT
+        if "previous_receipt_digest" in plan and (
+            _receipt_digest(installed_receipt(dest_root)) != plan["previous_receipt_digest"]
+        ):
+            raise ProfileError("profile receipt changed during scoped installation")
         receipt_text = json.dumps(_receipt_from_plan(plan), ensure_ascii=False, indent=2) + "\n"
         temporary_receipt = dest_root / f".{INSTALL_RECEIPT}.tmp-{uuid.uuid4().hex}"
         temporary_files.append(temporary_receipt)
@@ -795,6 +878,9 @@ def format_plan(plan: dict[str, Any]) -> str:
         f"mode: {plan['mode']}",
         f"install receipt: {plan['install_receipt_status']}",
     ]
+    if "verification_scope" in plan:
+        lines.append("selected owners: " + ", ".join(plan["verification_scope"]["owner_repos"]))
+        lines.append("unselected owners: preserved, not verified")
     for item in plan["skills"]:
         lines.append(
             f"- {item['name']}: {item['status']} owner={item['owner_repo']} "
@@ -814,6 +900,10 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--profile", default="os-user-default")
     parser.add_argument("--os-root", default="/srv/AbyssOS")
     parser.add_argument("--source-root", action="append", default=[], metavar="REPO=PATH")
+    parser.add_argument(
+        "--owner-repo", action="append", default=[], metavar="REPO",
+        help="update or check only this owner in an existing profile; repeat to select several",
+    )
     parser.add_argument("--dest-root", default=None)
     action = parser.add_mutually_exclusive_group()
     action.add_argument("--execute", action="store_true")
@@ -840,12 +930,14 @@ def main() -> int:
     os_root = Path(args.os_root).resolve()
     try:
         overrides = parse_root_overrides(args.source_root)
+        owner_repos = frozenset(args.owner_repo) if args.owner_repo else None
         profile, skills = resolve_profile(
             repo_root=repo_root,
             config_path=config_path,
             profile_name=args.profile,
             os_root=os_root,
             overrides=overrides,
+            owner_repos=owner_repos,
         )
         install_root = profile["install_root"]
         home_root = Path.home().resolve()
@@ -872,7 +964,7 @@ def main() -> int:
             raise ProfileError(f"refusing unsafe destination root: {dest_root}")
         if dest_root.exists() and not dest_root.is_dir():
             raise ProfileError(f"destination root must be a directory: {dest_root}")
-        plan = build_plan(profile_name=args.profile, profile=profile, skills=skills, dest_root=dest_root)
+        plan = build_plan(profile_name=args.profile, profile=profile, skills=skills, dest_root=dest_root, owner_repos=owner_repos)
         if args.execute:
             execute_plan(
                 plan,
@@ -881,7 +973,7 @@ def main() -> int:
                 prune_managed=args.prune_managed,
                 allow_dirty_source=args.allow_dirty_source,
             )
-            plan = build_plan(profile_name=args.profile, profile=profile, skills=skills, dest_root=dest_root)
+            plan = build_plan(profile_name=args.profile, profile=profile, skills=skills, dest_root=dest_root, owner_repos=owner_repos)
             if not plan_is_current(plan, allow_dirty_source=args.allow_dirty_source):
                 raise ProfileError("OS skill profile remained non-current after execution")
     except (
