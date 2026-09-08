@@ -22,7 +22,7 @@ trials and task-local DAGs remain in the session or runtime.
 
 ## Canonical owner source, OS user profile, and duplicate boundary
 
-An admitted v2 owner repository contains:
+An admitted v2 or v3 owner repository contains:
 
 ```text
 skills/
@@ -35,15 +35,35 @@ $HOME/.codex/skills/<bundle-name>/   # one OS-profile managed copy
 ```
 
 `skills/<bundle-name>/` is canonical. The owner retains procedure meaning,
-version, lifecycle, admission, and resources. The v2 manifest declares that
-its admitted bundles are eligible for consideration by `os-user-default`; it
-does not select them into the current profile or create a repository copy. The
-legacy exposure-mode value `profile-selected` names this target route, not
-current profile membership.
+version, lifecycle, admission, and resources. A v2 manifest declares one
+Codex/user eligibility contour for `os-user-default`; a v3 manifest declares
+an `exposures` array of eligibility contours and may contain more than one
+runtime, scope, or profile contour. Each v3 exposure names a non-empty unique
+subset of the admitted bundles, while an empty array is valid for an
+owner-only home. Runtime, scope, and profile are safe lowercase kebab case
+identifiers; the v3 mode is the literal `profile-eligible`. The common
+contract does not enumerate particular hosts.
+
+The target Codex user-profile adapter matches
+`runtime=codex`, `scope=user`, `profile=os-user-default`, and
+`mode=profile-eligible` for v3. V2 keeps its legacy
+`mode=profile-selected` contour and exact bundle-list semantics. An exposure
+declares eligibility for a consumer contour; it does not select bundles into
+the current profile or create a repository copy. A bundle may remain admitted
+and represented in the capability graph while being absent from every
+exposure.
+
+To migrate a v2 manifest, wrap its single `exposure` object in an
+`exposures` array, change `mode=profile-selected` to
+`mode=profile-eligible`, and preserve its bundle list and profile membership.
+To roll back, retain the v2 source manifest and the same prior adapter, then
+validate and install through the owner installer so the install receipt remains
+authoritative; do not copy files manually.
 
 `config/os_skill_profiles.json` is the source that selects eligible shared and
-owner bundles into the current user catalog. A v2 repository must not expose
-the same canonical bundle again at `.agents/skills/<bundle-name>`. This
+owner bundles into the current user catalog. A v2 or v3 repository must not
+expose the same canonical bundle again at `.agents/skills/<bundle-name>` when
+a Codex/user exposure names that bundle. This
 prevents the duplicate prompt-visible definitions observed when Codex entered
 an owner repository. Unrelated repository-only bundles may still use
 `.agents/skills` when their own owner and consumer contract requires that
@@ -98,9 +118,9 @@ python scripts/build_home_skill_projection.py \
   --owner-root /path/to/v1-owner --execute --prune
 ```
 
-Do not create new v1 ports. A v2 manifest intentionally blocks this builder and
-routes installation to the OS profile instead. Retire v1 after every admitted
-owner has moved and fresh-session profile trials have passed.
+Do not create new v1 ports. A v2 or v3 manifest intentionally blocks this
+builder and routes installation to the OS profile instead. Retire v1 after
+every admitted owner has moved and fresh-session profile trials have passed.
 
 ## Owner-source check
 
@@ -110,10 +130,11 @@ From the matching `aoa-skills` checkout:
 python scripts/validate_home_skill_port.py --owner-root /path/to/owner
 ```
 
-For v2 this checks source identity, admission reference, package shape, digest,
-the exact exposure-eligibility declaration, and absence of a same-name
-repository projection. It does not check current profile membership. For v1 it
-preserves source/projection byte and executable-bit parity during migration.
+For v2 and v3 this checks source identity, admission reference, package shape,
+digest, the exposure-eligibility declaration, and absence of a same-name
+repository projection for Codex/user-exposed bundles. It does not check
+current profile membership. For v1 it preserves source/projection byte and
+executable-bit parity during migration.
 
 A green check does not prove trigger quality, agent benefit, safety,
 fresh-session discovery, user-profile installation, or cross-model behavior.

@@ -14,7 +14,7 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description=(
             "Validate owner source shape and either deprecated v1 repository "
-            "projection parity or v2 OS-profile exposure."
+            "projection parity or v2/v3 OS-profile exposure."
         )
     )
     parser.add_argument("--owner-root", default=".")

@@ -14,7 +14,7 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description=(
             "Build a repo-scoped .agents/skills projection from an admitted "
-            "v1 owner skill home."
+            "v1 owner skill home; v2/v3 owner homes use the OS profile route."
         )
     )
     parser.add_argument(
