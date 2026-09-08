@@ -138,6 +138,24 @@ As of 2026-08-15:
 
 ## Review Log
 
+### 2026-09-07 - Add a neutral multi-contour v3 exposure grammar
+
+- `aoa_skill_home_port_v3` adds a top-level `exposures` array while retaining
+  the neutral admitted `bundles` set. Each contour has safe runtime, scope,
+  and profile identifiers, the literal `profile-eligible` mode, and a
+  non-empty unique subset of bundle names; an empty array represents an
+  admitted owner-only home.
+- The v3 parser rejects unknown or duplicate skills, duplicate
+  `(runtime, scope, profile)` targets, missing fields, and unsafe identifiers.
+  A Codex adapter consumes only
+  the exact user-profile contour `codex/user/os-user-default/profile-eligible`;
+  foreign contours remain structural declarations without installation or
+  execution claims.
+- V1 repository projection and v2 single-exposure semantics remain intact.
+  Capability parity continues to compare all advertised owner bundles, while
+  source validation applies the same-name `.agents/skills` guard only to
+  bundles named by a Codex/user exposure.
+
 ### 2026-08-15 - Select the SDK pre-tool routing front door
 
 - `aoa-sdk` now owns the typed `aoa-agent-tool-routing` control-plane contract

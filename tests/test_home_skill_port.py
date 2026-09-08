@@ -93,6 +93,47 @@ def upgrade_owner_to_v2(root: Path) -> dict[str, object]:
     return manifest
 
 
+def upgrade_owner_to_v3(
+    root: Path,
+    exposures: list[dict[str, object]],
+) -> dict[str, object]:
+    manifest_path = root / "skills" / "port.manifest.json"
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    manifest.pop("projection")
+    manifest["schema_version"] = "aoa_skill_home_port_v3"
+    manifest["exposures"] = exposures
+    manifest_path.write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
+    return manifest
+
+
+def add_owner_bundle(root: Path, name: str) -> None:
+    source = root / "skills" / name
+    source.mkdir(parents=True)
+    (source / "SKILL.md").write_text(
+        "---\n"
+        f"name: {name}\n"
+        f"description: Answer one bounded {name} question.\n"
+        "---\n\n"
+        f"# {name}\n",
+        encoding="utf-8",
+    )
+    admission = root / "docs" / "decisions" / f"{name}-admission.md"
+    admission.write_text(f"# Admit {name}\n", encoding="utf-8")
+    manifest_path = root / "skills" / "port.manifest.json"
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    manifest["bundles"].append(
+        {
+            "name": name,
+            "path": f"skills/{name}",
+            "version": "0.1.0",
+            "lifecycle": "admitted",
+            "visibility": "advertised",
+            "admission_ref": f"docs/decisions/{name}-admission.md",
+        }
+    )
+    manifest_path.write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
+
+
 def test_schema_is_valid(tmp_path: Path) -> None:
     repo_root = Path(__file__).resolve().parents[1]
     schema = json.loads((repo_root / "schemas" / "skill-home-port.schema.json").read_text())
@@ -102,6 +143,235 @@ def test_schema_is_valid(tmp_path: Path) -> None:
     manifest_path = owner / "skills" / "port.manifest.json"
     validator.validate(json.loads(manifest_path.read_text(encoding="utf-8")))
     validator.validate(upgrade_owner_to_v2(owner))
+
+
+def test_v3_schema_normalizes_multiple_contours_and_allows_owner_only_home(
+    tmp_path: Path,
+) -> None:
+    repo_root = Path(__file__).resolve().parents[1]
+    schema = json.loads(
+        (repo_root / "schemas" / "skill-home-port.schema.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    validator = Draft202012Validator(schema)
+    owner = make_owner(tmp_path / "aoa-stats")
+    manifest = upgrade_owner_to_v3(
+        owner,
+        [
+            {
+                "runtime": "codex",
+                "scope": "user",
+                "profile": "os-user-default",
+                "mode": "profile-eligible",
+                "skills": ["aoa-stats"],
+            },
+            {
+                "runtime": "fixture-reader",
+                "scope": "repo",
+                "profile": "fixture-default",
+                "mode": "profile-eligible",
+                "skills": ["aoa-stats"],
+            },
+        ],
+    )
+    validator.validate(manifest)
+
+    port = home_skill_port.load_port_definition(owner)
+    assert port.schema_version == home_skill_port.SCHEMA_VERSION_V3
+    assert [(item.runtime, item.scope, item.profile, item.mode) for item in port.exposures] == [
+        ("codex", "user", "os-user-default", "profile-eligible"),
+        ("fixture-reader", "repo", "fixture-default", "profile-eligible"),
+    ]
+    assert all(item.skills == ("aoa-stats",) for item in port.exposures)
+    assert home_skill_port.validation_plan(port)["schema_version"] == (
+        "aoa_skill_home_source_plan_v3"
+    )
+
+    owner_only = make_owner(tmp_path / "owner-only")
+    owner_only_manifest = upgrade_owner_to_v3(owner_only, [])
+    validator.validate(owner_only_manifest)
+    owner_only_port = home_skill_port.load_port_definition(owner_only)
+    assert owner_only_port.exposures == ()
+    assert home_skill_port.validation_plan(owner_only_port)["clean"] is True
+
+
+@pytest.mark.parametrize(
+    ("mutation", "message"),
+    [
+        (
+            lambda manifest: manifest["exposures"][0]["skills"].append("missing"),
+            "unknown bundles",
+        ),
+        (
+            lambda manifest: manifest["exposures"][0]["skills"].append("aoa-stats"),
+            "contains duplicates",
+        ),
+        (
+            lambda manifest: manifest["exposures"][0].update(runtime="../codex"),
+            "safe identifier",
+        ),
+        (
+            lambda manifest: manifest["exposures"][0].update(mode="native"),
+            "mode must equal",
+        ),
+        (
+            lambda manifest: manifest["exposures"].append(
+                {
+                    "runtime": "codex",
+                    "scope": "user",
+                    "profile": "os-user-default",
+                    "mode": "profile-eligible",
+                    "skills": ["aoa-stats"],
+                }
+            ),
+            "duplicate exposure target",
+        ),
+        (
+            lambda manifest: manifest["exposures"][0].pop("mode"),
+            "missing field 'mode'",
+        ),
+    ],
+)
+def test_v3_loader_rejects_ambiguous_or_unsafe_exposures(
+    tmp_path: Path,
+    mutation,
+    message: str,
+) -> None:
+    owner = make_owner(tmp_path / "aoa-stats")
+    manifest = upgrade_owner_to_v3(
+        owner,
+        [
+            {
+                "runtime": "codex",
+                "scope": "user",
+                "profile": "os-user-default",
+                "mode": "profile-eligible",
+                "skills": ["aoa-stats"],
+            }
+        ],
+    )
+    mutation(manifest)
+    (owner / "skills" / "port.manifest.json").write_text(
+        json.dumps(manifest, indent=2) + "\n", encoding="utf-8"
+    )
+    with pytest.raises(home_skill_port.PortContractError, match=message):
+        home_skill_port.load_port_definition(owner)
+
+
+def test_v3_source_plan_scopes_duplicate_guard_to_codex_user_exposures(
+    tmp_path: Path,
+) -> None:
+    owner = make_owner(tmp_path / "aoa-stats")
+    add_owner_bundle(owner, "aoa-memo")
+    upgrade_owner_to_v3(
+        owner,
+        [
+            {
+                "runtime": "codex",
+                "scope": "user",
+                "profile": "os-user-default",
+                "mode": "profile-eligible",
+                "skills": ["aoa-stats"],
+            },
+            {
+                "runtime": "fixture-reader",
+                "scope": "repo",
+                "profile": "fixture-default",
+                "mode": "profile-eligible",
+                "skills": ["aoa-memo"],
+            },
+        ],
+    )
+    repo_projection = owner / ".agents" / "skills"
+    (repo_projection / "aoa-memo").mkdir(parents=True)
+    (repo_projection / "aoa-memo" / "SKILL.md").write_text(
+        "repo-only\n", encoding="utf-8"
+    )
+    port = home_skill_port.load_port_definition(owner)
+    clean = home_skill_port.validation_plan(port)
+    assert clean["clean"] is True
+    assert clean["duplicate_repo_projections"] == []
+    assert clean["bundles"][1]["exposures"][0]["runtime"] == "fixture-reader"
+
+    (repo_projection / "aoa-stats").mkdir()
+    (repo_projection / "aoa-stats" / "SKILL.md").write_text(
+        "duplicate\n", encoding="utf-8"
+    )
+    blocked = home_skill_port.validation_plan(port)
+    assert blocked["clean"] is False
+    assert blocked["duplicate_repo_projections"] == [
+        ".agents/skills/aoa-stats"
+    ]
+
+
+def test_v3_codex_profile_resolver_requires_matching_exposure(
+    tmp_path: Path,
+) -> None:
+    owner = make_owner(tmp_path / "aoa-stats")
+    add_owner_bundle(owner, "aoa-memo")
+    upgrade_owner_to_v3(
+        owner,
+        [
+            {
+                "runtime": "codex",
+                "scope": "user",
+                "profile": "os-user-default",
+                "mode": "profile-eligible",
+                "skills": ["aoa-stats"],
+            }
+        ],
+    )
+    config_path = tmp_path / "os-skill-profiles.json"
+
+    def write_profile(names: list[str]) -> None:
+        config_path.write_text(
+            json.dumps(
+                {
+                    "schema_version": "aoa_os_skill_profiles_v1",
+                    "profiles": {
+                        "os-user-default": {
+                            "runtime": "codex",
+                            "scope": "user",
+                            "install_root": "$HOME/.codex/skills",
+                            "install_mode": "managed-copy",
+                            "sources": [
+                                {
+                                    "kind": "owner-port",
+                                    "repo": "aoa-stats",
+                                    "root": "aoa-stats",
+                                    "skills": names,
+                                }
+                            ],
+                        }
+                    },
+                },
+                indent=2,
+            )
+            + "\n",
+            encoding="utf-8",
+        )
+
+    write_profile(["aoa-stats"])
+    profile, skills = install_os_skill_profile.resolve_profile(
+        repo_root=Path(__file__).resolve().parents[1],
+        config_path=config_path,
+        profile_name="os-user-default",
+        os_root=tmp_path,
+        overrides={"aoa-stats": owner},
+    )
+    assert profile["runtime"] == "codex"
+    assert [skill.name for skill in skills] == ["aoa-stats"]
+
+    write_profile(["aoa-stats", "aoa-memo"])
+    with pytest.raises(install_os_skill_profile.ProfileError, match="matching.*exposure"):
+        install_os_skill_profile.resolve_profile(
+            repo_root=Path(__file__).resolve().parents[1],
+            config_path=config_path,
+            profile_name="os-user-default",
+            os_root=tmp_path,
+            overrides={"aoa-stats": owner},
+        )
 
 
 def test_projection_roundtrip_and_source_drift(tmp_path: Path) -> None:

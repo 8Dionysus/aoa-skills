@@ -1,0 +1,17 @@
+{
+  "allowed_bytes": 3529359,
+  "allowed_tracked_bytes": 10259418,
+  "approved_by": "repository-owner",
+  "base_ref": "616ce49eed8a605782fb2f295060ae916e04c7a6",
+  "changed_generated_bytes": 3529359,
+  "changed_generated_files": 116,
+  "decision_ref": "aoa-kag:docs/decisions/AOA-KAG-D-0017-portable-content-addressed-repository-family.md",
+  "default_limit_bytes": 1048576,
+  "head_family_digest": "99f16e1775c89a5d5266a17f0b652d5734aa72b01be4409644d97134284e4f20",
+  "reason": "Regenerate aoa-skills owner portable family for the reviewed multi-contour home-port v3 source commit 7ee6f5044a6410c57e42011ddcf0943f102b6c95 using workflow-pinned KAG producer cc0ba190c932921f1e23dff4536229f359275f8a. The source change clarifies owner exposure eligibility and v2 migration compatibility; this receipt authorizes only the measured generated family delta while preserving standing KAG budgets and owner semantics.",
+  "repo": "aoa-skills",
+  "schema_version": "aoa-repo-local-kag-budget-receipt-v1",
+  "scope": "generated_delta_and_tracked_size",
+  "tracked_bytes": 10259418,
+  "tracked_bytes_max": 9437184
+}

@@ -9,6 +9,12 @@ Tracking starts with the community-docs baseline for this repository.
 
 ### Changed
 
+- Extend the owner skill-home contract with a neutral v3 exposure array for
+  multiple runtime, scope, and profile contours using the literal
+  `profile-eligible` mode. Preserve v1 projection and v2 compatibility,
+  require subset-safe exposure declarations, scope the same-name repository
+  guard to Codex/user eligibility, and make the Codex profile resolver reject
+  admitted bundles absent from its matching v3 exposure.
 - Move runnable validation entrypoints out of inherited `AGENTS.md` cards into
   an on-demand root route, while keeping reusable command composition in the
   validation-lane manifest and guarding against command drift back into cards.

@@ -15,7 +15,8 @@ from typing import Any, Iterable
 
 SCHEMA_VERSION_V1 = "aoa_skill_home_port_v1"
 SCHEMA_VERSION_V2 = "aoa_skill_home_port_v2"
-SUPPORTED_SCHEMA_VERSIONS = {SCHEMA_VERSION_V1, SCHEMA_VERSION_V2}
+SCHEMA_VERSION_V3 = "aoa_skill_home_port_v3"
+SUPPORTED_SCHEMA_VERSIONS = {SCHEMA_VERSION_V1, SCHEMA_VERSION_V2, SCHEMA_VERSION_V3}
 CONTRACT_REF = "aoa-skills:schemas/skill-home-port.schema.json"
 DEFAULT_MANIFEST = Path("skills/port.manifest.json")
 PROJECTION_ROOT = Path(".agents/skills")
@@ -46,6 +47,17 @@ class BundleSpec:
 
 
 @dataclass(frozen=True)
+class ExposureSpec:
+    """One normalized eligibility contour from a v2 or v3 owner manifest."""
+
+    runtime: str
+    scope: str
+    profile: str | None
+    mode: str
+    skills: tuple[str, ...]
+
+
+@dataclass(frozen=True)
 class PortDefinition:
     owner_root: Path
     manifest_path: Path
@@ -54,7 +66,15 @@ class PortDefinition:
     owner_ref: Path
     bundles: tuple[BundleSpec, ...]
     projection_root: Path | None
-    exposure_profile: str | None
+    exposures: tuple[ExposureSpec, ...]
+
+    @property
+    def exposure_profile(self) -> str | None:
+        """Return the v2 profile marker while retaining the legacy accessor."""
+
+        if self.schema_version == SCHEMA_VERSION_V2 and len(self.exposures) == 1:
+            return self.exposures[0].profile
+        return None
 
 
 def _inside(root: Path, relative: Path, *, label: str) -> Path:
@@ -175,6 +195,29 @@ def tree_digest(snapshot: dict[str, dict[str, Any]]) -> str:
     return _tree_digest(snapshot)
 
 
+def matching_exposure(
+    port: PortDefinition,
+    *,
+    skill: str,
+    runtime: str,
+    scope: str,
+    profile: str,
+    mode: str,
+) -> ExposureSpec | None:
+    """Return the exact normalized exposure that makes one skill eligible."""
+
+    for exposure in port.exposures:
+        if (
+            exposure.runtime == runtime
+            and exposure.scope == scope
+            and exposure.profile == profile
+            and exposure.mode == mode
+            and skill in exposure.skills
+        ):
+            return exposure
+    return None
+
+
 def load_port_definition(
     owner_root: str | Path,
     manifest_path: str | Path = DEFAULT_MANIFEST,
@@ -213,6 +256,15 @@ def load_port_definition(
             "bundles",
             "exposure",
         }
+    elif schema_version == SCHEMA_VERSION_V3:
+        allowed_manifest_keys = {
+            "schema_version",
+            "contract_ref",
+            "owner_repo",
+            "owner_ref",
+            "bundles",
+            "exposures",
+        }
     else:
         allowed_manifest_keys = {
             "schema_version",
@@ -222,9 +274,10 @@ def load_port_definition(
             "bundles",
             "projection",
             "exposure",
+            "exposures",
         }
     errors = _unknown_keys(document, allowed_manifest_keys, label="manifest")
-    if schema_version not in SUPPORTED_SCHEMA_VERSIONS:
+    if not isinstance(schema_version, str) or schema_version not in SUPPORTED_SCHEMA_VERSIONS:
         errors.append(
             "schema_version must equal one of "
             f"{sorted(SUPPORTED_SCHEMA_VERSIONS)!r}"
@@ -303,7 +356,7 @@ def load_port_definition(
 
     bundle_names = [bundle.name for bundle in bundles]
     projection_root: Path | None = None
-    exposure_profile: str | None = None
+    exposures: list[ExposureSpec] = []
     if schema_version == SCHEMA_VERSION_V1:
         projection = document.get("projection")
         projection_skills: list[str] = []
@@ -338,6 +391,16 @@ def load_port_definition(
                 "partial home projection is forbidden"
             )
         projection_root = PROJECTION_ROOT
+        if projection_skills:
+            exposures.append(
+                ExposureSpec(
+                    runtime="codex",
+                    scope="repo",
+                    profile=None,
+                    mode="generated-copy",
+                    skills=tuple(projection_skills),
+                )
+            )
     elif schema_version == SCHEMA_VERSION_V2:
         exposure = document.get("exposure")
         exposure_skills: list[str] = []
@@ -374,7 +437,88 @@ def load_port_definition(
                     errors.append("exposure.skills contains duplicates")
         if exposure_skills and exposure_skills != bundle_names:
             errors.append("exposure.skills must exactly match bundles order")
-        exposure_profile = EXPOSURE_PROFILE
+        if exposure_skills:
+            exposures.append(
+                ExposureSpec(
+                    runtime="codex",
+                    scope="user",
+                    profile=EXPOSURE_PROFILE,
+                    mode="profile-selected",
+                    skills=tuple(exposure_skills),
+                )
+            )
+    elif schema_version == SCHEMA_VERSION_V3:
+        raw_exposures = document.get("exposures")
+        if not isinstance(raw_exposures, list):
+            errors.append("exposures must be an array")
+            raw_exposures = []
+
+        seen_targets: set[tuple[str, str, str]] = set()
+        exposure_keys = {"runtime", "scope", "profile", "mode", "skills"}
+        for index, raw_exposure in enumerate(raw_exposures):
+            label = f"exposures[{index}]"
+            if not isinstance(raw_exposure, dict):
+                errors.append(f"{label} must be an object")
+                continue
+            errors.extend(_unknown_keys(raw_exposure, exposure_keys, label=label))
+            missing = sorted(exposure_keys - set(raw_exposure))
+            errors.extend(f"{label} is missing field {key!r}" for key in missing)
+
+            identifiers: dict[str, str] = {}
+            for key in ("runtime", "scope", "profile"):
+                value = raw_exposure.get(key)
+                if not isinstance(value, str) or not NAME_RE.fullmatch(value):
+                    errors.append(
+                        f"{label}.{key} must use lowercase kebab-case safe identifier"
+                    )
+                else:
+                    identifiers[key] = value
+            if raw_exposure.get("mode") != "profile-eligible":
+                errors.append(f"{label}.mode must equal 'profile-eligible'")
+
+            raw_exposure_skills = raw_exposure.get("skills")
+            exposure_skills: list[str] = []
+            if not isinstance(raw_exposure_skills, list) or not raw_exposure_skills:
+                errors.append(f"{label}.skills must be a non-empty array")
+            elif not all(
+                isinstance(item, str) and NAME_RE.fullmatch(item)
+                for item in raw_exposure_skills
+            ):
+                errors.append(
+                    f"{label}.skills entries must use lowercase kebab-case"
+                )
+            else:
+                exposure_skills = list(raw_exposure_skills)
+                if len(set(exposure_skills)) != len(exposure_skills):
+                    errors.append(f"{label}.skills contains duplicates")
+                unknown = sorted(set(exposure_skills) - set(bundle_names))
+                if unknown:
+                    errors.append(
+                        f"{label}.skills contains unknown bundles: {', '.join(unknown)}"
+                    )
+
+            if len(identifiers) == 3:
+                target = tuple(identifiers[key] for key in ("runtime", "scope", "profile"))
+                if target in seen_targets:
+                    errors.append(
+                        f"duplicate exposure target: runtime={target[0]!r}, "
+                        f"scope={target[1]!r}, profile={target[2]!r}"
+                    )
+                seen_targets.add(target)
+                if (
+                    raw_exposure.get("mode") == "profile-eligible"
+                    and exposure_skills
+                    and len(set(exposure_skills)) == len(exposure_skills)
+                ):
+                    exposures.append(
+                        ExposureSpec(
+                            runtime=identifiers["runtime"],
+                            scope=identifiers["scope"],
+                            profile=identifiers["profile"],
+                            mode="profile-eligible",
+                            skills=tuple(exposure_skills),
+                        )
+                    )
 
     if errors:
         raise PortContractError(errors)
@@ -420,7 +564,7 @@ def load_port_definition(
         owner_ref=owner_ref,
         bundles=tuple(bundles),
         projection_root=projection_root_path,
-        exposure_profile=exposure_profile,
+        exposures=tuple(exposures),
     )
 
 
@@ -429,7 +573,7 @@ def projection_plan(port: PortDefinition) -> dict[str, Any]:
         raise PortContractError(
             [
                 "repository projection planning applies only to deprecated v1 ports; "
-                "v2 owner homes are installed through the OS user profile"
+                "v2/v3 owner homes are installed through the OS user profile"
             ]
         )
     projection_root = port.projection_root
@@ -478,13 +622,19 @@ def projection_plan(port: PortDefinition) -> dict[str, Any]:
 
 
 def source_plan(port: PortDefinition) -> dict[str, Any]:
-    if port.schema_version != SCHEMA_VERSION_V2 or port.exposure_profile is None:
+    if port.schema_version not in {SCHEMA_VERSION_V2, SCHEMA_VERSION_V3}:
         raise PortContractError(
-            ["OS-profile source planning applies only to v2 owner-home ports"]
+            ["OS-profile source planning applies only to v2/v3 owner-home ports"]
         )
 
     duplicate_repo_projections: list[str] = []
     bundle_records: list[dict[str, Any]] = []
+    codex_user_exposed = {
+        skill
+        for exposure in port.exposures
+        if exposure.runtime == "codex" and exposure.scope == "user"
+        for skill in exposure.skills
+    }
     for bundle in port.bundles:
         source_dir = _inside(
             port.owner_root,
@@ -496,25 +646,64 @@ def source_plan(port: PortDefinition) -> dict[str, Any]:
             label=f"bundle {bundle.name} source",
         )
         repo_projection = port.owner_root / PROJECTION_ROOT / bundle.name
-        if repo_projection.exists() or repo_projection.is_symlink():
+        if (
+            bundle.name in codex_user_exposed
+            and (repo_projection.exists() or repo_projection.is_symlink())
+        ):
             duplicate_repo_projections.append(
                 repo_projection.relative_to(port.owner_root).as_posix()
             )
-        bundle_records.append(
-            {
-                "name": bundle.name,
-                "version": bundle.version,
-                "source": bundle.path.as_posix(),
-                "source_digest": _tree_digest(source_snapshot),
-                "file_count": len(source_snapshot),
-                "exposure_profile": port.exposure_profile,
-            }
-        )
+        bundle_record = {
+            "name": bundle.name,
+            "version": bundle.version,
+            "source": bundle.path.as_posix(),
+            "source_digest": _tree_digest(source_snapshot),
+            "file_count": len(source_snapshot),
+        }
+        if port.schema_version == SCHEMA_VERSION_V2:
+            bundle_record["exposure_profile"] = port.exposure_profile
+        else:
+            bundle_record["exposures"] = [
+                {
+                    "runtime": exposure.runtime,
+                    "scope": exposure.scope,
+                    "profile": exposure.profile,
+                    "mode": exposure.mode,
+                }
+                for exposure in port.exposures
+                if bundle.name in exposure.skills
+            ]
+        bundle_records.append(bundle_record)
+
+    if port.schema_version == SCHEMA_VERSION_V2:
+        return {
+            "schema_version": "aoa_skill_home_source_plan_v2",
+            "owner_repo": port.owner_repo,
+            "manifest": port.manifest_path.relative_to(port.owner_root).as_posix(),
+            "bundles": bundle_records,
+            "duplicate_repo_projections": duplicate_repo_projections,
+            "clean": not duplicate_repo_projections,
+            "claim_limit": (
+                "owner source identity, package shape, profile eligibility, and "
+                "same-name repo-projection absence only; no current profile membership, "
+                "live user install, routing, or outcome claim"
+            ),
+        }
 
     return {
-        "schema_version": "aoa_skill_home_source_plan_v2",
+        "schema_version": "aoa_skill_home_source_plan_v3",
         "owner_repo": port.owner_repo,
         "manifest": port.manifest_path.relative_to(port.owner_root).as_posix(),
+        "exposures": [
+            {
+                "runtime": exposure.runtime,
+                "scope": exposure.scope,
+                "profile": exposure.profile,
+                "mode": exposure.mode,
+                "skills": list(exposure.skills),
+            }
+            for exposure in port.exposures
+        ],
         "bundles": bundle_records,
         "duplicate_repo_projections": duplicate_repo_projections,
         "clean": not duplicate_repo_projections,
@@ -612,13 +801,33 @@ def format_plan(plan: dict[str, Any]) -> str:
             )
         if plan["unexpected_entries"]:
             lines.append("unexpected: " + ", ".join(plan["unexpected_entries"]))
-    else:
+    elif plan["schema_version"] == "aoa_skill_home_source_plan_v2":
         for bundle in plan["bundles"]:
             lines.append(
                 f"- {bundle['name']}: source={bundle['source']} "
                 f"version={bundle['version']} files={bundle['file_count']} "
                 f"digest={bundle['source_digest']} "
                 f"eligible-profile={bundle['exposure_profile']}"
+            )
+        if plan["duplicate_repo_projections"]:
+            lines.append(
+                "duplicate repo projections: "
+                + ", ".join(plan["duplicate_repo_projections"])
+            )
+    else:
+        for exposure in plan["exposures"]:
+            lines.append(
+                f"exposure: runtime={exposure['runtime']} "
+                f"scope={exposure['scope']} profile={exposure['profile']} "
+                f"mode={exposure['mode']} skills={','.join(exposure['skills'])}"
+            )
+        for bundle in plan["bundles"]:
+            eligible = bundle["exposures"]
+            lines.append(
+                f"- {bundle['name']}: source={bundle['source']} "
+                f"version={bundle['version']} files={bundle['file_count']} "
+                f"digest={bundle['source_digest']} "
+                f"eligible-exposures={len(eligible)}"
             )
         if plan["duplicate_repo_projections"]:
             lines.append(

@@ -324,6 +324,22 @@ def resolve_profile(
             for name in requested:
                 if not isinstance(name, str) or name not in by_name:
                     raise ProfileError(f"owner port {repo} does not expose {name!r}")
+                if (
+                    port.schema_version == home_skill_port.SCHEMA_VERSION_V3
+                    and home_skill_port.matching_exposure(
+                        port,
+                        skill=name,
+                        runtime=profile["runtime"],
+                        scope=profile["scope"],
+                        profile=profile_name,
+                        mode="profile-eligible",
+                    )
+                    is None
+                ):
+                    raise ProfileError(
+                        f"owner port {repo} skill {name!r} has no matching "
+                        "Codex user profile exposure"
+                    )
                 bundle = by_name[name]
                 additions.append(
                     _resolved_skill(

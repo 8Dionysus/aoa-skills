@@ -8,6 +8,9 @@
     },
     {
       "$ref": "#/$defs/osUserExposureV2"
+    },
+    {
+      "$ref": "#/$defs/multiContourExposureV3"
     }
   ],
   "$defs": {
@@ -15,6 +18,11 @@
       "type": "string",
       "minLength": 1,
       "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))[^\\u0000]+$"
+    },
+    "safeIdentifier": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
     },
     "bundle": {
       "type": "object",
@@ -189,6 +197,83 @@
                 "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
               }
             }
+          }
+        }
+      }
+    },
+    "multiContourExposureV3": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_version",
+        "contract_ref",
+        "owner_repo",
+        "owner_ref",
+        "bundles",
+        "exposures"
+      ],
+      "properties": {
+        "schema_version": {
+          "const": "aoa_skill_home_port_v3"
+        },
+        "contract_ref": {
+          "const": "aoa-skills:schemas/skill-home-port.schema.json"
+        },
+        "owner_repo": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$"
+        },
+        "owner_ref": {
+          "$ref": "#/$defs/relativePath"
+        },
+        "bundles": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/bundle"
+          }
+        },
+        "exposures": {
+          "description": "Declares the runtime, scope, profile, and mode contours for which admitted owner bundles are eligible. An empty array is a valid owner-only home.",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/exposureV3"
+          }
+        }
+      }
+    },
+    "exposureV3": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "runtime",
+        "scope",
+        "profile",
+        "mode",
+        "skills"
+      ],
+      "properties": {
+        "runtime": {
+          "$ref": "#/$defs/safeIdentifier"
+        },
+        "scope": {
+          "$ref": "#/$defs/safeIdentifier"
+        },
+        "profile": {
+          "$ref": "#/$defs/safeIdentifier"
+        },
+        "mode": {
+          "description": "The v3 profile eligibility mode consumed by the supported profile adapter.",
+          "const": "profile-eligible"
+        },
+        "skills": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
           }
         }
       }
