@@ -2,12 +2,12 @@ schema_version: aoa-skill-contract-v1
 identity:
   name: aoa-knowledge-stewardship
   owner: aoa-skills
-  version: 0.2.8
+  version: 0.2.9
   health: challenger
 purpose: Preserve authority mapping and sanitized sharing behind one discoverable front door.
 freedom_level: bounded-judgment
 tool_requirements:
-  - Read access to target material and target-specific owner declarations.
+  - Read access to target material and complete inline or exact supplied target-specific owner declarations.
   - Destination write access only for an authorized sanitized artifact.
 trust:
   posture: authored-procedure

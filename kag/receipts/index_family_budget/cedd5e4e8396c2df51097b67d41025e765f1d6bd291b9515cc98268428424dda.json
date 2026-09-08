@@ -1,0 +1,17 @@
+{
+  "allowed_bytes": 3700976,
+  "allowed_tracked_bytes": 10267624,
+  "approved_by": "repository-owner",
+  "base_ref": "86720fe6aed8c6d59a8d938209032787f2670d09",
+  "changed_generated_bytes": 3700976,
+  "changed_generated_files": 123,
+  "decision_ref": "aoa-kag:docs/decisions/AOA-KAG-D-0017-portable-content-addressed-repository-family.md",
+  "default_limit_bytes": 1048576,
+  "head_family_digest": "cedd5e4e8396c2df51097b67d41025e765f1d6bd291b9515cc98268428424dda",
+  "reason": "Regenerate the common aoa-skills KAG portable family with the exact PR395 CI producer cc0ba190c932921f1e23dff4536229f359275f8a; repair the tracked-size receipt schema mismatch while preserving repository-owner budget semantics.",
+  "repo": "aoa-skills",
+  "schema_version": "aoa-repo-local-kag-budget-receipt-v1",
+  "scope": "generated_delta_and_tracked_size",
+  "tracked_bytes": 10267624,
+  "tracked_bytes_max": 9437184
+}

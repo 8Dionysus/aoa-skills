@@ -627,7 +627,7 @@ nodes:
     owner: *session_owner
     lifecycle:
       state: candidate
-      version: 0.2.10
+      version: 0.2.11
       visibility: advertised
       evidence_state: evaluated
       health: challenger
@@ -678,7 +678,7 @@ nodes:
       source_refs:
         - repo: aoa-skills
           path: skills/core/session-growth/aoa-memo-writeback/SKILL.md
-          ref: capability-family-v0.2.10
+          ref: capability-family-v0.2.11
           role: portable-procedure
           authority: authored
       optional_refs: []

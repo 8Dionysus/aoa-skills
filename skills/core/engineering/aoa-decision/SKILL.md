@@ -23,6 +23,7 @@ or write authority never becomes implicit approval.
 
 - one decision intent and the target owner, subject, ID, path, or mismatch
 - exact owner routes, records, template, index contract, and effect authority
+  for the exact effect, target, and scope
   required by the selected mode
 
 ## Outputs
@@ -54,6 +55,10 @@ Choose exactly one mode:
 5. Stop as `blocked_missing_input` before target reads or effects when a
    required owner source, accepted decision field, index contract, builder,
    or effect authority is unavailable.
+   For a write, bind authorization to the exact effect, target, and scope. A
+   current Operator or human authorization that already matches all three
+   satisfies the approval gate without a repeated question; a new or changed
+   effect, target, or scope requires fresh authorization.
 6. Return the selected mode, exact source refs, result state, actual effects,
    verification, skipped checks, residual uncertainty, and stop line.
 

@@ -26,20 +26,23 @@ effects; validation; claim limit; and stop line.
 
 Procedure:
 
-1. Before reading any target input, inspect the exact input references supplied
-   by the task. Require a sensitivity-policy reference and a separate exact
-   destination-contract reference. If either reference is absent, return
-   `blocked_missing_input` naming it with effect `none`; do not open owner
-   declarations, sensitivity material, raw, or another file to discover or
-   reconstruct the missing contract. A path or pointer mentioned inside an
+1. Before reading any target input, inspect the exact governing declarations
+   supplied by the task. Complete inline declarations satisfy this gate. When
+   a declaration defers a substantive fact to a policy or destination
+   contract, require and read that exact supplied reference; do not search for
+   or reconstruct it. If a required fact or deferred reference is absent,
+   return `blocked_missing_input` naming the fact or reference with effect
+   `none`; do not open owner declarations, sensitivity material, raw, or
+   another file to discover it. A path or pointer mentioned inside an
    unsupplied file does not make that contract supplied.
 2. Read the exact supplied owner/effect declaration, sensitivity policy, and
-   destination contract before opening the private raw material. Complete this
-   safety-and-effect preflight without reading raw:
+   destination contract when they are referenced, and use complete inline
+   declarations when they are not, before opening the private raw material.
+   Complete this safety-and-effect preflight without reading raw:
 
    | Required input | Valid only when |
    |---|---|
-   | destination contract ref | exact supplied contract was read |
+   | destination contract | complete inline contract or exact supplied contract was read |
    | raw locator | exact bounded material is named but not yet opened |
    | raw read and preservation | reading is authorized and in-place mutation, deletion, or custody transfer is explicitly allowed or prohibited |
    | audience or disclosure class | intended recipients or an explicit class such as public-safe, maintainer-only, or private handoff is stated |

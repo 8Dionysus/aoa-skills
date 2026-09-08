@@ -14,7 +14,9 @@ Consume `accepted-decision` with:
 - rationale and accepted consequences or tradeoffs
 - canonical decision home or owner route
 - affected owner source surfaces and follow-up boundary
-- explicit effect authority
+- explicit effect authority matching the exact intended effect, target owner or
+  path, and scope. A current Operator or human authorization already matching
+  all three is sufficient; do not ask for it again.
 
 Owner ID, template, index-builder, and validation details may be resolved only
 from the target owner's current decision law.
@@ -32,7 +34,11 @@ from the target owner's current decision law.
    do not load the `find` mode reference or start a second mode.
 4. Require every material input above. Do not infer rejected options,
    rationale, consequences, owner, or placement from the chosen path.
-5. When a material field is missing, return an inline incomplete draft with
+5. Bind any requested write to the exact effect, target, and scope. Existing
+   matching Operator or human authorization satisfies this approval gate. If
+   any of those dimensions is new, changed, missing, or ambiguous, require
+   fresh authority and stop before the effect.
+6. When a material field is missing, return an inline incomplete draft with
    `[owner input required]`, `blocked_missing_input`, and no file effect. Write
    a draft file only when the caller explicitly authorizes that distinct
    effect and supplies its destination.
@@ -55,8 +61,9 @@ from the target owner's current decision law.
 5. Keep evidence, generated output, planning, session, runtime, and audit
    material as context. None of them accepts the decision or becomes its
    governing source.
-6. Before writing, confirm effect authority, target path, preservation of
-   existing owner files, and the smallest intended diff. Use Git status only
+6. Before writing, confirm the matching authorization for the exact effect,
+   target path, and scope, preservation of existing owner files, and the
+   smallest intended diff. Use Git status only
    when the owner route is a Git workspace; in an explicit non-VCS fixture use
    direct file comparison and do not retry Git commands. Write only the owner
    source.
