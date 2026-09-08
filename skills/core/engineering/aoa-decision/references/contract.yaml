@@ -2,7 +2,7 @@ schema_version: aoa-skill-contract-v1
 identity:
   name: aoa-decision
   owner: aoa-skills
-  version: 0.2.3
+  version: 0.2.4
   health: challenger
 purpose: Preserve decision lookup, durable recording, and source-first correction behind one discoverable front door.
 applicability:
@@ -23,6 +23,8 @@ trust:
   posture: authored-procedure
   decision_authority: false
   requires_human_approval_for_writes: true
+  approval_matching: [effect, target, scope]
+  existing_matching_operator_authorization_satisfies: true
 provenance:
   source: skills/core/engineering/aoa-decision
   techniques_runtime_dependency: false
@@ -84,7 +86,7 @@ relations:
 verification:
   - exactly one mode and one target are active
   - every rationale, status, supersession, and owner claim is verified in authored source
-  - record and correct effects match explicit authority and owner law
+  - record and correct effects match explicit authority for the exact effect, target, and scope and the owner law
   - generated consumers are rebuilt from source and have bounded claim limits
 failure_modes:
   - several mode procedures or retired child skills loaded for one request
@@ -93,6 +95,7 @@ failure_modes:
   - generated index hand-edited or refreshed to hide missing source or builder law
   - semantic history silently rewritten instead of superseded
   - external retrieval freshness reported as owner-source validity
+  - matching authorization needlessly requested again, or reused after its effect, target, or scope changes
 termination:
   success: one typed mode result with exact owner source, actual effects, verification, uncertainty, and stop line
   blocked: required source, accepted-decision field, correction class, builder contract, or effect authority remains unavailable

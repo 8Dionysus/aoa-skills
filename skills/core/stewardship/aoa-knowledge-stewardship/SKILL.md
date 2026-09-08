@@ -35,7 +35,9 @@ own preceding node.
 
 - exactly one intent plus source material, audience or disclosure class,
   destination, review/evidence refs, current effect authority, and any owner
-  route required by an owner-specific claim
+  route required by an owner-specific claim. Governing declarations may be
+  complete inline task inputs; if a declaration defers to another policy or
+  contract, the exact supplied ref must be available.
 
 ## Outputs
 
@@ -61,11 +63,12 @@ own preceding node.
    material. A newer or nearby file cannot fill a missing owner edge.
    In `sanitized-share`, establish the audience or disclosure class, permitted
    abstraction, disclosure threshold, exact destination identifier, read/write
-   effect authority, publication posture, and review requirement from the
-   supplied governing declarations before opening the private raw material.
-   The task must supply an exact destination-contract reference; a pointer to
-   an unsupplied contract or a destination path mentioned by another file is
-   not the contract.
+   effect authority, publication posture, and review requirement from complete
+   inline declarations or exact supplied governing references before opening
+   the private raw material. A separate destination-contract or sensitivity
+   reference is required only when the task defers any substantive fact to
+   that document; a pointer to an unsupplied contract or a destination path
+   mentioned by another file is not the contract.
 
    Require an explicit custody owner or destination owner before making an
    owner-specific handoff, durable-placement claim, or publication claim. For

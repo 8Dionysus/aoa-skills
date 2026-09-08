@@ -44,7 +44,7 @@ nodes:
       authority: authored
     lifecycle:
       state: candidate
-      version: 0.2.3
+      version: 0.2.4
       visibility: advertised
       evidence_state: pilot-verified
       health: challenger
@@ -108,7 +108,7 @@ nodes:
       source_refs:
         - repo: aoa-skills
           path: skills/core/engineering/aoa-decision/SKILL.md
-          ref: capability-family-v0.2.0
+          ref: capability-family-v0.2.4
           role: portable-family-procedure
           authority: authored
       optional_refs: []
@@ -212,7 +212,7 @@ nodes:
       authority: authored
     lifecycle:
       state: candidate
-      version: 0.2.2
+      version: 0.2.3
       visibility: internal
       evidence_state: pilot-verified
       health: challenger
@@ -271,7 +271,7 @@ nodes:
       source_refs:
         - repo: aoa-skills
           path: skills/core/engineering/aoa-decision/references/record.md
-          ref: capability-family-v0.2.0
+          ref: capability-family-v0.2.3
           role: record-mode
           authority: authored
       optional_refs:

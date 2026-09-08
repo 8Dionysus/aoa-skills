@@ -2,7 +2,7 @@ schema_version: aoa-skill-contract-v1
 identity:
   name: aoa-memo-writeback
   owner: aoa-skills
-  version: 0.2.10
+  version: 0.2.11
   health: challenger
 purpose: Detect a memory-worthy work outcome and route its first guarded writeback decision.
 applicability:
@@ -17,7 +17,7 @@ input_abi: memo-writeback-pressure
 output_abi: memo-writeback-decision
 freedom_level: bounded-judgment
 tool_requirements:
-  - Read access to inspectable session and owner-source evidence.
+  - Read access to the exact loaded package path or a verified owner-resolver result, plus inspectable session and owner-source evidence.
   - Owner-local write access only when candidate creation is authorized.
 effects_by_decision:
   write_candidate: owner-local-write
@@ -34,6 +34,7 @@ verification:
   - One exact candidate read after write; no post-write repository or filesystem orientation when port validation is manual.
   - Report a single pre-package not-found recovery as package_path_recovered and retain its cost.
   - Distinguish origin owner, aoa-memo intake owner, and aoa-skills procedure provenance.
+  - Verify package identity from an absolute catalog or resolver path; a missing or ambiguous identity blocks before package or workspace reads.
 termination:
   success: one first-writeback decision or owner handoff, effect report, proof limit, and next owner route
   blocked: no inspectable evidence, owner, privacy posture, or required port contract
@@ -57,10 +58,10 @@ relations:
     target: aoa-memo
     condition: a concrete memo artifact, corpus question, or lifecycle target already exists
 failure_modes:
-  - repeated package-path construction, any search, or any workspace action instead of the host locator
+  - repeated package-path construction, any search, or any workspace action instead of the exact absolute catalog or verified resolver path
   - hiding a recovered not-found package-path miss as clean package entry
   - enumerating the workspace to discover an owner source or memo port when the exact evidence and conventional port path suffice
-  - guessing a filesystem source path from a semantic authority mention
+  - guessing a filesystem source path from a semantic authority mention or catalog typography
   - trusting a closeout assertion about local port admission without reading memo/PORT.yaml
   - reporting aoa-skills as the material's stronger owner because it owns the procedure
   - post-write git, cwd, size, or directory probes after the exact candidate already proves the effect

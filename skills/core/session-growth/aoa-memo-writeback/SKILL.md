@@ -53,21 +53,28 @@ Do not use this skill when:
    corpus identity, lifecycle target, or memory read-model target, do not load
    this skill. Select `aoa-memo` directly.
 2. After selection, the first tool turn must read only this bundle's
-   `SKILL.md` by copying the absolute `(file: ...)` source locator appended by
-   the host to this skill's catalog entry. Do not reconstruct the path from a
-   presumed skill root, `.system`, `$CODEX_HOME`, the workspace, or the skill
-   name. Do not combine the read with `pwd`, `AGENTS`, workspace inspection, or
-   another command.
+   `SKILL.md` from the exact absolute package path observed in the host catalog
+   or returned by a verified owner resolver. Use that loaded package path as
+   the source root for the references below. Catalog syntax such as `file:` is
+   only a locator presentation; a normalized absolute path is sufficient. Do
+   not reconstruct the path from a presumed skill root, `.system`,
+   `$CODEX_HOME`, the workspace, or the skill name. Do not combine the read
+   with `pwd`, `AGENTS`, workspace inspection, or another command. An absent,
+   malformed, non-absolute, or ambiguous catalog/resolver identity is
+   `blocked_package_path_not_observed` before any other package or workspace
+   action.
 
    If one constructed package path already failed with a pure not-found result
    before this body loaded and no workspace, search, or other action occurred,
-   read the exact host locator next and set
+   read the exact host locator or verified resolver result next and set
    `package_path_recovered: true`. This is a degraded one-call recovery, not a
    clean package entry; report it in the result and do not claim equivalent
    routing cost. Any second miss, search, directory probe, workspace read, or
-   absent/failed literal locator is `blocked_package_path_not_observed`.
+   absent/failed locator or ambiguous resolver result is
+   `blocked_package_path_not_observed`.
 3. Read `references/contract.yaml`, then `references/writeback.md`, from that
-   same bundle. Do not inspect the task workspace before both are loaded.
+   same loaded package path. Do not inspect the task workspace before both are
+   loaded.
 4. Check whether the inspected evidence unexpectedly supplies a concrete candidate, export,
    quarantine packet, memory object, corpus identity, or lifecycle target. If
    it does, return `owner_handoff` to `aoa-memo` without opening owner-corpus
@@ -120,6 +127,8 @@ Do not use this skill when:
 
 - confirm owner/stronger-owner, bounded memory question, source and evidence
   refs, freshness, privacy, local-port status, chosen decision, and effect
+- confirm package identity and the exact loaded source path or verified resolver
+  used
 - confirm candidate guardrails and review posture; inspect any packet manually
 - after an authorized candidate write, use the file-change result and one exact
   read of that candidate as the complete effect/artifact check; do not run

@@ -4,7 +4,12 @@
    object, corpus identity, or lifecycle target already exists. If one exists,
    return `owner_handoff` to `aoa-memo`; do not review it, search the corpus, or
    create a duplicate.
-2. Begin workspace reading from the exact evidence path supplied by the
+2. Carry forward the exact absolute package path observed in the host catalog
+   or returned by a verified owner resolver. Use it as the bundle root for
+   this mode; `file:` is optional locator syntax, not an identity requirement.
+   If the package identity is absent or ambiguous, stop with
+   `blocked_package_path_not_observed` before workspace or owner-source reads.
+   Begin workspace reading from the exact evidence path supplied by the
    request. Use an already-known nearest `AGENTS.md`, target-declared refs, and
    the exact conventional `memo/PORT.yaml` only when the writeback needs its
    local port. Do not run `rg --files`, `find`, a directory listing, or a
